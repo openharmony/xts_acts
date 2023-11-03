@@ -155,7 +155,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                     networkId: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
 
                 expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();
@@ -210,7 +210,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                     extendArgs: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
 
                 expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();

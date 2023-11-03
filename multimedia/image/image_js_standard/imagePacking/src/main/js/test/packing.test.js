@@ -266,7 +266,7 @@ export default function imagePacking() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100
          * @tc.name      : SUB_IMAGE_packing_P_001
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -275,13 +275,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99 };
-            packingPromise(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100", 2, packOpts);
+            packingPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0200
          * @tc.name      : SUB_IMAGE_packing_P_002 - Promise - RGB565 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -290,13 +290,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0200", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200", 2, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0200", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0300
          * @tc.name      : SUB_IMAGE_packing_P_003 - Promise - RGB565 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -305,13 +305,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0300", 0, async function (done) {
             let packOpts = { format: "image/jpeg" };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300", 2, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0300", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0400
          * @tc.name      : SUB_IMAGE_packing_P_004 - Promise - RGB565 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -320,13 +320,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0400", 0, async function (done) {
             let packOpts = { quality: 99 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400", 2, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0400", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0500
          * @tc.name      : SUB_IMAGE_packing_P_005 - Promise - RGB565 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -335,13 +335,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0500", 0, async function (done) {
             let packOpts = { format: "image/txt", quality: 99 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500", 2, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0500", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0600
          * @tc.name      : SUB_IMAGE_packing_P_006
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -350,13 +350,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0600", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 50 };
-            packingPromise(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600", 5, packOpts);
+            packingPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0600", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0700
          * @tc.name      : SUB_IMAGE_packing_P_007 - Promise - RGB888 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -365,13 +365,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0700", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700", 5, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0700", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0800
          * @tc.name      : SUB_IMAGE_packing_P_008 - Promise - RGB888 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -380,13 +380,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0800", 0, async function (done) {
             let packOpts = { format: "image/jpeg" };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800", 5, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0800", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0900
          * @tc.name      : SUB_IMAGE_packing_P_009 - Promise - RGB888 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -395,13 +395,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0900", 0, async function (done) {
             let packOpts = { quality: 99 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900", 5, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0900", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1000
          * @tc.name      : SUB_IMAGE_packing_P_010 - Promise - RGB888 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -410,13 +410,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1000", 0, async function (done) {
             let packOpts = { format: "image/txt", quality: 99 };
-            packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000", 5, packOpts);
+            packingPromiseFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1000", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0100
          * @tc.name      : SUB_IMAGE_packingCb_001
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -425,13 +425,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0100", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99 };
-            packingCb(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100", 2, packOpts);
+            packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0100", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0200
          * @tc.name      : SUB_IMAGE_packingCb_002 - callback - RGB565 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -440,13 +440,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0200", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200", 2, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0200", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0300
          * @tc.name      : SUB_IMAGE_packingCb_003 - callback - RGB565 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -455,13 +455,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0300", 0, async function (done) {
             let packOpts = { format: "image/jpeg" };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300", 2, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0300", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0400
          * @tc.name      : SUB_IMAGE_packingCb_004 - callback - RGB565 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -470,13 +470,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0400", 0, async function (done) {
             let packOpts = { quality: 99 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400", 2, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0400", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0500
          * @tc.name      : SUB_IMAGE_packingCb_005 - callback - RGB565 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -485,13 +485,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0500", 0, async function (done) {
             let packOpts = { format: "image/txt", quality: 99 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500", 2, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0500", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0600
          * @tc.name      : SUB_IMAGE_packingCb_006
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -500,13 +500,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0600", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 50 };
-            packingCb(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600", 5, packOpts);
+            packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0600", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0700
          * @tc.name      : SUB_IMAGE_packingCb_007 - callback - RGB888 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -515,13 +515,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0700", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700", 5, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0700", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0800
          * @tc.name      : SUB_IMAGE_packingCb_008 - callback - RGB888 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -530,13 +530,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0800", 0, async function (done) {
             let packOpts = { format: "image/jpeg" };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800", 5, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0800", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0900
          * @tc.name      : SUB_IMAGE_packingCb_009 - callback - RGB888 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -545,13 +545,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0900", 0, async function (done) {
             let packOpts = { quality: 99 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900", 5, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0900", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1000
          * @tc.name      : SUB_IMAGE_packingCb_010 - callback - RGB888 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -560,13 +560,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1000", 0, async function (done) {
             let packOpts = { format: "image/txt", quality: 99 };
-            packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000", 5, packOpts);
+            packingCbFail(done, "SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1000", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100
          * @tc.name      : packing ImageSource - promise
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -576,19 +576,19 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -597,26 +597,26 @@ export default function imagePacking() {
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
                             .then((data) => {
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 success");
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 success");
                                 expect(data != undefined).assertTrue();
                                 done();
                             })
                             .catch((error) => {
-                                console.log("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
+                                console.log("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
                                 expect(false).assertFail();
                                 done();
                             });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100
          * @tc.name      : packing ImageSource - callback
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -626,19 +626,19 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -646,7 +646,7 @@ export default function imagePacking() {
                         let packOpts = { format: "image/jpeg", quality: 1 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 success" + JSON.stringify(data)
+                                "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 success" + JSON.stringify(data)
                             );
                             expect(data != undefined).assertTrue();
                             done();
@@ -654,14 +654,14 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200
          * @tc.name      : packing ImageSource - callback - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -671,26 +671,26 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
                         let packOpts = { format: "image/gif", quality: 98 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success");
+                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success");
                             expect(data == undefined).assertTrue();
                             console.info(data);
                             done();
@@ -698,14 +698,14 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300
          * @tc.name      : packing ImageSource - callback - wrong quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -715,26 +715,26 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 101 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 success");
+                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 success");
                             expect(data == undefined).assertTrue();
                             console.info(data);
                             done();
@@ -742,14 +742,14 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100
          * @tc.name      : createImagePacker
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -759,37 +759,37 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success");
                         expect(true).assertTrue();
                         done();
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200
          * @tc.name      : packing ImageSource - promise - no quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -800,19 +800,19 @@ export default function imagePacking() {
          * @tc.level     : Level 1
          */
 
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -821,27 +821,27 @@ export default function imagePacking() {
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
                             .then((data) => {
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 failed");
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 failed");
                                 expect(data == undefined).assertTrue();
                                 done();
                             })
                             .catch((error) => {
-                                console.log("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
-                                console.log("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 success");
+                                console.log("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
+                                console.log("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 success");
                                 expect(true).assertTrue();
                                 done();
                             });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300
          * @tc.name      : packing ImageSource - promise - no format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -851,19 +851,19 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -872,27 +872,27 @@ export default function imagePacking() {
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
                             .then((data) => {
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 failed");
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 failed");
                                 expect(data == undefined).assertTrue();
                                 done();
                             })
                             .catch((error) => {
-                                console.log("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
-                                console.log("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 success");
+                                console.log("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
+                                console.log("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 success");
                                 expect(true).assertTrue();
                                 done();
                             });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400
          * @tc.name      : packing ImageSource - callback - quality 100
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -903,19 +903,19 @@ export default function imagePacking() {
          * @tc.level     : Level 1
          */
 
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -924,31 +924,31 @@ export default function imagePacking() {
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             if (err) {
                                 expect(false).assertTrue();
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + err);
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + err);
                                 done();
                                 return;
                             }
                             if (data != undefined) {
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 success");
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 success");
                                 expect(true).assertTrue();
                                 done();
                             } else {
                                 except(false).assertTrue();
-                                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 failed");
+                                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 failed");
                                 done();
                             }
                         });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500
          * @tc.name      : packing ImageSource - callback - quality 0
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -958,40 +958,40 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 0 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 success");
+                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 success");
                             expect(data != undefined).assertTrue();
                             done();
                         });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600
          * @tc.name      : packing ImageSource - callback - quality -1
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -1001,40 +1001,40 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600", 0, async function (done) {
             try {
                 await getFd("test.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
                     globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image packer failed");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: -1 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 success");
+                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 success");
                             expect(data == undefined).assertTrue();
                             done();
                         });
                     }
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100
          * @tc.name      : release ImagePacker - promise
          * @tc.desc      : 1.create ImagePacker
          *                 2.call release
@@ -1043,10 +1043,10 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100", 0, async function (done) {
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 create image packer failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 create image packer failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1054,12 +1054,12 @@ export default function imagePacking() {
                 imagePackerApi
                     .release()
                     .then(() => {
-                        console.info("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 success");
+                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 success");
                         expect(true).assertTrue();
                         done();
                     })
                     .catch(() => {
-                        console.log("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 error: " + error);
+                        console.log("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 error: " + error);
                         expect(false).assertTrue();
                         done();
                     });
@@ -1067,7 +1067,7 @@ export default function imagePacking() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100
          * @tc.name      : release ImagePacker - callback
          * @tc.desc      : 1.create ImagePacker
          *                 2.call release
@@ -1076,16 +1076,16 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100", 0, async function (done) {
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 create image packer failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 create image packer failed");
                 expect(false).assertTrue();
                 done();
             } else {
                 globalPacker = imagePackerApi;
                 imagePackerApi.release(() => {
-                    console.info("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 success");
+                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 success");
                     expect(true).assertTrue();
                     done();
                 });
@@ -1093,8 +1093,8 @@ export default function imagePacking() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1102,14 +1102,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 10485760 };
-            packingPromise(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", 2, packOpts);
+            packingPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1117,15 +1117,15 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 20480 };
-            console.info(`SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200 buffersize: ${packOpts.bufferSize}`);
-            packingPromise(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", 2, packOpts);
+            console.info(`SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200 buffersize: ${packOpts.bufferSize}`);
+            packingPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300-over maxbufferSize
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300-over maxbufferSize
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1133,14 +1133,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 20000000 };
-            packingPromise(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", 2, packOpts);
+            packingPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1148,14 +1148,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 10485760 };
-            packingCb(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", 2, packOpts);
+            packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", 2, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1163,14 +1163,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 20480 };
-            packingCb(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", 5, packOpts);
+            packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", 5, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
          *                 3.call packing
@@ -1178,9 +1178,9 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99, bufferSize: 20000000 };
-            packingCb(done, "SUB_GRAPHIC_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 5, packOpts);
+            packingCb(done, "SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 5, packOpts);
         });
     });
 }

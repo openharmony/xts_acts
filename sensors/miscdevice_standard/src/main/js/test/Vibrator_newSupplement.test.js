@@ -47,9 +47,6 @@ describe("VibratorJsTest_misc_5", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
-		vibrator.stop("preset");
-        vibrator.stop("time");
         console.info('afterEach called')
     })
 
@@ -84,6 +81,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -140,6 +138,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -237,6 +236,7 @@ describe("VibratorJsTest_misc_5", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -283,6 +283,7 @@ describe("VibratorJsTest_misc_5", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -410,6 +411,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest031 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -462,6 +464,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest032 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -514,6 +517,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest033 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -567,6 +571,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest034 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -619,6 +624,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest035 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -671,6 +677,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest036 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -724,6 +731,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest037 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -777,6 +785,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest038 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -830,6 +839,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest039 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 	    /*
@@ -856,6 +866,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -914,6 +925,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -971,6 +983,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
    /*
@@ -1027,6 +1040,7 @@ describe("VibratorJsTest_misc_5", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
    /*
@@ -1121,6 +1135,7 @@ describe("VibratorJsTest_misc_5", function () {
 			console.info("VibratorJsTest050 error :" + error);
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1171,6 +1186,7 @@ describe("VibratorJsTest_misc_5", function () {
 			console.info("VibratorJsTest052 error :" + error);
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1307,6 +1323,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest056 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1363,6 +1380,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest057 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1418,6 +1436,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest058 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1472,6 +1491,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest059 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1525,6 +1545,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest060 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1577,6 +1598,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest061 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1630,6 +1652,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest062 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
    /*
@@ -1682,6 +1705,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest063 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -1736,6 +1760,7 @@ describe("VibratorJsTest_misc_5", function () {
         }, ()=>{
             console.info("VibratorJsTest064 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 

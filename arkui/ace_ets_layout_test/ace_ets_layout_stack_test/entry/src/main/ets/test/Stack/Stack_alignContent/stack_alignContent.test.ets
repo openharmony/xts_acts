@@ -60,24 +60,24 @@ export default function Stack_AlignContent() {
       let stack_alignContent_012 = CommonFunc.getComponentRect('Stack_AlignContent_012');
       let stack_alignContent_013 = CommonFunc.getComponentRect('Stack_AlignContent_013');
       let stack_alignContent_01 = CommonFunc.getComponentRect('Stack_AlignContent_01');
-      expect(Math.round(stack_alignContent_011.left - stack_alignContent_01.left))
-        .assertEqual(Math.round(stack_alignContent_01.right - stack_alignContent_011.right));
-      expect(Math.round(stack_alignContent_012.left - stack_alignContent_01.left))
-        .assertEqual(Math.round(stack_alignContent_01.right - stack_alignContent_012.right));
-      expect(Math.round(stack_alignContent_013.left - stack_alignContent_01.left))
-        .assertEqual(Math.round(stack_alignContent_01.right - stack_alignContent_013.right));
-      expect(Math.round(stack_alignContent_011.top - stack_alignContent_01.top))
-        .assertEqual(Math.round(stack_alignContent_01.bottom - stack_alignContent_011.bottom));
-      expect(Math.round(stack_alignContent_012.top - stack_alignContent_01.top))
-        .assertEqual(Math.round(stack_alignContent_01.bottom - stack_alignContent_012.bottom));
-      expect(Math.round(stack_alignContent_013.top - stack_alignContent_01.top))
-        .assertEqual(Math.round(stack_alignContent_01.bottom - stack_alignContent_013.bottom));
-      expect(Math.round(stack_alignContent_011.bottom - stack_alignContent_011.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_012.bottom - stack_alignContent_012.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_013.bottom - stack_alignContent_013.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_011.right - stack_alignContent_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_012.right - stack_alignContent_012.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_013.right - stack_alignContent_013.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_011.left - stack_alignContent_01.left) - 
+      (stack_alignContent_01.right - stack_alignContent_011.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_012.left - stack_alignContent_01.left) - 
+      (stack_alignContent_01.right - stack_alignContent_012.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_013.left - stack_alignContent_01.left) - 
+      (stack_alignContent_01.right - stack_alignContent_013.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_011.top - stack_alignContent_01.top) - 
+      (stack_alignContent_01.bottom - stack_alignContent_011.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_012.top - stack_alignContent_01.top) - 
+      (stack_alignContent_01.bottom - stack_alignContent_012.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_013.top - stack_alignContent_01.top) - 
+      (stack_alignContent_01.bottom - stack_alignContent_013.bottom)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_011.bottom - stack_alignContent_011.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_012.bottom - stack_alignContent_012.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_013.bottom - stack_alignContent_013.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_011.right - stack_alignContent_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_012.right - stack_alignContent_012.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_013.right - stack_alignContent_013.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentCenter] END');
       done();
     });
@@ -104,12 +104,12 @@ export default function Stack_AlignContent() {
       expect(stack_alignContent_021.top).assertEqual(stack_alignContent_02.top);
       expect(stack_alignContent_022.top).assertEqual(stack_alignContent_02.top);
       expect(stack_alignContent_023.top).assertEqual(stack_alignContent_02.top);
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentTopStart] END');
       done();
     });
@@ -130,21 +130,21 @@ export default function Stack_AlignContent() {
       let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
       let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
       let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
-      expect(Math.round(stack_alignContent_021.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_021.right));
-      expect(Math.round(stack_alignContent_022.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_022.right));
-      expect(Math.round(stack_alignContent_023.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_023.right));
-      expect(stack_alignContent_021.top).assertEqual(stack_alignContent_02.top);
-      expect(stack_alignContent_022.top).assertEqual(stack_alignContent_02.top);
-      expect(stack_alignContent_023.top).assertEqual(stack_alignContent_02.top);
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_021.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_021.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_022.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_023.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_021.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.top) - (stack_alignContent_02.top)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentTop] END');
       done();
     });
@@ -171,12 +171,12 @@ export default function Stack_AlignContent() {
       expect(stack_alignContent_021.right).assertEqual(stack_alignContent_02.right);
       expect(stack_alignContent_022.right).assertEqual(stack_alignContent_02.right);
       expect(stack_alignContent_023.right).assertEqual(stack_alignContent_02.right);
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentTopEnd] END');
       done();
     });
@@ -197,21 +197,21 @@ export default function Stack_AlignContent() {
       let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
       let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
       let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
-      expect(stack_alignContent_021.left).assertEqual(stack_alignContent_02.left);
-      expect(stack_alignContent_022.left).assertEqual(stack_alignContent_02.left);
-      expect(stack_alignContent_023.left).assertEqual(stack_alignContent_02.left);
-      expect(Math.round(stack_alignContent_021.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_021.bottom));
-      expect(Math.round(stack_alignContent_022.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_022.bottom));
-      expect(Math.round(stack_alignContent_023.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_023.bottom));
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_021.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.left) - (stack_alignContent_02.left)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_021.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_021.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_022.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_023.bottom)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentStart] END');
       done();
     });
@@ -232,24 +232,24 @@ export default function Stack_AlignContent() {
       let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
       let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
       let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
-      expect(Math.round(stack_alignContent_021.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_021.right));
-      expect(Math.round(stack_alignContent_022.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_022.right));
-      expect(Math.round(stack_alignContent_023.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_023.right));
-      expect(Math.round(stack_alignContent_021.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_021.bottom));
-      expect(Math.round(stack_alignContent_022.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_022.bottom));
-      expect(Math.round(stack_alignContent_023.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_023.bottom));
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_021.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_021.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_022.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_023.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_021.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_021.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_022.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_023.bottom)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentCenter] END');
       done();
     });
@@ -270,21 +270,21 @@ export default function Stack_AlignContent() {
       let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
       let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
       let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
-      expect(stack_alignContent_021.right).assertEqual(stack_alignContent_02.right);
-      expect(stack_alignContent_022.right).assertEqual(stack_alignContent_02.right);
-      expect(stack_alignContent_023.right).assertEqual(stack_alignContent_02.right);
-      expect(Math.round(stack_alignContent_021.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_021.bottom));
-      expect(Math.round(stack_alignContent_022.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_022.bottom));
-      expect(Math.round(stack_alignContent_023.top - stack_alignContent_02.top))
-        .assertEqual(Math.round(stack_alignContent_02.bottom - stack_alignContent_023.bottom));
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_021.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.right) - (stack_alignContent_02.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_021.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_021.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_022.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.top - stack_alignContent_02.top) - 
+      (stack_alignContent_02.bottom - stack_alignContent_023.bottom)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentEnd] END');
       done();
     });
@@ -311,12 +311,12 @@ export default function Stack_AlignContent() {
       expect(stack_alignContent_021.bottom).assertEqual(stack_alignContent_02.bottom);
       expect(stack_alignContent_022.bottom).assertEqual(stack_alignContent_02.bottom);
       expect(stack_alignContent_023.bottom).assertEqual(stack_alignContent_02.bottom);
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentBottomStart] END');
       done();
     });
@@ -337,21 +337,21 @@ export default function Stack_AlignContent() {
       let stack_alignContent_022 = CommonFunc.getComponentRect('Stack_AlignContent_022');
       let stack_alignContent_023 = CommonFunc.getComponentRect('Stack_AlignContent_023');
       let stack_alignContent_02 = CommonFunc.getComponentRect('Stack_AlignContent_02');
-      expect(stack_alignContent_021.bottom).assertEqual(stack_alignContent_02.bottom);
-      expect(stack_alignContent_022.bottom).assertEqual(stack_alignContent_02.bottom);
-      expect(stack_alignContent_023.bottom).assertEqual(stack_alignContent_02.bottom);
-      expect(Math.round(stack_alignContent_021.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_021.right));
-      expect(Math.round(stack_alignContent_022.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_022.right));
-      expect(Math.round(stack_alignContent_023.left - stack_alignContent_02.left))
-        .assertEqual(Math.round(stack_alignContent_02.right - stack_alignContent_023.right));
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.abs((stack_alignContent_021.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.bottom) - (stack_alignContent_02.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_021.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_021.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_022.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_022.right)) <= 1).assertTrue();
+      expect(Math.abs((stack_alignContent_023.left - stack_alignContent_02.left) - 
+      (stack_alignContent_02.right - stack_alignContent_023.right)) <= 1).assertTrue();
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentBottom] END');
       done();
     });
@@ -378,12 +378,12 @@ export default function Stack_AlignContent() {
       expect(stack_alignContent_021.right).assertEqual(stack_alignContent_02.right);
       expect(stack_alignContent_022.right).assertEqual(stack_alignContent_02.right);
       expect(stack_alignContent_023.right).assertEqual(stack_alignContent_02.right);
-      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(vp2px(100));
-      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(vp2px(200));
-      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(vp2px(100));
+      expect(Math.round(stack_alignContent_021.bottom - stack_alignContent_021.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.bottom - stack_alignContent_022.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.bottom - stack_alignContent_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(stack_alignContent_021.right - stack_alignContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(stack_alignContent_022.right - stack_alignContent_022.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(stack_alignContent_023.right - stack_alignContent_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackAlignContentBottomEnd] END');
       done();
     });

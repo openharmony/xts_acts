@@ -30,7 +30,7 @@ export default function PublicApiNineTest() {
   describe('PublicApiNineTest', function () {
 
     /*
-     * @tc.number: SUB_BMS_SYSTEMAPI_RUNNIING_0069
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7960
      * @tc.name: getBundleInfoForSelfProTest
      * @tc.desc: Test getBundleInfoForSelf of API9 in version9 normal project
      */
@@ -50,7 +50,7 @@ export default function PublicApiNineTest() {
     });
 
     /*
-     * @tc.number: SUB_BMS_SYSTEMAPI_RUNNIING_0070
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7900
      * @tc.name: getProfileByAbilityTest
      * @tc.desc: Test getProfileByAbility of API9 in version9 normal project
      */
@@ -70,7 +70,7 @@ export default function PublicApiNineTest() {
     });
 
     /*
-    * @tc.number: SUB_BMS_SYSTEMAPI_RUNNIING_0071
+    * @tc.number: Sub_Bms_Framework_Query_Profile_8000
     * @tc.name: getProfileByExtensionAbilityTest
     * @tc.desc: Test getProfileByExtensionAbility of API9 in version9 normal project
     */
@@ -90,7 +90,7 @@ export default function PublicApiNineTest() {
     });
 
     /**
-    * @tc.number: SUB_BMS_SYSTEMAPI_RUNNIING_0072
+    * @tc.number: Sub_Bms_Framework_Status_DefaultApp_8250
     * @tc.name: isDefaultApplicationTest
     * @tc.desc: Test isDefaultApplication of API9 in version9 normal project
     */

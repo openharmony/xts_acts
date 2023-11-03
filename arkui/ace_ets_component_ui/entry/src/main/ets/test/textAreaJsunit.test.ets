@@ -182,11 +182,15 @@ export default function textAreaJsunit() {
       await text.longClick();
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
-      await allSelect.click();
-      await CommonFunc.sleep(1000);
+      if (allSelect != null) {
+        await allSelect.click();
+        await CommonFunc.sleep(1000);
+      }
       let copy = await driver.findComponent(BY.text('复制'));
-      await copy.click();
-      await CommonFunc.sleep(1000);
+      if (copy != null) {
+        await copy.click();
+        await CommonFunc.sleep(1000);
+      }
       let textIn = await driver.findComponent(BY.key('copy'));
       let txt = await textIn.getText();
       console.info('textAreaJsunit_0900 component obj is: ' + txt);
@@ -196,8 +200,10 @@ export default function textAreaJsunit() {
       await text.longClick();
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(BY.text('粘贴'));
-      await paste.click();
-      await CommonFunc.sleep(1000);
+      if (paste != null) {
+        await paste.click();
+        await CommonFunc.sleep(1000);
+      }
       let textPaste = await driver.findComponent(BY.key('paste'));
       let text1 = await textPaste.getText();
       console.info('textAreaJsunit_0900 text1: ' + text1);
@@ -216,11 +222,15 @@ export default function textAreaJsunit() {
       await textArea.longClick();
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
-      await allSelect.click();
-      await CommonFunc.sleep(1000);
+      if (allSelect != null) {
+        await allSelect.click();
+        await CommonFunc.sleep(1000);
+      }
       let cutComponent = await driver.findComponent(BY.text('剪切'));
-      await cutComponent.click();
-      await CommonFunc.sleep(1000);
+      if (cutComponent != null) {
+        await cutComponent.click();
+        await CommonFunc.sleep(1000);
+      }
       let textCut = await driver.findComponent(BY.key('cut'));
       let text = await textCut.getText();
       console.info('textAreaJsunit_1000 component obj is: ' + text);

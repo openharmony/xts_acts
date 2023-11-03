@@ -16,13 +16,23 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import {MessageManager,Callback} from '../test/MessageManager';
 export default function TextAreaSelectTest() {
 
   const SUITE = 'TextAreaSelect'
   const waitUiReadyMs = 500;
-
+   
+  async function sleep(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("sleep")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
   describe('TextAreaSelectTest', function () {
-
+   
     beforeEach(async function (done) {
       let options = {
         url: "TestAbility/pages/TextAreaSelect",
@@ -51,11 +61,10 @@ export default function TextAreaSelectTest() {
     it('ArkUI_TextArea_Select_0100', 0, async function (done) {
       let CASE = 'ArkUI_TextArea_Select_0100'
       console.info(`${SUITE} ${CASE} START`);
-
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_1', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+     sendEventByKey('TextAreaSelect_Button_1', 10, "")
+     await sleep(5000)
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");
@@ -73,10 +82,15 @@ export default function TextAreaSelectTest() {
       let CASE = 'ArkUI_TextArea_Select_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+     let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_2', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+    
+      globalThis.value.message.notify({name:'requestFocus', value:''});
+      await sleep(1000);
+      globalThis.value.message.notify({name:'Show selected (-1,0)', value:''});
+      await sleep(1000);
+      globalThis.value.message.notify({name:'Show selected (-1,0)', value:''});
+      await sleep(1000);
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");
@@ -85,6 +99,8 @@ export default function TextAreaSelectTest() {
       console.info(`${SUITE} ${CASE} END`);
       done()
     });
+
+
 
     /*
      *tc.number ArkUI_TextArea_Select_0300
@@ -95,10 +111,11 @@ export default function TextAreaSelectTest() {
       let CASE = 'ArkUI_TextArea_Select_0300'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+     let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_3', 10, "")
-      await driver.delayMs(waitUiReadyMs*5)
+   
+       globalThis.value.message.notify({name:'Show selected (0,3)', value:''});
+      await sleep(1000);
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("3");
@@ -119,8 +136,10 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_4', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+
+
+      globalThis.value.message.notify({name:'Show selected (1,3)', value:''});
+      await sleep(1000);
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("3");
@@ -141,8 +160,9 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_5', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+     
+       globalThis.value.message.notify({name:'Show selected (-1,6)', value:''});
+      await sleep(1000);
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("6");
@@ -163,8 +183,11 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_6', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+     
+
+      globalThis.value.message.notify({name:'Show selected (0,6)', value:''});
+      await sleep(1000);
+
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("6");
@@ -185,8 +208,9 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_7', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+      
+      globalThis.value.message.notify({name:'Show selected (-1,8)', value:''});
+      await sleep(1000);
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("6");
@@ -207,8 +231,10 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_8', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+      
+      globalThis.value.message.notify({name:'Show selected (0,8)', value:''});
+      await sleep(1000);
+
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("6");
@@ -229,8 +255,9 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_9', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+      globalThis.value.message.notify({name:'Show selected (null,null)', value:''});
+      await sleep(1000);
+      
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");
@@ -251,8 +278,9 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_10', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+      globalThis.value.message.notify({name:'Show selected (null,undefined)', value:''});
+      await sleep(1000);
+      
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");
@@ -273,8 +301,10 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_11', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+
+      globalThis.value.message.notify({name:'Show selected (undefined,null)', value:''});
+      await sleep(1000);
+     
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");
@@ -295,8 +325,10 @@ export default function TextAreaSelectTest() {
 
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('TextAreaSelect_Button_12', 10, "")
-      await driver.delayMs(waitUiReadyMs)
+
+      globalThis.value.message.notify({name:'Show selected (undefined,undefined)', value:''});
+      await sleep(1000);
+      
       let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.caretPosition).assertEqual("0");

@@ -65,12 +65,12 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10)); //margin =10
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10))); //margin =10
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);

@@ -70,12 +70,12 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
       let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceBetween6');
       expect(locationText1.top).assertEqual(locationText2.top);
       expect(locationText2.top).assertEqual(locationText3.top);
-      expect(Math.round(locationText1.top - locationFlex.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText1.top - locationFlex.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       expect(locationFlex.bottom).assertEqual(locationText3.bottom);
-      expect(Math.round(locationText1.left - locationFlex.left)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.left - locationFlex.left)).assertEqual(Math.round(vp2px(50)));
       expect(locationText1.right).assertEqual(locationText2.left);
       expect(locationText2.right).assertEqual(locationText3.left);
       expect(locationText3.right).assertEqual(Math.round(locationFlex.right - vp2px(50)));
@@ -112,9 +112,9 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
       expect(locationText1.top).assertEqual(locationText2.top);
       expect(locationText2.top).assertEqual(locationText3.top);
       expect(Math.round((locationText1.top - locationFlex.top)*10)/10).assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round((locationFlex.bottom - locationText3.bottom)*10)/10).assertEqual(Math.round(vp2px(45)*10)/10);
       expect(Math.round((locationText1.left - locationFlex.left)*10)/10).assertEqual(Math.round(vp2px(5)*10)/10);
       expect(Math.round((locationText3.right)*10)/10).assertEqual(Math.round((locationFlex.right - vp2px(5))*10)/10);
@@ -122,10 +122,10 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
         .assertEqual(Math.round(locationText2.right - locationText2.left));
       expect(Math.round(locationText3.right - locationText3.left))
         .assertEqual(Math.round(locationText2.right - locationText2.left));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(locationText2.left - locationText1.right))
         .assertEqual(Math.round(locationText3.left - locationText2.right));
-      expect(Math.round(locationText2.left - locationText1.right)).assertEqual(vp2px(20));
+      expect(Math.round(locationText2.left - locationText1.right)).assertEqual(Math.round(vp2px(20)));
       console.info('new testAlignSpaceBetweenRowNoWrapMarPadInRange END');
       done();
     });

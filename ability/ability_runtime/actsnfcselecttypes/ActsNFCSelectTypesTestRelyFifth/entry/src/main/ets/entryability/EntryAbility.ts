@@ -40,7 +40,7 @@ export default class EntryAbility extends UIAbility {
     };
     console.info('Ability4 onCreate' + JSON.stringify(want));
     let actionStr = want.action;
-    if (actionStr === 'ohos.nfc.tag.action.TAG_FOUND') {
+    if (actionStr === 'ohos.nfc.tag.test.action') {
       hilog.info(0x0000, 'testTag', '%{public}s', 'a4Ability ok');
       commonEventData.parameters.message = 'select';
       commonEvent.publish('ACTS_CROSS_CALL_EVENT', commonEventData, (err) => {

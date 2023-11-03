@@ -107,10 +107,12 @@ function genRsaKeyPairSpecErr() {
 }
 
 export default function AsyKeyGeneratorBySpecTwoJsunit() {
-  describe("AsyKeyGeneratorBySpecTwoJsunit", function () {
-    console.info("##########start AsyKeyGeneratorBySpecTwoJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("AsyKeyGeneratorBySpecTwoJsunit", function () {
+        console.info("##########start AsyKeyGeneratorBySpecTwoJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_GeneratorBySpec_Func_0900
@@ -136,7 +138,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
                 " failed. error is " +
                 err
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
@@ -166,37 +168,37 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
                 " failed. error is " +
                 err
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
     );
 
-    /**
-     * @tc.number Security_CryptoFramework_GeneratorBySpec_Func_1100
-     * @tc.name RSA Key generation scenario by spec
-     * @tc.desc the asyKeySpec is genRsa2048CommonSpec, Use the callback Style of Interface
-     */
-    it(
-      "Security_CryptoFramework_GeneratorBySpec_Func_1100",
-      0,
-      async function (done) {
-        asyCallback
-          .generateByCommonSpec(genRsa2048CommonSpec(), "RSA")
-          .then((result) => {
-            console.log("result :" + result);
-            expect(null).assertFail();
-          })
-          .catch((err) => {
-            console.error(
-              "Security_CryptoFramework_GeneratorBySpec_Func_1100 catch err " +
-                err
-            );
-            expect(err.code == 401).assertTrue();
-          });
-        done();
-      }
-    );
+        /**
+         * @tc.number Security_CryptoFramework_GeneratorBySpec_Func_1100
+         * @tc.name RSA Key generation scenario by spec
+         * @tc.desc the asyKeySpec is genRsa2048CommonSpec, Use the callback Style of Interface
+         */
+        it(
+            "Security_CryptoFramework_GeneratorBySpec_Func_1100",
+            0,
+            async function (done) {
+                asyCallback
+                    .generateByCommonSpec(genRsa2048CommonSpec(), "RSA")
+                    .then((result) => {
+                        console.log("result :" + result);
+                        expect(null).assertFail();
+                    })
+                    .catch((err) => {
+                        console.error(
+                            "Security_CryptoFramework_GeneratorBySpec_Func_1100 catch err " +
+                            err
+                      );
+                        expect(err.code).assertEqual(401);
+                    });
+                done();
+            }
+        );
 
     /**
      * @tc.number Security_CryptoFramework_GeneratorBySpec_Func_1200
@@ -271,7 +273,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
               "generatePubTopriSpecFailed generateSpecAsyKeyPair failed. error is " +
                 err
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
@@ -296,7 +298,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
             "Security_CryptoFramework_GeneratorBySpec_Func_1500 catch err " +
               err
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -307,7 +309,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
             "Security_CryptoFramework_GeneratorBySpec_Func_1500 catch err " +
               err
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -318,7 +320,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
             "Security_CryptoFramework_GeneratorBySpec_Func_1500 catch err " +
               err
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }

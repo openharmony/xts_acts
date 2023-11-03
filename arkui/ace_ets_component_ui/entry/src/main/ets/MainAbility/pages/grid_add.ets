@@ -43,7 +43,10 @@ struct GridExampleAdd {
       .height(300)
 
       Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
-      Grid(this.scroller) {
+      Grid(this.scroller,{regularSize:[12,12],irregularIndexes:[10,5,7],onGetIrregularSizeByIndex:(index: number) => {
+        return [index,index]
+      }
+      }) {
         ForEach(this.Number, (day: string,index:number) => {
           ForEach(this.Number, (day: string,index:number) => {
             GridItem() {
@@ -67,6 +70,7 @@ struct GridExampleAdd {
         scrollBackward:NestedScrollMode.SELF_FIRST
       })
       .edgeEffect(EdgeEffect.Spring)
+
       .onScrollIndex((first: number) => {
         console.info(first.toString())
       })

@@ -97,7 +97,7 @@ struct MarqueeExample {
         .height(40)
         .fontSize(16)
         .fontWeight(500)
-        .backgroundColor('#007DFF').key('btstart').key('start')
+        .backgroundColor('#007DFF').key('start')
 
       Text(this.message1).fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500).key('text1')
       Text(this.message2).fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500).key('text2')

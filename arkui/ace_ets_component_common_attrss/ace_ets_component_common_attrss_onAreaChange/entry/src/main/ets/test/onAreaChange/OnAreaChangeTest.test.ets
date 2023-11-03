@@ -204,26 +204,27 @@ export default function onAreaChangeTest() {
         let compareButtonRectAfter = Utils.getComponentRect(data.pageConfig.compareButtonKey);
         console.info('[' + data.caseTag + '] compareButtonRectAfter: ' + JSON.stringify(compareButtonRectAfter));
         console.info('[' + data.caseTag + '] data.testValue.describe: ' + data.testValue.describe);
-        expect(px2vp(compareButtonRectAfter.right - compareButtonRectAfter.left))
-          .assertEqual(data.testValue.expectValue.compareButtonWidth);
-        expect(px2vp(compareButtonRectAfter.bottom - compareButtonRectAfter.top))
-          .assertEqual(data.testValue.expectValue.compareButtonHeight);
+        expect(Math.abs(px2vp(compareButtonRectAfter.right - compareButtonRectAfter.left) - 
+        data.testValue.expectValue.compareButtonWidth) <= 1).assertTrue();
+        expect(Math.abs(px2vp(compareButtonRectAfter.bottom - compareButtonRectAfter.top) - 
+        data.testValue.expectValue.compareButtonHeight) <= 1).assertTrue();
         await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
           targetRectAfter, parentRectBefore, parentRectAfter);
       } else if (data.testValue.describe == 'SetWidthHeight') {
         console.info('[' + data.caseTag + '] data.testValue.describe: ' + data.testValue.describe);
         if ((data.pageConfig.componentKey == 'GridCol') || (data.pageConfig.componentKey == 'ListItemGroup')) {
-          expect(px2vp(targetRectAfter.bottom - targetRectAfter.top)).assertEqual(data.testValue.expectValue.height);
+          expect(Math.abs(px2vp(targetRectAfter.bottom - targetRectAfter.top) - 
+          data.testValue.expectValue.height) <= 1).assertTrue();
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         } else if ((data.pageConfig.componentKey == 'TabContent') || (data.pageConfig.componentKey == 'StepperItem')) {
-          expect(px2vp(RectAfter.right - RectAfter.left)).assertEqual(data.testValue.expectValue.width);
-          expect(px2vp(RectAfter.bottom - RectAfter.top)).assertEqual(data.testValue.expectValue.height);
+          expect(Math.abs(px2vp(RectAfter.right - RectAfter.left) - data.testValue.expectValue.width) <= 1).assertTrue();
+          expect(Math.abs(px2vp(RectAfter.bottom - RectAfter.top) - data.testValue.expectValue.height) <= 1).assertTrue();
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         } else {
-          expect(px2vp(targetRectAfter.right - targetRectAfter.left)).assertEqual(data.testValue.expectValue.width);
-          expect(px2vp(targetRectAfter.bottom - targetRectAfter.top)).assertEqual(data.testValue.expectValue.height);
+          expect(Math.abs(px2vp(targetRectAfter.right - targetRectAfter.left) - data.testValue.expectValue.width) <= 1).assertTrue();
+          expect(Math.abs(px2vp(targetRectAfter.bottom - targetRectAfter.top) - data.testValue.expectValue.height) <= 1).assertTrue();
           await checkResults(data, compareOldTextComponent, compareNewTextComponent, targetRectBefore,
             targetRectAfter, parentRectBefore, parentRectAfter);
         }

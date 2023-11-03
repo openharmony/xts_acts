@@ -278,7 +278,7 @@ export default function imageRaw() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0100
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -288,7 +288,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -298,11 +298,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0100", "test.arw", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0100", "test.arw", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0200
          * @tc.name      : createPixelMap - promise-cr2
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -312,7 +312,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0200", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -322,11 +322,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0200", "test.cr2", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0200", "test.cr2", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0300
          * @tc.name      : createPixelMap - promise-dng
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -336,7 +336,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0300", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -348,7 +348,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapPromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_0300",
+                "SUB_MULTIMEDIA_IMAGE_RAW_0300",
                 "test_dng.dng",
                 decodeOpts,
                 packingPromise,
@@ -357,7 +357,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0400
          * @tc.name      : createPixelMap - promise-nrw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -367,7 +367,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0400", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -377,11 +377,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0400", "test.nrw", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0400", "test.nrw", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0500
          * @tc.name      : createPixelMap - promise-pef
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -391,7 +391,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0500", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -401,11 +401,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0500", "test.pef", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0500", "test.pef", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0600
          * @tc.name      : createPixelMap - promise-raf
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -415,7 +415,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0600", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -425,11 +425,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0600", "test.raf", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0600", "test.raf", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0700
          * @tc.name      : createPixelMap - promise-rw2
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -439,7 +439,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0700", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -449,11 +449,11 @@ export default function imageRaw() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_RAW_0700", "test.rw2", decodeOpts, packingPromise, packOpts);
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_RAW_0700", "test.rw2", decodeOpts, packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0800
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -463,7 +463,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0800", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -475,7 +475,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_0800",
+                "SUB_MULTIMEDIA_IMAGE_RAW_0800",
                 "test.arw",
                 decodeOpts,
                 packingPromise,
@@ -484,7 +484,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_0900
          * @tc.name      : createPixelMap - callback-cr2
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -494,7 +494,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_0900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_0900", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -506,7 +506,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_0900",
+                "SUB_MULTIMEDIA_IMAGE_RAW_0900",
                 "test.cr2",
                 decodeOpts,
                 packingPromise,
@@ -515,7 +515,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1000
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1000
          * @tc.name      : createPixelMap - callback-dng
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -525,7 +525,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1000", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1000", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -537,7 +537,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_1000",
+                "SUB_MULTIMEDIA_IMAGE_RAW_1000",
                 "test_dng.dng",
                 decodeOpts,
                 packingPromise,
@@ -546,7 +546,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1100
          * @tc.name      : createPixelMap - callback-nrw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -556,7 +556,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -568,7 +568,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_1100",
+                "SUB_MULTIMEDIA_IMAGE_RAW_1100",
                 "test.nrw",
                 decodeOpts,
                 packingPromise,
@@ -577,7 +577,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1200
          * @tc.name      : createPixelMap - callback-pef
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -587,7 +587,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1200", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -599,7 +599,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_1200",
+                "SUB_MULTIMEDIA_IMAGE_RAW_1200",
                 "test.pef",
                 decodeOpts,
                 packingPromise,
@@ -608,7 +608,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1300
          * @tc.name      : createPixelMap - callback-raf
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -618,7 +618,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1300", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -630,7 +630,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_1300",
+                "SUB_MULTIMEDIA_IMAGE_RAW_1300",
                 "test.raf",
                 decodeOpts,
                 packingPromise,
@@ -639,7 +639,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1400
          * @tc.name      : createPixelMap - callback-rw2
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -649,7 +649,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1400", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -661,7 +661,7 @@ export default function imageRaw() {
             let packOpts = { format: ["image/webp"], quality: 100 };
             createPixelMapCallBack(
                 done,
-                "SUB_GRAPHIC_IMAGE_RAW_1400",
+                "SUB_MULTIMEDIA_IMAGE_RAW_1400",
                 "test.rw2",
                 decodeOpts,
                 packingPromise,
@@ -670,7 +670,7 @@ export default function imageRaw() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1500
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -679,7 +679,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1500", 0, async function (done) {
             let decodingOption = {
                 sampleSize: -1,
                 editable: true,
@@ -689,11 +689,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_1500", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_1500", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1600
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -702,7 +702,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1600", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -712,11 +712,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: -1,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_1600", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_1600", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1700
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -725,7 +725,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1700", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -735,11 +735,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_1700", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_1700", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1800
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -748,7 +748,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1800", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: false,
@@ -758,11 +758,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_1800", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_1800", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_1900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_1900
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -771,7 +771,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_1900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_1900", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -781,11 +781,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_1900", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_1900", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2000
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2000
          * @tc.name      : createPixelMap - callback-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -794,7 +794,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2000", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2000", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -804,11 +804,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 10000 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_RAW_2000", "test.arw", decodingOption);
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2000", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2100
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -817,7 +817,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2100", 0, async function (done) {
             let decodingOption = {
                 sampleSize: -1,
                 editable: true,
@@ -827,11 +827,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2100", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2100", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2200
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -840,7 +840,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2200", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -850,11 +850,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: -1,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2200", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2200", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2300
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -863,7 +863,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2300", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -873,11 +873,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2300", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2300", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2400
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -886,7 +886,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2400", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: false,
@@ -896,11 +896,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2400", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2400", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2500
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -909,7 +909,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2500", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -919,11 +919,11 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2500", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2500", "test.arw", decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RAW_2600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RAW_2600
          * @tc.name      : createPixelMap - promise-arw
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -932,7 +932,7 @@ export default function imageRaw() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_RAW_2600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RAW_2600", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -942,7 +942,7 @@ export default function imageRaw() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 10000 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_RAW_2600", "test.arw", decodingOption);
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_RAW_2600", "test.arw", decodingOption);
         });
     });
 }

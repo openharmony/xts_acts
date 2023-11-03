@@ -50,6 +50,11 @@ export default function NavRouterJsunit() {
       let navRouter = await driver.findComponent(BY.key('NavRouter1'));
       await navRouter.click();
       await CommonFunc.sleep(1000);
+      let router1Component = await driver.findComponent(BY.key('TestRouter'));
+      let router1State = await router1Component.getText();
+      // router1 state is true
+      console.info("[NavRouterJsunit_0100] textRouter: " + JSON.stringify(router1State));
+      expect(router1State == 'stateChange true').assertTrue();
       let navRouter2 = await driver.findComponent(BY.key('NavRouter2'));
       await navRouter2.click();
       await CommonFunc.sleep(1000);
@@ -61,6 +66,10 @@ export default function NavRouterJsunit() {
       let text2 = await textComponent.getText();
       console.info("[NavRouterJsunit_0100] text2: " + JSON.stringify(text2));
       expect(text2 == 'Hello').assertTrue();
+      // check navouter1 state is false
+      router1State = await router1Component.getText();
+      console.info("[NavRouterJsunit_0100] textRouter: " + JSON.stringify(router1State));
+      expect(router1State == 'stateChange false').assertTrue();
       console.info('[NavRouterJsunit_0100] END');
       done();
     });

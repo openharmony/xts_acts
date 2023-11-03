@@ -71,10 +71,10 @@ export default function flexAlign_SpaceBetween_fixedChild() {
       expect(locationText1.top).assertEqual(locationText2.top);
       expect(locationText2.top).assertEqual(locationText3.top);
       expect(locationText1.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(50)));
       expect(locationText1.left).assertEqual(locationFlex.left);
       expect(locationText1.right).assertEqual(locationText2.left);
       expect(locationText2.right).assertEqual(locationText3.left);
@@ -112,17 +112,17 @@ export default function flexAlign_SpaceBetween_fixedChild() {
       expect(locationText1.top).assertEqual(locationText2.top);
       expect(locationText2.top).assertEqual(locationText3.top);
       expect(locationText1.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(50)));
       expect(locationText1.left).assertEqual(locationFlex.left);
       expect(locationText3.right).assertEqual(locationFlex.right);
       expect(Math.round(locationText1.right - locationText1.left))
         .assertEqual(Math.round(locationText2.right - locationText2.left));
       expect(Math.round(locationText3.right - locationText3.left))
         .assertEqual(Math.round(locationText2.right - locationText2.left));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(locationText2.left - locationText1.right))
         .assertEqual(Math.round(locationText3.left - locationText2.right));
       expect(Math.round((locationText2.left - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);

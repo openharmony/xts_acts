@@ -29,6 +29,19 @@ export default function ActsAppAccountOptionalParameterTest() {
       clearTimeout(timeoutId)
     }
 
+    beforeEach(async (done)=>{
+      console.debug("====>afterEach start====");
+      var appAccountManager = account.createAppAccountManager();
+      var accounts = await appAccountManager.getAccountsByOwner(owner)
+      for (var i=0;i<accounts.length;i++){
+        var localName = accounts[i].name
+        if(localName == 'zhangsan'){
+          await appAccountManager.removeAccount(localName)
+        }
+      }
+      done();
+    })
+
     /*
     * @tc.number    : ActsAccountOptionalParameter_0100
     * @tc.name      : createAccount callback form
@@ -45,7 +58,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_0100 end====");
-          await sleep(200)
           done();
         });
       });
@@ -67,13 +79,11 @@ export default function ActsAppAccountOptionalParameterTest() {
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         expect().assertFail();
-        await sleep(200)
         done();
       }
       console.debug("====>delete account start====");
       await appAccountManager.removeAccount(name);
       console.debug("====>ActsAccountOptionalParameter_0200 end====");
-      await sleep(200)
       done();
     });
 
@@ -93,7 +103,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_0300 end====");
-          await sleep(200)
           done();
         });
       });
@@ -115,13 +124,11 @@ export default function ActsAppAccountOptionalParameterTest() {
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         expect().assertFail();
-        await sleep(200)
         done();
       }
       console.debug("====>delete account start====");
       await appAccountManager.removeAccount(name);
       console.debug("====>ActsAccountOptionalParameter_0400 end====");
-      await sleep(200)
       done();
     });
 
@@ -141,7 +148,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_0500 end====");
-          await sleep(200)
           done();
         });
       });
@@ -163,13 +169,11 @@ export default function ActsAppAccountOptionalParameterTest() {
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         expect().assertFail();
-        await sleep(200)
         done();
       }
       console.debug("====>delete account start====");
       await appAccountManager.removeAccount(name);
       console.debug("====>ActsAccountOptionalParameter_0600 end====");
-      await sleep(200)
       done();
     });
 
@@ -190,7 +194,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_0700 end====");
-          await sleep(200)
           done();
         });
       });
@@ -213,13 +216,11 @@ export default function ActsAppAccountOptionalParameterTest() {
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         expect().assertFail();
-        await sleep(200)
         done();
       }
       console.debug("====>delete account start====");
       await appAccountManager.removeAccount("account_name_promise_second");
       console.debug("====>ActsAccountOptionalParameter_0800 end====");
-      await sleep(200)
       done();
     });
 
@@ -242,7 +243,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_0900 end====");
-          await sleep(200)
           done();
         });
       });
@@ -267,13 +267,11 @@ export default function ActsAppAccountOptionalParameterTest() {
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         expect().assertFail();
-        await sleep(200)
         done();
       }
       console.debug("====>delete account start====");
       await appAccountManager.removeAccount("account_name_promise_second");
       console.debug("====>ActsAccountOptionalParameter_1000 end====");
-      await sleep(200)
       done();
     });
 
@@ -296,7 +294,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>delete Account ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           console.debug("====>ActsAccountOptionalParameter_1100 end====");
-          await sleep(200)
           done();
         });
       });
@@ -320,17 +317,14 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>delete account start====");
         await appAccountManager.removeAccount(name);
         console.debug("====>ActsAccountOptionalParameter_1200 end====");
-        await sleep(200)
         done();
       }
       catch (err) {
         console.error("====>createAccount fail err:" + JSON.stringify(err));
         await appAccountManager.removeAccount(name);
-        await sleep(200)
         done();
       }
       console.debug("====>ActsAccountOptionalParameter_1200 end====");
-      await sleep(200)
       done();
     });
 
@@ -355,12 +349,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_1300 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               console.debug("====>ActsAccountOptionalParameter_1300 end====");
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1300 end====");
-              await sleep(200)
               done();
             }
           },
@@ -370,7 +362,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1300 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -395,12 +386,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1400 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1400 end====");
-              await sleep(200)
               done();
             }
           },
@@ -413,7 +402,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1400 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -438,12 +426,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1500 end====");
-              await sleep(200)
               done();
             }
           },
@@ -454,7 +440,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1500 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -479,12 +464,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1600 end====");
-              await sleep(200)
               done();
             }
           },
@@ -495,7 +478,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1600 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -516,12 +498,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1700 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1700 end====");
-              await sleep(200)
               done();
             }
           },
@@ -534,7 +514,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1700 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -557,12 +536,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1800 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1800 end====");
-              await sleep(200)
               done();
             }
           },
@@ -575,7 +552,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1800 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -598,12 +574,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_1900 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_1900 end====");
-              await sleep(200)
               done();
             }
           },
@@ -616,7 +590,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_1900 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -639,12 +612,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2000 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2000 end====");
-              await sleep(200)
               done();
             }
           },
@@ -657,7 +628,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2000 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -680,12 +650,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2100 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2100 end====");
-              await sleep(200)
               done();
             }
           },
@@ -698,7 +666,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2100 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -721,12 +688,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2200 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2200 end====");
-              await sleep(200)
               done();
             }
           },
@@ -739,7 +704,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2200 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -762,12 +726,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2300 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2300 end====");
-              await sleep(200)
               done();
             }
           },
@@ -780,7 +742,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2300 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -803,12 +764,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2400 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2400 end====");
-              await sleep(200)
               done();
             }
           },
@@ -821,7 +780,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2400 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -844,12 +802,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2500 end====");
-              await sleep(200)
               done();
             }
           },
@@ -862,7 +818,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2500 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -887,12 +842,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2600 end====");
-              await sleep(200)
               done();
             }
           },
@@ -905,7 +858,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2600 end====");
         expect(null).assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -930,12 +882,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_2700 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2700 end====");
-              await sleep(200)
               done();
             }
           },
@@ -948,7 +898,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2700 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -976,12 +925,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_2800 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2800 end====");
-              await sleep(200)
               done();
             }
           },
@@ -994,7 +941,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2800 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1020,12 +966,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_2900 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_2900 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1038,7 +982,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_2900 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1064,12 +1007,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_3000 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3000 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1082,7 +1023,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3000 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1108,12 +1048,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_3100 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3100 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1126,7 +1064,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3100 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1154,12 +1091,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_3200 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3200 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1172,7 +1107,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3200 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1200,12 +1134,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_3300 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3300 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1218,7 +1150,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3300 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1246,12 +1177,10 @@ export default function ActsAppAccountOptionalParameterTest() {
               console.debug("====>ActsAccountOptionalParameter_3400 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3400 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1264,7 +1193,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3400 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1289,12 +1217,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_3500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3500 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1307,7 +1233,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
         console.debug("====>ActsAccountOptionalParameter_3500 end====");
         expect().assertFail()
-        await sleep(200)
         done();
       }
     });
@@ -1332,12 +1257,10 @@ export default function ActsAppAccountOptionalParameterTest() {
             try {
               console.debug("====>ActsAccountOptionalParameter_3600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              await sleep(200)
               done();
             } catch (err) {
               console.debug("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
               console.debug("====>ActsAccountOptionalParameter_3600 end====");
-              await sleep(200)
               done();
             }
           },
@@ -1553,13 +1476,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4200 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1570,7 +1491,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         console.debug("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
         await appAccountManager.removeAccount(name);
         expect().assertFail()
-        await sleep(200)
         done()
       }
     });
@@ -1600,13 +1520,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4300 verifyCredential_resultData:" + JSON.stringify(resultData));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4300 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1619,7 +1537,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1649,13 +1566,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4400 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1666,7 +1581,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1696,13 +1610,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4500 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1713,7 +1625,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1739,13 +1650,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4600 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1755,7 +1664,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1783,13 +1691,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4700 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1799,7 +1705,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1827,13 +1732,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4800 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1843,7 +1746,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1871,13 +1773,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_4900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_4900 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1887,7 +1787,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1915,13 +1814,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5000 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1931,7 +1828,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -1959,13 +1855,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5100 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -1975,7 +1869,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2003,13 +1896,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5200 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2019,7 +1910,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2047,13 +1937,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5300 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2063,7 +1951,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2091,13 +1978,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5400 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2107,7 +1992,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2137,13 +2021,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5500 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2153,7 +2035,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2183,13 +2064,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5600 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2199,7 +2078,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2229,13 +2107,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5700 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2245,7 +2121,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2273,13 +2148,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5800 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2289,7 +2162,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2317,13 +2189,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_5900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_5900 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2333,7 +2203,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2361,13 +2230,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6000 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2377,7 +2244,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2407,14 +2273,12 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6100 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 expect().assertFail()
-                await sleep(200)
                 done()
               }
             },
@@ -2423,7 +2287,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done()
         }
       });
@@ -2453,13 +2316,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6200 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2469,7 +2330,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2499,14 +2359,12 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6300 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 expect().assertFail()
-                await sleep(200)
                 done()
               }
             },
@@ -2515,7 +2373,6 @@ export default function ActsAppAccountOptionalParameterTest() {
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done()
         }
       });
@@ -2545,13 +2402,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6400 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2561,7 +2416,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2591,13 +2445,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6500 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2607,7 +2459,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2637,13 +2488,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6600 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2653,7 +2502,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2683,13 +2531,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6700 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done()
               }
             },
@@ -2699,7 +2545,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done()
         }
       });
@@ -2731,13 +2576,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_6800 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6800 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2747,7 +2590,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -2780,13 +2622,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_6900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_6900 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2799,7 +2639,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -2831,13 +2670,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_7000 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7000 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2848,7 +2685,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -2880,13 +2716,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 console.debug("====>ActsAccountOptionalParameter_7100 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7100 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2897,7 +2731,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -2924,13 +2757,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7200 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7200 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2943,7 +2774,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -2976,13 +2806,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7300 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7300 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -2995,7 +2823,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3028,13 +2855,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7400 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7400 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3047,7 +2872,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       })
@@ -3078,13 +2902,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7500 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7500 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3097,7 +2919,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3128,13 +2949,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7600 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7600 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3147,7 +2966,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3178,13 +2996,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7700 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7700 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3197,7 +3013,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3228,13 +3043,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7800 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7800 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3247,7 +3060,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3278,13 +3090,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_7900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_7900 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3297,7 +3107,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3328,13 +3137,11 @@ export default function ActsAppAccountOptionalParameterTest() {
                 expect(resultCode).assertEqual(12300113)
                 console.debug("====>ActsAccountOptionalParameter_8000 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 console.debug("====>ActsAccountOptionalParameter_8000 success")
                 done();
               } catch (err) {
                 console.debug("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
-                await sleep(200)
                 done();
               }
             },
@@ -3347,7 +3154,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3371,14 +3177,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>ActsAccountOptionalParameter_8100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8100 success")
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_8100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3402,19 +3206,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8200 success")
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3442,14 +3243,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>ActsAccountOptionalParameter_8300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8300 success")
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_8300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3477,19 +3276,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8400 success")
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3515,7 +3311,6 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>ActsAccountOptionalParameter_8500 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8500 success")
             done();
           })
@@ -3523,7 +3318,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_8500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3549,20 +3343,17 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8600 success")
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3588,7 +3379,6 @@ export default function ActsAppAccountOptionalParameterTest() {
             console.debug("====>ActsAccountOptionalParameter_8700 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             console.debug("====>ActsAccountOptionalParameter_8700 success")
             done();
           })
@@ -3596,7 +3386,6 @@ export default function ActsAppAccountOptionalParameterTest() {
           console.debug("====>ActsAccountOptionalParameter_8700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3623,19 +3412,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_8800 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3664,14 +3450,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_8900 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_8900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3700,19 +3484,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9000 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3741,13 +3522,11 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9100 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_9100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3776,19 +3555,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9200 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3817,13 +3593,11 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9300 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_9300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3856,14 +3630,12 @@ export default function ActsAppAccountOptionalParameterTest() {
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3890,14 +3662,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9500 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_9500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3924,19 +3694,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9600 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -3963,13 +3730,11 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9700 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_9700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -3996,19 +3761,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9800 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4035,13 +3797,11 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_9900 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_9900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -4068,19 +3828,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10000 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4107,14 +3864,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10100 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_10100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4141,19 +3896,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10200 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4180,14 +3932,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10300 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_10300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4214,19 +3964,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10400 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4253,13 +4000,11 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10500 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_10500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
-          await sleep(200)
           done();
         }
       });
@@ -4290,14 +4035,12 @@ export default function ActsAppAccountOptionalParameterTest() {
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4326,14 +4069,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10700 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_10700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4366,14 +4107,12 @@ export default function ActsAppAccountOptionalParameterTest() {
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4402,14 +4141,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_10900 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_10900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4438,19 +4175,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11000 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4479,14 +4213,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11100 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_11100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4515,19 +4247,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11200 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4556,14 +4285,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11300 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_11300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4592,19 +4319,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11400 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4633,14 +4357,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11500 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_11500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4673,14 +4395,12 @@ export default function ActsAppAccountOptionalParameterTest() {
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4709,14 +4429,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11700 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_11700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4745,19 +4463,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11800 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4784,14 +4499,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_11900 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_11900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4818,19 +4531,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_12000 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4857,14 +4567,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_12100 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_12100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4891,19 +4599,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_12200 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4930,14 +4635,12 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_12300 success")
-            await sleep(200)
             done();
           })
         } catch (err) {
           console.debug("====>ActsAccountOptionalParameter_12300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });
@@ -4964,19 +4667,16 @@ export default function ActsAppAccountOptionalParameterTest() {
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
             console.debug("====>ActsAccountOptionalParameter_12400 success")
-            await sleep(200)
             done()
           }).catch(async (err) => {
             console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
-            await sleep(200)
             done()
           });
         } catch (err) {
           console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
-          await sleep(200)
           done();
         }
       });

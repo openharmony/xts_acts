@@ -13,14 +13,7 @@
  * limitations under the License.
  */
 
-import {
-  describe,
-  beforeAll,
-  afterEach,
-  it,
-  expect,
-  afterAll,
-} from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
@@ -29,23 +22,35 @@ import * as asyCommon from "./utils/asymmetric/publicAsymmetricCommon";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityCipherSM2SM4Jsunit() {
-  describe("SecurityCipherSM2SM4Jsunit", function () {
-    console.log("##########start SecurityCipherSM2SM4Jsunit##########");
-    var symKeyPairSM4;
-    beforeAll(async function () {
-      async function genSymKeyPair() {
-        try {
-          let symGenerator = asyCommon.createSymKeyGenerator("SM4_128");
-          let symKeyPair = await symGenerator.generateSymKey();
-          return symKeyPair;
-        } catch (err) {
-          return err;
-        }
-      }
-      symKeyPairSM4 = await genSymKeyPair();
-    });
+    describe("SecurityCipherSM2SM4Jsunit", function () {
+        console.log("##########start SecurityCipherSM2SM4Jsunit##########");
+        var symKeyPairSM4;
+        beforeAll(async function () {
 
-    afterAll(function () {});
+            async function genSymKeyPair() {
+                try {
+                    let symGenerator = asyCommon.createSymKeyGenerator("SM4_128");
+                    let symKeyPair = await symGenerator.generateSymKey();
+                    return symKeyPair;
+                } catch (err) {
+                    return err;
+                }
+            }
+
+            async function sleep(ms) {
+                let timeoutID;
+                await new Promise(resolve => {
+                    timeoutID = setTimeout(resolve, ms)
+                });
+                clearTimeout(timeoutID);
+            }
+
+            await sleep(3000);
+            symKeyPairSM4 = await genSymKeyPair();
+        });
+
+        afterAll(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_CipherSMX_Func_0100
@@ -713,43 +718,43 @@ export default function SecurityCipherSM2SM4Jsunit() {
           await cryptoFramework.createCipher(null);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createCipher("SM2257|SHA256");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|SHA257");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|NoHash");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|C1C2C3|SHA512");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM4_192|CFB|PKCS5");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM4_256|CFB|PKCS5");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -771,21 +776,21 @@ export default function SecurityCipherSM2SM4Jsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createSymKeyGenerator("SM2_256|SHA257");
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createSymKeyGenerator("SM2257|SHA256");
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -813,7 +818,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 1 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGeneratorEncrypt.init(encryptMode, null, null);
@@ -823,7 +828,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 2 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGeneratorEncrypt.init(
@@ -838,7 +843,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 3 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -882,7 +887,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         await cipherGenerator.init(encryptMode, symKeyPairSM4, null);
         try {
@@ -897,19 +902,19 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGenerator.update(null);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGenerator.update(input, input);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -950,7 +955,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         await cipherGenerator.init(encryptMode, symKeyPairSM4, null);
         try {
@@ -965,7 +970,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -985,7 +990,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -1007,7 +1012,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           console.log(
             "Security_CryptoFramework_CipherSMX_Func_3300 catch err: " + err
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }

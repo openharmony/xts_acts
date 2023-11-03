@@ -53,7 +53,8 @@ export default function textTwoJsunit() {
       let strJson = getInspectorByKey('text1');
       let obj = JSON.parse(strJson);
       console.info('textTwoJsunit_0100 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FF000000"}'); 
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FF000000",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     });
 
@@ -64,7 +65,8 @@ export default function textTwoJsunit() {
       let strJson = getInspectorByKey('text1');
       let obj = JSON.parse(strJson);
       console.info('textTwoJsunit_0200 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FF000000"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FF000000",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       await CommonFunc.sleep(1000);
       // to modify the atrribute
       globalThis.value.message.notify({name:'type',value:TextDecorationType.Overline})
@@ -74,7 +76,8 @@ export default function textTwoJsunit() {
       let strJson2 = getInspectorByKey('text1');
       let obj2 = JSON.parse(strJson2);
       console.info('textTwoJsunit_0200 component obj2 is: ' + obj2.$attrs.decoration);
-      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Overline","color":"#FF008000"}');
+      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Overline","color":"#FF008000",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       await CommonFunc.sleep(1000);
 
       globalThis.value.message.notify({name:'type',value:TextDecorationType.Underline})
@@ -84,7 +87,8 @@ export default function textTwoJsunit() {
       let strJson3 = getInspectorByKey('text1');
       let obj3 = JSON.parse(strJson3);
       console.info('textTwoJsunit_0200 component obj3 is: ' + obj3.$attrs.decoration);
-      expect(obj3.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Underline","color":"#FFEE82EE"}');
+      expect(obj3.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Underline","color":"#FFEE82EE",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       await CommonFunc.sleep(1000);
 
       globalThis.value.message.notify({name:'type',value:TextDecorationType.None})
@@ -94,7 +98,8 @@ export default function textTwoJsunit() {
       let strJson4 = getInspectorByKey('text1');
       let obj4 = JSON.parse(strJson4);
       console.info('textTwoJsunit_0200 component obj4 is: ' + obj4.$attrs.decoration);
-      expect(obj4.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFACEEEE"}');
+      expect(obj4.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFACEEEE",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     });
 

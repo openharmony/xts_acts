@@ -66,19 +66,19 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(vp2px(30));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(vp2px(30)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0100] END');
       done();
     });
@@ -108,13 +108,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0200] END');
       done();
     });
@@ -138,20 +138,20 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(fp2px(50));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(fp2px(50));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(fp2px(50)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(fp2px(50)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       expect(Column_Space_String_013.bottom).assertEqual(Column_Space_String_01.bottom);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0300] END');
       done();
     });
@@ -184,13 +184,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0400] END');
       done();
     });
@@ -214,19 +214,19 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(vp2px(10)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0500] END');
       done();
     });
@@ -256,13 +256,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0600] END');
       done();
     });
@@ -286,19 +286,19 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(fp2px(10));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(fp2px(10));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(fp2px(10)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(fp2px(10)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0700] END');
       done();
     });
@@ -328,13 +328,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0800] END');
       done();
     });
@@ -364,13 +364,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_0900] END');
       done();
     });
@@ -403,13 +403,13 @@ export default function Column_Space_String() {
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_01000] END');
       done();
     });
@@ -433,19 +433,19 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(vp2px(30));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(vp2px(30)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_01100] END');
       done();
     });
@@ -469,19 +469,19 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(vp2px(50)));
       console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', + Column_Space_String_012.top - Column_Space_String_011.bottom)
       console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', + Column_Space_String_013.top - Column_Space_String_012.bottom)
       expect(Column_Space_String_01.top).assertEqual(Column_Space_String_011.top);
       console.log('assert height')
-      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_Space_String_011.bottom - Column_Space_String_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Column_Space_String_012.bottom - Column_Space_String_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Column_Space_String_013.bottom - Column_Space_String_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_Space_String_011.right - Column_Space_String_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_012.right - Column_Space_String_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_Space_String_013.right - Column_Space_String_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_Column_Space_String_TEST_1200] END');
       done();
     });

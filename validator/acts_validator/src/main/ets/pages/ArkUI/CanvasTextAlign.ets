@@ -37,7 +37,9 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('start').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('start').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -45,14 +47,16 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'start';
-                this.context.font = '40px sans-serif'
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=start', 250, 160);
                 this.num1 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
                   this.Vue = true;
                 }
               })
-            Text('end').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('end').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -60,13 +64,16 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'end';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=end', 250, 160);
                 this.num2 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
                   this.Vue = true;
                 }
               })
-            Text('left').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('left').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -74,13 +81,16 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'left';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=left', 250, 160);
                 this.num3 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
                   this.Vue = true;
                 }
               })
-            Text('center').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('center').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -88,13 +98,16 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'center';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=center', 250, 160);
                 this.num4 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
                   this.Vue = true;
                 }
               })
-            Text('right').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('right').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=> {
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -102,6 +115,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'right';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=right', 250, 160);
                 this.num5 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
@@ -122,7 +136,7 @@ struct SetCircle {
               })
           }.width('100%').height('70%')
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

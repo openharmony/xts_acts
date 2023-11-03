@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import menuTest from './menu'
+import menuSecondTest from './menusecond'
 
 export default function testsuite() {
        menuTest()
+       menuSecondTest()
 }

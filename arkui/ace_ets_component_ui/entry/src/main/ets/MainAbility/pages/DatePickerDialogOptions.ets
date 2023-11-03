@@ -16,6 +16,8 @@
 @Entry
 @Component
 struct DatePickerDialogOptions0 {
+  @State isLunar: boolean = false
+  selectedDate: Date = new Date("2023-7-24")
 
   build() {
     Column() {
@@ -23,12 +25,29 @@ struct DatePickerDialogOptions0 {
         .margin(20)
         .onClick(() => {
           DatePickerDialog.show({
+            alignment: DialogAlignment.TopStart,
+            offset: { dx: 10, dy: 100 },
+            maskRect: { x: 0, y: 90, width: 1000, height: 250  },
             start: new Date("2000-1-1"),
             end: new Date("2100-12-31"),
-            selected: new Date("2023-7-24"),
-            lunarSwitch: true
-          }).id("DatePickerDialogOptions0")
-        })
+            selected: this.selectedDate,
+            lunarSwitch:true,
+            lunar: this.isLunar,
+            showTime:true,
+            useMilitaryTime:false,
+            onDateAccept: (value: Date)=> {
+              this.selectedDate = value
+              console.info("DatePickerDialog:onDateAccept()" + value.toString())
+            },
+            onCancel:()=> {
+              console.info("DatePickerDialog: onCancel()")
+            },
+            onDateChange: (value: Date)=> {
+              console.info("DatePickerDialog: onChange()" + value.toString())
+            }
+          })
+        }).key('DatePickerDialog')
+		
     }.width('100%')
   }
 }

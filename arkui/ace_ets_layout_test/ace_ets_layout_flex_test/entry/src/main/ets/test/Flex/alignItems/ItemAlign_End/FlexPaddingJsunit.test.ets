@@ -64,17 +64,17 @@ export default function flexPadding_EndJsunit() {
 
       expect(textFlexPadding01.bottom).assertEqual(textFlexPadding02.bottom)
       expect(textFlexPadding02.bottom).assertEqual(textFlexPadding03.bottom)
-      expect(Math.round(flexPadding01.bottom - textFlexPadding01.bottom)).assertEqual(vp2px(10))
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(10))
+      expect(Math.round(flexPadding01.bottom - textFlexPadding01.bottom)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(Math.round(vp2px(10)))
       expect(textFlexPadding03.right).assertLess(flexPadding01.right)
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(Math.round(vp2px(150)))
 
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(150))
+      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(150)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndParentSetPadding END');

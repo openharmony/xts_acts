@@ -26,15 +26,15 @@ import SecurityCipherSM2SM4Jsunit from './SecurityCipherSM2SM4.test';
 import DigestAlgorithmSm3Jsunit from './DigestAlgorithmSm3.test';
 
 export default function testsuite() {
-  SecurityRandomSyncJsunit();
-  SecuritySignatureVerificationJsunit();
-  SecuritySignatureVerificationTwoJsunit();
-  SecurityKeyAgreementJsunit();
-  AsyGetKeySpecBySpecJsunit();
-  AsyKeyGeneratorBySpecJsunit();
-  AsyKeyGeneratorBySpecTwoJsunit();
-  SecurityCipherJsunit();
-  SecuritySignatureVerificationSM2Jsunit();
-  SecurityCipherSM2SM4Jsunit();
-  DigestAlgorithmSm3Jsunit();
+    SecurityCipherJsunit();
+    SecurityCipherSM2SM4Jsunit();
+    SecuritySignatureVerificationSM2Jsunit();
+    SecuritySignatureVerificationJsunit();
+    SecuritySignatureVerificationTwoJsunit();
+    DigestAlgorithmSm3Jsunit();
+    SecurityRandomSyncJsunit();
+    SecurityKeyAgreementJsunit();
+    AsyGetKeySpecBySpecJsunit();
+    AsyKeyGeneratorBySpecJsunit();
+    AsyKeyGeneratorBySpecTwoJsunit();
 }

@@ -55,50 +55,50 @@ static BOOL DeviceAttestFuncTestSuiteTearDown(void)
     return TRUE;
 }
 
-bool AttestStatusNumberValid(int32_t attestStatusNumber)
+BOOL AttestStatusNumberValid(int32_t attestStatusNumber)
 {
     if (attestStatusNumber < DEVATTEST_INIT || attestStatusNumber > DEVATTEST_SUCCESS) {
-        return false;
+        return FALSE;
     }
-    return true;
+    return TRUE;
 }
 
-bool AttestStatusValid(AttestResultInfo attestResultInfo)
+BOOL AttestStatusValid(AttestResultInfo attestResultInfo)
 {
-    bool result = true;
+    BOOL result = TRUE;
     if (!AttestStatusNumberValid(attestResultInfo.authResult)) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResult)) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_VERSIONID])) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PATCHLEVEL])) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_ROOTHASH])) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PCID])) {
-        result = false;
+        result = FALSE;
     }
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE])) {
-        result = false;
+        result = FALSE;
     }
     if (attestResultInfo.authResult == DEVATTEST_SUCCESS) {
         if (attestResultInfo.ticketLength <= 0) {
-            result = false;
+            result = FALSE;
         }
         if (attestResultInfo.ticket == "") {
-            result = false;
+            result = FALSE;
         }
     }
     if (result) {
-        return true;
+        return TRUE;
     } else {
-        return false;
+        return FALSE;
     }
 }
 
@@ -132,7 +132,7 @@ LITE_TEST_CASE(DeviceAttestFuncTestSuite, subDeviceAttest0200, LEVEL0)
     attestResultInfo.ticket = NULL;
     ret = GetAttestStatus(&attestResultInfo);
     TEST_ASSERT_EQUAL_INT(ret, DEVATTEST_SUCCESS);
-    TEST_ASSERT_EQUAL_INT(AttestStatusValid(attestResultInfo), true);  
+    TEST_ASSERT_EQUAL_INT(AttestStatusValid(attestResultInfo), TRUE);  
 };
 
 RUN_TEST_SUITE(DeviceAttestFuncTestSuite);

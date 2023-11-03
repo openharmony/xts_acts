@@ -215,7 +215,7 @@ export default function abilityTest() {
                 events: ["commonEvent_foreground"]
             };
             var Delegator = abilityDelegatorRegistry.getAbilityDelegator()
-            console.log("1000getAbilityDelegator data is" + JSON.stringify(Delegator))
+            console.log("0300getAbilityDelegator data is" + JSON.stringify(Delegator))
             Delegator.addAbilityMonitor(
                 {
                     abilityName: 'MainAbility3',
@@ -387,7 +387,7 @@ export default function abilityTest() {
                 events: ["ACTS_AddAbilityMonitor_0600"]
             };
             var data = abilityDelegatorRegistry.getAbilityDelegator()
-            console.log("0700getAbilityDelegator data is" + JSON.stringify(data))
+            console.log("0600getAbilityDelegator data is" + JSON.stringify(data))
             data.addAbilityMonitor(
                 {
                     abilityName: 'MainAbility4',

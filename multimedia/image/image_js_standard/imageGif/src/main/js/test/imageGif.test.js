@@ -312,7 +312,7 @@ export default function imageGif() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100
          * @tc.name      :  getDelayTime - promise
          * @tc.desc      : 1.create imagesource
          *                 2.getDelayTime
@@ -320,12 +320,12 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", 0, async function (done) {
-            getDelayTimePromise(done, "SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", "moving_test.gif");
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", 0, async function (done) {
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", "moving_test.gif");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100
          * @tc.name      :  getDelayTime - callback
          * @tc.desc      : 1.create imagesource
          *                 2.getDelayTime
@@ -333,12 +333,12 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", 0, async function (done) {
-            getDelayTimeCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", "moving_test.gif");
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", 0, async function (done) {
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", "moving_test.gif");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100
          * @tc.name      :  getFrameCount - promise
          * @tc.desc      : 1.create imagesource
          *                 2.getFrameCount
@@ -346,12 +346,12 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", 0, async function (done) {
-            getFrameCountPromise(done, "SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", "moving_test.gif");
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", 0, async function (done) {
+            getFrameCountPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", "moving_test.gif");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100
          * @tc.name      :  getFrameCount - callback
          * @tc.desc      : 1.create imagesource
          *                 2.getFrameCount
@@ -359,12 +359,12 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", 0, async function (done) {
-            getFrameCountCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", "moving_test.gif");
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", 0, async function (done) {
+            getFrameCountCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", "moving_test.gif");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100
          * @tc.name      : createPixelMapList - promise
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -374,7 +374,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -383,12 +383,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListPromise(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100",
+            createPixelMapListPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100
          * @tc.name      : createPixelMapList - promise-sampleSize: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -397,7 +397,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: -1,
                 editable: true,
@@ -406,12 +406,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListErrPromise(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100",
+            createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200
          * @tc.name      : createPixelMapList - promise-index: -8
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -420,7 +420,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -429,12 +429,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: -8,
             };
-            createPixelMapListErrPromise(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200",
+            createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300
          * @tc.name      : createPixelMapList - promise-rotate: 500
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -443,7 +443,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -452,12 +452,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListErrPromise(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300",
+            createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400
          * @tc.name      : createPixelMapList - promise-desiredPixelFormat: unsupported format
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -466,7 +466,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -475,12 +475,12 @@ export default function imageGif() {
                 desiredPixelFormat: 33,
                 index: 0,
             };
-            createPixelMapListErrPromise(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400",
+            createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100
          * @tc.name      : createPixelMapList - callback
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -490,7 +490,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -499,12 +499,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100",
+            createPixelMapListCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100
          * @tc.name      : createPixelMapList - callback-sampleSize: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -513,7 +513,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: -1,
                 editable: true,
@@ -522,12 +522,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListErrCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100",
+            createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200
          * @tc.name      : createPixelMapList - callback- index: -8
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -536,7 +536,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -545,12 +545,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: -8,
             };
-            createPixelMapListErrCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200",
+            createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300
          * @tc.name      : createPixelMapList - callback-rotate: 500
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -559,7 +559,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -568,12 +568,12 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
-            createPixelMapListErrCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300",
+            createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300",
                 "moving_test.gif", decodeOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400
          * @tc.name      : createPixelMapList - callback-unsupported format
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -582,7 +582,7 @@ export default function imageGif() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -591,7 +591,7 @@ export default function imageGif() {
                 desiredPixelFormat: 33,
                 index: 0,
             };
-            createPixelMapListErrCallBack(done, "SUB_GRAPHIC_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400",
+            createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400",
                 "moving_test.gif", decodeOpts);
         });
     });

@@ -70,7 +70,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_8888-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -80,13 +80,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -103,7 +103,7 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 createPixelMap error  " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 createPixelMap error  " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
@@ -111,7 +111,7 @@ export default function imageDecodeOptions() {
                         } else {
                             globalpixelmap = pixelmap;
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 success "
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 success "
                             );
                             expect(pixelmap != undefined).assertTrue();
                             done();
@@ -119,14 +119,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGB_565-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -136,13 +136,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -159,7 +159,7 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 createPixelMap error  " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 createPixelMap error  " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
@@ -167,7 +167,7 @@ export default function imageDecodeOptions() {
                         } else {
                             globalpixelmap = pixelmap;
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 success "
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 success "
                             );
                             expect(pixelmap != undefined).assertTrue();
                             done();
@@ -175,14 +175,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:unknown-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -192,13 +192,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -215,7 +215,7 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 createPixelMap error  " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 createPixelMap error  " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
@@ -223,7 +223,7 @@ export default function imageDecodeOptions() {
                         } else {
                             globalpixelmap = pixelmap;
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 success "
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 success "
                             );
                             expect(pixelmap != undefined).assertTrue();
                             done();
@@ -231,14 +231,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100
          * @tc.name      : createPixelMap(decodingOptions: index 1})-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -248,13 +248,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -270,29 +270,29 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 fail  " + pixelmap);
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 fail  " + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200
          * @tc.name      : createPixelMap(decodingOptions:index -1})-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -302,13 +302,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -324,29 +324,29 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 fail  " + pixelmap);
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 fail  " + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100
          * @tc.name      : createPixelMap(decodingOptions:sampleSize -1})-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -356,13 +356,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -378,16 +378,16 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 fail  " + pixelmap
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 fail  " + pixelmap
                             );
                             expect(false).assertTrue();
                             done();
@@ -395,14 +395,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100
          * @tc.name      : createPixelMap(decodingOptions:rotate -10})-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -412,13 +412,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -434,16 +434,16 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 fail  " + pixelmap
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 fail  " + pixelmap
                             );
                             expect(false).assertTrue();
                             done();
@@ -451,14 +451,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100
          * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -468,13 +468,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -491,17 +491,17 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 success "
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 success "
                             );
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 fail  " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 fail  " +
                                     pixelmap
                             );
                             expect(false).assertTrue();
@@ -511,7 +511,7 @@ export default function imageDecodeOptions() {
                 }
             } catch (error) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 error: " + error
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100 error: " + error
                 );
                 expect(false).assertTrue();
                 done();
@@ -519,7 +519,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100
          * @tc.name      : createPixelMap(decodingOptions:editable false})-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -529,13 +529,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -552,28 +552,28 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 success ");
                             expect(pixelmap != undefined).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100
          * @tc.name      : createPixelMap(decodingOptions:desiredSize>imagesize)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -583,13 +583,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -606,28 +606,28 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 success ");
                             expect(pixelmap != undefined).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200
          * @tc.name      : createPixelMap(decodingOptions:desiredRegion>imagesize)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -637,13 +637,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -660,7 +660,7 @@ export default function imageDecodeOptions() {
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 createPixelMap err " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 createPixelMap err " +
                                     JSON.stringify(err)
                             );
                             expect(false).assertTrue();
@@ -673,7 +673,7 @@ export default function imageDecodeOptions() {
                                     expect(imageInfo.size.height == 2).assertTrue();
                                     expect(imageInfo.size.width == 1).assertTrue();
                                     console.info(
-                                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 success "
+                                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 success "
                                     );
                                     console.info("imageInfo height :" + imageInfo.size.height);
                                     console.info("imageInfo width : " + imageInfo.size.width);
@@ -681,7 +681,7 @@ export default function imageDecodeOptions() {
                                 })
                                 .catch((err) => {
                                     console.info(
-                                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 getimageInfo err " +
+                                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 getimageInfo err " +
                                             JSON.stringify(err)
                                     );
                                 });
@@ -689,14 +689,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100
          * @tc.name      : createPixelMapdecodingOptions:x -1 y -1)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -706,12 +706,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -726,29 +726,29 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 fail  " + pixelmap);
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 fail  " + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200
          * @tc.name      : createPixelMap(decodingOptions:x > image.height y > image.width)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -758,12 +758,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 create image source failed");
+                    console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -778,29 +778,29 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 fail  " + pixelmap);
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 fail  " + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200
          * @tc.name      : createPixelMap(decodingOptions:rotate>360)-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -810,13 +810,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -832,16 +832,16 @@ export default function imageDecodeOptions() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 success ");
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 createPixelMap error " +
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 createPixelMap error " +
                                     JSON.stringify(err)
                             );
                             expect(true).assertTrue();
                             done();
                         } else {
                             console.info(
-                                "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 fail  " + pixelmap
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 fail  " + pixelmap
                             );
                             expect(false).assertTrue();
                             done();
@@ -849,14 +849,14 @@ export default function imageDecodeOptions() {
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100
          * @tc.name      : createPixelMap-promise-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -866,13 +866,13 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
@@ -881,25 +881,25 @@ export default function imageDecodeOptions() {
                         .createPixelMap()
                         .then((pixelmap) => {
                             globalpixelmap = pixelmap;
-                            console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 success ");
+                            console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 success ");
                             expect(pixelmap != undefined).assertTrue();
                             done();
                         })
                         .catch((error) => {
-                            console.log("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 error: " + error);
+                            console.log("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 error: " + error);
                             expect().assertFail();
                             done();
                         });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100
          * @tc.name      : createPixelMap-callback-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -909,33 +909,33 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100", 0, async function (done) {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 create image source failed"
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 create image source failed"
                     );
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     });
                 }
             } catch (error) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 error: " + error);
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 error: " + error);
                 expect(false).assertTrue();
                 done();
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_8888-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -945,12 +945,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -967,14 +967,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -983,7 +983,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_565-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -993,12 +993,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1015,14 +1015,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1031,7 +1031,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:unkonwn-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1041,12 +1041,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1063,14 +1063,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1079,7 +1079,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300
          * @tc.name      : createPixelMap(decodingOptions:index 1})-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1089,11 +1089,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1109,14 +1109,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1125,7 +1125,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400
          * @tc.name      : createPixelMap(decodingOptions:index -1})-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1135,11 +1135,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1154,15 +1154,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1171,7 +1171,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200
          * @tc.name      : createPixelMap(decodingOptions:sampleSize -1})-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1181,12 +1181,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1202,16 +1202,16 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 fail  " + pixelmap
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200 fail  " + pixelmap
                         );
                         expect(false).assertTrue();
                         done();
@@ -1221,7 +1221,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300
          * @tc.name      : createPixelMap(decodingOptions:rotate -10})-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1231,11 +1231,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1250,15 +1250,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1267,7 +1267,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200
          * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1277,12 +1277,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1299,17 +1299,17 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 success "
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 success "
                         );
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 fail  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200 fail  " +
                                 pixelmap
                         );
                         expect(false).assertTrue();
@@ -1320,7 +1320,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200
          * @tc.name      : createPixelMap(decodingOptions:editable false})-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1330,12 +1330,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1352,14 +1352,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1368,7 +1368,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300
          * @tc.name      : createPixelMap(decodingOptions:desiredSize>imagesize)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1378,11 +1378,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1398,14 +1398,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1414,7 +1414,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400
          * @tc.name      : createPixelMap(decodingOptions:desiredRegion>imagesize)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1424,11 +1424,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info(" SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 create image source failed");
+                console.info(" SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1444,7 +1444,7 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
@@ -1456,14 +1456,14 @@ export default function imageDecodeOptions() {
                             .then((imageInfo) => {
                                 expect(imageInfo.size.height == 2).assertTrue();
                                 expect(imageInfo.size.width == 1).assertTrue();
-                                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 success ");
+                                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 success ");
                                 console.info("imageInfo height :" + imageInfo.size.height);
                                 console.info("imageInfo width : " + imageInfo.size.width);
                                 done();
                             })
                             .catch((err) => {
                                 console.info(
-                                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 getimageInfo err " +
+                                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400 getimageInfo err " +
                                         JSON.stringify(err)
                                 );
                             });
@@ -1473,7 +1473,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300
          * @tc.name      : createPixelMapdecodingOptions:x -1 y -1)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1483,11 +1483,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1502,15 +1502,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1519,7 +1519,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400
          * @tc.name      : createPixelMap(decodingOptions:x > image.height y > image.width)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1529,11 +1529,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1548,15 +1548,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1565,7 +1565,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400
          * @tc.name      : createPixelMap(decodingOptions:rotate>360)-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1575,11 +1575,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1594,15 +1594,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1611,7 +1611,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200
          * @tc.name      : createPixelMap-promise-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1621,11 +1621,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1633,12 +1633,12 @@ export default function imageDecodeOptions() {
                     .createPixelMap()
                     .then((pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 success ");
                         expect(pixelmap !== undefined).assertTrue();
                         done();
                     })
                     .catch((error) => {
-                        console.log("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 error: " + error);
+                        console.log("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200 error: " + error);
                         expect().assertFail();
                         done();
                     });
@@ -1646,7 +1646,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200
          * @tc.name      : createPixelMap-callback-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1656,16 +1656,16 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200", 0, async function (done) {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
-                    console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200 success ");
+                    console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200 success ");
                     expect(pixelmap !== undefined).assertTrue();
                     done();
                 });
@@ -1673,7 +1673,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_8888-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1683,12 +1683,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1705,14 +1705,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1721,7 +1721,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGB_565-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1731,12 +1731,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1753,14 +1753,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1769,7 +1769,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:unkonwn-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1779,12 +1779,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1801,14 +1801,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -1817,7 +1817,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500
          * @tc.name      : createPixelMap(decodingOptions: index 1})-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1827,11 +1827,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1846,15 +1846,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1863,7 +1863,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600
          * @tc.name      : createPixelMap(decodingOptions:index -1})-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1873,11 +1873,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1892,15 +1892,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1909,7 +1909,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300
          * @tc.name      : createPixelMap(decodingOptions:sampleSize -1})-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1919,12 +1919,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -1940,16 +1940,16 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 fail  " + pixelmap
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300 fail  " + pixelmap
                         );
                         expect(false).assertTrue();
                         done();
@@ -1959,7 +1959,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500
          * @tc.name      : createPixelMap(decodingOptions:rotate -10})-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -1969,11 +1969,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -1988,15 +1988,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2005,7 +2005,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300
          * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2015,12 +2015,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2037,17 +2037,17 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 success "
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 success "
                         );
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 fail  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300 fail  " +
                                 pixelmap
                         );
                         expect(false).assertTrue();
@@ -2058,7 +2058,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300
          * @tc.name      : createPixelMap(decodingOptions:editable false})-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2068,12 +2068,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2090,14 +2090,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2106,7 +2106,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500
          * @tc.name      : createPixelMap(decodingOptions:desiredSize>imagesize)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2116,11 +2116,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2136,14 +2136,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2152,7 +2152,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600
          * @tc.name      : createPixelMap(decodingOptions:desiredRegion>imagesize)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2162,11 +2162,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info(" SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 create image source failed");
+                console.info(" SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2183,7 +2183,7 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
@@ -2195,14 +2195,14 @@ export default function imageDecodeOptions() {
                             .then((imageInfo) => {
                                 expect(imageInfo.size.height == 2).assertTrue();
                                 expect(imageInfo.size.width == 1).assertTrue();
-                                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 success ");
+                                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 success ");
                                 console.info("imageInfo height :" + imageInfo.size.height);
                                 console.info("imageInfo width : " + imageInfo.size.width);
                                 done();
                             })
                             .catch((err) => {
                                 console.info(
-                                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 getimageInfo err " +
+                                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600 getimageInfo err " +
                                         JSON.stringify(err)
                                 );
                             });
@@ -2212,7 +2212,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500
          * @tc.name      : createPixelMapdecodingOptions:x -1 y -1)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2222,11 +2222,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2241,15 +2241,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2258,7 +2258,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600
          * @tc.name      : createPixelMap(decodingOptions:x > image.height y > image.width)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2268,11 +2268,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2287,15 +2287,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2304,7 +2304,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600
          * @tc.name      : createPixelMap(decodingOptions:rotate>360)-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2314,11 +2314,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600", 0, async function (done) {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2333,15 +2333,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2350,7 +2350,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_8888-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2360,12 +2360,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2382,14 +2382,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2398,7 +2398,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGB_565-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2408,12 +2408,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2430,14 +2430,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2446,7 +2446,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900
          * @tc.name      : createPixelMap(decodingOptions)-pixelformat:unkonwn-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2456,12 +2456,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2478,14 +2478,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2494,7 +2494,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700
          * @tc.name      : createPixelMap(decodingOptions: index 1})-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2504,11 +2504,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2523,15 +2523,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2540,7 +2540,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800
          * @tc.name      : createPixelMap(decodingOptions:index -1})-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2551,11 +2551,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2570,15 +2570,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2587,7 +2587,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400
          * @tc.name      : createPixelMap(decodingOptions:sampleSize -1})-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2598,12 +2598,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2619,16 +2619,16 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 fail  " + pixelmap
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400 fail  " + pixelmap
                         );
                         expect(false).assertTrue();
                         done();
@@ -2638,7 +2638,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700
          * @tc.name      : createPixelMap(decodingOptions:rotate -10})-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2649,11 +2649,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2668,15 +2668,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2685,7 +2685,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400
          * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2696,12 +2696,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2718,17 +2718,17 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 success "
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 success "
                         );
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 fail  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400 fail  " +
                                 pixelmap
                         );
                         expect(false).assertTrue();
@@ -2739,7 +2739,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400
          * @tc.name      : createPixelMap(decodingOptions:editable false})-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2750,12 +2750,12 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(
-                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 create image source failed"
+                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 create image source failed"
                 );
                 expect(false).assertTrue();
                 done();
@@ -2772,14 +2772,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2788,7 +2788,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700
          * @tc.name      : createPixelMap(decodingOptions:desiredSize>imagesize)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2799,11 +2799,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2819,14 +2819,14 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
                         done();
                     } else {
                         globalpixelmap = pixelmap;
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700 success ");
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }
@@ -2835,7 +2835,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800
          * @tc.name      : createPixelMap(decodingOptions:desiredRegion>imagesize)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2846,11 +2846,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info(" SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 create image source failed");
+                console.info(" SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2866,7 +2866,7 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
@@ -2878,14 +2878,14 @@ export default function imageDecodeOptions() {
                             .then((imageInfo) => {
                                 expect(imageInfo.size.height == 2).assertTrue();
                                 expect(imageInfo.size.width == 1).assertTrue();
-                                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 success ");
+                                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 success ");
                                 console.info("imageInfo height :" + imageInfo.size.height);
                                 console.info("imageInfo width : " + imageInfo.size.width);
                                 done();
                             })
                             .catch((err) => {
                                 console.info(
-                                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 getimageInfo err " +
+                                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800 getimageInfo err " +
                                         JSON.stringify(err)
                                 );
                             });
@@ -2895,7 +2895,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700
          * @tc.name      : createPixelMapdecodingOptions:x -1 y -1)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2906,11 +2906,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2925,15 +2925,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2942,7 +2942,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800
          * @tc.name      : createPixelMap(decodingOptions:x > image.height y > image.width)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set decodingOptions
@@ -2953,11 +2953,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -2972,15 +2972,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2989,7 +2989,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800
          * @tc.name      : createPixelMap(decodingOptions:rotate>360)-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2999,11 +2999,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800", 0, async function (done) {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -3018,15 +3018,15 @@ export default function imageDecodeOptions() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 success ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 success ");
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 createPixelMap error " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 createPixelMap error " +
                                 JSON.stringify(err)
                         );
                         expect(true).assertTrue();
                         done();
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 fail  " + pixelmap);
+                        console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800 fail  " + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -3035,7 +3035,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100
          * @tc.name      : createPixelMap-unsupported image format
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -3045,7 +3045,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100", 0, async function (done) {
             await getFd("test.tiff");
             const imageSourceApi = image.createImageSource(fdNumber);
             let decodingOptions = {
@@ -3061,17 +3061,17 @@ export default function imageDecodeOptions() {
                 globalpixelmap = pixelmap;
                 if (err) {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 success "
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 success "
                     );
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 createPixelMap error " +
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 createPixelMap error " +
                             JSON.stringify(err)
                     );
                     expect(pixelmap == undefined).assertTrue();
                     done();
                 } else {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 fail  " + pixelmap
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100 fail  " + pixelmap
                     );
                     expect(false).assertTrue();
                     done();
@@ -3080,7 +3080,7 @@ export default function imageDecodeOptions() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900
          * @tc.name      : Decode the image to generate a bitmap
          * @tc.desc      : 1.create imagesource
          *                 2.create pixelmap
@@ -3090,11 +3090,11 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900", 0, async function (done) {
             await getFd("test.jpg");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 create image source failed");
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 create image source failed");
                 expect(false).assertTrue();
                 done();
             } else {
@@ -3110,7 +3110,7 @@ export default function imageDecodeOptions() {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (err) {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 createPixelMap error  " +
+                            "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 createPixelMap error  " +
                                 JSON.stringify(err)
                         );
                         expect(false).assertTrue();
@@ -3120,20 +3120,20 @@ export default function imageDecodeOptions() {
                         pixelmap.getImageInfo((error, imageInfo) => {
                             if (error) {
                                 console.info(
-                                    "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 getimageInfo err " +
+                                    "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 getimageInfo err " +
                                         JSON.stringify(error)
                                 );
                                 expect(false).assertTrue();
                                 done();
                             } else {
                                 if (imageInfo != undefined) {
-                                    console.info("SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 success");
+                                    console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 success");
                                     expect(imageInfo.size.height == 2).assertTrue();
                                     expect(imageInfo.size.width == 1).assertTrue();
                                     done();
                                 } else {
                                     console.info(
-                                        "SUB_GRAPHIC_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 imageInfo is empty"
+                                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900 imageInfo is empty"
                                     );
                                     expect(false).assertTrue();
                                     done();

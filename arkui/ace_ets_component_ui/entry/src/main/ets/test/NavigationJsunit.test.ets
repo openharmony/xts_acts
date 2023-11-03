@@ -221,7 +221,7 @@ export default function NavigationJsunit() {
       expect(obj.$attrs.hideBackButton).assertEqual(true);
       expect(obj.$attrs.navBarWidth).assertEqual('200.00vp');
       expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.End');
-      expect(obj.$attrs.mode).assertEqual('NavigationMode.STACK');
+      expect(obj.$attrs.mode).assertEqual('NavigationMode.AUTO');
       expect(obj.$attrs.backButtonIcon).assertEqual('');
       expect(obj.$attrs.hideNavBar).assertEqual(false);
       console.info('[NavigationJsunit_0900] END');

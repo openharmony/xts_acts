@@ -925,6 +925,9 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
+
+            await sleep(3000);
+            done();
         });
 
         /**

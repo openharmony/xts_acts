@@ -49,8 +49,8 @@ export default function fileAssetCallback2Test(abilityContext) {
         const checkCommitModify = async function (done, testNum, fetchOp, prop, val) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 const oldVal = asset[prop];
                 asset[prop] = val;
@@ -89,8 +89,8 @@ export default function fileAssetCallback2Test(abilityContext) {
         const abnormalCheckCommitModify = async function (done, testNum, fetchOp, prop, val) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 asset[prop] = val;
                 asset.commitModify(async (err) => {

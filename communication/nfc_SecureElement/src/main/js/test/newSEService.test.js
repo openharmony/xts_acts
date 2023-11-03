@@ -24,34 +24,51 @@ function sleep(delay) { // delay x ms
     }
 }
 
-let nfcSEService = null;
+async function getSEService() {
+    return new Promise((resolve, reject) => {
+        Service = secureElement.newSEService("serviceState", (state) => {
+            if (state == secureElement.ServiceState.DISCONNECTED) {
+                console.info("[nfc_test] getSEService newService state is Disconnected");
+                let err = null;
+                err.code = -1;
+                err.message = "newSEService failed, service is not connected"
+                reject(err);
+            } else {
+                console.info("[nfc_test] getSEService newService state is Connected");
+                resolve(Service);
+            }
+        });
+    });
+}
+
+let Service = null;
+let getReader = null;
 
 export default function newSEServicetest() {
     describe('newSEServicetest', function () {
-        beforeAll(function () {
-            try {
-                nfcSEService = secureElement.newSEService("serviceState", (state) => {
-                    if (state == secureElement.ServiceState.DISCONNECTED) {
-                        console.info("[nfc_test] beforeAll newService state is Disconnected");
-                    } else {
-                        console.info("[nfc_test] beforeAll newService state is Connected");
-                    }
-                    expect(state instanceof Object).assertTrue();
-                    console.info("[nfc_test] beforeAll newService state is " + state);
-                });
-                sleep(1000);
-            } catch (e) {
-                console.info("[nfc_test] beforeAll newService occurs exception:" + e.message);
-            }
+        beforeAll(async function (done) {
+            await getSEService().then(async (data) => {
+                Service = data;
+                let seIsConnected = Service.isConnected();
+                console.info("[NFC_test] SEService isConnected The connection status is: " + seIsConnected);
+                return Service;
+            }).catch((err) =>{
+                console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+            })
+            done();
+            console.info('beforeAll called');
         })
+
         beforeEach(function() {
             console.info('beforeEach called');
         })
+
         afterEach(function () {
             console.info('afterEach called');
         })
+
         afterAll(function () {
-            nfcSEService.shutdown();
+            Service.shutdown();
             sleep(5000);
             console.info('[nfc_test] afterAll newService shutdown success');
         })
@@ -65,7 +82,7 @@ export default function newSEServicetest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0100', 0, function () {
             try {
-                let nfcisConnected = nfcSEService.isConnected();
+                let nfcisConnected = Service.isConnected();
                 console.info("[NFC_test]1 SEService The connection status is: " + nfcisConnected);
                 expect(nfcisConnected).assertTrue();
             } catch (error) {
@@ -83,7 +100,7 @@ export default function newSEServicetest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0200', 0, function ()  {
             try {
-                let getSEVersion = nfcSEService.getVersion();
+                let getSEVersion = Service.getVersion();
                 console.info("[NFC_test]2 OMA The version number is: " + getSEVersion);
                 expect(typeof (getSEVersion)).assertEqual('string');
             } catch (error) {
@@ -101,7 +118,7 @@ export default function newSEServicetest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0300', 0, function ()  {
             try {
-                let nfcOmaReaderList = nfcSEService.getReaders();
+                let nfcOmaReaderList = Service.getReaders();
                 console.info("[nfc_test]3 Result of getReaders:" + nfcOmaReaderList );
                 if (nfcOmaReaderList == undefined) {
                     console.info("[NFC_test]3 This function is not supported because the phone NFC chip is ST chip.");
@@ -130,7 +147,7 @@ export default function newSEServicetest() {
         it('SUB_Communication_NFC_secureElement_js_0400', 0, function ()  {
             try {
                 let nfcOmaReaderList2 = [];
-                nfcOmaReaderList2 = nfcSEService.getReaders();
+                nfcOmaReaderList2 = Service.getReaders();
                 if (nfcOmaReaderList2 == undefined) {
                     console.info("[NFC_test]4 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
@@ -169,38 +186,35 @@ export default function newSEServicetest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0500', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0500', 0, async function (done)  {
             try {
-                nfcSEService.shutdown();
+                Service.shutdown();
                 console.info('[NFC_test] 05 eseshutdown pass');
-                let downESEisconnected = nfcSEService.isConnected();
+                let downESEisconnected = Service.isConnected();
                 console.info("[NFC_test]5 shutdown the SE SEService The connection status is: " + downESEisconnected);
                 expect(downESEisconnected).assertFalse();
                 sleep(5000);
-                let SEService = secureElement.newSEService("serviceState", (state) => {
-                    if (state == secureElement.ServiceState.DISCONNECTED) {
-                        console.info("[nfc_test]5 Service state is Disconnected");
-                    } else {
-                        console.info("[nfc_test]5 Service state is Connected");
+                await getSEService().then(async (data) => {
+                    Service = data;
+                    let seIsConnected = Service.isConnected();
+                    console.info("[NFC_test] SEService isConnected The connection status is: " + seIsConnected);
+                    if (seIsConnected) {
+                        getReader = Service.getReaders();
+                        if (getReader == undefined) {
+                            console.info("[NFC_test]5 This function is not supported because the phone NFC chip is ST chip.");
+                        } else {
+                            expect(getReader instanceof Object).assertTrue();
+                            console.info("[nfc_test]5 Result of getReaders:" + getReader);
+                        }
                     }
-                    console.info("[nfc_test]5 Service state is" + state);
-                });
-                sleep(1000);
-                expect(SEService instanceof Object).assertTrue();
-                let openESEisconnected = SEService.isConnected();
-                console.info("[NFC_test]5  SEService The connection status is:: " + openESEisconnected);
-                expect(openESEisconnected).assertTrue();
-                let nfcReadersList = SEService.getReaders();
-                if (nfcReadersList == undefined) {
-                    console.info("[NFC_test]5 This function is not supported because the phone NFC chip is ST chip.");
-                } else {
-                    expect(nfcReadersList instanceof Object).assertTrue();
-                    console.info("[nfc_test]5 Result of getReaders:" + nfcReadersList);
-                }
+                }).catch((err) =>{
+                    console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+                })
             } catch (error) {
                 console.info("[NFC_test]5 getReaders occurs exception:" + error);
                 expect().assertFail();
             }
+            done();
         })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");

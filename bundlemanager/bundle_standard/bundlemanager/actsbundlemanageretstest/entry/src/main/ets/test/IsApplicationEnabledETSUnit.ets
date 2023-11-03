@@ -25,15 +25,15 @@ export default function IsApplicationEnabledETSUnit() {
     describe('isApplicationEnabled_test', function () {
 
         /*
-         * @tc.number: context_isApplicationEnabled_test_0100
+         * @tc.number: Sub_Bms_Framework_Status_AppEnable_3000
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('isApplicationEnabled_test_0100', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3000', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isApplicationEnabled_test_0100]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Status_AppEnable_3000]', timeOldStamp, timeNewStamp);
                 expect(data).assertTrue();
             }).catch((error) => {
                 expect(error).assertFail();
@@ -41,7 +41,7 @@ export default function IsApplicationEnabledETSUnit() {
             timeOldStamp = await Utils.getNowTime();
             Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Status_AppEnable_3000]', timeOldStamp, timeNewStamp);
                 expect(error.code).assertEqual(0);
                 expect(data).assertTrue();
                 done();
@@ -49,11 +49,11 @@ export default function IsApplicationEnabledETSUnit() {
         });
 
         /*
-         * @tc.number: isApplicationEnabled_test_0200
+         * @tc.number: Sub_Bms_Framework_Status_AppEnable_2900
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('isApplicationEnabled_test_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_2900', 0, async function (done) {
             await Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
@@ -85,11 +85,11 @@ export default function IsApplicationEnabledETSUnit() {
         });
 
         /*
-         * @tc.number: isApplicationEnabled_test_0300
+         * @tc.number: Sub_Bms_Framework_Status_AppEnable_3100
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('isApplicationEnabled_test_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME_OTHER).then((data) => {
                 expect(data).assertTrue();

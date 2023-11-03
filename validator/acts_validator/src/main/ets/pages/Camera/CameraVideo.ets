@@ -20,7 +20,7 @@ import { CustomContainer } from '../common/CameraVideoContainer'
 import FirstDialog from '../model/FirstDialog'
 import router from '@ohos.router'
 import mediaPlay from '../model/mediaPlay'
-import prompt from '@ohos.prompt'
+import promptAction from '@ohos.promptAction'
 
 @Entry
 @Component
@@ -247,7 +247,7 @@ struct cameraOrientation {
                 .onClick(async () => {
                   this.testEnabled = false
                   this.nextEnabled = true
-                  prompt.showToast({
+                  promptAction.showToast({
                     message: '录制中，请等待三秒', duration: 1000
                   });
                   CameraService.startVideo().then(() => {
@@ -273,7 +273,8 @@ struct cameraOrientation {
             }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
           }.size({ width: '100%', height: '30%' })
         }
-      }.height('80%')
+      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
 
       CustomContainer({

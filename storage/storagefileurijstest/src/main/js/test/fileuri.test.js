@@ -14,6 +14,7 @@
  */
 
 import fileUri from '@ohos.file.fileuri';
+import fs from '@ohos.file.fs';
 import {
   describe,
   it,
@@ -24,6 +25,7 @@ from '@ohos/hypium'
 export default function fileuri_test() {
 describe('file_uri_test', function () {
 
+  const CONTENT = "Hello World!";
   /**
    * @tc.number SUB_STORAGE_FileUri_GetUriFromPath_0000
    * @tc.name FileUri_GetUriFromPath_000

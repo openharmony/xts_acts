@@ -27,8 +27,8 @@ export default function pasteBoardSystemPasteBoardTest(){
             error = undefined;
         })
 
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100
+		/**
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1800
          * @tc.name      clearData
          * @tc.desc      Clear the data in the system pasteBoard
          * @tc.size      : MEDIUM
@@ -52,7 +52,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2000
          * @tc.name      clearData
          * @tc.desc      Clear the data in the system pasteBoard fail,type of parameter "callback" is string
          * @tc.size      : MEDIUM
@@ -78,7 +78,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_PROMISE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1900
          * @tc.name      clearData
          * @tc.desc      Clear the data in the system pasteBoard
          * @tc.size      : MEDIUM
@@ -114,7 +114,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_3200
          * @tc.name     getData
          * @tc.desc      get the pastedata from system pasteBoard success
          * @tc.size      : MEDIUM
@@ -144,7 +144,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_CALLBACK_0200
+         * @tc.number   SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_3400
          * @tc.name     getData
          * @tc.desc      get the pastedata from system pasteBoard fail,type of parameter "callback" is string
          * @tc.size      : MEDIUM
@@ -171,7 +171,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_GETDATA_PROMISE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_3300
          * @tc.name     getData
          * @tc.desc      get the pastedata from system pasteBoard success
          * @tc.size      : MEDIUM
@@ -200,7 +200,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1300
          * @tc.name     hasData
          * @tc.desc      Determine if there is data in the system pasteboard success, result is true
          * @tc.size      : MEDIUM
@@ -229,8 +229,8 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200
-         * @tc.name     hasData
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1600
+         * @tc.name      hasData
          * @tc.desc      Determine if there is data in the system pasteboard success, result is true
          * @tc.size      : MEDIUM
          * @tc.type      : Function
@@ -254,7 +254,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1500
          * @tc.name     hasData
          * @tc.desc      Determine if there is data in the system pasteboard fail,type of parameter "callback" is string
          * @tc.size      : MEDIUM
@@ -280,7 +280,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1400
          * @tc.name     hasData
          * @tc.desc      Determine if there is data in the system pasteboard success, result is true
          * @tc.size      : MEDIUM
@@ -307,7 +307,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_PROMISE_0200
+         * @tc.number   SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1700
          * @tc.name     hasData
          * @tc.desc      Determine if there is data in the system pasteboard success, result is true
          * @tc.size      : MEDIUM
@@ -330,7 +330,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2600
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard success
          * @tc.size      : MEDIUM
@@ -359,7 +359,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2800
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard fail,type of parameter "pasteData" is string
          * @tc.size      : MEDIUM
@@ -390,7 +390,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0300
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_3100
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard fail,type of parameter "pasteData" is string
          * @tc.size      : MEDIUM
@@ -416,7 +416,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2700
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard success
          * @tc.size      : MEDIUM
@@ -443,7 +443,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2900
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard fail,type of parameter "pasteData" is string
          * @tc.size      : MEDIUM
@@ -467,7 +467,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_PROMISE_0300
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_3000
          * @tc.name     setData
          * @tc.desc      Put pastedata to system pasteBoard fail without parameters
          * @tc.size      : MEDIUM

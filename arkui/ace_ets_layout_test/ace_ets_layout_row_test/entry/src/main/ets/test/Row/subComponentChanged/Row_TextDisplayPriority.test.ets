@@ -62,14 +62,14 @@ export default function row_TextDisplayPriorityTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(vp2px(200));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(Math.round(vp2px(200)));
 
       expect(Math.round(thirdText.left - rowContainer.left)).assertEqual(vp2px(0));
       expect(Math.round(thirdText.top - rowContainer.top))
         .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom)); //text1、text2 is hidden,text3 center display
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(150));
+      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(150)));
       console.info('[testRowTextDisplayPriority01] END');
       done();
     });
@@ -94,11 +94,11 @@ export default function row_TextDisplayPriorityTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(Math.round(vp2px(200)));
 
 
       expect(Math.round(firstText.top - rowContainer.top))
@@ -107,9 +107,9 @@ export default function row_TextDisplayPriorityTest() {
         .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom)); //text1、text3  center display
 
       expect(firstText.left).assertEqual(rowContainer.left);
-      expect(Math.round(thirdText.left - firstText.right)).assertEqual(vp2px(10)); //text2 is hidden
+      expect(Math.round(thirdText.left - firstText.right)).assertEqual(Math.round(vp2px(10))); //text2 is hidden
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(40));
+      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(40)));
       console.info('[testRowTextDisplayPriority02] END');
       done();
     });

@@ -48,7 +48,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     
         /**
          * @tc.name resultSet ExcuteSql normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ExcuteSql_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0340
          * @tc.desc resultSet ExcuteSql normal test
          */
         it('ExcuteSqlTest0001', 0, async function (done) {
@@ -125,7 +125,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     
         /**
          * @tc.name resultSet ExcuteSql normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ExcuteSql_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0350
          * @tc.desc resultSet ExcuteSql normal test
          */
         it('ExcuteSqlTest0002', 0, async function (done) {
@@ -200,7 +200,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     
         /**
          * @tc.name resultSet ExcuteSql normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ExcuteSql_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0360
          * @tc.desc resultSet ExcuteSql normal test
          */
         it('ExcuteSqlTest0003', 0, async function (done) {
@@ -296,7 +296,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     
         /**
          * @tc.name resultSet ExcuteSql normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ExcuteSql_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0370
          * @tc.desc resultSet ExcuteSql normal test
          */
         it('ExcuteSqlTest0004', 0, async function (done) {

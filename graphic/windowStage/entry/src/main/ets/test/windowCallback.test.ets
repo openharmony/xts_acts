@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import screenManager from '@ohos.screen';
+import { BusinessError } from '@ohos.base';
 
 export default function windowCallbackTest(context, windowStage, abilityStorage) {
   console.log('testets context: ' + JSON.stringify(context))
@@ -57,7 +58,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       on: false,
       typeStr: '',
     };
-    var newWindowObj = null;
     beforeAll(function () {
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
@@ -68,24 +68,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
     beforeEach(function () {
-    })
-    afterEach(async function (done) {
-      windowCount++;
-      console.log('jsunittest afterEach listenerData:' + JSON.stringify(listenerData));
-      if (listenerData.on) {
-        listenerData.on = false;
-        if (listenerData.typeStr === 'systemBarTintChange') {
-          console.log('jsunittest systemBarTintChange start on');
-          console.log('jsunittest systemBarTintChange end off listenerData.typeStr==' + JSON.stringify(listenerData.typeStr));
-          ohosWindow.off(listenerData.typeStr);
-          console.log('jsunittest systemBarTintChange end off');
-        } else if (newWindowObj) {
-          newWindowObj.off(listenerData.typeStr);
-          console.log('jsunittest newWindowObj listenerData.typeStr:' + JSON.stringify(listenerData.typeStr));
-        }
-        await sleep(3000);
-      }
-      done();
     })
     afterAll(function () {
     })
@@ -124,35 +106,14 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       clearTimeout(timeoutId)
     }
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_006
-     * @tc.name Test setSystemBarEnableTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
+     * @tc.name  testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback
      * @tc.desc Test ohosWindow.setSystemBarEnable API function test1.
      */
-    it('setSystemBarEnableTest6', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest6';
+    it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback', 0, async function (done) {
+      let caseName = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        console.log(msgStr + 'ohosWindow.on  flagNav : ' + JSON.stringify(flagNav));
-        console.log(msgStr + 'ohosWindow.on  flagStatus : ' + JSON.stringify(flagStatus));
-        console.log(msgStr + 'ohosWindow.on  flagStatus && flagNav : ' + (flagStatus && flagNav));
-        if (flagStatus || flagNav) {
-          try {
-            expect(!!systembartintstate).assertTrue();
-            expect(!!systembartintstate.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
-          ohosWindow.off('systemBarTintChange')
-          done();
-        }
-      })
-
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
@@ -191,7 +152,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               reject(null)
             } else {
               console.log(msgStr + 'mainWnd.setFullScreen success');
-              flagNav = true;
               resolve(true)
             }
           })
@@ -207,7 +167,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               reject(null)
             } else {
               console.log(msgStr + 'mainWnd.setSystemBarEnable success');
-              flagStatus = true;
               resolve(true)
             }
           })
@@ -257,33 +216,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         done();
       });
       console.log(msgStr + 'finished!!');
+      done();
     });
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_007
-     * @tc.name Test setSystemBarEnableTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1230
+     * @tc.name  testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback
      * @tc.desc Verify that the scene hides the status bar and displays the navigation bar.
      */
-    it('setSystemBarEnableTest7', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest7';
+    it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback', 0, async function (done) {
+      let caseName = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
-
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on systembartintstate ：' + JSON.stringify(systembartintstate));
-        console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          console.log(msgStr + 'ohosWindow.on flagStatus || flagNav：');
-          try {
-            expect(!!systembartintstate).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-          }
-          ohosWindow.off('systemBarTintChange')
-          done();
-        }
-      })
-
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
@@ -333,7 +276,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              flagStatus = true;
               resolve(true)
             }
           })
@@ -347,7 +289,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              flagNav = true;
               resolve(true)
             }
           })
@@ -381,38 +322,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail();
         done();
       });
+      done();
     });
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_008
-     * @tc.name Test setSystemBarEnableTest8
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1320
+     * @tc.name  testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback
      * @tc.desc Verify that the scene displays both the status bar and the navigation bar.
      */
-    it('setSystemBarEnableTest8', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest8';
+    it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback', 0, async function (done) {
+      let caseName = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
-
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        if (flagStatus && flagNav) {
-          console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-          let enable = systembartintstate.regionTint[0].isEnable
-          let numType = systembartintstate.regionTint[0].type
-          console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
-          console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
-          try {
-            expect(numType === ohosWindow.WindowType.TYPE_STATUS_BAR || numType === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && enable)
-              .assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-          }
-          ohosWindow.off('systemBarTintChange')
-          done();
-        } else {
-          console.log(msgStr + 'flagStatus :' + flagStatus + '  ,regionTint:' + JSON.stringify(systembartintstate.regionTint));
-          console.log(msgStr + 'flagNav :' + flagNav + '  ,regionTint:' + JSON.stringify(systembartintstate.regionTint));
-        }
-      })
 
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
@@ -460,8 +380,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              flagStatus = true;
-              flagNav = true;
               resolve(true)
               console.log(msgStr + 'mainWnd.setSystemBarEnable [status, navigation] data==' + JSON.stringify(data));
             }
@@ -492,31 +410,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail();
         done();
       });
+      done();
     });
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_009
-     * @tc.name Test setSystemBarEnableTest9
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1250
+     * @tc.name testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback
      * @tc.desc Verify that the scene hides both the status bar and the navigation bar.
      */
-    it('setSystemBarEnableTest9', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest9';
+    it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback', 0, async function (done) {
+      let caseName = 'setSystemBarEnable_Hide_StatusBarAndNavBar_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
-      ohosWindow.on('systemBarTintChange', (systembartintstate) => {
-        console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
-        console.log(msgStr + 'ohosWindow.on systemBarTintChange systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          try {
-            expect(!!systembartintstate).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-          }
-          ohosWindow.off('systemBarTintChange')
-          done();
-        }
-      })
-
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
@@ -576,8 +480,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              flagStatus = true;
-              flagNav = true;
               resolve(true)
             }
           })
@@ -612,14 +514,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail();
         done();
       });
+      done();
     });
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_010
-     * @tc.name Test setSystemBarEnableTest10
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1270
+     * @tc.name  testSetSystemBarEnable_Invalid_Parameter_Callback
      * @tc.desc Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
      */
-    it('setSystemBarEnableTest10', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest10';
+    it('testSetSystemBarEnable_Invalid_Parameter_Callback', 0, async function (done) {
+      let caseName = 'setSystemBarEnable_Invalid_Parameter_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -717,12 +620,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     });
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_004
-     * @tc.name Test setSystemBarPropertiesTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1380
+     * @tc.name  testSetSystemBarEnable_RGB_Callback
      * @tc.desc TVerify the scene where the colors of the status bar and navigation bar are set in RGB
      */
-    it('setSystemBarPropertiesTest4', 0, async done => {
-      let caseName = 'setSystemBarPropertiesTest4';
+    it('testSetSystemBarEnable_RGB_Callback', 0, async done => {
+      let caseName = 'setSystemBarEnable_RGB_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
@@ -769,12 +672,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_005
-     * @tc.name Test setSystemBarPropertiesTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1340
+     * @tc.name testSetSystemBarEnable_Hexadecimal_Callback
      * @tc.desc Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
      */
-    it('setSystemBarPropertiesTest5', 0, async done => {
-      let caseName = 'setSystemBarPropertiesTest5';
+    it('testSetSystemBarEnable_Hexadecimal_Callback', 0, async done => {
+      let caseName = 'setSystemBarEnable_Hexadecimal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
         SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
@@ -786,88 +689,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let endNum = 0;
       let listenerFlag = false;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:' + i + '  ,arrLength:' + arrLength);
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
-              compareCount++;
-              let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.SBC.splice(backgroundIndex, 1);
-              } else {
-                console.log(msgStr + 'SBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.SCC.splice(contentColorIndex, 1);
-              } else {
-                console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
-              }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
-              if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
-                try {
-                  expect(true).assertTrue();
-                } catch (error) {
-                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-                }
-              } else {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
-              }
-              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
-              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
-              done();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.NBC.splice(backgroundIndex, 1);
-              } else {
-                console.log(msgStr + 'NBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.NCC.splice(contentColorIndex, 1);
-              } else {
-                console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
-              }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
-              if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
-                try {
-                  expect(true).assertTrue();
-                } catch (error) {
-                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-                }
-              } else {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
-              }
-              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
-              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
-              endNum = compareCount
-              done();
-            }
-          }
-        }
-        console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-      })
-
       let tempWnd;
       tempWnd = await windowStage.getMainWindow().catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -891,7 +712,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         done();
       });
       await sleep(1000);
-      listenerFlag = true
       let loopCount = commonNUMBERColorArr.length
       for (let i = 0; i < loopCount; i++) {
         console.log(msgStr + 'tempWnd.setSystemBarEnable i:' + i);
@@ -906,7 +726,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         };
         tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
-          console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
           if (err && err.code) {
             try {
               expect(TRUE_FLAG).assertFail();
@@ -924,47 +743,16 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_006
-     * @tc.name Test setSystemBarPropertiesTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1360
+     * @tc.name testSetSystemBarEnable_KeywordForm_Callback
      * @tc.desc TVerify the scene where the status bar and navigation bar colors are set as keywords
      */
-    it('setSystemBarPropertiesTest6', 0, async done => {
-      let caseName = 'setSystemBarPropertiesTest6';
+    it('testSetSystemBarEnable_KeywordForm_Callback', 0, async done => {
+      let caseName = 'setSystemBarEnable_KeywordForm_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
-      let listenerFlag = false;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-              try {
-                expect(backgroundIndex === -1).assertTrue();
-                expect(contentColorIndex === -1).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-              }
-            }
-          }
-        }
-        console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-      })
       let tempWnd;
       tempWnd = await windowStage.getMainWindow().catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -988,7 +776,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         done();
       });
       await sleep(1000);
-      listenerFlag = true
       let loopCount = commonRGBColorArr.length
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonKEYColorArr[i];
@@ -1001,7 +788,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           navigationBarContentColor: tempColor,
         };
         tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
-          console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
           console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
           if (err && err.code) {
             try {
@@ -1019,12 +805,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_005
-     * @tc.name Test create5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0170
+     * @tc.name testCreate_App_Type_Win_Callback
      * @tc.desc Scheme of Failed to Create Application Type Window in Stage Mode
      */
-    it('createTest5', 0, async done => {
-      let caseName = 'createTest5';
+    it('testCreate_App_Type_Win_Callback', 0, async done => {
+      let caseName = 'create_App_Type_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
@@ -1058,12 +844,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_006
-     * @tc.name Test createTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0250
+     * @tc.name testCreate_Sys_Type_Win_Callback
      * @tc.desc Verify the scenario of creating the system type window
      */
-    it('createTest6', 0, async done => {
-      let caseName = 'createTest6';
+    it('testCreate_Sys_Type_Win_Callback', 0, async done => {
+      let caseName = 'create_Sys_Type_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
@@ -1123,12 +909,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_007
-     * @tc.name Test createTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0210
+     * @tc.name testCreate_Not_Exist_Win_Type_Callback
      * @tc.desc Verify the scenario of creating a window of a type that does not exist
      */
-    it('createTest7', 0, async done => {
-      let caseName = 'createTest7';
+    it('testCreate_Not_Exist_Win_Type_Callback', 0, async done => {
+      let caseName = 'create_Not_Exist_Win_Type_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempType = 5000;
@@ -1150,12 +936,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     })
 
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_008
-     * @tc.name Test createTest8
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0230
+     * @tc.name testCreate_Repeate_Id_Win_Callback
      * @tc.desc Verify the scenario of creating a window with duplicate IDs
      */
-    it('createTest8', 0, async done => {
-      let caseName = 'createTest8';
+    it('testCreate_Repeate_Id_Win_Callback', 0, async done => {
+      let caseName = 'create_Repeate_Id_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'sameid'
@@ -1199,12 +985,13 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_ON_OFF_JSAPI_005
-     * @tc.name Test listenerTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0750
+     * @tc.name testListener_Sys_AvoidAreaChange_Callback
      * @tc.desc Verify whether the change of avoidance area and change monitoring can be turned on normally
      */
-    it('listenerTest5', 0, async function (done) {
-      let caseName = 'listenerTest5';
+    it('testListener_Sys_AvoidAreaChange_Callback', 0, async function (done) {
+      await sleep(1000)
+      let caseName = 'listener_Sys_AvoidAreaChange_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
@@ -1240,6 +1027,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
       });
       expect(!!tempWnd).assertTrue();
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err) => {
+        console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
       tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
         if (listenerOnFlag === true) {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
@@ -1264,140 +1056,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWTYPE_JSAPI_003
-     * @tc.name Test setWindowTypeTest3
-     * @tc.desc Verify the scenario where the normal window type is set
-     */
-    it('setWindowTypeTest3', 0, async function (done) {
-      let caseName = 'setWindowTypeTest3';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let windowId = 'setWindowTypeTest3';
-      console.log(msgStr + 'begin');
-      console.log(msgStr + 'newWindowObj 2: ' + JSON.stringify(newWindowObj));
-      let tempWnd = null
-      let loopCount1 = systemWindowTypeArr;
-      console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-
-      function createWin() {
-        return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
-            try {
-              if (!!data) {
-                resolve(data)
-              } else {
-                reject(null)
-              }
-            } catch (err) {
-              console.log(msgStr + 'ohosWindow.create catch err: ' + JSON.stringify(err));
-            }
-          })
-        })
-      }
-
-      function setWindowType(win, tempType, i) {
-        return new Promise(function (resolve, reject) {
-          win.setWindowType(tempType, (err, data) => {
-            console.log(msgStr + 'tempWnd.setWindowType i: ' + i);
-            if (err && err.code) {
-              reject(null)
-            } else {
-              console.log(msgStr + 'tempWnd.setWindowType success' + tempType);
-              resolve(true)
-            }
-          })
-        })
-      }
-
-      tempWnd = await createWin().catch(err => {
-        console.log(msgStr + 'ohosWindow.create failed' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      })
-      expect(!!tempWnd).assertTrue();
-
-      for (let i = 0; i < loopCount1.length; i++) {
-        let tempType = ohosWindow.WindowType[loopCount1[i]];
-        console.log(msgStr + "step: " + i);
-        await setWindowType(tempWnd, tempType, i).catch(err => {
-          console.log(msgStr + 'setWindowType failed' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
-        console.log(msgStr + 'getProperties start');
-        let winProperties;
-        winProperties = await tempWnd.getProperties().catch((err) => {
-          console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-        expect(!!winProperties).assertTrue();
-        expect(winProperties.type === tempType).assertTrue();
-        if (i == loopCount1.length - 1) {
-          await tempWnd.destroy();
-          done();
-        }
-      }
-    })
-    /**
-     * @tc.number SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
-     * @tc.name Test setWindowTypeTest4
-     * @tc.desc Verify the scene of setting illegal window type
-     */
-    it('setWindowTypeTest4', 0, async function (done) {
-      let caseName = 'setWindowTypeTest4';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let changedWndType = null;
-      let windowId = 'setWindowTypeTest4';
-      console.log(msgStr + 'begin');
-      let tempWnd = null
-
-      function createWin() {
-        return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
-            if (!!data) {
-              resolve(data)
-            }
-            else {
-              reject(null)
-            }
-          })
-        })
-      }
-
-      tempWnd = await createWin().catch(err => {
-        console.info(`ohosWindow.create failed  error: ${JSON.stringify(err)}`)
-        expect().assertFail();
-        done();
-      })
-      expect(!!tempWnd).assertTrue();
-      tempWnd.setWindowType(changedWndType, async (err, data) => {
-        if (!!data) {
-          await tempWnd.destroy();
-          unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
-        } else {
-          try {
-            expect(err.code == 1003).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.setWindowType catch error: ${JSON.stringify(error)}`)
-          }
-          await tempWnd.destroy();
-          done();
-        }
-      })
-
-    })
-    /**
-     * @tc.number SUB_WINDOW_DESTROY_JSAPI_002
-     * @tc.name Test destroyTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
+     * @tc.name testDestroy_Callbcak
      * @tc.desc Verification window destruction scenario
      */
-    it('destroyTest2', 0, async function (done) {
-      let caseName = 'destroyTest2';
+    it('testDestroy_Callbcak', 0, async function (done) {
+      let caseName = 'destroy_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
-      let windowId = 'destroyTest2';
+      let windowId = 'destroy_Callbcak';
       console.log(msgStr + 'begin');
       let tempWnd = null
 
@@ -1439,15 +1106,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_007
-     * @tc.name Test loadContentTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
+     * @tc.name testLoadContent_Exist_Create_SysWin_Callback
      * @tc.desc Verify the scenario of loading an existing page
      */
-    it('loadContentTest7', 0, async function (done) {
-      let caseName = 'loadContentTest7';
+    it('testLoadContent_Exist_Create_SysWin_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Exist_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
-      let windowId = 'loadContentTest7';
+      let windowId = 'loadContent_Exist_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
 
@@ -1485,15 +1152,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_008
-     * @tc.name Test loadContentTest8
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0870
+     * @tc.name testLoadContent_Para_Is_Null_Create_SysWin_Callback
      * @tc.desc Verify the scenario of loading a page that does not exist
      */
-    it('loadContentTest8', 0, async function (done) {
-      let caseName = 'loadContentTest8';
+    it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
-      let windowId = 'loadContentTest8';
+      let windowId = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
 
@@ -1531,12 +1198,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_009
-     * @tc.name Test loadContentTest9
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0830
+     * @tc.name testLoadContent_Exist_Input_Para_Path_Callback
      * @tc.desc Verify the scenario of loading an existing page
      */
-    it('loadContentTest9', 0, async function (done) {
-      let caseName = 'loadContentTest9';
+    it('testLoadContent_Exist_Input_Para_Path_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Exist_Input_Para_Path_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       windowStage.loadContent('MainAbility/pages/second/second', (err, data) => {
@@ -1555,12 +1222,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_010
-     * @tc.name Test loadContentTest10
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0850
+     * @tc.name testLoadContent_Input_Para_Is_Null_Callback
      * @tc.desc Verify the scenario of loading an existing page
      */
-    it('loadContentTest10', 0, async function (done) {
-      let caseName = 'loadContentTest10';
+    it('testLoadContent_Input_Para_Is_Null_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Input_Para_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1586,12 +1253,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'end');
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_011
-     * @tc.name Test loadContentTest11
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0810
+     * @tc.name testLoadContent_Exist_Input_Para_PathAndStorage_Callback
      * @tc.desc Verify the scenario of loading an existing page
      */
-    it('loadContentTest11', 0, async function (done) {
-      let caseName = 'loadContentTest11';
+    it('testLoadContent_Exist_Input_Para_PathAndStorage_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Exist_Input_Para_PathAndStorage_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1611,12 +1278,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_LOADCONTENT_JSAPI_012
-     * @tc.name Test loadContentTest12
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0890
+     * @tc.name testLoadContent_Para_PathAndStorage_Is_Null_Callback
      * @tc.desc Verify the scenario of loading an existing page
      */
-    it('loadContentTest12', 0, async function (done) {
-      let caseName = 'loadContentTest12';
+    it('testLoadContent_Para_PathAndStorage_Is_Null_Callback', 0, async function (done) {
+      let caseName = 'loadContent_Para_PathAndStorage_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1641,12 +1308,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATESUBWINDOW_JSAPI_003
-     * @tc.name Test createSubWindowTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0040
+     * @tc.name testCreateSubWindow_WinName_IsNot_Empty_Callback
      * @tc.desc Verify the scenario of creating an auxiliary window
      */
-    it('createSubWindowTest3', 0, async function (done) {
-      let caseName = 'createSubWindowTest3';
+    it('testCreateSubWindow_WinName_IsNot_Empty_Callback', 0, async function (done) {
+      let caseName = 'createSubWindow_WinName_IsNot_Empty_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWnd = null
@@ -1716,12 +1383,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_CREATESUBWINDOW_JSAPI_004
-     * @tc.name Test createSubWindowTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0060
+     * @tc.name testCreateSubWindow_WinName_Is_Null_Callback
      * @tc.desc Verify the scene of entering illegal values to create an auxiliary window
      */
-    it('createSubWindowTest4', 0, async function (done) {
-      let caseName = 'createSubWindowTest4';
+    it('testCreateSubWindow_WinName_Is_Null_Callback', 0, async function (done) {
+      let caseName = 'createSubWindow_WinName_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -1745,12 +1412,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETSUBWINDOW_JSAPI_002
-     * @tc.name Test getSubWindowTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0570
+     * @tc.name testGetSubWindow_Callback
      * @tc.desc Verify the scene of obtaining all auxiliary sub windows
      */
-    it('getSubWindowTest2', 0, async function (done) {
-      let caseName = 'getSubWindowTest2';
+    it('testGetSubWindow_Callback', 0, async function (done) {
+      let caseName = 'getSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1770,12 +1437,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_SETPRIVACYMODE_JSAPI_002
-     * @tc.name Test setPrivacyModeTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1190
+     * @tc.name testSetPrivacyMode_AppSubWin_Callback
      * @tc.desc Verify the scene where the application sub window is set as a security layer
      */
-    it('setPrivacyModeTest2', 0, async function (done) {
-      let caseName = 'setPrivacyModeTest2';
+    it('testSetPrivacyMode_AppSubWin_Callback', 0, async function (done) {
+      let caseName = 'setPrivacyMode_AppSubWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let tempWnd = null;
@@ -1855,12 +1522,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SETPRIVACYMODE_JSAPI_003
-     * @tc.name Test setPrivacyModeTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1210
+     * @tc.name testSetPrivacyMode_createSubWindow_Callback
      * @tc.desc Verify that the auxiliary window is set as the security layer
      */
-    it('setPrivacyModeTest3', 0, async function (done) {
-      let caseName = 'setPrivacyModeTest3';
+    it('testSetPrivacyMode_createSubWindow_Callback', 0, async function (done) {
+      let caseName = 'setPrivacyMode_createSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let tempWnd = null;
@@ -1939,12 +1606,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_002
-     * @tc.name Test setPreferredOrientationTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1170
+     * @tc.name testSetPreferredOrientation_Callback
      * @tc.desc Sets the display direction property of the window
      */
-    it('setPreferredOrientationTest2', 0, async function (done) {
-      let caseName = 'setPreferredOrientationTest2';
+    it('testSetPreferredOrientation_Callback', 0, async function (done) {
+      let caseName = 'setPreferredOrientation_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = null;
@@ -1991,12 +1658,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done()
     })
     /**
-     * @tc.number SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_002
-     * @tc.name Test setForbidSplitMoveTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1110
+     * @tc.name testSetForbidSplitMove_Callback
      * @tc.desc Sets whether Windows are forbidden to move in split screen mode
      */
-    it('setForbidSplitMoveTest2', 0, async function (done) {
-      let caseName = 'setForbidSplitMoveTest2';
+    it('testSetForbidSplitMove_Callback', 0, async function (done) {
+      let caseName = 'setForbidSplitMove_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -2036,12 +1703,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SNAPSHOT_JSAPI_002
-     * @tc.name Test snapshotTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2150
+     * @tc.name testSnapshotTest_Callback_Form
      * @tc.desc Scenario of screenshot of verification window
      */
-    it('snapshotTest2', 0, async function (done) {
-      let caseName = 'snapshotTest2';
+    it('testSnapshotTest_Callback_Form', 0, async function (done) {
+      let caseName = 'snapshotTest_Callback_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = null
@@ -2069,12 +1736,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
     })
     /**
-     * @tc.number SUB_WINDOW_DIALOGTARGETTOUCH_JSAPI_002
-     * @tc.name Test dialogTargetTouchTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0320
+     * @tc.name testDialogTargetTouch_Callback
      * @tc.desc Verify the scenario of opening modal window
      */
-    it('dialogTargetTouchTest2', 0, async done => {
-      let caseName = 'dialogTargetTouchTest2';
+    it('testDialogTargetTouch_Callback', 0, async done => {
+      let caseName = 'dialogTargetTouch_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
@@ -2096,12 +1763,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_WINDOW_ANIMATIONFORSHOWN_JSAPI_002
-     * @tc.name Test animationForShownTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0010
+     * @tc.name testAnimationForShown_Callback
      * @tc.desc Verify window custom animation configuration of the scene
      */
-    it('animationForShownTest2', 0, async function (done) {
-      let caseName = 'animationForShownTest2';
+    it('testAnimationForShown_Callback', 0, async function (done) {
+      let caseName = 'animationForShown_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
@@ -2148,12 +1815,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
     })
     /**
-     * @tc.number SUB_WINDOW_GETCUTOUTINFO_JSAPI_002
-     * @tc.name Test getCutoutInfoTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
+     * @tc.name testGetCutoutInfo_Callbcak
      * @tc.desc Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
      */
-    it('getCutoutInfoTest2', 0, async function (done) {
-      let caseName = 'getCutoutInfoTest2';
+    it('testGetCutoutInfo_Callbcak', 0, async function (done) {
+      let caseName = 'getCutoutInfo_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let dpClass = display.getDefaultDisplaySync();
@@ -2168,12 +1835,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_001
-     * @tc.name       Test setAspectRatioTest1
-     * @tc.desc       Validate the scenario cancelled after setting the proportion of the content layout of the main window
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1070
+     * @tc.name testSetAspectRatio_Cancel_Upon_Success_Callback
+     * @tc.desc Validate the scenario cancelled after setting the proportion of the content layout of the main window
      */
-    it('setAspectRatioTest1', 0, async function (done) {
-      let caseName = 'setAspectRatioTest1';
+    it('testSetAspectRatio_Cancel_Upon_Success_Callback', 0, async function (done) {
+      let caseName = 'setAspectRatio_Cancel_Upon_Success_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -2233,12 +1900,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       await resetAspectRatio()
     })
     /**
-     * @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_003
-     * @tc.name       Test setAspectRatioTest3
-     * @tc.desc       Validate the scenario where the content layout proportion of the main window is abnormal
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2330
+     * @tc.name testSetAspectRatio_Invalid_Params_Callback
+     * @tc.desc Validate the scenario where the content layout proportion of the main window is abnormal
      */
-    it('setAspectRatioTest3', 0, async function (done) {
-      let caseName = 'setAspectRatioTest3';
+    it('testSetAspectRatio_Invalid_Params_Callback', 0, async function (done) {
+      let caseName = 'setAspectRatio_Invalid_Params_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;

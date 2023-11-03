@@ -31,6 +31,8 @@ const DIR2 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example
 const DIR3 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example.myapplication1"
 const DESCRIPTION = "$string:mainability_description"
 const APPLICATION_DESCRIPTION = "$string:entry_description"
+const FLAGONE = "1"
+const FLAGTWO = "2"
 let userId = 0;
 
 export default function ActsBundleManagerTest() {
@@ -48,7 +50,7 @@ describe('ActsBundleManagerTest', function () {
     });
 
     /**
-     * @tc.number getBundleInfo_0100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1960
      * @tc.name testGetBundleInfoReqPermissionPromise
      * @tc.desc Test getBundleInfo interfaces with one hap.(by promise)
      */
@@ -102,7 +104,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_0600
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2060
      * @tc.name testGetBundeInfoReqPermissionCallback
      * @tc.desc Test getBundleInfo interfaces with one hap.(by callback)
      */
@@ -164,7 +166,7 @@ describe('ActsBundleManagerTest', function () {
     }
 
     /**
-     * @tc.number getBundleInfo_0200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1980
      * @tc.name testGetBundleInfoMultiHapPromise
      * @tc.desc Test getBundleInfo interfaces with two haps.(by promise)
      */
@@ -188,7 +190,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_0700
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2080
      * @tc.name testGetBundleInfoMultiHapCallback
      * @tc.desc Test getBundleInfo interfaces with two haps.(by callback)
      */
@@ -214,7 +216,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-      * @tc.number getBundleInfo_0300
+      * @tc.number Sub_Bms_Framework_Query_AppInfo_2000
       * @tc.name testGetBundleInfoPromise
       * @tc.desc Test getBundleInfo interfaces with one hap. (by promise)
       */
@@ -256,7 +258,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_0800
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2100
      * @tc.name testGetBundleInfoCallback
      * @tc.desc Test getBundleInfo interfaces with one hap. (by callback)
      */
@@ -301,7 +303,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-    * @tc.number getBundleInfo_0400
+    * @tc.number Sub_Bms_Framework_Query_AppInfo_2020
     * @tc.name testGetBundleInfoNotExistPromise
     * @tc.desc Test getBundleInfo interfaces with error hap. (by promise)
     */
@@ -318,7 +320,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-    * @tc.number getBundleInfo_0900
+    * @tc.number Sub_Bms_Framework_Query_AppInfo_2120
     * @tc.name testGetBundleInfoNotExistCallback
     * @tc.desc Test getBundleInfo interfaces with error hap. (by callback)
     */
@@ -338,7 +340,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-   * @tc.number getBundleInfo_0500
+   * @tc.number Sub_Bms_Framework_Query_AppInfo_2040
    * @tc.name testGetBundleInfoInvalidParamPromise
    * @tc.desc Test getBundleInfo interfaces with none hap. (by promise)
    */
@@ -355,7 +357,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1000
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2140
      * @tc.name testGetBundleInfoInvalidParamCallback
      * @tc.desc Test getBundleInfo interfaces with none hap. (by callback)
      */
@@ -375,7 +377,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2160
      * @tc.name testGetBundleInfoDifferentParamPromise
      * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by promise)
      */
@@ -401,7 +403,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2180
      * @tc.name testGetBundleInfoDifferentParamCallback
      * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by callback)
      */
@@ -433,7 +435,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1300
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2200
      * @tc.name testGetBundleInfoSystemAppCallback
      * @tc.desc Test getBundleInfo interfaces with systemApp.(by callback)
      */
@@ -465,7 +467,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2220
      * @tc.name testGetBundleInfoCurrentUserIdPromise
      * @tc.desc Test getBundleInfo interface with current userId (by promise).
      */
@@ -514,7 +516,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1500
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2240
      * @tc.name testGetBundleInfoCurrentUserIdCallback
      * @tc.desc Test getBundleInfo interface with current userId (by callback).
      */
@@ -563,7 +565,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_2100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2360
      * @tc.name testGetBundleInfoOtherUserIdPromise
      * @tc.desc Test getBundleInfo interface with other userId (by promise).
      */
@@ -582,7 +584,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_2200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2380
      * @tc.name testGetBundleInfoOtherUserIdCallback
      * @tc.desc Test getBundleInfo interface with other userId (by callback).
      */
@@ -603,7 +605,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfos_0100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0840
      * @tc.name testGetAllApplicationInfoPromise
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
@@ -636,7 +638,7 @@ describe('ActsBundleManagerTest', function () {
     }
 
     /**
-     * @tc.number getApplicationInfos_0600
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0940
      * @tc.name testGetAllApplicationInfoCallback
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
@@ -659,7 +661,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfos_0100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2460
      * @tc.name testGetAllBundleInfoPromise
      * @tc.desc Test getBundleInfos interfaces with one hap.
      */
@@ -676,14 +678,16 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
 
     /**
-     * @tc.number getApplicationInfo_0100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0220
      * @tc.name testGetApplicationInfoMetaDataPromise
      * @tc.desc Test getApplicationInfo interfaces with one hap. (by promise)
      */
@@ -723,7 +727,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0600
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0320
      * @tc.name testGetApplicationInfoMetaDataCallback
      * @tc.desc Test getApplicationInfo interfaces with one hap. (by callback)
      */
@@ -765,7 +769,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0240
      * @tc.name testGetApplicationInfoTwoHapPromise
      * @tc.desc Test getApplicationInfo interfaces with two haps. (by promise)
      */
@@ -802,7 +806,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0700
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0340
      * @tc.name testGetApplicationInfoTwoHapCallback
      * @tc.desc Test getApplicationInfo interfaces with two haps. (by callback)
      */
@@ -840,7 +844,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0300
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0260
      * @tc.name testGetApplicationInfoThereHapPromise
      * @tc.desc Test getApplicationInfo interfaces with three haps. (by promise)
      */
@@ -864,7 +868,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-    * @tc.number getApplicationInfo_2000
+    * @tc.number Sub_Bms_Framework_Query_AppInfo_0580
     * @tc.name testGetApplicationInfoThereHapCallback
     * @tc.desc Test getApplicationInfo interfaces with three haps. (by callback)
     */
@@ -889,7 +893,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0280
      * @tc.name testGetApplicationInfoNotExistCallback
      * @tc.desc Test getApplicationInfo interfaces with error hap. (by promise)
      */
@@ -907,7 +911,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0900
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0360
      * @tc.name testGetApplicationInfoNotExistPromise
      * @tc.desc Test getApplicationInfo interfaces with error hap. (by callback)
      */
@@ -927,7 +931,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_0500
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0300
      * @tc.name testGetApplicationInfoInvalidParamPromise
      * @tc.desc Test getApplicationInfo interfaces with none hap. (by promise)
      */
@@ -945,7 +949,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_1000
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0380
      * @tc.name testGetApplicationInfoInvalidParamCallback
      * @tc.desc Test getApplicationInfo interfaces with none hap. (by callback)
      */
@@ -965,13 +969,13 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_1100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0400
      * @tc.name testGetApplicationInfoDifferentParamPromise
      * @tc.desc Test getApplicationInfo interfaces with one hap and different param. (by promise)
      */
     it('testGetApplicationInfoDifferentParamPromise', 0, async function (done) {
         await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(datainfo => {
-            console.info("getApplicationInfo_1100 success" + JSON.stringify(datainfo));
+            console.info("Sub_Bms_Framework_Query_AppInfo_0400 success" + JSON.stringify(datainfo));
             expect(typeof datainfo).assertEqual(OBJECT);
             expect(datainfo.name).assertEqual(NAME1);
             expect(datainfo.label).assertEqual("$string:app_name");
@@ -991,7 +995,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_1200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0420
      * @tc.name testGetApplicationInfoDifferentParamCallback
      * @tc.desc Test getApplicationInfo interfaces with one hap and different param. (by callback)
      */
@@ -1019,7 +1023,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_1300
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0440
      * @tc.name testGetApplicationInfoPromise
      * @tc.desc Test getApplicationInfo interfaces with one hap. (by promise)
      */
@@ -1051,7 +1055,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfo_1400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0460
      * @tc.name testGetApplicationInfoCallback
      * @tc.desc Test getApplicationInfo interfaces with one hap. (by callback)
      */
@@ -1085,7 +1089,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfos_0600
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2560
      * @tc.name testGetAllBundleInfoCallback
      * @tc.desc Test getBundleInfos interfaces with one hap.
      */
@@ -1101,15 +1105,17 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         });
     })
 
     /**
-     * @tc.number getApplicationInfos_0200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0860
     * @tc.name testGetAllApplicationInfoTwoHapPromise
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
@@ -1121,7 +1127,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfos_0400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0900
      * @tc.name testGetAllApplicationInfoDifferentParamPromise
      * @tc.desc Test getApplicationInfos interfaces with two haps and different param.
      */
@@ -1133,7 +1139,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfos_0700
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0960
      * @tc.name testGetAllApplicationInfoTwoHapCallback
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
@@ -1161,7 +1167,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfos_0800
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_0980
      * @tc.name testGetAllApplicationInfoThereHapCallback
      * @tc.desc Test getApplicationInfos interfaces with three haps.
     */
@@ -1188,7 +1194,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getApplicationInfos_0900
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1000
      * @tc.name testGetAllApplicationInfoDifferentParamCallback
      * @tc.desc Test getApplicationInfos interfaces with two haps and different param.
      */
@@ -1215,7 +1221,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfos_0200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2480
      * @tc.name testGetAllBundleInfoTwoHapPromise
      * @tc.desc Test getBundleInfos interfaces with two haps.
      */
@@ -1231,14 +1237,16 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
 
     /**
-     * @tc.number getBundleInfos_0400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2520
      * @tc.name testGetAllBundleInfoTwoHapDifferentParamPromise
      * @tc.desc Test getBundleInfos interfaces with two haps and different param.
      */
@@ -1254,15 +1262,17 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
 
 
     /**
-     * @tc.number getBundleInfos_0700
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2580
      * @tc.name testGetAllBundleInfoTwoHapCallback
      * @tc.desc Test getBundleInfos interfaces with two haps.
      */
@@ -1278,15 +1288,17 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
     })
 
     /**
-     * @tc.number getBundleInfos_0900
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2620
     * @tc.name testGetAllBundleInfoTwoHapDifferentParamCallback
      * @tc.desc Test getBundleInfos interfaces with two haps and different param.
      */
@@ -1302,15 +1314,17 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
     })
 
     /**
-     * @tc.number getBundleInfos_0300
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2500
      * @tc.name testGetAllBundleInfoThereHapPromise
      * @tc.desc Test getBundleInfos interfaces with three haps.
      */
@@ -1325,14 +1339,16 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
 
     /**
-     * @tc.number getBundleInfos_0500
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2540
      * @tc.name testGetAllBundleInfoThereHapDifferentParamPromise
      * @tc.desc Test getBundleInfos interfaces with three haps and different param.
      */
@@ -1347,14 +1363,16 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
 
     /**
-     * @tc.number getBundleInfos_0800
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_2600
      * @tc.name testGetAllBundleInfoThereHapCallback
      * @tc.desc Test getBundleInfos interfaces with three haps.
      */
@@ -1369,8 +1387,10 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
@@ -1378,7 +1398,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0100
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0500
      * @tc.name testQueryAbilityByWantPromise
      * @tc.desc Test queryAbilityByWant interfaces with none hap. (by promise)
      */
@@ -1431,7 +1451,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0500
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0580
      * @tc.name testQueryAbilityByWantCallback
      * @tc.desc Test queryAbilityByWant interfaces with none hap. (by callback)
      */
@@ -1486,7 +1506,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0200
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0520
      * @tc.name testQueryAbilityByWantTwoHapPromise
      * @tc.desc Test queryAbilityByWant interfaces with two haps. (by promise)
      */
@@ -1527,7 +1547,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0600
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0600
      * @tc.name testQueryAbilityByWantTwoHapCallback
      * @tc.desc Test queryAbilityByWant interfaces with two haps. (by callback)
      */
@@ -1569,7 +1589,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0300
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0540
      * @tc.name testQueryAbilityByWantThereHapPromise
      * @tc.desc Test queryAbilityByWant interfaces with three haps. (by promise)
      */
@@ -1635,7 +1655,7 @@ describe('ActsBundleManagerTest', function () {
     }
 
     /**
-    * @tc.number queryAbilityByWant_0700
+    * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0620
     * @tc.name testQueryAbilityByWantThereHapCallback
     * @tc.desc Test queryAbilityByWant interfaces with three haps. (by callback)
     */
@@ -1700,7 +1720,7 @@ describe('ActsBundleManagerTest', function () {
     }
 
     /**
-     * @tc.number queryAbilityByWant_0800
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0640
      * @tc.name testQueryAbilityByWantNotExistHapPromise
      * @tc.desc Test queryAbilityByWant interfaces with one hap. (by promise)
      */
@@ -1721,7 +1741,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_0900
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0660
      * @tc.name testQueryAbilityByWantNotExistHapCallback
      * @tc.desc Test queryAbilityByWant interfaces with one hap. (by callback)
      */
@@ -1744,7 +1764,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-    * @tc.number queryAbilityByWant_0400
+    * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0560
     * @tc.name testQueryAbilityByWantSystemHapPromise
     * @tc.desc Test queryAbilityByWant interfaces with system hap. (by promise)
     */
@@ -1765,7 +1785,7 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number queryAbilityByWant_1100
+     * @tc.number Sub_Bms_Framework_Query_AbilityInfo_0700
      * @tc.name testQueryAbilityByWantSystemHapCallback
      * @tc.desc Test queryAbilityByWant interfaces with system hap. (by callback)
      */

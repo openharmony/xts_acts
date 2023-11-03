@@ -1881,6 +1881,18 @@ describe('BufferTest', function () {
     let buf11 = buffer.from("F1FG刘", "utf8")
     str = buf11.toString("utf8");
     expect(str).assertEqual("F1FG刘");
+
+    let buf12 = buffer.from("AsD-_QWEr", "base64url")
+    str = buf12.toString("hex");
+    expect(str).assertEqual("02c0fefd0584");
+
+    let buf13 = buffer.from("AsDQWEr134", "base64url")
+    str = buf13.toString("hex");
+    expect(str).assertEqual("02c0d0584af5df");
+
+    let buf14 = buffer.from("_AsDQ-12W7Er_", "base64url")
+    str = buf14.toString("hex");
+    expect(str).assertEqual("fc0b0343ed765bb12b");
   });
 
   /**
@@ -3828,5 +3840,53 @@ describe('BufferTest', function () {
       expect(err.name).assertEqual('BusinessError');
       expect(err.message).assertEqual('The value of "byteOffset" is out of range. It must be >= 0 and <= 5. Received value is: 6');
     }
+  });
+
+  /**
+   * @tc.name: testfrom0787
+   * @tc.desc: The buffer handles a uint8array and decodes it with base64 and base64url.
+   */
+  it('testfrom0787', 0, function () {
+    let array = new Uint8Array([252,11,3,67,237,118,91,177,43]);
+    let buf = buffer.from(array);
+    let strUrl = buf.toString("base64url");
+    let str = buf.toString("base64");
+    expect(strUrl).assertEqual("_AsDQ-12W7Er");
+    expect(str).assertEqual("/AsDQ+12W7Er");
+
+    array = new Uint8Array([2,192,254,253,5,132,69]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str= buf.toString("base64");
+    expect(strUrl).assertEqual("AsD-_QWERQ");
+    expect(str).assertEqual("AsD+/QWERQ==");
+
+    array = new Uint8Array([215,109,211,97,72,142,167,241]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("123TYUiOp_E");
+    expect(str).assertEqual("123TYUiOp/E=");
+
+    array = new Uint8Array([252]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_A");
+    expect(str).assertEqual("/A==");
+
+    array = new Uint8Array([252,97]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_GE");
+    expect(str).assertEqual("/GE=");
+
+    array = new Uint8Array([252,97,142]);
+    buf = buffer.from(array);
+    strUrl = buf.toString("base64url");
+    str = buf.toString("base64");
+    expect(strUrl).assertEqual("_GGO");
+    expect(str).assertEqual("/GGO");
   });
 })}

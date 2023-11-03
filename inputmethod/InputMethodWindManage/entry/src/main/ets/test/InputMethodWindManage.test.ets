@@ -40,7 +40,7 @@ export default function inputMethodWindManageAbility() {
 
     beforeAll(async (done)=>{
       display_info = display.getDefaultDisplaySync()
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${display_info.height*0.5}`
+      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
       inputServer.packageName = inputM.packageName;
@@ -1122,160 +1122,26 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
-    it('Sub_Misc_inputMethod_onImeShow_0201', 0, async function (done) {
-      function publishCallback(err){
-        console.info("====>Sub_Misc_inputMethod_onImeShow_0201 publishCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_onImeShow_0201 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_onImeShow_0201 publishCallback success:");
-        }
+    it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async function (done) {
+      let inputWindowInfo: inputMethod.InputWindowInfo = {
+        name: "inputWindowInfo_0201/99",
+        left: 100,
+        top: 607,
+        width: 720,
+        height: 601,
       }
-      console.info("====>Sub_Misc_inputMethod_onImeShow_0201 imeShow start" );
-      let inputMethodSetting = inputMethod.getSetting();
-      inputMethodSetting.on("imeShow", (inputWindowInfo) => {
-        inputMethodSetting.off("imeShow");
-        try {
-          console.info("====>Sub_Misc_inputMethod_onImeShow_0201 imeShow inputWindowInfo:" + JSON.stringify(inputWindowInfo));
-          expect(typeof(inputWindowInfo[0].name) === 'string').assertTrue();
-          expect(typeof(inputWindowInfo[0].left) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].top) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].width) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].height) === 'number').assertTrue();
-          done();
-        } catch (err) {
-          console.info('====>Sub_Misc_inputMethod_onImeShow_0201 imeShow catch err: ' + JSON.stringify(err));
-          done();
-        }
-      })
-      console.info("====>Sub_Misc_inputMethod_onImeShow_0201 imeShow end" );
-
-      var commonEventPublishData = {
-        code: 201
+      try {
+        console.info("====>Sub_Misc_inputMethod_inputWindowInfo_0201 inputWindowInfo: " + JSON.stringify(inputWindowInfo));
+        expect(inputWindowInfo.name).assertEqual("inputWindowInfo_0201/99")
+        expect(inputWindowInfo.left).assertEqual(100)
+        expect(inputWindowInfo.top).assertEqual(607)
+        expect(inputWindowInfo.width).assertEqual(720)
+        expect(inputWindowInfo.height).assertEqual(601)
+        done();
+      } catch (err) {
+        console.info("====>Sub_Misc_inputMethod_inputWindowInfo_0201 fail: " + JSON.stringify(err));
+        expect().assertFail();
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
-    });
-
-    it('Sub_Misc_inputMethod_onImeHide_0202', 0, async function (done) {
-      function publishCallback(err){
-        console.info("====>Sub_Misc_inputMethod_onImeHide_0202 publishCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_onImeHide_0202 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_onImeHide_0202 publishCallback success:");
-        }
-      }
-      console.info("====>Sub_Misc_inputMethod_onImeHide_0202 imeHide start" );
-      let inputMethodSetting = inputMethod.getSetting();
-      inputMethodSetting.on("imeHide", (inputWindowInfo) => {
-        inputMethodSetting.off("imeHide");
-        try {
-          console.info("====>Sub_Misc_inputMethod_onImeHide_0202 imeHide inputWindowInfo:" + JSON.stringify(inputWindowInfo));
-          expect(typeof(inputWindowInfo[0].name) === 'string').assertTrue();
-          expect(typeof(inputWindowInfo[0].left) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].top) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].width) === 'number').assertTrue();
-          expect(typeof(inputWindowInfo[0].height) === 'number').assertTrue();
-          done();
-        } catch (err) {
-          console.info('====>Sub_Misc_inputMethod_onImeHide_0202 imeHide catch err: ' + JSON.stringify(err));
-          done();
-        }
-      })
-      console.info("====>Sub_Misc_inputMethod_onImeHide_0202 imeHide end" );
-
-      var commonEventPublishData = {
-        code: 202
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
-    });
-
-    it('Sub_Misc_inputMethod_offImeShow_0203', 0, async function (done) {
-      function publishCallback(err){
-        console.info("====>Sub_Misc_inputMethod_offImeShow_0203 publishCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_offImeShow_0203 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_offImeShow_0203 publishCallback success:");
-        }
-      }
-      console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow start" );
-      let flat = true;
-      let inputMethodSetting = inputMethod.getSetting();
-      let inputwind = (inputWindowInfo) => {
-        flat = false;
-        console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow inputWindowInfo:" + JSON.stringify(inputWindowInfo));
-      }
-      inputMethodSetting.on("imeShow", inputwind)
-      inputMethodSetting.off("imeShow", inputwind);
-      console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow end" );
-
-      var commonEventPublishData = {
-        code: 203
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
-
-      let t = setTimeout(() => {
-        if(flat){
-          console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow off success" );
-          expect(true).assertTrue();
-          done();
-        }else{
-          console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow off fail" );
-          try{
-            expect().assertFail();
-            done();
-          }catch(err){
-            console.info("====>Sub_Misc_inputMethod_offImeShow_0203 imeShow off catch err: "  + JSON.stringify(err));
-            done();
-          }
-        }
-        clearTimeout(t);
-      }, 1000);
-    });
-
-    it('Sub_Misc_inputMethod_offImeHide_0204', 0, async function (done) {
-      function publishCallback(err){
-        console.info("====>Sub_Misc_inputMethod_offImeHide_0204 publishCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_offImeHide_0204 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_offImeHide_0204 publishCallback success:");
-        }
-      }
-      console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide start" );
-      let flat = true;
-      let inputMethodSetting = inputMethod.getSetting();
-      let inputwind = (inputWindowInfo) => {
-        flat = false;
-        console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide inputWindowInfo:" + JSON.stringify(inputWindowInfo));
-      }
-      inputMethodSetting.on("imeHide", inputwind)
-      inputMethodSetting.off("imeHide", inputwind);
-      console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide end" );
-
-      var commonEventPublishData = {
-        code: 203
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
-
-      let t = setTimeout(() => {
-        if(flat){
-          console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide off success" );
-          expect(true).assertTrue();
-          done();
-        }else{
-          console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide off fail" );
-          try{
-            expect().assertFail();
-            done();
-          }catch(err){
-            console.info("====>Sub_Misc_inputMethod_offImeHide_0204 imeHide off catch err: "  + JSON.stringify(err));
-            done();
-          }
-        }
-        clearTimeout(t);
-      }, 1000);
     });
 
     it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async function (done) {
@@ -1330,6 +1196,57 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback start");
+        if (err) {
+          console.error("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback failed: " + JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscriberCallback data: " + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 success end<====");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 catch end<====" + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        if (err) {
+          console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 end<====" + JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 success ====" );
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_Panel_changeFlag_0211"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe data: " + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 subscribe finish====");
+
+        var commonEventPublishData = {
+          code: 211
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
+    });
 
   });
 };

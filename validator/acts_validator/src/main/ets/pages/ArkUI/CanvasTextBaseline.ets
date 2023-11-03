@@ -37,7 +37,9 @@ struct SetCircle {
       Scroll() {
         Column() {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Text('Top').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+        Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Top').fontSize(13)
+            }.size({width:'19%',height:'20%'})
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
@@ -53,7 +55,9 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-        Text('Bottom').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+        Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Bottom').fontSize(13)
+            }.size({width:'19%',height:'20%'})
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
@@ -61,6 +65,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'bottom';
             this.context.fillText('Bottom', 160, 120);
             this.num2 = 1;
@@ -68,7 +73,9 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-        Text('Middle').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+        Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Middle').fontSize(13)
+            }.size({width:'19%',height:'20%'})
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
@@ -76,6 +83,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'middle';
             this.context.fillText('Middle', 160, 120);
             this.num3 = 1;
@@ -83,7 +91,9 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-        Text('Alphabetic').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+        Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Alphabetic').fontSize(13)
+            }.size({width:'19%',height:'20%'})
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
@@ -91,6 +101,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'alphabetic';
             this.context.fillText('Alphabetic', 160, 120);
             this.num4 = 1;
@@ -98,7 +109,9 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-        Text('Hanging').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+        Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Hanging').fontSize(13)
+            }.size({width:'19%',height:'20%'})
           .onClick(()=> {
             this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
@@ -106,6 +119,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'hanging';
             this.context.fillText('Hanging', 160, 120);
             this.num5 = 1;
@@ -128,7 +142,7 @@ struct SetCircle {
           })
       }.width('100%').height('70%')
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

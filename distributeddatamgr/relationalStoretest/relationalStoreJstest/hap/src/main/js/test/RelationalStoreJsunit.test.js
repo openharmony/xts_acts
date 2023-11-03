@@ -53,7 +53,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_0900
      * @tc.desc RelationalStore store getRdbStore test
      */
     it('testRdbStore0001', 0, async function (done) {
@@ -73,7 +73,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store getRdbStore and create table
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1000
      * @tc.desc RelationalStore store getRdbStore and create table
      */
     it('testRdbStore0002', 0, async function (done) {
@@ -97,7 +97,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore storegetRdbStore with wrong path
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1100
      * @tc.desc RelationalStore store getRdbStore with wrong path
      */
     it('testRdbStore0003', 0, async function (done) {
@@ -125,7 +125,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store deleteRdbStore
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1200
      * @tc.desc RelationalStore store deleteRdbStore
      */
     it('testRdbStore0004', 0, async function (done) {
@@ -143,7 +143,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store deleteRdbStore
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1300
      * @tc.desc RelationalStore store deleteRdbStore
      */
     it('testRdbStore0005', 0, async function (done) {
@@ -162,7 +162,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1400
      * @tc.desc RelationalStore store getRdbStore test
      */
      it('testRdbStore0006', 0, async function (done) {
@@ -188,7 +188,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0070
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1500
      * @tc.desc RelationalStore store getRdbStore test
      */
     it('testRdbStore0007', 0, async function (done) {
@@ -214,7 +214,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store deleteRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0080
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1600
      * @tc.desc RelationalStore store deleteRdbStore test
      */
     it('testRdbStore0008', 0, async function (done) {
@@ -232,7 +232,7 @@ describe('relationalStoreTest', function () {
 
     /**
      * @tc.name RelationalStore store deleteRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RdbStore_0090
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1700
      * @tc.desc RelationalStore store deleteRdbStore test
      */
     it('testRdbStore0009', 0, async function(done){
@@ -249,7 +249,7 @@ describe('relationalStoreTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Version_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1800
      * @tc.name Get relational store version test
      * @tc.desc relational version
      */
@@ -279,7 +279,7 @@ describe('relationalStoreTest', function () {
     })
 	
     /**
-     * @tc.number SUB_DDM_RelationalStore_Version_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1900
      * @tc.name Get relational store version test
      * @tc.desc relational version
      */	
@@ -315,7 +315,7 @@ describe('relationalStoreTest', function () {
     
 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2000
      * @tc.name Get S1Store then Get S2Store
      * @tc.desc relational version
      */	
@@ -348,7 +348,7 @@ describe('relationalStoreTest', function () {
     })
     
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2100
      * @tc.name Get S1Store then Get S3Store
      * @tc.desc relational version
      */	
@@ -381,7 +381,7 @@ describe('relationalStoreTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2200
      * @tc.name Get S1Store then Get S4Store
      * @tc.desc relational version
      */	
@@ -414,7 +414,7 @@ describe('relationalStoreTest', function () {
     })
             
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2300
      * @tc.name Get S2Store then Get S4Store
      * @tc.desc relational version
      */	
@@ -452,7 +452,7 @@ describe('relationalStoreTest', function () {
 
                 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2400
      * @tc.name Get S2Store then Get S3Store
      * @tc.desc relational version
      */	
@@ -490,7 +490,7 @@ describe('relationalStoreTest', function () {
 
                     
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2500
      * @tc.name Get S4Store then Get S1Store
      * @tc.desc relational version
      */	
@@ -524,7 +524,7 @@ describe('relationalStoreTest', function () {
 
                         
     /**
-     * @tc.number SUB_DDM_RelationalStore_Different_Version_0070
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2600
      * @tc.name Get S3Store then Get S2Store
      * @tc.desc relational version
      */	
@@ -562,7 +562,7 @@ describe('relationalStoreTest', function () {
 
                             
     /**
-     * @tc.number SUB_DDM_RelationalStore_Same_Version_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2700
      * @tc.name Get S1Store then Get S1Store
      * @tc.desc relational version
      */	
@@ -594,7 +594,7 @@ describe('relationalStoreTest', function () {
 
                                 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Same_Version_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2800
      * @tc.name Get S2Store then Get S2Store
      * @tc.desc relational version
      */	
@@ -631,7 +631,7 @@ describe('relationalStoreTest', function () {
     
                                 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Same_Version_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_2900
      * @tc.name Get S3Store then Get S3Store
      * @tc.desc relational version
      */	
@@ -665,7 +665,7 @@ describe('relationalStoreTest', function () {
     })     
                                 
     /**
-     * @tc.number SUB_DDM_RelationalStore_Same_Version_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_3000
      * @tc.name Get S4Store then Get S4Store
      * @tc.desc relational version
      */	

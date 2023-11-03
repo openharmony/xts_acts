@@ -21,12 +21,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
     console.info(TAG + 'SUB_NOTIFICATION_CES_SYSTEM_API_TEST START')
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0100
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_5000
      * @tc.name: publishAsUser 
      * @tc.desc: test function publishAsBundle
      */
-    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0100 START`);
+    it('Sub_Notification_Ans_Publish_Publish_5000', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5000 START`);
 
         commonEventManager.publishAsUser("event.test", 0, (err) => {
             if (err) {
@@ -40,16 +40,16 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5000 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0200
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_5100
      * @tc.name: publishAsUser
      * @tc.desc: test function publishAsUser
      */
-    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0200 START`);
+    it('Sub_Notification_Ans_Publish_Publish_5100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5100 START`);
 
         let publishData = {
             bundleNames: "example.bundleName",
@@ -68,16 +68,16 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300
+     * @tc.number: Sub_Notification_Ces_StaticEvent_Config_1200
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300 START`);
+    it('Sub_Notification_Ces_StaticEvent_Config_1200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1200 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event", (err) => {
             if (err) {
@@ -91,16 +91,16 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300 END`);
+        console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400
+     * @tc.number: Sub_Notification_Ces_StaticEvent_Config_1300
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400 START`);
+    it('Sub_Notification_Ces_StaticEvent_Config_1300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1300 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
             console.info("${TAG} remove sticky event AsyncCallback success");
@@ -112,6 +112,6 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
             done()
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400 END`);
+        console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1300 END`);
     });
 }) } 

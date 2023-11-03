@@ -24,7 +24,7 @@ export default function ActsBmsHasInstalldTest() {
 describe('ActsBmsHasInstalldTest', function () {
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0001
+     * @tc.number Sub_Bms_Framework_Status_Query_0100
      * @tc.name testHasInstalled
      * @tc.desc Test hasInstalled interface.
      */
@@ -50,7 +50,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0002
+     * @tc.number Sub_Bms_Framework_Status_Query_0200
      * @tc.name testHasInstalledNoSuccess
      * @tc.desc Test hasInstalled interface without success function.
      */
@@ -69,7 +69,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0003
+     * @tc.number Sub_Bms_Framework_Status_Query_0300
      * @tc.name testHasInstalledNoFailComplete
      * @tc.desc Test hasInstalled without fail function and complete function.
      */
@@ -85,7 +85,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0004
+     * @tc.number Sub_Bms_Framework_Status_Query_0400
      * @tc.name hasInstalledHapNotExist
      * @tc.desc Test hasInstalled when hap not exist.
      */
@@ -111,7 +111,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0007
+     * @tc.number Sub_Bms_Framework_Status_Query_0700
      * @tc.name testHasInstalledNumberParam
      * @tc.desc Test hasInstalled when bundleName is number.
      */
@@ -138,7 +138,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0008
+     * @tc.number Sub_Bms_Framework_Status_Query_0800
      * @tc.name testHasInstalledFailNotExist
      * @tc.desc Test hasInstalled without function fail.
      */
@@ -157,7 +157,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0009
+     * @tc.number Sub_Bms_Framework_Status_Query_0900
      * @tc.name testHasInstalledCompleteNotExit
      * @tc.desc Test hasInstalled without function complete.
      */
@@ -179,7 +179,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0010
+     * @tc.number Sub_Bms_Framework_Status_Query_1000
      * @tc.name testHasInstalledReturnNotExist
      * @tc.desc Test hasInstalled without function fail and function complete.
      */
@@ -199,7 +199,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number SUB_BMS_HAP_STATUS_0013
+     * @tc.number Sub_Bms_Framework_Status_Query_1300
      * @tc.name testHasInstalledNoFailCompleteBundleNotExist
      * @tc.desc Test hasInstalled interface without function fail and function complete bundleName not exiet 
      */
@@ -215,7 +215,7 @@ describe('ActsBmsHasInstalldTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_HAP_STATUS_0014
+     * @tc.number: Sub_Bms_Framework_Status_Query_1400
      * @tc.name: testHasInstalledInvalidParamCompleteNotExit
      * @tc.desc: test hasInstalled bundleName is number without function complete
      * @tc.level 3

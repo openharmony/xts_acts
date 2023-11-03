@@ -45,18 +45,16 @@ export default function abilityTest() {
             var Subscriber;
             var AbilityDelegator=await abilityDelegatorRegistry.getAbilityDelegator();
 
-            function SubscribeCallBack(err, data) {
+            async function SubscribeCallBack(err, data) {
                 console.debug("ACTS_GetCurrentTopAbility_0200====>Subscribe CallBack data:====>" + JSON.stringify(data));
                 expect(data.event == 'GetCurrentTopAbility').assertTrue();
                 if (data.event == 'GetCurrentTopAbility') {
+                  await sleep(1000);
                     AbilityDelegator.getCurrentTopAbility((err,data) => {
                         console.debug("====>thisTopAbility====>"+JSON.stringify(data.lastRequestWant))
                         console.debug("====>start startAbility====>");
-                        if(data.lastRequestWant.abilityName=='Ability1'){
-                            flag=false
-                            console.debug("====>0200====>flag"+flag)
-                            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                        }
+                        expect(data.lastRequestWant.abilityName).assertEqual('Ability1')
+                        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
                     })
                 }
             }
@@ -79,15 +77,6 @@ export default function abilityTest() {
                 done();
             }
 
-            setTimeout(()=>{
-                if(flag==true){
-                    expect().assertFail();
-                    console.debug("====>0200====>end====>flag"+flag)
-                    console.debug("in ACTS_GetCurrentTopAbility_0200 - timeout");
-                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                }
-                console.debug("ACTS_GetCurrentTopAbility_0200 - timeout");
-            }, START_ABILITY_TIMEOUT);
         })
 
         /**
@@ -109,11 +98,8 @@ export default function abilityTest() {
                     AbilityDelegator.getCurrentTopAbility().then((data) => {
                         console.debug("====>thisTopAbility====>"+JSON.stringify(data.lastRequestWant))
                         console.debug("====>start startAbility====>");
-                        if(data.lastRequestWant.abilityName=='Ability1'){
-                            flag=false
-                            console.debug("====>0500====>flag"+flag)
-                            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                        }
+                        expect(data.lastRequestWant.abilityName).assertEqual('Ability1')
+                        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
                     })
                 }
             }
@@ -135,17 +121,6 @@ export default function abilityTest() {
                 globalThis.ability3Context.terminateSelf();
                 done();
             }
-
-
-            setTimeout(()=>{
-                if(flag==true){
-                    expect().assertFail();
-                    console.debug("====>0500====>end====>flag"+flag)
-                    console.debug("in ACTS_GetCurrentTopAbility_0500 - timeout");
-                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-                }
-                console.debug("ACTS_GetCurrentTopAbility_0500 - timeout");
-            }, START_ABILITY_TIMEOUT);
         })
     })
 }

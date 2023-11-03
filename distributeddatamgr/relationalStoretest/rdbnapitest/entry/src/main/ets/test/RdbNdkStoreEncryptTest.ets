@@ -15,18 +15,27 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'libencrypt.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStoreEncryptTest() {
-  describe('RdbNdkStoreEncryptTest', function () {
-    beforeAll(function () {})
+  describe('RdbNdkStoreEncryptTest', async function () {
+    beforeAll(async function () {
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir success. data: '+ data , 'aa');
+        testNapi.RdbFilePath(data);
+      }).catch((err) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
+      })
+      
+    })
     beforeEach(function () {})
     afterEach(function () {})
     afterAll(function () {})
 
     /**
-     * @tc.name: SUB_DDM_RDB_ENCRYPT_0100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0100
      * @tc.desc: Exception testCase of NDK ENCRYPT.
      * @tc.type: FUNC
      */
@@ -38,7 +47,7 @@ export default function RdbNdkStoreEncryptTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_ENCRYPT_0200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1100
      * @tc.desc: Exception testCase of NDK SecurityLevel.
      * @tc.type: FUNC
      */

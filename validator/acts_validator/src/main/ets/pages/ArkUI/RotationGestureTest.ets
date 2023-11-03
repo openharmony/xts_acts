@@ -44,7 +44,7 @@ struct RotationGuestureTest {
       )
       Text('旋转角度:' + this.X)
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.height('80%').width('100%').backgroundColor(Color.White)
   }
   build() {

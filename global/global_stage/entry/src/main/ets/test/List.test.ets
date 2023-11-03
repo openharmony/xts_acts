@@ -14,7 +14,9 @@
  */
 
 import globalStageTest from './globalstage.test.ets'
+import i18nStageTest from './i18nstage.test.ets'
 
 export default function testsuite() {
   globalStageTest()
+  i18nStageTest()
 }

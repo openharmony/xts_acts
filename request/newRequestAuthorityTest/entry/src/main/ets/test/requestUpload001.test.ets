@@ -537,6 +537,65 @@ export default function requestUploadOnetJSUnitTest() {
     });
 
     /**
+     * @tc.number SUB_Misc_REQUEST_Off_Upload_Progress_0020
+     * @tc.desc download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Off_Upload_Progress_0020', 0, async function (done) {
+      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Progress_0020 is starting-----------------------");
+      let config_ = config
+      config_.mode = request.agent.Mode.FOREGROUND;
+
+      try {
+        let flag = true;
+        let flag1 = true;
+        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+          let on_progressCallback = (pro) => {
+            flag = false;
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 on_progressCallback flag: " + flag);
+          }
+          let on_progressCallback1 = (pro) => {
+            flag1 = false;
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 on_progressCallback1 flag1: " + flag1);
+          }
+          try {
+            if (err) {
+              console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 create err: " + JSON.stringify(err));
+              expect().assertFail();
+            }
+            task.on('progress', on_progressCallback);
+            task.on('progress', on_progressCallback1);
+            task.off('progress', on_progressCallback);
+            await task.start();
+            let t = setTimeout(async () => {
+              try {
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 offProgress success flag: " + flag);
+                task.off('progress');
+                clearTimeout(t);
+                expect(flag).assertTrue();
+                expect(flag1).assertFalse();
+                done();
+              } catch (err) {
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 offProgress fail err: " + JSON.stringify(err));
+                await request.agent.remove(task.tid);
+                done();
+              }
+            }, 3000)
+          } catch (err) {
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 catch err: " + JSON.stringify(err));
+            await request.agent.remove(task.tid);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 create catch err: " + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Progress_0030
      * @tc.desc      Starts a upload session.
      * @tc.size      : MEDIUM
@@ -768,7 +827,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.level     : Level 2
      */
     it('SUB_Misc_REQUEST_Off_Upload_Completed_0010', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0040 is starting-----------------------");
+      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0010 is starting-----------------------");
       let config_ = config
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
@@ -776,11 +835,11 @@ export default function requestUploadOnetJSUnitTest() {
         request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
           let on_offCompletedCallback = (pro) => {
             flag = false;
-            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 on_offCompletedCallback flag: " + flag);
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 on_offCompletedCallback flag: " + flag);
           }
           try {
             if(err){
-              console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 create err: " + JSON.stringify(err));
+              console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 create err: " + JSON.stringify(err));
               expect().assertFail();
             }
             task.on('completed', on_offCompletedCallback);
@@ -789,22 +848,22 @@ export default function requestUploadOnetJSUnitTest() {
             await task.start();
             let t = setTimeout(async () => {
               try {
-                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 offCompleted success flag: " + flag);
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 offCompleted success flag: " + flag);
                 clearTimeout(t);
                 expect(flag).assertTrue();
               } catch (err) {
-                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 offCompleted fail err: " + JSON.stringify(err));
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 offCompleted fail err: " + JSON.stringify(err));
               }
               done();
             }, 100)
           } catch (err) {
-            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 catch err: " + JSON.stringify(err));
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 catch err: " + JSON.stringify(err));
             await sleep(10);
             done();
           }
         });
       } catch (err) {
-        console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 create catch err: " + JSON.stringify(err));
+        console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 create catch err: " + JSON.stringify(err));
         await sleep(10);
         done();
       }
@@ -1078,6 +1137,65 @@ export default function requestUploadOnetJSUnitTest() {
         });
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0010 create catch err: " + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Misc_REQUEST_Off_Upload_Failed_0020
+     * @tc.desc download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Off_Upload_Failed_0020', 0, async function (done) {
+      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Failed_0020 is starting-----------------------");
+      let config_ = config
+      config_.mode = request.agent.Mode.FOREGROUND;
+
+      try {
+        let flag = true;
+        let flag1 = true;
+        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+          let on_progressCallback = (pro) => {
+            flag = false;
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 on_progressCallback flag: " + flag);
+          }
+          let on_progressCallback1 = (pro) => {
+            flag1 = false;
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 on_progressCallback1 flag1: " + flag1);
+          }
+          try {
+            if (err) {
+              console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 create err: " + JSON.stringify(err));
+              expect().assertFail();
+            }
+            task.on('failed', on_progressCallback);
+            task.on('failed', on_progressCallback1);
+            task.off('failed', on_progressCallback);
+            await task.start();
+            let t = setTimeout(async () => {
+              try {
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 offProgress success flag: " + flag);
+                task.off('failed');
+                clearTimeout(t);
+                expect(flag).assertTrue();
+                expect(flag1).assertFalse();
+                done();
+              } catch (err) {
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 offProgress fail err: " + JSON.stringify(err));
+                await request.agent.remove(task.tid);
+                done();
+              }
+            }, 3000)
+          } catch (err) {
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 catch err: " + JSON.stringify(err));
+            await request.agent.remove(task.tid);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 create catch err: " + JSON.stringify(err));
         done();
       }
     });

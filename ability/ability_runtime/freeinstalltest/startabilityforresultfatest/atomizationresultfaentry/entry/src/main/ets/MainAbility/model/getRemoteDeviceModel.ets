@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
-import deviceManager from '@ohos.distributedHardware.deviceManager';
-
-var SUBSCRIBE_ID = 100;
+import deviceManager from '@ohos.distributedDeviceManager';
+import { BusinessError } from '@ohos.base'
 
 export default class RemoteDeviceModel {
   deviceList = [];
@@ -28,15 +27,14 @@ export default class RemoteDeviceModel {
     if (typeof (this.deviceManager) === 'undefined') {
       console.log('[dmsDemo] deviceManager.createDeviceManager begin');
       let self = this;
-      deviceManager.createDeviceManager('com.ohos.distributedmusicplayer', (error, value) => {
-        if (error) {
-          console.error('createDeviceManager failed.');
-          return;
-        }
-        self.deviceManager = value;
+      try {
+        self.deviceManager = deviceManager.createDeviceManager('com.ohos.distributedmusicplayer');
         self.registerDeviceListCallback_();
-        console.log('[dmsDemo] createDeviceManager callback returned, error=' + error + ' value=' + JSON.stringify(value));
-      });
+      } catch(err) {
+        let e: BusinessError = err as BusinessError;
+        console.error('createDeviceManager errCode:' + e.code + ',errMessage:' + e.message);
+        return;
+      }
       console.log('[dmsDemo] deviceManager.createDeviceManager end');
     } else {
       this.registerDeviceListCallback_();
@@ -50,18 +48,29 @@ export default class RemoteDeviceModel {
       return;
     }
 
-    console.info('[dmsDemo] getTrustedDeviceListSync begin');
-    var list = this.deviceManager.getTrustedDeviceListSync();
-    console.info('[dmsDemo] getTrustedDeviceListSync end, deviceList=' + JSON.stringify(list));
-    if (typeof (list) != 'undefined' && typeof (list.length) != 'undefined') {
-      this.deviceList = list;
+    try {
+      console.info('[dmsDemo] getTrustedDeviceListSync begin');
+      let list: Array<deviceManager.DeviceBasicInfo> = this.deviceManager.getAvailableDeviceListSync();
+      console.info('[dmsDemo] getTrustedDeviceListSync end, deviceList=' + JSON.stringify(list));
+      if (typeof (list) != 'undefined' && typeof (list.length) != 'undefined') {
+        this.deviceList = list;
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error('getAvailableDeviceListSync errCode:' + e.code + ',errMessage:' + e.message);
+      return;
     }
     console.info('[dmsDemo] callback finished');
   }
 
   unregisterDeviceListCallback() {
-    console.info('[dmsDemo] stopDeviceDiscovery ' + SUBSCRIBE_ID);
-    this.deviceManager.stopDeviceDiscovery(SUBSCRIBE_ID);
+    console.info('[dmsDemo] stopDeviceDiscovery');
+    try {
+      this.deviceManager.stopDiscovering();
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error('stopDiscovering errCode:' + e.code + ',errMessage:' + e.message);
+    }
     this.deviceList = [];
   }
 }

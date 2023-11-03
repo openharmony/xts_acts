@@ -445,7 +445,7 @@ export default function abilityTest() {
         expect(data.parameters.num).assertEqual(900);
         expect(data.parameters.str).assertEqual('ACTS_CommonComponent_Call_0900');
         expect(data.parameters.result).assertEqual('ACTS_CommonComponent_Call_0900processed');
-        console.log('AMS_CallTest_0100 do release');
+        console.log('AMS_CallTest_0900 do release');
         caller.release();
       }
 

@@ -36,7 +36,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksECDHBasicAbort63KBCallbackJsunit() {
 describe('SecurityHuksECDHBasicAbort63KBCallbackJsunit', function () {
-  it('testReformedAgreeEDCH002', 0, async function (done) {
+  it('Security_HUKS_Agree_API9_EDCH_002', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_01_001';
     const srcKeyAliesSecond = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {
@@ -56,7 +56,7 @@ describe('SecurityHuksECDHBasicAbort63KBCallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort', true);
     done();
   });
 });

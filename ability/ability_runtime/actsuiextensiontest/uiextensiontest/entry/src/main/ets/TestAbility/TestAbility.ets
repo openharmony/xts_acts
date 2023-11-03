@@ -61,4 +61,9 @@ export default class TestAbility extends Ability {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onBackground');
     }
+
+    onNewWant(want, launchParam) {
+        hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onNewWant');
+    }
 }

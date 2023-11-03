@@ -67,15 +67,15 @@ export default function Grid_Row_Gutter() {
       let Grid_Row_Gutter_07 = CommonFunc.getComponentRect('Grid_Row_Gutter_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Gutter_01.left - Grid_Row_Gutter_00.right)).assertEqual(vp2px(-10));
-      expect(Math.round(Grid_Row_Gutter_02.left - Grid_Row_Gutter_01.right)).assertEqual(vp2px(-10));
-      expect(Math.round(Grid_Row_Gutter_03.left - Grid_Row_Gutter_02.right)).assertEqual(vp2px(-10));
-      expect(Math.round(Grid_Row_Gutter_04.left - Grid_Row_Gutter_03.right)).assertEqual(vp2px(-10));
-      expect(Math.round(Grid_Row_Gutter_05.left - Grid_Row_Gutter_04.right)).assertEqual(vp2px(-10));
-      expect(Math.round(Grid_Row_Gutter_07.left - Grid_Row_Gutter_06.right)).assertEqual(vp2px(-10));
+      expect(Math.round(Grid_Row_Gutter_01.left - Grid_Row_Gutter_00.right)).assertEqual(Math.round(vp2px(-10)));
+      expect(Math.round(Grid_Row_Gutter_02.left - Grid_Row_Gutter_01.right)).assertEqual(Math.round(vp2px(-10)));
+      expect(Math.round(Grid_Row_Gutter_03.left - Grid_Row_Gutter_02.right)).assertEqual(Math.round(vp2px(-10)));
+      expect(Math.round(Grid_Row_Gutter_04.left - Grid_Row_Gutter_03.right)).assertEqual(Math.round(vp2px(-10)));
+      expect(Math.round(Grid_Row_Gutter_05.left - Grid_Row_Gutter_04.right)).assertEqual(Math.round(vp2px(-10)));
+      expect(Math.round(Grid_Row_Gutter_07.left - Grid_Row_Gutter_06.right)).assertEqual(Math.round(vp2px(-10)));
 
-      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
 
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0100] END');
@@ -112,8 +112,8 @@ export default function Grid_Row_Gutter() {
       expect(Math.round(Grid_Row_Gutter_05.left - Grid_Row_Gutter_04.right)).assertEqual(Math.round(vp2px(0)));
       expect(Math.round(Grid_Row_Gutter_07.left - Grid_Row_Gutter_06.right)).assertEqual(Math.round(vp2px(0)));
 
-      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0200] END');
       done();
@@ -147,8 +147,8 @@ export default function Grid_Row_Gutter() {
       expect(Math.round(Grid_Row_Gutter_04.left - Grid_Row_Gutter_03.right)).assertEqual(Math.round(vp2px(5)));
       expect(Math.round(Grid_Row_Gutter_05.left - Grid_Row_Gutter_04.right)).assertEqual(Math.round(vp2px(5)));
       expect(Math.round(Grid_Row_Gutter_07.left - Grid_Row_Gutter_06.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0300] END');
       done();
@@ -182,8 +182,8 @@ export default function Grid_Row_Gutter() {
       expect(Math.round(Grid_Row_Gutter_04.left - Grid_Row_Gutter_03.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Grid_Row_Gutter_05.left - Grid_Row_Gutter_04.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Grid_Row_Gutter_07.left - Grid_Row_Gutter_06.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Gutter_06.top - Grid_Row_Gutter_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Gutter_07.top - Grid_Row_Gutter_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Gutter_TEST_0400] END');
       done();

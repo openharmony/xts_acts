@@ -80,28 +80,28 @@ export default function AlignContent_FlexAlign_Center_Margin() {
       console.log('AlignContentFlexCenterMargin_flex_4 rect_value is:'+
       JSON.stringify(AlignContentFlexCenter_4));
 
-      expect(Math.round(AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top)).assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top)).assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top)).assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left)).assertEqual(vp2px(150));
+      expect(Math.round(AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left)).assertEqual(Math.round(vp2px(150)));
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
       
-      expect(Math.round((AlignContentFlexCenter_flex001.top - Center_Margin_Column.top)*10)/10)
-      .assertEqual(vp2px(15)) 
-      expect(Math.round((AlignContentFlexCenter_1.top - Center_Margin_Column.top)*10)/10)
-      .assertEqual(vp2px(45)) 
+      expect(Math.round(AlignContentFlexCenter_flex001.top - Center_Margin_Column.top))
+      .assertEqual(Math.round(vp2px(15)))
+      expect(Math.round(AlignContentFlexCenter_1.top - Center_Margin_Column.top))
+      .assertEqual(Math.round(vp2px(45)))
       
       expect(AlignContentFlexCenter_flex001.bottom - AlignContentFlexCenter_4.bottom)
       .assertEqual(AlignContentFlexCenter_1.top - AlignContentFlexCenter_flex001.top);
       
       expect(Math.round(AlignContentFlexCenter_1.top - AlignContentFlexCenter_flex001.top))
-      .assertEqual(vp2px(30));
+      .assertEqual(Math.round(vp2px(30)));
       
       expect(AlignContentFlexCenter_4.top).assertEqual(AlignContentFlexCenter_2.bottom);
       

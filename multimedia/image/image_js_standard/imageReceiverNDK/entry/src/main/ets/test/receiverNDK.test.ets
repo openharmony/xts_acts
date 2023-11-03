@@ -66,7 +66,7 @@ export default function ImageReceiverNDKTest() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100
          * @tc.name      : createImageReceiver
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
@@ -74,10 +74,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0100', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0100");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0100");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 expect(myReceiver != undefined).assertTrue();
                 done();
@@ -89,61 +89,61 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0100
-         * @tc.name      : createImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100
+         * @tc.name      : createImageReceiver_1
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0100', 0, async function (done) {
-            createReceiverErr(done, "SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0100", 'a', HEIGHT, RECEIVER_FORMAT, CAPACITY);
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100', 0, async function (done) {
+            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100", 'a', HEIGHT, RECEIVER_FORMAT, CAPACITY);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0200
-         * @tc.name      : createImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200
+         * @tc.name      : createImageReceiver_2
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0200', 0, async function (done) {
-            createReceiverErr(done, "SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0200", WIDTH, { a: 1 }, RECEIVER_FORMAT,
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200', 0, async function (done) {
+            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200", WIDTH, { a: 1 }, RECEIVER_FORMAT,
                 CAPACITY);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0300
-         * @tc.name      : createImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300
+         * @tc.name      : createImageReceiver_3
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0300', 0, async function (done) {
-            createReceiverErr(done, "SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0300", WIDTH, HEIGHT, null, CAPACITY);
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300', 0, async function (done) {
+            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300", WIDTH, HEIGHT, null, CAPACITY);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0400
-         * @tc.name      : createImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400
+         * @tc.name      : createImageReceiver_4
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0400', 0, async function (done) {
-            createReceiverErr(done, "SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0400", WIDTH, HEIGHT, RECEIVER_FORMAT, true);
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400', 0, async function (done) {
+            createReceiverErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400", WIDTH, HEIGHT, RECEIVER_FORMAT, true);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0200
-         * @tc.name      : createImageReceiver
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200
+         * @tc.name      : createImageReceiver_5
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          *               : 3.getSize,getFormat,getCapacity
@@ -151,10 +151,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0200', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0200");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0200");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let size = ndkTest.getSize(myReceiver);
                 let capacity = ndkTest.getCapacity(myReceiver);
@@ -172,7 +172,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300
          * @tc.name      : getReceivingSurfaceId
          * @tc.desc      : 1.createImageReceiver
          *               : 2.getReceivingSurfaceId
@@ -180,10 +180,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0300', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0300");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0300");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let sId = ndkTest.getReceivingSurfaceId(myReceiver);
                 mlg.log("sId " + sId);
@@ -197,7 +197,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400
          * @tc.name      : readLatestImage
          * @tc.desc      : 1.createImageReceiver
          *               : 2.readLatestImage
@@ -205,10 +205,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0400', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0400");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0400");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 var dummy = myReceiver.test;
                 let myLatestImage = ndkTest.readLatestImage(myReceiver);
@@ -223,7 +223,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500
          * @tc.name      : readNextImage
          * @tc.desc      : 1.createImageReceiver
          *               : 2.readNextImage
@@ -231,10 +231,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0500', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0500");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0500");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 var dummy = myReceiver.test;
                 let myNextImage = ndkTest.readNextImage(myReceiver);
@@ -249,7 +249,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600
          * @tc.name      : on
          * @tc.desc      : 1.createImageReceiver
          *               : 2.on
@@ -257,10 +257,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0600', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0600");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0600");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let onRet = ndkTest.on(myReceiver);
                 mlg.log("onRet " + JSON.stringify(onRet));
@@ -276,7 +276,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700
          * @tc.name      : getOnEventCount
          * @tc.desc      : 1.createImageReceiver
          *               : 2.on
@@ -285,10 +285,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0700', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0700");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0700");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let onRet = ndkTest.on(myReceiver);
                 mlg.log("onRet " + JSON.stringify(onRet));
@@ -322,7 +322,7 @@ export default function ImageReceiverNDKTest() {
 
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800
          * @tc.name      : imageGetComponent
          * @tc.desc      : 1.createImageReceiver
          *               : 2.on
@@ -331,10 +331,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0800', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0800");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0800");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let onRet = ndkTest.on(myReceiver);
                 mlg.log("onRet " + JSON.stringify(onRet));
@@ -367,7 +367,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900
          * @tc.name      : img.release
          * @tc.desc      : 1.createImageReceiver
          *               : 2.readLatestImage
@@ -376,10 +376,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
                 let onRet = ndkTest.on(myReceiver);
                 mlg.log("onRet " + JSON.stringify(onRet));
@@ -406,7 +406,7 @@ export default function ImageReceiverNDKTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000
          * @tc.name      : receiver.release
          * @tc.desc      : 1.createImageReceiver
          *               : 2.release
@@ -414,10 +414,10 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000', 0, async function (done) {
-            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000', 0, async function (done) {
+            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000");
             try {
-                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000");
+                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000");
                 let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
 
                 let releaseRes = ndkTest.receiverRelease(myReceiver);

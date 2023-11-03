@@ -93,7 +93,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name set_distributed_table_none_table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_002
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0100
      * @tc.desc rdb set distributed table using none table as argment
      */
     it('testRdbStoreDistributed0002', 0, async function (done) {
@@ -112,7 +112,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name set distributed table using one table name
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_003
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0200
      * @tc.desc set distributed table using one table name
      */
     it('testRdbStoreDistributed0003', 0, async function (done) {
@@ -131,7 +131,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name set distributed table using two table name
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_004
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0300
      * @tc.desc set distributed table using two table name
      */
     it('testRdbStoreDistributed0004', 0, async function (done) {
@@ -150,7 +150,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name insert record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_005
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0400
      * @tc.desc insert record after setting distributed table
      */
     it('testRdbStoreDistributed0005', 0, async function (done) {
@@ -173,7 +173,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name update record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_006
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0500
      * @tc.desc update record after setting distributed table
      */
     it('testRdbStoreDistributed0006', 0, async function (done) {
@@ -203,7 +203,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name query record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_007
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0600
      * @tc.desc query record after setting distributed table
      */
     it('testRdbStoreDistributed0007', 0, async function (done) {
@@ -237,7 +237,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name delete record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_008
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0700
      * @tc.desc delete record after setting distributed table
      */
     it('testRdbStoreDistributed0008', 0, async function (done) {
@@ -257,7 +257,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name predicates inDevice
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_009
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0800
      * @tc.desc predicates inDevice
      */
     it('testRdbStoreDistributed0009', 0, async function (done) {
@@ -278,7 +278,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name predicates inAllDevices
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_0900
      * @tc.desc predicates inAllDevices
      */
     it('testRdbStoreDistributed0010', 0, async function (done) {
@@ -298,7 +298,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name sync test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_011
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1000
      * @tc.desc sync test
      */
     it('testRdbStoreDistributed0011', 0, async function (done) {
@@ -318,7 +318,7 @@ describe('rdbStoreDistributedTest', function () {
 	
 	/**
      * @tc.name sync Callback test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_Callback_011
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1100
      * @tc.desc sync Callback test
      */
     it('testRdbStoreDistributedCallback0011', 0, async function (done) {
@@ -343,7 +343,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name subscribe test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_012
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1200
      * @tc.desc subscribe test
      */
      it('testRdbStoreDistributed0012', 0, async function (done) {
@@ -361,7 +361,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name subscribe test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_013
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1300
      * @tc.desc subscribe test
      */
      it('testRdbStoreDistributed0013', 0, function (done) {
@@ -379,7 +379,7 @@ describe('rdbStoreDistributedTest', function () {
 	
     /**
      * @tc.name obtainDistributedTableName Callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_014
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1400
      * @tc.desc obtainDistributedTableName test
      */
     it('testRdbStoreDistributed0014', 0, async function (done){
@@ -398,7 +398,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name obtainDistributedTableName Promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_015
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBSyncJsAPITest_1500
      * @tc.desc obtainDistributedTableName test
      */
      it('testRdbStoreDistributed0015',0,async function (done){

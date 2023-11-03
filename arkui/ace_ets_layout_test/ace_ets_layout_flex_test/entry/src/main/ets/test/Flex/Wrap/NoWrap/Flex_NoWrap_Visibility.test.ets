@@ -69,11 +69,11 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(secondText.top).assertEqual(flexContainer.top);
         expect(secondText.top).assertEqual(thirdText.top);
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
         expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(250));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(250)));
         expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
 
         expect(secondText.left).assertEqual(flexContainer.left);
@@ -123,13 +123,13 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(secondText.top).assertEqual(thirdText.top);
         expect(flexContainer.top).assertEqual(thirdText.top);
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-        expect(Math.round(secondText.right - secondText.left)).assertEqual(vp2px(150));
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
+        expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(150)));
 
-        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(200));
+        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(200)));
         expect(thirdText.bottom).assertEqual(flexContainer.bottom);
       } catch (err) {
         console.error('[testWrapNoWrapTextVisibilityNoneMeet] failed');
@@ -165,15 +165,15 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(secondText.top).assertEqual(thirdText.top);
         expect(flexContainer.top).assertEqual(thirdText.top);
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-        expect(Math.round(secondText.right - secondText.left)).assertEqual(vp2px(150));
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
+        expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(150)));
 
         expect(thirdText.bottom).assertEqual(flexContainer.bottom);
-        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
-        expect(Math.round(secondText.left - flexContainer.left)).assertEqual(vp2px(150));
+        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(secondText.left - flexContainer.left)).assertEqual(Math.round(vp2px(150)));
       } catch (err) {
         console.error('[testWrapNoWrapTextVisibilityHidden] failed');
         expect().assertFail();

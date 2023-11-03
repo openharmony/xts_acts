@@ -81,17 +81,17 @@ export default function AlignContentFlexP_Fixed_Visibility() {
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
       
       expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-      .assertEqual(vp2px(100));
+      .assertEqual(Math.round(vp2px(100)));
       expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-      .assertEqual(vp2px(200));
+      .assertEqual(Math.round(vp2px(200)));
       expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
@@ -104,7 +104,7 @@ export default function AlignContentFlexP_Fixed_Visibility() {
       .assertEqual(Math.round(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_flex001.top));
       
       expect(Math.round(AlignContentFlexSpaceEvenly_2.left - AlignContentFlexSpaceEvenly_flex001.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
 
       console.info('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden END');
       done();
@@ -140,17 +140,17 @@ export default function AlignContentFlexP_Fixed_Visibility() {
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
 
       expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-      .assertEqual(vp2px(100));
+      .assertEqual(Math.round(vp2px(100)));
       expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-      .assertEqual(vp2px(200));
+      .assertEqual(Math.round(vp2px(200)));
       expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-      .assertEqual(vp2px(150));
+      .assertEqual(Math.round(vp2px(150)));
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");

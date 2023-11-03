@@ -15,18 +15,27 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'liblevel.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStoreLevelTest() {
-  describe('RdbNdkStoreLevelTest', function () {
-    beforeAll(function () {})
+  describe('RdbNdkStoreLevelTest', async function () {
+    beforeAll(async function () {
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir success. data: '+ data , 'aa');
+        testNapi.RdbFilePath(data);
+      }).catch((err) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
+      })
+      
+    })
     beforeEach(function () {})
     afterEach(function () {})
     afterAll(function () {})
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0200
      * @tc.desc: Normal testCase of NDK SecurityLevel is S1
      * @tc.type: FUNC
      */
@@ -38,7 +47,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1200
      * @tc.desc: Normal testCase of NDK SecurityLevel is S2
      * @tc.type: FUNC
      */
@@ -50,7 +59,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1300
      * @tc.desc: Normal testCase of NDK SecurityLevel is S3
      * @tc.type: FUNC
      */
@@ -62,7 +71,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1400
      * @tc.desc: Normal testCase of NDK SecurityLevel is S4
      * @tc.type: FUNC
      */

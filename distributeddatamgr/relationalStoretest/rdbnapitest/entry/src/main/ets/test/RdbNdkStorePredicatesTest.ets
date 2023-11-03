@@ -14,15 +14,22 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libpredicates.so'
-
+import featureAbility from '@ohos.ability.featureAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
 
 const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStorePredicatesTest() {
-  describe('RdbNdkStorePredicatesTest', function () {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+  describe('RdbNdkStorePredicatesTest', async function () {
+    beforeAll(async function () {
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir success. data: '+ data , 'aa');
+        testNapi.RdbFilePath(data);
+      }).catch((err) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
+      })
+      
     })
     beforeEach(function () {
       hilog.info(0x0000, TAG, 'testTag PredicatesSetUpTestCase' , ' begin');      
@@ -40,7 +47,7 @@ export default function RdbNdkStorePredicatesTest() {
     })
     
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0100
      * @tc.desc: Normal testCase of NDK Predicates for EqualTo、AndOR、beginWrap and endWrap
      * @tc.type: FUNC
      */
@@ -52,7 +59,7 @@ export default function RdbNdkStorePredicatesTest() {
     })
     
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0200
      * @tc.desc: Normal testCase of NDK Predicates for NotEqualTo
      * @tc.type: FUNC
      */
@@ -63,7 +70,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0300
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
      * @tc.type: FUNC
      */
@@ -74,7 +81,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0400
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -86,7 +93,7 @@ export default function RdbNdkStorePredicatesTest() {
     })
 
    /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0500
      * @tc.desc: Normal testCase of NDK Predicates for LessThan
      * @tc.type: FUNC
      */
@@ -97,7 +104,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0600
      * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -108,7 +115,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0700
      * @tc.desc: Normal testCase of NDK Predicates for IsNull
      * @tc.type: FUNC
      */
@@ -119,7 +126,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0800
      * @tc.desc: Normal testCase of NDK Predicates for isNotNull
      * @tc.type: FUNC
      */
@@ -130,7 +137,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_0900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0900
      * @tc.desc: Normal testCase of NDK Predicates for Between
      * @tc.type: FUNC
      */
@@ -141,7 +148,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1000
      * @tc.desc: Normal testCase of NDK Predicates for NotBetween
      * @tc.type: FUNC
      */
@@ -154,7 +161,7 @@ export default function RdbNdkStorePredicatesTest() {
 
     
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1100
      * @tc.desc: Normal testCase of NDK Predicates for OrderBy、Limit、Offset.
      * @tc.type: FUNC
      */
@@ -165,7 +172,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1200
      * @tc.desc: Normal testCase of NDK Predicates for In.
      * @tc.type: FUNC
      */
@@ -176,7 +183,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1300
      * @tc.desc: Normal testCase of NDK Predicates for NotIn
      * @tc.type: FUNC
      */
@@ -187,7 +194,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1400
      * @tc.desc: Normal testCase of NDK Predicates for Like
      * @tc.type: FUNC
      */
@@ -198,7 +205,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1500
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -209,7 +216,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1600
      * @tc.desc: Normal testCase of NDK Predicates for And
      * @tc.type: FUNC
      */
@@ -220,7 +227,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1700
      * @tc.desc: Normal testCase of NDK Predicates for Clear
      * @tc.type: FUNC
      */
@@ -231,7 +238,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1800
      * @tc.desc: Normal testCase of NDK Predicates for table name is NULL.
      * @tc.type: FUNC
      */
@@ -242,7 +249,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_1900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1900
      * @tc.desc: Normal testCase of NDK Predicates for equalTo
      * @tc.type: FUNC
      */
@@ -253,7 +260,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2000
      * @tc.desc: Normal testCase of NDK Predicates for equalTo
      * @tc.type: FUNC
      */
@@ -266,7 +273,7 @@ export default function RdbNdkStorePredicatesTest() {
 
     
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2100
      * @tc.desc: Normal testCase of NDK Predicates for equalTo
      * @tc.type: FUNC
      */
@@ -278,7 +285,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2200
      * @tc.desc: Normal testCase of NDK Predicates for equalTo
      * @tc.type: FUNC
      */
@@ -289,7 +296,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2300
      * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
      * @tc.type: FUNC
      */
@@ -300,7 +307,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2400
      * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
      * @tc.type: FUNC
      */
@@ -311,7 +318,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2500
      * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
      * @tc.type: FUNC
      */
@@ -322,7 +329,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2600
      * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
      * @tc.type: FUNC
      */
@@ -333,7 +340,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2700
      * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
      * @tc.type: FUNC
      */
@@ -344,7 +351,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2800
      * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
      * @tc.type: FUNC
      */
@@ -355,7 +362,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_2900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2900
      * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
      * @tc.type: FUNC
      */
@@ -366,7 +373,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3000
      * @tc.desc: Normal testCase of NDK Predicates for EqualTo、AndOR、beginWrap and endWrap
      * @tc.type: FUNC
      */
@@ -377,7 +384,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3100
      * @tc.desc: Normal testCase of NDK Predicates for
      * @tc.type: FUNC
      */
@@ -388,7 +395,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3200
      * @tc.desc: Normal testCase of NDK Predicates for And
      * @tc.type: FUNC
      */
@@ -399,7 +406,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3300
      * @tc.desc: Normal testCase of NDK Predicates for IsNull
      * @tc.type: FUNC
      */
@@ -410,7 +417,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3400
      * @tc.desc: Normal testCase of NDK Predicates for isNotNull
      * @tc.type: FUNC
      */
@@ -421,7 +428,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3500
      * @tc.desc: Normal testCase of NDK Predicates for Like
      * @tc.type: FUNC
      */
@@ -432,7 +439,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3600
      * @tc.desc: Normal testCase of NDK Predicates for Like
      * @tc.type: FUNC
      */
@@ -443,7 +450,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3700
      * @tc.desc: Normal testCase of NDK Predicates for Like
      * @tc.type: FUNC
      */
@@ -454,7 +461,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3800
      * @tc.desc: Normal testCase of NDK Predicates for Between
      * @tc.type: FUNC
      */
@@ -465,7 +472,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_3900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3900
      * @tc.desc: Normal testCase of NDK Predicates for Between
      * @tc.type: FUNC
      */
@@ -476,7 +483,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4000
      * @tc.desc: Normal testCase of NDK Predicates for Between
      * @tc.type: FUNC
      */
@@ -488,7 +495,7 @@ export default function RdbNdkStorePredicatesTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4100
      * @tc.desc: Normal testCase of NDK Predicates for NotBetween
      * @tc.type: FUNC
      */
@@ -499,7 +506,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4200
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
      * @tc.type: FUNC
      */
@@ -510,7 +517,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4300
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
      * @tc.type: FUNC
      */
@@ -521,7 +528,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4400
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
      * @tc.type: FUNC
      */
@@ -532,7 +539,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4500
      * @tc.desc: Normal testCase of NDK Predicates for LessThan
      * @tc.type: FUNC
      */
@@ -543,7 +550,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4600
      * @tc.desc: Normal testCase of NDK Predicates for LessThan
      * @tc.type: FUNC
      */
@@ -554,7 +561,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4700
      * @tc.desc: Normal testCase of NDK Predicates for LessThan
      * @tc.type: FUNC
      */
@@ -565,7 +572,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4800
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -576,7 +583,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_4900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4900
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -587,7 +594,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5000
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -598,7 +605,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5100
      * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -609,7 +616,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5200
      * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
      * @tc.type: FUNC
      */
@@ -620,7 +627,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5300
      * @tc.desc: Normal testCase of NDK Predicates for
      * @tc.type: FUNC
      */
@@ -631,7 +638,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5400
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -642,7 +649,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5500
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -653,7 +660,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5600
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -664,7 +671,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5700
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -675,7 +682,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5800
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5800
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
      * @tc.type: FUNC
      */
@@ -686,7 +693,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_5900
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5900
      * @tc.desc: Normal testCase of NDK Predicates for In.
      * @tc.type: FUNC
      */
@@ -697,7 +704,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6000
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6000
      * @tc.desc: Normal testCase of NDK Predicates for In.
      * @tc.type: FUNC
      */
@@ -709,7 +716,7 @@ export default function RdbNdkStorePredicatesTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6100
      * @tc.desc: Normal testCase of NDK Predicates for NotIn
      * @tc.type: FUNC
      */
@@ -720,7 +727,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6200
      * @tc.desc: Normal testCase of NDK Predicates for NotIn
      * @tc.type: FUNC
      */
@@ -731,7 +738,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6300
      * @tc.desc: Normal testCase of NDK Predicates for OrderBy
      * @tc.type: FUNC
      */
@@ -742,7 +749,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6400
      * @tc.desc: Normal testCase of NDK Predicates for OrderBy
      * @tc.type: FUNC
      */
@@ -753,7 +760,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6500
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6500
      * @tc.desc: Normal testCase of NDK Predicates for Limit
      * @tc.type: FUNC
      */
@@ -764,7 +771,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6600
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6600
      * @tc.desc: Normal testCase of NDK Predicates for Offset
      * @tc.type: FUNC
      */
@@ -775,7 +782,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
     /**
-     * @tc.name: SUB_DDM_RDB_Predicates_6700
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6700
      * @tc.desc: Normal testCase of NDK Predicates for Offset
      * @tc.type: FUNC
      */

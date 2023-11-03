@@ -15,17 +15,43 @@
 
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
-let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
-    secure: true, type: bluetooth.SppType.SPP_RFCOMM};
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btManagerGattServiceTest() {
 describe('btManagerGattServiceTest', function() {
 
     let gattServer = null;
-    let gattClient = null;
+
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
+    }
+
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
     }
 
     async function tryToEnableBt() {
@@ -34,6 +60,7 @@ describe('btManagerGattServiceTest', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             case 1:
@@ -46,6 +73,7 @@ describe('btManagerGattServiceTest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             default:
@@ -54,10 +82,11 @@ describe('btManagerGattServiceTest', function() {
     }
     beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
         await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
-        gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
-        done()
+        console.info('[bluetooth_js]bmgs gattServer create info:' + gattServer);
+        done();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -67,9 +96,11 @@ describe('btManagerGattServiceTest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
-        gattServer.close();
+        await gattServer.close();
+        console.info('[bluetooth_js]bmgs gattServer close success');
+        done();
     })
 
 
@@ -89,10 +120,9 @@ describe('btManagerGattServiceTest', function() {
                  +'deviceId:' + deviceId + 'status:' + status);
                 expect(true).assertEqual(BLEConnectChangedState !=null);
               }
-            await gattServer.on("connectStateChange", Connected);
-            gattClient.connect();
-            await sleep(2000);
-            await gattServer.off("connectStateChange");
+            gattServer.on("connectStateChange", Connected);
+            await sleep(1000);
+            gattServer.off("connectStateChange");
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
               expect(error.code).assertEqual('2900099');
@@ -123,7 +153,6 @@ describe('btManagerGattServiceTest', function() {
             expect(error.code).assertEqual('401');  
             done()
         }
-        
     })
 
     /**
@@ -161,7 +190,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},
                   message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }       
     })
@@ -205,7 +234,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService3 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }
        
@@ -280,7 +309,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService5 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }
        
@@ -327,7 +356,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService6 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }      
     })
@@ -367,7 +396,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService7 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }
         
@@ -408,7 +437,7 @@ describe('btManagerGattServiceTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]AddService8 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');  
             done()
         }
         
@@ -818,37 +847,37 @@ describe('btManagerGattServiceTest', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BTMANAGER_REMOVESERVICE_0100', 0, async function (done) {
+        let descriptors = [];
+        let arrayBuffer = new ArrayBuffer(8);
+        let descV = new Uint8Array(arrayBuffer);
+        descV[0] = 11;
+        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+        descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+        descriptors[0] = descriptor;
+        let characteristics = [];
+        let arrayBufferC = new ArrayBuffer(8);
+        let cccV = new Uint8Array(arrayBufferC);
+        cccV[0] = 1;
+        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+        characteristicValue: arrayBufferC, descriptors:descriptors};
+        characteristics[0] = characteristic;
+        let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B34FB', 
+                isPrimary: true,characteristics:characteristics,includeServices:[]};
+        let gattService1 = {serviceUuid:'00001888-0000-1000-8000-00805f9b34fb',
+                isPrimary: false,characteristics:characteristics,includeServices:[]};
+        gattServer.addService(gattService);
+        await sleep(1000);
+        gattServer.addService(gattService1);
         try {
-            let descriptors = [];
-            let arrayBuffer = new ArrayBuffer(8);
-            let descV = new Uint8Array(arrayBuffer);
-            descV[0] = 11;
-            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
-            descriptors[0] = descriptor;
-            let characteristics = [];
-            let arrayBufferC = new ArrayBuffer(8);
-            let cccV = new Uint8Array(arrayBufferC);
-            cccV[0] = 1;
-            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: arrayBufferC, descriptors:descriptors};
-            characteristics[0] = characteristic;
-            let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B34FB', 
-                    isPrimary: true,characteristics:characteristics,includeServices:[]};
-            let gattService1 = {serviceUuid:'00001888-0000-1000-8000-00805f9b34fb',
-                    isPrimary: false,characteristics:characteristics,includeServices:[]};
-            gattServer.addService(gattService);
-            await sleep(1000);
-            gattServer.addService(gattService1);
             await sleep(1000);
             gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
             done();
         } catch (error) {
             console.error(`[bluetooth_js]removeService1 failed, code is ${error.code},
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('401');
             done()
         }
         

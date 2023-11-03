@@ -74,6 +74,7 @@ let videoSurfaceId;
 let fdPath;
 let fileAsset;
 let fdNumber;
+let receiver;
 
 let mMetadataObjectTypeArray;
 let mMetadataObjectArray;
@@ -82,7 +83,7 @@ export default function cameraJSUnitOutput() {
 
   async function getImageReceiverSurfaceId() {
     console.log(TAG + 'Entering create Image receiver')
-    var receiver = image.createImageReceiver(640, 480, 4, 8)
+    receiver = image.createImageReceiver(640, 480, 4, 8)
     console.log(TAG + 'before receiver check')
     if (receiver !== undefined) {
       console.log(TAG + 'Receiver is ok')
@@ -422,7 +423,7 @@ export default function cameraJSUnitOutput() {
         console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
         expect(isEmpty(cameraOutputCap)).assertFalse();
         mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
-        if (isEmpty(mMetadataObjectTypeArray)) {
+        if (isEmpty(mMetadataObjectTypeArray) || mMetadataObjectTypeArray.length < 1) {
           console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 end with mMetadataObjectTypeArray is null");
         } else {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 start createMetadataOutput")

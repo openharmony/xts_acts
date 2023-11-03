@@ -898,7 +898,7 @@ static napi_value getTypedArrayInfo(napi_env env, napi_callback_info info)
     size_t byteOffset = -1;
     NAPI_CALL(env, napi_get_typedarray_info(env, result, &type, &length, &data, &retArrayBuffer, &byteOffset));
     NAPI_ASSERT(env, type == napi_int32_array, "napi_get_typedarray_info success 0");
-    NAPI_ASSERT(env, length == typedArrayLength, "napi_get_typedarray_info success 1");
+    NAPI_ASSERT(env, length == arrayBufferSize, "napi_get_typedarray_info success 1");
     NAPI_ASSERT(env, data == arrayBufferPtr, "napi_get_dataview_info success 2");
 
     bool retIsArrayBuffer = false;

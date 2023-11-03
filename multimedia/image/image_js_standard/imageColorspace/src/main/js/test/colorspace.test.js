@@ -143,7 +143,7 @@ export default function imageColorSpace() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_0100
          * @tc.name      : Decode 
          * @tc.desc      : 1.create imagesource
          *                 2.create pixelmap
@@ -151,8 +151,8 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_0100')
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_0100')
             try {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -174,7 +174,7 @@ export default function imageColorSpace() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_CALLBACK_0100
          * @tc.name      : Decode -callback
          * @tc.desc      : 1.create imagesource
          *                 2.create pixelmap
@@ -182,8 +182,8 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_CALLBACK_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_COLORSPACE_DECODE_CALLBACK_0100')
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_CALLBACK_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_COLORSPACE_DECODE_CALLBACK_0100')
             try {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -205,7 +205,7 @@ export default function imageColorSpace() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100
          * @tc.name      : Encode -callback
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -214,9 +214,9 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100')
-            let testNum = 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100'
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100')
+            let testNum = 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0100'
             try {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -254,7 +254,7 @@ export default function imageColorSpace() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0100
          * @tc.name      : Encode -promise
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -263,9 +263,9 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0100')
-            let testNum = 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0100'
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0100')
+            let testNum = 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0100'
             try {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -293,7 +293,7 @@ export default function imageColorSpace() {
 
                             done();
                         }).catch(error => {
-                            console.log('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0100 error: ' + error);
+                            console.log('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0100 error: ' + error);
                             expect(false).assertTrue();
                             done();
                         })
@@ -307,7 +307,7 @@ export default function imageColorSpace() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200
          * @tc.name      : Encode -callback-
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -316,13 +316,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', 0, async function (done) {
             let packOpts = { format: ["image/gif"], quality: 90 }
-            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', packOpts)
+            packingCbFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_0200', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100
          * @tc.name      : Encode -callback-wrong format
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -331,13 +331,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100', 0, async function (done) {
             let packOpts = { format: ["image/jpeg"], quality: 200 }
-            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100', packOpts)
+            packingCbFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_ERROR_FORMAT_0100', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100
          * @tc.name      : Encode -callback-no quality
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -346,13 +346,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100', 0, async function (done) {
             let packOpts = { format: ["image/jpeg"] }
-            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100', packOpts)
+            packingCbFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_QUALITY_0100', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100
          * @tc.name      : Encode -callback-no format
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -361,13 +361,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100', 0, async function (done) {
             let packOpts = { quality: 50 }
-            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100', packOpts)
+            packingCbFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_CALLBACK_NO_FORMAT_0100', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200
          * @tc.name      : Encode -promise
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -376,13 +376,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', 0, async function (done) {
             let packOpts = { format: ["image/gif"], quality: 90 }
-            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', packOpts)
+            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300
          * @tc.name      : Encode -promise
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -391,13 +391,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', 0, async function (done) {
             let packOpts = { format: ["image/jpeg"], quality: 101 }
-            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', packOpts)
+            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0300', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100
          * @tc.name      : Encode -promise -no quality
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -406,13 +406,13 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100', 0, async function (done) {
             let packOpts = { format: ["image/jpeg"] }
-            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100', packOpts)
+            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_QUALITY_0100', packOpts)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100
          * @tc.name      : Encode -promise -no format
          * @tc.desc      : 1.create imagesource
          *                 2.createImagePacker
@@ -421,9 +421,9 @@ export default function imageColorSpace() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100', 0, async function (done) {
             let packOpts = { quality: 100 }
-            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100', packOpts)
+            packingPromiseFail(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_NO_FORMAT_0100', packOpts)
         })
 
     })

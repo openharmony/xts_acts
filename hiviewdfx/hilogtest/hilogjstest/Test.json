@@ -15,15 +15,13 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         },
-        {   
-            "type":"ShellKit",
-             "run-command":[
-                "hilog -Q pidoff",
-                "hilog -Q domainoff"
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "param get hilog.flowctrl.proc.on false"
             ],
-            "teardown-command":[
-                "hilog -Q pidon",
-                "hilog -Q domainon"
+            "teardown-command": [
+                "param get hilog.flowctrl.proc.on true"
             ]
         }
     ]

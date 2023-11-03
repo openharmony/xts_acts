@@ -71,16 +71,16 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(firstText.top).assertEqual(flexContainer.top);
       expect(firstText.left).assertEqual(flexContainer.left);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
       expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(50)));
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1100] END');
       done();
     });
@@ -104,11 +104,11 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
       expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
 
@@ -119,8 +119,8 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(thirdText.left).assertEqual(firstText.left);
       expect(thirdText.top).assertEqual(secondText.bottom);
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(100));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(10)));
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1200] END');
       done();
     });
@@ -144,11 +144,11 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
       expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
 
@@ -159,8 +159,8 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(thirdText.left).assertEqual(firstText.left);
       expect(thirdText.top).assertEqual(secondText.bottom);
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(50));
-      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(vp2px(100));
+      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(100)));
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1300] END');
       done();
     });

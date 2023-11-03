@@ -1096,12 +1096,12 @@ describe('XmlSerializerXmlPullParserTest', function () {
         }
         var options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func1}
         that.parse(options);
-        var str3 = '  note [<!ENTITY foo "baa">] note      funcrion matchwo(a,6){return 1;}      Hello, World!      ' +
-                   'company John  amp;amp;  Hans company      title Happy title      title Happy title      ' +
-                   'lens Work lens      lens Play lens      go there      a b b a      h:table          ' +
-                   'h:tr              h:td Apples h:td              h:td Bananas h:td          h:tr      ' +
-                   'h:table note  ';
-        expect(str1).assertEqual(str3)
+        var str3 = '  note [\n<!ENTITY foo "baa">] note      ' +
+            '\\r\\nfuncrion matchwo(a,6)\\r\\n{\\r\\nreturn 1;\\r\\n}\\r\\n      Hello, World!      company John  ' +
+            'amp;amp;  Hans company      title Happy title      title Happy title      lens Work lens      ' + 
+            'lens Play lens      go there      a b b a      h:table          h:tr              h:td Apples h:td' + 
+            '              h:td Bananas h:td          h:tr      h:table note  ';
+        expect(str1).assertEqual(str3);
     })
 
     /**
@@ -1358,7 +1358,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
         expect(str).assertEqual(result);
     })
 
-     /**
+    /**
      * @tc.name: testParse012
      * @tc.desc: Starts parsing the XML file.
      */
@@ -1385,6 +1385,63 @@ describe('XmlSerializerXmlPullParserTest', function () {
         'key:2 value:0  key:4 value:0  key:3 value:0  key:3 value:0  key:1 value:0  ';
         expect(str).assertEqual(result);
     })
+
+    /**
+     * @tc.name: testParse013
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse013', 0, function () {
+        let strXml =
+          '<?xml version="1.0" encoding="utf-8"?>' +
+          '<note importance="high" logged="true">' +
+          '    <title>Happy</title>' +
+          '    <todo>Work</todo>' +
+          '    <mess><![CDATA[This is a \r CDATA\n section]]></mess>' +
+          '    <todo>Play</todo>' +
+          '</note>';
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
+        let str = "";
+        function func(key, value){
+          if ( key === 5) {
+            str += value.getText();
+          }
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'This is a \\r CDATA\\n section';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse014
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse014', 0, function () {
+        let strXml =
+          '<?xml version="1.0" encoding="utf-8"?>' +
+          '<note importance="high" logged="true">' +
+          '    <title>Hello\rWorld\n</title>' +
+          '    <todo>Work\r\n</todo>' +
+          '    <mess><![CDATA[This is a \r\n CDATA section]]></mess>' +
+          '</note>';
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
+        let str = "";
+        function func(key, value) {
+          if (key === 4 || key === 5) {
+            str += value.getText();
+          }
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'Hello\nWorld\nWork\nThis is a \\r\\n CDATA section';
+        expect(str).assertEqual(result);
+      })
 
     /**
      * @tc.name: testEventType001

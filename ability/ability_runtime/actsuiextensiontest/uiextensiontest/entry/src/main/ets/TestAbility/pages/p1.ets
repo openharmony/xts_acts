@@ -29,7 +29,7 @@ struct P1 {
     Row() {
       Column() {
         UIExtensionComponent({
-          bundleName: 'com.example.uiextensionprovider',
+          bundleName: 'com.acts.uiextensionprovider',
           abilityName: 'UIExtAbility'
         }).width('100%').height('35%')
           .onResult((data)=>{

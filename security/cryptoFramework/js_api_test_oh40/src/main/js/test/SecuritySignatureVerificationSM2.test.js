@@ -14,7 +14,6 @@
  */
 
 import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
-import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as asyCommon from "./utils/asymmetric/publicAsymmetricCommon";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -38,6 +37,15 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                 }
             }
 
+            async function sleep(ms) {
+                let timeoutID;
+                await new Promise(resolve => {
+                    timeoutID = setTimeout(resolve, ms)
+                });
+                clearTimeout(timeoutID);
+            }
+
+            await sleep(5000);
             asyKeyPair = await genAsyKeyPair();
         });
         afterAll(function () {
@@ -84,7 +92,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 1 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -92,14 +100,15 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 2 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await cryptoFramework.createSign("DSA|SM3");
                 } catch (err) {
                     console.error("signGenerator 3 error:" + err);
-                    expect(err.code == undefined).assertTrue();
+
+                    expect(err.code).assertEqual(undefined);
                 }
                 done();
             }
@@ -124,43 +133,43 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     cryptoFramework.createSign("SM2_256|NoHash");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createSign("SM2_256|MD5");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createSign("SM2_256|SHA256");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createSign("SM2_256|SHA1");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createSign("SM2_256|SHA224");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     await cryptoFramework.createSign("SM2_256|SHA384");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     await cryptoFramework.createSign("SM2_256|SHA512");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -185,43 +194,43 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     cryptoFramework.createVerify("SM2_256|NoHash");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|MD5");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|SHA256");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|SHA1");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|SHA224");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|SHA384");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     cryptoFramework.createVerify("SM2_256|SHA512");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -242,7 +251,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("createAsyKeyGenerator 1 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -250,7 +259,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("createAsyKeyGenerator 2 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -273,7 +282,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 1 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -281,7 +290,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 2 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -289,7 +298,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 3 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -297,7 +306,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("signGenerator 4 error:" + err);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -332,21 +341,21 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     await signGenerator.init(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await signGenerator.init(signKeyPair.priKey, signKeyPair.priKey);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await signGenerator.init("sroundpriKey");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -375,7 +384,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     await signGenerator.update(input);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 await signGenerator.init(asyKeyPair.priKey);
@@ -384,14 +393,14 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     await signGenerator.update(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await signGenerator.update(input, input);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -420,21 +429,21 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     await signGenerator.sign(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await signGenerator.sign("");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await signGenerator.sign(input, input);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -457,7 +466,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("verifyGenerator 1 error:" + err.code);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -465,7 +474,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("verifyGenerator 2 error:" + err.code);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -473,7 +482,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("verifyGenerator 3 error:" + err.code);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -481,7 +490,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("verifyGenerator 4 error:" + err.code);
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -516,7 +525,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     await verifyGenerator.init(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -526,14 +535,14 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     );
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     await verifyGenerator.init("sroundpriKey");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -594,7 +603,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     console.error("createAsyKeyAgreement error:" + err.code);
-                    expect(err.code == 801).assertTrue();
+                    expect(err.code).assertEqual(801);
                 }
                 done();
             }
@@ -620,7 +629,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                         "Security_CryptoFramework_SignatureVerificationSM2_Func_1600 catch err: " +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }

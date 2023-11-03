@@ -75,6 +75,7 @@ let fileAsset;
 let fdNumber;
 let metadataOutput;
 let mMetadataObjectTypeArray;
+let receiver;
 
 export default function CameraErrorCodeUsecaseTest() {
     function sleep(ms) {
@@ -176,14 +177,14 @@ export default function CameraErrorCodeUsecaseTest() {
         return true;
     }
 
-    function releaseCameraSessionInstance() {
-        mCameraSession.release();
+     async function releaseCameraSessionInstance() {
+        await mCameraSession.release();
         mCameraSession = null;
     }
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')
@@ -870,8 +871,8 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 }
+                done();
             })
-            done();
         })
 
         /**
@@ -892,14 +893,14 @@ export default function CameraErrorCodeUsecaseTest() {
             mCameraSession.addOutput(mPhotoOutput);
             await commitCameraSessionConfig();
             await mCameraSession.start();
-            await mPhotoOutput.capture({}).then((result) => {
-                console.info('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0400 success :' + result);
-            }).catch((err) => {
+            try {
+                await mPhotoOutput.capture({});
+            } catch (err) {
                 console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0400 FAILED");
                 console.info(TAG + "ERRORCODE: " + err.code);
                 expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
-            });
+            }
             done();
         })
 
@@ -2250,6 +2251,7 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 }
             })
+            sleep(1000);
             done();
         })
 

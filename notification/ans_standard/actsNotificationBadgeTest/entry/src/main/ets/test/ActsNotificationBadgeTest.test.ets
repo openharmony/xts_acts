@@ -20,48 +20,48 @@ describe('SUB_NOTIFICATION_ANS_BADGE_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_MANAGER_BADGE_test ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_BADGE_test START')
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0100
+     * @tc.number: Sub_Notification_Ans_Corner_SetNum_0900
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the callback function of setBadgeNumber
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0100', 0, async function (done) {
+    it('Sub_Notification_Ans_Corner_SetNum_0900', 0, async function (done) {
         try {
             notificationManager.setBadgeNumber(10, (err) => {
                 if (err) {
-                    console.log(`SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0100 failed, error code: ${err.code}, message: ${err.message}`)
+                    console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, error code: ${err.code}, message: ${err.message}`)
                     expect(false).assertTrue()
                     done()
                 } else {
-                    console.log("SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0100 success")
+                    console.log("Sub_Notification_Ans_Corner_SetNum_0900 success")
                     expect(true).assertTrue()
                     done();
                 }
             })
         } catch (err) {
-            console.log(`SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0100 failed, catch error code: ${err.code}, message: ${err.message}`)
+            console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, catch error code: ${err.code}, message: ${err.message}`)
             expect(false).assertTrue()
             done()
         }    
     })
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0200
+     * @tc.number: Sub_Notification_Ans_Corner_SetNum_1000
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the promise function of setBadgeNumber
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0200', 0, async function (done) {
+    it('Sub_Notification_Ans_Corner_SetNum_1000', 0, async function (done) {
         try {
             await notificationManager.setBadgeNumber(10).then(() => {
-                console.log("SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0200 success")
+                console.log("Sub_Notification_Ans_Corner_SetNum_1000 success")
                 expect(true).assertTrue()
                 done();
             }).catch((err) => {
-                console.log(`SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0200 failed, error code: ${err.code}, message: ${err.message}`)
+                console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, error code: ${err.code}, message: ${err.message}`)
                 expect(false).assertTrue()
                 done()
             })
         } catch (err) {
-            console.log(`SUB_NOTIFICATION_ANS_MANAGER_BADGE_test_0200 failed, catch error code: ${err.code}, message: ${err.message}`)
+            console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, catch error code: ${err.code}, message: ${err.message}`)
             expect(false).assertTrue()
             done()
         }    

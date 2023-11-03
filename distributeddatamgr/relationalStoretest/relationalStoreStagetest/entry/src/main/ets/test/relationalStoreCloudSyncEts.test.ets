@@ -125,7 +125,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test PRIKeyType string
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_PRIKeyType_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0200
      * @tc.desc test PRIKeyType string
      */
     it('testRdbStorePRIKeyType0010', 0, async function (done) {
@@ -152,7 +152,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     
     /**
      * @tc.name test PRIKeyType number
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_PRIKeyType_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0100
      * @tc.desc test PRIKeyType number
      */
     it('testRdbStorePRIKeyType0020', 0, async function (done) {
@@ -177,7 +177,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test UTCTime type
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_UTCTime_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0300
      * @tc.desc test UTCTime type
      */
     it('testRdbStoreUTCTime0010', 0, async function (done) {
@@ -197,7 +197,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test ModifyTime type
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ModifyTime_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0500
      * @tc.desc test ModifyTime type
      */
     it('testRdbStoreModifyTime0010', 0, async function (done) {
@@ -220,7 +220,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     })
     /**
      * @tc.name test Progress type
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Progress_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0800
      * @tc.desc test Progress type
      */
     it('testRdbStoreProgress0010', 0, async function (done) {
@@ -239,7 +239,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     })
     /**
      * @tc.name test Statistic
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Statistic_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0900
      * @tc.desc test Statistic
      */
     it('testRdbStoreStatistic0010', 0, async function (done) {
@@ -261,7 +261,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test TableDetails
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_TableDetails_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_1000
      * @tc.desc test TableDetails
      */
     it('testRdbStoreTableDetails0010', 0, async function (done) {
@@ -284,7 +284,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test ProgressCode
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ProgressCode_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0600
      * @tc.desc test ProgressCode
      */
     it('testRdbStoreProgressCode0010', 0, async function (done) {
@@ -309,7 +309,7 @@ export default function relationalStoreCloudSyncEtsTest(context) {
 
     /**
      * @tc.name test ProgressDetails
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ProgressDetails_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0700
      * @tc.desc test ProgressDetails
      */
     it('testRdbStoreProgressDetails0010', 0, async function (done) {

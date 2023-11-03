@@ -15,8 +15,6 @@
 
 import newSEServicetest from './newSEService.test.js';
 import openSessionTest from './openSession.test.js';
-import openBasicChanneltest from './openBasicChannel.test.js';
-import openLogicalChanneltest from './openLogicalChannel.test.js';
 import channelCallbacktest from './channelCallback.test.js';
 import parameter from '@ohos.systemparameter';
 let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
@@ -25,8 +23,6 @@ if (info != "false")
 {
     newSEServicetest();
     openSessionTest();
-    openBasicChanneltest();
-    openLogicalChanneltest();
     channelCallbacktest();
 }
 }

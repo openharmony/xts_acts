@@ -60,21 +60,21 @@ export default function flexTextMargin_BaselineJsunit() {
       let textMargin02 = CommonFunc.getComponentRect('textMargin02');
       let textMargin03 = CommonFunc.getComponentRect('textMargin03');
       let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
-      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(10))
-      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(10))
+      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(Math.round(vp2px(10)))
       expect(textMargin03.left).assertEqual(textMargin02.right)
-      expect(Math.round(flexTextMargin01.right - textMargin03.right)).assertEqual(vp2px(30))
+      expect(Math.round(flexTextMargin01.right - textMargin03.right)).assertEqual(Math.round(vp2px(30)))
 
       expect(textMargin03.top).assertEqual(flexTextMargin01.top)
       expect(textMargin01.top - textMargin03.top - vp2px(marginValue)).assertEqual(textMargin03.bottom - textMargin01.bottom + vp2px(marginValue))
       expect(textMargin02.top - textMargin03.top).assertEqual(textMargin03.bottom - textMargin02.bottom)
 
-      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(vp2px(150))
+      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(150)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
       console.info('new testFlexItemAlignBaselineSubSetMargin END');
@@ -97,8 +97,8 @@ export default function flexTextMargin_BaselineJsunit() {
       let textMargin02 = CommonFunc.getComponentRect('textMargin02');
       let textMargin03 = CommonFunc.getComponentRect('textMargin03');
       let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
-      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(30))
-      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(30))
+      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(Math.round(vp2px(30)))
       expect(textMargin03.left).assertEqual(textMargin02.right)
       expect(textMargin03.right).assertEqual(flexTextMargin01.right)
 
@@ -106,9 +106,9 @@ export default function flexTextMargin_BaselineJsunit() {
       expect(textMargin01.top - textMargin03.top - vp2px(marginValue)).assertEqual(textMargin03.bottom - textMargin01.bottom + vp2px(marginValue))
       expect(textMargin02.top - textMargin03.top).assertEqual(textMargin03.bottom - textMargin02.bottom)
 
-      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(Math.round(vp2px(150)))
       expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(440/3)))

@@ -65,8 +65,8 @@ export default function ColumnSetVisibility_SubChange() {
             expect(columnSetVisibility_1.bottom - columnSetVisibility_1.top).assertEqual(vp2px(0))
             expect(columnSetVisibility_1.right - columnSetVisibility_1.left).assertEqual(vp2px(0))
             expect(columnSetVisibility_2.top).assertEqual (columnSetVisibility.top)
-            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(vp2px(30))
-            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(vp2px(120))
+            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(Math.round(vp2px(30)))
+            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(Math.round(vp2px(120)))
 
       } catch (err) {
         console.error('[testColumnSetVisibilityNoneVisible] failed');
@@ -95,9 +95,9 @@ export default function ColumnSetVisibility_SubChange() {
             let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
             let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
             expect(columnSetVisibility.top).assertEqual(columnSetVisibility_1.top)
-            expect(Math.round(columnSetVisibility_2.top - columnSetVisibility_1.bottom)).assertEqual(vp2px(30))
-            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(vp2px(30))
-            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(vp2px(40))
+            expect(Math.round(columnSetVisibility_2.top - columnSetVisibility_1.bottom)).assertEqual(Math.round(vp2px(30)))
+            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(Math.round(vp2px(30)))
+            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(Math.round(vp2px(40)))
       } catch (err) {
         console.error('[testColumnSetVisibilityHiddenVisible] failed');
         expect().assertFail();
@@ -125,9 +125,9 @@ export default function ColumnSetVisibility_SubChange() {
           let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
           let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
          expect(columnSetVisibility.top).assertEqual(columnSetVisibility_1.top)
-         expect(Math.round(columnSetVisibility_2.top - columnSetVisibility_1.bottom)).assertEqual(vp2px(30))
-         expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(vp2px(30))
-         expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(vp2px(40))
+         expect(Math.round(columnSetVisibility_2.top - columnSetVisibility_1.bottom)).assertEqual(Math.round(vp2px(30)))
+         expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_2.bottom)).assertEqual(Math.round(vp2px(30)))
+         expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(Math.round(vp2px(40)))
       } catch (err) {
         console.error('[testColumnSetVisibilityVisible] failed');
         expect().assertFail();
@@ -157,8 +157,8 @@ export default function ColumnSetVisibility_SubChange() {
             expect(columnSetVisibility_2.bottom).assertEqual (columnSetVisibility_2.top)
             expect(columnSetVisibility_2.right).assertEqual (columnSetVisibility_2.left)
             expect(columnSetVisibility_1.top).assertEqual (columnSetVisibility.top)
-            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_1.bottom)).assertEqual(vp2px(30))
-            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(vp2px(170))
+            expect(Math.round(columnSetVisibility_3.top - columnSetVisibility_1.bottom)).assertEqual(Math.round(vp2px(30)))
+            expect(Math.round(columnSetVisibility.bottom - columnSetVisibility_3.bottom)).assertEqual(Math.round(vp2px(170)))
       } catch (err) {
         console.error('[testColumnSetVisibilityVisibleNone] failed');
         expect().assertFail();

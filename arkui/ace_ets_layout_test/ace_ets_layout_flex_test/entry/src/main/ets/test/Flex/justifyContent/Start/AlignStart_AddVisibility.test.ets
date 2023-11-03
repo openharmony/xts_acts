@@ -67,11 +67,11 @@ export default function AlignStart_AddVisibility() {
         expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
         expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_01.left);
         expect(Start_AddVisibility_012.right).assertEqual(Start_AddVisibility_013.left);
-        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_01.right - Start_AddVisibility_013.right)).assertEqual(vp2px(200));
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_01.right - Start_AddVisibility_013.right)).assertEqual(Math.round(vp2px(200)));
       } catch (err) {
         console.error('[testFlexAlignStartTextVisibilityNone] failed');
         expect().assertFail();
@@ -108,13 +108,13 @@ export default function AlignStart_AddVisibility() {
         expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
         expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
         expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
-        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
-        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(Math.round(vp2px(150)));
       } catch (err) {
         console.error('[testFlexAlignStartTextVisibilityHidden] failed');
         expect().assertFail();
@@ -151,13 +151,13 @@ export default function AlignStart_AddVisibility() {
         expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
         expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
         expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
-        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
-        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(Math.round(vp2px(150)));
       } catch (err) {
         console.error('[testFlexAlignStartTextVisibilityVisible] failed');
         expect().assertFail();

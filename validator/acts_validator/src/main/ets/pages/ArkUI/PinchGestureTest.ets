@@ -43,7 +43,7 @@ struct PinchGuestureTest {
       )
       Text('捏合放缩比例:'+this.X).fontColor(Color.Black)
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     } .width('100%').height('80%').backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

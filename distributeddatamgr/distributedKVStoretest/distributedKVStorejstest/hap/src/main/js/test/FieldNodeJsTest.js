@@ -22,7 +22,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0600
      */
     it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100', 0, async function(done) {
         try {
@@ -52,7 +52,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 002
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0500
      */
     it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200', 0, async function(done) {
         try {
@@ -74,7 +74,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300
      * @tc.desc  Test Js Api FieldNode.AppendChild() testcase 003
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0400
      */
     it('SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300', 0, async function(done) {
         try {
@@ -93,7 +93,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TOJSON_0100
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TOJSON_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0100
      */
     it('SUB_DDM_DKV_FIELDNODE_TOJSON_0100', 0, async function(done) {
         try {
@@ -112,7 +112,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TOJSON_0200
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 002
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TOJSON_0200
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0200
      */
     it('SUB_DDM_DKV_FIELDNODE_TOJSON_0200', 0, async function(done) {
         try {
@@ -131,7 +131,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TOJSON_0300
      * @tc.desc  Test Js Api FieldNode.ToJson() testcase 003
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TOJSON_0300
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0300
      */
     it('SUB_DDM_DKV_FIELDNODE_TOJSON_0300', 0, async function(done) {
         try {
@@ -150,7 +150,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_DEFAULT_0100
      * @tc.desc  Test Js Api FieldNode.default testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_DEFAULT_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0700
      */
      it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0100', 0, async function(done) {
         try {
@@ -170,7 +170,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_NULLABLE_0100
      * @tc.desc  Test Js Api FieldNode.nullable testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_NULLABLE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0800
      */
      it('SUB_DDM_DKV_FIELDNODE_NULLABLE_0100', 0, async function(done) {
         try {
@@ -190,7 +190,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0100
      * @tc.desc  Test Js Api FieldNode.type testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1400
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0100', 0, async function(done) {
         try {
@@ -210,7 +210,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0200
      * @tc.desc  Test Js Api FieldNode.type testcase 002
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0200
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1300
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0200', 0, async function(done) {
         try {
@@ -230,7 +230,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0300
      * @tc.desc  Test Js Api FieldNode.type testcase 003
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0300
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1200
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0300', 0, async function(done) {
         try {
@@ -250,7 +250,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0400
      * @tc.desc  Test Js Api FieldNode.type testcase 004
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0400
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1000
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0400', 0, async function(done) {
         try {
@@ -270,7 +270,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0500
      * @tc.desc  Test Js Api FieldNode.type testcase 005
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0500
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_0900
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0500', 0, async function(done) {
         try {
@@ -290,7 +290,7 @@ describe('FieldNodeTest', function() {
      * @tc.name SUB_DDM_DKV_FIELDNODE_TYPE_0600
      * @tc.desc  Test Js Api FieldNode.type testcase 006
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_TYPE_0600
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVFieldNodeJsApiTest_1100
      */
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0600', 0, async function(done) {
         try {

@@ -132,10 +132,9 @@ export default function flexBasisTest() {
 
       //Verify the flexBasis is or not be set success
       console.info('[' + data.caseTag + '] check the flexBasis is or not be set success');
-
       if (data.testValue.describe == 'SetNumber' || data.testValue.describe == 'SetStringPx') {
-        expect(data.viewObj.$attrs.flexBasis).assertEqual(data.testValue.expectValue.expectFlexBasis);
-        console.info('[' + data.caseTag + '] data.viewObj.$attrs.flexBasis' + data.viewObj.$attrs.flexBasis);
+         expect(data.viewObj.$attrs.flexBasis).assertEqual(data.testValue.expectValue.expectFlexBasis);
+         console.info('[' + data.caseTag + '] data.viewObj.$attrs.flexBasis' + data.viewObj.$attrs.flexBasis);
       }
 
       //Get target component rect

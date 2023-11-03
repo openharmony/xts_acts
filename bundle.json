@@ -22,7 +22,10 @@
         "rom": "~256KB",
         "ram": "0KB",
         "deps": {
-            "components": [],
+            "components": [
+                "graphic_2d",
+                "window_manager"
+            ],
             "third_party": [
                 "zlib",
                 "libpng",

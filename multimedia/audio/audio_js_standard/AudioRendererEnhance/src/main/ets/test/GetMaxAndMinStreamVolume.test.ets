@@ -164,6 +164,50 @@ export default function audioRendererTest() {
       }
     }
 
+  /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100
+     * @tc.name      : AudioRenderer -getMaxStreamVolumeSync 
+     * @tc.desc      : AudioRenderer - getMaxStreamVolumeSync 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', 0, async function (done) {
+      try {
+        let value = audioRen.getMaxStreamVolumeSync()
+        console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);
+          expect(value).assertEqual(env.OUTPUT_NUMBER_1);
+          done();
+      } catch (err) {
+        console.log("${TagFrmwkRender}:getMaxStreamVolume : error = " + err);
+          expect(false).assertTrue();
+          done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUMESYNC_0200
+     * @tc.name      : AudioRenderer -getMinStreamVolumeSync 
+     * @tc.desc      : AudioRenderer - getMinStreamVolumeSync 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', 0, async function (done) {
+      try {
+        let value = audioRen.getMinStreamVolumeSync()
+        console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);
+          expect(value).assertEqual(env.OUTPUT_NUMBER_0);
+          done();
+      } catch (err) {
+        console.log("${TagFrmwkRender}:getMaxStreamVolume : error = " + err);
+          expect(false).assertTrue();
+          done();
+      }
+    });
+
+
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0100
      * @tc.name      : AudioRenderer -getMaxStreamVolume "unit_32" - promise

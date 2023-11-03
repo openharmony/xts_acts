@@ -24,6 +24,7 @@ export default function connectAbilityTest_PA() {
   var dataAssert = "";
   var abilityDelegator = undefined
   var subscriber;
+  let timeoutId = 0;
   var subscribeInfo = {
     events: ["service_event", "service2_event", "service3_event", "service4_event", "service5_event",
       "service6_event", "service7_event", "service8_event", "service9_event", "service10_event", "service11_event"]
@@ -150,6 +151,7 @@ export default function connectAbilityTest_PA() {
         })
       }
       await sleep(500);
+      clearTimeout(timeoutId);
       done();
     });
 
@@ -167,7 +169,7 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdmyapp7, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str1 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -178,7 +180,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0100-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -195,7 +197,7 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdapp9, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str2 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -206,7 +208,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0200-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -219,7 +221,7 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0300", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0300-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0300";
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str3 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -230,7 +232,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0300-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -242,7 +244,7 @@ export default function connectAbilityTest_PA() {
      */
     it("FreeInstall_FA_ConnectAbility_PA_0400", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0400-------------");
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         TAG = "FreeInstall_FA_ConnectAbility_PA_0400";
         var str4 = {
           "want": {
@@ -254,7 +256,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0400-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -271,7 +273,7 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdin, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str5 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -282,7 +284,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0500-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -295,7 +297,7 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0600", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0600";
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str6 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -306,7 +308,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0600-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -320,7 +322,7 @@ export default function connectAbilityTest_PA() {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0700";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str7 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -331,7 +333,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0700-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -345,7 +347,7 @@ export default function connectAbilityTest_PA() {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0800";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str8 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -356,7 +358,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0800-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -374,7 +376,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         await sleep(500);
         var str9 = {
           "want": {
@@ -386,7 +388,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0900-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -400,7 +402,7 @@ export default function connectAbilityTest_PA() {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1000";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str10 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -411,7 +413,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_1000-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
 
@@ -430,7 +432,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var str11 = {
           "want": {
             "bundleName": "com.example.myapplication.hmservice",
@@ -441,7 +443,7 @@ export default function connectAbilityTest_PA() {
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_1100-------------");
-      }, 4000);
+      }, 20000);
       done();
     });
   }

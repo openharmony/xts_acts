@@ -38,7 +38,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         const checkAssetCount = async function (done, testNum, fetchOp, expectCount) {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkResult = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                let checkResult = await checkAssetsCount(testNum, fetchFileResult, expectCount);
                 expect(checkResult).assertTrue();
                 fetchFileResult.close();
                 done();
@@ -58,8 +58,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 let assetList = await fetchFileResult.getAllObject();
                 let targetObject = await fetchFileResult.getPositionObject(pos);
                 expect(targetObject.displayName).assertEqual(assetList[pos].displayName);
@@ -80,8 +80,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 console.info(`${testNum} currentFetchOp ${currentFetchOp} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 var targetObjects = await fetchFileResult.getAllObject();
                 expect(targetObjects.length).assertEqual(expectCount);
                 fetchFileResult.close();
@@ -178,8 +178,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 console.info(`${testNum} currentFetchOp :${JSON.stringify(currentFetchOp)}`);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 for (var i = 1; i < expectCount; i++) {
                     asset = await fetchFileResult.getNextObject();
@@ -213,8 +213,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 let expectCount = 4;
                 let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();
                 let count = 0;
                 try {
@@ -272,8 +272,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 let assetList = await fetchFileResult.getAllObject();
                 let firstObject = await fetchFileResult.getFirstObject();
                 expect(firstObject.displayName).assertEqual(assetList[0].displayName);
@@ -307,8 +307,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 let firstObject = await fetchFileResult.getFirstObject();
                 let nextObject = await fetchFileResult.getNextObject();
                 let assetList = await fetchFileResult.getAllObject();
@@ -344,8 +344,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 let assetList = await fetchFileResult.getAllObject();
                 let firstObject = await fetchFileResult.getLastObject();
                 expect(firstObject.displayName).assertEqual(assetList[assetList.length - 1].displayName);
@@ -420,8 +420,8 @@ export default function fetchFileResultPromiseTest(abilityContext) {
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 try {
                     await fetchFileResult.getPositionObject(expectCount);
                     expect(false).assertTrue();

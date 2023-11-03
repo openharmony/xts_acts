@@ -25,7 +25,7 @@ export default function getLaunchWantForBundle() {
     describe('GetLaunchWantForBundleTest', function () {
 
         /*
-        * @tc.number: SUB_BMS_APPINFO_QUERY_0069
+        * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_3720
         * @tc.name: testGetLaunchWantForBundle.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
         * @tc.size MediumTest
@@ -54,7 +54,7 @@ export default function getLaunchWantForBundle() {
         });
 
         /*
-        * @tc.number: SUB_BMS_APPINFO_QUERY_0012
+        * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2720
         * @tc.name: testGetLaunchWantForBundleWithManyHaps.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
         * @tc.size MediumTest
@@ -82,7 +82,7 @@ export default function getLaunchWantForBundle() {
             });
         });
         /*
-        * @tc.number: SUB_BMS_APPINFO_QUERY_0013
+        * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2740
         * @tc.name: testGetLaunchWantForBundleWithNotExist.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
         * @tc.size MediumTest
@@ -107,7 +107,7 @@ export default function getLaunchWantForBundle() {
         });
 
         /*
-        * @tc.number: SUB_BMS_APPINFO_QUERY_0014
+        * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2760
         * @tc.name: testGetLaunchWantForBundleWithInvalidParam.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
         * @tc.size MediumTest

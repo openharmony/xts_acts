@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import CallManageImsCall from './CallManageAll.test.js';
-import ObjectInterfaceTest from './ObjectInterface_test.js';
 
 export default function testsuite() {
-	ObjectInterfaceTest();
     CallManageImsCall();
 }

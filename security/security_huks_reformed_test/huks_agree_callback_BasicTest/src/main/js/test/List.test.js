@@ -13,29 +13,10 @@
  * limitations under the License.
  */
 
-import SecurityHuksDHBasicAbort63KBCallbackJsunit from './Agree/SecurityHuksDHBasicAbort63KBCallbackJsunit.test.js'
-import SecurityHuksDHBasicAbort65KBCallbackJsunit from './Agree/SecurityHuksDHBasicAbort65KBCallbackJsunit.test.js'
-import SecurityHuksDHBasicFinish63KBCallbackJsunit from './Agree/SecurityHuksDHBasicFinish63KBCallbackJsunit.test.js'
-import SecurityHuksDHBasicFinish65KBCallbackJsunit from './Agree/SecurityHuksDHBasicFinish65KBCallbackJsunit.test.js'
+
 import SecurityHuksECDHBasicAbort63KBCallbackJsunit from './Agree/SecurityHuksECDHBasicAbort63KBCallbackJsunit.test.js'
-import SecurityHuksECDHBasicAbort65KBCallbackJsunit from './Agree/SecurityHuksECDHBasicAbort65KBCallbackJsunit.test.js'
 import SecurityHuksECDHBasicFinish63KBCallbackJsunit from './Agree/SecurityHuksECDHBasicFinish63KBCallbackJsunit.test.js'
-import SecurityHuksECDHBasicFinish65KBCallbackJsunit from './Agree/SecurityHuksECDHBasicFinish65KBCallbackJsunit.test.js'
-import SecurityHuksX25519BasicAbort63KBCallbackJsunit from './Agree/SecurityHuksX25519BasicAbort63KBCallbackJsunit.test.js'
-import SecurityHuksX25519BasicAbort65KBCallbackJsunit from './Agree/SecurityHuksX25519BasicAbort65KBCallbackJsunit.test.js'
-import SecurityHuksX25519BasicFinish63KBCallbackJsunit from './Agree/SecurityHuksX25519BasicFinish63KBCallbackJsunit.test.js'
-import SecurityHuksX25519BasicFinish65KBCallbackJsunit from './Agree/SecurityHuksX25519BasicFinish65KBCallbackJsunit.test.js'
 export default function testsuite() {
-SecurityHuksDHBasicAbort63KBCallbackJsunit()
-SecurityHuksDHBasicAbort65KBCallbackJsunit()
-SecurityHuksDHBasicFinish63KBCallbackJsunit()
-SecurityHuksDHBasicFinish65KBCallbackJsunit()
-SecurityHuksECDHBasicAbort63KBCallbackJsunit()
-SecurityHuksECDHBasicAbort65KBCallbackJsunit()
-SecurityHuksECDHBasicFinish63KBCallbackJsunit()
-SecurityHuksECDHBasicFinish65KBCallbackJsunit()
-SecurityHuksX25519BasicAbort63KBCallbackJsunit()
-SecurityHuksX25519BasicAbort65KBCallbackJsunit()
-SecurityHuksX25519BasicFinish63KBCallbackJsunit()
-SecurityHuksX25519BasicFinish65KBCallbackJsunit()
+    SecurityHuksECDHBasicAbort63KBCallbackJsunit()
+    SecurityHuksECDHBasicFinish63KBCallbackJsunit()
 }

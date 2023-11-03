@@ -15,6 +15,7 @@
 
 import router from '@ohos.router';
 import { AttrsManager } from './AttrsManager';
+import display from '@ohos.display';
 
 export default class Utils {
   public static instance;
@@ -111,7 +112,19 @@ export default class Utils {
     console.info(JSON.stringify(rect_value));
     return rect_value;
   }
+  
+  static getDensityDPI() {
+    let displayClass = null;
+    let densityDPI;
+    try {
+         displayClass = display.getDefaultDisplaySync();
+         densityDPI = displayClass.densityDPI;
+    } catch (exception) {
+         console.error('Failed to obtain the default display object. Code: ' + JSON.stringify(exception));
+    }
+    return densityDPI;
 
+  }
   static getComponentByKey(componentKey) {
     let strJson = getInspectorByKey(componentKey);
     let obj = JSON.parse(strJson);
@@ -195,7 +208,7 @@ export default class Utils {
       screenX: screenX,
       screenY: screenX,
       x: x,
-      y: y
+      y: y,
     })
 
     console.info('performTouch result : ' + result);
@@ -226,7 +239,8 @@ export default class Utils {
       keySource: 1,
       deviceId: 0,
       metaKey: 0,
-      timestamp: new Date().getTime()
+      timestamp: new Date().getTime(),
+      stopPropagation: () => {},
     })
     console.info('performKeyEvent result : ' + result);
     return result
@@ -279,7 +293,8 @@ export default class Utils {
       tiltX: 0,
       tiltY: 0,
       sourceTool: 1,
-      pressure: 0
+      pressure: 0,
+      stopPropagation: () => {},
     })
 
     console.info('performMouseEvent result : ' + result);

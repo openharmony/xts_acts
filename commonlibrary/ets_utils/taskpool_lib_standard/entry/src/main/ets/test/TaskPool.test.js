@@ -1671,5 +1671,60 @@ describe('ActsAbilityTest', function () {
         expect(state != 0).assertTrue();
         done();
     })
+
+    /**
+     * @tc.number    : TaskPoolTestClass068
+     * @tc.name      : SharedArrayBuffer with taskpool
+     * @tc.desc      : transfer SharedArrayBuffer with taskpool
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass068', 0,  async function (done) {
+        let sab = new SharedArrayBuffer(20);
+        let int32 = new Uint32Array(sab);
+        function testTransfer(arg1) {
+            "use concurrent"
+            arg1[0] = 100;
+            arg1[1] = 200;
+            arg1[2] = 300;
+            arg1[3] = 400;
+            return "success";
+        }
+        let task = new taskpool.Task(testTransfer, int32);
+        taskpool.execute(task).then((res)=> {
+            let val = int32[0] + int32[1] + int32[2] + int32[3];
+            expect(val).assertEqual(1000);
+        });
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass069
+     * @tc.name      : SharedArrayBuffer and Atomics  with taskpool
+     * @tc.desc      : transfer SharedArrayBuffer and Atomics with taskpool
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass069', 0,  async function (done) {
+        let sab = new SharedArrayBuffer(20);
+        let int32 = new Int32Array(sab);
+        function testTransfer(arg1) {
+          "use concurrent"
+          console.info("wait begin::");
+          let res = Atomics.wait(arg1, 0, 0, 3000);
+          return res;
+        }
+
+        let task = new taskpool.Task(testTransfer, int32);
+        taskpool.execute(task).then((res) => {
+            expect(res).assertEqual("ok");
+        });
+        setTimeout(() => {
+          Atomics.notify(int32, 0, 1);
+        }, 1000);
+        done();
+    })
 })
 }

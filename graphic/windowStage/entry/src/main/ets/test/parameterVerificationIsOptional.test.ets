@@ -69,10 +69,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     }
 
     function inputClick(buttonText, msgStr) {
-      console.info(msgStr + `case come in buttonClick fun`)
+      console.info(msgStr + `case come in inputClick fun`)
       return new Promise(async (resolve, reject) => {
         let driver = await UiDriver.create()
-        console.info(msgStr + `case come in buttonClick fun 222`)
+        console.info(msgStr + `case come in inputClick fun 222`)
         console.info(msgStr + `driver is ${JSON.stringify(driver)}`)
         await sleep(1000)
         console.info(msgStr + `UiDriver start`)
@@ -92,11 +92,252 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
     }
     /**
-     * @tc.number SUB_WINDOW_WINDOWSTAGELOADCONTENT_JSAPI_001
-     * @tc.name Test windowStage_loadContent_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
+     * @tc.name testTouchOutsideBaseTest
+     * @tc.desc Enable listening for click events outside the area of this window
+     */
+    it('testTouchOutsideBaseTest', 0, async function (done) {
+      let caseName = 'testTouchOutsideBaseTest';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let mainWin = null;
+      mainWin = await windowStage.getMainWindow().catch((err) => {
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'getMainWindow success');
+      let callback = function (params) {
+        console.log('windowTest on/off touchOutside callback success');
+      }
+      try {
+        mainWin.on('touchOutside', callback);
+      } catch (err) {
+        console.log(msgStr + 'window on touchOutside failed');
+        expect().assertFail();
+        done();
+      }
+      await sleep(1000);
+      try {
+        mainWin.off('touchOutside', callback);
+        done();
+      } catch (err) {
+        console.log(msgStr + 'window off touchOutside failed');
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2370
+     * @tc.name testWindowOffTouchOutsideCancelAll
+     * @tc.desc Turns off listening for click events outside this window area.
+     */
+    it('testWindowOffTouchOutsideCancelAll', 0, async function (done) {
+      let caseName = 'testWindowOffTouchOutsideCancelAll';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId = 'touchOutside01';
+      let windowId_two = 'touchOutside001';
+      let num = 0
+      let firstListenFlag = false
+      let secondListenFlag = false
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let windowConfig_two = {
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let tempWnd = null;
+      let tempWnd_two = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'createWindow tempWnd failed');
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.log(msgStr + 'tempWnd.loadContent failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.resize(400, 400).catch((err) => {
+        console.log(msgStr + 'tempWnd.resize failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        console.log(msgStr + 'tempWnd.moveWindowTo failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.showWindow().catch((err) => {
+        console.log(msgStr + 'tempWnd.showWindow failed');
+        expect().assertFail();
+        done();
+      });
+      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err) => {
+        console.log(msgStr + 'createWindow tempWnd_two failed');
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd_two).assertTrue();
+      await tempWnd_two.loadContent('MainAbility/pages/second/pageOne').catch((err) => {
+        console.log(msgStr + 'tempWnd_two.loadContent failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.resize(500, 500).catch((err) => {
+        console.log(msgStr + 'tempWnd_two.resize failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.moveWindowTo(0, 500).catch((err) => {
+        console.log(msgStr + 'tempWnd_two.moveWindowTo failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.showWindow().catch((err) => {
+        console.log(msgStr + 'tempWnd_two.showWindow failed');
+        expect().assertFail();
+        done();
+      });
+      tempWnd.on('touchOutside', (data) => {
+        console.info(msgStr + "first listener trigger");
+        num++
+        firstListenFlag = true
+      });
+      tempWnd.on('touchOutside', (data) => {
+        console.info(msgStr + "second listener trigger");
+        num++
+        secondListenFlag = true
+      });
+      await sleep(3000);
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      tempWnd.off('touchOutside');
+      firstListenFlag = false
+      secondListenFlag = false
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        done();
+      } else {
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2380
+     * @tc.name Test testWindowOffTouchOutsideCancelSingle
+     * @tc.desc Turns off listening for click events outside this window area.
+     */
+    it('testWindowOffTouchOutsideCancelSingle', 0, async function (done) {
+      let caseName = 'testWindowOffTouchOutsideCancelSingle';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let firstListenFlag = false
+      let secondListenFlag = false
+
+      function firstCall() {
+        console.log(msgStr + "first listener trigger")
+        firstListenFlag = true
+      }
+
+      function secondCall() {
+        console.log(msgStr + "second listener trigger")
+        secondListenFlag = true
+      }
+
+      let windowId = 'touchOutside02';
+      let windowId_two = 'touchOutside002';
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let windowConfig_two = {
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let tempWnd = null;
+      let tempWnd_two = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.resize(400, 400).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd_two).assertTrue();
+      await tempWnd_two.loadContent('MainAbility/pages/second/pageOne').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd_two.resize(500, 500).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd_two.moveWindowTo(0, 500).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd_two.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      tempWnd.on('touchOutside', firstCall);
+      tempWnd.on('touchOutside', secondCall);
+      await sleep(1000);
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      tempWnd.off('touchOutside', firstCall);
+      firstListenFlag = false
+      secondListenFlag = false
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(1000)
+      await tempWnd.destroyWindow();
+      await tempWnd_two.destroyWindow();
+      if (!firstListenFlag && secondListenFlag) {
+        done();
+      } else {
+        expect(TRUE_FLAG).assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2170
+     * @tc.name testWindowStage_loadContent_Test_001
      * @tc.desc Verify The optional parameter is undefined
      */
-    it('windowStage_loadContent_Test_001', 0, async function (done) {
+    it('testWindowStage_loadContent_Test_001', 0, async function (done) {
       let caseName = 'windowStage_loadContent_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -109,14 +350,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFSIZECHANGE_JSAPI_001
-     * @tc.name Test window_off_windowSizeChange_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2280
+     * @tc.name testWindow_off_WindowSizeChange_No_Callback
      * @tc.desc Turn off listening for window size changes.
      */
-    it('window_off_windowSizeChange_Test_001', 0, async function (done) {
+    it('testWindow_off_WindowSizeChange_No_Callback', 0, async function (done) {
       let caseName = 'window_off_windowSizeChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let baseWndType = 1;
@@ -132,10 +374,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       expect(!!tempWnd).assertTrue();
       tempWnd.on('windowSizeChange', () => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('windowSizeChange', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       await tempWnd.show().catch((err) => {
@@ -161,18 +405,19 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         await tempWnd.destroyWindow();
         done();
       })
+      console.error(msgStr + 'num : ' + num);
       await sleep(500);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFSIZECHANGE_JSAPI_002
-     * @tc.name Test window_off_windowSizeChange_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2290
+     * @tc.name testWindow_off_WindowSizeChange_SecondCall_Callback
      * @tc.desc Turn off listening for window size changes.
      */
-    it('window_off_windowSizeChange_Test_002', 0, async function (done) {
+    it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async function (done) {
       let caseName = 'window_off_windowSizeChange_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -237,14 +482,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFAVOIDAREACHANGE_JSAPI_001
-     * @tc.name Test window_off_avoidAreaChange_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2200
+     * @tc.name testWindow_off_AvoidAreaChange_AllListening_LogOut
      * @tc.desc Disable listening for system avoidance zone changes.
      */
-    it('window_off_avoidAreaChange_Test_001', 0, async function (done) {
+    it('testWindow_off_AvoidAreaChange_AllListening_LogOut', 0, async function (done) {
       let caseName = 'window_off_avoidAreaChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let tempWnd = null
@@ -257,14 +503,19 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('avoidAreaChange', () => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('avoidAreaChange', (data) => {
         console.info(msgStr + 'second listener trigger');
+        num++
         secondListenFlag = true
       });
       await tempWnd.setFullScreen(true).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
+      });
+      await tempWnd.setSystemBarEnable(['status']).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       await sleep(1000);
       tempWnd.off('avoidAreaChange');
@@ -277,16 +528,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFAVOIDAREACHANGE_JSAPI_002
-     * @tc.name Test window_off_avoidAreaChange_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2210
+     * @tc.name testWindow_off_AvoidAreaChange_FirstCall_LogOut
      * @tc.desc Disable listening for system avoidance zone changes.
      */
-    it('window_off_avoidAreaChange_Test_002', 0, async function (done) {
+    it('testWindow_off_AvoidAreaChange_FirstCall_LogOut', 0, async function (done) {
       let caseName = 'window_off_avoidAreaChange_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -338,14 +589,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFSCREENSHOT_JSAPI_001
-     * @tc.name Test window_off_screenshot_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2260
+     * @tc.name testWindow_off_screenshot_AllListening_LogOut
      * @tc.desc Disable the monitoring of screenshots.
      */
-    it('window_off_screenshot_Test_001', 0, async function (done) {
+    it('testWindow_off_screenshot_AllListening_LogOut', 0, async function (done) {
       let caseName = 'window_off_screenshot_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_screenshot_Test_001';
@@ -368,10 +620,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('screenshot', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('screenshot', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       // 截屏代码
@@ -397,7 +651,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       } else {
@@ -407,11 +661,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFSCREENSHOT_JSAPI_002
-     * @tc.name Test window_off_screenshot_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2270
+     * @tc.name testWindow_off_screenshot_FirstCall_LogOut
      * @tc.desc Disable the monitoring of screenshots.
      */
-    it('window_off_screenshot_Test_002', 0, async function (done) {
+    it('testWindow_off_screenshot_FirstCall_LogOut', 0, async function (done) {
       let caseName = 'window_off_screenshot_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -482,14 +736,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFDIALOGTARGETTOUCH_JSAPI_001
-     * @tc.name Test window_off_dialogTargetTouch_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2220
+     * @tc.name testWindow_off_dialogTargetTouch_AllListening_LogOut
      * @tc.desc Turns on modal window listener for click events on target Windows.
      */
-    it('window_off_dialogTargetTouch_Test_001', 0, async function (done) {
+    it('testWindow_off_dialogTargetTouch_AllListening_LogOut', 0, async function (done) {
       let caseName = 'window_off_dialogTargetTouch_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_dialogTargetTouch_Test_001';
@@ -512,10 +767,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('dialogTargetTouch', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('dialogTargetTouch', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       // 点击模态窗口
@@ -536,17 +793,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       })
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFDIALOGTARGETTOUCH_JSAPI_002
-     * @tc.name Test window_off_dialogTargetTouch_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2230
+     * @tc.name testWindow_off_dialogTargetTouch_FirstCall_LogOut
      * @tc.desc Turns on modal window listener for click events on target Windows.
      */
-    it('window_off_dialogTargetTouch_Test_002', 0, async function (done) {
+    it('testWindow_off_dialogTargetTouch_FirstCall_LogOut', 0, async function (done) {
       let caseName = 'window_off_dialogTargetTouch_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -610,14 +867,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_001
-     * @tc.name Test window_off_keyboardHeightChange_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2240
+     * @tc.name testWindow_off_keyboardHeightChange_AllListening_LogOut
      * @tc.desc Turn off listening for keyboard height changes
      */
-    it('window_off_keyboardHeightChange_Test_001', 0, async function (done) {
+    it('testWindow_off_keyboardHeightChange_AllListening_LogOut', 0, async function (done) {
       let caseName = 'window_off_keyboardHeightChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_keyboardHeightChange_Test_001';
@@ -632,7 +890,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-      await tempWnd.resize(800, 1000).catch((err) => {
+      let current_display_Class = display.getDefaultDisplaySync();
+      await tempWnd.resize(800, current_display_Class.height).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.resetSize', done);
       });
       await tempWnd.moveWindowTo(0, 0).catch((err) => {
@@ -643,10 +902,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('keyboardHeightChange', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('keyboardHeightChange', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       await inputClick('pageTwoinput', msgStr).catch(async err => {
@@ -666,17 +927,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       })
       await sleep(2000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_002
-     * @tc.name Test window_off_keyboardHeightChange_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2250
+     * @tc.name testWindow_off_keyboardHeightChange_FirstCall_LogOut
      * @tc.desc Turn off listening for keyboard height changes
      */
-    it('window_off_keyboardHeightChange_Test_002', 0, async function (done) {
+    it('testWindow_off_keyboardHeightChange_FirstCall_LogOut', 0, async function (done) {
       let caseName = 'window_off_keyboardHeightChange_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -705,7 +966,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-      await tempWnd.resize(800, 1000).catch((err) => {
+      let current_display_Class = display.getDefaultDisplaySync();
+      await tempWnd.resize(800, current_display_Class.height).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.resetSize', done);
       });
       await tempWnd.moveWindowTo(0, 0).catch((err) => {
@@ -746,24 +1008,26 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_WINDOW_WINDOWSTAGEOFFWINDOWSTAGEVENT_JSAPI_001
-     * @tc.name Test windowStage_off_windowStageEvent_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2180
+     * @tc.name testWindowStage_off_windowStageEvent_AllListening_LogOut
      * @tc.desc Turn off listening for Windows Stage life cycle changes.
      */
-    it('windowStage_off_windowStageEvent_Test_001', 0, async function (done) {
+    it('testWindowStage_off_windowStageEvent_AllListening_LogOut', 0, async function (done) {
       let caseName = 'windowStage_off_windowStageEvent_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
-
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -783,16 +1047,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.show', done);
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWSTAGEOFFWINDOWSTAGEVENT_JSAPI_002
-     * @tc.name Test windowStage_off_windowStageEvent_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2190
+     * @tc.name testWindowStage_off_windowStageEvent_FirstCall_LogOut
      * @tc.desc Turn off listening for Windows Stage life cycle changes.
      */
-    it('windowStage_off_windowStageEvent_Test_002', 0, async function (done) {
+    it('testWindowStage_off_windowStageEvent_FirstCall_LogOut', 0, async function (done) {
       let caseName = 'windowStage_off_windowStageEvent_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -828,21 +1092,22 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       windowStage.off("windowStageEvent");
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
     })
 
     /**
-     * @tc.number SUB_WINDOW_DISPALYOFFADD_JSAPI_001
-     * @tc.name Test display_off_add_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0340
+     * @tc.name testDisplay_off_add_Deregister_All_Listeners
      * @tc.desc Enable the monitor that shows device changes.
      */
-    it('display_off_add_Test_001', 0, async function (done) {
+    it('testDisplay_off_add_Deregister_All_Listeners', 0, async function (done) {
       let caseName = 'display_off_add_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let screenClass = null;
@@ -850,11 +1115,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -900,17 +1167,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'screen.makeExpand', done);
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await screen.destroyVirtualScreen(screenClass_two.id)
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_DISPALYOFFADD_JSAPI_002
-     * @tc.name Test display_off_add_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0350
+     * @tc.name testDisplay_off_add_Deregister_FirstCall_Listeners
      * @tc.desc Enable the monitor that shows device changes.
      */
-    it('display_off_add_Test_002', 0, async function (done) {
+    it('testDisplay_off_add_Deregister_FirstCall_Listeners', 0, async function (done) {
       let caseName = 'display_off_add_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -975,20 +1242,21 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       display.off("add")
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SCREENOFFREMOVE_JSAPI_001
-     * @tc.name Test display_off_remove_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0380
+     * @tc.name testDisplay_off_remove_Deregister_All_Listeners
      * @tc.desc Enable the monitor that shows device changes.
      */
-    it('display_off_remove_Test_001', 0, async function (done) {
+    it('testDisplay_off_remove_Deregister_All_Listeners', 0, async function (done) {
       let caseName = 'display_off_remove_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let screenClass = null;
@@ -996,11 +1264,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -1047,16 +1317,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       await screen.destroyVirtualScreen(screenClass_two.id)
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_DISPLAYOFFREMOVE_JSAPI_002
-     * @tc.name Test display_off_remove_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0390
+     * @tc.name testDisplay_off_remove_Deregister_FirstCall_Listeners
      * @tc.desc Enable the monitor that shows device changes.
      */
-    it('display_off_remove_Test_002', 0, async function (done) {
+    it('testDisplay_off_remove_Deregister_FirstCall_Listeners', 0, async function (done) {
       let caseName = 'display_off_remove_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1121,75 +1391,70 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       display.off('remove')
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_DISPLAYOFFCHANGE_JSAPI_001
-     * @tc.name Test display_off_change_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0360
+     * @tc.name testDisplay_off_change_Deregister_All_Listeners
      * @tc.desc Enable monitoring of screen status changes.
      */
-    it('display_off_change_Test_001', 0, async function (done) {
+    it('testDisplay_off_change_Deregister_All_Listeners', 0, async function (done) {
       let caseName = 'display_off_change_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
-      let screenClass = null;
-
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
       display.on('change', firstCall);
       display.on('change', secondCall);
-      screenClass = await screen.createVirtualScreen({
-        name: 'change01',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', done);
+      let mainWindow = null
+      mainWindow = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-                                 screenId: 0, startX: 0, startY: 0
-                               }, {
-                                 screenId: screenClass.id, startX: 1080, startY: 0
-                               }]).catch((err) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', done);
-      });
-      await screenClass.setOrientation(screen.Orientation.HORIZONTAL).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      expect(!!mainWindow).assertTrue();
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
       display.off('change')
       firstListenFlag = false
       secondListenFlag = false
-      await screenClass.setOrientation(screen.Orientation.UNSPECIFIED).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect(TRUE_FLAG).assertFail();
+        done();
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
-        await screen.destroyVirtualScreen(screenClass.id)
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+        done();
+      }else {
+        expect(TRUE_FLAG).assertFail();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SCREENOFFCHANGE_JSAPI_002
-     * @tc.name Test screen_off_change_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0370
+     * @tc.name testDisplay_off_change_Deregister_FirstCall_Listeners
      * @tc.desc Enable monitoring of screen status changes.
      */
-    it('display_off_change_Test_002', 0, async function (done) {
+    it('testDisplay_off_change_Deregister_FirstCall_Listeners', 0, async function (done) {
       let caseName = 'display_off_change_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1209,52 +1474,43 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       display.on('change', firstCall);
       display.on('change', secondCall);
-      screenClass = await screen.createVirtualScreen({
-        name: 'change02',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', done);
+      let mainWindow = null
+      mainWindow = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-                                 screenId: 0, startX: 0, startY: 0
-                               }, {
-                                 screenId: screenClass.id, startX: 1080, startY: 0
-                               }]).catch((err) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', done);
-      });
-      await screenClass.setOrientation(screen.Orientation.HORIZONTAL).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      expect(!!mainWindow).assertTrue();
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
       display.off('change', firstCall)
       firstListenFlag = false
       secondListenFlag = false
-      await screenClass.setOrientation(screen.Orientation.UNSPECIFIED).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
-      await screen.destroyVirtualScreen(screenClass.id)
       display.off('change')
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETUICONTEXT_JSAPI_001
-     * @tc.name Test getUIContext_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0610
+     * @tc.name testGetUIContext_Instances
      * @tc.desc Get the UIContext instance.
      */
-    it('getUIContext_Test_001', 0, async function (done) {
+    it('testGetUIContext_Instances', 0, async function (done) {
       let caseName = 'getUIContext_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let uiContext=null;
+      let uiContext = null;
       console.log(msgStr + 'begin');
       let mainWindow = null
       mainWindow = await windowStage.getMainWindow().catch((err) => {
@@ -1264,7 +1520,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       // 获取UIContext实例。
       uiContext = mainWindow.getUIContext();
       expect(!!uiContext).assertTrue();
-      console.log(msgStr + 'after uiContext: '+JSON.stringify(uiContext));
+      console.log(msgStr + 'after uiContext: ' + JSON.stringify(uiContext));
       done();
     })
 

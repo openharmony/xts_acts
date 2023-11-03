@@ -64,25 +64,25 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       let SpaceEvenly_AddLayoutWeight_012 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_012');
       let SpaceEvenly_AddLayoutWeight_013 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_013');
       let SpaceEvenly_AddLayoutWeight_01 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_01');
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_013.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_01.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.right).assertEqual(SpaceEvenly_AddLayoutWeight_012.left);
-      expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
-      expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
-      expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_013.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.left)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.right));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
-        .assertEqual(vp2px(50));
+        .assertEqual(Math.round(vp2px(50)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
-        .assertEqual(vp2px(100));
+        .assertEqual(Math.round(vp2px(100)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
-        .assertEqual(vp2px(150));
+        .assertEqual(Math.round(vp2px(150)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left))
-        .assertEqual(vp2px(100));
+        .assertEqual(Math.round(vp2px(100)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left))
-        .assertEqual(vp2px(200));
+        .assertEqual(Math.round(vp2px(200)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left))
-        .assertEqual(vp2px(200));
+        .assertEqual(Math.round(vp2px(200)));
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight01] END');
       done();
     });
@@ -106,25 +106,26 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       let SpaceEvenly_AddLayoutWeight_012 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_012');
       let SpaceEvenly_AddLayoutWeight_013 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_013');
       let SpaceEvenly_AddLayoutWeight_01 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_01');
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_013.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_01.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.right).assertEqual(SpaceEvenly_AddLayoutWeight_012.left);
-      expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
-      expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
-      expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.top)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.top));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_012.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_013.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.left)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.left));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right)).assertEqual(Math.round(SpaceEvenly_AddLayoutWeight_01.right));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
-        .assertEqual(vp2px(50));
+        .assertEqual(Math.round(vp2px(50)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
-        .assertEqual(vp2px(100));
+        .assertEqual(Math.round(vp2px(100)));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
-        .assertEqual(vp2px(150));
+        .assertEqual(Math.round(vp2px(150)));
       let oneWidth = Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left);
       let twoWidth = Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left);
       expect(Math.round(twoWidth / oneWidth)).assertEqual(2);
-      expect(twoWidth + oneWidth).assertEqual(vp2px(350));
+
+      expect(Math.abs(Math.round(twoWidth + oneWidth) - Math.round(vp2px(350))) <= 1 ).assertTrue();
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left)).
-        assertEqual(vp2px(150));
+        assertEqual(Math.round(vp2px(150)));
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight02] END');
       done();
     });

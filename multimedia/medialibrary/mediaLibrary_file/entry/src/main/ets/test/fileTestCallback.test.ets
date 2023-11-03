@@ -60,8 +60,8 @@ export default function fileTestCallbackTest(abilityContext) {
         const creatAssetTest = async (done, testNum, fetchOp, path, type, name) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 let displayName1 = `${new Date().getTime()}.${name}`;
 
@@ -99,8 +99,8 @@ export default function fileTestCallbackTest(abilityContext) {
         const checkCreatAssetProps = async (done, testNum, fetchOp, path, type, name, key, val) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 let displayName = `${new Date().getTime()}.${name}`;
 
@@ -134,8 +134,8 @@ export default function fileTestCallbackTest(abilityContext) {
         const checkdateModified = async (done, testNum, fetchOp) => {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 asset.title = `title_${new Date().getTime()}`;
                 asset.commitModify(async (err) => {

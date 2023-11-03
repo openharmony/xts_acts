@@ -36,12 +36,48 @@
     ],
     "extensionAbilities": [
       {
+        "name": "TestServiceExtAbility",
+        "icon": "$media:icon",
+        "description": "service",
+        "type": "service",
+        "visible": true,
+        "srcEntrance": "./ets/testServiceExtAbility/TestServiceExtAbility.ts"
+      },{
+        "name": "SubServiceExtAbility",
+        "icon": "$media:icon",
+        "description": "service",
+        "type": "service",
+        "visible": true,
+        "srcEntrance": "./ets/testServiceExtAbility/SubServiceExtAbility.ts"
+      },{
+        "name": "MultipServiceExtAbility",
+        "icon": "$media:icon",
+        "description": "service",
+        "type": "service",
+        "visible": true,
+        "srcEntrance": "./ets/testServiceExtAbility/MultipServiceExtAbility.ts"
+      },
+      {
         "name": "UIExtAbility",
         "icon": "$media:icon",
         "description": "UIExtAbility",
         "type": "ui",
         "visible": true,
         "srcEntrance": "./ets/UIExtensionAbility/UIExtAbility.ts",
+        "metadata": [
+          {
+            "name": "ohos.extension.servicetype",
+            "value": "share"
+          }
+        ]
+      },
+      {
+        "name": "UIExtAbility2",
+        "icon": "$media:icon",
+        "description": "UIExtAbility2",
+        "type": "ui",
+        "visible": true,
+        "srcEntrance": "./ets/UIExtensionAbility/UIExtAbility2.ts",
         "metadata": [
           {
             "name": "ohos.extension.servicetype",

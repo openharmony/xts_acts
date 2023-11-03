@@ -20,7 +20,7 @@ export default function GetSecondModuleTest() {
   describe('getSecondModuleTest', function () {
 
     /**
-     * @tc.number SUB_BMS_APPINFO_QUERY_0138
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_5920
      * @tc.name GetSecondModuleTest
      * @tc.desc Test the bundleManager secondary module
      */

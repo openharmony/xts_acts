@@ -23,7 +23,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CanvasShadowColor';
-  @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：原本默认蓝色的阴影会随点击变化';
+  @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：阴影会随点击变化';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;
@@ -36,7 +36,9 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('Blue').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Blue').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(10, 100, 400, 300);
                 this.context.shadowBlur = 30;
@@ -48,7 +50,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Yellow').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(10, 100, 400, 300);
                 this.context.shadowBlur = 30;
@@ -60,7 +64,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Green').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(10, 100, 400, 300);
                 this.context.shadowBlur = 30;
@@ -84,7 +90,7 @@ struct SetCircle {
               })
           }.width('100%').height('60%')
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

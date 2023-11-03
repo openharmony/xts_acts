@@ -72,12 +72,12 @@ export default function Row_Size() {
       console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
       console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
       
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(vp2px(50));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(vp2px(150));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(vp2px(100));
+      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
       
       expect(Text1.left).assertEqual(Row.left);
       
@@ -85,8 +85,8 @@ export default function Row_Size() {
       expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
       expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
       
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
+      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
       
       expect(Row.right).assertLarger(Text3.right);
       console.info('testRowSizeBothSatisfy END');
@@ -116,18 +116,18 @@ export default function Row_Size() {
       console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
       console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
       
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(vp2px(50));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(vp2px(150));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(vp2px(100));
+      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
       expect(Text1.left).assertEqual(Row.left);
       expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
       expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
       expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
+      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
       expect(Text3.right).assertLarger(Row.right);
       
       console.info('testRowSizeWidthNOSatisfy END');
@@ -157,19 +157,19 @@ export default function Row_Size() {
       console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
       console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
       
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(vp2px(50));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(vp2px(150));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(vp2px(100));
+      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
       
       expect(Text1.left).assertEqual(Row.left);
       expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
       expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
       expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
+      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
       expect(Text3.bottom).assertLarger(Row.bottom);
       expect(Row.top).assertLarger(Text3.top);
       

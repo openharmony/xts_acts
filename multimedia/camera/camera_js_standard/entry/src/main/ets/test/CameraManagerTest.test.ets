@@ -34,6 +34,7 @@ let mFdNumber;
 
 // CAMERA-0 letiables
 let mCameraNum;
+let receiver;
 
 let mVideoProfileCfg = {
     audioBitrate: 48000,
@@ -64,7 +65,7 @@ export default function cameraManagerTest() {
 
     async function getImageReceiverSurfaceId() {
         console.log(TAG + 'Entering create Image receiver')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Receiver is ok')
