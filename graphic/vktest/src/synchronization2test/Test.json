@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanSynchronization2Test.qpa ActsVulkanSynchronization2Test.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanSynchronization2Test synchronization2.txt"
             ]
         },

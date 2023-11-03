@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanMesh_shaderTest.qpa ActsVulkanMesh_shaderTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanMesh_shaderTest mesh-shader.txt"
             ]
         },

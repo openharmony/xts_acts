@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanFragment_shader_interlockTest.qpa ActsVulkanFragment_shader_interlockTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanFragment_shader_interlockTest fragment-shader-interlock.txt"
             ]
         },

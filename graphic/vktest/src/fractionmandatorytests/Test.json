@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanFraction_mandatory_testsTest.qpa ActsVulkanFraction_mandatory_testsTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanFraction_mandatory_testsTest fraction-mandatory-tests.txt"
             ]
         },

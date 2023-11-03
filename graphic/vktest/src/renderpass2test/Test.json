@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanRenderpass2Test.qpa ActsVulkanRenderpass2Test.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanRenderpass2Test renderpass2.txt"
             ]
         },

@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanSsboTest.qpa ActsVulkanSsboTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanSsboTest ssbo.txt"
             ]
         },

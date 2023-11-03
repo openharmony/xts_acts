@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanFragment_shading_rateTest.qpa ActsVulkanFragment_shading_rateTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanFragment_shading_rateTest fragment-shading-rate.txt"
             ]
         },

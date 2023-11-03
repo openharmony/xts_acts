@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanMultiviewTest.qpa ActsVulkanMultiviewTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanMultiviewTest multiview.txt"
             ]
         },

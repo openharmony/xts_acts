@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanDynamic_stateTest.qpa ActsVulkanDynamic_stateTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanDynamic_stateTest dynamic-state.txt"
             ]
         },

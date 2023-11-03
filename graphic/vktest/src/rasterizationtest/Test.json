@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanRasterizationTest.qpa ActsVulkanRasterizationTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanRasterizationTest rasterization.txt"
             ]
         },

@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanMemory_modelTest.qpa ActsVulkanMemory_modelTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanMemory_modelTest memory-model.txt"
             ]
         },

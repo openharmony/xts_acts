@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanTransform_feedbackTest.qpa ActsVulkanTransform_feedbackTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanTransform_feedbackTest transform-feedback.txt"
             ]
         },

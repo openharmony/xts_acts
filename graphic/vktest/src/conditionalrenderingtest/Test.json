@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanConditional_renderingTest.qpa ActsVulkanConditional_renderingTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanConditional_renderingTest conditional-rendering.txt"
             ]
         },

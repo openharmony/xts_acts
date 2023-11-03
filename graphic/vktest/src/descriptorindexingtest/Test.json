@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanDescriptor_indexingTest.qpa ActsVulkanDescriptor_indexingTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanDescriptor_indexingTest descriptor-indexing.txt"
             ]
         },

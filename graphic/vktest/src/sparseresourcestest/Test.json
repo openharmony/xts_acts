@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanSparse_resourcesTest.qpa ActsVulkanSparse_resourcesTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanSparse_resourcesTest sparse-resources.txt"
             ]
         },

@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanRaytracingpipelineTest.qpa ActsVulkanRaytracingpipelineTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanRaytracingpipelineTest ray-tracing-pipeline.txt"
             ]
         },

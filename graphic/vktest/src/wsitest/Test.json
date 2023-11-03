@@ -45,6 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
+                "hdc file recv /data/local/tmp/ActsVulkanWsiTest.qpa ActsVulkanWsiTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanWsiTest wsi.txt"
             ]
         },
