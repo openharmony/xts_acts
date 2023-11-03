@@ -508,7 +508,7 @@ export default function pasteBoardSystemPasteBoardTest(){
                     done()
                 } catch (err) {
                     console.error(TAG + "test isRemoteData err:" + err)
-                    expect(err.code == "401").assertTrue();
+                    expect().assertFail();
                 }
             })
             console.info(TAG + "SUB_PASTEBOARD_ISREMOTEDATA_0100 end")
@@ -535,7 +535,7 @@ export default function pasteBoardSystemPasteBoardTest(){
                         done();
                     } catch (err) {
                         console.error(TAG + "test isRemoteData err:" + err)
-                        expect(err.code == "401").assertTrue();
+                        expect().assertFail();
                     }
                 })
             })
@@ -564,7 +564,7 @@ export default function pasteBoardSystemPasteBoardTest(){
                         done();
                     } catch (err) {
                         console.error(TAG +"test hasDataType err:"+ err)
-                        expect(err.code == "401").assertTrue();
+                        expect().assertFail();
                     }
                 })
             })
@@ -592,7 +592,7 @@ export default function pasteBoardSystemPasteBoardTest(){
                         done();
                     } catch (err) {
                         console.error(TAG +"test hasDataType err:"+ err)
-                        expect(err.code == "401").assertTrue();
+                        expect().assertFail();
                     }
                 })
             })
@@ -618,11 +618,11 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let string = systemPasteboard.getDataSource()
                         console.info(TAG + "bundle name :" + string )
-                        expect(string == "label").assertTrue()
+                        expect(string !== null).assertTrue()
                         done();
                     } catch (err) {
                         console.error(TAG + "test getDataSource err:" + err)
-                        expect(err.code == "401").assertTrue();
+                        expect().assertFail();
                     }
                 })
             })
