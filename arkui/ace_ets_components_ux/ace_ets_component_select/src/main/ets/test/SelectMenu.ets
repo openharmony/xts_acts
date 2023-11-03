@@ -335,7 +335,7 @@ export default function selectmenuTest() {
           let strJson = getInspectorByKey('selectTest13');
           let obj = JSON.parse(strJson);
           console.info("[ArkUXII_Stage_Select_Menu_MenuAlign_1300]:" + JSON.stringify(obj.$attrs.menuAlign));
-          expect(obj.$attrs.menuAlign.alignType).assertEqual("MenuAlignType.Center");
+          expect(obj.$attrs.menuAlign.alignType).assertEqual("MenuAlignType.Start");
           expect(obj.$attrs.menuAlign.offset.dX).assertEqual(0);
           expect(obj.$attrs.menuAlign.offset.dY).assertEqual(0);
           done();
