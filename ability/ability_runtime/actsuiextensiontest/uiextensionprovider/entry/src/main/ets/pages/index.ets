@@ -959,7 +959,7 @@ struct Index {
     await this.sleep(400)
     setTimeout(async () => {
       commonEventManager.publish(successBackToDesktop, (err) => { }); 
-    }, 2000);
+    }, 200);
   }
 
   async doDeviceEvent02(){
@@ -990,7 +990,7 @@ struct Index {
     setTimeout(async () => {
       console.log(TAG + '___successOffTheScreen Event');
       commonEventManager.publish(successOffTheScreen, (err) => { }); 
-    }, 2000);
+    }, 200);
   }
 
   async startAbilityByTypeEvent001() {

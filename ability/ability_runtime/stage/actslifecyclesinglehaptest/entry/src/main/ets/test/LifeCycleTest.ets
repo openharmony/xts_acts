@@ -152,7 +152,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -195,7 +195,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_0200 END-------------");
           done();
         }, 500);
-      }, 3500);
+      }, 4000);
     });
 
     /*
@@ -229,7 +229,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -266,7 +266,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_0300 END-------------");
           done();
         }, 2000);
-      }, 3500);
+      }, 4000);
     });
 
     /*
@@ -300,7 +300,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));
@@ -342,7 +342,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_0400 END-------------");
           done();
         }, 1000);
-      }, 3000);
+      }, 3500);
     });
 
     /*
@@ -375,7 +375,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start3 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " start after callbackid3 : " + JSON.stringify(globalThis.callbackid3));
         globalThis.applicationContext3
@@ -396,7 +396,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start4 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2800);
+      }, 3300);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -419,7 +419,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0500 END-------------");
             done();
           })
-      }, 5000);
+      }, 5500);
     });
 
     /*
@@ -452,7 +452,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 600);
       setTimeout(function () {
         let str2 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -464,7 +464,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 1100);
+      }, 1200);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -502,7 +502,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0600 END-------------");
             done();
           })
-      }, 4200);
+      }, 4500);
     });
 
     /*
@@ -633,6 +633,7 @@ export default function lifecycleTest() {
      * @tc.level   0
      */
     it("Singlehap_LifeCycleTest_0800", 0, async function (done) {
+      await sleep(500);
       console.log("------------Singlehap_LifeCycleTest_0800 START-------------");
       TAG = "Singlehap_LifeCycleTest_0800";
       let str = {
@@ -742,7 +743,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -777,7 +778,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0900 END-------------");
             done();
           });
-      }, 4800);
+      }, 5300);
     });
 
     /*
@@ -830,7 +831,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_1000 END-------------");
             done();
           });
-      }, 5000);
+      }, 5500);
     });
 
     /*
@@ -978,7 +979,7 @@ export default function lifecycleTest() {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycle_xts",
         abilityName: "Hap1MainAbility1"
@@ -986,7 +987,7 @@ export default function lifecycleTest() {
         console.log(TAG + ":first Hap1MainAbility1 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycle_xts",
         abilityName: "Hap1MainAbility1"
@@ -1009,7 +1010,7 @@ export default function lifecycleTest() {
               ",data: " + JSON.stringify(data));
               done();
             });
-        }, 3000)
+        }, 3500)
       });
       console.log("------------Singlehap_LifeCycleTest_1300 end-------------");
     });
@@ -1030,7 +1031,7 @@ export default function lifecycleTest() {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycle_xts",
         abilityName: "Hap1MainAbility2"
@@ -1038,7 +1039,7 @@ export default function lifecycleTest() {
         console.log(TAG + ":first Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycle_xts",
         abilityName: "Hap1MainAbility2"
@@ -1061,7 +1062,7 @@ export default function lifecycleTest() {
               ",data: " + JSON.stringify(data));
               done();
             });
-        }, 3000)
+        }, 3500)
       });
       console.log("------------Singlehap_LifeCycleTest_1400 end-------------");
     });
@@ -1097,7 +1098,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list11));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid11));
@@ -1124,7 +1125,7 @@ export default function lifecycleTest() {
             }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
-        }, 500);
+        }, 700);
       }, 3500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list11));
@@ -1269,7 +1270,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list12));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
@@ -1312,7 +1313,7 @@ export default function lifecycleTest() {
             }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
-        }, 500);
+        }, 700);
       }, 4200);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list12));
@@ -1370,7 +1371,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " firstCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));

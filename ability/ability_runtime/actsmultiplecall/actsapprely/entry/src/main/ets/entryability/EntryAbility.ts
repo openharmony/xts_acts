@@ -344,7 +344,7 @@ export default class EntryAbility extends Ability {
                 }
               })
               let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-              let pkillCmd = 'pkill -f com.acts.thirdpartyapprely';
+              let pkillCmd = 'aa force-stop com.acts.thirdpartyapprely';
               abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
                 console.info('====>Acts_SingleInstanceCallFunction_0800 pkillCmd err:' + JSON.stringify(err));
                 let commonEventData = {
@@ -355,7 +355,9 @@ export default class EntryAbility extends Ability {
                 };
                 commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
                   console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
-                  globalThis.terminate();
+                  setTimeout(()=>{
+                    globalThis.terminate();
+                  }, 500);
                 })
               })
             })
