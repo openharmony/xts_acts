@@ -62,6 +62,16 @@
     "pages/Player/PlayVideo",
     "pages/Player/PlayAudioList",
     "pages/Player/PlayVideoList",
-    "pages/model/FloatBall"
+    "pages/model/FloatBall",
+    "pages/Sensor/Sensor_index",
+    "pages/Sensor/SensorAccelerometer",
+    "pages/Player/PlayNetWorkList",
+    "pages/Player/PlayNetWork",
+    "pages/Screen/Screen_index",
+    "pages/Screen/VirtualScreen",
+    "pages/Screen/ScreenShot",
+    "pages/Screen/Brightness",
+    "pages/Screen/ScreenLock",
+    "pages/BundleManager/SetEnabled"
   ]
 }

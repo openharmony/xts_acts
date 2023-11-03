@@ -28,12 +28,18 @@ let path2 = path + '/Audio';
 let path3 = path + '/Camera';
 let path4 = path + '/Player';
 let path5 = path + '/Experience';
+let path6 = path + '/Sensor';
+let path8 = path + '/Screen';
 let picturePath = path + '/screenshot';
 let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
 let CameraColorBackPath = path + '/CameraColorBack.txt';
 let PlayerColorBackPath = path + '/PlayerColorBack.txt';
+let SensorColorBackPath = path + '/SensorColorBack.txt'; // 传感器
+let ScreenColorBackPath = path + '/ScreenColorBack.txt'; // 屏幕
+let PlayerNetWorkColorBackPath = path4 + '/PlayerNetWorkColorBack.txt'; // 播放网络视频
+
 let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
 let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
 let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
@@ -42,6 +48,8 @@ fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(SensorColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(ScreenColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let TimePath = path + '/Time.txt';
 fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let xmlPath = path + '/Test.xml';
@@ -52,8 +60,10 @@ let path33 = path3 + '/CameraReport.txt';
 let path44 = path4 + '/PlayerReport.txt';
 let PlayerAudioTxtPath = path4 + '/PlayerAudioReport.txt';
 let PlayerVideoTxtPath = path4 + '/PlayerVideoReport.txt';
+let PlayerNetWorkTxtPath = path4 + '/PlayerNetWorkReport.txt';
 let path55 = path5 + '/ExperienceReport.txt';
-
+let path66 = path6 + '/SensorReport.txt';
+let path88 = path8 + '/ScreenReport.txt'; // 屏幕
 @Entry
 @Component
 struct IndexPage {
@@ -63,6 +73,8 @@ struct IndexPage {
     {title:'Camera',uri:'pages/Camera/Camera_index'},
     {title:'Player',uri:'pages/Player/Player_index'},
     {title:'Experience',uri:'pages/Experience/Experience_index'},
+    {title:'Sensor',uri:'pages/Sensor/Sensor_index'},
+    {title:'Screen',uri:'pages/Screen/Screen_index'}
   ]
   @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
   async onPageShow(){
@@ -86,6 +98,9 @@ struct IndexPage {
       fs.mkdirSync(path3);
       fs.mkdirSync(path4);
       fs.mkdirSync(path5);
+      fs.mkdirSync(path6);
+      // 屏幕
+      fs.mkdirSync(path8);
       fs.mkdirSync(picturePath);
       fs.mkdirSync(ExperienceDataPath);
 
@@ -104,9 +119,13 @@ struct IndexPage {
     fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
   build(){
     Column(){
@@ -205,14 +224,20 @@ struct IndexPage {
     fs.unlinkSync(path44);
     fs.unlinkSync(PlayerAudioTxtPath);
     fs.unlinkSync(PlayerVideoTxtPath);
+    fs.unlinkSync(PlayerNetWorkTxtPath);
     fs.unlinkSync(path55);
+    fs.unlinkSync(path66);
+    fs.unlinkSync(path88);
     fs.unlinkSync(ArkUIColorBackPath);
     fs.unlinkSync(AudioColorBackPath);
     fs.unlinkSync(CameraColorBackPath);
     fs.unlinkSync(PlayerColorBackPath);
     fs.unlinkSync(PlayerAudioColorBackPath);
     fs.unlinkSync(PlayerVideoColorBackPath);
+    fs.unlinkSync(PlayerNetWorkColorBackPath);
     fs.unlinkSync(ExperienceColorBackPath);
+    fs.unlinkSync(SensorColorBackPath);
+    fs.unlinkSync(ScreenColorBackPath);
     fs.rmdirSync(picturePath);
     fs.mkdirSync(picturePath);
     fs.rmdirSync(ExperienceDataPath);
@@ -225,14 +250,20 @@ struct IndexPage {
     fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(SensorColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ScreenColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
@@ -240,6 +271,8 @@ struct IndexPage {
     FlushData.ResetExperience();
     FlushData.ResetPlayerAudio();
     FlushData.ResetPlayerVideo();
+    FlushData.ResetPlayNetworkVideo();
+    FlushData.ResetSensor();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
@@ -258,6 +291,8 @@ struct IndexPage {
     let CameraReport;
     let PlayerReport;
     let ExperienceReport;
+    let SensorReport; // 传感器
+    let ScreenReport; // 传感器
     /*
      * ArkUI
      */
@@ -329,7 +364,37 @@ struct IndexPage {
       result5[i] = str5[i * 2 + 1];
     }
 
-    let report = ArkUIReport + AudioReport + CameraReport + PlayerReport + ExperienceReport;
+    /**
+     * Sensor 传感器
+     */
+    let OP6 = fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf6 = new ArrayBuffer(40960);
+    fs.readSync(OP6.fd,buf6);
+    SensorReport = String.fromCharCode.apply(null, new Uint8Array(buf6));
+    let str6 = SensorReport.split(";");
+    let title6 = [];
+    let result6 = [];
+    for (let i = 0; i < Math.floor(str6.length / 2); i++) {
+      title6[i] = str6[i * 2];
+      result6[i] = str6[i * 2 + 1];
+    }
+
+    /**
+     * Screen 屏幕
+     */
+    let OP8 = fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf8 = new ArrayBuffer(40960);
+    fs.readSync(OP8.fd,buf8);
+    ScreenReport = String.fromCharCode.apply(null, new Uint8Array(buf8));
+    let str8 = ScreenReport.split(";");
+    let title8 = [];
+    let result8 = [];
+    for (let i = 0; i < Math.floor(str8.length / 2); i++) {
+      title8[i] = str8[i * 2];
+      result8[i] = str8[i * 2 + 1];
+    }
+
+    let report = ArkUIReport + AudioReport + CameraReport + PlayerReport + ExperienceReport + SensorReport + ScreenReport;
     let FailIndex = report.indexOf('false');
     let FailNum = 0;
     while(FailIndex != -1) {
@@ -447,6 +512,48 @@ struct IndexPage {
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
     let experienceTestNum = (ExperienceTestNum).toString();
+
+    /**
+     * Sensor
+     */
+    let SensorFailIndex = SensorReport.indexOf('false');
+    let SensorFailNum = 0;
+    while (SensorFailIndex != -1) {
+      console.log(SensorFailIndex);
+      SensorFailNum++;
+      SensorFailIndex = SensorReport.indexOf('false',SensorFailIndex + 1);
+    }
+    let sensorFailNum = (SensorFailNum).toString();
+    let SensorPassIndex = SensorReport.indexOf('true ');
+    let SensorPassNum = 0;
+    while (SensorPassIndex != -1) {
+      console.log(SensorPassIndex);
+      SensorPassNum++;
+      SensorPassIndex = SensorReport.indexOf('true ',SensorPassIndex + 1);
+    }
+    let SensorTestNum = SensorFailNum + SensorPassNum;
+    let sensorTestNum = (SensorTestNum).toString();
+
+    /**
+     * Screen
+     */
+    let ScreenFailIndex = ScreenReport.indexOf('false');
+    let ScreenFailNum = 0;
+    while (SensorFailIndex != -1) {
+      console.log(SensorFailIndex);
+      ScreenFailNum++;
+      ScreenFailIndex = ScreenReport.indexOf('false',ScreenFailIndex + 1);
+    }
+    let screenFailNum = (ScreenFailNum).toString();
+    let ScreenPassIndex = ScreenReport.indexOf('true ');
+    let ScreenPassNum = 0;
+    while (ScreenPassIndex != -1) {
+      console.log(ScreenPassIndex);
+      ScreenPassNum++;
+      ScreenPassIndex = ScreenReport.indexOf('true ',ScreenPassIndex + 1);
+    }
+    let ScreenTestNum = ScreenFailNum + ScreenPassNum;
+    let screenTestNum = (ScreenTestNum).toString();
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -585,6 +692,58 @@ struct IndexPage {
       serializer.setAttributes("time", "*");
       serializer.setAttributes("classname", "ActsExperienceTest");
       serializer.setAttributes("result", String(result5[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Sensor
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsSensorTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", sensorFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", sensorTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title6.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title6[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsSensorTest");
+      serializer.setAttributes("result", String(result6[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Screen
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsSensorTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", screenFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", screenTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title8.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title8[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsSensorTest");
+      serializer.setAttributes("result", String(result8[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
       serializer.endElement();
