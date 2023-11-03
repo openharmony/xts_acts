@@ -409,8 +409,7 @@ function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('playPauseLoopWithCallBack play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                await preparePromise(avPlayer);
-                await sleep(2000);
+                preparePromise(avPlayer);
                 avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
@@ -418,7 +417,7 @@ function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done) {
                 console.info('playPauseLoopWithCallBack play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
                 playPauseCount++;
-                await mediaTestBase.msleepAsync(playTime);
+                mediaTestBase.msleepAsync(playTime);
                 if(playPauseCount == 1001){
                     // step 4: playing -> stop -> release
                     avPlayer.stop().then(() => {
@@ -492,13 +491,13 @@ async function createToReleaseLoop(src, avPlayer, done) {
         switch (state) {
             case AV_PLAYER_STATE.IDLE:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.IDLE);
-                await setSource(avPlayer, src);
+                setSource(avPlayer, src);
                 break;
             case AV_PLAYER_STATE.INITIALIZED:
                 avPlayer.surfaceId = surfaceID;
                 console.info('createToReleaseLoop play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                await avPlayer.release()
+                avPlayer.release()
                 break;
             case AV_PLAYER_STATE.RELEASED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
@@ -506,9 +505,9 @@ async function createToReleaseLoop(src, avPlayer, done) {
                 if(createToReleaseLoopCount==1001){
                     done();
                 }else{
-                    avPlayer = await idle(src, avPlayer)
-                    await createToReleaseLoop(src, avPlayer, done)
-                    await setSource(avPlayer, src);
+                    avPlayer = idle(src, avPlayer)
+                    createToReleaseLoop(src, avPlayer, done)
+                    setSource(avPlayer, src);
                 }
                 break;
             case AV_PLAYER_STATE.ERROR:
@@ -662,7 +661,7 @@ async function seekLoopWithoutCallbackLoop(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('seekLoopWithoutCallbackLoop play state is INITIALIZED')
             // step 1: prepare
-                await preparePromise(avPlayer);
+                preparePromise(avPlayer);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -677,7 +676,7 @@ async function seekLoopWithoutCallbackLoop(src, avPlayer, done) {
                     avPlayer.seek(loopTime)
                     console.info(`case seekLoopWithoutCallbackLoop loopTime is ${loopTime}`);
                     if(loopTime==999){
-                        await avPlayer.stop().then(() => {
+                        avPlayer.stop().then(() => {
                             console.info('seekLoopWithoutCallbackLoop avPlayer from play to stop')
                             avPlayer.release().then(() => {
                                 console.info('seekLoopWithoutCallbackLoop avPlayer from stop to release')
@@ -726,7 +725,7 @@ async function prepareToStopLoop(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('prepareToStopLoop play state is INITIALIZED')
             // step 1: prepare
-                await preparePromise(avPlayer);
+                preparePromise(avPlayer);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -738,13 +737,13 @@ async function prepareToStopLoop(src, avPlayer, done) {
                 prepareToStopLoopCount++
                 if(prepareToStopLoopCount==1001){
             // end: release
-                    await avPlayer.release().then(() => {
+                    avPlayer.release().then(() => {
                         console.info('prepareToStopLoop avPlayer from stop to release')
                         expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                         done();
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 }else {
-                    await preparePromise(avPlayer);
+                    preparePromise(avPlayer);
                 }
                 break;
             case AV_PLAYER_STATE.ERROR:
@@ -787,14 +786,14 @@ async function prepareToResetLoop(src, avPlayer, done) {
                 prepareToResetLoopCount++;
                 if(prepareToResetLoopCount == 1001){
                     // end: release
-                    await avPlayer.release().then(() => {
+                    avPlayer.release().then(() => {
                         console.info('prepareToResetLoop avPlayer from stop to release')
                         expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                         done();
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 }else{
             // step 2: idle-INITIALIZED
-                    await setSource(avPlayer, src);
+                    setSource(avPlayer, src);
                     console.info('prepareToResetLoop avPlayer from play to seek,time is :' + prepareToResetLoopCount)
                 }
                 break;
@@ -802,7 +801,7 @@ async function prepareToResetLoop(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('prepareToResetLoop play state is INITIALIZED')
             // step 3: INITIALIZED-PREPARED
-                await preparePromise(avPlayer);
+                preparePromise(avPlayer);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -851,12 +850,12 @@ async function createToReleaseLoop2(src, avPlayer, done) {
         switch (state) {
             case AV_PLAYER_STATE.IDLE:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.IDLE);
-                await setSource(avPlayer, src);
+                setSource(avPlayer, src);
                 break;
             case AV_PLAYER_STATE.INITIALIZED:
                 avPlayer.surfaceId = surfaceID;
                 console.info('createToReleaseLoop2 play state is INITIALIZED')
-                await preparePromise(avPlayer);
+                preparePromise(avPlayer);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -866,7 +865,7 @@ async function createToReleaseLoop2(src, avPlayer, done) {
             case AV_PLAYER_STATE.PLAYING:
                 console.info('createToReleaseLoop2 play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
-                await avPlayer.release()
+                avPlayer.release()
                 break;
             case AV_PLAYER_STATE.RELEASED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
@@ -874,9 +873,9 @@ async function createToReleaseLoop2(src, avPlayer, done) {
                 if(createToReleaseLoopCount2==1001){
                     done();
                 }else{
-                    avPlayer = await idle(src, avPlayer)
-                    await createToReleaseLoop2(src, avPlayer, done)
-                    await setSource(avPlayer, src);
+                    avPlayer = idle(src, avPlayer)
+                    createToReleaseLoop2(src, avPlayer, done)
+                    setSource(avPlayer, src);
                 }
                 break;
             case AV_PLAYER_STATE.ERROR:
@@ -1119,7 +1118,7 @@ async function playTimeCallback(avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('playTimeCallback play state is INITIALIZED')
             // step 1: initialized -> prepared
-                await avPlayer.prepare((err) => {
+                avPlayer.prepare((err) => {
                     if (err != null) {
                         console.error(`case prepare error, errMessage is ${err.message}`);
                         expect().assertFail();
@@ -1135,7 +1134,7 @@ async function playTimeCallback(avPlayer, done) {
                 start = Date.now();
                 console.info(`playTimeCallback start time is : ${start}`)
             // step 2: prapared -> play
-                await avPlayer.play()
+                avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
                 console.info('playTimeCallback play state is PLAYING')
@@ -1156,7 +1155,7 @@ async function playTimeCallback(avPlayer, done) {
                         done();
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 }else{
-                    await avPlayer.pause()
+                    avPlayer.pause()
                 }
                 break;
             case AV_PLAYER_STATE.PAUSED:
@@ -1165,7 +1164,7 @@ async function playTimeCallback(avPlayer, done) {
                 start = Date.now();
                 console.info(`playTimeCallback start time is : ${start}`)
             // step 3: pause -> playing loop
-                await avPlayer.play()
+                avPlayer.play()
                 break;
             default:
                 break;
@@ -1240,7 +1239,7 @@ async function pauseTimeCallback(avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('pauseTimeCallback play state is INITIALIZED')
             // step 1: initialized -> prepared
-                await avPlayer.prepare((err) => {
+                avPlayer.prepare((err) => {
                     if (err != null) {
                         console.error(`case prepare error, errMessage is ${err.message}`);
                         expect().assertFail();
@@ -1253,14 +1252,14 @@ async function pauseTimeCallback(avPlayer, done) {
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
                 console.info('pauseTimeCallback avPlayer state is prepared')
-                await avPlayer.play()
+                avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
                 console.info('pauseTimeCallback play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
                 start = Date.now();
                 console.info(`pauseTimeCallback start time is : ${start}`)
-                await avPlayer.pause();
+                avPlayer.pause();
                 break;
             case AV_PLAYER_STATE.PAUSED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PAUSED);
@@ -1280,7 +1279,7 @@ async function pauseTimeCallback(avPlayer, done) {
                         done();
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 }else{
-                    await avPlayer.play()
+                    avPlayer.play()
                 }
                 break;
             default:
@@ -1364,7 +1363,6 @@ function stopTimeCallback(src, avPlayer, done) {
                         console.info('stopTimeCallback play state is prepared')
                     }
                 });
-                await sleep(2000);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -1647,7 +1645,6 @@ function seekTimeCallback(avPlayer, done) {
                         console.info('seekTimeCallback play state is prepared')
                     }
                 });
-                await sleep(2000);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -1773,7 +1770,6 @@ function getTrackDescriptionTimeCallback(avPlayer, done) {
                         console.info('getTrackDescriptionTimeCallback play state is prepared')
                     }
                 });
-                await sleep(2000);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -1880,7 +1876,7 @@ async function setSpeedTimeCallback(avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('setSpeedTimeCallback play state is INITIALIZED')
             // step 1: initialized -> prepared
-                await avPlayer.prepare((err) => {
+                avPlayer.prepare((err) => {
                     if (err != null) {
                         console.error(`case prepare error, errMessage is ${err.message}`);
                         expect().assertFail();
@@ -1893,7 +1889,7 @@ async function setSpeedTimeCallback(avPlayer, done) {
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
                 console.info('setSpeedTimeCallback avPlayer state is prepared')
-                await avPlayer.play()
+                avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
                 console.info('setSpeedTimeCallback play state is PLAYING')
@@ -1910,13 +1906,13 @@ async function setSpeedTimeCallback(avPlayer, done) {
                     start = Date.now();
                     console.info(`setSpeedTimeCallback start time is : ${start}`)
                     loopTime++
-                    await avPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
+                    avPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
                 }
                 break;
             case AV_PLAYER_STATE.PAUSED:
                 console.info('setSpeedTimeCallback play state is PAUSED')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PAUSED);
-                await avPlayer.play()
+                avPlayer.play()
                 break;
             default:
                 break;
@@ -1929,7 +1925,7 @@ async function setSpeedTimeCallback(avPlayer, done) {
         console.info("setSpeedTimeCallback execution time  is :" + execution)
         totalTime = totalTime + execution;
         console.info('speedDone success,and speed value is:' + speed)
-        await avPlayer.pause()
+        avPlayer.pause()
     });
 }
 
@@ -1996,7 +1992,6 @@ function setBitrateTimeCallback(avPlayer, done) {
                         console.info('setBitrateTimeCallback play state is prepared')
                     }
                 });
-                await sleep(2000);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -2107,7 +2102,6 @@ function setVolumeTimeCallback(avPlayer, done) {
                         console.info('setVolumeTimeCallback play state is prepared')
                     }
                 });
-                await sleep(2000);
                 break;
             case AV_PLAYER_STATE.PREPARED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
@@ -2251,9 +2245,9 @@ function setAVPlayerPlay(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('setAVPlayerPlay play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                await preparePromise(avPlayer)
-                await sleep(3000);
-                avPlayer.play()
+                avPlayer.prepare().then(() => {
+                    avPlayer.play()
+                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 break;
             case AV_PLAYER_STATE.PLAYING:
                 console.info('setAVPlayerPlay play state is PLAYING')
