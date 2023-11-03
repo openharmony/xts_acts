@@ -26,7 +26,7 @@ let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 struct CustomContainerUser {
   @State name: string = 'ContactsHotStart';
   @State toSP_daemon: string = 'SP_daemon -editor hotStart com.ohos.contacts 联系人 ohtest';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：应用热启动时延小于600ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示完成测试，启动应用'+'\n'+'预期结果：应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
