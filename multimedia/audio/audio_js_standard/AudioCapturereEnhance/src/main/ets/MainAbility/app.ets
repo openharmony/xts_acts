@@ -12,16 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import getMax_MinStreamVolume from './GetMaxAndMinStreamVolume.test.ets'
-import getUnderflowCount from './GetUnderflowCount.test.ets'
-import getCurrentOutputDevices from './GetCurrentOutputDevices.test.ets'
-import on_off_outputDeviceChange from './OnOffOutputDeviceChange.test.ets'
-import setChannelBlendMode from './SetChannelBlendMode.test.ets'
+import hilog from '@ohos.hilog';
 
-export default function testsuite() {
-  getMax_MinStreamVolume();
-  getUnderflowCount();
-  getCurrentOutputDevices();
-  on_off_outputDeviceChange();
-  setChannelBlendMode();
+export default {
+  onCreate() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
+  },
+  onDestroy() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
+  },
 }
