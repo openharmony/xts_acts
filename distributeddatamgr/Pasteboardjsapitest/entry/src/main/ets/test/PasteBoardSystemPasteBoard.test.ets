@@ -491,7 +491,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_ISREMOTEDATA_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_SourceOrType_0100
          * @tc.name      isRemoteData
          * @tc.desc      clear data than check the data whether it is from remote device
          * @tc.size      : MEDIUM
@@ -514,7 +514,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_ISREMOTEDATA_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_SourceOrType_0200
          * @tc.name      isRemoteData
          * @tc.desc      set data than check the data whether it is from remote device
          * @tc.size      : MEDIUM
@@ -540,7 +540,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_HASDATATYPE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_SourceOrType_0300
          * @tc.name      hasDataType
          * @tc.desc      set data than check the data type
          * @tc.size      : MEDIUM
@@ -566,7 +566,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_HASDATATYPE_0200
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_SourceOrType_0400
          * @tc.name      hasDataType
          * @tc.desc      set data than check the data type
          * @tc.size      : MEDIUM
@@ -592,7 +592,7 @@ export default function pasteBoardSystemPasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_GETDATASOURCE_0100
+         * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_SourceOrType_0500
          * @tc.name      getDataSource
          * @tc.desc      set data than get the data source
          * @tc.size      : MEDIUM
