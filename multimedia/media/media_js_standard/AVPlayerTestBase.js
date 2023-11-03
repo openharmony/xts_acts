@@ -505,9 +505,9 @@ async function createToReleaseLoop(src, avPlayer, done) {
                 if(createToReleaseLoopCount==1001){
                     done();
                 }else{
-                    avPlayer = idle(src, avPlayer)
+                    avPlayer = await idle(src, avPlayer)
                     await createToReleaseLoop(src, avPlayer, done)
-                    setSource(avPlayer, src);
+                    await setSource(avPlayer, src);
                 }
                 break;
             case AV_PLAYER_STATE.ERROR:
@@ -873,9 +873,9 @@ async function createToReleaseLoop2(src, avPlayer, done) {
                 if(createToReleaseLoopCount2==1001){
                     done();
                 }else{
-                    avPlayer = idle(src, avPlayer)
+                    avPlayer = await idle(src, avPlayer)
                     await createToReleaseLoop2(src, avPlayer, done)
-                    setSource(avPlayer, src);
+                    await setSource(avPlayer, src);
                 }
                 break;
             case AV_PLAYER_STATE.ERROR:
