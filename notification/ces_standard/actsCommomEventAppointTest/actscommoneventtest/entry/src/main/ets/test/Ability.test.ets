@@ -47,16 +47,6 @@ export default function abilityTest() {
     }
 
     afterEach(async function () {
-      let abilityDelegator;
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let cmd1 = 'aa force-stop com.example.commoneventfirstrely';
-      let cmd2 = 'aa force-stop com.example.commoneventsecondrely';
-      await abilityDelegator.executeShellCommand(cmd1).then(() => {
-        console.info('executeShellCommand1 callback');
-      });
-      await abilityDelegator.executeShellCommand(cmd2).then(() => {
-        console.info('executeShellCommand2 callback');
-      });
       sleep(TIMEOUT_ONE_SECOND);
     })
 
