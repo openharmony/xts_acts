@@ -67,7 +67,8 @@ export default function stageContextPropertiesTest(abilityContext) {
 
         function beforeEachLoadmanagement() {
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            abilityDelegator.executeShellCommand("hilog -r", async (err, data) => {});
+            abilityDelegator.executeShellCommand("hilog -Q pidoff", async (err, data) => {});
+            abilityDelegator.executeShellCommand("hilog -Q domainoff", async (err, data) => {});
             abilityDelegator.executeShellCommand("hilog -G 20M", async (err, data) => {});
         }
 
@@ -547,7 +548,7 @@ export default function stageContextPropertiesTest(abilityContext) {
                     }
                 });
             }, 500);
-        }, 4000);
+        }, 2000);
         })
 
         /*
@@ -590,8 +591,8 @@ export default function stageContextPropertiesTest(abilityContext) {
                     done();
                 }
                 });
-            }, 1000);
-        }, 4000);
+            }, 500);
+        }, 2000);
         })
 
         function checkApplicationContextDir(applicationContext) {
