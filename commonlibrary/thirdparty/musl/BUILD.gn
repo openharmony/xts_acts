@@ -27,7 +27,30 @@ ohos_js_hap_suite("ActsThirdPartyMuslTest") {
   subsystem_name = "thirdparty"
   part_name = "musl"
   shared_libraries = [
+    "./entry/src/main/cpp:ctypendk",
+    "./entry/src/main/cpp:direntndk",
+    "./entry/src/main/cpp:grpndk",
+    "./entry/src/main/cpp:ifaddrsndk",
+    "./entry/src/main/cpp:inetndk",
+    "./entry/src/main/cpp:inotifyndk",
+    "./entry/src/main/cpp:inttypesndk",
     "./entry/src/main/cpp:mathndk",
+    "./entry/src/main/cpp:netdbndk",
+    "./entry/src/main/cpp:pthreadndk",
+    "./entry/src/main/cpp:regexndk",
+    "./entry/src/main/cpp:resourcendk",
+    "./entry/src/main/cpp:schedndk",
+    "./entry/src/main/cpp:semaphorendk",
+    "./entry/src/main/cpp:setjmpndk",
+    "./entry/src/main/cpp:signalndk",
+    "./entry/src/main/cpp:stdiondk",
+    "./entry/src/main/cpp:stdlibndk",
+    "./entry/src/main/cpp:stringndk",
+    "./entry/src/main/cpp:stringsndk",
+    "./entry/src/main/cpp:timendk",
+    "./entry/src/main/cpp:unistdndk",
+    "./entry/src/main/cpp:wcharndk",
+    "./entry/src/main/cpp:wctypendk",
     ":libcppsharedso",
   ]
 }
