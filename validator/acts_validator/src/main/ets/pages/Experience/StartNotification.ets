@@ -111,7 +111,7 @@ struct CustomContainerUser {
             Row(){
               Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入桌面` + '\n' + '\n' + '2.点击悬浮球开始测试'+ '\n' + '\n' +
               `3.从屏幕顶部滑动下拉通知栏` + '\n' + '\n' + '4.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `5.点击结束观察测试结果` + '\n' + '\n' +
-              `6.若下拉通知栏时延小于或等于150ms则通过测试`  + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+              `6.若下拉通知栏时延小于150ms则通过测试`  + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
               `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
                 .fontColor(Color.White).fontSize('20fp')
             }
@@ -151,7 +151,7 @@ struct CustomContainerUser {
                       let head = report.indexOf(":");
                       this.time = report.substring(head+1);
                       let time = this.time;
-                      if( 0 < time && time < 1000 ) {
+                      if( 0 < time && time < 150 ) {
                         this.Vue = true;
                       } else if ( isNaN(this.time) ){
                         this.time = -1000;

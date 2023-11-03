@@ -29,7 +29,7 @@ let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 struct CustomContainerUser {
   @State name: string = 'CameraColdStart';
   @State appInfoList: Array<AppInfoItem> = globalThis.appList;
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2300ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示完成测试，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2300ms则测试通过';
   @State toSP_daemon: string = 'SP_daemon -editor coldStartHM com.ohos.camera 相机 ohtest';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
