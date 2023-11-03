@@ -506,7 +506,7 @@ async function createToReleaseLoop(src, avPlayer, done) {
                     done();
                 }else{
                     avPlayer = idle(src, avPlayer)
-                    createToReleaseLoop(src, avPlayer, done)
+                    await createToReleaseLoop(src, avPlayer, done)
                     setSource(avPlayer, src);
                 }
                 break;
@@ -874,7 +874,7 @@ async function createToReleaseLoop2(src, avPlayer, done) {
                     done();
                 }else{
                     avPlayer = idle(src, avPlayer)
-                    createToReleaseLoop2(src, avPlayer, done)
+                    await createToReleaseLoop2(src, avPlayer, done)
                     setSource(avPlayer, src);
                 }
                 break;
