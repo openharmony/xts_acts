@@ -548,7 +548,7 @@ export default function stageContextPropertiesTest(abilityContext) {
                     }
                 });
             }, 500);
-        }, 2000);
+        }, 3000);
         })
 
         /*
@@ -592,7 +592,7 @@ export default function stageContextPropertiesTest(abilityContext) {
                 }
                 });
             }, 500);
-        }, 2000);
+        }, 3000);
         })
 
         function checkApplicationContextDir(applicationContext) {
