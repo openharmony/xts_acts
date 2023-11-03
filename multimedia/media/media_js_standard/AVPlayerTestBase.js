@@ -408,11 +408,12 @@ function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done) {
             case AV_PLAYER_STATE.INITIALIZED:
                 avPlayer.surfaceId = surfaceID;
                 console.info('playPauseLoopWithCallBack play state is INITIALIZED')
-            // step 1: initialized -> prepared -> play
                 preparePromise(avPlayer);
                 break;
-            case AV_PLAYER_STATE.PLAYING:
+            case AV_PLAYER_STATE.PREPARED:
+            // step 1: initialized -> prepared -> play
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
+                console.info('playPauseLoopWithCallBack play state is PREPARED')
                 avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
