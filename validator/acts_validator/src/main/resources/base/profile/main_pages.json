@@ -71,7 +71,6 @@
     "pages/Screen/VirtualScreen",
     "pages/Screen/ScreenShot",
     "pages/Screen/Brightness",
-    "pages/Screen/ScreenLock",
-    "pages/BundleManager/SetEnabled"
+    "pages/Screen/ScreenLock"
   ]
 }
