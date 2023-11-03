@@ -505,12 +505,13 @@ export default function pasteBoardSystemPasteBoardTest(){
                 try {
                     let boolean = systemPasteboard.isRemoteData()
                     expect(boolean == false).assertTrue()
+                    done()
                 } catch (err) {
                     console.error(TAG + "test isRemoteData err:" + err)
+                    expect(err.code == "401").assertTrue();
                 }
             })
             console.info(TAG + "SUB_PASTEBOARD_ISREMOTEDATA_0100 end")
-            done()
         })
 
         /**
@@ -522,6 +523,7 @@ export default function pasteBoardSystemPasteBoardTest(){
          * @tc.level     : Level 2
          */
         it('SUB_PASTEBOARD_ISREMOTEDATA_0200', 0, async function (done) {
+            console.info(TAG + "SUB_PASTEBOARD_ISREMOTEDATA_0200 start")
             let systemPasteboard = pasteboard.getSystemPasteboard()
             await systemPasteboard.clearData().then(async() => {
                 let dataText = 'hello';
@@ -530,13 +532,15 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let boolean = systemPasteboard.isRemoteData()
                         expect(boolean == false).assertTrue()
+                        done();
                     } catch (err) {
                         console.error(TAG + "test isRemoteData err:" + err)
+                        expect(err.code == "401").assertTrue();
                     }
                 })
             })
             console.info(TAG +"SUB_PASTEBOARD_ISREMOTEDATA_0200 end")
-            done();
+            
         })
 
         /**
@@ -548,6 +552,7 @@ export default function pasteBoardSystemPasteBoardTest(){
          * @tc.level     : Level 2
          */
         it('SUB_PASTEBOARD_HASDATATYPE_0100', 0, async function (done) {
+            console.info(TAG + "SUB_PASTEBOARD_HASDATATYPE_0100 start")
             let systemPasteboard = pasteboard.getSystemPasteboard()
             await systemPasteboard.clearData().then(async() => {
                 let dataText = 'hello';
@@ -556,13 +561,14 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN)
                         expect(boolean).assertTrue()
+                        done();
                     } catch (err) {
                         console.error(TAG +"test hasDataType err:"+ err)
+                        expect(err.code == "401").assertTrue();
                     }
                 })
             })
             console.info(TAG + "SUB_PASTEBOARD_HASDATATYPE_0100 end")
-            done();
         })
 
         /**
@@ -574,6 +580,7 @@ export default function pasteBoardSystemPasteBoardTest(){
          * @tc.level     : Level 2
          */
         it('SUB_PASTEBOARD_HASDATATYPE_0200', 0, async function (done) {
+            console.info(TAG + "SUB_PASTEBOARD_HASDATATYPE_0200 start")
             let systemPasteboard = pasteboard.getSystemPasteboard()
             await systemPasteboard.clearData().then(async() => {
                 let dataText = 'hello';
@@ -582,8 +589,10 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_PIXELMAP)
                         expect(boolean == false).assertTrue()
+                        done();
                     } catch (err) {
                         console.error(TAG +"test hasDataType err:"+ err)
+                        expect(err.code == "401").assertTrue();
                     }
                 })
             })
@@ -600,6 +609,7 @@ export default function pasteBoardSystemPasteBoardTest(){
          * @tc.level     : Level 2
          */
         it('SUB_PASTEBOARD_GETDATASOURCE_0100', 0, async function (done) {
+            console.info(TAG + "SUB_PASTEBOARD_GETDATASOURCE_0100 start")
             let systemPasteboard = pasteboard.getSystemPasteboard()
             await systemPasteboard.clearData().then(async() => {
                 let dataText = 'hello';
@@ -608,13 +618,14 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let string = systemPasteboard.getDataSource()
                         expect(string != null).assertTrue()
+                        done();
                     } catch (err) {
                         console.error(TAG + "test getDataSource err:" + err)
+                        expect(err.code == "401").assertTrue();
                     }
                 })
             })
             console.info(TAG + "SUB_PASTEBOARD_GETDATASOURCE_0100 end")
-            done();
         })
 
     });
