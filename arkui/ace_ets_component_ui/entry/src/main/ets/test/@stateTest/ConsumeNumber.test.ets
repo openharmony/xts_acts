@@ -42,7 +42,12 @@ export default function ConsumeNumber() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0930
+    * @tc.name  : ConsumeNumber_0100
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeNumber_0100', 0, async function (done) {
       console.info('ConsumeNumber_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function ConsumeNumber() {
       console.info('[ConsumeNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0940
+    * @tc.name  : ConsumeNumber_0200
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeNumber_0200', 0, async function (done) {
       console.info('ConsumeNumber_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function ConsumeNumber() {
       console.info('[ConsumeNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0950
+    * @tc.name  : ConsumeNumber_0300
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeNumber_0300', 0, async function (done) {
       console.info('ConsumeNumber_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function ConsumeNumber() {
       console.info('[ConsumeNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0960
+    * @tc.name  : ConsumeArray_0400
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeNumber_0400', 0, async function (done) {
       console.info('ConsumeNumber_0100 START');
       let driver = await Driver.create()
@@ -106,7 +126,12 @@ export default function ConsumeNumber() {
       console.info('[ConsumeNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0970
+    * @tc.name  : ConsumeArray_0500
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeNumber_0500', 0, async function (done) {
       console.info('ConsumeNumber_0100 START');
       let driver = await Driver.create()
