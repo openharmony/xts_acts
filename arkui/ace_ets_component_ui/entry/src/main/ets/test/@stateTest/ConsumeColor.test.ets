@@ -42,7 +42,12 @@ export default function ConsumeColor() {
       }
       done();
     });
-
+     /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0980
+    * @tc.name  : ConsumeColor_0100
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0100', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function ConsumeColor() {
       console.info('[ConsumeColor_0100] END');
       done();
     });
-
+     /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0990
+    * @tc.name  : ConsumeColor_0200
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0200', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function ConsumeColor() {
       console.info('[ConsumeColor_0100] END');
       done();
     });
-
+      /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1000
+    * @tc.name  : ConsumeColor_0300
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0300', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function ConsumeColor() {
       console.info('[ConsumeColor_0100] END');
       done();
     });
-
+     /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1010
+    * @tc.name  : ConsumeColor_0400
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0400', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
@@ -106,7 +126,12 @@ export default function ConsumeColor() {
       console.info('[ConsumeColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1020
+    * @tc.name  : ConsumeColor_0500
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0500', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
@@ -122,7 +147,12 @@ export default function ConsumeColor() {
       console.info('[ConsumeColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1030
+    * @tc.name  : ConsumeColor_0600
+    * @tc.desc  : To test that the Consume decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ConsumeColor_0600', 0, async function (done) {
       console.info('ConsumeColor_0100 START');
       let driver = await Driver.create()
