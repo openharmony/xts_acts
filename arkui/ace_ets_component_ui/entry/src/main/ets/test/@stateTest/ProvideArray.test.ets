@@ -42,7 +42,12 @@ export default function ProvideArray() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0380
+    * @tc.name  : ProvideArray_0100
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideArray_0100', 0, async function (done) {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function ProvideArray() {
       console.info('[ProvideArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0390
+    * @tc.name  : ProvideArray_0200
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideArray_0200', 0, async function (done) {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function ProvideArray() {
       console.info('[ProvideArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0400
+    * @tc.name  : ProvideArray_0300
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideArray_0300', 0, async function (done) {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function ProvideArray() {
       console.info('[ProvideArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0410
+    * @tc.name  : ProvideArray_0400
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideArray_0400', 0, async function (done) {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
