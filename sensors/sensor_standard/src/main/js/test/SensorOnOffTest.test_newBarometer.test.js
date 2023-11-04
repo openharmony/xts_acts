@@ -20,12 +20,28 @@ export default function SensorJsTest_sensor_53() {
 describe("SensorJsTest_sensor_53", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		} 		
 		expect(typeof (data.pressure)).assertEqual("number");
 		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
 		expect(typeof (data.pressure)).assertEqual("number");
 		expect(typeof (data.timestamp)).assertEqual("number");
     }
@@ -156,6 +172,14 @@ describe("SensorJsTest_sensor_53", function () {
         console.info('---------newBarometer_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newBarometer_SensorJsTest004  callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
 			expect(typeof (data.pressure)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
         }
@@ -237,7 +261,15 @@ describe("SensorJsTest_sensor_53", function () {
      */
     it("newBarometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
-            console.info('newBarometer_SensorJsTest007  on error');
+            console.info('newBarometer_SensorJsTest007 callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
 			expect(typeof (data.pressure)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
             done();
@@ -283,6 +315,14 @@ describe("SensorJsTest_sensor_53", function () {
     it("newBarometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newBarometer_SensorJsTest009 callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
 			expect(typeof (data.pressure)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
         }
@@ -341,11 +381,27 @@ describe("SensorJsTest_sensor_53", function () {
 					expect(typeof(data)).assertEqual("object");				
 					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest011 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					});
 					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest011 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					});
@@ -396,11 +452,27 @@ describe("SensorJsTest_sensor_53", function () {
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest013 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					}, {'interval': 100000000});
 					sensor.once(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest013 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					});
@@ -435,11 +507,27 @@ describe("SensorJsTest_sensor_53", function () {
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest014 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					}, {'interval': 100000000});
 					sensor.on(sensor.SensorId.BAROMETER, (data)=>{
 						console.info("newBarometer_SensorJsTest014 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.pressure)).assertEqual("number");
 						expect(typeof (data.timestamp)).assertEqual("number");
 					}, {'interval': 100000000});

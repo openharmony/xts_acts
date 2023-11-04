@@ -63,7 +63,7 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 	it("getSensorLists_SensorJsTest001",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        sensor.getSensorList().then((data) => {
+        sensor.getSensorList().then((data) => {	
 		for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest001 " + JSON.stringify(data[i]));
 			done();
@@ -80,7 +80,7 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 	it("getSensorLists_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-    sensor.getSensorList((error, data) => {
+    sensor.getSensorList((error, data) => {	
         if (error) {
             console.info('getSensorLists_SensorJsTest002 error');
             expect(false).assertTrue();
@@ -100,7 +100,6 @@ describe("SensorJsTest_sensor_35", function () {
      */
     it("getSensorLists_SensorJsTest003", 0, async function (done) {
         sensor.getSensorList(null).then(data => {
-            console.info("--getSensorLists_SensorJsTest003 callback in--" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest003 " + JSON.stringify(data[i]));
             }
@@ -120,7 +119,6 @@ describe("SensorJsTest_sensor_35", function () {
      */
 it("getSensorLists_SensorJsTest004", 0, async function (done) {
     sensor.getSensorList(errMessage).then(data => {
-        console.info("--getSensorLists_SensorJsTest004 callback in--" + data.length);
         for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest004 " + JSON.stringify(data[i]));
         }
@@ -204,7 +202,6 @@ it("getSensorLists_SensorJsTest005", 0, async function (done) {
      */
     it("getSensorLists_SensorJsTest008", 0, async function (done) {
         sensor.getSensorList(undefined).then((data) => {
-            console.info("--getSensorLists_SensorJsTest008 callback in--" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest008 " + JSON.stringify(data[i]));
             }
@@ -224,7 +221,6 @@ it("getSensorLists_SensorJsTest005", 0, async function (done) {
      */
     it("getSensorLists_SensorJsTest009", 0, async function (done) {
         sensor.getSensorList(null).then((data) => {
-            console.info("----------getSensorLists_SensorJsTest009 callback in-----" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest009 " + JSON.stringify(data[i]));
             }

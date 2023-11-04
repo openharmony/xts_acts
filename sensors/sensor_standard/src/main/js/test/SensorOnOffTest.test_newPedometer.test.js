@@ -55,11 +55,27 @@ async function grantPerm(){
 describe("SensorJsTest_sensor_56", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
 		expect(typeof (data.steps)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback2 accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback2 invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
 		expect(typeof (data.steps)).assertEqual("number");
     }
 	
@@ -458,6 +474,14 @@ describe("SensorJsTest_sensor_56", function () {
                     try {       
 						function onSensorCallback(data) {
 							console.info('newPedometer_SensorJsTest011  on error');
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof (data.steps)).assertEqual("number");
 						}
 						try {
@@ -636,11 +660,27 @@ describe("SensorJsTest_sensor_56", function () {
                     try {
 						sensor.on(sensor.SensorId.PEDOMETER, (data)=>{
 							console.info("newPedometer_SensorJsTest016 callback: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.steps)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						}, {'interval': 100000000});
 						sensor.on(sensor.SensorId.PEDOMETER, (data)=>{
 							console.info("newPedometer_SensorJsTest016 callback2: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.steps)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						});
@@ -680,6 +720,14 @@ describe("SensorJsTest_sensor_56", function () {
                     try {
 						sensor.on(sensor.SensorId.PEDOMETER, (data)=>{
 							console.info("newPedometer_SensorJsTest017 callback: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.steps)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						}, {'interval': -100000000});					
