@@ -17,8 +17,8 @@ ohos_js_hap_suite("audio_renderer_ets_hap") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":audio_renderer_ets_assets",
-    ":audio_renderer_resources",
     ":audio_renderer_ets_test_assets",
+    ":audio_renderer_resources",
   ]
   ets2abc = true
 
