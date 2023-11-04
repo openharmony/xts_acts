@@ -41,7 +41,12 @@ export default function ProvideColor() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0290
+    * @tc.name  : ProvideColor_0100
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0100', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
@@ -57,7 +62,12 @@ export default function ProvideColor() {
       console.info('[ProvideColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0300
+    * @tc.name  : ProvideColor_0200
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0200', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
@@ -73,7 +83,12 @@ export default function ProvideColor() {
       console.info('[ProvideColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0310
+    * @tc.name  : ProvideColor_0300
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0300', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
@@ -89,7 +104,12 @@ export default function ProvideColor() {
       console.info('[ProvideColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0320
+    * @tc.name  : ProvideColor_0400
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0400', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
@@ -105,7 +125,12 @@ export default function ProvideColor() {
       console.info('[ProvideColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0330
+    * @tc.name  : ProvideColor_0500
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0500', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
@@ -121,7 +146,12 @@ export default function ProvideColor() {
       console.info('[ProvideColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0340
+    * @tc.name  : ProvideColor_0600
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideColor_0600', 0, async function (done) {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
