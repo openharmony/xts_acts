@@ -42,7 +42,12 @@ export default function ProvideHight() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0350
+    * @tc.name  : ProvideHight_0100
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideHight_0100', 0, async function (done) {
       console.info('ProvideHight_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function ProvideHight() {
       console.info('[ProvideHight_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0360
+    * @tc.name  : ProvideHight_0200
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideHight_0200', 0, async function (done) {
       console.info('ProvideHight_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function ProvideHight() {
       console.info('[ProvideHight_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0370
+    * @tc.name  : ProvideHight_0300
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideHight_0300', 0, async function (done) {
       console.info('ProvideHight_0100 START');
       let driver = await Driver.create()
