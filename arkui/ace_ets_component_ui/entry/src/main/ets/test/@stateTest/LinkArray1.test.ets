@@ -43,7 +43,12 @@ export default function LinkArray1() {
     });
 
 
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0880
+    * @tc.name  : LinkArray_0500
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0500', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -59,7 +64,12 @@ export default function LinkArray1() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0890
+    * @tc.name  : LinkArray_0600
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0600', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -75,7 +85,12 @@ export default function LinkArray1() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0900
+    * @tc.name  : LinkArray_0700
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0700', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -91,7 +106,12 @@ export default function LinkArray1() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0910
+    * @tc.name  : LinkArray_0800
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0800', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -107,7 +127,12 @@ export default function LinkArray1() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0920
+    * @tc.name  : StateArray_0900
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateArray_0900', 0, async function (done) {
       console.info('StateArray_0100 START');
       let driver = await Driver.create()
