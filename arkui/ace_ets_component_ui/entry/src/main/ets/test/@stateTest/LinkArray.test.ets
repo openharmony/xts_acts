@@ -42,7 +42,12 @@ export default function LinkArray() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0840
+    * @tc.name  : LinkArray_0100
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0100', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function LinkArray() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0850
+    * @tc.name  : LinkArray_0200
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0200', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function LinkArray() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0860
+    * @tc.name  : LinkArray_0300
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0300', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function LinkArray() {
       console.info('[LinkArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0870
+    * @tc.name  : LinkArray_0400
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkArray_0400', 0, async function (done) {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
