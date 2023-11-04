@@ -44,7 +44,12 @@ export default function PropArray1() {
     });
 
 
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0650
+    * @tc.name  : PropArray_0500
+    * @tc.desc  : To test that the Prop decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('PropArray_0500', 0, async function (done) {
       console.info('PropArray_0100 START');
       let driver = await Driver.create()
@@ -60,7 +65,12 @@ export default function PropArray1() {
       console.info('[PropArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0660
+    * @tc.name  : PropArray_0600
+    * @tc.desc  : To test that the Prop decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('PropArray_0600', 0, async function (done) {
       console.info('PropArray_0100 START');
       let driver = await Driver.create()
@@ -76,7 +86,12 @@ export default function PropArray1() {
       console.info('[PropArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0670
+    * @tc.name  : PropArray_0700
+    * @tc.desc  : To test that the Prop decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('PropArray_0700', 0, async function (done) {
       console.info('PropArray_0100 START');
       let driver = await Driver.create()
@@ -92,7 +107,12 @@ export default function PropArray1() {
       console.info('[PropArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0680
+    * @tc.name  : PropArray_0800
+    * @tc.desc  : To test that the Prop decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('PropArray_0800', 0, async function (done) {
       console.info('PropArray_0100 START');
       let driver = await Driver.create()
@@ -108,7 +128,12 @@ export default function PropArray1() {
       console.info('[PropArray_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0690
+    * @tc.name  : PropArray_0900
+    * @tc.desc  : To test that the Prop decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateArray_0900', 0, async function (done) {
       console.info('StateArray_0100 START');
       let driver = await Driver.create()
