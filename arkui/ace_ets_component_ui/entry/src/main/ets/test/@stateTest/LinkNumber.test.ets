@@ -42,7 +42,12 @@ export default function LinkNumber() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0700
+    * @tc.name  : LinkNumber_0100
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkNumber_0100', 0, async function (done) {
       console.info('LinkNumber_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function LinkNumber() {
       console.info('[LinkNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0710
+    * @tc.name  : LinkNumber_0200
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkNumber_0200', 0, async function (done) {
       console.info('LinkNumber_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function LinkNumber() {
       console.info('[LinkNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0720
+    * @tc.name  : LinkNumber_0300
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkNumber_0300', 0, async function (done) {
       console.info('LinkNumber_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function LinkNumber() {
       console.info('[LinkNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0730
+    * @tc.name  : LinkNumber_0400
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkNumber_0400', 0, async function (done) {
       console.info('LinkNumber_0100 START');
       let driver = await Driver.create()
@@ -106,7 +126,12 @@ export default function LinkNumber() {
       console.info('[LinkNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0740
+    * @tc.name  : LinkNumber_0500
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkNumber_0500', 0, async function (done) {
       console.info('LinkNumber_0100 START');
       let driver = await Driver.create()
