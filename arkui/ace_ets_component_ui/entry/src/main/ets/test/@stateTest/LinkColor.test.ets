@@ -42,7 +42,12 @@ export default function LinkColor() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0750
+    * @tc.name  : LinkColor_0100
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0100', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function LinkColor() {
       console.info('[LinkColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0760
+    * @tc.name  : LinkColor_0200
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0200', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function LinkColor() {
       console.info('[LinkColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0770
+    * @tc.name  : LinkColor_0300
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0300', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function LinkColor() {
       console.info('[LinkColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0780
+    * @tc.name  : LinkColor_0400
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0400', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
@@ -106,7 +126,12 @@ export default function LinkColor() {
       console.info('[LinkColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0790
+    * @tc.name  : LinkColor_0500
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0500', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
@@ -122,7 +147,12 @@ export default function LinkColor() {
       console.info('[LinkColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0800
+    * @tc.name  : LinkColor_0600
+    * @tc.desc  : To test that the Link decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('LinkColor_0600', 0, async function (done) {
       console.info('LinkColor_0100 START');
       let driver = await Driver.create()
