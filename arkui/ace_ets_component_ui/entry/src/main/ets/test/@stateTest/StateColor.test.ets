@@ -41,7 +41,12 @@ export default function StateColor() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0060
+    * @tc.name  : StateColor_0100
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0100', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
@@ -57,7 +62,12 @@ export default function StateColor() {
       console.info('[StateColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0070
+    * @tc.name  : StateColor_0200
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0200', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
@@ -73,7 +83,12 @@ export default function StateColor() {
       console.info('[StateColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0080
+    * @tc.name  : StateColor_0300
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0300', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
@@ -89,7 +104,12 @@ export default function StateColor() {
       console.info('[StateColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0090
+    * @tc.name  : StateColor_0400
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0400', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
@@ -105,7 +125,12 @@ export default function StateColor() {
       console.info('[StateColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0100
+    * @tc.name  : StateColor_0500
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0500', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
@@ -121,7 +146,12 @@ export default function StateColor() {
       console.info('[StateColor_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0110
+    * @tc.name  : StateColor_0600
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateColor_0600', 0, async function (done) {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
