@@ -41,7 +41,12 @@ export default function StateHight() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0120
+    * @tc.name  : StateHight_0100
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateHight_0100', 0, async function (done) {
       console.info('StateHight_0100 START');
       let driver = await Driver.create()
@@ -57,7 +62,12 @@ export default function StateHight() {
       console.info('[StateHight_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0130
+    * @tc.name  : StateHight_0200
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateHight_0200', 0, async function (done) {
       console.info('StateHight_0100 START');
       let driver = await Driver.create()
@@ -73,7 +83,12 @@ export default function StateHight() {
       console.info('[StateHight_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0140
+    * @tc.name  : StateHight_0300
+    * @tc.desc  : To test that the State decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('StateHight_0300', 0, async function (done) {
       console.info('StateHight_0100 START');
       let driver = await Driver.create()
