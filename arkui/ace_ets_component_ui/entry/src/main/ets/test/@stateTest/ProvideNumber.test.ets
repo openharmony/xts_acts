@@ -42,7 +42,12 @@ export default function ProvideNumber() {
       }
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0240
+    * @tc.name  : ProvideNumber_0100
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideNumber_0100', 0, async function (done) {
       console.info('ProvideNumber_0100 START');
       let driver = await Driver.create()
@@ -58,7 +63,12 @@ export default function ProvideNumber() {
       console.info('[ProvideNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0250
+    * @tc.name  : ProvideNumber_0200
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideNumber_0200', 0, async function (done) {
       console.info('ProvideNumber_0100 START');
       let driver = await Driver.create()
@@ -74,7 +84,12 @@ export default function ProvideNumber() {
       console.info('[ProvideNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0260
+    * @tc.name  : ProvideNumber_0300
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideNumber_0300', 0, async function (done) {
       console.info('ProvideNumber_0100 START');
       let driver = await Driver.create()
@@ -90,7 +105,12 @@ export default function ProvideNumber() {
       console.info('[ProvideNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0270
+    * @tc.name  : ProvideNumber_0400
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideNumber_0400', 0, async function (done) {
       console.info('ProvideNumber_0100 START');
       let driver = await Driver.create()
@@ -106,7 +126,12 @@ export default function ProvideNumber() {
       console.info('[ProvideNumber_0100] END');
       done();
     });
-
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0280
+    * @tc.name  : ProvideNumber_0500
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
     it('ProvideNumber_0500', 0, async function (done) {
       console.info('ProvideNumber_0100 START');
       let driver = await Driver.create()
