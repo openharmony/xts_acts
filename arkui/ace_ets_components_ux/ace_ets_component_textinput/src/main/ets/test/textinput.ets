@@ -202,7 +202,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_CaretPosition_0800 component obj.$attrs.caretPosition is: " +
           JSON.stringify(obj.$attrs.caretPosition));
-          expect(obj.$attrs.caretPosition).assertEqual("0");
+          expect(obj.$attrs.caretPosition).assertEqual("18");
           console.info('ArkUX_Stage_TextInput_CaretPosition_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -226,7 +226,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_CaretPosition_0900 component obj.$attrs.caretPosition is: " +
           JSON.stringify(obj.$attrs.caretPosition));
-          expect(obj.$attrs.caretPosition).assertEqual("0");
+          expect(obj.$attrs.caretPosition).assertEqual("18");
           console.info('ArkUX_Stage_TextInput_CaretPosition_0900 END ');
         } catch (err) {
           expect().assertFail();
@@ -250,7 +250,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_CaretPosition_1000 component obj.$attrs.caretPosition is: " +
           JSON.stringify(obj.$attrs.caretPosition));
-          expect(obj.$attrs.caretPosition).assertEqual("0");
+          expect(obj.$attrs.caretPosition).assertEqual("18");
           console.info('ArkUX_Stage_TextInput_CaretPosition_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -978,7 +978,7 @@ export default function textInputTest() {
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
           expect(obj.$attrs.selectedBackgroundColor).assertEqual(obj.$attrs.backgroundColor);
-          expect(obj.$attrs.caretPosition).assertEqual("0");
+          expect(obj.$attrs.caretPosition).assertEqual("18");
           expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_selectedColor_1300 END ');
         } catch (err) {
