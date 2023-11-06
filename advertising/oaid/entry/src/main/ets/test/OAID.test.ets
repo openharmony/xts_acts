@@ -15,7 +15,6 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
-// @ts-expect-error SDK待上库
 import oaid from '@ohos.identifier.oaid';
 import { BY, UiDriver } from '@ohos.UiTest';
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
