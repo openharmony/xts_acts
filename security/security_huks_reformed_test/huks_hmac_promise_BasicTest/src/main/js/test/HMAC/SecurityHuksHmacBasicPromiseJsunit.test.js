@@ -314,7 +314,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmacSM3102", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_SM3_102", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -328,7 +328,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmacSM3103", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_SM3_103", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -342,7 +342,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmacSM3104", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_SM3_104", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
       let HuksOptions = {
         properties: new Array(
