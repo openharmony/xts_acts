@@ -1067,12 +1067,13 @@ export default function relationalStoreCloudSyncTest() {
             rdbStore.on("autoSyncProgress", function (detail) {
                 console.log(TAG + `Progress:` + JSON.stringify(detail));
             });
-            expect(rdbStore).assertEqual(rdbStore);
+            expect(detail).notEquel(null);
             done();
             console.log(TAG + "on autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "on autoSyncProgress" + err);
             expect().assertFail();
+            done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0001 end *************");
     })
@@ -1088,12 +1089,13 @@ export default function relationalStoreCloudSyncTest() {
             rdbStore.off("autoSyncProgress", function (detail) {
                 console.log(TAG + `Progress:` + JSON.stringify(detail));
             });
-            expect(rdbStore).assertEqual(rdbStore);
+            expect(detail).notEquel(null);
             done();
             console.log(TAG + "off autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "off autoSyncProgress" + err);
             expect().assertFail();
+            done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0002 end *************");
     })
@@ -1107,12 +1109,12 @@ export default function relationalStoreCloudSyncTest() {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0003 start *************");
         try {
             rdbStore.off("autoSyncProgress", null);
-            expect(rdbStore).assertEqual(rdbStore);
             done();
             console.log(TAG + "off autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "off autoSyncProgress" + err);
             expect().assertFail();
+            done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0003 end *************");
     })
@@ -1126,12 +1128,12 @@ export default function relationalStoreCloudSyncTest() {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0004 start *************");
         try {
             rdbStore.off("autoSyncProgress", undefined);
-            expect(rdbStore).assertEqual(rdbStore);
             done();
             console.log(TAG + "off autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "off autoSyncProgress" + err);
             expect().assertFail();
+            done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0004 end *************");
     })
@@ -1145,12 +1147,12 @@ export default function relationalStoreCloudSyncTest() {
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 start *************");
         try {
             rdbStore.off("autoSyncProgress");
-            expect(rdbStore).assertEqual(rdbStore);
             done();
             console.log(TAG + "off autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "off autoSyncProgress" + err);
             expect().assertFail();
+            done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 end *************");
     })
