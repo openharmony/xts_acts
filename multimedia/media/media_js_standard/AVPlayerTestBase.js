@@ -1141,8 +1141,8 @@ async function playTimeCallback(avPlayer, done) {
                 avPlayer.play()
                 break;
             case AV_PLAYER_STATE.PLAYING:
-                console.info('playTimeCallback play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+                console.info('playTimeCallback play state is PLAYING')
                 end = Date.now();
                 console.info(`playTimeCallback end time is : ${end}`)
                 execution = parseInt(end - start)
@@ -1159,7 +1159,10 @@ async function playTimeCallback(avPlayer, done) {
                         done();
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                 }else{
-                    avPlayer.pause()
+            // step 3: playing -> pause loop
+                    setTimeout( () => {
+                        avPlayer.pause()
+                    }, 200);
                 }
                 break;
             case AV_PLAYER_STATE.PAUSED:
@@ -1167,7 +1170,6 @@ async function playTimeCallback(avPlayer, done) {
                 expect(avPlayer.state).assertEqual('paused');
                 start = Date.now();
                 console.info(`playTimeCallback start time is : ${start}`)
-            // step 3: pause -> playing loop
                 avPlayer.play()
                 break;
             default:
@@ -1261,9 +1263,11 @@ async function pauseTimeCallback(avPlayer, done) {
             case AV_PLAYER_STATE.PLAYING:
                 console.info('pauseTimeCallback play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
-                start = Date.now();
-                console.info(`pauseTimeCallback start time is : ${start}`)
-                avPlayer.pause();
+                setTimeout( () => {
+                    start = Date.now();
+                    console.info(`pauseTimeCallback start time is : ${start}`)
+                    avPlayer.pause()
+                }, 200);
                 break;
             case AV_PLAYER_STATE.PAUSED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PAUSED);
@@ -1811,7 +1815,9 @@ function getTrackDescriptionTimeCallback(avPlayer, done) {
                     }).catch((error) => {
                         console.info(`video catchCallback, error:${error}`);
                     });
-                    avPlayer.pause()
+                    setTimeout( () => {
+                        avPlayer.pause()
+                    }, 200);
                 }
                 break;
             case AV_PLAYER_STATE.PAUSED:
@@ -1967,7 +1973,7 @@ export async function setBitrateTimeWithoutCallback(src, avPlayer, done) {
 
 export async function setBitrateTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    await playTimeCallback(avPlayer, done)
+    await setBitrateTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -2077,7 +2083,7 @@ export async function setVolumeTimeWithoutCallback(src, avPlayer, done) {
 
 export async function setVolumeTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    await playTimeCallback(avPlayer, done)
+    await setVolumeTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
