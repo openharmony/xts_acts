@@ -728,7 +728,7 @@ struct IndexPage {
      * Screen
      */
     serializer.startElement("testsuite");
-    serializer.setAttributes("name", "ActsSensorTest");
+    serializer.setAttributes("name", "ActsScreenTest");
     serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
@@ -742,7 +742,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title8[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "ActsSensorTest");
+      serializer.setAttributes("classname", "ActsScreenTest");
       serializer.setAttributes("result", String(result8[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
