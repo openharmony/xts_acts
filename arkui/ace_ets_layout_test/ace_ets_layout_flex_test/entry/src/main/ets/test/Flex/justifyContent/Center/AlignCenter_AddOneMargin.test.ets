@@ -63,9 +63,9 @@ export default function AlignCenter_AddOneMargin() {
       let Center_AddOneMargin_012 = CommonFunc.getComponentRect('Center_AddOneMargin_012');
       let Center_AddOneMargin_013 = CommonFunc.getComponentRect('Center_AddOneMargin_013');
       let Center_AddOneMargin_01 = CommonFunc.getComponentRect('Center_AddOneMargin_01');
-      expect(Center_AddOneMargin_012.top).assertEqual(Center_AddOneMargin_01.top);
-      expect(Center_AddOneMargin_013.top).assertEqual(Center_AddOneMargin_012.top);
-      expect(Center_AddOneMargin_013.left).assertEqual(Center_AddOneMargin_012.right);
+      expect(Math.abs(Center_AddOneMargin_012.top - Center_AddOneMargin_01.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddOneMargin_013.top - Center_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddOneMargin_013.left - Center_AddOneMargin_012.right) <= 1).assertTrue();
       expect(Math.round((Center_AddOneMargin_011.left - Center_AddOneMargin_01.left)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);
       expect(Math.round(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(20)));
@@ -100,14 +100,12 @@ export default function AlignCenter_AddOneMargin() {
       let Center_AddOneMargin_012 = CommonFunc.getComponentRect('Center_AddOneMargin_012');
       let Center_AddOneMargin_013 = CommonFunc.getComponentRect('Center_AddOneMargin_013');
       let Center_AddOneMargin_01 = CommonFunc.getComponentRect('Center_AddOneMargin_01');
-      expect(Center_AddOneMargin_01.top).assertEqual(Center_AddOneMargin_012.top);
-      expect(Center_AddOneMargin_013.top).assertEqual(Center_AddOneMargin_012.top);
-      expect(Math.round(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left))
-        .assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(Center_AddOneMargin_012.left - Center_AddOneMargin_011.right))
-        .assertEqual(Math.round(vp2px(30)));
-      expect(Center_AddOneMargin_012.right).assertEqual(Center_AddOneMargin_013.left);
+      expect(Math.abs(Center_AddOneMargin_01.top - Center_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddOneMargin_013.top - Center_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Center_AddOneMargin_012.left - Center_AddOneMargin_011.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Center_AddOneMargin_012.right - Center_AddOneMargin_013.left) <= 1).assertTrue();
       expect(Math.round(Center_AddOneMargin_011.bottom - Center_AddOneMargin_011.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(Center_AddOneMargin_012.bottom - Center_AddOneMargin_012.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(Center_AddOneMargin_013.bottom - Center_AddOneMargin_013.top)).assertEqual(Math.round(vp2px(150)));

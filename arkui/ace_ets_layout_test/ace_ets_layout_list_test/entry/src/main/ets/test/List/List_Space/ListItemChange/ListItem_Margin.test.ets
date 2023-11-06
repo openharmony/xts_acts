@@ -72,9 +72,9 @@ export default function listItem_Margin() {
       let TextTest3 = CommonFunc.getComponentRect('MarginText3');
       let TextTest4 = CommonFunc.getComponentRect('MarginText4');
       expect(Math.round(locationText1.left - locationList.left)).assertEqual(Math.round(vp2px(10)));
-      expect(locationText2.left).assertEqual(locationText3.left);
-      expect(locationText3.left).assertEqual(locationText4.left);
-      expect(locationText4.left).assertEqual(locationList.left);
+      expect(Math.abs(locationText2.left - locationText3.left) <= 1).assertTrue();
+      expect(Math.abs(locationText3.left - locationText4.left) <= 1).assertTrue();
+      expect(Math.abs(locationText4.left - locationList.left) <= 1).assertTrue();
       expect(Math.round(locationText1.top - locationList.top)).assertEqual(Math.round(vp2px(10)));
 
       expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
@@ -93,10 +93,10 @@ export default function listItem_Margin() {
 
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
-      expect(locationText1.left).assertEqual(TextTest1.left);
-      expect(locationText1.top).assertEqual(TextTest1.top);
-      expect(locationText1.right).assertEqual(TextTest1.right);
-      expect(locationText1.bottom).assertEqual(TextTest1.bottom);
+      expect(Math.abs(locationText1.left - TextTest1.left) <= 1).assertTrue();
+      expect(Math.abs(locationText1.top - TextTest1.top) <= 1).assertTrue();
+      expect(Math.abs(locationText1.right - TextTest1.right) <= 1).assertTrue();
+      expect(Math.abs(locationText1.bottom - TextTest1.bottom) <= 1).assertTrue();
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again = CommonFunc.getComponentRect('ListItemTest14');

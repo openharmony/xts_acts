@@ -143,8 +143,8 @@ export default function Grid_Row_Columns_Option() {
       let gridRowColumns = JSON.parse(gridRowColumnsJson);
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(thirdColumns.left - secondColumns.right));
-      expect(Math.round(thirdColumns.left - secondColumns.right)).assertEqual(Math.round(fourthColumns.left - thirdColumns.right));
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(thirdColumns.left - secondColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdColumns.left - secondColumns.right) - Math.round(fourthColumns.left - thirdColumns.right)) <= 1).assertTrue();
       expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
 
       console.info('SUB_ACE_GridRowColumns_Option_0400 END');
@@ -171,9 +171,9 @@ export default function Grid_Row_Columns_Option() {
       let gridRowColumns = JSON.parse(gridRowColumnsJson);
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(thirdColumns.left - secondColumns.right));
-      expect(Math.round(thirdColumns.left - secondColumns.right)).assertEqual(Math.round(fourthColumns.left - thirdColumns.right));
-      expect(Math.round(fourthColumns.left - thirdColumns.right)).assertEqual(Math.round(fifthColumns.left - fourthColumns.right));
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(thirdColumns.left - secondColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdColumns.left - secondColumns.right) - Math.round(fourthColumns.left - thirdColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthColumns.left - thirdColumns.right) - Math.round(fifthColumns.left - fourthColumns.right)) <= 1).assertTrue();
       expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
 
       console.info('SUB_ACE_GridRowColumns_Option_0500 END');

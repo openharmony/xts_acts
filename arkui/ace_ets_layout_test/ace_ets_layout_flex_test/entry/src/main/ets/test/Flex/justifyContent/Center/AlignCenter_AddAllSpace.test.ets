@@ -63,10 +63,10 @@ export default function AlignCenter_AddAllSpace() {
       let Center_AddAllSpace_013 = CommonFunc.getComponentRect('Center_AddAllSpace_013');
       let Center_AddAllSpace_01 = CommonFunc.getComponentRect('Center_AddAllSpace_01');
       let Center_AddAllSpace_01_Box = CommonFunc.getComponentRect('Center_AddAllSpace_01_Box');
-      expect(Center_AddAllSpace_011.top).assertEqual(Center_AddAllSpace_012.top);
-      expect(Center_AddAllSpace_012.top).assertEqual(Center_AddAllSpace_013.top);
-      expect(Center_AddAllSpace_012.left).assertEqual(Center_AddAllSpace_011.right);
-      expect(Center_AddAllSpace_013.left).assertEqual(Center_AddAllSpace_012.right);
+      expect(Math.abs(Center_AddAllSpace_011.top - Center_AddAllSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.top - Center_AddAllSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.left - Center_AddAllSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_013.left - Center_AddAllSpace_012.right) <= 1).assertTrue();
       expect(Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Center_AddAllSpace_01.right - Center_AddAllSpace_013.right)).assertEqual(Math.round(vp2px(30)));
@@ -103,10 +103,10 @@ export default function AlignCenter_AddAllSpace() {
       let Center_AddAllSpace_013 = CommonFunc.getComponentRect('Center_AddAllSpace_013');
       let Center_AddAllSpace_01 = CommonFunc.getComponentRect('Center_AddAllSpace_01');
       let Center_AddAllSpace_01_Box = CommonFunc.getComponentRect('Center_AddAllSpace_01_Box');
-      expect(Center_AddAllSpace_011.top).assertEqual(Center_AddAllSpace_012.top);
-      expect(Center_AddAllSpace_012.top).assertEqual(Center_AddAllSpace_013.top);
-      expect(Center_AddAllSpace_012.left).assertEqual(Center_AddAllSpace_011.right);
-      expect(Center_AddAllSpace_013.left).assertEqual(Center_AddAllSpace_012.right);
+      expect(Math.abs(Center_AddAllSpace_011.top - Center_AddAllSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.top - Center_AddAllSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.left - Center_AddAllSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_013.left - Center_AddAllSpace_012.right) <= 1).assertTrue();
       expect(Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round((Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);

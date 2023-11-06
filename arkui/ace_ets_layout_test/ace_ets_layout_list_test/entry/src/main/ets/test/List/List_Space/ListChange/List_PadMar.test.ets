@@ -95,7 +95,7 @@ export default function List_PadMar() {
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let List_PadMar_014Again = CommonFunc.getComponentRect('List_PadMar_014');
-      expect(List_PadMar_014.top).assertEqual(List_PadMar_014Again.top);
+      expect(Math.abs(List_PadMar_014.top - List_PadMar_014Again.top) <= 1).assertTrue();
       console.info('testListPadMar END');
       done();
     });

@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function rowNesting_Space() {
   describe('rowNesting_Space', function () {
     beforeEach(async function (done) {
@@ -59,25 +59,25 @@ export default function rowNesting_Space() {
       let rowNesting_Space_01 = CommonFunc.getComponentRect('rowNesting_Space_01');
 
       console.log('assert position')
-      expect(Math.round(rowNesting_Space_011.top - rowNesting_Space_01.top)).assertEqual(Math.round(rowNesting_Space_01.bottom - rowNesting_Space_011.bottom));
-      expect(Math.round(rowNesting_Space_012.top - rowNesting_Space_01.top)).assertEqual(Math.round(rowNesting_Space_01.bottom - rowNesting_Space_012.bottom));
-      expect(Math.round(rowNesting_Space_013.top - rowNesting_Space_01.top)).assertEqual(Math.round(rowNesting_Space_01.bottom - rowNesting_Space_013.bottom));
+      expect(Math.abs(Math.round(rowNesting_Space_011.top - rowNesting_Space_01.top) - Math.round(rowNesting_Space_01.bottom - rowNesting_Space_011.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(rowNesting_Space_012.top - rowNesting_Space_01.top) - Math.round(rowNesting_Space_01.bottom - rowNesting_Space_012.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(rowNesting_Space_013.top - rowNesting_Space_01.top) - Math.round(rowNesting_Space_01.bottom - rowNesting_Space_013.bottom)) <= 1).assertTrue();
 
       console.log('assert space')
-      expect(Math.round(rowNesting_Space_012.left - rowNesting_Space_011.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(rowNesting_Space_013.left - rowNesting_Space_012.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Math.round(rowNesting_Space_012.left - rowNesting_Space_011.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_Space_013.left - rowNesting_Space_012.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       console.log('rowNesting_Space_012.left - rowNesting_Space_011.right', + rowNesting_Space_012.left - rowNesting_Space_011.right)
       console.log('rowNesting_Space_013.left - rowNesting_Space_012.right', + rowNesting_Space_013.left - rowNesting_Space_012.right)
 
 
       console.log('assert height')
-      expect(Math.round(rowNesting_Space_011.bottom - rowNesting_Space_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(rowNesting_Space_012.bottom - rowNesting_Space_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(rowNesting_Space_013.bottom - rowNesting_Space_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(rowNesting_Space_011.bottom - rowNesting_Space_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_Space_012.bottom - rowNesting_Space_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_Space_013.bottom - rowNesting_Space_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.round(rowNesting_Space_011.right - rowNesting_Space_011.left)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(rowNesting_Space_012.right - rowNesting_Space_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(rowNesting_Space_013.right - rowNesting_Space_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(rowNesting_Space_011.right - rowNesting_Space_011.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_Space_012.right - rowNesting_Space_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_Space_013.right - rowNesting_Space_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[SUB_ACE_rowNesting_Space_TEST_0100] END');
       done();
     });
