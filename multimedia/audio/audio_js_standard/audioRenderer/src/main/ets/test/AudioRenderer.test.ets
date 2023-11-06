@@ -10240,7 +10240,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1800', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -10285,7 +10285,7 @@ export default function audioRendererTest() {
         });
       }
       catch (error) {
-        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300 : error = " + error);
+        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1800 : error = " + error);
         expect(false).assertTrue();
       }
       await sleep(2000);
@@ -10547,7 +10547,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2300', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -10590,7 +10590,7 @@ export default function audioRendererTest() {
         });
       }
       catch (error) {
-        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0400 : error = " + error);
+        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2300 : error = " + error);
         expect(false).assertTrue();
       }
       await sleep(2000);
