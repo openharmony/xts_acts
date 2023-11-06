@@ -996,15 +996,15 @@ export default function relationalStoreCloudSyncTest() {
             console.log(TAG + `Progress:` + JSON.stringify(detail));
             done();
         }
-        let predicates = await new relationalStore.RdbPredicates("cloud_text")
+        let predicates = new relationalStore.RdbPredicates("cloud_text")
         predicates.in("num", ["1","2"]);
         try {
             await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, Progress)
         } catch (err) {
             console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
-            expect("202").assertEqual(err.code)
+            expect("202").assertEqual(err.code);
+            done();
         }
-        done();
         console.log(TAG + "************* testRdbCloudSyncFirst0001 end *************");
         })
 
@@ -1020,7 +1020,7 @@ export default function relationalStoreCloudSyncTest() {
                 function Progress(detail) {
                     console.log(TAG + `Progress:` + JSON.stringify(detail));
                 }
-                let predicates = await new relationalStore.RdbPredicates("cloud_text")
+                let predicates = new relationalStore.RdbPredicates("cloud_text")
                 predicates.in("num", ["1","2"]);
                 rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, predicates, Progress, () => {
                     expect(false).assertTrue()
@@ -1028,8 +1028,8 @@ export default function relationalStoreCloudSyncTest() {
             } catch (err) {
                 console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
                 expect("202").assertEqual(err.code)
+                done();
             }
-            done();
             console.log(TAG + "************* testRdbCloudSyncFirst0002 end *************");
         })
 
@@ -1051,8 +1051,8 @@ export default function relationalStoreCloudSyncTest() {
             } catch (err) {
                 console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
                 expect('401').assertEqual(err.code);
+                done();
             }
-            done();
             console.log(TAG + "************* testRdbCloudSyncFirst0003 end *************");
         })
 
