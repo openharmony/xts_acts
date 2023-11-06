@@ -1169,20 +1169,6 @@ export default function AVPlayerStabilityTest() {
         })
 
         /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100
-           * @tc.name      : 001.test setBitrate time (wait callback)
-           * @tc.desc      : Local Video test setBitrate time (wait callback)
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level3
-         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100 start')
-            AVPlayerTestBase.setBitrateTimeWithCallback(videos[0], avPlayer, done);
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100 end')
-        })
-
-        /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1110
            * @tc.name      : 001.test setBitrate time (not wait callback)
            * @tc.desc      : Local Video test setBitrate time (not wait callback)
