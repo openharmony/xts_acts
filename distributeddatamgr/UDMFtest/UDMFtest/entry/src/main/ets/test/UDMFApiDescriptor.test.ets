@@ -394,7 +394,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.typeId).assertEqual("general.java-script");
       expect(typeObj.belongingToTypes[0]).assertEqual("general.source-code");
       expect(typeObj.description).assertEqual("");
-      expect(typeObj.referenceURL).assertEqual("");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1500 end");
     })
