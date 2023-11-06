@@ -29,8 +29,8 @@ config("config") {
 
 ohos_shared_library("entry") {
   sources = [
-    "./camera_manager.cpp"
-    "./main.cpp",
+    "./camera_manager.cpp",
+    "./main.cpp"
   ]
   include_dirs = [
     "$MEDIA_ROOT_DIR/interfaces/kits/native/include/camera",
