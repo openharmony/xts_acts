@@ -34,7 +34,7 @@ struct Index {
     selectedFontWeight: FontWeight.Bolder,
     backgroundColor: Color.Grey,
     selectedBackgroundColor: Color.Blue,
-    textMargin: '2vp',
+    textPadding: '2vp',
   })
   @State singleIconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -69,7 +69,7 @@ struct Index {
     ],
     multiply: false,
     imageSize: { width: '40vp', height: '40vp' },
-    buttonMargin: '2vp'
+    buttonPadding: '2vp'
   })
   @State selectedIndexes1: number[] = [0]
   @State selectedIndexes2: number[] = [0]
