@@ -43,6 +43,10 @@ static OH_Rdb_Config config1_;
 static OH_Rdb_Config config2_;
 static OH_Rdb_Config config3_;
 static OH_Rdb_Config config4_;
+static OH_Rdb_Config config_EL1;
+static OH_Rdb_Config config_EL2;
+static OH_Rdb_Config config_EL3;
+static OH_Rdb_Config config_EL4;
 static void InitRdbConfig1()
 {
     config1_.dataBaseDir = RDB_TEST_PATH;
@@ -85,6 +89,54 @@ static void InitRdbConfig4()
     config4_.securityLevel = OH_Rdb_SecurityLevel::S4;
     config4_.isEncrypt = false;
     config4_.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static void InitRdbConfig_EL1()
+{
+    config_EL1.dataBaseDir = RDB_TEST_PATH;
+    config_EL1.storeName = RDB_STORE_NAME;
+    config_EL1.bundleName = BUNDLE_NAME;
+    config_EL1.moduleName = MODULE_NAME;
+    config_EL1.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config_EL1.isEncrypt = false;
+    config_EL1.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL1;
+    config_EL1.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static void InitRdbConfig_EL2()
+{
+    config_EL2.dataBaseDir = RDB_TEST_PATH;
+    config_EL2.storeName = RDB_STORE_NAME;
+    config_EL2.bundleName = BUNDLE_NAME;
+    config_EL2.moduleName = MODULE_NAME;
+    config_EL2.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config_EL2.isEncrypt = false;
+    config_EL2.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL2;
+    config_EL2.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static void InitRdbConfig_EL3()
+{
+    config_EL3.dataBaseDir = RDB_TEST_PATH;
+    config_EL3.storeName = RDB_STORE_NAME;
+    config_EL3.bundleName = BUNDLE_NAME;
+    config_EL3.moduleName = MODULE_NAME;
+    config_EL3.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config_EL3.isEncrypt = false;
+    config_EL3.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL3;
+    config_EL3.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static void InitRdbConfig_EL4()
+{
+    config_EL4.dataBaseDir = RDB_TEST_PATH;
+    config_EL4.storeName = RDB_STORE_NAME;
+    config_EL4.bundleName = BUNDLE_NAME;
+    config_EL4.moduleName = MODULE_NAME;
+    config_EL4.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config_EL4.isEncrypt = false;
+    config_EL4.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL4;
+    config_EL4.selfSize = sizeof(OH_Rdb_Config);
 }
 
 static napi_value RdbFilePath(napi_env env, napi_callback_info info) {
@@ -303,6 +355,201 @@ static napi_value SUB_DDM_RDB_LEVEL_0400(napi_env env, napi_callback_info info) 
     return returnCode;
 }
 
+static napi_value SUB_DDM_RDB_LEVEL_EL_0100(napi_env env, napi_callback_info info) {
+    InitRdbConfig_EL1();
+    mkdir(config_EL1.dataBaseDir, 0770);
+    int errCode = 0;
+    storeLevelTestRdbStore_ = OH_Rdb_GetOrOpen(&config_EL1, &errCode);
+    NAPI_ASSERT(env, errCode == 0, "getRdbStore is fail.");
+        
+    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+                                "data3 FLOAT, data4 BLOB, data5 TEXT);";
+        
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, createTableSql);
+    NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
+    
+    OH_VBucket* valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putInt64(valueBucket, "id", 1);
+    valueBucket->putText(valueBucket, "data1", "zhangSan");
+    valueBucket->putInt64(valueBucket, "data2", 12800);
+    valueBucket->putReal(valueBucket, "data3", 100.1);
+    uint8_t arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    valueBucket->putBlob(valueBucket, "data4", arr, len);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFG");
+    
+    errCode = OH_Rdb_Insert(storeLevelTestRdbStore_, "test", valueBucket);
+    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+    
+    char querySql[] = "SELECT * FROM test";
+    OH_Cursor *cursor = OH_Rdb_ExecuteQuery(storeLevelTestRdbStore_, querySql);
+    
+    int rowCount = 0;
+    cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, rowCount == 1, "getRowCount is fail.");
+    
+    valueBucket->destroy(valueBucket);
+    cursor->destroy(cursor);
+
+    char dropTableSql[] = "DROP TABLE IF EXISTS test";
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, dropTableSql);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
+    errCode = OH_Rdb_CloseStore(storeLevelTestRdbStore_);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    errCode = OH_Rdb_DeleteStore(&config_EL1);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail."); 
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+static napi_value SUB_DDM_RDB_LEVEL_EL_0200(napi_env env, napi_callback_info info) {
+    InitRdbConfig_EL2();
+    mkdir(config_EL2.dataBaseDir, 0770);
+    int errCode = 0;
+    storeLevelTestRdbStore_ = OH_Rdb_GetOrOpen(&config_EL2, &errCode);
+    NAPI_ASSERT(env, errCode == 0, "getRdbStore is fail.");
+        
+    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+                                "data3 FLOAT, data4 BLOB, data5 TEXT);";
+        
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, createTableSql);
+    NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
+    
+    OH_VBucket* valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putInt64(valueBucket, "id", 1);
+    valueBucket->putText(valueBucket, "data1", "zhangSan");
+    valueBucket->putInt64(valueBucket, "data2", 12800);
+    valueBucket->putReal(valueBucket, "data3", 100.1);
+    uint8_t arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    valueBucket->putBlob(valueBucket, "data4", arr, len);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFG");
+    
+    errCode = OH_Rdb_Insert(storeLevelTestRdbStore_, "test", valueBucket);
+    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+    
+    char querySql[] = "SELECT * FROM test";
+    OH_Cursor *cursor = OH_Rdb_ExecuteQuery(storeLevelTestRdbStore_, querySql);
+    
+    int rowCount = 0;
+    cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, rowCount == 1, "getRowCount is fail.");
+    
+    valueBucket->destroy(valueBucket);
+    cursor->destroy(cursor);
+
+    char dropTableSql[] = "DROP TABLE IF EXISTS test";
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, dropTableSql);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
+    errCode = OH_Rdb_CloseStore(storeLevelTestRdbStore_);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    errCode = OH_Rdb_DeleteStore(&config_EL2);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail."); 
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+static napi_value SUB_DDM_RDB_LEVEL_EL_0300(napi_env env, napi_callback_info info) {
+    InitRdbConfig_EL3();
+    mkdir(config_EL3.dataBaseDir, 0770);
+    int errCode = 0;
+    storeLevelTestRdbStore_ = OH_Rdb_GetOrOpen(&config_EL3, &errCode);
+    NAPI_ASSERT(env, errCode == 0, "getRdbStore is fail.");
+        
+    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+                                "data3 FLOAT, data4 BLOB, data5 TEXT);";
+        
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, createTableSql);
+    NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
+    
+    OH_VBucket* valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putInt64(valueBucket, "id", 1);
+    valueBucket->putText(valueBucket, "data1", "zhangSan");
+    valueBucket->putInt64(valueBucket, "data2", 12800);
+    valueBucket->putReal(valueBucket, "data3", 100.1);
+    uint8_t arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    valueBucket->putBlob(valueBucket, "data4", arr, len);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFG");
+    
+    errCode = OH_Rdb_Insert(storeLevelTestRdbStore_, "test", valueBucket);
+    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+    
+    char querySql[] = "SELECT * FROM test";
+    OH_Cursor *cursor = OH_Rdb_ExecuteQuery(storeLevelTestRdbStore_, querySql);
+    
+    int rowCount = 0;
+    cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, rowCount == 1, "getRowCount is fail.");
+    
+    valueBucket->destroy(valueBucket);
+    cursor->destroy(cursor);
+
+    char dropTableSql[] = "DROP TABLE IF EXISTS test";
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, dropTableSql);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
+    errCode = OH_Rdb_CloseStore(storeLevelTestRdbStore_);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    errCode = OH_Rdb_DeleteStore(&config_EL3);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail."); 
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+static napi_value SUB_DDM_RDB_LEVEL_EL_0400(napi_env env, napi_callback_info info) {
+    InitRdbConfig_EL4();
+    mkdir(config_EL4.dataBaseDir, 0770);
+    int errCode = 0;
+    storeLevelTestRdbStore_ = OH_Rdb_GetOrOpen(&config_EL4, &errCode);
+    NAPI_ASSERT(env, errCode == 0, "getRdbStore is fail.");
+        
+    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+                                "data3 FLOAT, data4 BLOB, data5 TEXT);";
+        
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, createTableSql);
+    NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
+    
+    OH_VBucket* valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putInt64(valueBucket, "id", 1);
+    valueBucket->putText(valueBucket, "data1", "zhangSan");
+    valueBucket->putInt64(valueBucket, "data2", 12800);
+    valueBucket->putReal(valueBucket, "data3", 100.1);
+    uint8_t arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    valueBucket->putBlob(valueBucket, "data4", arr, len);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFG");
+    
+    errCode = OH_Rdb_Insert(storeLevelTestRdbStore_, "test", valueBucket);
+    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+    
+    char querySql[] = "SELECT * FROM test";
+    OH_Cursor *cursor = OH_Rdb_ExecuteQuery(storeLevelTestRdbStore_, querySql);
+    
+    int rowCount = 0;
+    cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, rowCount == 1, "getRowCount is fail.");
+    
+    valueBucket->destroy(valueBucket);
+    cursor->destroy(cursor);
+
+    char dropTableSql[] = "DROP TABLE IF EXISTS test";
+    errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, dropTableSql);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
+    errCode = OH_Rdb_CloseStore(storeLevelTestRdbStore_);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    errCode = OH_Rdb_DeleteStore(&config_EL4);
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail."); 
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
@@ -311,7 +558,12 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_LEVEL_0100", nullptr, SUB_DDM_RDB_LEVEL_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_LEVEL_0200", nullptr, SUB_DDM_RDB_LEVEL_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_LEVEL_0300", nullptr, SUB_DDM_RDB_LEVEL_0300, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_LEVEL_0400", nullptr, SUB_DDM_RDB_LEVEL_0400, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"SUB_DDM_RDB_LEVEL_0400", nullptr, SUB_DDM_RDB_LEVEL_0400, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_LEVEL_EL_0100", nullptr, SUB_DDM_RDB_LEVEL_EL_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_LEVEL_EL_0200", nullptr, SUB_DDM_RDB_LEVEL_EL_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_LEVEL_EL_0300", nullptr, SUB_DDM_RDB_LEVEL_EL_0300, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_LEVEL_EL_0400", nullptr, SUB_DDM_RDB_LEVEL_EL_0400, nullptr, nullptr, nullptr, napi_default, nullptr}
+        };
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
 }

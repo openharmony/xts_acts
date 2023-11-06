@@ -81,8 +81,50 @@ export default function RdbNdkStoreLevelTest() {
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
-
-
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1500
+     * @tc.desc: Normal testCase of NDK SecurityLevel is S4
+     * @tc.type: FUNC
+     */
+     it('SUB_DDM_RDB_LEVEL_EL_0100',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_LEVEL_EL_0100' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_LEVEL_EL_0100();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1600
+     * @tc.desc: Normal testCase of NDK 
+     * @tc.type: FUNC
+     */
+      it('SUB_DDM_RDB_LEVEL_EL_0200',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_LEVEL_EL_0200' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_LEVEL_EL_0200();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1700
+     * @tc.desc: Normal testCase of NDK 
+     * @tc.type: FUNC
+     */
+      it('SUB_DDM_RDB_LEVEL_EL_0300',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_LEVEL_EL_0300' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_LEVEL_EL_0300();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1800
+     * @tc.desc: Normal testCase of NDK 
+     * @tc.type: FUNC
+     */
+     it('SUB_DDM_RDB_LEVEL_EL_0400',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_LEVEL_EL_0400' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_LEVEL_EL_0400();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
 
   })
 }
