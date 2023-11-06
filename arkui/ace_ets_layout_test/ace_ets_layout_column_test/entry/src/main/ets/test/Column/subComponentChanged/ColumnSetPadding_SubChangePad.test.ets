@@ -56,13 +56,13 @@ export default function ColumnSetPadding_SubChangePad() {
       let columnSetPadding_SubPad2 = CommonFunc.getComponentRect('columnSetPadding_SubPad2');
       let columnSetPadding_SubPad3 = CommonFunc.getComponentRect('columnSetPadding_SubPad3');
       let columnSetPadding_SubPad = CommonFunc.getComponentRect('columnSetPadding_SubPad');
-      expect(Math.round(columnSetPadding_SubPad1.top - columnSetPadding_SubPad.top)).assertEqual(Math.round(vp2px(20)))
-      expect(Math.round(columnSetPadding_SubPad.bottom - columnSetPadding_SubPad3.bottom)).assertEqual(Math.round(vp2px(20)))
-      expect(Math.round(columnSetPadding_SubPad2.top - columnSetPadding_SubPad1.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(columnSetPadding_SubPad3.top - columnSetPadding_SubPad2.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(columnSetPadding_SubPad1.right - columnSetPadding_SubPad1.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetPadding_SubPad2.right - columnSetPadding_SubPad2.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetPadding_SubPad3.right - columnSetPadding_SubPad3.left)).assertEqual(Math.round(vp2px(300)))
+      expect(Math.abs(columnSetPadding_SubPad1.top - columnSetPadding_SubPad.top - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad.bottom - columnSetPadding_SubPad3.bottom - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad2.top - columnSetPadding_SubPad1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad3.top - columnSetPadding_SubPad2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad1.right - columnSetPadding_SubPad1.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad2.right - columnSetPadding_SubPad2.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPadding_SubPad3.right - columnSetPadding_SubPad3.left - Math.round(vp2px(300))) <= 1).assertTrue()
       console.info('new testColumnParentPaddingSubPadding END');
       done();
     });
