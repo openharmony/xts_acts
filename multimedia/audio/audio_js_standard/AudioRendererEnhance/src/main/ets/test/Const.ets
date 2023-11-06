@@ -25,6 +25,7 @@ export const INVALID_PARAMETER_STRING = '123'
 export const INVALID_INPUT_PARAMETER_401 = 401;
 export const INVALID_INPUT_PARAMETER_6800101 = 6800101;
 export const UNSUPORTED_OPTION_6800104 = 6800104;
+export const UNSUPORTED_OPTION_6800103 = 6800103;
 
 //----------------StreamUsage: not streamapi--------------------
 export const StreamUsage = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13];
