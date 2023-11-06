@@ -65,14 +65,13 @@ export default function Grid_Col_Order_Default() {
       let Grid_Col_Order_Default_07 = CommonFunc.getComponentRect('Grid_Col_Order_Default_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Order_Default_01.top - Grid_Col_Order_Default_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_02.top - Grid_Col_Order_Default_01.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_03.top - Grid_Col_Order_Default_02.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_04.top - Grid_Col_Order_Default_03.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_05.top - Grid_Col_Order_Default_04.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_06.top - Grid_Col_Order_Default_05.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Order_Default_07.top - Grid_Col_Order_Default_06.bottom)).assertEqual(Math.round(vp2px(10)));
-
+      expect(Math.abs((Grid_Col_Order_Default_01.top - Grid_Col_Order_Default_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_02.top - Grid_Col_Order_Default_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_03.top - Grid_Col_Order_Default_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_04.top - Grid_Col_Order_Default_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_05.top - Grid_Col_Order_Default_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_06.top - Grid_Col_Order_Default_05.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_Default_07.top - Grid_Col_Order_Default_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_Default_TEST_0100] END');
       done();

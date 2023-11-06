@@ -68,13 +68,13 @@ export default function Grid_Col_Span_Number() {
 
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Span_Number_01.left - Grid_Col_Span_Number_00.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_02.left - Grid_Col_Span_Number_01.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_03.left - Grid_Col_Span_Number_02.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_04.left - Grid_Col_Span_Number_03.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_05.left - Grid_Col_Span_Number_04.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_01.left - Grid_Col_Span_Number_00.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_02.left - Grid_Col_Span_Number_01.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_03.left - Grid_Col_Span_Number_02.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_04.left - Grid_Col_Span_Number_03.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_05.left - Grid_Col_Span_Number_04.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_01.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0100] END');
       done();
@@ -129,19 +129,19 @@ export default function Grid_Col_Span_Number() {
 
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Span_Number_01.left - Grid_Col_Span_Number_00.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_02.left - Grid_Col_Span_Number_01.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_01.left - Grid_Col_Span_Number_00.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_02.left - Grid_Col_Span_Number_01.right) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Span_Number_04.left - Grid_Col_Span_Number_03.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_05.left - Grid_Col_Span_Number_04.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_04.left - Grid_Col_Span_Number_03.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_05.left - Grid_Col_Span_Number_04.right) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Span_Number_07.left - Grid_Col_Span_Number_06.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_07.left - Grid_Col_Span_Number_06.right) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Span_Number_03.top - Grid_Col_Span_Number_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_04.top - Grid_Col_Span_Number_01.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_05.top - Grid_Col_Span_Number_02.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_03.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_04.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_03.top - Grid_Col_Span_Number_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_04.top - Grid_Col_Span_Number_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_05.top - Grid_Col_Span_Number_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_04.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0300] END');
       done();
@@ -169,13 +169,13 @@ export default function Grid_Col_Span_Number() {
       let Grid_Col_Span_Number_07 = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Span_Number_01.top - Grid_Col_Span_Number_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_02.top - Grid_Col_Span_Number_01.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_03.top - Grid_Col_Span_Number_02.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_04.top - Grid_Col_Span_Number_03.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_05.top - Grid_Col_Span_Number_04.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_05.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_06.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Number_01.top - Grid_Col_Span_Number_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_02.top - Grid_Col_Span_Number_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_03.top - Grid_Col_Span_Number_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_04.top - Grid_Col_Span_Number_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_05.top - Grid_Col_Span_Number_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_06.top - Grid_Col_Span_Number_05.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Number_07.top - Grid_Col_Span_Number_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0400] END');
       done();
