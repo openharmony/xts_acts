@@ -29,7 +29,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0100
      * @tc.name clearDataSync interface test
-     * @tc.desc clearDataSync interface test
+     * @tc.desc Test clearDataSync when systemPasteBoard has data
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0100", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0100 ---------start")
@@ -54,7 +54,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0200
      * @tc.name setDataSync interface test
-     * @tc.desc setDataSync interface test
+     * @tc.desc Test setDataSync in systemPasteBoard
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0200", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0200 ---------start")
@@ -76,7 +76,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0300
      * @tc.name setDataSync interface test
-     * @tc.desc setDataSync paremeter is null
+     * @tc.desc Test setDataSync when parameter is null
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0300", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0300 ---------start")
@@ -86,6 +86,7 @@ export default function pasteboardSyncTest(){
       console.info(tag +`${systemPasteBoard}`)
       try{
         systemPasteBoard.setDataSync(null);
+        expect().assertFail()
         console.info(tag + "Succeeded in setting PasteData");
       }catch(err){
         expect(err.code == 401).assertTrue();
@@ -96,7 +97,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0400
      * @tc.name setDataSync interface test
-     * @tc.desc setDataSync paremeter is undefined
+     * @tc.desc Test setDataSync parameter is undefined
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0400", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0400 ---------start")
@@ -106,6 +107,7 @@ export default function pasteboardSyncTest(){
       console.info(tag +`${systemPasteBoard}`);
       try{
         systemPasteBoard.setDataSync(undefined);
+        expect().assertFail()
         console.info(tag + "Succeeded in setting PasteData");
       }catch(err){
         expect(err.code == 401).assertTrue();
@@ -117,7 +119,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0500
      * @tc.name getDataSync interface test
-     * @tc.desc getDataSync interface test
+     * @tc.desc Test getDataSync when setDataSync in systemPasteBoard
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0500", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0500 ---------start")
@@ -140,7 +142,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0600
      * @tc.name hasDataSync interface test
-     * @tc.desc hasDataSync is true
+     * @tc.desc Test hasDataSync when systemPasteBoard has parameter
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0600", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0600 ---------start")
@@ -160,7 +162,7 @@ export default function pasteboardSyncTest(){
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_PasteboardSync_0700
      * @tc.name hasDataSync interface test
-     * @tc.desc hasDataSync is false
+     * @tc.desc Test hasDataSync when systemPasteBoard is null
      */
     it("SUB_Pasteboard_Local_SDK_PasteboardSync_0700", 0, function () {
       console.info(tag + "SUB_Pasteboard_Local_SDK_PasteboardSync_0700 ---------start")
