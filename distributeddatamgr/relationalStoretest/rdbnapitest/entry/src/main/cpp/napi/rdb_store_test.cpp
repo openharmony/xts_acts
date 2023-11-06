@@ -37,7 +37,7 @@ char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
-
+static Rdb_ProgressDetails *g_progressDetails = NULL;
 OH_Rdb_Store *storeTestRdbStore_ = NULL;
 static OH_Rdb_Config config_;
 static void InitRdbConfig()
@@ -48,6 +48,7 @@ static void InitRdbConfig()
     config_.moduleName = MODULE_NAME;
     config_.securityLevel = OH_Rdb_SecurityLevel::S1;
     config_.isEncrypt = false;
+    config_.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL1;
     config_.selfSize = sizeof(OH_Rdb_Config);
 }
 
@@ -107,6 +108,10 @@ static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info
     return returnCode;
 }
 
+static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
+{
+    g_progressDetails = progressDetails;    
+}
 
 /**
  * @tc.name: SUB_DDM_RDB_0100
@@ -1755,6 +1760,370 @@ static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
     return returnCode;
 }
 
+/**
+ * @tc.name: SUB_DDM_RDB_3400
+ * @tc.desc: napi test RDB store for CloudSync TIME_FIRST
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test";
+
+    Rdb_SyncCallback callback = CloudSyncCallback;
+    auto errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_TIME_FIRST, table, TABLE_COUNT, &callback);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync TIME_FIRST is fail.");
+    NAPI_ASSERT(env, g_progressDetails != nullptr, "g_progressDetails is fail.");   
+    NAPI_ASSERT(env, g_progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version is fail."); 
+    NAPI_ASSERT(env, g_progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
+    NAPI_ASSERT(env, g_progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
+    NAPI_ASSERT(env, g_progressDetails->tableLength == 0, "tableLength is fail."); 
+    Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(g_progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
+    NAPI_ASSERT(env, tableDetails != nullptr, "tableDetails is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_3500
+ * @tc.desc: napi test RDB store for CloudSync CLOUD_FIRST
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3500(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test";
+    Rdb_SyncCallback callback = CloudSyncCallback;
+    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_CLOUD_FIRST, table, TABLE_COUNT, &callback);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_3600
+ * @tc.desc: napi test RDB store for CloudSync NATIVE_FIRST
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3600(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test";
+    Rdb_SyncCallback callback = CloudSyncCallback;
+    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_NATIVE_FIRST, table, TABLE_COUNT, &callback);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_3700
+ * @tc.desc: napi test RDB store for CloudSync  err
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3700(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test";
+
+    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_NATIVE_FIRST, table, TABLE_COUNT, nullptr);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS , "OH_Rdb_CloudSync is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+/**
+ * @tc.name: SUB_DDM_RDB_3800
+ * @tc.desc: napi test RDB store for CloudSync  err
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3800(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test";
+    Rdb_SyncCallback callback = CloudSyncCallback;
+    int errCode = OH_Rdb_CloudSync(nullptr, Rdb_SyncMode::RDB_SYNC_MODE_CLOUD_FIRST, table, TABLE_COUNT, &callback);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS , "OH_Rdb_CloudSync is fail.");
+    errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_3900
+ * @tc.desc: napi test RDB store for SetDistributedTables RdbStore err
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3900(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    Rdb_DistributedConfig config{ .version = 0, .isAutoSync = true };
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test"; 
+    config.version = DISTRIBUTED_CONFIG_VERSION;
+    int errCode = OH_Rdb_SetDistributedTables(nullptr, table, TABLE_COUNT, Rdb_DistributedType::RDB_DISTRIBUTED_CLOUD, &config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS , "OH_Rdb_SetDistributedTables 2 is fail.");    
+    errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+/**
+ * @tc.name: SUB_DDM_RDB_4000
+ * @tc.desc: napi test RDB store for SetDistributedTables  err
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4000(napi_env env, napi_callback_info info) {
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    Rdb_DistributedConfig config{ .version = 0, .isAutoSync = true };
+    constexpr int TABLE_COUNT = 1;
+    const char *table[TABLE_COUNT];
+    table[0] = "store_test"; 
+    config.version = DISTRIBUTED_CONFIG_VERSION;
+    int errCode = OH_Rdb_SetDistributedTables(NULL, table, TABLE_COUNT, Rdb_DistributedType::RDB_DISTRIBUTED_CLOUD, &config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS , "OH_Rdb_SetDistributedTables 2 is fail.");    
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+/**
+ * @tc.name: SUB_DDM_RDB_4100
+ * @tc.desc: napi test RDB store for OH_Rdb_FindModifyTime 
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4100(napi_env env, napi_callback_info info) 
+{
+    char createLogTableSql[] = "CREATE TABLE if not exists naturalbase_rdb_aux_rdbstoreimpltest_integer_log "
+                               "(id INTEGER PRIMARY KEY AUTOINCREMENT, timestamp INTEGER, data_key INTEGER, "
+                               "data3 FLOAT, data4 BLOB, data5 BOOLEAN);";
+    int errCode = OH_Rdb_Execute(storeTestRdbStore_, createLogTableSql);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_Execute 1 is fail.");    
+
+    OH_VBucket *bucket = OH_Rdb_CreateValuesBucket();
+    bucket->putInt64(bucket, "data_key", 1);
+    bucket->putInt64(bucket, "timestamp", 1000000000);
+    errCode = OH_Rdb_Insert(storeTestRdbStore_, "naturalbase_rdb_aux_rdbstoreimpltest_integer_log", bucket);
+    NAPI_ASSERT(env, errCode == 1 , "OH_Rdb_Insert 1 is fail.");    
+
+    OH_VObject *values = OH_Rdb_CreateValueObject();
+    int64_t keys[] = { 1 };
+    values->putInt64(values, keys, 1);
+
+    OH_Cursor *cursor;
+    cursor = OH_Rdb_FindModifyTime(storeTestRdbStore_, "rdbstoreimpltest_integer", "ROWID", values);
+    int rowCount;
+    errCode = cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "getRowCount is fail.");    
+    NAPI_ASSERT(env, rowCount == 1 , "OH_Rdb_Execute 1 is fail.");    
+    cursor->goToNextRow(cursor);
+    int64_t key = 0;
+    cursor->getInt64(cursor, 0, &key);
+    NAPI_ASSERT(env, key == 1 , "getInt64 1 is fail.");  
+    int64_t time = 0;
+    cursor->getInt64(cursor, 1, &time);
+    NAPI_ASSERT(env, time == 100000 , "getInt64 1 is fail.");
+
+    cursor->destroy(cursor);
+    char dropLogTableSql[] = "DROP TABLE IF EXISTS naturalbase_rdb_aux_rdbstoreimpltest_integer_log";
+    errCode = OH_Rdb_Execute(storeTestRdbStore_, dropLogTableSql);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_Execute is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+
+/**
+ * @tc.name: SUB_DDM_RDB_4200
+ * @tc.desc: napi test RDB store for OH_Rdb_FindModifyTime, tablename columnName, keys is empty,
+ *           and resultSet is null or empty
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4200(napi_env env, napi_callback_info info) 
+{
+    char createLogTableSql[] = "CREATE TABLE if not exists naturalbase_rdb_aux_rdbstoreimpltest_integer_log "
+                               "(id INTEGER PRIMARY KEY AUTOINCREMENT, timestamp INTEGER, data_key INTEGER, "
+                               "data3 FLOAT, data4 BLOB, data5 BOOLEAN);";
+    int errCode = OH_Rdb_Execute(storeTestRdbStore_, createLogTableSql);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_Execute 1 is fail.");
+
+    OH_VBucket *bucket = OH_Rdb_CreateValuesBucket();
+    bucket->putInt64(bucket, "data_key", 1);
+    bucket->putInt64(bucket, "timestamp", 1000000000);
+    errCode = OH_Rdb_Insert(storeTestRdbStore_, "naturalbase_rdb_aux_rdbstoreimpltest_integer_log", bucket);
+    NAPI_ASSERT(env, errCode == 1 , "OH_Rdb_Insert 1 is fail.");    
+
+    OH_VObject *values = OH_Rdb_CreateValueObject();
+    int64_t keys[] = { 1 };
+    values->putInt64(values, keys, 1);
+
+    // table name is ""
+    OH_Cursor *cursor;
+    cursor = OH_Rdb_FindModifyTime(storeTestRdbStore_, "", "data_key", values);
+    int rowCount = 0;
+    errCode = cursor->getRowCount(cursor, &rowCount);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS , "getRowCount 1 is fail.");
+
+    cursor->destroy(cursor);
+    char dropLogTableSql[] = "DROP TABLE IF EXISTS naturalbase_rdb_aux_rdbstoreimpltest_integer_log";
+    errCode = OH_Rdb_Execute(storeTestRdbStore_, dropLogTableSql);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_Execute 1 is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+
+/**
+ * @tc.name: SUB_DDM_RDB_4300
+ * @tc.desc: napi test RDB store for Rdb_ChangeInfo
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4300(napi_env env, napi_callback_info info) 
+{
+    Rdb_KeyInfo::Rdb_KeyData keydata_;
+    keydata_.integer = 1;
+    keydata_.real = 1.0;
+    keydata_.text = "rdbtest";
+
+    Rdb_KeyInfo keyinfo_1;
+    keyinfo_1.count = 1;
+    keyinfo_1.type = 1;
+    keyinfo_1.data = &keydata_;
+
+    Rdb_KeyInfo keyinfo_2;
+    keyinfo_2.count = 1;
+    keyinfo_2.type = 1;
+    keyinfo_2.data = &keydata_;
+
+    Rdb_KeyInfo keyinfo_3;
+    keyinfo_3.count = 1;
+    keyinfo_3.type = 1;
+    keyinfo_3.data = &keydata_;
+
+    Rdb_ChangeInfo changeinfo_;
+    changeinfo_.version = 1;
+    changeinfo_.tableName = "tablename";
+    changeinfo_.ChangeType = 1;
+    changeinfo_.inserted = keyinfo_1;
+    changeinfo_.updated = keyinfo_2;
+    changeinfo_.deleted = keyinfo_3;
+
+    NAPI_ASSERT(env, Rdb_ChangeType::RDB_DATA_CHANGE == 0 , "RDB_DATA_CHANGE 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ChangeType::RDB_ASSET_CHANGE == 1 , "RDB_ASSET_CHANGE 1 is fail."); 
+
+    NAPI_ASSERT(env, keyinfo_1.count == 1 , "count 1 is fail."); 
+    NAPI_ASSERT(env, keyinfo_1.type == 1 , "type 1 is fail."); 
+    NAPI_ASSERT(env, keyinfo_1.data == &keydata_ , "keydata_ 1 is fail."); 
+
+    NAPI_ASSERT(env, changeinfo_.version == 1 , "version 1 is fail."); 
+    NAPI_ASSERT(env, strncmp(changeinfo_.tableName, "tablename", 10) == 0, "tablename is fail.");
+    NAPI_ASSERT(env, changeinfo_.ChangeType == 1 , "ChangeType 1 is fail."); 
+    NAPI_ASSERT(env, changeinfo_.inserted.count == 1 , "keyinfo_1 1 is fail."); 
+    NAPI_ASSERT(env, changeinfo_.updated.count == 1 , "keyinfo_2 1 is fail."); 
+    NAPI_ASSERT(env, changeinfo_.deleted.count == 1 , "keyinfo_3 1 is fail."); 
+    int errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+
+}
+/**
+ * @tc.name: SUB_DDM_RDB_4400
+ * @tc.desc: napi test RDB store for Rdb_TableDetails
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4400(napi_env env, napi_callback_info info) 
+{
+    Rdb_Statistic statistic_;
+    statistic_.total = 1;
+    statistic_.successful = 1;
+    statistic_.failed = 1;
+    statistic_.remained = 1;
+
+    Rdb_Statistic statistic_2;
+    statistic_2.total = 1;
+    statistic_2.successful = 1;
+    statistic_2.failed = 1;
+    statistic_2.remained = 1;
+
+    Rdb_TableDetails tabledetails_;
+    tabledetails_.table = "tablename";
+    tabledetails_.upload = statistic_;
+    tabledetails_.download = statistic_2;
+
+    NAPI_ASSERT(env, Rdb_SubscribeType::RDB_SUBSCRIBE_TYPE_CLOUD == 0 , "RDB_SUBSCRIBE_TYPE_CLOUD 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_SubscribeType::RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS == 1 , "RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS 1 is fail.");
+
+    NAPI_ASSERT(env, statistic_.total == 1 , "total 1 is fail."); 
+    NAPI_ASSERT(env, statistic_.successful == 1 , "successful 1 is fail."); 
+    NAPI_ASSERT(env, statistic_.failed == 1 , "failed 1 is fail."); 
+    NAPI_ASSERT(env, statistic_.remained == 1 , "remained 1 is fail."); 
+    NAPI_ASSERT(env, strncmp(tabledetails_.table, "tablename", 10) == 0, "tablename is fail.");
+    NAPI_ASSERT(env, tabledetails_.upload.total == 1 , "tabledetails_ upload 1 is fail."); 
+    NAPI_ASSERT(env, tabledetails_.download.total == 1 , "tabledetails_ download 1 is fail.");
+    int errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+/**
+ * @tc.name: SUB_DDM_RDB_4500
+ * @tc.desc: napi test RDB store for Rdb_ProgressDetails
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_4500(napi_env env, napi_callback_info info) 
+{
+    Rdb_ProgressDetails progressdetails_;
+    progressdetails_.version = 1;
+    progressdetails_.schedule = 1;
+    progressdetails_.code = 1;
+    progressdetails_.tableLength = 10;
+    NAPI_ASSERT(env, progressdetails_.version == 1 , "progressdetails_.version 1 is fail."); 
+    NAPI_ASSERT(env, progressdetails_.schedule == 1 , "progressdetails_.schedule 1 is fail."); 
+    NAPI_ASSERT(env, progressdetails_.code == 1 , "progressdetails_.code 1 is fail."); 
+    NAPI_ASSERT(env, progressdetails_.tableLength == 10 , "progressdetails_.tableLength 1 is fail.");  
+    
+    NAPI_ASSERT(env, Rdb_Progress ::RDB_SYNC_BEGIN == 0 , "RDB_SYNC_BEGIN 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_Progress ::RDB_SYNC_IN_PROGRESS == 1 , "RDB_SYNC_IN_PROGRESS 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_Progress ::RDB_SYNC_FINISH == 2 , "RDB_SYNC_FINISH 1 is fail."); 
+
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_SUCCESS == 0 , "Rdb_ProgressCode RDB_SUCCESS 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_UNKNOWN_ERROR == 1 , "RDB_UNKNOWN_ERROR 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_NETWORK_ERROR == 2 , "RDB_NETWORK_ERROR 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_CLOUD_DISABLED == 3 , "RDB_CLOUD_DISABLED 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_LOCKED_BY_OTHERS == 4 , "RDB_LOCKED_BY_OTHERS 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_RECORD_LIMIT_EXCEEDED == 5 , "RDB_RECORD_LIMIT_EXCEEDED 1 is fail."); 
+    NAPI_ASSERT(env, Rdb_ProgressCode::RDB_NO_SPACE_FOR_ASSET == 6 , "RDB_NO_SPACE_FOR_ASSET 1 is fail."); 
+    int errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;       
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -1793,7 +2162,19 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_3000", nullptr, SUB_DDM_RDB_3000, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_3100", nullptr, SUB_DDM_RDB_3100, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_3200", nullptr, SUB_DDM_RDB_3200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_3300", nullptr, SUB_DDM_RDB_3300, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_3300", nullptr, SUB_DDM_RDB_3300, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3400", nullptr, SUB_DDM_RDB_3400, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3500", nullptr, SUB_DDM_RDB_3500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3600", nullptr, SUB_DDM_RDB_3600, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3700", nullptr, SUB_DDM_RDB_3700, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3800", nullptr, SUB_DDM_RDB_3800, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3900", nullptr, SUB_DDM_RDB_3900, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4000", nullptr, SUB_DDM_RDB_4000, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4100", nullptr, SUB_DDM_RDB_4100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4200", nullptr, SUB_DDM_RDB_4200, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4300", nullptr, SUB_DDM_RDB_4300, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4400", nullptr, SUB_DDM_RDB_4400, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr}
 
     };
         
