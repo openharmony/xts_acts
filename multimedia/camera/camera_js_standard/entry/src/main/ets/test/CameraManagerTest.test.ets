@@ -18,7 +18,7 @@ import image from '@ohos.multimedia.image';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import media from '@ohos.multimedia.media';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraUnitTest: ";
 
 // Define global variables
@@ -35,7 +35,7 @@ let mFdNumber;
 // CAMERA-0 letiables
 let mCameraNum;
 let receiver;
-
+let context = featureAbility.getContext();
 let mVideoProfileCfg = {
     audioBitrate: 48000,
     audioChannels: 2,
@@ -165,7 +165,7 @@ export default function cameraManagerTest() {
     function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -267,7 +267,7 @@ describe('CameraManagerTest', function () {
     */
     it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100', 2, async function (done) {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100--------------");
-        let cameraManagerPromise = cameraObj.getCameraManager(null);
+        let cameraManagerPromise = cameraObj.getCameraManager(context);
         expect(isEmpty(cameraManagerPromise)).assertFalse();
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100 cameraManagerPromise: " + JSON.stringify(cameraManagerPromise));
         done();
