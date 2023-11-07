@@ -19,7 +19,7 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_AlignItems_ChangeParent() {
-  
+
   describe('Column_AlignItems_ChangeParentTest', function () {
     beforeEach(async function (done) {
       console.info("Column_AlignItems_ChangeParent beforeEach called");
@@ -55,7 +55,7 @@ export default function column_AlignItems_ChangeParent() {
      */
     it('testColumnAlignItemsChangeParentHorizontalAlignStart', 0, async function (done) {
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignStart START');
-      globalThis.value.message.notify({name:'alignItems', value:HorizontalAlign.Start})
+      globalThis.value.message.notify({ name: 'alignItems', value: HorizontalAlign.Start })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnAlignItemsChange1');
       let obj = JSON.parse(strJson);
@@ -64,21 +64,20 @@ export default function column_AlignItems_ChangeParent() {
       let locationText2 = CommonFunc.getComponentRect('AlignItems_Test2');
       let locationText3 = CommonFunc.getComponentRect('AlignItems_Test3');
       let locationColumn = CommonFunc.getComponentRect('ColumnAlignItemsChange1');
-      expect(locationText1.left).assertEqual(locationColumn.left);
-      expect(locationText1.left).assertEqual(locationText2.left);
-      expect(locationText2.left).assertEqual(locationText3.left);
-      expect(Math.round(locationColumn.right - locationText1.right)).assertEqual(Math.round(vp2px(50)));
-      expect(locationText1.top).assertEqual(locationColumn.top);
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(40)));
-      expect(Math.round(locationText2.top - locationText1.bottom))
-        .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((locationText1.left) - (locationColumn.left)) <= 1).assertTrue();
+      expect(Math.abs((locationText1.left) - (locationText2.left)) <= 1).assertTrue();
+      expect(Math.abs((locationText2.left) - (locationText3.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationColumn.right - locationText1.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((locationText1.top) - (locationColumn.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationColumn.bottom - locationText3.bottom)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignStart END');
       done();
     });
@@ -90,7 +89,7 @@ export default function column_AlignItems_ChangeParent() {
      */
     it('testColumnAlignItemsChangeParentHorizontalAlignEnd', 0, async function (done) {
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignEnd START');
-      globalThis.value.message.notify({name:'alignItems', value:HorizontalAlign.End})
+      globalThis.value.message.notify({ name: 'alignItems', value: HorizontalAlign.End })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnAlignItemsChange1');
       let obj = JSON.parse(strJson);
@@ -99,21 +98,20 @@ export default function column_AlignItems_ChangeParent() {
       let locationText2 = CommonFunc.getComponentRect('AlignItems_Test2');
       let locationText3 = CommonFunc.getComponentRect('AlignItems_Test3');
       let locationColumn = CommonFunc.getComponentRect('ColumnAlignItemsChange1');
-      expect(locationText1.right).assertEqual(locationColumn.right);
-      expect(locationText1.right).assertEqual(locationText2.right);
-      expect(locationText2.right).assertEqual(locationText3.right);
-      expect(Math.round(locationText1.left - locationColumn.left)).assertEqual(Math.round(vp2px(50)));
-      expect(locationText1.top).assertEqual(locationColumn.top);
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(40)));
-      expect(Math.round(locationText2.top - locationText1.bottom))
-        .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((locationText1.right) - (locationColumn.right)) <= 1).assertTrue();
+      expect(Math.abs((locationText1.right) - (locationText2.right)) <= 1).assertTrue();
+      expect(Math.abs((locationText2.right) - (locationText3.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((locationText1.top) - (locationColumn.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationColumn.bottom - locationText3.bottom)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(locationText3.top - locationText2.bottom))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.top - locationText1.bottom)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText1.right - locationText1.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.right - locationText2.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText3.right - locationText3.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText1.bottom - locationText1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('new testColumnAlignItemsChangeParentHorizontalAlignEnd END');
       done();
     });

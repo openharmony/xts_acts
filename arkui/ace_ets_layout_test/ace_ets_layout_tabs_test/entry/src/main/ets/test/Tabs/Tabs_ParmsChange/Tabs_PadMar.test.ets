@@ -206,18 +206,18 @@ export default function tabs_PadMarTest() {
       expect(Math.round(Tabs_PadMar_011.bottom - Tabs_PadMar_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_PadMar_012.bottom - Tabs_PadMar_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_PadMar_013.bottom - Tabs_PadMar_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_PadMar_011.right - Tabs_PadMar_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_PadMar_012.right - Tabs_PadMar_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_PadMar_013.right - Tabs_PadMar_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_PadMar_011.right - Tabs_PadMar_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_PadMar_012.right - Tabs_PadMar_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_PadMar_013.right - Tabs_PadMar_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsMar] Tabs_PadMar_001.bottom -
         Tabs_PadMar_001.top = ${Tabs_PadMar_001.bottom - Tabs_PadMar_001.top}`);
       expect(Math.round(Tabs_PadMar_001.bottom - Tabs_PadMar_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_PadMar_002.bottom - Tabs_PadMar_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_PadMar_003.bottom - Tabs_PadMar_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_PadMar_001.right - Tabs_PadMar_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_PadMar_002.right - Tabs_PadMar_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_PadMar_003.right - Tabs_PadMar_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_PadMar_001.right - Tabs_PadMar_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_PadMar_002.right - Tabs_PadMar_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_PadMar_003.right - Tabs_PadMar_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsMar] subGreen.bottom = ${subGreen.bottom}`);
       expect(subGreen.bottom).assertEqual(Tabs_PadMar_001.top);

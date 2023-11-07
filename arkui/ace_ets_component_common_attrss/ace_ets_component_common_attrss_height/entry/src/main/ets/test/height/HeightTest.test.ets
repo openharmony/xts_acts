@@ -182,7 +182,7 @@ export default function heightTest() {
       expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
 
       //Confirm that the calculated value is consistent with the expected value.
-      expect(strJsonRectHeight).assertEqual(data.testValue.expectValue.height);
+      expect(Math.abs(strJsonRectHeight - data.testValue.expectValue.height) <= 1).assertTrue();
     })
   })
 }

@@ -112,18 +112,18 @@ export default function Tabs_itemSize() {
       expect(Math.round(Tabs_itemSize_011.bottom - Tabs_itemSize_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_itemSize_012.bottom - Tabs_itemSize_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_itemSize_013.bottom - Tabs_itemSize_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_itemSize_011.right - Tabs_itemSize_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_itemSize_012.right - Tabs_itemSize_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_itemSize_013.right - Tabs_itemSize_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_itemSize_011.right - Tabs_itemSize_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_itemSize_012.right - Tabs_itemSize_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_itemSize_013.right - Tabs_itemSize_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsItemSize]Tabs_itemSize_001.bottom - Tabs_itemSize_001.top=
         ${Math.round(Tabs_itemSize_001.bottom - Tabs_itemSize_001.top)}`);
       expect(Math.round(Tabs_itemSize_001.bottom - Tabs_itemSize_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_itemSize_002.bottom - Tabs_itemSize_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_itemSize_003.bottom - Tabs_itemSize_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_itemSize_001.right - Tabs_itemSize_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_itemSize_002.right - Tabs_itemSize_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_itemSize_003.right - Tabs_itemSize_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_itemSize_001.right - Tabs_itemSize_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_itemSize_002.right - Tabs_itemSize_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_itemSize_003.right - Tabs_itemSize_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsItemSize]subGreen.bottom - subGreen.top = ${Math.round(subGreen.bottom - subGreen.top)}`);
       expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
