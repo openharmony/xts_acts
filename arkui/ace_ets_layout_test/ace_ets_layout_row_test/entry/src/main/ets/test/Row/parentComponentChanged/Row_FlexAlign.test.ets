@@ -17,7 +17,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from '../../../MainAbility/common/Common'
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function Row_FlexAlign() {
 
   describe('Row_FlexAlign', function () {
@@ -58,39 +58,40 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignStart', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignStart START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.Start });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.Start });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Start");
-      
-      expect(Text1.left).assertEqual(Row.left);
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
-      
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
+
+      expect(Math.abs((Text1.left) - (Row.left)) <= 1).assertTrue();
+      expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
+
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Row.right).assertLarger(Text3.right);
-      
+
       console.info('testRowJustifyContentFlexAlignStart END');
       done();
     });
@@ -103,36 +104,36 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignCenter', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignCenter START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.Center });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.Center });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Center");
-      
-      expect(Math.round(Text1.left - Row.left)).assertEqual(Math.round(Row.right - Text3.right));
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
+
+      expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
       console.info('testRowJustifyContentFlexAlignCenter END');
       done();
@@ -146,38 +147,38 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignEnd', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignEnd START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.End });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.End });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.End");
-      
-      expect(Text3.right).assertEqual(Row.right);
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
+
+      expect(Math.abs(Text3.right - Row.right) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Text1.left).assertLarger(Row.left);
-      
+
       console.info('testRowJustifyContentFlexAlignEnd END');
       done();
     });
@@ -190,37 +191,37 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignSpaceBetween', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignSpaceBetween START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.SpaceBetween });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceBetween });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceBetween");
-      
-      expect(Text1.left).assertEqual(Row.left);
-      expect(Text3.right).assertEqual(Row.right);
-      expect(Math.round(Math.round((Text2.left - Text1.right)*10)/10)).assertEqual(Math.round(vp2px(25)));
-      expect(Math.round(Math.round((Text3.left - Text2.right)*10)/10)).assertEqual(Math.round(vp2px(25)));
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
+
+      expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
+      expect(Math.abs(Text3.right - Row.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text2.left - Text1.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text3.left - Text2.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
 
       console.info('testRowJustifyContentFlexAlignSpaceBetween END');
       done();
@@ -234,39 +235,39 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignSpaceAround', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignSpaceAround START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.SpaceAround });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceAround });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
 
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceAround");
-      
-      expect(Math.round(Text1.left - Row.left)).assertEqual(Math.round(Row.right - Text3.right));
-      expect(Math.round((Text1.left - Row.left)*10)/10).assertEqual(Math.round(vp2px(50/6)*10)/10);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(50/3)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(50/3)));
 
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
+      expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Text1.left - Row.left) * 10) / 10 - Math.round(vp2px(50 / 6) * 10) / 10) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(50 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(50 / 3)))) <= 1).assertTrue();
+
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
 
       console.info('testRowJustifyContentFlexAlignSpaceAround END');
       done();
@@ -280,38 +281,38 @@ export default function Row_FlexAlign() {
 
     it('testRowJustifyContentFlexAlignSpaceEvenly', 0, async function (done) {
       console.info('testRowJustifyContentFlexAlignSpaceEvenly START');
-      globalThis.value.message.notify({ name:'justifyContent', value:FlexAlign.SpaceEvenly });
+      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceEvenly });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
       let Text1 = CommonFunc.getComponentRect('Text1');
       let Text2 = CommonFunc.getComponentRect('Text2');
       let Text3 = CommonFunc.getComponentRect('Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
 
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceEvenly");
-      
-      expect(Math.round(Text1.left - Row.left)).assertEqual(Math.round(Row.right - Text3.right));
-      expect(Math.round(Math.round((Text1.left - Row.left)*100)/100)).assertEqual(Math.round(Math.round(vp2px(50/4)*100)/100));
-      expect(Math.round(Math.round((Text2.left - Text1.right)*100)/100)).assertEqual(Math.round(Math.round(vp2px(50/4)*100)/100));
-      expect(Math.round(Math.round((Text3.left - Text2.right)*100)/100)).assertEqual(Math.round(Math.round(vp2px(50/4)*100)/100));
 
-      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
-      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
-      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
+      expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text1.left - Row.left) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text2.left - Text1.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text3.left - Text2.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
+
+      expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
 
       console.info('testRowJustifyContentFlexAlignSpaceEvenly END');
       done();

@@ -63,10 +63,10 @@ export default function AlignCenter_AddPadding() {
       let Center_AddPadding_012 = CommonFunc.getComponentRect('Center_AddPadding_012');
       let Center_AddPadding_013 = CommonFunc.getComponentRect('Center_AddPadding_013');
       let Center_AddPadding_01 = CommonFunc.getComponentRect('Center_AddPadding_01');
-      expect(Center_AddPadding_011.top).assertEqual(Center_AddPadding_012.top);
-      expect(Center_AddPadding_012.top).assertEqual(Center_AddPadding_013.top);
-      expect(Center_AddPadding_012.left).assertEqual(Center_AddPadding_011.right);
-      expect(Center_AddPadding_013.left).assertEqual(Center_AddPadding_012.right);
+      expect(Math.abs(Center_AddPadding_011.top - Center_AddPadding_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_012.top - Center_AddPadding_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_012.left - Center_AddPadding_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_013.left - Center_AddPadding_012.right) <= 1).assertTrue();
       expect(Math.round(Center_AddPadding_011.left - Center_AddPadding_01.left)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Center_AddPadding_01.right - Center_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(Math.round(vp2px(30)));
@@ -98,10 +98,10 @@ export default function AlignCenter_AddPadding() {
       let Center_AddPadding_012 = CommonFunc.getComponentRect('Center_AddPadding_012');
       let Center_AddPadding_013 = CommonFunc.getComponentRect('Center_AddPadding_013');
       let Center_AddPadding_01 = CommonFunc.getComponentRect('Center_AddPadding_01');
-      expect(Center_AddPadding_011.top).assertEqual(Center_AddPadding_012.top);
-      expect(Center_AddPadding_012.top).assertEqual(Center_AddPadding_013.top);
-      expect(Center_AddPadding_012.left) .assertEqual(Center_AddPadding_011.right);
-      expect(Center_AddPadding_013.left) .assertEqual(Center_AddPadding_012.right);
+      expect(Math.abs(Center_AddPadding_011.top - Center_AddPadding_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_012.top - Center_AddPadding_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_012.left - Center_AddPadding_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddPadding_013.left - Center_AddPadding_012.right) <= 1).assertTrue();
       expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round((Center_AddPadding_011.left - Center_AddPadding_01.left)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);

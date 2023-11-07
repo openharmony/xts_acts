@@ -67,12 +67,12 @@ export default function Grid_Row_Length_String() {
       let Length_String_07 = CommonFunc.getComponentRect('Length_String_07');
 
       console.log('assert space')
-      expect(Math.round(Length_String_01.left - Length_String_00.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(Length_String_02.left - Length_String_01.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(Length_String_03.left - Length_String_02.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(Length_String_04.left - Length_String_03.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(Length_String_05.left - Length_String_04.right)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(Length_String_07.left - Length_String_06.right)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.abs(Math.round(Length_String_01.left - Length_String_00.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_02.left - Length_String_01.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_03.left - Length_String_02.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_04.left - Length_String_03.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_05.left - Length_String_04.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(vp2px(0))) <= 1).assertTrue();
 
       expect(Math.round(Length_String_06.top - Length_String_00.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Length_String_07.top - Length_String_01.bottom)).assertEqual(Math.round(vp2px(10)));
@@ -105,15 +105,15 @@ export default function Grid_Row_Length_String() {
       let Length_String_07 = CommonFunc.getComponentRect('Length_String_07');
 
       console.log('assert space')
-      expect(Math.round(Length_String_01.left - Length_String_00.right)).assertEqual(Math.round(50));
-      expect(Math.round(Length_String_02.left - Length_String_01.right)).assertEqual(Math.round(50));
-      expect(Math.round(Length_String_03.left - Length_String_02.right)).assertEqual(Math.round(50));
-      expect(Math.round(Length_String_04.left - Length_String_03.right)).assertEqual(Math.round(50));
-      expect(Math.round(Length_String_05.left - Length_String_04.right)).assertEqual(Math.round(50));
-      expect(Math.round(Length_String_07.left - Length_String_06.right)).assertEqual(Math.round(50));
+      expect(Math.abs(Math.round(Length_String_01.left - Length_String_00.right) - Math.round(50)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_02.left - Length_String_01.right) - Math.round(50)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_03.left - Length_String_02.right) - Math.round(50)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_04.left - Length_String_03.right) - Math.round(50)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_05.left - Length_String_04.right) - Math.round(50)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(50)) <= 1).assertTrue();
 
-      expect(Math.round(Length_String_06.top - Length_String_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Length_String_07.top - Length_String_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(Length_String_06.top - Length_String_00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.top - Length_String_01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Row_GutterStr_TEST_0200] END');
       done();

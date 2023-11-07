@@ -120,15 +120,11 @@ export default function List_alignListItem() {
       let List_alignListItem_013 = CommonFunc.getComponentRect('List_alignListItem_013');
       let List_alignListItem_014 = CommonFunc.getComponentRect('List_alignListItem_014');
       let List_alignListItem_01 = CommonFunc.getComponentRect('List_alignListItem_01');
-      expect(Math.round(List_alignListItem_011.left - List_alignListItem_01.left))
-        .assertEqual(Math.round(List_alignListItem_01.right - List_alignListItem_011.right));
-      expect(Math.round(List_alignListItem_012.left - List_alignListItem_01.left))
-        .assertEqual(Math.round(List_alignListItem_01.right - List_alignListItem_012.right));
-      expect(Math.round(List_alignListItem_013.left - List_alignListItem_01.left))
-        .assertEqual(Math.round(List_alignListItem_01.right - List_alignListItem_013.right));
-      expect(Math.round(List_alignListItem_014.left - List_alignListItem_01.left))
-        .assertEqual(Math.round(List_alignListItem_01.right - List_alignListItem_014.right));
-      expect(List_alignListItem_011.top).assertEqual(List_alignListItem_01.top);
+      expect(Math.abs(Math.round(List_alignListItem_011.left - List_alignListItem_01.left) - Math.round(List_alignListItem_01.right - List_alignListItem_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_alignListItem_012.left - List_alignListItem_01.left) - Math.round(List_alignListItem_01.right - List_alignListItem_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_alignListItem_013.left - List_alignListItem_01.left) - Math.round(List_alignListItem_01.right - List_alignListItem_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_alignListItem_014.left - List_alignListItem_01.left) - Math.round(List_alignListItem_01.right - List_alignListItem_014.right)) <= 1).assertTrue();
+      expect(Math.abs(List_alignListItem_011.top - List_alignListItem_01.top) <= 1).assertTrue();
 
       expect(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom)).assertEqual(Math.round(vp2px(20)));

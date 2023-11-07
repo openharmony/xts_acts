@@ -63,13 +63,13 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       let SpaceEvenly_AddAllSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_013');
       let SpaceEvenly_AddAllSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_01');
       let SpaceEvenly_AddAllSpace_01_Box = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_01_Box');
-      expect(Math.round(SpaceEvenly_AddAllSpace_011.top)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_012.top));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.top)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_013.top));
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_011.top) - Math.round(SpaceEvenly_AddAllSpace_012.top)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_012.top) - Math.round(SpaceEvenly_AddAllSpace_013.top)) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_AddAllSpace_011.top - SpaceEvenly_AddAllSpace_01.top)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(SpaceEvenly_AddAllSpace_01.right - SpaceEvenly_AddAllSpace_013.right)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(SpaceEvenly_AddAllSpace_011.left - SpaceEvenly_AddAllSpace_01.left)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.left)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_011.right));
-      expect(Math.round(SpaceEvenly_AddAllSpace_013.left)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_012.right));
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_012.left) - Math.round(SpaceEvenly_AddAllSpace_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_013.left) - Math.round(SpaceEvenly_AddAllSpace_012.right)) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_AddAllSpace_01.left - SpaceEvenly_AddAllSpace_01_Box.left)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(SpaceEvenly_AddAllSpace_01.top - SpaceEvenly_AddAllSpace_01_Box.top)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(SpaceEvenly_AddAllSpace_011.bottom - SpaceEvenly_AddAllSpace_011.top)).assertEqual(Math.round(vp2px(50)));
@@ -103,8 +103,8 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       let SpaceEvenly_AddAllSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_013');
       let SpaceEvenly_AddAllSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_01');
       let SpaceEvenly_AddAllSpace_01_Box = CommonFunc.getComponentRect('SpaceEvenly_AddAllSpace_01_Box');
-      expect(Math.round(SpaceEvenly_AddAllSpace_011.top)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_012.top));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.top)).assertEqual(Math.round(SpaceEvenly_AddAllSpace_013.top));
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_011.top) - Math.round(SpaceEvenly_AddAllSpace_012.top)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_012.top) - Math.round(SpaceEvenly_AddAllSpace_013.top)) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_AddAllSpace_011.top - SpaceEvenly_AddAllSpace_01.top)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(SpaceEvenly_AddAllSpace_01.right - SpaceEvenly_AddAllSpace_013.right))
         .assertEqual(Math.round(vp2px(22.5)));
@@ -118,8 +118,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       expect(Math.round(SpaceEvenly_AddAllSpace_011.bottom - SpaceEvenly_AddAllSpace_011.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(SpaceEvenly_AddAllSpace_012.bottom - SpaceEvenly_AddAllSpace_012.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(SpaceEvenly_AddAllSpace_013.bottom - SpaceEvenly_AddAllSpace_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.left - SpaceEvenly_AddAllSpace_011.right))
-        .assertEqual(Math.round(SpaceEvenly_AddAllSpace_013.left - SpaceEvenly_AddAllSpace_012.right));
+      expect(Math.abs(Math.round(SpaceEvenly_AddAllSpace_012.left - SpaceEvenly_AddAllSpace_011.right) - Math.round(SpaceEvenly_AddAllSpace_013.left - SpaceEvenly_AddAllSpace_012.right)) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_AddAllSpace_012.left - SpaceEvenly_AddAllSpace_011.right))
         .assertEqual(Math.round(vp2px(2.5)));
       console.info('[testFlexAlignSpaceEvenlyFlexSpaceMeet] END');

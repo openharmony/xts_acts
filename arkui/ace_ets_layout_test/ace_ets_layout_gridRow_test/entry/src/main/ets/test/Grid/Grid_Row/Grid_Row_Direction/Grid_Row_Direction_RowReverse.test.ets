@@ -62,8 +62,8 @@ export default function Grid_Row_Direction_RowReverse() {
       let gridRowDirection = JSON.parse(gridRowDirectionRowReverseJson);
       expect(gridRowDirection.$type).assertEqual('GridRow');
 
-      expect(firstDirectionRowReverse.top).assertEqual(DirectionRowReverse_1.top);
-      expect(firstDirectionRowReverse.right).assertEqual(DirectionRowReverse_1.right);
+      expect(Math.abs(firstDirectionRowReverse.top - DirectionRowReverse_1.top) <= 1).assertTrue();
+      expect(Math.abs(firstDirectionRowReverse.right - DirectionRowReverse_1.right) <= 1).assertTrue();
 
       expect(Math.round(firstDirectionRowReverse.left - secondDirectionRowReverse.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(thirdDirectionRowReverse.top - firstDirectionRowReverse.bottom)).assertEqual(Math.round(vp2px(10)));

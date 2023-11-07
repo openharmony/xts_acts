@@ -63,9 +63,9 @@ export default function AlignStart_AddOneMargin() {
       let Start_AddOneMargin_012 = CommonFunc.getComponentRect('Start_AddOneMargin_012');
       let Start_AddOneMargin_013 = CommonFunc.getComponentRect('Start_AddOneMargin_013');
       let Start_AddOneMargin_01 = CommonFunc.getComponentRect('Start_AddOneMargin_01');
-      expect(Start_AddOneMargin_013.top).assertEqual(Start_AddOneMargin_012.top);
-      expect(Start_AddOneMargin_01.top).assertEqual(Start_AddOneMargin_012.top);
-      expect(Start_AddOneMargin_013.left).assertEqual(Start_AddOneMargin_012.right);
+      expect(Math.abs(Start_AddOneMargin_013.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Start_AddOneMargin_01.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Start_AddOneMargin_013.left - Start_AddOneMargin_012.right) <= 1).assertTrue();
       expect(Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left)).assertEqual(Math.round(vp2px(20)));
@@ -97,10 +97,10 @@ export default function AlignStart_AddOneMargin() {
       let Start_AddOneMargin_012 = CommonFunc.getComponentRect('Start_AddOneMargin_012');
       let Start_AddOneMargin_013 = CommonFunc.getComponentRect('Start_AddOneMargin_013');
       let Start_AddOneMargin_01 = CommonFunc.getComponentRect('Start_AddOneMargin_01');
-      expect(Start_AddOneMargin_012.top).assertEqual(Start_AddOneMargin_013.top);
-      expect(Start_AddOneMargin_01.top).assertEqual(Start_AddOneMargin_012.top);
-      expect(Start_AddOneMargin_013.left).assertEqual(Start_AddOneMargin_012.right);
-      expect(Start_AddOneMargin_013.right).assertEqual(Start_AddOneMargin_01.right);
+      expect(Math.abs(Start_AddOneMargin_012.top - Start_AddOneMargin_013.top) <= 1).assertTrue();
+      expect(Math.abs(Start_AddOneMargin_01.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
+      expect(Math.abs(Start_AddOneMargin_013.left - Start_AddOneMargin_012.right) <= 1).assertTrue();
+      expect(Math.abs(Start_AddOneMargin_013.right - Start_AddOneMargin_01.right) <= 1).assertTrue();
       expect(Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right))
         .assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(30)));

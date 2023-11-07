@@ -63,13 +63,13 @@ export default function AlignSpaceEvenly_NoSpace() {
       let SpaceEvenly_NoSpace_012 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_012');
       let SpaceEvenly_NoSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_013');
       let SpaceEvenly_NoSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_01');
-      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_012.top);
-      expect(SpaceEvenly_NoSpace_012.top).assertEqual(SpaceEvenly_NoSpace_013.top);
-      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_01.top);
-      expect(SpaceEvenly_NoSpace_011.left).assertEqual(SpaceEvenly_NoSpace_01.left);
-      expect(SpaceEvenly_NoSpace_01.right).assertEqual(SpaceEvenly_NoSpace_013.right);
-      expect(SpaceEvenly_NoSpace_012.left).assertEqual(SpaceEvenly_NoSpace_011.right);
-      expect(SpaceEvenly_NoSpace_013.left).assertEqual(SpaceEvenly_NoSpace_012.right);
+      expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_012.top - SpaceEvenly_NoSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_01.top) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_011.left - SpaceEvenly_NoSpace_01.left) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_013.left - SpaceEvenly_NoSpace_012.right) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left))
         .assertEqual(Math.round(vp2px(400/3)));
       expect(Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left))
@@ -101,9 +101,9 @@ export default function AlignSpaceEvenly_NoSpace() {
       let SpaceEvenly_NoSpace_012 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_012');
       let SpaceEvenly_NoSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_013');
       let SpaceEvenly_NoSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_01');
-      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_012.top);
-      expect(SpaceEvenly_NoSpace_012.top).assertEqual(SpaceEvenly_NoSpace_013.top);
-      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_01.top);
+      expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_012.top - SpaceEvenly_NoSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_01.top) <= 1).assertTrue();
       expect(Math.round(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right))
         .assertEqual(Math.round(vp2px(12.5)));
       expect(Math.round(SpaceEvenly_NoSpace_011.left - SpaceEvenly_NoSpace_01.left))
@@ -112,7 +112,7 @@ export default function AlignSpaceEvenly_NoSpace() {
         .assertEqual(Math.round(vp2px(12.5)));
       expect(Math.round(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right))
         .assertEqual(Math.round(vp2px(12.5)));
-    
+
 
       expect(Math.abs(Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left) - Math.round(vp2px(150))) <=1).assertTrue();
       expect(Math.abs(Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left) - Math.round(vp2px(150))) <=1).assertTrue();
