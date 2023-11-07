@@ -117,6 +117,12 @@ struct ImageEffectsExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent9, this.stateChangCallBack);
+
+    var stateChangeEvent10 = {
+      eventId: 21,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent10, this.stateChangCallBack);
   }
 
   build() {

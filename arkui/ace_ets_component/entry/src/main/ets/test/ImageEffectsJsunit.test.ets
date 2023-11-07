@@ -1027,6 +1027,38 @@ export default function imageEffectsJsunit() {
       expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterFloatingMD");
       done();
     });
+
+    it('testImageEffects042', 0, async function (done) {
+      console.info('[testImageEffects042] START');
+      await Utils.sleep(1000);
+      let shadowValue = {
+        radius: 20, color: ColoringStrategy.AVERAGE, offsetX: 10, offsetY: 10
+      };
+      try {
+        var eventData = {
+          data: {
+            "shadowValue": JSON.stringify(shadowValue)
+          }
+        }
+        var innerEvent = {
+          eventId: 21,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testImageEffects042] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testImageEffects042] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('centerRow3');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testImageEffects042] component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.shadow.radius).assertEqual("20.000000");
+      expect(objNew.$attrs.shadow.color).assertEqual("ColoringStrategy.AVERAGE");
+      expect(objNew.$attrs.shadow.offsetX).assertEqual("10.000000");
+      expect(objNew.$attrs.shadow.offsetY).assertEqual("10.000000");
+      done();
+    });
   })
 }
 
