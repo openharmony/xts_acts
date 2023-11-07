@@ -21,7 +21,7 @@ import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import deviceInfo from '@ohos.deviceInfo';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraModuleTest: ";
 
 // Define global letiables
@@ -124,6 +124,7 @@ let mMETERINGPointInvalidRB = {
 
 let mEnableCheckInvalidMETERINGPoint = false;
 let receiver;
+let context = featureAbility.getContext();
 
 export default function cameraSessionExposureTest() {
 
@@ -230,7 +231,7 @@ export default function cameraSessionExposureTest() {
     function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;

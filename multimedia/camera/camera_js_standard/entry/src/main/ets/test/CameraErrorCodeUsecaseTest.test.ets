@@ -17,6 +17,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import featureAbility from '@ohos.ability.featureAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 // 创建视频录制的参数
@@ -76,6 +77,7 @@ let fdNumber;
 let metadataOutput;
 let mMetadataObjectTypeArray;
 let receiver;
+let context = featureAbility.getContext();
 
 export default function CameraErrorCodeUsecaseTest() {
     function sleep(ms) {
@@ -92,7 +94,7 @@ export default function CameraErrorCodeUsecaseTest() {
 
     function getCameraManagerInstance() {
         console.info(TAG + 'Enter getCameraManagerInstance');
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
