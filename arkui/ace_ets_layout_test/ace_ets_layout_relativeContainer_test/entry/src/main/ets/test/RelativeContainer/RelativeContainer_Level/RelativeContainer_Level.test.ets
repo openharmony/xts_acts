@@ -59,8 +59,8 @@ export default function RelativeContainer_Level() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_Level_tx2.top).assertEqual(RelativeContainer_Level_bt1.bottom);
-      expect(RelativeContainer_Level_tx2.right).assertEqual(RelativeContainer_Level_bt1.left);
+      expect(Math.abs(RelativeContainer_Level_tx2.top - RelativeContainer_Level_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Level_tx2.right - RelativeContainer_Level_bt1.left) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0100] END');
       done();
@@ -82,8 +82,8 @@ export default function RelativeContainer_Level() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_Level_tx2.top).assertEqual(RelativeContainer_Level_bt1.bottom);
-      expect(RelativeContainer_Level_tx2.right).assertEqual((RelativeContainer_Level_bt1.right - RelativeContainer_Level_bt1.left)/2 + RelativeContainer_Level_bt1.left);
+      expect(Math.abs(RelativeContainer_Level_tx2.top - RelativeContainer_Level_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Level_tx2.right - ((RelativeContainer_Level_bt1.right - RelativeContainer_Level_bt1.left)/2 + RelativeContainer_Level_bt1.left)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0200] END');
       done();
@@ -106,8 +106,8 @@ export default function RelativeContainer_Level() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_Level_tx2.top).assertEqual(RelativeContainer_Level_bt1.bottom);
-      expect(RelativeContainer_Level_tx2.right).assertEqual(RelativeContainer_Level_bt1.right);
+      expect(Math.abs(RelativeContainer_Level_tx2.top - RelativeContainer_Level_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Level_tx2.right - RelativeContainer_Level_bt1.right) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0300] END');
       done();

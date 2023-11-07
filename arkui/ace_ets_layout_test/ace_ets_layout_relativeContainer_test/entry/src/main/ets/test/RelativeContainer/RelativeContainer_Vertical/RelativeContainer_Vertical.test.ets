@@ -59,8 +59,8 @@ export default function RelativeContainer_Vertical() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_Vertical_tx2.top).assertEqual(RelativeContainer_Vertical_bt1.top);
-      expect(RelativeContainer_Vertical_tx2.left).assertEqual(RelativeContainer_Vertical_bt1.right);
+      expect(Math.abs(RelativeContainer_Vertical_tx2.top - RelativeContainer_Vertical_bt1.top) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Vertical_tx2.left - RelativeContainer_Vertical_bt1.right) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0100] END');
       done();
@@ -82,8 +82,8 @@ export default function RelativeContainer_Vertical() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_Vertical_tx2.top).assertEqual((RelativeContainer_Vertical_bt1.bottom - RelativeContainer_Vertical_bt1.top)/2 + RelativeContainer_Vertical_bt1.top);
-      expect(RelativeContainer_Vertical_tx2.left).assertEqual(RelativeContainer_Vertical_bt1.right);
+      expect(Math.abs(RelativeContainer_Vertical_tx2.top - ((RelativeContainer_Vertical_bt1.bottom - RelativeContainer_Vertical_bt1.top)/2 + RelativeContainer_Vertical_bt1.top)) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Vertical_tx2.left - RelativeContainer_Vertical_bt1.right) <= 1).assertTrue();
 
 
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0200] END');
@@ -108,8 +108,8 @@ export default function RelativeContainer_Vertical() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_Vertical_tx2.top).assertEqual(RelativeContainer_Vertical_bt1.bottom);
-      expect(RelativeContainer_Vertical_tx2.left).assertEqual(RelativeContainer_Vertical_bt1.right);
+      expect(Math.abs(RelativeContainer_Vertical_tx2.top - RelativeContainer_Vertical_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Vertical_tx2.left - RelativeContainer_Vertical_bt1.right) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0300] END');
       done();

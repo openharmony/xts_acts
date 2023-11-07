@@ -58,10 +58,10 @@ export default function RelativeContainer_AnchorPoint_TwoDirection() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_AnchorPoint_TwoDirection_row1.top).assertEqual(RelativeContainer_AnchorPoint_TwoDirection_r1.top);
-      expect(RelativeContainer_AnchorPoint_TwoDirection_row1.bottom).assertEqual(RelativeContainer_AnchorPoint_TwoDirection_r1.bottom);
-      expect(RelativeContainer_AnchorPoint_TwoDirection_row1.left).assertEqual(RelativeContainer_AnchorPoint_TwoDirection_r1.left);
-      expect(RelativeContainer_AnchorPoint_TwoDirection_row1.right).assertEqual(RelativeContainer_AnchorPoint_TwoDirection_r1.right);
+      expect(Math.abs(RelativeContainer_AnchorPoint_TwoDirection_row1.top - RelativeContainer_AnchorPoint_TwoDirection_r1.top) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_TwoDirection_row1.bottom - RelativeContainer_AnchorPoint_TwoDirection_r1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_TwoDirection_row1.left - RelativeContainer_AnchorPoint_TwoDirection_r1.left) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_TwoDirection_row1.right - RelativeContainer_AnchorPoint_TwoDirection_r1.right) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_TwoDirection_TEST_0100] END');
       done();

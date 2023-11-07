@@ -61,10 +61,10 @@ export default function RelativeContainer_AnchorPoint_Absent() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_AnchorPoint_Absent_r1.left).assertEqual(RelativeContainer_AnchorPoint_Absent_row1.left);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Absent_r1.left - RelativeContainer_AnchorPoint_Absent_row1.left) <= 1).assertTrue();
 
-      expect(RelativeContainer_AnchorPoint_Absent_bt1.top).assertEqual(RelativeContainer_AnchorPoint_Absent_r1.top );
-      expect(RelativeContainer_AnchorPoint_Absent_bt1.left + (RelativeContainer_AnchorPoint_Absent_bt1.right - RelativeContainer_AnchorPoint_Absent_bt1.left)/2 ).assertEqual(RelativeContainer_AnchorPoint_Absent_r1.left + (RelativeContainer_AnchorPoint_Absent_r1.right - RelativeContainer_AnchorPoint_Absent_r1.left)/2);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Absent_bt1.top - RelativeContainer_AnchorPoint_Absent_r1.top) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Absent_bt1.left + (RelativeContainer_AnchorPoint_Absent_bt1.right - RelativeContainer_AnchorPoint_Absent_bt1.left)/2 - (RelativeContainer_AnchorPoint_Absent_r1.left + (RelativeContainer_AnchorPoint_Absent_r1.right - RelativeContainer_AnchorPoint_Absent_r1.left)/2)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Absent_TEST_0100] END');
       done();

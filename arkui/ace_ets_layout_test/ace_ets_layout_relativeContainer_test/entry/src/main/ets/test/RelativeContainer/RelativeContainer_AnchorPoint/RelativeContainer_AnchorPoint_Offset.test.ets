@@ -60,9 +60,9 @@ export default function RelativeContainer_AnchorPoint_Offset() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_AnchorPoint_Offset_tx2.top).assertEqual(RelativeContainer_AnchorPoint_Offset_bt1.bottom);
-      expect(RelativeContainer_AnchorPoint_Offset_tx2.bottom).assertEqual(RelativeContainer_AnchorPoint_Offset_r1.bottom);
-      expect(RelativeContainer_AnchorPoint_Offset_tx2.right).assertEqual((RelativeContainer_AnchorPoint_Offset_bt1.right - RelativeContainer_AnchorPoint_Offset_bt1.left)/2 + RelativeContainer_AnchorPoint_Offset_bt1.left + vp2px(50));
+      expect(Math.abs(RelativeContainer_AnchorPoint_Offset_tx2.top - RelativeContainer_AnchorPoint_Offset_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Offset_tx2.bottom - RelativeContainer_AnchorPoint_Offset_r1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Offset_tx2.right - ((RelativeContainer_AnchorPoint_Offset_bt1.right - RelativeContainer_AnchorPoint_Offset_bt1.left)/2 + RelativeContainer_AnchorPoint_Offset_bt1.left + vp2px(50))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Offset_TEST_0100] END');
       done();

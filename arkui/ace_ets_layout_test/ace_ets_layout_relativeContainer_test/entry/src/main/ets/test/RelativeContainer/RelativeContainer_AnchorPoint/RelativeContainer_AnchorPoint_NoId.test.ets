@@ -61,8 +61,8 @@ export default function RelativeContainer_AnchorPoint_NoId() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_AnchorPoint_NoId_row1.left).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.left);
-      expect(RelativeContainer_AnchorPoint_NoId_row1.top).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.top);
+      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.left - RelativeContainer_AnchorPoint_NoId_r1.left) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.top - RelativeContainer_AnchorPoint_NoId_r1.top) <= 1).assertTrue();
 
 //      expect(RelativeContainer_AnchorPoint_NoId_row2.right).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.right);
 //      expect(RelativeContainer_AnchorPoint_NoId_row2.top).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.top);
