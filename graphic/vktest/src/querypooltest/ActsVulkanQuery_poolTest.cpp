@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanQuerypoolTest.h"
+#include "ActsVulkanQuery_poolTest.h"
 
 namespace OHOS {
     using namespace std;

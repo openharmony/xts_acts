@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanMeshshaderTest.h"
+#include "ActsVulkanMesh_shaderTest.h"
 
 namespace OHOS {
     using namespace std;

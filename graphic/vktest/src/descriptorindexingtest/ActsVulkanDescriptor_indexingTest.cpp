@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDescriptorindexingTest.h"
+#include "ActsVulkanDescriptor_indexingTest.h"
 
 namespace OHOS {
     using namespace std;

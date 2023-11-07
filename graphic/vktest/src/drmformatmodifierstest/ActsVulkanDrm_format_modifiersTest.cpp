@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDrmformatmodifiersTest.h"
+#include "ActsVulkanDrm_format_modifiersTest.h"
 
 namespace OHOS {
     using namespace std;

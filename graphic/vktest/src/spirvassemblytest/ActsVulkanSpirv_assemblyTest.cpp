@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanSpirvassemblyTest.h"
+#include "ActsVulkanSpirv_assemblyTest.h"
 
 namespace OHOS {
     using namespace std;

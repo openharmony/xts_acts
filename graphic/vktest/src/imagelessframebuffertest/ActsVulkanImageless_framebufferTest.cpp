@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanImagelessframebufferTest.h"
+#include "ActsVulkanImageless_framebufferTest.h"
 
 namespace OHOS {
     using namespace std;

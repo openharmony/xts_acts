@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragmentoperationsTest.h"
+#include "ActsVulkanFragment_operationsTest.h"
 
 namespace OHOS {
     using namespace std;

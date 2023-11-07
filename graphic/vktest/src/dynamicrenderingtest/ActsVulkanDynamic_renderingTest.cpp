@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDynamicrenderingTest.h"
+#include "ActsVulkanDynamic_renderingTest.h"
 
 namespace OHOS {
     using namespace std;

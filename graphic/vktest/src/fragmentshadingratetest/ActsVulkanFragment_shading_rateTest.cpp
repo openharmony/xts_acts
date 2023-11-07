@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragmentshadingrateTest.h"
+#include "ActsVulkanFragment_shading_rateTest.h"
 
 namespace OHOS {
     using namespace std;

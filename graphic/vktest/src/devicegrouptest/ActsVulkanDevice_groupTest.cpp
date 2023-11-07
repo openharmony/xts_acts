@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDevicegroupTest.h"
+#include "ActsVulkanDevice_groupTest.h"
 
 namespace OHOS {
     using namespace std;

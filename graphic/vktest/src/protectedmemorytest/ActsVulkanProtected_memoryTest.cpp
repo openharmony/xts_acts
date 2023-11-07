@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanProtectedmemoryTest.h"
+#include "ActsVulkanProtected_memoryTest.h"
 
 namespace OHOS {
     using namespace std;

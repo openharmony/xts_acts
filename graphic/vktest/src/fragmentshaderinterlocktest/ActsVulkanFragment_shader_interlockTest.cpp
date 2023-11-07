@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragmentshaderinterlockTest.h"
+#include "ActsVulkanFragment_shader_interlockTest.h"
 
 namespace OHOS {
     using namespace std;

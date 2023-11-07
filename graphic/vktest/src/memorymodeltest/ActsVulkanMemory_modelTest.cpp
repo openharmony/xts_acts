@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanMemorymodelTest.h"
+#include "ActsVulkanMemory_modelTest.h"
 
 namespace OHOS {
     using namespace std;
