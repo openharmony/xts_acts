@@ -65,7 +65,7 @@ export default function flexMargin_CenterJsunit() {
       expect(Math.abs(textFlexMargin02.top - flexMargin.top - (flexMargin.bottom - textFlexMargin02.bottom)) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin03.top - flexMargin.top - (flexMargin.bottom - textFlexMargin03.bottom)) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin01.bottom - textFlexMargin01.top - Math.round(vp2px(50))) <= 1).assertTrue()
-      expect(Math.abs(textFlexMargin02.bottom - textFlexMargin02.to - Math.round(vp2px(100))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin02.bottom - textFlexMargin02.top - Math.round(vp2px(100))) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin03.bottom - textFlexMargin03.top - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin01.right - textFlexMargin01.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin02.right - textFlexMargin02.left - Math.round(vp2px(150))) <= 1).assertTrue()

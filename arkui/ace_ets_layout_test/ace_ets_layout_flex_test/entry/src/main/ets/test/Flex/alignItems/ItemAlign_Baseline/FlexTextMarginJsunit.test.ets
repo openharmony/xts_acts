@@ -63,11 +63,11 @@ export default function flexTextMargin_BaselineJsunit() {
       expect(Math.abs(Math.round(textMargin01.left - flexTextMargin01.left) - Math.round(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textMargin02.left - textMargin01.right) - Math.round(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(textMargin03.left - textMargin02.right) <= 1).assertTrue();
-      expect(Math.abs(Math.round(flexTextMargin01.right - textMargin03.right) - Math.round(vp2px(30)))).assertTrue()
+      expect(Math.abs(Math.round(flexTextMargin01.right - textMargin03.right) - Math.round(vp2px(30))) <= 1).assertTrue()
 
       expect(Math.abs(textMargin03.top - flexTextMargin01.top) <= 1).assertTrue();
-      expect(Math.abs(textMargin01.top - textMargin03.top - vp2px(marginValue) - textMargin03.bottom - textMargin01.bottom + vp2px(marginValue)) <= 1).assertTrue();
-      expect(Math.abs(textMargin02.top - textMargin03.top - textMargin03.bottom - textMargin02.bottom) <= 1).assertTrue();
+      expect(Math.abs(textMargin01.top - textMargin03.top - vp2px(marginValue) - (textMargin03.bottom - textMargin01.bottom + vp2px(marginValue))) <= 1).assertTrue();
+      expect(Math.abs(textMargin02.top - textMargin03.top - (textMargin03.bottom - textMargin02.bottom)) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(textMargin01.bottom - textMargin01.top) - Math.round(vp2px(50))) <= 1).assertTrue()
       expect(Math.abs(Math.round(textMargin02.bottom - textMargin02.top) - Math.round(vp2px(100))) <= 1).assertTrue()
@@ -103,8 +103,8 @@ export default function flexTextMargin_BaselineJsunit() {
       expect(Math.abs(textMargin03.right - flexTextMargin01.right) <= 1).assertTrue();
 
       expect(Math.abs(textMargin03.top - flexTextMargin01.top) <= 1).assertTrue();
-      expect(Math.abs(textMargin01.top - textMargin03.top - vp2px(marginValue) - textMargin03.bottom - textMargin01.bottom + vp2px(marginValue)) <= 1).assertTrue();
-      expect(Math.abs(textMargin02.top - textMargin03.top - textMargin03.bottom - textMargin02.bottom) <= 1).assertTrue();
+      expect(Math.abs(textMargin01.top - textMargin03.top - vp2px(marginValue) - (textMargin03.bottom - textMargin01.bottom + vp2px(marginValue))) <= 1).assertTrue();
+      expect(Math.abs(textMargin02.top - textMargin03.top - (textMargin03.bottom - textMargin02.bottom)) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(textMargin01.bottom - textMargin01.top) - Math.round(vp2px(50))) <= 1).assertTrue()
       expect(Math.abs(Math.round(textMargin02.bottom - textMargin02.top) - Math.round(vp2px(100))) <= 1).assertTrue()

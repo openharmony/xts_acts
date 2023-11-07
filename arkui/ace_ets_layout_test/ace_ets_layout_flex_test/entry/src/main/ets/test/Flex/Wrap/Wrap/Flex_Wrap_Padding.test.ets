@@ -64,7 +64,7 @@ export default function flex_Wrap_PaddingTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10))); //Flex_padding = 10
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
@@ -102,7 +102,7 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30))); // Flex_padding = 30
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(30)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(firstText.right).assertEqual(secondText.left);
@@ -153,7 +153,7 @@ export default function flex_Wrap_PaddingTest() {
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10))); // margin =10
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(flexContainer.top - columnContainer.top))
         .assertEqual(Math.round(firstText.top - columnContainer.top));
 
@@ -187,8 +187,8 @@ export default function flex_Wrap_PaddingTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10))); // margin=10
-      expect(Math.round(firstText.top - columnContainer.top)).assertEqual(Math.round(vp2px(40))); //Flex_padding+margin = 40
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstText.top - columnContainer.top)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(firstText.right).assertEqual(secondText.left);

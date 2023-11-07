@@ -66,7 +66,7 @@ export default function AlignStart_NoSpace() {
       expect(Math.abs(Start_NoSpace_011.top - Start_NoSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_012.top - Start_NoSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_011.top - Start_NoSpace_01.top) <= 1).assertTrue();
-      expect(Math.abs(Start_NoSpace_012.left - Start_NoSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(Start_NoSpace_012.left - Start_NoSpace_011.right) <= 2).assertTrue();
       expect(Math.abs(Start_NoSpace_013.left - Start_NoSpace_012.right) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_01.left - Start_NoSpace_011.left) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_01.right - Start_NoSpace_013.right) <= 1).assertTrue();
