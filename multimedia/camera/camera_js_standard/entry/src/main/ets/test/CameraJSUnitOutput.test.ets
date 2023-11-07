@@ -1231,10 +1231,6 @@ export default function cameraJSUnitOutput() {
           if (!err) {
             expect(true).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-            // count++;
-            // console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-            // await sleep(1000);
-            // done();
           } else {
             expect().assertFail();
             console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " + err.message);
@@ -1242,7 +1238,6 @@ export default function cameraJSUnitOutput() {
         })
         await sleep(1000);
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
       }
       await sleep(1000);
       done();
@@ -1282,7 +1277,7 @@ export default function cameraJSUnitOutput() {
         await sleep(1000);
         done();
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
+
       }
       await sleep(1000);
       done();
@@ -1320,7 +1315,7 @@ export default function cameraJSUnitOutput() {
         await sleep(1000);
         done();
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
+
       }
       await sleep(1000);
       done();

@@ -21,7 +21,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraUnitTest: ";
 
-// Define global variables
+
 let mCameraManager;
 let mCameraDevicesArray;
 
@@ -32,7 +32,6 @@ let mFileAsset;
 let mFdPath;
 let mFdNumber;
 
-// CAMERA-0 letiables
 let mCameraNum;
 let receiver;
 let context = featureAbility.getContext();
@@ -292,7 +291,6 @@ describe('CameraManagerTest', function () {
             if (mCameraDevicesArrayPromise != null && mCameraDevicesArrayPromise.length > 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 success");
                 for (let i = 0; i < mCameraDevicesArrayPromise.length; i++) {
-                    // Get the variables from camera object
                     let cameraId = mCameraDevicesArrayPromise[i].cameraId;
                     expect(isEmpty(cameraId)).assertFalse();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 camera" + i + "Id: " + cameraId);
