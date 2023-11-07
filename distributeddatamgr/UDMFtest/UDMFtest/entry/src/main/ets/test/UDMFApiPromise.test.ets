@@ -38,11 +38,11 @@ export default function UDMFApiPromise() {
     console.info(TAG + "*************Unit Test Begin*************")
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0100
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0100', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', 0, function (done) {
       let Options = {}
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = 'this is textContent';
@@ -66,11 +66,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0200
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0200', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', 0, function (done) {
       let Options = {
         intention: undefined
       }
@@ -96,11 +96,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0300
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0300', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', 0, function (done) {
       let Options = {
         intention:null
       }
@@ -126,11 +126,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0400
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0400', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', 0, function (done) {
       let Options = {
         intention: undefined,
         key: undefined
@@ -157,11 +157,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0500
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0500', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', 0, function (done) {
       let Options = {
         key: null
       }
@@ -187,11 +187,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0600
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0600', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -215,11 +215,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1000
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000
      * @tc.name unifiedDataChannel updateData promise interface test
      * @tc.desc unifiedDataChannel updateData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1000', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -252,11 +252,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0800
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0800', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -294,11 +294,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0900
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0900', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       }
@@ -337,12 +337,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0700
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700
      * @tc.name unifiedDataChannel insertData promise interface test
      * @tc.desc unifiedDataChannel insertData promise interface test.
      */
 
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_0700', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB,
         key: undefined
@@ -382,11 +382,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1100
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100
      * @tc.name unifiedDataChannel queryData promise interface test
      * @tc.desc unifiedDataChannel queryData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1100', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -429,11 +429,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1200
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200
      * @tc.name unifiedDataChannel queryData promise interface test
      * @tc.desc unifiedDataChannel queryData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1200', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -476,11 +476,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1300
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300
      * @tc.name unifiedDataChannel queryData promise interface test
      * @tc.desc unifiedDataChannel queryData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1300', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -527,11 +527,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1400
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400
      * @tc.name unifiedDataChannel queryData promise interface test
      * @tc.desc unifiedDataChannel queryData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1400', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -584,11 +584,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1500
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500
      * @tc.name unifiedDataChannel queryData promise interface test
      * @tc.desc unifiedDataChannel queryData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1500', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -635,7 +635,7 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1600
      * @tc.name unifiedDataChannel deleteData promise interface test
      * @tc.desc unifiedDataChannel deleteData promise interface test.
      */
@@ -689,11 +689,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1700
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700
      * @tc.name unifiedDataChannel deleteData promise interface test
      * @tc.desc unifiedDataChannel deleteData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1700', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', 0, function (done) {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -743,11 +743,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1800
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800
      * @tc.name unifiedDataChannel deleteData promise interface test
      * @tc.desc unifiedDataChannel deleteData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1800', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -801,11 +801,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1900
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900
      * @tc.name unifiedDataChannel deleteData promise interface test
      * @tc.desc unifiedDataChannel deleteData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1900', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
@@ -865,11 +865,11 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_2000
+     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000
      * @tc.name unifiedDataChannel deleteData promise interface test
      * @tc.desc unifiedDataChannel deleteData promise interface test.
      */
-    it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_2000', 0, function (done) {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
