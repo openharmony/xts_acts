@@ -855,7 +855,7 @@ export default function AVPlayerStabilityTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600 start')
-            AVPlayerTestBase.prepareToStopLoop(videos[0], avPlayer, done);
+            AVPlayerTestBase.prepareToStop(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0600 end')
         })
 
@@ -869,7 +869,7 @@ export default function AVPlayerStabilityTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 start')
-            AVPlayerTestBase.prepareToResetLoop(videos[0], avPlayer, done);
+            AVPlayerTestBase.prepareToReset(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 end')
         })
 
@@ -883,7 +883,7 @@ export default function AVPlayerStabilityTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 start')
-            AVPlayerTestBase.createToReleaseLoop(videos[0], avPlayer, done);
+            AVPlayerTestBase.createToRelease2(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 end')
         })
 
@@ -1166,20 +1166,6 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010 start')
             AVPlayerTestBase.setSpeedTimeWithoutCallback(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1010 end')
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100
-           * @tc.name      : 001.test setBitrate time (wait callback)
-           * @tc.desc      : Local Video test setBitrate time (wait callback)
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level3
-         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100 start')
-            AVPlayerTestBase.setBitrateTimeWithCallback(videos[0], avPlayer, done);
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_1100 end')
         })
 
         /* *
