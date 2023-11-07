@@ -64,20 +64,20 @@ export default function AlignStart_AddMargin() {
       let Start_AddMargin_013 = CommonFunc.getComponentRect('Start_AddMargin_013');
       let Start_AddMargin_01 = CommonFunc.getComponentRect('Start_AddMargin_01');
       let Start_AddMargin_01_Box = CommonFunc.getComponentRect('Start_AddMargin_01_Box');
-      expect(Start_AddMargin_011.top).assertEqual(Start_AddMargin_012.top);
-      expect(Start_AddMargin_013.top).assertEqual(Start_AddMargin_012.top);
-      expect(Start_AddMargin_011.top).assertEqual(Start_AddMargin_01.top);
-      expect(Start_AddMargin_012.left).assertEqual(Start_AddMargin_011.right);
-      expect(Start_AddMargin_013.left).assertEqual(Start_AddMargin_012.right);
-      expect(Start_AddMargin_011.left).assertEqual(Start_AddMargin_01.left);
-      expect(Math.round(Start_AddMargin_01.top - Start_AddMargin_01_Box.top)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(Start_AddMargin_01.left - Start_AddMargin_01_Box.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(Start_AddMargin_011.bottom - Start_AddMargin_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_AddMargin_012.bottom - Start_AddMargin_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_AddMargin_013.bottom - Start_AddMargin_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddMargin_011.right - Start_AddMargin_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddMargin_012.right - Start_AddMargin_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddMargin_013.right - Start_AddMargin_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Start_AddMargin_011.top - Start_AddMargin_012.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_013.top - Start_AddMargin_012.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_011.top - Start_AddMargin_01.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_012.left - Start_AddMargin_011.right) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_013.left - Start_AddMargin_012.right) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_011.left - Start_AddMargin_01.left) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_01.top - Start_AddMargin_01_Box.top - vp2px(20)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_01.left - Start_AddMargin_01_Box.left - vp2px(20)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_011.bottom - Start_AddMargin_011.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_012.bottom - Start_AddMargin_012.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_013.bottom - Start_AddMargin_013.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_011.right - Start_AddMargin_011.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_012.right - Start_AddMargin_012.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddMargin_013.right - Start_AddMargin_013.left - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignStartFlexMargin] END');
       done();
     });

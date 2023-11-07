@@ -66,7 +66,7 @@ export default function flexWrapReverse_fixedParent() {
       let locationText2 = CommonFunc.getComponentRect('WrapReverseTest23');
       let locationText3 = CommonFunc.getComponentRect('WrapReverseTest24');
       let locationFlex = CommonFunc.getComponentRect('FlexWrapReverseTest8');
-      
+
       expect(Math.abs(locationText1.right - locationFlex.right) <=1).assertTrue();
       expect(Math.abs(locationText1.left - locationText2.right) <=1).assertTrue();
       expect(Math.abs(locationText2.left - locationText3.right) <=1).assertTrue();

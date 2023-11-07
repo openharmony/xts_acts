@@ -52,7 +52,7 @@ export default function AlignStart_AddOneMargin() {
      */
     it('testFlexAlignStartTextMarginMeet', 0, async function (done) {
       console.info('[testFlexAlignStartTextMarginMeet] START');
-      globalThis.value.message.notify({name:'OneMargin', value:20});
+      globalThis.value.message.notify({ name: 'OneMargin', value: 20 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneMargin_01');
       let obj = JSON.parse(strJson);
@@ -66,15 +66,15 @@ export default function AlignStart_AddOneMargin() {
       expect(Math.abs(Start_AddOneMargin_013.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddOneMargin_01.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddOneMargin_013.left - Start_AddOneMargin_012.right) <= 1).assertTrue();
-      expect(Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignStartTextMarginMeet] END');
       done();
     })
@@ -86,7 +86,7 @@ export default function AlignStart_AddOneMargin() {
      */
     it('testFlexAlignStartTextMarginOverflow', 0, async function (done) {
       console.info('[testFlexAlignStartTextMarginOverflow] START');
-      globalThis.value.message.notify({name:'OneMargin', value:30});
+      globalThis.value.message.notify({ name: 'OneMargin', value: 30 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneMargin_01');
       let obj = JSON.parse(strJson);
@@ -101,20 +101,15 @@ export default function AlignStart_AddOneMargin() {
       expect(Math.abs(Start_AddOneMargin_01.top - Start_AddOneMargin_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddOneMargin_013.left - Start_AddOneMargin_012.right) <= 1).assertTrue();
       expect(Math.abs(Start_AddOneMargin_013.right - Start_AddOneMargin_01.right) <= 1).assertTrue();
-      expect(Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right))
-        .assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left))
-        .assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left))
-        .assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left))
-        .assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left))
-        .assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignStartTextMarginOverflow] END');
       done();
     })

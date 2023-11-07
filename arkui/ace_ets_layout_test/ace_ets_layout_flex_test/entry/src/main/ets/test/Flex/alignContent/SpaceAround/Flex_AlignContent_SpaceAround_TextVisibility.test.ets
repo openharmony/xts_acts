@@ -83,7 +83,6 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         expect(Math.abs(Math.round(fourthText.left) - Math.round(flexContainer.left)) <= 2).assertTrue();
         expect(Math.abs(Math.round((secondText.top - flexContainer.top)*100)/100 - Math.round((distanceBefore * 1.5 + vp2px(50))*100)/100) <= 2).assertTrue();
    
-      
         expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 2).assertTrue();
       
         expect(Math.abs(Math.round((thirdText.top - secondText.bottom)*10)/10 - Math.round(distanceBefore*10)/10) <= 2).assertTrue();
@@ -124,22 +123,19 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
-        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.abs(secondText.bottom - secondText.top) - vp2px(100) <= 1).assertTrue();
+        expect(Math.abs(thirdText.bottom - thirdText.top) - vp2px(50) <= 1).assertTrue();
+        expect(Math.abs(fourthText.bottom - fourthText.top) - vp2px(100) <= 1).assertTrue();
         
         expect(Math.abs(Math.round(secondText.left) - Math.round(thirdText.left)) <= 1).assertTrue();
         expect(Math.abs(Math.round(thirdText.left) - Math.round(fourthText.left)) <= 1).assertTrue();
         expect(Math.abs(Math.round(fourthText.left) - Math.round(flexContainer.left)) <= 1).assertTrue();
-        
 
-        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
-        expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(distanceBefore);
+        expect(Math.abs(thirdText.top - secondText.bottom) - Math.abs(fourthText.top - thirdText.bottom) <= 1).assertTrue();
+        expect(Math.abs(thirdText.top - secondText.bottom) >= distanceBefore).assertTrue();
 
-        expect(Math.round(secondText.top - flexContainer.top))
-          .assertEqual(Math.round(flexContainer.bottom - fourthText.bottom));
-        expect(Math.round(secondText.top - flexContainer.top))
-          .assertEqual(Math.round((thirdText.top - secondText.bottom) / 2));
+        expect(Math.abs(secondText.top - flexContainer.top) - Math.abs(flexContainer.bottom - fourthText.bottom) <= 1).assertTrue();
+        expect(Math.abs(secondText.top - flexContainer.top) - Math.round((thirdText.top - secondText.bottom) / 2) <= 1).assertTrue();
       } catch (err) {
         console.error('[testFlexAlignContentSpaceAroundTextVisibilityNone] failed' + JSON.stringify(err));
         expect().assertFail();

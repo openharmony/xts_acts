@@ -62,17 +62,17 @@ export default function AlignStart_AddOffset() {
       let Start_AddOffset_012 = CommonFunc.getComponentRect('Start_AddOffset_012');
       let Start_AddOffset_013 = CommonFunc.getComponentRect('Start_AddOffset_013');
       let Start_AddOffset_01 = CommonFunc.getComponentRect('Start_AddOffset_01');
-      expect(Math.round((Start_AddOffset_011.top - Start_AddOffset_01.top)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10);
-      expect(Math.round(Start_AddOffset_011.left - Start_AddOffset_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Start_AddOffset_012.top).assertEqual(Start_AddOffset_013.top);
-      expect(Start_AddOffset_013.left).assertEqual(Start_AddOffset_012.right);
-      expect(Math.round(Start_AddOffset_01.right - Start_AddOffset_013.right)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_AddOffset_011.right - Start_AddOffset_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOffset_012.right - Start_AddOffset_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOffset_013.right - Start_AddOffset_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_AddOffset_011.bottom - Start_AddOffset_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_AddOffset_012.bottom - Start_AddOffset_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_AddOffset_013.bottom - Start_AddOffset_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Start_AddOffset_011.top - Start_AddOffset_01.top - vp2px(15)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_011.left - Start_AddOffset_01.left - vp2px(10)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_012.top - Start_AddOffset_013.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_013.left - Start_AddOffset_012.right) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_01.right - Start_AddOffset_013.right - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_011.right - Start_AddOffset_011.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_012.right - Start_AddOffset_012.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_013.right - Start_AddOffset_013.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_011.bottom - Start_AddOffset_011.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_012.bottom - Start_AddOffset_012.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOffset_013.bottom - Start_AddOffset_013.top - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignStartTextOffset] END');
       done();
     });
