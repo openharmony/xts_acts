@@ -39,7 +39,7 @@
             GTEST_LOG_(INFO) << #TestCase << "notsupport!";                       \
         } else if (result.isComplete) {                                           \
             EXPECT_TRUE(result.isComplete);                                       \
-            EXPECT_TRUE(TestSuite::runResult.numPassed == 1);                     \
+            EXPECT_TRUE(result.numFailed == 0);                                \
         };                                                                        \
         GTEST_LOG_(INFO) << #TestCase << "end";                                   \
     }

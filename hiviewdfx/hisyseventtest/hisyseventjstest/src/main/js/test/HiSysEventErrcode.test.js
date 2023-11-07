@@ -1008,11 +1008,11 @@ describe('hiSysEventErrcodeTest', function () {
 	it('testHiSysEventApi57', 3, async function (done) {
 		console.info('testHiSysEventApi57 start')
 		try {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 51; i++) {
 				hiSysEvent.query({
 					beginTime: -1,
 					endTime: -1,
-					maxEvents: 500000,
+					maxEvents: 1,
 				}, [{
 					domain: "RELIABILITY" ,
 					names: ["STACK"],

@@ -45,9 +45,8 @@ export default function TimePickerDialogJsunit() {
 
 
     it('TimePickerDialogJsunit_0100', 0, async function (done) {
-	 
       console.info('TimePickerDialogJsunit_0100 START');
-	  let driver = await UiDriver.create()
+	    let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('TimePickerDialog'));
       await button.click();
       await CommonFunc.sleep(1000);
@@ -57,9 +56,7 @@ export default function TimePickerDialogJsunit() {
       console.info("[TimePickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("TimePickerDialog");
       console.info('[TimePickerDialogJsunit_0100] END');
-	  await driver.pressBack();
       done();
     });
-
   })
 }

@@ -42,7 +42,7 @@ export default function ProvideJsunit() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back();
+      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('ProvideJsunit_0001', 0, async function (done) {

@@ -44,7 +44,7 @@ export default function Storage36Jsunit() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back();
+      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('Storage36Jsunit_0300', 0, async function (done) {

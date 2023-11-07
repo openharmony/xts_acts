@@ -41,25 +41,18 @@ let huksOptionsCipher = {
 
 export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
     describe('SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit', function () {
-        beforeAll(async function (done) {
-            useSoftware = await checkSoftware();
-            done();
-        });
         beforeEach(function () {
             HuksOptions63kb = {
                 properties: new Array(
                     HuksAgreeECDH.HuksKeyAlgECC,
                     HuksAgreeECDH.HuksKeyPurposeECDH,
                     HuksAgreeECDH.HuksKeyECCSize256,
-                    // HuksAgreeECDH.HuksKeyECCDIGEST,
-                    // HuksAgreeECDH.HuksKeyECCPADDING,
-                    // HuksAgreeECDH.HuksKeyECCBLOCKMODE
                 ),
             };
             console.info('test beforeEach called');
         });
 
-        it('testReformedAgreeECDH101', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_EDCH_101', 0, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {
@@ -86,7 +79,7 @@ export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
         });
 
         // abort
-        it('testReformedAgreeECDH102', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_EDCH_102', 0, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {

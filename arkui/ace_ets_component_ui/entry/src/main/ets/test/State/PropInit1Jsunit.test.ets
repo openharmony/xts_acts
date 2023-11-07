@@ -44,7 +44,7 @@ export default function PropInit1Jsunit() {
 
     afterEach(async function () {
       let driver = await UiDriver.create()
-      router.back();
+      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('PropInit1Jsunit_0200', 0, async function (done) {

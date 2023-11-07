@@ -130,15 +130,16 @@
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro06.mp4",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro07.mp4",
                 "chmod -R 777 /storage/media/100/local/files/*",
-                "hilog -p off",
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",
-                "hilog -b D",
+                "hilog -b D -D 0xD002B70",
                 "scanner",
                 "sleep 10"
             ],
             "teardown-command": [
                 "power-shell setmode 600",
+                "hilog -Q pidon",
+                "hilog -Q domainon",
                 "rm -rf /storage/media/100/local/files/Audios",
                 "rm -rf /storage/media/100/local/files/Camera",
                 "rm -rf /storage/media/100/local/files/Pictures",

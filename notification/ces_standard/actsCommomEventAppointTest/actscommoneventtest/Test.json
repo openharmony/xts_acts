@@ -23,9 +23,6 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D",
                 "setenforce 0"
             ]
         }

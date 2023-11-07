@@ -299,7 +299,7 @@ export default function requestUploadJSUnit() {
           expect(true).assertEqual((uploadTask != undefined));
           let headerReceive_callback = (header) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 header = " + header);
-            expect(true).assertEqual((header != {} || header != undefined));
+            expect(true).assertEqual((JSON.stringify(header) !== '{}' || header !== undefined));
           }
           uploadTask.on('headerReceive', headerReceive_callback);
 

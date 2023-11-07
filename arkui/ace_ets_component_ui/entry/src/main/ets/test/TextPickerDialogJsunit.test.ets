@@ -45,10 +45,8 @@ export default function TextPickerDialogJsunit() {
 
 
     it('TextPickerDialogJsunit_0100', 0, async function (done) {
-
-      
       console.info('TextPickerDialogJsunit_0100 START');
-	  let driver = await UiDriver.create()
+	    let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('TextPickerDialog'));
       await button.click();
       await CommonFunc.sleep(1000);
@@ -58,9 +56,7 @@ export default function TextPickerDialogJsunit() {
       console.info("[TextPickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("TextPickerDialog");
       console.info('[TextPickerDialogJsunit_0100] END');
-	  await driver.pressBack();
       done();
     });
-
   })
 }

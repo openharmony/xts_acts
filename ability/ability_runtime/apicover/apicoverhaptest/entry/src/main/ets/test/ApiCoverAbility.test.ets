@@ -340,6 +340,7 @@ export default function ApiCoverTest() {
           flag = true;
         })
         let shellCmdResult: abilityDelegatorRegistry.ShellCmdResult;
+        await sleep(2000);
         abilityDelegator.removeAbilityMonitor(abilityMonitor, (err, data) => {
           console.log(`SUB_AA_ABILITY_Extension_API_012 printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
           expect(flag).assertTrue();

@@ -34,6 +34,7 @@ group("componentAttrssTest") {
       "ace_ets_component_common_attrss_hitTestBehavior:ActsAceEtsComponentCommonAttrsHitTestBehaviorTest",
       "ace_ets_component_common_attrss_layoutWeight:ActsAceEtsComponentCommonAttrsLayoutWeightTest",
       "ace_ets_component_common_attrss_margin:ActsAceEtsComponentCommonAttrsMarginTest",
+      "ace_ets_component_common_attrss_marginLength:ActsAceEtsComponentCommonAttrsMarginLengthTest",
       "ace_ets_component_common_attrss_markAnchor:ActsAceEtsComponentCommonAttrsMarkAnchorTest",
       "ace_ets_component_common_attrss_offset:ActsAceEtsComponentCommonAttrsOffsetTest",
       "ace_ets_component_common_attrss_onAppear:ActsAceEtsComponentCommonAttrsOnAppearTest",

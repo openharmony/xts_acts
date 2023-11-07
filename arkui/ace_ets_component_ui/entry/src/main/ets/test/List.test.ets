@@ -147,7 +147,24 @@ import ListLanes from './ListLanes.test';
 import navigationNavbar02 from './navigationNavbar02.test.ets';
 import GridRowCol from './GridRowCol.test';
 import navigationPosition from './navigationPosition.test.ets';
-
+import textAreaBC1Jsunit from './textAreaBC1Jsunit.test.ets';
+import video1Jsunit from './video1Jsunit.test.ets';
+import buttonEnabledJsunit from './buttonEnabledJsunit.test.ets';
+import textEnabledJsunit from './textEnabledJsunit.test.ets';
+import textAenEnabledJsunit from './textAenEnabledJsunit.test.ets';
+import textChangeEnabledJsunit from './textChangeEnabledJsunit.test.ets';
+import menuEnabledJsunit from './menuEnabledJsunit.test.ets';
+import gestureEnabledJsunit from './gestureEnabledJsunit.test.ets'
+import link1 from './Zhuang/link1.test.ets'
+import link2 from './Zhuang/link2.test.ets'
+import ObjectLink1 from './Zhuang/ObjectLink1.test.ets'
+import ObjectLink2 from './Zhuang/ObjectLink2.test.ets'
+import Prop1 from './Zhuang/Prop1.test.ets'
+import Prop2 from './Zhuang/Prop2.test.ets'
+import provide1 from './Zhuang/provide1.test.ets'
+import provide2 from './Zhuang/provide2.test.ets'
+import state1 from './Zhuang/state1.test.ets'
+import state2 from './Zhuang/state2.test.ets'
 
 
 export default function testsuite() {
@@ -285,4 +302,22 @@ export default function testsuite() {
   GridRowCol()
   navigationNavbar02()
   navigationPosition()
+  textAreaBC1Jsunit()
+  video1Jsunit()
+  buttonEnabledJsunit();
+  textEnabledJsunit();
+  textAenEnabledJsunit();
+  textChangeEnabledJsunit();
+  menuEnabledJsunit();
+  gestureEnabledJsunit();
+  link1()
+  link2()
+  ObjectLink1()
+  ObjectLink2()
+  Prop1()
+  Prop2()
+  provide1()
+  provide2()
+  state1()
+  state2()
 }

@@ -31,7 +31,7 @@ export default function SecurityHuksECCBasicFinish65KBPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it('testReformedSignVerifyECC103', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_ECC_103', 0, async function (done) {
       const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias103';
       let HuksOptions = {
         properties: new Array(

@@ -60,6 +60,20 @@ export default function imageJsTest() {
               return true;
             }
         }
+        class MySequence3 {
+            pixel_map;
+            constructor(pixelmap) {
+                this.pixel_map = pixelmap;
+            }
+            marshalling(messageSequence) {
+                this.pixel_map.marshalling(messageSequence);
+                return true;
+            }
+            async unmarshalling(messageSequence) {
+                this.pixel_map = image.createPixelMapFromParcel(messageSequence);
+                return true;
+            }
+        }
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -3150,6 +3164,55 @@ export default function imageJsTest() {
             } else {
                 expect(ret.pixel_map.isEditable == opts.editable).assertTrue();
                 console.info('SUB_MULTIMEDIA_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100 success');
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0200
+         * @tc.name      : marshalling and unmarshalling pixelmap-promise (editable: false,
+         *                 pixelFormat: BGRA_8888, size: { height: 4, width: 6 }, bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.marshalling pixelmap into the messageSequence
+         *                 5.unmarshalling pixelmap from the messageSequence
+         *                 6.return pixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0200', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = 0x80;
+            }
+            let opts = {
+                editable: false,
+                pixelFormat: 4,
+                size: { height: 4, width: 6 },
+                alphaType: 3
+            }
+            let pixelMap;
+            await image.createPixelMap(color, opts).then((pixelmap) => {
+                pixelMap = pixelmap;
+                globalpixelmap = pixelmap;
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0200 editable: ' + pixelmap.isEditable);
+            })
+            let parcelable = new MySequence1(pixelMap);
+            let data = rpc.MessageSequence.create();
+            data.writeParcelable(parcelable);
+            let pixel_map = undefined;
+            let ret = new MySequence3(pixel_map);
+            data.readParcelable(ret);
+            if (ret.pixel_map == undefined) {
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0200 unmarshalling pixelmap failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                expect(ret.pixel_map.isEditable == opts.editable).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0200 success');
                 done();
             }
         })
