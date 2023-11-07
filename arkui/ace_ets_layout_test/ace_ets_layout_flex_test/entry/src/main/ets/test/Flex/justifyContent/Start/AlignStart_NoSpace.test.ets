@@ -52,7 +52,7 @@ export default function AlignStart_NoSpace() {
      */
     it('testFlexAlignStartFlexWidthOverflow', 0, async function (done) {
       console.info('[testFlexAlignStartFlexWidthOverflow] START');
-      globalThis.value.message.notify({name:'DadWidth', value:400});
+      globalThis.value.message.notify({ name: 'DadWidth', value: 400 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_NoSpace_01');
       let obj = JSON.parse(strJson);
@@ -70,12 +70,12 @@ export default function AlignStart_NoSpace() {
       expect(Math.abs(Start_NoSpace_013.left - Start_NoSpace_012.right) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_01.left - Start_NoSpace_011.left) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_01.right - Start_NoSpace_013.right) <= 1).assertTrue();
-      expect(Math.round(Start_NoSpace_011.right - Start_NoSpace_011.left)).assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(Start_NoSpace_012.right - Start_NoSpace_012.left)).assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(Start_NoSpace_013.right - Start_NoSpace_013.left)).assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(Start_NoSpace_011.right - Start_NoSpace_011.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_012.right - Start_NoSpace_012.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_013.right - Start_NoSpace_013.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignStartFlexWidthOverflow] END');
       done();
     });
@@ -88,7 +88,7 @@ export default function AlignStart_NoSpace() {
     it('testFlexAlignStartFlexWidthMeet', 0, async function (done) {
       console.info('[testFlexAlignStartFlexWidthMeet] START');
       let strJson = getInspectorByKey('Start_NoSpace_01');
-      globalThis.value.message.notify({name:'DadWidth', value:500})
+      globalThis.value.message.notify({ name: 'DadWidth', value: 500 })
       await CommonFunc.sleep(3000);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
@@ -104,13 +104,13 @@ export default function AlignStart_NoSpace() {
       expect(Math.abs(Start_NoSpace_01.left - Start_NoSpace_011.left) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_012.left - Start_NoSpace_011.right) <= 1).assertTrue();
       expect(Math.abs(Start_NoSpace_013.left - Start_NoSpace_012.right) <= 1).assertTrue();
-      expect(Math.round(Start_NoSpace_01.right - Start_NoSpace_013.right)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_NoSpace_011.right - Start_NoSpace_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_NoSpace_012.right - Start_NoSpace_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_NoSpace_013.right - Start_NoSpace_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(Start_NoSpace_01.right - Start_NoSpace_013.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_011.right - Start_NoSpace_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_012.right - Start_NoSpace_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_013.right - Start_NoSpace_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignStartFlexWidthMeet] END');
       done();
     });

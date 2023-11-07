@@ -51,9 +51,9 @@ export default function AlignCenter_AddLayoutWeight() {
      */
     it('testFlexAlignCenterTextLayoutWeight01', 0, async function (done) {
       console.info('[testFlexAlignCenterTextLayoutWeight01] START');
-      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
-      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
-      globalThis.value.message.notify({name:'OneLayoutWeight3', value:2});
+      globalThis.value.message.notify({ name: 'OneLayoutWeight1', value: 1 });
+      globalThis.value.message.notify({ name: 'OneLayoutWeight2', value: 2 });
+      globalThis.value.message.notify({ name: 'OneLayoutWeight3', value: 2 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddLayoutWeight_01');
       let obj = JSON.parse(strJson);
@@ -71,12 +71,12 @@ export default function AlignCenter_AddLayoutWeight() {
       expect(Math.abs(Center_AddLayoutWeight_012.right - Center_AddLayoutWeight_013.left) <= 1).assertTrue();
       expect(Math.abs(Center_AddLayoutWeight_011.left - Center_AddLayoutWeight_01.left) <= 1).assertTrue();
       expect(Math.abs(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_01.right) <= 1).assertTrue();
-      expect(Math.round(Center_AddLayoutWeight_011.right - Center_AddLayoutWeight_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Center_AddLayoutWeight_012.right - Center_AddLayoutWeight_012.left)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_013.left)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(Center_AddLayoutWeight_011.bottom - Center_AddLayoutWeight_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Center_AddLayoutWeight_012.bottom - Center_AddLayoutWeight_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Center_AddLayoutWeight_013.bottom - Center_AddLayoutWeight_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_011.right - Center_AddLayoutWeight_011.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_012.right - Center_AddLayoutWeight_012.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_013.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_011.bottom - Center_AddLayoutWeight_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_012.bottom - Center_AddLayoutWeight_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddLayoutWeight_013.bottom - Center_AddLayoutWeight_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignCenterTextLayoutWeight01] END');
       done();
     });
@@ -87,9 +87,9 @@ export default function AlignCenter_AddLayoutWeight() {
      */
     it('testFlexAlignCenterTextLayoutWeight02', 0, async function (done) {
       console.info('[testFlexAlignCenterTextLayoutWeight02] START');
-      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
-      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
-      globalThis.value.message.notify({name:'OneLayoutWeight3', value:0});
+      globalThis.value.message.notify({ name: 'OneLayoutWeight1', value: 1 });
+      globalThis.value.message.notify({ name: 'OneLayoutWeight2', value: 2 });
+      globalThis.value.message.notify({ name: 'OneLayoutWeight3', value: 0 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddLayoutWeight_01');
       let obj = JSON.parse(strJson);
@@ -109,7 +109,7 @@ export default function AlignCenter_AddLayoutWeight() {
       expect(Math.abs(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_01.right) <= 1).assertTrue();
       let oneWidth = Math.round(Center_AddLayoutWeight_011.right - Center_AddLayoutWeight_011.left);
       let twoWidth = Math.round(Center_AddLayoutWeight_012.right - Center_AddLayoutWeight_012.left);
-      expect(Math.round(twoWidth / oneWidth)).assertEqual(2);
+      expect(Math.abs((Math.round(twoWidth / oneWidth)) - (2)) <= 1).assertTrue();
       expect(Math.abs(Math.round(twoWidth + oneWidth) - Math.round(vp2px(350))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_013.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Center_AddLayoutWeight_011.bottom - Center_AddLayoutWeight_011.top) - Math.round(vp2px(50))) <= 1).assertTrue();

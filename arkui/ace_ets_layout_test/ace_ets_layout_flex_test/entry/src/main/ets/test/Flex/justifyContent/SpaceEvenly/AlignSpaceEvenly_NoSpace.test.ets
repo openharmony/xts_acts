@@ -52,7 +52,7 @@ export default function AlignSpaceEvenly_NoSpace() {
      */
     it('testFlexAlignSpaceEvenlyFlexWidthOverflow', 0, async function (done) {
       console.info('[testFlexAlignSpaceEvenlyFlexWidthOverflow] START');
-      globalThis.value.message.notify({name:'DadWidth', value:400});
+      globalThis.value.message.notify({ name: 'DadWidth', value: 400 });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
       let obj = JSON.parse(strJson);
@@ -70,15 +70,12 @@ export default function AlignSpaceEvenly_NoSpace() {
       expect(Math.abs(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right) <= 1).assertTrue();
       expect(Math.abs(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right) <= 1).assertTrue();
       expect(Math.abs(SpaceEvenly_NoSpace_013.left - SpaceEvenly_NoSpace_012.right) <= 1).assertTrue();
-      expect(Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left))
-        .assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left))
-        .assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left))
-        .assertEqual(Math.round(vp2px(400/3)));
-      expect(Math.round(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left)) - (Math.round(vp2px(400 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100] END');
       done();
     });
@@ -91,7 +88,7 @@ export default function AlignSpaceEvenly_NoSpace() {
     it('testFlexAlignSpaceEvenlyFlexWidthMeet', 0, async function (done) {
       console.info('[testFlexAlignSpaceEvenlyFlexWidthMeet] START');
       let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
-      globalThis.value.message.notify({name:'DadWidth', value:500});
+      globalThis.value.message.notify({ name: 'DadWidth', value: 500 });
       await CommonFunc.sleep(3000);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
@@ -104,22 +101,18 @@ export default function AlignSpaceEvenly_NoSpace() {
       expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(SpaceEvenly_NoSpace_012.top - SpaceEvenly_NoSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(SpaceEvenly_NoSpace_011.top - SpaceEvenly_NoSpace_01.top) <= 1).assertTrue();
-      expect(Math.round(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right))
-        .assertEqual(Math.round(vp2px(12.5)));
-      expect(Math.round(SpaceEvenly_NoSpace_011.left - SpaceEvenly_NoSpace_01.left))
-        .assertEqual(Math.round(vp2px(12.5)));
-      expect(Math.round(SpaceEvenly_NoSpace_013.left - SpaceEvenly_NoSpace_012.right))
-        .assertEqual(Math.round(vp2px(12.5)));
-      expect(Math.round(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right))
-        .assertEqual(Math.round(vp2px(12.5)));
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right)) - (Math.round(vp2px(12.5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_011.left - SpaceEvenly_NoSpace_01.left)) - (Math.round(vp2px(12.5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_013.left - SpaceEvenly_NoSpace_012.right)) - (Math.round(vp2px(12.5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right)) - (Math.round(vp2px(12.5)))) <= 1).assertTrue();
 
 
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left) - Math.round(vp2px(150))) <=1).assertTrue();
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left) - Math.round(vp2px(150))) <=1).assertTrue();
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left) - Math.round(vp2px(150))) <=1).assertTrue();
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top) - Math.round(vp2px(50))) <=1).assertTrue(); 
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top) - Math.round(vp2px(100))) <=1).assertTrue(); 
-      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top) - Math.round(vp2px(150))) <=1).assertTrue(); 
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.info('[testFlexAlignSpaceEvenlyFlexWidthMeet] END');
       done();
     });

@@ -51,7 +51,7 @@ export default function AlignCenter_AddOneWidth() {
      */
     it('testFlexAlignCenterTextWidth', 0, async function (done) {
       console.info('[testFlexAlignCenterTextWidth] START');
-      globalThis.value.message.notify({name:'OneWidth', value:160})
+      globalThis.value.message.notify({ name: 'OneWidth', value: 160 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddOneWidth_01');
       let obj = JSON.parse(strJson);
@@ -61,13 +61,13 @@ export default function AlignCenter_AddOneWidth() {
       let Center_AddOneWidth_011 = CommonFunc.getComponentRect('Center_AddOneWidth_011');
       let Center_AddOneWidth_012 = CommonFunc.getComponentRect('Center_AddOneWidth_012');
       let Center_AddOneWidth_013 = CommonFunc.getComponentRect('Center_AddOneWidth_013');
-      let Center_AddOneWidth_01 = CommonFunc.getComponentRect('Center_AddOneWidth_01');        
+      let Center_AddOneWidth_01 = CommonFunc.getComponentRect('Center_AddOneWidth_01');
       expect(Math.abs(Center_AddOneWidth_011.top - Center_AddOneWidth_012.top) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_013.top - Center_AddOneWidth_012.top) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_011.top - Center_AddOneWidth_01.top) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_011.right - Center_AddOneWidth_012.left) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_012.right - Center_AddOneWidth_013.left) <= 1).assertTrue();
-        
+
       expect(Math.abs(Center_AddOneWidth_011.left - Center_AddOneWidth_01.left - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_01.right - Center_AddOneWidth_013.right - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(Math.abs(Center_AddOneWidth_011.right - Center_AddOneWidth_011.left - Math.round(vp2px(160))) <= 1).assertTrue();
