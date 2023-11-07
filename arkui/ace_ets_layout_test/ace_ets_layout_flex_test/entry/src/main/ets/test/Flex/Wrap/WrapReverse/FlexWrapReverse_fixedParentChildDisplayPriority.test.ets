@@ -75,7 +75,7 @@ export default function flexWrapReverse_fixedParentChildDisplayPriority() {
       expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(200)));
       expect(Math.round(locationText2.left - locationFlexParent.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationFlexParent.bottom - locationText2.bottom)).assertEqual(Math.round(vp2px(150)));  
+      expect(Math.round(locationFlexParent.bottom - locationText2.bottom)).assertEqual(Math.round(vp2px(150)));
       console.info('new testWrapReverseParentfixedDisplayPriority END');
       done();
     });

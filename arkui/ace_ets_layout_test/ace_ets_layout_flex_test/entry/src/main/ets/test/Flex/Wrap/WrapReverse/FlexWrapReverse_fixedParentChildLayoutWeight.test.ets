@@ -75,10 +75,8 @@ export default function flexWrapReverse_fixedParentChildLayoutWeight() {
       expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText2.right - locationText2.left))
-        .assertEqual(Math.round(locationText3.right - locationText3.left))
-      expect(Math.round((locationText1.right - locationText1.left)*100)/100)
-        .assertEqual(Math.round(150*(locationText3.right - locationText3.left))/100)
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(locationText3.right - locationText3.left))
+      expect(Math.round((locationText1.right - locationText1.left)*100)/100).assertEqual(Math.round(150*(locationText3.right - locationText3.left))/100)
       console.info('new testWrapReverseParentfixedLayoutWeight END');
       done();
     });

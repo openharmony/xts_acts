@@ -40,14 +40,14 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       done();
     });
     afterEach(async function () {
-      globalThis.value.message.notify({name:'firstTextMargin', value:0});
-      globalThis.value.message.notify({name:'secondTextMargin', value:0});
-      globalThis.value.message.notify({name:'thirdTextMargin', value:0});
-      globalThis.value.message.notify({name:'firstTextPadding', value:0});
-      globalThis.value.message.notify({name:'secondTextPadding', value:0});
-      globalThis.value.message.notify({name:'thirdTextPadding', value:0});
-      globalThis.value.message.notify({name:'flexMargin', value:0});
-      globalThis.value.message.notify({name:'flexPadding', value:0});
+      globalThis.value.message.notify({ name: 'firstTextMargin', value: 0 });
+      globalThis.value.message.notify({ name: 'secondTextMargin', value: 0 });
+      globalThis.value.message.notify({ name: 'thirdTextMargin', value: 0 });
+      globalThis.value.message.notify({ name: 'firstTextPadding', value: 0 });
+      globalThis.value.message.notify({ name: 'secondTextPadding', value: 0 });
+      globalThis.value.message.notify({ name: 'thirdTextPadding', value: 0 });
+      globalThis.value.message.notify({ name: 'flexMargin', value: 0 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 0 });
       await CommonFunc.sleep(1000);
       console.info("Flex_NoWrap_FlexMarPad_TextMarPadText after each called");
     });
@@ -59,11 +59,11 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
      */
     it('testWrapNoWrapFlexMarPadTextPad', 0, async function (done) {
       console.info('[testWrapNoWrapFlexMarPadTextPad] START');
-      globalThis.value.message.notify({name:'firstTextPadding', value:10});
-      globalThis.value.message.notify({name:'secondTextPadding', value:20});
-      globalThis.value.message.notify({name:'thirdTextPadding', value:30});
-      globalThis.value.message.notify({name:'flexMargin', value:10});
-      globalThis.value.message.notify({name:'flexPadding', value:30});
+      globalThis.value.message.notify({ name: 'firstTextPadding', value: 10 });
+      globalThis.value.message.notify({ name: 'secondTextPadding', value: 20 });
+      globalThis.value.message.notify({ name: 'thirdTextPadding', value: 30 });
+      globalThis.value.message.notify({ name: 'flexMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 30 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad1');
       let secondText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad2');
@@ -77,7 +77,7 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
 
       expect(Math.abs(flexContainer.left - columnContainer.left - Math.round(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(flexContainer.top - columnContainer.top - Math.round(vp2px(10))) <= 1).assertTrue(); //margin = 10
-      
+
       expect(Math.abs(firstText.left - flexContainer.left - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(firstText.top - flexContainer.top - Math.round(vp2px(30))) <= 1).assertTrue(); //padding=30
 
@@ -86,7 +86,7 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       expect(Math.abs(firstText.right - secondText.left) <= 1).assertTrue();
       expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
 
-      expect(Math.abs(firstText.bottom - firstText.top -Math.round(vp2px(100))) <=1).assertTrue();
+      expect(Math.abs(firstText.bottom - firstText.top - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - secondText.top - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <= 1).assertTrue();
 
@@ -107,11 +107,11 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
      */
     it('testWrapNoWrapFlexMarPadTextMar', 0, async function (done) {
       console.info('[testWrapNoWrapFlexMarPadTextMar] START');
-      globalThis.value.message.notify({name:'firstTextMargin', value:10});
-      globalThis.value.message.notify({name:'secondTextMargin', value:10});
-      globalThis.value.message.notify({name:'thirdTextMargin', value:10});
-      globalThis.value.message.notify({name:'flexMargin', value:10});
-      globalThis.value.message.notify({name:'flexPadding', value:20});
+      globalThis.value.message.notify({ name: 'firstTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'secondTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'thirdTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'flexMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 20 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad1');
       let secondText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad2');
@@ -152,14 +152,14 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
      */
     it('testWrapNoWrapFlexMarPadTextMarPad', 0, async function (done) {
       console.info('[testWrapNoWrapFlexMarPadTextMarPad] START');
-      globalThis.value.message.notify({name:'firstTextMargin', value:10});
-      globalThis.value.message.notify({name:'secondTextMargin', value:10});
-      globalThis.value.message.notify({name:'thirdTextMargin', value:10});
-      globalThis.value.message.notify({name:'firstTextPadding', value:10});
-      globalThis.value.message.notify({name:'secondTextPadding', value:20});
-      globalThis.value.message.notify({name:'thirdTextPadding', value:30});
-      globalThis.value.message.notify({name:'flexMargin', value:20});
-      globalThis.value.message.notify({name:'flexPadding', value:30});
+      globalThis.value.message.notify({ name: 'firstTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'secondTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'thirdTextMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'firstTextPadding', value: 10 });
+      globalThis.value.message.notify({ name: 'secondTextPadding', value: 20 });
+      globalThis.value.message.notify({ name: 'thirdTextPadding', value: 30 });
+      globalThis.value.message.notify({ name: 'flexMargin', value: 20 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 30 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad1');
       let secondText = CommonFunc.getComponentRect('NoWrap_FlexMarPad_TextPad2');
@@ -179,9 +179,9 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       expect(Math.abs(firstText.top - secondText.top) <= 1).assertTrue();
       expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue();
 
-      expect(Math.abs(firstText.bottom - firstText.top - Math.round(vp2px(100))) <=1).assertTrue();
+      expect(Math.abs(firstText.bottom - firstText.top - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - secondText.top - Math.round(vp2px(150))) <= 1).assertTrue();
-      expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <=1).assertTrue();
+      expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <= 1).assertTrue();
 
       expect(Math.abs(firstText.right - firstText.left - Math.round(vp2px(380) / 3)) <= 1).assertTrue();
       expect(Math.abs(firstText.right - firstText.left - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
