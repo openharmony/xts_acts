@@ -19,7 +19,6 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import deviceInfo from '@ohos.deviceInfo';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
 const TAG = "CameraModuleTest: ";
@@ -457,8 +456,6 @@ export default function cameraSessionTest() {
             getCameraManagerInstance();
             getCameraSupportDevicesArray();
             createCameraSessionInstance();
-
-            console.info('Device type = ' + deviceInfo.deviceType);
 
             console.info('beforeAll case');
         })
