@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanSpirv_assemblyTest.h"
+#include "ActsVulkanSpirvassemblyTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanSpirv_assemblyTest::SetUpTestCase(void)
+    void ActsVulkanSpirvassemblyTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanSpirv_assemblyTest::TearDownTestCase(void)
+    void ActsVulkanSpirvassemblyTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanSpirv_assemblyTest::SetUp()
+    void ActsVulkanSpirvassemblyTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanSpirv_assemblyTest::TearDown()
+    void ActsVulkanSpirvassemblyTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanSpirv_assemblyTest, TestVulkanSpirv_assemblyTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanSpirvassemblyTest, TestVulkanSpirv_assemblyTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanSpirv_assemblyTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/spirv-assembly.txt --deqp-log-filename=ActsVulkanSpirv_assemblyTest.qpa");
+        printf("------start ActsVulkanSpirvassemblyTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/spirv-assembly.txt --deqp-log-filename=ActsVulkanSpirvassemblyTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanSpirv_assemblyTest------\n");
+        printf("------end ActsVulkanSpirvassemblyTest------\n");
     }
 }

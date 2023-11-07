@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanImageless_framebufferTest.h"
+#include "ActsVulkanImagelessframebufferTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanImageless_framebufferTest::SetUpTestCase(void)
+    void ActsVulkanImagelessframebufferTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanImageless_framebufferTest::TearDownTestCase(void)
+    void ActsVulkanImagelessframebufferTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanImageless_framebufferTest::SetUp()
+    void ActsVulkanImagelessframebufferTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanImageless_framebufferTest::TearDown()
+    void ActsVulkanImagelessframebufferTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanImageless_framebufferTest, TestVulkanImageless_framebufferTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanImagelessframebufferTest, TestVulkanImageless_framebufferTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanImageless_framebufferTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/imageless-framebuffer.txt --deqp-log-filename=ActsVulkanImageless_framebufferTest.qpa");
+        printf("------start ActsVulkanImagelessframebufferTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/imageless-framebuffer.txt --deqp-log-filename=ActsVulkanImagelessframebufferTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanImageless_framebufferTest------\n");
+        printf("------end ActsVulkanImagelessframebufferTest------\n");
     }
 }

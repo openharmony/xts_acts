@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsVulkanQuery_poolTest : public testing::Test {
+    class ActsVulkanQuerypoolTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case

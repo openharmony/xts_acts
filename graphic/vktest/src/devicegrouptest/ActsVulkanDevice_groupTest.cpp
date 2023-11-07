@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDevice_groupTest.h"
+#include "ActsVulkanDevicegroupTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanDevice_groupTest::SetUpTestCase(void)
+    void ActsVulkanDevicegroupTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanDevice_groupTest::TearDownTestCase(void)
+    void ActsVulkanDevicegroupTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanDevice_groupTest::SetUp()
+    void ActsVulkanDevicegroupTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanDevice_groupTest::TearDown()
+    void ActsVulkanDevicegroupTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanDevice_groupTest, TestVulkanDevice_groupTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanDevicegroupTest, TestVulkanDevice_groupTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanDevice_groupTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/device-group.txt --deqp-log-filename=ActsVulkanDevice_groupTest.qpa");
+        printf("------start ActsVulkanDevicegroupTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/device-group.txt --deqp-log-filename=ActsVulkanDevicegroupTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanDevice_groupTest------\n");
+        printf("------end ActsVulkanDevicegroupTest------\n");
     }
 }

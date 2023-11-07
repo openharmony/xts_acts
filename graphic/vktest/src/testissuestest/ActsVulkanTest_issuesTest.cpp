@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanTest_issuesTest.h"
+#include "ActsVulkanTestissuesTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanTest_issuesTest::SetUpTestCase(void)
+    void ActsVulkanTestissuesTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanTest_issuesTest::TearDownTestCase(void)
+    void ActsVulkanTestissuesTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanTest_issuesTest::SetUp()
+    void ActsVulkanTestissuesTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanTest_issuesTest::TearDown()
+    void ActsVulkanTestissuesTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanTest_issuesTest, TestVulkanTest_issuesTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanTestissuesTest, TestVulkanTest_issuesTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanTest_issuesTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/test-issues.txt --deqp-log-filename=ActsVulkanTest_issuesTest.qpa");
+        printf("------start ActsVulkanTestissuesTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/test-issues.txt --deqp-log-filename=ActsVulkanTestissuesTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanTest_issuesTest------\n");
+        printf("------end ActsVulkanTestissuesTest------\n");
     }
 }

@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanMemory_modelTest.qpa ActsVulkanMemory_modelTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanMemory_modelTest memory-model.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanMemorymodelTest.qpa ActsVulkanMemorymodelTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanMemorymodelTest memory-model.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanMemory_modelTest.qpa->ActsVulkanMemory_modelTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanMemorymodelTest.qpa->ActsVulkanMemorymodelTest.qpa"
                 }
             ]
         }

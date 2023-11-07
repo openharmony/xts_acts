@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanQuery_poolTest.qpa ActsVulkanQuery_poolTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanQuery_poolTest query-pool.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanQuerypoolTest.qpa ActsVulkanQuerypoolTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanQuerypoolTest query-pool.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanQuery_poolTest.qpa->ActsVulkanQuery_poolTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanQuerypoolTest.qpa->ActsVulkanQuerypoolTest.qpa"
                 }
             ]
         }

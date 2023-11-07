@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanImageless_framebufferTest.qpa ActsVulkanImageless_framebufferTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanImageless_framebufferTest imageless-framebuffer.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanImagelessframebufferTest.qpa ActsVulkanImagelessframebufferTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanImagelessframebufferTest imageless-framebuffer.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanImageless_framebufferTest.qpa->ActsVulkanImageless_framebufferTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanImagelessframebufferTest.qpa->ActsVulkanImagelessframebufferTest.qpa"
                 }
             ]
         }

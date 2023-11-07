@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanSpirv_assemblyTest.qpa ActsVulkanSpirv_assemblyTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanSpirv_assemblyTest spirv-assembly.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanSpirvassemblyTest.qpa ActsVulkanSpirvassemblyTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanSpirvassemblyTest spirv-assembly.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanSpirv_assemblyTest.qpa->ActsVulkanSpirv_assemblyTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanSpirvassemblyTest.qpa->ActsVulkanSpirvassemblyTest.qpa"
                 }
             ]
         }

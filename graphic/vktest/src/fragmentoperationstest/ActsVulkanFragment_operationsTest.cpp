@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragment_operationsTest.h"
+#include "ActsVulkanFragmentoperationsTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanFragment_operationsTest::SetUpTestCase(void)
+    void ActsVulkanFragmentoperationsTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanFragment_operationsTest::TearDownTestCase(void)
+    void ActsVulkanFragmentoperationsTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanFragment_operationsTest::SetUp()
+    void ActsVulkanFragmentoperationsTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanFragment_operationsTest::TearDown()
+    void ActsVulkanFragmentoperationsTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanFragment_operationsTest, TestVulkanFragment_operationsTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanFragmentoperationsTest, TestVulkanFragment_operationsTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanFragment_operationsTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-operations.txt --deqp-log-filename=ActsVulkanFragment_operationsTest.qpa");
+        printf("------start ActsVulkanFragmentoperationsTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-operations.txt --deqp-log-filename=ActsVulkanFragmentoperationsTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanFragment_operationsTest------\n");
+        printf("------end ActsVulkanFragmentoperationsTest------\n");
     }
 }

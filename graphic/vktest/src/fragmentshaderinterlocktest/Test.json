@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanFragment_shader_interlockTest.qpa ActsVulkanFragment_shader_interlockTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanFragment_shader_interlockTest fragment-shader-interlock.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanFragmentshaderinterlockTest.qpa ActsVulkanFragmentshaderinterlockTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanFragmentshaderinterlockTest fragment-shader-interlock.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragment_shader_interlockTest.qpa->ActsVulkanFragment_shader_interlockTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFragmentshaderinterlockTest.qpa->ActsVulkanFragmentshaderinterlockTest.qpa"
                 }
             ]
         }

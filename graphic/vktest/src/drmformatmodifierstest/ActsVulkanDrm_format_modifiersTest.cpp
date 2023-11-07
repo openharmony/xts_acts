@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDrm_format_modifiersTest.h"
+#include "ActsVulkanDrmformatmodifiersTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanDrm_format_modifiersTest::SetUpTestCase(void)
+    void ActsVulkanDrmformatmodifiersTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanDrm_format_modifiersTest::TearDownTestCase(void)
+    void ActsVulkanDrmformatmodifiersTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanDrm_format_modifiersTest::SetUp()
+    void ActsVulkanDrmformatmodifiersTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanDrm_format_modifiersTest::TearDown()
+    void ActsVulkanDrmformatmodifiersTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanDrm_format_modifiersTest, TestVulkanDrm_format_modifiersTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanDrmformatmodifiersTest, TestVulkanDrm_format_modifiersTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanDrm_format_modifiersTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/drm-format-modifiers.txt --deqp-log-filename=ActsVulkanDrm_format_modifiersTest.qpa");
+        printf("------start ActsVulkanDrmformatmodifiersTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/drm-format-modifiers.txt --deqp-log-filename=ActsVulkanDrmformatmodifiersTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanDrm_format_modifiersTest------\n");
+        printf("------end ActsVulkanDrmformatmodifiersTest------\n");
     }
 }

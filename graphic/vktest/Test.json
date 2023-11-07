@@ -73,11 +73,11 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDescriptor_indexingTest.qpa->ActsVulkanDescriptor_indexingTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDescriptorindexingTest.qpa->ActsVulkanDescriptorindexingTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDevice_groupTest.qpa->ActsVulkanDevice_groupTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDevicegroupTest.qpa->ActsVulkanDevicegroupTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -85,15 +85,15 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDrm_format_modifiersTest.qpa->ActsVulkanDrm_format_modifiersTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDrmformatmodifiersTest.qpa->ActsVulkanDrmformatmodifiersTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDynamic_renderingTest.qpa->ActsVulkanDynamic_renderingTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDynamicrenderingTest.qpa->ActsVulkanDynamicrenderingTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDynamic_stateTest.qpa->ActsVulkanDynamic_stateTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDynamicstateTest.qpa->ActsVulkanDynamicstateTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -101,15 +101,15 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragment_operationsTest.qpa->ActsVulkanFragment_operationsTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFragmentoperationsTest.qpa->ActsVulkanFragmentoperationsTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragment_shader_interlockTest.qpa->ActsVulkanFragment_shader_interlockTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFragmentshaderinterlockTest.qpa->ActsVulkanFragmentshaderinterlockTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragment_shading_rateTest.qpa->ActsVulkanFragment_shading_rateTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFragmentshadingrateTest.qpa->ActsVulkanFragmentshadingrateTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -125,7 +125,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanImageless_framebufferTest.qpa->ActsVulkanImageless_framebufferTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanImagelessframebufferTest.qpa->ActsVulkanImagelessframebufferTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -141,14 +141,14 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanMemory_modelTest.qpa->ActsVulkanMemory_modelTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanMemorymodelTest.qpa->ActsVulkanMemorymodelTest.qpa"
                 },
                 {
                     "name": "pull",
                     "value": "/data/local/tmp/ActsVulkanMemoryTest.qpa->ActsVulkanMemoryTest.qpa"
                 },{
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanMesh_shaderTest.qpa->ActsVulkanMesh_shaderTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanMeshshaderTest.qpa->ActsVulkanMeshshaderTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -196,7 +196,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanSpirv_assemblyTest.qpa->ActsVulkanSpirv_assemblyTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanSpirvassemblyTest.qpa->ActsVulkanSpirvassemblyTest.qpa"
                 },
                 {
                     "name": "pull",

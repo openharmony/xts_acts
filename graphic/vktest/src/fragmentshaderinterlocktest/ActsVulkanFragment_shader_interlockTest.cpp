@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragment_shader_interlockTest.h"
+#include "ActsVulkanFragmentshaderinterlockTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanFragment_shader_interlockTest::SetUpTestCase(void)
+    void ActsVulkanFragmentshaderinterlockTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanFragment_shader_interlockTest::TearDownTestCase(void)
+    void ActsVulkanFragmentshaderinterlockTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanFragment_shader_interlockTest::SetUp()
+    void ActsVulkanFragmentshaderinterlockTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanFragment_shader_interlockTest::TearDown()
+    void ActsVulkanFragmentshaderinterlockTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanFragment_shader_interlockTest, TestVulkanFragment_shader_interlockTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanFragmentshaderinterlockTest, TestVulkanFragment_shader_interlockTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanFragment_shader_interlockTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shader-interlock.txt --deqp-log-filename=ActsVulkanFragment_shader_interlockTest.qpa");
+        printf("------start ActsVulkanFragmentshaderinterlockTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shader-interlock.txt --deqp-log-filename=ActsVulkanFragmentshaderinterlockTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanFragment_shader_interlockTest------\n");
+        printf("------end ActsVulkanFragmentshaderinterlockTest------\n");
     }
 }

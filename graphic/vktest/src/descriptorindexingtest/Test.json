@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanDescriptor_indexingTest.qpa ActsVulkanDescriptor_indexingTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanDescriptor_indexingTest descriptor-indexing.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanDescriptorindexingTest.qpa ActsVulkanDescriptorindexingTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanDescriptorindexingTest descriptor-indexing.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDescriptor_indexingTest.qpa->ActsVulkanDescriptor_indexingTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDescriptorindexingTest.qpa->ActsVulkanDescriptorindexingTest.qpa"
                 }
             ]
         }

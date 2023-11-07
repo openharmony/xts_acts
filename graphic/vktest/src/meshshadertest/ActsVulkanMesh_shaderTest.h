@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsVulkanMesh_shaderTest : public testing::Test {
+    class ActsVulkanMeshshaderTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case

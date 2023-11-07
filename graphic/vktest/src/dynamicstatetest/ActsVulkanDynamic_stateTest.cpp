@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDynamic_stateTest.h"
+#include "ActsVulkanDynamicstateTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanDynamic_stateTest::SetUpTestCase(void)
+    void ActsVulkanDynamicstateTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanDynamic_stateTest::TearDownTestCase(void)
+    void ActsVulkanDynamicstateTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanDynamic_stateTest::SetUp()
+    void ActsVulkanDynamicstateTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanDynamic_stateTest::TearDown()
+    void ActsVulkanDynamicstateTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanDynamic_stateTest, TestVulkanDynamic_stateTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanDynamicstateTest, TestVulkanDynamic_stateTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanDynamic_stateTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-state.txt --deqp-log-filename=ActsVulkanDynamic_stateTest.qpa");
+        printf("------start ActsVulkanDynamicstateTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-state.txt --deqp-log-filename=ActsVulkanDynamicstateTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanDynamic_stateTest------\n");
+        printf("------end ActsVulkanDynamicstateTest------\n");
     }
 }

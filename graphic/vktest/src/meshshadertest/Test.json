@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanMesh_shaderTest.qpa ActsVulkanMesh_shaderTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanMesh_shaderTest mesh-shader.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanMeshshaderTest.qpa ActsVulkanMeshshaderTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanMeshshaderTest mesh-shader.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanMesh_shaderTest.qpa->ActsVulkanMesh_shaderTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanMeshshaderTest.qpa->ActsVulkanMeshshaderTest.qpa"
                 }
             ]
         }

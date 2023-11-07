@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanFragment_shading_rateTest.h"
+#include "ActsVulkanFragmentshadingrateTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanFragment_shading_rateTest::SetUpTestCase(void)
+    void ActsVulkanFragmentshadingrateTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanFragment_shading_rateTest::TearDownTestCase(void)
+    void ActsVulkanFragmentshadingrateTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanFragment_shading_rateTest::SetUp()
+    void ActsVulkanFragmentshadingrateTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanFragment_shading_rateTest::TearDown()
+    void ActsVulkanFragmentshadingrateTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanFragment_shading_rateTest, TestVulkanFragment_shading_rateTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanFragmentshadingrateTest, TestVulkanFragment_shading_rateTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanFragment_shading_rateTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shading-rate.txt --deqp-log-filename=ActsVulkanFragment_shading_rateTest.qpa");
+        printf("------start ActsVulkanFragmentshadingrateTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/fragment-shading-rate.txt --deqp-log-filename=ActsVulkanFragmentshadingrateTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanFragment_shading_rateTest------\n");
+        printf("------end ActsVulkanFragmentshadingrateTest------\n");
     }
 }

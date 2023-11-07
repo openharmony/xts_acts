@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanDynamic_renderingTest.qpa ActsVulkanDynamic_renderingTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanDynamic_renderingTest dynamic-rendering.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanDynamicrenderingTest.qpa ActsVulkanDynamicrenderingTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanDynamicrenderingTest dynamic-rendering.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanDynamic_renderingTest.qpa->ActsVulkanDynamic_renderingTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanDynamicrenderingTest.qpa->ActsVulkanDynamicrenderingTest.qpa"
                 }
             ]
         }

@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanDescriptor_indexingTest.h"
+#include "ActsVulkanDescriptorindexingTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanDescriptor_indexingTest::SetUpTestCase(void)
+    void ActsVulkanDescriptorindexingTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanDescriptor_indexingTest::TearDownTestCase(void)
+    void ActsVulkanDescriptorindexingTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanDescriptor_indexingTest::SetUp()
+    void ActsVulkanDescriptorindexingTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanDescriptor_indexingTest::TearDown()
+    void ActsVulkanDescriptorindexingTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanDescriptor_indexingTest, TestVulkanDescriptor_indexingTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanDescriptorindexingTest, TestVulkanDescriptor_indexingTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanDescriptor_indexingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/descriptor-indexing.txt --deqp-log-filename=ActsVulkanDescriptor_indexingTest.qpa");
+        printf("------start ActsVulkanDescriptorindexingTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/descriptor-indexing.txt --deqp-log-filename=ActsVulkanDescriptorindexingTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanDescriptor_indexingTest------\n");
+        printf("------end ActsVulkanDescriptorindexingTest------\n");
     }
 }

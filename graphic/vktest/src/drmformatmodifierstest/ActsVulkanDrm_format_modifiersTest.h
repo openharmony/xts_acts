@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsVulkanDrm_format_modifiersTest : public testing::Test {
+    class ActsVulkanDrmformatmodifiersTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case

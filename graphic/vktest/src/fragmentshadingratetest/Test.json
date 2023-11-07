@@ -45,8 +45,8 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanFragment_shading_rateTest.qpa ActsVulkanFragment_shading_rateTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanFragment_shading_rateTest fragment-shading-rate.txt"
+                "hdc file recv /data/local/tmp/ActsVulkanFragmentshadingrateTest.qpa ActsVulkanFragmentshadingrateTest.qpa",
+                "python testcases/vulkandata/genlocal.py ActsVulkanFragmentshadingrateTest fragment-shading-rate.txt"
             ]
         },
         {
@@ -54,7 +54,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragment_shading_rateTest.qpa->ActsVulkanFragment_shading_rateTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFragmentshadingrateTest.qpa->ActsVulkanFragmentshadingrateTest.qpa"
                 }
             ]
         }

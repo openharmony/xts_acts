@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanProtected_memoryTest.h"
+#include "ActsVulkanProtectedmemoryTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanProtected_memoryTest::SetUpTestCase(void)
+    void ActsVulkanProtectedmemoryTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanProtected_memoryTest::TearDownTestCase(void)
+    void ActsVulkanProtectedmemoryTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanProtected_memoryTest::SetUp()
+    void ActsVulkanProtectedmemoryTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanProtected_memoryTest::TearDown()
+    void ActsVulkanProtectedmemoryTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanProtected_memoryTest, TestVulkanProtected_memoryTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanProtectedmemoryTest, TestVulkanProtected_memoryTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanProtected_memoryTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/protected-memory.txt --deqp-log-filename=ActsVulkanProtected_memoryTest.qpa");
+        printf("------start ActsVulkanProtectedmemoryTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/protected-memory.txt --deqp-log-filename=ActsVulkanProtectedmemoryTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanProtected_memoryTest------\n");
+        printf("------end ActsVulkanProtectedmemoryTest------\n");
     }
 }

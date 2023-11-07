@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsVulkanFragment_operationsTest : public testing::Test {
+    class ActsVulkanFragmentoperationsTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case

@@ -15,34 +15,34 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsVulkanMesh_shaderTest.h"
+#include "ActsVulkanMeshshaderTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanMesh_shaderTest::SetUpTestCase(void)
+    void ActsVulkanMeshshaderTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanMesh_shaderTest::TearDownTestCase(void)
+    void ActsVulkanMeshshaderTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanMesh_shaderTest::SetUp()
+    void ActsVulkanMeshshaderTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanMesh_shaderTest::TearDown()
+    void ActsVulkanMeshshaderTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanMesh_shaderTest, TestVulkanMesh_shaderTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanMeshshaderTest, TestVulkanMesh_shaderTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanMesh_shaderTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/mesh-shader.txt --deqp-log-filename=ActsVulkanMesh_shaderTest.qpa");
+        printf("------start ActsVulkanMeshshaderTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/mesh-shader.txt --deqp-log-filename=ActsVulkanMeshshaderTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanMesh_shaderTest------\n");
+        printf("------end ActsVulkanMeshshaderTest------\n");
     }
 }

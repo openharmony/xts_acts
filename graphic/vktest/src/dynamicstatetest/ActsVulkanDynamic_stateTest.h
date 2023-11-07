@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsVulkanDynamic_stateTest : public testing::Test {
+    class ActsVulkanDynamicstateTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case
