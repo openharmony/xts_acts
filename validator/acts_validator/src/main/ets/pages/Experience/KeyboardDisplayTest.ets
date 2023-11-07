@@ -25,7 +25,7 @@ let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 struct CustomContainerUser {
   @State name: string = 'KeyboardDisplay';
   @State toSP_daemon: string = 'SP_daemon -editor completeTime com.example.kikakeyboard ohtest';
-  @State StepTips: string = '操作步骤：根据操作提示点击输入框等待键盘加载'+'\n'+'预期结果：输入键盘弹出时延小于1000ms测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示点击输入框等待键盘加载'+'\n'+'预期结果：弹出输入法键盘时延小于1000ms通过测试';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: number = 0;
@@ -109,7 +109,7 @@ struct CustomContainerUser {
             Row(){
               Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入信息` + '\n' + '\n' + '2.新建一条信息显示输入框'+ '\n' + '\n'
               + `3.点击悬浮球开始测试` + '\n' + '\n' + '4.点击输入框等待键盘弹出' + '\n' + '\n' + `5.待悬浮球倒计时结束显示为done后返回validator应用` + '\n' + '\n'
-              + `6.点击结束观察测试结果` + '\n' + '\n' + `7.若弹出键盘时延小于1000ms则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+              + `6.点击结束观察测试结果` + '\n' + '\n' + `7.若弹出输入法键盘时延小于1000ms则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
               `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
                 .fontColor(Color.White).fontSize('20fp')
             }
