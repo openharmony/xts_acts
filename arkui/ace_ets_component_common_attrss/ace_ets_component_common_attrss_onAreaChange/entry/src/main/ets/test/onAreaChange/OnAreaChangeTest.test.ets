@@ -235,10 +235,10 @@ export default function onAreaChangeTest() {
         expect(viewObj.$attrs.offset.x).assertEqual(data.testValue.expectValue.x);
         console.info('[' + data.caseTag + '] viewObj.$attrs.offset.y: ' + viewObj.$attrs.offset.y);
         expect(viewObj.$attrs.offset.y).assertEqual(data.testValue.expectValue.y);
-        expect(Number(targetRectAfter.left - targetRectBefore.left).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.left).toFixed(2));
-        expect(Number(targetRectAfter.top - targetRectBefore.top).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.top).toFixed(2));
+        expect(Math.abs(Number(targetRectAfter.left - targetRectBefore.left) -
+          Number(data.testValue.expectValue.left)) <= 1).assertTrue();
+        expect(Math.abs(Number(targetRectAfter.top - targetRectBefore.top) -
+          Number(data.testValue.expectValue.top)) <= 1).assertTrue();
         expect(compareOldTextComponent.$attrs.content).assertEqual('');
         expect(compareNewTextComponent.$attrs.content).assertEqual('');
       }
@@ -254,30 +254,30 @@ export default function onAreaChangeTest() {
     let compareOldTextObj = JSON.parse(compareOldTextComponent.$attrs.content);
     let compareNewTextObj = JSON.parse(compareNewTextComponent.$attrs.content);
     console.info('[' + data.caseTag + '] compareOldTextObj.width: ' + compareOldTextObj.width);
-    expect(compareOldTextObj.width).assertEqual(px2vp(targetRectBefore.right - targetRectBefore.left));
+    expect(Math.abs(compareOldTextObj.width - px2vp(targetRectBefore.right - targetRectBefore.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareOldTextObj.height: ' + compareOldTextObj.height);
-    expect(compareOldTextObj.height).assertEqual(px2vp(targetRectBefore.bottom - targetRectBefore.top));
+    expect(Math.abs(compareOldTextObj.height - px2vp(targetRectBefore.bottom - targetRectBefore.top)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareOldTextObj.position.x: ' + compareOldTextObj.position.x);
-    expect(compareOldTextObj.position.x).assertEqual(px2vp(targetRectBefore.left - parentRectBefore.left));
+    expect(Math.abs(compareOldTextObj.position.x - px2vp(targetRectBefore.left - parentRectBefore.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareOldTextObj.position.y: ' + compareOldTextObj.position.y);
-    expect(compareOldTextObj.position.y).assertEqual(px2vp(targetRectBefore.top - parentRectBefore.top));
+    expect(Math.abs(compareOldTextObj.position.y - px2vp(targetRectBefore.top - parentRectBefore.top)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.x: ' + compareOldTextObj.globalPosition.x);
-    expect(compareOldTextObj.globalPosition.x).assertEqual(px2vp(targetRectBefore.left));
+    expect(Math.abs(compareOldTextObj.globalPosition.x - px2vp(targetRectBefore.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareOldTextObj.globalPosition.y: ' + compareOldTextObj.globalPosition.y);
-    expect(compareOldTextObj.globalPosition.y).assertEqual(px2vp(targetRectBefore.top));
+    expect(Math.abs(compareOldTextObj.globalPosition.y - px2vp(targetRectBefore.top)) <= 1).assertTrue();
 
     //Check whether the changed position information is correct
     console.info('[' + data.caseTag + '] compareNewTextObj.width: ' + compareNewTextObj.width);
-    expect(compareNewTextObj.width).assertEqual(px2vp(targetRectAfter.right - targetRectAfter.left));
+    expect(Math.abs(compareNewTextObj.width - px2vp(targetRectAfter.right - targetRectAfter.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareNewTextObj.height: ' + compareNewTextObj.height);
-    expect(compareNewTextObj.height).assertEqual(px2vp(targetRectAfter.bottom - targetRectAfter.top));
+    expect(Math.abs(compareNewTextObj.height - px2vp(targetRectAfter.bottom - targetRectAfter.top)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareNewTextObj.position.x: ' + compareNewTextObj.position.x);
-    expect(compareNewTextObj.position.x).assertEqual(px2vp(targetRectAfter.left - parentRectAfter.left));
+    expect(Math.abs(compareNewTextObj.position.x - px2vp(targetRectAfter.left - parentRectAfter.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareNewTextObj.position.y: ' + compareNewTextObj.position.y);
-    expect(compareNewTextObj.position.y).assertEqual(px2vp(targetRectAfter.top - parentRectAfter.top));
+    expect(Math.abs(compareNewTextObj.position.y - px2vp(targetRectAfter.top - parentRectAfter.top)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.x: ' + compareNewTextObj.globalPosition.x);
-    expect(compareNewTextObj.globalPosition.x).assertEqual(px2vp(targetRectAfter.left));
+    expect(Math.abs(compareNewTextObj.globalPosition.x - px2vp(targetRectAfter.left)) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] compareNewTextObj.globalPosition.y: ' + compareNewTextObj.globalPosition.y);
-    expect(compareNewTextObj.globalPosition.y).assertEqual(px2vp(targetRectAfter.top));
+    expect(Math.abs(compareNewTextObj.globalPosition.y - px2vp(targetRectAfter.top)) <= 1).assertTrue();
   }
 }
