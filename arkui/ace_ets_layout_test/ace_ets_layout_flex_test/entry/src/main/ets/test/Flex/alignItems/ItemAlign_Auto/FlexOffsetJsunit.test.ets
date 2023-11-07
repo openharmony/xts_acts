@@ -68,7 +68,7 @@ export default function flexOffset_AutoJsunit() {
       expect(Math.abs(Math.round(textOffset03.bottom - textOffset03.top) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textOffset01.right - textOffset01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textOffset02.right - textOffset02.left) - Math.round(vp2px(150))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(textOffset03.right - textOffset03.left) = Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textOffset03.right - textOffset03.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexOffset END');

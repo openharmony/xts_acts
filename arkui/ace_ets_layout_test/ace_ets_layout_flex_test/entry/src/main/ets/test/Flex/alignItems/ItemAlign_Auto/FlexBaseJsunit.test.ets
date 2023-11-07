@@ -66,14 +66,14 @@ export default function flexBase_AutoJsunit() {
 
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue();
       expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue();
-      expect(Math.abs(Math.round(flex01.right - textFlex03.right) - Math.round(vp2px(50)) <= 1)).assertTrue();
+      expect(Math.abs(Math.round(flex01.right - textFlex03.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(textFlex01.bottom - textFlex01.top) - Math.round(vp2px(50)) <= 1)).assertTrue();
-      expect(Math.abs(Math.round(textFlex02.bottom - textFlex02.top) - Math.round(vp2px(100)) <= 1)).assertTrue();
-      expect(Math.abs(Math.round(textFlex03.bottom - textFlex03.top) - Math.round(vp2px(150)) <= 1)).assertTrue();
-      expect(Math.abs(Math.round(textFlex01.right - textFlex01.left) - Math.round(vp2px(150)) <= 1)).assertTrue();
-      expect(Math.abs(Math.round(textFlex02.right - textFlex02.left) - Math.round(vp2px(150)) <= 1)).assertTrue();
-      expect(Math.abs(Math.round(textFlex03.right - textFlex03.left) - Math.round(vp2px(150)) <= 1)).assertTrue();
+      expect(Math.abs(Math.round(textFlex01.bottom - textFlex01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textFlex02.bottom - textFlex02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textFlex03.bottom - textFlex03.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textFlex01.right - textFlex01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textFlex02.right - textFlex02.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textFlex03.right - textFlex03.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexWidHeiMeet END');

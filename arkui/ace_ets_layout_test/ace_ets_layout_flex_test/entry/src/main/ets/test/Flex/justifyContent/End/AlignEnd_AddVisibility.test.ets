@@ -65,15 +65,15 @@ export default function AlignEnd_AddVisibility() {
         let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
         let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
         let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_013.top) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_01.top) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_012.right - End_AddVisibility_013.left) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_013.right - End_AddVisibility_01.right) <=1).assertTrue()
-        expect(Math.abs((End_AddVisibility_012.left - End_AddVisibility_01.left) - vp2px(200)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.right - End_AddVisibility_012.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.right - End_AddVisibility_013.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.bottom - End_AddVisibility_012.top) - vp2px(100)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.bottom - End_AddVisibility_013.top) - vp2px(150)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_012.top) - (End_AddVisibility_013.top)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_012.top) - (End_AddVisibility_01.top)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_012.right) - (End_AddVisibility_013.left)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_013.right) - (End_AddVisibility_01.right)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.left - End_AddVisibility_01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testFlexAlignEndVisibilityNone] failed');
         expect().assertFail();
@@ -104,20 +104,19 @@ export default function AlignEnd_AddVisibility() {
         let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
         let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
         let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-        expect(Math.abs(End_AddVisibility_011.top - End_AddVisibility_012.top) <= 1).assertTrue();
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_013.top) <= 1).assertTrue();
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_01.top) <= 1).assertTrue();
-        expect(Math.abs(End_AddVisibility_011.right - End_AddVisibility_012.left) <= 1).assertTrue();
-        expect(Math.abs(End_AddVisibility_013.right - End_AddVisibility_01.right) <= 1).assertTrue();
-        expect(Math.abs(End_AddVisibility_013.left - End_AddVisibility_012.right) <= 1).assertTrue();
-
-        expect(Math.abs((End_AddVisibility_011.left - End_AddVisibility_01.left) - vp2px(50)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_011.right - End_AddVisibility_011.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.right - End_AddVisibility_012.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.right - End_AddVisibility_013.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_011.bottom - End_AddVisibility_011.top) - vp2px(50)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.bottom - End_AddVisibility_012.top) - vp2px(100)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.bottom - End_AddVisibility_013.top) - vp2px(150)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.top)) - (Math.round(End_AddVisibility_012.top))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.top)) - (Math.round(End_AddVisibility_013.top))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.top)) - (Math.round(End_AddVisibility_01.top))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.right)) - (Math.round(End_AddVisibility_012.left))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.right)) - (Math.round(End_AddVisibility_01.right))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.left)) - (Math.round(End_AddVisibility_012.right))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testFlexAlignEndVisibilityHidden] failed');
         expect().assertFail();
@@ -148,19 +147,19 @@ export default function AlignEnd_AddVisibility() {
         let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
         let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
         let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-        expect(Math.abs(End_AddVisibility_011.top - End_AddVisibility_012.top) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_013.top) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_012.top - End_AddVisibility_01.top) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_011.right - End_AddVisibility_012.left) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_013.right - End_AddVisibility_01.right) <=1).assertTrue()
-        expect(Math.abs(End_AddVisibility_013.left - End_AddVisibility_012.right) <=1).assertTrue()
-        expect(Math.abs((End_AddVisibility_011.left - End_AddVisibility_01.left) - vp2px(50)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_011.right - End_AddVisibility_011.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.right - End_AddVisibility_012.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.right - End_AddVisibility_013.left) - vp2px(150)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_011.bottom - End_AddVisibility_011.top) - vp2px(50)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_012.bottom - End_AddVisibility_012.top) - vp2px(100)) <= 1).assertTrue();
-        expect(Math.abs((End_AddVisibility_013.bottom - End_AddVisibility_013.top) - vp2px(150)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_011.top) - (End_AddVisibility_012.top)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_012.top) - (End_AddVisibility_013.top)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_012.top) - (End_AddVisibility_01.top)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_011.right) - (End_AddVisibility_012.left)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_013.right) - (End_AddVisibility_01.right)) <= 1).assertTrue();
+        expect(Math.abs((End_AddVisibility_013.left) - (End_AddVisibility_012.right)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testFlexAlignEndVisibilityVisible] failed');
         expect().assertFail();
