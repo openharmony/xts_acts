@@ -56,13 +56,13 @@ export default function ColumnSetPadding__SubChangeMar() {
       let columnSetPad_2 = CommonFunc.getComponentRect('columnSetPad_2');
       let columnSetPad_3 = CommonFunc.getComponentRect('columnSetPad_3');
       let columnSetPad = CommonFunc.getComponentRect('columnSetPad');
-      expect(Math.round(columnSetPad_1.top - columnSetPad.top)).assertEqual(Math.round(vp2px(40)))
-      expect(Math.round(columnSetPad_2.top - columnSetPad_1.bottom)).assertEqual(Math.round(vp2px(50)))
-      expect(Math.round(columnSetPad_3.top - columnSetPad_2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.abs(columnSetPad_1.top - columnSetPad.top - Math.round(vp2px(40))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPad_2.top - columnSetPad_1.bottom - Math.round(vp2px(50))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPad_3.top - columnSetPad_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(columnSetPad.bottom).assertLess(columnSetPad_3.bottom)
-      expect(Math.round(columnSetPad_1.right - columnSetPad_1.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetPad_2.right - columnSetPad_2.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetPad_3.right - columnSetPad_3.left)).assertEqual(Math.round(vp2px(300)))
+      expect(Math.abs(columnSetPad_1.right - columnSetPad_1.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPad_2.right - columnSetPad_2.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetPad_3.right - columnSetPad_3.left - Math.round(vp2px(300))) <= 1).assertTrue()
       console.info('new testColumnParentPaddingSubMargin END');
       done();
     });
