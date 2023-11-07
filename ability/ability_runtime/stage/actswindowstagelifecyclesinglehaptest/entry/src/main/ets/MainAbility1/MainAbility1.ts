@@ -13,13 +13,14 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility1 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility1 onCreate")
         globalThis.abilityWant = want;
         console.log("[Demo] MainAbility1 context: " + JSON.stringify(this.context));
-        var listKey1 = [];
+        globalThis.list1 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 console.log("[Demo] AbilityLifecycleCallback onAbilityCreate ability:"
@@ -32,8 +33,7 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageCreate abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageCreate");
-                listKey1.push(abilityname + " onWindowStageCreate");
-                console.log("[Demo] 1listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageCreate");
             },
             onWindowStageActive(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageActive ability:"
@@ -42,8 +42,7 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageActive abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageActive");
-                listKey1.push(abilityname + " onWindowStageActive");
-                console.log("[Demo] 2listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageActive");
             },
             onWindowStageInactive(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageInactive ability:"
@@ -52,8 +51,7 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageInactive abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageInactive");
-                listKey1.push(abilityname + " onWindowStageInactive");
-                console.log("[Demo] 3listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageInactive");
             },
             onWindowStageDestroy(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageDestroy ability:"
@@ -62,8 +60,7 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageDestroy abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageDestroy");
-                listKey1.push(abilityname + " onWindowStageDestroy");
-                console.log("[Demo] 4listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 console.log("[Demo] AbilityLifecycleCallback onAbilityDestroy ability:"
@@ -85,15 +82,22 @@ export default class MainAbility1 extends Ability {
         globalThis.applicationContext1 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext1.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback1 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback1 listKey1: " + JSON.stringify(listKey1));
-            globalThis.list1 = listKey1;
-            globalThis.callbackid1 = lifecycleid;
-        }, 2500);
+        globalThis.callbackid1 = lifecycleid;
+
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onCreate", ()=>{
+                console.log("[Demo] MainAbility1 onCreate")
+            });
+        }, 500)
     }
 
     onDestroy() {
         console.log("[Demo] MainAbility1 onDestroy")
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onDestroy", ()=>{
+                console.log("[Demo] MainAbility1 onDestroy")
+            });
+        }, 500)
     }
 
     onWindowStageCreate(windowStage) {
@@ -111,6 +115,11 @@ export default class MainAbility1 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility1 onForeground")
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onForeground", ()=>{
+                console.log("[Demo] MainAbility1 onForeground")
+            });
+        }, 500)
     }
 
     onBackground() {

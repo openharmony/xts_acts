@@ -13,11 +13,15 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility9 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility9 onCreate")
         globalThis.abilityWant = want;
+        globalThis.context9 = this.context;
+        globalThis.mainAbility9CallBackId = -1;
+        globalThis.mainAbility9ListKey = [];
     }
 
     onDestroy() {
@@ -39,8 +43,6 @@ export default class MainAbility9 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility9 onForeground")
-
-        var listKey9 = [];
         var abilityName = "";
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
@@ -50,7 +52,7 @@ export default class MainAbility9 extends Ability {
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageCreate")
-                listKey9.push(abilityName + " onWindowStageCreate");
+                globalThis.mainAbility9ListKey.push(abilityName + " onWindowStageCreate");
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -63,7 +65,7 @@ export default class MainAbility9 extends Ability {
             onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageDestroy")
-                listKey9.push(abilityName + " onWindowStageDestroy");
+                globalThis.mainAbility9ListKey.push(abilityName + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -76,25 +78,26 @@ export default class MainAbility9 extends Ability {
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageActive")
-                listKey9.push(abilityName + " onWindowStageActive");
+                globalThis.mainAbility9ListKey.push(abilityName + " onWindowStageActive");
             },
             onWindowStageInactive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageInactive")
-                listKey9.push(abilityName + " onWindowStageInactive");
+                globalThis.mainAbility9ListKey.push(abilityName + " onWindowStageInactive");
             }
         }
         globalThis.applicationContext9 = this.context.getApplicationContext();
-        var callBackId = globalThis.applicationContext9
-            .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
-
-        console.log("callBackId is aaa :" + callBackId);
-        setTimeout(() => {
-            globalThis.mainAbility9ListKey = listKey9
-            globalThis.mainAbility9CallBackId = callBackId
-            console.log("listKey is :" + listKey9);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
+        if (globalThis.mainAbility9CallBackId == -1) {
+            var callBackId = globalThis.applicationContext9
+                .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+            console.log("callBackId is aaa :" + callBackId);
+            globalThis.mainAbility9CallBackId = callBackId;
+        }
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility9.onForeground", ()=>{
+                console.log("[Demo] MainAbility9 onForeground")
+            });
+        }, 1000)
     }
 
     onBackground() {
