@@ -1066,9 +1066,9 @@ export default function relationalStoreCloudSyncTest() {
         try {
             rdbStore.on("autoSyncProgress", function (detail) {
                 console.log(TAG + `Progress:` + JSON.stringify(detail));
+                expect(detail).notEquel(null);
+                done();
             });
-            expect(detail).notEquel(null);
-            done();
             console.log(TAG + "on autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "on autoSyncProgress" + err);
@@ -1088,9 +1088,9 @@ export default function relationalStoreCloudSyncTest() {
         try {
             rdbStore.off("autoSyncProgress", function (detail) {
                 console.log(TAG + `Progress:` + JSON.stringify(detail));
+                expect(detail).notEquel(null);
+                done();
             });
-            expect(detail).notEquel(null);
-            done();
             console.log(TAG + "off autoSyncProgress success");
         } catch (err) {
             console.log(TAG + "off autoSyncProgress" + err);
