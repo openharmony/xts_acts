@@ -20,6 +20,9 @@ group("actsstageappcontext") {
       #"actsstagecontextassistone:ActsStageContextAssistOne",
       #"actsstagecontextassisttwo:ActsStageContextAssistTwo",
       "actsstageappcontexttest:ActsStageAppContextTest",
+      "clearupappdatahelpassistentry:ClearUpAppDataHelpAssistEntry",
+      "clearupappdatahelpassistfeature:ClearUpAppDataHelpAssistFeature",
+      "clearupappdatahelpassistsystem:ClearUpAppDataHelpAssistSystem",
     ]
   }
 }
