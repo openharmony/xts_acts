@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "module description"
+      "value": "模块描述"
     },
     {
       "name": "MainAbility_desc",
@@ -10,14 +10,6 @@
     },
     {
       "name": "MainAbility_label",
-      "value": "label"
-    },
-    {
-      "name": "TestAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "TestAbility_label",
       "value": "label"
     }
   ]
