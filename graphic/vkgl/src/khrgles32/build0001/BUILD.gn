@@ -32,7 +32,7 @@ ohos_static_library("libkhrgles32func0001") {
   sources += [ "../Khrgles32BaseFunc.cpp" ]
 
   include_dirs = common_include
-  deps = common_depends
+  deps = common_depends_gles32
   external_deps = [
     "hilog:libhilog",
     "image_framework:image_native",

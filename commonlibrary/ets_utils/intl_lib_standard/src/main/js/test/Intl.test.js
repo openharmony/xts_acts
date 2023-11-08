@@ -140,7 +140,7 @@ describe('etsIntlFunTest', function () {
             { year: "numeric", month: "long", day: "numeric" };
         var intlObj = new Intl.DateTimeFormat("th-TH-u-nu-thai-ca-chinese", options).format;
         console.log("intlDateTimeFormatTest007::" + intlObj(newDate));
-        expect(intlObj(newDate)).assertEqual("๒๐๒๒ 9 ๑๓");
+        expect(intlObj(newDate)).assertEqual("๒๐๒๒(เหรินอิ๋น) 9 ๑๓");
     })
 
     /**

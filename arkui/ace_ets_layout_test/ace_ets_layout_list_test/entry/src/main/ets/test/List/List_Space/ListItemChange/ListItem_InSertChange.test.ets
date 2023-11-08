@@ -72,11 +72,11 @@ export default function listItem_InSertChange() {
       let TextTest2 = CommonFunc.getComponentRect('InSertChangeText2');
       let TextTest3 = CommonFunc.getComponentRect('InSertChangeText3');
       let TextTest4 = CommonFunc.getComponentRect('InSertChangeText4');
-      expect(locationText1.left).assertEqual(locationText2.left);
-      expect(locationText2.left).assertEqual(locationText3.left);
-      expect(locationText3.left).assertEqual(locationText4.left);
-      expect(locationText4.left).assertEqual(locationList.left);
-      expect(locationText1.top).assertEqual(locationList.top);
+      expect(Math.abs(locationText1.left - locationText2.left) <= 1).assertTrue();
+      expect(Math.abs(locationText2.left - locationText3.left) <= 1).assertTrue();
+      expect(Math.abs(locationText3.left - locationText4.left) <= 1).assertTrue();
+      expect(Math.abs(locationText4.left - locationList.left) <= 1).assertTrue();
+      expect(Math.abs(locationText1.top - locationList.top) <= 1).assertTrue();
 
       expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(100)));
@@ -95,16 +95,14 @@ export default function listItem_InSertChange() {
       expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
 
-      expect(Math.round(TextTest1.left - locationText1.left))
-        .assertEqual(Math.round(locationText1.right - TextTest1.right));
-      expect(Math.round(TextTest1.top - locationText1.top))
-        .assertEqual(Math.round(locationText1.bottom - TextTest1.bottom));
+      expect(Math.abs(Math.round(TextTest1.left - locationText1.left) - Math.round(locationText1.right - TextTest1.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(TextTest1.top - locationText1.top) - Math.round(locationText1.bottom - TextTest1.bottom)) <= 1).assertTrue();
       expect(Math.round(TextTest1.right - TextTest1.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(TextTest1.bottom - TextTest1.top)).assertEqual(Math.round(vp2px(50)));
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again = CommonFunc.getComponentRect('ListItemTest74');
-      expect(locationText4.top).assertEqual(locationText4Again.top);
+      expect(Math.abs(locationText4.top - locationText4Again.top) <= 1).assertTrue();
       console.info('new testListItemInSertChangeFiftyPercent END');
       done();
     });

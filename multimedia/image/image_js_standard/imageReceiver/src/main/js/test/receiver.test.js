@@ -336,7 +336,7 @@ export default function ImageReceiver() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100
          * @tc.name      : createImageReceiver
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -345,7 +345,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
@@ -364,7 +364,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200
          * @tc.name      : createImageReceiver
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -373,10 +373,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200",
                 WIDTH,
                 HEIGHT,
                 FORMATJPEG,
@@ -385,7 +385,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100
          * @tc.name      : createImageReceiver-wrong format
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -394,10 +394,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100",
                 WIDTH,
                 HEIGHT,
                 null,
@@ -406,7 +406,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200
          * @tc.name      : createImageReceiver-wrong height
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -415,10 +415,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200",
                 WIDTH,
                 null,
                 FORMATJPEG,
@@ -427,7 +427,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300
          * @tc.name      : createImageReceiver-wrong width
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -436,10 +436,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300",
                 null,
                 HEIGHT,
                 FORMATJPEG,
@@ -448,7 +448,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400
          * @tc.name      : createImageReceiver-wrong capacity
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -457,10 +457,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400",
                 WIDTH,
                 HEIGHT,
                 FORMATJPEG,
@@ -469,7 +469,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500
          * @tc.name      : createImageReceiver-wrong width
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -478,10 +478,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500",
                 false,
                 HEIGHT,
                 FORMATJPEG,
@@ -490,7 +490,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600
          * @tc.name      : createImageReceiver- wrong width
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -499,10 +499,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600",
                 { a: 10 },
                 HEIGHT,
                 FORMATJPEG,
@@ -511,7 +511,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300
          * @tc.name      : createImageReceiver
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -520,10 +520,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300",
                 WIDTH,
                 false,
                 FORMATJPEG,
@@ -532,7 +532,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700
          * @tc.name      : createImageReceiver- wrong format
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -541,10 +541,10 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700", 0, async function (done) {
             createRecriver(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700",
                 WIDTH,
                 HEIGHT,
                 "form.",
@@ -553,7 +553,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400
          * @tc.name      : createImageReceiver
          * @tc.desc      : 1.set width,height,format,capacity
          *                 2.create ImageReceiver
@@ -562,11 +562,11 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400 undefined");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400 undefined");
                 done();
                 return;
             } else {
@@ -581,7 +581,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100
          * @tc.name      : getReceivingSurfaceId-promise
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call getReceivingSurfaceId
@@ -590,7 +590,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver != undefined) {
                 globalreceiver = receiver;
@@ -598,7 +598,7 @@ export default function ImageReceiver() {
                     .getReceivingSurfaceId()
                     .then((id) => {
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 getReceivingSurfaceId [" +
+                            "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 getReceivingSurfaceId [" +
                             id +
                             "]"
                         );
@@ -607,7 +607,7 @@ export default function ImageReceiver() {
                         return;
                     })
                     .catch((error) => {
-                        console.log("SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 error: " + error);
+                        console.log("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 error: " + error);
                         expect(false).assertTrue();
                         done();
                         return;
@@ -620,7 +620,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100
          * @tc.name      : getReceivingSurfaceId-callback
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call getReceivingSurfaceId
@@ -629,13 +629,13 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver.getReceivingSurfaceId((err, id) => {
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 getReceivingSurfaceId call back [" +
+                        "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 getReceivingSurfaceId call back [" +
                         id +
                         "]"
                     );
@@ -645,14 +645,14 @@ export default function ImageReceiver() {
                 });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0100
          * @tc.name      : release-promise
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call release
@@ -660,14 +660,14 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver
                     .release()
                     .then(() => {
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100 release ");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0100 release ");
                         expect(true).assertTrue();
                         done();
                         return;
@@ -679,14 +679,14 @@ export default function ImageReceiver() {
                     });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0100
          * @tc.name      : release-callback
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call release
@@ -694,18 +694,18 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver.release((err) => {
                     if (err) {
                         expect(false).assertTrue();
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release fail");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release fail");
                         done();
                         return;
                     } else {
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release call back");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release call back");
                         expect(true).assertTrue();
                         done();
                         return;
@@ -713,14 +713,14 @@ export default function ImageReceiver() {
                 });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100
          * @tc.name      : readLatestImage-promise
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call readLatestImage
@@ -729,7 +729,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             var error = receiver.checkDeviceTest;
             if (DEVICE_CODE == error) {
@@ -744,27 +744,27 @@ export default function ImageReceiver() {
                     .readLatestImage()
                     .then((img) => {
                         globalImg = img;
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 readLatestImage Success");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 readLatestImage Success");
                         expect(img != undefined).assertTrue();
                         done();
                         return;
                     })
                     .catch((error) => {
-                        console.log("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 error: " + error);
+                        console.log("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 error: " + error);
                         expect(false).assertTrue();
                         done();
                         return;
                     });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100
          * @tc.name      : readLatestImage-callback
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call readLatestImage
@@ -773,7 +773,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             var error = receiver.checkDeviceTest;
             if (DEVICE_CODE == error) {
@@ -787,7 +787,7 @@ export default function ImageReceiver() {
                 receiver.readLatestImage((err, img) => {
                     globalImg = img;
                     console.info(
-                        "SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 readLatestImage call back Success"
+                        "SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 readLatestImage call back Success"
                     );
                     expect(img != undefined).assertTrue();
                     done();
@@ -795,14 +795,14 @@ export default function ImageReceiver() {
                 });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100
          * @tc.name      : readNextImage-promise
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call readNextImage
@@ -811,7 +811,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             var error = receiver.checkDeviceTest;
             if (DEVICE_CODE == error) {
@@ -827,27 +827,27 @@ export default function ImageReceiver() {
                     .readNextImage()
                     .then((img) => {
                         globalImg = img;
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 readNextImage Success");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 readNextImage Success");
                         expect(img != undefined).assertTrue();
                         done();
                         return;
                     })
                     .catch((error) => {
-                        console.log("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 error: " + error);
+                        console.log("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 error: " + error);
                         expect(false).assertTrue();
                         done();
                         return;
                     });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100
          * @tc.name      : readNextImage-callback
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call readNextImage
@@ -856,7 +856,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             var error = receiver.checkDeviceTest;
             if (DEVICE_CODE == error) {
@@ -875,7 +875,7 @@ export default function ImageReceiver() {
                     } else {
                         globalImg = img;
                         console.info(
-                            "SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 readNextImage call back Success"
+                            "SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 readNextImage call back Success"
                         );
                         expect(img != undefined).assertTrue();
                         done();
@@ -884,14 +884,14 @@ export default function ImageReceiver() {
                 });
             } else {
                 expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 finished");
+                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 finished");
                 done();
                 return;
             }
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100
          * @tc.name      : getComponent-jpeg
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -901,7 +901,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100", 0, async function (done) {
             function checkFormat(imgformat) {
                 expect(imgformat == RGBA);
             }
@@ -911,7 +911,7 @@ export default function ImageReceiver() {
             }
             getComponentPromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100",
                 FORMATJPEG,
                 JPEG,
                 checkFormat,
@@ -920,7 +920,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100
          * @tc.name      : getComponent-jpeg
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -930,7 +930,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100", 0, async function (done) {
             function checkFormat(imgformat) {
                 expect(imgformat == RGBA);
             }
@@ -940,7 +940,7 @@ export default function ImageReceiver() {
             }
             getComponentCb(
                 done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100",
+                "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100",
                 FORMATJPEG,
                 JPEG,
                 checkFormat,
@@ -949,7 +949,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_RECEIVERON_0100
          * @tc.name      : on
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -957,7 +957,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_RECEIVERON_0100", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
@@ -974,13 +974,13 @@ export default function ImageReceiver() {
                 let pass = false;
                 receiver.on("imageArrival", (err) => {
                     if (err) {
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100 on err" + err);
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RECEIVERON_0100 on err" + err);
                         expect(false).assertTrue();
                         done();
                         return;
                     } else {
                         pass = true;
-                        console.info("SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100 on call back IN");
+                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_RECEIVERON_0100 on call back IN");
                     }
                 });
 
@@ -993,7 +993,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0200
          * @tc.name      : release-promise
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1004,7 +1004,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0200", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
@@ -1048,7 +1048,7 @@ export default function ImageReceiver() {
                                 return;
                             })
                             .catch((error) => {
-                                console.log("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200 err" + error);
+                                console.log("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0200 err" + error);
                                 expect(false).assertTrue();
                                 done();
                                 return;
@@ -1056,7 +1056,7 @@ export default function ImageReceiver() {
                     }
                 })
                 .catch((error) => {
-                    console.log("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200 readLatestImage err" + error);
+                    console.log("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_PROMISE_0200 readLatestImage err" + error);
                     expect(false).assertTrue();
                     done();
                     return;
@@ -1064,7 +1064,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0200
          * @tc.name      : release-callback
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1075,7 +1075,7 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_RELEASE_CALLBACK_0200", 0, async function (done) {
             var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
             if (receiver == undefined) {
                 expect(false).assertTrue();
@@ -1123,7 +1123,7 @@ export default function ImageReceiver() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1133,12 +1133,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100", 0, async function (done) {
-            getComponentCbErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100", FORMATJPEG, null);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100", 0, async function (done) {
+            getComponentCbErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100", FORMATJPEG, null);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1148,12 +1148,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200", 0, async function (done) {
-            getComponentCbErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200", FORMATJPEG, "ab");
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200", 0, async function (done) {
+            getComponentCbErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200", FORMATJPEG, "ab");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1163,12 +1163,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300", 0, async function (done) {
-            getComponentCbErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300", FORMATJPEG, 0.1);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300", 0, async function (done) {
+            getComponentCbErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300", FORMATJPEG, 0.1);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1178,12 +1178,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400", 0, async function (done) {
-            getComponentCbErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400", FORMATJPEG, { a: 1 });
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400", 0, async function (done) {
+            getComponentCbErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400", FORMATJPEG, { a: 1 });
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1193,12 +1193,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500", FORMATJPEG, null);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500", 0, async function (done) {
+            getComponentProErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500", FORMATJPEG, null);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1208,12 +1208,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600", FORMATJPEG, "ab");
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600", 0, async function (done) {
+            getComponentProErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600", FORMATJPEG, "ab");
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1223,12 +1223,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700", FORMATJPEG, 0.1);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700", 0, async function (done) {
+            getComponentProErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700", FORMATJPEG, 0.1);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800
          * @tc.name      : getComponent-wrong format
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1238,12 +1238,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", FORMATJPEG, { a: 1 });
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", 0, async function (done) {
+            getComponentProErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", FORMATJPEG, { a: 1 });
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100
          * @tc.name      : on-1
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1251,12 +1251,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100", 0, async function (done) {
-            onErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100", 1);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100", 0, async function (done) {
+            onErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100", 1);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200
          * @tc.name      : on-null
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1264,12 +1264,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200", 0, async function (done) {
-            onErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200", null);
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200", 0, async function (done) {
+            onErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200", null);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300
          * @tc.name      : on-{a : 1}
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1277,12 +1277,12 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300", 0, async function (done) {
-            onErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300", { a: 1 });
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300", 0, async function (done) {
+            onErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300", { a: 1 });
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400
          * @tc.name      : on-'a'
          * @tc.desc      : 1.create ImageReceiver
          *                 2.call on
@@ -1290,8 +1290,8 @@ export default function ImageReceiver() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", 0, async function (done) {
-            onErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", "a");
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", 0, async function (done) {
+            onErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", "a");
         });
     });
 }

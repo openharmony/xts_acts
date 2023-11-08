@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -80,8 +80,7 @@ export default function ActsGetAllAccounts() {
             var selfBundle = "com.example.actsgetallaccounts";
             try{
                 var acclist = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -97,8 +96,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>getAllAccounts 0200 start====");
             try{
                 var data = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts 0200 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -106,8 +104,7 @@ export default function ActsGetAllAccounts() {
             try{
                 expect(data[0].name).assertEqual("Account_this_application_promise");
                 expect(data[0].owner).assertEqual("com.example.actsgetallaccounts");
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>check data 0200 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -153,8 +150,7 @@ export default function ActsGetAllAccounts() {
             var selfBundle = "com.example.actsgetallaccounts";
             try{
                 var acclist = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -202,8 +198,7 @@ export default function ActsGetAllAccounts() {
             var emptyBundle = "";
             try{
                 var data = await appAccountManager.getAllAccounts(emptyBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.debug("====>getAllAccounts 0600 err:" + JSON.stringify(err));   
                 expect(err.code != 0).assertEqual(true);
                 console.debug("====>ActsGetAllAccounts_0600 end====");
@@ -247,8 +242,7 @@ export default function ActsGetAllAccounts() {
             }
             try{
                 var data = await appAccountManager.getAllAccounts(limitBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.debug("====>getAllAccounts 0800 err:" + JSON.stringify(err));   
                 expect(err.code != 0).assertEqual(true);
                 console.debug("====>ActsGetAllAccounts_0800 end====");
@@ -289,6 +283,7 @@ export default function ActsGetAllAccounts() {
                 expect(err).assertEqual(null);
                 expect(data[0].name).assertEqual("Account_application_callback");
                 expect(data[0].owner).assertEqual("com.example.actsgetallaccounts");
+                console.debug("====>delete account 0900 start====");
                 appAccountManager.deleteAccount("Account_application_callback", (err)=>{
                     console.debug("====>delete account 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
@@ -332,8 +327,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>getAllAccounts 1000 start====");
             try{
                 var data = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts 1000 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -342,8 +336,7 @@ export default function ActsGetAllAccounts() {
             try{
                 expect(data[0].name).assertEqual("Account_application_promise");
                 expect(data[0].owner).assertEqual("com.example.actsgetallaccounts");
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>check data 1000 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -352,7 +345,48 @@ export default function ActsGetAllAccounts() {
             await appAccountManager.deleteAccount("Account_application_promise");
             console.debug("====>ActsGetAllAccounts_1000 end====");
             done();
-        });       
+        });
+
+        /*
+        * @tc.number    : ActsGetAllAccounts_1100
+        * @tc.name      : getAllAccounts callback
+        * @tc.desc      : The parameter owner is not a exist owner
+        */
+        it('ActsGetAllAccounts_1100', 0, async function (done) {
+            console.debug("====>ActsGetAllAccounts_1100 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>createAppAccountManager finish====");
+            var selfBundle = "com.example.notexist";
+            console.debug("====>getAllAccounts 1100 start====");
+            appAccountManager.getAllAccounts(selfBundle, (err, data) => {
+                console.debug("====>getAllAccounts 1100 err:" + JSON.stringify(err));
+                console.debug("====>getAllAccounts 1100 data:" + JSON.stringify(data));
+                expect(err.code != 0).assertEqual(true);
+                console.debug("====>ActsGetAllAccounts_1100 end====");
+                done();
+            });
+        });
+
+        /*
+        * @tc.number    : ActsGetAllAccounts_1200
+        * @tc.name      : getAllAccounts promise
+        * @tc.desc      : The parameter owner is not a exist owner
+        */
+        it('ActsGetAllAccounts_1200', 0, async function (done) {
+            console.debug("====>ActsGetAllAccounts_1200 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>creat finish====");
+            var selfBundle = "com.example.notexist";
+            console.debug("====>getAllAccounts 1200 start====");
+            try{
+                await appAccountManager.getAllAccounts(selfBundle);
+            } catch(err) {
+                console.error("====>getAllAccounts 1200 err:" + JSON.stringify(err));
+                expect(err.code != 0).assertEqual(true);
+                console.debug("====>ActsGetAllAccounts_1200 end====");
+                done();
+            }
+        });
 
         /*
         * @tc.number    : ActsGetAllAccounts_1300
@@ -386,8 +420,7 @@ export default function ActsGetAllAccounts() {
                 var data = await appAccountManager.getAllAccounts(nonexistentBundle);
                 expect().assertFail();
                 done();
-            }
-            catch(err){
+            } catch(err) {
                 console.debug("====>getAllAccounts 1400 err:" + JSON.stringify(err));   
                 expect(err.code != 0).assertEqual(true);
                 console.debug("====>ActsGetAllAccounts_1400 end====");
@@ -443,8 +476,7 @@ export default function ActsGetAllAccounts() {
             var selfBundle = "com.example.actsgetallaccounts";
             try{
                 var acclist = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -460,8 +492,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>first getAllAccounts 1600 start====");
             try{
                 var data = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts 1600 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -473,8 +504,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>second getAllAccounts 1600 start====");
             try{
                 var dataDelete = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>second getAllAccounts 1600 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -534,8 +564,7 @@ export default function ActsGetAllAccounts() {
             var selfBundle = "com.example.actsgetallaccounts";
             try{
                 var acclist = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -551,8 +580,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>first getAllAccounts 1800 start====");
             try{
                 var data = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>getAllAccounts 1800 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
@@ -565,8 +593,7 @@ export default function ActsGetAllAccounts() {
             console.debug("====>second getAllAccounts 1800 start====");
             try{
                 var dataDelete = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
+            } catch(err) {
                 console.error("====>second getAllAccounts 1800 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();

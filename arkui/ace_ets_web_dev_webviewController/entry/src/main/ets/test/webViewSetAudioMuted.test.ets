@@ -72,7 +72,7 @@ export default function webViewSetAudioMuted() {
     it('testSetAudioMuted',0,async function(done){
       emitKey="emitSetAudioDisMuted";
       Utils.registerEvent("testSetAudioMuted","true",405,done);
-      Utils.registerEvent("testSetAudioMuted","muted",406,done);
+      Utils.registerEvent("testSetAudioMuted",'"muted"',406,done);
       sendEventByKey('webViewSetAudioMuted',10,'');
     })
     /*
@@ -83,7 +83,7 @@ export default function webViewSetAudioMuted() {
     it('testSetAudioDisMuted',0,async function(done){
       emitKey="emitSetAudioDisMuted";
       Utils.registerEvent("testSetAudioDisMuted","false",407,done);
-      Utils.registerEvent("testSetAudioDisMuted","unmuted",408,done);
+      Utils.registerEvent("testSetAudioDisMuted",'"unmuted"',408,done);
       sendEventByKey('webViewSetAudioMuted',10,'');
     })
   })

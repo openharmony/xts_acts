@@ -1,0 +1,563 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#include <js_native_api.h>
+#include <malloc.h>
+#include <node_api.h>
+#include <sys/select.h>
+
+#include <cctype>
+#define TRUE 1
+#define FALSE 0
+#define ERROR -1
+#define STRLENGTH 8
+#define ZERO 0
+static napi_value Isalnum(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isalnum((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsalnumL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isalnum_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isalpha(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isalpha((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsalphaL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isalpha_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isascii(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int first;
+    napi_get_value_int32(env, args[0], &first);
+    int retVal = isascii(first);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isblank(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isblank((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsblankL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isblank_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Iscntrl(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int first;
+    napi_get_value_int32(env, args[0], &first);
+    int retVal = iscntrl(first);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IscntrlL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int first;
+    napi_get_value_int32(env, args[0], &first);
+    int retVal = iscntrl_l(first, ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isdigit(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isdigit((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+static napi_value IsdigitL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isdigit_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isgraph(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isgraph((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+static napi_value IsgraphL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isgraph_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Islower(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = islower((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IslowerL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = islower_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isprint(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isprint((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsprintL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isprint_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Ispunct(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = ispunct((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IspunctL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = ispunct_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isspace(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isspace((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+static napi_value IsspaceL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isspace_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isupper(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isupper((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsupperL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isupper_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value Isxdigit(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isxdigit((int)ch[0]);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+static napi_value IsxdigitL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = STRLENGTH;
+    size_t strResult = FALSE;
+    char *ch = (char *)malloc(sizeof(char) * length);
+    napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
+    int retVal = isxdigit_l((int)ch[0], ZERO);
+    napi_value result;
+    if (retVal != FALSE) {
+        napi_create_double(env, TRUE, &result);
+        return result;
+    } else {
+        napi_create_double(env, FALSE, &result);
+        return result;
+    }
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"isalnum", nullptr, Isalnum, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isalnumL", nullptr, IsalnumL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isalpha", nullptr, Isalpha, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isalphaL", nullptr, IsalphaL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isascii", nullptr, Isascii, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isblank", nullptr, Isblank, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isblankL", nullptr, IsblankL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"iscntrl", nullptr, Iscntrl, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"iscntrlL", nullptr, IscntrlL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isdigit", nullptr, Isdigit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isdigitL", nullptr, IsdigitL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isgraph", nullptr, Isgraph, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isgraphL", nullptr, IsgraphL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"islower", nullptr, Islower, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"islowerL", nullptr, IslowerL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isprint", nullptr, Isprint, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isprintL", nullptr, IsprintL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ispunct", nullptr, Ispunct, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ispunctL", nullptr, IspunctL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isspace", nullptr, Isspace, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isspaceL", nullptr, IsspaceL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isupper", nullptr, Isupper, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isupperL", nullptr, IsupperL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isxdigit", nullptr, Isxdigit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"isxdigitL", nullptr, IsxdigitL, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "dirent",
+    .nm_priv = ((void *)0),
+    .reserved = {0},
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }

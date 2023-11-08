@@ -17,6 +17,9 @@
 export const OUTPUT_NUMBER_0 = 0;
 export const OUTPUT_NUMBER_1 = 1;
 export const OUTPUT_NUMBER_2 = 2;
+export const INPUT_PARAMETER_TYPE_NUMBER = -1;
+export const INPUT_PARAMETER_TYPE_NUMBER_4 = 4;
+export const INVALID_PARAMETER_STRING = '123'
 
 //--------------------------------------------------------------
 export const INVALID_INPUT_PARAMETER_401 = 401;

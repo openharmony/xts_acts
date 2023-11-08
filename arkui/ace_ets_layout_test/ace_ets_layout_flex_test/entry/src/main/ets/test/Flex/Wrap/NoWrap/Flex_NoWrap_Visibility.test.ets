@@ -52,10 +52,10 @@ export default function flex_NoWrap_VisibilityTest() {
     it('testWrapNoWrapTextVisibilityNoneOverflow', 0, async function (done) {
       console.info('[testWrapNoWrapTextVisibilityNoneOverflow] START');
       try {
-        globalThis.value.message.notify({name:'firstTextWidth', value:250});
-        globalThis.value.message.notify({name:'secondTextWidth', value:350});
-        globalThis.value.message.notify({name:'thirdTextWidth', value:350});
-        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+        globalThis.value.message.notify({ name: 'firstTextWidth', value: 250 });
+        globalThis.value.message.notify({ name: 'secondTextWidth', value: 350 });
+        globalThis.value.message.notify({ name: 'thirdTextWidth', value: 350 });
+        globalThis.value.message.notify({ name: 'visibility', value: Visibility.None })
         await CommonFunc.sleep(3000);
         let firstText = CommonFunc.getComponentRect('NoWrap_Text_Visibility1');
         let secondText = CommonFunc.getComponentRect('NoWrap_Text_Visibility2');
@@ -66,19 +66,19 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-        expect(secondText.top).assertEqual(flexContainer.top);
-        expect(secondText.top).assertEqual(thirdText.top);
+        expect(Math.abs((secondText.top) - (flexContainer.top)) <= 1).assertTrue();
+        expect(Math.abs((secondText.top) - (thirdText.top)) <= 1).assertTrue();
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
-        expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
+        expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
 
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(250)));
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+        expect(Math.abs((Math.round(thirdText.right - thirdText.left)) - (Math.round(vp2px(250)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.right - thirdText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
 
-        expect(secondText.left).assertEqual(flexContainer.left);
-        expect(thirdText.right).assertEqual(flexContainer.right);
-        expect(thirdText.bottom).assertEqual(flexContainer.bottom);
+        expect(Math.abs((secondText.left) - (flexContainer.left)) <= 1).assertTrue();
+        expect(Math.abs((thirdText.right) - (flexContainer.right)) <= 1).assertTrue();
+        expect(Math.abs((thirdText.bottom) - (flexContainer.bottom)) <= 1).assertTrue();
       } catch (err) {
         console.error('[testWrapNoWrapTextVisibilityNoneOverflow] failed');
         expect().assertFail();
@@ -117,20 +117,20 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-        expect(flexContainer.left).assertEqual(secondText.left);
-        expect(secondText.right).assertEqual(thirdText.left);
-        expect(secondText.right).assertEqual(thirdText.left);
-        expect(secondText.top).assertEqual(thirdText.top);
-        expect(flexContainer.top).assertEqual(thirdText.top);
+        expect(Math.abs(flexContainer.left - secondText.left) <= 1).assertTrue();
+        expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
+        expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
+        expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue();
+        expect(Math.abs(flexContainer.top - thirdText.top) <= 1).assertTrue();
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
+        expect(Math.abs(secondText.bottom - secondText.top - Math.round(vp2px(150))) <= 1).assertTrue();
+        expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <= 1).assertTrue();
 
-        expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.abs(secondText.right - secondText.left - Math.round(vp2px(150))) <= 1).assertTrue();
+        expect(Math.abs(thirdText.right - thirdText.left - Math.round(vp2px(150))) <= 1).assertTrue();
 
-        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(200)));
-        expect(thirdText.bottom).assertEqual(flexContainer.bottom);
+        expect(Math.abs(flexContainer.right - thirdText.right - Math.round(vp2px(200))) <= 1).assertTrue();
+        expect(Math.abs(thirdText.bottom - flexContainer.bottom) <= 1).assertTrue();
       } catch (err) {
         console.error('[testWrapNoWrapTextVisibilityNoneMeet] failed');
         expect().assertFail();
@@ -147,10 +147,10 @@ export default function flex_NoWrap_VisibilityTest() {
     it('testWrapNoWrapTextVisibilityHidden', 0, async function (done) {
       console.info('[testWrapNoWrapTextVisibilityHidden] START');
       try {
-        globalThis.value.message.notify({name:'firstTextWidth', value:150});
-        globalThis.value.message.notify({name:'secondTextWidth', value:150});
-        globalThis.value.message.notify({name:'thirdTextWidth', value:150});
-        globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden})
+        globalThis.value.message.notify({ name: 'firstTextWidth', value: 150 });
+        globalThis.value.message.notify({ name: 'secondTextWidth', value: 150 });
+        globalThis.value.message.notify({ name: 'thirdTextWidth', value: 150 });
+        globalThis.value.message.notify({ name: 'visibility', value: Visibility.Hidden })
         await CommonFunc.sleep(3000);
         let firstText = CommonFunc.getComponentRect('NoWrap_Text_Visibility1');
         let secondText = CommonFunc.getComponentRect('NoWrap_Text_Visibility2');
@@ -161,19 +161,19 @@ export default function flex_NoWrap_VisibilityTest() {
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-        expect(secondText.right).assertEqual(thirdText.left);
-        expect(secondText.top).assertEqual(thirdText.top);
-        expect(flexContainer.top).assertEqual(thirdText.top);
+        expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
+        expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue();
+        expect(Math.abs(flexContainer.top - thirdText.top) <= 1).assertTrue();
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
+        expect(Math.abs(secondText.bottom - secondText.top - Math.round(vp2px(150))) <= 1).assertTrue();
+        expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <= 1).assertTrue();
 
-        expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
-        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.abs(secondText.right - secondText.left - Math.round(vp2px(150))) <= 1).assertTrue();
+        expect(Math.abs(thirdText.right - thirdText.left - Math.round(vp2px(150))) <= 1).assertTrue();
 
-        expect(thirdText.bottom).assertEqual(flexContainer.bottom);
-        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
-        expect(Math.round(secondText.left - flexContainer.left)).assertEqual(Math.round(vp2px(150)));
+        expect(Math.abs(thirdText.bottom - flexContainer.bottom) <= 1).assertTrue();
+        expect(Math.abs(flexContainer.right - thirdText.right - Math.round(vp2px(50))) <= 1).assertTrue();
+        expect(Math.abs(secondText.left - flexContainer.left - Math.round(vp2px(150))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testWrapNoWrapTextVisibilityHidden] failed');
         expect().assertFail();

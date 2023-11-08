@@ -37,88 +37,88 @@ describe('userAuthTestExecute', function () {
 
     /**
     * @tc.name      execute_authentication_callback_ALL_NO_SUPPORT
-    * @tc.number    JSAPI_Function_Execute_1700
+    * @tc.number    Security_IAM_Face_JSAPI_Function_Execute_1700
     * @tc.size      MEDIUM
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('JSAPI_Function_Execute_1700', 0, function (done) {
-        console.log("JSAPI_Function_Execute_1700 start");
+    it('Security_IAM_Face_JSAPI_Function_Execute_1700', 0, function (done) {
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_1700 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("ALL", "S2", function(data) {
-            console.log("JSAPI_Function_Execute_1700 auth.execute:" + data);
+            console.log("Security_IAM_Face_JSAPI_Function_Execute_1700 auth.execute:" + data);
             // NO_SUPPORT(-1)
             expect(data).assertEqual(-1);
             setTimeout(function() {
                 done();
             }, 1);
         });
-        console.log("JSAPI_Function_Execute_1700 end");
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_1700 end");
     })
 
 
     /**
     * @tc.name      execute_authentication_promise_ALL_NO_SUPPORT
-    * @tc.number    JSAPI_Function_Execute_2000
+    * @tc.number    Security_IAM_Face_JSAPI_Function_Execute_2000
     * @tc.size      MEDIUM
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('JSAPI_Function_Execute_2000', 0, function (done) {
-        console.log("JSAPI_Function_Execute_2000 start");
+    it('Security_IAM_Face_JSAPI_Function_Execute_2000', 0, function (done) {
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_2000 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("ALL", "S2").catch(function(data) {
-            console.log("JSAPI_Function_Execute_2000 auth.execute:" + data);
+            console.log("Security_IAM_Face_JSAPI_Function_Execute_2000 auth.execute:" + data);
             // NO_SUPPORT(-1)
             expect(data).assertEqual(-1);
             setTimeout(function() {
                 done();
             }, 1);
         });
-        console.log("JSAPI_Function_Execute_2000 end");
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_2000 end");
     })
     
     /**
     * @tc.name      execute_authentication_callback_Type_is_null
-    * @tc.number    JSAPI_Function_Execute_1800
+    * @tc.number    Security_IAM_Face_JSAPI_Function_Execute_1800
     * @tc.size      MEDIUM
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('JSAPI_Function_Execute_1800', 0, function (done) {
-        console.log("JSAPI_Function_Execute_1800 start");
+    it('Security_IAM_Face_JSAPI_Function_Execute_1800', 0, function (done) {
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_1800 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("", "S2", function(data) {
-            console.log("JSAPI_Function_Execute_1800 auth.execute:" + data);
+            console.log("Security_IAM_Face_JSAPI_Function_Execute_1800 auth.execute:" + data);
             // INVALID_PARAMETERS（6）
             expect(data).assertEqual(6);
             setTimeout(function() {
                 done();
             }, 1);
         });
-        console.log("JSAPI_Function_Execute_1800 end");
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_1800 end");
     })
 
 
     /**
     * @tc.name      execute_authentication_promise_Type_is_null
-    * @tc.number    JSAPI_Function_Execute_2100
+    * @tc.number    Security_IAM_Face_JSAPI_Function_Execute_2100
     * @tc.size      MEDIUM
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('JSAPI_Function_Execute_2100', 0, function (done) {
-        console.log("JSAPI_Function_Execute_2100 start");
+    it('Security_IAM_Face_JSAPI_Function_Execute_2100', 0, function (done) {
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_2100 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("", "S2").catch(function(data) {
-            console.log("JSAPI_Function_Execute_2100 auth.execute:" + data);
+            console.log("Security_IAM_Face_JSAPI_Function_Execute_2100 auth.execute:" + data);
             // INVALID_PARAMETERS（6）
             expect(data).assertEqual(6);
             setTimeout(function() {
                 done();
             }, 1);
         });
-        console.log("JSAPI_Function_Execute_2100 end");
+        console.log("Security_IAM_Face_JSAPI_Function_Execute_2100 end");
     })
 
        /**

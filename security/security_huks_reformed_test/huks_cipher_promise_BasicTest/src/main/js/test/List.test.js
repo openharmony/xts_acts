@@ -16,8 +16,10 @@
 import SecurityHuksCipherAESBasicPromiseJsunit from './Cipher/SecurityHuksCipherAESBasicPromiseJsunit.test.js'
 import SecurityHuksCipherRSABasicPromiseJsunit from './Cipher/SecurityHuksCipherRSABasicPromiseJsunit.test.js'
 import SecurityHuksCipherSM4BasicPromiseJsunit from './Cipher/SecurityHuksCipherSM4BasicPromiseJsunit.test.js'
+import SecurityHuksCipherSM2BasicPromiseJsunit from './Cipher/SecurityHuksCipherSM2BasicPromiseJsunit.test.js'
 export default function testsuite() {
-SecurityHuksCipherAESBasicPromiseJsunit()
-SecurityHuksCipherRSABasicPromiseJsunit()
-SecurityHuksCipherSM4BasicPromiseJsunit()
+    SecurityHuksCipherAESBasicPromiseJsunit()
+    SecurityHuksCipherRSABasicPromiseJsunit()
+    SecurityHuksCipherSM4BasicPromiseJsunit()
+    SecurityHuksCipherSM2BasicPromiseJsunit()
 }

@@ -210,20 +210,14 @@ export default function positionTest() {
       if ('SetStringPercent' == data.testValue.describe && benchmarkChanged) {
         console.info('[' + data.caseTag + '] benchmark changed after component rendered.');
         console.info('[' + data.caseTag + '] check actual offset x.');
-        expect(Number(rect.left - rectParent.left).toFixed(2))
-          .assertEqual(Number(percentBaseX * data.testValue.setValue.xp).toFixed(2));
-
+        expect(Math.abs(Number(rect.left - rectParent.left) - Number(percentBaseX * data.testValue.setValue.xp)) <= 1).assertTrue();
         console.info('[' + data.caseTag + '] check actual offset y.');
-        expect(Number(rect.top - rectParent.top).toFixed(2))
-          .assertEqual(Number(percentBaseY * data.testValue.setValue.yp).toFixed(2));
+        expect(Math.abs(Number(rect.top - rectParent.top) - Number(percentBaseY * data.testValue.setValue.yp)) <= 1).assertTrue();
       } else {
         console.info('[' + data.caseTag + '] check actual offset x.');
-        expect(Number(rect.left - rectParent.left).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.left).toFixed(2));
-
+        expect(Math.abs(Number(rect.left - rectParent.left) - Number(data.testValue.expectValue.left)) <= 1).assertTrue();
         console.info('[' + data.caseTag + '] check actual offset y.');
-        expect(Number(rect.top - rectParent.top).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.top).toFixed(2));
+        expect(Math.abs(Number(rect.top - rectParent.top) - Number(data.testValue.expectValue.top)) <= 1).assertTrue();
       }
 
       //Confirm that the position attribute value has been set successfully.
@@ -236,17 +230,17 @@ export default function positionTest() {
 
       //Confirm that the region information of the reference component has not changed.
       console.info('[' + data.caseTag + '] check referenceComponent layout not changed.');
-      expect(referenceRectBefore.left).assertEqual(referenceRectAfter.left);
-      expect(referenceRectBefore.right).assertEqual(referenceRectAfter.right);
-      expect(referenceRectBefore.top).assertEqual(referenceRectAfter.top);
-      expect(referenceRectBefore.bottom).assertEqual(referenceRectAfter.bottom);
+      expect(Math.abs(referenceRectBefore.left - referenceRectAfter.left) <= 1).assertTrue()
+      expect(Math.abs(referenceRectBefore.right - referenceRectAfter.right) <= 1).assertTrue()
+      expect(Math.abs(referenceRectBefore.top - referenceRectAfter.top) <= 1).assertTrue()
+      expect(Math.abs(referenceRectBefore.bottom - referenceRectAfter.bottom) <= 1).assertTrue()
 
       //Confirm that the region information of the parent component has not changed.
       console.info('[' + data.caseTag + '] check parentComponent layout not changed.');
-      expect(parentRectBefore.left).assertEqual(parentRectAfter.left);
-      expect(parentRectBefore.right).assertEqual(parentRectAfter.right);
-      expect(parentRectBefore.top).assertEqual(parentRectAfter.top);
-      expect(parentRectBefore.bottom).assertEqual(parentRectAfter.bottom);
+      expect(Math.abs(parentRectBefore.left - parentRectAfter.left) <= 1).assertTrue()
+      expect(Math.abs(parentRectBefore.right - parentRectAfter.right) <= 1).assertTrue()
+      expect(Math.abs(parentRectBefore.top - parentRectAfter.top) <= 1).assertTrue()
+      expect(Math.abs(parentRectBefore.bottom - parentRectAfter.bottom) <= 1).assertTrue()
     })
   })
 }

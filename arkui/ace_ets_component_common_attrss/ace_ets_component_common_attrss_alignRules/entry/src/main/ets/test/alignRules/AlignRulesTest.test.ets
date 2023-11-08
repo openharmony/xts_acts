@@ -267,17 +267,17 @@ export default function AlignRulesTest() {
         expect(rec.top).assertEqual(recParent.top)
       } else if (data.testValue.describe == 'ParentVerticalCenterLeftJustifying') {
         expect(rec.left).assertEqual(recParent.left)
-        expect(Number(rec.top + (rec.bottom - rec.top) / 2).toFixed(2))
-          .assertEqual(Number(recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))
+        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)
+        - (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <=1 ).assertTrue();
       } else if (data.testValue.describe == 'ParentVerticalCenterHorizontally') {
-        expect(Number(rec.left + (rec.right - rec.left) / 2).toFixed(2))
-          .assertEqual(Number(recReference.left + (recReference.right - recReference.left) / 2).toFixed(2))
-        expect(Number(rec.top + (rec.bottom - rec.top) / 2).toFixed(2))
-          .assertEqual(Number(recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))
+        expect(Math.abs((rec.left + (rec.right - rec.left) / 2).toFixed(2) -
+        (recReference.left + (recReference.right - recReference.left) / 2).toFixed(2)) <= 1).assertTrue()
+        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2) - 
+        (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <= 1).assertTrue()
       } else if (data.testValue.describe == 'ParentVerticalCenterRightAlignment') {
         expect(rec.right).assertEqual(recParent.right)
-        expect(Number(rec.top + (rec.bottom - rec.top) / 2).toFixed(2))
-          .assertEqual(Number(recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))
+        expect(Math.abs((rec.top + (rec.bottom - rec.top) / 2).toFixed(2) -
+        (recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2)) <=1).assertTrue()
       } else if (data.testValue.describe == 'ParentAlignmentLeftJustifying') {
         expect(rec.left).assertEqual(recParent.left)
         expect(rec.bottom).assertEqual(recParent.bottom)

@@ -100,7 +100,7 @@ export default function textJsunit() {
       expect(obj.$attrs.maxLines).assertEqual("2")
       expect(obj.$attrs.textCase).assertEqual("TextCase.Normal")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
-        type: "TextDecorationType.Underline", color: "#FFFF0000"
+        type: "TextDecorationType.Underline", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
       }))
       expect(obj.$attrs.direction).assertEqual("Direction.Auto")
       expect(obj.$attrs.aspectRatio).assertEqual(1)
@@ -128,7 +128,7 @@ export default function textJsunit() {
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
-        type: "TextDecorationType.LineThrough", color: "#FFFF0000"
+        type: "TextDecorationType.LineThrough", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
       }))
       expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF")
       console.info('cd text1InspectorByKey END');
@@ -153,7 +153,7 @@ export default function textJsunit() {
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
       expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
-        type: "TextDecorationType.None", color: "#FFFF0000"
+        type: "TextDecorationType.None", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
       }))
       expect(obj.$attrs.fontColor).assertEqual("#FF0000FF")
       console.info('cd text2InspectorByKey END');
@@ -178,7 +178,7 @@ export default function textJsunit() {
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.End")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Lighter")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
-        type: "TextDecorationType.Overline", color: "#FFFF0000"
+        type: "TextDecorationType.Overline", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
       }))
       expect(obj.$attrs.fontColor).assertEqual("#FF808080")
       console.info('cd text3InspectorByKey END');

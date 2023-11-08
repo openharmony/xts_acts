@@ -84,6 +84,7 @@ describe('btManagerGattAdvertTest', function() {
         await openPhone();
         await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
+        console.info('bluetooth ble create gattserver result:' + gattServer);
         done();
     })
     beforeEach(async function (done) {
@@ -95,9 +96,11 @@ describe('btManagerGattAdvertTest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
-        gattServer.close();
+        await gattServer.close();
+        console.info('bluetooth gattServer close success');
+        done();
     })
 
     /**

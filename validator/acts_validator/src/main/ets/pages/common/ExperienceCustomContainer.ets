@@ -26,6 +26,9 @@ const TAG = '[Screenshot]';
 @Component
 export struct CustomContainer {
   @Link name : string;
+  @Link appName : string;
+  @Link appAbilityName : string;
+  @Link appBundleName : string;
   title : string = '';
   StepTips: string = '';
   Url : string = '';

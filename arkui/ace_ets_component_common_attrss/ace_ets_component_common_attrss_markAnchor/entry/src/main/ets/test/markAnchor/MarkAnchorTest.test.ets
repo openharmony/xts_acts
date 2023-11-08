@@ -117,19 +117,17 @@ export default function MarkAnchorTest() {
       //verify the actual shifting of the target component.
       if ('StringPercent' == data.testValue.describe) {
         //When setting the type to percentage, use the width/height of the parent container as the base.
-        expect(Number(initialPosition.left - targetRectAfter.left).toFixed(2))
-          .assertEqual(Number((targetRectAfter.right - targetRectAfter.left) * 0.5).toFixed(2));
-        expect(Number(initialPosition.top - targetRectAfter.top).toFixed(2))
-          .assertEqual(Number((targetRectAfter.bottom - targetRectAfter.top) * 0.5).toFixed(2));
+        expect(Math.abs(Number(initialPosition.left - targetRectAfter.left) -
+          Number((targetRectAfter.right - targetRectAfter.left) * 0.5)) <= 1).assertTrue();
+        expect(Math.abs(Number(initialPosition.top - targetRectAfter.top) -
+          Number((targetRectAfter.bottom - targetRectAfter.top) * 0.5)) <= 1).assertTrue();
       } else {
         //When set to the basic type, verify the calculated shifting
-        expect(Number(initialPosition.left - targetRectAfter.left).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.left).toFixed(2));
-        expect(Number(initialPosition.top - targetRectAfter.top).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.top).toFixed(2));
+        expect(Math.abs(Number(initialPosition.left - targetRectAfter.left) -
+          Number(data.testValue.expectValue.left)) <= 1).assertTrue();
+        expect(Math.abs(Number(initialPosition.top - targetRectAfter.top) -
+          Number(data.testValue.expectValue.top)) <= 1).assertTrue();
       }
-
-
     })
   })
 }

@@ -83,6 +83,7 @@ describe('btGattAdvertTest', function() {
         console.info('beforeAll called')
         await openPhone();
         gattServer = bluetooth.BLE.createGattServer();
+        console.info('bluetooth ble create gattserver result:' + gattServer);
         done();
     })
     beforeEach(async function (done) {
@@ -97,6 +98,8 @@ describe('btGattAdvertTest', function() {
     afterAll(function () {
         console.info('afterAll called')
         gattServer.close();
+        console.info('bluetooth gattServer close success');
+        done();
     })
 
     /**

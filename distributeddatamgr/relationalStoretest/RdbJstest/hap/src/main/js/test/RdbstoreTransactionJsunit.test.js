@@ -52,7 +52,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb transaction insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0001
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0100
          * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
          */
         it('testRdbTransactionInsert0001', 0, async function (done) {
@@ -87,7 +87,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb transaction insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0002
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0200
          * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
          */
         it('testRdbTransactionInsert0002', 0, async function (done) {
@@ -138,7 +138,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb transaction insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0003
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0300
          * @tc.desc while using transaction to insert values, querying the db,
          *     the result comes out is 0;
          */
@@ -187,7 +187,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_RollBack_0001
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0400
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
          */
@@ -222,7 +222,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Multi_0001
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0500
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
          */
@@ -269,7 +269,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Multi_0002
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0600
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
          */
@@ -321,7 +321,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Multi_0003
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0700
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
          */
@@ -376,7 +376,7 @@ export default function rdbstoreTransactionTest() {
 
         /**
          * @tc.name rdb delete test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Transaction_Delete_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0800
          * @tc.desc the classical transaction scenario, when we delete or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
          */

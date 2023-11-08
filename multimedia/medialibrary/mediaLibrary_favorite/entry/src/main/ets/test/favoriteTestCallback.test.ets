@@ -49,8 +49,8 @@ export default function favoriteTestCallbackTest(abilityContext) {
         const favoriteDefaultState = async function (done, testNum, fetchOp) {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 asset.isFavorite(async (err, isFavorite) => {
                     if (err) {
@@ -72,8 +72,8 @@ export default function favoriteTestCallbackTest(abilityContext) {
         const favoriteByTrue = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 asset.favorite(true, async (err) => {
                     if (err) {
@@ -97,8 +97,8 @@ export default function favoriteTestCallbackTest(abilityContext) {
         const favoriteByFalse = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 await asset.favorite(true);
                 asset.favorite(false, async (err) => {

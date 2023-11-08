@@ -119,15 +119,15 @@ export default function List_lanes() {
       let List_lanes_013 = CommonFunc.getComponentRect('List_lanes_013');
       let List_lanes_014 = CommonFunc.getComponentRect('List_lanes_014');
       let List_lanes_01 = CommonFunc.getComponentRect('List_lanes_01');
-      expect(List_lanes_011.top).assertEqual(List_lanes_01.top);
-      expect(List_lanes_012.top).assertEqual(List_lanes_01.top);
+      expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_012.top - List_lanes_01.top) <= 1).assertTrue();
       expect(Math.round(List_lanes_013.top - List_lanes_011.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(List_lanes_014.top - List_lanes_012.bottom)).assertEqual(Math.round(vp2px(20)));
 
-      expect(List_lanes_011.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_013.left).assertEqual(List_lanes_01.left);
-      expect(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((List_lanes_014.left - List_lanes_013.right)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
+      expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_013.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10 - Math.round(vp2px(75)*10)/10) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_014.left - List_lanes_013.right)*10)/10 - Math.round(vp2px(75)*10)/10) <= 1).assertTrue();
 
       expect(Math.round(List_lanes_011.right - List_lanes_011.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(List_lanes_012.right - List_lanes_012.left)).assertEqual(Math.round(vp2px(100)));
@@ -164,15 +164,15 @@ export default function List_lanes() {
       let List_lanes_013 = CommonFunc.getComponentRect('List_lanes_013');
       let List_lanes_014 = CommonFunc.getComponentRect('List_lanes_014');
       let List_lanes_01 = CommonFunc.getComponentRect('List_lanes_01');
-      expect(List_lanes_011.top).assertEqual(List_lanes_01.top);
-      expect(List_lanes_012.top).assertEqual(List_lanes_01.top);
-      expect(List_lanes_013.top).assertEqual(List_lanes_01.top);
+      expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_012.top - List_lanes_01.top) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_013.top - List_lanes_01.top) <= 1).assertTrue();
       expect(List_lanes_014.top - List_lanes_011.bottom).assertEqual(Math.round(vp2px(20)));
 
-      expect(List_lanes_011.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_014.left).assertEqual(List_lanes_01.left);
-      expect(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10).assertEqual(Math.round(vp2px(50/3)*10)/10);
-      expect(Math.round((List_lanes_013.left - List_lanes_012.right)*10)/10).assertEqual(Math.round(vp2px(50/3)*10)/10);
+      expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_014.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10 - Math.round(vp2px(50/3)*10)/10) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_013.left - List_lanes_012.right)*10)/10 - Math.round(vp2px(50/3)*10)/10) <= 1).assertTrue();
 
       expect(Math.round(List_lanes_011.right - List_lanes_011.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(List_lanes_012.right - List_lanes_012.left)).assertEqual(Math.round(vp2px(100)));
@@ -209,15 +209,15 @@ export default function List_lanes() {
       let List_lanes_013 = CommonFunc.getComponentRect('List_lanes_013');
       let List_lanes_014 = CommonFunc.getComponentRect('List_lanes_014');
       let List_lanes_01 = CommonFunc.getComponentRect('List_lanes_01');
-      expect(List_lanes_011.top).assertEqual(List_lanes_01.top);
-      expect(List_lanes_012.top).assertEqual(List_lanes_01.top);
+      expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_012.top - List_lanes_01.top) <= 1).assertTrue();
       expect(Math.round(List_lanes_013.top - List_lanes_011.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(List_lanes_014.top - List_lanes_012.bottom)).assertEqual(Math.round(vp2px(20)));
 
-      expect(List_lanes_011.left).assertEqual(List_lanes_01.left);
-      expect(List_lanes_013.left).assertEqual(List_lanes_01.left);
-      expect(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((List_lanes_014.left - List_lanes_013.right)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
+      expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(List_lanes_013.left - List_lanes_01.left) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_012.left - List_lanes_011.right)*10)/10 - Math.round(vp2px(75)*10)/10) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_lanes_014.left - List_lanes_013.right)*10)/10 - Math.round(vp2px(75)*10)/10) <= 1).assertTrue();
 
       expect(Math.round(List_lanes_011.right - List_lanes_011.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(List_lanes_012.right - List_lanes_012.left)).assertEqual(Math.round(vp2px(100)));

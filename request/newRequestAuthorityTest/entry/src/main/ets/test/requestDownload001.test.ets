@@ -558,7 +558,7 @@ export default function requestDownloadOneJSUnitTest() {
     });
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0030
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -771,7 +771,7 @@ export default function requestDownloadOneJSUnitTest() {
     });
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0060
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function

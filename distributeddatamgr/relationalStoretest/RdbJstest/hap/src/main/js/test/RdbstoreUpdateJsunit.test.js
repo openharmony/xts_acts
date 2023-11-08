@@ -47,7 +47,7 @@ export default function rdbStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Update_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0100
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0001', 0, async function (done) {
@@ -116,7 +116,7 @@ export default function rdbStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Update_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0200
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0002', 0, async function (done) {
@@ -173,7 +173,7 @@ export default function rdbStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Update_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0300
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0003', 0, async function (done) {
@@ -217,7 +217,7 @@ export default function rdbStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Update_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBUpdateJsAPITest_0400
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0004', 0, async function (done) {

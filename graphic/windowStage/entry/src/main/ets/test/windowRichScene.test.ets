@@ -38,22 +38,22 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     }
 
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOWTEST_JSAPI_001
-     * @tc.name Test createWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0110
+     * @tc.name testCreateWindow_Invalid_WinType_Promise
      * @tc.desc Verify The optional parameter is error
      */
-    it('createWindow_Test_001', 0, async function (done) {
+    it('testCreateWindow_Invalid_WinType_Promise', 0, async function (done) {
       let caseName = 'createWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_001'
       let windowConfig = {
-        name: windowId, windowType: 18, ctx: context
+        name: windowId, windowType: 8888, ctx: context
       };
-      let win;
       try {
-        win = await ohosWindow.createWindow(windowConfig).then((data) => {
+        await ohosWindow.createWindow(windowConfig).then((data) => {
           console.log(msgStr + 'Window createWindow data: ' + JSON.stringify(data));
+          expect().assertFail();
           done();
         })
       } catch (err) {
@@ -63,27 +63,29 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOWTEST_JSAPI_002
-     * @tc.name Test createWindow_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+     * @tc.name testCreateWindow_Invalid_WinType_Callback
      * @tc.desc Verify The optional parameter is error
      */
-    it('createWindow_Test_002', 0, async function (done) {
+    it('testCreateWindow_Invalid_WinType_Callback', 0, async function (done) {
       let caseName = 'createWindow_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_002'
       let windowConfig = {
-        name: windowId, windowType: 18, ctx: context
+        name: windowId, windowType: 8888, ctx: context
       };
-      let win;
       try {
-        win = await ohosWindow.createWindow(windowConfig, (err, data) => {
-          try {
-            expect().assertFail();
-          } catch (error) {
-            console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+        await ohosWindow.createWindow(windowConfig, (err, data) => {
+          if (err.code) {
+            try {
+              expect().assertFail();
+            } catch (error) {
+              console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+            }
+            done();
+            return;
           }
-          done();
         });
       } catch (err) {
         console.log(msgStr + 'Window createWindow catch err: ' + JSON.stringify(err))
@@ -92,11 +94,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_FINEDWINDOW_JSAPI_001
-     * @tc.name Test findWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0410
+     * @tc.name testFindWindow_WinName_Is_Exist
      * @tc.desc Find the window corresponding to name
      */
-    it('findWindow_Test_001', 0, async function (done) {
+    it('testFindWindow_WinName_Is_Exist', 0, async function (done) {
       let caseName = 'findWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -124,11 +126,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_FINEDWINDOW_JSAPI_002
-     * @tc.name Test findWindow_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0400
+     * @tc.name testFindWindow_WinName_IsNot_Exist
      * @tc.desc Verify The optional parameter is error
      */
-    it('findWindow_Test_002', 0, async function (done) {
+    it('testFindWindow_WinName_IsNot_Exist', 0, async function (done) {
       let caseName = 'findWindow_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -144,11 +146,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_001
-     * @tc.name Test create_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+     * @tc.name testCreate_Invalid_WinType_Promise
      * @tc.desc Verify The optional parameter is error
      */
-    it('create_Test_001', 0, async function (done) {
+    it('testCreate_Invalid_WinType_Promise', 0, async function (done) {
       let caseName = 'create_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -160,11 +162,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
     })
     /**
-     * @tc.number SUB_WINDOW_CREATE_JSAPI_002
-     * @tc.name Test create_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0190
+     * @tc.name testCreate_Invalid_WinType_Callback
      * @tc.desc Verify The optional parameter is error
      */
-    it('create_Test_002', 0, async function (done) {
+    it('testCreate_Invalid_WinType_Callback', 0, async function (done) {
       let caseName = 'create_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -189,11 +191,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_FINED_JSAPI_001
-     * @tc.name Test find_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0420
+     * @tc.name testFind_Invoke_Interface_Continuously
      * @tc.desc Find the window corresponding to name
      */
-    it('find_Test_001', 0, async function (done) {
+    it('testFind_Invoke_Interface_Continuously', 0, async function (done) {
       let caseName = 'find_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -232,11 +234,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_FINED_JSAPI_002
-     * @tc.name Test find_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0430
+     * @tc.name testFind_WinName_IsNot_Exist
      * @tc.desc Verify The optional parameter is error
      */
-    it('find_Test_002', 0, async function (done) {
+    it('testFind_WinName_IsNot_Exist', 0, async function (done) {
       let caseName = 'find_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -263,11 +265,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETTOPWINDOW_JSAPI_001
-     * @tc.name Test getTopWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0600
+     * @tc.name testGetTopWindow_Invoke_Interfae_Two_Times
      * @tc.desc Gets the last window displayed in the current app
      */
-    it('getTopWindow_Test_001', 0, async function (done) {
+    it('testGetTopWindow_Invoke_Interfae_Two_Times', 0, async function (done) {
       let caseName = 'getTopWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -300,11 +302,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SHOWWINDOW_JSAPI_001
-     * @tc.name Test showWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2130
+     * @tc.name testShowWindow_Invoked_Twice
      * @tc.desc Verify The optional parameter is error
      */
-    it('showWindow_Test_001', 0, async function (done) {
+    it('testShowWindow_Invoked_Twice', 0, async function (done) {
       let caseName = 'showWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -338,11 +340,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SHOWWINDOW_JSAPI_002
-     * @tc.name Test showWindow_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2140
+     * @tc.name testShowWindow_Window_NotExist
      * @tc.desc Verify The optional parameter is error
      */
-    it('showWindow_Test_002', 0, async function (done) {
+    it('testShowWindow_Window_NotExist', 0, async function (done) {
       let caseName = 'showWindow_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -369,11 +371,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_DESTROYWINOW_JSAPI_001
-     * @tc.name Test destroyWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0280
+     * @tc.name testDestroyWindow_Destory_Same_Win_Type
      * @tc.desc Verify The optional parameter is error
      */
-    it('destroyWindow_Test_001', 0, async function (done) {
+    it('testDestroyWindow_Destory_Same_Win_Type', 0, async function (done) {
       let caseName = 'destroyWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -406,11 +408,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWPROPERTIES_JSAPI_001
-     * @tc.name Test getWindowProperties_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0700
+     * @tc.name testGetWindowProperties_Invoke_Interface_Two_Times
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
-    it('getWindowProperties_Test_001', 0, async function (done) {
+    it('testGetWindowProperties_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getWindowProperties_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -445,11 +447,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_001
-     * @tc.name Test getWindowAvoidArea_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0630
+     * @tc.name testGetWindowAvoidArea_Invoke_Interface_Two_Times
      * @tc.desc Verify The optional parameter is error
      */
-    it('getWindowAvoidArea_Test_001', 0, async function (done) {
+    it('testGetWindowAvoidArea_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getWindowAvoidArea_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -486,11 +488,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_002
-     * @tc.name Test getWindowAvoidArea_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0620
+     * @tc.name testGetWindowAvoidArea_Invalid_Parameter
      * @tc.desc Verify The optional parameter is error
      */
-    it('getWindowAvoidArea_Test_002', 0, async function (done) {
+    it('testGetWindowAvoidArea_Invalid_Parameter', 0, async function (done) {
       let caseName = 'getWindowAvoidArea_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -515,11 +517,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_001
-     * @tc.name Test setWindowLayoutFullScreen_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1160
+     * @tc.name testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the layout of the window is immersive
      */
-    it('setWindowLayoutFullScreen_Test_001', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreen_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -571,11 +573,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_002
-     * @tc.name Test setWindowLayoutFullScreen_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1150
+     * @tc.name testSetWindowLayoutFullScreen_Destroyed_Win
      * @tc.desc Sets whether the layout of the window is immersive
      */
-    it('setWindowLayoutFullScreen_Test_002', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreen_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -630,11 +632,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWCOLORAPACE_JSAPI_001
-     * @tc.name Test setWindowColorSpace_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1660
+     * @tc.name testSetWindowColorSpace_Invalid_ParamsOne
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
      */
-    it('setWindowColorSpace_Test_001', 0, async function (done) {
+    it('testSetWindowColorSpace_Invalid_ParamsOne', 0, async function (done) {
       let caseName = 'setWindowColorSpace_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -661,11 +663,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWCOLORAPACE_JSAPI_002
-     * @tc.name Test setWindowColorSpace_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1680
+     * @tc.name testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
      */
-    it('setWindowColorSpace_Test_002', 0, async function (done) {
+    it('testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default', 0, async function (done) {
       let caseName = 'setWindowColorSpace_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -707,11 +709,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWCOLORAPACE_JSAPI_001
-     * @tc.name Test getWindowColorSpace_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0680
+     * @tc.name testGetWindowColorSpace_Invoke_Interface_Two_Times
      * @tc.desc Gets the current window gamut mode
      */
-    it('getWindowColorSpace_Test_001', 0, async function (done) {
+    it('testGetWindowColorSpace_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getWindowColorSpace_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -730,11 +732,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWBACKGROUNDCOLOR_JSAPI_001
-     * @tc.name Test setWindowBackgroundColor_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1470
+     * @tc.name testSetWindowBackgroundColor_Multiple_Calls
      * @tc.desc Set the background color of the window
      */
-    it('setWindowBackgroundColor_Test_001', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Multiple_Calls', 0, async function (done) {
       let caseName = 'setWindowBackgroundColor_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -763,11 +765,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWBACKGROUNDCOLOR_JSAPI_002
-     * @tc.name Test setWindowBackgroundColor_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1490
+     * @tc.name testSetWindowBackgroundColor_Invalid_ParamsOne
      * @tc.desc Set the background color of the window
      */
-    it('setWindowBackgroundColor_Test_002', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Invalid_ParamsOne', 0, async function (done) {
       let caseName = 'setWindowBackgroundColor_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -787,11 +789,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWBRIGHTNESS_JSAPI_001
-     * @tc.name Test setWindowBrightness_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1590
+     * @tc.name testSetWindowBrightness_Invalid_ParamsOne_Promise
      * @tc.desc Set the screen brightness value
      */
-    it('setWindowBrightness_Test_001', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsOne_Promise', 0, async function (done) {
       let caseName = 'setWindowBrightness_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -819,11 +821,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWBRIGHTNESS_JSAPI_002
-     * @tc.name Test setWindowBrightness_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1610
+     * @tc.name testSetWindowBrightness_Multiple_Calls_Promise_And_Callback
      * @tc.desc Set the screen brightness value
      */
-    it('setWindowBrightness_Test_002', 0, async function (done) {
+    it('testSetWindowBrightness_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
       let caseName = 'setWindowBrightness_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -870,11 +872,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWFOCUSABLE_JSAPI_001
-     * @tc.name Test setWindowFocusable_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1710
+     * @tc.name testSetWindowFocusable_Multiple_Calls_Promise_And_Callback
      * @tc.desc Set whether to switch focus window when clicking
      */
-    it('setWindowFocusable_Test_001', 0, async function (done) {
+    it('testSetWindowFocusable_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
       let caseName = 'setWindowFocusable_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -920,11 +922,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWKEEPSCREENON_JSAPI_001
-     * @tc.name Test setWindowKeepScreenOn_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1740
+     * @tc.name testSetWindowKeepScreenOn_Window_State_Abnorma
      * @tc.desc Set whether the screen is steady on
      */
-    it('setWindowKeepScreenOn_Test_001', 0, async function (done) {
+    it('testSetWindowKeepScreenOn_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'setWindowKeepScreenOn_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -955,11 +957,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWKEEPSCREENON_JSAPI_002
-     * @tc.name Test setWindowKeepScreenOn_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1760
+     * @tc.name testSetWindowKeepScreenOn_Multiple_Calls
      * @tc.desc Set whether the screen is steady on
      */
-    it('setWindowKeepScreenOn_Test_002', 0, async function (done) {
+    it('testSetWindowKeepScreenOn_Multiple_Calls', 0, async function (done) {
       let caseName = 'setWindowKeepScreenOn_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1010,11 +1012,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWPRIVACYMODE_TEST_JSAPI_001
-     * @tc.name Test setWindowPrivacyMode_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1880
+     * @tc.name testSetWindowPrivacyMode_Window_State_Abnorma
      * @tc.desc Sets whether the window is in private mode
      */
-    it('setWindowPrivacyMode_Test_001', 0, async function (done) {
+    it('testSetWindowPrivacyMode_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'setWindowPrivacyMode_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1045,11 +1047,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWPRIVACYMODE_TEST_JSAPI_002
-     * @tc.name Test setWindowPrivacyMode_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
+     * @tc.name testSetWindowPrivacyMode_Window_Multiple_Calls
      * @tc.desc Sets whether the window is in private mode
      */
-    it('setWindowPrivacyMode_Test_002', 0, async function (done) {
+    it('testSetWindowPrivacyMode_Window_Multiple_Calls', 0, async function (done) {
       let caseName = 'setWindowPrivacyMode_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1098,11 +1100,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWTOUCHABLE_JSAPI_001
-     * @tc.name Test setWindowTouchable_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2040
+     * @tc.name testSetWindowTouchable_Promise_Form
      * @tc.desc Sets whether the window is touchable
      */
-    it('setWindowTouchable_Test_001', 0, async function (done) {
+    it('testSetWindowTouchable_Promise_Form', 0, async function (done) {
       let caseName = 'setWindowTouchable_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1153,11 +1155,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWTOUCHABLE_JSAPI_002
-     * @tc.name Test setWindowTouchable_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2060
+     * @tc.name testSetWindowTouchable_Window_NotExist
      * @tc.desc Sets whether the window is touchable
      */
-    it('setWindowTouchable_Test_002', 0, async function (done) {
+    it('testSetWindowTouchable_Window_NotExist', 0, async function (done) {
       let caseName = 'setWindowTouchable_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1188,11 +1190,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETASPECTRATIO_TEST_JSAPI_001
-     * @tc.name Test setAspectRatio_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1090
+     * @tc.name testSetAspectRatio_Non_Main_Win
      * @tc.desc Set the proportion of the window content layout
      */
-    it('setAspectRatio_Test_001', 0, async function (done) {
+    it('testSetAspectRatio_Non_Main_Win', 0, async function (done) {
       let caseName = 'setAspectRatio_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1224,11 +1226,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_RESETASPECTRATIO_JSAPI_001
-     * @tc.name Test resetAspectRatio_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0990
+     * @tc.name testResetAspectRatio_Non_Main_Win
      * @tc.desc Unset the proportion of the window content layout
      */
-    it('resetAspectRatio_Test_001', 0, async function (done) {
+    it('testResetAspectRatio_Non_Main_Win', 0, async function (done) {
       let caseName = 'resetAspectRatio_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1259,11 +1261,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_GETPROPERTIES_JSAPI_001
-     * @tc.name Test getProperties_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0560
+     * @tc.name testGetProperties_Invoke_Interface_Two_Times
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
-    it('getProperties_Test_001', 0, async function (done) {
+    it('testGetProperties_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getProperties_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1302,11 +1304,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETPROPERTIES_JSAPI_002
-     * @tc.name Test getProperties_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0550
+     * @tc.name testGetProperties_Destroyed_Win
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
-    it('getProperties_Test_002', 0, async function (done) {
+    it('testGetProperties_Destroyed_Win', 0, async function (done) {
       let caseName = 'getProperties_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1331,11 +1333,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETAVOIDAREA_JSAPI_001
-     * @tc.name Test getAvoidArea_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0470
+     * @tc.name testGetAvoidArea_Invoke_Interfaca_Two_Times
      * @tc.desc Gets the area where the window content is avoided
      */
-    it('getAvoidArea_Test_001', 0, async function (done) {
+    it('testGetAvoidArea_Invoke_Interfaca_Two_Times', 0, async function (done) {
       let caseName = 'getAvoidArea_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1376,11 +1378,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETAVOIDAREA_JSAPI_002
-     * @tc.name Test getAvoidArea_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0460
+     * @tc.name testGetAvoidArea_Invalid_Parameter
      * @tc.desc Gets the area where the window content is avoided
      */
-    it('getAvoidArea_Test_002', 0, async function (done) {
+    it('testGetAvoidArea_Invalid_Parameter', 0, async function (done) {
       let caseName = 'getAvoidArea_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1407,11 +1409,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETAVOIDAREA_JSAPI_003
-     * @tc.name Test getAvoidArea_Test_003
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0480
+     * @tc.name testGetAvoidArea_Type_CutOut_Destroyed_Win
      * @tc.desc Gets the area where the window content is avoided
      */
-    it('getAvoidArea_Test_003', 0, async function (done) {
+    it('testGetAvoidArea_Type_CutOut_Destroyed_Win', 0, async function (done) {
       let caseName = 'getAvoidArea_Test_003';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1438,11 +1440,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETFULLSCREEN_JSAPI_001
-     * @tc.name Test setFullScreen_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1140
+     * @tc.name testSetFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the window layout is full-screen
      */
-    it('setFullScreen_Test_001', 0, async function (done) {
+    it('testSetFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'setFullScreen_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1479,11 +1481,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETFULLSCREEN_JSAPI_002
-     * @tc.name Test setFullScreen_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1130
+     * @tc.name testSetFullScreen_Destroyed_Win
      * @tc.desc Sets whether the window layout is full-screen
      */
-    it('setFullScreen_Test_002', 0, async function (done) {
+    it('testSetFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'setFullScreen_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1509,11 +1511,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETLAYOUTFULLSCREEN_JSAPI_001
-     * @tc.name Test setLayoutFullScreen_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1160
+     * @tc.name testSetLayoutFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the window layout is full-screen
      */
-    it('setLayoutFullScreen_Test_001', 0, async function (done) {
+    it('testSetLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'setLayoutFullScreen_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1550,11 +1552,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETLAYOUTFULLSCREEN_JSAPI_002
-     * @tc.name Test setLayoutFullScreen_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1150
+     * @tc.name testSetLayoutFullScreen_Destroyed_Win
      * @tc.desc Sets whether the window layout is full-screen
      */
-    it('setLayoutFullScreen_Test_002', 0, async function (done) {
+    it('testSetLayoutFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'setLayoutFullScreen_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1580,11 +1582,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_TEST_JSAPI_001
-     * @tc.name Test setSystemBarEnable_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1290
+     * @tc.name testSetSystemBarEnable_Invoke_Interface_Two_Times
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
-    it('setSystemBarEnable_Test_001', 0, async function (done) {
+    it('testSetSystemBarEnable_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'setSystemBarEnable_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1621,11 +1623,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_TEST_JSAPI_002
-     * @tc.name Test setSystemBarEnable_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1220
+     * @tc.name testSetSystemBarEnable_Destroyed_Win
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
-    it('setSystemBarEnable_Test_002', 0, async function (done) {
+    it('testSetSystemBarEnable_Destroyed_Win', 0, async function (done) {
       let caseName = 'setSystemBarEnable_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1652,11 +1654,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETMAINWINDOW_JSAPI_001
-     * @tc.name Test getMainWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0540
+     * @tc.name testGetMainWindow_Invoke_Interface_Two_Times
      * @tc.desc Gets the main window under the WindowStage instance
      */
-    it('getMainWindow_Test_001', 0, async function (done) {
+    it('testGetMainWindow_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getMainWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1689,11 +1691,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETMAINWINDOWSYNC_JSAPI_001
-     * @tc.name Test getMainWindowSync_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0530
+     * @tc.name testGetMainWindowSync_Invoke_Interface_Two_Times
      * @tc.desc Gets the main window under the WindowStage instance
      */
-    it('getMainWindowSync_Test_001', 0, async function (done) {
+    it('testGetMainWindowSync_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getMainWindowSync_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1720,11 +1722,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATESUBWINDOW_JSAPI_001
-     * @tc.name Test createSubWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0030
+     * @tc.name testCreateSubWindow_Two_Consecutive_Calls
      * @tc.desc Create a child window under the WindowStage instance
      */
-    it('createSubWindow_Test_001', 0, async function (done) {
+    it('testCreateSubWindow_Two_Consecutive_Calls', 0, async function (done) {
       let caseName = 'createSubWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1773,11 +1775,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETSUBWINDOW_JSAPI_001
-     * @tc.name Test getSubWindow_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0580
+     * @tc.name testGetSubWindow_Invoke_Interface_Two_Times
      * @tc.desc Gets all the child Windows under the WindowStage instance
      */
-    it('getSubWindow_Test_001', 0, async function (done) {
+    it('testGetSubWindow_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'getSubWindow_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1807,11 +1809,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_ISWINDOWSUPPORTWIDEGAMUT_JSAPI_001
-     * @tc.name Test isWindowSupportWideGamut_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0730
+     * @tc.name testIsWindowSupportWideGamut_Invoke_Interface_Two_Times
      * @tc.desc Check whether the current window supports the wide color gamut mode
      */
-    it('isWindowSupportWideGamut_Test_001', 0, async function (done) {
+    it('testIsWindowSupportWideGamut_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'isWindowSupportWideGamut_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1838,11 +1840,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_WINDOW_ISWINDOWSHOWING_JSAPI_001
-     * @tc.name Test isWindowShowing_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0720
+     * @tc.name testIsWindowShowing_Invoke_Interface_Two_Times
      * @tc.desc Check whether the current window is displayed
      */
-    it('isWindowShowing_Test_001', 0, async function (done) {
+    it('testIsWindowShowing_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'isWindowShowing_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1879,11 +1881,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETUICONTENT_TEST_JSAPI_001
-     * @tc.name Test setUIContent_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1440
+     * @tc.name testSetUIContent_Window_State_Abnorma_Callback
      * @tc.desc Set the display direction property of the window
      */
-    it('setUIContent_Test_001', 0, async function (done) {
+    it('testSetUIContent_Window_State_Abnorma_Callback', 0, async function (done) {
       let caseName = 'setUIContent_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1918,11 +1920,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETUICONTENT_JSAPI_002
-     * @tc.name Test setUIContent_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1450
+     * @tc.name testSetUIContent_Multiple_Calls
      * @tc.desc Set the display direction property of the window
      */
-    it('setUIContent_Test_002', 0, async function (done) {
+    it('testSetUIContent_Multiple_Calls', 0, async function (done) {
       let caseName = 'setUIContent_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1951,11 +1953,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_001
-     * @tc.name Test setWindowSystemBarEnable_Test_001
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1970
+     * @tc.name testSetWindowSystemBarEnable_More_Params
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
-    it('setWindowSystemBarEnable_Test_001', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_More_Params', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnable_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1985,11 +1987,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_002
-     * @tc.name Test setWindowSystemBarEnable_Test_002
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1980
+     * @tc.name testSetWindowSystemBarEnable_Window_State_Abnorma
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
-    it('setWindowSystemBarEnable_Test_002', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnable_Test_002';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1997,7 +1999,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let windowConfig = {
         name: windowId, windowType: 1, ctx: context
       };
-      let windowClass=null;
+      let windowClass = null;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
         console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
         expect().assertFail();

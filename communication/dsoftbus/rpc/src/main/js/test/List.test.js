@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import actsRpcClientJsTest from './RpcClientJsunit.test.js'
+import ActsRpcClientJsTest from './RpcClientJsunit.test.js'
 
 export default function testsuite() {
-    actsRpcClientJsTest()
+    ActsRpcClientJsTest()
 }

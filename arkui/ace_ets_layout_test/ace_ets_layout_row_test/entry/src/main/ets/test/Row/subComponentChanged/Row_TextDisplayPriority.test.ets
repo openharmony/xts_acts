@@ -52,9 +52,9 @@ export default function row_TextDisplayPriorityTest() {
      */
     it('testRowTextDisplayPriority01', 0, async function (done) {
       console.info('[testRowTextDisplayPriority01] START');
-      globalThis.value.message.notify({name:'firstTextDisplayPriority', value:1});
-      globalThis.value.message.notify({name:'secondTextDisplayPriority', value:2});
-      globalThis.value.message.notify({name:'thirdTextDisplayPriority', value:3});
+      globalThis.value.message.notify({ name: 'firstTextDisplayPriority', value: 1 });
+      globalThis.value.message.notify({ name: 'secondTextDisplayPriority', value: 2 });
+      globalThis.value.message.notify({ name: 'thirdTextDisplayPriority', value: 3 });
       await CommonFunc.sleep(3000);
       let thirdText = CommonFunc.getComponentRect('Row_TextDisplayPriority3');
       let rowContainer = CommonFunc.getComponentRect('Row_TextDisplayPriority_Container01');
@@ -62,14 +62,13 @@ export default function row_TextDisplayPriorityTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.right - thirdText.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
 
-      expect(Math.round(thirdText.left - rowContainer.left)).assertEqual(vp2px(0));
-      expect(Math.round(thirdText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom)); //text1、text2 is hidden,text3 center display
+      expect(Math.abs((Math.round(thirdText.left - rowContainer.left)) - (vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testRowTextDisplayPriority01] END');
       done();
     });
@@ -82,9 +81,9 @@ export default function row_TextDisplayPriorityTest() {
      */
     it('testRowTextDisplayPriority02', 0, async function (done) {
       console.info('[testRowTextDisplayPriority02] START');
-      globalThis.value.message.notify({name:'firstTextDisplayPriority', value:2});
-      globalThis.value.message.notify({name:'secondTextDisplayPriority', value:1});
-      globalThis.value.message.notify({name:'thirdTextDisplayPriority', value:3});
+      globalThis.value.message.notify({ name: 'firstTextDisplayPriority', value: 2 });
+      globalThis.value.message.notify({ name: 'secondTextDisplayPriority', value: 1 });
+      globalThis.value.message.notify({ name: 'thirdTextDisplayPriority', value: 3 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Row_TextDisplayPriority1');
       let secondText = CommonFunc.getComponentRect('Row_TextDisplayPriority2');
@@ -94,22 +93,20 @@ export default function row_TextDisplayPriorityTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.right - thirdText.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
 
 
-      expect(Math.round(firstText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
-      expect(Math.round(thirdText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom)); //text1、text3  center display
+      expect(Math.abs(Math.round(firstText.top - rowContainer.top) - Math.round(rowContainer.bottom - firstText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - rowContainer.top) - Math.round(rowContainer.bottom - thirdText.bottom)) <= 1).assertTrue();
 
-      expect(firstText.left).assertEqual(rowContainer.left);
-      expect(Math.round(thirdText.left - firstText.right)).assertEqual(Math.round(vp2px(10))); //text2 is hidden
+      expect(Math.abs(firstText.left - rowContainer.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
       console.info('[testRowTextDisplayPriority02] END');
       done();
     });

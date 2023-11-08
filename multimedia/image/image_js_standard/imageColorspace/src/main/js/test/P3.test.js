@@ -121,8 +121,8 @@ export default function ImageP3() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.getColorSpace and getColorSpaceName
@@ -130,8 +130,8 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100", 0, async function (done) {
-            let logger = Logger("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100");
+        it("SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100", 0, async function (done) {
+            let logger = Logger("SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100");
             try {
                 let imageSource = GenPicSource(testImg);
                 if (imageSource != undefined) {
@@ -157,8 +157,8 @@ export default function ImageP3() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -167,19 +167,19 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100", 0, function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100", 0, function (done) {
             let imageSource = image.createImageSource(testP3.buffer);
             setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100",
+                "SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100",
                 imageSource,
                 colorSpaceManager.ColorSpace.SRGB
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -188,19 +188,19 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200", 1, function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200", 1, function (done) {
             let imageSource = image.createImageSource(testImg.buffer);
             setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200",
+                "SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200",
                 imageSource,
                 colorSpaceManager.ColorSpace.DISPLAY_P3
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -209,20 +209,20 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300", 1, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300", 1, async function (done) {
             await getFd("colorspace.jpg");
             let imageSource = image.createImageSource(fdNumber);
             setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300",
+                "SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300",
                 imageSource,
                 colorSpaceManager.ColorSpace.DISPLAY_P3
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -231,12 +231,12 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400", 1, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400", 1, async function (done) {
             await getFd("DisplayP3.png");
             let imageSource = image.createImageSource(fdNumber);
             setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400",
+                "SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400",
                 imageSource,
                 colorSpaceManager.ColorSpace.SRGB
             );

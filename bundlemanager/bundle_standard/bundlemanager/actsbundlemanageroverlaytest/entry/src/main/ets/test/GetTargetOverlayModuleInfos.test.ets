@@ -27,7 +27,7 @@ const ERROR_CODE = 401;
 export default function getTargetOverlayModuleInfos() {
   describe('getTargetOverlayModuleInfos', function () {
     /*
-     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0006
+     * @tc.number: Sub_Bms_Framework_Overlay_Query_0600
      * @tc.name: GetTargetOverlayModuleInfosModuleNameIsNull
      * @tc.desc: The query fails when the incoming moduleName is empty
      */
@@ -60,7 +60,7 @@ export default function getTargetOverlayModuleInfos() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0008
+     * @tc.number: Sub_Bms_Framework_Overlay_Query_0800
      * @tc.name: GetTargetOverlayModuleInfosModuleNameNotInstall
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */

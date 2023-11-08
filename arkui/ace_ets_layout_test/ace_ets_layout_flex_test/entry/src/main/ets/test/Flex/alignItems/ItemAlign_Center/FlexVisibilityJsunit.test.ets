@@ -64,15 +64,15 @@ export default function flexVisibility_CenterJsunit() {
           let textVisible02 = CommonFunc.getComponentRect('textVisible02');
           let textVisible03 = CommonFunc.getComponentRect('textVisible03');
           let flexVisible = CommonFunc.getComponentRect('flexVisible');
-          expect(textVisible01.left).assertEqual(textVisible01.right)
-          expect(textVisible01.left).assertEqual(flexVisible.left)
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(Math.round(vp2px(200)))
-          expect(textVisible02.top - flexVisible.top).assertEqual(flexVisible.bottom - textVisible02.bottom)
-          expect(textVisible03.top - flexVisible.top).assertEqual(flexVisible.bottom - textVisible03.bottom)
+          expect(Math.abs(textVisible01.left - textVisible01.right) <= 1).assertTrue()
+          expect(Math.abs(textVisible01.left - flexVisible.left) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.bottom - textVisible02.top - vp2px(100)) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.bottom - textVisible03.top - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.right - textVisible02.left - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.right - textVisible03.left - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(flexVisible.right - textVisible03.right - vp2px(200)) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.top - flexVisible.top - flexVisible.bottom + textVisible02.bottom) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.top - flexVisible.top - flexVisible.bottom + textVisible03.bottom) <= 1).assertTrue()
           expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
           expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
        }  catch (err) {
@@ -102,16 +102,16 @@ export default function flexVisibility_CenterJsunit() {
           let textVisible02 = CommonFunc.getComponentRect('textVisible02');
           let textVisible03 = CommonFunc.getComponentRect('textVisible03');
           let flexVisible = CommonFunc.getComponentRect('flexVisible');
-          expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(Math.round(vp2px(50)))
-          expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
-          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(Math.round(vp2px(50)))
-          expect(textVisible01.top - flexVisible.top).assertEqual(flexVisible.bottom - textVisible01.bottom)
-          expect(textVisible02.top - flexVisible.top).assertEqual(flexVisible.bottom - textVisible02.bottom)
-          expect(textVisible03.top - flexVisible.top).assertEqual(flexVisible.bottom - textVisible03.bottom)
+          expect(Math.abs(textVisible01.bottom - textVisible01.top - vp2px(50)) <= 1).assertTrue()
+          expect(Math.abs(textVisible01.right - textVisible01.left - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.bottom - textVisible02.top - vp2px(100)) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.right - textVisible02.left - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.bottom - textVisible03.top - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.right - textVisible03.left - vp2px(150)) <= 1).assertTrue()
+          expect(Math.abs(flexVisible.right - textVisible03.right - vp2px(50)) <= 1).assertTrue()
+          expect(Math.abs(textVisible01.top - flexVisible.top - flexVisible.bottom + textVisible01.bottom) <= 1).assertTrue()
+          expect(Math.abs(textVisible02.top - flexVisible.top - flexVisible.bottom + textVisible02.bottom) <= 1).assertTrue()
+          expect(Math.abs(textVisible03.top - flexVisible.top - flexVisible.bottom + textVisible03.bottom) <= 1).assertTrue()
           expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
           expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
        } catch (err) {

@@ -30,11 +30,11 @@ export default function getAbilityLabel() {
 
 
         /*
-         * @tc.number: getAbilityLabel_test_0100
+         * @tc.number: Sub_Bms_Framework_Query_Label_4000
          * @tc.name: Test getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('getAbilityLabel_test_0100', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4000', 0, async function (done) {
             await Bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME).then((data) => {
                 expect(data).assertEqual("entry_MainAbility");
             }).catch((error) => {
@@ -48,15 +48,15 @@ export default function getAbilityLabel() {
         });
 
         /*
-         * @tc.number: getAbilityLabel_test_0200
+         * @tc.number: Sub_Bms_Framework_Query_Label_4100
          * @tc.name: getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('getAbilityLabel_test_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Query_Label_4100]', timeOldStamp, timeNewStamp);
                 expect(data).assertEqual("bmsfirstright");
             }).catch((error) => {
                 expect(error).assertFail();
@@ -64,7 +64,7 @@ export default function getAbilityLabel() {
             timeOldStamp = await Utils.getNowTime();
             Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME, (error, data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[context_Sub_Bms_Framework_Query_Label_4100]', timeOldStamp, timeNewStamp);
                 expect(data).assertEqual("bmsfirstright");
                 expect(error).assertNull();
                 done();
@@ -72,11 +72,11 @@ export default function getAbilityLabel() {
         });
 
         /*
-         * @tc.number: getAbilityLabel_test_0300
+         * @tc.number: Sub_Bms_Framework_Query_Label_4200
          * @tc.name: getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('getAbilityLabel_test_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4200', 0, async function (done) {
             await Bundle.getAbilityLabel(BUNDLE_NAME, SERVICE_ABILITY_NAME).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -90,17 +90,17 @@ export default function getAbilityLabel() {
         });
 
         /*
-         * @tc.number: getAbilityLabel_test_0400
+         * @tc.number: Sub_Bms_Framework_Query_Label_4500
          * @tc.name: getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('getAbilityLabel_test_0400', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4500', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Query_Label_4500]', timeOldStamp, timeNewStamp);
                 expect(error).assertEqual(1);
             });
             await Bundle.getAbilityLabel("", "").then((data) => {
@@ -111,7 +111,7 @@ export default function getAbilityLabel() {
             timeOldStamp = await Utils.getNowTime();
             Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR, (error, data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Query_Label_4500]', timeOldStamp, timeNewStamp);
                 expect(error).assertEqual(1);
                 expect(data).assertEqual(undefined);
                 Bundle.getAbilityLabel("", "", (error, data) => {
@@ -123,11 +123,11 @@ export default function getAbilityLabel() {
         });
 
         /*
-         * @tc.number: getAbilityLabel_test_0500
+         * @tc.number: Sub_Bms_Framework_Query_Label_4300
          * @tc.name: getAbilityLabel : Gets the specified ability label
          * @tc.desc: Check the return value of the interface
          */
-        it('getAbilityLabel_test_0500', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Label_4300', 0, async function (done) {
             await Bundle.getAbilityLabel(undefined, OTHER_ABILITY_NAME).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {

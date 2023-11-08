@@ -966,8 +966,13 @@ hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gi
 
 ### 全量用例执行指导（适用于小型系统、标准系统）<a name="section159801435165220"></a>
 
-搭建测试环境
-Windows工作台下安装python3.7及以上版本，确保工作台和测试设备正常连接。
+搭建测试环境Windows工作台下安装python3.7及以上版本，确保工作台和测试设备正常连接。
+
+**注：高版本python不带 easy_install，可以安装低于 52.0.0 的 setuptools，解决该问题。**
+
+```
+pip install setuptools==50.0.0
+```
 
 测试执行目录（对应编译生成的out/release/suites/acts目录）
 
@@ -997,7 +1002,6 @@ Windows工作台下安装python3.7及以上版本，确保工作台和测试设�
     testChecked: testcase
     ```
 
-    
 
 3.  查看测试报告。
     进入acts\reports\，获取当前的执行记录，打开“summary_report.html”可以获取到测试报告。

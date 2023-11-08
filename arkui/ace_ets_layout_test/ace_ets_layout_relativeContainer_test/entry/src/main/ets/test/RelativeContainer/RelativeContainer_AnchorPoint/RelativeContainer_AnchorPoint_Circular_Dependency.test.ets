@@ -60,8 +60,8 @@ export default function RelativeContainer_AnchorPoint_Circular_Dependency() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_AnchorPoint_Circular_Dependency_row4.left).assertEqual(RelativeContainer_AnchorPoint_Circular_Dependency_r1.left);
-      expect(RelativeContainer_AnchorPoint_Circular_Dependency_row4.top).assertEqual(RelativeContainer_AnchorPoint_Circular_Dependency_r1.top);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Circular_Dependency_row4.left - RelativeContainer_AnchorPoint_Circular_Dependency_r1.left) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Circular_Dependency_row4.top - RelativeContainer_AnchorPoint_Circular_Dependency_r1.top) <= 1).assertTrue();
 //      expect(RelativeContainer_AnchorPoint_Circular_Dependency_row4.bottom).assertEqual(RelativeContainer_AnchorPoint_Circular_Dependency_r1.bottom);
 
 

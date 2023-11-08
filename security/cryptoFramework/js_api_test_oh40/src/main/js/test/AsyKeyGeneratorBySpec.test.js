@@ -142,7 +142,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
                             " failed. error is " +
                             err
                         );
-                        expect(err.code == 401).assertTrue();
+                        expect(err.code).assertEqual(401);
                     });
                 done();
             }

@@ -303,6 +303,20 @@ describe("HashMapTest", function () {
     expect(res1).assertEqual(false);
   });
         
+ /**
+   * @tc.name: testHasKey023
+   * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey(8).
+   */
+  it("testHasKey023", 0, function () {
+    let hashMap = new HashMap();
+    for (let i = 0; i < 10; i++) {
+      hashMap.set(i, i)
+    }
+    let ss = Math.floor(Math.random()*10)
+    let res = hashMap.hasKey(ss);
+    expect(res).assertEqual(true);
+  });
+        
   /**
    * @tc.name: testHasValue024
    * @tc.desc: Determine whether the HashMap contains the specified value. For example: hashMap.hasValue(8).

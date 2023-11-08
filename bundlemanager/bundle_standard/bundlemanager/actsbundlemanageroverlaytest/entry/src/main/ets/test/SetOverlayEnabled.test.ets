@@ -26,7 +26,7 @@ const ERROR_CODE = 401;
 export default function setOverlayEnabled() {
   describe('setOverlayEnabled', function () {
     /*
-     * @tc.number: SUB_BMS_OVERLAY_ENABLED_0001
+     * @tc.number: Sub_Bms_Framework_Status_OverlayEnable_0100
      * @tc.name: SetOverlayEnabledModuleNameIsNull
      * @tc.desc: Failed to set when the incoming moduleName is empty
      */
@@ -60,7 +60,7 @@ export default function setOverlayEnabled() {
     })
 
     /*
-     * @tc.number: SUB_BMS_OVERLAY_ENABLED_0005
+     * @tc.number: Sub_Bms_Framework_Status_OverlayEnable_0500
      * @tc.name: SetOverlayEnabledModuleNameNotInstall
      * @tc.desc: Failed to set when the incoming moduleName is not installed
      */
@@ -82,7 +82,7 @@ export default function setOverlayEnabled() {
     })
 
     /*
-     * @tc.number: SUB_BMS_OVERLAY_ENABLED_0006
+     * @tc.number: Sub_Bms_Framework_Status_OverlayEnable_0600
      * @tc.name: SetOverlayEnabledModuleNameIsNotOverlay
      * @tc.desc: Failed to set when the incoming moduleName is not overlay
      */

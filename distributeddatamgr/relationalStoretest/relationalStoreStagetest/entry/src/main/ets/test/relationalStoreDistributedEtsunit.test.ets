@@ -51,7 +51,7 @@ describe('relationalStoreDistributedTest', function () {
     console.info(TAG + "*************Unit Test Begin*************");
     /**
      * @tc.name obtainDistributedTableName Callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_SetDistributeJsApiTest_0100
      * @tc.desc obtainDistributedTableName test
      */
     it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0100', 0, async function (done){
@@ -73,7 +73,7 @@ describe('relationalStoreDistributedTest', function () {
 
     /**
      * @tc.name obtainDistributedTableName Promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_SetDistributeJsApiTest_0200
      * @tc.desc obtainDistributedTableName test
      */
      it('SUB_DDM_AppDataFWK_ETSRDB_Distributed_obtainDistributedTableName_0200',0,async function (done){

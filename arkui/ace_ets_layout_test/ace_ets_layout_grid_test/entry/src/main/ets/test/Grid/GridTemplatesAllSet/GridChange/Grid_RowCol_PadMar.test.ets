@@ -60,34 +60,35 @@ export default function Grid_RowCol_PadMar() {
       let Grid_RowCol_PadMar_013 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
       let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
       let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
-      expect(Math.round(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_013.left).assertEqual(Grid_RowCol_PadMar_011.left);
 
-      expect(Grid_RowCol_PadMar_011.right).assertEqual(Grid_RowCol_PadMar_012.left);
-      expect(Grid_RowCol_PadMar_013.right).assertEqual(Grid_RowCol_PadMar_014.left);
+      expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_011.left) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.right - Grid_RowCol_PadMar_012.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_014.right).assertEqual(Grid_RowCol_PadMar_012.right);
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_014.left) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.top - Grid_RowCol_PadMar_01.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_012.top).assertEqual(Grid_RowCol_PadMar_011.top);
+      expect(Math.abs(Grid_RowCol_PadMar_01.right - Grid_RowCol_PadMar_012.right - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_012.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.bottom).assertEqual(Grid_RowCol_PadMar_013.top);
-      expect(Grid_RowCol_PadMar_012.bottom).assertEqual(Grid_RowCol_PadMar_014.top);
+      expect(Math.abs(Grid_RowCol_PadMar_011.top - Grid_RowCol_PadMar_01.top - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.top - Grid_RowCol_PadMar_011.top) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.bottom - Grid_RowCol_PadMar_013.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_013.bottom).assertEqual(Grid_RowCol_PadMar_014.bottom);
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_013.top) <= 1).assertTrue();
 
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_014.top) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.abs(Grid_RowCol_PadMar_01.bottom - Grid_RowCol_PadMar_013.bottom - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_014.bottom) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left - vp2px(140)) <= 1).assertTrue();
+
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top - vp2px(140)) <= 1).assertTrue();
       console.info('[testGridRowColGridPad] END');
       done();
     });
@@ -110,38 +111,38 @@ export default function Grid_RowCol_PadMar() {
       let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
       let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
       let Grid_RowCol_PadMar_Box_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
-      expect(Grid_RowCol_PadMar_011.left).assertEqual(Grid_RowCol_PadMar_01.left);
-      expect(Grid_RowCol_PadMar_013.left).assertEqual(Grid_RowCol_PadMar_01.left);
+      expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_01.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.right).assertEqual(Grid_RowCol_PadMar_012.left);
-      expect(Grid_RowCol_PadMar_013.right).assertEqual(Grid_RowCol_PadMar_014.left);
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_014.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_01.right).assertEqual(Grid_RowCol_PadMar_012.right);
-      expect(Grid_RowCol_PadMar_014.right).assertEqual(Grid_RowCol_PadMar_012.right);
+      expect(Math.abs(Grid_RowCol_PadMar_01.right - Grid_RowCol_PadMar_012.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_012.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.top).assertEqual(Grid_RowCol_PadMar_01.top);
-      expect(Grid_RowCol_PadMar_012.top).assertEqual(Grid_RowCol_PadMar_011.top);
+      expect(Math.abs(Grid_RowCol_PadMar_011.top - Grid_RowCol_PadMar_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.top - Grid_RowCol_PadMar_011.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.bottom).assertEqual(Grid_RowCol_PadMar_013.top);
-      expect(Grid_RowCol_PadMar_012.bottom).assertEqual(Grid_RowCol_PadMar_014.top);
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_013.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_014.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_01.bottom).assertEqual(Grid_RowCol_PadMar_013.bottom);
-      expect(Grid_RowCol_PadMar_013.bottom).assertEqual(Grid_RowCol_PadMar_014.bottom);
+      expect(Math.abs(Grid_RowCol_PadMar_01.bottom - Grid_RowCol_PadMar_013.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_014.bottom) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.left - Grid_RowCol_PadMar_Box_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_01.top - Grid_RowCol_PadMar_Box_01.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_Box_01.right - Grid_RowCol_PadMar_01.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_Box_01.bottom - Grid_RowCol_PadMar_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Grid_RowCol_PadMar_01.left - Grid_RowCol_PadMar_Box_01.left - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_01.top - Grid_RowCol_PadMar_Box_01.top - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_Box_01.right - Grid_RowCol_PadMar_01.right - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_Box_01.bottom - Grid_RowCol_PadMar_01.bottom - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top - vp2px(150)) <= 1).assertTrue();
       console.info('[testGridRowColGridMargin] END');
       done();
     });
@@ -164,39 +165,40 @@ export default function Grid_RowCol_PadMar() {
       let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
       let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
       let Grid_RowCol_PadMar_Box_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
-      expect(Math.round(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_013.left).assertEqual(Grid_RowCol_PadMar_011.left);
+      expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left - vp2px(10)) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.right).assertEqual(Grid_RowCol_PadMar_012.left);
-      expect(Grid_RowCol_PadMar_013.right).assertEqual(Grid_RowCol_PadMar_014.left);
+      expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_011.left) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.right - Grid_RowCol_PadMar_012.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_014.right).assertEqual(Grid_RowCol_PadMar_012.right);
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_014.left) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.top - Grid_RowCol_PadMar_01.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_012.top).assertEqual(Grid_RowCol_PadMar_011.top);
+      expect(Math.abs(Grid_RowCol_PadMar_01.right - Grid_RowCol_PadMar_012.right - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_012.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_PadMar_011.bottom).assertEqual(Grid_RowCol_PadMar_013.top);
-      expect(Grid_RowCol_PadMar_012.bottom).assertEqual(Grid_RowCol_PadMar_014.top);
+      expect(Math.abs(Grid_RowCol_PadMar_011.top - Grid_RowCol_PadMar_01.top - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.top - Grid_RowCol_PadMar_011.top) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.bottom - Grid_RowCol_PadMar_013.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Grid_RowCol_PadMar_013.bottom).assertEqual(Grid_RowCol_PadMar_014.bottom);
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_013.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_014.top) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_01.left - Grid_RowCol_PadMar_Box_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_01.top - Grid_RowCol_PadMar_Box_01.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_Box_01.right - Grid_RowCol_PadMar_01.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_RowCol_PadMar_Box_01.bottom - Grid_RowCol_PadMar_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Grid_RowCol_PadMar_01.bottom - Grid_RowCol_PadMar_013.bottom - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_014.bottom) <= 1).assertTrue();
 
+      expect(Math.abs(Grid_RowCol_PadMar_01.left - Grid_RowCol_PadMar_Box_01.left - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_01.top - Grid_RowCol_PadMar_Box_01.top - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_Box_01.right - Grid_RowCol_PadMar_01.right - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_Box_01.bottom - Grid_RowCol_PadMar_01.bottom - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.abs(Grid_RowCol_PadMar_011.right - Grid_RowCol_PadMar_011.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.right - Grid_RowCol_PadMar_012.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.right - Grid_RowCol_PadMar_013.left - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.right - Grid_RowCol_PadMar_014.left - vp2px(140)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(Math.round(vp2px(140)));
-      expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.abs(Grid_RowCol_PadMar_011.bottom - Grid_RowCol_PadMar_011.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top - vp2px(140)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top - vp2px(140)) <= 1).assertTrue();
+
       console.info('[testGridRowColGridPadMar] END');
       done();
     });

@@ -21,12 +21,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST START`)
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_1900
      * @tc.name: isStickyCommonEvent isOrderedCommonEvent abortCommonEvent getAbortCommonEvent clearAbortCommonEvent
      * @tc.desc: verify the callback function
      */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 START`)
+    it('Sub_Notification_Ans_Subscriber_Subscribe_1900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1900 START`)
 
       let subscriber
 
@@ -35,16 +35,16 @@ export default function ActsCommonEventManagerSubscribeTest() {
       }
 
       try {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 come in `)
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1900 come in `)
 
         commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
-          console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 createSubscriber come in `)
+          console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1900 createSubscriber come in `)
           if (err) {
-            console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
+            console.info(`Sub_Notification_Ans_Subscriber_Subscribe_1900 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 createSubscriber success ${commonEventSubscriber}`)
+            console.info(`Sub_Notification_Ans_Subscriber_Subscribe_1900 createSubscriber success ${commonEventSubscriber}`)
             subscriber = commonEventSubscriber
             expect(true).assertTrue()
             done()
@@ -115,21 +115,21 @@ export default function ActsCommonEventManagerSubscribeTest() {
           }
         })
       } catch (err) {
-        console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 failed, code is ${err.code}, message is ${err.message}`)
+        console.info(`Sub_Notification_Ans_Subscriber_Subscribe_1900 failed, code is ${err.code}, message is ${err.message}`)
         expect(false).assertTrue()
         done()
       }
 
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_0900 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1900 END`)
     })
 
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_2000
      * @tc.name: isStickyCommonEvent isOrderedCommonEvent abortCommonEvent getAbortCommonEvent clearAbortCommonEvent
      * @tc.desc: verify the promise function
      */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000 START`)
+    it('Sub_Notification_Ans_Subscriber_Subscribe_2000', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2000 START`)
 
       let subscriber
 
@@ -140,11 +140,11 @@ export default function ActsCommonEventManagerSubscribeTest() {
       try {
         commonEventManager.createSubscriber(subscribeInfo, async (err, commonEventSubscriber) => {
           if (err) {
-            console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
+            console.info(`Sub_Notification_Ans_Subscriber_Subscribe_2000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000 createSubscriber success ${commonEventSubscriber}`)
+            console.info(`Sub_Notification_Ans_Subscriber_Subscribe_2000 createSubscriber success ${commonEventSubscriber}`)
             subscriber = commonEventSubscriber
             expect(true).assertTrue()
             done()
@@ -202,11 +202,11 @@ export default function ActsCommonEventManagerSubscribeTest() {
           }
         })
       } catch (err) {
-        console.info(`SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000 failed, code is ${err.code}, message is ${err.message}`)
+        console.info(`Sub_Notification_Ans_Subscriber_Subscribe_2000 failed, code is ${err.code}, message is ${err.message}`)
         expect(false).assertTrue()
         done()
       }
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1000 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2000 END`)
     })
 
     it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_1100', 0, async function (done) {

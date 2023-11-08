@@ -418,7 +418,7 @@ export default function imagePixelMapFramework() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100
          * @tc.name      : BASE64 Image
          * @tc.desc      : 1.create imagesource with base64Image
          *               : 2.create pixelmap
@@ -426,8 +426,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_BASE64_0100')
             try {
                 const imageSource = image.createImageSource(base64Image)
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -451,7 +451,7 @@ export default function imagePixelMapFramework() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100
          * @tc.name      : Pixelmap Scale-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -461,7 +461,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width * 2) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -469,11 +469,11 @@ export default function imagePixelMapFramework() {
                     done()
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100', 'promise', 'scale', sizeCheck, scale2x1, 2.0, 1.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0100', 'promise', 'scale', sizeCheck, scale2x1, 2.0, 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200
          * @tc.name      : Pixelmap Scale-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -483,7 +483,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height * 4) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -491,11 +491,11 @@ export default function imagePixelMapFramework() {
                     done()
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200', 'promise', 'scale', sizeCheck, scale1x4, 1.0, 4.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_PROMISE_0200', 'promise', 'scale', sizeCheck, scale1x4, 1.0, 4.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100
          * @tc.name      : Pixelmap Scale-callback
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -505,7 +505,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height * 4) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -513,11 +513,11 @@ export default function imagePixelMapFramework() {
                     done()
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100', 'callback', 'scale', sizeCheck, scale1x4, 1.0, 4.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_CALLBACK_0100', 'callback', 'scale', sizeCheck, scale1x4, 1.0, 4.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100
          * @tc.name      : Pixelmap Translate -promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call translate
@@ -527,7 +527,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width + 3) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -535,11 +535,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100', 'promise', 'translate', sizeCheck, translate3x1, 3.0, 1.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0100', 'promise', 'translate', sizeCheck, translate3x1, 3.0, 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200
          * @tc.name      : Pixelmap Translate-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call translate
@@ -549,7 +549,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height + 3) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -557,11 +557,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200', 'promise', 'translate', sizeCheck, translate1x3, 1.0, 3.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_PROMISE_0200', 'promise', 'translate', sizeCheck, translate1x3, 1.0, 3.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100
          * @tc.name      : Pixelmap Translate-callback
          * @tc.desc      : 1.create pixelmap
          *               : 2.call translate
@@ -571,7 +571,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.height != orgInfo.size.height + 3) {
                     logger.log(`org height ${orgInfo.size.height}, new height ${newInfo.size.height} `);
@@ -579,11 +579,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100', 'callback', 'translate', sizeCheck, translate1x3, 1.0, 3.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_CALLBACK_0100', 'callback', 'translate', sizeCheck, translate1x3, 1.0, 3.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100
          * @tc.name      : Pixelmap Rotate-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -593,7 +593,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.height) {
                     logger.log(`org height ${orgInfo.size.height}, new width ${newInfo.size.width} `);
@@ -601,11 +601,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100', 'promise', 'rotate', sizeCheck, rotate90, 90.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_PROMISE_0100', 'promise', 'rotate', sizeCheck, rotate90, 90.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100
          * @tc.name      : Pixelmap Rotate-callback
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -615,7 +615,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.height) {
                     logger.log(`org height ${orgInfo.size.height}, new width ${newInfo.size.width} `);
@@ -623,11 +623,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100', 'callback', 'rotate', sizeCheck, rotate90, 90.0)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_CALLBACK_0100', 'callback', 'rotate', sizeCheck, rotate90, 90.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100
          * @tc.name      : Pixelmap Flip-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -637,7 +637,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -645,11 +645,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100', 'promise', 'flip', sizeCheck, flipH, false, true)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_PROMISE_0100', 'promise', 'flip', sizeCheck, flipH, false, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100
          * @tc.name      : Pixelmap Flip-callback
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -659,7 +659,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100', 0, async function (done) {
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 if (newInfo.size.width != orgInfo.size.width) {
                     logger.log(`org width ${orgInfo.size.width}, new width ${newInfo.size.width} `);
@@ -667,11 +667,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100', 'callback', 'flip', sizeCheck, flipH, false, true)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_CALLBACK_0100', 'callback', 'flip', sizeCheck, flipH, false, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100
          * @tc.name      : isSupportAlpha SetSupportAlpha
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -681,8 +681,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_ISSUPPORTALPHA_SETSUPPORTALPHA_0100')
             try {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -716,7 +716,7 @@ export default function imagePixelMapFramework() {
             }
         })
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100
          * @tc.name      : createAlphaPixelmap-promise
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -726,13 +726,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 0, async function (done) {
             var imageData = testPng.buffer;
-            await createAlphaPixelmapTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 'promise', imageData);
+            await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_PROMISE_0100', 'promise', imageData);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100
          * @tc.name      : createAlphaPixelmap-callback
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -742,13 +742,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 0, async function (done) {
             var imageData = testPng.buffer;
-            await createAlphaPixelmapTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 'callback', imageData);
+            await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_CALLBACK_0100', 'callback', imageData);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100
          * @tc.name      : createAlphaPixelmap-Jpg
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -758,13 +758,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 0, async function (done) {
             var imageData = testJpg.buffer;
-            await createAlphaPixelmapTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 'promise', imageData);
+            await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0100', 'promise', imageData);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200
          * @tc.name      : createAlphaPixelmap
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -774,13 +774,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 0, async function (done) {
             var imageData = testBmp.buffer;
-            await createAlphaPixelmapTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 'promise', imageData);
+            await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0200', 'promise', imageData);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300
          * @tc.name      : createAlphaPixelmap
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -790,13 +790,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 0, async function (done) {
             var imageData = testGif.buffer;
-            await createAlphaPixelmapTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 'promise', imageData);
+            await createAlphaPixelmapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_0300', 'promise', imageData);
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100
          * @tc.name      : setAlpha-promise
          * @tc.desc      : 1.create pixelmap
          *               : 2.setAlpha
@@ -806,8 +806,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_PROMISE_0100')
             try {
                 var pixelMap = await genPixelMap()
                 logger.log("pixelMap " + (pixelMap != undefined));
@@ -841,7 +841,7 @@ export default function imagePixelMapFramework() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100
          * @tc.name      : setAlpha -callback
          * @tc.desc      : 1.create pixelmap
          *               : 2.setAlpha
@@ -851,8 +851,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100', 0, async function (done) {
-            let logger = loger('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0100')
             try {
                 var pixelMap = await genPixelMap()
                 logger.log("pixelMap " + (pixelMap != undefined));
@@ -887,7 +887,7 @@ export default function imagePixelMapFramework() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100
          * @tc.name      : SourceOptions getDensity fitDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -896,13 +896,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', 0, async function (done) {
             var imageData = testPng.buffer;
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', imageData)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100
          * @tc.name      : fitDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap with fitDensity
@@ -911,14 +911,14 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', 0, async function (done) {
             var imageData = testPng.buffer;
             let decodingOptions = { fitDensity: 240 };
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', imageData, decodingOptions)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0100', imageData, decodingOptions)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200
          * @tc.name      : setDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -928,13 +928,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', 0, async function (done) {
             var imageData = testPng.buffer;
-            await setDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', imageData)
+            await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0200', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200
          * @tc.name      : SourceOptions getDensity fitDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -943,13 +943,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', 0, async function (done) {
             var imageData = testJpg.buffer;
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', imageData)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0200', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300
          * @tc.name      : SourceOptions getDensity fitDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -958,13 +958,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', 0, async function (done) {
             var imageData = testBmp.buffer;
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', imageData)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0300', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400
          * @tc.name      : SourceOptions getDensity fitDensity
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -973,13 +973,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', 0, async function (done) {
             var imageData = testGif.buffer;
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', imageData)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0400', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300
          * @tc.name      : fitDensity-JPG
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap with fitDensity
@@ -988,14 +988,14 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', 0, async function (done) {
             var imageData = testJpg.buffer;
             let decodingOptions = { fitDensity: 240 };
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', imageData, decodingOptions)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0300', imageData, decodingOptions)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400
          * @tc.name      : fitDensity-bmp
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap with fitDensity
@@ -1004,14 +1004,14 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', 0, async function (done) {
             var imageData = testBmp.buffer;
             let decodingOptions = { fitDensity: 240 };
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', imageData, decodingOptions)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0400', imageData, decodingOptions)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500
          * @tc.name      : fitDensity-gif
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap with fitDensity
@@ -1020,14 +1020,14 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', 0, async function (done) {
             var imageData = testGif.buffer;
             let decodingOptions = { fitDensity: 240 };
-            await getDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', imageData, decodingOptions)
+            await getDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_FITDENSITY_0500', imageData, decodingOptions)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100
          * @tc.name      : setDensity-Jpg
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1037,13 +1037,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', 0, async function (done) {
             var imageData = testJpg.buffer;
-            await setDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', imageData)
+            await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0100', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200
          * @tc.name      : setDensity-bmp
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1053,13 +1053,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', 0, async function (done) {
             var imageData = testBmp.buffer;
-            await setDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', imageData)
+            await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0200', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300
          * @tc.name      : setDensity-gif
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1069,13 +1069,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', 0, async function (done) {
             var imageData = testGif.buffer;
-            await setDensityTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', imageData)
+            await setDensityTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_0300', imageData)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100
          * @tc.name      : crop-promise
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1086,7 +1086,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: 1 };
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 orgInfo = region;
@@ -1096,11 +1096,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100', 'promise', 'crop', sizeCheck, crop3x3, region)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_0100', 'promise', 'crop', sizeCheck, crop3x3, region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100
          * @tc.name      : crop -callback
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1111,7 +1111,7 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: 1 };
             function sizeCheck(done, logger, orgInfo, newInfo) {
                 orgInfo = region;
@@ -1121,11 +1121,11 @@ export default function imagePixelMapFramework() {
                     done();
                 }
             }
-            await pixelMapModifySizeTest(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100', 'callback', 'crop', sizeCheck, crop3x3, region)
+            await pixelMapModifySizeTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_0100', 'callback', 'crop', sizeCheck, crop3x3, region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100
          * @tc.name      : Pixelmap Scale-promise-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1133,12 +1133,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 'promise', 'scale', { a: 10 }, 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0100', 'promise', 'scale', { a: 10 }, 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200
          * @tc.name      : Pixelmap Scale-promise-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1146,12 +1146,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 'promise', 'scale', 'a', 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0200', 'promise', 'scale', 'a', 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300
          * @tc.name      : Pixelmap Scale-promise-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1159,13 +1159,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 'promise', 'scale', 1.0, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0300', 'promise', 'scale', 1.0, null)
 
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400
          * @tc.name      : Pixelmap Scale-promise-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1173,13 +1173,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 'promise', 'scale', 1.0, true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_PROMISE_0400', 'promise', 'scale', 1.0, true)
 
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100
          * @tc.name      : Pixelmap Scale-callback-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1187,12 +1187,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 'callback', 'scale', { a: 10 }, 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0100', 'callback', 'scale', { a: 10 }, 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200
          * @tc.name      : Pixelmap Scale-callback-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1200,12 +1200,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 'callback', 'scale', 'a', 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0200', 'callback', 'scale', 'a', 1.0)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300
          * @tc.name      : Pixelmap Scale-callback-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1213,12 +1213,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 'callback', 'scale', 1.0, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0300', 'callback', 'scale', 1.0, null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400
          * @tc.name      : Pixelmap Scale-callback-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call scale
@@ -1226,12 +1226,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 'callback', 'scale', 1.0, true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_SCALE_ERROR_CALLBACK_0400', 'callback', 'scale', 1.0, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100
          * @tc.name      : Pixelmap Translate -promise-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call translate
@@ -1239,12 +1239,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 'promise', 'translate', { a: 10 }, 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0100', 'promise', 'translate', { a: 10 }, 1.0)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200
         * @tc.name      : Pixelmap Translate -promise-wrong x
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1252,12 +1252,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 'promise', 'translate', 'a', 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0200', 'promise', 'translate', 'a', 1.0)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300
         * @tc.name      : Pixelmap Translate -promise-wrong y
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1265,12 +1265,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 'promise', 'translate', 1.0, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0300', 'promise', 'translate', 1.0, null)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400
         * @tc.name      : Pixelmap Translate -promise-wrong y
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1278,12 +1278,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 'promise', 'translate', 1.0, false)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_PROMISE_0400', 'promise', 'translate', 1.0, false)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100
          * @tc.name      : Pixelmap Translate -callback-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call translate
@@ -1291,12 +1291,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 'callback', 'translate', { a: 10 }, 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0100', 'callback', 'translate', { a: 10 }, 1.0)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200
         * @tc.name      : Pixelmap Translate -callback-wrong x
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1304,12 +1304,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 'callback', 'translate', 'a', 1.0)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0200', 'callback', 'translate', 'a', 1.0)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300
         * @tc.name      : Pixelmap Translate -callback-wrong y
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1317,12 +1317,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 'callback', 'translate', 1.0, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0300', 'callback', 'translate', 1.0, null)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400
         * @tc.name      : Pixelmap Translate -callback-wrong y
         * @tc.desc      : 1.create pixelmap
         *               : 2.call translate
@@ -1330,12 +1330,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 'callback', 'translate', 1.0, false)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_TRANSLATE_ERROR_CALLBACK_0400', 'callback', 'translate', 1.0, false)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100
          * @tc.name      : Pixelmap Rotate-promise-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1343,12 +1343,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 'promise', 'rotate', 'a')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0100', 'promise', 'rotate', 'a')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200
          * @tc.name      : Pixelmap Rotate-promise-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1356,12 +1356,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 'promise', 'rotate', { a: 10 })
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0200', 'promise', 'rotate', { a: 10 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300
          * @tc.name      : Pixelmap Rotate-promise-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1369,12 +1369,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 'promise', 'rotate', null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0300', 'promise', 'rotate', null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400
          * @tc.name      : Pixelmap Rotate-promise-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1382,12 +1382,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 'promise', 'rotate', false)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_PROMISE_0400', 'promise', 'rotate', false)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100
          * @tc.name      : Pixelmap Rotate-callback-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1395,12 +1395,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 'callback', 'rotate', 'a')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0100', 'callback', 'rotate', 'a')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200
          * @tc.name      : Pixelmap Rotate-callback-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1408,12 +1408,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 'callback', 'rotate', { a: 10 })
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0200', 'callback', 'rotate', { a: 10 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300
          * @tc.name      : Pixelmap Rotate-callback-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1421,12 +1421,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 'callback', 'rotate', null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0300', 'callback', 'rotate', null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400
          * @tc.name      : Pixelmap Rotate-callback-wrong angle
          * @tc.desc      : 1.create pixelmap
          *               : 2.call rotate
@@ -1434,12 +1434,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 'callback', 'rotate', false)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_ROTATE_ERROR_ANGLE_CALLBACK_0400', 'callback', 'rotate', false)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100
          * @tc.name      : Pixelmap Flip-promise-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1447,12 +1447,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 'promise', 'flip', 'false', true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0100', 'promise', 'flip', 'false', true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200
          * @tc.name      : Pixelmap Flip-promise-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1460,12 +1460,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 'promise', 'flip', 1, true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0200', 'promise', 'flip', 1, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300
          * @tc.name      : Pixelmap Flip-promise-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1473,12 +1473,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 'promise', 'flip', true, { a: 10 })
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0300', 'promise', 'flip', true, { a: 10 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400
          * @tc.name      : Pixelmap Flip-promise-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1486,12 +1486,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 'promise', 'flip', true, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_PROMISE_0400', 'promise', 'flip', true, null)
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100
         * @tc.name      : Pixelmap Flip-callback-wrong x
         * @tc.desc      : 1.create pixelmap
         *               : 2.call flip
@@ -1499,12 +1499,12 @@ export default function imagePixelMapFramework() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 'callback', 'flip', 'false', true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0100', 'callback', 'flip', 'false', true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200
          * @tc.name      : Pixelmap Flip-callback-wrong x
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1512,12 +1512,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 'callback', 'flip', 1, true)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0200', 'callback', 'flip', 1, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300
          * @tc.name      : Pixelmap Flip-callback-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1525,12 +1525,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 'callback', 'flip', true, { a: 10 })
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0300', 'callback', 'flip', true, { a: 10 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400
          * @tc.name      : Pixelmap Flip-callback-wrong y
          * @tc.desc      : 1.create pixelmap
          *               : 2.call flip
@@ -1538,12 +1538,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 0, async function (done) {
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 'callback', 'flip', true, null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 0, async function (done) {
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_PIXELMAP_FLIP_ERROR_CALLBACK_0400', 'callback', 'flip', true, null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100
          * @tc.name      : SetSupportAlpha-wrong alpha
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -1552,12 +1552,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 0, async function (done) {
-            setAlphaAbleErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 'a')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 0, async function (done) {
+            setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0100', 'a')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200
          * @tc.name      : SetSupportAlpha-wrong alpha
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -1566,12 +1566,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', 0, async function (done) {
-            setAlphaAbleErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', { a: 1 })
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', 0, async function (done) {
+            setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0200', { a: 1 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300
          * @tc.name      : SetSupportAlpha-wrong alpha
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -1580,12 +1580,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', 0, async function (done) {
-            setAlphaAbleErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', null)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', 0, async function (done) {
+            setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0300', null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400
          * @tc.name      : SetSupportAlpha-wrong alpha
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
@@ -1594,12 +1594,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 0, async function (done) {
-            setAlphaAbleErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 1)
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 0, async function (done) {
+            setAlphaAbleErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETSUPPORTALPHA_ERROR_ALPHA_0400', 1)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100
          * @tc.name      : crop-promise- size: { height: 3, width: 3 }, x: -1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1610,13 +1610,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: -1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 'promise', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0100', 'promise', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200
          * @tc.name      : crop-promise-size: { height: 3, width: 3 }, x: 1, y: -1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1627,13 +1627,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: -1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 'promise', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0200', 'promise', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300
          * @tc.name      : crop-promise-size: { height: 3, width: -3 }, x: 1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1644,13 +1644,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 0, async function (done) {
             var region = { size: { height: 3, width: -3 }, x: 1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 'promise', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0300', 'promise', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400
          * @tc.name      : crop-promise-size: { height: -3, width: 3 }, x: 1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1661,13 +1661,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 0, async function (done) {
             var region = { size: { height: -3, width: 3 }, x: 1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 'promise', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_PROMISE_SIZE_0400', 'promise', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100
          * @tc.name      : crop-callback-size: { height: 3, width: 3 }, x: -1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1678,13 +1678,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: -1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 'callback', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0100', 'callback', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200
          * @tc.name      : crop-callback-size: { height: 3, width: 3 }, x: 1, y: -1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1695,13 +1695,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 0, async function (done) {
             var region = { size: { height: 3, width: 3 }, x: 1, y: -1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 'callback', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0200', 'callback', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300
          * @tc.name      : crop-callback-size: { height: 3, width: -3 }, x: 1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1712,13 +1712,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 0, async function (done) {
             var region = { size: { height: 3, width: -3 }, x: 1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 'callback', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0300', 'callback', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400
          * @tc.name      : crop-callback-size: { height: -3, width: 3 }, x: 1, y: 1
          * @tc.desc      : 1.create PixelMap
          *               : 2.crop
@@ -1729,13 +1729,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 0, async function (done) {
             var region = { size: { height: -3, width: 3 }, x: 1, y: 1 };
-            await pixelMapModifySizeTestErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 'callback', 'crop', region)
+            await pixelMapModifySizeTestErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CROP_CALLBACK_SIZE_0400', 'callback', 'crop', region)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100
          * @tc.name      : setDensity-gif-wrong density
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1744,13 +1744,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', 0, async function (done) {
             var imageData = testGif.buffer;
-            setDensityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', imageData, null)
+            setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0100', imageData, null)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200
          * @tc.name      : setDensity-gif-wrong density
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1759,13 +1759,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', 0, async function (done) {
             var imageData = testGif.buffer;
-            setDensityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', imageData, 'a')
+            setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0200', imageData, 'a')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300
          * @tc.name      : setDensity-gif-wrong density
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1774,13 +1774,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', 0, async function (done) {
             var imageData = testGif.buffer;
-            setDensityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', imageData, true)
+            setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0300', imageData, true)
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400
          * @tc.name      : setDensity-gif-wrong density
          * @tc.desc      : 1.create ImageSource
          *               : 2.create PixelMap
@@ -1789,13 +1789,13 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', 0, async function (done) {
             var imageData = testGif.buffer;
-            setDensityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', imageData, { a: 1 })
+            setDensityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETDENSITY_GIF_ERROR_DENSITY_0400', imageData, { a: 1 })
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100
          * @tc.name      : opacity-promise-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1803,12 +1803,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', { a: 1 }, 'Promise')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0100', { a: 1 }, 'Promise')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200
          * @tc.name      : opacity-promise-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1816,12 +1816,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 'a', 'Promise')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0200', 'a', 'Promise')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300
          * @tc.name      : opacity-promise-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1829,12 +1829,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', null, 'Promise')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0300', null, 'Promise')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400
          * @tc.name      : opacity-promise-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1842,12 +1842,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 2, 'Promise')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_PROMISE_ERROR_ALPHA_0400', 2, 'Promise')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100
          * @tc.name      : opacity-callback-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1855,12 +1855,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', { a: 1 }, 'callback')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0100', { a: 1 }, 'callback')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200
          * @tc.name      : opacity-callback-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1868,12 +1868,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 'a', 'callback')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0200', 'a', 'callback')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300
          * @tc.name      : opacity-callback-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacityErr
@@ -1881,12 +1881,12 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', null, 'callback')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0300', null, 'callback')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400
          * @tc.name      : opacity-callback-wrong alpha
          * @tc.desc      : 1.create pixelmap
          *               : 2.opacity
@@ -1894,8 +1894,8 @@ export default function imagePixelMapFramework() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 0, async function (done) {
-            opacityErr(done, 'SUB_GRAPHIC_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 2, 'callback')
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 0, async function (done) {
+            opacityErr(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_OPACITY_CALLBACK_ERROR_ALPHA_0400', 2, 'callback')
         })
     })
 }

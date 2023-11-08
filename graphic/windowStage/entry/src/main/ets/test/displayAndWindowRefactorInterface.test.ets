@@ -98,12 +98,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       clearTimeout(timeoutId)
     }
     /**
-     * @tc.number SUB_WINDOW_GETALLDISPLAYS_JSAPI_001
-     * @tc.name Test getAllDisplaysTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0450
+     * @tc.name tesGetAllDisplays_Promise
      * @tc.desc Gets all current display objects
      */
-    it('getAllDisplaysTest1', 0, async function (done) {
-      let caseName = 'getAllDisplaysTest1';
+    it('tesGetAllDisplays_Promise', 0, async function (done) {
+      let caseName = 'tesGetAllDisplays_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       await display.getAllDisplays().then((data) => {
@@ -129,12 +129,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       });
     })
     /**
-     * @tc.number SUB_WINDOW_GETALLDISPLAYS_JSAPI_002
-     * @tc.name Test getAllDisplaysTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0440
+     * @tc.name tesGetAllDisplays_Callback
      * @tc.desc Gets all current display objects
      */
-    it('getAllDisplaysTest2', 0, async function (done) {
-      let caseName = 'getAllDisplaysTest2';
+    it('tesGetAllDisplays_Callback', 0, async function (done) {
+      let caseName = 'tesGetAllDisplays_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       display.getAllDisplays((err, data) => {
@@ -166,12 +166,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       });
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_001
-     * @tc.name Test createWindowTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0090
+     * @tc.name testCreateWindow_Diff_Type_Wins_Promise
      * @tc.desc Verify the scenario of creating the application type window
      */
-    it('createWindowTest1', 0, async function (done) {
-      let caseName = 'createWindowTest1';
+    it('testCreateWindow_Diff_Type_Wins_Promise', 0, async function (done) {
+      let caseName = 'testCreateWindow_Diff_Type_Wins_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeDicArr.length;
@@ -203,12 +203,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     })
 
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_002
-     * @tc.name Test createWindowTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0150
+     * @tc.name testCreateWindow_Same_Name_Wins_Promise
      * @tc.desc Verify the scenario of creating a window with duplicate IDs
      */
-    it('createWindowTest2', 0, async function (done) {
-      let caseName = 'createWindowTest2';
+    it('testCreateWindow_Same_Name_Wins_Promise', 0, async function (done) {
+      let caseName = 'testCreateWindow_Same_Name_Wins_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindowSameidsTest2'
@@ -242,11 +242,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_004
-     * @tc.name Test createWindowTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0130
+     * @tc.name testCreateWindow_Not_Exist_WinType_Promise
      * @tc.desc Verify the scenario of creating the application type window
      */
-    it('createWindowTest4', 0, async function (done) {
+    it('testCreateWindow_Not_Exist_WinType_Promise', 0, async function (done) {
       sleep(1000)
       let caseName = 'createWindowTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -312,11 +312,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_005
-     * @tc.name Test createWindowTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0160
+     * @tc.name testCreateWindow_Type_System_Alert_Win_Callback
      * @tc.desc Verify the scenario of creating the system type window
      */
-    it('createWindowTest5', 0, done => {
+    it('testCreateWindow_Type_System_Alert_Win_Callback', 0, done => {
       let caseName = 'createWindowTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -363,11 +363,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_006
-     * @tc.name Test createWindowTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0140
+     * @tc.name testCreateWindow_Same_Name_Wins_Callback
      * @tc.desc Verify the scenario of creating a window with duplicate IDs
      */
-    it('createWindowTest6', 0, async function (done) {
+    it('testCreateWindow_Same_Name_Wins_Callback', 0, async function (done) {
       let caseName = 'createWindowTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -426,11 +426,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_001
-     * @tc.name Test getWindowAvoidAreaTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0660
+     * @tc.name testGetWindowAvoidArea_Type_System
      * @tc.desc Obtain the area that the window content avoids
      */
-    it('getWindowAvoidAreaTest1', 0, async function (done) {
+    it('testGetWindowAvoidArea_Type_System', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -459,11 +459,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     })
 
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_002
-     * @tc.name Test getWindowAvoidAreaTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0640
+     * @tc.name testGetWindowAvoidArea_Type_CutOut
      * @tc.desc Obtain the area that the window content avoids
      */
-    it('getWindowAvoidAreaTest2', 0, async function (done) {
+    it('testGetWindowAvoidArea_Type_CutOut', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -492,11 +492,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_003
-     * @tc.name Test getWindowAvoidAreaTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0670
+     * @tc.name testGetWindowAvoidArea_Type_System_Gesture
      * @tc.desc Obtain the area that the window content avoids
      */
-    it('getWindowAvoidAreaTest3', 0, async function (done) {
+    it('testGetWindowAvoidArea_Type_System_Gesture', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -524,11 +524,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_004
-     * @tc.name Test getWindowAvoidAreaTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0650
+     * @tc.name testGetWindowAvoidArea_Type_Keyboard
      * @tc.desc Obtain the area that the window content avoids
      */
-    it('getWindowAvoidAreaTest4', 0, async function (done) {
+    it('testGetWindowAvoidArea_Type_Keyboard', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -556,11 +556,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETWINDOWPROPERTIES_JSAPI_001
-     * @tc.name Test getWindowPropertiesTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0690
+     * @tc.name testGetWindowPropertiesTest
      * @tc.desc Gets the properties of the current window
      */
-    it('getWindowPropertiesTest1', 0, async function (done) {
+    it('testGetWindowPropertiesTest', 0, async function (done) {
       let caseName = 'getWindowPropertiesTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -597,11 +597,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETLASTWINDOW_JSAPI_001
-     * @tc.name Test getLastWindowTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0520
+     * @tc.name testGetLastWindow_Promise
      * @tc.desc Get the final show window
      */
-    it('getLastWindowTest1', 0, async function (done) {
+    it('testGetLastWindow_Promise', 0, async function (done) {
       let caseName = 'getLastWindowTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -622,11 +622,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_GETLASTWINDOW_JSAPI_002
-     * @tc.name Test getLastWindowTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0510
+     * @tc.name testGetLastWindow_Callback
      * @tc.desc Get the final show window
      */
-    it('getLastWindowTest2', 0, async function (done) {
+    it('testGetLastWindow_Callback', 0, async function (done) {
       let caseName = 'getLastWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -651,11 +651,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SHOWWINDOW_JSAPI_001
-     * @tc.name Test showWindowTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2120
+     * @tc.name testShowWindowTest_Callback_Form
      * @tc.desc show window
      */
-    it('showWindowTest1', 0, async function (done) {
+    it('testShowWindowTest_Callback_Form', 0, async function (done) {
       let caseName = 'showWindowTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -689,11 +689,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SHOWWINDOW_JSAPI_002
-     * @tc.name Test showWindowTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2110
+     * @tc.name testShowWindowTest_Promise_Form
      * @tc.desc show window
      */
-    it('showWindowTest2', 0, async function (done) {
+    it('testShowWindowTest_Promise_Form', 0, async function (done) {
       let caseName = 'showWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -747,11 +747,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
 
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_001
-     * @tc.name Test moveWindowToTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0980
+     * @tc.name testMoveWindowTo_X_Val300_Y_Val300_Promise
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest1', 0, async function (done) {
+    it('testMoveWindowTo_X_Val300_Y_Val300_Promise', 0, async function (done) {
       let caseName = 'moveWindowToTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -794,11 +794,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_002
-     * @tc.name Test moveWindowToTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0940
+     * @tc.name testMoveWindowTo_X_Val100_Y_Val50_Promise
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest2', 0, async function (done) {
+    it('testMoveWindowTo_X_Val100_Y_Val50_Promise', 0, async function (done) {
       let caseName = 'moveWindowToTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -841,11 +841,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_003
-     * @tc.name Test moveWindowToTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0960
+     * @tc.name testMoveWindowTo_X_Val20000_Y_Val20000_Promise
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest3', 0, async function (done) {
+    it('testMoveWindowTo_X_Val20000_Y_Val20000_Promise', 0, async function (done) {
       let caseName = 'moveWindowToTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -888,11 +888,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_004
-     * @tc.name Test moveWindowToTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0920
+     * @tc.name testMoveWindowTo_XYVal_Is_Negative_Num_Promise
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest4', 0, async function (done) {
+    it('testMoveWindowTo_XYVal_Is_Negative_Num_Promise', 0, async function (done) {
       let caseName = 'moveWindowToTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -935,11 +935,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_005
-     * @tc.name Test moveWindowToTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0970
+     * @tc.name testMoveWindowTo_X_Val300_Y_Va300_Callback
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest5', 0, async function (done) {
+    it('testMoveWindowTo_X_Val300_Y_Va300_Callback', 0, async function (done) {
       let caseName = 'moveWindowToTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -995,11 +995,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_006
-     * @tc.name Test moveWindowToTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0930
+     * @tc.name testMoveWindowTo_X_Val100_Y_Va50_Callback
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest6', 0, async function (done) {
+    it('testMoveWindowTo_X_Val100_Y_Va50_Callback', 0, async function (done) {
       let caseName = 'moveWindowToTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1055,11 +1055,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_007
-     * @tc.name Test moveWindowToTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0950
+     * @tc.name testMoveWindowTo_X_Val20000_Y_Val20000_Callback
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest7', 0, async function (done) {
+    it('testMoveWindowTo_X_Val20000_Y_Val20000_Callback', 0, async function (done) {
       let caseName = 'moveWindowToTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1115,11 +1115,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number SUB_WINDOW_MOVEWINDOWTO_JSAPI_008
-     * @tc.name Test moveWindowToTest8
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0910
+     * @tc.name testMoveWindowTo_XYVal_Is_Negative_Num_Callback
      * @tc.desc Set the position of a window.
      */
-    it('moveWindowToTest8', 0, async function (done) {
+    it('testMoveWindowTo_XYVal_Is_Negative_Num_Callback', 0, async function (done) {
       let caseName = 'moveWindowToTest8';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1175,11 +1175,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_001
-     * @tc.name Test resizeTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1060
+     * @tc.name testResize_X_Val200_Y_Val600_Promise
      * @tc.desc Set the size of a window
      */
-    it('resizeTest1', 0, async function (done) {
+    it('testResize_X_Val200_Y_Val600_Promise', 0, async function (done) {
       let caseName = 'resizeTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1220,11 +1220,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_002
-     * @tc.name Test resizeTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1040
+     * @tc.name testResize_X_Val20000_Y_Val20000_Promise
      * @tc.desc Set the size of a window
      */
-    it('resizeTest2', 0, async function (done) {
+    it('testResize_X_Val20000_Y_Val20000_Promise', 0, async function (done) {
       let caseName = 'resizeTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1265,11 +1265,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_003
-     * @tc.name Test resizeTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1020
+     * @tc.name testResize_XY_Value_Is_Zero_Promise
      * @tc.desc Set the size of a window
      */
-    it('resizeTest3', 0, async function (done) {
+    it('testResize_XY_Value_Is_Zero_Promise', 0, async function (done) {
       let caseName = 'resizeTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1313,11 +1313,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_004
-     * @tc.name Test resizeTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1010
+     * @tc.name testResize_XY_Value_Is_Negative_Num_Promise
      * @tc.desc Set the size of a window
      */
-    it('resizeTest4', 0, async function (done) {
+    it('testResize_XY_Value_Is_Negative_Num_Promise', 0, async function (done) {
       let caseName = 'resizeTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1361,11 +1361,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_005
-     * @tc.name Test resizeTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1030
+     * @tc.name testResize_X_Val100_Y_Val100_Multi_Set_Promise
      * @tc.desc Set the size of a window
      */
-    it('resizeTest5', 0, async function (done) {
+    it('testResize_X_Val100_Y_Val100_Multi_Set_Promise', 0, async function (done) {
       let caseName = 'resizeTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1406,11 +1406,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_006
-     * @tc.name Test resizeTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1050
+     * @tc.name testResize_X_Val200_Y_Val200_Callback
      * @tc.desc Set the size of a window
      */
-    it('resizeTest6', 0, async function (done) {
+    it('testResize_X_Val200_Y_Val200_Callback', 0, async function (done) {
       let caseName = 'resizeTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1467,11 +1467,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number SUB_WINDOW_RESIZE_JSAPI_007
-     * @tc.name Test resizeTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1000
+     * @tc.name testResize_Set_Diff_XY_In_Turn
      * @tc.desc Set the size of a window
      */
-    it('resizeTest7', 0, async function (done) {
+    it('testResize_Set_Diff_XY_In_Turn', 0, async function (done) {
       let caseName = 'resizeTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1542,11 +1542,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       }
     })
     /**
-     * @tc.number SUB_WINDOW_DESTROYWINDOW_JSAPI_001
-     * @tc.name Test destroyWindowTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0290
+     * @tc.name testDestroyWindow_Promise
      * @tc.desc Verification window destruction scenario.
      */
-    it('destroyWindowTest1', 0, async function (done) {
+    it('testDestroyWindow_Promise', 0, async function (done) {
       let caseName = 'destroyWindowTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
@@ -1589,11 +1589,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_DESTROYWINDOW_JSAPI_002
-     * @tc.name Test destroyWindowTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0270
+     * @tc.name testDestroyWindow_Callback
      * @tc.desc Verification window destruction scenario
      */
-    it('destroyWindowTest2', 0, async function (done) {
+    it('testDestroyWindow_Callback', 0, async function (done) {
       let caseName = 'destroyWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -1650,11 +1650,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       })
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_001
-     * @tc.name Test setWindowSystemBarEnableTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1910
+     * @tc.name testSetWindowSystemBarEnable_Empty_Promise
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest1', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_Empty_Promise', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -1690,11 +1690,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_002
-     * @tc.name Test setWindowSystemBarEnableTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1920
+     * @tc.name testSetWindowSystemBarEnable_StatusAndNavigation_Promise
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest2', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_StatusAndNavigation_Promise', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -1730,11 +1730,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_003
-     * @tc.name Test setWindowSystemBarEnableTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1930
+     * @tc.name testSetWindowSystemBarEnable_Status_Promise
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest3', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_Status_Promise', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -1770,11 +1770,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_004
-     * @tc.name Test setWindowSystemBarEnableTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1940
+     * @tc.name testSetWindowSystemBarEnable_Navigation_Promise
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest4', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_Navigation_Promise', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -1810,11 +1810,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_005
-     * @tc.name Test setWindowSystemBarEnableTest5
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1950
+     * @tc.name testSetWindowSystemBarEnable_StatusAndNavigation_Callback
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest5', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_StatusAndNavigation_Callback', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1857,11 +1857,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_006
-     * @tc.name Test setWindowSystemBarEnableTest6
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1960
+     * @tc.name testSetWindowSystemBarEnable_Empty_Callback
      * @tc.desc Set the visible mode of navigation bar and status bar
      */
-    it('setWindowSystemBarEnableTest6', 0, async function (done) {
+    it('testSetWindowSystemBarEnable_Empty_Callback', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1904,11 +1904,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_003
-     * @tc.name Test createWindowTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0130
+     * @tc.name testCreateWindow_Not_Exist_WinType_Promise
      * @tc.desc Verify the scenario of creating a window of a type that does not exist
      */
-    it('createWindowTest3', 0, async function (done) {
+    it('testCreateWindow_Not_Exist_WinType_Promise', 0, async function (done) {
       let caseName = 'createWindowTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1936,11 +1936,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_CREATEWINDOW_JSAPI_007
-     * @tc.name Test createWindowTest7
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0120
+     * @tc.name testCreateWindow_Not_Exist_WinType_Callback
      * @tc.desc Verify the scenario of creating a window of a type that does not exist
      */
-    it('createWindowTest7', 0, done => {
+    it('testCreateWindow_Not_Exist_WinType_Callback', 0, done => {
       let caseName = 'createWindowTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1970,11 +1970,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_001
-     * @tc.name Test setWindowLayoutFullScreenTest1
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1770
+     * @tc.name testSetWindowLayoutFullScreen_True_Promise
      * @tc.desc set the property of the window can layout in full screen
      */
-    it('setWindowLayoutFullScreenTest1', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_True_Promise', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -2011,11 +2011,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_002
-     * @tc.name Test setWindowLayoutFullScreenTest2
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1780
+     * @tc.name testSetWindowLayoutFullScreen_False_Promise
      * @tc.desc set the property of the window can layout in full screen
      */
-    it('setWindowLayoutFullScreenTest2', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_False_Promise', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -2051,11 +2051,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_003
-     * @tc.name Test setWindowLayoutFullScreenTest3
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1790
+     * @tc.name testSetWindowLayoutFullScreen_True_Callback
      * @tc.desc set the property of the window can layout in full screen
      */
-    it('setWindowLayoutFullScreenTest3', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_True_Callback', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -2100,11 +2100,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_004
-     * @tc.name Test setWindowLayoutFullScreenTest4
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
+     * @tc.name testSetWindowLayoutFullScreen_False_Callback
      * @tc.desc set the property of the window can layout in full screen
      */
-    it('setWindowLayoutFullScreenTest4', 0, async function (done) {
+    it('testSetWindowLayoutFullScreen_False_Callback', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
@@ -2149,196 +2149,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       ;
     })
     /**
-     * @tc.number SUB_WINDOW_SETWINDOWMODE_JSAPI_001
-     * @tc.name Test setWindowModeTest1
-     * @tc.desc Test window.setWindowMode API function test.
-     */
-    it('setWindowModeTest1', 0, async function (done) {
-      let windowModeArr = ['FULLSCREEN', 'PRIMARY', 'SECONDARY', 'FLOATING','FULLSCREEN']
-      let caseName = 'setWindowModeTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount = 0
-      let baseWndType = 1;
-      let windowId = 'setWindowModeTest1';
-      let windowConfig = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
-      let tempWnd;
-      try {
-       tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          console.info(msgStr + 'fail createWindow. Data: ' + JSON.stringify(err));
-        })
-        expect(!!tempWnd).assertTrue();
-        console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(windowModeArr))
-        for(let i=0;i<windowModeArr.length;i++){
-          let tempType = ohosWindow.WindowMode[windowModeArr[i]];
-          console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start current step:' + i);
-          try {
-            await tempWnd.setWindowMode(tempType).then(() => {
-              console.info(msgStr + 'Succeeded in setting the window mode. current tempType:' + tempType);
-              console.info(msgStr + 'Succeeded in setting the window mode. current step:' + i);
-              if(i == windowModeArr.length-1){
-                console.info(msgStr + 'finished in setting the window mode. current step:' + i);
-                done()
-              }
-            }).catch((err) => {
-              console.log(msgStr + 'currentType: ' + tempType)
-              console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-              expect().assertFail();
-              done();
-            });
-          } catch (exception) {
-            console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-          }
-          ;
-        }
-        await tempWnd.destroyWindow()
-      } catch (exception) {
-        console.error('try catch Failed to obtain the getMainWindowSync. Cause: ' + JSON.stringify(exception));
-      }
-      ;
-    })
-    /**
-     * @tc.number SUB_WINDOW_SETWINDOWMODE_JSAPI_002
-     * @tc.name Test setWindowModeTest2
-     * @tc.desc Verify the scenario where the normal window mode is set
-     */
-    it('setWindowModeTest2', 0, async function (done) {
-      let windowModeArr = ['FULLSCREEN', 'PRIMARY', 'SECONDARY', 'FLOATING','FULLSCREEN']
-      let caseName = 'setWindowModeTest2';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount = 0
-      let baseWndType = 1;
-      let windowId = 'setWindowModeTest2';
-      let windowConfig = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
-      let wnd;
-      try {
-        wnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          console.info(msgStr + 'fail createWindow. Data: ' + JSON.stringify(err));
-        })
-        expect(!!wnd).assertTrue();
-
-        function setWindowModeFun(tempType,i){
-          console.log(msgStr + 'tempWnd.setWindowMode tempType:' + tempType + ' begin i:' + i);
-          return new Promise((resolve,reject)=>{
-            try {
-              wnd.setWindowMode(tempType, (err, data) => {
-                if (err && err.code) {
-                  console.log(msgStr + 'currentType: ' + tempType)
-                  console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-                  try {
-                    expect().assertFail();
-                  } catch (err) {
-                    console.log(msgStr + 'assertFail catch' + JSON.stringify(err));
-                  }
-                  done();
-                  reject(false)
-                }
-                resolve(true)
-                console.log(msgStr + 'tempWnd.setWindowMode tempType:' + tempType + ' successed i:' + i);
-              })
-            } catch (exception) {
-              console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-            }
-          })
-        }
-        for(let i=0;i<windowModeArr.length;i++){
-          let tempType = ohosWindow.WindowMode[windowModeArr[i]];
-          await setWindowModeFun(tempType,i);
-          if(i==windowModeArr.length-1){
-            console.log(msgStr + 'tempWnd.setWindowMode tempType:' + tempType + ' finished i:' + i);
-            await wnd.destroyWindow()
-            done()
-          }
-        }
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
-      }
-      ;
-    })
-    /**
-     * @tc.number SUB_WINDOW_SETWINDOWMODE_JSAPI_003
-     * @tc.name Test setWindowModeTest3
-     * @tc.desc Test window.setWindowMode API function test.
-     */
-    it('setWindowModeTest3', 0, async function (done) {
-      let caseName = 'setWindowModeTest3';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let windowId = 'setWindowModeTest3';
-      let windowConfig = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
-      let tempWnd;
-      try {
-        tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          console.info(msgStr + 'fail createWindow. Data: ' + JSON.stringify(err));
-        })
-        expect(!!tempWnd).assertTrue();
-        await tempWnd.setWindowMode(ohosWindow.WindowMode.UNDEFINED).catch(async (err) => {
-          console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-          expect(err.code == 1300002).assertTrue();
-          await tempWnd.destroyWindow()
-          console.log(msgStr + 'tempWnd.setWindowMode failed ' + 'finished');
-          done();
-        });
-      } catch (exception) {
-        console.error('try catch Failed to obtain the getMainWindowSync. Cause: ' + JSON.stringify(exception));
-      }
-      ;
-    })
-    /**
-     * @tc.number SUB_WINDOW_SETWINDOWMODE_JSAPI_004
-     * @tc.name Test setWindowModeTest4
-     * @tc.desc Verify the scenario where the normal window mode is set
-     */
-    it('setWindowModeTest4', 0, async function (done) {
-      let caseName = 'setWindowModeTest4';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let windowId = 'setWindowModeTest4';
-      let windowConfig = {
-        name: windowId, windowType: baseWndType, ctx: context
-      };
-      let wnd;
-      try {
-        wnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          console.info(msgStr + 'fail createWindow. Data: ' + JSON.stringify(err));
-        })
-        expect(!!wnd).assertTrue();
-        let tempType =ohosWindow.WindowMode.UNDEFINED;
-        try {
-          wnd.setWindowMode(tempType, async (err, data) => {
-            if (err && err.code) {
-              console.log(msgStr + 'currentType: ' + tempType)
-              console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-              try {
-                expect(err.code == 1300002).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
-              }
-              await wnd.destroyWindow()
-              done();
-            } else {
-              console.info(msgStr + 'Succeeded in setting the window mode');
-            }
-          })
-        } catch (exception) {
-          console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-        };
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
-    })
-
-    /**
-     * @tc.number SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPERENAME_JSAPI_001
-     * @tc.name Test enumWindowStageEventTypeReName_Test_001.
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2300
+     * @tc.name testEnumWindowStageEventTypeReName_Test_001.
      * @tc.desc To test the enum value of WindowStageEventType.
      */
-    it('enumWindowStageEventTypeReName_Test_001', 0, async function (done) {
+    it('testEnumWindowStageEventTypeReName_Test_001', 0, async function (done) {
       console.info('test the enum value of WindowStageEventType begin');
       try {
         expect(1).assertEqual(ohosWindow.WindowStageEventType.SHOWN);

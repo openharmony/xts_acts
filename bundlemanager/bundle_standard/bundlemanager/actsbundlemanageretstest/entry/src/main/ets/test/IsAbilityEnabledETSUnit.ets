@@ -57,16 +57,16 @@ export default function isAbilityEnabledETSUnit() {
     describe('isAbilityEnabled_test', function () {
 
         /*
-         * @tc.number: isAbilityEnabled_test_0100
+         * @tc.number: Sub_Bms_Framework_Status_AbilityEnable_5400
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface
          */
-        it('isAbilityEnabled_test_0100', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5400', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Status_AbilityEnable_5400]', timeOldStamp, timeNewStamp);
                 expect(data).assertTrue();
             }).catch((error) => {
                 expect(error).assertFail();
@@ -77,18 +77,18 @@ export default function isAbilityEnabledETSUnit() {
                     expect(error).assertFail();
                 }
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[Sub_Bms_Framework_Status_AbilityEnable_5400]', timeOldStamp, timeNewStamp);
                 expect(data).assertTrue();
                 done();
             });
         });
 
         /*
-         * @tc.number: isAbilityEnabled_test_0200
+         * @tc.number: Sub_Bms_Framework_Status_AbilityEnable_5300
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
-        it('isAbilityEnabled_test_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5300', 0, async function (done) {
             let abilityInfo1 = generateAbilityInfoForTest(ABILITY_ERROR1.bundleName,ABILITY_ERROR1.name);
             let abilityInfo2 = generateAbilityInfoForTest(ABILITY_ERROR2.bundleName,ABILITY_ERROR2.name);
             let abilityInfo3 = generateAbilityInfoForTest(ABILITY_ERROR3.bundleName,ABILITY_ERROR3.name);
@@ -133,11 +133,11 @@ export default function isAbilityEnabledETSUnit() {
         });
 
         /*
-         * @tc.number: isAbilityEnabled_test_0300
+         * @tc.number: Sub_Bms_Framework_Status_AbilityEnable_5200
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
-        it('isAbilityEnabled_test_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5200', 0, async function (done) {
             let abilityInfo4 = generateAbilityInfoForTest(ABILITY_ERROR4.bundleName,ABILITY_ERROR4.name);
             let abilityInfo5 = generateAbilityInfoForTest(ABILITY_ERROR5.bundleName,ABILITY_ERROR5.name);
             let abilityInfo6 = generateAbilityInfoForTest(ABILITY_ERROR6.bundleName,ABILITY_ERROR6.name);
@@ -172,11 +172,11 @@ export default function isAbilityEnabledETSUnit() {
         });
 
         /*
-         * @tc.number: isAbilityEnabled_test_0400
+         * @tc.number: Sub_Bms_Framework_Status_AbilityEnable_5500
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
          * @tc.desc: Check the return value of the interface
          */
-        it('isAbilityEnabled_test_0400', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_AbilityEnable_5500', 0, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_OTHER,ABILITY_NAME_OTHER);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 expect(data).assertTrue();

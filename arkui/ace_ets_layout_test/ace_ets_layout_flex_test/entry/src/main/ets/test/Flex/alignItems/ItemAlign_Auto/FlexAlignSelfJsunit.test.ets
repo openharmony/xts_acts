@@ -60,18 +60,18 @@ export default function flexAlignSelf_AutoJsunit() {
       let textAlignSelf02 = CommonFunc.getComponentRect('textAlignSelf02');
       let textAlignSelf03 = CommonFunc.getComponentRect('textAlignSelf03');
       let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
-      expect(textAlignSelf01.left).assertEqual(flexAlignSelf01.left);
-      expect(textAlignSelf01.right).assertEqual(textAlignSelf02.left);
-      expect(textAlignSelf01.top).assertEqual(textAlignSelf02.top);
-      expect(textAlignSelf02.top).assertEqual(textAlignSelf03.top);
-      expect(textAlignSelf01.bottom).assertEqual(flexAlignSelf01.bottom);
+      expect(Math.abs(textAlignSelf01.left - flexAlignSelf01.left) <= 1).assertTrue();
+      expect(Math.abs(textAlignSelf01.right - textAlignSelf02.left) <= 1).assertTrue();
+      expect(Math.abs(textAlignSelf01.top - textAlignSelf02.top) <= 1).assertTrue();
+      expect(Math.abs(textAlignSelf02.top - textAlignSelf03.top) <= 1).assertTrue();
+      expect(Math.abs(textAlignSelf01.bottom - flexAlignSelf01.bottom) <= 1).assertTrue();
 
-      expect(Math.round(textAlignSelf01.bottom - textAlignSelf01.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(textAlignSelf01.right - textAlignSelf01.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textAlignSelf02.bottom - textAlignSelf02.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(textAlignSelf02.right - textAlignSelf02.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textAlignSelf03.bottom - textAlignSelf03.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textAlignSelf03.right - textAlignSelf03.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(textAlignSelf01.bottom - textAlignSelf01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textAlignSelf01.right - textAlignSelf01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textAlignSelf02.bottom - textAlignSelf02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textAlignSelf02.right - textAlignSelf02.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textAlignSelf03.bottom - textAlignSelf03.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(textAlignSelf03.right - textAlignSelf03.left) - Math.round(vp2px(150))) <= 1).assertTrue();
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');

@@ -205,7 +205,7 @@ export default function imageSvg() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_0100
          * @tc.name      : createPixelMap - promise
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -215,7 +215,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -225,12 +225,12 @@ export default function imageSvg() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_0100", "test_large.svg", decodeOpts,
+            createPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_0100", "test_large.svg", decodeOpts,
                 packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_0100
          * @tc.name      : createPixelMap - callback
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -240,7 +240,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_0100", 0, async function (done) {
             let decodeOpts = {
                 sampleSize: 1,
                 editable: true,
@@ -250,12 +250,12 @@ export default function imageSvg() {
                 index: 0,
             };
             let packOpts = { format: ["image/webp"], quality: 100 };
-            createPixelMapCallBack(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_0100", "test_large.svg", decodeOpts,
+            createPixelMapCallBack(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_0100", "test_large.svg", decodeOpts,
                 packingPromise, packOpts);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0100
          * @tc.name      : createPixelMap - callback-sampleSize: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -264,7 +264,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0100", 0, async function (done) {
             let decodingOption = {
                 sampleSize: -1,
                 editable: true,
@@ -274,12 +274,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0100", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0100", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0200
          * @tc.name      : createPixelMap - callback-index: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -288,7 +288,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0200", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -298,12 +298,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: -1,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0200", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0200", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0300
          * @tc.name      : createPixelMap - callback-rotate: 500
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -312,7 +312,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0300", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -322,12 +322,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0300", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0300", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0400
          * @tc.name      : createPixelMap - callback-desiredPixelFormat: 33
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -336,7 +336,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0400", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: false,
@@ -346,12 +346,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0400", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0400", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0500
          * @tc.name      : createPixelMap - callback-{x: 10000, y: 0 }
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -360,7 +360,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0500", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -370,12 +370,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 0 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0500", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0500", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0600
          * @tc.name      : createPixelMap - callback-{x: 0, y: 10000 }
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -384,7 +384,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0600", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -394,12 +394,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 10000 },
                 index: 0,
             };
-            await createPixelMapCallBackErr(done, "SUB_GRAPHIC_IMAGE_SVG_CALLBACK_ERR_0600", "test_large.svg",
+            await createPixelMapCallBackErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0600", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0100
          * @tc.name      : createPixelMap - promise-sampleSize: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -408,7 +408,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0100", 0, async function (done) {
             let decodingOption = {
                 sampleSize: -1,
                 editable: true,
@@ -418,12 +418,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0100", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0100", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0200
          * @tc.name      : createPixelMap - promise-index: -1
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -432,7 +432,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0200", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -442,12 +442,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: -1,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0200", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0200", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0300
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0300
          * @tc.name      : createPixelMap - promise-rotate: 500
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -456,7 +456,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0300", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -466,12 +466,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0300", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0300", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0400
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0400
          * @tc.name      : createPixelMap - promise-desiredPixelFormat: 33
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -480,7 +480,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0400", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: false,
@@ -490,12 +490,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0400", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0400", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0500
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0500
          * @tc.name      : createPixelMap - promise-{x: 10000, y: 0}
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -504,7 +504,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0500", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -514,12 +514,12 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 0 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0500", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0500", "test_large.svg",
                 decodingOption);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0600
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0600
          * @tc.name      : createPixelMap - promise-{x: 0, y: 10000}
          * @tc.desc      : 1.create imagesource
          *                 2.set DecodeOptions
@@ -528,7 +528,7 @@ export default function imageSvg() {
          * @tc.type      : Functional
          * @tc.level     : Level 3
          */
-        it("SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0600", 0, async function (done) {
             let decodingOption = {
                 sampleSize: 1,
                 editable: true,
@@ -538,7 +538,7 @@ export default function imageSvg() {
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 10000 },
                 index: 0,
             };
-            await createPixelMapPromiseErr(done, "SUB_GRAPHIC_IMAGE_SVG_PROMISE_ERR_0600", "test_large.svg",
+            await createPixelMapPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0600", "test_large.svg",
                 decodingOption);
         });
     });

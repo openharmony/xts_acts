@@ -15,50 +15,10 @@
 
 <div class="container">
     <div class="prop-container">
-        <text class="title">
-            picker-view通用属性
-        </text>
 
-        <text class="sub-title">
-            渲染属性 -- for
-        </text>
         <picker-view id="forPropNull"
              for="">
         </picker-view>
-        <picker-view id="forPropOne"
-             for="{{listOne}}">
-        </picker-view>
-        <picker-view id="forPropThree"
-             for="{{listThree}}">
-        </picker-view>
 
-        <text class="sub-title">
-            渲染属性 -- if
-        </text>
-        <picker-view id="ifPropTrue"
-             if="true">
-        </picker-view>
-        <picker-view id="ifPropTrue"
-                     elif="true">
-        </picker-view>
-        <picker-view id="ifPropTrue"
-                     elif="false">
-        </picker-view>
-        <picker-view id="ifPropTrue"
-                     elif="">
-        </picker-view>
-
-        <text class="sub-title">
-            渲染属性 -- show
-        </text>
-        <picker-view id="showPropTrue"
-             show="true">
-        </picker-view>
-        <picker-view id="showPropFalse"
-             show="false">
-        </picker-view>
-        <picker-view id="showPropNone"
-             show="">
-        </picker-view>
     </div>
 </div>

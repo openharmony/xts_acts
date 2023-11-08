@@ -43,7 +43,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /**
-        * @tc.number    getApplicationInfos_1300
+        * @tc.number    Sub_Bms_Framework_Query_AppInfo_1080
         * @tc.name      getApplicationInfosUnPermission
         * @tc.desc      test getAllApplicationInfo 
         */
@@ -61,7 +61,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /**
-        * @tc.number    getBundleInfo_2000
+        * @tc.number    Sub_Bms_Framework_Query_AppInfo_2340
         * @tc.name      getBundleInfoUnPermission
         * @tc.desc      test getBundleInfo
         */
@@ -79,7 +79,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /**
-        * @tc.number    getApplicationInfo_1800
+        * @tc.number    Sub_Bms_Framework_Query_AppInfo_0540
         * @tc.name      getApplicationInfoUnPermission
         * @tc.desc      test getApplicationInfo 
         */
@@ -97,7 +97,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: SUB_BMS_HAP_STATUS_0011
+         * @tc.number: Sub_Bms_Framework_Status_Query_1100
          * @tc.name: hasInstalledUnPermissionSelf
          * @tc.desc: test hasInstalled without permission
         */
@@ -123,7 +123,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: SUB_BMS_HAP_STATUS_0012
+         * @tc.number: Sub_Bms_Framework_Status_Query_1200
          * @tc.name: hasInstalledUnPermissionOther
          * @tc.desc: test hasInstalled without permission
         */
@@ -149,7 +149,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
+         * @tc.number: Sub_Bms_Framework_Query_Icon_0600
          * @tc.name: getAbilityIconUnPermission
          * @tc.desc: test getAbilityIcon without permission
         */
@@ -166,7 +166,7 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: SUB_BMS_APPINFO_GETABILITYINFO_0008
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2580
          * @tc.name: getAbilityInfoUnPermissionSelf
          * @tc.desc: test getAbilityInfo
         */

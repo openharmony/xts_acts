@@ -131,7 +131,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0100
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0001', 0, async function (done) {
@@ -149,7 +149,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0011
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0200
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0002', 0, async function (done) {
@@ -167,7 +167,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0012
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0300
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0003', 0, async function (done) {
@@ -185,7 +185,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0013
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0400
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0004', 0, async function (done) {
@@ -203,7 +203,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0014
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0500
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0005', 0, async function (done) {
@@ -221,7 +221,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0015
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0600
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0006', 0, async function (done) {
@@ -239,7 +239,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0016
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0700
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0007', 0, async function (done) {
@@ -257,7 +257,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0017
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0800
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0008', 0, async function (done) {
@@ -276,7 +276,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0900
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0001', 0, async function (done) {
@@ -294,7 +294,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0021
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1000
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0002', 0, async function (done) {
@@ -313,7 +313,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0022
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1100
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0003', 0, async function (done) {
@@ -331,7 +331,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0023
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1200
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0004', 0, async function (done) {
@@ -349,7 +349,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0024
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1300
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0005', 0, async function (done) {
@@ -367,7 +367,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0025
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1400
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0006', 0, async function (done) {
@@ -385,7 +385,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0026
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1500
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0007', 0, async function (done) {
@@ -403,7 +403,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0027
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1600
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0008', 0, async function (done) {
@@ -421,7 +421,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1700
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0001', 0, async function (done) {
@@ -437,7 +437,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0031
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1800
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0002', 0, async function (done) {
@@ -453,7 +453,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0032
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_1900
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0003', 0, async function (done) {
@@ -469,7 +469,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0033
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2000
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0004', 0, async function (done) {
@@ -485,7 +485,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2100
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0001', 0, async function (done) {
@@ -501,7 +501,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0041
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2200
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0002', 0, async function (done) {
@@ -517,7 +517,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0042
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2300
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0003', 0, async function (done) {
@@ -533,7 +533,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0043
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2400
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0004', 0, async function (done) {
@@ -549,7 +549,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2500
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0001', 0, async function (done) {
@@ -567,7 +567,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0051
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2600
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0002', 0, async function (done) {
@@ -585,7 +585,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0052
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2700
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0003', 0, async function (done) {
@@ -603,7 +603,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0053
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2800
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0004', 0, async function (done) {
@@ -621,7 +621,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0054
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_2900
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0005', 0, async function (done) {
@@ -639,7 +639,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0055
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3000
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0006', 0, async function (done) {
@@ -657,7 +657,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0056
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3100
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0007', 0, async function (done) {
@@ -675,7 +675,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0057
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3200
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0008', 0, async function (done) {
@@ -693,7 +693,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3300
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0001', 0, async function (done) {
@@ -711,7 +711,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0061
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3400
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0002', 0, async function (done) {
@@ -729,7 +729,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0062
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3500
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0003', 0, async function (done) {
@@ -747,7 +747,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0063
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3600
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0004', 0, async function (done) {
@@ -765,7 +765,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0070
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3700
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0001', 0, async function (done) {
@@ -783,7 +783,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0071
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3800
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0002', 0, async function (done) {
@@ -801,7 +801,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0072
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_3900
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0003', 0, async function (done) {
@@ -819,7 +819,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0073
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4000
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0004', 0, async function (done) {
@@ -837,7 +837,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0074
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4100
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0005', 0, async function (done) {
@@ -855,7 +855,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0075
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4200
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0006', 0, async function (done) {
@@ -873,7 +873,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0076
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4300
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0007', 0, async function (done) {
@@ -891,7 +891,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0077
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4400
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0008', 0, async function (done) {
@@ -909,7 +909,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0080
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4500
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0001', 0, async function (done) {
@@ -927,7 +927,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0081
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4600
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0002', 0, async function (done) {
@@ -945,7 +945,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0082
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4700
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0003', 0, async function (done) {
@@ -963,7 +963,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0083
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4800
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0004', 0, async function (done) {
@@ -981,7 +981,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0090
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_4900
      * @tc.desc predicates between normal test
      */
     it('testBetween0001', 0, async function (done) {
@@ -999,7 +999,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0091
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5000
      * @tc.desc predicates between normal test
      */
     it('testBetween0002', 0, async function (done) {
@@ -1017,7 +1017,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0092
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5100
      * @tc.desc predicates between normal test
      */
     it('testBetween0003', 0, async function (done) {
@@ -1035,7 +1035,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0093
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5200
      * @tc.desc predicates between normal test
      */
     it('testBetween0004', 0, async function (done) {
@@ -1053,7 +1053,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0094
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5300
      * @tc.desc predicates between normal test
      */
     it('testBetween0005', 0, async function (done) {
@@ -1071,7 +1071,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0095
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5400
      * @tc.desc predicates between normal test
      */
     it('testBetween0006', 0, async function (done) {
@@ -1089,7 +1089,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0096
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5500
      * @tc.desc predicates between normal test
      */
     it('testBetween0007', 0, async function (done) {
@@ -1107,7 +1107,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0097
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5600
      * @tc.desc predicates between normal test
      */
     it('testBetween0008', 0, async function (done) {
@@ -1125,7 +1125,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0001
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0230
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5700
      * @tc.desc test string value with notBetween.
      */
     it('testNotBetween0001', 0, async function (done) {
@@ -1144,7 +1144,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0002
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0231
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_5800
      * @tc.desc test double value with notBetween.
      */
     it('testNotBetween0002', 0, async function (done) {
@@ -1163,7 +1163,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0003
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0232
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_59002
      * @tc.desc test integer value with notBetween.
      */
     it('testNotBetween0003', 0, async function (done) {
@@ -1182,7 +1182,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0004
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0233
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6000
      * @tc.desc test long value with notBetween.
      */
     it('testNotBetween0004', 0, async function (done) {
@@ -1201,7 +1201,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0001
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0240
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6100
      * @tc.desc end with ? by glob.
      */
     it('testGlob0001', 0, async function (done) {
@@ -1220,7 +1220,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0002
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0241
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6200
      * @tc.desc begin with * by glob.
      */
     it('testGlob0002', 0, async function (done) {
@@ -1239,7 +1239,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0003
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0242
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6300
      * @tc.desc end with ? by glob.
      */
     it('testGlob0003', 0, async function (done) {
@@ -1258,7 +1258,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0004
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0243
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6400
      * @tc.desc begin with ? by glob.
      */
     it('testGlob0004', 0, async function (done) {
@@ -1277,7 +1277,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0005
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0244
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6500
      * @tc.desc begin and end with * by glob.
      */
     it('testGlob0005', 0, async function (done) {
@@ -1296,7 +1296,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0006
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0245
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6600
      * @tc.desc begin and end with ? by glob.
      */
     it('testGlob0006', 0, async function (done) {
@@ -1315,7 +1315,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6700
      * @tc.desc predicates contains normal test
      */
     it('testContains0001', 0, async function (done) {
@@ -1331,7 +1331,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0101
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6800
      * @tc.desc predicates contains normal test
      */
     it('testContains0002', 0, async function (done) {
@@ -1347,7 +1347,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0102
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_6900
      * @tc.desc predicates contains normal test
      */
     it('testContains0003', 0, async function (done) {
@@ -1363,7 +1363,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0103
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7000
      * @tc.desc predicates contains normal test
      */
     it('testContains0004', 0, async function (done) {
@@ -1379,7 +1379,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0110
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7100
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0001', 0, async function (done) {
@@ -1395,7 +1395,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0111
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7200
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0002', 0, async function (done) {
@@ -1411,7 +1411,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0112
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7300
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0003', 0, async function (done) {
@@ -1427,7 +1427,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0113
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7400
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0004', 0, async function (done) {
@@ -1443,7 +1443,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0120
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7500
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0001', 0, async function (done) {
@@ -1459,7 +1459,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0121
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7600
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0002', 0, async function (done) {
@@ -1475,7 +1475,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0122
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7700
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0003', 0, async function (done) {
@@ -1491,7 +1491,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0123
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7800
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0004', 0, async function (done) {
@@ -1507,7 +1507,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0130
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_7900
      * @tc.desc predicates like normal test
      */
     it('testLike0001', 0, async function (done) {
@@ -1523,7 +1523,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0131
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8000
      * @tc.desc predicates like normal test
      */
     it('testLike0002', 0, async function (done) {
@@ -1539,7 +1539,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0132
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8100
      * @tc.desc predicates like normal test
      */
     it('testLike0003', 0, async function (done) {
@@ -1555,7 +1555,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0133
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8200
      * @tc.desc predicates like normal test
      */
     it('testLike0004', 0, async function (done) {
@@ -1571,7 +1571,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0140
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8300
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0001', 0, async function (done) {
@@ -1594,7 +1594,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0141
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8400
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0002', 0, async function (done) {
@@ -1615,7 +1615,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0142
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8500
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0003', 0, async function (done) {
@@ -1636,7 +1636,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0143
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8600
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0004', 0, async function (done) {
@@ -1656,7 +1656,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0144
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8700
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0005', 0, async function (done) {
@@ -1676,7 +1676,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0150
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8800
      * @tc.desc predicates and normal test
      */
     it('testAnd0001', 0, async function (done) {
@@ -1696,7 +1696,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates or normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0151
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_8900
      * @tc.desc predicates or normal test
      */
     it('testAnd0002', 0, async function (done) {
@@ -1719,7 +1719,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0152
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9000
      * @tc.desc predicates and normal test
      */
     it('testAnd0003', 0, async function (done) {
@@ -1737,7 +1737,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0153
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9100
      * @tc.desc predicates and normal test
      */
     it('testAnd0004', 0, async function (done) {
@@ -1756,7 +1756,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0160
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9200
      * @tc.desc predicates order normal test
      */
     it('testOrder0001', 0, async function (done) {
@@ -1780,7 +1780,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0161
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9300
      * @tc.desc predicates order normal test
      */
     it('testOrder0002', 0, async function (done) {
@@ -1804,7 +1804,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0162
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9400
      * @tc.desc predicates order normal test
      */
     it('testOrder0003', 0, async function (done) {
@@ -1822,7 +1822,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0163
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9500
      * @tc.desc predicates order normal test
      */
     it('testOrder0004', 0, async function (done) {
@@ -1840,7 +1840,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0170
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9600
      * @tc.desc predicates limit normal test
      */
     it('testLimit0001', 0, async function (done) {
@@ -1856,7 +1856,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0171
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9700
      * @tc.desc predicates limit normal test
      */
     it('testLimit0002', 0, async function (done) {
@@ -1872,7 +1872,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0172
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9800
      * @tc.desc predicates limit normal test
      */
     it('testLimit0003', 0, async function (done) {
@@ -1888,7 +1888,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0173
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_9900
      * @tc.desc predicates limit normal test
      */
     it('testLimit0004', 0, async function (done) {
@@ -1904,7 +1904,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0174
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0110
      * @tc.desc predicates limit normal test
      */
     it('testLimit0005', 0, async function (done) {
@@ -1920,7 +1920,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0175
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0120
      * @tc.desc predicates limit normal test
      */
     it('testLimit0006', 0, async function (done) {
@@ -1936,7 +1936,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0180
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0130
      * @tc.desc predicates offset normal test
      */
     it('testOffset0001', 0, async function (done) {
@@ -1952,7 +1952,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0181
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0140
      * @tc.desc predicates offset normal test
      */
     it('testOffset0002', 0, async function (done) {
@@ -1968,7 +1968,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0182
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0150
      * @tc.desc predicates offset normal test
      */
     it('testOffset0003', 0, async function (done) {
@@ -1984,7 +1984,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0183
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0160
      * @tc.desc predicates offset normal test
      */
     it('testOffset0004', 0, async function (done) {
@@ -2000,7 +2000,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0190
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0170
      * @tc.desc predicates in normal test
      */
     it('testIn0001', 0, async function (done) {
@@ -2016,7 +2016,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0191
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0180
      * @tc.desc predicates in normal test
      */
     it('testIn0002', 0, async function (done) {
@@ -2032,7 +2032,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0192
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0190
      * @tc.desc predicates in normal test
      */
     it('testIn0003', 0, async function (done) {
@@ -2048,7 +2048,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0193
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0210
      * @tc.desc predicates in normal test
      */
     it('testIn0004', 0, async function (done) {
@@ -2063,8 +2063,8 @@ describe('rdbPredicatesTest', function () {
     })
 
     /**
-     * @tc.name testNotIn0001
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0250
+     * @tc.name predicates in normal test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0220
      * @tc.desc the common and min value test with notin.
      */
     it('testNotIn0001', 0, async function (done) {
@@ -2081,7 +2081,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0002
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0251
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0230
      * @tc.desc the common and max value test with notin.
      */
     it('testNotIn0002', 0, async function (done) {
@@ -2098,7 +2098,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0003
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0252
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0240
      * @tc.desc the min and max value test with notin.
      */
     it('testNotIn0003', 0, async function (done) {
@@ -2115,7 +2115,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates constructor test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0250
      * @tc.desc predicates constructor test
      */
     it('testCreate0001', 0, async function (done) {
@@ -2129,7 +2129,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates constructor test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0201
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0260
      * @tc.desc predicates constructor test
      */
     it('testCreate0002', 0, async function (done) {
@@ -2143,7 +2143,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates groupBy test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0210
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0270
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0001', 0, async function (done) {
@@ -2159,7 +2159,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates groupBy test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0211
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0280
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0002', 0, async function (done) {
@@ -2175,7 +2175,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
 	 * @tc.name predicates indexedBy test
-	 * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0220
+	 * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0290
 	 * @tc.desc predicates indexedBy test
 	 */
 	it('testIndexedBy0001', 0, async function (done) {
@@ -2196,7 +2196,7 @@ describe('rdbPredicatesTest', function () {
 
 	/**
 	 * @tc.name predicates indexedBy test
-	 * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0221
+	 * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0310
 	 * @tc.desc predicates indexedBy test
 	 */
 	it('testIndexedBy0002', 0, async function (done) {
@@ -2217,7 +2217,7 @@ describe('rdbPredicatesTest', function () {
 
 	/**
 	 * @tc.name predicates indexedBy test
-	 * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0222
+	 * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0320
 	 * @tc.desc predicates indexedBy test
 	 */
 	it('testIndexedBy0003', 0, async function (done) {
@@ -2238,7 +2238,7 @@ describe('rdbPredicatesTest', function () {
 
 	/**
 	 * @tc.name predicates indexedBy test
-	 * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0223
+	 * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0330
 	 * @tc.desc predicates indexedBy test
 	 */
 	it('testIndexedBy0004', 0, async function (done) {

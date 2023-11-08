@@ -28,7 +28,7 @@ export default function PublicApiEightTest() {
   describe('PublicApiEightTest', function () {
 
     /*
-     * @tc.number: SUB_BMS_SYSTEMAPI_RUNNING_0083
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7980
      * @tc.name:  getBundleInfoTest
      * @tc.desc: Test getBundleInfo of API8 in version9 normal project
      */
@@ -50,7 +50,7 @@ export default function PublicApiEightTest() {
     });
 
     /*
-     * @tc.number: SUB_BMS_SYSTEMAPI_RUNNING_0084
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_8340
      * @tc.name:  getAbilityInfoTest
      * @tc.desc: Test getAbilityInfo of API8 in version9 normal project
      */
@@ -72,7 +72,7 @@ export default function PublicApiEightTest() {
     });
 
     /*
-     * @tc.number: SUB_BMS_SYSTEMAPI_RUNNING_0085
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_8000
      * @tc.name:  getApplicationInfoTest
      * @tc.desc: Test getApplicationInfo of API8 in version9 normal project
      */
@@ -93,7 +93,7 @@ export default function PublicApiEightTest() {
       });
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0086
+      * @tc.number Sub_Bms_Framework_Query_AbilityInfo_8360
       * @tc.name queryAbilityByWantTest
       * @tc.desc Test queryAbilityByWant of API8 in version9 normal project
       */
@@ -123,7 +123,7 @@ export default function PublicApiEightTest() {
       })
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0087
+      * @tc.number Sub_Bms_Framework_Query_AppInfo_8020
       * @tc.name getAllBundleInfoTest
       * @tc.desc Test getAllBundleInfo of API8 in version9 normal project
       */
@@ -145,7 +145,7 @@ export default function PublicApiEightTest() {
       })
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0088
+      * @tc.number Sub_Bms_Framework_Query_AppInfo_8040
       * @tc.name getAllApplicationInfoTest
       * @tc.desc Test getAllApplicationInfo of API8 in version9 normal project
       */
@@ -167,7 +167,7 @@ export default function PublicApiEightTest() {
       })
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0089
+      * @tc.number Sub_Bms_Framework_Query_AppInfo_8060
       * @tc.name getNameForUidTest
       * @tc.desc Test getNameForUid of API8 in version9 normal project
       */
@@ -187,7 +187,7 @@ export default function PublicApiEightTest() {
       });
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0090
+      * @tc.number Sub_Bms_Framework_Query_AppInfo_8080
       * @tc.name getBundleArchiveInfoTest
       * @tc.desc Test getBundleArchiveInfo of API8 in version9 normal project
       */
@@ -209,7 +209,7 @@ export default function PublicApiEightTest() {
       })
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0091
+      * @tc.number Sub_Bms_Framework_Query_AbilityInfo_8380
       * @tc.name getLaunchWantForBundleTest
       * @tc.desc Test getLaunchWantForBundle of API8 in version9 normal project
       */
@@ -231,7 +231,7 @@ export default function PublicApiEightTest() {
       });
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0092
+      * @tc.number Sub_Bms_Framework_Query_Label_5300
       * @tc.name getAbilityLabelTest
       * @tc.desc Test getAbilityLabel of API8 in version9 normal project
       */
@@ -252,7 +252,7 @@ export default function PublicApiEightTest() {
       });
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0093
+      * @tc.number Sub_Bms_Framework_Query_Icon_4100
       * @tc.name getAbilityIconTest
       * @tc.desc Test getAbilityIcon of API8 in version9 normal project
       */
@@ -273,7 +273,7 @@ export default function PublicApiEightTest() {
       });
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0094
+      * @tc.number Sub_Bms_Framework_Status_AbilityEnable_7600
       * @tc.name isAbilityEnabledTest
       * @tc.desc Test isAbilityEnabled of API8 in version9 normal project
       */
@@ -292,7 +292,7 @@ export default function PublicApiEightTest() {
       })
 
       /**
-      * @tc.number SUB_BMS_SYSTEMAPI_RUNNING_0095
+      * @tc.number Sub_Bms_Framework_Status_AppEnable_4300
       * @tc.name isApplicationEnabledTest
       * @tc.desc Test isApplicationEnabled of API8 in version9 normal project
       */

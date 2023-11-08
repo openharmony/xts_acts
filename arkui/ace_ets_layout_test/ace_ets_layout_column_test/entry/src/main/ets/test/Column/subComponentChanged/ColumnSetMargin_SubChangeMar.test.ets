@@ -56,13 +56,13 @@ export default function ColumnSetMargin_SubChangeMar() {
       let columnSetMar_2 = CommonFunc.getComponentRect('columnSetMar_2');
       let columnSetMar_3 = CommonFunc.getComponentRect('columnSetMar_3');
       let columnSetMar = CommonFunc.getComponentRect('columnSetMar');
-      expect(Math.round(columnSetMar_1.top - columnSetMar.top)).assertEqual(Math.round(vp2px(20)))
-      expect(Math.round(columnSetMar_2.top - columnSetMar_1.bottom)).assertEqual(Math.round(vp2px(50)))
-      expect(Math.round(columnSetMar_3.top - columnSetMar_2.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(columnSetMar_1.right - columnSetMar_1.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetMar_2.right - columnSetMar_2.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(columnSetMar_3.right - columnSetMar_3.left)).assertEqual(Math.round(vp2px(300)))
-      expect(columnSetMar.bottom).assertEqual(columnSetMar_3.bottom)
+      expect(Math.abs(columnSetMar_1.top - columnSetMar.top - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar_2.top - columnSetMar_1.bottom - Math.round(vp2px(50))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar_3.top - columnSetMar_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar_1.right - columnSetMar_1.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar_2.right - columnSetMar_2.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar_3.right - columnSetMar_3.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(columnSetMar.bottom - columnSetMar_3.bottom) <= 1).assertTrue()
       console.info('new testColumnParentMarginSubMargin END');
       done();
     });

@@ -312,7 +312,6 @@ export default function continuationManagerTest() {
             console.info("----------------------testRegister007 end----------------------");
         })
 
-
         /**
          * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0800
          * @tc.name [JS-API8]ContinuationManager.register().
@@ -344,7 +343,6 @@ export default function continuationManagerTest() {
             }
             console.info("----------------------testRegister008 end----------------------");
         })
-
 
         /**
          * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0900
@@ -378,22 +376,27 @@ export default function continuationManagerTest() {
             console.info("----------------------testRegister009 end----------------------");
         })
 
-
         /**
-         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_1000
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0100
          * @tc.name [JS-API8]ContinuationManager.register().
-         * @tc.desc Test Js Api ContinuationManager.register() testcase 010
+         * @tc.desc Test Js Api ContinuationManager.register() testcase 0100
          */
         it('testRegister010', 0, async function (done) {
             console.info("----------------------testRegister010 start----------------------");
             try {
-                continuationManager.register().then((data) => {
+                continuationManager.register({
+                    deviceType: ["00E"],
+                    description: "description",
+                    filter: { "name": "authInfo", "length": 8 },
+                    continuationMode: 10,
+                    authInfo: { "name": "authInfo", "length": 8 }
+                }).then((data) => {
                     console.log('testRegister010 data is' + data);
-                    expect(data != -1).assertTrue();
+                    expect().assertFail();
                     done();
                 }).catch((err) => {
                     console.log('testRegister010 err code is' + err.code);
-                    expect().assertFail();
+                    expect(err.code == 29360216).assertTrue();
                     done();
                 });
             } catch (error) {
@@ -402,6 +405,31 @@ export default function continuationManagerTest() {
                 done();
             }
             console.info("----------------------testRegister010 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_1000
+         * @tc.name [JS-API8]ContinuationManager.register().
+         * @tc.desc Test Js Api ContinuationManager.register() testcase 010
+         */
+        it('testRegister011', 0, async function (done) {
+            console.info("----------------------testRegister011 start----------------------");
+            try {
+                continuationManager.register().then((data) => {
+                    console.log('testRegister010 data is' + data);
+                    expect(data != -1).assertTrue();
+                    done();
+                }).catch((err) => {
+                    console.log('testRegister011 err code is' + err.code);
+                    expect().assertFail();
+                    done();
+                });
+            } catch (error) {
+                console.info("testRegister011 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testRegister011 end----------------------");
         })
 
         /**
@@ -1060,6 +1088,27 @@ export default function continuationManagerTest() {
                 done();
             }
             console.info("----------------------testOn004 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_ON_0500
+         * @tc.name [JS-API8]ContinuationManager.on().
+         * @tc.desc Test Js Api ContinuationManager.on() testcase 005
+         */
+        it('testOn005', 0, async function (done) {
+            console.info("----------------------testOn005 start----------------------");
+            try {
+                continuationManager.on("deviceConnect",continuationManager.ContinuationResult, function (data) {
+                    console.info("testOn005 data is" + data);
+                    expect().assertFail();
+                    done()
+                });
+            } catch (error) {
+                console.info("testOn005 catch error is" + error);
+                expect(error.toString().includes("Parameter error")).assertTrue();
+                done();
+            }
+            console.info("----------------------testOn005 end----------------------");
         })
 
         /**

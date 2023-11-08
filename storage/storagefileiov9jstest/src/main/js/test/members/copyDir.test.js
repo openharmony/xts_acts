@@ -383,7 +383,7 @@ export default function fileIOCopyDir() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_COPYDIR_SYNC_1600
+   * @tc.number SUB_DF_FILEIO_COPYDIR_SYNC_0800
    * @tc.name fileIO_test_copyDir_sync_008
    * @tc.desc Test copyDirSync() interface.
    * There is no target folder(src) under path dest. Mode is undefined.

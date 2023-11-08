@@ -102,8 +102,9 @@ describe('btBleServiceTest', function() {
     afterAll(async function (done) {
         console.info('afterAll called')
         gattServer.close();
+        console.info('bluetooth gattServer close success');
         gattClient.close();
-        await sleep(3000);
+        console.info('bluetooth gattClient close success');
         done();
     })
 
@@ -209,13 +210,32 @@ describe('btBleServiceTest', function() {
         let notifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
         characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: characteristic.characteristicValue, confirm: false};
         try {
-            gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic, (err, data) => {
-                console.info('notifyCharacteristicChanged err:' + JSON.stringify(err) + ',notifyCharacteristicChanged data:' + JSON.stringify(data));
+            function nCChanged() {
+                 return new Promise((resolve,reject) => {
+                    gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic, (err, data)=> {
+                        if (err) {
+                            console.error('nCChanged failed' + err);
+                            reject(err.code);
+                        } else
+                          {
+                            console.info('[bluetooth_js]nCChanged value:'+JSON.stringify(data));
+                            expect(true).assertEqual(data != null);
+                        }
+                        resolve();
+                    });
+                });
+            }
+            await nCChanged().then((data) => {
+                console.info("[bluetooth_js]01 notifyCharacteristicChanged done");
                 done();
-            });
+            })
+            .catch(e => {
+                console.info("[bluetooth_js]01 notifyCharacteristicChanged failed" + e);
+                expect(2900099).assertEqual(e);
+                done();
+            })
         } catch (error) {
-            console.error('[bluetooth_js]notifyCharacteristicChanged1 failed, code:'
-            +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
+            console.error(`[bluetooth_js]notifyCharacteristicChanged error, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
         done();

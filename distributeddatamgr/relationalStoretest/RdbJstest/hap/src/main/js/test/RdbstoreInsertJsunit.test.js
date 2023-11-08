@@ -58,7 +58,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0100
          * @tc.desc rdb insert test
          */
         it('testRdbStoreInsert0001', 0, async function (done) {
@@ -124,7 +124,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0200
          * @tc.desc rdb insert test
          */
         it('testRdbStoreInsert0002', 0, async function (done) {
@@ -151,7 +151,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0300
          * @tc.desc rdb insert test
          */
         it('testRdbStoreInsert0003', 0, async function (done) {
@@ -183,7 +183,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0400
          * @tc.desc rdb insert test
          */
         it('testRdbStoreInsert0004', 0, async function (done) {
@@ -209,7 +209,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0500
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0001', 0, async function (done) {
@@ -273,7 +273,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0600
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0002', 0, async function (done) {
@@ -354,7 +354,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0700
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0003', 0, async function (done) {
@@ -461,7 +461,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0800
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0004', 0, async function (done) {
@@ -514,7 +514,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_0900
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0005', 0, async function (done) {
@@ -574,7 +574,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0060
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1000
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0006', 0, async function (done) {
@@ -614,7 +614,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Promise_0070
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1100
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertPromise0007', 0, async function (done) {
@@ -635,7 +635,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0100
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1200
          * @tc.desc rdb insert test
          * zheg s
          */
@@ -724,7 +724,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0200
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1300
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0002', 0, async function (done) {
@@ -793,7 +793,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0300
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1400
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0003', 0, async function (done) {
@@ -897,7 +897,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0400
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1500
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0004', 0, async function (done) {
@@ -950,7 +950,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0500
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1600
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0005', 0, async function (done) {
@@ -1014,7 +1014,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0600
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1700
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0006', 0, async function (done) {
@@ -1063,7 +1063,7 @@ export default function rdbstoreInsertTest() {
 
         /**
          * @tc.name rdb batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0700
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBInsertJsAPITest_1800
          * @tc.desc rdb insert test
          */
         it('testRdbStorebatchInsertCallback0007', 0, async function (done) {

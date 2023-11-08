@@ -13,17 +13,11 @@
  * limitations under the License.
  */
 
-import SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit from './Agree/SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit.test.js'
 import SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit from './Agree/SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit.test.js'
-import SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit from './Agree/SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit.test.js'
 import SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit from './Agree/SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit.test.js'
-import SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit from './Agree/SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit.test.js'
 import SecurityHuksAgreeX25519BasicFinish63KBPromiseJsunit from './Agree/SecurityHuksAgreeX25519BasicFinish63KBPromiseJsunit.test.js'
 export default function testsuite() {
-SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit()
 SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() //special
-SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit()
 SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit()
-SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit()
 SecurityHuksAgreeX25519BasicFinish63KBPromiseJsunit()
 }

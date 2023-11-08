@@ -37,11 +37,11 @@ export default function getBundleArchiveInfo() {
   describe('getBundleArchiveInfo', function () {
 
     /**
-     * @tc.number getBundleArchiveInfo_0100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1280
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with one hap.
      */
-    it('getBundleArchiveInfo_0100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1280', 0, async function (done) {
       let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME1)
       expect(datainfo.vendor).assertEqual("example")
@@ -59,11 +59,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1300
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with two haps.
      */
-    it('getBundleArchiveInfo_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1300', 0, async function (done) {
       let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME2)
       expect(datainfo.vendor).assertEqual("example")
@@ -81,11 +81,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0300
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1320
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with three haps.
      */
-    it('getBundleArchiveInfo_0300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1320', 0, async function (done) {
       let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME3)
       expect(datainfo.vendor).assertEqual("example")
@@ -103,11 +103,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0400
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1340
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with error hap.
      */
-    it('getBundleArchiveInfo_0400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1340', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + ERROR, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
         console.info("getBundleArchiveInfo success" + JSON.stringify(datainfo))
         expect(datainfo).assertFail()
@@ -120,11 +120,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0500
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1360
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
-    it('getBundleArchiveInfo_0500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1360', 0, async function (done) {
       let datainfo = await bundle.getBundleArchiveInfo(' ', bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
         console.info("getBundleArchiveInfo success" + JSON.stringify(datainfo))
         expect(datainfo).assertFail()
@@ -137,11 +137,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0600
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1380
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
-    it('getBundleArchiveInfo_0600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1380', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)
@@ -175,11 +175,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0700
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1400
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with two hap.
      */
-    it('getBundleArchiveInfo_0700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1400', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME2)
@@ -199,11 +199,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0800
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1420
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with one hap.
      */
-    it('getBundleArchiveInfo_0800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1420', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME3)
@@ -223,11 +223,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_0900
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1440
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with error hap.
      */
-    it('getBundleArchiveInfo_0900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1440', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + ERROR, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         if (err) {
@@ -243,11 +243,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_1000
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1460
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
-    it('getBundleArchiveInfo_1000', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1460', 0, async function (done) {
       await bundle.getBundleArchiveInfo(' ', bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         if (err) {
@@ -263,11 +263,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_1100
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1480
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
-    it('getBundleArchiveInfo_1100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1480', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)
@@ -301,11 +301,11 @@ export default function getBundleArchiveInfo() {
     })
 
     /**
-     * @tc.number getBundleArchiveInfo_1200
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_1500
      * @tc.name BUNDLE::getBundleArchiveInfo
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
-    it('getBundleArchiveInfo_1200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_1500', 0, async function (done) {
       await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)

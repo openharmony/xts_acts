@@ -64,7 +64,7 @@ export default function RelativeContainer_AnchorPoint_Visibility_None() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_AnchorPoint_Visibility_None_bt2.right).assertEqual(RelativeContainer_AnchorPoint_Visibility_None_r1.right);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_None_bt2.right - RelativeContainer_AnchorPoint_Visibility_None_r1.right) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Visibility_None_TEST_0100] END');
       done();

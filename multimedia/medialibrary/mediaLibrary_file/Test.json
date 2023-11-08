@@ -65,14 +65,15 @@
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",
-                "hilog -p off",
-                "hilog -b I",
+                "hilog -Q domainoff",
                 "hilog -b D -D 0xD002B70",
                 "scanner",
                 "sleep 10"
             ],
             "teardown-command": [
                 "power-shell setmode 600",
+                "hilog -Q pidon",
+                "hilog -Q domainon",
                 "rm -rf /storage/media/100/local/temp",
                 "rm -rf /storage/media/100/local/files/Audios",
                 "rm -rf /storage/media/100/local/files/Camera",

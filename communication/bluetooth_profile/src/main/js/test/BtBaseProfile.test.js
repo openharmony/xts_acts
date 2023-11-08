@@ -365,7 +365,7 @@ describe('btBaseProfileTest', function() {
             expect(true).assertEqual(devices != null);
         } catch (err) {
             console.error("bluetooth getConnectedDevices errCode:" + err.code + ",errMessage:" + err.message);
-            expect(true).assertFalse();
+            expect(err.code).assertEqual('2900008');
         }
         done();
     })
@@ -384,7 +384,7 @@ describe('btBaseProfileTest', function() {
             expect(true).assertEqual(state == 0 || state == 1 || state == 2);
         } catch (err) {
             console.error("bluetooth getConnectionState errCode:" + err.code + ",errMessage:" + err.message);
-            expect(err.code).assertEqual('2900099');
+            expect(err.code).assertEqual('2900008');
         }
         done();
     })

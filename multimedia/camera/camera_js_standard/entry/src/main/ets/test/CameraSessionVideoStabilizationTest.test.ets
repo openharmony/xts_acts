@@ -13,18 +13,16 @@
  * limitations under the License.
  */
  
-// @ts-ignore
+
 
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import deviceInfo from '@ohos.deviceInfo';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraModuleTest: ";
 
-// Define global letiables
 let mCameraManager;
 let mCameraDevicesArray;
 let mCameraSession;
@@ -45,7 +43,7 @@ let mPhotoOutput;
 let mVideoOutput;
 
 let mIsVideoStabilizationModeSupportedArray;
-
+let context = featureAbility.getContext();
 let mVideoProfileCfg = {
     audioBitrate: 48000,
     audioChannels: 2,
@@ -182,7 +180,7 @@ export default function cameraSessionVideoStabilizationTest() {
     function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -218,7 +216,7 @@ export default function cameraSessionVideoStabilizationTest() {
             return false;
         }
 
-        //mCameraNum = 1;
+
         mCameraNum = mCameraDevicesArray.length;
 
         console.info(TAG + "getCameraSupportDevicesArray is: " + mCameraNum);
@@ -486,8 +484,6 @@ export default function cameraSessionVideoStabilizationTest() {
             getCameraManagerInstance();
             getCameraSupportDevicesArray();
             createCameraSessionInstance();
-
-            console.info('Device type = ' + deviceInfo.deviceType);
 
             console.info('beforeAll case');
         })

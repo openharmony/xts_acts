@@ -16,7 +16,10 @@ import router from '@ohos.router';
 import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
-
+import { AppInfoItem } from '../model/LocalConfigEntity';
+let AppNameList = ['图库'];
+let AppBundleNameList =["com.ohos.photos"];
+let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 let abilityContext = getContext(this) as context.UIAbilityContext;
 
 @Entry
@@ -24,7 +27,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 struct CustomContainerUser {
   @State name: string = 'PhotosHotStart';
   @State toSP_daemon: string = 'SP_daemon -editor hotStart com.ohos.photos 图库 ohtest';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：应用热启动时延小于600ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示完成测试，启动应用'+'\n'+'预期结果：应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -33,12 +36,29 @@ struct CustomContainerUser {
   @State mmsNum: number = 0;
   @State cameraNum: number = 0;
   @State contactsNum: number = 0;
+  @State select: number = 2;
+  @State appName: string = '图库';
+  @State appBundleName: string = "com.ohos.launcher";
+  @State appAbilityName: string = "com.ohos.launcher.MainAbility";
+  @State appInfoList: Array<AppInfoItem> = globalThis.appList;
   scroller: Scroller = new Scroller();
+  onPageShow(){
+    for (let i = 1; i < this.appInfoList.length; i++) {
+      AppNameList[i] = this.appInfoList[i].appName;
+    }
+    for (let i = 1; i < this.appInfoList.length; i++) {
+      AppBundleNameList[i] = this.appInfoList[i].packageName;
+    }
+    for (let i = 1; i < this.appInfoList.length; i++) {
+      AppAbilityNameList[i] = this.appInfoList[i].abilityName;
+    }
+  }
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -47,7 +67,50 @@ struct CustomContainerUser {
         Scroll(this.scroller) {
           Column(){
             Row(){
-              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
+              Column(){
+                Button(`选择测试应用`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .margin('10vp')
+                  .onClick(()=>{
+                    TextPickerDialog.show({
+
+                      range: AppNameList,
+                      selected: this.select,
+                      onAccept: (value: TextPickerResult) => {
+                        // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                        this.select = +value.index
+                        console.info("TextPickerDialog:onAccept()" + JSON.stringify(value))
+                        globalThis.AppNameCamera = AppNameList[+value.index];
+                        this.appName = globalThis.AppNameCamera;
+                        globalThis.AppBundleNameCamera = AppBundleNameList[+value.index];
+                        this.appBundleName = globalThis.AppBundleNameCamera;
+                        globalThis.AppAbilityNameCamera = AppAbilityNameList[+value.index];
+                        this.appAbilityName = globalThis.AppAbilityNameCamera;
+                      },
+                      onCancel: () => {
+                        console.info("TextPickerDialog:onCancel()")
+                      },
+                      onChange: (value: TextPickerResult) => {
+                        console.info("TextPickerDialog:onChange()" + JSON.stringify(value))
+                      }
+                    })
+
+                  })
+              }
+              Column(){
+                Button(`无可测试应用`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .onClick(()=>{
+                    this.Vue = true;
+                  })
+              }
+            }
+            Row(){
+              Text('\n' + '\n' +`根据以下操作步骤完成测试`+ '\n' + '\n' + '待测试应用为：' + this.appName + '\n' + '\n')
                 .fontColor(Color.White).fontSize('24fp')
             }
             Row(){
@@ -64,6 +127,7 @@ struct CustomContainerUser {
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
+                  .margin('10vp')
                   .enabled(this.StartEnable)
                   .opacity(this.StartEnable? 1 : 0.4)
                   .onClick(async () => {
@@ -94,9 +158,6 @@ struct CustomContainerUser {
                               photos
                      */
                     let photosReport = globalThis.resultNum;
-                    if ( photosReport == undefined ) {
-                      this.photosNum = -1000;
-                    } else {
                       let photosHead = photosReport.indexOf(':');
                       let photosTime = photosReport.substring(photosHead+1);
                       this.photosNum = parseFloat(photosTime);
@@ -108,17 +169,17 @@ struct CustomContainerUser {
                       if( this.num === 1 ) {
                         this.Vue = true;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
             }
             Row(){
-              Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '图库热启动时延' + this.photosNum + 'ms')
+              Text('\n' + '\n' + `测试结果：` + '\n' + '\n' + '图库热启动时延' + this.photosNum + 'ms')
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
+        }.scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
@@ -139,6 +200,9 @@ struct CustomContainerUser {
         mmsNum: $mmsNum,
         cameraNum: $cameraNum,
         contactsNum: $contactsNum,
+        appName: $appName,
+        appBundleName: $appBundleName,
+        appAbilityName: $appAbilityName,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

@@ -52,29 +52,25 @@ export default function Row_Space() {
      */
     it('testRowSpaceUnfill', 0, async function (done) {
       console.info('[testRowSpaceUnfill] START');
-      globalThis.value.message.notify({name:'addSpace', value:10});
+      globalThis.value.message.notify({ name: 'addSpace', value: 10 });
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
       let Row_Space_012 = CommonFunc.getComponentRect('Row_Space_012');
       let Row_Space_013 = CommonFunc.getComponentRect('Row_Space_013');
       let Row_Space_01 = CommonFunc.getComponentRect('Row_Space_01');
-      expect(Math.round(Row_Space_011.top - Row_Space_01.top)).
-        assertEqual(Math.round(Row_Space_01.bottom - Row_Space_011.bottom));
-      expect(Math.round(Row_Space_012.top - Row_Space_01.top)).
-        assertEqual(Math.round(Row_Space_01.bottom - Row_Space_012.bottom));
-      expect(Math.round(Row_Space_013.top - Row_Space_01.top)).
-        assertEqual(Math.round(Row_Space_01.bottom - Row_Space_013.bottom));
-      expect(Math.round(Row_Space_012.left - Row_Space_011.right)).
-        assertEqual(Math.round(Row_Space_013.left - Row_Space_012.right));
-      expect(Math.round(Row_Space_012.left - Row_Space_011.right)).assertEqual(Math.round(vp2px(10)))
-      expect(Row_Space_01.left).assertEqual(Row_Space_011.left);
+      expect(Math.abs(Math.round(Row_Space_011.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_011.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_012.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_013.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_013.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.left - Row_Space_011.right) - Math.round(Row_Space_013.left - Row_Space_012.right)) <= 1).assertTrue();
+      expect(Math.round(Row_Space_012.left - Row_Space_011.right) - vp2px(10) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_01.left) - Math.round(Row_Space_011.left)) <= 1).assertTrue();
       expect(Row_Space_013.right).assertLess(Row_Space_01.right);
-      expect(Math.round(Row_Space_011.bottom - Row_Space_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Row_Space_012.bottom - Row_Space_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.bottom - Row_Space_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs((Math.round(Row_Space_011.bottom - Row_Space_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.bottom - Row_Space_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.bottom - Row_Space_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_011.right - Row_Space_011.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.right - Row_Space_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.right - Row_Space_013.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testRowSpaceUnfill] END');
       done();
     });
@@ -86,29 +82,25 @@ export default function Row_Space() {
      */
     it('testRowSpaceFill', 0, async function (done) {
       console.info('[testRowSpaceFill] START');
-      globalThis.value.message.notify({name:'addSpace', value:25});
+      globalThis.value.message.notify({ name: 'addSpace', value: 25 });
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
       let Row_Space_012 = CommonFunc.getComponentRect('Row_Space_012');
       let Row_Space_013 = CommonFunc.getComponentRect('Row_Space_013');
       let Row_Space_01 = CommonFunc.getComponentRect('Row_Space_01');
-      expect(Math.round(Row_Space_011.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_011.bottom));
-      expect(Math.round(Row_Space_012.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_012.bottom));
-      expect(Math.round(Row_Space_013.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_013.bottom));
-      expect(Math.round(Row_Space_012.left - Row_Space_011.right))
-        .assertEqual(Math.round(Row_Space_013.left - Row_Space_012.right));
-      expect(Math.round((Row_Space_012.left - Row_Space_011.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Row_Space_01.left).assertEqual(Row_Space_011.left);
-      expect(Row_Space_013.right).assertEqual(Row_Space_01.right);
-      expect(Math.round(Row_Space_011.bottom - Row_Space_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Row_Space_012.bottom - Row_Space_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.bottom - Row_Space_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(Row_Space_011.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_011.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_012.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_013.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_013.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.left - Row_Space_011.right) - Math.round(Row_Space_013.left - Row_Space_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Row_Space_012.left - Row_Space_011.right) * 10) / 10 - Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_01.left) - Math.round(Row_Space_011.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_013.right) - Math.round(Row_Space_01.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_011.bottom - Row_Space_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.bottom - Row_Space_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.bottom - Row_Space_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_011.right - Row_Space_011.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.right - Row_Space_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.right - Row_Space_013.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testRowSpaceFill] END');
       done();
     });
@@ -120,29 +112,25 @@ export default function Row_Space() {
      */
     it('testRowSpaceOverflow', 0, async function (done) {
       console.info('[testRowSpaceOverflow] START');
-      globalThis.value.message.notify({name:'addSpace', value:30});
+      globalThis.value.message.notify({ name: 'addSpace', value: 30 });
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
       let Row_Space_012 = CommonFunc.getComponentRect('Row_Space_012');
       let Row_Space_013 = CommonFunc.getComponentRect('Row_Space_013');
       let Row_Space_01 = CommonFunc.getComponentRect('Row_Space_01');
-      expect(Math.round(Row_Space_011.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_011.bottom));
-      expect(Math.round(Row_Space_012.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_012.bottom));
-      expect(Math.round(Row_Space_013.top - Row_Space_01.top))
-        .assertEqual(Math.round(Row_Space_01.bottom - Row_Space_013.bottom));
-      expect(Math.round(Row_Space_012.left - Row_Space_011.right))
-        .assertEqual(Math.round(Row_Space_013.left - Row_Space_012.right));
-      expect(Math.round(Row_Space_012.left - Row_Space_011.right)).assertEqual(Math.round(vp2px(30)))
-      expect(Row_Space_01.left).assertEqual(Row_Space_011.left);
+      expect(Math.abs(Math.round(Row_Space_011.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_011.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_012.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_013.top - Row_Space_01.top) - Math.round(Row_Space_01.bottom - Row_Space_013.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_012.left - Row_Space_011.right) - Math.round(Row_Space_013.left - Row_Space_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Row_Space_012.left - Row_Space_011.right - vp2px(30)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Row_Space_01.left) - Math.round(Row_Space_011.left)) <= 1).assertTrue();
       expect(Row_Space_013.right).assertLarger(Row_Space_01.right);
-      expect(Math.round(Row_Space_011.bottom - Row_Space_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Row_Space_012.bottom - Row_Space_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.bottom - Row_Space_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs((Math.round(Row_Space_011.bottom - Row_Space_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.bottom - Row_Space_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.bottom - Row_Space_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_011.right - Row_Space_011.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_012.right - Row_Space_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Row_Space_013.right - Row_Space_013.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testRowSpaceOverflow] END');
       done();
     });

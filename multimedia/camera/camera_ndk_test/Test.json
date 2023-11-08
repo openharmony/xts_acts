@@ -1,0 +1,37 @@
+{
+    "description": "Configuration for camera ndk Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "1500000",
+	    "bundle-name": "com.example.camerandk",
+        "package-name": "com.example.camerandk",
+        "shell-timeout": "600000",
+	    "testcase-timeout": "100000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsCameraFrameWorkNdkTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "power-shell wakeup",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602"
+            ],
+            "teardown-command":[
+                "power-shell setmode 600",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner",
+                "sleep 5"
+            ]
+        }
+    ]
+}

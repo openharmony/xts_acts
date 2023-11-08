@@ -43,11 +43,6 @@ export default {
 
     getCommonPropValues(){
         this.forPropNull = this.$element("forPropNull").getInspector()
-        this.forPropOne = this.$element("forPropOne").getInspector()
-        this.forPropThree = this.$element("forPropThree").getInspector()
-        this.ifPropTrue = this.$element("ifPropTrue").getInspector()
-        this.showPropTrue = this.$element("showPropTrue").getInspector()
-        this.showPropFalse = this.$element("showPropFalse").getInspector()
-        this.showPropNone = this.$element("showPropNone").getInspector()
+
     }
 }

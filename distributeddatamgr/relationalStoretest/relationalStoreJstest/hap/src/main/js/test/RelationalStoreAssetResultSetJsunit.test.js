@@ -155,7 +155,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0100
          * @tc.desc resultSet getAsset normal test
          */
         it('testGetAsset0001', 0, async function (done) {
@@ -196,7 +196,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0200
          * @tc.desc resultSet getAsset insert test
          */
         it('testGetAsset0002', 0, async function (done) {
@@ -228,7 +228,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0300
          * @tc.desc resultSet getAsset normal test
          */
         it('testGetAsset0003', 0, async function (done) {
@@ -257,7 +257,7 @@ export default function relationalStoreAssetResultSetTest() {
 
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0400
          * @tc.desc resultSet getAsset delete test
          */
         it('testGetAsset0004', 0, async function (done) {
@@ -290,7 +290,7 @@ export default function relationalStoreAssetResultSetTest() {
         
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0500
          * @tc.desc resultSet getAsset ABNORMAL test
          */
          it('testGetAsset0005', 0, async function (done) {
@@ -323,7 +323,7 @@ export default function relationalStoreAssetResultSetTest() {
                 
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0060
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0600
          * @tc.desc resultSet getAsset DOWNLOADING test
          */
          it('testGetAsset0006', 0, async function (done) {
@@ -356,7 +356,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0700
          * @tc.desc resultSet getAsset normal test
          */
         it('testAssetNoStatus0010', 0, async function (done) {
@@ -388,7 +388,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0000
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0800
          * @tc.desc resultSet getAsset normal test
          */
         it('testAssetStatusUndefined0010', 0, async function (done) {
@@ -433,7 +433,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0000
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_0900
          * @tc.desc resultSet getAsset normal test
          */
         it('testAssetStatusNull0010', 0, async function (done) {
@@ -478,7 +478,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1000
          * @tc.desc resultSet getAsset normal test
          */
         it('testGetAssetUndefined', 0, async function (done) {
@@ -508,7 +508,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAsset normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1100
          * @tc.desc resultSet getAsset normal test
          */
         it('testGetAssetNull', 0, async function (done) {
@@ -538,7 +538,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAssets normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1200
          * @tc.desc resultSet getAssets normal test
          */
         it('testGetAssets0001', 0, async function (done) {
@@ -572,7 +572,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAssets normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1300
          * @tc.desc resultSet getAssets normal test
          */
         it('testGetAssets0002', 0, async function (done) {
@@ -623,7 +623,7 @@ export default function relationalStoreAssetResultSetTest() {
     
         /**
          * @tc.name resultSet getAssets normal test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_GetAssertJsAPITest_1400
          * @tc.desc resultSet getAssets normal test
          */
         it('testGetAssets0003', 0, async function (done) {

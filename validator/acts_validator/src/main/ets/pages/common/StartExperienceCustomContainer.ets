@@ -29,6 +29,9 @@ export struct CustomContainer {
   title : string = '';
   StepTips: string = '';
   Url : string = '';
+  @Link appName : string;
+  @Link appAbilityName : string;
+  @Link appBundleName : string;
   @Link StartEnable : boolean
   @Link Vue : boolean;
   @Link num : number;

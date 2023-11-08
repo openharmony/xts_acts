@@ -64,7 +64,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
 
     /**
      * @tc.name resultSet Update test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_ComplexFiled_0001
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1250
      * @tc.desc resultSet Update test
      */
     it('SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_ComplexFiled_0001', 0, async function (done) {
@@ -90,7 +90,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
 
     /**
      * @tc.name resultSet Update test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_ComplexFiled_0002
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1260
      * @tc.desc resultSet Update test
      */
     it('SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_ComplexFiled_0002', 0, async function (done) {

@@ -13,11 +13,18 @@
  * limitations under the License.
  */
 
+//dont knwo why AES is not added into this list
+import SecurityHuksAESBasicCallbackJsunit from './Cipher/SecurityHuksAESBasicCallbackJsunit.test.js'
+
 import securityHuksExportSupportJsunit from './Cipher/securityHuksExportSupportJsunit.test.js'
 import SecurityHuksRSABasicCallbackJsunit from './Cipher/SecurityHuksRSABasicCallbackJsunit.test.js'
 import SecurityHuksSM4BasicCallbackJsunit from './Cipher/SecurityHuksSM4BasicCallbackJsunit.test.js'
+import SecurityHuksSM2BasicCallbackJsunit from './Cipher/SecurityHuksSM2BasicCallbackJsunit.test.js'
 export default function testsuite() {
-securityHuksExportSupportJsunit()
-SecurityHuksRSABasicCallbackJsunit()
-SecurityHuksSM4BasicCallbackJsunit()
+    SecurityHuksAESBasicCallbackJsunit()
+    
+    securityHuksExportSupportJsunit()
+    SecurityHuksRSABasicCallbackJsunit()
+    SecurityHuksSM4BasicCallbackJsunit()
+    SecurityHuksSM2BasicCallbackJsunit()
 }

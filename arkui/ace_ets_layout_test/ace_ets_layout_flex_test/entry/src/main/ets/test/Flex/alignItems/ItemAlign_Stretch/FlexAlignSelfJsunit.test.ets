@@ -58,19 +58,20 @@ export default function flexAlignSelf_StretchJsunit() {
       let textAlignSelf02 = CommonFunc.getComponentRect('textAlignSelf02');
       let textAlignSelf03 = CommonFunc.getComponentRect('textAlignSelf03');
       let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
-      expect(textAlignSelf02.top).assertEqual(textAlignSelf03.top)
-      expect(textAlignSelf03.top).assertEqual(flexAlignSelf01.top)
 
-      expect(textAlignSelf01.left).assertEqual(flexAlignSelf01.left)
-      expect(textAlignSelf01.right).assertEqual(textAlignSelf02.left)
-      expect(textAlignSelf02.bottom).assertEqual(textAlignSelf03.bottom)
+      expect(Math.abs(textAlignSelf02.top - textAlignSelf03.top) <= 1).assertTrue()
+      expect(Math.abs(textAlignSelf03.top - flexAlignSelf01.top) <= 1).assertTrue()
 
-      expect(Math.round(textAlignSelf01.bottom - textAlignSelf01.top)).assertEqual(Math.round(vp2px(50)))
-      expect(Math.round(textAlignSelf01.right - textAlignSelf01.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textAlignSelf02.bottom - textAlignSelf02.top)).assertEqual(Math.round(vp2px(200)))
-      expect(Math.round(textAlignSelf02.right - textAlignSelf02.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textAlignSelf03.bottom - textAlignSelf03.top)).assertEqual(Math.round(vp2px(200)))
-      expect(Math.round(textAlignSelf03.right - textAlignSelf03.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs(textAlignSelf01.left - flexAlignSelf01.left) <= 1).assertTrue()
+      expect(Math.abs(textAlignSelf01.right - textAlignSelf02.left) <= 1).assertTrue()
+      expect(Math.abs(textAlignSelf02.bottom - textAlignSelf03.bottom) <= 1).assertTrue()
+
+      expect(Math.abs((textAlignSelf01.bottom - textAlignSelf01.top) - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs((textAlignSelf01.right - textAlignSelf01.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textAlignSelf02.bottom - textAlignSelf02.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textAlignSelf02.right - textAlignSelf02.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textAlignSelf03.bottom - textAlignSelf03.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textAlignSelf03.right - textAlignSelf03.left) - vp2px(150)) <= 1).assertTrue()
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')

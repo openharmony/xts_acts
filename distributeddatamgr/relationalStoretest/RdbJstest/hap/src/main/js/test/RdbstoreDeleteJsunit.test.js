@@ -50,7 +50,7 @@ describe('rdbStoreDeleteTest', function () {
     
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0100
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0001', 0, async function (done) {
@@ -99,7 +99,7 @@ describe('rdbStoreDeleteTest', function () {
 
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0200
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0002', 0, async function (done) {
@@ -149,7 +149,7 @@ describe('rdbStoreDeleteTest', function () {
 
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0300
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0003', 0, async function (done) {
@@ -203,7 +203,7 @@ describe('rdbStoreDeleteTest', function () {
 
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0400
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0004', 0, async function (done) {
@@ -253,7 +253,7 @@ describe('rdbStoreDeleteTest', function () {
 
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0500
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0005', 0, async function (done) {
@@ -304,7 +304,7 @@ describe('rdbStoreDeleteTest', function () {
 
     /**
      * @tc.name rdb delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0600
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0006', 0, async function (done) {

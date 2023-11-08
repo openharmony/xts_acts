@@ -22,6 +22,4 @@
 using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
-static  SHRINK_HWTEST_F(ActsTexture0007TS, TCTexturelod, "dEQP-VK.texture.subgroup_lod.texturelod*");
-static  SHRINK_HWTEST_F(ActsTexture0007TS, TCTexturegrad, "dEQP-VK.texture.subgroup_lod.texturegrad*");
-static  SHRINK_HWTEST_F(ActsTexture0007TS, TCTexelfetch, "dEQP-VK.texture.subgroup_lod.texelfetch*");
+static  SHRINK_HWTEST_F(ActsTexture0007TS, TCTexturelod, "dEQP-VK.texture.subgroup_lod.*");

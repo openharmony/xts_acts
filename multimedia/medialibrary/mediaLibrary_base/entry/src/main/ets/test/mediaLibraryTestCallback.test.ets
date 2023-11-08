@@ -182,8 +182,8 @@ export default function mediaLibraryTestCallback(abilityContext) {
         async function checkFileAssetAttr(done, testNum, fetchOps, type, count, typesArr) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, count);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, count);
+                expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.getFirstObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
@@ -283,7 +283,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                         done();
                         return;
                     }
-                    let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 0);
+                    let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 0);
                     expect(checkAssetCountPass).assertTrue();
                     fetchFileResult.close();
                     done();
@@ -298,8 +298,8 @@ export default function mediaLibraryTestCallback(abilityContext) {
         const createAssetTest = async (done, testNum, fetchOps, type, name, path) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 media.createAsset(type, name, path, async (err, creatAsset) => {
                     if (err) {
@@ -328,8 +328,8 @@ export default function mediaLibraryTestCallback(abilityContext) {
         const createAssetSameNameTest = async (done, testNum, fetchOps, type, name, path) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 const creatAsset = await media.createAsset(type, name, path);
                 const fd = await asset.open("rw");

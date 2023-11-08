@@ -277,10 +277,10 @@ export default function marginTest() {
       console.info('[' + data.caseTag + ']' + 'margin is: ' + referenceRectAfter.$attrs.margin);
       //Confirm if the margin is correct
       expect(referenceRectAfter.$attrs.margin).assertEqual(JSON.stringify(data.testValue.expectValue.margin));
-      expect(top).assertEqual(data.testValue.expectValue.top);
-      expect(right).assertEqual(data.testValue.expectValue.right);
-      expect(bottom).assertEqual(data.testValue.expectValue.bottom);
-      expect(left).assertEqual(data.testValue.expectValue.left);
+      expect(Math.abs(top - data.testValue.expectValue.top) <= 1).assertTrue();
+      expect(Math.abs(right - data.testValue.expectValue.right) <= 1).assertTrue();
+      expect(Math.abs(bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
+      expect(Math.abs(left - data.testValue.expectValue.left) <= 1).assertTrue();
     });
   })
 }

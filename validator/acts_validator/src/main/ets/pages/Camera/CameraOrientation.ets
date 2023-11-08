@@ -25,7 +25,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraOrientation';
-  @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
+  @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：左侧预览窗口顺时针旋转相应角度后与右侧图片一致';
   private tag: string = 'CameraOrientation'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -180,7 +180,7 @@ struct cameraOrientation {
             Text(`Orientation: ${this.imageRotation}°`).fontSize('16fp').fontColor(Color.White)
             Text(`顺时针`).fontSize('16fp').fontColor(Color.White)
             Text(`提示：`).fontSize('16fp').fontColor(Color.White)
-            Text(`如果左边预览窗口顺时针旋转后与右边窗口相同，选择pass，否则选择fail`)
+            Text(`如果左侧预览窗口顺时针旋转相应角度后与右侧图片一致，选择pass，否则选择fail`)
               .fontSize('16fp').fontColor(Color.White)
           }.size({ width: '80%', height: '25%' })
 
@@ -194,7 +194,8 @@ struct cameraOrientation {
               this.onChangeTake()
             })
         }
-      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
+      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
       CustomContainer({
         title: this.name,

@@ -37,7 +37,7 @@
           "value": "footer2"
         },
         {
-            "name": "nexMargin",
+            "name": "nextMargin",
             "value": "20"
         },
         {
@@ -45,12 +45,24 @@
             "value": "20"
         },
         {
-            "name": "nexMarginString",
+            "name": "nextMarginString",
             "value": "20px"
         },
         {
             "name": "prevMarginString",
             "value": "20px"
+        },
+        {
+            "name": "gutter_10",
+            "value": "10"
+        },
+        {
+            "name": "number",
+            "value": "200"
+        },
+        {
+            "name": "color",
+            "value": "0x008000"
         }
     ]
 }

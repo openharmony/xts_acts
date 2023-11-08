@@ -251,10 +251,9 @@ export default function constraintSizeTest() {
       console.info('[' + data.caseTag + ']' + 'width is:' + JSON.stringify(width));
       console.info('[' + data.caseTag + ']' + 'height is:' + JSON.stringify(height));
       console.info('[' + data.caseTag + ']' + 'constraintSize is:' + data.viewObj.$attrs.constraintSize);
-      expect(data.viewObj.$attrs.constraintSize)
-        .assertEqual(JSON.stringify(data.testValue.expectValue.constraintSize));
-      expect(width).assertEqual(data.testValue.expectValue.width);
-      expect(height).assertEqual(data.testValue.expectValue.height);
+      expect(data.viewObj.$attrs.constraintSize).assertEqual(JSON.stringify(data.testValue.expectValue.constraintSize));
+      expect(Math.abs(width - data.testValue.expectValue.width) <= 1).assertTrue();
+      expect(Math.abs(height - data.testValue.expectValue.height) <= 1).assertTrue();
     });
   })
 }

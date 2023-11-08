@@ -40,6 +40,8 @@ ohos_shared_library("napitest") {
   include_dirs = [ "../cpp" ]
   configs = [ ":config" ]
 
+  deps = [ "//third_party/bounds_checking_function:libsec_static" ]
+
   external_deps = [ "napi:ace_napi" ]
 
   output_extension = "so"

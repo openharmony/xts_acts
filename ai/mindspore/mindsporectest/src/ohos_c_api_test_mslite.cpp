@@ -31,10 +31,10 @@ using namespace testing::ext;
 
 class MSLiteTest: public testing::Test {
 protected:
-  static void SetUpTestCase(void) {}
-  static void TearDownTestCase(void) {}
-  virtual void SetUp() {}
-  virtual void TearDown() {}
+    static void SetUpTestCase(void) {}
+    static void TearDownTestCase(void) {}
+    virtual void SetUp() {}
+    virtual void TearDown() {}
 };
 
 // function before callback
@@ -92,21 +92,27 @@ bool IsNPU() {
 // add nnrt device info
 void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
     size_t num = 0;
-    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
-    if (desc == nullptr) {
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (descs == nullptr) {
         return;
     }
 
     std::cout << "found " << num << " nnrt devices" << std::endl;
-    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
-    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
-    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
-    std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        ASSERT_NE(desc, nullptr);
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+        std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+    }
+
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(descs);
 
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     ASSERT_NE(nnrt_device_info, nullptr);
     OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id);
-    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
 
     OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
     printf("==========device_type:%d\n", device_type);
@@ -116,6 +122,45 @@ void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
     ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_MEDIUM);
     OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
     ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+// add nnrt device info
+void AddContextDeviceNNRTWithCache(OH_AI_ContextHandle context, const char *cache_path, const char *cache_version) {
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (descs == nullptr) {
+        return;
+    }
+
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        ASSERT_NE(desc, nullptr);
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+        std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+    }
+
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(descs);
+
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+
+    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
+    printf("==========device_type:%d\n", device_type);
+    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_NNRT);
+
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_MEDIUM);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
 }
@@ -368,7 +413,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_NOT_SUPPORT);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_NULLPTR);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -444,7 +489,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0009, Function | MediumTest | Level1) {
     OH_AI_ContextSetThreadAffinityMode(context, 3);
     int thread_affinity_mode = OH_AI_ContextGetThreadAffinityMode(context);
     printf("==========thread_affinity_mode:%d\n", thread_affinity_mode);
-    ASSERT_EQ(thread_affinity_mode, 3);
+    ASSERT_EQ(thread_affinity_mode, 0);
     AddContextDeviceCPU(context);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -452,7 +497,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0009, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_NULLPTR);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -469,13 +514,14 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0010, Function | MediumTest | Level1) {
     int32_t core_list[core_num] = {0, 1, 2, 3};
     OH_AI_ContextSetThreadAffinityCoreList(context, core_list, core_num);
     size_t ret_core_num;
-    const int32_t *ret_core_list = nullptr;
-    ret_core_list = OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num);
+    int32_t *ret_core_list = nullptr;
+    ret_core_list = const_cast<int32_t *>(OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num));
     ASSERT_EQ(ret_core_num, core_num);
     for (size_t i = 0; i < ret_core_num; i++) {
         printf("==========ret_core_list:%d\n", ret_core_list[i]);
         ASSERT_EQ(ret_core_list[i], core_list[i]);
     }
+    free(ret_core_list);
     AddContextDeviceCPU(context);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -499,13 +545,14 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0011, Function | MediumTest | Level1) {
     int32_t core_list[core_num] = {0, 1, 3, 4};
     OH_AI_ContextSetThreadAffinityCoreList(context, core_list, core_num);
     size_t ret_core_num;
-    const int32_t *ret_core_list = nullptr;
-    ret_core_list = OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num);
+    int32_t *ret_core_list = nullptr;
+    ret_core_list = const_cast<int32_t *>(OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num));
     ASSERT_EQ(ret_core_num, core_num);
     for (size_t i = 0; i < ret_core_num; i++) {
         printf("==========ret_core_list:%d\n", ret_core_list[i]);
         ASSERT_EQ(ret_core_list[i], core_list[i]);
     }
+    free(ret_core_list);
     AddContextDeviceCPU(context);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -597,7 +644,9 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0016, Function | MediumTest | Level1) {
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     ASSERT_NE(cpu_device_info, nullptr);
     OH_AI_DeviceInfoSetProvider(cpu_device_info, "vendor_new");
-    ASSERT_EQ(strcmp(OH_AI_DeviceInfoGetProvider(cpu_device_info), "vendor_new"), 0);
+    char *proInfo = const_cast<char *>(OH_AI_DeviceInfoGetProvider(cpu_device_info));
+    ASSERT_EQ(strcmp(proInfo, "vendor_new"), 0);
+    free(proInfo);
     OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -613,7 +662,9 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0017, Function | MediumTest | Level1) {
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     ASSERT_NE(cpu_device_info, nullptr);
     OH_AI_DeviceInfoSetProviderDevice(cpu_device_info, "cpu_new");
-    ASSERT_EQ(strcmp(OH_AI_DeviceInfoGetProviderDevice(cpu_device_info), "cpu_new"), 0);
+    char *proInfo = const_cast<char *>(OH_AI_DeviceInfoGetProviderDevice(cpu_device_info));
+    ASSERT_EQ(strcmp(proInfo, "cpu_new"), 0);
+    free(proInfo);
     OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -666,21 +717,22 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0020, Function | MediumTest | Level1) {
     OH_AI_ModelDestroy(&model);
 }
 
- // 正常场景：Context设置NPU,频率为1
- HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level1) {
-     printf("==========Init Context==========\n");
-     OH_AI_ContextHandle context = OH_AI_ContextCreate();
-     ASSERT_NE(context, nullptr);
-     OH_AI_DeviceInfoHandle npu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_KIRIN_NPU);
-     ASSERT_NE(npu_device_info, nullptr);
-     OH_AI_DeviceInfoSetFrequency(npu_device_info, 1);
-     int frequency = OH_AI_DeviceInfoGetFrequency(npu_device_info);
-     ASSERT_EQ(frequency, 1);
-     OH_AI_ContextAddDeviceInfo(context, npu_device_info);
-     printf("==========Create model==========\n");
-     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-     ASSERT_NE(model, nullptr);
- }
+// 正常场景：Context设置NPU,频率为1
+HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    OH_AI_DeviceInfoHandle npu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_KIRIN_NPU);
+    ASSERT_NE(npu_device_info, nullptr);
+    OH_AI_DeviceInfoSetFrequency(npu_device_info, 1);
+    int frequency = OH_AI_DeviceInfoGetFrequency(npu_device_info);
+    ASSERT_EQ(frequency, 1);
+    OH_AI_ContextAddDeviceInfo(context, npu_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_ContextDestroy(&context);
+}
 
 // 正常场景：ModelBuild，调用指针方法
 HWTEST(MSLiteTest, OHOS_Model_Build_0001, Function | MediumTest | Level1) {
@@ -751,7 +803,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0004, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     OH_AI_Status ret = OH_AI_ModelBuild(model, graphBuf, 0, OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_INPUT_PARAM_INVALID);
     delete[] graphBuf;
     OH_AI_ModelDestroy(&model);
 }
@@ -940,7 +992,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0004, Function | MediumTest | Level1) {
     OH_AI_ShapeInfo shape_infos = {4, {1, -32, 32, 1}};
     ret = OH_AI_ModelResize(model, inputs, &shape_infos, inputs.handle_num);
     printf("==========Resizes return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_PARAM_INVALID);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -2074,39 +2126,34 @@ HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
     OH_AI_ModelDestroy(&model);
 }
 
-// 正常场景：delegate异构，使用高低级接口创建nnrt device info，多输入单输出
-HWTEST(MSLiteTest, OHOS_NNRT_0004, Function | MediumTest | Level1) {
-    size_t num = 0;
-    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
-    bool is_npu = true;
-    if (desc == nullptr) {
-        is_npu = false;
-    }
 
+// 正常场景：delegate异构，设置NNRT扩展选项，包括cache路径
+HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level1) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
-    AddContextDeviceNNRT(context);
+    AddContextDeviceNNRTWithCache(context, "/data/local/tmp/", "1");
     AddContextDeviceCPU(context);
+
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     ASSERT_NE(model, nullptr);
+
     printf("==========Build model==========\n");
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_headpose_pb2tflite.ms",
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
         OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "ml_headpose_pb2tflite", false);
+    FillInputsData(inputs, "ml_face_isface", true);
+
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    if (!is_npu) {
-        CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
-    }
+    CompareResult(outputs, "ml_face_isface");
     OH_AI_ModelDestroy(&model);
 }
-

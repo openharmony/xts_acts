@@ -14,7 +14,11 @@
  */
 
 import cryptoSymOptAADJsTestUnit from './SymOptAAD.test'
+import cryptoHmacOptParaJsTestUnit from './HmacOptParameter.test'
+import cryptoPbkdf2JsTestUnit from './Pbkdf2.test'
 
 export default function testsuite() {
-  cryptoSymOptAADJsTestUnit()
+  cryptoPbkdf2JsTestUnit();
+  cryptoSymOptAADJsTestUnit();
+  cryptoHmacOptParaJsTestUnit();
 }

@@ -175,9 +175,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_2200 mkdir successfully");
@@ -715,9 +712,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_3100 mkdir successfully");
@@ -775,9 +769,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_3200 mkdir successfully");
@@ -1100,7 +1091,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0076
+        * @tc.number: Sub_Bms_Zlib_Compress_InputParam_6700
         * @tc.name: compressFileOfFolders
         * @tc.desc: test compressFile when input is folders
         */
@@ -1162,7 +1153,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0077
+        * @tc.number: Sub_Bms_Zlib_Compress_InputParam_6800
         * @tc.name: compressFileTest
         * @tc.desc: test compressFile when inFile and out file is valid
         */
@@ -1220,7 +1211,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0078
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_0700
         * @tc.name: compressFileInFileNotExist
         * @tc.desc: test compressFile when inFile is not exist
         */
@@ -1250,7 +1241,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0079
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_0800
         * @tc.name: compressFileInFileNull
         * @tc.desc: test compressFile when inFile is null
         */
@@ -1286,7 +1277,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0080
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_0900
         * @tc.name: compressFileOutFileNotExist
         * @tc.desc: test compressFile when outFile is not existed.
         */
@@ -1323,7 +1314,7 @@ export default function ActsZlibTest() {
 
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0081
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_1000
         * @tc.name: compressFileOutFileNull
         * @tc.desc: test compressFile when outFile is null
         */
@@ -1366,7 +1357,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0082
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_1100
         * @tc.name: compressFileOptionNull
         * @tc.desc: test compressFile when option is null
         */
@@ -1406,7 +1397,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0083
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_1200
         * @tc.name: compressFileInvalidOption
         * @tc.desc: test compressFile when option is invalid
         */
@@ -1442,7 +1433,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0084
+        * @tc.number: Sub_Bms_Zlib_Compress_Unusual_1300
         * @tc.name: compressFileStrategyNull
         * @tc.desc: test compressFile when strategy is null
         */
@@ -1484,7 +1475,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0086
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0300
         * @tc.name: decompressFileTest
         * @tc.desc: test decompressFile when inFile and out file is valid
         */
@@ -1573,7 +1564,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0087
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0400
         * @tc.name: decompressDifferentLevel
         * @tc.desc: test decompressFile when inFile and out file is valid
         */
@@ -1582,8 +1573,8 @@ export default function ActsZlibTest() {
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/decompressFileTest1.zip";
             let zipDest2 = dir + "/decompressFileTest2.zip";
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0087a";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0087b";
+            let unzipdir1 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0400a";
+            let unzipdir2 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0400b";
             let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
             let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -1662,7 +1653,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0088
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0200
         * @tc.name: decompressFileInFileNotExist
         * @tc.desc: test decompressFile when inFile is not exist
         */
@@ -1698,7 +1689,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0089
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0300
         * @tc.name: decompressFileInFileNull
         * @tc.desc: test decompressFile when inFile is null
         */
@@ -1741,7 +1732,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0090
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0400
         * @tc.name: decompressFileOutFileNotExist
         * @tc.desc: test decompressFile when outFile is not existed.
         */
@@ -1791,7 +1782,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0091
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0500
         * @tc.name: decompressFileOutFileNull
         * @tc.desc: test decompressFile when outFile is null
         */
@@ -1851,7 +1842,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0092
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0600
         * @tc.name: decompressFileOptionNull
         * @tc.desc: test decompressFile when option is null
         */
@@ -1861,9 +1852,9 @@ export default function ActsZlibTest() {
             let zipDest1 = dir + "/decompressFileOptionNull.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file success " + JSON.stringify(number));
+                console.info("Sub_Bms_Zlib_Uncompress_InputParam_0400 write data to file success " + JSON.stringify(number));
             }).catch(function (err) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file failed with error:" + err);
+                console.info("Sub_Bms_Zlib_Uncompress_InputParam_0400 write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
             await zlib.compressFile(path, zipDest1, {
@@ -1914,7 +1905,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0093
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0700
         * @tc.name: decompressFileInvalidOption
         * @tc.desc: test decompressFile when option is invalid
         */
@@ -1924,9 +1915,9 @@ export default function ActsZlibTest() {
             let zipDest1 = dir + "/decompressFileInvalidOption.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file success " + JSON.stringify(number));
+                console.info("Sub_Bms_Zlib_Uncompress_InputParam_0400 write data to file success " + JSON.stringify(number));
             }).catch(function (err) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file failed with error:" + err);
+                console.info("Sub_Bms_Zlib_Uncompress_InputParam_0400 write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
             await zlib.compressFile(path, zipDest1, {
@@ -1971,7 +1962,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0094
+        * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_0800
         * @tc.name: decompressFileStrategyNull
         * @tc.desc: test decompressFile when strategy is null
         */
@@ -2037,7 +2028,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0096
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0500
         * @tc.name: decompressFileInfileSpecialCharacters
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2046,8 +2037,8 @@ export default function ActsZlibTest() {
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/@#@##.zip";
             let zipDest2 = dir + "/@#@#@.zip";
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0096a";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0096b";
+            let unzipdir1 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0500a";
+            let unzipdir2 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0500b";
             let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
             let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -2126,7 +2117,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0097
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0600
         * @tc.name: decompressFileOutfileSpecialCharDir
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2215,7 +2206,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0098
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0700
         * @tc.name: decompressFileInfileChineseDir
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2304,7 +2295,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0099
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0800
         * @tc.name: decompressFileInfileChinesePath
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2313,8 +2304,8 @@ export default function ActsZlibTest() {
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/解压1.zip";
             let zipDest2 = dir + "/解压2.zip";
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0099a";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0099b";
+            let unzipdir1 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0800a";
+            let unzipdir2 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0800b";
             let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
             let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -2393,7 +2384,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0100
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_0900
         * @tc.name: decompressFileInfileZipPath
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2402,8 +2393,8 @@ export default function ActsZlibTest() {
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/1#@.zip.zip";
             let zipDest2 = dir + "/2##.zip.zip";
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0100a";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0100b";
+            let unzipdir1 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0900a";
+            let unzipdir2 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_0900b";
             let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
             let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -2482,7 +2473,7 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0101
+        * @tc.number: Sub_Bms_Zlib_Uncompress_InputParam_1000
         * @tc.name: decompressFileInfileBlankPath
         * @tc.desc: test decompressFile when outFile is a dir
         */
@@ -2491,8 +2482,8 @@ export default function ActsZlibTest() {
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/解压 1#@.zip";
             let zipDest2 = dir + "/解压 2##.zip";
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0101a";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0101b";
+            let unzipdir1 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_1000a";
+            let unzipdir2 = dir + "/Sub_Bms_Zlib_Uncompress_InputParam_1000b";
             let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
             let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);

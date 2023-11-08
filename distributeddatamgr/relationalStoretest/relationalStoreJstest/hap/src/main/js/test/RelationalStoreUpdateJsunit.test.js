@@ -50,7 +50,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Update_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0100
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0001', 0, async function (done) {
@@ -119,7 +119,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Update_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0200
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0002', 0, async function (done) {
@@ -176,7 +176,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Update_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0300
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0003', 0, async function (done) {
@@ -220,7 +220,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Update_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0400
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdate0004', 0, async function (done) {
@@ -264,7 +264,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0001
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0500
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0001', 0, async function (done) {
@@ -360,7 +360,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0002
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0600
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0002', 0, async function (done) {
@@ -455,7 +455,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0003
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0700
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0003', 0, async function (done) {
@@ -550,7 +550,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0004
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0800
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0004', 0, async function (done) {
@@ -645,7 +645,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0005
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_0900
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0005', 0, async function (done) {
@@ -738,6 +738,11 @@ export default function relationalStoreUpdateTest() {
             }
         })
 
+        /**
+         * @tc.name resultSet Update test
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1000
+         * @tc.desc resultSet Update test
+         */
         it('testRdbStoreUpdateWithConflictResolution0006', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0006 start *************");
             {
@@ -813,7 +818,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0007
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1100
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0007', 0, async function (done) {
@@ -907,6 +912,11 @@ export default function relationalStoreUpdateTest() {
             }
         })
 
+        /**
+         * @tc.name resultSet Update test
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1200
+         * @tc.desc resultSet Update test
+         */
         it('testRdbStoreUpdateWithConflictResolution0008', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0008 start *************");
             {
@@ -981,7 +991,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0009
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1300
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0009', 0, async function (done) {
@@ -1075,6 +1085,11 @@ export default function relationalStoreUpdateTest() {
             }
         })
 
+        /**
+         * @tc.name resultSet Update test
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1400
+         * @tc.desc resultSet Update test
+         */
         it('testRdbStoreUpdateWithConflictResolution0010', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0010 start *************");
             {
@@ -1149,7 +1164,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0011
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1500
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0011', 0, async function (done) {
@@ -1243,6 +1258,11 @@ export default function relationalStoreUpdateTest() {
             }
         })
 
+        /**
+         * @tc.name resultSet Update test
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1600
+         * @tc.desc resultSet Update test
+         */
         it('testRdbStoreUpdateWithConflictResolution0012', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0012 start *************");
             {
@@ -1319,7 +1339,7 @@ export default function relationalStoreUpdateTest() {
 
         /**
          * @tc.name resultSet Update test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_UpdateWithConflictResolution_0013
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_UpdateJsAPITest_1700
          * @tc.desc resultSet Update test
          */
         it('testRdbStoreUpdateWithConflictResolution0013', 0, async function (done) {

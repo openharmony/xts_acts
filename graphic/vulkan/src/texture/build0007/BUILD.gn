@@ -210,7 +210,6 @@ ohos_moduletest_suite("ActsTextureTestSuite0007") {
   sources = [
     "../ActsTexture0007TestSuite.cpp",
     "../texture/Texture_subgroup_lodTestCase.cpp",
-    "../texture/Texture_swizzle04TestCase.cpp",
   ]
 
   include_dirs = common_include

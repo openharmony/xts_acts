@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraPhotoFormat';
-  @State StepTips: string = '测试目的：用于测试相机拍照分辨率能力\n测试步骤：\n1. 点击拍照\n2. 点击下一个\n3. 重复步骤1和2直至所有拍照分辨率均遍历完成\n预期结果：所有分辨率均可以拍照，图片与预览一致';
+  @State StepTips: string = '测试目的：用于测试相机拍照分辨率能力\n-对于前置摄像头会有镜像效果\n测试步骤：\n1. 点击拍照\n2. 点击下一个\n3. 重复步骤1和2直至所有拍照分辨率均遍历完成\n预期结果：所有分辨率均可以拍照，图片与预览一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -287,7 +287,8 @@ struct cameraOrientation {
           }.width('100%').justifyContent(FlexAlign.SpaceEvenly)
           .height('10%')
         }
-      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
+      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
       CustomContainer({
         title: this.name,

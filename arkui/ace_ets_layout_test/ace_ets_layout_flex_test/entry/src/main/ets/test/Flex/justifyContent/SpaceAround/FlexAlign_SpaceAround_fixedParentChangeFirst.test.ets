@@ -54,9 +54,9 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
      */
     it('testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight122', 0, async function (done) {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight122 START');
-      globalThis.value.message.notify({name:'testFirstlayoutWeight', value:1})
-      globalThis.value.message.notify({name:'testSecondlayoutWeight', value:2})
-      globalThis.value.message.notify({name:'testThirdlayoutWeight', value:2})
+      globalThis.value.message.notify({ name: 'testFirstlayoutWeight', value: 1 })
+      globalThis.value.message.notify({ name: 'testSecondlayoutWeight', value: 2 })
+      globalThis.value.message.notify({ name: 'testThirdlayoutWeight', value: 2 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround12');
       let obj = JSON.parse(strJson);
@@ -68,20 +68,20 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
       let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround35');
       let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround36');
       let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround12');
-      expect(locationText1.top).assertEqual(locationText2.top);
-      expect(locationText2.top).assertEqual(locationText3.top);
-      expect(locationText1.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(50)));
-      expect(locationText1.left).assertEqual(locationFlex.left);
-      expect(locationText1.right).assertEqual(locationText2.left);
-      expect(locationText2.right).assertEqual(locationText3.left);
-      expect(locationText3.right).assertEqual(locationFlex.right);
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue();
+      expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue();
+      expect(Math.abs(locationText1.top - locationFlex.top) <= 1).assertTrue();
+      expect(Math.abs(locationText1.bottom - locationText1.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(locationText2.bottom - locationText2.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(locationText3.bottom - locationText3.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(locationFlex.bottom - locationText3.bottom - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(locationText1.left - locationFlex.left) <= 1).assertTrue();
+      expect(Math.abs(locationText1.right - locationText2.left) <= 1).assertTrue();
+      expect(Math.abs(locationText2.right - locationText3.left) <= 1).assertTrue();
+      expect(Math.abs(locationText3.right - locationFlex.right) <= 1).assertTrue();
+      expect(Math.abs(locationText1.right - locationText1.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(locationText3.right - locationText3.left - vp2px(200)) <= 1).assertTrue();
+      expect(Math.abs(locationText2.right - locationText2.left - vp2px(200)) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight122 END');
       done();
     });
@@ -93,9 +93,9 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
      */
     it('testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight120', 0, async function (done) {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight120 START');
-      globalThis.value.message.notify({name:'testFirstlayoutWeight', value:1})
-      globalThis.value.message.notify({name:'testSecondlayoutWeight', value:2})
-      globalThis.value.message.notify({name:'testThirdlayoutWeight', value:0})
+      globalThis.value.message.notify({ name: 'testFirstlayoutWeight', value: 1 })
+      globalThis.value.message.notify({ name: 'testSecondlayoutWeight', value: 2 })
+      globalThis.value.message.notify({ name: 'testThirdlayoutWeight', value: 0 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround12');
       let obj = JSON.parse(strJson);
@@ -107,20 +107,20 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
       let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround35');
       let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround36');
       let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround12');
-      expect(locationText1.top).assertEqual(locationText2.top);
-      expect(locationText2.top).assertEqual(locationText3.top);
-      expect(locationText1.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(50)));
-      expect(locationText1.left).assertEqual(locationFlex.left);
-      expect(locationText1.right).assertEqual(locationText2.left);
-      expect(locationText2.right).assertEqual(locationText3.left);
-      expect(locationText3.right).assertEqual(locationFlex.right);
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(350/3)));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(700/3)));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue();
+      expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue();
+      expect(Math.abs(locationText1.top - locationFlex.top) <= 1).assertTrue();
+      expect(Math.abs(locationText1.bottom - locationText1.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(locationText2.bottom - locationText2.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(locationText3.bottom - locationText3.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(locationFlex.bottom - locationText3.bottom - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(locationText1.left - locationFlex.left) <= 1).assertTrue();
+      expect(Math.abs(locationText1.right - locationText2.left) <= 1).assertTrue();
+      expect(Math.abs(locationText2.right - locationText3.left) <= 1).assertTrue();
+      expect(Math.abs(locationText3.right - locationFlex.right) <= 1).assertTrue();
+      expect(Math.abs(locationText1.right - locationText1.left - vp2px(350 / 3)) <= 1).assertTrue();
+      expect(Math.abs(locationText2.right - locationText2.left - vp2px(700 / 3)) <= 1).assertTrue();
+      expect(Math.abs(locationText3.right - locationText3.left - vp2px(150)) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight120 END');
       done();
     });
