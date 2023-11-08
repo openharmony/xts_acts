@@ -32,7 +32,7 @@ ohos_static_library("libdeqpgles3func0039") {
   sources += [ "../Deqpgles3BaseFunc.cpp" ]
 
   include_dirs = common_include
-  deps = common_depends
+  deps = common_depends_gles3
   external_deps = [
     "hilog:libhilog",
     "image_framework:image_native",
