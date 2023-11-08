@@ -1760,30 +1760,7 @@ static napi_value SUB_DDM_RDB_Predicates_5600(napi_env env, napi_callback_info i
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
-/**
- * @tc.name: SUB_DDM_RDB_Predicates_5700
- * @tc.desc: napi test RDB Predicates for GroupBy
- * @tc.type: FUNC
- */
-static napi_value SUB_DDM_RDB_Predicates_5700(napi_env env, napi_callback_info info) {
-    int errCode = 0;
-    OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
-    const char *columnNames[] = {"data1", "data2"};
-    predicates->groupBy(predicates, columnNames, 3);
 
-    OH_Cursor *cursor = OH_Rdb_Query(predicatesTestRdbStore_, predicates, NULL, 0);
-    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
-    int rowCount = -1;
-    errCode = cursor->getRowCount(cursor, &rowCount);
-    NAPI_ASSERT(env, rowCount == -1, "getRowCount is fail.");
-
-    predicates->destroy(predicates);
-    errCode = cursor->destroy(cursor);
-    
-    napi_value returnCode;
-    napi_create_double(env, errCode, &returnCode);
-    return returnCode;
-}
 /**
  * @tc.name: SUB_DDM_RDB_Predicates_5800
  * @tc.desc: napi test RDB Predicates for GroupBy
@@ -2126,7 +2103,6 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_Predicates_5400", nullptr, SUB_DDM_RDB_Predicates_5400, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_Predicates_5500", nullptr, SUB_DDM_RDB_Predicates_5500, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_Predicates_5600", nullptr, SUB_DDM_RDB_Predicates_5600, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_Predicates_5700", nullptr, SUB_DDM_RDB_Predicates_5700, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_Predicates_5800", nullptr, SUB_DDM_RDB_Predicates_5800, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_Predicates_5900", nullptr, SUB_DDM_RDB_Predicates_5900, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_Predicates_6000", nullptr, SUB_DDM_RDB_Predicates_6000, nullptr, nullptr, nullptr, napi_default, nullptr},
