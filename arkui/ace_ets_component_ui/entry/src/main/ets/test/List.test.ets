@@ -199,7 +199,25 @@ import StateArray1 from './@stateTest/StateArray1.test.ets'
 import StateColor from './@stateTest/StateColor.test.ets'
 import StateHight from './@stateTest/StateHight.test.ets'
 import StateNumber from './@stateTest/StateNumber.test.ets'
-
+import NavigationStack01Jsunit from './Navigation/NavigationStack01Jsunit.test';
+import NavigationStack02Jsunit from './Navigation/NavigationStack02Jsunit.test';
+import NavigationStack03Jsunit from './Navigation/NavigationStack03Jsunit.test';
+import NavigationStack10Jsunit from './Navigation/NavigationStack10Jsunit.test';
+import NavigationStack11Jsunit from './Navigation/NavigationStack11Jsunit.test';
+import NavigationStack12Jsunit from './Navigation/NavigationStack12Jsunit.test';
+import NavigationStack13Jsunit from './Navigation/NavigationStack13Jsunit.test';
+import NavigationStack14Jsunit from './Navigation/NavigationStack14Jsunit.test';
+import NavigationStack15Jsunit from './Navigation/NavigationStack15Jsunit.test';
+import NavigationStack16Jsunit from './Navigation/NavigationStack16Jsunit.test';
+import NavigationStack17Jsunit from './Navigation/NavigationStack17Jsunit.test';
+import NavigationStack18Jsunit from './Navigation/NavigationStack18Jsunit.test';
+import NavigationStack19Jsunit from './Navigation/NavigationStack19Jsunit.test';
+import NavigationStack20Jsunit from './Navigation/NavigationStack20Jsunit.test';
+import NavigationStack21Jsunit from './Navigation/NavigationStack21Jsunit.test';
+import NavigationStack23Jsunit from './Navigation/NavigationStack23Jsunit.test';
+import NavigationStack24Jsunit from './Navigation/NavigationStack24Jsunit.test';
+import NavigationStack25Jsunit from './Navigation/NavigationStack25Jsunit.test';
+import NavigationStack26Jsunit from './Navigation/NavigationStack26Jsunit.test';
 
 export default function testsuite() {
   DialogJsunit();
@@ -387,4 +405,23 @@ export default function testsuite() {
   StateColor()
   StateHight()
   StateNumber()
+  NavigationStack01Jsunit();
+  NavigationStack02Jsunit();
+  NavigationStack03Jsunit();
+  NavigationStack10Jsunit();
+  NavigationStack11Jsunit();
+  NavigationStack12Jsunit();
+  NavigationStack13Jsunit();
+  NavigationStack14Jsunit();
+  NavigationStack15Jsunit();
+  NavigationStack16Jsunit();
+  NavigationStack17Jsunit();
+  NavigationStack18Jsunit();
+  NavigationStack19Jsunit();
+  NavigationStack20Jsunit();
+  NavigationStack21Jsunit();
+  NavigationStack23Jsunit();
+  NavigationStack24Jsunit();
+  NavigationStack25Jsunit();
+  NavigationStack26Jsunit();
 }
