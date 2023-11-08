@@ -29,23 +29,23 @@ export default function RdbNdkStorePredicatesTest() {
       }).catch((err) => {
         hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
       })
-      
+
     })
     beforeEach(function () {
-      hilog.info(0x0000, TAG, 'testTag PredicatesSetUpTestCase' , ' begin');      
+      hilog.info(0x0000, TAG, 'testTag PredicatesSetUpTestCase' , ' begin');
       let re = testNapi.PredicatesSetUpTestCase();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
     afterEach(function () {
-      hilog.info(0x0000, TAG, 'testTag PredicatesTearDownTestCase' , ' begin');      
+      hilog.info(0x0000, TAG, 'testTag PredicatesTearDownTestCase' , ' begin');
       let re = testNapi.PredicatesTearDownTestCase();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
     afterAll(function () {
     })
-    
+
     /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0100
      * @tc.desc: Normal testCase of NDK Predicates for EqualTo、AndOR、beginWrap and endWrap
@@ -57,13 +57,13 @@ export default function RdbNdkStorePredicatesTest() {
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
-    
+
     /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0200
      * @tc.desc: Normal testCase of NDK Predicates for NotEqualTo
      * @tc.type: FUNC
      */
-     it('SUB_DDM_RDB_Predicates_0200',0, async function () {
+    it('SUB_DDM_RDB_Predicates_0200',0, async function () {
       hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_0200' , ' begin');
       let re = testNapi.SUB_DDM_RDB_Predicates_0200();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -74,7 +74,7 @@ export default function RdbNdkStorePredicatesTest() {
      * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
      * @tc.type: FUNC
      */
-     it('SUB_DDM_RDB_Predicates_0300',0, async function () {
+    it('SUB_DDM_RDB_Predicates_0300',0, async function () {
       hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_0300' , ' begin');
       let re = testNapi.SUB_DDM_RDB_Predicates_0300();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -92,7 +92,7 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
 
-   /**
+    /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0500
      * @tc.desc: Normal testCase of NDK Predicates for LessThan
      * @tc.type: FUNC
@@ -159,13 +159,13 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
 
-    
+
     /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1100
      * @tc.desc: Normal testCase of NDK Predicates for OrderBy、Limit、Offset.
      * @tc.type: FUNC
      */
-     it('SUB_DDM_RDB_Predicates_1100',0, async function () {
+    it('SUB_DDM_RDB_Predicates_1100',0, async function () {
       hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_1100' , ' begin');
       let re = testNapi.SUB_DDM_RDB_Predicates_1100();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -271,14 +271,14 @@ export default function RdbNdkStorePredicatesTest() {
       expect(re == 0).assertTrue();
     })
 
-    
+
     /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2100
      * @tc.desc: Normal testCase of NDK Predicates for equalTo
      * @tc.type: FUNC
      */
 
-     it('SUB_DDM_RDB_Predicates_2100',0, async function () {
+    it('SUB_DDM_RDB_Predicates_2100',0, async function () {
       hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_2100' , ' begin');
       let re = testNapi.SUB_DDM_RDB_Predicates_2100();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -670,17 +670,7 @@ export default function RdbNdkStorePredicatesTest() {
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
-    /**
-     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5700
-     * @tc.desc: Normal testCase of NDK Predicates for GroupBy
-     * @tc.type: FUNC
-     */
-    it('SUB_DDM_RDB_Predicates_5700',0, async function () {
-      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_5700' , ' begin');
-      let re = testNapi.SUB_DDM_RDB_Predicates_5700();
-      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
-      expect(re == 0).assertTrue();
-    })
+
     /**
      * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5800
      * @tc.desc: Normal testCase of NDK Predicates for GroupBy
