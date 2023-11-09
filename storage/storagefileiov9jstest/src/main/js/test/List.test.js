@@ -55,6 +55,7 @@ import fileIORW from './members/filerw.test.js'
 import fileIOLseek from './members/lseek.test.js'
 import fileIOReadLines from './members/readLines.test.js'
 import fileIOFileGetParent from './class_file/filegetParent.test.js'
+import fileIOMkdir11 from './members/mkdir11.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -98,4 +99,5 @@ export default function testsuite() {
     fileIOLseek()
     fileIOReadLines()
     fileIOFileGetParent()
+    fileIOMkdir11()
 }
