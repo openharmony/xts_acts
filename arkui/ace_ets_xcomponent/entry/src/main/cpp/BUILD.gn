@@ -32,6 +32,7 @@ config("public_config") {
 }
 
 ohos_shared_library("nativerender") {
+  testonly = true
   sources = [
     "./napi/napi_init.cpp",
     "./plugin_manager.cpp",
@@ -56,7 +57,10 @@ ohos_shared_library("nativerender") {
     "//third_party/EGL:libEGL_public_config",
     "//third_party/openGLES:libGLES_public_config",
   ]
-  external_deps = [ "napi:ace_napi" ]
+  external_deps = [
+    "hilog:hilog_ndk",
+    "napi:ace_napi",
+  ]
   deps = [
     "$comPath:ace_ndk",
     "$compath2:EGL",
