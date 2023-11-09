@@ -233,6 +233,8 @@ import NavigationMode12Jsunit from './Navigation/NavigationMode12Jsunit.test';
 import NavigationMode13Jsunit from './Navigation/NavigationMode13Jsunit.test';
 import NavigationMode14Jsunit from './Navigation/NavigationMode14Jsunit.test';
 import NavigationMode15Jsunit from './Navigation/NavigationMode15Jsunit.test';
+import NavigationMode16Jsunit from './Navigation/NavigationMode16Jsunit.test';
+import NavigationMode17Jsunit from './Navigation/NavigationMode17Jsunit.test';
 
 export default function testsuite() {
   DialogJsunit();
@@ -454,4 +456,6 @@ export default function testsuite() {
   NavigationMode13Jsunit();
   NavigationMode14Jsunit();
   NavigationMode15Jsunit();
+  NavigationMode16Jsunit();
+  NavigationMode17Jsunit();
 }
