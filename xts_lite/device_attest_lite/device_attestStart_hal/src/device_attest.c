@@ -91,7 +91,7 @@ BOOL AttestStatusValid(AttestResultInfo attestResultInfo)
         if (attestResultInfo.ticketLength <= 0) {
             result = FALSE;
         }
-        if (attestResultInfo.ticket == "") {
+        if (strcmp(attestResultInfo.ticket, "") == 0) {
             result = FALSE;
         }
     }
