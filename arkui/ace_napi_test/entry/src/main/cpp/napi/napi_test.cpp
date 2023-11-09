@@ -1984,6 +1984,20 @@ static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
     return _value;
 }
 
+static napi_value napiLoadModule(napi_env env, napi_callback_info info)
+{
+    napi_value value;
+    const char* path =  "@ohos.hilog";
+    napi_status status = napi_load_module(env, path, &value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_load_module ok");
+    NAPI_ASSERT(env, value != nullptr, "napi_load_module success");
+    
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
 static napi_value napiGetNodeVersion(napi_env env, napi_callback_info info)
 {
     napi_value value;
@@ -2921,6 +2935,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("stringUtf16OfLengthEqOne", StringUtf16OfLengthEqOne),
         DECLARE_NAPI_FUNCTION("stringUtf8OfLengthLeZero", StringUtf8OfLengthLeZero),
         DECLARE_NAPI_FUNCTION("NewTargetTest", NewTargetTest),
+        DECLARE_NAPI_FUNCTION("napiLoadModule", napiLoadModule),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
