@@ -218,6 +218,21 @@ import NavigationStack23Jsunit from './Navigation/NavigationStack23Jsunit.test';
 import NavigationStack24Jsunit from './Navigation/NavigationStack24Jsunit.test';
 import NavigationStack25Jsunit from './Navigation/NavigationStack25Jsunit.test';
 import NavigationStack26Jsunit from './Navigation/NavigationStack26Jsunit.test';
+import NavigationMode01Jsunit from './Navigation/NavigationMode01Jsunit.test';
+import NavigationMode02Jsunit from './Navigation/NavigationMode02Jsunit.test';
+import NavigationMode03Jsunit from './Navigation/NavigationMode03Jsunit.test';
+import NavigationMode04Jsunit from './Navigation/NavigationMode04Jsunit.test';
+import NavigationMode05Jsunit from './Navigation/NavigationMode05Jsunit.test';
+import NavigationMode06Jsunit from './Navigation/NavigationMode06Jsunit.test';
+import NavigationMode07Jsunit from './Navigation/NavigationMode07Jsunit.test';
+import NavigationMode08Jsunit from './Navigation/NavigationMode08Jsunit.test';
+import NavigationMode09Jsunit from './Navigation/NavigationMode09Jsunit.test';
+import NavigationMode10Jsunit from './Navigation/NavigationMode10Jsunit.test';
+import NavigationMode11Jsunit from './Navigation/NavigationMode11Jsunit.test';
+import NavigationMode12Jsunit from './Navigation/NavigationMode12Jsunit.test';
+import NavigationMode13Jsunit from './Navigation/NavigationMode13Jsunit.test';
+import NavigationMode14Jsunit from './Navigation/NavigationMode14Jsunit.test';
+import NavigationMode15Jsunit from './Navigation/NavigationMode15Jsunit.test';
 
 export default function testsuite() {
   DialogJsunit();
@@ -424,4 +439,19 @@ export default function testsuite() {
   NavigationStack24Jsunit();
   NavigationStack25Jsunit();
   NavigationStack26Jsunit();
+  NavigationMode01Jsunit();
+  NavigationMode02Jsunit();
+  NavigationMode03Jsunit();
+  NavigationMode04Jsunit();
+  NavigationMode05Jsunit();
+  NavigationMode06Jsunit();
+  NavigationMode07Jsunit();
+  NavigationMode08Jsunit();
+  NavigationMode09Jsunit();
+  NavigationMode10Jsunit();
+  NavigationMode11Jsunit();
+  NavigationMode12Jsunit();
+  NavigationMode13Jsunit();
+  NavigationMode14Jsunit();
+  NavigationMode15Jsunit();
 }
