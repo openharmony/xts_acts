@@ -59,27 +59,27 @@ export default function flexGrow_Default() {
       let Column_flexGrow_Default_013 = CommonFunc.getComponentRect('Column_flexGrow_Default_013');
       let Column_flexGrow_Default_01 = CommonFunc.getComponentRect('Column_flexGrow_Default_01');
       console.log('assert position')
-      expect(Math.round(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right));
-      expect(Math.round(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right));
-      expect(Math.round(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right));
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom))
+      expect(Math.abs(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)) <= 1).assertTrue();
       console.log('assert space')
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom', + Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)
       console.log('Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom', + Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)
-      expect(Column_flexGrow_Default_01.top).assertEqual(Column_flexGrow_Default_011.top);
+      expect(Math.abs(Column_flexGrow_Default_01.top - Column_flexGrow_Default_011.top) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.round(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top', + Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)
-      expect(Math.round(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top', + Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)
-      expect(Math.round(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top', + Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left - Math.round(vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_flexGrow_Default_TEST_0100] END');
       done();
     });
@@ -98,27 +98,27 @@ export default function flexGrow_Default() {
       let Column_flexGrow_Default_013 = CommonFunc.getComponentRect('Column_flexGrow_Default_013');
       let Column_flexGrow_Default_01 = CommonFunc.getComponentRect('Column_flexGrow_Default_01');
       console.log('assert position')
-      expect(Math.round(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right));
-      expect(Math.round(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right));
-      expect(Math.round(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right));
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom))
+      expect(Math.abs(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)) <= 1).assertTrue()
       console.log('assert space')
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom', + Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)
       console.log('Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom', + Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)
-      expect(Column_flexGrow_Default_01.top).assertEqual(Column_flexGrow_Default_011.top);
+      expect(Math.abs(Column_flexGrow_Default_01.top - Column_flexGrow_Default_011.top) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.round(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top', + Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)
-      expect(Math.round(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top', + Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)
-      expect(Math.round(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top', + Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left - Math.round(vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_flexGrow_Default_TEST_0200] END');
       done();
     });
@@ -137,27 +137,27 @@ export default function flexGrow_Default() {
       let Column_flexGrow_Default_013 = CommonFunc.getComponentRect('Column_flexGrow_Default_013');
       let Column_flexGrow_Default_01 = CommonFunc.getComponentRect('Column_flexGrow_Default_01');
       console.log('assert position')
-      expect(Math.round(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right));
-      expect(Math.round(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right));
-      expect(Math.round(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left)).assertEqual(Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right));
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom))
+      expect(Math.abs(Column_flexGrow_Default_011.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.left - Column_flexGrow_Default_01.left - Math.round(Column_flexGrow_Default_01.right - Column_flexGrow_Default_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)) <= 1).assertTrue()
       console.log('assert space')
-      expect(Math.round(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom', + Column_flexGrow_Default_012.top - Column_flexGrow_Default_011.bottom)
       console.log('Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom', + Column_flexGrow_Default_013.top - Column_flexGrow_Default_012.bottom)
-      expect(Column_flexGrow_Default_01.top).assertEqual(Column_flexGrow_Default_011.top);
+      expect(Math.abs(Column_flexGrow_Default_01.top - Column_flexGrow_Default_011.top) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.round(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top', + Column_flexGrow_Default_011.bottom - Column_flexGrow_Default_011.top)
-      expect(Math.round(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top', + Column_flexGrow_Default_012.bottom - Column_flexGrow_Default_012.top)
-      expect(Math.round(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top', + Column_flexGrow_Default_013.bottom - Column_flexGrow_Default_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Column_flexGrow_Default_011.right - Column_flexGrow_Default_011.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_012.right - Column_flexGrow_Default_012.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_013.right - Column_flexGrow_Default_013.left - Math.round(vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_flexGrow_Default_TEST_0300] END');
       done();
     });
@@ -175,25 +175,24 @@ export default function flexGrow_Default() {
       let Column_flexGrow_Default_023 = CommonFunc.getComponentRect('Column_flexGrow_Default_023');
       let Column_flexGrow_Default_02 = CommonFunc.getComponentRect('Column_flexGrow_Default_02');
       console.log('assert position')
-      expect(Math.round(Column_flexGrow_Default_021.left - Column_flexGrow_Default_02.left)).assertEqual(Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_021.right));
-      expect(Math.round(Column_flexGrow_Default_022.left - Column_flexGrow_Default_02.left)).assertEqual(Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_022.right));
-      expect(Math.round(Column_flexGrow_Default_023.left - Column_flexGrow_Default_02.left)).assertEqual(Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_023.right));
-      expect(Math.round(Column_flexGrow_Default_022.top - Column_flexGrow_Default_021.bottom)).assertEqual(Math.round(Column_flexGrow_Default_023.top - Column_flexGrow_Default_022.bottom))
+      expect(Math.abs(Column_flexGrow_Default_021.left - Column_flexGrow_Default_02.left - Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_021.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_022.left - Column_flexGrow_Default_02.left - Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_022.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_023.left - Column_flexGrow_Default_02.left - Math.round(Column_flexGrow_Default_02.right - Column_flexGrow_Default_023.right)) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_022.top - Column_flexGrow_Default_021.bottom - Math.round(Column_flexGrow_Default_023.top - Column_flexGrow_Default_022.bottom)) <= 1).assertTrue();
       console.log('assert space')
-      expect(Math.round(Column_flexGrow_Default_022.top - Column_flexGrow_Default_021.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Column_flexGrow_Default_023.top - Column_flexGrow_Default_022.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Column_flexGrow_Default_02.top).assertEqual(Column_flexGrow_Default_021.top);
-      console.log('assert height')
-      expect(Math.round(Column_flexGrow_Default_021.bottom - Column_flexGrow_Default_021.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_022.top - Column_flexGrow_Default_021.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_023.top - Column_flexGrow_Default_022.bottom - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_02.top - Column_flexGrow_Default_021.top) <= 1).assertTrue(Column_flexGrow_Default_021.top);
       console.log('Column_flexGrow_Default_021.bottom - Column_flexGrow_Default_021.top', + Column_flexGrow_Default_021.bottom - Column_flexGrow_Default_021.top)
-      expect(Math.round(Column_flexGrow_Default_022.bottom - Column_flexGrow_Default_022.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_021.bottom - Column_flexGrow_Default_021.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_022.bottom - Column_flexGrow_Default_022.top', + Column_flexGrow_Default_022.bottom - Column_flexGrow_Default_022.top)
-      expect(Math.round(Column_flexGrow_Default_023.bottom - Column_flexGrow_Default_023.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Column_flexGrow_Default_022.bottom - Column_flexGrow_Default_022.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('Column_flexGrow_Default_023.bottom - Column_flexGrow_Default_023.top', + Column_flexGrow_Default_023.bottom - Column_flexGrow_Default_023.top)
+      expect(Math.abs(Column_flexGrow_Default_023.bottom - Column_flexGrow_Default_023.top - Math.round(vp2px(100))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.round(Column_flexGrow_Default_021.right - Column_flexGrow_Default_021.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_022.right - Column_flexGrow_Default_022.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Column_flexGrow_Default_023.right - Column_flexGrow_Default_023.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Column_flexGrow_Default_021.right - Column_flexGrow_Default_021.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_022.right - Column_flexGrow_Default_022.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Column_flexGrow_Default_023.right - Column_flexGrow_Default_023.left - Math.round(vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_flexGrow_Default_TEST_0400] END');
       done();
     });

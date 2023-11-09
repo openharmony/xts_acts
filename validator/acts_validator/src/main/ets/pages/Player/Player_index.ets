@@ -30,6 +30,7 @@ let ColorBackPath = path + '/PlayerColorBack.txt';
 let txtPath = path1 + '/PlayerReport.txt';
 let AudioTxtPath = path1 + '/PlayerAudioReport.txt';
 let VideoTxtPath = path1 + '/PlayerVideoReport.txt';
+let NetWorkTxtPath = path1 + '/PlayerNetWorkReport.txt';
 let xmlPath = path1 + '/PlayerTest.xml';
 
 @Entry
@@ -43,10 +44,12 @@ struct IndexPage {
   private TestCaseList = [
     { title: 'PlayerAudio', uri: 'pages/Player/PlayAudioList' },
     { title: 'PlayerVideo', uri: 'pages/Player/PlayVideoList' },
+    { title: 'PlayerNetWork', uri: 'pages/Player/PlayNetWorkList' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue : Object[] = [];
   @State ColorTrue2 : Object[] = [];
+  @State ColorTrue3 : Object[] = [];
   async onPageShow() {
     let Test = null;
     let context = null;
@@ -137,7 +140,6 @@ struct IndexPage {
       if (this.ColorObject[i] === 'true '){
         this.ColorTrue[i] = 0x263526
         this.ColorTrue2[i] = 0x0CB60C
-
       }
       else if (this.ColorObject[i] === 'false'){
         this.ColorTrue[i] = 0x380303
@@ -267,6 +269,7 @@ struct IndexPage {
     fs.mkdirSync(path1);
     fs.openSync(AudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(VideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(NetWorkTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     for (let i = 0; i < this.TestCaseList.length; i++) {
       let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
@@ -274,6 +277,7 @@ struct IndexPage {
     }
     FlushData.ResetPlayerAudio();
     FlushData.ResetPlayerVideo();
+    FlushData.ResetPlayNetworkVideo();
   }
 
   ReadTextParseXml() {

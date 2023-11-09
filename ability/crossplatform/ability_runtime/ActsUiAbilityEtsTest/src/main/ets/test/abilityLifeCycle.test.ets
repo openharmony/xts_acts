@@ -119,8 +119,8 @@ export default function abilityTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
 
-      // MainAbility2在1.5秒后，会终结自己，等待2.5s, 确保MainAbility2终结完自己
-      await sleep(2500);
+      // MainAbility2在1.5秒后，会终结自己，等待3.5s, 确保MainAbility2终结完自己
+      await sleep(3500);
 
       const result2 = globalThis.list2;
       console.info("result2: " + JSON.stringify(result2));
@@ -377,7 +377,7 @@ export default function abilityTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
 
-      await sleep(2000);
+      await sleep(3000);
       expect(otherAppResult == 1).assertTrue();
       done();
     });

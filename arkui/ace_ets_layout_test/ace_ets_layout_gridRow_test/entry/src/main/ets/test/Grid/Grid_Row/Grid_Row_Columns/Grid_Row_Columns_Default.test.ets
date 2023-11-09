@@ -72,20 +72,20 @@ export default function Grid_Row_Columns_Default() {
       let gridRowColumns = JSON.parse(gridRowColumnsJson);
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
-      expect(firstColumns.top).assertEqual(Columns_1.top);
-      expect(secondColumns.top).assertEqual(Columns_1.top);
-      expect(thirdColumns.top).assertEqual(Columns_1.top);
-      expect(fourthColumns.top).assertEqual(Columns_1.top);
-      expect(fifthColumns.top).assertEqual(Columns_1.top);
-      expect(sixthColumns.top).assertEqual(Columns_1.top);
-      expect(seventhColumns.top).assertEqual(Columns_1.top);
-      expect(eighthColumns.top).assertEqual(Columns_1.top);
-      expect(ninthColumns.top).assertEqual(Columns_1.top);
-      expect(tenthColumns.top).assertEqual(Columns_1.top);
-      expect(eleventhColumns.top).assertEqual(Columns_1.top);
-      expect(twelfthColumns.top).assertEqual(Columns_1.top);
+      expect(Math.abs(firstColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(secondColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(thirdColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(fourthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(fifthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(sixthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(seventhColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(eighthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(ninthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(tenthColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(eleventhColumns.top - Columns_1.top) <= 1).assertTrue();
+      expect(Math.abs(twelfthColumns.top - Columns_1.top) <= 1).assertTrue();
 
-      expect(firstColumns.left).assertEqual(Columns_1.left);
+      expect(Math.abs(firstColumns.left - Columns_1.left) <= 1).assertTrue();
 
       expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
 

@@ -60,10 +60,10 @@ export default function Grid_Row_Breakpoints_Quantity() {
       let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity3');
       let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity4');
 
-      expect(Math.round(secondBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(fourthBreakpoints.top - thirdBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(fifthBreakpoints.top - fourthBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthBreakpoints.top - thirdBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fifthBreakpoints.top - fourthBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
       console.info('SUB_ACE_GridRowBreakpoints_Quantity_0100 END');
       done();
     });

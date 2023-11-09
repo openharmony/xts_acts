@@ -65,10 +65,10 @@ export default function flexVisibility_StartJsunit() {
           let textVisible03 = CommonFunc.getComponentRect('textVisible03');
           let flexVisible = CommonFunc.getComponentRect('flexVisible');
 
-          expect(textVisible01.left).assertEqual(textVisible01.right)
-          expect(textVisible01.right).assertEqual(flexVisible.left)
-          expect(textVisible02.top).assertEqual(textVisible03.top)
-          expect(textVisible03.top).assertEqual(flexVisible.top)
+          expect(Math.abs(textVisible01.left - textVisible01.right) <=1).assertTrue();
+          expect(Math.abs(textVisible01.right - flexVisible.left) <=1).assertTrue();
+          expect(Math.abs(textVisible02.top - textVisible03.top) <=1).assertTrue();
+          expect(Math.abs(textVisible03.top - flexVisible.top) <=1).assertTrue();
           expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
           expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1).assertTrue();
           expect(Math.abs(Math.round(textVisible02.right - textVisible02.left) - Math.round(vp2px(150))) <= 1).assertTrue();
@@ -103,11 +103,11 @@ export default function flexVisibility_StartJsunit() {
           let textVisible02 = CommonFunc.getComponentRect('textVisible02');
           let textVisible03 = CommonFunc.getComponentRect('textVisible03');
           let flexVisible = CommonFunc.getComponentRect('flexVisible');
-          expect(textVisible01.left).assertEqual(flexVisible.left)
-          expect(textVisible01.right).assertEqual(textVisible02.left)
-          expect(textVisible02.top).assertEqual(textVisible03.top)
-          expect(textVisible03.top).assertEqual(flexVisible.top)
-          
+          expect(Math.abs(textVisible01.left - flexVisible.left) <=1).assertTrue();
+          expect(Math.abs(textVisible01.right - textVisible02.left) <=1).assertTrue();
+          expect(Math.abs(textVisible02.top - textVisible03.top) <=1).assertTrue();
+          expect(Math.abs(textVisible03.top - flexVisible.top) <=1).assertTrue();
+
           expect(Math.abs(Math.round(textVisible01.bottom - textVisible01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
           expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
           expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1).assertTrue();

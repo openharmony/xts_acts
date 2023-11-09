@@ -25,7 +25,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 struct CustomContainerUser {
   @State name: string = 'DeskFps';
   @State toSP_daemon: string = 'SP_daemon -editor fpsohtest com.ohos.launcher 桌面';
-  @State StepTips: string = '操作步骤：根据操作提示滑动系统桌面测试帧率'+'\n'+'预期结果：帧率大于55帧测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示滑动系统桌面测试帧率'+'\n'+'预期结果：帧率大于或等于55帧测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State Fps: number = 0;
@@ -53,7 +53,7 @@ struct CustomContainerUser {
             Row(){
               Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n' + '2.长按桌面空白处添加空白页' + '\n' + '\n' + '3.点击悬浮球开始测试'+ '\n' + '\n' +
               `4.左右滑动系统桌面连续10s以上` + '\n' + '\n' + '5.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `6.点击结束观察测试结果` + '\n' + '\n' +
-              `7.若测试最高帧率大于55帧则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+              `7.若测试最高帧率大于或等于55帧则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
               `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
                 .fontColor(Color.White).fontSize('20fp')
             }

@@ -20,7 +20,14 @@
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/com.example.soundpoolxts/haps/entry/files",
-                "chmod 777 -R /data/app/el2/100/base/com.example.soundpoolxts/haps/entry"
+                "chmod 777 -R /data/app/el2/100/base/com.example.soundpoolxts/haps/entry",
+                "param set persist.ace.testmode.enabled 1",
+                "power-shell wakeup",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602"
+            ],
+            "teardown-command":[
+                "power-shell setmode 600"
             ]
         },
         {

@@ -131,15 +131,15 @@ export default function smsUiJsunit() {
     it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async function (done) {
       sms.getDefaultSmsSimId((err, data) => {
         if(err){
-          console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(data));
-          expect(true).assertTrue();
+          console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(err));
+          expect(false).assertTrue();
           done();
           return;
         }
         console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         sim.hasSimCard(0, (err, data) => {
           console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertTrue();
+          expect(data).assertFalse();
           done();
         });
       });
@@ -155,12 +155,12 @@ export default function smsUiJsunit() {
         console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 data = " + JSON.stringify(data));
         sim.hasSimCard(0, (err, data) => {
           console.log(`Telephony_Sms_getDefaultSmsSimId_Promise_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertTrue();
+          expect(data).assertFalse();
           done();
         });
       }).catch(err => {
         console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 err = " + JSON.stringify(err));
-        expect(true).assertTrue();
+        expect(false).assertTrue();
         done();
       });
     });

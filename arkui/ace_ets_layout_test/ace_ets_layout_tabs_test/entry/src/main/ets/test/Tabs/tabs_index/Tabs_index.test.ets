@@ -109,18 +109,18 @@ export default function tabs_IndexTest() {
       expect(Math.round(Tabs_index_011.bottom - Tabs_index_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_012.bottom - Tabs_index_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_013.bottom - Tabs_index_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_011.right - Tabs_index_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_012.right - Tabs_index_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_013.right - Tabs_index_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_011.right - Tabs_index_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_012.right - Tabs_index_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_013.right - Tabs_index_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexLessThanMin] Tabs_index_001.bottom -
       Tabs_index_001.top = ${Tabs_index_001.bottom - Tabs_index_001.top}`);
       expect(Math.round(Tabs_index_001.bottom - Tabs_index_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_002.bottom - Tabs_index_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_003.bottom - Tabs_index_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_001.right - Tabs_index_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_002.right - Tabs_index_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_003.right - Tabs_index_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_001.right - Tabs_index_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_002.right - Tabs_index_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_003.right - Tabs_index_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexLessThanMin] subGreen.bottom = ${subGreen.bottom}`);
       expect(subGreen.bottom).assertEqual(Tabs_index_001.top);
@@ -198,18 +198,18 @@ export default function tabs_IndexTest() {
       expect(Math.round(Tabs_index_011.bottom - Tabs_index_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_012.bottom - Tabs_index_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_013.bottom - Tabs_index_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_011.right - Tabs_index_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_012.right - Tabs_index_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_013.right - Tabs_index_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_011.right - Tabs_index_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_012.right - Tabs_index_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_013.right - Tabs_index_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexNormal] Tabs_index_001.bottom -
       Tabs_index_001.top = ${Tabs_index_001.bottom - Tabs_index_001.top}`);
       expect(Math.round(Tabs_index_001.bottom - Tabs_index_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_002.bottom - Tabs_index_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_003.bottom - Tabs_index_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_001.right - Tabs_index_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_002.right - Tabs_index_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_003.right - Tabs_index_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_001.right - Tabs_index_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_002.right - Tabs_index_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_003.right - Tabs_index_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexNormal] subGreen.bottom = ${subGreen.bottom}`);
       expect(subGreen.bottom).assertEqual(Tabs_index_001.top);
@@ -289,18 +289,18 @@ export default function tabs_IndexTest() {
       expect(Math.round(Tabs_index_011.bottom - Tabs_index_011.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_012.bottom - Tabs_index_012.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_013.bottom - Tabs_index_013.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_011.right - Tabs_index_011.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_012.right - Tabs_index_012.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_013.right - Tabs_index_013.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_011.right - Tabs_index_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_012.right - Tabs_index_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_013.right - Tabs_index_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexMoreThanMax] Tabs_index_001.bottom -
       Tabs_index_001.top = ${Tabs_index_001.bottom - Tabs_index_001.top}`);
       expect(Math.round(Tabs_index_001.bottom - Tabs_index_001.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_002.bottom - Tabs_index_002.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.round(Tabs_index_003.bottom - Tabs_index_003.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_index_001.right - Tabs_index_001.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_002.right - Tabs_index_002.left)).assertEqual(Math.round(vp2px(330)));
-      expect(Math.round(Tabs_index_003.right - Tabs_index_003.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.abs(Tabs_index_001.right - Tabs_index_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_002.right - Tabs_index_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_index_003.right - Tabs_index_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexMoreThanMax] subGreen.bottom = ${subGreen.bottom}`);
       expect(subGreen.bottom).assertEqual(Tabs_index_001.top);

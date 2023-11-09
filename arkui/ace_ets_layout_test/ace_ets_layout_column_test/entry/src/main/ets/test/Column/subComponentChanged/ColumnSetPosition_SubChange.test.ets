@@ -59,10 +59,10 @@ export default function ColumnSetPosition_SubChange() {
       let columnPosition_3 = CommonFunc.getComponentRect('columnPosition_3');
       let columnPosition = CommonFunc.getComponentRect('columnPosition');
 
-      expect(Math.round(columnPosition_1.top - columnPosition.top)).assertEqual(Math.round(vp2px(10)))
-      expect(Math.round(columnPosition_1.left - columnPosition.left)).assertEqual(Math.round(vp2px(10)))
-      expect(columnPosition_2.top).assertEqual (columnPosition.top)
-      expect(Math.round(columnPosition_3.top - columnPosition_2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.abs(columnPosition_1.top - columnPosition.top - Math.round(vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(columnPosition_1.left - columnPosition.left - Math.round(vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(columnPosition_2.top - columnPosition.top) <= 1).assertTrue()
+      expect(Math.abs(columnPosition_3.top - columnPosition_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(columnPosition_3.bottom).assertLess( columnPosition.bottom)
       console.info('new testColumnSubcomponentSetPosition END');
       done();

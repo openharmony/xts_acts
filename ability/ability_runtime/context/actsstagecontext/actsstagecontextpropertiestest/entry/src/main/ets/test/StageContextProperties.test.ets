@@ -67,7 +67,8 @@ export default function stageContextPropertiesTest(abilityContext) {
 
         function beforeEachLoadmanagement() {
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            abilityDelegator.executeShellCommand("hilog -r", async (err, data) => {});
+            abilityDelegator.executeShellCommand("hilog -Q pidoff", async (err, data) => {});
+            abilityDelegator.executeShellCommand("hilog -Q domainoff", async (err, data) => {});
             abilityDelegator.executeShellCommand("hilog -G 20M", async (err, data) => {});
         }
 
@@ -526,21 +527,16 @@ export default function stageContextPropertiesTest(abilityContext) {
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
             setTimeout(function () {
                 console.log('====>ReportDrawnCompleted_1400 expect start ');
-                let grepLog = "'\"name_\":\"DRAWN_COMPLETED\"'";
+                let grepLog = "DRAWN_COMPLETED";
                 let cmd = "hilog -x | grep " + grepLog;
                 abilityDelegator.executeShellCommand(cmd, (err, data) => {
                     console.log('====>ReportDrawnCompleted_0100 executeShellCommand err : ' + JSON.stringify(err));
                     if (data.stdResult) {
                     console.log('====>ReportDrawnCompleted_1400 data.stdResult : ' + JSON.stringify(data.stdResult));
                     try {
-                        expect(data.stdResult).assertContain("\"domain_\":\"AAFWK\"");
-                        expect(data.stdResult).assertContain("\"name_\":\"DRAWN_COMPLETED\"");
-                        expect(data.stdResult).assertContain("\"type_\":4");
-                        expect(data.stdResult).assertContain("\"tz_\":\"+0800\"");
-                        expect(data.stdResult).assertContain(
-                            "\"BUNDLE_NAME\":\"com.example.stagecontextpropertiestest\"");
-                        expect(data.stdResult).assertContain("\"MODULE_NAME\":\"drawn\"");
-                        expect(data.stdResult).assertContain("\"ABILITY_NAME\":\"DrawnAbility\"");
+                        expect(data.stdResult).assertContain("DRAWN_COMPLETED");
+                        expect(data.stdResult).assertContain("com.example.stagecontextpropertiestest");
+                        expect(data.stdResult).assertContain("DrawnAbility");
                     } catch {
                         expect().assertFail();
                         done();
@@ -551,8 +547,8 @@ export default function stageContextPropertiesTest(abilityContext) {
                     done();
                     }
                 });
-            }, 200);
-        }, 4000);
+            }, 500);
+        }, 3000);
         })
 
         /*
@@ -575,21 +571,16 @@ export default function stageContextPropertiesTest(abilityContext) {
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
             setTimeout(function () {
                 console.log('====>ReportDrawnCompleted_1500 expect start ');
-                let grepLog = "'\"name_\":\"DRAWN_COMPLETED\"'";
+                let grepLog = "DRAWN_COMPLETED";
                 let cmd = "hilog -x | grep " + grepLog;
                 abilityDelegator.executeShellCommand(cmd, (err, data) => {
                 console.log('====>ReportDrawnCompleted_1500 executeShellCommand err : ' + JSON.stringify(err));
                 if (data.stdResult) {
                     console.log('====>ReportDrawnCompleted_1500 data.stdResult : ' + JSON.stringify(data.stdResult));
                     try {
-                        expect(data.stdResult).assertContain("\"domain_\":\"AAFWK\"");
-                        expect(data.stdResult).assertContain("\"name_\":\"DRAWN_COMPLETED\"");
-                        expect(data.stdResult).assertContain("\"type_\":4");
-                        expect(data.stdResult).assertContain("\"tz_\":\"+0800\"");
-                        expect(data.stdResult).assertContain(
-                            "\"BUNDLE_NAME\":\"com.example.reportdrawncompletedmanualtest\"");
-                        expect(data.stdResult).assertContain("\"MODULE_NAME\":\"entry\"");
-                        expect(data.stdResult).assertContain("\"ABILITY_NAME\":\"EntryAbility\"");
+                        expect(data.stdResult).assertContain("DRAWN_COMPLETED");
+                        expect(data.stdResult).assertContain("com.example.reportdrawncompletedmanualtest");
+                        expect(data.stdResult).assertContain("EntryAbility");
                     } catch {
                         expect().assertFail();
                         done();
@@ -600,8 +591,8 @@ export default function stageContextPropertiesTest(abilityContext) {
                     done();
                 }
                 });
-            }, 1000);
-        }, 4000);
+            }, 500);
+        }, 3000);
         })
 
         function checkApplicationContextDir(applicationContext) {

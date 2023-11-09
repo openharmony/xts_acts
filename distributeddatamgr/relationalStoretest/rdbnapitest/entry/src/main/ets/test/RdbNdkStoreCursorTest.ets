@@ -247,6 +247,94 @@ export default function RdbNdkStoreCursorTest() {
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1900
+     * @tc.desc: getRowCount
+     * @tc.type: FUNC
+     */
+     it('SUB_DDM_RDB_CURSOR_1900',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_1900' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_1900();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2000
+     * @tc.desc:
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_CURSOR_2000',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2000' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_2000();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2100
+     * @tc.desc:
+     * @tc.type: FUNC
+     */
+     it('SUB_DDM_RDB_CURSOR_2100',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2100' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_2100();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
 
+  /**
+   * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2200
+   * @tc.desc:
+   * @tc.type: FUNC
+   */
+      it('SUB_DDM_RDB_CURSOR_2200',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2200' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_2200();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+    /**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2300
+     * @tc.desc:
+     * @tc.type: FUNC
+     */
+      it('SUB_DDM_RDB_CURSOR_2300',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2300' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_2300();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+  /**
+   * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2400
+   * @tc.desc:
+   * @tc.type: FUNC
+   */
+   it('SUB_DDM_RDB_CURSOR_2400',0, async function () {
+    hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2400' , ' begin');
+    let re = testNapi.SUB_DDM_RDB_CURSOR_2400();
+    hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+    expect(re == 0).assertTrue();
+  })
+  /**
+   * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2500
+   * @tc.desc:
+   * @tc.type: FUNC
+   */
+    it('SUB_DDM_RDB_CURSOR_2500',0, async function () {
+    hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2500' , ' begin');
+    let re = testNapi.SUB_DDM_RDB_CURSOR_2500();
+    hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+    expect(re == 0).assertTrue();
+  })
+    /**
+   * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2600
+   * @tc.desc:
+   * @tc.type: FUNC
+   */
+     it('SUB_DDM_RDB_CURSOR_2600',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_CURSOR_2600' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_CURSOR_2600();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
   })
 }

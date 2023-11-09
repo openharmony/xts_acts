@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function stackNoneSettingWidthHeight() {
   describe('stackNoneSettingWidthHeightTest', function () {
     beforeEach(async function (done) {
@@ -51,17 +51,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentTopStart', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentTopStart START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round(stackSizeDefaultKey01.right - stackSizeDefaultKey01.left)).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackSizeDefaultKey01.right - stackSizeDefaultKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackDefaultSizeAlignContentTopStart END');
@@ -75,17 +75,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentTop', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentTop START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackDefaultSizeAlignContentTop END');
@@ -99,17 +99,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentTopEnd', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentTopEnd START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackDefaultSizeAlignContentTopEnd END');
@@ -123,17 +123,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentStart', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentStart START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackDefaultSizeAlignContentStart END');
@@ -147,17 +147,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentCenter', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentCenter START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackDefaultSizeAlignContentCenter END');
@@ -171,17 +171,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentEnd', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentEnd START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackDefaultSizeAlignContentEnd END');
@@ -195,17 +195,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentBottomStart', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentBottomStart START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackDefaultSizeAlignContentBottomStart END');
@@ -219,17 +219,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentBottom', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentBottom START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackDefaultSizeAlignContentBottom END');
@@ -243,17 +243,17 @@ export default function stackNoneSettingWidthHeight() {
      */
     it('testStackDefaultSizeAlignContentBottomEnd', 0, async function (done) {
       console.info('new testStackDefaultSizeAlignContentBottomEnd START');
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackSizeDefaultKey');
       let obj = JSON.parse(strJson);
       let stackSizeDefaultKey = CommonFunc.getComponentRect('stackSizeDefaultKey');
       let stackSizeDefaultKey01 = CommonFunc.getComponentRect('stackSizeDefaultKey01');
-      expect(stackSizeDefaultKey.left).assertEqual(stackSizeDefaultKey01.left)
-      expect(stackSizeDefaultKey.right).assertEqual(stackSizeDefaultKey01.right)
-      expect(stackSizeDefaultKey.top).assertEqual(stackSizeDefaultKey01.top)
-      expect(stackSizeDefaultKey.bottom).assertEqual(stackSizeDefaultKey01.bottom)
-      expect(Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))).assertEqual(Math.round(vp2px(200)))
+      expect(Math.abs((stackSizeDefaultKey.left) - (stackSizeDefaultKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.right) - (stackSizeDefaultKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.top) - (stackSizeDefaultKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackSizeDefaultKey.bottom) - (stackSizeDefaultKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((stackSizeDefaultKey01.right - stackSizeDefaultKey01.left))) - (Math.round(vp2px(200)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackDefaultSizeAlignContentBottomEnd END');

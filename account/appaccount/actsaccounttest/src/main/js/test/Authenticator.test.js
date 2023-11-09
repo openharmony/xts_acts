@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,6 +55,7 @@ export default function ActsAccountAuthenticator() {
             }
             done();
         });
+
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0100
         * @tc.name      : Check Account Labels callback form
@@ -82,13 +83,11 @@ export default function ActsAccountAuthenticator() {
             });
         });
 
-
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0200
         * @tc.name      : Check Account Labels callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAccountLabels_0200', 0, async function (done) {
             console.debug("====>ActsAccountCheckAccountLabels_0200 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -116,7 +115,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Check Account Labels callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAccountLabels_0300', 0, async function (done) {
             console.debug("====>ActsAccountCheckAccountLabels_0300 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -144,7 +142,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Check Account Labels promise form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAccountLabels_0400', 0, async function (done) {
             console.debug("====>ActsAccountCheckAccountLabels_0400 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -178,7 +175,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Check Account Labels promise form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAccountLabels_0500', 0, async function (done) {
             console.debug("====>ActsAccountCheckAccountLabels_0500 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -213,7 +209,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Check Account Labels promise form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAccountLabels_0600', 0, async function (done) {
             console.debug("====>ActsAccountCheckAccountLabels_0600 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -246,7 +241,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Check App Access callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAppAccess_0100', 0, async function (done) {
             console.debug("====>ActsAccountCheckAppAccess_0100 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -289,13 +283,11 @@ export default function ActsAccountAuthenticator() {
             }); 
         }); 
 
-
         /*
         * @tc.number    : ActsAccountCheckAppAccess_0200
         * @tc.name      : Check App Access promise form
         * @tc.desc      : 
         */
-
         it('ActsAccountCheckAppAccess_0200', 0, async function (done) {
             console.debug("====>ActsAccountCheckAppAccess_0200 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -356,13 +348,11 @@ export default function ActsAccountAuthenticator() {
                 
         });
 
-
         /*
         * @tc.number    : ActsAccountDeleteAccountCredential_0100
         * @tc.name      : Delete Account Credential callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountDeleteAccountCredential_0100', 0, async function (done) {
             console.debug("====>ActsAccountDeleteAccountCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -402,7 +392,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Delete Account Credential promise form
         * @tc.desc      : 
         */
-
         it('ActsAccountDeleteAccountCredential_0200', 0, async function (done) {
             console.debug("====>ActsAccountDeleteAccountCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -450,7 +439,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Verify Credential callback form, options
         * @tc.desc      : 
         */
-
         it('ActsAccountVerifyCredential_0100', 0, async function (done) {
             console.debug("====>ActsAccountVerifyCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -480,7 +468,7 @@ export default function ActsAccountAuthenticator() {
                             console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_onRequestContinued")
                         }   
                 });
-            });            
+            });
         });
 
         /*
@@ -488,7 +476,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Verify Credential callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountVerifyCredential_0200', 0, async function (done) {
             console.debug("====>ActsAccountVerifyCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -517,14 +504,14 @@ export default function ActsAccountAuthenticator() {
                         console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_onRequestContinued")
                     }   
                 });
-            });            
+            });
         });
+
         /*
         * @tc.number    : ActsAccountSetAuthenticatorProperties_0100
         * @tc.name      : Verify Credential callback form, options
         * @tc.desc      : 
         */
-
         it('ActsAccountSetAuthenticatorProperties_0100', 0, async function (done) {
             console.debug("====>ActsAccountSetAuthenticatorProperties_0100 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -541,8 +528,7 @@ export default function ActsAccountAuthenticator() {
                     try{
                         await appAccountManager.deleteAccount(name)
                         console.debug('====>ActsAccountSetAuthenticatorProperties_0100 deleteAccount_success')
-                    }                               
-                    catch{
+                    } catch {
                         console.debug('====>ActsAccountSetAuthenticatorProperties_0100 deleteAccount_err')
                         expect().assertFail()
                     }    
@@ -553,7 +539,7 @@ export default function ActsAccountAuthenticator() {
                         console.debug("====>ActsAccountSetAuthenticatorProperties_0100 verifyCredential_onRequestContinued")
                     }   
                 });
-            });            
+            });
         });
 
         /*
@@ -561,7 +547,6 @@ export default function ActsAccountAuthenticator() {
         * @tc.name      : Verify Credential callback form
         * @tc.desc      : 
         */
-
         it('ActsAccountSetAuthenticatorProperties_0200', 0, async function (done) {
             console.debug("====>ActsAccountSetAuthenticatorProperties_0200 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -577,8 +562,7 @@ export default function ActsAccountAuthenticator() {
                     try{
                         await appAccountManager.deleteAccount(name)
                         console.debug('====>ActsAccountSetAuthenticatorProperties_0200 deleteAccount_success')
-                    }                               
-                    catch{
+                    } catch {
                         console.debug('====>ActsAccountSetAuthenticatorProperties_0200 deleteAccount_err')
                         expect().assertFail()
                     }    
@@ -589,16 +573,15 @@ export default function ActsAccountAuthenticator() {
                         console.debug("====>ActsAccountSetAuthenticatorProperties_0200 verifyCredential_onRequestContinued")
                     }   
                 });
-            });            
+            });
         });
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
-        * @tc.desc      : 
+        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.desc      : SelectAccountsByOptions Promise
         */
-
-        it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {  
+        it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {
             console.debug("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -609,31 +592,31 @@ export default function ActsAccountAuthenticator() {
                 try {
                     var data = await appAccountManager.selectAccountsByOptions(select_options)
                     console.debug("====>ActsAccountSelectAccountByOptions_0100 data:" + JSON.stringify(data));
-                    expect(data.length).assertEqual(1) 
+                    expect(data.length).assertEqual(1)
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0100 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null)
-                    done()
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                    return
                 }
                 try{
                     await appAccountManager.deleteAccount(name)
                     console.debug('====>ActsAccountSelectAccountByOptions_0100 deleteAccount_success')
-                }                               
-                catch{
+                } catch {
                     console.debug('====>ActsAccountSelectAccountByOptions_0100 deleteAccount_err')
                     expect().assertFail()
                 }
                 done();
-            });        
+            });
         });
 
         /*
-        * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
-        * @tc.desc      : 
+        * @tc.number    : ActsAccountSelectAccountByOptions_0200
+        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.desc      : SelectAccountsByOptions Promise
         */
-
-        it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {            
+        it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
             console.debug("====>ActsAccountSelectAccountByOptions_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -644,30 +627,30 @@ export default function ActsAccountAuthenticator() {
                 try {
                     var data = await appAccountManager.selectAccountsByOptions(select_options)
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 data:" + JSON.stringify(data));
-                    expect(data.length).assertEqual(3)                
+                    expect(data.length).assertEqual(3)
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null)
-                    done()
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                    return
                 }
                 try{
                     await appAccountManager.deleteAccount(name)
                     console.debug('====>ActsAccountSelectAccountByOptions_0200 deleteAccount_success')
-                }                               
-                catch{
+                } catch {
                     console.debug('====>ActsAccountSelectAccountByOptions_0200 deleteAccount_err')
                     expect().assertFail()
                 }
                 done();
-            });        
+            });
         });
 
         /*
-        * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
-        * @tc.desc      : 
+        * @tc.number    : ActsAccountSelectAccountByOptions_0300
+        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.desc      : SelectAccountsByOptions Promise
         */
-
         it('ActsAccountSelectAccountByOptions_0300', 0, async function (done) {
             console.debug("====>ActsAccountSelectAccountByOptions_0300 start====");
             var appAccountManager = account.createAppAccountManager();
@@ -679,21 +662,115 @@ export default function ActsAccountAuthenticator() {
                 try {
                     var data = await appAccountManager.selectAccountsByOptions(options)
                     console.debug("====>ActsAccountSelectAccountByOptions_0300 data:" + JSON.stringify(data));
-                    expect(data.length).assertEqual(1)                
+                    expect(data.length).assertEqual(1)
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0300 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null)
-                    done()
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                    return
                 }
                 try{
                     await appAccountManager.deleteAccount(name)
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_success')
-                }
-                catch{
+                } catch {
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_err')
                     expect().assertFail()
                 }
                 done();
+            });
+        });
+
+        /*
+        * @tc.number    : ActsAccountSelectAccountByOptions_0400
+        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.desc      : SelectAccountsByOptions Callback
+        */
+        it('ActsAccountSelectAccountByOptions_0400', 0, async function (done) {
+            console.debug("====>ActsAccountSelectAccountByOptions_0400 start====");
+            var appAccountManager = account.createAppAccountManager();
+            var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
+            console.debug("====>start finish====");
+            appAccountManager.addAccount(name, async (err)=>{
+                console.debug("====>ActsAccountSelectAccountByOptions_0400 add_account_err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                try {
+                    appAccountManager.selectAccountsByOptions(select_options, async (err, data) => {
+                        console.debug("====>ActsAccountSelectAccountByOptions_0400 data:" + JSON.stringify(data));
+                        expect(err).assertEqual(null)
+                        expect(data.length).assertEqual(1)
+                        await appAccountManager.deleteAccount(name)
+                        console.debug('====>ActsAccountSelectAccountByOptions_0400 deleteAccount_success')
+                        done();
+                    })
+                } catch(err) {
+                    console.debug("====>ActsAccountSelectAccountByOptions_0400 err:" + JSON.stringify(err));
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                }
+            });
+        });
+
+        /*
+        * @tc.number    : ActsAccountSelectAccountByOptions_0500
+        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.desc      : SelectAccountsByOptions Callback
+        */
+        it('ActsAccountSelectAccountByOptions_0500', 0, async function (done) {
+            console.debug("====>ActsAccountSelectAccountByOptions_0500 start====");
+            var appAccountManager = account.createAppAccountManager();
+            var select_options = {allowedOwners: [owner]}
+            console.debug("====>start finish====");
+            appAccountManager.addAccount(name, async (err)=>{
+                console.debug("====>ActsAccountSelectAccountByOptions_0500 add_account_err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                try {
+                    appAccountManager.selectAccountsByOptions(select_options, async (err, data) => {
+                        console.debug("====>ActsAccountSelectAccountByOptions_0500 data:" + JSON.stringify(data));
+                        expect(err).assertEqual(null)
+                        expect(data.length).assertEqual(3)
+                        await appAccountManager.deleteAccount(name)
+                        console.debug('====>ActsAccountSelectAccountByOptions_0500 deleteAccount_success')
+                        done();
+                    })
+                } catch(err) {
+                    console.debug("====>ActsAccountSelectAccountByOptions_0500 err:" + JSON.stringify(err));
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                }
+            });
+        });
+
+        /*
+        * @tc.number    : ActsAccountSelectAccountByOptions_0600
+        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.desc      : SelectAccountsByOptions Callback
+        */
+        it('ActsAccountSelectAccountByOptions_0600', 0, async function (done) {
+            console.debug("====>ActsAccountSelectAccountByOptions_0600 start====");
+            var appAccountManager = account.createAppAccountManager();
+            var options = {requiredLabels: ["male", "30-40"]}
+            console.debug("====>start finish====");
+            appAccountManager.addAccount(name, async (err)=>{
+                console.debug("====>ActsAccountSelectAccountByOptions_0600 add_account_err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                try {
+                    appAccountManager.selectAccountsByOptions(options, async (err, data) => {
+                        console.debug("====>ActsAccountSelectAccountByOptions_0600 data:" + JSON.stringify(data));
+                        expect(err).assertEqual(null)
+                        expect(data.length).assertEqual(1)
+                        await appAccountManager.deleteAccount(name)
+                        console.debug('====>ActsAccountSelectAccountByOptions_0600 deleteAccount_success')
+                        done();
+                    })
+                } catch(err) {
+                    console.debug("====>ActsAccountSelectAccountByOptions_0600 err:" + JSON.stringify(err));
+                    await appAccountManager.deleteAccount(name)
+                    expect().assertFail()
+                    done();
+                }
             });
         });
     })

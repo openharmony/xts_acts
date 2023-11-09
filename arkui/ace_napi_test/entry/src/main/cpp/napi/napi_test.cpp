@@ -301,10 +301,15 @@ static napi_value isExceptionPending(napi_env env, napi_callback_info info)
 static napi_value openAndCloseHandleScope(napi_env env, napi_callback_info info)
 {
     napi_handle_scope scope;
-    NAPI_CALL(env, napi_open_handle_scope(env, &scope));
+    napi_status openStatus = napi_open_handle_scope(env, &scope);
     napi_value output = NULL;
-    NAPI_CALL(env, napi_create_object(env, &output));
-    NAPI_CALL(env, napi_close_handle_scope(env, scope));
+    napi_status createStatus = napi_create_object(env, &output);
+    napi_status closeStatus = napi_close_handle_scope(env, scope);
+    if (openStatus == napi_ok && createStatus == napi_ok && closeStatus == napi_ok) {
+        napi_value undefined;
+        napi_get_undefined(env, &undefined);
+        return undefined;
+    }
     return output;
 }
 

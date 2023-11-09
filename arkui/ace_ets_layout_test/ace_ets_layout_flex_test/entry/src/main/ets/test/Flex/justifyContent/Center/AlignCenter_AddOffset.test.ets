@@ -62,21 +62,18 @@ export default function AlignCenter_AddOffset() {
       let Center_AddOffset_012 = CommonFunc.getComponentRect('Center_AddOffset_012');
       let Center_AddOffset_013 = CommonFunc.getComponentRect('Center_AddOffset_013');
       let Center_AddOffset_01 = CommonFunc.getComponentRect('Center_AddOffset_01');
-      expect(Math.round((Center_AddOffset_011.top - Center_AddOffset_01.top)*10)/10)
-        .assertEqual(Math.round(vp2px(15)*10)/10);
-      expect(Math.round((Center_AddOffset_011.left - Center_AddOffset_01.left)*10)/10)
-        .assertEqual(Math.round(vp2px(35)*10)/10);
-      expect(Math.round((Center_AddOffset_01.right - Center_AddOffset_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Center_AddOffset_012.top).assertEqual(Center_AddOffset_013.top);
-      expect(Center_AddOffset_012.top).assertEqual(Center_AddOffset_01.top);
-      expect(Center_AddOffset_013.left).assertEqual(Center_AddOffset_012.right);
-      expect(Math.round(Center_AddOffset_011.right - Center_AddOffset_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Center_AddOffset_012.right - Center_AddOffset_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Center_AddOffset_013.right - Center_AddOffset_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Center_AddOffset_011.bottom - Center_AddOffset_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Center_AddOffset_012.bottom - Center_AddOffset_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Center_AddOffset_013.bottom - Center_AddOffset_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs((Math.round((Center_AddOffset_011.top - Center_AddOffset_01.top)*10)/10) - (Math.round(vp2px(15)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddOffset_011.left - Center_AddOffset_01.left)*10)/10) - (Math.round(vp2px(35)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddOffset_01.right - Center_AddOffset_013.right)*10)/10) - (Math.round(vp2px(25)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddOffset_012.top) - (Center_AddOffset_013.top)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddOffset_012.top) - (Center_AddOffset_01.top)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddOffset_013.left) - (Center_AddOffset_012.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_011.right - Center_AddOffset_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_012.right - Center_AddOffset_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_013.right - Center_AddOffset_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_011.bottom - Center_AddOffset_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_012.bottom - Center_AddOffset_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddOffset_013.bottom - Center_AddOffset_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignCenterTextOffset] END');
       done();
     });

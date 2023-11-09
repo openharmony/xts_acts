@@ -19,9 +19,8 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import deviceInfo from '@ohos.deviceInfo';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraModuleTest: ";
 
 // Define global letiables
@@ -75,7 +74,7 @@ let mVideoConfig = {
 let mPicWidthMax = 8192;
 let mPicHeightMax = 8192;
 let receiver;
-
+let context = featureAbility.getContext();
 export default function cameraSessionFlashTest() {
 
     function sleep(ms) {
@@ -183,7 +182,7 @@ export default function cameraSessionFlashTest() {
     function mgetCameraManagerInstance() {
         console.info('Enter mgetCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -492,8 +491,6 @@ export default function cameraSessionFlashTest() {
             mgetCameraManagerInstance();
             getCameraSupportDevicesArray();
             createCameraSessionInstance();
-
-            console.info('Device type = ' + deviceInfo.deviceType);
 
             console.info('beforeAll case');
         })

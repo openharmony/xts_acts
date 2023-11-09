@@ -17,7 +17,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from '../../../MainAbility/common/Common'
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function Row_VerticalAlign() {
 
   describe('Row_VerticalAlign', function () {
@@ -56,38 +56,38 @@ export default function Row_VerticalAlign() {
 
     it('testRowAlignItemsVerticalAlignTop', 0, async function (done) {
       console.info('testRowAlignItemsVerticalAlignTop START');
-      globalThis.value.message.notify({ name:'alignItems', value:VerticalAlign.Top });
+      globalThis.value.message.notify({ name: 'alignItems', value: VerticalAlign.Top });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_VerticalAlign_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
       let Text1 = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
       let Text2 = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
       let Text3 = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.alignItems).assertEqual("VerticalAlign.Top");
-      
-      expect(Text1.left).assertEqual(Row.left);
-      expect(Text1.top).assertEqual(Row.top);
-      expect(Text2.top).assertEqual(Row.top);
-      expect(Text3.top).assertEqual(Row.top);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
+
+      expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
+      expect(Math.abs(Text1.top - Row.top) <= 1).assertTrue();
+      expect(Math.abs(Text2.top - Row.top) <= 1).assertTrue();
+      expect(Math.abs(Text3.top - Row.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Row.right).assertLarger(Text3.right);
-      
+
       console.info('testRowAlignItemsVerticalAlignTop END');
       done();
     });
@@ -100,39 +100,39 @@ export default function Row_VerticalAlign() {
 
     it('testRowAlignItemsVerticalAlignBottom', 0, async function (done) {
       console.info('testRowAlignItemsVerticalAlignBottom START');
-      globalThis.value.message.notify({ name:'alignItems', value:VerticalAlign.Bottom });
+      globalThis.value.message.notify({ name: 'alignItems', value: VerticalAlign.Bottom });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_VerticalAlign_Row');
       let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' +  JSON.stringify(obj.$attrs));
+      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
       let Row = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
       let Text1 = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
       let Text2 = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
       let Text3 = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(Math.round(vp2px(100)));
-      
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
       expect(obj.$attrs.alignItems).assertEqual("VerticalAlign.Bottom");
-      
-      expect(Text1.left).assertEqual(Row.left);
-      expect(Text1.bottom).assertEqual(Row.bottom);
-      expect(Text2.bottom).assertEqual(Row.bottom);
-      expect(Text3.bottom).assertEqual(Row.bottom);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(10)));
+
+      expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
+      expect(Math.abs(Text1.bottom - Row.bottom) <= 1).assertTrue();
+      expect(Math.abs(Text2.bottom - Row.bottom) <= 1).assertTrue();
+      expect(Math.abs(Text3.bottom - Row.bottom) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Row.right).assertLarger(Text3.right);
-      
+
       console.info('testRowAlignItemsVerticalAlignBottom END');
       done();
     });

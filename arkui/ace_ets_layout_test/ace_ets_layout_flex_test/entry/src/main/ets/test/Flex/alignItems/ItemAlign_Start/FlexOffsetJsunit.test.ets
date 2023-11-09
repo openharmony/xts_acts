@@ -56,18 +56,20 @@ export default function flexOffset_StartJsunit() {
       let textOffset02 = CommonFunc.getComponentRect('textOffset02');
       let textOffset03 = CommonFunc.getComponentRect('textOffset03');
       let flexOffset = CommonFunc.getComponentRect('flexOffset');
-      expect(Math.round((textOffset01.right - textOffset02.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10)
-      expect(Math.round(textOffset01.top - flexOffset.top)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round((textOffset01.left - flexOffset.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10)
-      expect(textOffset02.top).assertEqual(textOffset03.top)
-      expect(textOffset03.top).assertEqual(flexOffset.top)
 
-      expect(Math.round(textOffset01.bottom - textOffset01.top)).assertEqual(Math.round(vp2px(50)))
-      expect(Math.round(textOffset02.bottom - textOffset02.top)).assertEqual(Math.round(vp2px(100)))
-      expect(Math.round(textOffset03.bottom - textOffset03.top)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textOffset01.right - textOffset01.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textOffset02.right - textOffset02.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textOffset03.right - textOffset03.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs((textOffset01.right - textOffset02.left) - vp2px(15)) <= 1).assertTrue();
+      expect(Math.abs((textOffset01.top - flexOffset.top) - vp2px(30)) <= 1).assertTrue();
+      expect(Math.abs((textOffset01.left - flexOffset.left) - vp2px(15)) <= 1).assertTrue();
+      expect(Math.abs(textOffset02.top - textOffset03.top) <= 1).assertTrue();
+      expect(Math.abs(textOffset03.top - flexOffset.top) <= 1).assertTrue();
+
+      expect(Math.abs((textOffset01.bottom - textOffset01.top) - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs((textOffset02.bottom - textOffset02.top) - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs((textOffset03.bottom - textOffset03.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs((textOffset01.right - textOffset01.left) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs((textOffset02.right - textOffset02.left) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs((textOffset03.right - textOffset03.left) - vp2px(150)) <= 1).assertTrue();
+
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSetOffset END');

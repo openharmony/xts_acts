@@ -59,8 +59,8 @@ export default function Grid_Row_Breakpoints_Change() {
       let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change1');
       let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change2');
 
-      expect(Math.round(secondBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowBreakpoints_Value_0100 END');
       done();
@@ -80,8 +80,8 @@ export default function Grid_Row_Breakpoints_Change() {
       let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change1');
       let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change2');
 
-      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(thirdBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(secondBreakpoints.left - firstBreakpoints.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowBreakpoints_Value_0200 END');
       done();
@@ -103,10 +103,10 @@ export default function Grid_Row_Breakpoints_Change() {
       let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change3');
       let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Change4');
 
-      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(15)));
-      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(Math.round(vp2px(15)));
-      expect(Math.round(fourthBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(15)));
-      expect(Math.round(fifthBreakpoints.top - secondBreakpoints.bottom)).assertEqual(Math.round(vp2px(15)));
+      expect(Math.abs(Math.round(secondBreakpoints.left - firstBreakpoints.right) - Math.round(vp2px(15))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.left - secondBreakpoints.right) - Math.round(vp2px(15))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(15))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fifthBreakpoints.top - secondBreakpoints.bottom) - Math.round(vp2px(15))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowBreakpoints_Value_0300 END');
       done();

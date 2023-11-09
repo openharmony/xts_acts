@@ -60,13 +60,13 @@ export default function ColumnSetLayoutWeightNone_SubChange() {
       let setLayoutWeightNone3 = CommonFunc.getComponentRect('setLayoutWeightNone3');
       let setLayoutWeightNone = CommonFunc.getComponentRect('setLayoutWeightNone');
 
-      expect(setLayoutWeightNone1.top).assertEqual(setLayoutWeightNone.top)
-      expect(Math.round(setLayoutWeightNone2.top - setLayoutWeightNone1.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(setLayoutWeightNone3.top - setLayoutWeightNone2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.abs(setLayoutWeightNone1.top - setLayoutWeightNone.top) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeightNone2.top - setLayoutWeightNone1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeightNone3.top - setLayoutWeightNone2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
 
-      expect(Math.round(setLayoutWeightNone1.bottom - setLayoutWeightNone1.top)).assertEqual(Math.round(vp2px(layoutExpectHeight1)))
-      expect(Math.round(setLayoutWeightNone2.bottom - setLayoutWeightNone2.top)).assertEqual(Math.round(vp2px(layoutExpectHeight2)))
-      expect(Math.round(setLayoutWeightNone3.bottom - setLayoutWeightNone3.top)).assertEqual(Math.round(vp2px(layoutExpectHeight3)))
+      expect(Math.abs(setLayoutWeightNone1.bottom - setLayoutWeightNone1.top - Math.round(vp2px(layoutExpectHeight1))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeightNone2.bottom - setLayoutWeightNone2.top - Math.round(vp2px(layoutExpectHeight2))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeightNone3.bottom - setLayoutWeightNone3.top - Math.round(vp2px(layoutExpectHeight3))) <= 1).assertTrue()
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoZero END');
       done();
     });

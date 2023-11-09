@@ -983,5 +983,178 @@ export default function relationalStoreCloudSyncTest() {
             }
             console.log(TAG + "************* testRdbStoreCloudSyncTable0012 end *************");
         })
-        console.log(TAG + "*************Unit Test End*************");
-    })}
+
+        /**
+         * @tc.name cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3800
+         * @tc.desc cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and promise method
+         */
+        it('testRdbCloudSyncFirst0001', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudSyncFirst0001 start *************");
+
+        function Progress(detail) {
+            console.log(TAG + `Progress:` + JSON.stringify(detail));
+            done();
+        }
+        let predicates = new relationalStore.RdbPredicates("cloud_text")
+        predicates.in("num", ["1","2"]);
+        try {
+            await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, Progress)
+        } catch (err) {
+            console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
+            expect("202").assertEqual(err.code);
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudSyncFirst0001 end *************");
+        })
+
+        /**
+         * @tc.name cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_3900
+         * @tc.desc cloud sync with RdbPredicates, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         */
+        it('testRdbCloudSyncFirst0002', 0, async function (done) {
+            console.log(TAG + "************* testRdbCloudSyncFirst0002 start *************");
+            try {
+
+                function Progress(detail) {
+                    console.log(TAG + `Progress:` + JSON.stringify(detail));
+                }
+                let predicates = new relationalStore.RdbPredicates("cloud_text")
+                predicates.in("num", ["1","2"]);
+                rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, predicates, Progress, () => {
+                    expect(false).assertTrue()
+                });
+            } catch (err) {
+                console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
+                expect("202").assertEqual(err.code)
+                done();
+            }
+            console.log(TAG + "************* testRdbCloudSyncFirst0002 end *************");
+        })
+
+        /**
+         * @tc.name cloud sync with exception parameter, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4000
+         * @tc.desc cloud sync with exception parameter, SyncMode is SYNC_MODE_CLOUD_FIRST and callback method
+         */
+        it('testRdbCloudSyncFirst0003', 0, async function (done) {
+            console.log(TAG + "************* testRdbCloudSyncFirst0003 start *************");
+            try {
+
+                function Progress(detail) {
+                    console.log(TAG + `Progress:` + JSON.stringify(detail));
+                }
+                rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, 1410, Progress, () => {
+                    expect(false).assertTrue()
+                });
+            } catch (err) {
+                console.log(TAG + `cloud sync fail, errcode:${JSON.stringify(err)}.`);
+                expect('401').assertEqual(err.code);
+                done();
+            }
+            console.log(TAG + "************* testRdbCloudSyncFirst0003 end *************");
+        })
+
+    /**
+     * @tc.name subscribe test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4100
+     * @tc.desc normal testcase for autoSyncProgress of interface 'on'
+     */
+     it('testRdbCloudAutoSyncProgress0001', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0001 start *************");
+        try {
+            rdbStore.on("autoSyncProgress", function (detail) {
+                console.log(TAG + `Progress:` + JSON.stringify(detail));
+                expect(detail).notEquel(null);
+                done();
+            });
+            console.log(TAG + "on autoSyncProgress success");
+        } catch (err) {
+            console.log(TAG + "on autoSyncProgress" + err);
+            expect().assertFail();
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0001 end *************");
+    })
+
+    /**
+     * @tc.name subscribe test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4200
+     * @tc.desc normal testcase for autoSyncProgress of interface 'off'
+     */
+    it('testRdbCloudAutoSyncProgress0002', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0002 start *************");
+        try {
+            rdbStore.off("autoSyncProgress", function (detail) {
+                console.log(TAG + `Progress:` + JSON.stringify(detail));
+                expect(detail).notEquel(null);
+                done();
+            });
+            console.log(TAG + "off autoSyncProgress success");
+        } catch (err) {
+            console.log(TAG + "off autoSyncProgress" + err);
+            expect().assertFail();
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0002 end *************");
+    })
+
+    /**
+     * @tc.name subscribe test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4300
+     * @tc.desc normal testcase for autoSyncProgress of interface 'off'
+     */
+    it('testRdbCloudAutoSyncProgress0003', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0003 start *************");
+        try {
+            rdbStore.off("autoSyncProgress", null);
+            done();
+            console.log(TAG + "off autoSyncProgress success");
+        } catch (err) {
+            console.log(TAG + "off autoSyncProgress" + err);
+            expect().assertFail();
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0003 end *************");
+    })
+
+    /**
+     * @tc.name subscribe test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4400
+     * @tc.desc normal testcase for autoSyncProgress of interface 'off'
+     */
+    it('testRdbCloudAutoSyncProgress0004', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0004 start *************");
+        try {
+            rdbStore.off("autoSyncProgress", undefined);
+            done();
+            console.log(TAG + "off autoSyncProgress success");
+        } catch (err) {
+            console.log(TAG + "off autoSyncProgress" + err);
+            expect().assertFail();
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0004 end *************");
+    })
+
+    /**
+     * @tc.name subscribe test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CloudSyncJsAPITest_4500
+     * @tc.desc normal testcase for autoSyncProgress of interface 'off'
+     */
+    it('testRdbCloudAutoSyncProgress0005', 0, async function (done) {
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 start *************");
+        try {
+            rdbStore.off("autoSyncProgress");
+            done();
+            console.log(TAG + "off autoSyncProgress success");
+        } catch (err) {
+            console.log(TAG + "off autoSyncProgress" + err);
+            expect().assertFail();
+            done();
+        }
+        console.log(TAG + "************* testRdbCloudAutoSyncProgress0005 end *************");
+    })
+    console.log(TAG + "*************Unit Test End*************");
+})}

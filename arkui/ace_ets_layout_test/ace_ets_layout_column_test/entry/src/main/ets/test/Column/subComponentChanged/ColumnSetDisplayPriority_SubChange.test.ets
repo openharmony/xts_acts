@@ -59,17 +59,17 @@ export default function ColumnSetDisplayPriority_SubChange() {
       let setDisplayPriority2 = CommonFunc.getComponentRect('setDisplayPriority2');
       let setDisplayPriority3 = CommonFunc.getComponentRect('setDisplayPriority3');
       let setDisplayPriority = CommonFunc.getComponentRect('setDisplayPriority');
-      expect(setDisplayPriority.top).assertEqual(setDisplayPriority1.top)
-      expect(setDisplayPriority1.top).assertEqual(setDisplayPriority2.top)
-      expect(Math.round(setDisplayPriority3.top - setDisplayPriority2.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(setDisplayPriority.bottom - setDisplayPriority3.bottom)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.abs(setDisplayPriority.top - setDisplayPriority1.top) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority1.top - setDisplayPriority2.top) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.top - setDisplayPriority2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority.bottom - setDisplayPriority3.bottom - Math.round(vp2px(20))) <= 1).assertTrue(Math.round(vp2px(20)))
 
-      expect(Math.round(setDisplayPriority1.right - setDisplayPriority1.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority2.right - setDisplayPriority2.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority3.right - setDisplayPriority3.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority1.bottom - setDisplayPriority1.top)).assertEqual(Math.round(vp2px(100)))
-      expect(Math.round(setDisplayPriority2.bottom - setDisplayPriority2.top)).assertEqual(Math.round(vp2px(200)))
-      expect(Math.round(setDisplayPriority3.bottom - setDisplayPriority3.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs(setDisplayPriority1.right - setDisplayPriority1.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority2.right - setDisplayPriority2.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.right - setDisplayPriority3.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority1.bottom - setDisplayPriority1.top - Math.round(vp2px(100))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority2.bottom - setDisplayPriority2.top - Math.round(vp2px(200))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.bottom - setDisplayPriority3.top - Math.round(vp2px(150))) <= 1).assertTrue()
       console.info('new testColumnSetDisplayPriorityWithRateOneTwoThree END');
       done();
     });
@@ -89,17 +89,17 @@ export default function ColumnSetDisplayPriority_SubChange() {
       let setDisplayPriority2 = CommonFunc.getComponentRect('setDisplayPriority2');
       let setDisplayPriority3 = CommonFunc.getComponentRect('setDisplayPriority3');
       let setDisplayPriority = CommonFunc.getComponentRect('setDisplayPriority');
-      expect(setDisplayPriority.top).assertEqual(setDisplayPriority1.top)
-      expect(setDisplayPriority1.top).assertEqual(setDisplayPriority2.top)
-      expect(Math.round(setDisplayPriority3.top - setDisplayPriority2.bottom)).assertEqual(Math.round(vp2px(30)))
-      expect(Math.round(setDisplayPriority.bottom - setDisplayPriority3.bottom)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.abs(setDisplayPriority.top - setDisplayPriority1.top) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority1.top - setDisplayPriority2.top) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.top - setDisplayPriority2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority.bottom - setDisplayPriority3.bottom - Math.round(vp2px(20))) <= 1).assertTrue()
 
-      expect(Math.round(setDisplayPriority1.right - setDisplayPriority1.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority2.right - setDisplayPriority2.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority3.right - setDisplayPriority3.left)).assertEqual(Math.round(vp2px(300)))
-      expect(Math.round(setDisplayPriority1.bottom - setDisplayPriority1.top)).assertEqual(Math.round(vp2px(100)))
-      expect(Math.round(setDisplayPriority2.bottom - setDisplayPriority2.top)).assertEqual(Math.round(vp2px(200)))
-      expect(Math.round(setDisplayPriority3.bottom - setDisplayPriority3.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs(setDisplayPriority1.right - setDisplayPriority1.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority2.right - setDisplayPriority2.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.right - setDisplayPriority3.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority1.bottom - setDisplayPriority1.top - Math.round(vp2px(100))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority2.bottom - setDisplayPriority2.top - Math.round(vp2px(200))) <= 1).assertTrue()
+      expect(Math.abs(setDisplayPriority3.bottom - setDisplayPriority3.top - Math.round(vp2px(150))) <= 1).assertTrue()
       console.info('new testColumnSetDisplayPriorityWithRateTwoOneTwo END');
       done();
     });

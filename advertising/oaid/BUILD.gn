@@ -24,7 +24,7 @@ ohos_js_hap_suite("ActsCloudOAIDTest") {
   js_build_mode = "debug"
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsCloudOAIDTest"
-  subsystem_name = "cloud"
+  subsystem_name = "advertising"
   part_name = "oaid"
 }
 

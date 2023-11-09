@@ -14,6 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
+import deviceInfo from '@ohos.deviceInfo';
 import audio from '@ohos.multimedia.audio';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs'
@@ -526,7 +527,7 @@ export default function soundPoolTest() {
         let streamId = -1;
         await createSoundPool();
         soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: %{error.message}`);
+          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
           expectFalse();
         })
         await soundPool.load(fd2, 0, length2 + 1).then((soundId_) => {
@@ -534,7 +535,7 @@ export default function soundPoolTest() {
             console.info(`${TAG}: load(fd, offset, length) success, length > fileSize, soundId: ${soundId_}`);
             soundId = soundId_;
           } else {
-            console.info(`${TAG}: load(fd, offset, length) fail! soundId: %{soundId_}`);
+            console.info(`${TAG}: load(fd, offset, length) fail! soundId: ${soundId_}`);
             expectFalse();
           }
         }).catch((error) => {
@@ -3104,28 +3105,32 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0100', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0100 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
+            console.info(`${TAG}: setRate success, rate: ${audio.AudioRendererRate.RENDER_RATE_DOUBLE}`);
+          }).catch((error) => {
+            console.info(`${TAG}: setRate fail! error: [${error.code}, ${error.message}]`);
+            expectFalse();
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
-          console.info(`${TAG}: setRate success, rate: ${audio.AudioRendererRate.RENDER_RATE_DOUBLE}`);
-        }).catch((error) => {
-          console.info(`${TAG}: setRate fail! error: [${error.code}, ${error.message}]`);
-          expectFalse();
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3138,28 +3143,32 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0200', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0200 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(streamId, -1).then(() => {
+            console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: -1 will be change to normal`);
+          }).catch((error) => {
+            console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
+            expectFalse();
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(streamId, -1).then(() => {
-          console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: -1 will be change to normal`);
-        }).catch((error) => {
-          console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
-          expectFalse();
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3172,28 +3181,32 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0300', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0300 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(streamId, 1.5).then(() => {
+            console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: 1.5 will be change to normal`);
+          }).catch((error) => {
+            console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
+            expectFalse();
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(streamId, 1.5).then(() => {
-          console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: 1.5 will be change to normal`);
-        }).catch((error) => {
-          console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
-          expectFalse();
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3206,28 +3219,32 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0400', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0400 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(streamId, 3).then(() => {
+            console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: 3 will be change to normal`);
+          }).catch((error) => {
+            console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
+            expectFalse();
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(streamId, 3).then(() => {
-          console.info(`${TAG}: Test setRate with invalid rate success, setRate success! rate: 3 will be change to normal`);
-        }).catch((error) => {
-          console.info(`${TAG}: Test setRate with invalid rate fail, error: [${error.code}, ${error.message}]`);
-          expectFalse();
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3240,33 +3257,37 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0500', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0500 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
-          expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
-          console.info(`${TAG}: Test setRate with invalid streamId fail, setRate success! streamId: -1`);
-          expectFalse();
-        }).catch((error) => {
-          if (error.code == 401) {
-            console.info(`${TAG}: Test setRate with invalid streamId success, error: [${error.code}, ${error.message}]`);
-          } else {
-            console.info(`${TAG}: Test setRate with invalid streamId fail, errCode != 401, error: [${error.code}, ${error.message}]`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
             expectFalse();
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
+            console.info(`${TAG}: Test setRate with invalid streamId fail, setRate success! streamId: -1`);
+            expectFalse();
+          }).catch((error) => {
+            if (error.code == 401) {
+              console.info(`${TAG}: Test setRate with invalid streamId success, error: [${error.code}, ${error.message}]`);
+            } else {
+              console.info(`${TAG}: Test setRate with invalid streamId fail, errCode != 401, error: [${error.code}, ${error.message}]`);
+              expectFalse();
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3279,33 +3300,37 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0600', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0600 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
-          expectFalse();
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        await soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_HALF).then(() => {
-          console.info(`${TAG}: Test setRate with unplayed streamId fail, setRate success! streamId: ${(streamId + 1)}`);
-          expectFalse();
-        }).catch((error) => {
-          if (error.code == 5400102) {
-            console.info(`${TAG}: Test setRate with unplayed streamId success, error: [${error.code}, ${error.message}]`);
-          } else {
-            console.info(`${TAG}: Test setRate with unplayed streamId fail, errCode != 5400102, error: [${error.code}, ${error.message}]`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
             expectFalse();
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          await soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_HALF).then(() => {
+            console.info(`${TAG}: Test setRate with unplayed streamId fail, setRate success! streamId: ${(streamId + 1)}`);
+            expectFalse();
+          }).catch((error) => {
+            if (error.code == 5400102) {
+              console.info(`${TAG}: Test setRate with unplayed streamId success, error: [${error.code}, ${error.message}]`);
+            } else {
+              console.info(`${TAG}: Test setRate with unplayed streamId fail, errCode != 5400102, error: [${error.code}, ${error.message}]`);
+              expectFalse();
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
       }
       done();
       return;
@@ -3318,34 +3343,40 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_HALF, (err) => {
+            if (err) {
+              console.info(`${TAG}: setRateCallback error: ${JSON.stringify(err)}`);
+              expectFalse();
+            } else {
+              console.info(`${TAG}: setRateCallback success, rate: ${audio.AudioRendererRate.RENDER_RATE_HALF}`);
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_HALF, (err) => {
-          if (err) {
-            console.info(`${TAG}: setRateCallback error: ${JSON.stringify(err)}`);
-            expectFalse();
-          } else {
-            console.info(`${TAG}: setRateCallback success, rate: ${audio.AudioRendererRate.RENDER_RATE_HALF}`);
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -3358,34 +3389,40 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(streamId, -1, (err) => {
+            if (err) {
+              console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
+              expectFalse();
+            } else {
+              console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: -1 will be changed to normal`);
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(streamId, -1, (err) => {
-          if (err) {
-            console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
-            expectFalse();
-          } else {
-            console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: -1 will be changed to normal`);
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -3398,34 +3435,40 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(streamId, 1.5, (err) => {
+            if (err) {
+              console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
+              expectFalse();
+            } else {
+              console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: 1.5 will be changed to normal`);
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(streamId, 1.5, (err) => {
-          if (err) {
-            console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
-            expectFalse();
-          } else {
-            console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: 1.5 will be changed to normal`);
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -3438,34 +3481,40 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(streamId, 3, (err) => {
+            if (err) {
+              console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
+              expectFalse();
+            } else {
+              console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: 3 will be changed to normal`);
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(streamId, 3, (err) => {
-          if (err) {
-            console.info(`${TAG}: Test setRateCallback with invalid rate fail, error: [${err.code}, ${err.message}]`);
-            expectFalse();
-          } else {
-            console.info(`${TAG}: Test setRateCallback with invalid rate success, rate: 3 will be changed to normal`);
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -3478,39 +3527,45 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
+            if (err) {
+              if (err.code == 401) {
+                console.info(`${TAG}: Test setRateCallback with invalid streamId success, error: [${err.code}, ${err.message}]`);
+              } else {
+                console.info(`${TAG}: Test setRateCallback with invalid streamId fail, errCode != 401, error: [${err.code}, ${err.message}]`);
+                expectFalse();
+              }
+            } else {
+              console.info(`${TAG}: Test setRateCallback with invalid streamId fail, setRate success! streamId: -1`);
+              expectFalse();
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
-          if (err) {
-            if (err.code == 401) {
-              console.info(`${TAG}: Test setRateCallback with invalid streamId success, error: [${err.code}, ${err.message}]`);
-            } else {
-              console.info(`${TAG}: Test setRateCallback with invalid streamId fail, errCode != 401, error: [${err.code}, ${err.message}]`);
-              expectFalse();
-            }
-          } else {
-            console.info(`${TAG}: Test setRateCallback with invalid streamId fail, setRate success! streamId: -1`);
-            expectFalse();
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -3523,39 +3578,45 @@ export default function soundPoolTest() {
         */
     it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600', 0, async function (done) {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600 in`);
-      try {
-        let streamId = 0;
-        await createSoundPool();
-        soundPool.on('error', (error) => {
-          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+      if (deviceInfo.deviceType === 'default') {
+        try {
+          let streamId = 0;
+          await createSoundPool();
+          soundPool.on('error', (error) => {
+            console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+            expectFalse();
+            done();
+            return;
+          })
+          soundId = await soundPool.load(fd1, 0, length1);
+          await sleep(200);
+          streamId = await soundPool.play(soundId);
+          await sleep(200);
+          soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
+            if (err) {
+              if (err.code == 5400102) {
+                console.info(`${TAG}: Test setRateCallback with unplayed streamId success, error: [${err.code}, ${err.message}]`);
+              } else {
+                console.info(`${TAG}: Test setRateCallback with unplayed streamId fail, errCode != 5400102, error: [${err.code}, ${err.message}]`);
+                expectFalse();
+              }
+            } else {
+              console.info(`${TAG}: Test setRateCallback with unplayed streamId fail, setRate success! streamId: ${(streamId + 1)}`);
+              expectFalse();
+            }
+          })
+          await sleep(2000);
+          await soundPool.stop(streamId);
+          done();
+          return;
+        } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
           done();
           return;
-        })
-        soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
-        streamId = await soundPool.play(soundId);
-        await sleep(200);
-        soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
-          if (err) {
-            if (err.code == 5400102) {
-              console.info(`${TAG}: Test setRateCallback with unplayed streamId success, error: [${err.code}, ${err.message}]`);
-            } else {
-              console.info(`${TAG}: Test setRateCallback with unplayed streamId fail, errCode != 5400102, error: [${err.code}, ${err.message}]`);
-              expectFalse();
-            }
-          } else {
-            console.info(`${TAG}: Test setRateCallback with unplayed streamId fail, setRate success! streamId: ${(streamId + 1)}`);
-            expectFalse();
-          }
-        })
-        await sleep(2000);
-        await soundPool.stop(streamId);
-        done();
-        return;
-      } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+        }
+      } else {
+        console.info(`${TAG}: This device does not support setRate! Ignore this case.`);
         done();
         return;
       }
@@ -4498,7 +4559,7 @@ export default function soundPoolTest() {
         streamId_[0] = await soundPool.play(soundId_[0]);
         streamId_[1] = await soundPool.play(soundId_[1]);
         streamId_[2] = await soundPool.play(soundId_[2]);
-        streamId_[2] = await soundPool.play(soundId_[3]);
+        streamId_[3] = await soundPool.play(soundId_[3]);
         await sleep(8000);
         for (let i = 0; i < 4; i++) {
           await soundPool.unload(soundId_[i]);

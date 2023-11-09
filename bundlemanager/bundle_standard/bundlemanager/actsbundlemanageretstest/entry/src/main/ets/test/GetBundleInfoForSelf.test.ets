@@ -33,6 +33,9 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(5);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(bundle.AbilityType.DATA);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("dataability://com.open.harmony.packagemag.DataAbility");
         expect(data.hapModulesInfo[0].abilitiesInfo[1].type).assertEqual(bundle.AbilityType.PAGE);
         expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(bundle.DisplayOrientation.FOLLOW_RECENT);
         expect(data.hapModulesInfo[0].abilitiesInfo[2].type).assertEqual(bundle.AbilityType.PAGE);

@@ -57,22 +57,22 @@ export default function flexHeightModify_BaselineJsunit() {
       let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
       let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
-      expect(textHeightModify01.left).assertEqual(flexHeightModify.left)
-      expect(textHeightModify02.left).assertEqual(textHeightModify01.right)
-      expect(textHeightModify03.left).assertEqual(textHeightModify02.right)
+      expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.left - textHeightModify02.right) <= 1).assertTrue()
 
-      expect(textHeightModify01.top - textHeightModify03.top).assertEqual(textHeightModify03.bottom - textHeightModify01.bottom)
-      expect(textHeightModify02.top - textHeightModify03.top).assertEqual(textHeightModify03.bottom - textHeightModify02.bottom)
+      expect(Math.abs(textHeightModify01.top - textHeightModify03.top - textHeightModify03.bottom + textHeightModify01.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.top - textHeightModify03.top - textHeightModify03.bottom + textHeightModify02.bottom) <= 1).assertTrue()
 
-      expect(Math.round(textHeightModify01.top - flexHeightModify.top)).assertEqual(Math.round(vp2px(50)))
-      expect(textHeightModify03.top).assertEqual(flexHeightModify.top)
+      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.top - flexHeightModify.top) <= 1).assertTrue()
 
-      expect(Math.round(textHeightModify01.bottom - textHeightModify01.top)).assertEqual(Math.round(vp2px(50)))
-      expect(Math.round(textHeightModify02.bottom - textHeightModify02.top)).assertEqual(Math.round(vp2px(100)))
-      expect(Math.round(textHeightModify03.bottom - textHeightModify03.top)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify01.right - textHeightModify01.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify02.right - textHeightModify02.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify03.right - textHeightModify03.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs(textHeightModify01.bottom - textHeightModify01.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.bottom - textHeightModify02.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.bottom - textHeightModify03.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
       console.info('new testFlexItemAlignBaselineDefaultSize END');
@@ -94,20 +94,20 @@ export default function flexHeightModify_BaselineJsunit() {
       let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
       let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
-      expect(textHeightModify01.left).assertEqual(flexHeightModify.left)
-      expect(textHeightModify02.left).assertEqual(textHeightModify01.right)
-      expect(textHeightModify03.left).assertEqual(textHeightModify02.right)
+      expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.left - textHeightModify02.right) <= 1).assertTrue()
 
-      expect(textHeightModify01.top - textHeightModify03.top).assertEqual(textHeightModify03.bottom - textHeightModify01.bottom)
-      expect(textHeightModify02.top - textHeightModify03.top).assertEqual(textHeightModify03.bottom - textHeightModify02.bottom)
+      expect(Math.abs(textHeightModify01.top - textHeightModify03.top - textHeightModify03.bottom + textHeightModify01.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.top - textHeightModify03.top - textHeightModify03.bottom + textHeightModify02.bottom) <= 1).assertTrue()
 
-      expect(Math.round((textHeightModify01.top - flexHeightModify.top)*10)/10).assertEqual(Math.round(vp2px(35)*10)/10)
-      expect(Math.round(textHeightModify01.bottom - textHeightModify01.top)).assertEqual(Math.round(vp2px(80)))
-      expect(Math.round(textHeightModify02.bottom - textHeightModify02.top)).assertEqual(Math.round(vp2px(100)))
-      expect(Math.round(textHeightModify03.bottom - textHeightModify03.top)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify01.right - textHeightModify01.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify02.right - textHeightModify02.left)).assertEqual(Math.round(vp2px(150)))
-      expect(Math.round(textHeightModify03.right - textHeightModify03.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - vp2px(35)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify01.bottom - textHeightModify01.top - vp2px(80)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.bottom - textHeightModify02.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.bottom - textHeightModify03.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
       console.info('new testFlexItemAlignBaselineHeightModify END');

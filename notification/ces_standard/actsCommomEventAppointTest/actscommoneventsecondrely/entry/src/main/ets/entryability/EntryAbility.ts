@@ -23,6 +23,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_CommonEventTest_0200') {
       commonEvent.publish('Acts_CommonEvent_Test', (err) => {
         console.info('====>CommonEventSecondRely publish err: ' + JSON.stringify(err));
+        this.context.terminateSelf();
       });
     }
   }

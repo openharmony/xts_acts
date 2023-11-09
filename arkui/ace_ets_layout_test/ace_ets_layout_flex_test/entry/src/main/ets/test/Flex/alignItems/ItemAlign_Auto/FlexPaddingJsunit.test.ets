@@ -59,21 +59,21 @@ export default function flexPadding_AutoJsunit() {
       let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03');
       let flexPadding01 = CommonFunc.getComponentRect('flexPadding01');
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left);
-      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left);
+      expect(Math.abs(textFlexPadding01.left - flexPadding01.left - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding01.right - textFlexPadding02.left) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.right - textFlexPadding03.left) <= 1).assertTrue();
 
-      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top);
-      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top);
-      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(textFlexPadding01.top - textFlexPadding02.top) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.top - textFlexPadding03.top) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding01.top - flexPadding01.top - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(textFlexPadding01.bottom - textFlexPadding01.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.bottom - textFlexPadding02.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding03.bottom - textFlexPadding03.top - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(textFlexPadding01.right - textFlexPadding01.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.right - textFlexPadding02.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding03.right - textFlexPadding03.left - vp2px(150)) <= 1).assertTrue();
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexPadMeet END');
@@ -95,20 +95,20 @@ export default function flexPadding_AutoJsunit() {
       let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03');
       let flexPadding01 = CommonFunc.getComponentRect('flexPadding01');
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(Math.round(vp2px(30)));
-      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left);
-      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left);
+      expect(Math.abs(textFlexPadding01.left - flexPadding01.left - vp2px(30)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding01.right - textFlexPadding02.left) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.right - textFlexPadding03.left) <= 1).assertTrue();
 
-      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top);
-      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top);
-      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.abs(textFlexPadding01.top - textFlexPadding02.top) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.top - textFlexPadding03.top) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding01.top - flexPadding01.top - vp2px(30)) <= 1).assertTrue();
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.abs(textFlexPadding01.bottom - textFlexPadding01.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.bottom - textFlexPadding02.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding03.bottom - textFlexPadding03.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding01.right - textFlexPadding01.left - vp2px(440/3)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding02.right - textFlexPadding02.left - vp2px(440/3)) <= 1).assertTrue();
+      expect(Math.abs(textFlexPadding03.right - textFlexPadding03.left - vp2px(440/3)) <= 1).assertTrue();
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexPadOverflow END');

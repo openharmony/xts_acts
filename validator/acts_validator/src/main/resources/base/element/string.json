@@ -31,6 +31,14 @@
     {
       "name": "ok",
       "value": "OK"
+    },
+    {
+      "name": "yes",
+      "value": "是"
+    },
+    {
+      "name": "no",
+      "value": "否"
     }
   ]
 }

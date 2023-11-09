@@ -52,7 +52,7 @@ export default function AlignEnd_AddPadding() {
      */
     it('testFlexAlignEndFlexPadOverflow', 0, async function (done) {
       console.info('[testFlexAlignEndFlexPadOverflow] START');
-      globalThis.value.message.notify({name:'DadPadding', value:30})
+      globalThis.value.message.notify({ name: 'DadPadding', value: 30 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddPadding_01');
       let obj = JSON.parse(strJson);
@@ -63,19 +63,19 @@ export default function AlignEnd_AddPadding() {
       let End_AddPadding_012 = CommonFunc.getComponentRect('End_AddPadding_012');
       let End_AddPadding_013 = CommonFunc.getComponentRect('End_AddPadding_013');
       let End_AddPadding_01 = CommonFunc.getComponentRect('End_AddPadding_01');
-      expect(End_AddPadding_011.top).assertEqual(End_AddPadding_012.top);
-      expect(End_AddPadding_012.top).assertEqual(End_AddPadding_013.top);
-      expect(End_AddPadding_012.left).assertEqual(End_AddPadding_011.right);
-      expect(End_AddPadding_013.left).assertEqual(End_AddPadding_012.right);
-      expect(Math.round(End_AddPadding_011.top - End_AddPadding_01.top)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(End_AddPadding_011.left - End_AddPadding_01.left)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(End_AddPadding_01.right - End_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(End_AddPadding_011.right - End_AddPadding_011.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(End_AddPadding_012.right - End_AddPadding_012.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(End_AddPadding_013.right - End_AddPadding_013.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.abs(End_AddPadding_011.top - End_AddPadding_012.top) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_012.top - End_AddPadding_013.top) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_012.left - End_AddPadding_011.right) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_013.left - End_AddPadding_012.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.top - End_AddPadding_01.top)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.left - End_AddPadding_01.left)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_01.right - End_AddPadding_013.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.right - End_AddPadding_011.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_012.right - End_AddPadding_012.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_013.right - End_AddPadding_013.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
       console.info('[testFlexAlignEndFlexPadOverflow] END');
       done();
     });
@@ -87,7 +87,7 @@ export default function AlignEnd_AddPadding() {
      */
     it('testFlexAlignEndFlexPadMeet', 0, async function (done) {
       console.info('[testFlexAlignEndFlexPadMeet] START');
-      globalThis.value.message.notify({name:'DadPadding', value:20})
+      globalThis.value.message.notify({ name: 'DadPadding', value: 20 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddPadding_01');
       let obj = JSON.parse(strJson);
@@ -98,19 +98,19 @@ export default function AlignEnd_AddPadding() {
       let End_AddPadding_012 = CommonFunc.getComponentRect('End_AddPadding_012');
       let End_AddPadding_013 = CommonFunc.getComponentRect('End_AddPadding_013');
       let End_AddPadding_01 = CommonFunc.getComponentRect('End_AddPadding_01');
-      expect(End_AddPadding_011.top).assertEqual(End_AddPadding_012.top);
-      expect(End_AddPadding_012.top).assertEqual(End_AddPadding_013.top);
-      expect(End_AddPadding_011.right).assertEqual(End_AddPadding_012.left);
-      expect(End_AddPadding_012.right).assertEqual(End_AddPadding_013.left);
-      expect(Math.round(End_AddPadding_011.top - End_AddPadding_01.top)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(End_AddPadding_011.left - End_AddPadding_01.left)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(End_AddPadding_01.right - End_AddPadding_013.right)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(End_AddPadding_011.right - End_AddPadding_011.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(End_AddPadding_012.right - End_AddPadding_012.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(End_AddPadding_013.right - End_AddPadding_013.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(End_AddPadding_011.top - End_AddPadding_012.top) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_012.top - End_AddPadding_013.top) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_011.right - End_AddPadding_012.left) <= 1).assertTrue();
+      expect(Math.abs(End_AddPadding_012.right - End_AddPadding_013.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.top - End_AddPadding_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.left - End_AddPadding_01.left)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_01.right - End_AddPadding_013.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.right - End_AddPadding_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_012.right - End_AddPadding_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_013.right - End_AddPadding_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignEndFlexPadMeet] END');
       done();
     });

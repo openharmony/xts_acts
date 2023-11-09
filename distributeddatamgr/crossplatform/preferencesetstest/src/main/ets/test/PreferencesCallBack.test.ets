@@ -214,16 +214,23 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-            });
-            dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
+
             expect(preferences !== null).assertTrue();
             done();
           } catch (err) {
@@ -320,16 +327,22 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-            });
-            dataPreferences.deletePreferences(context, {
-              name: "getPreferencesTest1"
-            }, (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.deletePreferences(context, {
+                  name: "getPreferencesTest1"
+                }, (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
             expect(preferences !== null).assertTrue();
@@ -421,15 +434,20 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-              done();
-            });
-            dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
           } catch (err) {
@@ -524,19 +542,24 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-            });
-            dataPreferences.removePreferencesFromCache(context, {
-              name: "getPreferencesTest1"
-            }, (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.removePreferencesFromCache(context, {
+                  name: "getPreferencesTest1"
+                }, (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
-            done();
           } catch (err) {
             console.info("testRemovePreferencesFromCache006 fail: " + err.message + "code: " + err.code);
             expect(!err).assertTrue();

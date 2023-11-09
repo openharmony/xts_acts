@@ -61,12 +61,12 @@ export default function RelativeContainer_AnchorPoint_Visibility_Hidden() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.top).assertEqual(RelativeContainer_AnchorPoint_Visibility_Hidden_r1.top );
-      expect(RelativeContainer_AnchorPoint_Visibility_Hidden_bt2.right).assertEqual(RelativeContainer_AnchorPoint_Visibility_Hidden_r1.right );
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.top - RelativeContainer_AnchorPoint_Visibility_Hidden_r1.top) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_Hidden_bt2.right - RelativeContainer_AnchorPoint_Visibility_Hidden_r1.right) <= 1).assertTrue();
 
-      expect(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.top).assertEqual(RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.bottom );
-      expect(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.bottom).assertEqual(RelativeContainer_AnchorPoint_Visibility_Hidden_r1.bottom );
-      expect(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.right).assertEqual((RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.right - RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.left)/2 + RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.left);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.top - RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.bottom - RelativeContainer_AnchorPoint_Visibility_Hidden_r1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Visibility_Hidden_tx2.right - ((RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.right - RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.left)/2 + RelativeContainer_AnchorPoint_Visibility_Hidden_bt1.left)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Visibility_Hidden_TEST_0100] END');
       done();

@@ -17,7 +17,6 @@ import cameraObj from '@ohos.multimedia.camera';
 import featureAbility from '@ohos.ability.featureAbility';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import {UiDriver, BY} from '@ohos.UiTest'
-
 const TAG = "CameraInputTest: ";
 
 // Define global variables
@@ -29,7 +28,7 @@ let mCameraNum;
 
 let mCameraInput;
 let mPreviewOutput;
-
+let context = featureAbility.getContext();
 export default function CameraInputTest() {
     function sleep(ms) {
         console.info(TAG + "Entering sleep -> Promise constructor");
@@ -72,7 +71,7 @@ export default function CameraInputTest() {
     function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;

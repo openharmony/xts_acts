@@ -184,4 +184,78 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
+  static ResetPlayNetworkVideo = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('PlayerNetWork', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'PlayNetWork'. Data: " + data);
+    });
+    promise = preferences.put('PlayerNetWork', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'PlayNetWork'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetSensor = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Sensor', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Sensor'. Data: " + data);
+    });
+    promise = preferences.put('Sensor', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Sensor'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetScreen = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Screen', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Screen'. Data: " + data);
+    });
+    promise = preferences.put('Screen', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Screen'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

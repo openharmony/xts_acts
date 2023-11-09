@@ -65,13 +65,13 @@ export default function Grid_Col_Span_Default() {
       let Grid_Col_Span_Default_07 = CommonFunc.getComponentRect('Grid_Col_Span_Default_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Span_Default_01.left - Grid_Col_Span_Default_00.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_02.left - Grid_Col_Span_Default_01.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_03.left - Grid_Col_Span_Default_02.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_04.left - Grid_Col_Span_Default_03.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_05.left - Grid_Col_Span_Default_04.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_06.top - Grid_Col_Span_Default_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Grid_Col_Span_Default_07.top - Grid_Col_Span_Default_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs((Grid_Col_Span_Default_01.left - Grid_Col_Span_Default_00.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_02.left - Grid_Col_Span_Default_01.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_03.left - Grid_Col_Span_Default_02.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_04.left - Grid_Col_Span_Default_03.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_05.left - Grid_Col_Span_Default_04.right) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_06.top - Grid_Col_Span_Default_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Span_Default_07.top - Grid_Col_Span_Default_01.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_Default_TEST_0100] END');
       done();

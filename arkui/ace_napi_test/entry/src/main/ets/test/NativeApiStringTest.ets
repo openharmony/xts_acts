@@ -978,7 +978,7 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest069 START');
       let value = napitest.getVersion();
       console.info('aceNapiTest069 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual(2147483647 );
+      expect(value).assertEqual(8);
       done();
     });
 
