@@ -39,6 +39,12 @@ export default function NavigationMode16Jsunit() {
       }
       done();
     });
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0050
+    * @tc.name  : NavigationMode16Jsunit_0100
+    * @tc.desc  : NavigationMode: Dynamically switches the stack mode and split mode.
+    * @tc.level : Level 3
+    */
     it('NavigationMode16Jsunit_0100', 0, async function (done) {
       console.info('NavigationMode16Jsunit_0100 START')
       await CommonFunc.sleep(1000);
