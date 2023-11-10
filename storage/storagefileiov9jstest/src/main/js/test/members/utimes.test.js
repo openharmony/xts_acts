@@ -24,7 +24,7 @@ export default function fileIOUtimes() {
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_UTIMES_0100
    * @tc.name fileIO_test_utimes_async_001
    * @tc.desc Test utimes() interfaces.
-   * Modify the time(minus 10s) of the file, verify normal function.
+   * Modify File Last Access Time attribute,verify normal function.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -36,15 +36,13 @@ export default function fileIOUtimes() {
 
     try {
       let time = new Date().getTime();
-      let newtime = time;
       fileIO.utimes(fpath, time);
       let stat = fileIO.statSync(fpath);
-      let fltime = newtime / 1000; 
-      let setime = Math.floor(fltime);
+      let setime = Math.floor(time / 1000);
       expect(stat.mtime == setime).assertTrue();
       fileIO.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileIO_test_utimes_async_002 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_utimes_async_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -53,7 +51,7 @@ export default function fileIOUtimes() {
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_UTIMES_0200
    * @tc.name fileIO_test_utimes_async_002
    * @tc.desc Test utimes() interfaces.
-   * Verify normal function.
+   * Modify the time(minus 10s) of the file,Verify normal function.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -64,16 +62,14 @@ export default function fileIOUtimes() {
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
     
     try {
-      let time = new Date().getTime();
-      let newtime = time - 10000;
+      let time = new Date().getTime() - 10000;
       fileIO.utimes(fpath, time);
       let stat = fileIO.statSync(fpath);
-      let fltime = newtime / 1000; 
-      let setime = Math.floor(fltime);
-      expect(stat.mtime == setime + 10).assertTrue();
+      let setime = Math.floor(time / 1000);
+      expect(stat.mtime == setime).assertTrue();
       fileIO.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileIO_test_utimes_async_003 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_utimes_async_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -93,16 +89,14 @@ export default function fileIOUtimes() {
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
 
     try {
-      let time = new Date().getTime();
-      let newtime = time + 3000;
+      let time = new Date().getTime() + 3000;
       fileIO.utimes(fpath, time);
-      let stat = fileIO.statSync(fpath);
-      let fltime = newtime / 1000; 
-      let setime = Math.floor(fltime);
-      expect(stat.mtime == setime - 3).assertTrue();
+      let stat = fileIO.statSync(fpath); 
+      let setime = Math.floor(time / 1000);
+      expect(stat.mtime == setime).assertTrue();
       fileIO.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileIO_test_utimes_async_001 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_utimes_async_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -111,7 +105,7 @@ export default function fileIOUtimes() {
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_UTIMES_0400
    * @tc.name fileIO_test_utimes_async_004
    * @tc.desc Test utimes() interfaces.
-   * The path point to nothing, no such file   
+   * The path point to nothing, no such file.   
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -147,7 +141,7 @@ export default function fileIOUtimes() {
       fileIO.utimes();
       expect(false).assertTrue();
     } catch (e) {
-      console.log('fileIO_test_utimes_005 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_utimes_async_005 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
@@ -176,4 +170,3 @@ export default function fileIOUtimes() {
   }); 
 });
 }
-  
