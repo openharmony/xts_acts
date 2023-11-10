@@ -39,7 +39,12 @@ export default function NavigationMode14Jsunit() {
       }
       done();
     });
-    // 双栏 mode Auto-->stack 触发回调
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0040
+    * @tc.name  : NavigationMode14Jsunit_0100
+    * @tc.desc  : When NavigationMode is set to Auto, two columns are displayed for Auto, and the mode is dynamically switched to the stack mode.
+    * @tc.level : Level 3
+    */
     it('NavigationMode14Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
