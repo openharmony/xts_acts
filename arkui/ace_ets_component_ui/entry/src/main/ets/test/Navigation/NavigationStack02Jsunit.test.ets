@@ -39,6 +39,13 @@ export default function NavigationStack02Jsunit() {
       }
       done();
     });
+    
+	/* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_HIDENAVBAR_0130
+    * @tc.name  : NavigationStack02Jsunit_0100
+    * @tc.desc  : Use NavPathStack but empty content
+    * @tc.level : Level 3
+    */
     it('NavigationStack02Jsunit_0100', 0, async function (done) {
       console.info('NavigationStack02Jsunit_0100 START')
       await CommonFunc.sleep(1000);
