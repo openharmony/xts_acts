@@ -40,7 +40,12 @@ export default function NavigationMode05Jsunit() {
       }
       done();
     });
-    // Navigation父组件的宽度和Navigation的宽度小于600vp
+     /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0100
+    * @tc.name  : NavigationMode05Jsunit_0100
+    * @tc.desc  : The width of the navigation parent component and navigation is less than 600 vp, and the landscape/portrait mode is switched.
+    * @tc.level : Level 3
+    */
     it('NavigationMode05Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
