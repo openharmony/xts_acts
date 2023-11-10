@@ -78,7 +78,7 @@ export default function relationalStoreTransactionTest() {
                 console.info(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
                 expect(1).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             } catch (e) {
                 console.info(TAG + e);
                 expect(null).assertFail()
@@ -129,7 +129,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(3).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             } catch (e) {
                 expect(null).assertFail()
                 console.info(TAG + "testRdbTransactionInsert0002 failed");
@@ -170,7 +170,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
                 const valueBucket2 = {
                     "name": "wangwu",
                     "age": 16,
@@ -217,7 +217,7 @@ export default function relationalStoreTransactionTest() {
                 console.info(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             }
             done()
             console.info(TAG + "************* testRdbTransactionRollBack0001 end *************");
@@ -409,7 +409,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
                 const valueBucket2 = {
                     "name": "wangwu",
                     "age": 16,
