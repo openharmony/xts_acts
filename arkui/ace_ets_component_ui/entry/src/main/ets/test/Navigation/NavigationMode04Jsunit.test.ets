@@ -40,7 +40,12 @@ export default function NavigationMode04Jsunit() {
       }
       done();
     });
-    // Navigation的宽度大于600vp,动态改变Navigation的宽度小于600vp
+     /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0080
+    * @tc.name  : NavigationMode04Jsunit_0100
+    * @tc.desc  : The width of Navigation is greater than 600 vp. The width of Navigation is dynamically changed to less than 600 vp.
+    * @tc.level : Level 3
+    */
     it('NavigationMode04Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
