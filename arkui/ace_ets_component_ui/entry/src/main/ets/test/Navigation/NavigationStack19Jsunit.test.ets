@@ -39,6 +39,12 @@ export default function NavigationStack19Jsunit() {
       }
       done();
     });
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_HIDENAVBAR_0070
+    * @tc.name  : NavigationStack19Jsunit_0100
+    * @tc.desc  : When NavigationMode is set to split, hideNavBar is dynamically changed to false.
+    * @tc.level : Level 3
+    */
     it('NavigationStack19Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
