@@ -45,7 +45,7 @@ do_make()
     else
         for target in "${xts_targets[@]}"
             do
-                ./test/xts/acts/build.sh product_name=rk3568 system_size=standard target_subsystem=${target}
+                ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${target}
             done
     fi
 }
