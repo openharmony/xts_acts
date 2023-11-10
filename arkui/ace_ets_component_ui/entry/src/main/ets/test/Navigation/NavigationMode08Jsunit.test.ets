@@ -39,7 +39,12 @@ export default function NavigationMode08Jsunit() {
       }
       done();
     });
-    // 测试minContentWidth：单栏--》双栏
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0060
+    * @tc.name  : NavigationMode07Jsunit_0100
+    * @tc.desc  : When the sum of minNavBarWidth and minContentWidth is less than the navigation width, change minContentWidth to ensure that the sum of minNavBarWidth and minContentWidth is greater than the navigation width.
+    * @tc.level : Level 3
+    */
     it('NavigationMode08Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
