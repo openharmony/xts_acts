@@ -40,7 +40,12 @@ export default function NavigationMode02Jsunit() {
       }
       done();
     });
-    // Navigation的父组件的宽度大于600vp,动态改变Navigation的父组件的宽度小于600vp
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0170
+    * @tc.name  : NavigationMode02Jsunit_0100
+    * @tc.desc  : Navigation. The width of the parent component of Navigation is greater than 600 vp. The width of the parent component of Navigation is dynamically changed to less than 600 vp.
+    * @tc.level : Level 3
+    */
     it('NavigationMode02Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
