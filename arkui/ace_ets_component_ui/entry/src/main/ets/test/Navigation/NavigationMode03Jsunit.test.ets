@@ -40,6 +40,12 @@ export default function NavigationMode03Jsunit() {
       }
       done();
     });
+     /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0090
+    * @tc.name  : NavigationMode03Jsunit_0100
+    * @tc.desc  : The width of Navigation is less than 600 vp.to greater  to 600 vp
+    * @tc.level : Level 3
+    */
     it('NavigationMode03Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
