@@ -39,6 +39,12 @@ export default function NavigationStack03Jsunit() {
       }
       done();
     });
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_HIDENAVBAR_0140 ； SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_HIDENAVBAR_0150
+    * @tc.name  : NavigationStack03Jsunit_0100
+    * @tc.desc  : If NavPathStack is not used, set the navigation background color backgroundColor.
+    * @tc.level : Level 3
+    */
     it('NavigationStack03Jsunit_0100', 0, async function (done) {
       console.info('NavigationStack03Jsunit_0100 START')
       await CommonFunc.sleep(1000);
