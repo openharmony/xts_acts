@@ -39,7 +39,12 @@ export default function NavigationMode13Jsunit() {
       }
       done();
     });
-    // 单栏 mode Auto-->split 触发回调
+   /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0010
+    * @tc.name  : NavigationMode13Jsunit_0100
+    * @tc.desc  : If NavigationMode is set to Auto, a single column is displayed for Auto. The mode is dynamically switched to split mode
+    * @tc.level : Level 3
+    */
     it('NavigationMode13Jsunit_0100', 0, async function (done) {
       console.info('NavigationMode13Jsunit_0100 START')
       await CommonFunc.sleep(1000);
