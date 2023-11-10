@@ -41,7 +41,7 @@ export default function NavigationMode08Jsunit() {
     });
     /* *
     * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0060
-    * @tc.name  : NavigationMode07Jsunit_0100
+    * @tc.name  : NavigationMode08Jsunit_0100
     * @tc.desc  : When the sum of minNavBarWidth and minContentWidth is less than the navigation width, change minContentWidth to ensure that the sum of minNavBarWidth and minContentWidth is greater than the navigation width.
     * @tc.level : Level 3
     */
