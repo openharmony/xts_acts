@@ -199,6 +199,11 @@ import StateArray1 from './@stateTest/StateArray1.test.ets'
 import StateColor from './@stateTest/StateColor.test.ets'
 import StateHight from './@stateTest/StateHight.test.ets'
 import StateNumber from './@stateTest/StateNumber.test.ets'
+import HoverJsunit5 from './HoverTest/HoverJsunit5.test.ets'
+import HoverJsunit11 from './HoverTest/HoverJsunit11.test.ets'
+import HoverJsunit17 from './HoverTest/HoverJsunit17.test.ets'
+import HoverJsunit23 from './HoverTest/HoverJsunit23.test.ets'
+import HoverJsunit25 from './HoverTest/HoverJsunit25.test.ets'
 
 
 export default function testsuite() {
@@ -387,4 +392,9 @@ export default function testsuite() {
   StateColor()
   StateHight()
   StateNumber()
+  HoverJsunit5()
+  HoverJsunit11()
+  HoverJsunit17()
+  HoverJsunit23()
+  HoverJsunit25()
 }
