@@ -39,7 +39,12 @@ export default function NavigationMode12Jsunit() {
       }
       done();
     });
-    // 双栏 mode Auto-->split 不触发回调
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0030
+    * @tc.name  : NavigationMode12Jsunit_0100
+    * @tc.desc  : When NavigationMode is set to Auto, double columns are displayed for Auto, and the mode is dynamically switched to split mode.
+    * @tc.level : Level 3
+    */
     it('NavigationMode12Jsunit_0100', 0, async function (done) {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
