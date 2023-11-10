@@ -250,14 +250,14 @@ export default function relationalStoreTransactionTest() {
                     "salary": 220.5,
                     "blobType": u8,
                 }
-                let num = rdbStore.insert("test", valueBucket1)
+                let num = await rdbStore.insert("test", valueBucket1)
                 num.then(async (ret1) => {
                     console.info('ttt' + "testRdbTransactionMulti0001 * insert result " + ret1);
                     expect(2).assertEqual(ret1)
                 })
 
                 await rdbStore.commit()
-                await rdbStore.commit()
+                
 
                 let predicates = new data_Rdb.RdbPredicates("test");
                 await rdbStore.query(predicates).then(async (ret2) => {

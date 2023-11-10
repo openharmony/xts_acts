@@ -1076,6 +1076,7 @@ export default function relationalStoreCloudSyncTest() {
             done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0001 end *************");
+        done()
     })
 
     /**
@@ -1098,6 +1099,7 @@ export default function relationalStoreCloudSyncTest() {
             done();
         }
         console.log(TAG + "************* testRdbCloudAutoSyncProgress0002 end *************");
+        done()
     })
 
     /**
