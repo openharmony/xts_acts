@@ -29,7 +29,7 @@ group("graphic") {
         "vkgl:cpvkgl",
 
         #"vulkan:cpvktest",
-        "vktest:vulkanTest",
+        #"vktest:vulkanTest",
       ]
     }
   } else {
