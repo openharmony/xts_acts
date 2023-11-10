@@ -22,7 +22,9 @@ export default function imageGetImagePropertySecond() {
         const { DATE_TIME, GPS_TIME_STAMP, GPS_DATE_STAMP, IMAGE_DESCRIPTION, MAKE, MODEL, SENSITIVITY_TYPE,
             RECOMMENDED_EXPOSURE_INDEX, ISO_SPEED, APERTURE_VALUE, EXPOSURE_BIAS_VALUE, METERING_MODE, LIGHT_SOURCE,
             FLASH, FOCAL_LENGTH, USER_COMMENT, PIXEL_X_DIMENSION, PIXEL_Y_DIMENSION, WHITE_BALANCE,
-            FOCAL_LENGTH_IN_35_MM_FILM, PHOTO_MODE, STANDARD_OUTPUT_SENSITIVITY, CAPTURE_MODE, PHYSICAL_APERTURE } = image.PropertyKey;
+            FOCAL_LENGTH_IN_35_MM_FILM, PHOTO_MODE, STANDARD_OUTPUT_SENSITIVITY, CAPTURE_MODE, PHYSICAL_APERTURE ,ROLL_ANGLE ,PITCH_ANGLE,
+            SCENE_FOOD_CONF,SCENE_STAGE_CONF,SCENE_BLUE_SKY_CONF,SCENE_GREEN_PLANT_CONF,SCENE_BEACH_CONF,SCENE_SNOW_CONF,
+            SCENE_SUNSET_CONF,SCENE_FLOWERS_CONF,SCENE_NIGHT_CONF,SCENE_TEXT_CONF,FACE_COUNT,FOCUS_MODE} = image.PropertyKey;
         const props = {
             DateTime: "2019:11:15 20:48:30",
             GPSTimeStamp: "13:31:27.00",
@@ -43,7 +45,21 @@ export default function imageGetImagePropertySecond() {
             PixelXDimension: "3456",
             PixelYDimension: "4608",
             WhiteBalance: "Auto white balance",
-            FocalLengthIn35mmFilm: "26"
+            FocalLengthIn35mmFilm: "26",
+            HwMnoteRollAngle: "default_exif_value",
+            HwMnotePitchAngle: "default_exif_value",
+            HwMnoteSceneFoodConf: "default_exif_value",
+            HwMnoteSceneStageConf: "default_exif_value",
+            HwMnoteSceneBlueSkyConf: "default_exif_value",
+            HwMnoteSceneGreenPlantConf: "default_exif_value",
+            HwMnoteSceneBeachConf: "default_exif_value",
+            HwMnoteSceneSnowConf: "default_exif_value",
+            HwMnoteSceneSunsetConf: "default_exif_value",
+            HwMnoteSceneFlowersConf: "default_exif_value",
+            HwMnoteSceneNightConf: "default_exif_value",
+            HwMnoteSceneTextConf: "default_exif_value",
+            HwMnoteFaceCount: "default_exif_value",
+            HwMnoteFocusMode: "default_exif_value",
         }
         let filePath;
         let fdNumber;
@@ -453,6 +469,216 @@ export default function imageGetImagePropertySecond() {
         });
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100
+         * @tc.name      : getImageProperty(ROLL_ANGLE )
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(ROLL_ANGLE )
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100",
+            ROLL_ANGLE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200
+         * @tc.name      : getImageProperty(PITCH_ANGLE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(PITCH_ANGLE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200",
+            PITCH_ANGLE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300
+         * @tc.name      : getImageProperty(SCENE_FOOD_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_FOOD_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300",
+            SCENE_FOOD_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400
+         * @tc.name      : getImageProperty(SCENE_STAGE_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_STAGE_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400",
+            SCENE_STAGE_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500
+         * @tc.name      : getImageProperty(SCENE_BLUESKY_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_BLUESKY_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500",
+            SCENE_BLUE_SKY_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600
+         * @tc.name      : getImageProperty(SCENE_GREENPLANT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_GREENPLANT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600",
+            SCENE_GREEN_PLANT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700
+         * @tc.name      : getImageProperty(SCENE_BEACH_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_BEACH_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700",
+            SCENE_BEACH_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800
+         * @tc.name      : getImageProperty(SCENE_SNOW_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_SNOW_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800",
+            SCENE_SNOW_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900
+         * @tc.name      : getImageProperty(SCENE_SUNSET_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_SUNSET_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900",
+            SCENE_SUNSET_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000
+         * @tc.name      : getImageProperty(SCENE_FLOWERS_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_FLOWERS_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000",
+            SCENE_FLOWERS_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100
+         * @tc.name      : getImageProperty(SCENE_NIGHT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_NIGHT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100",
+            SCENE_NIGHT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200
+         * @tc.name      : getImageProperty(SCENE_TEXT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_TEXT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200",
+            SCENE_TEXT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300
+         * @tc.name      : getImageProperty(FACE_COUNT)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(FACE_COUNT)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300",
+            FACE_COUNT);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400
+         * @tc.name      : getImageProperty(FOCUS_MODE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(FOCUS_MODE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400", 0, async function (done) {
+            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400",
+            FOCUS_MODE);
+        });
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100
          * @tc.name      : getImageProperty(DATE_TIME)-callback
          * @tc.desc      : 1.create imagesource
@@ -710,6 +936,216 @@ export default function imageGetImagePropertySecond() {
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2000", 0, async function (done) {
             getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2000", FOCAL_LENGTH_IN_35_MM_FILM);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100
+         * @tc.name      : getImageProperty(ROLL_ANGLE )
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(ROLL_ANGLE )
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100",
+            ROLL_ANGLE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200
+         * @tc.name      : getImageProperty(PITCH_ANGLE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(PITCH_ANGLE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200",
+            PITCH_ANGLE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300
+         * @tc.name      : getImageProperty(SCENE_FOOD_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_FOOD_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300",
+            SCENE_FOOD_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400
+         * @tc.name      : getImageProperty(SCENE_STAGE_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_STAGE_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400",
+            SCENE_STAGE_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500
+         * @tc.name      : getImageProperty(SCENE_BLUESKY_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_BLUESKY_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500",
+            SCENE_BLUE_SKY_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600
+         * @tc.name      : getImageProperty(SCENE_GREENPLANT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_GREENPLANT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600",
+            SCENE_GREEN_PLANT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700
+         * @tc.name      : getImageProperty(SCENE_BEACH_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_BEACH_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700",
+            SCENE_BEACH_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800
+         * @tc.name      : getImageProperty(SCENE_SNOW_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_SNOW_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800",
+            SCENE_SNOW_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900
+         * @tc.name      : getImageProperty(SCENE_SUNSET_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_SUNSET_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900",
+            SCENE_SUNSET_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000
+         * @tc.name      : getImageProperty(SCENE_FLOWERS_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_FLOWERS_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000",
+            SCENE_FLOWERS_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100
+         * @tc.name      : getImageProperty(SCENE_NIGHT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_NIGHT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100",
+            SCENE_NIGHT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200
+         * @tc.name      : getImageProperty(SCENE_TEXT_CONF)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(SCENE_TEXT_CONF)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200",
+            SCENE_TEXT_CONF);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300
+         * @tc.name      : getImageProperty(FACE_COUNT)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(FACE_COUNT)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300",
+            FACE_COUNT);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400
+         * @tc.name      : getImageProperty(FOCUS_MODE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(FOCUS_MODE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400", 0, async function (done) {
+            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400",
+            FOCUS_MODE);
         });
 
         /**
@@ -992,6 +1428,216 @@ export default function imageGetImagePropertySecond() {
             getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2000", FOCAL_LENGTH_IN_35_MM_FILM);
         });
 
+                /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100
+         * @tc.name      : getImageProperty(ROLL_ANGLE ,property)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(ROLL_ANGLE )
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100",
+            ROLL_ANGLE);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200
+            * @tc.name      : getImageProperty(PITCH_ANGLE,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(PITCH_ANGLE)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200",
+            PITCH_ANGLE);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300
+            * @tc.name      : getImageProperty(SCENE_FOOD_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_FOOD_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300",
+            SCENE_FOOD_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400
+            * @tc.name      : getImageProperty(SCENE_STAGE_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_STAGE_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400",
+            SCENE_STAGE_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500
+            * @tc.name      : getImageProperty(SCENE_BLUESKY_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_BLUESKY_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500",
+            SCENE_BLUE_SKY_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600
+            * @tc.name      : getImageProperty(SCENE_GREENPLANT_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_GREENPLANT_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600",
+            SCENE_GREEN_PLANT_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700
+            * @tc.name      : getImageProperty(SCENE_BEACH_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_BEACH_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700",
+            SCENE_BEACH_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800
+            * @tc.name      : getImageProperty(SCENE_SNOW_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_SNOW_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800",
+            SCENE_SNOW_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900
+            * @tc.name      : getImageProperty(SCENE_SUNSET_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_SUNSET_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900",
+            SCENE_SUNSET_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000
+            * @tc.name      : getImageProperty(SCENE_FLOWERS_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_FLOWERS_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000",
+            SCENE_FLOWERS_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100
+            * @tc.name      : getImageProperty(SCENE_NIGHT_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_NIGHT_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100",
+            SCENE_NIGHT_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200
+            * @tc.name      : getImageProperty(SCENE_TEXT_CONF,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(SCENE_TEXT_CONF)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200",
+            SCENE_TEXT_CONF);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300
+            * @tc.name      : getImageProperty(FACE_COUNT,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(FACE_COUNT)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300",
+            FACE_COUNT);
+        });
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400
+            * @tc.name      : getImageProperty(FOCUS_MODE,property)
+            * @tc.desc      : 1.create imagesource
+            *                 2.set property
+            *                 3.call getImageProperty(FOCUS_MODE)
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400", 0, async function (done) {
+            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400",
+            FOCUS_MODE);
+        });
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0100
          * @tc.name      : getImageProperty(PHOTO_MODE)
@@ -1020,32 +1666,32 @@ export default function imageGetImagePropertySecond() {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0200", STANDARD_OUTPUT_SENSITIVITY);
         });
 
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300
-         * @tc.name      : getImageProperty(CAPTURE_MODE)
-         * @tc.desc      : 1.create imagesource
-         *                 2.set property
-         *                 3.call getImageProperty(CAPTURE_MODE)
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300", 0, async function (done) {
-            getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300 ", CAPTURE_MODE);
-        });
+        // /**
+        //  * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300
+        //  * @tc.name      : getImageProperty(CAPTURE_MODE)
+        //  * @tc.desc      : 1.create imagesource
+        //  *                 2.set property
+        //  *                 3.call getImageProperty(CAPTURE_MODE)
+        //  * @tc.size      : MEDIUM
+        //  * @tc.type      : Functional
+        //  * @tc.level     : Level 0
+        //  */
+        // it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300", 0, async function (done) {
+        //     getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300 ", CAPTURE_MODE);
+        // });
 
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400
-         * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
-         * @tc.desc      : 1.create imagesource
-         *                 2.set property
-         *                 3.call getImageProperty(PHYSICAL_APERTURE)
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400", 0, async function (done) {
-            getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400 ", PHYSICAL_APERTURE);
-        });
+        // /**
+        //  * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400
+        //  * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
+        //  * @tc.desc      : 1.create imagesource
+        //  *                 2.set property
+        //  *                 3.call getImageProperty(PHYSICAL_APERTURE)
+        //  * @tc.size      : MEDIUM
+        //  * @tc.type      : Functional
+        //  * @tc.level     : Level 0
+        //  */
+        // it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400", 0, async function (done) {
+        //     getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400 ", PHYSICAL_APERTURE);
+        // });
     });
 }
