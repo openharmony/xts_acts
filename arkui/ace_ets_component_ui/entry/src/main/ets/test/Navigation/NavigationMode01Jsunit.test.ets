@@ -40,6 +40,12 @@ export default function NavigationMode01Jsunit() {
       }
       done();
     });
+    /* *
+    * @tc.number: SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_MODE_0160
+    * @tc.name  : NavigationMode01Jsunit_0100
+    * @tc.desc  : Navigation: The width of the parent component of Navigation is less than 600 vp. The width of the parent component of Navigation is dynamically changed to be greater than or equal to 600 vp.
+    * @tc.level : Level 3
+    */
     it('NavigationMode01Jsunit_0100', 0, async function (done) {
       console.info('NavigationMode01Jsunit_0100 START')
       await CommonFunc.sleep(1000);
