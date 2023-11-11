@@ -480,6 +480,78 @@ export default function imageModifyProperty() {
         });
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100
+         * @tc.name      : modifyImageProperty(BitsPerSample)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "4, 4, 4").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100",
+                "fd",
+                "BitsPerSample",
+                "4, 4, 4",
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200
+         * @tc.name      : modifyImageProperty(ImageLength)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "800").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200",
+                "fd",
+                "ImageLength",
+                "800",
+                checkProps
+            );
+        });
+
+        /**
+                 * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300
+                 * @tc.name      : modifyImageProperty(ImageWidth)-promise
+                 * @tc.desc      : 1.create imagesource
+                 *                 2.call modifyImageProperty(key,value)
+                 *                 3.return undefined
+                 * @tc.size      : MEDIUM
+                 * @tc.type      : Functional
+                 * @tc.level     : Level 1
+                 */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "500").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300",
+                "fd",
+                "ImageWidth",
+                "500",
+                checkProps
+            );
+        });
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100
          * @tc.name      : modifyImageProperty(Orientation)-callback
          * @tc.desc      : 1.create imagesource
@@ -675,6 +747,57 @@ export default function imageModifyProperty() {
                 expect(result == "W").assertTrue();
             }
             modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1000", "fd", "GPSLongitudeRef", "W", checkProps);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100
+         * @tc.name      : modifyImageProperty(BitsPerSample)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "4, 4, 4").assertTrue();
+            }
+            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", "fd", "BitsPerSample", "4, 4, 4", checkProps);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200
+         * @tc.name      : modifyImageProperty(ImageLength)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "800").assertTrue();
+            }
+            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", "fd", "ImageLength", "800", checkProps);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300
+         * @tc.name      : modifyImageProperty(ImageWidth)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "500").assertTrue();
+            }
+            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", "fd", "ImageWidth", "500", checkProps);
         });
 
         /**
@@ -913,6 +1036,78 @@ export default function imageModifyProperty() {
                 "fd",
                 "GPSLongitudeRef",
                 "W",
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100
+         * @tc.name      : modifyImageProperty(BitsPerSample,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "4, 4, 4").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100",
+                "fd",
+                "BitsPerSample",
+                "4, 4, 4",
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200
+         * @tc.name      : modifyImageProperty(ImageLength,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "800").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200",
+                "fd",
+                "ImageLength",
+                "800",
+                checkProps
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300
+         * @tc.name      : modifyImageProperty(ImageWidth,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "500").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300",
+                "fd",
+                "ImageWidth",
+                "500",
                 checkProps
             );
         });
