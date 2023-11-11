@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import ActsNotificationRequestTest from './ActsNotificationRequestTest.test';
+import ActsCallbackTest from './ActsCallbackTest.test';
 
 export default function testsuite() {
-  ActsNotificationRequestTest();
+  ActsCallbackTest();
 };
