@@ -6,7 +6,7 @@
         "bundle-name":"com.example.xts_audiocapturerenhance",
         "package-name": "com.example.xts_audiocapturerenhance",
         "shell-timeout": "600000",
-		"testcase-timeout": 100000
+		"testcase-timeout": "100000"
     },
     "kits": [
         {
