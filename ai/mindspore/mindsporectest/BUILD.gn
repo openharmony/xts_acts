@@ -28,11 +28,13 @@ ohos_moduletest_suite("ActsMindSporeTest") {
 
   configs = [ ":mindspore_config" ]
 
-  external_deps = [ "c_utils:utils" ]
+  external_deps = [
+    "c_utils:utils",
+    "mindspore:mindspore-ndk",
+  ]
   deps = [
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
-    "//third_party/mindspore/mindspore-src/source/mindspore/lite:mindspore_ndk",
   ]
 
   subsystem_name = "ai"
