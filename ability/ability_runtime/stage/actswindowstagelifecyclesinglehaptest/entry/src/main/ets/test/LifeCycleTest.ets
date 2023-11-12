@@ -451,12 +451,12 @@ export default function lifecycleTest() {
         let listTemp = JSON.stringify(globalThis.list1);
         console.log(TAG + " listTemp is :" + listTemp);
         expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
-        expect(listTemp.split("MainAbility1 onWindowStageActive").length - 1).assertEqual(3);
+        expect(listTemp.split("MainAbility1 onWindowStageActive").length - 1).assertEqual(4);
         expect(listTemp.split("MainAbility1 onWindowStageInactive").length - 1).assertEqual(3);
         expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(3);
         expect(listTemp.split("MainAbility2 onWindowStageActive").length - 1).assertEqual(3);
-        expect(listTemp.split("MainAbility2 onWindowStageInactive").length - 1).assertEqual(2);
-        expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onWindowStageInactive").length - 1).assertEqual(3);
+        expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(3);
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
