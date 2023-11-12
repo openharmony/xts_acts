@@ -117,7 +117,8 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0200, Function | MediumTest 
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
     EXPECT_EQ(ret, DEVATTEST_SUCCESS);
-    EXPECT_EQ(AttestStatusValid(attestResultInfo), true);        
+    bool resultBool = AttestStatusValid(attestResultInfo);
+    EXPECT_EQ(resultBool, true);        
 }
 
 /**
