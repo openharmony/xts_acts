@@ -14,12 +14,12 @@
  */
 
 
-#include <stdio.h>
+#include <cstdio>
 #include "gtest/gtest.h"
 
 #include "devattest_interface.h"
 
-#define DEVATTEST_INIT -2
+#define DEVATTEST_INIT (-2)
 #define DEVATTEST_SUCCESS 0
 
 using namespace std;
@@ -56,28 +56,34 @@ public:
             result = false;
         }
         if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_VERSIONID])) {
-            failString += string(" versionResult is ") + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_VERSIONID]);
+            failString += string(" versionResult is ")
+                          + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_VERSIONID]);
             result = false;
         }
         if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PATCHLEVEL])) {
-            failString += string(" patchResult is ") + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PATCHLEVEL]);
+            failString += string(" patchResult is ")
+                          + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PATCHLEVEL]);
             result = false;
         }
         if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_ROOTHASH])) {
-            failString += string(" roothashResult is ") + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_ROOTHASH]);
+            failString += string(" roothashResult is ")
+                          + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_ROOTHASH]);
             result = false;
         }
         if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PCID])) {
-            failString += string(" pcidResult is ") + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PCID]);
+            failString += string(" pcidResult is ")
+                          + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_PCID]);
             result = false;
         }
         if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE])) {
-            failString += string(" reserveResult is ") + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE]);
+            failString += string(" reserveResult is ")
+                          + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE]);
             result = false;
         }
         if (attestResultInfo.authResult == DEVATTEST_SUCCESS) {
             if (attestResultInfo.ticketLength <= 0) {
-                failString += string(" ticketLength is ") + to_string(attestResultInfo.ticketLength);
+                failString += string(" ticketLength is ")
+                              + to_string(attestResultInfo.ticketLength);
                 result = false;
             }
             if (attestResultInfo.ticket == "") {
