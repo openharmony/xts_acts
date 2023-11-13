@@ -28,7 +28,7 @@ export default function regexNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslRegexRegcomp001', 0, async (done: Function) => {
-      let result = regex.regcomp();
+      let result:number = regex.regcomp();
       console.info("Test regcomp result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
       done()
@@ -43,12 +43,41 @@ export default function regexNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslRegexRegexec001', 0, async (done: Function) => {
-      let result = regex.regexec();
+      let result:number = regex.regexec();
       console.info("Test regexec result = " + JSON.stringify(result));
       expect(result).assertEqual(1);
       done()
     });
 
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGERROR_0100
+     * @tc.name       : testMuslRegexRegerror001
+     * @tc.desc       : test regexec
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslRegexRegerror001', 0, async (done: Function) => {
+      let result:number = regex.regerror();
+      console.info("Test result = " + JSON.stringify(result));
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGFREE_0100
+     * @tc.name       : testMuslRegexRegfree001
+     * @tc.desc       : test regfree
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslRegexRegfree001', 0, async (done: Function) => {
+      let result:number = regex.regfree();
+      console.info("Test result = " + JSON.stringify(result));
+      expect(result).assertEqual(0);
+      done()
+    });
 
   })
 }

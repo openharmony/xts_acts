@@ -18,12 +18,36 @@
 #include <malloc.h>
 #include <node_api.h>
 #include <sys/select.h>
+#include <cwchar>
+
 #define STRLENGTH 16
 #define FAIL -1
 #define NO_ERR 0
 #define SUCCESS 1
 #define FALSE 0
-#define ZERO 0
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_2 2
+#define PARAM_UNNORMAL -1
+#define RETURN_0 0
+#define RETURN_ONE 1
+#define FAILD -1
+#define ERRON_0 0
+#define SIZE_3 3
+#define SIZE_5 5
+#define SIZE_6 6
+#define SIZE_10 10
+#define SIZE_13 13
+#define SIZE_18 18
+#define SIZE_20 20
+#define SIZE_25 25
+#define SIZE_30 30
+#define SIZE_80 80
+#define SIZE_100 100
+#define SIZE_256 256
+#define SIZE_1024 1024
+#define SIZE_4096 4096
+#define SIZE_8192 8192
 
 static napi_value Iswalnum(napi_env env, napi_callback_info info)
 {
@@ -32,7 +56,7 @@ static napi_value Iswalnum(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswalnum((wint_t) * (char16_t *)ch);
     napi_value result;
@@ -52,11 +76,11 @@ static napi_value IswalnumL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswalnum_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswalnum_l((wint_t) * (char16_t *)ch,PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -72,11 +96,11 @@ static napi_value Iswalpha(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswalpha((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -92,11 +116,11 @@ static napi_value IswalphaL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswalpha_l((wint_t) * (char16_t *)ch, 0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -112,11 +136,11 @@ static napi_value Iswblank(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswblank((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -132,11 +156,11 @@ static napi_value IswblankL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswblank_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswblank_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -154,7 +178,7 @@ static napi_value Iswcntrl(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &first);
     int retVal = iswcntrl(first);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -170,9 +194,9 @@ static napi_value IswcntrlL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first;
     napi_get_value_int32(env, args[0], &first);
-    int retVal = iswcntrl_l(first, 0);
+    int retVal = iswcntrl_l(first, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -188,11 +212,11 @@ static napi_value Iswdigit(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswdigit((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -207,11 +231,11 @@ static napi_value IswdigitL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswdigit_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswdigit_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -227,11 +251,11 @@ static napi_value Iswgraph(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswgraph((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -246,11 +270,11 @@ static napi_value IswgraphL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswgraph_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswgraph_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -266,11 +290,11 @@ static napi_value Iswlower(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswlower((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -286,11 +310,11 @@ static napi_value IswlowerL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswlower_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswlower_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -306,11 +330,11 @@ static napi_value Iswprint(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswprint((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -326,11 +350,11 @@ static napi_value IswprintL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswprint_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswprint_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -346,11 +370,11 @@ static napi_value Iswpunct(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswpunct((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -366,11 +390,11 @@ static napi_value IswpunctL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswpunct_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswpunct_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -386,11 +410,11 @@ static napi_value Iswspace(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswspace((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -405,11 +429,11 @@ static napi_value IswspaceL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswspace_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswspace_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -425,11 +449,11 @@ static napi_value Iswupper(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswupper((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -445,11 +469,11 @@ static napi_value IswupperL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswupper_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswupper_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -465,13 +489,13 @@ static napi_value Iswctype(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *chFirst = (char *)malloc(sizeof(char) * length);
-    char *chSecond = (char *)malloc(sizeof(char) * length);
+    char chFirst[length];
+    char chSecond[length];
     napi_get_value_string_utf8(env, args[0], chFirst, length, &strResult);
     napi_get_value_string_utf8(env, args[1], chSecond, length, &strResult);
     int retVal = iswctype((wint_t) * (char16_t *)chFirst, wctype(chSecond));
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -487,13 +511,13 @@ static napi_value IswctypeL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *chFirst = (char *)malloc(sizeof(char) * length);
-    char *chSecond = (char *)malloc(sizeof(char) * length);
+    char chFirst[length];
+    char chSecond[length];
     napi_get_value_string_utf8(env, args[0], chFirst, length, &strResult);
     napi_get_value_string_utf8(env, args[1], chSecond, length, &strResult);
     int retVal = iswctype_l((wint_t) * (char16_t *)chFirst, wctype(chSecond), 0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -509,11 +533,11 @@ static napi_value Iswxdigit(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = iswxdigit((wint_t) * (char16_t *)ch);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
@@ -529,17 +553,281 @@ static napi_value IswxdigitL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswxdigit_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswxdigit_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
-    if (retVal != ZERO) {
+    if (retVal != PARAM_0) {
         napi_create_double(env, SUCCESS, &result);
         return result;
     } else {
         napi_create_double(env, FALSE, &result);
         return result;
     }
+}
+
+static napi_value Towctrans(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int towctrans_value = FAILD;
+
+    if (param == PARAM_0) {
+        wchar_t str[] = L"ABCD";
+        wctrans_t trans = wctrans("tolower");
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans(str[i], trans);
+        }
+        if (wcscmp(str, L"abcd") == PARAM_0) {
+            towctrans_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        wchar_t str[] = L"abcd";
+        wctrans_t trans = wctrans("toupper");
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans(str[i], trans);
+        }
+        if (wcscmp(str, L"ABCD") == PARAM_0) {
+            towctrans_value = RETURN_0;
+        }
+    } else {
+        wchar_t str[] = L"Abcd";
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans(str[i], PARAM_0);
+        }
+        if (wcscmp(str, L"Abcd") == PARAM_0) {
+            towctrans_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, towctrans_value, &result);
+
+    return result;
+}
+
+static napi_value TowctransL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int towctrans_l_value = FAILD;
+    locale_t locale = nullptr;
+    if (param == PARAM_0) {
+        wchar_t str[] = L"ABCD";
+        wctrans_t trans = wctrans("tolower");
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans_l(str[i], trans, locale);
+        }
+        if (wcscmp(str, L"abcd") == PARAM_0) {
+            towctrans_l_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        wchar_t str[] = L"abcd";
+        wctrans_t trans = wctrans("toupper");
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans_l(str[i], trans, locale);
+        }
+        if (wcscmp(str, L"ABCD") == PARAM_0) {
+            towctrans_l_value = RETURN_0;
+        }
+    } else {
+        wchar_t str[] = L"Abcd";
+        for (int i = PARAM_0; i < wcslen(str); i++) {
+            str[i] = towctrans_l(str[i], PARAM_0, locale);
+        }
+        if (wcscmp(str, L"Abcd") == PARAM_0) {
+            towctrans_l_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, towctrans_l_value, &result);
+
+    return result;
+}
+
+static napi_value TowlowerL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int towlower_l_value = FAILD;
+    locale_t locale = nullptr;
+    if (param == PARAM_0) {
+        char ch = 'A';
+        char result = towlower_l(ch, locale);
+        if (result == 'a') {
+            towlower_l_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = PARAM_2;
+        char result = towlower_l(ch, locale);
+        if (result == ch) {
+            towlower_l_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'a';
+        char result = towlower_l(ch, locale);
+        if (result == 'a') {
+            towlower_l_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = towlower_l(ch, locale);
+        if (result == '$') {
+            towlower_l_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, towlower_l_value, &result);
+
+    return result;
+}
+
+static napi_value TowupperL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int towupper_l_value = FAILD;
+    locale_t local = nullptr;
+    if (param == PARAM_0) {
+        char ch = 'a';
+        char result = towupper_l(ch, local);
+        if (result == 'A') {
+            towupper_l_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = PARAM_2;
+        char result = towupper_l(ch, local);
+        if (result == ch) {
+            towupper_l_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'A';
+        char result = towupper_l(ch, local);
+        if (result == 'A') {
+            towupper_l_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = towupper_l(ch, local);
+        if (result == '$') {
+            towupper_l_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, towupper_l_value, &result);
+
+    return result;
+}
+
+static napi_value Wctrans(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    if (param == PARAM_0) {
+        if (wctrans("tolower")) {
+            result_value = RETURN_0;
+        }
+    } else {
+        if (wctrans("toupper")) {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value WctransL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    locale_t locale = nullptr;
+    if (param == PARAM_0) {
+        if (wctrans_l("tolower", locale)) {
+            result_value = RETURN_0;
+        }
+    } else {
+        if (wctrans_l("toupper", locale)) {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Wctype(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    if (param == PARAM_0) {
+        wctype_t wt = wctype("alnum");
+        int result = iswctype(L'1', wt);
+        if (result == PARAM_1) {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value WctypeL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    locale_t locale = nullptr;
+    if (param == PARAM_0) {
+        wctype_t wt = wctype_l("alnum", locale);
+        int result = iswctype_l(L'1', wt, locale);
+        if (result == PARAM_1) {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
 }
 
 EXTERN_C_START
@@ -572,6 +860,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"iswctypeL", nullptr, IswctypeL, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"iswxdigit", nullptr, Iswxdigit, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"iswxdigitL", nullptr, IswxdigitL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"towctrans", nullptr, Towctrans, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"towctransL", nullptr, TowctransL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"towlowerL", nullptr, TowlowerL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"towupperL", nullptr, TowupperL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"wctrans", nullptr, Wctrans, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"wctransL", nullptr, WctransL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"wctype", nullptr, Wctype, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"wctypeL", nullptr, WctypeL, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -14,27 +14,37 @@
  */
 
 #include "napi/native_api.h"
-#include <cstdlib>
+#include <cerrno>
 #include <cstring>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
 #include <net/if.h>
+#include <netdb.h>
 #include <sys/inotify.h>
-#include <utmp.h>
 #include <uv.h>
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_2 2
+#define PARAM_UNNORMAL -1
+#define ERRON_0 0
+#define ONEVAL 1
+#define MINUSONE -1
+#define MINUSTWO -2
+#define MINUSTHR -3
+#define MAX_NAMBER 1024
 
+#define PARAM_4 4
 #define NO_ERR 0
 #define SUCCESS 1
 #define FAIL -1
 #define TRUE 1
 #define LENGTH 64
-#define ZERO 0
 #define EIGHTY 80
 #define BUFLEN 256
 #define FLAG 127
 static napi_value GetProtoEnt(napi_env env, napi_callback_info info)
 {
-    struct protoent *getInfo;
+    struct protoent *getInfo = nullptr;
     getInfo = getprotoent();
     int ret = FAIL;
     if (getInfo != nullptr) {
@@ -50,11 +60,11 @@ static napi_value GetProtoByName(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    size_t length = LENGTH, strResult = ZERO;
-    char *proto_name = (char *)malloc(sizeof(char) * length);
+    size_t length = LENGTH, strResult = PARAM_0;
+    char proto_name[LENGTH] = {0};
 
     napi_get_value_string_utf8(env, args[0], proto_name, length, &strResult);
-    struct protoent *getInfo;
+    struct protoent *getInfo = nullptr;
     getInfo = getprotobyname(proto_name);
     napi_value result = nullptr;
     if (getInfo != nullptr) {
@@ -64,15 +74,40 @@ static napi_value GetProtoByName(napi_env env, napi_callback_info info)
     }
     return result;
 }
+static napi_value Hstrerror(napi_env env, napi_callback_info info)
+{
+    const char *ret = hstrerror(1);
+    napi_value result;
+    if (strcmp(ret, "Unknown error nnn")) {
+        napi_create_int32(env, PARAM_0, &result);
+    } else {
+        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    }
+    return result;
+}
+
+static napi_value Herror(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    herror("herror");
+    napi_value result;
+    if (errno == ERRON_0) {
+        napi_create_int32(env, PARAM_0, &result);
+    } else {
+        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    }
+    return result;
+}
+
 static napi_value GetProtoByNumber(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    int valueZero;
+    int valueZero = PARAM_0;
     napi_get_value_int32(env, args[0], &valueZero);
-    struct protoent *getInfo;
+    struct protoent *getInfo = nullptr;
     getInfo = getprotobynumber(valueZero);
     napi_value result = nullptr;
     if (getInfo != nullptr) {
@@ -84,24 +119,21 @@ static napi_value GetProtoByNumber(napi_env env, napi_callback_info info)
 }
 static napi_value GetNameInfo(napi_env env, napi_callback_info info)
 {
-    char *ptr;
-    char hostname[128] = {0};
-    char serverName[128] = {0};
-    struct sockaddr_in addR_dst;
-
-    memset(&addR_dst, ZERO, sizeof(addR_dst));
+    char hostname[128] = {PARAM_0};
+    char serverName[128] = {PARAM_0};
+    sockaddr_in addR_dst = {PARAM_0};
+    memset(&addR_dst, PARAM_0, sizeof(addR_dst));
     addR_dst.sin_family = AF_INET;
-    addR_dst.sin_addr.s_addr = inet_addr(ptr);
-
-    int getInfo = getnameinfo((struct sockaddr *)&addR_dst, sizeof(addR_dst), hostname, sizeof(hostname), serverName,
-                              sizeof(serverName), ZERO);
+    inet_pton(AF_INET, "127.0.0.1", &addR_dst.sin_addr.s_addr);
+    int getInfo = getnameinfo((sockaddr *)&addR_dst, sizeof(addR_dst), hostname, sizeof(hostname), serverName,
+                              sizeof(serverName), PARAM_0);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
 }
 static napi_value GetHostEnt(napi_env env, napi_callback_info info)
 {
-    struct hostent *getInfo;
+    hostent *getInfo = nullptr;
     errno = NO_ERR;
     sethostent(TRUE);
     getInfo = gethostent();
@@ -115,12 +147,11 @@ static napi_value GetHostEnt(napi_env env, napi_callback_info info)
 }
 static napi_value GetServEnt(napi_env env, napi_callback_info info)
 {
-    struct servent *getInfo;
     errno = NO_ERR;
     setservent(TRUE);
-    getInfo = getservent();
     int ret = FAIL;
-    if (getInfo != nullptr) {
+    getservent();
+    if(errno ==NO_ERR){
         ret = SUCCESS;
     }
     napi_value result = nullptr;
@@ -129,7 +160,7 @@ static napi_value GetServEnt(napi_env env, napi_callback_info info)
 }
 static napi_value GetNetEnt(napi_env env, napi_callback_info info)
 {
-    struct netent *getInfo;
+    netent *getInfo = nullptr;
     errno = NO_ERR;
     setnetent(TRUE);
     getInfo = getnetent();
@@ -143,7 +174,7 @@ static napi_value GetNetEnt(napi_env env, napi_callback_info info)
 }
 static napi_value GetNetByAddr(napi_env env, napi_callback_info info)
 {
-    struct netent *getInfo;
+    netent *getInfo = nullptr;
     errno = NO_ERR;
     getInfo = getnetbyaddr(FLAG, AF_INET);
     int ret = FAIL;
@@ -156,7 +187,7 @@ static napi_value GetNetByAddr(napi_env env, napi_callback_info info)
 }
 static napi_value GetNetByName(napi_env env, napi_callback_info info)
 {
-    struct netent *getInfo;
+    netent *getInfo = nullptr;
     errno = NO_ERR;
     getInfo = getnetbyname("loopback");
     int ret = FAIL;
@@ -169,7 +200,7 @@ static napi_value GetNetByName(napi_env env, napi_callback_info info)
 }
 static napi_value GetServByName(napi_env env, napi_callback_info info)
 {
-    struct servent *getInfo;
+    servent *getInfo = nullptr;
     errno = NO_ERR;
     getInfo = getservbyname("http", "tcp");
     int ret = FAIL;
@@ -182,7 +213,7 @@ static napi_value GetServByName(napi_env env, napi_callback_info info)
 }
 static napi_value GetServByPort(napi_env env, napi_callback_info info)
 {
-    struct servent *getInfo;
+    servent *getInfo = nullptr;
     errno = NO_ERR;
     getInfo = getservbyport(htons(EIGHTY), "tcp");
     int ret = FAIL;
@@ -195,9 +226,9 @@ static napi_value GetServByPort(napi_env env, napi_callback_info info)
 }
 static napi_value GetHostByName(napi_env env, napi_callback_info info)
 {
-    struct hostent *getInfo;
+    hostent *getInfo = nullptr;
     errno = NO_ERR;
-    getInfo = gethostbyname("tcp");
+    getInfo = gethostbyname("www.baidu.com");
     int ret = FAIL;
     if (getInfo != nullptr) {
         ret = SUCCESS;
@@ -208,12 +239,12 @@ static napi_value GetHostByName(napi_env env, napi_callback_info info)
 }
 static napi_value GetHostByAddr(napi_env env, napi_callback_info info)
 {
-    struct hostent *getInfo;
+    hostent *getInfo = nullptr;
     errno = NO_ERR;
-    const char *add = "10.1.59.80";
-    char p[30];
-    inet_pton(AF_INET, add, p);
-    getInfo = gethostbyaddr(p, strlen(p), AF_INET);
+    const char *add = "127.0.0.1";
+    in_addr addr = {PARAM_0};
+    inet_pton(AF_INET, add, &addr);
+    getInfo = gethostbyaddr((const char *)&addr, sizeof(addr), AF_INET);
     int ret = FAIL;
     if (getInfo != nullptr) {
         ret = SUCCESS;
@@ -227,9 +258,10 @@ static napi_value GetHostByNameR(napi_env env, napi_callback_info info)
     int getInfo;
     errno = NO_ERR;
     char buf[1024];
-    struct hostent hostInfo, *pHost;
+    hostent hostInfo;
+    hostent *pHost = nullptr;
     int type;
-    getInfo = gethostbyname_r("tcp", &hostInfo, buf, sizeof(buf), &pHost, &type);
+    getInfo = gethostbyname_r("www.baidu.com", &hostInfo, buf, sizeof(buf), &pHost, &type);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
@@ -238,25 +270,21 @@ static napi_value GetHostByAddrR(napi_env env, napi_callback_info info)
 {
     int getInfo;
     errno = NO_ERR;
-    char ip_address[] = "13.2.37.103";
-    struct in_addr address;
-    inet_pton(AF_INET, ip_address, &address);
-
-    struct hostent host_buf;
-    struct hostent *host_result;
-    char buffer[2048];
-    int errNum;
-    getInfo =
-        gethostbyaddr_r(&address, sizeof(address), AF_INET, &host_buf, buffer, sizeof(buffer), &host_result, &errNum);
+    in_addr_t address = inet_addr("127.0.0.1");
+    hostent host_buf;
+    hostent *host_result = nullptr;
+    char buffer[8192];
+    int errNum = PARAM_0;
+    getInfo = gethostbyaddr_r(&address, PARAM_4, AF_INET, &host_buf, buffer, sizeof(buffer), &host_result, &errNum);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
 }
 static napi_value GetHostByName2(napi_env env, napi_callback_info info)
 {
-    struct hostent *getInfo;
+    hostent *getInfo = nullptr;
     errno = NO_ERR;
-    getInfo = gethostbyname2("tcp", AF_INET);
+    getInfo = gethostbyname2("127.0.0.1", AF_INET);
     int ret = FAIL;
     if (getInfo != nullptr) {
         ret = SUCCESS;
@@ -265,25 +293,178 @@ static napi_value GetHostByName2(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
+
 static napi_value GetHostByName2R(napi_env env, napi_callback_info info)
 {
     int getInfo;
     errno = NO_ERR;
     int err;
-    int buf_len = BUFLEN;
-    struct hostent hBuf;
-    struct hostent *ret;
-    char *buf = (char *)malloc(buf_len);
-    memset(buf, ZERO, buf_len);
-    getInfo = gethostbyname2_r("tcp", AF_INET, &hBuf, buf, buf_len, &ret, &err);
+    int buf_len = 8192;
+    hostent hBuf;
+    hostent *ret = nullptr;
+    char buf[buf_len];
+    memset(buf, PARAM_0, buf_len);
+    getInfo = gethostbyname2_r("127.0.0.1", AF_INET, &hBuf, buf, buf_len, &ret, &err);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
+    return result;
+}
+static napi_value Sethostent(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    sethostent(ONEVAL);
+    gethostent();
+    endhostent();
+    napi_value result;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value Setnetent(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    const char *netname = nullptr;
+    napi_value result = nullptr;
+    netent *ne = nullptr;
+    setnetent(ONEVAL);
+    while (ONEVAL) {
+        ne = getnetent();
+        if (!ne)
+            break;
+        if (strcmp(ne->n_name, netname) == PARAM_0) {
+            setnetent(PARAM_0);
+            endnetent();
+            napi_create_int32(env, ONEVAL, &result);
+            return result;
+        }
+    }
+    setnetent(PARAM_0);
+    endnetent();
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value Setprotoent(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    endprotoent();
+    napi_value result = nullptr;
+    protoent *getval = getprotoent();
+    if (getval == nullptr) {
+        napi_create_int32(env, MINUSONE, &result);
+    }
+    char buf[MAX_NAMBER] = {PARAM_0};
+    strcpy(buf, getval->p_name);
+    setprotoent(PARAM_0);
+    getval = getprotoent();
+    if (getval == nullptr) {
+        napi_create_int32(env, MINUSTWO, &result);
+    }
+    if (strcmp(getval->p_name, buf)) {
+        napi_create_int32(env, MINUSTHR, &result);
+    } else {
+        napi_create_int32(env, errno, &result);
+    }
+    return result;
+}
+
+static napi_value Setservent(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    char **p = nullptr;
+    struct servent *serv = nullptr;
+    napi_value result;
+    setservent(ONEVAL);
+    while ((serv = getservent()) != nullptr) {
+        for (p = serv->s_aliases; *p != nullptr; p++)
+            ;
+    }
+    endservent();
+    if (errno == PARAM_0) {
+        napi_create_int32(env, errno, &result);
+    } else {
+        napi_create_int32(env, MINUSONE, &result);
+    }
+    return result;
+}
+
+static napi_value EndServEnt(napi_env env, napi_callback_info info)
+{
+    errno = SUCCESS;
+    endservent();
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value EndProToEnt(napi_env env, napi_callback_info info)
+{
+    errno = SUCCESS;
+    endprotoent();
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value EndNetEnt(napi_env env, napi_callback_info info)
+{
+    errno = SUCCESS;
+    endnetent();
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value EndHostEnt(napi_env env, napi_callback_info info)
+{
+    errno = SUCCESS;
+    endhostent();
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+napi_value GaiStrerror(napi_env env, napi_callback_info info)
+{
+    const char *value = gai_strerror(EAI_BADFLAGS);
+    int ret = FAIL;
+    if (value != nullptr) {
+        ret = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+napi_value Freeaddrinfo(napi_env env, napi_callback_info info) 
+{
+    struct addrinfo *ai, hint;
+    hint.ai_flags = AI_PASSIVE;
+    hint.ai_family = AF_UNSPEC;
+    if (getaddrinfo("127.0.0.1", nullptr, &hint, &ai) != NO_ERR) {
+        freeaddrinfo(ai);
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+napi_value Getaddrinfo(napi_env env, napi_callback_info info) 
+{
+    struct addrinfo hint, *ai;
+    hint.ai_flags = AI_PASSIVE;
+    hint.ai_family = AF_UNSPEC;
+    int ret = getaddrinfo("127.0.0.1", nullptr, &hint, &ai);
+    freeaddrinfo(ai);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
     return result;
 }
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
+        {"hstrerror", nullptr, Hstrerror, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"herror", nullptr, Herror, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getProtoEnt", nullptr, GetProtoEnt, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getProtoByName", nullptr, GetProtoByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getProtoByNumber", nullptr, GetProtoByNumber, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -301,7 +482,18 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getHostByAddrR", nullptr, GetHostByAddrR, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getHostByName2", nullptr, GetHostByName2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getHostByName2R", nullptr, GetHostByName2R, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
+        {"sethostent", nullptr, Sethostent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setnetent", nullptr, Setnetent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setprotoent", nullptr, Setprotoent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setservent", nullptr, Setservent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"endservent", nullptr, EndServEnt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"endprotoent", nullptr, EndProToEnt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"endnetent", nullptr, EndNetEnt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"endhostent", nullptr, EndHostEnt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"gaiStrerror", nullptr, GaiStrerror, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"freeaddrinfo", nullptr, Freeaddrinfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getaddrinfo", nullptr, Getaddrinfo, nullptr, nullptr, nullptr, napi_default, nullptr}
+};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
@@ -312,7 +504,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libnetdb",
+    .nm_modname = "netdb",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

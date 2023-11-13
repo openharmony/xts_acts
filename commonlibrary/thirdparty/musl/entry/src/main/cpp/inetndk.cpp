@@ -28,6 +28,7 @@
 #define TRUE 1
 #define ERROR -1
 #define PORT 9000
+#define DEFAULT_VALUE 0
 
 static napi_value InetAddr(napi_env env, napi_callback_info info)
 {
@@ -143,7 +144,7 @@ static napi_value InetNtop(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &valueZero);
     struct in_addr inp;
     inp.s_addr = valueZero;
-    char buf[20] = {0};
+    char buf[20] = {DEFAULT_VALUE};
     const char *ret = inet_ntop(AF_INET, &inp, buf, sizeof(buf));
     int flag = ERROR;
     if (ret != nullptr) {
@@ -163,12 +164,13 @@ static napi_value InetPton(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &valueZero);
     struct in_addr inp;
     inp.s_addr = valueZero;
-    char buf[20] = {0};
+    char buf[20] = {DEFAULT_VALUE};
     int ret = inet_pton(AF_INET, buf, &inp);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -182,6 +184,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"inetNtoa", nullptr, InetNtoa, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"inetNtop", nullptr, InetNtop, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"inetPton", nullptr, InetPton, nullptr, nullptr, nullptr, napi_default, nullptr},
+
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
