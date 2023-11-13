@@ -1177,7 +1177,7 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
+     * @tc.number    SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
      * @tc.desc      AVI video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1353,7 +1353,7 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
+     * @tc.number    SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
      * @tc.desc      Windows WMP video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1705,7 +1705,7 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6500
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6500
      * @tc.desc      : File data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1955,7 +1955,7 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500
      * @tc.desc      : GNU archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -2030,7 +2030,7 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800
      * @tc.desc      : Calendar data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
