@@ -46,6 +46,27 @@ import grid_GridFrictionTest from './Grid/Grid_attribute/Grid_GridFriction.test'
 import Calc01 from './Grid/Calc/Calc01Jsunit.test';
 import Calc02 from './Grid/Calc/Calc02Jsunit.test';
 
+import GridIrregular from "./Grid/Grid_iiregular/GridIrregular.test";
+import GridIrregular1 from "./Grid/Grid_iiregular/GridIrregular1.test";
+import GridIrregular2 from  "./Grid/Grid_iiregular/GridIrregular2.test";
+import GridIrregular3 from "./Grid/Grid_iiregular/GridIrregular3.test";
+import onGetIrregular from  "./Grid/Grid_iiregular/onGetIrregular.test";
+import onGetIrregular1 from "./Grid/Grid_iiregular/onGetIrregular1.test";
+import onGetIrregular2 from  "./Grid/Grid_iiregular/onGetIrregular2.test";
+import onGetIrregular3 from  "./Grid/Grid_iiregular/onGetIrregular3.test";
+import onGetIrregular4 from  "./Grid/Grid_iiregular/onGetIrregular4.test";
+import onGetIrregular5 from  "./Grid/Grid_iiregular/onGetIrregular5.test";
+import onGetIrregular6 from  "./Grid/Grid_iiregular/onGetIrregular6.test";
+import onGetIrregular7 from  "./Grid/Grid_iiregular/onGetIrregular7.test";
+import onGetIrregular8 from  "./Grid/Grid_iiregular/onGetIrregular8.test";
+import onGetIrregular9 from  "./Grid/Grid_iiregular/onGetIrregular9.test";
+import scrollBy from  "./Grid/Grid_iiregular/scrollBy.test";
+import scrollEge from  "./Grid/Grid_iiregular/scrollEge.test";
+import scrollPage from   "./Grid/Grid_iiregular/scrollPage.test";
+import scrollTo from  "./Grid/Grid_iiregular/scrollTo.test";
+import StartAndEnd from './Grid/Grid_iiregular/StartAndEnd.test';
+import StartAndStop from './Grid/Grid_iiregular/StartAndStop.test';
+
 export default function testsuite() {
   OnlyColumnsTemplate1();
   OnlyColumnsTemplate2();
@@ -78,6 +99,27 @@ export default function testsuite() {
   grid_GridFrictionTest();
   Calc01();
   Calc02();
+
+  GridIrregular()
+  GridIrregular1()
+  GridIrregular2()
+  GridIrregular3()
+  onGetIrregular()
+  onGetIrregular1()
+  onGetIrregular2()
+  onGetIrregular3()
+  onGetIrregular4()
+  onGetIrregular5()
+  onGetIrregular6()
+  onGetIrregular7()
+  onGetIrregular8()
+  onGetIrregular9()
+  scrollBy()
+  scrollEge()
+  scrollPage()
+  scrollTo()
+  StartAndEnd()
+  StartAndStop()
 
 
 }
