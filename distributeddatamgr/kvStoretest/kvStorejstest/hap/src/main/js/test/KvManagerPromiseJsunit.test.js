@@ -52,7 +52,7 @@ describe('kvManagerPromiseTest', function () {
         await factory.createKVManager(config).then((manager) => {
             kvManager = manager;
             console.info('beforeAll createKVManager success');
-            kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
+            await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
                 console.info("beforeAll getKVStore success");
                 kvStoreNew = store;
             }).catch((err) => {
