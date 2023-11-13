@@ -27,6 +27,12 @@ export default function inputMethodJSUnit() {
         done();
       });
     });
+    /*
+    * @tc.number  inputmethoh_test_002
+    * @tc.name    return The InputMethodProperty object of the current input method.
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
 
     it('inputmethoh_test_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
