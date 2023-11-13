@@ -151,9 +151,9 @@ export default function inputMethodJSUnit() {
 
 
     /*
-     * @tc.number: inputmethod_test_MAX_TYPE_NUM_001
-     * @tc.name: inputMethod::MAX_TYPE_NUM
-     * @tc.desc: Verify Max_ TYPE_ NUM
+     * @tc.number  inputmethod_test_MAX_TYPE_NUM_001
+     * @tc.name    inputmethod_test_MAX_TYPE_NUM_001
+     * @tc.desc    Keyboard max number
      * @tc.size    MEDIUM
      * @tc.type    Function
      * @tc.level   0
