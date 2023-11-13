@@ -78,7 +78,7 @@ export default function relationalStoreTransactionTest() {
                 console.info(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
                 expect(1).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             } catch (e) {
                 console.info(TAG + e);
                 expect(null).assertFail()
@@ -129,7 +129,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(3).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             } catch (e) {
                 expect(null).assertFail()
                 console.info(TAG + "testRdbTransactionInsert0002 failed");
@@ -170,7 +170,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
                 const valueBucket2 = {
                     "name": "wangwu",
                     "age": 16,
@@ -217,7 +217,7 @@ export default function relationalStoreTransactionTest() {
                 console.info(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
             }
             done()
             console.info(TAG + "************* testRdbTransactionRollBack0001 end *************");
@@ -250,22 +250,21 @@ export default function relationalStoreTransactionTest() {
                     "salary": 220.5,
                     "blobType": u8,
                 }
-                let num = rdbStore.insert("test", valueBucket1)
-                num.then(async (ret1) => {
-                    console.info('ttt' + "testRdbTransactionMulti0001 * insert result " + ret1);
-                    expect(2).assertEqual(ret1)
+                await rdbStore.insert("test", valueBucket1).then(async (ret) => {
+                    console.info(TAG + "testRdbTransactionMulti0001 * insert result " + ret);
+                    expect(2).assertEqual(ret)
                 })
 
                 await rdbStore.commit()
                 await rdbStore.commit()
 
                 let predicates = new data_Rdb.RdbPredicates("test");
-                await rdbStore.query(predicates).then(async (ret2) => {
-                    console.info('ttt' + "testRdbTransactionMulti0001 ret.rowCount =  " + ret2.rowCount);
-                    expect(2).assertEqual(ret2.rowCount)
+                await rdbStore.query(predicates).then(async (ret) => {
+                    console.info('ttt' + "testRdbTransactionMulti0001 ret.rowCount =  " + ret.rowCount);
+                    expect(2).assertEqual(ret.rowCount)
                     done()
                     console.info('ttt' + "************* testRdbTransactionMulti0001 end *************");
-                    ret2.close()
+                    ret.close()
                 })
             } catch (e) {
                 console.info('ttt' + "testRdbTransactionMulti0001 fail ***** ");
@@ -409,7 +408,7 @@ export default function relationalStoreTransactionTest() {
                 let resultSet = await rdbStore.query(predicates)
                 expect(0).assertEqual(resultSet.rowCount)
                 resultSet.close()
-                //            resultSet == null;
+                
                 const valueBucket2 = {
                     "name": "wangwu",
                     "age": 16,
