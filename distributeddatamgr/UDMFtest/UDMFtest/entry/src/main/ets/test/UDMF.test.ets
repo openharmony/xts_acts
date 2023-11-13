@@ -139,11 +139,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is text
      * @tc.desc      : Test UDMF creating a unifieddata with a text record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100 start');
@@ -159,11 +159,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is plainText
      * @tc.desc      : Test UDMF creating a unifieddata with a plaintext record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 start');
@@ -181,11 +181,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData  type is link
      * @tc.desc      : Test UDMF creating a unifieddata with a hyperlink record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300 start');
@@ -203,11 +203,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is html
      * @tc.desc      : Test UDMF creating a unifieddata with a html record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400 start');
@@ -225,11 +225,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData  type is file
      * @tc.desc      : Test UDMF creating a unifieddata with a file record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500 start');
@@ -246,11 +246,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0600
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData  type is folder
      * @tc.desc      : Test UDMF creating a unifieddata with a folder record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0600',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0600 start');
@@ -267,11 +267,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0700
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is image
      * @tc.desc      : Test UDMF creating a unifieddata with a image record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0700',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0700 start');
@@ -288,11 +288,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0800
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is video
      * @tc.desc      : Test UDMF creating a unifieddata with a video record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0800',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0800 start');
@@ -309,11 +309,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0900
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is audio
      * @tc.desc      : Test UDMF creating a unifieddata with a audio record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0900',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0900 start');
@@ -330,11 +330,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1000
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is systemDefinedRecord
      * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedrecord record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1000',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1000 start');
@@ -353,11 +353,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1100
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is systemDefinedForm
      * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedform record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1100',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1100 start');
@@ -381,11 +381,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1200
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is systemDefinedAppItem
      * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedappitem record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1200',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1200 start');
@@ -410,11 +410,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1300
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is systemDefinedPixelMap
      * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedpixelmap record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1300',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1300 start');
@@ -436,11 +436,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1400
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData type is applicationDefinedRecord
      * @tc.desc      : Test UDMF creating a unifieddata with a applicationdefinedrecord record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1400',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1400 start');
@@ -458,11 +458,11 @@ export default function UDMFApiTest() {
 
     /**
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500
-     * @tc.name      : CreateData
+     * @tc.name      : CreateData with a recordgroup contain all type
      * @tc.desc      : Test UDMF creating a unifieddata with a recordgroup.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500',0, async function (done) {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500 start');
