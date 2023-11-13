@@ -47,6 +47,81 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125
+     * @tc.desc      : Base data type for physical hierarchy, which identifies the physical representation of the data type.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125',0,function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125 start');
+      expect(UTD.UniformDataType.ENTITY).assertEqual("general.entity");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.ENTITY);
+      console.log("typeId:"+typeObj.typeId);
+      console.log("belongingToTypes:"+typeObj.belongingToTypes);
+      console.log("description:"+typeObj.description);
+      console.log("referenceURL:"+typeObj.referenceURL);
+      console.log("iconFile:"+typeObj.iconFile);
+      expect(typeObj.typeId).assertEqual("general.entity");
+      expect(typeObj.belongingToTypes.length).assertEqual(0);
+      expect(typeObj.description).assertEqual("Base type for physical hierarchy.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150
+     * @tc.desc      : Base data type for logical hierarchy, which identifies the logical content representation of the data type.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150',0,function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150 start');
+      expect(UTD.UniformDataType.OBJECT).assertEqual("general.object");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT);
+      console.log("typeId:"+typeObj.typeId);
+      console.log("belongingToTypes:"+typeObj.belongingToTypes);
+      console.log("description:"+typeObj.description);
+      console.log("referenceURL:"+typeObj.referenceURL);
+      console.log("iconFile:"+typeObj.iconFile);
+      expect(typeObj.typeId).assertEqual("general.object");
+      expect(typeObj.belongingToTypes.length).assertEqual(0);
+      expect(typeObj.description).assertEqual("Base type for logical hierarchy.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175
+     * @tc.desc      : Base data type for mixed object. For example, a PDF file contains both text and special formatting data.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175',0,function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175 start');
+      expect(UTD.UniformDataType.COMPOSITE_OBJECT ).assertEqual("general.composite-object");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.COMPOSITE_OBJECT );
+      console.log("typeId:"+typeObj.typeId);
+      console.log("belongingToTypes:"+typeObj.belongingToTypes);
+      console.log("description:"+typeObj.description);
+      console.log("referenceURL:"+typeObj.referenceURL);
+      console.log("iconFile:"+typeObj.iconFile);
+      expect(typeObj.typeId).assertEqual("general.composite-object");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
+      expect(typeObj.description).assertEqual("Base type for mixed object. For example, a PDF file contains both text and special formatting data.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175 end");
+    })
+
+    /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200
      * @tc.desc      : Plain text data type
@@ -99,7 +174,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0400
-     * @tc.desc      ：Hyperlink data type.
+     * @tc.desc      : Hyperlink data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -123,7 +198,7 @@ export default function UDMFApiDescriptorTest() {
 
 
     /**
-     * @tc.name      ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500
      * @tc.desc      : XML(Extensible Markup Language) data type
      * @tc.size      : MEDIUM
@@ -392,6 +467,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("referenceURL:"+typeObj.referenceURL);
       console.log("iconFile:"+typeObj.iconFile);
       expect(typeObj.typeId).assertEqual("general.java-script");
+      expect(typeObj.description).assertEqual("JavaScript source code.");
       expect(typeObj.belongingToTypes[0]).assertEqual("general.source-code");
       expect(typeObj.iconFile).assertEqual("");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1500 end");
@@ -675,8 +751,8 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2700
-     * @tc.number    ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2700
-     * @tc.desc      ：Media data type
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2700
+     * @tc.desc      : Media data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -926,7 +1002,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3700
-     * @tc.desc      ：Microsoft Word data type.
+     * @tc.desc      : Microsoft Word data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1427,9 +1503,9 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
-     * @tc.number    ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
-     * @tc.desc      ：MP3 audio format data type
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
+     * @tc.desc      : MP3 audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1554,7 +1630,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6200
-     * @tc.desc      ：Windows WMX audio format data type
+     * @tc.desc      : Windows WMX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1577,9 +1653,9 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
-     * @tc.number    ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
-     * @tc.desc      ：Windows WVX audio format data type
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
+     * @tc.desc      : Windows WVX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1603,8 +1679,8 @@ export default function UDMFApiDescriptorTest() {
 
 
     /**
-     * @tc.name      ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
-     * @tc.number    ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
      * @tc.desc      : Windows WAX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1703,7 +1779,7 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6800
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6800
      * @tc.desc      : Symlink data type
      * @tc.size      : MEDIUM
@@ -2004,8 +2080,8 @@ export default function UDMFApiDescriptorTest() {
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000
-     * @tc.number    ：SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000
-     * @tc.desc      ：Database data type
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000
+     * @tc.desc      : Database data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2026,6 +2102,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.iconFile).assertEqual("");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000 end");
     })
+
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8100
@@ -2227,6 +2304,57 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8800 end");
     })
 
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825
+     * @tc.desc      : OpenHarmony system defined package, which is a directory presented to the user as a file(the data is provided
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825 start');
+      expect(UTD.UniformDataType.OPENHARMONY_PACKAGE ).assertEqual("openharmony.package");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OPENHARMONY_PACKAGE );
+      console.log("typeId:"+typeObj.typeId);
+      console.log("belongingToTypes:"+typeObj.belongingToTypes);
+      console.log("description:"+typeObj.description);
+      console.log("referenceURL:"+typeObj.referenceURL);
+      console.log("iconFile:"+typeObj.iconFile);
+      expect(typeObj.typeId).assertEqual("openharmony.package");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.directory");
+      expect(typeObj.description).assertEqual("OpenHarmony system defined package (that is, a directory presented to the user as a file).");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850
+     * @tc.desc      : OpenHarmony system defined ability package(the data is provided and bound to OpenHarmony system).
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850 start');
+      expect(UTD.UniformDataType.OPENHARMONY_HAP).assertEqual("openharmony.hap");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OPENHARMONY_HAP);
+      console.log("typeId:"+typeObj.typeId);
+      console.log("belongingToTypes:"+typeObj.belongingToTypes);
+      console.log("description:"+typeObj.description);
+      console.log("referenceURL:"+typeObj.referenceURL);
+      console.log("iconFile:"+typeObj.iconFile);
+      expect(typeObj.typeId).assertEqual("openharmony.hap");
+      expect(typeObj.belongingToTypes[0]).assertEqual("openharmony.package");
+      expect(typeObj.description).assertEqual("OpenHarmony system defined ability package.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850 end");
+    })
+
+
 
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8900
@@ -2241,7 +2369,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let typeObj = UTD.getTypeDescriptor(null);
         console.log('typeObj start'+typeObj);
-        expect(typeObj !== null ).assertFail();
+        expect().assertFail();
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
          expect(err.code == "401").assertEqual(true);
@@ -2263,7 +2391,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let typeObj = UTD.getTypeDescriptor(undefined);
         console.log('typeObj start'+typeObj);
-        expect(typeObj !== null ).assertFail();
+        expect().assertFail();
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect(err.code == "401").assertEqual(true);
@@ -2290,13 +2418,15 @@ export default function UDMFApiDescriptorTest() {
         expect(typeObj == null ).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect(err !== null ).assertFail();
+        expect().assertFail();
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9100 end");
     })
+
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9200
-     * @tc.desc      Illegal parameters general.hello
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9200
+     * @tc.desc      : Illegal parameters ""
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2309,13 +2439,15 @@ export default function UDMFApiDescriptorTest() {
         expect(typeObj == null ).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect(err !== null ).assertFail();
+        expect().assertFail();
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9200 end");
     })
+
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9300
-     * @tc.desc      Equals the same parameter types
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9300
+     * @tc.desc      : Equals the same parameter types
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2329,14 +2461,15 @@ export default function UDMFApiDescriptorTest() {
         expect(result == true ).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect(err !== null ).assertFail();
+        expect().assertFail();
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9300 end");
     })
 
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9400
-     * @tc.desc      Equals the different parameter types
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9400
+     * @tc.desc      : Equals the different parameter types
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2350,14 +2483,15 @@ export default function UDMFApiDescriptorTest() {
         expect(result == false).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect(err !== null ).assertFail();
+        expect().assertFail();
       }
       console.log("vSUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9400 end");
     })
     
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9500
-     * @tc.desc      Equals the different parameter types -- Illegal params null
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9500
+     * @tc.desc      : Equals the different parameter types -- Illegal params null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2378,8 +2512,9 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9600
-     * @tc.desc      Equals the different parameter types -- Illegal params undefined
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9600
+     * @tc.desc      : Equals the different parameter types -- Illegal params undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2397,6 +2532,1180 @@ export default function UDMFApiDescriptorTest() {
         expect(err.code == "401").assertEqual(true);
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9600 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610
+     * @tc.desc      : belongsTo parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.NAVIGATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.NAVIGATION);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.LOCATION);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.LOCATION);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.CALENDAR);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.CALENDAR);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635
+     * @tc.desc      : belongsTo parameter --"general.text" UTD.UniformDataType.NAVIGATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.TEXT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640
+     * @tc.desc      : belongsTo parameter --"general.object" UTD.UniformDataType.ENTITY
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.ENTITY);
+      try{
+        let result = typeObj1.belongsTo(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.MESSAGE ""
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.MESSAGE);
+      try{
+        let result = typeObj1.belongsTo("");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.CONTACT null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.CONTACT);
+      try{
+        let result = typeObj1.belongsTo(null);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.IMAGE undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.IMAGE);
+      try{
+        let result = typeObj1.belongsTo(undefined);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660
+     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.NAVIGATION "general.hello"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.belongsTo("general.hello");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665
+     * @tc.desc      : isLowerLevelType parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670
+     * @tc.desc      : isLowerLevelType parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.NAVIGATION);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.LOCATION);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.LOCATION);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.COMPOSITE_OBJECT  UTD.UniformDataType.COMPOSITE_OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.COMPOSITE_OBJECT);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.COMPOSITE_OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.ENTITY);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION "general.text"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType(UTD.UniformDataType.TEXT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION ""
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType("");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION "general.hello"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType("general.hello");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType(null);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715
+     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      try{
+        let result = typeObj1.isLowerLevelType(undefined);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT navigation
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.NAVIGATION);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720 end");
+    })
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT navigation
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.OBJECT );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.LOCATION);
+        console.log("result==>" +result);
+        expect(result == true).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.LOCATION );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.C_HEADER );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.C_HEADER);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.ENTITY );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.OBJECT);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.CONTACT UTD.UniformDataType.MESSAGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.CONTACT );
+      try{
+        let result = typeObj1.isHigherLevelType(UTD.UniformDataType.MESSAGE);
+        console.log("result==>" +result);
+        expect(result == false).assertEqual(true)
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.PLAIN_TEXT  ""
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.PLAIN_TEXT );
+      try{
+        let result = typeObj1.isHigherLevelType("");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.TEXT );
+      try{
+        let result = typeObj1.isHigherLevelType("general.hello");
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.CONTACT);
+      try{
+        let result = typeObj1.isHigherLevelType(null);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770
+     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770 start');
+      let typeObj1 = UTD.getTypeDescriptor(UTD.UniformDataType.ENTITY  );
+      try{
+        let result = typeObj1.isHigherLevelType(undefined);
+        console.log("result==>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".xls"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".xls");
+        console.log("result=====>" +result);
+        expect(result == "com.microsoft.excel.xls").assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(null);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --.hello
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".hello");
+        console.log("result=====>" +result);
+        expect(result == null).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --""
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension("");
+        console.log("result=====>" +result);
+        expect(result == null ).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(undefined);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --".doc","com.microsoft.word.doc"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".doc","com.microsoft.word.doc");
+        console.log("result=====>" +result);
+        expect(result == "com.microsoft.word.doc").assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --".doc","com.microsoft.word.doc"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".doc","com.microsoft.powerpoint.ppt");
+        console.log("result=====>" +result);
+        expect(result == null ).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".wave",null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".wave",null);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".wave",undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".wave",undefined);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825
+     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".hello","com.microsoft.ico"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825 start');
+      try{
+        let result = UTD.getUniformDataTypeByFilenameExtension(".hello","com.microsoft.ico");
+        console.log("result=====>" +result);
+        expect( result==null ).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff");
+        console.log("result=====>" +result);
+        expect(result == "general.tiff").assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835 end");
+    })
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"hello"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("hello");
+        console.log("result=====>" +result);
+        expect(result == null).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840 end");
+    })
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("");
+        console.log("result=====>" +result);
+        expect( result == null ).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType(null);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850 end");
+    })
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter -undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType(undefined);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.type-script"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wma","com.microsoft.windows-media-wma");
+        console.log("result=====>" +result);
+        expect(result == "com.microsoft.windows-media-wma").assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.type-script"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff","general.type-script");
+        console.log("result=====>" +result);
+        expect(result == null).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865 end");
+    })
+
+
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff",null
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff",null);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff",undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff",undefined);
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"","com.microsoft.windows-media-wmv"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("hello","com.microsoft.windows-media-wmv");
+        console.log("result=====>" +result);
+        expect(result == null).assertEqual(true);
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880 end");
+    })
+
+    /**
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.hello"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885',0, function () {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885 start');
+      try{
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff","general.hello");
+        console.log("result=====>" +result);
+        expect().assertFail();
+      } catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect(err.code == "401").assertEqual(true);
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885 end");
     })
   })
 }

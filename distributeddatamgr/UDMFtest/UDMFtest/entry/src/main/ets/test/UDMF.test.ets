@@ -138,9 +138,9 @@ export default function UDMFApiTest() {
     let records2 = summary.totalSize;
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a text record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -158,9 +158,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a plaintext record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a plaintext record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -180,9 +180,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a hyperlink record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a hyperlink record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -202,9 +202,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a html record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a html record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -224,9 +224,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a file record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a file record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -245,9 +245,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0600
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a folder record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0600
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a folder record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -266,9 +266,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0700
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a image record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0700
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a image record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -287,9 +287,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0800
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a video record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0800
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a video record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -308,9 +308,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0900
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a audio record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0900
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a audio record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -329,9 +329,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1000
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedrecord record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1000
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedrecord record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -352,9 +352,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1100
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedform record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1100
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedform record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -380,9 +380,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1200
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedappitem record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1200
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedappitem record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -409,9 +409,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1300
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedpixelmap record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1300
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a systemdefinedpixelmap record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -435,9 +435,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1400
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a applicationdefinedrecord record.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1400
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a applicationdefinedrecord record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -457,9 +457,9 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500
-     * @tc.name      CreateData
-     * @tc.desc      Test UDMF creating a unifieddata with a recordgroup.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500
+     * @tc.name      : CreateData
+     * @tc.desc      : Test UDMF creating a unifieddata with a recordgroup.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
