@@ -241,7 +241,7 @@ export default function circleNewJsunit() {
       await Utils.sleep(1000);
       let resource: resourceManager.Resource = {
         bundleName: "com.open.harmony.aceEtsApiLack",
-        moduleName: "entry",
+        moduleName: "phone",
         id: $r('app.string.app_name').id,
         params: null,
         type: 0
