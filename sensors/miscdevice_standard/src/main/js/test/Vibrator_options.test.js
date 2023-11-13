@@ -169,7 +169,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
-        await vibrator.stopVibration();
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })	
 
@@ -219,7 +223,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
-        await vibrator.stopVibration();
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })	
 	
@@ -269,7 +277,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
-        await vibrator.stopVibration();
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })
 

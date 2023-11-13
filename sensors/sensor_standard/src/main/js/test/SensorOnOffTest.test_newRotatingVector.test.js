@@ -19,6 +19,14 @@ export default function SensorJsTest_sensor_49() {
 describe("SensorJsTest_sensor_49", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -28,6 +36,14 @@ describe("SensorJsTest_sensor_49", function () {
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -161,6 +177,14 @@ describe("SensorJsTest_sensor_49", function () {
         console.info('---------newRotatingVector_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newRotatingVector_SensorJsTest004  callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -245,6 +269,14 @@ describe("SensorJsTest_sensor_49", function () {
     it("newRotatingVector_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newRotatingVector_SensorJsTest007  on error');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
 			expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -293,6 +325,14 @@ describe("SensorJsTest_sensor_49", function () {
     it("newRotatingVector_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newRotatingVector_SensorJsTest009 callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
 			expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -354,6 +394,14 @@ describe("SensorJsTest_sensor_49", function () {
 					expect(typeof(data)).assertEqual("object");				
 					sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest011 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
@@ -362,6 +410,14 @@ describe("SensorJsTest_sensor_49", function () {
 					});
 					sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest011 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
@@ -415,6 +471,14 @@ describe("SensorJsTest_sensor_49", function () {
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest013 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
@@ -423,6 +487,14 @@ describe("SensorJsTest_sensor_49", function () {
 					}, {'interval': 100000000});
 					sensor.once(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest013 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
@@ -460,6 +532,14 @@ describe("SensorJsTest_sensor_49", function () {
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest014 callback: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
@@ -468,6 +548,14 @@ describe("SensorJsTest_sensor_49", function () {
 					}, {'interval': 100000000});
 					sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
 						console.info("newRotatingVector_SensorJsTest014 callback2: " + JSON.stringify(data));
+						if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+							sensor.SensorAccuracy.ACCURACY_HIGH) {
+							console.info('callback accuracy verified' + JSON.stringify(data));
+							expect(true).assertTrue();
+						} else {
+							console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+							expect(false).assertTrue();
+						}						
 						expect(typeof (data.x)).assertEqual("number");
 						expect(typeof (data.y)).assertEqual("number");
 						expect(typeof (data.z)).assertEqual("number");
