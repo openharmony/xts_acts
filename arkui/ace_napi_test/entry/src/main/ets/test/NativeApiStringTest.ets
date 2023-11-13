@@ -1669,5 +1669,18 @@ export default function nativeApiStringJsunit() {
       expect(value.toString() === 'hello').assertTrue();
       done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0114
+     * @tc.name      napiLoadModule0114
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('napiLoadModule0114', 0, async function (done) {
+      console.info('napiLoadModule START');
+      value = napitest.napiLoadModule();
+      console.info('napiLoadModule testString result is: ' + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }

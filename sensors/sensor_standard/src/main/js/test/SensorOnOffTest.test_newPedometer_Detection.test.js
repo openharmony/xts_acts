@@ -57,11 +57,27 @@ async function grantPerm(){
 describe("SensorJsTest_sensor_57", function () {
     function callback(data) {
         console.info('callback success' + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
         expect(typeof(data.scalar)).assertEqual('number');
     }
 
     function callback2(data) {
         console.info('callback2 sucess' + JSON.stringify(data));
+		if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+			sensor.SensorAccuracy.ACCURACY_HIGH) {
+			console.info('callback accuracy verified' + JSON.stringify(data));
+			expect(true).assertTrue();
+		} else {
+			console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+			expect(false).assertTrue();
+		}		
         expect(typeof(data.scalar)).assertEqual('number');
     }
  
@@ -635,11 +651,27 @@ describe("SensorJsTest_sensor_57", function () {
                     try {
 						sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data)=>{
 							console.info("newPedometerDetection_SensorJsTest016 callback: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.scalar)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						}, {'interval': 100000000});
 						sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data)=>{
 							console.info("newPedometerDetection_SensorJsTest016 callback2: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.scalar)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						});
@@ -679,6 +711,14 @@ describe("SensorJsTest_sensor_57", function () {
                     try {
 						sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data)=>{
 							console.info("newPedometerDetection_SensorJsTest017 callback: " + JSON.stringify(data));
+							if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+								sensor.SensorAccuracy.ACCURACY_HIGH) {
+								console.info('callback accuracy verified' + JSON.stringify(data));
+								expect(true).assertTrue();
+							} else {
+								console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+								expect(false).assertTrue();
+							}							
 							expect(typeof(data.scalar)).assertEqual('number');
 							expect(typeof (data.timestamp)).assertEqual("number");
 						}, {'interval': -100000000});					

@@ -19,6 +19,14 @@ export default function SensorJsTest_sensor_39() {
 describe("SensorJsTest_sensor_39", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+          } else {
+            console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+          }
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -26,6 +34,14 @@ describe("SensorJsTest_sensor_39", function () {
     }
 
     function callback2(data) {
+        if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('callback2 accuracy verified' + JSON.stringify(data));
+            expect(true).assertTrue();
+          } else {
+            console.info('callback2 invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+          }		
         console.info("callback2" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
@@ -131,6 +147,14 @@ describe("SensorJsTest_sensor_39", function () {
         console.info('---------newAccelerometer_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newAccelerometer_SensorJsTest004  callback in');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -192,7 +216,15 @@ describe("SensorJsTest_sensor_39", function () {
      */
     it("newAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
-            console.info('newAccelerometer_SensorJsTest007  on error');
+            console.info('newAccelerometer_SensorJsTest007 in callback');
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -232,6 +264,14 @@ describe("SensorJsTest_sensor_39", function () {
     it("newAccelerometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newAccelerometer_SensorJsTest009 callback in' + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -273,6 +313,14 @@ describe("SensorJsTest_sensor_39", function () {
     it("newAccelerometer_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.on(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest011 callback: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -280,6 +328,14 @@ describe("SensorJsTest_sensor_39", function () {
         });
         sensor.on(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest011 callback2: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -318,6 +374,14 @@ describe("SensorJsTest_sensor_39", function () {
         console.info('---------newAccelerometer_SensorJsTest013--------------');
         sensor.on(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest013 callback: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -325,6 +389,14 @@ describe("SensorJsTest_sensor_39", function () {
         }, {'interval': 100000000});
         sensor.once(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest013 callback2: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -347,6 +419,14 @@ describe("SensorJsTest_sensor_39", function () {
         console.info('---------newAccelerometer_SensorJsTest014--------------');
         sensor.on(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest014 callback: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
@@ -354,6 +434,14 @@ describe("SensorJsTest_sensor_39", function () {
         }, {'interval': 100000000});
         sensor.on(sensor.SensorId.ACCELEROMETER, (data)=>{
             console.info("newAccelerometer_SensorJsTest014 callback2: " + JSON.stringify(data));
+			if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+				sensor.SensorAccuracy.ACCURACY_HIGH) {
+				console.info('callback accuracy verified' + JSON.stringify(data));
+				expect(true).assertTrue();
+			} else {
+				console.info('callback invalid accuracy encountered' + JSON.stringify(data));
+				expect(false).assertTrue();
+			}			
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");

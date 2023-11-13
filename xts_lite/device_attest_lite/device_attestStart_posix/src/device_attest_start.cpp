@@ -14,13 +14,14 @@
  */
 
 
-#include <stdio.h>
+#include <cstdio>
 #include "gtest/gtest.h"
 
 #include "devattest_interface.h"
 
 #define ATTEST_SOFTWARE_RESULT_SIZE 5
 #define ACTS_DEVATTEST_SUCCESS 0
+#define SLEEP_TIMEOUT 4
 
 using namespace std;
 using namespace testing::ext;
@@ -30,8 +31,9 @@ protected:
     static void SetUpTestCase(void) {}
     static void TearDownTestCase(void) {}
     virtual void SetUp() {}
-    virtual void TearDown() {
-        sleep(4);
+    virtual void TearDown()
+    {
+        sleep(SLEEP_TIMEOUT);
     }
 };
 
