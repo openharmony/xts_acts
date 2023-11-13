@@ -27,7 +27,7 @@ group("bundlemanager") {
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
-      "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
+      "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTestGroup",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlenativeninthapitest:ActsBundleNativeNinthApiTest",
       "actsbundlenativetest:ActsBundleNativeTest",

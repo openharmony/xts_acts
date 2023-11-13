@@ -415,6 +415,14 @@
               "abilities": ["MainAbility"],
               "when": "inuse"
             }
+          },
+          {
+            "name": "ohos.permission.RUN_DYN_CODE",
+            "reason": "$string:permission_reason",
+            "usedScene": {
+              "abilities": ["MainAbility"],
+              "when": "always"
+            }
           }
         ],
         "metadata": [
