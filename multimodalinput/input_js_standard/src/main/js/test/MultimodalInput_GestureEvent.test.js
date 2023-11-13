@@ -158,8 +158,7 @@ export default function MultimodalInput_GestureEvent_test() {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001 enter`);
       /** @type { ThreeFingersTap } */
       let threeFingersTap = {
-        type: gestureEvent.ActionType.END,
-        angle: 0
+        type: gestureEvent.ActionType.END
       }
       expect(threeFingersTap.type == 1).assertTrue();
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_ThreeFingersTap_001 exit`);
