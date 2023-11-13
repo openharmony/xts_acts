@@ -18,6 +18,15 @@ import inputMethod from '@ohos.inputMethod';
 export default function inputMethodJSUnit() {
   describe('appInfoTest_input_2', function () {
     console.info("====>************* settings Test start*************");
+
+    /**
+     * @tc.number  inputmethoh_test_001
+     * @tc.name    inputmethoh_test_001
+     * @tc.desc    listInputMethod().interfaces.Callback.
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_001', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_001 result:" + JSON.stringify(inputMethodSetting));
