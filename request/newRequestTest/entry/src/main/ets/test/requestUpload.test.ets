@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -27,13 +28,21 @@ export default function requestUploadJSUnit() {
     beforeAll(async function (done) {
       console.info('====>beforeAll: Prerequisites are executed.');
       try {
+        console.info('beforeAll====>------------text.txt file generate start----------------');
+        let pathDir = globalThis.abilityContext.cacheDir;
+        let filePath = pathDir + `/test.txt`;
+        let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
+        let content = ''.padEnd(1 * 1024 *1024, 'h');
+        fileio.writeSync(fd, content);
+        fileio.closeSync(fd);
+        console.info('====>beforeAll: text.txt file generate success');
         let cmd = 'pkill download_server'
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let ShellCmdResult = await abilityDelegator.executeShellCommand(cmd);
         console.info('====>beforeAll: pkill download_server: ' + ShellCmdResult.stdResult);
         done();
       } catch (err) {
-        console.info('====>beforeAll: abilityDelegator.executeShellCommand err: ' + JSON.stringify(err));
+        console.info('====>beforeAll: abilityDelegator.executeShellCommand err or text.txt file generate failed: ' + err);
         done();
       }
     });
@@ -61,6 +70,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number    SUB_MISC_REQUEST_UPLOAD_removeNormal_promise_0010
+     * @tc.name    SUB_MISC_REQUEST_UPLOAD_removeNormal_promise_0010
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -82,6 +92,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number    SUB_MISC_REQUEST_UPLOAD_removeNormal_callback_0010
+     * @tc.name    SUB_MISC_REQUEST_UPLOAD_removeNormal_callback_0010
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -108,6 +119,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -143,8 +155,8 @@ export default function requestUploadJSUnit() {
             expect(err.code).assertEqual(201);
             done();
           } else {
-            console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 create success: " + task);
             expect().assertFail();
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 create success: " + task);
             done();
           }
         } catch (error) {
@@ -156,6 +168,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
