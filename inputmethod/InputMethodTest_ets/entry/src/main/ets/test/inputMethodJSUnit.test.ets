@@ -27,13 +27,15 @@ export default function inputMethodJSUnit() {
         done();
       });
     });
-    /*
-    * @tc.number  inputmethoh_test_002
-    * @tc.name    return The InputMethodProperty object of the current input method.
-    * @tc.desc    Function test
-    * @tc.level   2
-    */
 
+    /**
+     * @tc.number  inputmethoh_test_002
+     * @tc.name    inputmethoh_test_002
+     * @tc.desc    listInputMethod().interfaces.Promise.
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_002 result:" + JSON.stringify(inputMethodSetting));
@@ -54,6 +56,14 @@ export default function inputMethodJSUnit() {
       });
     });
 
+    /**
+     * @tc.number  inputmethoh_test_003
+     * @tc.name    inputmethoh_test_003
+     * @tc.desc    displayOptionalInputMethod().interfaces.Callback
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_003', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_003 result:" + JSON.stringify(inputMethodSetting));
@@ -76,6 +86,14 @@ export default function inputMethodJSUnit() {
       }, 500)
     });
 
+    /**
+     * @tc.number  inputmethoh_test_004
+     * @tc.name    inputmethoh_test_004
+     * @tc.desc    displayOptionalInputMethod().interfaces.Promise
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_004 result:" + JSON.stringify(inputMethodSetting));
@@ -92,6 +110,14 @@ export default function inputMethodJSUnit() {
       }, 500)
     });
 
+    /**
+     * @tc.number  inputmethoh_test_005
+     * @tc.name    inputmethoh_test_005
+     * @tc.desc    Stop input().interfaces.Callback
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_005', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController();
       console.info("====>inputmethoh_test_005 result:" + JSON.stringify(inputMethodCtrl));
@@ -101,6 +127,14 @@ export default function inputMethodJSUnit() {
       });
     });
 
+    /**
+     * @tc.number  inputmethoh_test_006
+     * @tc.name    inputmethoh_test_006
+     * @tc.desc    Stop input().interfaces.Promise
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
+     */
     it('inputmethoh_test_006', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController();
       console.info("====>inputmethoh_test_006 result:" + JSON.stringify(inputMethodCtrl));
@@ -114,10 +148,15 @@ export default function inputMethodJSUnit() {
       });
     });
 
+
+
     /*
      * @tc.number: inputmethod_test_MAX_TYPE_NUM_001
      * @tc.name: inputMethod::MAX_TYPE_NUM
      * @tc.desc: Verify Max_ TYPE_ NUM
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
      */
     it('inputmethod_test_MAX_TYPE_NUM_001', 0, async function (done) {
       console.info("====>************* inputmethod_test_MAX_TYPE_NUM_001 Test start*************");
@@ -131,7 +170,9 @@ export default function inputMethodJSUnit() {
     /*
      * @tc.number  inputmethod_test_getCurrentInputMethod_001
      * @tc.name    return The InputMethodProperty object of the current input method.
-     * @tc.desc    Function test
+     * @tc.desc    Get current input method
+     * @tc.size    MEDIUM
+     * @tc.type    Function
      * @tc.level   2
      */
     it('inputmethod_test_getCurrentInputMethod_001', 0, async function (done) {
@@ -145,12 +186,13 @@ export default function inputMethodJSUnit() {
       done();
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_001
-     * @tc.name    param enable :
-     *             if true, collect enabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_001
+     * @tc.desc    List input methods,getInputMethods().interfaces. Callback.
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
      */
     it('inputmethod_test_getInputMethods_001', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -174,12 +216,13 @@ export default function inputMethodJSUnit() {
       });
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_002
-     * @tc.name    param enable :
-     *             if false, collect disabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_002
+     * @tc.desc    List input methods,getInputMethods().interfaces. Callback.
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
      */
     it('inputmethod_test_getInputMethods_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -201,12 +244,13 @@ export default function inputMethodJSUnit() {
       });
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_003
-     * @tc.name    param enable :
-     *             if true, collect enabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_003
+     * @tc.desc    List input methods,getInputMethods().interfaces.Promise
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
      */
     it('inputmethod_test_getInputMethods_003', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -225,12 +269,13 @@ export default function inputMethodJSUnit() {
       }
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_004
-     * @tc.name    param enable :
-     *             if false, collect disabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_004
+     * @tc.desc    List input methods,().interfaces.Promise
+     * @tc.size    MEDIUM
+     * @tc.type    Function
+     * @tc.level   0
      */
     it('inputmethod_test_getInputMethods_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -250,6 +295,7 @@ export default function inputMethodJSUnit() {
     });
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0100
+     * @tc.name     SUB_InputMethod_IMF_Enable_0100
      * @tc.desc     List input methods sync.
      * @tc.size     MEDIUM
      * @tc.type     Function
@@ -284,6 +330,7 @@ export default function inputMethodJSUnit() {
 
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0200
+     * @tc.name     SUB_InputMethod_IMF_Enable_0200
      * @tc.desc     List input methods sync.
      * @tc.size     MEDIUM
      * @tc.type     Function
@@ -307,6 +354,7 @@ export default function inputMethodJSUnit() {
 
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0300
+     * @tc.name     SUB_InputMethod_IMF_Enable_0300
      * @tc.desc     List input methods sync.
      * @tc.size     MEDIUM
      * @tc.type     Function
@@ -330,6 +378,7 @@ export default function inputMethodJSUnit() {
 
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0400
+     * @tc.name     SUB_InputMethod_IMF_Enable_0400
      * @tc.desc     List all input methods.
      * @tc.size     MEDIUM
      * @tc.type     Function
@@ -368,6 +417,7 @@ export default function inputMethodJSUnit() {
 
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0500
+     * @tc.name     SUB_InputMethod_IMF_Enable_0500
      * @tc.desc     List all input methods.
      * @tc.size     MEDIUM
      * @tc.type     Function
@@ -400,6 +450,7 @@ export default function inputMethodJSUnit() {
 
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0600
+     * @tc.name     SUB_InputMethod_IMF_Enable_0600
      * @tc.desc     List all input methods.
      * @tc.size     MEDIUM
      * @tc.type     Function
