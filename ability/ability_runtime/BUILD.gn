@@ -64,7 +64,6 @@ group("ability_runtime") {
       "shareextensionability:actsshareextensionability",
       "stage:stage",
       "stopserviceextension:stopserviceextension",
-      "transparentformtest:transparentformtest",
       "want:want",
       "workercontextcover:workercontextcover",
     ]
