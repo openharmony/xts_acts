@@ -2,6 +2,10 @@ import Ability from '@ohos.app.ability.UIAbility';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import {FloatWindowFun} from '../pages/model/FloatWindowFun';
 import BundleManager from '../pages/model/BundleMangerUtils';
+import Base from '@ohos.base';
+import notification from '@ohos.notificationManager';
+import consts from '../pages/Notification/CommonEvent/model/Consts';
+import surveillanceEventsManager from '../pages/Notification/CommonEvent/model/SurveillanceEventsManager';
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
@@ -13,6 +17,11 @@ export default class MainAbility extends Ability {
         BundleManager.getAppList().then(appList =>{
             globalThis.appList = appList
         })
+        let settings: Map<string, number> = new Map();
+        surveillanceEventsManager.surveillanceEvents.forEach((element: string) => {
+          settings.set(element, consts.ENABLE_STATE_ALWAYS);
+        });
+        globalThis.settings = settings;
     }
 
     onDestroy() {
@@ -29,7 +38,18 @@ export default class MainAbility extends Ability {
           "ohos.permission.SYSTEM_FLOAT_WINDOW", "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
           "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
           "ohos.permission.MEDIA_LOCATION","ohos.permission.WRITE_IMAGEVIDEO","ohos.permission.READ_IMAGEVIDEO"]).then(() => {})
-        windowStage.loadContent("pages/index", (err, data) => {
+          try {
+            notification.requestEnableNotification((err: Base.BusinessError) => {
+              if (err) {
+                console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.info("requestEnableNotification success");
+              }
+            });
+          } catch (err) {
+            console.info(`enableNotification err ${JSON.stringify(err)}`);
+          }
+          windowStage.loadContent("pages/index", (err, data) => {
             if (err.code) {
                 console.error('Failed to load the content. Cause:' + JSON.stringify(err));
                 return;
