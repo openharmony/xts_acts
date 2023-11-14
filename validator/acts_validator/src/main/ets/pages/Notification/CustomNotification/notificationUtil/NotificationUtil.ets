@@ -13,7 +13,8 @@
 * limitations under the License.
 */
 
-import notification from '@ohos.notificationManager';
+import notificationManager from '@ohos.notificationManager';
+import notification from '@ohos.notification';
 import logger from '../../../model/Logger';
 import { notificationManagement } from '../notificationUtil/NotificationManagementUtil';
 
@@ -34,12 +35,12 @@ export class NotificationUtil {
    * @param notificationRequest
    * @param id, Support specifying notification id when publishing notifications
    */
-  async publishNotification(notificationRequest: notification.NotificationRequest, id?: number) {
+  async publishNotification(notificationRequest: notificationManager.NotificationRequest, id?: number) {
     if (id && id > 0) {
       notificationRequest.id = id;
     }
     try {
-      let notificationSlot: notification.NotificationSlot = {
+      let notificationSlot: notificationManager.NotificationSlot = {
         type: notification.SlotType.CONTENT_INFORMATION,
         level: notification.SlotLevel.LEVEL_DEFAULT
       };
@@ -50,9 +51,9 @@ export class NotificationUtil {
         notificationSlot.vibrationEnabled = true;
         notificationSlot.vibrationValues = [200];
       }
-      await notification.removeAllSlots();
-      await notification.addSlot(notificationSlot.type);
-      await notification.publish(notificationRequest);
+      await notificationManager.removeAllSlots();
+      await notificationManager.addSlot(notificationSlot.type);
+      await notificationManager.publish(notificationRequest);
       // 通知管理器添加新通知
       await notificationManagement.addNotification(notificationRequest);
       logger.info(TAG, `publish notification success, ${notificationRequest}`);
