@@ -13,7 +13,8 @@
 * limitations under the License.
 */
 
-import notification from '@ohos.notificationManager'
+import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import { WantAgent } from '@ohos.wantAgent'
 
 class NotificationRequestUtil {
@@ -23,7 +24,7 @@ class NotificationRequestUtil {
    * @return return the created NotificationRequest
    */
 
-  initBasicNotificationRequest(notificationContent: notification.NotificationContent): notification.NotificationRequest {
+  initBasicNotificationRequest(notificationContent: notificationManager.NotificationContent): notificationManager.NotificationRequest {
     return {
       slotType: notification.SlotType.CONTENT_INFORMATION,
       id: 1, // 通知id，默认为1
@@ -38,7 +39,7 @@ class NotificationRequestUtil {
    * @return return the created NotificationRequest
    */
 
-  initWantAgentNotificationRequest(notificationContent: notification.NotificationContent, notificationWantAgent: WantAgent): notification.NotificationRequest {
+  initWantAgentNotificationRequest(notificationContent: notificationManager.NotificationContent, notificationWantAgent: WantAgent): notificationManager.NotificationRequest {
     return {
       slotType: notification.SlotType.CONTENT_INFORMATION,
       id: 1, // 通知id，默认为1
@@ -53,7 +54,7 @@ class NotificationRequestUtil {
    * @param notificationActionButtons
    * @return return the created NotificationRequest
    */
-  initButtonNotificationRequest(notificationContent: notification.NotificationContent, notificationActionButtons: notification.NotificationActionButton[]): notification.NotificationRequest {
+  initButtonNotificationRequest(notificationContent: notificationManager.NotificationContent, notificationActionButtons: notificationManager.NotificationActionButton[]): notificationManager.NotificationRequest {
     let actionButtons = notificationActionButtons
     if (notificationActionButtons.length > 2) { // 当前通知接口最大允许有两个按钮，超过两个按钮不展示
       actionButtons = notificationActionButtons.splice(0, 2)

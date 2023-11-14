@@ -14,8 +14,8 @@
 */
 
 import image from '@ohos.multimedia.image'
-import notification from '@ohos.notificationManager'
-
+import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 class NotificationContentUtil {
   /**
    * init basic notification content
@@ -23,7 +23,7 @@ class NotificationContentUtil {
    * @return return the created NotificationContent
    */
 
-  initBasicNotificationContent(basicContent: notification.NotificationBasicContent): notification.NotificationContent {
+  initBasicNotificationContent(basicContent: notificationManager.NotificationBasicContent): notificationManager.NotificationContent {
     return {
       contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT, // 通知内容类型
       normal: basicContent // 基本类型通知内容
@@ -40,7 +40,7 @@ class NotificationContentUtil {
    * @return return the created NotificationContent
    */
 
-  initNotificationLongTextContent(basicContent: notification.NotificationBasicContent, notificationLongText: string, notificationBriefText: string, notificationExpandedTitle: string): notification.NotificationContent {
+  initNotificationLongTextContent(basicContent: notificationManager.NotificationBasicContent, notificationLongText: string, notificationBriefText: string, notificationExpandedTitle: string): notificationManager.NotificationContent {
     return {
       contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT, // 通知内容类型
       longText: {
@@ -63,7 +63,7 @@ class NotificationContentUtil {
    * @return return the created NotificationContent
    */
 
-  initNotificationMultiLineContent(basicContent: notification.NotificationBasicContent, notificationBriefText: string, notificationLongTitle: string, notificationLines: Array<string>): notification.NotificationContent {
+  initNotificationMultiLineContent(basicContent: notificationManager.NotificationBasicContent, notificationBriefText: string, notificationLongTitle: string, notificationLines: Array<string>): notificationManager.NotificationContent {
     return {
       contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE, // 通知内容类型
       multiLine: {
@@ -86,7 +86,7 @@ class NotificationContentUtil {
    * @return return the created NotificationContent
    */
 
-  initNotificationPictureContent(basicContent: notification.NotificationBasicContent, notificationBriefText: string, notificationExpandedTitle: string, notificationPicture: image.PixelMap): notification.NotificationContent {
+  initNotificationPictureContent(basicContent: notificationManager.NotificationBasicContent, notificationBriefText: string, notificationExpandedTitle: string, notificationPicture: image.PixelMap): notificationManager.NotificationContent {
     return {
       contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE, // 通知内容类型
       picture: {
