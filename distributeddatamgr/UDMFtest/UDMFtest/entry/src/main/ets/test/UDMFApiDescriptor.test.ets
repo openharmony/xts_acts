@@ -24,7 +24,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0100
-     * @tc.desc      : Text data type
+     * @tc.desc      : Verify the properties of the text type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -49,7 +49,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0125
-     * @tc.desc      : Base data type for physical hierarchy, which identifies the physical representation of the data type.
+     * @tc.desc      : Verify the properties of the entity type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -74,7 +74,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150
-     * @tc.desc      : Base data type for logical hierarchy, which identifies the logical content representation of the data type.
+     * @tc.desc      : Verify the properties of the object type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -99,7 +99,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0175
-     * @tc.desc      : Base data type for mixed object. For example, a PDF file contains both text and special formatting data.
+     * @tc.desc      : Verify the properties of the composite-object type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -124,7 +124,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200
-     * @tc.desc      : Plain text data type
+     * @tc.desc      : Verify the properties of the plain text data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -149,7 +149,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0300
-     * @tc.desc      : HTML data type
+     * @tc.desc      : Verify the properties of the html data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -174,7 +174,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0400
-     * @tc.desc      : Hyperlink data type.
+     * @tc.desc      : Verify the properties of the hyperlink data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -200,7 +200,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500
-     * @tc.desc      : XML(Extensible Markup Language) data type
+     * @tc.desc      : Verify the properties of the xml data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -225,7 +225,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0600
-     * @tc.desc      : Source code data type
+     * @tc.desc      : Verify the properties of the Source code data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -250,7 +250,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0700
-     * @tc.desc      : Script data type
+     * @tc.desc      : Verify the properties of the Script data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -275,7 +275,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0800
-     * @tc.desc      : Shell script data type
+     * @tc.desc      : Verify the properties of the Shell script data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -300,7 +300,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0900
-     * @tc.desc      : C-shell script data type
+     * @tc.desc      : Verify the properties of the C-shell script data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -326,7 +326,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1000
-     * @tc.desc      : Perl script data type
+     * @tc.desc      : Verify the properties of the Perl script data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -351,7 +351,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1100
-     * @tc.desc      : PHP script data type
+     * @tc.desc      : Verify the properties of the PHP script data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -376,7 +376,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1200
-     * @tc.desc      : Python script data type.
+     * @tc.desc      : Verify the properties of the Python script data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -401,7 +401,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1300
-     * @tc.desc      : Ruby script data type.
+     * @tc.desc      : Verify the properties of the Ruby script data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -426,7 +426,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1400
-     * @tc.desc      : TypeScript data type
+     * @tc.desc      : Verify the properties of the TypeScript data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -452,7 +452,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1500
-     * @tc.desc      : JavaScript data type
+     * @tc.desc      : Verify the properties of the JavaScript data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -477,7 +477,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1600
-     * @tc.desc      : JavaScript data type
+     * @tc.desc      : Verify the properties of the JavaScript data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -502,7 +502,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1700
-     * @tc.desc      : C source code data type
+     * @tc.desc      : Verify the properties of the C source code data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -527,7 +527,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1800
-     * @tc.desc      : C++ header data type
+     * @tc.desc      : Verify the properties of the C++ header data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -552,7 +552,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1900
-     * @tc.desc      : C++ source code data type
+     * @tc.desc      : Verify the properties of the C++ source code data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -577,7 +577,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2000
-     * @tc.desc      : C++ source code data type
+     * @tc.desc      : Verify the properties of the C++ source code data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -602,7 +602,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2100
-     * @tc.desc      : Ebook data type
+     * @tc.desc      : Verify the properties of the Ebook data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -627,7 +627,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2200
-     * @tc.desc      : EPUB ebook file format data type
+     * @tc.desc      : Verify the properties of the EPUB ebook file format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -652,7 +652,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2300
-     * @tc.desc      : AZW ebook file format data type
+     * @tc.desc      : Verify the properties of the AZW ebook file format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -677,7 +677,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2400
-     * @tc.desc      : AZW3 ebook file format data type
+     * @tc.desc      : Verify the properties of the AZW3 ebook file format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -702,7 +702,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2500
-     * @tc.desc      : KFX ebook file format data type
+     * @tc.desc      : Verify the properties of the KFX ebook file format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -727,7 +727,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2600
-     * @tc.desc      : MOBI ebook file format data type
+     * @tc.desc      : Verify the properties of the MOBI ebook file format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -752,7 +752,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2700
-     * @tc.desc      : Media data type
+     * @tc.desc      : Verify the properties of the Media data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -777,7 +777,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2800
-     * @tc.desc      : Image data type
+     * @tc.desc      : Verify the properties of the Image data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -802,7 +802,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2900
-     * @tc.desc      : JPEG image format data type
+     * @tc.desc      : Verify the properties of the JPEG image format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -827,7 +827,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3000
-     * @tc.desc      : JPEG image format data type
+     * @tc.desc      : Verify the properties of the png image format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -852,7 +852,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3100
-     * @tc.desc      : Raw image format data type
+     * @tc.desc      : Verify the properties of the Raw image format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -877,7 +877,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3200
-     * @tc.desc      : TIFF image format data type
+     * @tc.desc      : Verify the properties of the TIFF image format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -902,7 +902,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3300
-     * @tc.desc      : Windows bitmap image data type
+     * @tc.desc      : Verify the properties of the Windows bitmap image data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -927,7 +927,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3400
-     * @tc.desc      : Windows icon data type
+     * @tc.desc      : Verify the properties of the Windows icon data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -952,7 +952,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3500
-     * @tc.desc      : Adobe Photoshop document data type
+     * @tc.desc      : Verify the properties of the Adobe Photoshop document data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -977,7 +977,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3600
-     * @tc.desc      : Adobe Illustrator document data type
+     * @tc.desc      : Verify the properties of the Adobe Illustrator document data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1002,7 +1002,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3700
-     * @tc.desc      : Microsoft Word data type.
+     * @tc.desc      : Verify the properties of the Microsoft Word data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1027,7 +1027,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3800
-     * @tc.desc      : Microsoft Excel data type
+     * @tc.desc      : Verify the properties of the Microsoft Excel data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1052,7 +1052,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3900
-     * @tc.desc      : Microsoft PowerPoint presentation data type
+     * @tc.desc      : Verify the properties of the Microsoft PowerPoint presentation data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1077,7 +1077,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4000
-     * @tc.desc      : PDF data type
+     * @tc.desc      : Verify the properties of the PDF data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1102,7 +1102,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4100
-     * @tc.desc      : PostScript data type
+     * @tc.desc      : Verify the properties of the PostScript data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1127,7 +1127,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4200
-     * @tc.desc      : Encapsulated PostScript data type
+     * @tc.desc      : Verify the properties of the Encapsulated PostScript data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1153,7 +1153,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4300
-     * @tc.desc      : Video data type
+     * @tc.desc      : Verify the properties of the Video data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1176,9 +1176,9 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
-     * @tc.desc      AVI video format data type
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400
+     * @tc.desc      : Verify the properties of the AVI video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1203,7 +1203,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4500
-     * @tc.desc      : MPEG video format data type
+     * @tc.desc      : Verify the properties of the MPEG video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1228,7 +1228,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4600
-     * @tc.desc      : MPEG4 video format data type
+     * @tc.desc      : Verify the properties of the MPEG4 video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1253,7 +1253,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4700
-     * @tc.desc      : 3GPP video format data type.
+     * @tc.desc      : Verify the properties of the 3GPP video format data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1278,7 +1278,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4800
-     * @tc.desc      : 3GPP video format data type.
+     * @tc.desc      : Verify the properties of the 3GPP video format data type.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1304,7 +1304,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4900
-     * @tc.desc      : Windows WM video format data type
+     * @tc.desc      : Verify the properties of the Windows WM video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1329,7 +1329,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5000
-     * @tc.desc      : Windows WMV video format data type
+     * @tc.desc      : Verify the properties of the Windows WMV video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1352,9 +1352,9 @@ export default function UDMFApiDescriptorTest() {
     })
 
     /**
-     * @tc.name      SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
-     * @tc.number    SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
-     * @tc.desc      Windows WMP video format data type
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100
+     * @tc.desc      : Verify the properties of the Windows WMP video format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1380,7 +1380,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5200
-     * @tc.desc      : Audio data type
+     * @tc.desc      : Verify the properties of the Audio data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1405,7 +1405,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5300
-     * @tc.desc      : AAC audio format data type
+     * @tc.desc      : Verify the properties of the AAC audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1430,7 +1430,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5400
-     * @tc.desc      : AIFF audio format data type
+     * @tc.desc      : Verify the properties of the AIFF audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1455,7 +1455,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5500
-     * @tc.desc      : ALAC audio format data type
+     * @tc.desc      : Verify the properties of the ALAC audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1480,7 +1480,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5600
-     * @tc.desc      : FLAC audio format data type
+     * @tc.desc      : Verify the properties of the FLAC audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1505,7 +1505,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700
-     * @tc.desc      : MP3 audio format data type
+     * @tc.desc      : Verify the properties of the MP3 audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1530,7 +1530,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5800
-     * @tc.desc      : OGG audio format data type
+     * @tc.desc      : Verify the properties of the OGG audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1555,7 +1555,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5900
-     * @tc.desc      : PCM audio format data type
+     * @tc.desc      : Verify the properties of the PCM audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1580,7 +1580,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6000
-     * @tc.desc      : Windows WMA audio format data type
+     * @tc.desc      : Verify the properties of the Windows WMA audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1605,7 +1605,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6100
-     * @tc.desc      : Waveform audio format data type created by Microsoft
+     * @tc.desc      : Verify the properties of the Waveform audio format data type created by Microsoft
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1630,7 +1630,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6200
-     * @tc.desc      : Windows WMX audio format data type
+     * @tc.desc      : Verify the properties of the Windows WMX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1655,7 +1655,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300
-     * @tc.desc      : Windows WVX audio format data type
+     * @tc.desc      : Verify the properties of the Windows WVX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1681,7 +1681,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400
-     * @tc.desc      : Windows WAX audio format data type
+     * @tc.desc      : Verify the properties of the Windows WAX audio format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1706,7 +1706,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6500
-     * @tc.desc      : File data type
+     * @tc.desc      : Verify the properties of the File data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1731,7 +1731,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6600
-     * @tc.desc      : Directory data type
+     * @tc.desc      : Verify the properties of the Directory data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1756,7 +1756,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6700
-     * @tc.desc      : Folder data type
+     * @tc.desc      : Verify the properties of the Folder data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1781,7 +1781,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6800
-     * @tc.desc      : Symlink data type
+     * @tc.desc      : Verify the properties of the Symlink data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1806,7 +1806,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6900
-     * @tc.desc      : Symlink data type
+     * @tc.desc      : Verify the properties of the Symlink data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1831,7 +1831,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7000
-     * @tc.desc      : Bzip2 archive file data type
+     * @tc.desc      : Verify the properties of the Bzip2 archive file data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1856,7 +1856,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7100
-     * @tc.desc      : Disk image archive file data type
+     * @tc.desc      : Verify the properties of the Disk image archive file data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1881,7 +1881,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7200
-     * @tc.desc      : Tar archive data type
+     * @tc.desc      : Verify the properties of the Tar archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1906,7 +1906,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7300
-     * @tc.desc      : Zip archive data type
+     * @tc.desc      : Verify the properties of the Zip archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1931,7 +1931,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7400
-     * @tc.desc      : Java archive data type
+     * @tc.desc      : Verify the properties of the Java archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1956,7 +1956,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500
-     * @tc.desc      : GNU archive data type
+     * @tc.desc      : Verify the properties of the GNU archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -1981,7 +1981,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7600
-     * @tc.desc      : Gzip archive data type
+     * @tc.desc      : Verify the properties of the Gzip archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2006,7 +2006,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7700
-     * @tc.desc      : Gzip tar archive data type
+     * @tc.desc      : Verify the properties of the Gzip tar archive data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2031,7 +2031,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800
-     * @tc.desc      : Calendar data type
+     * @tc.desc      : Verify the properties of the Calendar data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2056,7 +2056,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7900
-     * @tc.desc      : Contact data type
+     * @tc.desc      : Verify the properties of the Contact data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2081,7 +2081,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8000
-     * @tc.desc      : Database data type
+     * @tc.desc      : Verify the properties of the Database data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2106,7 +2106,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8100
-     * @tc.desc      : Message data type
+     * @tc.desc      : Verify the properties of the Message data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2131,7 +2131,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8200
-     * @tc.desc      : A file format data type stand for electronic business card
+     * @tc.desc      : Verify the properties of the vcard format data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2156,7 +2156,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300
-     * @tc.desc      : location
+     * @tc.desc      : Verify the properties of the navigation data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2181,7 +2181,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8400
-     * @tc.desc      : Location data type
+     * @tc.desc      : Verify the properties of the Location data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2206,7 +2206,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8500
-     * @tc.desc      : OpenHarmony system defined form data type(the data is provided and bound to OpenHarmony system).
+     * @tc.desc      : Verify the properties of the openharmony.form  data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2231,7 +2231,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8600
-     * @tc.desc      : OpenHarmony system defined app item data type(the data is provided and bound to OpenHarmony system)
+     * @tc.desc      : Verify the properties of the openharmony.app-item  data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2256,7 +2256,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8700
-     * @tc.desc      : OpenHarmony system defined pixel map data type(the data is provided and bound to OpenHarmony system)
+     * @tc.desc      : Verify the properties of the openharmony.pixel-map data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2282,7 +2282,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8800
-     * @tc.desc      : OpenHarmony system defined atomic service data type(the data is provided and bound to OpenHarmony system).
+     * @tc.desc      : Verify the properties of the openharmony.atomic-service data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2307,7 +2307,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8825
-     * @tc.desc      : OpenHarmony system defined package, which is a directory presented to the user as a file(the data is provided
+     * @tc.desc      : Verify the properties of the openharmony.package data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2332,7 +2332,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8850
-     * @tc.desc      : OpenHarmony system defined ability package(the data is provided and bound to OpenHarmony system).
+     * @tc.desc      : Verify the properties of the openharmony.hap data type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2538,7 +2538,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9610
-     * @tc.desc      : belongsTo parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.desc      : parameters to belongsTo -- The relationship between the object of the parameter and the parent of the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2549,7 +2549,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = typeObj1.belongsTo(UTD.UniformDataType.OBJECT);
         console.log("result==>" +result);
-        expect(result == true).assertEqual(true);
+        expect(result).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -2560,7 +2560,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9615
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.NAVIGATION
+     * @tc.desc      : parameters to belongsTo -- The relationship between the object of the parameter and the next level of the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2582,7 +2582,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9620
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameters to belongsTo -- The relationship between the object of the parameter and the two levels above the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2593,7 +2593,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = typeObj1.belongsTo(UTD.UniformDataType.OBJECT);
         console.log("result==>" +result);
-        expect(result == true).assertEqual(true);
+        expect(result).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -2604,7 +2604,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9625
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameters to belongsTo -- ToThe relationship between the object of the parameter and the two levels below the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2627,7 +2627,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9630
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameter to belongsTo()-- The relationship between the object of the parameter and the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2638,7 +2638,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = typeObj1.belongsTo(UTD.UniformDataType.CALENDAR);
         console.log("result==>" +result);
-        expect(result == true).assertEqual(true);
+        expect(result).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -2649,7 +2649,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9635
-     * @tc.desc      : belongsTo parameter --"general.text" UTD.UniformDataType.NAVIGATION
+     * @tc.desc      : parameter to belongsTo()-- The relationship between the object of the parameter and the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2671,7 +2671,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9640
-     * @tc.desc      : belongsTo parameter --"general.object" UTD.UniformDataType.ENTITY
+     * @tc.desc      : parameter to belongsTo()-- The relationship between the object of the parameter and the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2693,7 +2693,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9645
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.MESSAGE ""
+     * @tc.desc      : Invalid parameter to belongsTo() -- The relationship between the object of the parameter and "".
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2715,7 +2715,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9650
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.CONTACT null
+     * @tc.desc      : Invalid parameter to belongsTo() --The relationship between the object of the parameter and null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2737,7 +2737,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9655
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.IMAGE undefined
+     * @tc.desc      : Invalid parameter to belongsTo() --The relationship between the object of the parameter and undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2759,7 +2759,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9660
-     * @tc.desc      : belongsTo parameter --UTD.UniformDataType.NAVIGATION "general.hello"
+     * @tc.desc      : Invalid parameter to belongsTo() --The relationship between the object of the parameter and "general.hello"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2782,7 +2782,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9665
-     * @tc.desc      : isLowerLevelType parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.desc      : parameter to isLowerLevelType() --The low-level relationship between the object of a parameter and the previous level of the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2793,7 +2793,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = typeObj1.isLowerLevelType(UTD.UniformDataType.OBJECT);
         console.log("result==>" +result);
-        expect(result == true).assertEqual(true);
+        expect(result).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -2804,7 +2804,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9670
-     * @tc.desc      : isLowerLevelType parameter --"general.object" UTD.UniformDataType.NAVIGATION
+     * @tc.desc      : parameter to isLowerLevelType() --The low-level relationship between the object of a parameter and the next level of the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2826,7 +2826,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9675
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameter to isLowerLevelType()  --The low-level relationship between the object of a parameter and the two levels above the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2837,7 +2837,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = typeObj1.isLowerLevelType(UTD.UniformDataType.OBJECT);
         console.log("result==>" +result);
-        expect(result == true).assertEqual(true);
+        expect(result).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -2848,7 +2848,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9680
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.LOCATION  UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameter to isLowerLevelType() --The low-level relationship between the object of a parameter and the lower two levels of the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2870,7 +2870,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9685
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.COMPOSITE_OBJECT  UTD.UniformDataType.COMPOSITE_OBJECT
+     * @tc.desc      : parameter to isLowerLevelType()--A low-level relationship between an object of a parameter and the same parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2893,7 +2893,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9690
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameter to isLowerLevelType()--The low-level relationship between the object of a parameter and the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2915,7 +2915,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9695
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION "general.text"
+     * @tc.desc      : parameter to isLowerLevelType()--The low-level relationship between the object of a parameter and the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2937,7 +2937,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9700
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION ""
+     * @tc.desc      : Invalid parameter to isLowerLevelType()--The low-level relationship of the object of the parameter to "".
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2959,7 +2959,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9705
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION "general.hello"
+     * @tc.desc      : Invalid parameter to isLowerLevelType()--The low-level relationship of the object of the parameter to "general.hello".
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -2981,7 +2981,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9710
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION null
+     * @tc.desc      : Invalid parameter to isLowerLevelType()--The low-level relationship of the object of the parameter to null.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3003,7 +3003,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9715
-     * @tc.desc      : isLowerLevelType parameter --UTD.UniformDataType.NAVIGATION undefined
+     * @tc.desc      : Invalid parameter to isLowerLevelType()--The low-level relationship of the object of the parameter to undefined.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3025,7 +3025,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9720
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT navigation
+     * @tc.desc      : parameter to isHigherLevelType()--The high-level relationship between the object of a parameter and the level above the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3046,7 +3046,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9725
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT navigation
+     * @tc.desc      : parameter to isHigherLevelType() --The high-level relationship between the object of a parameter and the level below the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3069,7 +3069,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9730
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.desc      : parameter to isHigherLevelType() --The object of a parameter has a high-level relationship with two levels above the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3091,7 +3091,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9735
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.desc      : parameter to isHigherLevelType() --The object of a parameter has a high-level relationship with the two levels below the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3113,7 +3113,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9740
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.OBJECT UTD.UniformDataType.LOCATION
+     * @tc.desc      : parameter to isHigherLevelType() --The high-level relationship between the object of the parameter and the parameter
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3136,7 +3136,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9745
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.desc      : parameter to isHigherLevelType() --The object of a parameter is a high-level relationship with the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3158,7 +3158,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9750
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.CONTACT UTD.UniformDataType.MESSAGE
+     * @tc.desc      : parameter to isHigherLevelType() --The object of a parameter is a high-level relationship with the parameter at the same level
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3180,7 +3180,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9755
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.PLAIN_TEXT  ""
+     * @tc.desc      : Invalid parameter to isHigherLevelType() --The high-level relationship between the object of the parameter and "".
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3202,7 +3202,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9760
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY UTD.UniformDataType.OBJECT
+     * @tc.desc      : Invalid parameter to isHigherLevelType() --The high-level relationship between the object of the parameter and "general.hello".
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3224,7 +3224,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9765
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY null
+     * @tc.desc      : Invalid parameter to isHigherLevelType() --The high-level relationship between the object of the parameter and null.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3246,7 +3246,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9770
-     * @tc.desc      : isHigherLevelType parameter --UTD.UniformDataType.ENTITY undefined
+     * @tc.desc      : Invalid parameter to isHigherLevelType() --The high-level relationship between the object of the parameter and undefined.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3268,7 +3268,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9775
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".xls"
+     * @tc.desc      : parameter to getUniformDataTypeByFilenameExtension()  --parameter is ".xls"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3278,7 +3278,7 @@ export default function UDMFApiDescriptorTest() {
       try{
         let result = UTD.getUniformDataTypeByFilenameExtension(".xls");
         console.log("result=====>" +result);
-        expect(result == "com.microsoft.excel.xls").assertEqual(true);
+        expect(result ==  UTD.UniformDataType.EXCEL).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -3289,7 +3289,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9780
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --null
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameter is null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3310,7 +3310,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --.hello
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameter is ".hello"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3331,7 +3331,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --""
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameter is ""
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3352,7 +3352,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9795
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --null
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameter is undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3373,7 +3373,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --".doc","com.microsoft.word.doc"
+     * @tc.desc      : parameter to getUniformDataTypeByFilenameExtension()  --parameters are ".doc" and UTD.UniformDataType.WORD_DOC
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3381,9 +3381,9 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9800 start');
       try{
-        let result = UTD.getUniformDataTypeByFilenameExtension(".doc","com.microsoft.word.doc");
+        let result = UTD.getUniformDataTypeByFilenameExtension(".doc",UTD.UniformDataType.WORD_DOC );
         console.log("result=====>" +result);
-        expect(result == "com.microsoft.word.doc").assertEqual(true);
+        expect(result == UTD.UniformDataType.WORD_DOC ).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -3394,7 +3394,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --".doc","com.microsoft.word.doc"
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameters are ".doc" and invalid parameter UTD.UniformDataType.PPT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3402,7 +3402,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805 start');
       try{
-        let result = UTD.getUniformDataTypeByFilenameExtension(".doc","com.microsoft.powerpoint.ppt");
+        let result = UTD.getUniformDataTypeByFilenameExtension(".doc",UTD.UniformDataType.PPT);
         console.log("result=====>" +result);
         expect(result == null ).assertEqual(true);
       } catch (err) {
@@ -3415,7 +3415,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9815
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".wave",null
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameters are ".doc" and invalid parameter null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3436,7 +3436,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9820
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".wave",undefined
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameters are ".doc" and invalid parameter undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3457,7 +3457,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825
-     * @tc.desc      : getUniformDataTypeByFilenameExtension parameter --".hello","com.microsoft.ico"
+     * @tc.desc      : Invalid parameter to getUniformDataTypeByFilenameExtension()  --parameters are invalid parameter ".hello" and UTD.UniformDataType.ICO
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3465,7 +3465,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825 start');
       try{
-        let result = UTD.getUniformDataTypeByFilenameExtension(".hello","com.microsoft.ico");
+        let result = UTD.getUniformDataTypeByFilenameExtension(".hello",UTD.UniformDataType.ICO);
         console.log("result=====>" +result);
         expect( result==null ).assertEqual(true);
       } catch (err) {
@@ -3478,7 +3478,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9835
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff"
+     * @tc.desc      : parameter to getUniformDataTypeByMIMEType() --"image/tiff"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3498,7 +3498,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"hello"
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter is "hello"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3518,7 +3518,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --null
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter is ""
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3540,7 +3540,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9850
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --null
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter is null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3562,7 +3562,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9855
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter -undefined
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter is undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3583,7 +3583,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.type-script"
+     * @tc.desc      : parameter to getUniformDataTypeByMIMEType()  --parameter are "image/tiff" and "general.type-script"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3591,9 +3591,9 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860 start');
       try{
-        let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wma","com.microsoft.windows-media-wma");
+        let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wma",UTD.UniformDataType.WINDOWS_MEDIA_WMA );
         console.log("result=====>" +result);
-        expect(result == "com.microsoft.windows-media-wma").assertEqual(true);
+        expect(result == UTD.UniformDataType.WINDOWS_MEDIA_WMA).assertEqual(true);
       } catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
         expect().assertFail();
@@ -3604,7 +3604,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.type-script"
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter are "image/tiff"and invalid parameter "general.type-script"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3612,7 +3612,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865 start');
       try{
-        let result = UTD.getUniformDataTypeByMIMEType("image/tiff","general.type-script");
+        let result = UTD.getUniformDataTypeByMIMEType("image/tiff",UTD.UniformDataType.TYPE_SCRIPT );
         console.log("result=====>" +result);
         expect(result == null).assertEqual(true);
       } catch (err) {
@@ -3627,7 +3627,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9870
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff",null
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter are "image/tiff"and invalid parameter null
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3648,7 +3648,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9875
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff",undefined
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter are "image/tiff"and invalid parameter undefined
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3669,7 +3669,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"","com.microsoft.windows-media-wmv"
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter are invalid parameter "hello" and  UTD.UniformDataType.WINDOWS_MEDIA_WMV
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -3677,7 +3677,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880',0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880 start');
       try{
-        let result = UTD.getUniformDataTypeByMIMEType("hello","com.microsoft.windows-media-wmv");
+        let result = UTD.getUniformDataTypeByMIMEType("hello",UTD.UniformDataType.WINDOWS_MEDIA_WMV);
         console.log("result=====>" +result);
         expect(result == null).assertEqual(true);
       } catch (err) {
@@ -3690,7 +3690,7 @@ export default function UDMFApiDescriptorTest() {
     /**
      * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9885
-     * @tc.desc      : getUniformDataTypeByMIMEType parameter --"image/tiff","general.hello"
+     * @tc.desc      : Invalid  parameter to getUniformDataTypeByMIMEType() --parameter are "image/tiff"and invalid parameter "general.hello"
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
