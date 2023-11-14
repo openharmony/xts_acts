@@ -124,6 +124,8 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.appProvisionType).assertEqual("release");
         expect(data.appInfo.permissions.length).assertEqual(0);
         expect(data.appInfo.systemApp).assertFalse();
+        expect(data.appInfo.dataUnclearable).assertFalse();
+        expect(data.appInfo.applicationReservedFlag).assertEqual(0);
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -507,9 +509,9 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
         let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-        expect(extensionList.length).assertEqual(18);
+        expect(extensionList.length).assertEqual(19);
         let count = 0;
-        for (let i = 0;i < 18; i++) {
+        for (let i = 0;i < 19; i++) {
           switch (extensionList[i].name) {
             case "Form":
               console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
@@ -521,6 +523,7 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].iconId).assertLarger(0);
               expect(extensionList[i].exported).assertTrue();
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+              expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
               expect(extensionList[i].permissions.length).assertEqual(0);
               expect(extensionList[i].applicationInfo).assertEqual(null);
               expect(extensionList[i].metadata.length).assertEqual(0);
@@ -622,10 +625,15 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
               count = count + 19;
               break;
+            case 'adsService':
+              console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+              count = count + 20;
+              break;
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(155);
+        expect(count).assertEqual(175);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -653,9 +661,9 @@ export default function getBundleInfoForSelf() {
           expect(data.appInfo).assertEqual(null);
           expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
           let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-          expect(extensionList.length).assertEqual(18);
+          expect(extensionList.length).assertEqual(19);
           let count = 0;
-          for (let i = 0;i < 18; i++) {
+          for (let i = 0;i < 19; i++) {
             switch (extensionList[i].name) {
               case "Form":
                 console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
@@ -667,6 +675,7 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].iconId).assertLarger(0);
                 expect(extensionList[i].exported).assertTrue();
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+                expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
                 expect(extensionList[i].permissions.length).assertEqual(0);
                 expect(extensionList[i].applicationInfo).assertEqual(null);
                 expect(extensionList[i].metadata.length).assertEqual(0);
@@ -768,10 +777,15 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
                 count = count + 19;
                 break;
+              case 'adsService':
+                console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+                count = count + 20;
+                break;
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(155);
+          expect(count).assertEqual(175);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -797,7 +811,7 @@ export default function getBundleInfoForSelf() {
         checkCommonBundleInfo(data);
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo.length).assertEqual(0);
-        expect(data.reqPermissionDetails.length).assertEqual(2);
+        expect(data.reqPermissionDetails.length).assertEqual(3);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
         expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -835,7 +849,7 @@ export default function getBundleInfoForSelf() {
         console.info("PermissionPro" + JSON.stringify(data.permissionGrantStates));
         checkCommonBundleInfo(data);
         expect(data.appInfo).assertEqual(null);
-        expect(data.reqPermissionDetails.length).assertEqual(2);
+        expect(data.reqPermissionDetails.length).assertEqual(3);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
         expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -1204,6 +1218,41 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7061
+     * @tc.name: getBundleInfoForSelfSyncFileContextMenu
+     * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenu flag.
+     */
+    it('getBundleInfoForSelfSyncFileContextMenu', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE|bundle.BundleFlag.GET_BUNDLE_INFO_WITH_MENU);
+      console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
+      checkCommonBundleInfo(data);
+      console.info("data.hapModulesInfo[0].fileContextMenu" + JSON.stringify(data.hapModulesInfo[0].fileContextMenu));
+      //      expect(bundle.ApplicationReservedFlag.ENCRYPTED_APPLICATION).assertEqual(1);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(1);
+      expect(data.hapModulesInfo[0].name).assertEqual("testModule");
+      expect(data.hapModulesInfo[0].icon).assertEqual("$media:icon");
+      expect(data.hapModulesInfo[0].iconId).assertLarger(0);
+      expect(data.hapModulesInfo[0].label).assertEqual("$string:entry_label");
+      expect(data.hapModulesInfo[0].labelId).assertLarger(0);
+      expect(data.hapModulesInfo[0].description).assertEqual("$string:testModule_entry_dsc");
+      expect(data.hapModulesInfo[0].descriptionId).assertLarger(0);
+      expect(data.hapModulesInfo[0].mainElementName).assertEqual(ABILITY_NAME);
+      expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
+      expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
+      expect(data.hapModulesInfo[0].installationFree).assertFalse();
+      expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+      expect(data.hapModulesInfo[0].fileContextMenu).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      done();
+    })
+    /*
      * @tc.number: Sub_Bms_Framework_Query_AppInfo_7080
      * @tc.name: getBundleInfoForSelfSyncAbilitiesInfo
      * @tc.desc: Test getBundleInfoForSelfSync with abilitiesInfo flag.
@@ -1314,12 +1363,12 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-      expect(extensionList.length).assertEqual(18);
+      expect(extensionList.length).assertEqual(19);
       let count = 0;
-      for (let i = 0;i < 18; i++) {
+      for (let i = 0;i < 19; i++) {
         switch (extensionList[i].name) {
           case "Form":
-            console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+            console.info("Form" + JSON.stringify(extensionList[i]));
             expect(extensionList[i].bundleName).assertEqual(BUNDLE_NAME);
             expect(extensionList[i].moduleName).assertEqual("testModule");
             expect(extensionList[i].name).assertEqual("Form");
@@ -1328,6 +1377,7 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].iconId).assertLarger(0);
             expect(extensionList[i].exported).assertTrue();
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+            expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
             expect(extensionList[i].permissions.length).assertEqual(0);
             expect(extensionList[i].applicationInfo).assertEqual(null);
             expect(extensionList[i].metadata.length).assertEqual(0);
@@ -1429,10 +1479,15 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
             count = count + 19;
             break;
+          case 'adsService':
+            console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+            count = count + 20;
+            break;
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(155);
+      expect(count).assertEqual(175);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1452,7 +1507,7 @@ export default function getBundleInfoForSelf() {
       checkCommonBundleInfo(data);
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(0);
-      expect(data.reqPermissionDetails.length).assertEqual(2);
+      expect(data.reqPermissionDetails.length).assertEqual(3);
       expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
       expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
       expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -1528,6 +1583,7 @@ export default function getBundleInfoForSelf() {
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo.appId).assertEqual(APPID);
       expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+      expect(data.signatureInfo.appIdentifier).assertEqual("");
       done();
     })
 
