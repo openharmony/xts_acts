@@ -22,12 +22,16 @@ parse_target_subsystem()
     target_subsystem_config=${XTS_HOME}/tools/config/precise_compilation.json
     xts_targets=()
     repositorys=$1
+    match_status=true
     repo_lst=($(echo $repositorys | tr "," "\n"))
     for repo in "${repo_lst[@]}"
     do
         # 仓名映射target名
         jq_cmd="cat $target_subsystem_config | jq -r '.[] | select( .name == \"${repo}\") | .buildTarget'"
         xts_target=`eval $jq_cmd`
+        if [[ -z "${xts_target}" ]];then
+            match_status=false
+        fi
         # precise_compilation.json匹配到的才添加，数组中不存在才添加（去重）
         if [[ -n "${xts_target}" && !("${xts_targets[@]}" =~ "$xts_target") ]];then
             xts_targets=(${xts_targets[@]} $xts_target)
@@ -40,7 +44,7 @@ parse_target_subsystem()
 do_make()
 {
     cd $BASE_HOME
-    if [[ ${#xts_targets[@]} -eq 0 || "${xts_targets[@]}" =~ "xts_acts" ]];then
+    if [[ ${match_status} == false || "${xts_targets[@]}" =~ "xts_acts" ]];then
 	    ./test/xts/acts/build.sh product_name=rk3568 system_size=standard
     else
         for target in "${xts_targets[@]}"
