@@ -76,7 +76,7 @@ export default function relationalStoreCloudCursor() {
         afterEach(async function () {
             console.info(TAG + 'afterEach');
             try {
-                let predicates = await new relationalStore.RdbPredicates("query_tb");
+                let predicates = new relationalStore.RdbPredicates("query_tb");
                 predicates.equalTo("data", "cloud_cursor_insert");
                 await rdbStore.delete(predicates);
                 console.log(TAG + "delete table query_tb success");
@@ -102,12 +102,12 @@ export default function relationalStoreCloudCursor() {
         it('testRdbQueryWithCursor0001', 0, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0001 start *************");
     
-            let predicates = await new relationalStore.RdbPredicates("query_tb");
+            let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0001 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             let promise = rdbStore.query(predicates);
             await promise.then((resultSet) => {
@@ -135,14 +135,14 @@ export default function relationalStoreCloudCursor() {
         it('testRdbQueryWithCursor0002', 0, async function (done) {
             console.log(TAG + "************* testRdbQueryWithCursor0002 start *************");
     
-            let predicates = await new relationalStore.RdbPredicates("query_tb");
+            let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
             predicates.orderByAsc(relationalStore.Field.CURSOR_FIELD);
             predicates.orderByAsc("data");
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0002 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             let promise = rdbStore.query(predicates, ["data", "uuid"]);
             await promise.then((resultSet) => {
@@ -172,18 +172,18 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0003 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             const valueBucket = {
                 "recycledTime": "1234567890",
             }
-            let updatePredicates = await new relationalStore.RdbPredicates("query_tb");
+            let updatePredicates = new relationalStore.RdbPredicates("query_tb");
             updatePredicates.equalTo("uuid", "test_key1");
             updatePredicates.or();
             updatePredicates.equalTo("uuid", "test_key2");
             await rdbStore.update(valueBucket, updatePredicates);
             console.log(TAG + `testRdbQueryWithCursor0003 update end.`);
-            let predicates = await new relationalStore.RdbPredicates("query_tb");
+            let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThanOrEqualTo(relationalStore.Field.CURSOR_FIELD, 26);
             predicates.equalTo(relationalStore.Field.ORIGIN_FIELD, relationalStore.Origin.LOCAL);
             predicates.orderByDesc(relationalStore.Field.CURSOR_FIELD);
@@ -216,13 +216,13 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0004 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
-            let deletedPred = await new relationalStore.RdbPredicates("query_tb");
+            let deletedPred = new relationalStore.RdbPredicates("query_tb");
             deletedPred.equalTo("uuid", "test_key3");
             await rdbStore.delete(deletedPred);
             console.log(TAG + `delete end.`);
-            let predicates = await new relationalStore.RdbPredicates("query_tb");
+            let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 37);
             predicates.orderByAsc(relationalStore.Field.CURSOR_FIELD);
             try {
@@ -250,9 +250,9 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbQueryWithCursor0005 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
-            let predicates = await new relationalStore.RdbPredicates("query_tb");
+            let predicates = new relationalStore.RdbPredicates("query_tb");
             predicates.greaterThan(relationalStore.Field.CURSOR_FIELD, 0);
             predicates.and();
             predicates.beginWrap();
@@ -285,18 +285,18 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0001 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             let cursor = 3;
             let promise = rdbStore.cleanDirtyData("query_tb", cursor);
             await promise.then((err) => {
                 console.log(TAG + `testRdbCleanDirtyData0001 cleanDirtyData success`);
+                done();
             }).catch((err) => {
                 console.log(TAG + `testRdbCleanDirtyData0001 cleanDirtyData fail, errcode: ${JSON.stringify(err)}.`);
                 expect().assertFail();
                 done();
             });
-            done();
             console.log(TAG + "************* testRdbCleanDirtyData0001 end *************");
         })
     
@@ -310,17 +310,17 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0002 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             let promise = rdbStore.cleanDirtyData("query_tb");
             await promise.then((err) => {
                 console.log(TAG + `testRdbCleanDirtyData0002 cleanDirtyData success`);
+                done();
             }).catch((err) => {
                 console.log(TAG + `testRdbCleanDirtyData0002 cleanDirtyData fail, errcode:${JSON.stringify(err)}.`);
                 expect().assertFail();
                 done();
             });
-            done();
             console.log(TAG + "************* testRdbCleanDirtyData0002 end *************");
         })
 
@@ -334,7 +334,7 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0003 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             rdbStore.cleanDirtyData("query_tb", (err) =>{
                 if (err) {
@@ -358,7 +358,7 @@ export default function relationalStoreCloudCursor() {
             if (rdbStore == undefined) {
                 console.log(TAG + "testRdbCleanDirtyData0004 rdbStore == undefined");
                 expect().assertFail();
-                done();
+                return;
             }
             let cursor = 3;
             rdbStore.cleanDirtyData("query_tb",cursor,(err) =>{
