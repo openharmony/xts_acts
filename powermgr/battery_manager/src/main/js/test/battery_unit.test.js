@@ -466,5 +466,42 @@ describe('BatteryUnitTest', function () {
             + batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL);
         expect(batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL == 'capacityLevel').assertTrue();
     })
+
+    /**
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1920
+     * @tc.name set_battery_config_JSTest
+     * @tc.desc set battery config api Test
+     */
+    it('set_battery_config_JSTest', 0, function () {
+        let sceneName = "wireless";
+        let sceneValue = "0";
+        let result = batteryInfo.setBatteryConfig(sceneName, sceneValue);
+        console.info('setBatteryConfig result = ' + result);
+        expect(result == -2).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1930
+     * @tc.name get_battery_config_JSTest
+     * @tc.desc get battery config api Test
+     */
+    it('get_battery_config_JSTest', 0, function () {
+        let sceneName = "wireless";
+        let result = batteryInfo.getBatteryConfig(sceneName);
+        console.info('getBatteryConfig result = ' + result);
+        expect(result == "").assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1940
+     * @tc.name is_battery_config_supported_JSTest
+     * @tc.desc check battery config supported api Test
+     */
+    it('is_battery_config_supported_JSTest', 0, function () {
+        let sceneName = "wireless";
+        let result = batteryInfo.isBatteryConfigSupported(sceneName);
+        console.info('isBatteryConfigSupported result = ' + result);
+        expect(result == false).assertTrue();
+    })
 })
 }
