@@ -23,10 +23,10 @@ export default function MultimodalInput_GestureEvent_test() {
 
     /**
      * @tc.number Multimodalinput_GestureEventTest_001
-     * @tc.name Multimodalinput_GestureEvent_SUB_MMI_GestureEvent_001
+     * @tc.name Multimodalinput_GestureEvent_SUB_MMI_GestureEventTest_001
      * @tc.desc GestureEvent interface On gesture type
      */
-    it('Multimodalinput_GestureEvent_SUB_MMI_GestureEvent_001', 0, function () {
+    it('Multimodalinput_GestureEvent_SUB_MMI_GestureEventTest_001', 0, function () {
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_001 enter`);
 
       expect(gestureEvent.ActionType.CANCEL == 0).assertTrue();
