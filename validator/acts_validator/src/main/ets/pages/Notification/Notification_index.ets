@@ -255,13 +255,7 @@ struct NotificationPage {
             .width('100%')
             .height(50)
             .alignItems(VerticalAlign.Center)
-            .linearGradient(this.count === 0 && this.TEST === 0 ? {
-                                                                    angle: 90,
-                                                                    colors: [[0x000000, 0.0], [0x000000, 1.0]]
-                                                                  } : {
-                                                                        angle: 90,
-                                                                        colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]]
-                                                                      })
+            .linearGradient(this.count === 0 && this.TEST === 0 ? { angle: 90, colors: [[0x000000, 0.0], [0x000000, 1.0]] } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
             .onClick(() => {
               this.count = 1;
               this.ClearAll = false;
