@@ -35,6 +35,7 @@ import RichTextJsunit from './RichTextJsunit.test.ets';
 import SearchJsunit from './SearchJsunit.test.ets';
 import GridJsunit from './GridJsunit.test.ets';
 import TextClockJsunit from './TextClockJsunit.test.ets';
+import TextClockLongJsunit from './TextClockLongJsunit.test.ets';
 import ListJsunit from './ListJsunit.test.ets';
 import NavRouterJsunit from './NavRouterJsunit.test.ets';
 import TextInputJsunit from './TextInputJsunit.test.ets';
@@ -323,6 +324,7 @@ export default function testsuite() {
   SearchJsunit();
   GridJsunit();
   TextClockJsunit();
+  TextClockLongJsunit();
   ListJsunit();
   NavRouterJsunit();
   TextInputJsunit();
