@@ -191,9 +191,9 @@ export default class EntryAbility extends Ability {
           data.readParcelable(result);
           console.debug('====>Acts_SingleInstanceCallFunction_0400 callWithResult result:' + JSON.stringify(result));
           let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-          let pkillCmd = 'pkill -f com.acts.callapprely';
-          abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
-            console.debug('====>Acts_SingleInstanceCallFunction_0400 pkillCmd err:' + JSON.stringify(err));
+          let forcestop = 'aa force-stop com.acts.callapprely';
+          abilityDelegator.executeShellCommand(forcestop, (err, data) => {
+            console.debug('====>Acts_SingleInstanceCallFunction_0400 forcestop err:' + JSON.stringify(err));
             let commonEventData = {
               parameters: {
                 num: result.num,
@@ -347,6 +347,8 @@ export default class EntryAbility extends Ability {
               let pkillCmd = 'aa force-stop com.acts.thirdpartyapprely';
               abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
                 console.info('====>Acts_SingleInstanceCallFunction_0800 pkillCmd err:' + JSON.stringify(err));
+              })
+              setTimeout(()=>{
                 let commonEventData = {
                   parameters: {
                     num: receivedData.num,
@@ -355,11 +357,9 @@ export default class EntryAbility extends Ability {
                 };
                 commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
                   console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
-                  setTimeout(()=>{
-                    globalThis.terminate();
-                  }, 500);
+                  globalThis.terminate();
                 })
-              })
+              }, 500)
             })
           })
         }).catch((err) => {
