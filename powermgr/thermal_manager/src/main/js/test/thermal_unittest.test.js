@@ -135,32 +135,25 @@ export default function ThermalUnitTest() {
             expect(thermalLevel === 6).assertTrue();
         })
 
-        /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0100
-         * @tc.name Get_Level_JSTest0100
-         * @tc.desc Thermal acquisition kit
+        /**
+         * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0100
+         * @tc.name Get_Thermal_Level_Emergency_JSTest0100
+         * @tc.desc Get device thermalLevel ESCAPE
          */
-        it('Get_Level_JSTest0100', 0, async function (done) {
-            let level = thermal.getLevel();
-            console.info("Get_Level_JSTest0100 level is: " + level);
-            expect(level >= thermal.ThermalLevel.COOL && level <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
+        it('Get_Thermal_Level_Escape_JSTest0100', 0, function () {
+            let thermalLevel = thermal.ThermalLevel.ESCAPE;
+            console.info('ThermalLevel.ESCAPE = ' + thermalLevel);
+            expect(thermalLevel === 7).assertTrue();
         })
 
         /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0110
-         * @tc.name Register_Thermal_Level_Callback_JSTest0110
+         * @tc.name Get_Level_JSTest0110
          * @tc.desc Thermal acquisition kit
          */
-        it('Register_Thermal_Level_Callback_JSTest0110', 0, async function (done) {
-            try {
-                thermal.registerThermalLevelCallback((value) => {
-                    console.info("Register_Thermal_Level_Callback_JSTest0110 level is: " + value);
-                    let level = thermal.getLevel();
-                    expect(level === value).assertTrue();
-                })
-            } catch (error) {
-                console.info('Register_Thermal_Level_Callback_JSTest0110:' + error);
-                expect().assertFail();
-            }
+        it('Get_Level_JSTest0110', 0, async function (done) {
+            let level = thermal.getLevel();
+            console.info("Get_Level_JSTest0110 level is: " + level);
+            expect(level >= thermal.ThermalLevel.COOL && level <= thermal.ThermalLevel.ESCAPE).assertTrue();
             done();
         })
 
@@ -170,24 +163,27 @@ export default function ThermalUnitTest() {
          */
         it('Register_Thermal_Level_Callback_JSTest0120', 0, async function (done) {
             try {
-                thermal.registerThermalLevelCallback('')
+                thermal.registerThermalLevelCallback((value) => {
+                    console.info("Register_Thermal_Level_Callback_JSTest0120 level is: " + value);
+                    let level = thermal.getLevel();
+                    expect(level === value).assertTrue();
+                })
             } catch (error) {
-                console.info('Register_Thermal_Level_Callback_JSTest0120 error:' + error);
-                // 401: Invalid input parameter
-                expect(error.code === 401).assertTrue();
+                console.info('Register_Thermal_Level_Callback_JSTest0120:' + error);
+                expect().assertFail();
             }
             done();
         })
 
         /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0130
-        * @tc.name UnRegister_Thermal_Level_Callback_JSTest0130
-        * @tc.desc Thermal acquisition kit
-        */
-        it('UnRegister_Thermal_Level_Callback_JSTest0130', 0, async function (done) {
+         * @tc.name Register_Thermal_Level_Callback_JSTest0130
+         * @tc.desc Thermal acquisition kit
+         */
+        it('Register_Thermal_Level_Callback_JSTest0130', 0, async function (done) {
             try {
-                thermal.unregisterThermalLevelCallback('')
+                thermal.registerThermalLevelCallback('')
             } catch (error) {
-                console.info('UnRegister_Thermal_Level_Callback_JSTest0130 error:' + error);
+                console.info('Register_Thermal_Level_Callback_JSTest0130 error:' + error);
                 // 401: Invalid input parameter
                 expect(error.code === 401).assertTrue();
             }
@@ -200,9 +196,24 @@ export default function ThermalUnitTest() {
         */
         it('UnRegister_Thermal_Level_Callback_JSTest0140', 0, async function (done) {
             try {
+                thermal.unregisterThermalLevelCallback('')
+            } catch (error) {
+                console.info('UnRegister_Thermal_Level_Callback_JSTest0140 error:' + error);
+                // 401: Invalid input parameter
+                expect(error.code === 401).assertTrue();
+            }
+            done();
+        })
+
+        /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0150
+        * @tc.name UnRegister_Thermal_Level_Callback_JSTest0150
+        * @tc.desc Thermal acquisition kit
+        */
+        it('UnRegister_Thermal_Level_Callback_JSTest0150', 0, async function (done) {
+            try {
                 thermal.unregisterThermalLevelCallback()
             } catch (error) {
-                console.info('UnRegister_Thermal_Level_Callback_JSTest0140:' + error);
+                console.info('UnRegister_Thermal_Level_Callback_JSTest0150:' + error);
                 expect().assertFail();
             }
 
@@ -211,7 +222,7 @@ export default function ThermalUnitTest() {
                     expect(true).assertTrue();
                 })
             } catch (error) {
-                console.info('UnRegister_Thermal_Level_Callback_JSTest0140:' + error);
+                console.info('UnRegister_Thermal_Level_Callback_JSTest0150:' + error);
                 expect().assertFail();
             }
             done();
