@@ -34,7 +34,7 @@ let module1FormInfo: formInfo.FormInfo = {
     formConfigAbility: "ability://xxxxx",
     updateDuration: 1,
     defaultDimension:2,
-    supportDimensions:[2],
+    supportDimensions:[2, 6],
     customizeData: {},
     isDynamic: true,
     transparencyEnabled: false
