@@ -13,13 +13,14 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility11 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility11 onCreate")
         globalThis.abilityWant = want;
         globalThis.ability11 = this.context;
-        var listKey11 = [];
+        globalThis.list11 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 console.log("[Demo] AbilityLifecycleCallback onAbilityCreate ability:"
@@ -32,8 +33,8 @@ export default class MainAbility11 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageCreate abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageCreate");
-                listKey11.push(abilityname + " onWindowStageCreate");
-                console.log("[Demo] 1listKey11:" + JSON.stringify(listKey11));
+                globalThis.list11.push(abilityname + " onWindowStageCreate");
+                console.log("[Demo] 1listKey11:" + JSON.stringify(globalThis.list11));
             },
             onWindowStageActive(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageActive ability:"
@@ -42,8 +43,8 @@ export default class MainAbility11 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageActive abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageActive");
-                listKey11.push(abilityname + " onWindowStageActive");
-                console.log("[Demo] 2listKey11:" + JSON.stringify(listKey11));
+                globalThis.list11.push(abilityname + " onWindowStageActive");
+                console.log("[Demo] 2listKey11:" + JSON.stringify(globalThis.list11));
             },
             onWindowStageInactive(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageInactive ability:"
@@ -52,8 +53,8 @@ export default class MainAbility11 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageInactive abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageInactive");
-                listKey11.push(abilityname + " onWindowStageInactive");
-                console.log("[Demo] 3listKey11:" + JSON.stringify(listKey11));
+                globalThis.list11.push(abilityname + " onWindowStageInactive");
+                console.log("[Demo] 3listKey11:" + JSON.stringify(globalThis.list11));
             },
             onWindowStageDestroy(ability, windowStage) {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageDestroy ability:"
@@ -62,8 +63,8 @@ export default class MainAbility11 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback onWindowStageDestroy abilityname:"
                 + JSON.stringify(abilityname));
                 console.log("[Demo] " + abilityname + " onWindowStageDestroy");
-                listKey11.push(abilityname + " onWindowStageDestroy");
-                console.log("[Demo] 4listKey11:" + JSON.stringify(listKey11));
+                globalThis.list11.push(abilityname + " onWindowStageDestroy");
+                console.log("[Demo] 4listKey11:" + JSON.stringify(globalThis.list11));
             },
             onAbilityDestroy(ability) {
                 console.log("[Demo] AbilityLifecycleCallback onAbilityDestroy ability:"
@@ -85,15 +86,21 @@ export default class MainAbility11 extends Ability {
         globalThis.applicationContext11 = globalThis.ability11.getApplicationContext();
         let lifecycleid = globalThis.applicationContext11.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback11 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback11 listKey: " + JSON.stringify(listKey11));
-            globalThis.list11 = listKey11;
-            globalThis.callbackid11 = lifecycleid;
-        }, 2000);
+        globalThis.callbackid11 = lifecycleid;
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility11.onCreate", ()=>{
+                console.log("[Demo] MainAbility11 onCreate")
+            });
+        }, 500)
     }
 
     onDestroy() {
         console.log("[Demo] MainAbility11 onDestroy")
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility11.onDestroy", ()=>{
+                console.log("[Demo] MainAbility11 onDestroy")
+            });
+        }, 500)
     }
 
     onWindowStageCreate(windowStage) {
