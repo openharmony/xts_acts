@@ -67,7 +67,7 @@ struct Index {
   private notificationUtil = new NotificationUtil();
   @State isPromptTone: boolean = false;
   @State name: string = 'CustomNotification';
-  @State StepTips: string = '操作步骤：\n分别点击6个小卡片，发送不同类型的通知' + '\n' + '预期结果：通知都发送成功，则通过';
+  @State StepTips: string = '操作步骤：\n分别点击6个小卡片，发送不同类型的通知' + '\n' + '预期结果：通知卡片变为绿色，上方状态栏下滑能收到不同类型的通知，则通过';
   @State Vue: boolean = false;
   @State isVibrationEffect: boolean = false;
   @State count: number = 0;
