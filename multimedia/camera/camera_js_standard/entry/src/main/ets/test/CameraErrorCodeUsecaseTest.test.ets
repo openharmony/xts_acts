@@ -868,12 +868,14 @@ export default function CameraErrorCodeUsecaseTest() {
             mPhotoOutput.capture({}, async (err) => {
                 if (!err) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0200 success");
+                    done();
                 } else {
                     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0200 FAILED");
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+                    done();
                 }
-                done();
+                
             })
         })
 
