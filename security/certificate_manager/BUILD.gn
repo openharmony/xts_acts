@@ -10,26 +10,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-base_root = "../../../../"
-import("$base_root/build/ohos_var.gni")
-import("$base_root/test/xts/tools/build/suite.gni")
-
-group("security") {
+group("certificate_manager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
-      "certificate_framework",
-      "certificate_manager",
-      "cipher/datacipher:datacipher",
-      "crossplatform:crossplatform",
-      "cryptoFramework",
-      "dlp_permission_service:DlpTest",
-      "huks_napi_BasicTest:ActsHuksNAPITest",
-      "security_component:ActsSecComponentTest",
-      "security_huks_basic",
-      "security_huks_reformed_test",
+      "certificate_manager_func:ActsCertificateManagerJsFuncTest",
+      "certificate_manager_permission:ActsCertificateManagerJsPermissionTest",
     ]
   }
 }
