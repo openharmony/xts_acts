@@ -338,10 +338,10 @@ export default function SecurityHuksCipherSM2BasicPromiseJsunit() {
             done();
         });
 
-        it('testReformedCipherSM2_102', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_102', 0, async function (done) {
             // init - update - finish
-            const srcKeyAlies = 'testReformedCipherSM2_102A';
-            const newSrcKeyAlies = 'testReformedCipherSM2_102B';
+            const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_102A';
+            const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_102B';
             let HuksOptions = {
                 properties: new Array(
                     {
@@ -401,10 +401,10 @@ export default function SecurityHuksCipherSM2BasicPromiseJsunit() {
             done();
         });
 
-        it('testReformedCipherSM2_103', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_103', 0, async function (done) {
             // only use finish instead of update
-            const srcKeyAlies = 'testReformedCipherSM2_103A';
-            const newSrcKeyAlies = 'testReformedCipherSM2_103B';
+            const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_103A';
+            const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_103B';
             let HuksOptions = {
                 properties: new Array(
                     {
@@ -1650,7 +1650,7 @@ export default function SecurityHuksCipherSM2BasicPromiseJsunit() {
             done();
         });
 
-        it('testReformedCipherSM2_801', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_801', 0, async function (done) {
             // use update and finish
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1752,7 +1752,7 @@ export default function SecurityHuksCipherSM2BasicPromiseJsunit() {
             done();
         });
 
-        it('testReformedCipherSM2_802', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_802', 0, async function (done) {
             // only use finish instead of update
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
