@@ -270,6 +270,7 @@ import NavigationMode14Jsunit from './Navigation/NavigationMode14Jsunit.test';
 import NavigationMode15Jsunit from './Navigation/NavigationMode15Jsunit.test';
 import NavigationMode16Jsunit from './Navigation/NavigationMode16Jsunit.test';
 import NavigationMode17Jsunit from './Navigation/NavigationMode17Jsunit.test';
+import AnimationJsunit from './AnimationJsunit.test.ets';
 
 export default function testsuite() {
  comSizeAbilityTest_01();
@@ -526,4 +527,5 @@ export default function testsuite() {
   NavigationMode15Jsunit();
   NavigationMode16Jsunit();
   NavigationMode17Jsunit();
+  AnimationJsunit();
 }
