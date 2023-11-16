@@ -34,12 +34,13 @@ export default function audioCapturerEnhanceTest() {
       console.info(`${Tag} beforeEach: Prerequisites at the test case level`);
       await sleep(1000);
     })
-    afterEach(function () {
+    afterEach(async function () {
       if (audioCap != null) {
         releaseFun(audioCap);
         audioCap = null;
       }
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
+      await sleep(1000);
     })
     afterAll(function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
@@ -59,7 +60,7 @@ export default function audioCapturerEnhanceTest() {
       let descriptor = inputDeviceInfo[0];
       str += `Id:${descriptor.id}, DeviceType:${descriptor.deviceType}, DeviceRole:${descriptor.deviceRole},
               Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]},
-              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}`;
+              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}, encodingTypes:${descriptor.encodingTypes}`;
       return str;
     }
 

@@ -31,7 +31,7 @@ export default function audioCapturerEnhanceTest() {
 
     beforeAll(async function () {
       console.info("beforeAll case");
-      let permissions = ["ohos.permission.MICROPHONE","ohos.permission.CAPTURE_SCREEN"];
+      let permissions = ["ohos.permission.MICROPHONE"];
       try {
         featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (err, data) => {
           console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
@@ -57,12 +57,13 @@ export default function audioCapturerEnhanceTest() {
       console.info(`${Tag} beforeEach: Prerequisites at the test case level`);
       await sleep(1000);
     })
-    afterEach(function () {
+    afterEach(async function () {
       if (audioCap != null) {
         releaseFun(audioCap);
         audioCap = null;
       }
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
+      await sleep(1000);
     })
     afterAll(function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
@@ -165,7 +166,7 @@ export default function audioCapturerEnhanceTest() {
       let descriptor = inputDeviceInfo[0];
       str += `Id:${descriptor.id}, DeviceType:${descriptor.deviceType}, DeviceRole:${descriptor.deviceRole},
               Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]},
-              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}\n`;
+              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}, encodingTypes:${descriptor.encodingTypes}\n`;
       return str;
     }
 
@@ -210,6 +211,7 @@ export default function audioCapturerEnhanceTest() {
         expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(InputDeviceInfo[0].id).assertEqual(env.INPUT_DEVICE_MIC_ID);
+        expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
@@ -260,6 +262,7 @@ export default function audioCapturerEnhanceTest() {
         expect(InputDeviceInfo[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
@@ -315,6 +318,7 @@ export default function audioCapturerEnhanceTest() {
           expect(InputDeviceInfo[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
           expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+          expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         } catch (error) {
           console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
           expect(false).assertTrue();
