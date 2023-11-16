@@ -71,6 +71,15 @@
     "pages/Screen/VirtualScreen",
     "pages/Screen/ScreenShot",
     "pages/Screen/Brightness",
-    "pages/Screen/ScreenLock"
+    "pages/Screen/ScreenLock",
+    "pages/MultimodalInput/MultimodalInput_index",
+    "pages/MultimodalInput/InputMonitor",
+    "pages/MultimodalInput/KeyBoard",
+    "pages/Power/Power_index",
+    "pages/Power/Dormancy",
+    "pages/Notification/Notification_index",
+    "pages/Notification/CommonEvent/page/CommonEventSetting",
+    "pages/Notification/CommonEvent/page/CommonEvent",
+    "pages/Notification/CustomNotification/CustomNotification"
   ]
 }

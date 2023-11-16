@@ -89,6 +89,9 @@
       },
       {
         "name": "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+      },
+      {
+        "name": "ohos.permission.INPUT_MONITORING"
       }
     ]
   }
