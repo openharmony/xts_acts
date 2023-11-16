@@ -289,7 +289,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmacSM3101", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SM3_101", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
       let HuksOptions = {
         properties: new Array(

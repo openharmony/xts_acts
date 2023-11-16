@@ -182,7 +182,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     })
     // HKS_SUPPORT_SM4_CBC_NOPADDING
-    it('testCipherSM4101_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_SM4_10148', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -287,7 +287,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_CBC_PKCS7
-    it('testCipherSM4103_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_SM4_10348', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODECBCKeyAlias103';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -400,7 +400,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_CTR_NOPADDING
-    it('testCipherSM4105_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_SM4_10548', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECTRKeyAlias105';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECTR);
@@ -505,7 +505,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_ECB_NOPADDING
-    it('testCipherSM4107_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_SM4_10748', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODEECBKeyAlias107';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -618,7 +618,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_ECB_PKCS7
-    it('testCipherSM4109_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_SM4_10948', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODEECBKeyAlias109';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
