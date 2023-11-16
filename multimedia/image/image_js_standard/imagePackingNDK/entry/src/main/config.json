@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.multimedia.imageSourceNDK",
+        "bundleName": "ohos.acts.multimedia.image.packerNDK",
         "vendor": "open",
         "version": {
             "code": 1000000,
@@ -14,9 +14,9 @@
     },
     "deviceConfig": {},
     "module": {
-        "package": "ohos.acts.multimedia.imageSourceNDK",
+        "package": "ohos.acts.multimedia.image.packerNDK",
         "name": ".MyApplication",
-        "mainAbility": "ohos.acts.multimedia.imageSourceNDK.MainAbility",
+        "mainAbility": "ohos.acts.multimedia.image.packerNDK.MainAbility",
         "deviceType": [
             "tablet",
             "default",

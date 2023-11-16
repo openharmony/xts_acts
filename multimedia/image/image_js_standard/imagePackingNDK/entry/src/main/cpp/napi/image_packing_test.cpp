@@ -137,8 +137,12 @@ static bool parseImagePackingOps(napi_env env, napi_value arg, struct ImagePacki
         return false;
     }
 
-    GetStringProperty(env, arg, "format", &(ops.format), &(ops.formatSize));
-    GetInt32Property(env, arg, "quality", &(ops.quality));
+    if (!GetStringProperty(env, arg, "format", &(ops.format), &(ops.formatSize))) {
+        return false;
+    }
+    if (!GetInt32Property(env, arg, "quality", &(ops.quality))) {
+        return false;
+    }
     GetUint32Property(env, arg, "size", &(ops.size));
     return true;
 }
@@ -169,7 +173,7 @@ napi_value ImagePackingNDKTest::Create(napi_env env, napi_callback_info info)
     return createResultValue(env, res, imagePacker);
 }
 
-static ImagePackerNative* getNativeImagePacker(napi_env env, napi_callback_info info,
+static ImagePacker_Native* getNativeImagePacker(napi_env env, napi_callback_info info,
     napi_value* argValue, size_t &argCount)
 {
     napi_value thisVar = nullptr;
@@ -188,7 +192,7 @@ napi_value ImagePackingNDKTest::InitNative(napi_env env, napi_callback_info info
     napi_value argValue[SIZE_ONE] = {0};
     size_t argCount = SIZE_ONE;
 
-    ImagePackerNative* native = getNativeImagePacker(env, info, argValue, argCount);
+    ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr) {
         return createUndefine(env);
     }
@@ -200,7 +204,7 @@ napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info
 {
     napi_value argValue[SIZE_THREE] = {0};
     size_t argCount = SIZE_THREE;
-    ImagePackerNative* native = getNativeImagePacker(env, info, argValue, argCount);
+    ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr || !checkArgs(argValue, argCount, SIZE_THREE)) {
         DEBUG_LOG("argValue check failed");
         return createUndefine(env);
@@ -208,10 +212,10 @@ napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info
     struct ImagePackingTestOps ops;
     if (!parseImagePackingOps(env, argValue[ARGS_THIRD], ops)) {
         DEBUG_LOG("packing ops parse failed");
-        return createUndefine(env);
+        return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
 
-    OhosImagePackerOpts packerOpts;
+    ImagePacker_Opts packerOpts;
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
 
@@ -238,7 +242,7 @@ napi_value ImagePackingNDKTest::PackToFile(napi_env env, napi_callback_info info
 {
     napi_value argValue[SIZE_FOUR] = {0};
     size_t argCount = SIZE_FOUR;
-    ImagePackerNative* native = getNativeImagePacker(env, info, argValue, argCount);
+    ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr || !checkArgs(argValue, argCount, SIZE_FOUR)) {
         DEBUG_LOG("argValue check failed");
         return createUndefine(env);
@@ -252,10 +256,10 @@ napi_value ImagePackingNDKTest::PackToFile(napi_env env, napi_callback_info info
     struct ImagePackingTestOps ops;
     if (!parseImagePackingOps(env, argValue[ARGS_FOURTH], ops)) {
         DEBUG_LOG("packing ops parse failed");
-        return createUndefine(env);
+        return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
 
-    OhosImagePackerOpts packerOpts;
+    ImagePacker_Opts packerOpts;
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
 
@@ -271,10 +275,10 @@ napi_value ImagePackingNDKTest::Release(napi_env env, napi_callback_info info)
 {
     napi_value argValue[SIZE_ONE] = {0};
     size_t argCount = SIZE_ONE;
-    ImagePackerNative* native = getNativeImagePacker(env, info, argValue, argCount);
+    ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr) {
         DEBUG_LOG("argValue check failed");
-        return createUndefine(env);
+        return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
     int32_t res = OH_ImagePacker_Release(native);
     return createResultValue(env, res);
