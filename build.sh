@@ -91,6 +91,8 @@ parse_cmdline()
 
 do_make()
 {
+    BUILD_TARGET=$(echo "$BUILD_TARGET" | sed 's/,/ /g')
+    echo "BUILD_TARGET: $BUILD_TARGET"
     cd $BASE_HOME
     ACTS_ROOT="$BASE_HOME/test/xts/acts"
 
