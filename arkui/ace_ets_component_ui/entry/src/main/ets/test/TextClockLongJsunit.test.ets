@@ -40,10 +40,14 @@ export default function TextClockLongJsunit() {
       }
       done();
     });
-
-    it('TextClockLong_0100', 0, async function (done) {
+    /**
+     * @tc.number TextClockLongJsunit_0100
+     * @tc.name scenario testing
+     * @tc.desc Does the onDateChange stop when testing pauses.
+     */
+    it('TextClockLongJsunit_0100', 0, async function (done) {
       // Test stop
-      console.info('[TextClockLong_0100] START');
+      console.info('[TextClockLongJsunit_0100] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
       let start = await driver.findComponent(ON.id('start'));
@@ -61,13 +65,17 @@ export default function TextClockLongJsunit() {
       let accumulateTimeTextStop2 = await accumulateTime.getText()
       expect(accumulateTimeTextStop).assertEqual(accumulateTimeTextStop2)
       await start.click()
-      console.info('[TextClockLong_0100] END');
+      console.info('[TextClockLongJsunit_0100] END');
       done();
     });
-
-    it('TextClockLong_0200', 0, async function (done) {
+    /**
+     * @tc.number TextClockLongJsunit_0200
+     * @tc.name scenario testing
+     * @tc.desc Does the onDateChange Visible when testing pauses.
+     */
+    it('TextClockLongJsunit_0200', 0, async function (done) {
       // Test Visible
-      console.info('[TextClockLong_0200] START');
+      console.info('[TextClockLongJsunit_0200] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
       let show = await driver.findComponent(ON.id('show'));
@@ -79,13 +87,17 @@ export default function TextClockLongJsunit() {
       let accumulateTimeTextHideEnd = await accumulateTime.getText()
       expect(accumulateTimeTextHideStart).assertEqual(accumulateTimeTextHideEnd)
       await show.click()
-      console.info('[TextClockLong_0200] END');
+      console.info('[TextClockLongJsunit_0200] END');
       done();
     });
-
-    it('TextClockLong_0300', 0, async function (done) {
+    /**
+     * @tc.number TextClockLongJsunit_0200
+     * @tc.name scenario testing
+     * @tc.desc Test whether the onDateChange stops when sliding out of the field of view.
+     */
+    it('TextClockLongJsunit_0300', 0, async function (done) {
       // Test sliding out screen
-      console.info('[TextClockLong_0300] START');
+      console.info('[TextClockLongJsunit_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
       let list = await driver.findComponent(ON.id("list"));
@@ -96,7 +108,7 @@ export default function TextClockLongJsunit() {
       let accumulateTime2 = await driver.findComponent(ON.id("accumulateTime2"));
       let accumulateTimeTextEnd = await accumulateTime2.getText()
       expect(accumulateTimeTextStart).assertEqual(accumulateTimeTextEnd)
-      console.info('[TextClockLong_0300] END');
+      console.info('[TextClockLongJsunit_0300] END');
       done();
     });
 
