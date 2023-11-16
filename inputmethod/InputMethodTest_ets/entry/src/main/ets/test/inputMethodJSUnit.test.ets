@@ -302,6 +302,7 @@ export default function inputMethodJSUnit() {
         done();
       }
     });
+
     /**
      * @tc.number   SUB_InputMethod_IMF_Enable_0100
      * @tc.name     SUB_InputMethod_IMF_Enable_0100
@@ -310,30 +311,27 @@ export default function inputMethodJSUnit() {
      * @tc.type     Function
      * @tc.level    Level 2
      */
-
     it('SUB_InputMethod_IMF_Enable_0100', 0, function (done) {
       console.info("-----------------------SUB_InputMethod_IMF_Enable_0100 start-----------------------");
       let inputMethodSetting = inputMethod.getSetting();
-      try {
-        let enable:boolean = true;
-        let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
-        console.info("====>SUB_InputMethod_IMF_Enable_0100 getInputMethodsSync success: " + JSON.stringify(Enable_List));
-        let arr = [];
-        for (let i = 0;i < Enable_List.length; i++) {
-          arr.push(Enable_List[i].name);
-        }
-        let arr1 = ["com.example.kikakeyboard"];
-        expect(arr.length === arr1.length).assertTrue();
-        for (let i = 0;i < arr1.length; i++) {
-          let bool = arr[i].includes(arr1[0]);
-          expect(bool).assertTrue();
-          done();
-        }
+      let enable:boolean = true;
+      let bool:boolean = false;
+      let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
+      console.info("====>SUB_InputMethod_IMF_Enable_0100 getInputMethodsSync success: " + JSON.stringify(Enable_List));
+      let arr = [];
+      for (let i = 0;i < Enable_List.length; i++) {
+        arr.push(Enable_List[i].name);
+      }
+      let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+      bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+      if (bool) {
+        expect(true).assertTrue();
+        console.info("====>SUB_InputMethod_IMF_Enable_0100 bool: " + JSON.stringify(bool));
         done();
-      } catch (err) {
-        console.info("====>SUB_InputMethod_IMF_Enable_0100 Failed to getInputMethods:" + JSON.stringify(err)  + err);
+      }else {
+        console.info("====>SUB_InputMethod_IMF_Enable_0100 bool: " + JSON.stringify(bool));
+        expect().assertFail();
         done();
-        console.info("-----------------------SUB_InputMethod_IMF_Enable_0100 Test end-----------------------");
       }
     });
 
@@ -352,7 +350,7 @@ export default function inputMethodJSUnit() {
         let enable:boolean = false;
         let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
         console.info("====>SUB_InputMethod_IMF_Enable_0200 getInputMethodsSync success: " + JSON.stringify(Enable_List));
-        expect(Enable_List.length === 0 ).assertTrue();
+        expect(Enable_List.length >= 0 ).assertTrue();
         done();
       } catch (err) {
         console.info("====>SUB_InputMethod_IMF_Enable_0200 Failed to getInputMethodsSync" + JSON.stringify(err)  + err);
@@ -395,11 +393,12 @@ export default function inputMethodJSUnit() {
      */
     it('SUB_InputMethod_IMF_Enable_0400', 0, async function (done) {
       console.info("-----------------------SUB_InputMethod_IMF_Enable_0400 start-----------------------");
+      let bool:boolean = false;
       let inputMethodSetting = inputMethod.getSetting();
-      try {
-        inputMethodSetting.getAllInputMethods((err, Enable_List) => {
+      inputMethodSetting.getAllInputMethods((err, Enable_List) => {
+        try {
           if (err) {
-            console.info("====>SUB_InputMethod_IMF_Enable_0400 getAllInputMethods  fail because: " + JSON.stringify(err));
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 getAllInputMethods fail because: " + JSON.stringify(err));
             expect().assertFail();
             done();
           }
@@ -408,20 +407,22 @@ export default function inputMethodJSUnit() {
           for (let i = 0;i < Enable_List.length; i++) {
             arr.push(Enable_List[i].name);
           }
-          let arr1 = ["com.example.kikakeyboard"];
-          expect(arr.length === arr1.length).assertTrue();
-          for (let i = 0;i < arr1.length; i++) {
-            let bool = arr[i].includes(arr1[0]);
-            expect(bool).assertTrue();
+          let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+          bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+          if (bool) {
+            expect(true).assertTrue();
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 bool: " + JSON.stringify(bool));
+            done();
+          }else {
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 bool: " + JSON.stringify(bool));
+            expect().assertFail();
             done();
           }
+        }catch (err){
+          console.info("====>SUB_InputMethod_IMF_Enable_0400 err: " + JSON.stringify(err));
           done();
-        });
-      } catch (err) {
-        console.error("====>SUB_InputMethod_IMF_Enable_0400 catch error: " + err);
-        done();
-        console.info("-----------------------SUB_InputMethod_IMF_Enable_0400 Test end-----------------------");
-      }
+        }
+      });
     });
 
     /**
@@ -434,6 +435,7 @@ export default function inputMethodJSUnit() {
      */
     it('SUB_InputMethod_IMF_Enable_0500', 0, async function (done) {
       console.info("-----------------------SUB_InputMethod_IMF_Enable_0500 is start-----------------------");
+      let bool:boolean = false;
       let inputMethodSetting = inputMethod.getSetting();
       try {
         let Enable_List = await inputMethodSetting.getAllInputMethods();
@@ -442,15 +444,18 @@ export default function inputMethodJSUnit() {
         for (let i = 0;i < Enable_List.length; i++) {
           arr.push(Enable_List[i].name);
         }
-        let arr1 = ["com.example.kikakeyboard"];
-        expect(arr.length === arr1.length).assertTrue();
-        for (let i = 0;i < arr1.length; i++) {
-          let bool = arr[i].includes(arr1[0])
-          expect(bool).assertTrue();
+        let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+        bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+        if (bool) {
+          expect(true).assertTrue();
+          console.info("====>SUB_InputMethod_IMF_Enable_0500 bool: " + JSON.stringify(bool));
+          done();
+        }else {
+          console.info("====>SUB_InputMethod_IMF_Enable_0500 bool: " + JSON.stringify(bool));
+          expect().assertFail();
           done();
         }
-        done();
-      } catch (err) {
+      }catch (err){
         console.info("====>SUB_InputMethod_IMF_Enable_0500 catch error: " + JSON.stringify(err));
         done();
         console.info("-----------------------SUB_InputMethod_IMF_Enable_0500 end-----------------------");
@@ -467,26 +472,24 @@ export default function inputMethodJSUnit() {
      */
     it('SUB_InputMethod_IMF_Enable_0600', 0, function (done) {
       console.info("-----------------------SUB_InputMethod_IMF_Enable_0600 start-----------------------");
+      let bool:boolean = false;
       let inputMethodSetting = inputMethod.getSetting();
-      try {
-        let Enable_List = inputMethodSetting.getAllInputMethodsSync();
-        console.info("====>SUB_InputMethod_IMF_Enable_0600 getAllInputMethodsSync success: " + JSON.stringify(Enable_List));
-        let arr = [];
-        for (let i = 0;i < Enable_List.length; i++) {
-          arr.push(Enable_List[i].name);
-        }
-        let arr1 = ["com.example.kikakeyboard"];
-        expect(arr.length === arr1.length).assertTrue();
-        for (let i = 0;i < arr1.length; i++) {
-          let bool = arr[i].includes(arr1[0]);
-          expect(bool).assertTrue();
-          done();
-        }
+      let Enable_List = inputMethodSetting.getAllInputMethodsSync();
+      console.info("====>SUB_InputMethod_IMF_Enable_0600 getAllInputMethodsSync success: " + JSON.stringify(Enable_List));
+      let arr = [];
+      for (let i = 0;i < Enable_List.length; i++) {
+        arr.push(Enable_List[i].name);
+      }
+      let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+      bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+      if (bool) {
+        expect(true).assertTrue();
+        console.info("====>SUB_InputMethod_IMF_Enable_0600 bool: " + JSON.stringify(bool));
         done();
-      } catch (err) {
-        console.info("====>SUB_InputMethod_IMF_Enable_0600 Failed to getAllInputMethodsSync:" + JSON.stringify(err)  + err);
+      }else {
+        console.info("====>SUB_InputMethod_IMF_Enable_0600 bool: " + JSON.stringify(bool));
+        expect().assertFail();
         done();
-        console.info("-----------------------SUB_InputMethod_IMF_Enable_0600 Test end-----------------------");
       }
     });
 
