@@ -17,8 +17,8 @@ group("ActsAdTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "advertising:ActsCloudAdTest",
       "abilitydemo:AdsKitServiceDemo",
+      "advertising:ActsCloudAdTest",
     ]
   }
 }

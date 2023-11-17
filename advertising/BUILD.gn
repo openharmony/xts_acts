@@ -14,8 +14,8 @@
 import("//build/ohos_var.gni")
 group("advertising") {
   testonly = true
-  deps = [
-  "ads:ActsAdTest",
+  deps = [ 
   "oaid:ActsCloudOAIDTest",
+	"ads:ActsAdTest",
   ]
 }
