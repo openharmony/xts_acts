@@ -25,8 +25,8 @@ let driver: Driver = Driver.create();
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context: common.UIAbilityContext;
 
-export default function abilityTest() {
-  describe('ActsAbilityTest', () => {
+export default function flagstartwithouttipstest() {
+  describe('FlagsSartWithoutTipsTest', () => {
     beforeAll(() => {
       context = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
     })
@@ -34,8 +34,8 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0100
      * @tc.name: Verify that the implicit startup application does not set flags and does not match the display popup
-     * @tc.desc: Function test
-     * @tc.level 3
+     * @tc.desc: A pop-up dialog box
+     * @tc.level 0
      */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0100', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0100';
@@ -77,8 +77,8 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0200
      * @tc.name: Verify that the implicit startup application sets flags and does not display pop-ups if they do not match
-     * @tc.desc: Function test
-     * @tc.level 3
+     * @tc.desc: No information dialog box is displayed
+     * @tc.level 0
      */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0200', 0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0200';
@@ -114,7 +114,7 @@ export default function abilityTest() {
     /**
    * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0500
    * @tc.name: Verify that the implicit startup service does not set flags and does not display pop-ups
-   * @tc.desc: Function test
+   * @tc.desc: Pop-up selection box
    * @tc.level 3
    */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0500', 0, async (done: Function) => {
@@ -154,7 +154,7 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0600
      * @tc.name: Verify that the implicit startup service sets flags and does not display pop-ups if they do not match
-     * @tc.desc: Function test
+     * @tc.desc: Pop-up selection box
      * @tc.level 3
      */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0600', 0, async (done: Function) => {
@@ -195,7 +195,7 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0700
      * @tc.name: Verify that the implicit startup application does not set flags and matches one that opens directly
-     * @tc.desc: Function test
+     * @tc.desc: Pull the matching UIAbility directly
      * @tc.level 3
      */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', 0, async (done: Function) => {
@@ -233,7 +233,7 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_startAbility_FLAG_0800
      * @tc.name: Verify that the implicit startup application sets flags and matches one that opens directly
-     * @tc.desc: Function test
+     * @tc.desc: Pull the matching UIAbility directly
      * @tc.level 3
      */
     it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', 0, async (done: Function) => {
