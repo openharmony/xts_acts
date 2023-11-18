@@ -5,13 +5,13 @@
     "test-timeout": "1200000",
     "shell-timeout": "900000",
     "testcase-timeout": "600000",
-    "bundle-name": "com.openharmony.certificate_manager_permission",
+    "bundle-name": "com.openharmony.certificate_manager_notsystem_app",
     "module-name": "entry_test"
   },
   "kits": [
     {
       "test-file-name": [
-        "ActsCertificateManagerJsPermissionTest.hap"
+        "ActsCertificateManagerJsNotSystemAppTest.hap"
       ],
       "type": "AppInstallKit",
       "cleanup-apps": true
