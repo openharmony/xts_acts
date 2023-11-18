@@ -20,11 +20,14 @@
 #include <sys/inotify.h>
 #include <utmp.h>
 #include <uv.h>
+
 #define FALSE 0
 #define TRUE 1
 #define ERROR -1
 #define TWO 2
 #define NO_ERRORS 0
+#define CHMOD 777
+
 static napi_value InotifyInit(napi_env env, napi_callback_info info)
 {
     int ret = inotify_init();
@@ -61,13 +64,16 @@ static napi_value InotifyInit1(napi_env env, napi_callback_info info)
     napi_create_int32(env, fd, &result);
     return result;
 }
+
 static napi_value InotifyAddWatch(napi_env env, napi_callback_info info)
 {
     errno = FALSE;
     int fd = inotify_init();
+    char path[] = "/data/storage/el2/base/files/";
     int wd = ERROR;
+    chmod(path,CHMOD);
     if (fd != ERROR) {
-        wd = inotify_add_watch(fd, "/data", IN_CREATE | IN_DELETE);
+        wd = inotify_add_watch(fd, path, IN_ALL_EVENTS);
         inotify_rm_watch(fd, wd);
     }
     if (wd != ERROR) {
@@ -77,17 +83,23 @@ static napi_value InotifyAddWatch(napi_env env, napi_callback_info info)
     napi_create_int32(env, wd, &result);
     return result;
 }
+
 static napi_value InotifyRmWatch(napi_env env, napi_callback_info info)
 {
-    int fd = inotify_init1(0);
+    errno = FALSE;
+    int fd = inotify_init();
+    char path[] = "/data/storage/el2/base/files/";
     int wd = ERROR;
-    int ret = ERROR;
+    chmod(path,CHMOD);
     if (fd != ERROR) {
-        wd = inotify_add_watch(fd, "/data", IN_CREATE | IN_DELETE);
-        ret = inotify_rm_watch(fd, wd);
+        wd = inotify_add_watch(fd, path, IN_ALL_EVENTS);
+        wd = inotify_rm_watch(fd, wd);
+    }
+    if (wd != ERROR) {
+        wd = TRUE;
     }
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
+    napi_create_int32(env, wd, &result);
     return result;
 }
 

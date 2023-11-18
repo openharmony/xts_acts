@@ -15,6 +15,7 @@
 
 #include "napi/native_api.h"
 #include <csignal>
+#include <cstdio>
 #include <cstdlib>
 #include <ctime>
 #include <pthread.h>
@@ -39,7 +40,7 @@
 #define ERROR -1
 #define NORMAL 0
 #define TRUE 1
-#define ZERO 0
+#define PARAM_0 0
 #define ONE 1
 #define DEFAULTVALUE -100
 
@@ -109,7 +110,7 @@ static int testAttrGetDetachState(int input)
 {
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
-    int state = ZERO;
+    int state = PARAM_0;
     if (input == NORMAL) {
         err = pthread_attr_init(&attr);
         if (err != NORMAL) {
@@ -129,7 +130,7 @@ static napi_value PThreadAttrGetDetachState(napi_env env, napi_callback_info inf
 }
 static int testAttrGetGuardSize(int input)
 {
-    size_t size = ZERO;
+    size_t size = PARAM_0;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -143,7 +144,6 @@ static int testAttrGetGuardSize(int input)
     }
     return err;
 }
-// pthread_attr_getguardsize
 static napi_value PThreadAttrGetGuardSize(napi_env env, napi_callback_info info)
 {
     int input = intInput(env, info);
@@ -196,7 +196,7 @@ static napi_value PThreadAttrGetSchedParam(napi_env env, napi_callback_info info
 }
 static int testAttrGetSchedPolicy(int input)
 {
-    int getpolicy = ZERO;
+    int getpolicy = PARAM_0;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -218,7 +218,7 @@ static napi_value PThreadAttrGetSchedPolicy(napi_env env, napi_callback_info inf
 }
 static int testAttrGetScope(int input)
 {
-    int getscope = ZERO;
+    int getscope = PARAM_0;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -241,7 +241,7 @@ static napi_value PThreadAttrGetScope(napi_env env, napi_callback_info info)
 static int testAttrGetStack(int input)
 {
     void *stack = nullptr;
-    size_t stacksize;
+    size_t stacksize = PARAM_0;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -269,7 +269,7 @@ static napi_value PThreadAttrGetStack(napi_env env, napi_callback_info info)
 }
 static int testAttrGetStackSize(int input)
 {
-    size_t stacksize = ZERO;
+    size_t stacksize = PARAM_0;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -448,12 +448,12 @@ static int testAttrSetStack(int input)
         }
     }
     int pageSize = getpagesize();
-    if (pageSize == ZERO) {
+    if (pageSize == PARAM_0) {
         return PAGE_SIZE_GET_FAIL;
     }
     if (input == NORMAL) {
         int ret = posix_memalign(&stackAddr, pageSize, THREAD_STACK_LEN);
-        if (ret != ZERO) {
+        if (ret != PARAM_0) {
             return MEMALIGN_ERROR;
         }
         err = pthread_attr_setstack(&attr, stackAddr, stacksize);
@@ -539,19 +539,18 @@ static int testBarrierWait(int input)
     int err = DEFAULTVALUE;
     pthread_t ids[THREADNUM];
     if (input == NORMAL) {
-        err = pthread_barrier_init(&WaitBarrier, nullptr, THREADNUM + BARRIERNUM);
+        err = pthread_barrier_init(&WaitBarrier, nullptr, THREADNUM );
         if (err != NORMAL) {
             return BARRIER_INIT_FAIL;
         }
     }
-    for (int i = ZERO; i < THREADNUM; i++) {
+    for (int i = PARAM_0; i < THREADNUM; i++) {
         err = pthread_create((pthread_t *)(&(ids[i])), nullptr, threadFunc, nullptr);
         if (err != NORMAL) {
             return CREATE_ERROR;
         }
     }
-    int barrierErr = pthread_barrier_wait(&WaitBarrier);
-    for (int i = ZERO; i < THREADNUM; i++) {
+    for (int i = PARAM_0; i < THREADNUM; i++) {
         err = pthread_join(ids[i], (void **)nullptr);
         if (err != NORMAL) {
             return JOIN_ERROR;
@@ -560,7 +559,7 @@ static int testBarrierWait(int input)
     if (input == NORMAL) {
         err = pthread_barrier_destroy(&WaitBarrier);
     }
-    return barrierErr;
+    return PARAM_0;
 }
 static napi_value PThreadBarrierWait(napi_env env, napi_callback_info info)
 {
@@ -587,7 +586,7 @@ static int testBarrierAttrGetPShared(int input)
 {
     int err = DEFAULTVALUE;
     pthread_barrierattr_t barrierAttr;
-    int shared = ZERO;
+    int shared = PARAM_0;
     if (input == NORMAL) {
         err = pthread_barrierattr_init(&barrierAttr);
         if (err != NORMAL) {
@@ -630,7 +629,7 @@ static int testBarrierAttrSetPShared(int input)
 {
     int err = DEFAULTVALUE;
     pthread_barrierattr_t barrierAttr;
-    int shared = ZERO;
+    int shared = PARAM_0;
     if (input == NORMAL) {
         err = pthread_barrierattr_init(&barrierAttr);
         if (err != NORMAL) {
@@ -741,6 +740,36 @@ static napi_value PThreadCondWait(napi_env env, napi_callback_info info)
 {
     int input = intInput(env, info);
     int result = testCondWait(input);
+    return intOutput(env, result);
+}
+static void *threadTimedWait(void *)
+{
+    pthread_mutex_t gmutex;
+    timeval now;
+    timespec outTime;
+    pthread_mutex_lock(&gmutex);
+    gettimeofday(&now, nullptr);
+    outTime.tv_sec = now.tv_sec + 1;
+    outTime.tv_nsec = now.tv_usec * thousand;
+    pthread_cond_timedwait(&condT, &gmutex, &outTime);
+    return nullptr;
+}
+static int testCondTimedWait(int input)
+{
+    int err = PARAM_0;
+    pthread_t pid;
+    if (input == PARAM_0) {
+        err = pthread_create(&pid, nullptr, threadTimedWait, nullptr);
+        if (err != NORMAL) {
+            return CREATE_ERROR;
+        }
+    }
+    return err;
+}
+static napi_value PThreadCondTimedWait(napi_env env, napi_callback_info info)
+{
+    int input = intInput(env, info);
+    int result = testCondTimedWait(input);
     return intOutput(env, result);
 }
 static int testCondAttrInit(int input)
@@ -876,7 +905,7 @@ static napi_value PThreadCreate(napi_env env, napi_callback_info info)
 static int testDetach(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pid;
+    pthread_t pid = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pid, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -896,7 +925,7 @@ static napi_value PThreadDetach(napi_env env, napi_callback_info info)
 static int testEqual(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pid;
+    pthread_t pid = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pid, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -918,8 +947,8 @@ static napi_value PThreadEqual(napi_env env, napi_callback_info info)
 static int testEqual2(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    pthread_t pidsecond;
+    pthread_t pidFirst = PARAM_0;
+    pthread_t pidsecond = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -939,13 +968,13 @@ static napi_value PThreadEqual2(napi_env env, napi_callback_info info)
     int result = testEqual2(input);
     return intOutput(env, result);
 }
-int exitOne = ZERO;
+int exitOne = PARAM_0;
 static void *threadFunc4(void *) { pthread_exit(&exitOne); }
 static int testExit(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    void *pThreadResult;
+    pthread_t pidFirst = PARAM_0;
+    void *pThreadResult = nullptr;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc4, nullptr);
         if (err != NORMAL) {
@@ -964,7 +993,7 @@ static napi_value PThreadExit(napi_env env, napi_callback_info info)
 static int testGetAttrNp(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
+    pthread_t pidFirst = PARAM_0;
     pthread_attr_t pthreadAttr;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
@@ -984,8 +1013,8 @@ static napi_value PThreadGetAttrNp(napi_env env, napi_callback_info info)
 static int testGetCpuClockId(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    clockid_t clockid;
+    pthread_t pidFirst = PARAM_0;
+    clockid_t clockid = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -1004,8 +1033,8 @@ static napi_value PThreadGetCpuClockId(napi_env env, napi_callback_info info)
 static int testGetSchedParam(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    int policy;
+    pthread_t pidFirst = PARAM_0;
+    int policy = PARAM_0;
     struct sched_param schedParam;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
@@ -1023,11 +1052,11 @@ static napi_value PThreadGetSchedParam(napi_env env, napi_callback_info info)
     return intOutput(env, result);
 }
 static pthread_key_t testGetSpecificKey;
-int32_t *keyRet;
-int keyRes;
+int32_t *keyRet = nullptr;
+int keyRes = PARAM_0;
 void *threadFuncA(void *)
 {
-    int value = ZERO;
+    int value = PARAM_0;
     pthread_setspecific(testGetSpecificKey, &value);
     keyRet = (int *)pthread_getspecific(testGetSpecificKey);
     keyRes = *keyRet;
@@ -1060,7 +1089,7 @@ static napi_value PThreadGetSpecific(napi_env env, napi_callback_info info)
 static int testJoin(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
+    pthread_t pidFirst = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFuncA, nullptr);
         if (err != NORMAL) {
@@ -1123,7 +1152,7 @@ static int testKill(int input)
         if (err != NORMAL) {
             return CREATE_ERROR;
         }
-        err = pthread_kill(pidFirst, ZERO);
+        err = pthread_kill(pidFirst, PARAM_0);
     }
     return err;
 }
@@ -1264,7 +1293,7 @@ static napi_value PThreadMutexAttrDestroy(napi_env env, napi_callback_info info)
 static int testMutexAttrGetProtocol(int input)
 {
     int err = DEFAULTVALUE;
-    int protocol;
+    int protocol = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1284,7 +1313,7 @@ static napi_value PThreadMutexAttrGetProtocol(napi_env env, napi_callback_info i
 static int testMutexAttrGetPshared(int input)
 {
     int err = DEFAULTVALUE;
-    int share;
+    int share = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1304,7 +1333,7 @@ static napi_value PThreadMutexAttrGetPShared(napi_env env, napi_callback_info in
 static int testMutexAttrGetType(int input)
 {
     int err = DEFAULTVALUE;
-    int type;
+    int type = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1339,7 +1368,7 @@ static napi_value PThreadMutexAttrInit(napi_env env, napi_callback_info info)
 static int testMutexAttrSetProtocol(int input)
 {
     int err = DEFAULTVALUE;
-    int protocol = ZERO;
+    int protocol = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1359,7 +1388,7 @@ static napi_value PThreadMutexAttrSetProtocol(napi_env env, napi_callback_info i
 static int testMutexAttrSetPshared(int input)
 {
     int err = DEFAULTVALUE;
-    int share = ZERO;
+    int share = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1379,7 +1408,7 @@ static napi_value PThreadMutexAttrSetPShared(napi_env env, napi_callback_info in
 static int testMutexAttrSetType(int input)
 {
     int err = DEFAULTVALUE;
-    int type = ZERO;
+    int type = PARAM_0;
     pthread_mutexattr_t mutexAttr;
     if (input == NORMAL) {
         err = pthread_mutexattr_init(&mutexAttr);
@@ -1399,10 +1428,10 @@ static napi_value PThreadMutexAttrSetType(napi_env env, napi_callback_info info)
 pthread_once_t once = PTHREAD_ONCE_INIT;
 void once_run(void)
 {
-    int i = ZERO;
+    int i = PARAM_0;
     i = i + 1;
 }
-int pThreadOnceRet;
+int pThreadOnceRet = PARAM_0;
 void *threadfunc5(void *)
 {
     pThreadOnceRet = pthread_once(&once, once_run);
@@ -1411,7 +1440,7 @@ void *threadfunc5(void *)
 static int testOnce(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
+    pthread_t pidFirst = PARAM_0;
     void *pThreadResult = nullptr;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadfunc5, nullptr);
@@ -1676,7 +1705,7 @@ static int testRwLockAttrSetPShared(int input)
 {
     int err = DEFAULTVALUE;
     pthread_rwlockattr_t rwLockAttr;
-    int shared = ZERO;
+    int shared = PARAM_0;
     if (input == NORMAL) {
         err = pthread_rwlockattr_init(&rwLockAttr);
         if (err != NORMAL) {
@@ -1714,8 +1743,8 @@ static napi_value PThreadSelf(napi_env env, napi_callback_info info)
 static int testSetNameNp(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    char setName[20] = "pSet";
+    pthread_t pidFirst = PARAM_0;
+    char setName[16] = "pSet";
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -1734,9 +1763,9 @@ static napi_value PThreadSetNameNp(napi_env env, napi_callback_info info)
 static int testSetSchedParam(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
+    pthread_t pidFirst = PARAM_0;
     struct sched_param schedParam;
-    schedParam.sched_priority = ZERO;
+    schedParam.sched_priority = PARAM_0;
 
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
@@ -1756,8 +1785,8 @@ static napi_value PThreadSetSchedParam(napi_env env, napi_callback_info info)
 static int testSetSchedPrio(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
-    int prio = ZERO;
+    pthread_t pidFirst = PARAM_0;
+    int prio = PARAM_0;
     if (input == NORMAL) {
         err = pthread_create(&pidFirst, nullptr, threadFunc3, nullptr);
         if (err != NORMAL) {
@@ -1777,14 +1806,14 @@ static pthread_key_t testSetSpecificKey;
 int setSpecRet = DEFAULTVALUE;
 void *threadfuncB(void *)
 {
-    int32_t value = ZERO;
+    int32_t value = PARAM_0;
     setSpecRet = pthread_setspecific(testSetSpecificKey, &value);
     pthread_exit(&setSpecRet);
 }
 static int testSetSpecific(int input)
 {
     int err = DEFAULTVALUE;
-    pthread_t pidFirst;
+    pthread_t pidFirst = PARAM_0;
     void *pThreadResult = nullptr;
     if (input == NORMAL) {
         err = pthread_key_create(&testSetSpecificKey, nullptr);
@@ -1806,7 +1835,73 @@ static napi_value PThreadSetSpecific(napi_env env, napi_callback_info info)
     int result = testSetSpecific(input);
     return intOutput(env, result);
 }
+static napi_value PthreadSigmask(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    sigset_t set ;
+    sigaddset(&set, SIGINT);
+    int32_t returnValue = pthread_sigmask(SIG_BLOCK, &set, nullptr);
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
 
+static napi_value PthreadSpinInit(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    pthread_spinlock_t spin;
+    int param = PTHREAD_PROCESS_PRIVATE;
+    int returnValue = pthread_spin_init(&spin, param);
+    pthread_spin_destroy(&spin);
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value PthreadSpinDestroy(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    pthread_spinlock_t spinlock ;
+    int param = PTHREAD_PROCESS_PRIVATE;
+    pthread_spin_init(&spinlock, param);
+    int returnValue = pthread_spin_destroy(&spinlock);
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value PthreadSpinLock(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    pthread_spinlock_t spinlock;
+    int param = PTHREAD_PROCESS_PRIVATE;
+    pthread_spin_init(&spinlock, param);
+    int returnValue = pthread_spin_lock(&spinlock);
+    pthread_spin_unlock(&spinlock);
+    
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value PthreadSpinTrylock(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    pthread_spinlock_t spinlock ;
+    int param = PTHREAD_PROCESS_PRIVATE;
+    pthread_spin_init(&spinlock, param);
+    int returnValue = pthread_spin_trylock(&spinlock);
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value PthreadSpinUnlock(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    pthread_spinlock_t spinlock ;
+    int param = PTHREAD_PROCESS_PRIVATE;
+    pthread_spin_init(&spinlock, param);
+    pthread_spin_lock(&spinlock);
+    int returnValue = pthread_spin_unlock(&spinlock);
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1853,6 +1948,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"pThreadCondBroadcast", nullptr, PThreadCondBroadcast, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadCondSignal", nullptr, PThreadCondSignal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadCondWait", nullptr, PThreadCondWait, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadCondTimedWait", nullptr, PThreadCondTimedWait, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadCondAttrInit", nullptr, PThreadCondAttrInit, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadCondAttrDestroy", nullptr, PThreadCondAttrDestroy, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadCondAttrGetClock", nullptr, PThreadCondAttrGetClock, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1916,6 +2012,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"pThreadSetSchedParam", nullptr, PThreadSetSchedParam, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadSetSchedPrio", nullptr, PThreadSetSchedPrio, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pThreadSetSpecific", nullptr, PThreadSetSpecific, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSpinInit", nullptr, PthreadSpinInit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSigmask", nullptr, PthreadSigmask, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSpinDestroy", nullptr, PthreadSpinDestroy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSpinLock", nullptr, PthreadSpinLock, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSpinTrylock", nullptr, PthreadSpinTrylock, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pThreadSpinUnlock", nullptr, PthreadSpinUnlock, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
