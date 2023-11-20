@@ -17,6 +17,7 @@ group("certificate_manager") {
   if (is_standard_system) {
     deps = [
       "certificate_manager_func:ActsCertificateManagerJsFuncTest",
+      "certificate_manager_notsystem_app:ActsCertificateManagerJsNotSystemAppTest",
       "certificate_manager_permission:ActsCertificateManagerJsPermissionTest",
     ]
   }

@@ -16,13 +16,45 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <cerrno>
+#include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <ctime>
+#include <fcntl.h>
+#include <string>
 #include <unistd.h>
 #include <utmp.h>
-
+#define ERRON_0 0
+#define BUF_SIZE 256
 #define EXPECTERROR -1
-#define ZERO 0
+#define NO_ERR 0
+#define FAIL -1
+#define ARRY_MAX 128
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_2 2
+#define PARAM_3 3
+#define PARAM_4 4
+#define PARAM_5 5
+#define PARAM_6 6
+#define PARAM_UNNORMAL -1
+#define RETURN_0 0
+#define RETURN_1 1
+#define FAILD -1
+#define ERRNO_0 0
+#define SIZE_0 0
+#define SIZE_5 5
+#define SIZE_8 8
+#define SIZE_10 10
+#define SIZE_16 16
+#define SIZE_20 20
+#define SIZE_32 32
+#define SIZE_64 64
+#define SIZE_1024 1024
+#define SUCCESS 1
+#define INIT 0
+#define DEF_VALUE -2
 
 static napi_value Ldiv(napi_env env, napi_callback_info info)
 {
@@ -32,9 +64,7 @@ static napi_value Ldiv(napi_env env, napi_callback_info info)
     int num, den;
     napi_get_value_int32(env, args[0], &num);
     napi_get_value_int32(env, args[1], &den);
-
     ldiv_t ret = ldiv(num, den);
-
     napi_value result = nullptr;
     napi_create_object(env, &result);
     napi_value quot = nullptr;
@@ -45,7 +75,28 @@ static napi_value Ldiv(napi_env env, napi_callback_info info)
     napi_set_named_property(env, result, "quot", quot);
     napi_create_int32(env, b, &rem);
     napi_set_named_property(env, result, "rem", rem);
+    return result;
+}
 
+static napi_value LLdiv(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int num, den;
+    napi_get_value_int32(env, args[0], &num);
+    napi_get_value_int32(env, args[1], &den);
+    lldiv_t ret = lldiv(num, den);
+    napi_value result = nullptr;
+    napi_create_object(env, &result);
+    napi_value quot = nullptr;
+    napi_value rem = nullptr;
+    int a = ret.quot;
+    int b = ret.rem;
+    napi_create_int32(env, a, &quot);
+    napi_set_named_property(env, result, "quot", quot);
+    napi_create_int32(env, b, &rem);
+    napi_set_named_property(env, result, "rem", rem);
     return result;
 }
 
@@ -63,46 +114,100 @@ static napi_value Lcong48(napi_env env, napi_callback_info info)
     uint32_t g;
     napi_get_value_uint32(env, args[0], &a);
     napi_get_value_uint32(env, args[1], &b);
-    napi_get_value_uint32(env, args[2], &c);
-    napi_get_value_uint32(env, args[3], &d);
-    napi_get_value_uint32(env, args[4], &e);
-    napi_get_value_uint32(env, args[5], &f);
-    napi_get_value_uint32(env, args[6], &g);
+    napi_get_value_uint32(env, args[PARAM_2], &c);
+    napi_get_value_uint32(env, args[PARAM_3], &d);
+    napi_get_value_uint32(env, args[PARAM_4], &e);
+    napi_get_value_uint32(env, args[PARAM_5], &f);
+    napi_get_value_uint32(env, args[PARAM_6], &g);
     unsigned short xSubFirst[7] = {(unsigned short)a, (unsigned short)b, (unsigned short)c, (unsigned short)d,
                                    (unsigned short)e, (unsigned short)f, (unsigned short)g};
     long randValue = jrand48(xSubFirst);
     napi_value result = nullptr;
     napi_create_int32(env, (int)randValue, &result);
-
     return result;
 }
 
 static napi_value Rand(napi_env env, napi_callback_info info)
 {
-    int randValue = rand();
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int resultValue = FAILD;
+    if (param == PARAM_0) {
+        int rand_value = rand();
+        if (rand_value < RAND_MAX) {
+            resultValue = RETURN_0;
+        }
+    } else {
+        int rand_value = rand();
+        if (rand_value > PARAM_0) {
+            resultValue = RETURN_0;
+        }
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value LLabs(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int a;
+    napi_get_value_int32(env, args[0], &a);
+    long randValue = llabs(a);
     napi_value result = nullptr;
     napi_create_int32(env, randValue, &result);
+    return result;
+}
 
+static napi_value Labs(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int a;
+    napi_get_value_int32(env, args[0], &a);
+    long randValue = labs(a);
+    napi_value result = nullptr;
+    napi_create_int32(env, randValue, &result);
     return result;
 }
 
 static napi_value RandR(napi_env env, napi_callback_info info)
 {
-    unsigned seed = getpid();
-    int randR_value = rand_r(&seed);
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int resultValue = FAILD;
+    if (param == PARAM_0) {
+        unsigned seed = getpid();
+        int randR_value = rand_r(&seed);
+        if (randR_value < RAND_MAX) {
+            resultValue = RETURN_0;
+        }
+    } else {
+        unsigned seed = getpid();
+        int randR_value = rand_r(&seed);
+        if (randR_value > PARAM_0) {
+            resultValue = RETURN_0;
+        }
+    }
     napi_value result = nullptr;
-    napi_create_int32(env, randR_value, &result);
-
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
 static napi_value Random(napi_env env, napi_callback_info info)
 {
     int randomValue = random();
-
     napi_value result = nullptr;
     napi_create_int32(env, randomValue, &result);
-
     return result;
 }
 
@@ -116,7 +221,7 @@ static napi_value Seed48(napi_env env, napi_callback_info info)
     uint32_t third;
     napi_get_value_uint32(env, args[0], &first);
     napi_get_value_uint32(env, args[1], &second);
-    napi_get_value_uint32(env, args[2], &third);
+    napi_get_value_uint32(env, args[PARAM_2], &third);
     unsigned short int *p,
         seedV[3] = {(unsigned short int)first, (unsigned short int)second, (unsigned short int)third};
     p = seed48(seedV);
@@ -131,7 +236,7 @@ static napi_value Srand(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
     napi_get_value_int32(env, args[0], &valueZero);
-    if (valueZero == ZERO) {
+    if (valueZero == PARAM_0) {
         int time_value = time(nullptr);
         srand(time_value);
     } else {
@@ -150,7 +255,7 @@ static napi_value Srand48(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
     napi_get_value_int32(env, args[0], &valueZero);
-    if (valueZero == ZERO) {
+    if (valueZero == PARAM_0) {
         int time_value = time(nullptr);
         srand48(time_value);
     } else {
@@ -169,7 +274,7 @@ static napi_value Srandom(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
     napi_get_value_int32(env, args[0], &valueZero);
-    if (valueZero == ZERO) {
+    if (valueZero == PARAM_0) {
         int time_value = time(nullptr);
         srandom(time_value);
     } else {
@@ -189,10 +294,8 @@ static napi_value Strtod(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueZero = NapiHelper::GetString(env, args[0]);
     double strtod_value = strtod(valueZero, nullptr);
-
     napi_value result = nullptr;
     napi_create_double(env, strtod_value, &result);
-
     return result;
 }
 
@@ -203,7 +306,6 @@ static napi_value Strtof(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueZero = NapiHelper::GetString(env, args[0]);
     double strTofValue = strtof(valueZero, nullptr);
-
     napi_value result = nullptr;
     napi_create_double(env, strTofValue, &result);
 
@@ -212,7 +314,6 @@ static napi_value Strtof(napi_env env, napi_callback_info info)
 
 static napi_value Strtol(napi_env env, napi_callback_info info)
 {
-
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -244,7 +345,6 @@ static napi_value Strtold(napi_env env, napi_callback_info info)
 
 static napi_value Strtoll(napi_env env, napi_callback_info info)
 {
-
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -262,7 +362,6 @@ static napi_value Strtoll(napi_env env, napi_callback_info info)
 
 static napi_value Strtoul(napi_env env, napi_callback_info info)
 {
-
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -280,7 +379,6 @@ static napi_value Strtoul(napi_env env, napi_callback_info info)
 
 static napi_value Strtoull(napi_env env, napi_callback_info info)
 {
-
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -302,10 +400,10 @@ static napi_value Setenv(napi_env env, napi_callback_info info)
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
-    char *value2 = NapiHelper::GetString(env, args[1]);
-    int value3;
-    napi_get_value_int32(env, args[2], &value3);
-    int setValue = setenv(valueFirst, value2, value3);
+    char *valueSecond = NapiHelper::GetString(env, args[1]);
+    int valueThree;
+    napi_get_value_int32(env, args[PARAM_2], &valueThree);
+    int setValue = setenv(valueFirst, valueSecond, valueThree);
     napi_value result;
     napi_create_int32(env, setValue, &result);
     return result;
@@ -314,11 +412,913 @@ static napi_value GetLoadAvg(napi_env env, napi_callback_info info)
 {
     double avgs[3];
     int getInfo = getloadavg(avgs, 3);
-
     napi_value result = nullptr;
     napi_create_double(env, getInfo, &result);
     return result;
 }
+
+static napi_value MkTemp(napi_env env, napi_callback_info info) {
+    errno = ERRON_0;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    }
+    char *ret = mktemp(tpl);
+    
+    napi_value result = nullptr;
+    if (*ret == '\0') {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkSTemp(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    }
+    int mktfp = mkstemp(tpl);
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+    
+}
+
+static napi_value MkSTempS(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX.dat");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX.dat");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    }
+    int mktfp = mkstemps(tpl, strlen(".dat"));
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkOSTemp(napi_env env, napi_callback_info info) {
+
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    }
+    int fileFlag = PARAM_0;
+    int mktfp = PARAM_0;
+    napi_get_value_int32(env, args[1], &fileFlag);
+    switch (fileFlag) {
+    case 0:
+        mktfp = mkostemp(tpl, O_APPEND);
+        break;
+    case 1:
+        mktfp = mkostemp(tpl, O_CLOEXEC);
+        break;
+    case 2:
+        mktfp = mkostemp(tpl, O_SYNC);
+        break;
+    default:
+        mktfp = mkostemp(tpl, O_SYNC);
+        break;
+    }
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkOSTempS(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX.dat");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX.dat");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    }
+    int fileFlag = PARAM_0;
+    int mktfp = PARAM_0;
+    napi_get_value_int32(env, args[1], &fileFlag);
+    switch (fileFlag) {
+    case 0:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_APPEND);
+        break;
+    case 1:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_CLOEXEC);
+        break;
+    case 2:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_SYNC);
+        break;
+    default:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_SYNC);
+        break;
+    }
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkSTemp64(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    }
+    int mktfp = mkstemp64(tpl);
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkSTempS64(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX.dat");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX.dat");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    }
+    int mktfp = mkstemps64(tpl, strlen(".dat"));
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkOSTemp64(napi_env env, napi_callback_info info) {
+
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp");
+        break;
+    }
+    int fileFlag = PARAM_0;
+    int mktfp = PARAM_0;
+    napi_get_value_int32(env, args[1], &fileFlag);
+    switch (fileFlag) {
+    case 0:
+        mktfp = mkostemp64(tpl, O_APPEND);
+        break;
+    case 1:
+        mktfp = mkostemp64(tpl, O_CLOEXEC);
+        break;
+    case 2:
+        mktfp = mkostemp64(tpl, O_SYNC);
+        break;
+    default:
+        mktfp = mkostemp64(tpl, O_SYNC);
+        break;
+    }
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value MkOSTempS64(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int flag = PARAM_0;
+    napi_get_value_int32(env, args[0], &flag);
+    char tpl[BUFSIZ];
+    switch (flag) {
+    case 0:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXXXXX.dat");
+        break;
+    case 1:
+        strcpy(tpl, "/data/storage/el2/base/files/tempXXX.dat");
+        break;
+    case 2:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    default:
+        strcpy(tpl, "/data/storage/el2/base/files/temp.dat");
+        break;
+    }
+    int fileFlag = PARAM_0;
+    int mktfp = PARAM_0;
+    napi_get_value_int32(env, args[1], &fileFlag);
+    switch (fileFlag) {
+    case 0:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_APPEND);
+        break;
+    case 1:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_CLOEXEC);
+        break;
+    case 2:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_SYNC);
+        break;
+    default:
+        mktfp = mkostemps(tpl, strlen(".dat"), O_SYNC);
+        break;
+    }
+    napi_value result = nullptr;
+    if (mktfp == PARAM_UNNORMAL) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    unlink(tpl);
+    return result;
+}
+
+static napi_value Getloadavg(napi_env env, napi_callback_info info)
+{
+    double loadavg[3];
+    int ret = getloadavg(loadavg, 3);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+static napi_value Getsubopt(napi_env env, napi_callback_info info)
+{
+    char getsubopt1[] = "getsubopt";
+    char test[] = "test";
+
+    char *tokens[] = {getsubopt1, test, nullptr};
+    char buf[BUF_SIZE];
+    strcpy(buf, "getsubopt=0100,unknown");
+    char *subopts = buf;
+    char *value = nullptr;
+    int ret = getsubopt(&subopts, tokens, &value);
+    napi_value result = nullptr;
+    if (ret != PARAM_UNNORMAL) {
+        napi_create_int32(env, RETURN_0, &result);
+    } else {
+        napi_create_int32(env, FAILD, &result);
+    }
+    return result;
+}
+static napi_value Grantpt(napi_env env, napi_callback_info info)
+{
+    int rev = grantpt(PARAM_0);
+    napi_value result = nullptr;
+    napi_create_int32(env, rev, &result);
+    return result;
+}
+static napi_value MkDTemp(napi_env env, napi_callback_info info)
+{
+    char *ret = nullptr;
+    char path[] = "/data/storage/el2/base/files/mk-XXXXXX";
+    ret = mkdtemp(path);
+    if (access(path, F_OK) == PARAM_0) {
+        rmdir(path);
+    }
+    int res;
+    napi_value result = nullptr;
+    if (ret != nullptr) {
+        res = PARAM_0;
+    } else {
+        res = FAIL;
+    }
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
+static napi_value Jrand48(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    uint32_t a;
+    uint32_t b;
+    uint32_t c;
+    napi_get_value_uint32(env, args[0], &a);
+    napi_get_value_uint32(env, args[1], &b);
+    napi_get_value_uint32(env, args[PARAM_2], &c);
+    uint16_t aa = a;
+    uint16_t ba = b;
+    uint16_t ca = c;
+    unsigned short sub[] = {aa, ba, ca};
+    long rev = jrand48(sub);
+    napi_value result = nullptr;
+    napi_create_int32(env, rev, &result);
+    return result;
+}
+static napi_value InitState(napi_env env, napi_callback_info info)
+{
+    char state[BUF_SIZE];
+    errno = ERRNO_0;
+    initstate(PARAM_1, state, sizeof state);
+    napi_value result = nullptr;
+    if (errno != ERRNO_0) {
+        napi_create_int32(env, FAILD, &result);
+    } else {
+        napi_create_int32(env, RETURN_0, &result);
+    }
+    return result;
+}
+
+static napi_value Lrand48(napi_env env, napi_callback_info info)
+{
+    int ret = lrand48();
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value Mblen(napi_env env, napi_callback_info info)
+{
+    size_t ret = FAIL;
+
+    char src[ARRY_MAX];
+
+    wchar_t pwc[] = L"mblen_0100";
+    wcstombs(src, pwc, ARRY_MAX);
+    ret = mblen(src, ARRY_MAX);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+int compare(const void *a, const void *b)
+{
+    const int *x = (int *)a;
+    const int *y = (int *)b;
+
+    if (*x > *y)
+        return RETURN_1;
+    else if (*x < *y)
+        return FAILD;
+
+    return NO_ERR;
+}
+static napi_value RealPath(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    char actualPath[PATH_MAX] = {0};
+    char *ptrRet = nullptr;
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    close(fd);
+    ptrRet = realpath("/data/storage/el2/base/files/Fzl.txt", actualPath);
+    napi_value result = nullptr;
+    if (ptrRet != nullptr) {
+        napi_create_int32(env, RETURN_0, &result);
+    } else {
+        napi_create_int32(env, FAILD, &result);
+    }
+    return result;
+}
+
+static napi_value Qsort(napi_env env, napi_callback_info info)
+ {
+     size_t argc = 1;
+     napi_value args[1] = {nullptr};
+     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     int value = PARAM_0;
+     napi_get_value_int32(env, args[0], &value);
+     const int num = 10;
+     int arr[num] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+     qsort(arr, num, sizeof(int), compare);
+     napi_value result = nullptr;
+     napi_create_int32(env, arr[value], &result);
+     return result;
+ }
+
+static napi_value PtsName(napi_env env, napi_callback_info info)
+{
+    char *returnValue;
+    napi_value result = nullptr;
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    returnValue = ptsname(fileDescribe);
+    int backInfo = PARAM_0;
+    if (returnValue != nullptr) {
+        backInfo = RETURN_1;
+    }
+    napi_create_int32(env, backInfo, &result);
+    return result;
+}
+void bye(void) {}
+
+static napi_value Atexit(napi_env env, napi_callback_info info)
+{
+    int ret = atexit(bye);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+static napi_value System(napi_env env, napi_callback_info info)
+{
+    int system_result = system(nullptr);
+    napi_value result = nullptr;
+    napi_create_int32(env, system_result, &result);
+    return result;
+}
+
+static napi_value StrtofL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    char *param_end = NapiHelper::GetString(env, args[1]);
+    locale_t local = nullptr;
+    double result_value = strtof_l(param, &param_end, local);
+
+    napi_value result = nullptr;
+    napi_create_double(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value StrtoldL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    char *param_end = NapiHelper::GetString(env, args[1]);
+    locale_t locale = nullptr;
+    double result_value = strtold_l(param, &param_end, locale);
+
+    napi_value result = nullptr;
+    napi_create_double(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Realloc(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    if (param == PARAM_UNNORMAL) {
+        void *ret = realloc(nullptr, SIZE_10);
+        if (ret != nullptr) {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Valloc(napi_env env, napi_callback_info info)
+{
+    int result_value = PARAM_UNNORMAL;
+    void *buf = valloc(SIZE_10);
+    if (buf != nullptr) {
+        result_value = RETURN_0;
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value StrtodL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    char *param_end = NapiHelper::GetString(env, args[1]);
+    locale_t locale = nullptr;
+    double result_value = strtod_l(param, &param_end, locale);
+
+    napi_value result = nullptr;
+    napi_create_double(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Unlockpt(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    int fdm = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR | O_CREAT);
+    grantpt(fdm);
+    int ret = unlockpt(fdm);
+    napi_create_int32(env, ret, &result);
+    close(fdm);
+    return result;
+}
+
+static napi_value Unsetenv(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    std::string valueFirst = NapiHelper::GetString(env, args[0]);
+    int unsetenvValue = DEF_VALUE;
+    if(strcmp(valueFirst.data(), "") == PARAM_0){
+        unsetenvValue = unsetenv(valueFirst.data());
+    }else{
+        char env_temp[] = "test=putenv_0100";
+        int ret = putenv(env_temp);
+        std::string test = getenv("test");
+        if(strcmp(test.data(), "putenv_0100") == PARAM_0){
+            ret = unsetenv("test");
+            if(ret == PARAM_0){
+                unsetenvValue = RETURN_1;
+            }
+        }
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, unsetenvValue, &result);
+    return result;
+}
+
+static napi_value PosixMemAlign(napi_env env, napi_callback_info info)
+ {
+     errno = ERRON_0;
+    void *memory = nullptr;
+    int rev = posix_memalign(&memory, SIZE_16, RETURN_1);
+    if (memory) {
+        free(memory);
+    }
+     napi_value result = nullptr;
+     napi_create_int32(env, rev, &result);
+     return result;
+ }
+
+static napi_value Exit(napi_env env, napi_callback_info info)
+{
+    int backParam = SUCCESS;
+    napi_value result = nullptr;
+    napi_create_int32(env, backParam, &result);
+    int pid = fork();
+    if (pid == PARAM_UNNORMAL) {
+        exit(RETURN_1);
+    }
+    return result;
+}
+
+static napi_value Abs(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int backParam, firstParam;
+    napi_get_value_int32(env, args[0], &firstParam);
+    backParam = abs(firstParam);
+    napi_value result = nullptr;
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value DRand48(napi_env env, napi_callback_info info)
+{
+    double backParam = drand48();
+    napi_value result = nullptr;
+    napi_create_double(env, backParam, &result);
+    return result;
+}
+
+static napi_value ERand48(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr, nullptr, nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int firstTemp;
+    napi_get_value_int32(env, args[0], &firstTemp);
+    int secondTemp;
+    napi_get_value_int32(env, args[1], &secondTemp);
+    int thirdTemp;
+    napi_get_value_int32(env, args[PARAM_2], &thirdTemp);
+    unsigned short firstParam, secondParam, thirdParam;
+    firstParam = firstTemp;
+    secondParam = secondTemp;
+    thirdParam = thirdTemp;
+    unsigned short testNo[3] = {firstParam, secondParam, thirdParam};
+    double backParam = erand48(testNo);
+    napi_value result = nullptr;
+    napi_create_double(env, backParam, &result);
+    return result;
+}
+
+static napi_value Div(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr, nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int firstParam, secondParam;
+    char backParam[64] = {"("}, strBuufer[64];
+    napi_get_value_int32(env, args[0], &firstParam);
+    napi_get_value_int32(env, args[1], &secondParam);
+    div_t divResult;
+    divResult = div(firstParam, secondParam);
+    sprintf(strBuufer, "%d", divResult.quot);
+    strcat(backParam, strBuufer);
+    strcat(backParam, ",");
+    sprintf(strBuufer, "%d", divResult.rem);
+    strcat(backParam, strBuufer);
+    strcat(backParam, ")");
+    napi_value result = nullptr;
+    napi_create_string_utf8(env, backParam, NAPI_AUTO_LENGTH, &result);
+    return result;
+}
+
+static napi_value Atof(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    napi_value result = nullptr;
+
+    double resultValue = atof(param);
+    napi_create_double(env, resultValue, &result);
+
+    return result;
+}
+
+static napi_value Atoi(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    napi_value result = nullptr;
+
+    double resultValue = atoi(param);
+    napi_create_double(env, resultValue, &result);
+
+    return result;
+}
+
+static napi_value Atol(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    napi_value result = nullptr;
+
+    double resultValue = atol(param);
+    napi_create_double(env, resultValue, &result);
+
+    return result;
+}
+
+static napi_value Atoll(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param = NapiHelper::GetString(env, args[0]);
+    napi_value result = nullptr;
+
+    double resultValue = atoll(param);
+    napi_create_double(env, resultValue, &result);
+
+    return result;
+}
+
+static napi_value AlignedAlloc(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int size;
+    int resulTrue = SUCCESS;
+    int resulFalse = EXPECTERROR;
+    napi_get_value_int32(env, args[0], &size);
+    napi_value result = nullptr;
+
+    void *resultValue = aligned_alloc(alignof(void *), size);
+    if (resultValue) {
+        napi_create_int32(env, resulTrue, &result);
+    } else {
+        napi_create_int32(env, resulFalse, &result);
+    }
+
+    return result;
+}
+
+static napi_value Getenv(napi_env env, napi_callback_info info)
+{
+    const char *env_var[1] = {"HOME"};
+    char *env_val[1];
+    int resultValue = EXPECTERROR;
+    for (int i = 0; i < 1; i++) {
+        env_val[i] = getenv(env_var[i]);
+        if (env_val[i] != nullptr) {
+            resultValue = SUCCESS;
+        }
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+
+    return result;
+}
+
+static napi_value AtQuickExit(napi_env env, napi_callback_info info)
+{
+    int size;
+    napi_value result = nullptr;
+    size = at_quick_exit(bye);
+    napi_create_int32(env, size, &result);
+    return result;
+}
+
+static napi_value Calloc(napi_env env, napi_callback_info info)
+{
+    size_t size = SIZE_10;
+    size_t param = SIZE_20;
+    napi_value result = nullptr;
+    int resultValue = EXPECTERROR;
+    if (calloc(size, param)) {
+        resultValue = SUCCESS;
+    }
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Free(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    int *ptr;
+    size_t size = SIZE_5;
+    ptr = (int *)malloc(size * sizeof(int));
+    free(ptr);
+    napi_value result = nullptr;
+    int resultValue = EXPECTERROR;
+    if (errno == PARAM_0) {
+        resultValue = SUCCESS;
+    }
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Bsearch(napi_env env, napi_callback_info info)
+{
+    const int num = SIZE_10;
+    int arr[num] = {5, 9, 10, 14, 16, 19, 21, 26, 29, 31};
+    int key1 = SIZE_10;
+    int *p1 = (int *)bsearch(&key1, arr, num, sizeof(int), compare);
+    int returnValue = EXPECTERROR;
+    if (p1 != nullptr) {
+        returnValue = SUCCESS;
+    }
+    napi_value result;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value Clearenv(napi_env env, napi_callback_info info)
+{
+    int returnValue = clearenv();
+    napi_value result;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -337,11 +1337,59 @@ static napi_value Init(napi_env env, napi_value exports)
         {"strtoll", nullptr, Strtoll, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strtoul", nullptr, Strtoul, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strtoull", nullptr, Strtoull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"llabs", nullptr, LLabs, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"labs", nullptr, Labs, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"lcong48", nullptr, Lcong48, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ldiv", nullptr, Ldiv, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"lldiv", nullptr, LLdiv, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkTemp", nullptr, MkTemp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkSTemp", nullptr, MkSTemp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkOSTemp", nullptr, MkOSTemp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkSTempS", nullptr, MkSTempS, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkOSTempS", nullptr, MkOSTempS, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkSTemp64", nullptr, MkSTemp64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkOSTemp64", nullptr, MkOSTemp64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkSTempS64", nullptr, MkSTempS64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkOSTempS64", nullptr, MkOSTempS64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getloadavg", nullptr, Getloadavg, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getsubopt", nullptr, Getsubopt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"grantpt", nullptr, Grantpt, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setenv", nullptr, Setenv, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getLoadAvg", nullptr, GetLoadAvg, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
+        {"system", nullptr, System, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"strtofL", nullptr, StrtofL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"strtoldL", nullptr, StrtoldL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"realloc", nullptr, Realloc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"valloc", nullptr, Valloc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"strtodL", nullptr, StrtodL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unlockpt", nullptr, Unlockpt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unsetenv", nullptr, Unsetenv, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"erand48", nullptr, ERand48, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"drand48", nullptr, DRand48, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"exit", nullptr, Exit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"div", nullptr, Div, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"abs", nullptr, Abs, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atof", nullptr, Atof, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atoi", nullptr, Atoi, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atol", nullptr, Atol, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atoll", nullptr, Atoll, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"alignedAlloc", nullptr, AlignedAlloc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atQuickExit", nullptr, AtQuickExit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"calloc", nullptr, Calloc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getenv", nullptr, Getenv, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"bsearch", nullptr, Bsearch, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"clearenv", nullptr, Clearenv, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"free", nullptr, Free, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mkDTemp", nullptr, MkDTemp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mblen", nullptr, Mblen, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"jrand48", nullptr, Jrand48, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"initState", nullptr, InitState, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"lrand48", nullptr, Lrand48, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"realPath", nullptr, RealPath, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"atexit", nullptr, Atexit, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"qsort", nullptr, Qsort, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"posixMemAlign", nullptr, PosixMemAlign, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ptsName", nullptr, PtsName, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

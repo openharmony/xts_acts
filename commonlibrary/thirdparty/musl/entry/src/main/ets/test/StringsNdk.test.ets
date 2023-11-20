@@ -27,11 +27,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmp001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let b = "abcd"
-      let c = strings.strcasecmp(a, b);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "ABCD"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp(firstParam, secondParam);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -43,11 +43,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmp002', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strcasecmp(a, b);
-      let d = (c < 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp(firstParam, secondParam);
+      let trueResult = (result < 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -59,11 +59,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmp003', 0, async (done: Function) => {
-      let a = "efg"
-      let b = "abcd"
-      let c = strings.strcasecmp(a, b);
-      let d = (c > 0);
-      expect(d).assertTrue();
+      let firstParam = "efg"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp(firstParam, secondParam);
+      let trueResult = (result > 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -75,11 +75,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmpL001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let b = "abcd"
-      let c = strings.strcasecmp_l(a, b);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "ABCD"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp_l(firstParam, secondParam);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -91,11 +91,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmpL002', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strcasecmp_l(a, b);
-      let d = (c < 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp_l(firstParam, secondParam);
+      let trueResult = (result < 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -107,11 +107,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrcasecmpL003', 0, async (done: Function) => {
-      let a = "efg"
-      let b = "abcd"
-      let c = strings.strcasecmp_l(a, b);
-      let d = (c > 0);
-      expect(d).assertTrue();
+      let firstParam = "efg"
+      let secondParam = "abcd"
+      let result:number = strings.strcasecmp_l(firstParam, secondParam);
+      let trueResult = (result > 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -123,11 +123,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmp001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let b = "abcd"
-      let c = strings.strncasecmp(a, b, 10);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "ABCD"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp(firstParam, secondParam, 10);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -139,11 +139,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmp002', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strncasecmp(a, b, 10);
-      let d = (c < 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp(firstParam, secondParam, 10);
+      let trueResult = (result < 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -155,11 +155,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmp003', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strncasecmp(a, b, 2);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp(firstParam, secondParam, 2);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -171,11 +171,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmp004', 0, async (done: Function) => {
-      let a = "efg"
-      let b = "abcd"
-      let c = strings.strncasecmp(a, b, 10);
-      let d = (c > 0);
-      expect(d).assertTrue();
+      let firstParam = "efg"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp(firstParam, secondParam, 10);
+      let trueResult = (result > 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -187,11 +187,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmpL001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let b = "abcd"
-      let c = strings.strncasecmp_l(a, b, 10, 0);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "ABCD"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -203,11 +203,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmpL002', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strncasecmp_l(a, b, 10, 0);
-      let d = (c < 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
+      let trueResult = (result < 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -219,11 +219,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmpL003', 0, async (done: Function) => {
-      let a = "AB"
-      let b = "abcd"
-      let c = strings.strncasecmp_l(a, b, 2, 0);
-      let d = (c == 0);
-      expect(d).assertTrue();
+      let firstParam = "AB"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp_l(firstParam, secondParam, 2, 0);
+      let trueResult = (result == 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -235,11 +235,11 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmpL004', 0, async (done: Function) => {
-      let a = "efg"
-      let b = "abcd"
-      let c = strings.strncasecmp_l(a, b, 10, 0);
-      let d = (c > 0);
-      expect(d).assertTrue();
+      let firstParam = "efg"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, 0);
+      let trueResult = (result > 0);
+      expect(trueResult).assertTrue();
       done()
     });
     /**
@@ -251,99 +251,135 @@ export default function stringsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslStringsStrncasecmpL005', 0, async (done: Function) => {
-      let a = "efg"
-      let b = "abcd"
-      let c = strings.strncasecmp_l(a, b, 10, -1);
-      let d = (c > 0);
-      expect(d).assertTrue();
-      done()
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STPCPY_0100
-     * @tc.name       : testMuslStringsStpcpy001
-     * @tc.desc       : test stpcpy
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStringsStpcpy001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let c = strings.stpcpy(a);
-      expect(c).assertEqual(a);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STPCPY_0200
-     * @tc.name       : testMuslStringsStpcpy002
-     * @tc.desc       : test stpcpy
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStringsStpcpy002', 0, async (done: Function) => {
-      let a = "ABCDEFG"
-      let c = strings.stpcpy(a);
-      expect(c).assertEqual(a);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCPY_0100
-     * @tc.name       : testMuslStringsStrcpy001
-     * @tc.desc       : test strcpy
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStringsStrcpy001', 0, async (done: Function) => {
-      let a = "AB"
-      let c = strings.strcpy(a);
-      expect(a).assertEqual(c);
+      let firstParam = "efg"
+      let secondParam = "abcd"
+      let result:number = strings.strncasecmp_l(firstParam, secondParam, 10, -1);
+      let trueResult = (result > 0);
+      expect(trueResult).assertTrue();
       done()
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCPY_0200
-     * @tc.name       : testMuslStringsStrcpy002
-     * @tc.desc       : test strcpy
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_INDEX_0100
+     * @tc.name       : testMuslStringsIndex001
+     * @tc.desc       : test index
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcpy002', 0, async (done: Function) => {
-      let a = "ABCDEF"
-      let c = strings.strcpy(a);
-      expect(c).assertEqual(a);
+    it('testMuslStringsIndex001', 0, async (done:Function) => {
+
+      let param = "ABCDE";
+      let result:number = strings.index(param);
+      console.info("Test result = " + JSON.stringify(result));
+      expect(result).assertEqual(0);
       done()
     });
+
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCSPN_0100
-     * @tc.name       : testMuslStringsStrcspn001
-     * @tc.desc       : test strcspn
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_INDEX_0200
+     * @tc.name       : testMuslStringsIndex002
+     * @tc.desc       : test index
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcspn001', 0, async (done: Function) => {
-      let a = "ABCD"
-      let b = "AB"
-      let c = strings.strcspn(a, b);
-      expect(c).assertEqual(0);
+    it('testMuslStringsIndex002', 0, async (done:Function) => {
+
+      let param = "AB";
+      let result:number = strings.index(param);
+      console.info("Test result = " + JSON.stringify(result));
+      expect(result).assertEqual(-1);
       done()
     });
+
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCSPN_0200
-     * @tc.name       : testMuslStringsStrcspn002
-     * @tc.desc       : test strcspn
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFS_0100
+     * @tc.name       : testMuslStringsFfs001
+     * @tc.desc       : test ffs
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslStringsFfs001', 0, async (done: Function) => {
+      let firstParam = 1;
+      let result:number = strings.ffs(firstParam);
+      expect(result).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFSL_0100
+     * @tc.name       : testMuslStringsFfsL001
+     * @tc.desc       : test ffsl
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslStringsFfsL001', 0, async (done: Function) => {
+      let firstParam = 8;
+      let result:number = strings.ffsl(firstParam);
+      expect(result).assertEqual(4);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFSLL_0100
+     * @tc.name       : testMuslStringsFfsLL001
+     * @tc.desc       : test ffsll
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslStringsFfsLL001', 0, async (done: Function) => {
+      let firstParam = -2;
+      let result:number = strings.ffsll(firstParam);
+      expect(result).assertEqual(2);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BCMP_0100
+     * @tc.name       : testMuslStringsBcmp001
+     * @tc.desc       : test bcmp
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslStringsBcmp001', 0, async (done: Function) => {
+      let resultExcept = 0;
+      let resultValue:number = strings.bcmp();
+      expect(resultValue).assertEqual(resultExcept);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BCOPY_0100
+     * @tc.name       : testMuslStringsBcopy001
+     * @tc.desc       : test bcopy
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStringsStrcspn002', 0, async (done: Function) => {
-      let a = "ABCDEF"
-      let b = "G"
-      let c = strings.strcspn(a, b);
-      expect(c).assertEqual(6);
+    it('testMuslStringsBcopy001', 0, async (done: Function) => {
+      let result:number = strings.bcopy();
+      expect(result).assertEqual(0);
       done()
     });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BZERO_0100
+     * @tc.name       : testMuslStringsBzero001
+     * @tc.desc       : test bzero
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStringsBzero001', 0, async (done: Function) => {
+      let result:number = strings.bzero();
+      expect(result).assertEqual(0);
+      done()
+    });
+
   })
 }

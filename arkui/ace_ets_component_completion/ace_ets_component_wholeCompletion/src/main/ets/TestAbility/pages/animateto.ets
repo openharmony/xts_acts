@@ -25,6 +25,7 @@ struct animateto {
   @State iteration: number = 1
   @State tempo: number= 1000
   @State playmode: PlayMode = PlayMode.Normal
+  @State finishCallbackType: FinishCallbackType = FinishCallbackType.REMOVED
 
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
@@ -47,6 +48,9 @@ struct animateto {
       }
       if (message.name == 'playmode') {
         this.playmode = message.value
+      }
+      if (message.name == 'finishCallbackType') {
+        this.finishCallbackType = message.value
       }
     }
     this.messageManager.registerCallback(callback)
@@ -615,6 +619,93 @@ struct animateto {
           console.info("button15 duration value is : " + this.duration)
           globalThis.uiContent.animateTo({ duration: this.duration }, () => {
             console.info("button15 duration test animateTo START")
+          })
+        })
+      Button(this.show)
+        .backgroundColor(0x317aff)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button161')
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "finishCallbackType": this.finishCallbackType,
+              }
+            }
+            var backEvent = {
+              eventId: 1011,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button1011 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button1011 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button1011 animateTo START")
+          console.info("button1011 duration value is : " + this.duration)
+          globalThis.uiContent.animateTo({ duration: this.duration }, () => {
+            console.info("button1011 duration test animateTo START")
+          })
+        })
+      Button(this.show)
+        .backgroundColor(0x317aff)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button171')
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "finishCallbackType": this.finishCallbackType,
+              }
+            }
+            var backEvent = {
+              eventId: 1012,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button171 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button171 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button171 animateTo START")
+          console.info("button171 finishCallbackType value is : " + this.finishCallbackType)
+          globalThis.uiContent.animateTo({ finishCallbackType: 0 }, () => {
+            console.info("button171 finishCallbackType test animateTo START")
+          })
+        })
+      Button(this.show)
+        .backgroundColor(0x317aff)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button181')
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "finishCallbackType": this.finishCallbackType,
+              }
+            }
+            var backEvent = {
+              eventId: 1013,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button181 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button181 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button181 animateTo START")
+          console.info("button181 finishCallbackType value is : " + this.finishCallbackType)
+          globalThis.uiContent.animateTo({ finishCallbackType: 1 }, () => {
+            console.info("button181 finishCallbackType test animateTo START")
           })
         })
     }.height("%100").width("100%")

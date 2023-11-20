@@ -25,6 +25,7 @@
 		"MainAbility/pages/SearchPage",
         "MainAbility/pages/GridPage",
         "MainAbility/pages/TextClockPage",
+        "MainAbility/pages/TextClockLongPage",
         "MainAbility/pages/ListPage",
         "MainAbility/pages/NavRouterPage",
         "MainAbility/pages/TextInputPage",

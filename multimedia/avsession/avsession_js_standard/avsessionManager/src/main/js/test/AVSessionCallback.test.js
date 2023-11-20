@@ -628,13 +628,11 @@ export default function AVSessionCallback() {
             let metadata14  = {
                 assetId: '121278',
             };
-            session.destroy((err) => {
-                if (err) {
-                    console.info('TestLog: session destroy failed');
-                    expect(false).assertTrue();
-                } else {
-                    console.info('TestLog: session destroy successfully');
-                }
+            await session.destroy().then(()=>{
+                console.info('TestLog: session destroy successfully');
+            }).catch((err) => {
+                console.info('TestLog: session destroy failed');
+                expect(false).assertTrue();
             });
             await sleep(500);
             session.setAVMetadata(metadata14, (err) => {
@@ -1036,13 +1034,10 @@ export default function AVSessionCallback() {
                 loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
                 isFavorite:true,
             };
-            session.destroy((err) => {
-                if (err) {
-                    console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                }
+            await session.destroy().catch((err) => {
+                console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
-            await sleep(500);
             session.setAVPlaybackState(PlaybackState10, (err) => {
                 if (err) {
                     console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);

@@ -17,6 +17,9 @@ import commonEvent from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest';
 
+function sleep(time: number): Promise<number> {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 var abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 var ACTS_CallFunction = {
   events: ['ACTS_CALL_EVENT', 'ACTS_CALL_EVENT_ANOTHER']
@@ -669,7 +672,7 @@ export default function abilityTest() {
      * @tc.desc: Test the startAbilityForResult interface in promiss form.
      */
     it('Acts_ActionExtensionAbility_1400',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1400 createSubscriber  ${data}`);
@@ -708,7 +711,7 @@ export default function abilityTest() {
      * @tc.desc: Test the startAbilityForResult interface with invalid want.
      */
     it('Acts_ActionExtensionAbility_1500',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1500 createSubscriber  ${data}`);
@@ -747,7 +750,7 @@ export default function abilityTest() {
      * @tc.desc: Test setReceiveDataCallback successful.
      */
     it('Acts_ActionExtensionAbility_1600',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['setReceiveDataCallback']
@@ -789,7 +792,7 @@ export default function abilityTest() {
      * @tc.desc: Use ui components continuously to start two ActionExtensionAbility.
      */
     it('Acts_ActionExtensionAbility_1700',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       globalThis.context.startAbility({
         bundleName: 'com.example.actsactionextensionabilitytest',
         abilityName: 'EntryAbility',
@@ -797,7 +800,7 @@ export default function abilityTest() {
       }, (err) => {
         expect(err.code).assertEqual(0);
       });
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       await abilityDelegator.executeShellCommand('aa dump -a').then((data) => {
         console.info('====>Acts_ActionExtensionAbility_1700 : data : ' + JSON.stringify(data.stdResult));
         try {
@@ -820,7 +823,7 @@ export default function abilityTest() {
      * @tc.desc: Test starts ActionExtensionAbility using startAbility interface.
      */
     it('Acts_ActionExtensionAbility_1800',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -865,7 +868,7 @@ export default function abilityTest() {
      * @tc.desc: Test hapModuleInfo in context
      */
     it('Acts_ActionExtensionAbility_1900',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -931,7 +934,7 @@ export default function abilityTest() {
      * @tc.desc: Test config in context
      */
     it('Acts_ActionExtensionAbility_2000',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -982,7 +985,7 @@ export default function abilityTest() {
      * @tc.desc: Test extensionAbilityInfo in context
      */
     it('Acts_ActionExtensionAbility_2100',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1047,7 +1050,7 @@ export default function abilityTest() {
      * @tc.desc: Test resourceManager in context
      */
     it('Acts_ActionExtensionAbility_2200', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1086,7 +1089,7 @@ export default function abilityTest() {
      * @tc.desc: Test applicationInfo in context
      */
     it('Acts_ActionExtensionAbility_2300', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1141,7 +1144,7 @@ export default function abilityTest() {
      * @tc.desc: Test cacheDir in context
      */
     it('Acts_ActionExtensionAbility_2400', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1183,7 +1186,7 @@ export default function abilityTest() {
      * @tc.desc: Test tempDir in context
      */
     it('Acts_ActionExtensionAbility_2500', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1225,7 +1228,7 @@ export default function abilityTest() {
      * @tc.desc: Test filesDir in context
      */
     it('Acts_ActionExtensionAbility_2600', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1266,7 +1269,7 @@ export default function abilityTest() {
      * @tc.desc: Test databaseDir in context
      */
     it('Acts_ActionExtensionAbility_2700', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1307,7 +1310,7 @@ export default function abilityTest() {
      * @tc.desc: Test preferencesDir in context
      */
     it('Acts_ActionExtensionAbility_2800', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1349,7 +1352,7 @@ export default function abilityTest() {
      * @tc.desc: Test bundleCodeDir in context
      */
     it('Acts_ActionExtensionAbility_2900', 0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_CALL_EVENT']
@@ -1391,7 +1394,7 @@ export default function abilityTest() {
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap1
      */
     it('Acts_ActionExtensionAbility_3000',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1439,7 +1442,7 @@ export default function abilityTest() {
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap2
      */
     it('Acts_ActionExtensionAbility_3100',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1487,7 +1490,7 @@ export default function abilityTest() {
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the cross-application hap1
      */
     it('Acts_ActionExtensionAbility_3200',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1534,7 +1537,7 @@ export default function abilityTest() {
      * @tc.desc: Context calls createModuleContext, passing in a non-existing moduleName
      */
     it('Acts_ActionExtensionAbility_3300',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1581,7 +1584,7 @@ export default function abilityTest() {
      * @tc.desc: Context calls createModuleContext, and the incoming moduleName is undefined
      */
     it('Acts_ActionExtensionAbility_3400',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']
@@ -1628,7 +1631,7 @@ export default function abilityTest() {
      * @tc.desc: test getApplicationContext return not empty
      */
     it('Acts_ActionExtensionAbility_3500',0, async function (done) {
-      await Driver.create().delayMs(2000);
+      await sleep(2000);
       var subscriber;
       var subscribeInfo = {
         events: ['ACTS_TEST_CONTEXT']

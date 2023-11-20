@@ -19,6 +19,7 @@ group("stage") {
     deps = [
       "actsbatchuripermission:ActsBatchUriPermission",
       "actsdebuggabletest:actsdebuggabletest",
+      "actsflagstartwithouttipstest:ActsFlagStartWithoutTipsTest",
       "actsgetgroupdirtest:actsgetgroupdirtest",
       "actslifecyclemultihap2:ActsLifecycleMultiHap2",
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",
