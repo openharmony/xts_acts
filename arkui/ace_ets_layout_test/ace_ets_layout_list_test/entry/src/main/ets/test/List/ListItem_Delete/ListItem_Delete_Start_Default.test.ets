@@ -42,7 +42,10 @@ export default function ListItem_Delete_Start_Default() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back()
+      router.back({
+        url: 'MainAbility/pages/index/index',
+      })
+      await CommonFunc.sleep(1000);
       console.info("ListItem_Delete_Start_Default after each called");
     });
     // /**

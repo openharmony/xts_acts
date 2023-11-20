@@ -42,9 +42,10 @@ export default function ListItem_Delete_End() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      // router.back()
-      let driver = await UiDriver.create()
-      await driver.pressBack();
+      router.back({
+        url: 'MainAbility/pages/index/index',
+      })
+      await CommonFunc.sleep(1000);
       console.info("ListItem_Delete_End after each called");
     });
 
