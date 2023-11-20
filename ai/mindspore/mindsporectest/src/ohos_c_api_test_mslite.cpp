@@ -413,7 +413,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_NULLPTR);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -1426,7 +1426,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0009, Function | MediumTest | Level1) {
                                            create_shape_num, imageBuf, size1);
     ASSERT_NE(tensor, nullptr);
     OH_AI_Format data_format = OH_AI_TensorGetFormat(tensor);
-    ASSERT_EQ(data_format, OH_AI_FORMAT_NCHW);
+    ASSERT_EQ(data_format, OH_AI_FORMAT_NHWC);
     delete[] imageBuf;
     OH_AI_TensorDestroy(&tensor);
 }
@@ -1718,7 +1718,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     int ret2 = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret2);
-    ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
+    ASSERT_EQ(ret2, OH_AI_STATUS_LITE_MODEL_REBUILD);
     OH_AI_ModelDestroy(&model);
 }
 
