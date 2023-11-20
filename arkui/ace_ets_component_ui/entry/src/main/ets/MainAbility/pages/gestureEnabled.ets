@@ -22,6 +22,10 @@ struct gestureEnabled1 {
 
   build() {
     Column() {
+      Text('初始值').key("value")
+        .onClick(() => {
+          this.value = 'Gesture enabled false'
+        })
       // 触发反馈
       Text(this.value).margin(30).key('gestureText')
       List({space:20, initialIndex:0}){

@@ -45,8 +45,15 @@ export default function gestureEnabledJsunit() {
     afterEach(async function () {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
-      await driver.pressBack();
+      let button = await driver.findComponent(BY.key('value'));
+      await button.click();
     });
+	
+	  /**
+     * @tc.number: SUB_ACE_TS_COMPONENT_TAPGESTURE_01
+     * @tc.name : gestureEnabledJsunit_0100
+     * @tc.desc : Does the TapGesture click trigger
+     */
 
     it('gestureEnabledJsunit_0100', 0, async function (done) {
 
@@ -63,6 +70,12 @@ export default function gestureEnabledJsunit() {
       console.info('[gestureEnabledJsunit_0100] END');
       done();
     });
+	
+	/**
+     * @tc.number: SUB_ACE_TS_COMPONENT_TAPGESTURE_02
+     * @tc.name : gestureEnabledJsunit_0200
+     * @tc.desc : Does the TapGesture click trigger
+     */
 
     it('gestureEnabledJsunit_0200', 0, async function (done) {
 
@@ -79,6 +92,12 @@ export default function gestureEnabledJsunit() {
       console.info('[gestureEnabledJsunit_0200] END');
       done();
     });
+	
+	/**
+     * @tc.number: SUB_ACE_TS_COMPONENT_TAPGESTURE_03
+     * @tc.name : gestureEnabledJsunit_0300
+     * @tc.desc : Does the TapGesture doubleClick trigger
+     */
 
     it('gestureEnabledJsunit_0300', 0, async function (done) {
 
@@ -95,6 +114,12 @@ export default function gestureEnabledJsunit() {
       console.info('[gestureEnabledJsunit_0300] END');
       done();
     });
+	
+	/**
+     * @tc.number: SUB_ACE_TS_COMPONENT_TAPGESTURE_04
+     * @tc.name : gestureEnabledJsunit_0400
+     * @tc.desc : Does the TapGesture longClick trigger
+     */
 
     it('gestureEnabledJsunit_0400', 0, async function (done) {
 
