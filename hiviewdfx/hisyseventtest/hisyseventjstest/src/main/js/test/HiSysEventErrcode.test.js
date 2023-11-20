@@ -1010,8 +1010,8 @@ describe('hiSysEventErrcodeTest', function () {
 		try {
 			for (let i = 0; i < 51; i++) {
 				hiSysEvent.query({
-					beginTime: -1,
-					endTime: -1,
+					beginTime: 1686827195833,
+					endTime: 1686827195834,
 					maxEvents: 1,
 				}, [{
 					domain: "RELIABILITY" ,
