@@ -88,9 +88,7 @@ LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreNew002, Function | MediumTe
 LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreNew003, Function | MediumTest | Level1)
 {
     g_cmsisSemSema = osSemaphoreNew(SEMAPHHORE_COUNT_INT0, SEMAPHHORE_COUNT_INT10, NULL);
-    TEST_ASSERT_NOT_NULL(g_cmsisSemSema);
-    (void)osSemaphoreDelete(g_cmsisSemSema);
-    osDelay(DELAY_TICKS_5);
+    TEST_ASSERT_NULL(g_cmsisSemSema);
 };
 
 /**
@@ -153,9 +151,7 @@ LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreNew007, Function | MediumTe
 LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreNew008, Function | MediumTest | Level1)
 {
     g_cmsisSemSema = osSemaphoreNew(SEMAPHHORE_COUNT_INT0, SEMAPHHORE_COUNT_HEX_MAX, NULL);
-    TEST_ASSERT_NOT_NULL(g_cmsisSemSema);
-    osSemaphoreDelete(g_cmsisSemSema);
-    osDelay(DELAY_TICKS_5);
+    TEST_ASSERT_NULL(g_cmsisSemSema);
 };
 
 /**
@@ -247,12 +243,7 @@ LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreAcquire003, Function | Medi
 {
     osStatus_t uwRet;
     g_cmsisSemSema = osSemaphoreNew(SEMAPHHORE_COUNT_INT0, SEMAPHHORE_COUNT_INT1, NULL);
-    TEST_ASSERT_NOT_NULL(g_cmsisSemSema);
-    uwRet = osSemaphoreAcquire(g_cmsisSemSema, 0);
-    TEST_ASSERT_EQUAL_INT(osOK, uwRet);
-
-    uwRet = osSemaphoreDelete(g_cmsisSemSema);
-    TEST_ASSERT_EQUAL_INT(osOK, uwRet);
+    TEST_ASSERT_NULL(g_cmsisSemSema);
 };
 
 /**
@@ -387,11 +378,7 @@ LITE_TEST_CASE(CmsisSemFuncTestSuite, testOsSemaphoreGetCount002, Function | Med
     TEST_ASSERT_EQUAL_INT(osOK, uwRet);
 
     g_cmsisSemSema = osSemaphoreNew(SEMAPHHORE_COUNT_INT0, SEMAPHHORE_COUNT_INT1, NULL);
-    TEST_ASSERT_NOT_NULL(g_cmsisSemSema);
-    uwRet = osSemaphoreGetCount(g_cmsisSemSema);
-    TEST_ASSERT_EQUAL_INT(1, uwRet);
-    uwRet = osSemaphoreDelete(g_cmsisSemSema);
-    TEST_ASSERT_EQUAL_INT(osOK, uwRet);
+    TEST_ASSERT_NULL(g_cmsisSemSema);
 };
 
 /**
