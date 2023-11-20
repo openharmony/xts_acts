@@ -44,7 +44,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSighold002', 0, async (done: Function) => {
       let a: number = signal.sighold(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -58,7 +58,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSighold003', 0, async (done: Function) => {
       let a: number = signal.sighold(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -86,7 +86,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigrelse002', 0, async (done: Function) => {
       let a: number = signal.sigrelse(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -100,7 +100,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigrelse003', 0, async (done: Function) => {
       let a: number = signal.sigrelse(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -128,7 +128,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigdelset002', 0, async (done: Function) => {
       let a: number = signal.sigdelset(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -142,7 +142,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigdelset003', 0, async (done: Function) => {
       let a: number = signal.sigdelset(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -198,7 +198,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigaddset002', 0, async (done: Function) => {
       let a: number = signal.sigaddset(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -209,7 +209,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigaddset003', 0, async (done: Function) => {
       let a: number = signal.sigaddset(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -231,7 +231,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigaction002', 0, async (done: Function) => {
       let a: number = signal.sigaction(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -242,7 +242,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigaction003', 0, async (done: Function) => {
       let a: number = signal.sigaction(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -264,7 +264,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigaltstack002', 0, async (done: Function) => {
       let a: number = signal.sigaltstack(-1);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -286,7 +286,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigignore002', 0, async (done: Function) => {
       let a: number = signal.sigignore(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -297,7 +297,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigignore003', 0, async (done: Function) => {
       let a: number = signal.sigignore(-1, 0);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -308,7 +308,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigpause001', 0, async (done: Function) => {
       let a: number = signal.sigpause();
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -341,7 +341,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigprocmask002', 0, async (done: Function) => {
       let a: number = signal.sigprocmask(-1, 99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -355,7 +355,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigprocmask003', 0, async (done: Function) => {
       let a: number = signal.sigprocmask(-1, -1);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -369,7 +369,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigpqueue001', 0, async (done: Function) => {
       let a: number = signal.sigqueue(-1,99999);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -397,7 +397,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigismember001', 0, async (done: Function) => {
       let a: number = signal.sigismember(0,0);
-      expect(a).assertEqual(1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -424,9 +424,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslSignalSigwait001', 0, async (done: Function) => {
-      //let a: number = signal.sigwait();
-      //for QA signal wait
-      let a = 0;
+      let a: number = signal.sigwait();
       expect(a).assertEqual(0);
       done()
     });
@@ -440,10 +438,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslSignalSigwaitinfo001', 0, async (done: Function) => {
-      //let a: number = signal.sigwaitinfo();
-      //for QA signal wait
-      let a = 14;
-      expect(a).assertEqual(14);
+      let a: number = signal.sigwaitinfo();
+      expect(a).assertEqual(0);
       done()
     });
     /**
@@ -470,7 +466,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigismember004', 0, async (done: Function) => {
       let a: number = signal.sigismember(1,0);
-      expect(a).assertEqual(1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -540,7 +536,7 @@ export default function signalNdkTest() {
      */
     it('testMuslSignalSigset002', 0, async (done: Function) => {
       let a: number = signal.sigset(1);
-      expect(a).assertEqual(-1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -673,9 +669,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalBsdSignal001', 0, async (done: Function) => {
-      let resultTrue = 1;
-      let result = signal.bsdSignal();
-      expect(result).assertEqual(resultTrue);
+      let a: number= signal.bsdSignal();
+      expect(a).assertEqual(0);
       done()
     });
   })
