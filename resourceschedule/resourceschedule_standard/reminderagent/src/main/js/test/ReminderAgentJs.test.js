@@ -2140,7 +2140,7 @@ export default function ReminderAgentTest() {
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
-                slotType: 5
+                slotType: 20231120
             }
             reminderAgent.cancelAllReminders((err, data) => {
                 reminderAgent.publishReminder(timer, (err, reminderId) => {
