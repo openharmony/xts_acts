@@ -16,5 +16,4 @@ import adsTest from './Ads.test';
 
 export default function testsuite() {
   adsTest();
-  abilityTest();
 }
