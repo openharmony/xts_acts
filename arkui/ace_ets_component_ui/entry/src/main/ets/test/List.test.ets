@@ -271,7 +271,7 @@ import NavigationMode14Jsunit from './Navigation/NavigationMode14Jsunit.test';
 import NavigationMode15Jsunit from './Navigation/NavigationMode15Jsunit.test';
 import NavigationMode16Jsunit from './Navigation/NavigationMode16Jsunit.test';
 import NavigationMode17Jsunit from './Navigation/NavigationMode17Jsunit.test';
-
+import AnimationJsunit from './AnimationJsunit.test.ets';
 import getListItemRect1 from './getItemRect/list/getListItemRect1.test';
 import getListItemRect2 from './getItemRect/list/getListItemRect2.test';
 import getListItemRect3 from './getItemRect/list/getListItemRect3.test';
@@ -557,33 +557,5 @@ export default function testsuite() {
   NavigationMode15Jsunit();
   NavigationMode16Jsunit();
   NavigationMode17Jsunit();
-
- getListItemRect1();
- getListItemRect2();
- getListItemRect3();
- getListItemRect4();
- getListItemRect5();
- getListItemRect6();
- getListItemGroupRect1();
- getListItemGroupRect2();
- getListItemGroupRect3();
- getListItemGroupRect4();
- getListItemGroupRect5();
- getListItemGroupRect6();
- getGridItemRect1();
- getGridItemRect2();
- getGridItemRect3();
- getGridItemRect4();
- getGridItemRect5();
- getGridItemRect6();
- getScrollItemRect1();
- getScrollItemRect2();
- getScrollItemRect3();
- getScrollItemRect4();
- getScrollItemRect5();
- getWaterFlowItemRect1();
- getWaterFlowItemRect2();
- getWaterFlowItemRect3();
- getWaterFlowItemRect4();
- getWaterFlowItemRect5();
+  AnimationJsunit();
 }
