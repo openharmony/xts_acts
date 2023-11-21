@@ -1266,14 +1266,13 @@ static napi_value GzPrintf(napi_env env, napi_callback_info info)
 
 static napi_value GzOpenW(napi_env env, napi_callback_info info)
 {
-    gzFile file = nullptr;
 #if defined(_WIN32) && !defined(Z_SOLO)
+    gzFile file = nullptr;
     file = gzopen_w(TESTFILE, "wb");
-#endif
     NAPI_ASSERT(env, file != nullptr, "gzopen_w error");
     gzclose(file);
+#endif
     napi_value result = nullptr;
-
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1291,14 +1290,12 @@ static napi_value GzOpen(napi_env env, napi_callback_info info)
 
 static napi_value GzOpen64(napi_env env, napi_callback_info info)
 {
-
-    gzFile file = nullptr;
 #ifdef Z_LARGE64
+    gzFile file = nullptr;
     file = gzopen64(TESTFILE, "wb");
-#endif
     NAPI_ASSERT(env, file != nullptr, "gzopen64 error");
     gzclose(file);
-
+#endif
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
