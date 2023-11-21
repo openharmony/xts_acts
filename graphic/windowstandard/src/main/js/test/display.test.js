@@ -449,7 +449,8 @@ describe('display_test', function () {
                        done();
                        }
                        console.info('www data Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
-                   });
+                       done();
+                    });
                } catch (err) {
                     console.error('www data Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
                     expect().assertFail();
