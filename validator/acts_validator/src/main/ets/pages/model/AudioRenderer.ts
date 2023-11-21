@@ -35,33 +35,32 @@ class AudioRenderer {
     async startRenderer(){
         try{
             await this.audioRenderer.start()
-            globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(value => {
+            globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(async (value) => {
                 this.fd = value.fd
-				        this.offset = value.offset
+				this.offset = value.offset
                 this.length = value.length
                 Logger.info(this.tag, `getRawFd fd : ${this.fd}, offset: ${value.offset}, length: ${value.length}`)
+				let bufferSize = await this.audioRenderer.getBufferSize()
+				Logger.info(this.tag, `audioRenderer bufferSize:` + JSON.stringify(bufferSize))
+				let len = this.length % bufferSize == 0 ? Math.floor(this.length / bufferSize) : Math.floor(this.length / bufferSize + 1);
+				let buf = new ArrayBuffer(bufferSize);
+				while (true) {
+					for (let i = 0;i < len; i++) {
+						let options = {
+							offset: i * bufferSize + this.offset,
+							length: bufferSize
+						}
+						await fs.read(this.fd, buf, options)
+						try {
+							await this.audioRenderer.write(buf)
+						} catch (err) {
+							console.error(`audioRenderer.write err: ${err}`)
+						}
+					}
+				}
             }).catch(err => {
                 console.log(`getRawFd fail err: ${err}, message: ${err.message}, code: ${err.code}`);
             })
-
-            let bufferSize = await this.audioRenderer.getBufferSize()
-            Logger.info(this.tag, `audioRenderer bufferSize:` + JSON.stringify(bufferSize))
-            let len = this.length % bufferSize == 0 ? Math.floor(this.length / bufferSize) : Math.floor(this.length / bufferSize + 1);
-            let buf = new ArrayBuffer(bufferSize);
-            while (true) {
-                for (let i = 0;i < len; i++) {
-                    let options = {
-                        offset: i * bufferSize + this.offset,
-                        length: bufferSize
-                    }
-                    await fs.read(this.fd, buf, options)
-                    try {
-                        await this.audioRenderer.write(buf)
-                    } catch (err) {
-                        console.error(`audioRenderer.write err: ${err}`)
-                    }
-                }
-            }
         }catch(err){
             Logger.info(this.tag, `startRenderer fail err: ${err}, message: ${err.message}, code: ${err.code}`)
         }
