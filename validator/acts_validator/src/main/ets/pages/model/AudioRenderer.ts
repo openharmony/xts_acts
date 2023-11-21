@@ -35,7 +35,7 @@ class AudioRenderer {
     async startRenderer() {
         try {
             await this.audioRenderer.start()
-            globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(value => {
+            globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(async (value) => {
                 this.fd = value.fd
                 this.offset = value.offset
                 this.length = value.length
