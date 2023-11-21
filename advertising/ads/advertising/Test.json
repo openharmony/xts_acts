@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsCloudAdTest.hap",
-                "AdsKitServiceDemo.hap"
+                "ActsAdsKitTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
