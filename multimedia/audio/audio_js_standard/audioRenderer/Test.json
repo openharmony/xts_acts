@@ -6,7 +6,7 @@
         "bundle-name": "com.example.audiorenderer",
         "package-name": "com.example.audiorenderer",
         "shell-timeout": "60000",
-        "testcase-timeout": 100000
+        "testcase-timeout": "100000"
     },
     "kits": [
         {
@@ -19,8 +19,14 @@
         {
             "type": "ShellKit",
             "run-command": [
+			"power-shell wakeup",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602",
                 "mkdir -p /data/app/el2/100/base/com.example.audiorenderer/haps/entry/files",
                 "chmod 777 -R /data/app/el2/100/base/com.example.audiorenderer/haps/entry"
+            ],
+			"teardown-command":[
+                "power-shell setmode 600"
             ],
             "cleanup-apps": true
         },
