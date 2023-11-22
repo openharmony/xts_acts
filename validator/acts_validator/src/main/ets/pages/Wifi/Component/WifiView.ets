@@ -17,6 +17,8 @@ import Logger from '../../model/Logger'
 import wifi from '@ohos.wifiManager'
 
 const TAG: string = 'WifiView'
+const WIFI_SEC_TYPE_INVALID: wifi.WifiSecurityType = 0;
+const WIFI_SEC_TYPE_OPEN: wifi.WifiSecurityType = 1;
 
 @Component
 export struct WifiView {
@@ -28,7 +30,7 @@ export struct WifiView {
     Logger.debug(TAG, `aboutToAppear ${JSON.stringify(this.wifi)}`)
     if (this.wifi) {
       if (this.wifi.securityType) {
-        if (this.wifi.securityType === 0 || this.wifi.securityType === 1) {
+        if (this.wifi.securityType === WIFI_SEC_TYPE_INVALID || this.wifi.securityType === WIFI_SEC_TYPE_OPEN) {
           this.securityString = '开放'
           this.isLock = false
         }
