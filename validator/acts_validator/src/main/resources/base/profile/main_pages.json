@@ -80,6 +80,19 @@
     "pages/Notification/Notification_index",
     "pages/Notification/CommonEvent/page/CommonEventSetting",
     "pages/Notification/CommonEvent/page/CommonEvent",
-    "pages/Notification/CustomNotification/CustomNotification"
+    "pages/Notification/CustomNotification/CustomNotification",
+    "pages/Wifi/Wifi_index",
+    "pages/Wifi/WifiScan"
   ]
 }
+
+
+
+
+
+
+
+
+
+
+

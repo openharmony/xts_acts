@@ -37,7 +37,7 @@ export default class MainAbility extends Ability {
           "ohos.permission.MICROPHONE", "ohos.permission.START_INVISIBLE_ABILITY",
           "ohos.permission.SYSTEM_FLOAT_WINDOW", "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
           "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
-          "ohos.permission.MEDIA_LOCATION","ohos.permission.WRITE_IMAGEVIDEO","ohos.permission.READ_IMAGEVIDEO"]).then(() => {})
+          "ohos.permission.MEDIA_LOCATION","ohos.permission.WRITE_IMAGEVIDEO","ohos.permission.READ_IMAGEVIDEO","ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then(() => {})
           try {
             notification.requestEnableNotification((err: Base.BusinessError) => {
               if (err) {

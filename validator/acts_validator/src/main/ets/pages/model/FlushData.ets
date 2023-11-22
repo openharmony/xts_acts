@@ -333,4 +333,29 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
+
+  static ResetWifi = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Wifi', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Wifi'. Data: " + data);
+    });
+    promise = preferences.put('Wifi', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Wifi'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

@@ -33,6 +33,7 @@ let path8 = path + '/Screen';
 let path9 = path + '/MultimodalInput';
 let path10 = path + '/Power';
 let path1_1 = path + '/Notification';
+let path1_2 = path + '/Wifi';
 let picturePath = path + '/screenshot';
 let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
@@ -44,6 +45,7 @@ let ScreenColorBackPath = path + '/ScreenColorBack.txt'; // 屏幕
 let MultimodalInputColorBackPath = path + '/MultimodalInputColorBack.txt'; // 多模输入
 let PowerColorBackPath = path + '/PowerColorBack.txt'; // 电源管理
 let NotificationColorBackPath = path + '/NotificationColorBack.txt'; // 通知管理
+let WifiColorBackPath = path + '/WifiColorBack.txt'; // wifi管理
 let PlayerNetWorkColorBackPath = path4 + '/PlayerNetWorkColorBack.txt'; // 播放网络视频
 let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
 let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
@@ -58,6 +60,7 @@ fs.openSync(ScreenColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(MultimodalInputColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let TimePath = path + '/Time.txt';
 fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let xmlPath = path + '/Test.xml';
@@ -75,6 +78,7 @@ let path88 = path8 + '/ScreenReport.txt'; // 屏幕
 let path99 = path9 + '/MultimodalInputReport.txt'; // 多模输入
 let pathPower = path10 + '/PowerReport.txt'; // 多模输入
 let pathNotification = path1_1 + '/NotificationReport.txt'; // 多模输入
+let pathWifi = path1_2 + '/WifiReport.txt'; // wifi模块
 @Entry
 @Component
 struct IndexPage {
@@ -88,7 +92,8 @@ struct IndexPage {
     {title:'Screen',uri:'pages/Screen/Screen_index'},
     {title:'MultimodalInput',uri:'pages/MultimodalInput/MultimodalInput_index'},
     {title:'Power',uri:'pages/Power/Power_index'},
-    {title:'Notification',uri:'pages/Notification/Notification_index'}
+    {title:'Notification',uri:'pages/Notification/Notification_index'},
+    {title:'Wifi',uri:'pages/Wifi/Wifi_index'}
   ]
   @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
   async onPageShow(){
@@ -121,7 +126,8 @@ struct IndexPage {
       fs.mkdirSync(path10);
       // 通知
       fs.mkdirSync(path1_1);
-
+      // wifi管理
+      fs.mkdirSync(path1_2);
       fs.mkdirSync(picturePath);
       fs.mkdirSync(ExperienceDataPath);
 
@@ -150,6 +156,7 @@ struct IndexPage {
     fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
   build(){
     Column(){
@@ -255,6 +262,7 @@ struct IndexPage {
     fs.unlinkSync(path99);
     fs.unlinkSync(pathPower);
     fs.unlinkSync(pathNotification);
+    fs.unlinkSync(pathWifi);
     fs.unlinkSync(ArkUIColorBackPath);
     fs.unlinkSync(AudioColorBackPath);
     fs.unlinkSync(CameraColorBackPath);
@@ -268,6 +276,7 @@ struct IndexPage {
     fs.unlinkSync(MultimodalInputColorBackPath);
     fs.unlinkSync(PowerColorBackPath);
     fs.unlinkSync(NotificationColorBackPath);
+    fs.unlinkSync(WifiColorBackPath);
     fs.rmdirSync(picturePath);
     fs.mkdirSync(picturePath);
     fs.rmdirSync(ExperienceDataPath);
@@ -287,6 +296,7 @@ struct IndexPage {
     fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -300,6 +310,7 @@ struct IndexPage {
     fs.openSync(MultimodalInputColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
@@ -312,6 +323,7 @@ struct IndexPage {
     FlushData.ResetMultimodalInput();
     FlushData.ResetPower();
     FlushData.ResetNotification();
+    FlushData.ResetWifi();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
@@ -334,7 +346,8 @@ struct IndexPage {
     let ScreenReport; // 屏幕
     let MultimodalInputReport; // 多模输入
     let PowerReport; // 电源管理
-    let NotificationReport; //通知
+    let NotificationReport; // 通知
+    let WifiReport; // wifi管理
     /*
      * ArkUI
      */
@@ -481,8 +494,25 @@ struct IndexPage {
       result11[i] = str11[i * 2 + 1];
     }
 
+    /**
+     * wifi 通知
+     */
+    let OP12 = fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf12 = new ArrayBuffer(40960);
+    fs.readSync(OP12.fd,buf12);
+    WifiReport = String.fromCharCode.apply(null, new Uint8Array(buf12));
+    let str12 = WifiReport.split(";");
+    let title12 = [];
+    let result12 = [];
+    for (let i = 0; i < Math.floor(str12.length / 2); i++) {
+      title12[i] = str12[i * 2];
+      result12[i] = str12[i * 2 + 1];
+    }
+
+
     let report = ArkUIReport + AudioReport + CameraReport + PlayerReport +
-    ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport + PowerReport + NotificationReport;
+    ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport
+    + PowerReport + NotificationReport + WifiReport;
     let FailIndex = report.indexOf('false');
     let FailNum = 0;
     while(FailIndex != -1) {
@@ -705,6 +735,28 @@ struct IndexPage {
     }
     let NotificationTestNum = NotificationFailNum + NotificationPassNum;
     let notificationTestNum = (NotificationTestNum).toString();
+
+    /**
+     * Wifi 管理
+     */
+    let WifiFailIndex = WifiReport.indexOf('false');
+    let WifiFailNum = 0;
+    while (WifiFailIndex != -1) {
+      console.log(WifiFailIndex);
+      WifiFailNum++;
+      WifiFailIndex = WifiReport.indexOf('false',WifiFailIndex + 1);
+    }
+    let wifiFailNum = (WifiFailNum).toString();
+    let WifiPassIndex = WifiReport.indexOf('true ');
+    let WifiPassNum = 0;
+    while (WifiPassIndex != -1) {
+      console.log(WifiPassIndex);
+      WifiPassNum++;
+      WifiPassIndex = WifiReport.indexOf('true ',WifiPassIndex + 1);
+    }
+    let WifiTestNum = WifiFailNum + WifiPassNum;
+    let wifiTestNum = (WifiTestNum).toString();
+
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -973,6 +1025,32 @@ struct IndexPage {
       serializer.setAttributes("time", "*");
       serializer.setAttributes("classname", "ActsNotificationTest");
       serializer.setAttributes("result", String(result11[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Wifi 管理
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsWifiTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", wifiFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", wifiTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title12.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title12[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsWifiTest");
+      serializer.setAttributes("result", String(result12[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
       serializer.endElement();
