@@ -17,7 +17,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
 
-const delay_time = 1000;
+const delayTime = 1000;
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -51,8 +51,8 @@ export default class EntryAbility extends UIAbility {
     setTimeout(() => {
       this.context.terminateSelf((err) => {
         console.info('Terminate self: ' + JSON.stringify(err));
-      })
-    }, delay_time);
+      });
+    }, delayTime);
   }
 
   onBackground() {
