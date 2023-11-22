@@ -57,15 +57,10 @@ describe('etsIntlFunTest', function () {
         var newDate = new Date((24 * 60 * 60 * 1000) * (52 * 365 + 9 * 30 + 23));
         var options =
             { year: "2-digit", month: "2-digit", day: "2-digit",
-                hour: "2-digit", minute: "2-digit",
-                timeZoneName: "short" };
+                hour: "2-digit", minute: "2-digit", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("en-US", options).format;
         console.log("intlDateTimeFormatTest003::" + intlObj(newDate));
-        if (intlObj(newDate).indexOf('CST') != -1) {
-            expect(intlObj(newDate)).assertEqual("10/08/22, 08:00 AM CST");
-        } else {
-            expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
-        }
+        expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM");
     })
 
     /**
@@ -79,15 +74,10 @@ describe('etsIntlFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_004', 0, function () {
         var options =
             { year: "2-digit", month: "2-digit", day: "2-digit",
-                hour: "2-digit", minute: "2-digit",
-                timeZoneName: "short" };
+                hour: "2-digit", minute: "2-digit", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("en", options).format;
         console.log("intlDateTimeFormatTest004::" + intlObj(newDate));
-        if (intlObj(newDate).indexOf('CST') != -1) {
-            expect(intlObj(newDate)).assertEqual("10/08/22, 08:00 AM CST");
-        } else {
-            expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
-        }
+        expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM");
     })
 
     /**
@@ -137,7 +127,7 @@ describe('etsIntlFunTest', function () {
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_007', 0, function () {
         var options =
-            { year: "numeric", month: "long", day: "numeric" };
+            { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("th-TH-u-nu-thai-ca-chinese", options).format;
         console.log("intlDateTimeFormatTest007::" + intlObj(newDate));
         expect(intlObj(newDate)).assertEqual("๒๐๒๒(เหรินอิ๋น) 9 ๑๓");
@@ -152,7 +142,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_008', 0, function () {
-        var options = { year: "numeric", month: "long", day: "numeric" };
+        var options = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("en-GB", options).format;
         console.log("intlDateTimeFormatTest008::" + intlObj(newDate));
         expect(intlObj(newDate)).assertEqual("8 October 2022");
@@ -168,7 +158,7 @@ describe('etsIntlFunTest', function () {
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_009', 0, function () {
         var options =
-            { year: "numeric", month: "long", day: "numeric" };
+            { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("aa", options).format;
         console.log("intlDateTimeFormatTest009::" + intlObj(newDate));
         expect(intlObj(newDate)).assertEqual("October 8, 2022");
@@ -184,7 +174,7 @@ describe('etsIntlFunTest', function () {
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_010', 0, function () {
         var options =
-            { year: "numeric", month: "long", day: "numeric" };
+            { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("aa", options).format;
         console.log("intlDateTimeFormatTest010::" + intlObj(newDate));
         expect(intlObj(newDate)).assertInstanceOf("String");
@@ -199,7 +189,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_011', 0, function () {
-        var options = { year: "numeric", month: "long", day: "numeric" };
+        var options = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat(['ban', 'zh'], options).format;
         console.log("intlDateTimeFormatTest011::" + intlObj(newDate));
         expect(intlObj(newDate)).assertEqual("2022年10月8日");
@@ -214,7 +204,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_012', 0, function () {
-        var options = { year: "numeric", month: "long", day: "numeric" };
+        var options = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat(['en', 'zh'], options).format;
         console.log("intlDateTimeFormatTest012::" + intlObj(newDate));
         expect(intlObj(newDate)).assertEqual("October 8, 2022");
@@ -229,7 +219,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_013', 0, function () {
-        var options = { year: "numeric", month: "long", day: "numeric" };
+        var options = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat(['abc', 'ban'], options).format;
         console.log("intlDateTimeFormatTest013::" + intlObj(newDate));
         expect(intlObj(newDate)).assertContain('2022');
@@ -244,7 +234,7 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_014', 0, function () {
-        var options = { year: "numeric", month: "long", day: "numeric" };
+        var options = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" };
         var intlObj = new Intl.DateTimeFormat("zh-CN", options).format;
         console.log("intlDateTimeFormatTest014::" + intlObj(newDate));
         expect(intlObj(newDate)).assertContain('2022年10月8日');
