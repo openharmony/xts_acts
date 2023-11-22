@@ -24,7 +24,7 @@ let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 @Component
 struct CustomContainerUser {
   @State name: string = 'KeyboardDisplay';
-  @State toSP_daemon: string = 'SP_daemon -editor completeTime com.example.kikakeyboard ohtest';
+  @State toSP_daemon: string = 'SP_daemon -editor completeTime com.example.kikakeyboard 输入法 ohtest';
   @State StepTips: string = '操作步骤：根据操作提示点击输入框等待键盘加载'+'\n'+'预期结果：弹出输入法键盘时延小于1000ms通过测试';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
