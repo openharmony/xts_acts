@@ -15,14 +15,14 @@
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import display from '@ohos.display';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
 globalThis.GetApplicationState1 = async () => {
   console.info(TAG, 'GetApplicationState Start!');
   let processInfo = await globalThis.singleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
-}
+};
 
 globalThis.createWindow1 = async (name, windowType, rect) => {
   let win;
@@ -43,7 +43,7 @@ globalThis.createWindow1 = async (name, windowType, rect) => {
   } catch {
     console.error('Window create failed!');
   }
-}
+};
 
 const TAG: string = 'ServiceExtAbilityTAG';
 
@@ -69,7 +69,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       globalThis.createWindow1('uiPages', window.WindowType.TYPE_FLOAT, navigationBarRect);
-    })
+    });
   }
 
   onConnect(want) {

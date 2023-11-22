@@ -19,7 +19,7 @@ import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 import commonEventManager from '@ohos.commonEventManager';
 
-const delay_time = 500;
+const delayTime = 500;
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -40,8 +40,8 @@ globalThis.GetApplicationState4 = async () => {
   console.info(TAG, `applicationState : ${commonEventData.parameters.applicationState}`);
   commonEventManager.publish('visibilityState', commonEventData, (error) => {
     console.info('publish data : ' + JSON.stringify(error));
-  })
-}
+  });
+};
 globalThis.createWindow4 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
@@ -61,7 +61,7 @@ globalThis.createWindow4 = async (name, windowType, rect) => {
   } catch {
     console.error('Window create failed!');
   }
-}
+};
 globalThis.createWindow5 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
@@ -81,7 +81,7 @@ globalThis.createWindow5 = async (name, windowType, rect) => {
   } catch {
     console.error('Window create failed!');
   }
-}
+};
 
 class StubTest extends rpc.RemoteObject {
   // ...
@@ -105,7 +105,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       globalThis.createWindow4('uiPages1', window.WindowType.TYPE_FLOAT, navigationBarRect);
-    })
+    });
 
     await display.getDefaultDisplay().then(async (dis) => {
       let navigationBarRect = {
@@ -115,10 +115,10 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       await globalThis.createWindow5('uiPages2', window.WindowType.TYPE_FLOAT, navigationBarRect);
-      await sleep(delay_time);
+      await sleep(delayTime);
       await globalThis.GetApplicationState4();
 
-    })
+    });
   }
 
   onConnect(want) {

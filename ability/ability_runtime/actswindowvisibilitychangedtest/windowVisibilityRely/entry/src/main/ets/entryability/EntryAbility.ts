@@ -15,7 +15,7 @@
 
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import commonEventManager from '@ohos.commonEventManager';
 
 let applicationState = 0;
@@ -24,7 +24,7 @@ let commonEventData = {
     applicationState: applicationState
   }
 };
-const delay_time = 1000;
+const delayTime = 1000;
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -61,11 +61,11 @@ export default class EntryAbility extends UIAbility {
         commonEventData.parameters.applicationState = data[0].state;
         commonEventManager.publish('visibilityState', commonEventData, (error) => {
           console.info('publish data : ' + JSON.stringify(error));
-        })
+        });
       }).catch((error) => {
         console.info('error' + JSON.stringify(error));
       });
-    }, delay_time)
+    }, delayTime);
   }
 
   onBackground() {

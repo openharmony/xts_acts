@@ -15,11 +15,11 @@
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import display from '@ohos.display';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import rpc from '@ohos.rpc';
 import commonEventManager from '@ohos.commonEventManager';
 
-const delay_time = 500;
+const delayTime = 500;
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -39,8 +39,8 @@ globalThis.GetApplicationState2 = async () => {
   console.info(TAG, `applicationState : ${commonEventData.parameters.applicationState}`);
   commonEventManager.publish('visibilityState', commonEventData, (error) => {
     console.info(TAG, 'publish data : ' + JSON.stringify(error));
-  })
-}
+  });
+};
 globalThis.createWindow2 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
@@ -54,13 +54,13 @@ globalThis.createWindow2 = async (name, windowType, rect) => {
     await win.moveTo(rect.left, rect.top);
     await win.resetSize(rect.width, rect.height);
     await win.loadContent('pages/uiPage3');
-    await win.setBackgroundColor('#ffeae6e6')
+    await win.setBackgroundColor('#ffeae6e6');
     await win.show();
     console.info(TAG, 'Start creating window successfully!');
   } catch {
     console.error('Window create failed!');
   }
-}
+};
 
 const TAG: string = 'ServiceExtAbilityTAG';
 
@@ -86,9 +86,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       await globalThis.createWindow2('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
-      await sleep(delay_time);
+      await sleep(delayTime);
       await globalThis.GetApplicationState2();
-    })
+    });
   }
 
   onConnect(want) {

@@ -15,7 +15,7 @@
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import display from '@ohos.display';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
 globalThis.createWindow3 = async (name, windowType, rect) => {
@@ -37,7 +37,7 @@ globalThis.createWindow3 = async (name, windowType, rect) => {
   } catch {
     console.error('Window create failed!');
   }
-}
+};
 
 const TAG: string = 'ServiceExtAbilityTAG';
 
@@ -63,7 +63,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 200
       };
       await globalThis.createWindow3('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
-    })
+    });
   }
 
   onConnect(want) {
