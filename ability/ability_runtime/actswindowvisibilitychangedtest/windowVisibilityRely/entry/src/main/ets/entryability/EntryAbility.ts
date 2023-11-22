@@ -15,7 +15,7 @@
 
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import type window from '@ohos.window';
+import window from '@ohos.window';
 import commonEventManager from '@ohos.commonEventManager';
 
 let applicationState = 0;

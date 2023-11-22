@@ -18,7 +18,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
-import type window from '@ohos.window';
+import window from '@ohos.window';
 
 export default class TestAbility extends UIAbility {
   onCreate(want, launchParam) {

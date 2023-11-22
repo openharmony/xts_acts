@@ -15,7 +15,7 @@
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import display from '@ohos.display';
-import type window from '@ohos.window';
+import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
 globalThis.GetApplicationState1 = async () => {
