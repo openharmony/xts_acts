@@ -192,6 +192,11 @@ export default function textInputJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :textInputTest09
+     * @tc.name   :test getCaretOffset when iput text is null
+     * @tc.desc   :expect caretOffset index 0 when input text is null
+     */
     it('textInputTest09', 0, async function (done) {
       console.info('[textInputTest09] START');
       await Utils.sleep(1000);
@@ -206,6 +211,11 @@ export default function textInputJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :textInputTest10
+     * @tc.name   :test getCaretOffset when iput text length less than maxLength
+     * @tc.desc   :expect caretOffset index equal input text length
+     */
     it('textInputTest10', 0, async function (done) {
       console.info('[textInputTest10] START');
       await Utils.sleep(1000);
@@ -236,7 +246,11 @@ export default function textInputJsunit() {
       done();
     });
 
-    // test exceed maxLength
+    /*
+     * @tc.number :textInputTest10
+     * @tc.name   :test getCaretOffset when iput text length exceed maxLength
+     * @tc.desc   :expect caretOffset index equal maxLength
+     */
     it('textInputTest11', 0, async function (done) {
       console.info('[textAreaTest13] START');
       await Utils.sleep(1000);

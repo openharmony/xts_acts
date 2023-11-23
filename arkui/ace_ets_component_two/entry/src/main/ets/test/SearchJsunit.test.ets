@@ -82,6 +82,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch003
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length 19, get backend max length property
+     */
     it('testSearch003', 0, async function (done) {
       console.info('[testSearch003] START');
       await Utils.sleep(2000);
@@ -92,6 +97,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch004
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length 0, get backend max length property
+     */
     it('testSearch004', 0, async function (done) {
       console.info('[testSearch004] START');
       await Utils.sleep(1000);
@@ -118,6 +128,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch005
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length 0, get backend max length property
+     */
     it('testSearch005', 0, async function (done) {
       console.info('[testSearch005] START');
       await Utils.sleep(1000);
@@ -144,6 +159,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch006
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length 1000000, get backend max length property
+     */
     it('testSearch006', 0, async function (done) {
       console.info('[testSearch006] START');
       await Utils.sleep(1000);
@@ -170,6 +190,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch007
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length illeggal value, get backend max length property
+     */
     it('testSearch007', 0, async function (done) {
       console.info('[testSearch007] START');
       await Utils.sleep(1000);
@@ -196,6 +221,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch008
+     * @tc.name   :test maxLength interface
+     * @tc.desc   :set max length illeggal value, get backend max length property
+     */
     it('testSearch008', 0, async function (done) {
       console.info('[testSearch008] START');
       await Utils.sleep(1000);
@@ -222,6 +252,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch009
+     * @tc.name   :test copy options
+     * @tc.desc   :get default copy options
+     */
     it('testSearch009', 0, async function (done) {
       console.info('[testSearch009] START');
       await Utils.sleep(2000);
@@ -232,6 +267,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch0010
+     * @tc.name   :test copy options
+     * @tc.desc   :get default copy options
+     */
     it('testSearch0010', 0, async function (done) {
       console.info('[testSearch0010] START');
       await Utils.sleep(1000);
@@ -258,6 +298,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch0011
+     * @tc.name   :test copy options
+     * @tc.desc   :get CopyOptions.CROSS_DEVICE
+     */
     it('testSearch0011', 0, async function (done) {
       console.info('[testSearch0011] START');
       await Utils.sleep(1000);
@@ -284,6 +329,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch099
+     * @tc.name   :test  getCaretOffset when null input
+     * @tc.desc   :expect caretOffset index 0 when text is null
+     */
     it('testSearch099', 0, async function (done) {
       console.info('[testSearch099] START');
       await Utils.sleep(1000);
@@ -298,6 +348,11 @@ export default function searchJsunit() {
       done();
     });
 
+    /*
+     * @tc.number :testSearch100
+     * @tc.name   :test getCaretOffset
+     * @tc.desc   :expect caretOffset index 9 when text length is 9
+     */
     it('testSearch100', 0, async function (done) {
       console.info('[testSearch100] START');
       await Utils.sleep(1000);
@@ -328,7 +383,11 @@ export default function searchJsunit() {
       done();
     });
 
-    // test exceed maxLength
+    /*
+     * @tc.number :testSearch100
+     * @tc.name   :test getCaretOffset when iput text exceed maxLength
+     * @tc.desc   :expect caretOffset index max length.
+     */
     it('testSearch101', 0, async function (done) {
       console.info('[testSearch100] START');
       await Utils.sleep(1000);
