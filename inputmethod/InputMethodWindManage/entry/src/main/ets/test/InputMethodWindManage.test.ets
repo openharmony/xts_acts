@@ -19,6 +19,7 @@ import subtype from '@ohos.InputMethodSubtype';
 import commonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
+import { PanelInfo, PanelFlag, PanelType } from '@ohos.inputMethod.Panel';
 
 export default function inputMethodWindManageAbility() {
   describe('inputMethodWindManageTest', function () {
@@ -82,6 +83,12 @@ export default function inputMethodWindManageAbility() {
       }
     })
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_createPanelCallback_0010
+    * @tc.name   Sub_Misc_inputMethod_Panel_createPanelCallback_0010
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 unSubscriberCallback start");
@@ -134,6 +141,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_createPanelPromise_0020
+    * @tc.name   Sub_Misc_inputMethod_Panel_createPanelPromise_0020
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 unSubscriberCallback start");
@@ -186,6 +199,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030
+    * @tc.name   Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 unSubscriberCallback start");
@@ -238,6 +257,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040
+    * @tc.name   Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 unSubscriberCallback start");
@@ -290,6 +315,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentCallback_0050
+    * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentCallback_0050
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 unSubscriberCallback start");
@@ -342,6 +373,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentPromise_0060
+    * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentPromise_0060
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 unSubscriberCallback start");
@@ -394,6 +431,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentCallback_0070
+    * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentCallback_0070
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback start");
@@ -446,6 +489,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentPromise_0080
+    * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentPromise_0080
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 unSubscriberCallback start");
@@ -498,6 +547,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_resizeCallback_0090
+    * @tc.name   Sub_Misc_inputMethod_Panel_resizeCallback_0090
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 unSubscriberCallback start");
@@ -550,6 +605,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_resizePromise_0100
+    * @tc.name   Sub_Misc_inputMethod_Panel_resizePromise_0100
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_resizePromise_0100 unSubscriberCallback start");
@@ -602,6 +663,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_moveToCallback_0110
+    * @tc.name   Sub_Misc_inputMethod_Panel_moveToCallback_0110
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 unSubscriberCallback start");
@@ -654,6 +721,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_moveToPromise_0120
+    * @tc.name   Sub_Misc_inputMethod_Panel_moveToPromise_0120
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 unSubscriberCallback start");
@@ -706,6 +779,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_showCallback_0130
+    * @tc.name   Sub_Misc_inputMethod_Panel_showCallback_0130
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_showCallback_0130 unSubscriberCallback start");
@@ -758,6 +837,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_hideCallback_0150
+    * @tc.name   Sub_Misc_inputMethod_Panel_hideCallback_0150
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_hideCallback_0150 unSubscriberCallback start");
@@ -810,6 +895,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_showPromise_0140
+    * @tc.name   Sub_Misc_inputMethod_Panel_showPromise_0140
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_showPromise_0140 unSubscriberCallback start");
@@ -862,6 +953,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_hidePromise_0160
+    * @tc.name   Sub_Misc_inputMethod_Panel_hidePromise_0160
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_hidePromise_0160 unSubscriberCallback start");
@@ -914,6 +1011,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_onShow_0170
+    * @tc.name  Sub_Misc_inputMethod_Panel_onShow_0170
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_onShow_0170 unSubscriberCallback start");
@@ -966,6 +1069,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_onHide_0180
+    * @tc.name  Sub_Misc_inputMethod_Panel_onHide_0180
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_onHide_0180 unSubscriberCallback start");
@@ -1018,6 +1127,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_offShow_0190
+    * @tc.name  Sub_Misc_inputMethod_Panel_offShow_0190
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_offShow_0190 unSubscriberCallback start");
@@ -1070,6 +1185,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_offHide_0200
+    * @tc.name  Sub_Misc_inputMethod_Panel_offHide_0200
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_offHide_0200 unSubscriberCallback start");
@@ -1122,6 +1243,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_inputWindowInfo_0201
+    * @tc.name  Sub_Misc_inputMethod_inputWindowInfo_0201
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async function (done) {
       let inputWindowInfo: inputMethod.InputWindowInfo = {
         name: "inputWindowInfo_0201/99",
@@ -1144,6 +1271,12 @@ export default function inputMethodWindManageAbility() {
       }
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_changeFlag_0210
+    * @tc.name  Sub_Misc_inputMethod_Panel_changeFlag_0210
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0210 unSubscriberCallback start");
@@ -1196,6 +1329,12 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_Panel_changeFlag_0211
+    * @tc.name  Sub_Misc_inputMethod_Panel_changeFlag_0211
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback start");
@@ -1246,6 +1385,40 @@ export default function inputMethodWindManageAbility() {
         }
         commonEventManager.publish("test", commonEventPublishData, publishCallback);
       })
+    });
+
+    /*
+    * @tc.number  SUB_InputMethod_IMF_panelInfo_0400
+    * @tc.name  SUB_InputMethod_IMF_panelInfo_0400
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
+    it('SUB_InputMethod_IMF_panelInfo_0400', 0,  async function (done) {
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 start");
+      let panel:PanelInfo;
+      panel = {
+        type: 1,
+        flag: 0
+      }
+      let FLAG_FLOATING = PanelFlag.FLAG_FLOATING
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 FLAG_FLOATING: " + FLAG_FLOATING);
+      expect(FLAG_FLOATING === 1).assertTrue();
+      let FLAG_FIXED = PanelFlag.FLAG_FIXED
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 FLAG_FIXED: " + FLAG_FIXED);
+      expect(FLAG_FIXED === 0).assertTrue();
+
+      let FLAG_CANDIDATE = PanelFlag.FLAG_CANDIDATE
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 FLAG_CANDIDATE: " + FLAG_CANDIDATE);
+      expect(FLAG_CANDIDATE === 2).assertTrue();
+
+      let SOFT_KEYBOARD = PanelType.SOFT_KEYBOARD
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 SOFT_KEYBOARD: " + SOFT_KEYBOARD);
+      expect(SOFT_KEYBOARD === 0).assertTrue();
+
+      let STATUS_BAR = PanelType.STATUS_BAR
+      console.info("====>SUB_InputMethod_IMF_panelInfo_0400 STATUS_BAR: " + STATUS_BAR);
+      expect(STATUS_BAR === 1).assertTrue();
+      done();
     });
 
   });
