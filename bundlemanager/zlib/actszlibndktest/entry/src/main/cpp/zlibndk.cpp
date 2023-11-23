@@ -17,9 +17,9 @@
 #include "native_common.h"
 #include "zconf.h"
 #include "zlib.h"
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <cstdio>
 
 #define NO_ERR 0
 #define SUCCESS 1
@@ -371,7 +371,7 @@ static napi_value ZLibVersion(napi_env env, napi_callback_info info)
 {
     static const char *myVersion = ZLIB_VERSION;
     static const char *err;
-    err = zlibVersion(); // 1.2.11
+    err = zlibVersion();
     NAPI_ASSERT(env, err == myVersion, "zlibVersion error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -1144,7 +1144,7 @@ static napi_value GzTell(napi_env env, napi_callback_info info)
     file = gzopen(TESTFILE, "wb");
     NAPI_ASSERT(env, file != nullptr, "gzopen error");
     char ret = VALUE_ZERO;
-    NAPI_ASSERT(env, gztell(file) == ret, "gzseek error"); /* define gztell gztell in zlib.h */
+    NAPI_ASSERT(env, gztell(file) == ret, "gzseek error");
     gzclose(file);
     napi_create_int32(env, SUCCESS, &result);
     return result;
