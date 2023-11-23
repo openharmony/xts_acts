@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -188,6 +189,95 @@ export default function textInputJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[textInputTest08] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      done();
+    });
+
+    /*
+     * @tc.number :textInputTest09
+     * @tc.name   :test getCaretOffset when iput text is null
+     * @tc.desc   :expect caretOffset index 0 when input text is null
+     */
+    it('textInputTest09', 0, async function (done) {
+      console.info('[textInputTest09] START');
+      await Utils.sleep(1000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(2000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index0');
+      done();
+    });
+
+    /*
+     * @tc.number :textInputTest10
+     * @tc.name   :test getCaretOffset when iput text length less than maxLength
+     * @tc.desc   :expect caretOffset index equal input text length
+     */
+    it('textInputTest10', 0, async function (done) {
+      console.info('[textInputTest10] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text2": '123456789'
+          }
+        }
+        var innerEvent = {
+          eventId: 225,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[textInputTest10] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[textInputTest10] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index9');
+      done();
+    });
+
+    /*
+     * @tc.number :textInputTest10
+     * @tc.name   :test getCaretOffset when iput text length exceed maxLength
+     * @tc.desc   :expect caretOffset index equal maxLength
+     */
+    it('textInputTest11', 0, async function (done) {
+      console.info('[textAreaTest13] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text2": '1234567890abc'
+          }
+        }
+        var innerEvent = {
+          eventId: 225,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[textInputTest11] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[textInputTest11] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index10');
       done();
     });
   })
