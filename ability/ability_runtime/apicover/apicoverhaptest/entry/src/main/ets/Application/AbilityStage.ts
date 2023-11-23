@@ -46,8 +46,12 @@ export default class MyAbilityStage extends AbilityStage {
       return abilityId;
   }
   onConfigurationUpdate(config) {
-      console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language)
-      console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language)
-      globalThis.UpdateConfiguration_0200 = config.language
+      console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language);
+      console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language);
+      globalThis.UpdateConfiguration_0200 = config.language;
+  }
+  onNewProcessRequest(want) {
+    console.log("onNewProcesssRequest called want:" + JSON.stringify(want));
+    return "";
   }
 }
