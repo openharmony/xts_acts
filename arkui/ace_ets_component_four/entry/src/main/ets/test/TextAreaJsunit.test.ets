@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -230,6 +231,81 @@ export default function textAreaJsunit() {
       console.info("[textAreaTest10] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('textAreaTest10 END');
+      done();
+    });
+
+    it('textAreaTest11', 0, async function (done) {
+      console.info('[textAreaTest11] START');
+      await Utils.sleep(1000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(2000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index0');
+      done();
+    });
+
+    it('textAreaTest12', 0, async function (done) {
+      console.info('[textAreaTest12] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text2": '123456789'
+          }
+        }
+        var innerEvent = {
+          eventId: 218,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[textAreaTest12] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[textAreaTest12] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index9');
+      done();
+    });
+
+    // test exceed maxLength
+    it('textAreaTest13', 0, async function (done) {
+      console.info('[textAreaTest13] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text2": '1234567890abc'
+          }
+        }
+        var innerEvent = {
+          eventId: 218,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[textAreaTest13] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[textAreaTest13] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index10');
       done();
     });
   })

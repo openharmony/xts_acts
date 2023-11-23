@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -78,6 +79,283 @@ export default function searchJsunit() {
       let objNew = JSON.parse(strJsonNew);
       console.info("[testSearch002] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.searchButton).assertEqual('5');
+      done();
+    });
+
+    it('testSearch003', 0, async function (done) {
+      console.info('[testSearch003] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch003] component strJson:" + strJson);
+      let obj3 = JSON.parse(strJson);
+      expect(obj3.$attrs.maxLength).assertEqual('19');
+      done();
+    });
+
+    it('testSearch004', 0, async function (done) {
+      console.info('[testSearch004] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "maxLength": 0
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch004] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch004] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch004] component strJson:" + strJson);
+      let obj4 = JSON.parse(strJson);
+      expect(obj4.$attrs.maxLength).assertEqual('0');
+      done();
+    });
+
+    it('testSearch005', 0, async function (done) {
+      console.info('[testSearch005] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "maxLength": 123
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch005] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch005] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch005] component strJson:" + strJson);
+      let obj5 = JSON.parse(strJson);
+      expect(obj5.$attrs.maxLength).assertEqual('123');
+      done();
+    });
+
+    it('testSearch006', 0, async function (done) {
+      console.info('[testSearch006] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "maxLength": 1000000
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch006] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch006] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch006] component strJson:" + strJson);
+      let obj6 = JSON.parse(strJson);
+      expect(obj6.$attrs.maxLength).assertEqual('INF');
+      done();
+    });
+
+    it('testSearch007', 0, async function (done) {
+      console.info('[testSearch007] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "maxLength": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch007] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch007] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch007] component strJson:" + strJson);
+      let obj7 = JSON.parse(strJson);
+      expect(obj7.$attrs.maxLength).assertEqual('INF');
+      done();
+    });
+
+    it('testSearch008', 0, async function (done) {
+      console.info('[testSearch008] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "maxLength": 1020300
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch008] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch008] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch008] component strJson:" + strJson);
+      let obj8 = JSON.parse(strJson);
+      expect(obj8.$attrs.maxLength).assertEqual('INF');
+      done();
+    });
+
+    it('testSearch009', 0, async function (done) {
+      console.info('[testSearch009] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch009] component strJson:" + strJson);
+      let obj9 = JSON.parse(strJson);
+      expect(obj9.$attrs.copyOption).assertEqual('CopyOptions.Local');
+      done();
+    });
+
+    it('testSearch0010', 0, async function (done) {
+      console.info('[testSearch0010] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "copyOption": CopyOptions.InApp
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch0010] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch0010] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch0010] component strJson:" + strJson);
+      let obj10 = JSON.parse(strJson);
+      expect(obj10.$attrs.copyOption).assertEqual('CopyOptions.InApp');
+      done();
+    });
+
+    it('testSearch0011', 0, async function (done) {
+      console.info('[testSearch0011] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "copyOption": CopyOptions.CROSS_DEVICE
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch0011] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch0011] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('search');
+      console.info("[testSearch0011] component strJson:" + strJson);
+      let obj11 = JSON.parse(strJson);
+      expect(obj11.$attrs.copyOption).assertEqual('CopyOptions.Distributed');
+      done();
+    });
+
+    it('testSearch099', 0, async function (done) {
+      console.info('[testSearch099] START');
+      await Utils.sleep(1000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(2000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index0');
+      done();
+    });
+
+    it('testSearch100', 0, async function (done) {
+      console.info('[testSearch100] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text": '123456789'
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch100] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch100] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index9');
+      done();
+    });
+
+    // test exceed maxLength
+    it('testSearch101', 0, async function (done) {
+      console.info('[testSearch100] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "text": '1234567890abc'
+          }
+        }
+        var innerEvent = {
+          eventId: 190,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testSearch101] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testSearch101] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let driver = UiDriver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      await btn.click();
+      await Utils.sleep(1000);
+      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let text = await caretText.getText();
+      expect(text).assertEqual('Index10');
       done();
     });
   })
