@@ -59,8 +59,9 @@ export default function abilityTest() {
           done()
         }
       }, 8000); // max wait 8s
-
-      done()
+      setTimeout(async () => {
+        done()
+      }, 300);
     });
     afterEach(async function (done) {
       console.log("done globalId="+globalId);
@@ -977,6 +978,10 @@ export default function abilityTest() {
     it('ACTS_UIExtension_Device_01',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_01 == ';
       console.log(TAG + "begin");
+      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
+        bundleName:'com.example.uiextensiontest',
+        abilityName:'TestAbility'
+      })
 
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let successBackToDesktop = 'ACTS_UIExtension_Success_Back_To_Desktop';
@@ -1029,6 +1034,10 @@ export default function abilityTest() {
     it('ACTS_UIExtension_Device_02',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_02 == ';
       console.log(TAG + "begin");
+      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
+        bundleName:'com.example.uiextensiontest',
+        abilityName:'TestAbility'
+      })
 
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let successOffTheScreen = 'ACTS_UIExtension_Success_Off_The_Screen';
