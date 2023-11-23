@@ -384,12 +384,12 @@ export default function searchJsunit() {
     });
 
     /*
-     * @tc.number :testSearch100
+     * @tc.number :testSearch101
      * @tc.name   :test getCaretOffset when iput text exceed maxLength
      * @tc.desc   :expect caretOffset index max length.
      */
     it('testSearch101', 0, async function (done) {
-      console.info('[testSearch100] START');
+      console.info('[testSearch101] START');
       await Utils.sleep(1000);
       try {
         var eventData = {
