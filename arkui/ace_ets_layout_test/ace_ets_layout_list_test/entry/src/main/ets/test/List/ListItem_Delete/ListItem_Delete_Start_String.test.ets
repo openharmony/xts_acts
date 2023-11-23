@@ -41,11 +41,12 @@ export default function ListItem_Delete_Start_String() {
       done();
     });
     afterEach(async function () {
+      let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      router.back({
-        url: 'MainAbility/pages/index/index',
-      })
-      await CommonFunc.sleep(1000);
+      console.log('button click')
+      let btn = await driver.findComponent(ON.id('ListItem_Delete_Start_String_button1'));
+      await btn.click();
+      await CommonFunc.sleep(3000);
       console.info("ListItem_Delete_Start_String after each called");
     });
     /**
@@ -90,10 +91,17 @@ export default function ListItem_Delete_Start_String() {
       console.info('[SUB_ACE_ListItem_Delete_Start_String_0200] START');
       globalThis.value.message.notify({name:'actionAreaDistance', value:'10%'});
       await CommonFunc.sleep(1000);
+
+      let driver = Driver.create();
+      await CommonFunc.sleep(2000);
+      console.log('button click')
+      let btn = await driver.findComponent(ON.id('ListItem_Delete_Start_String_button1'));
+      await btn.click();
+      await CommonFunc.sleep(2000);
+
       let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_Start_String_ListItem_00');
       let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_Start_String_ListItem_01');
 
-      let driver = await Driver.create();
       await driver.swipe(
       Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(300)), Math.round(vp2px(50))
       );
