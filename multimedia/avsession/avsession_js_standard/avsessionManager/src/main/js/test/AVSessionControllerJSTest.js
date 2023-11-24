@@ -64,7 +64,8 @@ export default function AVSessionControllerJsTest() {
       mediaUri: "mediaUri",
       startPosition: 0,
       creditsPosition: 0,
-      appName: "appName"
+      appName: "appName",
+      displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID 
     };
     const QUEUE_ITEM_DESCRIPTION_ERROR = {
       mediaId: QUEUE_ITEM_KEY_WORD,
