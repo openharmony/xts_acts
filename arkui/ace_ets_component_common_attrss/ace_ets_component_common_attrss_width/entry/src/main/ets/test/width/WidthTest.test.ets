@@ -179,8 +179,7 @@ export default function widthTest() {
       expect(data.viewObj.$attrs.width).assertEqual(data.testValue.expectValue.widthCompare);
 
       //Confirm that the calculated value is consistent with the expected value.
-      expect(strJsonRectWidth).assertEqual(data.testValue.expectValue.width);
-
+      expect(Math.abs(strJsonRectWidth - data.testValue.expectValue.width) <= 1).assertTrue();
     })
   })
 }

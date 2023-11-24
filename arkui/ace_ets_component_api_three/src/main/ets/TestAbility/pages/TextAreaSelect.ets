@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import hilog from '@ohos.hilog';
+import {MessageManager,Callback} from '../../test/MessageManager';
 @Entry
 @Component
 struct TextAreaSelect {
@@ -19,7 +21,61 @@ struct TextAreaSelect {
   controller2: TextAreaController = new TextAreaController()
   controller3: TextAreaController = new TextAreaController()
   @State text: string = '123456'
+  @State text1: string = "Show selected "
+  messageManager:MessageManager = new MessageManager()
+  onPageShow() {
 
+    globalThis.value = {
+      name:'messageManager',message:this.messageManager
+    }
+    let callback:Callback = (message:any) => {
+      console.error('message = ' + message.name + "--" + message.value)
+      if (message.name == 'Show selected (-2,-1)') {
+          this.controller.setTextSelection(-2,-1)
+      }
+      if (message.name == 'requestFocus') {
+          focusControl.requestFocus("TextAreaSelect_TextArea_1")
+      }
+      if (message.name == 'Show selected (-1,0)') {
+          this.controller.setTextSelection(-1,0)
+      }
+      if (message.name == 'Show selected (0,3)') {
+          this.controller.setTextSelection(0,3)
+      }
+      if (message.name == 'Show selected (1,3)') {
+
+          this.controller.setTextSelection(1,3)
+      }
+      if (message.name == 'Show selected (-1,6)') {
+          this.controller.setTextSelection(-1,6)
+      }
+       if (message.name == 'Show selected (0,6)') {
+          this.controller.setTextSelection(0,6)
+      }
+      if (message.name == 'Show selected (-1,8)') {
+          this.controller.setTextSelection(-1,8)
+      }
+       if (message.name == 'Show selected (0,8)') {
+          this.controller.setTextSelection(0,8)
+      }
+       if (message.name == 'Show selected (null,null)') {
+          this.controller.setTextSelection(null,null)
+      }
+       if (message.name == 'Show selected (null,undefined)') {
+          this.controller.setTextSelection(null,undefined)
+      }
+       if (message.name == 'Show selected (undefined,null)') {
+          this.controller.setTextSelection(undefined,null)
+      }
+
+      if (message.name == 'Show selected(undefined,undefined)') {
+          this.controller.setTextSelection(undefined,undefined)
+      }
+
+    }
+    this.messageManager.registerCallback(callback)
+
+  }
   build() {
     Column() {
       TextArea({ text: this.text, placeholder: 'input your word', controller: this.controller })
@@ -34,78 +90,15 @@ struct TextAreaSelect {
         .fontColor(Color.Red)
         .tabIndex(1)
         .key('TextAreaSelect_TextArea_1')
-      Button("Show selected (-2,-1)")
+        .focusable(true).focusOnTouch(true).defaultFocus(true)
+
+        Button("Show selected (-2,-1)")
         .margin(30)
         .onClick(() => {
           this.controller.setTextSelection(-2,-1)
         })
         .key('TextAreaSelect_Button_1')
-      Button("Show selected (-1,0)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(-1,0)
-        })
-        .key('TextAreaSelect_Button_2')
-      Button("Show selected (0,3)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(0,3)
-        })
-        .key('TextAreaSelect_Button_3')
-      Button("Show selected (1,3)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(1,3)
-        })
-        .key('TextAreaSelect_Button_4')
-      Button("Show selected (-1,6)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(-1,6)
-        })
-        .key('TextAreaSelect_Button_5')
-      Button("Show selected (0,6)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(0,6)
-        })
-        .key('TextAreaSelect_Button_6')
-      Button("Show selected (-1,8)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(-1,8)
-        })
-        .key('TextAreaSelect_Button_7')
-      Button("Show selected (0,8)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(0,8)
-        })
-        .key('TextAreaSelect_Button_8')
-      Button("Show selected (null,null)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(null,null)
-        })
-        .key('TextAreaSelect_Button_9')
-      Button("Show selected (null,undefined)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(null,undefined)
-        })
-        .key('TextAreaSelect_Button_10')
-      Button("Show selected (undefined,null)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(undefined,null)
-        })
-        .key('TextAreaSelect_Button_11')
-      Button("Show selected (undefined,undefined)")
-        .margin(30)
-        .onClick(() => {
-          this.controller.setTextSelection(undefined,undefined)
-        })
-        .key('TextAreaSelect_Button_12')
+
       TextArea({ text: '', placeholder: 'input your word', controller: this.controller2 })
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 20, weight: 100, family: 'cursive', style: FontStyle.Italic })

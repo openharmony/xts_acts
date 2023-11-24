@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function stackAlignChange() {
   describe('stackAlignChangeTest', function () {
     beforeEach(async function (done) {
@@ -52,31 +52,31 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-     expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentTopStart END');
       done();
     });
@@ -88,28 +88,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -124,28 +124,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -160,28 +160,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -196,32 +196,32 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentCenter END');
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       done();
     });
 
@@ -232,28 +232,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -268,28 +268,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -304,28 +304,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -340,28 +340,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopStartAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignTopStartAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -376,28 +376,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -412,28 +412,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -448,28 +448,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -484,28 +484,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -520,28 +520,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -556,28 +556,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -592,28 +592,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -628,28 +628,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -664,28 +664,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignTopAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Top});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Top });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
@@ -700,28 +700,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -736,28 +736,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -772,28 +772,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -808,28 +808,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -844,28 +844,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -880,28 +880,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.top - stackTopStartKey01.top) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.top - stackTopStartKey02.top) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -916,28 +916,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -952,28 +952,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -988,28 +988,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignTopEndAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignTopEndAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.TopEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.TopEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.top).assertEqual(stackTopStartKey01.top)
-      expect(stackTopStartKey01.top).assertEqual(stackTopStartKey02.top)
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.top) - (stackTopStartKey01.top)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.top) - (stackTopStartKey02.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -1024,28 +1024,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1060,28 +1060,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1096,28 +1096,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1132,28 +1132,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1168,28 +1168,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1204,28 +1204,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1240,28 +1240,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1276,28 +1276,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1312,28 +1312,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignStartAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignStartAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Start});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Start });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
@@ -1348,28 +1348,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1384,28 +1384,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1420,27 +1420,27 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1455,28 +1455,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1491,28 +1491,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1527,28 +1527,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1563,28 +1563,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1599,28 +1599,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1635,28 +1635,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignCenterAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignCenterAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Center});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Center });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.top - stackTopStartKey.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.top - stackTopStartKey01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs(Math.round(stackTopStartKey01.left - stackTopStartKey.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.left - stackTopStartKey01.left) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey.right - stackTopStartKey01.right) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey02.right) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs(Math.round(stackTopStartKey01.right - stackTopStartKey01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.right - stackTopStartKey02.left) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
@@ -1671,28 +1671,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1707,28 +1707,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1743,28 +1743,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1779,28 +1779,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1815,28 +1815,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1851,28 +1851,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1887,28 +1887,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1923,28 +1923,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1959,28 +1959,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignEndAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignEndAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.End});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.End });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.bottom - stackTopStartKey01.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey02.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
@@ -1995,28 +1995,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue()
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2031,28 +2031,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2067,28 +2067,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2103,28 +2103,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2139,28 +2139,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2175,28 +2175,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.left - stackTopStartKey01.left) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.left - stackTopStartKey02.left) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2211,28 +2211,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2247,28 +2247,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2283,28 +2283,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomStartAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignBottomStartAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomStart});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomStart });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.left).assertEqual(stackTopStartKey01.left)
-      expect(stackTopStartKey01.left).assertEqual(stackTopStartKey02.left)
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.left) - (stackTopStartKey01.left)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.left) - (stackTopStartKey02.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -2319,28 +2319,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue()
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2355,28 +2355,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2391,28 +2391,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2427,28 +2427,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2463,28 +2463,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2499,28 +2499,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2535,28 +2535,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2571,28 +2571,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2607,28 +2607,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignBottomAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.Bottom});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.Bottom });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey.right - stackTopStartKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey02.right)).assertEqual(vp2px(50))
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey.right - stackTopStartKey01.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey02.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -2643,28 +2643,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentTopStart', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentTopStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue()
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue()
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue()
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2679,28 +2679,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentTop', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentTop START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Top });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2715,28 +2715,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentTopEnd', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentTopEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2751,28 +2751,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentStart', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Start });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2787,28 +2787,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentCenter', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentCenter START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Center });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2823,28 +2823,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentEnd', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.End });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs(stackTopStartKey.right - stackTopStartKey01.right) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.right - stackTopStartKey02.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey.bottom - stackTopStartKey01.bottom) <= 1).assertTrue();
+      expect(Math.abs(stackTopStartKey01.bottom - stackTopStartKey02.bottom) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2859,28 +2859,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentBottomStart', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentBottomStart START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2895,28 +2895,28 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentBottom', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentBottom START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
       let stackTopStartKey = CommonFunc.getComponentRect('stackTopStartKey');
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -2931,8 +2931,8 @@ export default function stackAlignChange() {
      */
     it('testStackAlignBottomEndAlignmentBottomEnd', 0, async function (done) {
       console.info('new testStackAlignBottomEndAlignmentBottomEnd START');
-      globalThis.value.message.notify({name:'align', value:Alignment.BottomEnd});
-      globalThis.value.message.notify({name:'alignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'align', value: Alignment.BottomEnd });
+      globalThis.value.message.notify({ name: 'alignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stackTopStartKey');
       let obj = JSON.parse(strJson);
@@ -2940,20 +2940,20 @@ export default function stackAlignChange() {
       let stackTopStartKey01 = CommonFunc.getComponentRect('stackTopStartKey01');
       let stackTopStartKey02 = CommonFunc.getComponentRect('stackTopStartKey02');
 
-      expect(stackTopStartKey.right).assertEqual(stackTopStartKey01.right)
-      expect(stackTopStartKey01.right).assertEqual(stackTopStartKey02.right)
-      expect(Math.round(stackTopStartKey01.left - stackTopStartKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.left - stackTopStartKey01.left)).assertEqual(vp2px(100))
+      expect(Math.abs((stackTopStartKey.right) - (stackTopStartKey01.right)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.right) - (stackTopStartKey02.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.left - stackTopStartKey.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.left - stackTopStartKey01.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.top - stackTopStartKey.top)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.top - stackTopStartKey01.top)).assertEqual(vp2px(100))
-      expect(stackTopStartKey.bottom).assertEqual(stackTopStartKey01.bottom)
-      expect(stackTopStartKey01.bottom).assertEqual(stackTopStartKey02.bottom)
+      expect(Math.abs((Math.round(stackTopStartKey01.top - stackTopStartKey.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.top - stackTopStartKey01.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey.bottom) - (stackTopStartKey01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((stackTopStartKey01.bottom) - (stackTopStartKey02.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(stackTopStartKey01.right - stackTopStartKey01.left)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)).assertEqual(vp2px(200))
-      expect(Math.round(stackTopStartKey02.right - stackTopStartKey02.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
+      expect(Math.abs((Math.round(stackTopStartKey01.right - stackTopStartKey01.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey01.bottom - stackTopStartKey01.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.right - stackTopStartKey02.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')

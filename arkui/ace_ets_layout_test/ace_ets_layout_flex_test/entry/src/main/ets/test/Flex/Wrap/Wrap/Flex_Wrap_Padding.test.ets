@@ -40,8 +40,8 @@ export default function flex_Wrap_PaddingTest() {
       done();
     });
     afterEach(async function () {
-      globalThis.value.message.notify({name:'flexMargin', value:0});
-      globalThis.value.message.notify({name:'flexPadding', value:0});
+      globalThis.value.message.notify({ name: 'flexMargin', value: 0 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 0 });
       await CommonFunc.sleep(1000);
       console.info("Flex_Wrap_Padding after each called");
     });
@@ -53,7 +53,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexPaddingMeet', 0, async function (done) {
       console.info('[testWrapWrapFlexPaddingMeet] START');
-      globalThis.value.message.notify({name:'flexPadding', value:10})
+      globalThis.value.message.notify({ name: 'flexPadding', value: 10 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flex_pad1');
       let secondText = CommonFunc.getComponentRect('Wrap_flex_pad2');
@@ -64,23 +64,23 @@ export default function flex_Wrap_PaddingTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //Flex_padding = 10
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
       expect(firstText.right).assertEqual(secondText.left);
       expect(secondText.right).assertEqual(thirdText.left);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(40));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(140));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(140)));
       console.info('[testWrapWrapFlexPaddingMeet] END');
       done();
     });
@@ -92,7 +92,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexPaddingOverflow', 0, async function (done) {
       console.info('[testWrapWrapFlexPaddingOverflow] START');
-      globalThis.value.message.notify({name:'flexPadding', value:30})
+      globalThis.value.message.notify({ name: 'flexPadding', value: 30 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flex_pad1');
       let secondText = CommonFunc.getComponentRect('Wrap_flex_pad2');
@@ -102,23 +102,23 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(30)); // Flex_padding = 30
-      expect(Math.round(firstText.left- flexContainer.left)).assertEqual(vp2px(30));
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(30)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(firstText.right).assertEqual(secondText.left);
       expect(secondText.bottom).assertEqual(thirdText.top);
       expect(secondText.left).assertEqual(thirdText.right);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(170));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(Math.round(vp2px(170)));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(20)));
       console.info('[testWrapWrapFlexPaddingOverflow] END');
       done();
     });
@@ -130,7 +130,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexMargin', 0, async function (done) {
       console.info('[testWrapWrapFlexMargin] START');
-      globalThis.value.message.notify({name:'flexMargin', value:10})
+      globalThis.value.message.notify({ name: 'flexMargin', value: 10 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flex_pad1');
       let secondText = CommonFunc.getComponentRect('Wrap_flex_pad2');
@@ -149,20 +149,20 @@ export default function flex_Wrap_PaddingTest() {
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10)); // margin =10
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(flexContainer.top - columnContainer.top))
         .assertEqual(Math.round(firstText.top - columnContainer.top));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(150));
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
       console.info('[testWrapWrapFlexMargin] END');
       done();
     });
@@ -174,8 +174,8 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexMarPad', 0, async function (done) {
       console.info('[testWrapWrapFlexMarPad] START');
-      globalThis.value.message.notify({name:'flexMargin', value:10});
-      globalThis.value.message.notify({name:'flexPadding', value:30});
+      globalThis.value.message.notify({ name: 'flexMargin', value: 10 });
+      globalThis.value.message.notify({ name: 'flexPadding', value: 30 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flex_pad1');
       let secondText = CommonFunc.getComponentRect('Wrap_flex_pad2');
@@ -187,24 +187,24 @@ export default function flex_Wrap_PaddingTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10)); // margin=10
-      expect(Math.round(firstText.top - columnContainer.top)).assertEqual(vp2px(40)); //Flex_padding+margin = 40
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(30));
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstText.top - columnContainer.top)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(firstText.right).assertEqual(secondText.left);
       expect(thirdText.top).assertEqual(secondText.bottom);
       expect(thirdText.left).assertEqual(firstText.left);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(170));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(Math.round(vp2px(170)));
       console.info('[testWrapWrapFlexMarPad] END');
       done();
     });

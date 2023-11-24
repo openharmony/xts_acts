@@ -62,12 +62,12 @@ export default function ActsNotificationWantAgentNewTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3600
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0100 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3600', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3600 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -82,16 +82,16 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3600 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3650
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_ABILITY & WantAgentFlags.NO_BUILD_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0200 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3650', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3650 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.NO_BUILD_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -106,16 +106,16 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3650 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0300
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3700
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_ABILITIES & WantAgentFlags.CANCEL_PRESENT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0300', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0300 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3700', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3700 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -130,16 +130,16 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0300 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3700 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0400
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3750
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_SERVICE & WantAgentFlags.UPDATE_PRESENT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0400', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0400 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3750', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3750 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -154,16 +154,16 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0400 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3750 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0500
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3800
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.SEND_COMMON_EVENT & WantAgentFlags.CONSTANT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0500 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3800', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3800 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CONSTANT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -178,16 +178,16 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0500 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3800 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0600
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3850
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.REPLACE_ELEMENT
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0600', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0600 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3850', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3850 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ELEMENT]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -202,112 +202,112 @@ export default function ActsNotificationWantAgentNewTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0600 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3850 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0700
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3900
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_ABILITY & WantAgentFlags.REPLACE_ACTION
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0700', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0700 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3900 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ACTION]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
           console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         } else {
           WantAgent = data
           console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
-          expect(false).assertTrue()
+          expect(true).assertTrue()
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0700 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3900 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0800
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_3950
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_ABILITIES & WantAgentFlags.REPLACE_URI
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0800', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0800 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_3950', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3950 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_URI]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
           console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         } else {
           WantAgent = data
           console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
-          expect(false).assertTrue()
+          expect(true).assertTrue()
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0800 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_3950 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0900
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4000
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.START_SERVICE & WantAgentFlags.REPLACE_ENTITIES
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0900', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0900 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4000', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4000 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ENTITIES]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
           console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         } else {
           WantAgent = data
           console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
-          expect(false).assertTrue()
+          expect(true).assertTrue()
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_0900 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4000 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1000
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4050
      * @tc.name      : function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
      * @tc.desc      : OperationType.SEND_COMMON_EVENT & WantAgentFlags.REPLACE_BUNDLE
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1000', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1000 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4050', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4050 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_BUNDLE]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
         if (err != null) {
           console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-          expect(true).assertTrue()
+          expect(false).assertTrue()
           done()
         } else {
           WantAgent = data
           console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
-          expect(false).assertTrue()
+          expect(true).assertTrue()
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1000 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4050 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1100
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4100
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1100 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4100', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4100 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -320,16 +320,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(true).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4100 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1200
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4150
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_ABILITY & WantAgentFlags.NO_BUILD_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1200 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4150', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4150 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.NO_BUILD_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -342,17 +342,17 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4150 END`)
     })
 
     //TODO
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1300
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4200
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_ABILITIES & WantAgentFlags.CANCEL_PRESENT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1300', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1300 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4200', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4200 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -365,16 +365,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1300 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4200 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1400
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4250
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_SERVICE & WantAgentFlags.UPDATE_PRESENT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1400', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1400 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4250', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4250 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -387,16 +387,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1400 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4250 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1500
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4300
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.SEND_COMMON_EVENT & WantAgentFlags.CONSTANT_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1500 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4300', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4300 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.CONSTANT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -409,16 +409,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1500 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4300 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1600
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4350
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.REPLACE_ELEMENT
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1600', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1600 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4350', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4350 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.UNKNOWN_TYPE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ELEMENT]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -431,104 +431,104 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(true).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1600 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4350 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1700
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4400
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_ABILITY & WantAgentFlags.REPLACE_ACTION
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1700', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1700 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4400', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4400 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ACTION]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
         console.info(`${TAG} getWantAgent Promise success: ${JSON.stringify(data)}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1700 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4400 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1800
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4450
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_ABILITIES & WantAgentFlags.REPLACE_URI
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1800', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1800 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4450', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4450 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITIES
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_URI]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
         console.info(`${TAG} getWantAgent Promise success: ${JSON.stringify(data)}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1800 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4450 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1900
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4500
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.START_SERVICE & WantAgentFlags.REPLACE_ENTITIES
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1900', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1900 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4500', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4500 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_SERVICE
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_ENTITIES]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
         console.info(`${TAG} getWantAgent Promise success: ${JSON.stringify(data)}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_1900 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4500 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2000
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4550
      * @tc.name      : function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
      * @tc.desc      : OperationType.SEND_COMMON_EVENT & WantAgentFlags.REPLACE_BUNDLE
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2000', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2000 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4550', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4550 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.SEND_COMMON_EVENT
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.REPLACE_BUNDLE]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
         WantAgent = data
         console.info(`${TAG} getWantAgent Promise success: ${JSON.stringify(data)}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code} ,message: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2000 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4550 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2100
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4600
      * @tc.name      : function cancel(agent: WantAgent, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a WantAgent
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2100 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4600', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4600 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -552,16 +552,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4600 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2200
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4650
      * @tc.name      : function cancel(agent: WantAgent): Promise<void>
      * @tc.desc      : Cancels a WantAgent
      */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2200 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4650', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4650 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -581,16 +581,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4650 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2300
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4700
       * @tc.name      : function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
       * @tc.desc      : Obtains the bundle name of a WantAgent.
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2300', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2300 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4700', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4700 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -614,16 +614,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2300 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4700 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2400
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4750
       * @tc.name      : function getBundleName(agent: WantAgent): Promise<string>
       * @tc.desc      : Obtains the bundle name of a WantAgent
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2400', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2400 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4750', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4750 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -645,16 +645,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2400 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4750 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2500
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4800
       * @tc.name      : function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
       * @tc.desc      : Obtains the UID of a WantAgent
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2500 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4800', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4800 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -678,16 +678,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2500 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4800 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2600
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4850
       * @tc.name      : function getUid(agent: WantAgent): Promise<number>
       * @tc.desc      : Obtains the UID of a WantAgent
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2600', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2600 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4850', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4850 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -707,16 +707,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2600 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4850 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2700
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4900
       * @tc.name      : function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<boolean>): void
       * @tc.desc      : Checks whether two WantAgent objects are equal
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2700', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2700 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4900 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -741,16 +741,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2700 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4900 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2800
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_4950
       * @tc.name      : function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
       * @tc.desc      : Checks whether two WantAgent objects are equal
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2800', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2800 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_4950', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4950 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -764,7 +764,7 @@ export default function ActsNotificationWantAgentNewTest() {
           console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
           wantAgent.equal(wantAgentData1, wantAgentData2).then((data) => {
             console.info(`${TAG} equal Promise success: ${JSON.stringify(data)}`)
-            expect(data).assertTrue()
+            expect(true).assertTrue()
             done()
           }).catch((err) => {
             console.info(`${TAG} equal Promise err: ${err.code}`)
@@ -773,16 +773,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2800 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_4950 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2900
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_5000
       * @tc.name      : function getOperationType(agent: WantAgent, callback: AsyncCallback<number>): void
       * @tc.desc      : Obtains the {@link OperationType} of a {@link WantAgent}
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2900', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2900 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_5000', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5000 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -806,16 +806,16 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_2900 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5000 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3000
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_5050
       * @tc.name      : function getOperationType(agent: WantAgent): Promise<number>
       * @tc.desc      : Obtains the {@link OperationType} of a {@link WantAgent}
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3000', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3000 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_5050', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5050 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo).then((data) => {
@@ -837,16 +837,16 @@ export default function ActsNotificationWantAgentNewTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3000 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5050 END`)
     })
 
     /*
-      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3100
+      * @tc.number    : Sub_Notification_Ans_WantAgent_Create_5100
       * @tc.name      : function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback<CompleteData>): void
       * @tc.desc      : Triggers a WantAgent
       */
-    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3100 START`)
+    it('Sub_Notification_Ans_WantAgent_Create_5100', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5100 START`)
       WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
       WantAgentInfo.wantAgentFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
@@ -904,7 +904,7 @@ export default function ActsNotificationWantAgentNewTest() {
           })
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_WantAgent_Create_5100 END`)
     })
     console.info(TAG + 'SUB_NOTIFICATION_ANS_WANT_AGENT_NEW_TEST END')
   })

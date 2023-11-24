@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class Hap1MainAbility1 extends Ability {
     onCreate(want, launchParam) {
@@ -24,11 +25,16 @@ export default class Hap1MainAbility1 extends Ability {
             }).catch((error) => {
                 console.log("Hap1MainAbility1 EventTest terminateSelf error: " + JSON.stringify(error));
             })
-        }, 2000)
+        }, 1000)
     }
 
     onDestroy() {
         console.log("[Demo] Hap1MainAbility1 onDestroy")
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.Hap1MainAbility1.onDestroy", ()=>{
+                console.log("[Demo] Hap1MainAbility1 onDestroy")
+            });
+        }, 500)
     }
 
     onWindowStageCreate(windowStage) {

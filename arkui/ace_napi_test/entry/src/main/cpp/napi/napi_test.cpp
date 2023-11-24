@@ -301,10 +301,15 @@ static napi_value isExceptionPending(napi_env env, napi_callback_info info)
 static napi_value openAndCloseHandleScope(napi_env env, napi_callback_info info)
 {
     napi_handle_scope scope;
-    NAPI_CALL(env, napi_open_handle_scope(env, &scope));
+    napi_status openStatus = napi_open_handle_scope(env, &scope);
     napi_value output = NULL;
-    NAPI_CALL(env, napi_create_object(env, &output));
-    NAPI_CALL(env, napi_close_handle_scope(env, scope));
+    napi_status createStatus = napi_create_object(env, &output);
+    napi_status closeStatus = napi_close_handle_scope(env, scope);
+    if (openStatus == napi_ok && createStatus == napi_ok && closeStatus == napi_ok) {
+        napi_value undefined;
+        napi_get_undefined(env, &undefined);
+        return undefined;
+    }
     return output;
 }
 
@@ -898,7 +903,7 @@ static napi_value getTypedArrayInfo(napi_env env, napi_callback_info info)
     size_t byteOffset = -1;
     NAPI_CALL(env, napi_get_typedarray_info(env, result, &type, &length, &data, &retArrayBuffer, &byteOffset));
     NAPI_ASSERT(env, type == napi_int32_array, "napi_get_typedarray_info success 0");
-    NAPI_ASSERT(env, length == typedArrayLength, "napi_get_typedarray_info success 1");
+    NAPI_ASSERT(env, length == arrayBufferSize, "napi_get_typedarray_info success 1");
     NAPI_ASSERT(env, data == arrayBufferPtr, "napi_get_dataview_info success 2");
 
     bool retIsArrayBuffer = false;
@@ -1979,6 +1984,20 @@ static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
     return _value;
 }
 
+static napi_value napiLoadModule(napi_env env, napi_callback_info info)
+{
+    napi_value value;
+    const char* path =  "@ohos.hilog";
+    napi_status status = napi_load_module(env, path, &value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_load_module ok");
+    NAPI_ASSERT(env, value != nullptr, "napi_load_module success");
+    
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
 static napi_value napiGetNodeVersion(napi_env env, napi_callback_info info)
 {
     napi_value value;
@@ -2916,6 +2935,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("stringUtf16OfLengthEqOne", StringUtf16OfLengthEqOne),
         DECLARE_NAPI_FUNCTION("stringUtf8OfLengthLeZero", StringUtf8OfLengthLeZero),
         DECLARE_NAPI_FUNCTION("NewTargetTest", NewTargetTest),
+        DECLARE_NAPI_FUNCTION("napiLoadModule", napiLoadModule),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

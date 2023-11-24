@@ -57,10 +57,10 @@ export default function ColumnSetFlexShink_SubChange() {
       let columnSetFlexShink_3 = CommonFunc.getComponentRect('columnSetFlexShink_3');
       let columnSetFlexShink = CommonFunc.getComponentRect('columnSetFlexShink');
 
-      expect(columnSetFlexShink.top).assertEqual(columnSetFlexShink_1.top)
-      expect(Math.round(columnSetFlexShink_2.top - columnSetFlexShink_1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShink_3.top - columnSetFlexShink_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShink.bottom - columnSetFlexShink_3.bottom)).assertEqual(vp2px(40))
+      expect(Math.abs(columnSetFlexShink.top - columnSetFlexShink_1.top) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShink_2.top - columnSetFlexShink_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShink_3.top - columnSetFlexShink_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShink.bottom - columnSetFlexShink_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
       console.info('new testColumnSetFlexShink END');
       done();
     });

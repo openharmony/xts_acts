@@ -37,7 +37,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: BMS_SECURITY_INITIALIZE_0004
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7540
      * @tc.name: getAccessTokenIdOfEntry
      * @tc.desc: get the accessTokenId
      */
@@ -55,7 +55,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0001
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_6200
      * @tc.name: getReqPermissionOfEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
@@ -77,7 +77,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0008
+     * @tc.number: Sub_Bms_Framework_Permission_Query_0300
      * @tc.name: getReqPermissionUpdateEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
@@ -103,7 +103,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0003
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_6240
      * @tc.name: getReqPermissionUpdateEntryAndFeature
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
@@ -131,7 +131,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number BMS_SECURITY_INITIALIZE_0013
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_7560
      * @tc.name getAccessTokenIdWithDefault
      * @tc.desc Test getBundleInfos interfaces with with a flag
      */
@@ -149,7 +149,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number BMS_SECURITY_INITIALIZE_0014
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_7580
      * @tc.name getAccessTokenIdWithGetAbilities
      * @tc.desc Test getBundleInfos interfaces with a flag
      */
@@ -167,7 +167,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number BMS_SECURITY_INITIALIZE_0015
+     * @tc.number Sub_Bms_Framework_Query_AppInfo_7600
      * @tc.name getAccessTokenIdWithGetPermission
      * @tc.desc Test getBundleInfos interfaces with a flag
      */

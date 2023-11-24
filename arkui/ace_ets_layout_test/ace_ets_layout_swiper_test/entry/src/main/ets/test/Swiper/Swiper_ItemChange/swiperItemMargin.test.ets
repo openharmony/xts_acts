@@ -36,6 +36,7 @@ export default function swiperItemMargin() {
       } catch (err) {
         console.error("push swiperItemPadMar page error " + JSON.stringify(err));
       }
+      done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

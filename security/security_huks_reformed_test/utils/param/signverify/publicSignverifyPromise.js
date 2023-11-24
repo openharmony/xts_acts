@@ -14,9 +14,9 @@
  */
 import { expect } from 'deccjsunit/index';
 import huks from '@ohos.security.huks';
-import { HksKeyAlg } from '../publicParam.js';
-import { HuksSignVerifyDSA } from './publicSignverifyParam.js';
-import { stringToUint8Array, uint8ArrayToString } from '../publicFunc.js';
+import { HksKeyAlg } from '../publicParam';
+import { HuksSignVerifyDSA } from './publicSignverifyParam';
+import { stringToUint8Array, uint8ArrayToString } from '../publicFunc';
 let finishOutData;
 let exportKey;
 let handle;

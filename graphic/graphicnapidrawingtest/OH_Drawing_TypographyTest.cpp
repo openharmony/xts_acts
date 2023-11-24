@@ -433,19 +433,19 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest014, TestSize.Level
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
     OH_Drawing_SetTextStyleFontStyle(txtStyle, FONT_STYLE_NORMAL);
 #ifndef USE_GRAPHIC_TEXT_GINE
-    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, FontStyle::NORMAL);
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, rosen::FontStyle::NORMAL);
 #else
     EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle, FontStyle::NORMAL);
 #endif
     OH_Drawing_SetTextStyleFontStyle(txtStyle, FONT_STYLE_ITALIC);
 #ifndef USE_GRAPHIC_TEXT_GINE
-    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, FontStyle::ITALIC);
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, rosen::FontStyle::ITALIC);
 #else
     EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle, FontStyle::ITALIC);
 #endif
     OH_Drawing_SetTextStyleFontStyle(txtStyle, -1);
 #ifndef USE_GRAPHIC_TEXT_GINE
-    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, FontStyle::NORMAL);
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle_, rosen::FontStyle::NORMAL);
 #else
     EXPECT_EQ(ConvertToOriginalText(txtStyle)->fontStyle, FontStyle::NORMAL);
 #endif

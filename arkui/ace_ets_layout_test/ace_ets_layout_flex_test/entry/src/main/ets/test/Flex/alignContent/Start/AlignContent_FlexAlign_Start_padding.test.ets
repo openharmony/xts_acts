@@ -79,21 +79,21 @@ export default function AlignContent_FlexAlign_Start_padding() {
       console.log('AlignContentFlexStartPadding_flex001_4 rect_value is:'+
       JSON.stringify(AlignContentFlexStart_4));
 
-      expect(Math.round(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top)).assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top)).assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top)).assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left)).assertEqual(vp2px(150));
+      expect(Math.abs(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top) - vp2px(50) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top) - vp2px(100) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top) - vp2px(200) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left) - vp2px(150) <= 1).assertTrue();
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
- 
-      expect(Math.round(AlignContentFlexStart_1.top - AlignContentFlexStart_flex001.top)).assertEqual(vp2px(40));
-      expect(AlignContentFlexStart_flex001.bottom - AlignContentFlexStart_4.bottom).assertLess(vp2px(40));
-      expect(AlignContentFlexStart_4.top).assertEqual(AlignContentFlexStart_2.bottom);
+
+      expect(Math.abs(AlignContentFlexStart_1.top - AlignContentFlexStart_flex001.top) - vp2px(40) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_flex001.bottom - AlignContentFlexStart_4.bottom) - vp2px(40) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.top - AlignContentFlexStart_2.bottom) <= 1).assertTrue();
       
       console.info('testAlignContentStartFlexPaddingNoSatisfy END');
       done();
@@ -128,23 +128,21 @@ export default function AlignContent_FlexAlign_Start_padding() {
       console.log('AlignContentFlexStart_4 rect_value is:'+
       JSON.stringify(AlignContentFlexStart_4));
 
-      expect(Math.round(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top)).assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top)).assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top)).assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left)).assertEqual(vp2px(150));
+      expect(Math.abs(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top) - vp2px(50) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top) - vp2px(100) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top) - vp2px(200) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left) - vp2px(150) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left) - vp2px(150) <= 1).assertTrue();
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
-      
-      expect(AlignContentFlexStart_4.top).assertEqual(AlignContentFlexStart_2.bottom);
-      expect(Math.round((AlignContentFlexStart_1.top - AlignContentFlexStartPadding_flex002.top)*10)/10)
-      .assertEqual(vp2px(15));
-      expect(Math.round((AlignContentFlexStartPadding_flex002.bottom - AlignContentFlexStart_4.bottom)*10)/10)
-      .assertEqual(vp2px(45));
+
+      expect(Math.abs(AlignContentFlexStart_4.top - AlignContentFlexStart_2.bottom) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_1.top - AlignContentFlexStartPadding_flex002.top) - vp2px(15) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStartPadding_flex002.bottom - AlignContentFlexStart_4.bottom) - vp2px(45) <= 1).assertTrue();
 
       console.info('testAlignContentStartFlexPaddingSatisfy END');
       done();

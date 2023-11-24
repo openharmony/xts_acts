@@ -16,21 +16,23 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import defaultAppMgr from '@ohos.bundle.defaultAppManager'
 
+const PARAM_ERROR_CODE = 401;
+
 export default function isDefaultApplicationTest() {
     describe('isDefaultApplicationTest', function() {
   
        /**
-         * @tc.number: isDefaultApplication_0100
+         * @tc.number: Sub_Bms_Framework_Status_DefaultApp_0900
          * @tc.name: isDefaultApplication Promise and Callback
          * @tc.desc: No default image application is set. Query and return false
          */
-          it('isDefaultApplication_0100', 0, async function (done) {
+          it('Sub_Bms_Framework_Status_DefaultApp_0900', 0, async function (done) {
               const data = await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE)
-              console.info("isDefaultApplication_0100 --- " + data)
+              console.info("Sub_Bms_Framework_Status_DefaultApp_0900 --- " + data)
               expect(data).assertFalse()
               defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE,(err,data) => {
-                  console.info("isDefaultApplication_0100 data--- " + data)
-                  console.info("isDefaultApplication_0100 err--- " + err)
+                  console.info("Sub_Bms_Framework_Status_DefaultApp_0900 data--- " + data)
+                  console.info("Sub_Bms_Framework_Status_DefaultApp_0900 err--- " + err)
                   expect(data).assertFalse()
                   expect(err).assertEqual(null)
                   done()
@@ -38,35 +40,35 @@ export default function isDefaultApplicationTest() {
           });
 
        /**
-         * @tc.number: isDefaultApplication_0200
+         * @tc.number: Sub_Bms_Framework_Status_DefaultApp_0650
          * @tc.name: isDefaultApplication Promise
          * @tc.desc: The parameter type is correct, the string format is incorrect, return false
          */
-        it('isDefaultApplication_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_DefaultApp_0650', 0, async function (done) {
             const data = await defaultAppMgr.isDefaultApplication("image/")
-            console.info("isDefaultApplication_0200 --- " + data)
+            console.info("Sub_Bms_Framework_Status_DefaultApp_0650 --- " + data)
             expect(data).assertFalse()
             done();
         });
 
        /**
-         * @tc.number: isDefaultApplication_0300
+         * @tc.number: Sub_Bms_Framework_Status_DefaultApp_1150
          * @tc.name: isDefaultApplication Promise
          * @tc.desc: The parameter type is correct, the string format is incorrect, return false
          */
-        it('isDefaultApplication_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_DefaultApp_1150', 0, async function (done) {
             const data = await defaultAppMgr.isDefaultApplication("abc")
-            console.info("isDefaultApplication_0300 --- " + data)
+            console.info("Sub_Bms_Framework_Status_DefaultApp_1150 --- " + data)
             expect(data).assertFalse()
             done()
         });
 
         /**
-         * @tc.number: applicationType_0100
+         * @tc.number: Sub_Bms_Framework_Status_DefaultApp_1200
          * @tc.name: test ApplicationType
          * @tc.desc: ApplicationType is string
          */
-        it('applicationType_0100', 0, async function (done) {
+        it('Sub_Bms_Framework_Status_DefaultApp_1200', 0, async function (done) {
             expect(typeof (defaultAppMgr.ApplicationType.BROWSER)).assertEqual("string");
             expect(defaultAppMgr.ApplicationType.BROWSER).assertEqual("Web Browser");
 
@@ -91,6 +93,56 @@ export default function isDefaultApplicationTest() {
             expect(typeof (defaultAppMgr.ApplicationType.PPT)).assertEqual("string");
             expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT Viewer");
             done()
+        });
+
+
+        /**
+          * @tc.number: Sub_Bms_Framework_Status_DefaultApp_2550
+          * @tc.name: testIsDefaultApplicationNotExistedType
+          * @tc.desc: The parameter type is correct, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationNotExistedType', 0, async function (done) {
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync("abc");
+                expect(data).assertFalse();
+                done();
+            } catch (err) {
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /**
+          * @tc.number: SUB_BMS_DEFAULTAPP_QUERY_0053
+          * @tc.name: testIsDefaultApplicationNullType
+          * @tc.desc: The parameter type is null, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationNullType', 0, async function (done) {
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync(null);
+                expect(data).assertFail();
+                done();
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR_CODE);
+                done();
+            }
+        });
+
+        /**
+          * @tc.number: SUB_BMS_DEFAULTAPP_QUERY_0053
+          * @tc.name: testIsDefaultApplicationUndefinedType
+          * @tc.desc: The parameter type is undefined, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationUndefinedType', 0, async function (done) {
+
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync(undefined);
+                expect(data).assertFail();
+                done();
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR_CODE);
+                done();
+            }
         });
     })
   }

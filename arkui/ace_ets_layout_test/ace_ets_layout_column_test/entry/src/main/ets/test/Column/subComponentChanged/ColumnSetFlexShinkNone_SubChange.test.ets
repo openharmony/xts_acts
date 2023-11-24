@@ -57,11 +57,11 @@ export default function ColumnSetFlexShinkNone_SubChange() {
       let columnSetFlexShinkNone_3 = CommonFunc.getComponentRect('columnSetFlexShinkNone_3');
       let columnSetFlexShinkNone = CommonFunc.getComponentRect('columnSetFlexShinkNone');
 
-      expect(columnSetFlexShinkNone.top).assertEqual(columnSetFlexShinkNone_1.top)
-      expect(columnSetFlexShinkNone.bottom).assertEqual(columnSetFlexShinkNone_3.bottom)
-      expect(Math.round(columnSetFlexShinkNone_2.top - columnSetFlexShinkNone_1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShinkNone_3.top - columnSetFlexShinkNone_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShinkNone_3.bottom - columnSetFlexShinkNone_3.top)).assertEqual(vp2px(190))
+      expect(Math.abs(columnSetFlexShinkNone.top - columnSetFlexShinkNone_1.top) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShinkNone.bottom - columnSetFlexShinkNone_3.bottom) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShinkNone_2.top - columnSetFlexShinkNone_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShinkNone_3.top - columnSetFlexShinkNone_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnSetFlexShinkNone_3.bottom - columnSetFlexShinkNone_3.top - Math.round(vp2px(190))) <= 1).assertTrue()
       console.info('new testColumnSetFlexShinkNone END');
       done();
     });

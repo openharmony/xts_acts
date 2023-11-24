@@ -115,6 +115,7 @@ struct HitTestBehaviorPage {
         .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
     } else if (this.targetView == 'Image') {
       Image($r('app.media.icon'))
+        .draggable(false)
         .commonStyle()
     } else if (this.targetView == 'Marquee') {
       Marquee({

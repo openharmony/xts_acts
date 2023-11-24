@@ -18,8 +18,6 @@ const parentPort = worker.workerPort;
 
 var ss = undefined;
 var backValue = undefined;
-var flag = false;
-
 parentPort.onmessage = function(e) {
   var data = e.data;
   switch(data.type) {
@@ -30,15 +28,9 @@ parentPort.onmessage = function(e) {
       }
       ss.onmessage = function(ee) {
         backValue = ee.data; // 16
-        flag = true;
+        ss.terminate()
       }
       ss.postMessage({type: "new", value: data.value + 1}); // 11
-      break;
-    case "wait":
-      ss.postMessage({type: "wait"});
-      if (flag) {
-        ss.terminate();
-      }
       break;
     default:
       break;

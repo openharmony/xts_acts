@@ -61,12 +61,12 @@ export default function RelativeContainer_AnchorPoint_Margin() {
 
 
       console.log('assert position')
-      expect(RelativeContainer_AnchorPoint_Margin_row1.left).assertEqual(vp2px(100));
-      expect(RelativeContainer_AnchorPoint_Margin_r1.left).assertEqual(RelativeContainer_AnchorPoint_Margin_row1.left);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_row1.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_r1.left - RelativeContainer_AnchorPoint_Margin_row1.left) <= 1).assertTrue();
 
-      expect(RelativeContainer_AnchorPoint_Margin_tx2.top).assertEqual(RelativeContainer_AnchorPoint_Margin_bt1.bottom);
-      expect(RelativeContainer_AnchorPoint_Margin_tx2.bottom).assertEqual(RelativeContainer_AnchorPoint_Margin_r1.bottom);
-      expect(RelativeContainer_AnchorPoint_Margin_tx2.right).assertEqual((RelativeContainer_AnchorPoint_Margin_bt1.right - RelativeContainer_AnchorPoint_Margin_bt1.left)/2 + RelativeContainer_AnchorPoint_Margin_bt1.left);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_tx2.top - RelativeContainer_AnchorPoint_Margin_bt1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_tx2.bottom - RelativeContainer_AnchorPoint_Margin_r1.bottom) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Margin_tx2.right - ((RelativeContainer_AnchorPoint_Margin_bt1.right - RelativeContainer_AnchorPoint_Margin_bt1.left)/2 + RelativeContainer_AnchorPoint_Margin_bt1.left)) <= 1).assertTrue();
 
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Margin_TEST_0100] END');

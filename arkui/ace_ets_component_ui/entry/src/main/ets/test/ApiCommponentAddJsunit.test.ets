@@ -684,6 +684,30 @@ export default function ApiCommponentAddJsunit() {
       }
       done();
     });
+    
+     it('apiCommponentAddJsunit_2700', 0, async function (done) {
+      console.info("[apiCommponentAddJsunit_2700] START" );
+      ohosrouter.clear();
+      ohosrouter.pushUrl({
+        url: 'MainAbility/pages/lifecycle',
+        params: {
+          data1: 'message',
+          data2: {
+            data3: [123, 456, 789]
+          }
+        }
+      }).then(() => {
+        // success
+      }).catch(err => {
+        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+      })
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('S1');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_2700] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('S1');
+      done();
+    });
 
 
   })

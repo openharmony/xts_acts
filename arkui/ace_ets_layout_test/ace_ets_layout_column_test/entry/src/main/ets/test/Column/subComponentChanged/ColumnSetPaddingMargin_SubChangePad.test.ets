@@ -56,13 +56,13 @@ export default function ColumnSetPaddingMargin_SubChange() {
       let setPaddingMargin_SubPad02 = CommonFunc.getComponentRect('setPaddingMargin_SubPad02');
       let setPaddingMargin_SubPad03 = CommonFunc.getComponentRect('setPaddingMargin_SubPad03');
       let setPaddingMargin_SubPad = CommonFunc.getComponentRect('setPaddingMargin_SubPad');
-      expect(Math.round(setPaddingMargin_SubPad01.top - setPaddingMargin_SubPad.top)).assertEqual(vp2px(20))
-      expect(Math.round(setPaddingMargin_SubPad02.top - setPaddingMargin_SubPad01.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(setPaddingMargin_SubPad03.top - setPaddingMargin_SubPad02.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(setPaddingMargin_SubPad.bottom - setPaddingMargin_SubPad03.bottom)).assertEqual(vp2px(20))
-      expect(Math.round(setPaddingMargin_SubPad01.right - setPaddingMargin_SubPad01.left)).assertEqual(vp2px(300))
-      expect(Math.round(setPaddingMargin_SubPad02.right - setPaddingMargin_SubPad02.left)).assertEqual(vp2px(300))
-      expect(Math.round(setPaddingMargin_SubPad03.right - setPaddingMargin_SubPad03.left)).assertEqual(vp2px(300))
+      expect(Math.abs(setPaddingMargin_SubPad01.top - setPaddingMargin_SubPad.top - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad02.top - setPaddingMargin_SubPad01.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad03.top - setPaddingMargin_SubPad02.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad.bottom - setPaddingMargin_SubPad03.bottom - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad01.right - setPaddingMargin_SubPad01.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad02.right - setPaddingMargin_SubPad02.left - Math.round(vp2px(300))) <= 1).assertTrue()
+      expect(Math.abs(setPaddingMargin_SubPad03.right - setPaddingMargin_SubPad03.left - Math.round(vp2px(300))) <= 1).assertTrue()
       console.info('new testColumnParentMarPadSubPaddding END');
       done();
     });

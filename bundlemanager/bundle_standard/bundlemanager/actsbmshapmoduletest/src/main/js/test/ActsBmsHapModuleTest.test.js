@@ -38,11 +38,11 @@ export default function ActsBmsHapModuleTest() {
 describe('ActsBmsHapModuleTest', function () {
 
     /*
-     * @tc.number: bms_getHapModuleInfo_0100
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_8500
      * @tc.name: get hapModuleInfo from one app by getBundleInfo
      * @tc.desc: get the module information of the hap with type of entry
      */
-    it('bms_getHapModuleInfo_0100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8500', 0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         async function callback(err, result) {
@@ -71,11 +71,11 @@ describe('ActsBmsHapModuleTest', function () {
     });
 
     /*
-     * @tc.number: bms_getHapModuleInfo_0200
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_8520
      * @tc.name: get hapModuleInfo from two modules by getBundleInfo
      * @tc.desc: get the module information of the hap with type of feature
      */
-    it('bms_getHapModuleInfo_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8520', 0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
@@ -99,11 +99,11 @@ describe('ActsBmsHapModuleTest', function () {
     });
 
     /*
-     * @tc.number: bms_getHapModuleInfo_0300
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_8540
      * @tc.name: get hapModuleInfo one app without mainAbility by getBundleInfo
      * @tc.desc: get the module information of the hap without mainAbility
      */
-    it('bms_getHapModuleInfo_0300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8540', 0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));
@@ -131,11 +131,11 @@ describe('ActsBmsHapModuleTest', function () {
     });
 
     /*
-     * @tc.number: bms_getHapModuleInfo_0400
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_8560
      * @tc.name: get hapModuleInfo through getBundleInfo, an application that adds mainAbility
      * @tc.desc: get the module information of the hap with the added field mainAbility
      */
-    it('bms_getHapModuleInfo_0400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8560', 0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
@@ -163,11 +163,11 @@ describe('ActsBmsHapModuleTest', function () {
     });
 
     /*
-     * @tc.number: bms_getHapModuleInfo_0600
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_0120
      * @tc.name: get hapModuleInfo from the system through getBundleInfo 
      * @tc.desc: get module information of mainAbility system application 
      */
-    it('bms_getHapModuleInfo_0600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0120', 0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         function callback(err, data) {

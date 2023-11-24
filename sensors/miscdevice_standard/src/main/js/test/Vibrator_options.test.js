@@ -46,8 +46,6 @@ describe("VibratorJsTest_misc_7", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        vibrator.stop("preset");
-        vibrator.stop("time");
         console.info('afterEach called')
     })
 
@@ -78,6 +76,7 @@ describe("VibratorJsTest_misc_7", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -99,6 +98,7 @@ describe("VibratorJsTest_misc_7", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -120,6 +120,7 @@ describe("VibratorJsTest_misc_7", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -168,6 +169,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })	
 
@@ -217,6 +223,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })	
 	
@@ -266,6 +277,11 @@ describe("VibratorJsTest_misc_7", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
+		try{
+            await vibrator.stopVibration();			
+		} catch (error){
+			console.log("VibratorJsTest079 vibrator.stopVibration failed："+error);
+		}
 		done();
     })
 
@@ -324,6 +340,7 @@ describe("VibratorJsTest_misc_7", function () {
             fail: undefined,
             complete: undefined
           });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -342,6 +359,7 @@ describe("VibratorJsTest_misc_7", function () {
             fail: null,
             complete: null
           });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -360,6 +378,7 @@ describe("VibratorJsTest_misc_7", function () {
             fail: 123,
             complete: 123
           });
+        await vibrator.stopVibration();
     })
 
     /*

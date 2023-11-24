@@ -19,6 +19,7 @@ import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
 var context = abilityFeatureAbility.getContext();
 var contextApplication = context.getApplicationContext()
+var rdbStore = undefined;
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
@@ -52,7 +53,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0900
      * @tc.desc rdb store getRdbStore test
      */
     it('testRdbStore0001', 0, async function (done) {
@@ -72,7 +73,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store getRdbStore and create table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1000
      * @tc.desc rdb store getRdbStore and create table
      */
     it('testRdbStore0002', 0, async function (done) {
@@ -96,7 +97,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb storegetRdbStore with wrong path
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1100
      * @tc.desc rdb store getRdbStore with wrong path
      */
     it('testRdbStore0003', 0, async function (done) {
@@ -123,7 +124,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store deleteRdbStore
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1200
      * @tc.desc rdb store deleteRdbStore
      */
     it('testRdbStore0004', 0, async function (done) {
@@ -141,7 +142,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store deleteRdbStore
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1300
      * @tc.desc rdb store deleteRdbStore
      */
     it('testRdbStore0005', 0, async function (done) {
@@ -160,7 +161,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1400
      * @tc.desc rdb store getRdbStore test
      */
      it('testRdbStore0006', 0, async function (done) {
@@ -185,7 +186,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store getRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0070
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1500
      * @tc.desc rdb store getRdbStore test
      */
     it('testRdbStore0007', 0, async function (done) {
@@ -210,7 +211,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store deleteRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0080
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1600
      * @tc.desc rdb store deleteRdbStore test
      */
     it('testRdbStore0008', 0, async function (done) {
@@ -228,7 +229,7 @@ describe('rdbStoreTest', function () {
 
     /**
      * @tc.name rdb store deleteRdbStore test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0090
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_1700
      * @tc.desc rdb store deleteRdbStore test
      */
     it('testRdbStore0009', 0, async function(done){

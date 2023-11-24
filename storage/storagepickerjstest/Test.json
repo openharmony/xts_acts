@@ -26,13 +26,6 @@
         },
         {
             "type": "ShellKit",
-            "run-command": [
-                "hilog -Q pidoff",
-                "hilog -p off",
-                "hilog -b I",
-                "hilog -b D -D 0xD002B70",
-                "sleep 10"
-            ],
             "teardown-command": [
                 "reboot"
             ]

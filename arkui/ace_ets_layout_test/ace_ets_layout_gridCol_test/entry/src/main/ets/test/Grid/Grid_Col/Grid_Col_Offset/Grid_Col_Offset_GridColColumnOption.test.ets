@@ -68,14 +68,14 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0100] END');
       done();
@@ -104,30 +104,30 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left + vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(0);
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right)).assertEqual(Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left + vp2px(20));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left  + vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(0);
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right)).assertEqual(Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left + vp2px(20));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left + vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(0);
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)) <= 1).assertTrue();
 
       console.log('assert space')
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0200] END');
       done();
@@ -158,32 +158,32 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 + vp2px(40)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 ) + vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 + vp2px(40)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 ) + vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10))) <= 1).assertTrue();
 
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0300] END');
       done();
@@ -214,23 +214,23 @@ export default function Grid_Col_Offset_GridColColumnOption() {
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left)*2 + vp2px(20)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left)*2 + vp2px(20)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left)*2 + vp2px(20)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left)*2 + vp2px(20)));;
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left)*2 + vp2px(20)));;
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left)*2 + vp2px(20)));;
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left)*2 + vp2px(20)));;
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left)*2 + vp2px(20)));;
-Math.round
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 2 ) + vp2px(20))) <= 1).assertTrue();
+
       console.log('assert space')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0400] END');
       done();
@@ -260,24 +260,24 @@ Math.round
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left)*5 + vp2px(50)) );
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual( Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left)*5 + vp2px(50)) );
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left) * 5 ) + vp2px(50))) <= 1).assertTrue();
 
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0500] END');
       done();
@@ -307,32 +307,32 @@ Math.round
       let Grid_Col_Offset_GridColColumnOption_G1 = CommonFunc.getComponentRect('Grid_Col_Offset_GridColColumnOption_G1');
 
       console.log('assert position')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 + vp2px(40)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_00.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_00.right - Grid_Col_Offset_GridColColumnOption_00.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_01.right - Grid_Col_Offset_GridColColumnOption_01.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.left - Grid_Col_Offset_GridColColumnOption_01.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_02.right - Grid_Col_Offset_GridColColumnOption_02.left) * 3 ) + vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 + vp2px(40)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_03.right - Grid_Col_Offset_GridColColumnOption_03.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_04.right - Grid_Col_Offset_GridColColumnOption_04.left + vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.left - Grid_Col_Offset_GridColColumnOption_04.right) - (Math.round((Grid_Col_Offset_GridColColumnOption_05.right - Grid_Col_Offset_GridColColumnOption_05.left) * 3 ) + vp2px(40))) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 + vp2px(30)));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left)).assertEqual(Math.round(Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10)));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Math.round((Grid_Col_Offset_GridColColumnOption_06.right - Grid_Col_Offset_GridColColumnOption_06.left) * 3 ) + vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.left - Grid_Col_Offset_GridColColumnOption_G1.left) - (Grid_Col_Offset_GridColColumnOption_07.right - Grid_Col_Offset_GridColColumnOption_07.left + vp2px(10))) <= 1).assertTrue();
 
 
       console.log('assert space')
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_01.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_02.top - Grid_Col_Offset_GridColColumnOption_00.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_03.top - Grid_Col_Offset_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_04.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_05.top - Grid_Col_Offset_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_06.top - Grid_Col_Offset_GridColColumnOption_05.bottom) - vp2px(10)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Grid_Col_Offset_GridColColumnOption_07.top - Grid_Col_Offset_GridColColumnOption_06.bottom) - vp2px(10)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Offset_GridColColumnOption_TEST_0600] END');
       done();

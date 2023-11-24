@@ -52,6 +52,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010
+     * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -73,6 +74,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010
+     * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -96,5 +98,107 @@ export default function requestDownloadJSUnit() {
         }
       });
     });
+
+    /**
+     * @tc.number SUB_Misc_Request_DownloadManagement_0001
+     * @tc.name SUB_Misc_Request_DownloadManagement_0001
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_DownloadManagement_0001', 0, async function (done) {
+      console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0001 is starting---------------------");
+      let downloadFileConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        filePath: "downloadFilePath",
+        title: 'XTS download test!',
+      }
+      try {
+        await request.downloadFile(globalThis.abilityContext, downloadFileConfig);
+        expect().assertFail();
+        console.info("====>SUB_Misc_Request_DownloadManagement_0001 downloadFile success");
+        done();
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_DownloadManagement_0001 error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010.txt',
+        mode: request.agent.Mode.BACKGROUND
+      };
+
+      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 downloadTask: " + task);
+        try {
+          if (err) {
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
+          } else {
+            expect().assertFail();
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 create success: " + task);
+            done();
+          }
+        } catch (error) {
+          console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 fail: " + JSON.stringify(error));
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010.txt',
+        mode: request.agent.Mode.BACKGROUND
+      };
+
+      try {
+        var task = await request.agent.create(globalThis.abilityContext, config);
+        expect().assertFail();
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 create success: " + task);
+      } catch (err) {
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 catch error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
   });
 }

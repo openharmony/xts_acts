@@ -14,122 +14,119 @@
  */
 
 import cryptoFramework from "@ohos.security.cryptoFramework";
-import {
-  stringTouInt8Array,
-  uInt8ArrayToShowStr,
-} from "../common/publicDoString";
+import { stringTouInt8Array, uInt8ArrayToShowStr, } from "../common/publicDoString";
 
 async function generateSymKey(symKeyGenerator) {
-  return new Promise((resolve, reject) => {
-    symKeyGenerator.generateSymKey((err, symKey) => {
-      if (err) {
-        console.error("[Callback] generateSymKey failed. error is " + err);
-        reject(err);
-      } else {
-        console.log("[Callback] generateSymKey success. symKey is " + symKey);
-        console.log("[Callback] key algName:" + symKey.algName);
-        console.log("[Callback] key format:" + symKey.format);
-        var encodeKey = symKey.getEncoded();
-        console.log(
-          "[Callback] key getEncoded hex: " +
-            uInt8ArrayToShowStr(encodeKey.data)
-        );
-        resolve(symKey);
-      }
+    return new Promise((resolve, reject) => {
+        symKeyGenerator.generateSymKey((err, symKey) => {
+            if (err) {
+                console.error("[Callback] generateSymKey failed. error is " + err);
+                reject(err);
+            } else {
+                console.log("[Callback] generateSymKey success. symKey is " + symKey);
+                console.log("[Callback] key algName:" + symKey.algName);
+                console.log("[Callback] key format:" + symKey.format);
+                var encodeKey = symKey.getEncoded();
+                console.log(
+                    "[Callback] key getEncoded hex: " +
+                    uInt8ArrayToShowStr(encodeKey.data)
+                );
+                resolve(symKey);
+            }
+        });
     });
-  });
 }
 
 async function initMac(macGenerator, symKey) {
-  return new Promise((resolve, reject) => {
-    macGenerator.init(symKey, (err) => {
-      if (err) {
-        console.error("[Callback] macGenerator init failed. error is " + err);
-        reject(err);
-      } else {
-        console.log("[Callback] macGenerator init success!");
-        resolve("init success");
-      }
+    return new Promise((resolve, reject) => {
+        macGenerator.init(symKey, (err) => {
+            if (err) {
+                console.error("[Callback] macGenerator init failed. error is " + err);
+                reject(err);
+            } else {
+                console.log("[Callback] macGenerator init success!");
+                resolve("init success");
+            }
+        });
     });
-  });
 }
 
 async function updateMac(macGenerator, dataBlob) {
-  return new Promise((resolve, reject) => {
-    macGenerator.update(dataBlob, (err) => {
-      if (err) {
-        console.error("[Callback] macGenerator update failed. error is " + err);
-        reject(err);
-      } else {
-        console.log("[Callback] macGenerator update success!");
-        resolve("update success");
-      }
+    return new Promise((resolve, reject) => {
+        macGenerator.update(dataBlob, (err) => {
+            if (err) {
+                console.error("[Callback] macGenerator update failed. error is " + err);
+                reject(err);
+            } else {
+                console.log("[Callback] macGenerator update success!");
+                resolve("update success");
+            }
+        });
     });
-  });
 }
 
 async function doFinalMac(macGenerator) {
-  return new Promise((resolve, reject) => {
-    macGenerator.doFinal((err, output) => {
-      if (err) {
-        console.error(
-          "[Callback] macGenerator doFinal failed. error is " + err
-        );
-        reject(err);
-      } else {
-        console.log(
-          "[Callback] macGenerator doFinal success! output is: " + output
-        );
-        resolve(output);
-      }
+    return new Promise((resolve, reject) => {
+        macGenerator.doFinal((err, output) => {
+            if (err) {
+                console.error(
+                    "[Callback] macGenerator doFinal failed. error is " + err
+                );
+                reject(err);
+            } else {
+                console.log(
+                    "[Callback] macGenerator doFinal success! output is: " + output
+                );
+                resolve(output);
+            }
+        });
     });
-  });
 }
 
 async function testHMACDigestCallback(HMACAlgoName, keyAlgoName) {
-  let globalHMAC;
-  let globalText = "my test data";
-  let globalsymKeyGenerator;
-  let ginBlob = {
-    data: stringTouInt8Array(globalText),
-  };
+    let globalHMAC;
+    let globalText = "my test data";
+    let globalsymKeyGenerator;
+    let ginBlob = {
+        data: stringTouInt8Array(globalText),
+    };
 
-  return new Promise((resolve, reject) => {
-    globalHMAC = cryptoFramework.createMac(HMACAlgoName);
-    console.log("[Callback] mac= " + globalHMAC);
-    console.log("[Callback] HMAC algName is: " + globalHMAC.algName);
-    globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator(keyAlgoName);
-    console.log(
-      "[Callback] symKeyGenerator algName:" + globalsymKeyGenerator.algName
-    );
+    return new Promise((resolve, reject) => {
+        globalHMAC = cryptoFramework.createMac(HMACAlgoName);
+        console.log("[Callback] mac= " + globalHMAC);
+        console.log("[Callback] HMAC algName is: " + globalHMAC.algName);
+        globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator(keyAlgoName);
+        console.log(
+            "[Callback] symKeyGenerator algName:" + globalsymKeyGenerator.algName
+        );
 
-    generateSymKey(globalsymKeyGenerator)
-      .then((symKey) => {
-        return initMac(globalHMAC, symKey);
-      })
-      .then((initData) => {
-        console.log("[Callback] init success: " + initData);
-        return updateMac(globalHMAC, ginBlob);
-      })
-      .then((updateData) => {
-        console.log("[Callback] update success: " + updateData);
-        return doFinalMac(globalHMAC);
-      })
-      .then((macOutput) => {
-        console.log("[Callback] HMAC result:" + macOutput.data);
-        let macLen = globalHMAC.getMacLength();
-        console.log("[Callback] MAC len:" + macLen);
-        if (macOutput != null && macLen != 0 && macLen != null) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      })
-      .catch((err) => {
-        console.error("[Callback] testHMACDigestCallback catch error: " + err);
-        reject(err);
-      });
-  });
+        generateSymKey(globalsymKeyGenerator)
+            .then((symKey) => {
+                return initMac(globalHMAC, symKey);
+            })
+            .then((initData) => {
+                console.log("[Callback] init success: " + initData);
+                return updateMac(globalHMAC, ginBlob);
+            })
+            .then((updateData) => {
+                console.log("[Callback] update success: " + updateData);
+                return doFinalMac(globalHMAC);
+            })
+            .then((macOutput) => {
+                console.log("[Callback] HMAC result:" + macOutput.data);
+                let macLen = globalHMAC.getMacLength();
+                console.log("[Callback] MAC len:" + macLen);
+                if (macOutput != null && macLen != 0 && macLen != null) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            })
+            .catch((err) => {
+                console.error("[Callback] testHMACDigestCallback catch error: " + err);
+                reject(err);
+            });
+    });
 }
 
 export { testHMACDigestCallback };

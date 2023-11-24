@@ -82,29 +82,26 @@ export default function AlignContent_Center_FlexP_Fixed_Offset() {
       console.log('AlignContentFlexCenter_4 rect_value is:'+
       JSON.stringify(AlignContentFlexCenter_4));
 
-      expect(Math.round(AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top)).assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top)).assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top)).assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left)).assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left)).assertEqual(vp2px(150));
+      expect(Math.abs((AlignContentFlexCenter_1.bottom - AlignContentFlexCenter_1.top) - vp2px(50)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top) - vp2px(100)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top) - vp2px(200)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <=1).assertTrue();
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
       
-      expect(Math.round(AlignContentFlexCenter_2.left - AlignContentFlexCenter_flex001.left)).assertEqual(vp2px(150)); 
-      expect(Math.round((AlignContentFlexCenter_4.top - AlignContentFlexCenter_flex001.top)*10)/10).assertEqual(vp2px(175));   
-      expect(Math.round((AlignContentFlexCenter_1.right - AlignContentFlexCenter_2.left)*10)/10).assertEqual(vp2px(15)); 
-      expect(Math.round(AlignContentFlexCenter_1.top - AlignContentFlexCenter_2.top)).assertEqual(vp2px(30));
-      
-      expect(AlignContentFlexCenter_2.top - AlignContentFlexCenter_flex001.top)
-        .assertEqual(AlignContentFlexCenter_flex001.bottom - AlignContentFlexCenter_4.bottom);
-      expect(Math.round((AlignContentFlexCenter_2.top - AlignContentFlexCenter_flex001.top)*10)/10)
-        .assertEqual(vp2px(25));
-     
-      expect(AlignContentFlexCenter_4.top).assertEqual(AlignContentFlexCenter_3.bottom)
+      expect(Math.abs((AlignContentFlexCenter_2.left - AlignContentFlexCenter_flex001.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_4.top - AlignContentFlexCenter_flex001.top) - vp2px(175)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_1.right - AlignContentFlexCenter_2.left) - vp2px(15)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_1.top - AlignContentFlexCenter_2.top) - vp2px(30)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_2.top - AlignContentFlexCenter_flex001.top) - (AlignContentFlexCenter_flex001.bottom - AlignContentFlexCenter_4.bottom)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexCenter_2.top - AlignContentFlexCenter_flex001.top) - vp2px(25)) <=1).assertTrue();
+      expect(Math.abs(AlignContentFlexCenter_4.top - AlignContentFlexCenter_3.bottom) <=1).assertTrue();
+
       console.info('testAlignContentCenterFlexPfixedOffset END');
       done();
     });

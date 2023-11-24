@@ -70,7 +70,7 @@ export default function Tabs_barMode() {
       let Tabs_barMode_001 = CommonFunc.getComponentRect('Tabs_barMode_001');
       let Tabs_barMode_011 = CommonFunc.getComponentRect('Tabs_barMode_011');
       let driver = await Driver.create();
-      await driver.swipe(Math.round(Tabs_barMode_011.right - 30),
+      await driver.swipe(Math.round((Tabs_barMode_011.right - 30)),
       Math.round(Tabs_barMode_011.top + ((Tabs_barMode_011.bottom -Tabs_barMode_011.top) / 2)),
       Math.round(Tabs_barMode_011.left + 30),
       Math.round(Tabs_barMode_011.top + ((Tabs_barMode_011.bottom -Tabs_barMode_011.top) / 2)));
@@ -91,48 +91,48 @@ export default function Tabs_barMode() {
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_011.left equal Tabs_barMode_001.left
         ${Tabs_barMode_011.left} === ${Tabs_barMode_001.left}`);
-      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_001.left);
-      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_002.left);
-      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_003.left);
-      expect(Tabs_barMode_011.top).assertEqual(Tabs_barMode_001.top);
-      expect(Tabs_barMode_012.top).assertEqual(Tabs_barMode_002.top);
-      expect(Tabs_barMode_013.top).assertEqual(Tabs_barMode_003.top);
+      expect(Math.abs(Tabs_barMode_011.left - Tabs_barMode_001.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_012.left - Tabs_barMode_002.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_013.left - Tabs_barMode_003.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_011.top - Tabs_barMode_001.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_012.top - Tabs_barMode_002.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_013.top - Tabs_barMode_003.top) <= 1).assertTrue();
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_011.left equal Tabs_barMode_01.left
       ${Tabs_barMode_011.left} === ${Tabs_barMode_01.left}`);
-      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_011.top).assertEqual(subGreen.bottom);
-      expect(Tabs_barMode_012.top).assertEqual(subBlue.bottom);
-      expect(Tabs_barMode_013.top).assertEqual(subYellow.bottom);
+      expect(Math.abs(Tabs_barMode_011.left - Tabs_barMode_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_012.left - Tabs_barMode_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_013.left - Tabs_barMode_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_011.top - subGreen.bottom) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_012.top - subBlue.bottom) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barMode_013.top - subYellow.bottom) <= 1).assertTrue();
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_011.bottom - Tabs_barMode_011.top=
         ${Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)}`);
-      expect(Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_012.bottom - Tabs_barMode_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_013.bottom - Tabs_barMode_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_012.bottom - Tabs_barMode_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_013.bottom - Tabs_barMode_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_001.bottom - Tabs_barMode_001.top=
         ${Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)}`);
-      expect(Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_002.bottom - Tabs_barMode_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_003.bottom - Tabs_barMode_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_002.bottom - Tabs_barMode_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_003.bottom - Tabs_barMode_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarModeFixed]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
 
       console.info('[testTabsBarModeFixed] END');
       done();

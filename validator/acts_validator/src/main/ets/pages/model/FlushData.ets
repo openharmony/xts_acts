@@ -184,4 +184,178 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
+  static ResetPlayNetworkVideo = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('PlayerNetWork', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'PlayNetWork'. Data: " + data);
+    });
+    promise = preferences.put('PlayerNetWork', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'PlayNetWork'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetSensor = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Sensor', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Sensor'. Data: " + data);
+    });
+    promise = preferences.put('Sensor', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Sensor'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetScreen = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Screen', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Screen'. Data: " + data);
+    });
+    promise = preferences.put('Screen', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Screen'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetMultimodalInput = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('MultimodalInput', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'MultimodalInput'. Data: " + data);
+    });
+    promise = preferences.put('MultimodalInput', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'MultimodalInput'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetPower = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Power', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Power'. Data: " + data);
+    });
+    promise = preferences.put('Power', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Power'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetNotification = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Notification', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Notification'. Data: " + data);
+    });
+    promise = preferences.put('Notification', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Notification'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+
+  static ResetWifi = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Wifi', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Wifi'. Data: " + data);
+    });
+    promise = preferences.put('Wifi', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Wifi'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

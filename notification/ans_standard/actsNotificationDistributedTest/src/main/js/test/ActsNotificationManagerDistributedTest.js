@@ -21,12 +21,12 @@ export default function ActsNotificationManagerDistributedTest() {
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST START')
 
     /*
-    * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0100
+    * @tc.number    : Sub_Notification_Ans_Distributed_Enable_4100
     * @tc.name      : function isDistributedEnabled(callback: AsyncCallback<boolean>): void
     * @tc.desc      : Obtains whether the device supports distributed notification
     */
-    it('SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0100 START`)
+    it('Sub_Notification_Ans_Distributed_Enable_4100', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 START`)
       try {
         notificationManager.isDistributedEnabled((err, data) => {
           if (err) {
@@ -44,16 +44,16 @@ export default function ActsNotificationManagerDistributedTest() {
         expect(false).assertTrue()
         done()
       }
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 END`)
     })
 
     /*
-    * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0200
+    * @tc.number    : Sub_Notification_Ans_Distributed_Enable_4200
     * @tc.name      : function isDistributedEnabled(): Promise<boolean>
     * @tc.desc      : Obtains whether the device supports distributed notification
     */
-    it('SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0200 START`)
+    it('Sub_Notification_Ans_Distributed_Enable_4200', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 START`)
       notificationManager.isDistributedEnabled().then((data) => {
         console.info(`${TAG} isDistributedEnabled Promise success: ${data}`)
         expect(data).assertFalse()
@@ -63,7 +63,7 @@ export default function ActsNotificationManagerDistributedTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 END`)
     })
 
     /*

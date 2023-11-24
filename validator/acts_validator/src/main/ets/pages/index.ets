@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
-import fileio from '@ohos.fileio';
+import fs from '@ohos.file.fs';
 import xml from '@ohos.xml';
-import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
 import DateTimeUtil from './model/DateTimeUtil';
 import data_preferences from '@ohos.data.preferences';
@@ -29,32 +28,57 @@ let path2 = path + '/Audio';
 let path3 = path + '/Camera';
 let path4 = path + '/Player';
 let path5 = path + '/Experience';
+let path6 = path + '/Sensor';
+let path8 = path + '/Screen';
+let path9 = path + '/MultimodalInput';
+let path10 = path + '/Power';
+let path1_1 = path + '/Notification';
+let path1_2 = path + '/Wifi';
 let picturePath = path + '/screenshot';
 let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
 let CameraColorBackPath = path + '/CameraColorBack.txt';
 let PlayerColorBackPath = path + '/PlayerColorBack.txt';
+let SensorColorBackPath = path + '/SensorColorBack.txt'; // 传感器
+let ScreenColorBackPath = path + '/ScreenColorBack.txt'; // 屏幕
+let MultimodalInputColorBackPath = path + '/MultimodalInputColorBack.txt'; // 多模输入
+let PowerColorBackPath = path + '/PowerColorBack.txt'; // 电源管理
+let NotificationColorBackPath = path + '/NotificationColorBack.txt'; // 通知管理
+let WifiColorBackPath = path + '/WifiColorBack.txt'; // wifi管理
+let PlayerNetWorkColorBackPath = path4 + '/PlayerNetWorkColorBack.txt'; // 播放网络视频
 let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
 let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
 let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
-fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
+fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(SensorColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(ScreenColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(MultimodalInputColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let TimePath = path + '/Time.txt';
-fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let xmlPath = path + '/Test.xml';
-fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
+fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let path11 = path1 + '/ArkUIReport.txt';
 let path22 = path2 + '/AudioReport.txt';
 let path33 = path3 + '/CameraReport.txt';
 let path44 = path4 + '/PlayerReport.txt';
 let PlayerAudioTxtPath = path4 + '/PlayerAudioReport.txt';
 let PlayerVideoTxtPath = path4 + '/PlayerVideoReport.txt';
+let PlayerNetWorkTxtPath = path4 + '/PlayerNetWorkReport.txt';
 let path55 = path5 + '/ExperienceReport.txt';
-
+let path66 = path6 + '/SensorReport.txt';
+let path88 = path8 + '/ScreenReport.txt'; // 屏幕
+let path99 = path9 + '/MultimodalInputReport.txt'; // 多模输入
+let pathPower = path10 + '/PowerReport.txt'; // 多模输入
+let pathNotification = path1_1 + '/NotificationReport.txt'; // 多模输入
+let pathWifi = path1_2 + '/WifiReport.txt'; // wifi模块
 @Entry
 @Component
 struct IndexPage {
@@ -64,6 +88,12 @@ struct IndexPage {
     {title:'Camera',uri:'pages/Camera/Camera_index'},
     {title:'Player',uri:'pages/Player/Player_index'},
     {title:'Experience',uri:'pages/Experience/Experience_index'},
+    {title:'Sensor',uri:'pages/Sensor/Sensor_index'},
+    {title:'Screen',uri:'pages/Screen/Screen_index'},
+    {title:'MultimodalInput',uri:'pages/MultimodalInput/MultimodalInput_index'},
+    {title:'Power',uri:'pages/Power/Power_index'},
+    {title:'Notification',uri:'pages/Notification/Notification_index'},
+    {title:'Wifi',uri:'pages/Wifi/Wifi_index'}
   ]
   @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
   async onPageShow(){
@@ -82,13 +112,24 @@ struct IndexPage {
       console.info("Succeeded in getting value of 'index'. Data: " + data);
     });
     if(Test != 1) {
-      fileio.mkdirSync(path1);
-      fileio.mkdirSync(path2);
-      fileio.mkdirSync(path3);
-      fileio.mkdirSync(path4);
-      fileio.mkdirSync(path5);
-      fileio.mkdirSync(picturePath);
-      fileio.mkdirSync(ExperienceDataPath);
+      fs.mkdirSync(path1);
+      fs.mkdirSync(path2);
+      fs.mkdirSync(path3);
+      fs.mkdirSync(path4);
+      fs.mkdirSync(path5);
+      fs.mkdirSync(path6);
+      // 屏幕
+      fs.mkdirSync(path8);
+      // 多模输入
+      fs.mkdirSync(path9);
+      // 电源管理
+      fs.mkdirSync(path10);
+      // 通知
+      fs.mkdirSync(path1_1);
+      // wifi管理
+      fs.mkdirSync(path1_2);
+      fs.mkdirSync(picturePath);
+      fs.mkdirSync(ExperienceDataPath);
 
       let promise = preferences.put('index', 1);
       promise.then(() => {
@@ -99,15 +140,23 @@ struct IndexPage {
         console.info("Succeeded in flushing.");
       });
     }
-    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
+    fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
   build(){
     Column(){
@@ -129,7 +178,7 @@ struct IndexPage {
                   value: 'Yes',
                   action: () => {
                     this.ClearText();
-                    prompt.showToast({
+                    promptAction.showToast({
                       message: '结果已删除', duration: 1000
                     });
                   }
@@ -155,17 +204,17 @@ struct IndexPage {
           .onClick(() => {
             this.SaveXml();
             AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Test.xml -本地路径'",
+              message: "报告已生成，请将设备连接pc，通过run.bat确认测试已结束，获取可视化报告",
               confirm:{
                 value:'OK',
                 action:()=>{
-                  prompt.showToast({
+                  promptAction.showToast({
                     message: '总报告已生成', duration: 1000
                   })
                 }
               },
               cancel: () => {
-                prompt.showToast({
+                promptAction.showToast({
                   message: '总报告已生成', duration: 1000
                 });
               }
@@ -186,11 +235,11 @@ struct IndexPage {
               let dateTimeUtil = new DateTimeUtil();
               let time = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
               let TimePath = path + "/Time.txt";
-              let OP = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+              let OP = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
               let buf = new ArrayBuffer(4096);
-              fileio.readSync(OP,buf);
+              fs.readSync(OP.fd,buf);
               let Log = (time + ";").toString();
-              fileio.writeSync(OP,Log);
+              fs.writeSync(OP.fd,Log);
             })
           }
         },item  => item.title)
@@ -198,42 +247,70 @@ struct IndexPage {
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){
-    fileio.unlinkSync(TimePath);
-    fileio.unlinkSync(xmlPath);
-    fileio.unlinkSync(path11);
-    fileio.unlinkSync(path22);
-    fileio.unlinkSync(path33);
-    fileio.unlinkSync(path44);
-    fileio.unlinkSync(PlayerAudioTxtPath);
-    fileio.unlinkSync(PlayerVideoTxtPath);
-    fileio.unlinkSync(path55);
-    fileio.unlinkSync(ArkUIColorBackPath);
-    fileio.unlinkSync(AudioColorBackPath);
-    fileio.unlinkSync(CameraColorBackPath);
-    fileio.unlinkSync(PlayerColorBackPath);
-    fileio.unlinkSync(PlayerAudioColorBackPath);
-    fileio.unlinkSync(PlayerVideoColorBackPath);
-    fileio.unlinkSync(ExperienceColorBackPath);
-    fileio.rmdirSync(picturePath);
-    fileio.mkdirSync(picturePath);
-    fileio.rmdirSync(ExperienceDataPath);
-    fileio.mkdirSync(ExperienceDataPath);
-    fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
-    fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
+    fs.unlinkSync(TimePath);
+    fs.unlinkSync(xmlPath);
+    fs.unlinkSync(path11);
+    fs.unlinkSync(path22);
+    fs.unlinkSync(path33);
+    fs.unlinkSync(path44);
+    fs.unlinkSync(PlayerAudioTxtPath);
+    fs.unlinkSync(PlayerVideoTxtPath);
+    fs.unlinkSync(PlayerNetWorkTxtPath);
+    fs.unlinkSync(path55);
+    fs.unlinkSync(path66);
+    fs.unlinkSync(path88);
+    fs.unlinkSync(path99);
+    fs.unlinkSync(pathPower);
+    fs.unlinkSync(pathNotification);
+    fs.unlinkSync(pathWifi);
+    fs.unlinkSync(ArkUIColorBackPath);
+    fs.unlinkSync(AudioColorBackPath);
+    fs.unlinkSync(CameraColorBackPath);
+    fs.unlinkSync(PlayerColorBackPath);
+    fs.unlinkSync(PlayerAudioColorBackPath);
+    fs.unlinkSync(PlayerVideoColorBackPath);
+    fs.unlinkSync(PlayerNetWorkColorBackPath);
+    fs.unlinkSync(ExperienceColorBackPath);
+    fs.unlinkSync(SensorColorBackPath);
+    fs.unlinkSync(ScreenColorBackPath);
+    fs.unlinkSync(MultimodalInputColorBackPath);
+    fs.unlinkSync(PowerColorBackPath);
+    fs.unlinkSync(NotificationColorBackPath);
+    fs.unlinkSync(WifiColorBackPath);
+    fs.rmdirSync(picturePath);
+    fs.mkdirSync(picturePath);
+    fs.rmdirSync(ExperienceDataPath);
+    fs.mkdirSync(ExperienceDataPath);
+    fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerNetWorkColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(SensorColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ScreenColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(MultimodalInputColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
@@ -241,13 +318,19 @@ struct IndexPage {
     FlushData.ResetExperience();
     FlushData.ResetPlayerAudio();
     FlushData.ResetPlayerVideo();
+    FlushData.ResetPlayNetworkVideo();
+    FlushData.ResetSensor();
+    FlushData.ResetMultimodalInput();
+    FlushData.ResetPower();
+    FlushData.ResetNotification();
+    FlushData.ResetWifi();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
     let endtime = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
-    let fd = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+    let fd = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf = new ArrayBuffer(40960);
-    fileio.readSync(fd,buf);
+    fs.readSync(fd.fd,buf);
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
@@ -259,12 +342,18 @@ struct IndexPage {
     let CameraReport;
     let PlayerReport;
     let ExperienceReport;
+    let SensorReport; // 传感器
+    let ScreenReport; // 屏幕
+    let MultimodalInputReport; // 多模输入
+    let PowerReport; // 电源管理
+    let NotificationReport; // 通知
+    let WifiReport; // wifi管理
     /*
      * ArkUI
      */
-    let OP1 = fileio.openSync(path11, 0o100 | 0o2002, 0o664);
+    let OP1 = fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf1 = new ArrayBuffer(40960);
-    fileio.readSync(OP1,buf1);
+    fs.readSync(OP1.fd,buf1);
     ArkUIReport = String.fromCharCode.apply(null, new Uint8Array(buf1));
     let str1 = ArkUIReport.split(";");
     let title1 = [];
@@ -276,9 +365,9 @@ struct IndexPage {
     /*
      * Audio
      */
-    let OP2 = fileio.openSync(path22, 0o100 | 0o2002, 0o664);
+    let OP2 = fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf2 = new ArrayBuffer(40960);
-    fileio.readSync(OP2,buf2);
+    fs.readSync(OP2.fd,buf2);
     AudioReport = String.fromCharCode.apply(null, new Uint8Array(buf2));
     let str2 = AudioReport.split(";");
     let title2 = [];
@@ -290,9 +379,9 @@ struct IndexPage {
     /*
      * Camera
      */
-    let OP3 = fileio.openSync(path33, 0o100 | 0o2002, 0o664);
+    let OP3 = fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf3 = new ArrayBuffer(40960);
-    fileio.readSync(OP3,buf3);
+    fs.readSync(OP3.fd,buf3);
     CameraReport = String.fromCharCode.apply(null, new Uint8Array(buf3));
     let str3 = CameraReport.split(";");
     let title3 = [];
@@ -304,9 +393,9 @@ struct IndexPage {
     /*
  * Player
  */
-    let OP4 = fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    let OP4 = fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf4 = new ArrayBuffer(40960);
-    fileio.readSync(OP4,buf4);
+    fs.readSync(OP4.fd,buf4);
     PlayerReport = String.fromCharCode.apply(null, new Uint8Array(buf4));
     let str4 = PlayerReport.split(";");
     let title4 = [];
@@ -318,9 +407,9 @@ struct IndexPage {
     /*
  * Experience
  */
-    let OP5 = fileio.openSync(path55, 0o100 | 0o2002, 0o664);
+    let OP5 = fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf5 = new ArrayBuffer(40960);
-    fileio.readSync(OP5,buf5);
+    fs.readSync(OP5.fd,buf5);
     ExperienceReport = String.fromCharCode.apply(null, new Uint8Array(buf5));
     let str5 = ExperienceReport.split(";");
     let title5 = [];
@@ -330,7 +419,100 @@ struct IndexPage {
       result5[i] = str5[i * 2 + 1];
     }
 
-    let report = ArkUIReport + AudioReport + CameraReport + PlayerReport + ExperienceReport;
+    /**
+     * Sensor 传感器
+     */
+    let OP6 = fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf6 = new ArrayBuffer(40960);
+    fs.readSync(OP6.fd,buf6);
+    SensorReport = String.fromCharCode.apply(null, new Uint8Array(buf6));
+    let str6 = SensorReport.split(";");
+    let title6 = [];
+    let result6 = [];
+    for (let i = 0; i < Math.floor(str6.length / 2); i++) {
+      title6[i] = str6[i * 2];
+      result6[i] = str6[i * 2 + 1];
+    }
+
+    /**
+     * Screen 屏幕
+     */
+    let OP8 = fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf8 = new ArrayBuffer(40960);
+    fs.readSync(OP8.fd,buf8);
+    ScreenReport = String.fromCharCode.apply(null, new Uint8Array(buf8));
+    let str8 = ScreenReport.split(";");
+    let title8 = [];
+    let result8 = [];
+    for (let i = 0; i < Math.floor(str8.length / 2); i++) {
+      title8[i] = str8[i * 2];
+      result8[i] = str8[i * 2 + 1];
+    }
+
+    /**
+     * MultimodalInput 多模输入
+     */
+    let OP9 = fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf9 = new ArrayBuffer(40960);
+    fs.readSync(OP9.fd,buf9);
+    MultimodalInputReport = String.fromCharCode.apply(null, new Uint8Array(buf9));
+    let str9 = MultimodalInputReport.split(";");
+    let title9 = [];
+    let result9 = [];
+    for (let i = 0; i < Math.floor(str9.length / 2); i++) {
+      title9[i] = str9[i * 2];
+      result9[i] = str9[i * 2 + 1];
+    }
+
+    /**
+     * Power 电源管理
+     */
+    let OP10 = fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf10 = new ArrayBuffer(40960);
+    fs.readSync(OP10.fd,buf10);
+    PowerReport = String.fromCharCode.apply(null, new Uint8Array(buf10));
+    let str10 = PowerReport.split(";");
+    let title10 = [];
+    let result10 = [];
+    for (let i = 0; i < Math.floor(str10.length / 2); i++) {
+      title10[i] = str10[i * 2];
+      result10[i] = str10[i * 2 + 1];
+    }
+
+    /**
+     * Notification 通知
+     */
+    let OP11 = fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf11 = new ArrayBuffer(40960);
+    fs.readSync(OP11.fd,buf11);
+    NotificationReport = String.fromCharCode.apply(null, new Uint8Array(buf11));
+    let str11 = NotificationReport.split(";");
+    let title11 = [];
+    let result11 = [];
+    for (let i = 0; i < Math.floor(str11.length / 2); i++) {
+      title11[i] = str11[i * 2];
+      result11[i] = str11[i * 2 + 1];
+    }
+
+    /**
+     * wifi 通知
+     */
+    let OP12 = fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf12 = new ArrayBuffer(40960);
+    fs.readSync(OP12.fd,buf12);
+    WifiReport = String.fromCharCode.apply(null, new Uint8Array(buf12));
+    let str12 = WifiReport.split(";");
+    let title12 = [];
+    let result12 = [];
+    for (let i = 0; i < Math.floor(str12.length / 2); i++) {
+      title12[i] = str12[i * 2];
+      result12[i] = str12[i * 2 + 1];
+    }
+
+
+    let report = ArkUIReport + AudioReport + CameraReport + PlayerReport +
+    ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport
+    + PowerReport + NotificationReport + WifiReport;
     let FailIndex = report.indexOf('false');
     let FailNum = 0;
     while(FailIndex != -1) {
@@ -448,6 +630,133 @@ struct IndexPage {
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
     let experienceTestNum = (ExperienceTestNum).toString();
+
+    /**
+     * Sensor
+     */
+    let SensorFailIndex = SensorReport.indexOf('false');
+    let SensorFailNum = 0;
+    while (SensorFailIndex != -1) {
+      console.log(SensorFailIndex);
+      SensorFailNum++;
+      SensorFailIndex = SensorReport.indexOf('false',SensorFailIndex + 1);
+    }
+    let sensorFailNum = (SensorFailNum).toString();
+    let SensorPassIndex = SensorReport.indexOf('true ');
+    let SensorPassNum = 0;
+    while (SensorPassIndex != -1) {
+      console.log(SensorPassIndex);
+      SensorPassNum++;
+      SensorPassIndex = SensorReport.indexOf('true ',SensorPassIndex + 1);
+    }
+    let SensorTestNum = SensorFailNum + SensorPassNum;
+    let sensorTestNum = (SensorTestNum).toString();
+
+    /**
+     * Screen
+     */
+    let ScreenFailIndex = ScreenReport.indexOf('false');
+    let ScreenFailNum = 0;
+    while (SensorFailIndex != -1) {
+      console.log(SensorFailIndex);
+      ScreenFailNum++;
+      ScreenFailIndex = ScreenReport.indexOf('false',ScreenFailIndex + 1);
+    }
+    let screenFailNum = (ScreenFailNum).toString();
+    let ScreenPassIndex = ScreenReport.indexOf('true ');
+    let ScreenPassNum = 0;
+    while (ScreenPassIndex != -1) {
+      console.log(ScreenPassIndex);
+      ScreenPassNum++;
+      ScreenPassIndex = ScreenReport.indexOf('true ',ScreenPassIndex + 1);
+    }
+    let ScreenTestNum = ScreenFailNum + ScreenPassNum;
+    let screenTestNum = (ScreenTestNum).toString();
+
+    /**
+     * MultimodalInput 多模输入
+     */
+    let MultimodalInputFailIndex = MultimodalInputReport.indexOf('false');
+    let MultimodalInputFailNum = 0;
+    while (MultimodalInputFailIndex != -1) {
+      console.log(MultimodalInputFailIndex);
+      MultimodalInputFailNum++;
+      MultimodalInputFailIndex = MultimodalInputReport.indexOf('false',MultimodalInputFailIndex + 1);
+    }
+    let multimodalInputFailNum = (MultimodalInputFailNum).toString();
+    let MultimodalInputPassIndex = MultimodalInputReport.indexOf('true ');
+    let MultimodalInputPassNum = 0;
+    while (MultimodalInputPassIndex != -1) {
+      console.log(MultimodalInputPassIndex);
+      MultimodalInputPassNum++;
+      MultimodalInputPassIndex = MultimodalInputReport.indexOf('true ',MultimodalInputPassIndex + 1);
+    }
+    let MultimodalInputTestNum = MultimodalInputFailNum + MultimodalInputPassNum;
+    let multimodalInputTestNum = (MultimodalInputTestNum).toString();
+
+    /**
+     * Power 电源管理
+     */
+    let PowerFailIndex = PowerReport.indexOf('false');
+    let PowerFailNum = 0;
+    while (PowerFailIndex != -1) {
+      console.log(PowerFailIndex);
+      PowerFailNum++;
+      PowerFailIndex = PowerReport.indexOf('false',PowerFailIndex + 1);
+    }
+    let powerFailNum = (PowerFailNum).toString();
+    let PowerPassIndex = PowerReport.indexOf('true ');
+    let PowerPassNum = 0;
+    while (PowerPassIndex != -1) {
+      console.log(PowerPassIndex);
+      PowerPassNum++;
+      PowerPassIndex = PowerReport.indexOf('true ',PowerPassIndex + 1);
+    }
+    let PowerTestNum = PowerFailNum + PowerPassNum;
+    let powerTestNum = (PowerTestNum).toString();
+
+    /**
+     * Notification 通知
+     */
+    let NotificationFailIndex = NotificationReport.indexOf('false');
+    let NotificationFailNum = 0;
+    while (NotificationFailIndex != -1) {
+      console.log(NotificationFailIndex);
+      NotificationFailNum++;
+      NotificationFailIndex = NotificationReport.indexOf('false',NotificationFailIndex + 1);
+    }
+    let notificationFailNum = (NotificationFailNum).toString();
+    let NotificationPassIndex = NotificationReport.indexOf('true ');
+    let NotificationPassNum = 0;
+    while (NotificationPassIndex != -1) {
+      console.log(NotificationPassIndex);
+      NotificationPassNum++;
+      NotificationPassIndex = NotificationReport.indexOf('true ',NotificationPassIndex + 1);
+    }
+    let NotificationTestNum = NotificationFailNum + NotificationPassNum;
+    let notificationTestNum = (NotificationTestNum).toString();
+
+    /**
+     * Wifi 管理
+     */
+    let WifiFailIndex = WifiReport.indexOf('false');
+    let WifiFailNum = 0;
+    while (WifiFailIndex != -1) {
+      console.log(WifiFailIndex);
+      WifiFailNum++;
+      WifiFailIndex = WifiReport.indexOf('false',WifiFailIndex + 1);
+    }
+    let wifiFailNum = (WifiFailNum).toString();
+    let WifiPassIndex = WifiReport.indexOf('true ');
+    let WifiPassNum = 0;
+    while (WifiPassIndex != -1) {
+      console.log(WifiPassIndex);
+      WifiPassNum++;
+      WifiPassIndex = WifiReport.indexOf('true ',WifiPassIndex + 1);
+    }
+    let WifiTestNum = WifiFailNum + WifiPassNum;
+    let wifiTestNum = (WifiTestNum).toString();
+
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -591,6 +900,163 @@ struct IndexPage {
       serializer.endElement();
     }
     serializer.endElement();
+
+    /**
+     * Sensor
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsSensorTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", sensorFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", sensorTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title6.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title6[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsSensorTest");
+      serializer.setAttributes("result", String(result6[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Screen
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsScreenTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", screenFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", screenTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title8.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title8[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsScreenTest");
+      serializer.setAttributes("result", String(result8[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * MultimodalInput
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsMultimodalInputTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", multimodalInputFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", multimodalInputTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title9.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title9[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsMultimodalInputTest");
+      serializer.setAttributes("result", String(result9[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Power
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsPowerTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", powerFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", powerTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title10.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title10[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsPowerTest");
+      serializer.setAttributes("result", String(result10[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Notification 通知
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsNotificationTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", notificationFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", notificationTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title11.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title11[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsNotificationTest");
+      serializer.setAttributes("result", String(result11[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Wifi 管理
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsWifiTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", wifiFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", wifiTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title12.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title12[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsWifiTest");
+      serializer.setAttributes("result", String(result12[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
     serializer.endElement();
 
     let that = new util.TextDecoder('utf-8');
@@ -599,12 +1065,12 @@ struct IndexPage {
     console.info(xmlPath);
     try {
       console.error(TAG, "write xmlPath =" + xmlPath);
-      var xmlfd = fileIO.openSync(xmlPath, 0o102, 0o666);
-      fileIO.writeSync(xmlfd, serializerStr);
+      var xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.writeSync(xmlfd.fd, serializerStr);
     } catch (err) {
       console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
     } finally {
-      fileIO.closeSync(xmlfd);
+      fs.closeSync(xmlfd);
     }
   }
 }

@@ -444,7 +444,7 @@ async function encryptAndDecryptBySpecProcess(asyKeyPairSpec, cipherAlgoName) {
     var decryptMode = cryptoFramework.CryptoMode.DECRYPT_MODE;
 
     return new Promise((resolve, reject) => {
-        var cipherGeneratorEncrypt = createAsyCipher(cipherAlgoName);
+        let cipherGeneratorEncrypt = createAsyCipher(cipherAlgoName);
         let cipherGeneratorDncrypt = createAsyCipher(cipherAlgoName);
         initCipher(cipherGeneratorEncrypt, encryptMode, asyKeyPairSpec.pubKey, null)
             .then((initCipherOut) => {

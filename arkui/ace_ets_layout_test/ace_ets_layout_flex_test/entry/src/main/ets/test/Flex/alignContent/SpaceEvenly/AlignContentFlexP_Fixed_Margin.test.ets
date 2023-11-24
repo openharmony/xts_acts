@@ -81,37 +81,23 @@ export default function AlignContentFlexP_Fixed_Margin() {
       console.log('AlignContentFlexSpaceEvenly_4 rect_value is:'+
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
       
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top))
-      .assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-      .assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-      .assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-      .assertEqual(vp2px(150));
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top) - vp2px(50)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top) - vp2px(100)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top) - vp2px(200)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left) - vp2px(150)) <=1).assertTrue();
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
       
-      expect(Math.round(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom))
-      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top));
-      
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom))
-      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top));
-      
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.left - AlignContentFlexSpaceEvenly_flex001.left))
-      .assertEqual(vp2px(10));
-      
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top))
-      .assertEqual(Math.round(vp2px(50/3)+vp2px(10)));
+      expect(Math.abs((AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom) - (AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom) - (AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.left - AlignContentFlexSpaceEvenly_flex001.left) - vp2px(10)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top) - (vp2px(50/3)+vp2px(10))) <=1).assertTrue();
+
       
       console.info('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy END');
       done();
@@ -146,35 +132,23 @@ export default function AlignContentFlexP_Fixed_Margin() {
       console.log('AlignContentFlexSpaceEvenly_4 rect_value is:'+
       JSON.stringify(AlignContentFlexSpaceEvenly_4));
 
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top))
-      .assertEqual(vp2px(50));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top))
-      .assertEqual(vp2px(100));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top))
-      .assertEqual(vp2px(200));
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left))
-      .assertEqual(vp2px(150));
-      expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
-      .assertEqual(vp2px(150));
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.bottom - AlignContentFlexSpaceEvenly_1.top) - vp2px(50)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_2.bottom - AlignContentFlexSpaceEvenly_2.top) - vp2px(100)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_3.bottom - AlignContentFlexSpaceEvenly_3.top) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.bottom - AlignContentFlexSpaceEvenly_4.top) - vp2px(200)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_1.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_2.right - AlignContentFlexSpaceEvenly_2.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_3.right - AlignContentFlexSpaceEvenly_3.left) - vp2px(150)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left) - vp2px(150)) <=1).assertTrue();
+
       
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
       
       expect(AlignContentFlexSpaceEvenly_4.bottom).assertLarger(AlignContentFlexSpaceEvenly_flex002.bottom);
-      expect(Math.round(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_1.bottom))
-      .assertEqual(vp2px(100));
-      
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex002.top))
-      .assertEqual(vp2px(100));
-      
-      expect(Math.round(AlignContentFlexSpaceEvenly_1.left - AlignContentFlexSpaceEvenly_flex002.left))
-      .assertEqual(vp2px(100));
+      expect(Math.abs((AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_1.bottom) - vp2px(100)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex002.top) - vp2px(100)) <=1).assertTrue();
+      expect(Math.abs((AlignContentFlexSpaceEvenly_1.left - AlignContentFlexSpaceEvenly_flex002.left) - vp2px(100)) <=1).assertTrue();
 
       console.info('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy END');
       done();

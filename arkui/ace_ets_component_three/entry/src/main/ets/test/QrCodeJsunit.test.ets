@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import bundle from '@ohos.bundle.bundleManager';
 
 export default function qrCodeJsunit() {
   describe('qrCodeTest', function () {
@@ -129,9 +130,17 @@ export default function qrCodeJsunit() {
       }
       await Utils.sleep(2000);
       var strJson = getInspectorByKey('QrCodeColor');
+      var strJsonDefault = getInspectorByKey('QrCodeDefault');
       var obj = JSON.parse(strJson);
+      var objDefault = JSON.parse(strJsonDefault);
       console.info("[test_qrCode_004] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#FF000000');
+      console.info("[test_qrCode_004] component objDefault is: " + JSON.stringify(objDefault));
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion < 11) {
+        expect(obj.$attrs.color).assertEqual('#FF000000');
+      } else {
+        expect(obj.$attrs.color).assertEqual(objDefault.$attrs.color);
+      }
       done();
     });
 
@@ -181,10 +190,18 @@ export default function qrCodeJsunit() {
       }
       await Utils.sleep(2000);
       var strJson = getInspectorByKey('QrCodeColor');
+      var strJsonDefault = getInspectorByKey('QrCodeDefault');
       var obj = JSON.parse(strJson);
+      var objDefault = JSON.parse(strJsonDefault);
       console.info("[test_qrCode_006] component obj is: " + JSON.stringify(obj));
+      console.info("[test_qrCode_006] component objDefault is: " + JSON.stringify(objDefault));
       // 非法入参默认初始值
-      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+      let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
+      if (targetVersion < 11) {
+        expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+      } else {
+        expect(obj.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
+      }
       done();
     });
 

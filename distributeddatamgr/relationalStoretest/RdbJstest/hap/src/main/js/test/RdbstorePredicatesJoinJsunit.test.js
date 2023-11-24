@@ -55,7 +55,7 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     afterEach(async function () {
         console.info(TAG + 'afterEach')
-        await dataRdb.deleteRdbStore("InsertTest.db");
+        await dataRdb.deleteRdbStore("RdbJoinTest.db");
         rdbStore = null
         console.info(TAG + 'afterEach end')
     })
@@ -114,7 +114,7 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin001
-     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Inner_Join
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0100
      * @tc.desc: sql query inner join test
      */
     it('testRdbJoin001', 0, async function (done) {
@@ -137,7 +137,7 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin002
-     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Cross_Join
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0200
      * @tc.desc: sql query cross join test
      */
     it('testRdbJoin002', 0, async function (done) {
@@ -162,7 +162,7 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin003
-     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Left_Outer_Join
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_RDBQueryJsAPITest_0300
      * @tc.desc: sql query left outer join test
      */
     it('testRdbJoin003', 0, async function (done) {

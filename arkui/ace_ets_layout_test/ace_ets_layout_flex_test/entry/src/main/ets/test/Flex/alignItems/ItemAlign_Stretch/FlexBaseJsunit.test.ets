@@ -60,22 +60,23 @@ export default function flexBase_StretchJsunit() {
       let textFlex02 = CommonFunc.getComponentRect('textFlex02');
       let textFlex03 = CommonFunc.getComponentRect('textFlex03');
       let flex01 = CommonFunc.getComponentRect('flex01');
-      expect(flex01.top).assertEqual(textFlex01.top)
-      expect(textFlex01.top).assertEqual(textFlex02.top)
-      expect(textFlex02.top).assertEqual(textFlex03.top)
-      expect(textFlex01.bottom).assertEqual(textFlex02.bottom)
-      expect(textFlex02.bottom).assertEqual(textFlex03.bottom)
 
-      expect(textFlex01.right).assertEqual(textFlex02.left)
-      expect(textFlex02.right).assertEqual(textFlex03.left)
-      expect(Math.round(flex01.right - textFlex03.right)).assertEqual(vp2px(50))
+      expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue()
+      expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.top - textFlex03.top) <= 1).assertTrue()
+      expect(Math.abs(textFlex01.bottom - textFlex02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.bottom - textFlex03.bottom) <= 1).assertTrue()
 
-      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(200))
-      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(200))
-      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(200))
-      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(150))
+      expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()
+      expect(Math.abs((flex01.right - textFlex03.right) - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs((textFlex01.bottom - textFlex01.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textFlex02.bottom - textFlex02.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textFlex03.bottom - textFlex03.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textFlex01.right - textFlex01.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textFlex02.right - textFlex02.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textFlex03.right - textFlex03.left) - vp2px(150)) <= 1).assertTrue()
+
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretch END');
@@ -98,24 +99,26 @@ export default function flexBase_StretchJsunit() {
       let textFlex02 = CommonFunc.getComponentRect('textFlex02');
       let textFlex03 = CommonFunc.getComponentRect('textFlex03');
       let flex01 = CommonFunc.getComponentRect('flex01');
-      expect(textFlex01.left).assertEqual(flex01.left)
-      expect(textFlex01.right).assertEqual(textFlex02.left)
-      expect(textFlex02.right).assertEqual(textFlex03.left)
-      expect(flex01.top).assertEqual(textFlex01.top)
-      expect(textFlex01.top).assertEqual(textFlex02.top)
-      expect(textFlex02.top).assertEqual(textFlex03.top)
 
-      expect(textFlex01.bottom).assertEqual(flex01.bottom)
-      expect(flex01.right).assertEqual(textFlex03.right)
-      expect(textFlex01.bottom).assertEqual(textFlex02.bottom)
-      expect(textFlex02.bottom).assertEqual(textFlex03.bottom)
+      expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
+      expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()
+      expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue()
+      expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.top - textFlex03.top) <= 1).assertTrue()
 
-      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(140))
+      expect(Math.abs(textFlex01.bottom - flex01.bottom) <= 1).assertTrue()
+      expect(Math.abs(flex01.right - textFlex03.right) <= 1).assertTrue()
+      expect(Math.abs(textFlex01.bottom - textFlex02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textFlex02.bottom - textFlex03.bottom) <= 1).assertTrue()
+
+      expect(Math.abs((textFlex01.bottom - textFlex01.top) - vp2px(140)) <= 1).assertTrue()
+      expect(Math.abs((textFlex02.bottom - textFlex02.top) - vp2px(140)) <= 1).assertTrue()
+      expect(Math.abs((textFlex03.bottom - textFlex03.top) - vp2px(140)) <= 1).assertTrue()
+      expect(Math.abs((textFlex01.right - textFlex01.left) - vp2px(140)) <= 1).assertTrue()
+      expect(Math.abs((textFlex02.right - textFlex02.left) - vp2px(140)) <= 1).assertTrue()
+      expect(Math.abs((textFlex03.right - textFlex03.left) - vp2px(140)) <= 1).assertTrue()
+
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')

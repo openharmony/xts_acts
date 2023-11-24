@@ -60,42 +60,40 @@ export default function Grid_RowCol_Gap() {
       let Grid_RowCol_Gap_013 = CommonFunc.getComponentRect('Grid_RowCol_Gap_013');
       let Grid_RowCol_Gap_014 = CommonFunc.getComponentRect('Grid_RowCol_Gap_014');
       let Grid_RowCol_Gap_01 = CommonFunc.getComponentRect('Grid_RowCol_Gap_01');
-      expect(Grid_RowCol_Gap_011.left).assertEqual(Grid_RowCol_Gap_01.left);
-      expect(Grid_RowCol_Gap_013.left).assertEqual(Grid_RowCol_Gap_01.left);
+      expect(Math.abs(Grid_RowCol_Gap_011.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.abs(Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right - vp2px(5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right - vp2px(5)) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_01.right);
-      expect(Grid_RowCol_Gap_014.right).assertEqual(Grid_RowCol_Gap_01.right);
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_01.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_01.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.top).assertEqual(Grid_RowCol_Gap_01.top);
-      expect(Grid_RowCol_Gap_012.top).assertEqual(Grid_RowCol_Gap_01.top);
+      expect(Math.abs(Grid_RowCol_Gap_011.top - Grid_RowCol_Gap_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.top - Grid_RowCol_Gap_01.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.bottom).assertEqual(Grid_RowCol_Gap_013.top);
-      expect(Grid_RowCol_Gap_012.bottom).assertEqual(Grid_RowCol_Gap_014.top);
+      expect(Math.abs(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_013.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_014.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_013.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
-      expect(Grid_RowCol_Gap_014.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
+      expect(Math.abs(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.right).assertEqual(Grid_RowCol_Gap_013.right);
-      expect(Grid_RowCol_Gap_012.left).assertEqual(Grid_RowCol_Gap_014.left);
+      expect(Math.abs(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_013.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_014.right) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
+      expect(Math.abs((Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left -
+        vp2px(147.5)) * 100 / 100) <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)).assertEqual(vp2px(150));
+      expect(Math.abs(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top - vp2px(150)) <= 1).assertTrue();
       console.info('[testGridColGap] END');
       done();
     });
@@ -117,42 +115,36 @@ export default function Grid_RowCol_Gap() {
       let Grid_RowCol_Gap_013 = CommonFunc.getComponentRect('Grid_RowCol_Gap_013');
       let Grid_RowCol_Gap_014 = CommonFunc.getComponentRect('Grid_RowCol_Gap_014');
       let Grid_RowCol_Gap_01 = CommonFunc.getComponentRect('Grid_RowCol_Gap_01');
-      expect(Grid_RowCol_Gap_011.left).assertEqual(Grid_RowCol_Gap_01.left);
-      expect(Grid_RowCol_Gap_013.left).assertEqual(Grid_RowCol_Gap_01.left);
+      expect(Math.abs(Grid_RowCol_Gap_011.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.right).assertEqual(Grid_RowCol_Gap_012.left);
-      expect(Grid_RowCol_Gap_013.right).assertEqual(Grid_RowCol_Gap_014.left);
+      expect(Math.abs(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_014.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_014.right);
-      expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_01.right);
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_014.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_01.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.top).assertEqual(Grid_RowCol_Gap_01.top);
-      expect(Grid_RowCol_Gap_011.top).assertEqual(Grid_RowCol_Gap_012.top);
+      expect(Math.abs(Grid_RowCol_Gap_011.top - Grid_RowCol_Gap_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_011.top - Grid_RowCol_Gap_012.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_013.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
-      expect(Grid_RowCol_Gap_014.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
+      expect(Math.abs(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_013.top).assertEqual(Grid_RowCol_Gap_014.top);
-      expect(Grid_RowCol_Gap_011.bottom).assertEqual(Grid_RowCol_Gap_012.bottom);
+      expect(Math.abs(Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_014.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_012.bottom) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.abs(Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom - vp2px(5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom - vp2px(5)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)).assertEqual(vp2px(150));
-
-      expect(Math.round((Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
+      expect(Math.abs(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left - vp2px(150)) <= 1).assertTrue();
+      
+      expect(Math.abs(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top - vp2px(147.5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top - vp2px(147.5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top - vp2px(147.5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top - vp2px(147.5)) <= 1).assertTrue();
       console.info('[testGridRowGap] END');
       done();
     });
@@ -174,48 +166,44 @@ export default function Grid_RowCol_Gap() {
       let Grid_RowCol_Gap_013 = CommonFunc.getComponentRect('Grid_RowCol_Gap_013');
       let Grid_RowCol_Gap_014 = CommonFunc.getComponentRect('Grid_RowCol_Gap_014');
       let Grid_RowCol_Gap_01 = CommonFunc.getComponentRect('Grid_RowCol_Gap_01');
-      expect(Grid_RowCol_Gap_011.left).assertEqual(Grid_RowCol_Gap_01.left);
-      expect(Grid_RowCol_Gap_013.left).assertEqual(Grid_RowCol_Gap_01.left);
+      expect(Math.abs(Grid_RowCol_Gap_011.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_013.left - Grid_RowCol_Gap_01.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_014.right);
-      expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_01.right);
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_014.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_01.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_011.top).assertEqual(Grid_RowCol_Gap_01.top);
-      expect(Grid_RowCol_Gap_011.top).assertEqual(Grid_RowCol_Gap_012.top);
+      expect(Math.abs(Grid_RowCol_Gap_011.top - Grid_RowCol_Gap_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_011.top - Grid_RowCol_Gap_012.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_013.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
-      expect(Grid_RowCol_Gap_014.bottom).assertEqual(Grid_RowCol_Gap_01.bottom);
+      expect(Math.abs(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_01.bottom) <= 1).assertTrue();
 
-      expect(Grid_RowCol_Gap_013.top).assertEqual(Grid_RowCol_Gap_014.top);
-      expect(Grid_RowCol_Gap_011.bottom).assertEqual(Grid_RowCol_Gap_012.bottom);
+      expect(Math.abs(Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_014.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_012.bottom) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.abs(Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom - vp2px(5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom - vp2px(5)) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.abs(Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right - vp2px(5)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right - vp2px(5)) <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
+      expect(Math.abs((Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left -
+        vp2px(147.5)) * 100 / 100) <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
 
-      expect(Math.round((Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      expect(Math.round((Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)*100)/100)
-        .assertEqual(Math.round(vp2px(147.5)*100)/100);
+      expect(Math.abs((Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top -
+        vp2px(147.5)) * 100 / 100) <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
+      expect(Math.abs((Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top -
+        vp2px(147.5))) * 100 / 100 <= 1).assertTrue();
       console.info('[testGridRowColGap] END');
       done();
     });

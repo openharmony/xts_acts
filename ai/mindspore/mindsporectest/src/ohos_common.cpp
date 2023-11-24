@@ -163,7 +163,7 @@ bool allclose(float *a, float *b, uint64_t count, float rtol = 1e-05,
     }
 
     if (i == count - 1) {
-      printf("     ……\n");
+      printf("     ......\n");
       printf("\n *** Total fail_count: %u\n", fail_count);
       if (fail_count != 0) {
         printf("\n     fabs(a[i] - b[i])/(fabs(b[i])+1) : %f\n",

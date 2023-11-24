@@ -13,5 +13,9 @@
 
 group("applications") {
   testonly = true
-  deps = [ "settingsdata:settingsdata" ]
+  deps = [
+    "calendarManager:calendarManager",
+    "print_fwk:print_fwk",
+    "settingsdata:settingsdata",
+  ]
 }

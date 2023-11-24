@@ -15,12 +15,40 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btSppTest() {
 describe('btSppTest', function() {
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
+    }
+
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
     }
 
     async function tryToEnableBt() {
@@ -29,6 +57,7 @@ describe('btSppTest', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             case 1:
@@ -41,14 +70,17 @@ describe('btSppTest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
+        done();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -84,6 +116,7 @@ describe('btSppTest', function() {
             done();
         }
         bluetooth.sppListen('server1', SppOption, serverSocket);
+        done();
     })
 
     /**
@@ -108,6 +141,7 @@ describe('btSppTest', function() {
              done();
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
+        done();
     })
 
     /**
@@ -157,6 +191,7 @@ describe('btSppTest', function() {
              done();
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
+        done();
     })
 
     /**
@@ -167,17 +202,42 @@ describe('btSppTest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0500', 0, async function (done) {
-        function acceptClientSocket(code, number) {
-            
-            if (code) {
-                console.log('[bluetooth_js] error code05: ' + JSON.stringify(code));
-            }else{
-                console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
-                expect(true).assertEqual(number!=null);
-            }
-            done();
+        let SppOption = {
+            uuid: '00001810-0000-1000-8000-00805F9B34FB',
+            secure: true, type: bluetooth.SppType.SPP_RFCOMM
+        };
+        let serverNumber = -1;
+        function sppCreatePromise() {
+            return new Promise((resolve, reject) => {
+                bluetooth.sppListen('serverAccept', SppOption, (err, number) => {
+                    if (err == null) {
+                        console.log('bluetooth serverSocket Number05:' + JSON.stringify(number));
+                        serverNumber = number;
+                        expect(true).assertEqual(serverNumber != -1);
+                        resolve(null);
+                    } else {
+                        console.log('bluetooth error code05: ' + err.code);
+                        resolve(null);
+                    }
+                })
+            })
         }
-        bluetooth.sppAccept(0, acceptClientSocket);
+        await sppCreatePromise();
+
+        function acceptClientSocket(code, number) {
+            console.log('bluetooth error code05: ' + code.code);
+            if (code.code == 0) {
+                console.log('bluetooth clientSocket Number05: ' + number);
+                expect(true).assertEqual(number != null);
+            }
+        }
+        try {
+            bluetooth.sppAccept(serverNumber, acceptClientSocket);
+        } catch (error) {
+            console.error(`[bluetooth_js]SPPAccept error05, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+        }
+        done();
     })
 
     /**

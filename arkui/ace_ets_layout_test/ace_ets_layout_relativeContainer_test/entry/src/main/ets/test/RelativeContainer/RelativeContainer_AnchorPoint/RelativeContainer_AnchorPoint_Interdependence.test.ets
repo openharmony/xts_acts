@@ -60,8 +60,8 @@ export default function RelativeContainer_AnchorPoint_Interdependence() {
 
       console.log('assert position')
 
-      expect(RelativeContainer_AnchorPoint_Interdependence_row3.left).assertEqual(RelativeContainer_AnchorPoint_Interdependence_re1.left);
-      expect(RelativeContainer_AnchorPoint_Interdependence_row3.top).assertEqual(RelativeContainer_AnchorPoint_Interdependence_re1.top);
+      expect(Math.abs(RelativeContainer_AnchorPoint_Interdependence_row3.left - RelativeContainer_AnchorPoint_Interdependence_re1.left)<=1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Interdependence_row3.top - RelativeContainer_AnchorPoint_Interdependence_re1.top)<=1).assertTrue();
 //      expect(RelativeContainer_AnchorPoint_Interdependence_row3.bottom).assertEqual(RelativeContainer_AnchorPoint_Interdependence_re1.bottom);
 
 

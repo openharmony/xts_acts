@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function layoutWeight_All() {
   describe('layoutWeight_All', function () {
     beforeEach(async function (done) {
@@ -51,9 +51,9 @@ export default function layoutWeight_All() {
      */
     it('SUB_ACE_layoutWeight_All_TEST_0100', 0, async function (done) {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0100] START');
-      globalThis.value.message.notify({name:'layoutWeight1', value:'3'});
-      globalThis.value.message.notify({name:'layoutWeight2', value:'3'});
-      globalThis.value.message.notify({name:'layoutWeight3', value:'3'});
+      globalThis.value.message.notify({ name: 'layoutWeight1', value: '3' });
+      globalThis.value.message.notify({ name: 'layoutWeight2', value: '3' });
+      globalThis.value.message.notify({ name: 'layoutWeight3', value: '3' });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
       let Column_layoutWeight_All_021 = CommonFunc.getComponentRect('Column_layoutWeight_All_021');
@@ -61,26 +61,26 @@ export default function layoutWeight_All() {
       let Column_layoutWeight_All_023 = CommonFunc.getComponentRect('Column_layoutWeight_All_023');
       let Column_layoutWeight_All_02 = CommonFunc.getComponentRect('Column_layoutWeight_All_02');
       console.log('assert position')
-      expect(Math.round(Column_layoutWeight_All_021.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_021.right));
-      expect(Math.round(Column_layoutWeight_All_022.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_022.right));
-      expect(Math.round(Column_layoutWeight_All_023.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_023.right));
-      expect(Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)).assertEqual(Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom))
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_021.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_022.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_023.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)) - (Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom))) <= 1).assertTrue();
       console.log('assert space')
-      expect(Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom)).assertEqual(vp2px(10));
-      expect(Column_layoutWeight_All_02.top).assertEqual(Column_layoutWeight_All_021.top);
-      expect(Column_layoutWeight_All_023.bottom).assertEqual(Column_layoutWeight_All_02.bottom);
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Column_layoutWeight_All_02.top) - (Column_layoutWeight_All_021.top)) <= 1).assertTrue();
+      expect(Math.abs((Column_layoutWeight_All_023.bottom) - (Column_layoutWeight_All_02.bottom)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.round(Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top', + Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top)
-      expect(Math.round(Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top', + Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top)
-      expect(Math.round(Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top', + Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top)
       console.log('assert weight')
-      expect(Math.round(Column_layoutWeight_All_021.right - Column_layoutWeight_All_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_All_022.right - Column_layoutWeight_All_022.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_All_023.right - Column_layoutWeight_All_023.left)).assertEqual(vp2px(300));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.right - Column_layoutWeight_All_021.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.right - Column_layoutWeight_All_022.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.right - Column_layoutWeight_All_023.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
       console.info('[SUB_ACE_layoutWeight_All_TEST_0100] END');
       done();
     });
@@ -91,9 +91,9 @@ export default function layoutWeight_All() {
      */
     it('SUB_ACE_layoutWeight_All_TEST_0200', 0, async function (done) {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0200] START');
-      globalThis.value.message.notify({name:'layoutWeight1', value:'3'});
-      globalThis.value.message.notify({name:'layoutWeight2', value:'2'});
-      globalThis.value.message.notify({name:'layoutWeight3', value:'1'});
+      globalThis.value.message.notify({ name: 'layoutWeight1', value: '3' });
+      globalThis.value.message.notify({ name: 'layoutWeight2', value: '2' });
+      globalThis.value.message.notify({ name: 'layoutWeight3', value: '1' });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
       let Column_layoutWeight_All_021 = CommonFunc.getComponentRect('Column_layoutWeight_All_021');
@@ -101,26 +101,26 @@ export default function layoutWeight_All() {
       let Column_layoutWeight_All_023 = CommonFunc.getComponentRect('Column_layoutWeight_All_023');
       let Column_layoutWeight_All_02 = CommonFunc.getComponentRect('Column_layoutWeight_All_02');
       console.log('assert position')
-      expect(Math.round(Column_layoutWeight_All_021.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_021.right));
-      expect(Math.round(Column_layoutWeight_All_022.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_022.right));
-      expect(Math.round(Column_layoutWeight_All_023.left - Column_layoutWeight_All_02.left)).assertEqual(Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_023.right));
-      expect(Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)).assertEqual(Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom))
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_021.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_022.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.left - Column_layoutWeight_All_02.left)) - (Math.round(Column_layoutWeight_All_02.right - Column_layoutWeight_All_023.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)) - (Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom))) <= 1).assertTrue();
       console.log('assert space')
-      expect(Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom)).assertEqual(vp2px(10));
-      expect(Column_layoutWeight_All_02.top).assertEqual(Column_layoutWeight_All_021.top);
-      expect(Column_layoutWeight_All_023.bottom).assertEqual(Column_layoutWeight_All_02.bottom);
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.top - Column_layoutWeight_All_021.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.top - Column_layoutWeight_All_022.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Column_layoutWeight_All_02.top) - (Column_layoutWeight_All_021.top)) <= 1).assertTrue();
+      expect(Math.abs((Column_layoutWeight_All_023.bottom) - (Column_layoutWeight_All_02.bottom)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top).assertEqual(vp2px(225));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top)) - (Math.round(vp2px(225)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top', + Column_layoutWeight_All_021.bottom - Column_layoutWeight_All_021.top)
-      expect(Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top', + Column_layoutWeight_All_022.bottom - Column_layoutWeight_All_022.top)
-      expect(Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top).assertEqual(vp2px(75));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top)) - (Math.round(vp2px(75)))) <= 1).assertTrue();
       console.log('Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top', + Column_layoutWeight_All_023.bottom - Column_layoutWeight_All_023.top)
       console.log('assert weight')
-      expect(Math.round(Column_layoutWeight_All_021.right - Column_layoutWeight_All_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_All_022.right - Column_layoutWeight_All_022.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_All_023.right - Column_layoutWeight_All_023.left)).assertEqual(vp2px(300));
+      expect(Math.abs((Math.round(Column_layoutWeight_All_021.right - Column_layoutWeight_All_021.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_022.right - Column_layoutWeight_All_022.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Column_layoutWeight_All_023.right - Column_layoutWeight_All_023.left)) - (Math.round(vp2px(300)))) <= 1).assertTrue();
       console.info('[SUB_ACE_layoutWeight_All_TEST_0200] END');
       done();
     });

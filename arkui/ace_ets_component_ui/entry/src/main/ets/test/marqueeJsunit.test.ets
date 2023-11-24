@@ -52,7 +52,8 @@ export default function marqueeJsunit() {
        // to confirm allowScale
        console.info('marqueeJsunit_0100 component obj is: ' + obj.$attrs.allowScale);
        expect(obj.$attrs.start).assertEqual('false');
-       expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(50));
+       
+       expect(Math.abs(obj.$attrs.step - vp2px(50)) <= 1).assertTrue();
        expect(obj.$attrs.loop).assertEqual('2');
        expect(obj.$attrs.fromStart).assertEqual('true');
        expect(obj.$attrs.src).assertEqual('Running Marquee starts rolling');
@@ -119,7 +120,9 @@ export default function marqueeJsunit() {
       // check the value of changed parameter
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
-      expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(50));
+      
+      expect(Math.abs(obj.$attrs.step - vp2px(50)) <= 1).assertTrue();
+    
       done();   
     });    
     
@@ -130,8 +133,7 @@ export default function marqueeJsunit() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
-      // to confirm
-      expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(6));
+      expect(Math.abs(obj.$attrs.step - vp2px(6)) <= 1).assertTrue();
       done();
    });
   

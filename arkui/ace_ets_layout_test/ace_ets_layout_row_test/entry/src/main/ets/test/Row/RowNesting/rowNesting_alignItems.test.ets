@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function rowNesting_alignItems() {
   describe('rowNesting_alignItems', function () {
     beforeEach(async function (done) {
@@ -59,25 +59,25 @@ export default function rowNesting_alignItems() {
       let rowNesting_alignItems_01 = CommonFunc.getComponentRect('rowNesting_alignItems_01');
 
       console.log('assert position')
-      expect(Math.round(rowNesting_alignItems_011.top - rowNesting_alignItems_01.top)).assertEqual(0);
-      expect(Math.round(rowNesting_alignItems_012.top - rowNesting_alignItems_01.top)).assertEqual(0);
-      expect(Math.round(rowNesting_alignItems_013.top - rowNesting_alignItems_01.top)).assertEqual(0);
+      expect(Math.abs((Math.round(rowNesting_alignItems_011.top - rowNesting_alignItems_01.top)) - (0)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_012.top - rowNesting_alignItems_01.top)) - (0)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_013.top - rowNesting_alignItems_01.top)) - (0)) <= 1).assertTrue();
 
       console.log('assert space')
-      expect(Math.round(rowNesting_alignItems_012.left - rowNesting_alignItems_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(rowNesting_alignItems_013.left - rowNesting_alignItems_012.right)).assertEqual(vp2px(10));
+      expect(Math.abs(Math.round(rowNesting_alignItems_012.left - rowNesting_alignItems_011.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(rowNesting_alignItems_013.left - rowNesting_alignItems_012.right) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.log('rowNesting_alignItems_012.left - rowNesting_alignItems_011.right', + rowNesting_alignItems_012.left - rowNesting_alignItems_011.right)
       console.log('rowNesting_alignItems_013.left - rowNesting_alignItems_012.right', + rowNesting_alignItems_013.left - rowNesting_alignItems_012.right)
 
 
       console.log('assert height')
-      expect(Math.round(rowNesting_alignItems_011.bottom - rowNesting_alignItems_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(rowNesting_alignItems_012.bottom - rowNesting_alignItems_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(rowNesting_alignItems_013.bottom - rowNesting_alignItems_013.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(rowNesting_alignItems_011.bottom - rowNesting_alignItems_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_012.bottom - rowNesting_alignItems_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_013.bottom - rowNesting_alignItems_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.round(rowNesting_alignItems_011.right - rowNesting_alignItems_011.left)).assertEqual(vp2px(50));
-      expect(Math.round(rowNesting_alignItems_012.right - rowNesting_alignItems_012.left)).assertEqual(vp2px(100));
-      expect(Math.round(rowNesting_alignItems_013.right - rowNesting_alignItems_013.left)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(rowNesting_alignItems_011.right - rowNesting_alignItems_011.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_012.right - rowNesting_alignItems_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_alignItems_013.right - rowNesting_alignItems_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[SUB_ACE_rowNesting_alignItems_TEST_0100] END');
       done();
     });

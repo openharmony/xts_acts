@@ -37,9 +37,49 @@ import List_Padding from './List/List_Space/ListChange/List_Padding.test';
 import List_PadMar from './List/List_Space/ListChange/List_PadMar.test';
 import list_ListFrictionTest from './List/List_attribute/List_ListFriction.test';
 
+import ListItem_Delete_End from './List/ListItem_Delete/ListItem_Delete_End.test.ets';
+import ListItem_Delete_End_Default from './List/ListItem_Delete/ListItem_Delete_End_Default.test.ets';
+import ListItem_Delete_End_String from './List/ListItem_Delete/ListItem_Delete_End_String.test.ets';
+import ListItem_Delete_End_Resource from './List/ListItem_Delete/ListItem_Delete_End_Resource.test.ets';
+import ListItem_Delete_Start from './List/ListItem_Delete/ListItem_Delete_Start.test.ets';
+import ListItem_Delete_Start_Default from './List/ListItem_Delete/ListItem_Delete_Start_Default.test.ets';
+import ListItem_Delete_Start_String from './List/ListItem_Delete/ListItem_Delete_Start_String.test.ets';
+import ListItem_Delete_Start_Resource from './List/ListItem_Delete/ListItem_Delete_Start_Resource.test.ets';
+
+import List_scrollToIndex1 from './List/List_scrollToIndex/List_scrollToIndex1.test';
+import List_scrollToIndex2 from './List/List_scrollToIndex/List_scrollToIndex2.test';
+import List_scrollToIndex3 from './List/List_scrollToIndex/List_scrollToIndex3.test';
+
+import List_Space_Percentage from './List/List_SpaceChange/List_Space_Percentage.test';
+import listItemGroup_Space_Percentage from './List/List_SpaceChange/listItemGroup_Space_Percentage.test';
+import List_aspectRatio_width from './List/List_aspectRatio/List_aspectRatio/List_aspectRatio_width.test';
+import List_aspectRatio_height from './List/List_aspectRatio/List_aspectRatio/List_aspectRatio_height.test';
+import List_aspectRatio_all from './List/List_aspectRatio/List_aspectRatio/List_aspectRatio_all.test';
+import List_aspectRatio_neither from './List/List_aspectRatio/List_aspectRatio/List_aspectRatio_neither.test';
+import ListItem_aspectRatio_width from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_width.test';
+import ListItem_aspectRatio_height from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_height.test';
+import ListItem_aspectRatio_all from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_all.test';
+import ListItem_aspectRatio_neither from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_neither.test';
+import ListItem_aspectRatio_width2 from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_width2.test';
+import ListItem_aspectRatio_height2 from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_height2.test';
+import ListItem_aspectRatio_all2 from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_all2.test';
+import ListItem_aspectRatio_neither2 from './List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_neither2.test';
+import ListItemGroup_aspectRatio_width from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_width.test';
+import ListItemGroup_aspectRatio_height from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height.test';
+import ListItemGroup_aspectRatio_all from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_all.test';
+import ListItemGroup_aspectRatio_neither from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_neither.test';
+import ListItemGroup_aspectRatio_width2 from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_width2.test';
+import ListItemGroup_aspectRatio_height2 from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height2.test';
+import ListItemGroup_aspectRatio_all2 from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_all2.test';
+import ListItemGroup_aspectRatio_neither2 from './List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_neither2.test';
+import List_divider_number from './List/List_divider/List_divider_number.test';
+import List_divider_string from './List/List_divider/List_divider_string.test';
+import List_strokeWidth from './List/List_divider/List_strokeWidth.test';
+import List_divider_resource from './List/List_divider/List_divider_resource.test';
+
+
 export default function testsuite() {
-  
-  listItem_SizeChange()
+ listItem_SizeChange()
   listItem_Margin()
   listItem_Padding()
   listItem_PadMar()
@@ -63,5 +103,45 @@ export default function testsuite() {
   List_Padding();
   List_PadMar();
   list_ListFrictionTest();
-  
+
+  ListItem_Delete_End()
+  ListItem_Delete_End_Default()
+  ListItem_Delete_End_String()
+  ListItem_Delete_End_Resource()
+  ListItem_Delete_Start()
+  ListItem_Delete_Start_Default()
+  ListItem_Delete_Start_String()
+  ListItem_Delete_Start_Resource()
+
+ List_scrollToIndex1()
+ List_scrollToIndex2()
+ List_scrollToIndex3()
+
+ List_Space_Percentage();
+ listItemGroup_Space_Percentage();
+ List_aspectRatio_width();
+ List_aspectRatio_height();
+ List_aspectRatio_all();
+ List_aspectRatio_neither();
+ ListItem_aspectRatio_width();
+ ListItem_aspectRatio_height();
+ ListItem_aspectRatio_all();
+ ListItem_aspectRatio_neither();
+ ListItem_aspectRatio_width2();
+ ListItem_aspectRatio_height2();
+ ListItem_aspectRatio_all2();
+ ListItem_aspectRatio_neither2();
+ ListItemGroup_aspectRatio_width();
+ ListItemGroup_aspectRatio_height();
+ ListItemGroup_aspectRatio_all();
+ ListItemGroup_aspectRatio_neither();
+ ListItemGroup_aspectRatio_width2();
+ ListItemGroup_aspectRatio_height2();
+ ListItemGroup_aspectRatio_all2();
+ ListItemGroup_aspectRatio_neither2();
+ List_divider_number();
+ List_divider_string();
+ List_strokeWidth();
+ List_divider_resource();
+
 }

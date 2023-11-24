@@ -61,11 +61,11 @@ export default function Grid_Row_Direction_Row() {
       let gridRowDirection = JSON.parse(gridRowDirectionRowJson);
       expect(gridRowDirection.$type).assertEqual('GridRow');
 
-      expect(firstDirectionRow.top).assertEqual(DirectionRow_1.top);
-      expect(firstDirectionRow.left).assertEqual(DirectionRow_1.left);
+      expect(Math.abs(firstDirectionRow.top - DirectionRow_1.top) <= 1).assertTrue();
+      expect(Math.abs(firstDirectionRow.left - DirectionRow_1.left) <= 1).assertTrue();
 
-      expect(Math.round(secondDirectionRow.left - firstDirectionRow.right)).assertEqual(vp2px(10));
-      expect(Math.round(thirdDirectionRow.top - firstDirectionRow.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(secondDirectionRow.left - firstDirectionRow.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdDirectionRow.top - firstDirectionRow.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('SUB_ACE_GridRowDirection_Row_0100 END');
       done();

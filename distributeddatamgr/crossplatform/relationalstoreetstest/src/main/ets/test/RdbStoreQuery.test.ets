@@ -93,7 +93,7 @@ export default function rdbStoreQueryTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0930
      * @tc.name   : testRdbStoreQuery001
      * @tc.desc   : RdbStore query callback test
      * @tc.size   : MediumTest
@@ -117,7 +117,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0950
      * @tc.name   : testRdbStoreQuery002
      * @tc.desc   : RdbStore query callback test
      * @tc.size   : MediumTest
@@ -144,7 +144,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0940
      * @tc.name   : testRdbStoreQuery003
      * @tc.desc   : RdbStore query promise test
      * @tc.size   : MediumTest
@@ -165,7 +165,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0960
      * @tc.name   : testRdbStoreQuery004
      * @tc.desc   : RdbStore query promise test
      * @tc.size   : MediumTest
@@ -186,6 +186,38 @@ export default function rdbStoreQueryTest() {
         done();
       });
       console.info(TAG + "************* testRdbStoreQuery004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0920
+     * @tc.name   : testRdbStoreQuery005
+     * @tc.desc   : RdbStore query callback test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreQuery005", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreQuery005 start *************");
+      let predicates = new relationalStore.RdbPredicates("test");
+      try {
+        rdbStore.query(async (err, resultSet) => {
+          if (err) {
+            console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            done();
+          }
+          console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+          expect(!err).assertFail();
+          resultSet.close();
+          done();
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info(TAG + " query failed.", e);
+        expect(e !== null).assertTrue();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreQuery005 end *************");
     });
   });
 }

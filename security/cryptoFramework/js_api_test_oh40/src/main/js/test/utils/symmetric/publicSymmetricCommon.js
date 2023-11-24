@@ -16,25 +16,25 @@
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 function createSymKeyGenerator(symAlgoName) {
-  try {
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator(symAlgoName);
-    console.log("symKeyGenerator algName: " + symKeyGenerator.algName);
-    return symKeyGenerator;
-  } catch (err) {
-    console.error("symKeyGenerator error:" + err);
-    return err;
-  }
+    try {
+        let symKeyGenerator = cryptoFramework.createSymKeyGenerator(symAlgoName);
+        console.log("symKeyGenerator algName: " + symKeyGenerator.algName);
+        return symKeyGenerator;
+    } catch (err) {
+        console.error("symKeyGenerator error:" + err);
+        throw err;
+    }
 }
 
 function createSymCipher(cipherAlgoName) {
-  try {
-    let cipherGenerator = cryptoFramework.createCipher(cipherAlgoName);
-    console.log("cipherGenerator algName: " + cipherGenerator.algName);
-    return cipherGenerator;
-  } catch (err) {
-    console.error("cipherGenerator error:" + err);
-    return err;
-  }
+    try {
+        let cipherGenerator = cryptoFramework.createCipher(cipherAlgoName);
+        console.log("cipherGenerator algName: " + cipherGenerator.algName);
+        return cipherGenerator;
+    } catch (err) {
+        console.error("cipherGenerator error:" + err);
+        throw err;
+    }
 }
 
 export { createSymKeyGenerator, createSymCipher };

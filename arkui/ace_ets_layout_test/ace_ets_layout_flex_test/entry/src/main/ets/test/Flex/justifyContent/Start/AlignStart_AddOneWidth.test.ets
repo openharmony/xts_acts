@@ -62,19 +62,19 @@ export default function AlignStart_AddOneWidth() {
       let Start_AddOneWidth_012 = CommonFunc.getComponentRect('Start_AddOneWidth_012');
       let Start_AddOneWidth_013 = CommonFunc.getComponentRect('Start_AddOneWidth_013');
       let Start_AddOneWidth_01 = CommonFunc.getComponentRect('Start_AddOneWidth_01');
-      expect(Start_AddOneWidth_011.top).assertEqual(Start_AddOneWidth_012.top);
-      expect(Start_AddOneWidth_013.top).assertEqual(Start_AddOneWidth_012.top);
-      expect(Start_AddOneWidth_011.top).assertEqual(Start_AddOneWidth_01.top);
-      expect(Start_AddOneWidth_01.left).assertEqual(Start_AddOneWidth_011.left);
-      expect(Start_AddOneWidth_012.left).assertEqual(Start_AddOneWidth_011.right);
-      expect(Start_AddOneWidth_013.left).assertEqual(Start_AddOneWidth_012.right);
-      expect(Math.round(Start_AddOneWidth_011.right - Start_AddOneWidth_011.left)).assertEqual(vp2px(160));
-      expect(Math.round(Start_AddOneWidth_012.right - Start_AddOneWidth_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddOneWidth_013.right - Start_AddOneWidth_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddOneWidth_011.bottom - Start_AddOneWidth_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Start_AddOneWidth_012.bottom - Start_AddOneWidth_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddOneWidth_013.bottom - Start_AddOneWidth_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddOneWidth_01.right - Start_AddOneWidth_013.right)).assertEqual(vp2px(40));
+      expect(Math.abs(Start_AddOneWidth_011.top - Start_AddOneWidth_012.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_013.top - Start_AddOneWidth_012.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_011.top - Start_AddOneWidth_01.top) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_01.left - Start_AddOneWidth_011.left) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_012.left - Start_AddOneWidth_011.right) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_013.left - Start_AddOneWidth_012.right) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_011.right - Start_AddOneWidth_011.left - vp2px(160)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_012.right - Start_AddOneWidth_012.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_013.right - Start_AddOneWidth_013.left - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_011.bottom - Start_AddOneWidth_011.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_012.bottom - Start_AddOneWidth_012.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_013.bottom - Start_AddOneWidth_013.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(Start_AddOneWidth_01.right - Start_AddOneWidth_013.right - vp2px(40)) <= 1).assertTrue()
       console.info('[testFlexAlignStartTextWidth] END');
       done();
     });

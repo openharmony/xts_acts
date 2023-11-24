@@ -66,14 +66,14 @@ export default function TimePickerJsunit() {
       console.info("[TimePickerJsunit_0100] hour1: " + JSON.stringify(hour1));
       expect(hour1).assertEqual('hour:8');
       await driver.swipe(Math.round(right / 5), Math.round(middle + 80), Math.round(right / 5), Math.round(middle - 80));
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let hour2 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour2: " + JSON.stringify(hour2));
       expect(hour2).assertEqual('hour:20');
       
       // Verify hour
       await driver.swipe(Math.round(right / 2), Math.round(middle + 100), Math.round(right / 2), Math.round(middle - 100));
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let hour3 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour3: " + JSON.stringify(hour3));
       expect(hour2 == hour3).assertFalse();
@@ -84,7 +84,7 @@ export default function TimePickerJsunit() {
       console.info("[TimePickerJsunit_0100] minute1: " + JSON.stringify(minute1));
       expect(minute1).assertEqual('minute:0');
       await driver.swipe(Math.round(right * 5 / 6), Math.round(middle + 100), Math.round(right * 5 / 6), Math.round(middle - 100));
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let minute2 = await minute.getText();
       console.info("[TimePickerJsunit_0100] minute2: " + JSON.stringify(minute2));
       expect(minute1 == minute2).assertFalse();
@@ -135,7 +135,7 @@ export default function TimePickerJsunit() {
       let hour1 = await hour.getText();
       console.info("[TimePickerJsunit_0300] hour1: " + JSON.stringify(hour1));
       await driver.swipe(Math.round(right * 0.24), Math.round(middle + 100), Math.round(right * 0.24), Math.round(middle - 100));
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let hourComponent = await driver.findComponent(BY.key('hour'));
       let hour2 = await hourComponent.getText();
       console.info("[TimePickerJsunit_0300] hour2: " + JSON.stringify(hour2));
@@ -146,7 +146,7 @@ export default function TimePickerJsunit() {
       let minute1 = await minute.getText();
       console.info("[TimePickerJsunit_0300] minute1: " + JSON.stringify(minute1));
       await driver.swipe(Math.round(right * 0.76), Math.round(middle + 100), Math.round(right * 0.76), Math.round(middle - 100));
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let minute2 = await minute.getText();
       console.info("[TimePickerJsunit_0300] minute2: " + JSON.stringify(minute2));
       expect(minute1 == minute2).assertFalse();

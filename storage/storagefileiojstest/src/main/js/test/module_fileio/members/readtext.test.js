@@ -293,7 +293,7 @@ describe('fileio_readtext', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_0300
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0300
    * @tc.name fileio_test_readtext_async_003
    * @tc.desc Test readtext() interfaces. Promise.
    * Use default option.
@@ -318,7 +318,7 @@ describe('fileio_readtext', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_0400
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0400
    * @tc.name fileio_test_readtext_async_004
    * @tc.desc Test readtext() interfaces. Callback.
    * Use default option.
@@ -348,7 +348,7 @@ describe('fileio_readtext', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_0500
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0500
    * @tc.name fileio_test_readtext_async_005
    * @tc.desc Test readtext() interfaces. Promise.
    * Use default option.
@@ -377,7 +377,7 @@ describe('fileio_readtext', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_0600
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_0600
    * @tc.name fileio_test_readtext_async_006
    * @tc.desc Test readtext() interfaces. Callback.
    * Use default option.

@@ -25,8 +25,8 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = 'key_test_number_array';
 const KEY_TEST_STRING_ARRAY_ELEMENT = 'key_test_string_array';
 const KEY_TEST_BOOL_ARRAY_ELEMENT = 'key_test_bool_array';
-var mPreferences;
-var context;
+let mPreferences;
+let context;
 
 export default function preferencesPromiseTest(){
     describe('preferencesPromiseTest', function () {
@@ -43,77 +43,67 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name put StringArray promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0010
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0800
          * @tc.desc put StringArray promise interface test
          */
         it('testPreferencesPutStringArray0131', 0, async function (done) {
             await mPreferences.clear();
             var stringArr = ['1', '2', '3'];
-            let promise1 = mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ['123', '321']);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
+            await mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ['123', '321']).then((pre) => {
                 for (let i = 0; i < stringArr.length; i++) {
                     expect(stringArr[i]).assertEqual(pre[i]);
                 }
-
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
          * @tc.name put NumberArray promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0020
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0700
          * @tc.desc put NumberArray promise interface test
          */
         it('testPreferencesPutNumberArray0132', 0, async function (done) {
             await mPreferences.clear();
             var numberArr = [11, 22, 33, 44, 55];
-            let promise1 = mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
+            await mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]).then((pre) => {
                 for (let i = 0; i < numberArr.length; i++) {
                     expect(numberArr[i]).assertEqual(pre[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
          * @tc.name put BoolArray promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0030
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0600
          * @tc.desc put BoolArray promise interface test
          */
         it('testPreferencesPutBoolArray0133', 0, async function (done) {
             await mPreferences.clear();
             var boolArr = [true, true, false];
-            let promise1 = mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
+            await mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]).then((pre) => {
                 for (let i = 0; i < boolArr.length; i++) {
                     expect(boolArr[i]).assertEqual(pre[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
          * @tc.name getAll promise interface test
-         * @tc.number SUB_DDM_Preferences_GetAll_Promise_0040
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1000
          * @tc.desc getAll promise interface test
          */
         it('testPreferencesGetAll0001', 0, async function (done) {
@@ -130,8 +120,7 @@ export default function preferencesPromiseTest(){
 
             await mPreferences.flush();
 
-            let promise = mPreferences.getAll();
-            promise.then((obj) => {
+            await mPreferences.getAll().then((obj) => {
                 expect(false).assertEqual(obj.key_test_boolean);
                 expect("123").assertEqual(obj.key_test_string);
                 expect(123.1).assertEqual(obj.key_test_float);
@@ -149,217 +138,206 @@ export default function preferencesPromiseTest(){
                 for (let i = 0; i < nArr.length; i++) {
                     expect(nArr[i]).assertEqual(doubleArr[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise;
-
-            done();
         })
 
         /**
          * @tc.name clear promise interface test
-         * @tc.number SUB_DDM_Preferences_Clear_Promise_0050
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_2100
          * @tc.desc clear promise interface test
          */
         it('testPreferencesClear0011', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
-            const promise = mPreferences.clear();
-            promise.then(async (ret) => {
+            await mPreferences.clear().then(async (ret) => {
                 let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
                 expect("defaultvalue").assertEqual(per);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name has string interface test
-         * @tc.number SUB_DDM_Preferences_Has_Promise_0060
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0900
          * @tc.desc has string interface test
          */
         it('testPreferencesHasKey0031', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            const promise = mPreferences.has(KEY_TEST_STRING_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_STRING_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name has int interface test
-         * @tc.number SUB_DDM_Preferences_Has_Promise_0070
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1700
          * @tc.desc has int interface test
          */
         it('testPreferencesHasKey0032', 0, async function (done) {
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
-            const promise = mPreferences.has(KEY_TEST_INT_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_INT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
             done();
         })
 
         /**
          * @tc.name has float interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0080
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1500
          * @tc.desc has float interface test
          */
         it('testPreferencesHasKey0033', 0, async function (done) {
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
-            const promise = mPreferences.has(KEY_TEST_FLOAT_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_FLOAT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name has boolean interface test
-         * @tc.number SUB_DDM_Preferences_Has_Promise_0090
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1300
          * @tc.desc has boolean interface test
          */
         it('testPreferencesHasKey0034', 0, async function (done) {
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
-            const promise = mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name has long interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0100
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1800
          * @tc.desc has long interface test
          */
         it('testPreferencesHasKey0035', 0, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
-            const promise = mPreferences.has(KEY_TEST_LONG_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_LONG_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
+
         })
 
         /**
          * @tc.name get string promise interface test
-         * @tc.number SUB_DDM_Preferences_Get_Promise_0110
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1100
          * @tc.desc get string promise interface test
          */
         it('testPreferencesGetDefValue0061', 0, async function (done) {
             await mPreferences.clear();
-            const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue");
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue").then((ret) => {
                 expect('defaultValue').assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name get float promise interface test
-         * @tc.number SUB_DDM_Preferences_Get_Promise_0120
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1400
          * @tc.desc get float promise interface test
          */
         it('testPreferencesGetFloat0071', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
-            const promise = mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0).then((ret) => {
                 expect(3.0).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name get int promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0130
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1600
          * @tc.desc get int promise interface test
          */
         it('testPreferencesGetInt0081', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
-            const promise = mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0).then((ret) => {
                 expect(3).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name get long promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0140
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1900
          * @tc.desc get long promise interface test
          */
         it('testPreferencesGetLong0091', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
-            const promise = mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0).then((ret) => {
                 expect(3).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name get String promise interface test
-         * @tc.number SUB_DDM_Preferences_Get_Promise_0150
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_2000
          * @tc.desc get String promise interface test
          */
         it('tesPreferencesGetString101', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
-            const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue").then((ret) => {
                 expect('test').assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
          * @tc.name put boolean promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0160
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0100
          * @tc.desc put boolean promise interface test
          */
         it('testPreferencesPutBoolean0121', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
-            await promise;
+            await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
             let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
             expect(true).assertEqual(per);
             await mPreferences.flush();
@@ -370,13 +348,12 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name put float promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0170
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0200
          * @tc.desc put float promise interface test
          */
         it('testPreferencesPutFloat0131', 0, async function (done) {
             await mPreferences.clear();
-            const promise = mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
-            await promise;
+            await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
             let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
             expect(4.0).assertEqual(per);
             await mPreferences.flush();
@@ -387,13 +364,12 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name put int promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0180
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0300
          * @tc.desc put int promise interface test
          */
         it('testPreferencesPutInt0141', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
-            await promise;
+            await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
             expect(4).assertEqual(per);
             await mPreferences.flush();
@@ -404,12 +380,11 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name put long promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0190
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0400
          * @tc.desc put long promise interface test
          */
         it('testPreferencesPutLong0151', 0, async function (done) {
-            let promise = mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
-            await promise;
+            await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
             expect(4).assertEqual(per);
             await mPreferences.flush();
@@ -420,12 +395,11 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name put String promise interface test
-         * @tc.number SUB_DDM_Preferences_Put_Promise_0200
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0500
          * @tc.desc put String promise interface test
          */
         it('testPreferencesPutString0161', 0, async function (done) {
-            let promise = mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
-            await promise;
+            await mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
             let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue")
             expect('').assertEqual(per);
             await mPreferences.flush();
@@ -436,19 +410,18 @@ export default function preferencesPromiseTest(){
 
         /**
          * @tc.name get string promise interface test
-         * @tc.number SUB_DDM_Preferences_Get_Promise_0210
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1200
          * @tc.desc get string promise interface test
          */
         it('testPreferencesGetDefValue00162', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
     })
 }

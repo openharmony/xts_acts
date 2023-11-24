@@ -27,6 +27,9 @@
     "TestAbility/pages/list",
     "TestAbility/pages/grid",
     "TestAbility/pages/swiper",
-    "TestAbility/pages/richeditor"
+    "TestAbility/pages/richeditor",
+    "TestAbility/pages/navigationType",
+    "TestAbility/pages/getcomponentadd",
+    "TestAbility/pages/getcomponent"
   ]
 }

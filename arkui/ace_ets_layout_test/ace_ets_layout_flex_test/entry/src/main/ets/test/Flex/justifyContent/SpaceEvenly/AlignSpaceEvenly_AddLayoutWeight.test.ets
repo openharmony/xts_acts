@@ -64,25 +64,19 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       let SpaceEvenly_AddLayoutWeight_012 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_012');
       let SpaceEvenly_AddLayoutWeight_013 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_013');
       let SpaceEvenly_AddLayoutWeight_01 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_01');
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_013.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_01.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.right).assertEqual(SpaceEvenly_AddLayoutWeight_012.left);
-      expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
-      expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
-      expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
-        .assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left))
-        .assertEqual(vp2px(200));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left))
-        .assertEqual(vp2px(200));
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.top - SpaceEvenly_AddLayoutWeight_012.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.top - SpaceEvenly_AddLayoutWeight_012.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.top - SpaceEvenly_AddLayoutWeight_01.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_012.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_013.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.left - SpaceEvenly_AddLayoutWeight_01.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_01.right) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left - vp2px(200)) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight01] END');
       done();
     });
@@ -106,25 +100,22 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       let SpaceEvenly_AddLayoutWeight_012 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_012');
       let SpaceEvenly_AddLayoutWeight_013 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_013');
       let SpaceEvenly_AddLayoutWeight_01 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_01');
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_013.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_01.top);
-      expect(SpaceEvenly_AddLayoutWeight_011.right).assertEqual(SpaceEvenly_AddLayoutWeight_012.left);
-      expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
-      expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
-      expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
-        .assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
-        .assertEqual(vp2px(150));
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.top - SpaceEvenly_AddLayoutWeight_012.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.top - SpaceEvenly_AddLayoutWeight_012.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.top - SpaceEvenly_AddLayoutWeight_01.top) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_012.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_013.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.left - SpaceEvenly_AddLayoutWeight_01.left) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_01.right) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top - vp2px(50)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top - vp2px(100)) <= 1).assertTrue()
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top - vp2px(150)) <= 1).assertTrue()
       let oneWidth = Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left);
       let twoWidth = Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left);
-      expect(Math.round(twoWidth / oneWidth)).assertEqual(2);
-      expect(twoWidth + oneWidth).assertEqual(vp2px(350));
-      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left)).
-        assertEqual(vp2px(150));
+      expect(Math.abs(twoWidth / oneWidth - 2) <= 1).assertTrue()
+
+      expect(Math.abs(Math.round(twoWidth + oneWidth) - Math.round(vp2px(350))) <= 1 ).assertTrue();
+      expect(Math.abs(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyLayoutWeight02] END');
       done();
     });

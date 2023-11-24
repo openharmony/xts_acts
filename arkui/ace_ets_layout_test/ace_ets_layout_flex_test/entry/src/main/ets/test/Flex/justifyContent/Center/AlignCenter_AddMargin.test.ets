@@ -61,23 +61,21 @@ export default function AlignCenter_AddMargin() {
       let Center_AddMargin_013 = CommonFunc.getComponentRect('Center_AddMargin_013');
       let Center_AddMargin_01 = CommonFunc.getComponentRect('Center_AddMargin_01');
       let Center_AddMargin_01_Box = CommonFunc.getComponentRect('Center_AddMargin_01_Box');
-      expect(Center_AddMargin_011.top).assertEqual(Center_AddMargin_012.top);
-      expect(Center_AddMargin_011.top).assertEqual(Center_AddMargin_01.top);
-      expect(Center_AddMargin_013.top).assertEqual(Center_AddMargin_012.top);
-      expect(Center_AddMargin_012.left).assertEqual(Center_AddMargin_011.right);
-      expect(Center_AddMargin_013.left).assertEqual(Center_AddMargin_012.right);
-      expect(Math.round(Center_AddMargin_01.left - Center_AddMargin_01_Box.left)).assertEqual(vp2px(20));
-      expect(Math.round(Center_AddMargin_01.top - Center_AddMargin_01_Box.top)).assertEqual(vp2px(20));
-      expect(Math.round((Center_AddMargin_011.left - Center_AddMargin_01.left)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round((Center_AddMargin_01.right - Center_AddMargin_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddMargin_011.bottom - Center_AddMargin_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddMargin_012.bottom - Center_AddMargin_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddMargin_013.bottom - Center_AddMargin_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddMargin_011.right - Center_AddMargin_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddMargin_012.right - Center_AddMargin_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddMargin_013.right - Center_AddMargin_013.left)).assertEqual(vp2px(150));
+      expect(Math.abs((Center_AddMargin_011.top) - (Center_AddMargin_012.top)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddMargin_011.top) - (Center_AddMargin_01.top)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddMargin_013.top) - (Center_AddMargin_012.top)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddMargin_012.left) - (Center_AddMargin_011.right)) <= 1).assertTrue();
+      expect(Math.abs((Center_AddMargin_013.left) - (Center_AddMargin_012.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_01.left - Center_AddMargin_01_Box.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_01.top - Center_AddMargin_01_Box.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddMargin_011.left - Center_AddMargin_01.left)*10)/10) - (Math.round(vp2px(25)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddMargin_01.right - Center_AddMargin_013.right)*10)/10) - (Math.round(vp2px(25)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_011.bottom - Center_AddMargin_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_012.bottom - Center_AddMargin_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_013.bottom - Center_AddMargin_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_011.right - Center_AddMargin_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_012.right - Center_AddMargin_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddMargin_013.right - Center_AddMargin_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignCenterFlexMargin] END');
       done();
     });

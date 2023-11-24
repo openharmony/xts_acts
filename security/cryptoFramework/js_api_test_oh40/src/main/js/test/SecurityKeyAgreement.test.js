@@ -19,10 +19,12 @@ import * as asyCommon from "./utils/common/publicDoSpec";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityKeyAgreementJsunit() {
-  describe("SecurityKeyAgreementJsunit", function () {
-    console.log("##########start SecurityKeyAgreementJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("SecurityKeyAgreementJsunit", function () {
+        console.log("##########start SecurityKeyAgreementJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_KeyAgreement_Func_0100
@@ -62,7 +64,7 @@ export default function SecurityKeyAgreementJsunit() {
           })
           .catch((err) => {
             console.error("AsyPromise keyAgreementProcess catch error: " + err);
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
@@ -106,7 +108,7 @@ export default function SecurityKeyAgreementJsunit() {
             console.error(
               "AsyPromise keyAgreementBySpecProcess catch error: " + err
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
@@ -134,7 +136,7 @@ export default function SecurityKeyAgreementJsunit() {
             console.error(
               "AsyPromise keyAgreementBySpecProcess catch error: " + err
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }

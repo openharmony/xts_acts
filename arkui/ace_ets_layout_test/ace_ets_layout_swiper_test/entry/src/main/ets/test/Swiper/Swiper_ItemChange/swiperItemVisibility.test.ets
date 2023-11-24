@@ -36,6 +36,7 @@ export default function swiperItemVisibility() {
       } catch (err) {
         console.error("push swiperItemVisibility page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

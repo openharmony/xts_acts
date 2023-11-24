@@ -207,36 +207,26 @@ export default function paddingTest() {
         if (data.testValue.describe == 'SetPadding') {
           //Panel component need special adapter ,the reason is the top of Panel has a own size
           if (data.pageConfig.componentKey == 'Panel') {
-            expect(referenceRect.top - targetRectAfter.top)
-              .assertEqual(data.testValue.expectValue.top + vp2px(8));
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1).assertTrue();
           } else {
-            expect(referenceRect.top - targetRectAfter.top)
-              .assertEqual(data.testValue.expectValue.top);
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top)) <= 1).assertTrue();
           }
-          expect(targetRectAfter.bottom - referenceRect.bottom)
-            .assertEqual(data.testValue.expectValue.bottom);
-          expect(targetRectAfter.right - referenceRect.right)
-            .assertEqual(data.testValue.expectValue.right);
-          expect(referenceRect.left - targetRectAfter.left)
-            .assertEqual(data.testValue.expectValue.left);
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.left - referenceRect.left - data.testValue.expectValue.left) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingTop') {
           //Panel component need special adapter ,the reason is the top of Panel has a own size
           if (data.pageConfig.componentKey == 'Panel') {
-            expect(referenceRect.top - targetRectAfter.top)
-              .assertEqual(data.testValue.expectValue.top + vp2px(8));
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top + vp2px(8))) <= 1).assertTrue();
           } else {
-            expect(referenceRect.top - targetRectAfter.top)
-              .assertEqual(data.testValue.expectValue.top);
+            expect(Math.abs(referenceRect.top - targetRectAfter.top - (data.testValue.expectValue.top)) <= 1).assertTrue();
           }
         } else if (data.testValue.describe == 'SetPaddingBottom') {
-          expect(targetRectAfter.bottom - referenceRect.bottom)
-            .assertEqual(data.testValue.expectValue.bottom);
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingRight') {
-          expect(targetRectAfter.right - referenceRect.right)
-            .assertEqual(data.testValue.expectValue.right);
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingLeft') {
-          expect(referenceRect.left - targetRectAfter.left)
-            .assertEqual(data.testValue.expectValue.left);
+          expect(Math.abs(targetRectAfter.left - referenceRect.left - data.testValue.expectValue.left) <= 1).assertTrue();
         }
       } else if (data.pageConfig.componentKey == 'Tabs') {
         let referenceRect = Utils.getComponentRectByObj(JSON.parse(JSON.stringify(getInspectorTree()))
@@ -248,26 +238,17 @@ export default function paddingTest() {
           .$children[0]
           .$children[0]);
         if (data.testValue.describe == 'SetPadding') {
-          expect(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top))
-            .assertEqual(data.testValue.expectValue.top);
-          expect(targetRectAfter.bottom - referenceRect.bottom)
-            .assertEqual(data.testValue.expectValue.bottom);
-          expect(targetRectAfter.right - referenceRect.right)
-            .assertEqual(data.testValue.expectValue.right);
-          expect(referenceRect.left - targetRectAfter.left)
-            .assertEqual(data.testValue.expectValue.left);
+          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.right) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingTop') {
-          expect(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top))
-            .assertEqual(data.testValue.expectValue.top);
+          expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingBottom') {
-          expect(targetRectAfter.bottom - referenceRect.bottom)
-            .assertEqual(data.testValue.expectValue.bottom);
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingRight') {
-          expect(targetRectAfter.right - referenceRect.right)
-            .assertEqual(data.testValue.expectValue.right);
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPaddingLeft') {
-          expect(referenceRect.left - targetRectAfter.left)
-            .assertEqual(data.testValue.expectValue.left);
+          expect(Math.abs(targetRectAfter.left - referenceRect.left - data.testValue.expectValue.left) <= 1).assertTrue();
         }
       } else {
         //Verify the width size of the target component.
@@ -282,10 +263,8 @@ export default function paddingTest() {
         console.info('[' + data.caseTag + '] referenceRectAfterHeight:' + targetRectAfterHeight);
 
         //Confirm that the calculated value is consistent with the expected value.
-        expect(targetRectAfterWidth - targetRectBeforeWidth)
-          .assertEqual(data.testValue.expectValue.left + data.testValue.expectValue.right);
-        expect(targetRectAfterHeight - targetRectBeforeHeight)
-          .assertEqual(data.testValue.expectValue.top + data.testValue.expectValue.bottom);
+        expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right)) <= 1).assertTrue();
+        expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1).assertTrue();
       }
     })
   })

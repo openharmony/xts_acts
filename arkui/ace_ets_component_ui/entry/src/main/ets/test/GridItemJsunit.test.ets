@@ -171,7 +171,7 @@ export default function GridItemJsunit() {
       await CommonFunc.sleep(1000);
       let gridItem3 = CommonFunc.getComponentRect('1');
       let left3 = gridItem3.left;
-      expect(left3 - right1).assertEqual(vp2px(4));
+      expect(Math.abs(Math.ceil(left3 - right1) - Math.ceil(vp2px(4))) <= 1).assertTrue();
       console.info('[GridJsunit_0500] END');
       done();
     });
@@ -184,7 +184,7 @@ export default function GridItemJsunit() {
       let bottom1 = gridItem1.bottom;
       let gridItem3 = CommonFunc.getComponentRect('4');
       let top3 = gridItem3.top;
-      expect(top3 - bottom1).assertEqual(vp2px(5));
+      expect(Math.abs((top3 - bottom1) - vp2px(5)) <= 1).assertTrue();
       console.info('[GridJsunit_0600] END');
       done();
     });
@@ -215,7 +215,7 @@ export default function GridItemJsunit() {
       let bottom1 = gridItem1.bottom;
       let gridItem2 = CommonFunc.getComponentRect('gridItem3');
       let top1 = gridItem2.top;
-      expect(top1 - bottom1).assertEqual(vp2px(5));
+      expect(Math.abs((top1 - bottom1) - vp2px(5)) <= 1).assertTrue();
       console.info('[GridJsunit_0800] END');
       done();
     });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,24 +25,31 @@ export default {
         this.title = "scene accessible first application";
     },
     onShow() {
-        console.debug('====>scene accessible first application start====');
+        function sleep(delay) {
+            var start = (new Date()).getTime();
+            while((new Date()).getTime() - start < delay) {
+                continue;
+            }
+        }
+
+        console.info('====>scene accessible first application start====');
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>creat first scene manager finish====");
+        console.info("====>creat first scene manager finish====");
         var enableBundle = "com.example.actsgetallaccessiblemultiple";
         var enableBundle_2 = "com.example.getmultipleaccountstest"
-        console.debug("====>add first account start====");
+        console.info("====>add first account start====");
         appAccountManager.createAccount("account_name_scene_first_first", (err)=>{
-            console.debug("====>add first account err:" + JSON.stringify(err));
+            console.info("====>add first account err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_first_first", enableBundle, true, (err)=>{
-                console.debug("====>enableAppAccess first account err:" + JSON.stringify(err));
+                console.info("====>enableAppAccess first account err:" + JSON.stringify(err));
                 appAccountManager.setAppAccess("account_name_scene_first_first", enableBundle_2, true, (err) => {
-                    console.debug("====>enableAppAccess first account for enableBundle_2 err:" + JSON.stringify(err));
+                    console.info("====>enableAppAccess first account for enableBundle_2 err:" + JSON.stringify(err));
                     appAccountManager.createAccount("account_name_scene_first_second", (err)=>{
-                        console.debug("====>add second account err:" + JSON.stringify(err));
+                        console.info("====>add second account err:" + JSON.stringify(err));
                         appAccountManager.setAppAccess("account_name_scene_first_second", enableBundle, true, (err)=>{
                             appAccountManager.setAppAccess("account_name_scene_first_second", enableBundle_2, true, (err)=>{
-                                console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
-                                console.debug("====>startAbility second start====");
+                                console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
+                                console.info("====>startAbility second start====");
                                 featureAbility.startAbility(
                                     {
                                         want:
@@ -54,6 +61,12 @@ export default {
                                             parameters:
                                             {},
                                         },
+                                    }, (err, data) => {
+                                        console.info("====>startAbility com.example.actsaccountaccessiblesecond err:" + JSON.stringify(err));
+                                        sleep(1500);
+                                        featureAbility.terminateSelf((err, data)=>{
+                                            console.info("====>Terminate First Ability err:" + JSON.stringify(err));
+                                        });
                                     }
                                 );
                             })

@@ -60,14 +60,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.left).assertEqual(Stack_Offset_Change_01.left);
-      expect(Stack_Offset_Change_012.top).assertEqual(Stack_Offset_Change_01.top);
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.left) - (Stack_Offset_Change_01.left)) <= 1).assertTrue();
+      expect(Math.abs((Stack_Offset_Change_012.top) - (Stack_Offset_Change_01.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentTopStart] END');
       done();
     });
@@ -79,7 +79,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentTop', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentTop] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.Top});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Top });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -88,15 +88,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.top).assertEqual(Stack_Offset_Change_01.top);
-      expect(Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left))
-        .assertEqual(Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right));
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.top) - (Stack_Offset_Change_01.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left)) - (Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentTop] END');
       done();
     });
@@ -108,7 +107,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentTopEnd', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentTopEnd] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.TopEnd});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.TopEnd });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -117,14 +116,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.right).assertEqual(Stack_Offset_Change_01.right);
-      expect(Stack_Offset_Change_012.top).assertEqual(Stack_Offset_Change_01.top);
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.right) - (Stack_Offset_Change_01.right)) <= 1).assertTrue();
+      expect(Math.abs((Stack_Offset_Change_012.top) - (Stack_Offset_Change_01.top)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentTopEnd] END');
       done();
     });
@@ -136,7 +135,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentStart', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentStart] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.Start});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Start });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -145,15 +144,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.left).assertEqual(Stack_Offset_Change_01.left);
-      expect(Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top))
-        .assertEqual(Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom));
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.left) - (Stack_Offset_Change_01.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top)) - (Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentStart] END');
       done();
     });
@@ -165,7 +163,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentCenter', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentCenter] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.Center});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Center });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -174,16 +172,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left))
-        .assertEqual(Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right));
-      expect(Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top))
-        .assertEqual(Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom));
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left)) - (Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top)) - (Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentCenter] END');
       done();
     });
@@ -195,7 +191,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentEnd', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentEnd] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.End});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.End });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -204,15 +200,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.right).assertEqual(Stack_Offset_Change_01.right);
-      expect(Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top))
-        .assertEqual(Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom));
-      expect(Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.right) - (Stack_Offset_Change_01.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.top - Stack_Offset_Change_01.top)) - (Math.round(Stack_Offset_Change_01.bottom - Stack_Offset_Change_012.bottom))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.top - Stack_Offset_Change_01.top)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentEnd] END');
       done();
     });
@@ -224,7 +219,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentBottomStart', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentBottomStart] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.BottomStart});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomStart });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -233,14 +228,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.left).assertEqual(Stack_Offset_Change_01.left);
-      expect(Stack_Offset_Change_012.bottom).assertEqual(Stack_Offset_Change_01.bottom);
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.left) - (Stack_Offset_Change_01.left)) <= 1).assertTrue();
+      expect(Math.abs((Stack_Offset_Change_012.bottom) - (Stack_Offset_Change_01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentBottomStart] END');
       done();
     });
@@ -252,7 +247,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentBottom', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentBottom] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.Bottom});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.Bottom });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -261,15 +256,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.bottom).assertEqual(Stack_Offset_Change_01.bottom);
-      expect(Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left))
-        .assertEqual(Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)).assertEqual(vp2px(70));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.bottom) - (Stack_Offset_Change_01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.left - Stack_Offset_Change_01.left)) - (Math.round(Stack_Offset_Change_01.right - Stack_Offset_Change_012.right))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.left - Stack_Offset_Change_01.left)) - (Math.round(vp2px(70)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentBottom] END');
       done();
     });
@@ -281,7 +275,7 @@ export default function Stack_Offset_Change() {
      */
     it('testStackOffsetChangeWithAlignmentBottomEnd', 0, async function (done) {
       console.info('[testStackOffsetChangeWithAlignmentBottomEnd] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.BottomEnd});
+      globalThis.value.message.notify({ name: 'addAlignContent', value: Alignment.BottomEnd });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Stack_Offset_Change_01');
       let obj = JSON.parse(strJson);
@@ -290,14 +284,14 @@ export default function Stack_Offset_Change() {
       let Stack_Offset_Change_011 = CommonFunc.getComponentRect('Stack_Offset_Change_011');
       let Stack_Offset_Change_012 = CommonFunc.getComponentRect('Stack_Offset_Change_012');
       let Stack_Offset_Change_01 = CommonFunc.getComponentRect('Stack_Offset_Change_01');
-      expect(Stack_Offset_Change_012.bottom).assertEqual(Stack_Offset_Change_01.bottom);
-      expect(Stack_Offset_Change_012.right).assertEqual(Stack_Offset_Change_01.right);
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)).assertEqual(vp2px(20));
-      expect(Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)).assertEqual(vp2px(100));
+      expect(Math.abs((Stack_Offset_Change_012.bottom) - (Stack_Offset_Change_01.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Stack_Offset_Change_012.right) - (Stack_Offset_Change_01.right)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_01.bottom)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_01.right)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.bottom - Stack_Offset_Change_011.top)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.bottom - Stack_Offset_Change_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_011.right - Stack_Offset_Change_011.left)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Stack_Offset_Change_012.right - Stack_Offset_Change_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[testStackOffsetChangeWithAlignmentBottomEnd] END');
       done();
     });

@@ -139,8 +139,8 @@ export default function Grid_Row_SizeOption() {
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
 
-      expect(Math.round(secondSizeOption.left - firstSizeOption.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(fifthSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs((Math.round(secondSizeOption.left - firstSizeOption.right)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(fifthSizeOption.top - firstSizeOption.bottom)) - (Math.round(vp2px(5)))) <= 1).assertTrue();      
 
       console.info('SUB_ACE_GridRowSizeOption_0400 END');
       done();

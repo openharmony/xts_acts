@@ -19,9 +19,8 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import deviceInfo from '@ohos.deviceInfo';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraModuleTest: ";
 
 // Define global letiables
@@ -45,7 +44,7 @@ let mPhotoOutput;
 let mVideoOutput;
 
 let mIsFocusModeSupportedArray;
-
+let context = featureAbility.getContext();
 let mVideoProfileCfg = {
     audioBitrate: 48000,
     audioChannels: 2,
@@ -120,6 +119,7 @@ let mFocusPointInvalidRB = {
 }
 
 let mEnableCheckInvalidFocusPoint = false;
+let receiver;
 
 export default function cameraSessionFocusTest() {
 
@@ -169,7 +169,7 @@ export default function cameraSessionFocusTest() {
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')
@@ -228,7 +228,7 @@ export default function cameraSessionFocusTest() {
     function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(context);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -517,8 +517,6 @@ export default function cameraSessionFocusTest() {
             getCameraManagerInstance();
             getCameraSupportDevicesArray();
             createCameraSessionInstance();
-
-            console.info('Device type = ' + deviceInfo.deviceType);
 
             console.info('beforeAll case');
         })

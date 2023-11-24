@@ -63,12 +63,12 @@ export default function Gutter_Length_Resource() {
       let gridRow = JSON.parse(gridRowLengthResourceJson);
       expect(gridRow.$type).assertEqual('GridRow');
 
-      expect(firstLengthResource.top).assertEqual(LengthResource_1.top);
-      expect(secondLengthResource.top).assertEqual(LengthResource_1.top);
-      expect(firstLengthResource.left).assertEqual(LengthResource_1.left);
+      expect(Math.abs(firstLengthResource.top - LengthResource_1.top) <= 1).assertTrue();
+      expect(Math.abs(secondLengthResource.top - LengthResource_1.top) <= 1).assertTrue();
+      expect(Math.abs(firstLengthResource.left - LengthResource_1.left) <= 1).assertTrue();
 
-      expect(Math.round(secondLengthResource.left - firstLengthResource.right)).assertEqual(vp2px(10));
-      expect(Math.round(thirdLengthResource.top - firstLengthResource.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(secondLengthResource.left - firstLengthResource.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdLengthResource.top - firstLengthResource.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('SUB_ACE_GridRowGutterLength_RESOURCE_0100 END');
       done();

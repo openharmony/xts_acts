@@ -205,7 +205,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     })
     // HKS_SUPPORT_SM4_CBC_NOPADDING
-    it('testReformedCipherSM4101_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10148', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -237,7 +237,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4101_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_101240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -269,7 +269,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4102_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10248', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias102';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -289,7 +289,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4102_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_102240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias102';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -310,7 +310,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_CBC_PKCS7
-    it('testReformedCipherSM4103_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10348', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODECBCKeyAlias103';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -344,7 +344,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4103_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_103240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODECBCKeyAlias103';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -378,7 +378,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4104_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10448', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODECBCKeyAlias104';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -400,7 +400,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4104_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_104240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODECBCKeyAlias104';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECBC);
@@ -423,7 +423,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_CTR_NOPADDING
-    it('testReformedCipherSM4105_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10548', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECTRKeyAlias105';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECTR);
@@ -455,7 +455,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4105_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_105240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECTRKeyAlias105';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECTR);
@@ -487,7 +487,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4106_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10648', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECTRKeyAlias106';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECTR);
@@ -507,7 +507,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4106_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_106240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECTRKeyAlias106';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODECTR);
@@ -528,7 +528,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_ECB_NOPADDING
-    it('testReformedCipherSM4107_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10748', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODEECBKeyAlias107';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -562,7 +562,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4107_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_107240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODEECBKeyAlias107';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -596,7 +596,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4108_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10848', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODEECBKeyAlias108';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -618,7 +618,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4108_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_108240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODEECBKeyAlias108';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -641,7 +641,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
     });
 
     // HKS_SUPPORT_SM4_ECB_PKCS7
-    it('testReformedCipherSM4109_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_10948', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODEECBKeyAlias109';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -675,7 +675,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4109_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_109240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODEECBKeyAlias109';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -709,7 +709,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4110_48', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_11048', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODEECBKeyAlias110';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);
@@ -731,7 +731,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherSM4110_240', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_SM4_110240', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGPKCS7MODEECBKeyAlias110';
       genHuksOptions.properties.splice(2, 1, HuksCipherSM4.HuksKeySM4Size128);
       genHuksOptions.properties.splice(3, 1, HuksCipherSM4.HuksKeySM4BLOCKMODEECB);

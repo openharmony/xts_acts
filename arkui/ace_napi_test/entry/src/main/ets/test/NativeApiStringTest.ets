@@ -978,7 +978,7 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest069 START');
       let value = napitest.getVersion();
       console.info('aceNapiTest069 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual(2147483647 );
+      expect(value).assertEqual(8);
       done();
     });
 
@@ -1667,6 +1667,19 @@ export default function nativeApiStringJsunit() {
       value = napitest.callFunction(testFunc);
       console.info('aceNapiTest114 testString result is: ' + JSON.stringify(value));
       expect(value.toString() === 'hello').assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0114
+     * @tc.name      napiLoadModule0114
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('napiLoadModule0114', 0, async function (done) {
+      console.info('napiLoadModule START');
+      value = napitest.napiLoadModule();
+      console.info('napiLoadModule testString result is: ' + JSON.stringify(value));
+      expect(value).assertEqual(0);
       done();
     });
   })

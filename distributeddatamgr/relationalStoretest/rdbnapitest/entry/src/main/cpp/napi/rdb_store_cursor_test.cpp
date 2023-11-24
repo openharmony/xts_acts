@@ -35,7 +35,7 @@
 
 OH_Rdb_Store *cursorTestRdbStore_ = NULL;
 
-char RDB_TEST_PATH[] =  "/data/storage/el2/database/";
+char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_cursor_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
@@ -49,7 +49,78 @@ static void InitRdbConfig()
     config_.moduleName = MODULE_NAME;
     config_.securityLevel = OH_Rdb_SecurityLevel::S1;
     config_.isEncrypt = false;
+	config_.area = Rdb_SecurityArea::RDB_SECURITY_AREA_EL1;
     config_.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static napi_value RdbFilePath(napi_env env, napi_callback_info info) {
+    int errCode = 0;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    size_t bufferSize = 0;
+    napi_get_value_string_latin1(env, args[0], nullptr, 0, &bufferSize);
+
+    char *buffer = (char*)malloc((bufferSize) + 1);
+    napi_get_value_string_utf8(env, args[0], buffer, bufferSize+1, &bufferSize);  
+
+    RDB_TEST_PATH = (char*)malloc((bufferSize) + 1);
+    sprintf(RDB_TEST_PATH, "%s", buffer);
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode; 
+}
+
+static void SetAsset(Data_Asset *asset, int index)
+{
+    OH_Data_Asset_SetName(asset, "name");
+    OH_Data_Asset_SetUri(asset,"uri");
+    OH_Data_Asset_SetPath(asset, "path");
+    OH_Data_Asset_SetCreateTime(asset, index);
+    OH_Data_Asset_SetModifyTime(asset, index);
+    OH_Data_Asset_SetSize(asset, index);
+    OH_Data_Asset_SetStatus(asset, Data_AssetStatus::ASSET_NORMAL);
+}
+
+static void CreateAssetTable()
+{
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS asset_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 "
+                            "asset, data2 assets );";
+    OH_Rdb_Execute(cursorTestRdbStore_, createTableSql);
+    char table[] = "asset_table";
+    int assetsCount = 2;
+    int curRow = 1;
+    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
+    Data_Asset *asset1 = OH_Data_Asset_CreateOne();
+    SetAsset(asset1, 1);
+    Data_Asset *asset2 = OH_Data_Asset_CreateOne();
+    SetAsset(asset2, 2);
+
+    valueBucket->putInt64(valueBucket, "id", curRow);
+    OH_VBucket_PutAsset(valueBucket, "data1", asset1);
+    Data_Asset **assets1 = OH_Data_Asset_CreateMultiple(assetsCount);
+    SetAsset(assets1[0], 1);
+    SetAsset(assets1[1], 2);
+    OH_VBucket_PutAssets(valueBucket, "data2", assets1, assetsCount);
+    OH_Rdb_Insert(cursorTestRdbStore_, table, valueBucket);
+    curRow++;
+
+    valueBucket->clear(valueBucket);
+    valueBucket->putInt64(valueBucket, "id", curRow);
+    OH_VBucket_PutAsset(valueBucket, "data1", asset2);
+    Data_Asset **assets2 = OH_Data_Asset_CreateMultiple(assetsCount);
+    SetAsset(assets2[0], 1);
+    SetAsset(assets2[1], 3);
+    OH_VBucket_PutAssets(valueBucket, "data2", assets2, assetsCount);
+    OH_Rdb_Insert(cursorTestRdbStore_, table, valueBucket);
+
+    OH_Data_Asset_DestroyMultiple(assets1, assetsCount);
+    OH_Data_Asset_DestroyMultiple(assets2, assetsCount);
+    OH_Data_Asset_DestroyOne(asset1);
+    OH_Data_Asset_DestroyOne(asset2);
+    valueBucket->destroy(valueBucket);
 }
 
 static napi_value CursorSetUpTestCase(napi_env env, napi_callback_info info) {
@@ -724,9 +795,363 @@ static napi_value SUB_DDM_RDB_CURSOR_1800(napi_env env, napi_callback_info info)
     return returnCode;
 }
 
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_1900
+ * @tc.desc: Normal testCase of cursor for OH_Data_Asset_CreateOne, OH_Data_Asset_SetName.
+ * OH_Data_Asset_SetUri,OH_Data_Asset_SetPath
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_1900(napi_env env, napi_callback_info info) {
+    Data_Asset *asset1 = OH_Data_Asset_CreateOne();
+    int errCode = OH_Data_Asset_SetName(asset1, "name1");
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetName is fail.");
+    errCode = OH_Data_Asset_SetUri(asset1, "uri1");
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetUri is fail.");
+    errCode = OH_Data_Asset_SetPath(asset1, "path1");
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetPath is fail.");
+    errCode = OH_Data_Asset_SetCreateTime(asset1, 1);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetCreateTime is fail.");
+    errCode = OH_Data_Asset_SetModifyTime(asset1, 1);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetModifyTime is fail.");
+    errCode = OH_Data_Asset_SetSize(asset1, 1);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetSize is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_NORMAL);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetStatus is fail.");
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2000
+ * @tc.desc: Normal testCase of cursor for OH_Data_Asset_SetStatus
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2000(napi_env env, napi_callback_info info) {
+    Data_Asset *asset1 = OH_Data_Asset_CreateOne();
+    int errCode = OH_Data_Asset_SetName(asset1, "name1");
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Data_Asset_SetName is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_NULL);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_NULL is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_NORMAL);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_NORMAL is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_INSERT);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_INSERT is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_UPDATE);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_UPDATE is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_DELETE);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_DELETE is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_ABNORMAL);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_ABNORMAL is fail.");
+    errCode = OH_Data_Asset_SetStatus(asset1, Data_AssetStatus::ASSET_DOWNLOADING);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "ASSET_DOWNLOADING is fail.");
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2100
+ * @tc.desc: Normal testCase of cursor for OH_Data_Asset_CreateMultiple
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2100(napi_env env, napi_callback_info info) {
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS asset_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 "
+                            "asset, data2 assets );";
+    int errCode = OH_Rdb_Execute(cursorTestRdbStore_, createTableSql);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_Execute is fail.");
+    char table[] = "asset_table";
+    int assetsCount = 2;
+    int curRow = 1;
+    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
+    Data_Asset *asset1 = OH_Data_Asset_CreateOne();
+    SetAsset(asset1, 1);
+    Data_Asset *asset2 = OH_Data_Asset_CreateOne();
+    SetAsset(asset2, 2);
+    valueBucket->putInt64(valueBucket, "id", curRow);
+    OH_VBucket_PutAsset(valueBucket, "data1", asset1);
+    Data_Asset **assets1 = OH_Data_Asset_CreateMultiple(assetsCount);
+    SetAsset(assets1[0], 1);
+    SetAsset(assets1[1], 2);
+    errCode = OH_VBucket_PutAssets(valueBucket, "data2", assets1, assetsCount);
+    int rowID = OH_Rdb_Insert(cursorTestRdbStore_, table, valueBucket);
+    NAPI_ASSERT(env, rowID == curRow, "OH_Rdb_Insert is fail.");
+    curRow++;
+
+    valueBucket->clear(valueBucket);
+    valueBucket->putInt64(valueBucket, "id", curRow);
+    OH_VBucket_PutAsset(valueBucket, "data1", asset2);
+    Data_Asset **assets2 = OH_Data_Asset_CreateMultiple(assetsCount);
+    SetAsset(assets2[0], 1);
+    SetAsset(assets2[1], 3);
+    errCode = OH_VBucket_PutAssets(valueBucket, "data2", assets2, assetsCount);
+    rowID = OH_Rdb_Insert(cursorTestRdbStore_, table, valueBucket);
+    NAPI_ASSERT(env, rowID == curRow, "OH_Rdb_Insert is fail.");
+
+    OH_Data_Asset_DestroyMultiple(assets1, assetsCount);
+    OH_Data_Asset_DestroyMultiple(assets2, assetsCount);
+    OH_Data_Asset_DestroyOne(asset1);
+    OH_Data_Asset_DestroyOne(asset2);
+    valueBucket->destroy(valueBucket);
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2200
+ * @tc.desc: Normal testCase of cursor for getAsset.
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2200(napi_env env, napi_callback_info info) {
+    CreateAssetTable();
+    int errCode = 0;
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
+    OH_Cursor *cursor = OH_Rdb_Query(cursorTestRdbStore_, predicates, NULL, 0);
+    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
+    cursor->goToNextRow(cursor);
+    OH_ColumnType type;
+    errCode = cursor->getColumnType(cursor, 0, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_INT64, "getColumnType is fail.");
+    int64_t id;
+    errCode = cursor->getInt64(cursor, 0, &id);
+    NAPI_ASSERT(env, id == 1, "getInt64 is fail.");
+    errCode = cursor->getColumnType(cursor, 1, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_ASSET, "getColumnType is fail.");
+
+    Data_Asset *asset = OH_Data_Asset_CreateOne();
+    errCode = cursor->getAsset(cursor, 1, asset);
+    NAPI_ASSERT(env, asset != NULL, "OH_Data_Asset_CreateOne is fail.");
+
+    char name[10] = "";
+    size_t nameLength = 10;
+    errCode = OH_Data_Asset_GetName(asset, name, &nameLength);
+    NAPI_ASSERT(env, strncmp(name, "name", nameLength) == 0, "OH_Data_Asset_GetName is fail.");
+    char uri[10] = "";
+    size_t uriLength = 10;
+    errCode = OH_Data_Asset_GetUri(asset, uri, &uriLength);
+    NAPI_ASSERT(env, strncmp(uri, "uri", uriLength) == 0, "OH_Data_Asset_GetUri is fail.");
+    char path[10] = "";
+    size_t pathLength = 10;
+    errCode = OH_Data_Asset_GetPath(asset, path, &pathLength);
+    NAPI_ASSERT(env, strncmp(path, "path", pathLength) == 0, "OH_Data_Asset_GetPath is fail.");
+    int64_t createTime = 0;
+    errCode = OH_Data_Asset_GetCreateTime(asset, &createTime);
+    NAPI_ASSERT(env, createTime == 1, "getInt64 is fail.");
+    int64_t modifyTime = 0;
+    errCode = OH_Data_Asset_GetModifyTime(asset, &modifyTime);
+    NAPI_ASSERT(env, modifyTime == 1, "OH_Data_Asset_GetModifyTime is fail.");
+    size_t size = 0;
+    errCode = OH_Data_Asset_GetSize(asset, &size);
+    NAPI_ASSERT(env, size == 1, "OH_Data_Asset_GetSize is fail.");
+    Data_AssetStatus status = Data_AssetStatus::ASSET_NULL;
+    errCode = OH_Data_Asset_GetStatus(asset, &status);
+    NAPI_ASSERT(env, status == Data_AssetStatus::ASSET_INSERT, "OH_Data_Asset_GetStatus is fail.");
+
+    predicates->destroy(predicates);
+    OH_Data_Asset_DestroyOne(asset);
+    errCode = cursor->destroy(cursor);
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2300
+ * @tc.desc: Normal testCase of cursor for getAssets.
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2300(napi_env env, napi_callback_info info) {
+    CreateAssetTable();
+    int errCode = 0;
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
+    OH_Cursor *cursor = OH_Rdb_Query(cursorTestRdbStore_, predicates, NULL, 0);
+    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
+    cursor->goToNextRow(cursor);
+    OH_ColumnType type;
+    errCode = cursor->getColumnType(cursor, 0, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_INT64, "getColumnType is fail.");
+    int64_t id;
+    errCode = cursor->getInt64(cursor, 0, &id);
+    NAPI_ASSERT(env, id == 1, "getInt64 is fail.");
+    errCode = cursor->getColumnType(cursor, 2, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_ASSETS, "getColumnType is fail.");
+    uint32_t assetCount = 0;
+    errCode = cursor->getAssets(cursor, 2, nullptr, &assetCount);
+    NAPI_ASSERT(env, assetCount == 2, "getAssets is fail.");
+    Data_Asset **assets = OH_Data_Asset_CreateMultiple(assetCount);
+    errCode = cursor->getAssets(cursor, 2, assets, &assetCount);
+    NAPI_ASSERT(env, assetCount == 2, "getAssets is fail.");
+
+    Data_Asset *asset = assets[1];
+    NAPI_ASSERT(env, asset != NULL, "Assets is fail.");
+
+    char name[10] = "";
+    size_t nameLength = 10;
+    errCode = OH_Data_Asset_GetName(asset, name, &nameLength);
+    NAPI_ASSERT(env, strncmp(name, "name", nameLength) == 0, "OH_Data_Asset_GetName is fail.");
+    char uri[10] = "";
+    size_t uriLength = 10;
+    errCode = OH_Data_Asset_GetUri(asset, uri, &uriLength);
+    NAPI_ASSERT(env, strncmp(uri, "uri", uriLength) == 0, "OH_Data_Asset_GetUri is fail.");
+    char path[10] = "";
+    size_t pathLength = 10;
+    errCode = OH_Data_Asset_GetPath(asset, path, &pathLength);
+    NAPI_ASSERT(env, strncmp(path, "path", pathLength) == 0, "OH_Data_Asset_GetPath is fail.");
+    int64_t createTime = 0;
+    errCode = OH_Data_Asset_GetCreateTime(asset, &createTime);
+    NAPI_ASSERT(env, createTime == 2, "OH_Data_Asset_GetCreateTime is fail.");
+    int64_t modifyTime = 0;
+    errCode = OH_Data_Asset_GetModifyTime(asset, &modifyTime);
+    NAPI_ASSERT(env, modifyTime == 2, "OH_Data_Asset_GetModifyTime is fail.");
+    size_t size = 0;
+    errCode = OH_Data_Asset_GetSize(asset, &size);
+    NAPI_ASSERT(env, size == 2, "OH_Data_Asset_GetSize is fail.");
+    Data_AssetStatus status = Data_AssetStatus::ASSET_NULL;
+    errCode = OH_Data_Asset_GetStatus(asset, &status);
+    NAPI_ASSERT(env, status == Data_AssetStatus::ASSET_INSERT, "OH_Data_Asset_GetStatus is fail.");
+
+    predicates->destroy(predicates);
+    OH_Data_Asset_DestroyMultiple(assets, assetCount);
+    errCode = cursor->destroy(cursor);
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2400
+ * @tc.desc: Normal testCase of cursor for getAssets err.
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2400(napi_env env, napi_callback_info info) {
+    CreateAssetTable();
+    int errCode = 0;
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
+    OH_Cursor *cursor = OH_Rdb_Query(cursorTestRdbStore_, predicates, NULL, 0);
+    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
+    cursor->goToNextRow(cursor);
+    OH_ColumnType type;
+    errCode = cursor->getColumnType(cursor, 0, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_INT64, "getColumnType is fail.");
+    int64_t id;
+    errCode = cursor->getInt64(cursor, 0, &id);
+    NAPI_ASSERT(env, id == 1, "getInt64 is fail.");
+    errCode = cursor->getColumnType(cursor, 2, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_ASSETS, "getColumnType is fail.");
+    uint32_t assetCount = 0;
+    errCode = cursor->getAssets(cursor, 2, nullptr, &assetCount);
+    NAPI_ASSERT(env, assetCount == 2, "getAssets is fail.");
+    Data_Asset **assets = OH_Data_Asset_CreateMultiple(assetCount);
+    errCode = cursor->getAssets(nullptr, 2, assets, &assetCount);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "getAssets is fail.");
+
+    predicates->destroy(predicates);
+    errCode = cursor->destroy(cursor);
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2500
+ * @tc.desc: Normal testCase of cursor for getAssets err.
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2500(napi_env env, napi_callback_info info) {
+    CreateAssetTable();
+    int errCode = 0;
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
+    OH_Cursor *cursor = OH_Rdb_Query(cursorTestRdbStore_, predicates, NULL, 0);
+    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
+    cursor->goToNextRow(cursor);
+    OH_ColumnType type;
+    errCode = cursor->getColumnType(cursor, 0, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_INT64, "getColumnType is fail.");
+    int64_t id;
+    errCode = cursor->getInt64(cursor, 0, &id);
+    NAPI_ASSERT(env, id == 1, "getInt64 is fail.");
+    errCode = cursor->getColumnType(cursor, 2, &type);
+    NAPI_ASSERT(env, type == OH_ColumnType::TYPE_ASSETS, "getColumnType is fail.");
+    uint32_t assetCount = 0;
+    errCode = cursor->getAssets(cursor, 2, nullptr, &assetCount);
+    NAPI_ASSERT(env, assetCount == 2, "getAssets is fail.");
+    Data_Asset **assets = OH_Data_Asset_CreateMultiple(assetCount);
+    errCode = cursor->getAssets(cursor, 2, assets, &assetCount);
+    NAPI_ASSERT(env, assetCount == 2, "getAssets is fail.");
+
+    Data_Asset *asset = assets[1];
+    NAPI_ASSERT(env, asset != NULL, "Assets is fail.");
+
+    char name[10] = "";
+    size_t nameLength = 10;
+    errCode = OH_Data_Asset_GetName(nullptr, name, &nameLength);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetName is fail.");
+    char uri[10] = "";
+    size_t uriLength = 10;
+    errCode = OH_Data_Asset_GetUri(nullptr, uri, &uriLength);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetUri is fail.");
+    char path[10] = "";
+    size_t pathLength = 10;
+    errCode = OH_Data_Asset_GetPath(nullptr, path, &pathLength);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetPath is fail.");
+    int64_t createTime = 0;
+    errCode = OH_Data_Asset_GetCreateTime(nullptr, &createTime);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetCreateTime is fail.");
+    int64_t modifyTime = 0;
+    errCode = OH_Data_Asset_GetModifyTime(nullptr, &modifyTime);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetModifyTime is fail.");
+    size_t size = 0;
+    errCode = OH_Data_Asset_GetSize(nullptr, &size);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetSize is fail.");
+    Data_AssetStatus status = Data_AssetStatus::ASSET_NULL;
+    errCode = OH_Data_Asset_GetStatus(nullptr, &status);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+
+    predicates->destroy(predicates);
+    OH_Data_Asset_DestroyMultiple(assets, assetCount);
+    errCode = cursor->destroy(cursor);
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_CURSOR_2600
+ * @tc.desc: Normal testCase of cursor for OH_Data_Asset_SetName err.
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_CURSOR_2600(napi_env env, napi_callback_info info) {
+    int errCode = OH_Data_Asset_SetName(nullptr, "name1");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetUri(nullptr, "uri1");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetPath(nullptr, "path1");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetCreateTime(nullptr, 1);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetModifyTime(nullptr, 1);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetSize(nullptr, 1);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = OH_Data_Asset_SetStatus(nullptr, Data_AssetStatus::ASSET_NORMAL);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "OH_Data_Asset_GetStatus is fail.");
+    errCode = 0;
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
+        {"RdbFilePath", nullptr, RdbFilePath, nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"CursorSetUpTestCase", nullptr, CursorSetUpTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CursorTearDownTestCase", nullptr, CursorTearDownTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_CURSOR_0100", nullptr, SUB_DDM_RDB_CURSOR_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -746,8 +1171,15 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_CURSOR_1500", nullptr, SUB_DDM_RDB_CURSOR_1500, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_CURSOR_1600", nullptr, SUB_DDM_RDB_CURSOR_1600, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_CURSOR_1700", nullptr, SUB_DDM_RDB_CURSOR_1700, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_CURSOR_1800", nullptr, SUB_DDM_RDB_CURSOR_1800, nullptr, nullptr, nullptr, napi_default, nullptr}
-
+        {"SUB_DDM_RDB_CURSOR_1800", nullptr, SUB_DDM_RDB_CURSOR_1800, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_1900", nullptr, SUB_DDM_RDB_CURSOR_1900, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2000", nullptr, SUB_DDM_RDB_CURSOR_2000, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2100", nullptr, SUB_DDM_RDB_CURSOR_2100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2200", nullptr, SUB_DDM_RDB_CURSOR_2200, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2300", nullptr, SUB_DDM_RDB_CURSOR_2300, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2400", nullptr, SUB_DDM_RDB_CURSOR_2400, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2500", nullptr, SUB_DDM_RDB_CURSOR_2500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_CURSOR_2600", nullptr, SUB_DDM_RDB_CURSOR_2600, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
         
     

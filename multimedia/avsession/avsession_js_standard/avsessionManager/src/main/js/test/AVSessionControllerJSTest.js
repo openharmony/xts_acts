@@ -252,25 +252,25 @@ export default function AVSessionControllerJsTest() {
     }
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSESSIONEVENT_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100
    * @tc.desc:One on function - lyrics session event
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_ONSESSIONEVENT_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100", 0, async function (done) {
       controller.on('sessionEvent', dynamicLyricsCallback1);
       await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       sleep(200).then(() => {
         if (receivedCallback) {
-          console.log(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0100 Received session event change event");
+          console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100 Received session event change event");
           expect(receivedString == UPDATE_LYRICS_EVENT).assertTrue();
           expect(receivedParam.lyrics == UPDATE_LYRICS_WANT_PARAMS.lyrics).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0100 Session event change event not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100 Session event change event not received");
           expect().assertFail();
         }
         receivedCallback = false;
@@ -281,29 +281,29 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSESSIONEVENT_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200
    * @tc.desc:Two on functions - lyrics session event
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_ONSESSIONEVENT_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200", 0, async function (done) {
       controller.on('sessionEvent', dynamicLyricsCallback1);
       controller.on('sessionEvent', dynamicLyricsCallback2);
       await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0200 Set session event error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200 Set session event error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0200 Received session event change event");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200 Received session event change event");
         expect(receivedString == UPDATE_LYRICS_EVENT).assertTrue();
         expect(receivedParam.lyrics == UPDATE_LYRICS_WANT_PARAMS.lyrics).assertTrue();
         expect(receivedString2 == UPDATE_LYRICS_EVENT).assertTrue();
         expect(receivedParam2.lyrics == UPDATE_LYRICS_WANT_PARAMS.lyrics).assertTrue();
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSESSIONEVENT_0200 Session event change event not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200 Session event change event not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -316,12 +316,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSESSIONEVENT_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_ONSESSIONEVENT_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0300", 0, async function (done) {
       try {
         controller.on('sessionEvent');
       } catch (err) {
@@ -331,12 +331,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSESSIONEVENT_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_ONSESSIONEVENT_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0400", 0, async function (done) {
       try {
         controller.on('sessionEvent', dynamicLyricsCallback1, dynamicLyricsCallback2);
       } catch (err) {
@@ -346,12 +346,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSESSIONEVENT_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0500
    * @tc.desc:One on functions - invalid type
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_ONSESSIONEVENT_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0500", 0, async function (done) {
       try {
         controller.on('sessionEvent', INVALID_STRING);
       } catch (err) {
@@ -361,12 +361,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFSESSIONEVENT_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0100
    * @tc.desc:Two on functions and one off function - lyrics session event
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_OFFSESSIONEVENT_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0100", 0, async function (done) {
       controller.on('sessionEvent', dynamicLyricsCallback1);
       controller.on('sessionEvent', dynamicLyricsCallback2);
       controller.off('sessionEvent', dynamicLyricsCallback2);
@@ -392,12 +392,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFSESSIONEVENT_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0200
    * @tc.desc:Two on functions and two off function - lyrics session event
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_OFFSESSIONEVENT_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0200", 0, async function (done) {
       controller.on('sessionEvent', dynamicLyricsCallback1);
       controller.on('sessionEvent', dynamicLyricsCallback2);
       controller.off('sessionEvent', dynamicLyricsCallback1);
@@ -421,12 +421,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFSESSIONEVENT_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0300
    * @tc.desc:Two on functions and off all function - lyrics session event
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_OFFSESSIONEVENT_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0300", 0, async function (done) {
       controller.on('sessionEvent', dynamicLyricsCallback1);
       controller.on('sessionEvent', dynamicLyricsCallback2);
       controller.off('sessionEvent');
@@ -449,12 +449,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFSESSIONEVENT_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0400
    * @tc.desc:Two on functions and off function - three params
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_OFFSESSIONEVENT_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0400", 0, async function (done) {
       try {
         controller.on('sessionEvent', dynamicLyricsCallback1);
         controller.on('sessionEvent', dynamicLyricsCallback2);
@@ -466,12 +466,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFSESSIONEVENT_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0500
    * @tc.desc:One on functions and off all function - invalid type
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_OFFSESSIONEVENT_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0500", 0, async function (done) {
       try {
         controller.on('sessionEvent', dynamicLyricsCallback1);
         controller.off('sessionEvent', INVALID_STRING);
@@ -482,50 +482,50 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100
    * @tc.desc:Send common command - callback
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100", 0, async function (done) {
       controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200
    * @tc.desc:Send common command - promise
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200", 0, async function (done) {
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0300
    * @tc.desc:Set common command - one param
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0300", 0, async function (done) {
       let errCode = 0;
       await controller.sendCommonCommand(COMMON_COMMAND_STRING).catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0300 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0300 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
@@ -535,15 +535,15 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0400
    * @tc.desc:Send common command - invalid params
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0400", 0, async function (done) {
       let errCode = 0;
       await controller.sendCommonCommand(COMMON_COMMAND_PARAMS, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0400 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0400 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
@@ -553,12 +553,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0500
    * @tc.desc:Send common command - deactive
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_SENDCOMMONCOMMAND_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0500", 0, async function (done) {
       try {
         session.deactivate(async () => {
           await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS);
@@ -570,64 +570,64 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETEXTRAS_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100
    * @tc.desc:Get extras - callback
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_GETEXTRAS_0100", 0, async function (done) {
-      console.info(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0100 start");
+    it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100", 0, async function (done) {
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 start");
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 error " + JSON.stringify(err));
         expect().assertFail();
       });
 
       controller.getExtras((err, extras) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
         expect(extras.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
-        console.info(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 finished");
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETEXTRAS_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200
    * @tc.desc:Get extras - promise
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_GETEXTRAS_0200", 0, async function (done) {
-      console.info(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0200 start");
+    it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200", 0, async function (done) {
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 start");
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 error " + JSON.stringify(err));
         expect().assertFail();
       });
 
       let extras = await controller.getExtras().catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       })
       expect(extras.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
-      console.info(TAG + "SUB_MULTIMEDIA_GETEXTRAS_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONEXTRASCHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100
    * @tc.desc:One on function - extras change
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_ONEXTRASCHANGE_0100", 0, async function (done) {
-      console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0100 start");
+    it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100", 0, async function (done) {
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100 start");
       controller.on('extrasChange', extrasChangeCallback1);
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -636,28 +636,28 @@ export default function AVSessionControllerJsTest() {
           console.log(TAG + "Received extras change event");
           expect(receivedExtras.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0100 extras change event not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100 extras change event not received");
           expect().assertFail();
         }
         receivedCallback = false;
         receivedExtras = null;
-        console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100 finished");
         done();
       })
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONEXTRASCHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200
    * @tc.desc:Two on function - extras change
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_ONEXTRASCHANGE_0200", 0, async function (done) {
-      console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0200 start");
+    it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200", 0, async function (done) {
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200 start");
       controller.on('extrasChange', extrasChangeCallback1);
       controller.on('extrasChange', extrasChangeCallback2);
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -667,78 +667,78 @@ export default function AVSessionControllerJsTest() {
           expect(receivedExtras.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
           expect(receivedExtras2.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0200 extras change event not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200 extras change event not received");
           expect().assertFail();
         }
         receivedCallback = false;
         receivedCallback2 = false;
         receivedExtras = null;
         receivedExtras2 = null;
-        console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0200 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200 finished");
         done();
       })
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONEXTRASCHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_ONEXTRASCHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0300", 0, async function (done) {
       try {
         controller.on('extrasChange');
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0300 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0300 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONEXTRASCHANGE_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_ONEXTRASCHANGE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0400", 0, async function (done) {
       try {
         controller.on('extrasChange', extrasChangeCallback1, extrasChangeCallback2);
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0400 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0400 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONEXTRASCHANGE_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0500
    * @tc.desc:One on functions - invalid type
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_ONEXTRASCHANGE_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0500", 0, async function (done) {
       try {
         controller.on('extrasChange', INVALID_STRING);
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_ONEXTRASCHANGE_0500 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0500 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFEXTRASCHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100
    * @tc.desc:Two on functions and one off function - extras change
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_OFFEXTRASCHANGE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100", 0, async function (done) {
       controller.on('extrasChange', extrasChangeCallback1);
       controller.on('extrasChange', extrasChangeCallback2);
       controller.off('extrasChange', extrasChangeCallback2);
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -748,77 +748,77 @@ export default function AVSessionControllerJsTest() {
         expect(receivedExtras.extrasKey == CUSTOM_EXTRAS.extrasKey).assertTrue();
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0100 Extras change event not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100 Extras change event not received");
         expect().assertFail();
       }
       receivedCallback = false;
       receivedExtras = null;
-      console.info(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0100 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200
    * @tc.desc:Two on functions and two off function - extras change
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200", 0, async function (done) {
       controller.on('extrasChange', extrasChangeCallback1);
       controller.on('extrasChange', extrasChangeCallback2);
       controller.off('extrasChange', extrasChangeCallback1);
       controller.off('extrasChange', extrasChangeCallback2);
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200 Success, not received extras change event");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200 Success, not received extras change event");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200 failed, extras change event received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200 failed, extras change event received");
         expect().assertFail();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300
    * @tc.desc:Two on functions and off all function - extras change
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300", 0, async function (done) {
       controller.on('extrasChange', extrasChangeCallback1);
       controller.on('extrasChange', extrasChangeCallback2);
       controller.off('extrasChange');
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300Success, not received extras change event");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300Success, not received extras change event");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300 failed, extras change event received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300 failed, extras change event received");
         expect().assertFail();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0300 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFEXTRASCHANGE_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0400
    * @tc.desc:Two on functions and off function - three params
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_OFFEXTRASCHANGE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0400", 0, async function (done) {
       try {
         controller.on('extrasChange', extrasChangeCallback1);
         controller.on('extrasChange', extrasChangeCallback2);
@@ -826,46 +826,46 @@ export default function AVSessionControllerJsTest() {
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0400 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0400 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFEXTRASCHANGE_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0500
    * @tc.desc:One on functions and off all function - invalid type
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_OFFEXTRASCHANGE_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0500", 0, async function (done) {
       try {
         controller.on('extrasChange', extrasChangeCallback1);
         controller.off('extrasChange', INVALID_STRING);
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
-      console.info(TAG + "SUB_MULTIMEDIA_OFFEXTRASCHANGE_0500 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0500 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100
    * @tc.desc:One on function - queue items change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100", 0, async function (done) {
       controller.on('queueItemsChange', queueItemsCallback1);
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0100 setAVQueueItems error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100 setAVQueueItems error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       sleep(200).then(() => {
         if (receivedCallback) {
-          console.log(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0100 Received queue items change");
+          console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100 Received queue items change");
           expect(true).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0100 Session queue items change  not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100 Session queue items change  not received");
           expect().assertFail();
         }
         receivedCallback = false;
@@ -874,25 +874,25 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200
    * @tc.desc:One on function - queue items change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200", 0, async function (done) {
       controller.on('queueItemsChange', queueItemsCallback1);
       controller.on('queueItemsChange', queueItemsCallback2);
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0200 Received queue items change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200 Received queue items change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0200 Session queue items change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200 Session queue items change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -901,12 +901,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0300", 0, async function (done) {
       try {
         controller.on('queueItemsChange');
       } catch (err) {
@@ -916,12 +916,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUEITEMSCHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0400", 0, async function (done) {
       try {
         controller.on('queueItemsChange', queueItemsCallback1, queueItemsCallback2);
       } catch (err) {
@@ -931,24 +931,24 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100
    * @tc.desc:One on function - queue title change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100", 0, async function (done) {
       controller.on('queueTitleChange', queueTitleCallback1);
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0100 setAVQueueTitle error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100 setAVQueueTitle error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       sleep(200).then(() => {
         if (receivedCallback) {
-          console.log(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0100 Received queue Title change");
+          console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100 Received queue Title change");
           expect(true).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0100 Session queue Title change  not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100 Session queue Title change  not received");
           expect().assertFail();
         }
         receivedCallback = false;
@@ -957,25 +957,25 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200
    * @tc.desc:One on function - queue title change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200", 0, async function (done) {
       controller.on('queueTitleChange', queueTitleCallback1);
       controller.on('queueTitleChange', queueTitleCallback2);
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0200 Received queue Title change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200 Received queue Title change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0200 Session queue Title change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200 Session queue Title change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -984,12 +984,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0300", 0, async function (done) {
       try {
         controller.on('queueTitleChange');
       } catch (err) {
@@ -999,12 +999,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONQUEUETITLECHANGE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0400", 0, async function (done) {
       try {
         controller.on('queueTitleChange', queueTitleCallback1, queueTitleCallback2);
       } catch (err) {
@@ -1014,26 +1014,26 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100
    * @tc.desc:Two on functions and one off function - queue items change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100", 0, async function (done) {
       controller.on('queueItemsChange', queueItemsCallback1);
       controller.on('queueItemsChange', queueItemsCallback2);
       controller.off('queueItemsChange', queueItemsCallback2);
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0100 setAVQueueItems error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100 setAVQueueItems error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0100 Received queue items change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100 Received queue items change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0100 Session queue items change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100 Session queue items change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1041,27 +1041,27 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200
    * @tc.desc:Two on functions and two off function - queue items change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200", 0, async function (done) {
       controller.on('queueItemsChange', queueItemsCallback1);
       controller.on('queueItemsChange', queueItemsCallback2);
       controller.off('queueItemsChange', queueItemsCallback1);
       controller.off('queueItemsChange', queueItemsCallback2);
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0200 setAVQueueItems error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200 setAVQueueItems error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0200 Received queue items change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200 Received queue items change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0200 Session queue items change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200 Session queue items change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1069,26 +1069,26 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300
    * @tc.desc:Two on functions and off all function - queue items change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300", 0, async function (done) {
       controller.on('queueItemsChange', queueItemsCallback1);
       controller.on('queueItemsChange', queueItemsCallback2);
       controller.off('queueItemsChange');
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0300 setAVQueueItems error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300 setAVQueueItems error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0300 Received queue items change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300 Received queue items change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0300 Session queue items change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300 Session queue items change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1096,12 +1096,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0400
    * @tc.desc:Two on functions and off function - three params
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUEITEMSCHANGE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0400", 0, async function (done) {
       try {
         controller.on('queueItemsChange', queueItemsCallback1);
         controller.on('queueItemsChange', queueItemsCallback2);
@@ -1113,26 +1113,26 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100
    * @tc.desc:Two on functions and one off function - queue title change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100", 0, async function (done) {
       controller.on('queueTitleChange', queueTitleCallback1);
       controller.on('queueTitleChange', queueTitleCallback2);
       controller.off('queueTitleChange', queueTitleCallback2);
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0100 setAVQueueTitle error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100 setAVQueueTitle error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0100 Received queue Title change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100 Received queue Title change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0100 Session queue Title change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100 Session queue Title change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1140,28 +1140,28 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200
    * @tc.desc:Two on functions and two off function - queue title change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200", 0, async function (done) {
       controller.on('queueTitleChange', queueTitleCallback1);
       controller.on('queueTitleChange', queueTitleCallback2);
       controller.off('queueTitleChange', queueTitleCallback1);
       controller.off('queueTitleChange', queueTitleCallback2);
 
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0200 setAVQueueTitle error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200 setAVQueueTitle error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0200 Received queue Title change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200 Received queue Title change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0200 Session queue Title change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200 Session queue Title change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1169,27 +1169,27 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300
    * @tc.desc:Two on functions and off all function - queue title change
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300", 0, async function (done) {
       controller.on('queueTitleChange', queueTitleCallback1);
       controller.on('queueTitleChange', queueTitleCallback2);
       controller.off('queueTitleChange');
 
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0300 setAVQueueTitle error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300 setAVQueueTitle error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0300 Received queue Title change");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300 Received queue Title change");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0300 Session queue Title change  not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300 Session queue Title change  not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1197,12 +1197,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0400
    * @tc.desc:Two on functions and off function - three params
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_OFFQUEUETITLECHANGE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0400", 0, async function (done) {
       try {
         controller.on('queueTitleChange', queueTitleCallback1);
         controller.on('queueTitleChange', queueTitleCallback2);
@@ -1214,146 +1214,146 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUEITEMS_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100
    * @tc.desc:setAVQueueItems - callback
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
 
-    it("SUB_MULTIMEDIA_SETAVQUEUEITEMS_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100", 0, async function (done) {
       session.setAVQueueItems(ITEMS_ARRAY, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUEITEMS_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200
    * @tc.desc:setAVQueueItems - promise
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SETAVQUEUEITEMS_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200", 0, async function (done) {
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0300
    * @tc.desc:setAVQueueItems - error situation
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0300", 0, async function (done) {
       await session.setAVQueueItems(ITEMS_ARRAY_ERROR).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
       });
       await sleep(2000);
-      console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0300 finished");
       done();
     })
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUETITLE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100
    * @tc.desc:setAVQueueTitle - callback
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SETAVQUEUETITLE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100", 0, async function (done) {
       session.setAVQueueTitle(QUEUE_TITLE, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUETITLE_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUETITLE_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUETITLE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200
    * @tc.desc:setAVQueueTitle - promise
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SETAVQUEUETITLE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200", 0, async function (done) {
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUETITLE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUETITLE_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100
    * @tc.desc:SkipToQueueItem - callback
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100", 0, async function (done) {
       controller.skipToQueueItem(QUEUE_ITEM_ID, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200
    * @tc.desc:SkipToQueueItem - promise
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200", 0, async function (done) {
       await controller.skipToQueueItem(QUEUE_ITEM_ID).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_SKIPTOQUEUEITEM_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100
    * @tc.desc:One on function - skip to queue items
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100", 0, async function (done) {
       session.on('skipToQueueItem', skipToQueueItemCallback1);
       await controller.skipToQueueItem(SKIP_ITEM_ID).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       sleep(200).then(() => {
         if (receivedCallback) {
-          console.log(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0100 Received skipToQueueItem ");
+          console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100 Received skipToQueueItem ");
           expect(true).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0100 skipToQueueItem not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100 skipToQueueItem not received");
           expect().assertFail();
         }
         receivedCallback = false;
@@ -1362,25 +1362,25 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200
    * @tc.desc:One on function - skip to queue items
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200", 0, async function (done) {
       session.on('skipToQueueItem', skipToQueueItemCallback1);
       session.on('skipToQueueItem', skipToQueueItemCallback2);
       await controller.skipToQueueItem(SKIP_ITEM_ID).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0200 Received skipToQueueItem ");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200 Received skipToQueueItem ");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0200skipToQueueItem not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200skipToQueueItem not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -1389,12 +1389,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0300", 0, async function (done) {
       try {
         session.on('skipToQueueItem');
       } catch (err) {
@@ -1404,12 +1404,12 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_ONSKIPTOQUEUEITEM_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0400", 0, async function (done) {
       try {
         session.on('skipToQueueItem', skipToQueueItemCallback1, skipToQueueItemCallback2);
       } catch (err) {
@@ -1419,30 +1419,30 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100
    * @tc.desc:GetAVQueueItems - callback
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100", 0, async function (done) {
       session.setAVQueueItems(ITEMS_ARRAY, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100 finished");
         expect(true).assertTrue();
         done();
       });
       await sleep(200);
       controller.getAVQueueItems((err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100 finished");
         expect(true).assertTrue();
         done();
       });
@@ -1450,55 +1450,55 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200
    * @tc.desc:GetAVQueueItems - promise
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200", 0, async function (done) {
       await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200 finished");
       done();
       await sleep(200);
       await controller.getAVQueueItems().catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMS_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200 finished");
       done();
       await sleep(200);
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUETITLE_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100
    * @tc.desc:GetAVQueueTitle - callback
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_GETAVQUEUETITLE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100", 0, async function (done) {
       session.setAVQueueTitle(QUEUE_TITLE, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100 finished");
         expect(true).assertTrue();
         done();
       });
       await sleep(200);
       controller.getAVQueueTitle((err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100 finished");
         expect(true).assertTrue();
         done();
       });
@@ -1506,29 +1506,180 @@ export default function AVSessionControllerJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUETITLE_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200
    * @tc.desc:GetAVQueueTitle - promise
    * @tc.type: FUNC
    * @tc.require: I6KTU4
    */
-    it("SUB_MULTIMEDIA_GETAVQUEUETITLE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200", 0, async function (done) {
       await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200 finished");
       done();
       await sleep(200);
       await controller.getAVQueueTitle().catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLE_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200 finished");
       done();
       await sleep(200);
     })
+
+    /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100
+   * @tc.desc:Get av playback state - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100 start");
+    try {
+      let playbackState = {
+        state: 0
+      }
+      await session.setAVPlaybackState(playbackState);
+      sleep(200);
+      let currentPlaybackState = controller.getAVPlaybackStateSync();
+      console.log(`Get playback state: ${playbackState}`);
+      expect(currentPlaybackState.state).assertEqual(0);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100
+   * @tc.desc:Get av metadata - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100 start");
+    try {
+      let metaData = {
+        assetId: "0"
+      }
+      await session.setAVMetadata(metaData);
+      sleep(200);
+      let currentMetaData = controller.getAVMetadataSync();
+      console.log(`Get metadata: ${currentMetaData}`);
+      expect(currentMetaData.assetId).assertEqual("0");
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100
+   * @tc.desc:Get av queue title - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100 start");
+    try {
+      await session.setAVQueueTitle(QUEUE_TITLE);
+      sleep(200);
+      let currentQueueTitle = controller.getAVQueueTitleSync();
+      console.log(`Get queue title: ${currentQueueTitle}`);
+      expect(currentQueueTitle).assertEqual(QUEUE_TITLE);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100
+   * @tc.desc:Get av queue item - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100 start");
+    try {
+      await session.setAVQueueItems(ITEMS_ARRAY);
+      sleep(200);
+      let currentQueueItem = controller.getAVQueueItemsSync();
+      console.log(`Get queue item: ${currentQueueItem}`);
+      expect(currentQueueItem[0].itemId).assertEqual(ITEMS_ARRAY[0].itemId);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100
+   * @tc.desc:Get output device - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100 start");
+    try {
+      let outputDeviceInfo = controller.getOutputDeviceSync();
+      console.log(`Get output device info: ${outputDeviceInfo}`);
+      expect(outputDeviceInfo.devices[0].deviceId).assertEqual("0");
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100
+   * @tc.desc:Is session active - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100 start");
+    try {
+      await session.activate();
+      sleep(200);
+      let isActive = controller.isActiveSync();
+      console.log(`Get session active state: ${isActive}`);
+      expect(isActive).assertEqual(true);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100
+   * @tc.desc:Get valid commands - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100 start");
+    try {
+      session.on('play', () => {});
+      sleep(200);
+      let validCommands = controller.getValidCommandsSync();
+      console.log(`Get valid commands: ${validCommands}`);
+      expect(validCommands[0]).assertEqual(0);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100 finished");
+    done();
+  })
 
   })
 }

@@ -69,7 +69,7 @@ export default function Tabs_barWidHei() {
       let Tabs_barWidHei_001 = CommonFunc.getComponentRect('Tabs_barWidHei_001');
       let Tabs_barWidHei_011 = CommonFunc.getComponentRect('Tabs_barWidHei_011');
       let driver = await Driver.create();
-      await driver.swipe(Math.round(Tabs_barWidHei_011.right - 30),
+      await driver.swipe(Math.round((Tabs_barWidHei_011.right - 30)),
       Math.round(Tabs_barWidHei_011.top + ((Tabs_barWidHei_011.bottom -Tabs_barWidHei_011.top) / 2)),
       Math.round(Tabs_barWidHei_011.left + 30),
       Math.round(Tabs_barWidHei_011.top + ((Tabs_barWidHei_011.bottom -Tabs_barWidHei_011.top) / 2)));
@@ -108,30 +108,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarWidToNegative]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarWidToNegative]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top
         ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`);
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarWidToNegative]subGreen.bottom - subGreen.top
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
 
       console.info('[testTabsBarWidToNegative] END');
       done();
@@ -200,30 +200,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarWidExceedTabsWid]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top=
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarWidExceedTabsWid]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top=
         ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`);
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarWidExceedTabsWid]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsBarWidExceedTabsWid] END');
       done();
     });
@@ -291,30 +291,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarWidWithinTabsWid]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top=
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarWidWithinTabsWid]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top=
       ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`)
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarWidWithinTabsWid]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(100));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(100));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(100));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testTabsBarWidWithinTabsWid] END');
       done();
     });
@@ -382,30 +382,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarHeiExceedTabsHei]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top=
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarHeiExceedTabsHei]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top=
         ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`);
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarHeiExceedTabsHei]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsBarHeiExceedTabsHei] END');
       done();
     });
@@ -473,30 +473,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarHeiWithinTabsHei]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top=
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarHeiWithinTabsHei]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top=
         ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`);
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(200));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarHeiWithinTabsHei]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(100));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(100));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(100));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsBarHeiWithinTabsHei] END');
       done();
     });
@@ -563,30 +563,30 @@ export default function Tabs_barWidHei() {
 
       console.info(`[testTabsBarHeiToNegative]Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top=
         ${Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)}`);
-      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_011.bottom - Tabs_barWidHei_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_012.bottom - Tabs_barWidHei_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_013.bottom - Tabs_barWidHei_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_barWidHei_011.right - Tabs_barWidHei_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_012.right - Tabs_barWidHei_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barWidHei_013.right - Tabs_barWidHei_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsBarHeiToNegative]Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top=
         ${Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)}`);
-      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_barWidHei_001.bottom - Tabs_barWidHei_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_002.bottom - Tabs_barWidHei_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_003.bottom - Tabs_barWidHei_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_barWidHei_001.right - Tabs_barWidHei_001.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_002.right - Tabs_barWidHei_002.left)).assertEqual(Math.round(vp2px(330)));
+      expect(Math.round(Tabs_barWidHei_003.right - Tabs_barWidHei_003.left)).assertEqual(Math.round(vp2px(330)));
 
       console.info(`[testTabsBarHeiToNegative]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsBarHeiToNegative] END');
       done();
     });

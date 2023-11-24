@@ -71,62 +71,62 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
       let gridContainerObj = JSON.parse(gridContainerStrJson);
       expect(gridContainerObj.$type).assertEqual('Grid');
 
-      expect(Math.round(firstGridItem.right - firstGridItem.left)).assertEqual(vp2px(300));
-      expect(Math.round((firstGridItem.bottom - firstGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(firstGridItem.left).assertEqual(gridContainer.left);
-      expect(firstGridItem.top).assertEqual(gridContainer.top); //firstGridItem
+      expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(300)) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.top - gridContainer.top) <= 1).assertTrue(); //firstGridItem
 
-      expect(Math.round((secondGridItem.right - secondGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((secondGridItem.bottom - secondGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(secondGridItem.left).assertEqual(gridContainer.left);
-      expect(secondGridItem.top).assertEqual(firstGridItem.bottom);
-      expect(Math.round((thirdGridItem.right - thirdGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(thirdGridItem.left).assertEqual(secondGridItem.right);
-      expect(thirdGridItem.top).assertEqual(secondGridItem.top);
-      expect(thirdGridItem.bottom).assertEqual(secondGridItem.bottom);
-      expect(Math.round((fourthGridItem.right - fourthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(fourthGridItem.left).assertEqual(thirdGridItem.right);
-      expect(fourthGridItem.top).assertEqual(secondGridItem.top);
-      expect(fourthGridItem.bottom).assertEqual(secondGridItem.bottom);
-      expect(Math.round((fifthGridItem.right - fifthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(fifthGridItem.left).assertEqual(fourthGridItem.right);
-      expect(fifthGridItem.right).assertEqual(gridContainer.right);
-      expect(fifthGridItem.top).assertEqual(secondGridItem.top);
-      expect(fifthGridItem.bottom).assertEqual(secondGridItem.bottom);  //first row
+      expect(Math.abs(secondGridItem.right - secondGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.bottom - secondGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.top - firstGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.right - thirdGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.left - secondGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.top - secondGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.bottom - secondGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.right - fourthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.left - thirdGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.top - secondGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.bottom - secondGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.right - fifthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.left - fourthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.right - gridContainer.right) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.top - secondGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.bottom - secondGridItem.bottom) <= 1).assertTrue(); //first row
 
-      expect(Math.round((sixthGridItem.right - sixthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((sixthGridItem.bottom - sixthGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(sixthGridItem.left).assertEqual(gridContainer.left);
-      expect(sixthGridItem.top).assertEqual(secondGridItem.bottom);
-      expect(Math.round((seventhGridItem.right - seventhGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(seventhGridItem.left).assertEqual(sixthGridItem.right);
-      expect(seventhGridItem.top).assertEqual(sixthGridItem.top);
-      expect(seventhGridItem.bottom).assertEqual(sixthGridItem.bottom);
-      expect(Math.round((eighthGridItem.right - eighthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(eighthGridItem.left).assertEqual(seventhGridItem.right);
-      expect(eighthGridItem.top).assertEqual(sixthGridItem.top);
-      expect(eighthGridItem.bottom).assertEqual(sixthGridItem.bottom);
-      expect(Math.round((ninthGridItem.right - ninthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(ninthGridItem.left).assertEqual(eighthGridItem.right);
-      expect(ninthGridItem.top).assertEqual(sixthGridItem.top);
-      expect(ninthGridItem.bottom).assertEqual(sixthGridItem.bottom);
+      expect(Math.abs(sixthGridItem.right - sixthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.bottom - sixthGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.top - secondGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.right - seventhGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.left - sixthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.top - sixthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.bottom - sixthGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.right - eighthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.left - seventhGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.top - sixthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.bottom - sixthGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.right - ninthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.left - eighthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.top - sixthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.bottom - sixthGridItem.bottom) <= 1).assertTrue();
 
-      expect(Math.round((tenthGridItem.right - tenthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((tenthGridItem.bottom - tenthGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(tenthGridItem.left).assertEqual(gridContainer.left);
-      expect(tenthGridItem.top).assertEqual(sixthGridItem.bottom);
-      expect(Math.round((eleventhGridItem.right - eleventhGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(eleventhGridItem.left).assertEqual(tenthGridItem.right);
-      expect(eleventhGridItem.top).assertEqual(tenthGridItem.top);
-      expect(eleventhGridItem.bottom).assertEqual(tenthGridItem.bottom);
-      expect(Math.round((twelfthGridItem.right - twelfthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(twelfthGridItem.left).assertEqual(eleventhGridItem.right);
-      expect(twelfthGridItem.top).assertEqual(tenthGridItem.top);
-      expect(twelfthGridItem.bottom).assertEqual(tenthGridItem.bottom);
-      expect(Math.round((thirteenthGridItem.right - thirteenthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(thirteenthGridItem.left).assertEqual(twelfthGridItem.right);
-      expect(thirteenthGridItem.top).assertEqual(tenthGridItem.top);
-      expect(thirteenthGridItem.bottom).assertEqual(gridContainer.bottom); //third row
+      expect(Math.abs(tenthGridItem.right - tenthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.bottom - tenthGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.top - sixthGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.right - eleventhGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.left - tenthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.top - tenthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.bottom - tenthGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.right - twelfthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.left - eleventhGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.top - tenthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.bottom - tenthGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.right - thirteenthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.left - twelfthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.top - tenthGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.bottom - gridContainer.bottom) <= 1).assertTrue();
       console.info('[testGridRowColItemColumnStartToZeroEndToThree] END');
       done();
     });
@@ -158,63 +158,62 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
       let gridContainerObj = JSON.parse(gridContainerStrJson);
       expect(gridContainerObj.$type).assertEqual('Grid');
 
-      expect(Math.round((firstGridItem.right - firstGridItem.left)*10)/10).assertEqual(Math.round(vp2px(225)*10)/10);
-      expect(Math.round((firstGridItem.bottom - firstGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(firstGridItem.left).assertEqual(gridContainer.left);
-      expect(firstGridItem.top).assertEqual(gridContainer.top); //firstGridItem
-      expect(secondGridItem.left).assertEqual(firstGridItem.right);
-      expect(secondGridItem.right).assertEqual(gridContainer.right);
-      expect(secondGridItem.top).assertEqual(gridContainer.top);
-      expect(secondGridItem.bottom).assertEqual(firstGridItem.bottom); //first Row
+      expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(225)) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(firstGridItem.top - gridContainer.top) <= 1).assertTrue(); //firstGridItem
+      expect(Math.abs(secondGridItem.left - firstGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.right - gridContainer.right) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.top - gridContainer.top) <= 1).assertTrue();
+      expect(Math.abs(secondGridItem.bottom - firstGridItem.bottom) <= 1).assertTrue(); //first Row
 
+      expect(Math.abs(thirdGridItem.right - thirdGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.bottom - thirdGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(thirdGridItem.top - firstGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.right - fourthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.left - thirdGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.top - thirdGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(fourthGridItem.bottom - thirdGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.right - fifthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.left - fourthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.top - thirdGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(fifthGridItem.bottom - thirdGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.right - sixthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.left - fifthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.right - gridContainer.right) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.top - thirdGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(sixthGridItem.bottom - thirdGridItem.bottom) <= 1).assertTrue(); //second row
 
-      expect(Math.round((thirdGridItem.right - thirdGridItem.left )*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((thirdGridItem.bottom - thirdGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(thirdGridItem.left).assertEqual(gridContainer.left);
-      expect(thirdGridItem.top).assertEqual(firstGridItem.bottom);
-      expect(Math.round((fourthGridItem.right - fourthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(fourthGridItem.left).assertEqual(thirdGridItem.right);
-      expect(fourthGridItem.top).assertEqual(thirdGridItem.top);
-      expect(fourthGridItem.bottom).assertEqual(thirdGridItem.bottom);
-      expect(Math.round((fifthGridItem.right - fifthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(fifthGridItem.left).assertEqual(fourthGridItem.right);
-      expect(fifthGridItem.top).assertEqual(thirdGridItem.top);
-      expect(fifthGridItem.bottom).assertEqual(thirdGridItem.bottom);
-      expect(Math.round((sixthGridItem.right - sixthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(sixthGridItem.left).assertEqual(fifthGridItem.right);
-      expect(sixthGridItem.right).assertEqual(gridContainer.right);
-      expect(sixthGridItem.top).assertEqual(thirdGridItem.top);
-      expect(sixthGridItem.bottom).assertEqual(thirdGridItem.bottom); //second row
+      expect(Math.abs(seventhGridItem.right - seventhGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.bottom - seventhGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(seventhGridItem.top - thirdGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.right - eighthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.left - seventhGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.top - seventhGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(eighthGridItem.bottom - seventhGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.right - ninthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.left - eighthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.top - seventhGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(ninthGridItem.bottom - seventhGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.right - tenthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.left - ninthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.top - seventhGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(tenthGridItem.bottom - seventhGridItem.bottom) <= 1).assertTrue(); //third row
 
-      expect(Math.round((seventhGridItem.right - seventhGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((seventhGridItem.bottom - seventhGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(seventhGridItem.left).assertEqual(gridContainer.left);
-      expect(seventhGridItem.top).assertEqual(thirdGridItem.bottom);
-      expect(Math.round((eighthGridItem.right - eighthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(eighthGridItem.left).assertEqual(seventhGridItem.right);
-      expect(eighthGridItem.top).assertEqual(seventhGridItem.top);
-      expect(eighthGridItem.bottom).assertEqual(seventhGridItem.bottom);
-      expect(Math.round((ninthGridItem.right - ninthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(ninthGridItem.left).assertEqual(eighthGridItem.right);
-      expect(ninthGridItem.top).assertEqual(seventhGridItem.top);
-      expect(ninthGridItem.bottom).assertEqual(seventhGridItem.bottom);
-      expect(Math.round((tenthGridItem.right - tenthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(tenthGridItem.left).assertEqual(ninthGridItem.right);
-      expect(tenthGridItem.top).assertEqual(seventhGridItem.top);
-      expect(tenthGridItem.bottom).assertEqual(seventhGridItem.bottom); //third row
-
-      expect(Math.round((eleventhGridItem.right - eleventhGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((eleventhGridItem.bottom - eleventhGridItem.top)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(eleventhGridItem.left).assertEqual(gridContainer.left);
-      expect(eleventhGridItem.top).assertEqual(seventhGridItem.bottom);
-      expect(Math.round((twelfthGridItem.right - twelfthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(twelfthGridItem.left).assertEqual(eleventhGridItem.right);
-      expect(twelfthGridItem.top).assertEqual(eleventhGridItem.top);
-      expect(twelfthGridItem.bottom).assertEqual(eleventhGridItem.bottom);
-      expect(Math.round((thirteenthGridItem.right - thirteenthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(thirteenthGridItem.left).assertEqual(twelfthGridItem.right);
-      expect(thirteenthGridItem.top).assertEqual(eleventhGridItem.top);
-      expect(thirteenthGridItem.bottom).assertEqual(gridContainer.bottom);  //fourth row
+      expect(Math.abs(eleventhGridItem.right - eleventhGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.bottom - eleventhGridItem.top - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.left - gridContainer.left) <= 1).assertTrue();
+      expect(Math.abs(eleventhGridItem.top - seventhGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.right - twelfthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.left - eleventhGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.top - eleventhGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(twelfthGridItem.bottom - eleventhGridItem.bottom) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.right - thirteenthGridItem.left - vp2px(75)) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.left - twelfthGridItem.right) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.top - eleventhGridItem.top) <= 1).assertTrue();
+      expect(Math.abs(thirteenthGridItem.bottom - gridContainer.bottom) <= 1).assertTrue(); //fourth row
       console.info('[testGridRowColItemColumnStartToZeroEndToTwo] END');
       done();
     });

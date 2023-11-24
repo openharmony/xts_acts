@@ -2,6 +2,7 @@
   "src": [
     "TestAbility/pages/Index",
     "TestAbility/pages/ListDelete",
+    "TestAbility/pages/ListSwipe",
     "TestAbility/pages/ListRebound",
     "TestAbility/pages/TextAreaCallback",
     "TestAbility/pages/BindMenu",

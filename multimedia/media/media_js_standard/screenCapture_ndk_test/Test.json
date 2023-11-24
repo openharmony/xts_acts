@@ -5,7 +5,8 @@
         "test-timeout": "1500000",
 	    "bundle-name": "com.example.avscreencapturendkxts",
         "package-name": "com.example.avscreencapturendkxts",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+	"testcase-timeout": "100000"
     },
     "kits": [
         {

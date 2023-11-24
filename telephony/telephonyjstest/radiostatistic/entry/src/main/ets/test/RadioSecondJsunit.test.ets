@@ -50,9 +50,9 @@ export default function radioSecondJsunit() {
         expect(data.isRoaming === true || data.isRoaming === false).assertTrue();
         expect(data.isCaActive === true || data.isCaActive === false).assertTrue();
         expect(data.isEmergency === true || data.isEmergency === false).assertTrue();
-        expect(data.cfgTech === -1).assertFalse();
-        expect(data.nsaState === -1).assertFalse();
-        expect(data.regState === -1).assertFalse();
+        expect(data.cfgTech.toString() == "-1").assertFalse();
+        expect(data.nsaState.toString() == "-1").assertFalse();
+        expect(data.regState.toString() == "-1").assertFalse();
         done();
         return;
       });
@@ -73,9 +73,9 @@ export default function radioSecondJsunit() {
         expect(result.isRoaming === true || result.isRoaming === false).assertTrue();
         expect(result.isCaActive === true || result.isCaActive === false).assertTrue();
         expect(result.isEmergency === true || result.isEmergency === false).assertTrue();
-        expect(result.cfgTech === -1).assertFalse();
-        expect(result.nsaState === -1).assertFalse();
-        expect(result.regState === -1).assertFalse();
+        expect(result.cfgTech.toString() == "-1").assertFalse();
+        expect(result.nsaState.toString() == "-1").assertFalse();
+        expect(result.regState.toString() == "-1").assertFalse();
         done();
       } catch (error) {
         console.error("Network unavailable");
@@ -104,9 +104,9 @@ export default function radioSecondJsunit() {
         expect(data.isRoaming === true || data.isRoaming === false).assertTrue();
         expect(data.isCaActive === true || data.isCaActive === false).assertTrue();
         expect(data.isEmergency === true || data.isEmergency === false).assertTrue();
-        expect(data.cfgTech === -1).assertFalse();
-        expect(data.nsaState === -1).assertFalse();
-        expect(data.regState === -1).assertFalse();
+        expect(data.cfgTech.toString() == "-1").assertFalse();
+        expect(data.nsaState.toString() == "-1").assertFalse();
+        expect(data.regState.toString() == "-1").assertFalse();
         done();
       });
     })
@@ -126,9 +126,9 @@ export default function radioSecondJsunit() {
         expect(result.isRoaming === true || result.isRoaming === false).assertTrue();
         expect(result.isCaActive === true || result.isCaActive === false).assertTrue();
         expect(result.isEmergency === true || result.isEmergency === false).assertTrue();
-        expect(result.cfgTech === -1).assertFalse();
-        expect(result.nsaState === -1).assertFalse();
-        expect(result.regState === -1).assertFalse();
+        expect(result.cfgTech.toString() == "-1").assertFalse();
+        expect(result.nsaState.toString() == "-1").assertFalse();
+        expect(result.regState.toString() == "-1").assertFalse();
         done();
       } catch (error) {
         console.error("Network unavailable");
@@ -152,8 +152,8 @@ export default function radioSecondJsunit() {
           return;
         }
         console.error("Telephony_NetworkSearch_getRadioTech_Async_0500 data:" + JSON.stringify(data));
-        expect(data.psRadioTech === -1).assertFalse();
-        expect(data.csRadioTech === -1).assertFalse();
+        expect(data.psRadioTech.toString() == "-1").assertFalse();
+        expect(data.csRadioTech.toString() == "-1").assertFalse();
         done();
       });
     });
@@ -168,8 +168,8 @@ export default function radioSecondJsunit() {
       let promise = radio.getRadioTech(slotId);
       promise.then(data => {
         console.error("Telephony_NetworkSearch_getRadioTech_Async_0500 data:" + JSON.stringify(data));
-        expect(data.psRadioTech === -1).assertFalse();
-        expect(data.csRadioTech === -1).assertFalse();
+        expect(data.psRadioTech.toString() == "-1").assertFalse();
+        expect(data.csRadioTech.toString() == "-1").assertFalse();
         done();
       }).catch(err => {
         console.error("Telephony_NetworkSearch_getRadioTech_Async_0500 err:" + JSON.stringify(err));

@@ -53,6 +53,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/driver:driver",
   "${ACTS_ROOT}/msdp:msdp",
   "${ACTS_ROOT}/arkcompiler:arkcompiler",
+  "${ACTS_ROOT}/advertising:advertising",
 ]
 
 _all_test_packages_ivi = [
@@ -111,6 +112,7 @@ if (build_xts == true && XTS_SUITENAME == "acts") {
 
   # always include testtools
   selected_packages += [ "testtools:deploy_testtools" ]
+  selected_packages += [ "${XTS_ROOT}/tools/others/query:libQuery" ]
   selected_packages_ivi += [ "testtools:deploy_testtools" ]
   selected_packages_intellitv += [ "testtools:deploy_testtools" ]
   selected_packages_wearable += [ "testtools:deploy_testtools" ]

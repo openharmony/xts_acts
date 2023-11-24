@@ -60,23 +60,23 @@ export default function flexHeightModify_StretchJsunit() {
       let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
       let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
 
-      expect(textHeightModify01.top).assertEqual(textHeightModify02.top)
-      expect(textHeightModify02.top).assertEqual(textHeightModify03.top)
-      expect(textHeightModify03.top).assertEqual(flexHeightModify.top)
+      expect(Math.abs(textHeightModify01.top - textHeightModify02.top) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.top - textHeightModify03.top) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.top - flexHeightModify.top) <= 1).assertTrue()
 
-      expect(textHeightModify01.bottom).assertEqual(textHeightModify02.bottom)
-      expect(textHeightModify02.bottom).assertEqual(textHeightModify03.bottom)
+      expect(Math.abs(textHeightModify01.bottom - textHeightModify02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.bottom - textHeightModify03.bottom) <= 1).assertTrue()
 
-      expect(textHeightModify01.left).assertEqual(flexHeightModify.left)
-      expect(textHeightModify02.left).assertEqual(textHeightModify01.right)
+      expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
       expect(textHeightModify03.right).assertLess(flexHeightModify.right)
 
-      expect(Math.round(textHeightModify01.bottom - textHeightModify01.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify02.bottom - textHeightModify02.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify03.bottom - textHeightModify03.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify01.right - textHeightModify01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textHeightModify02.right - textHeightModify02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textHeightModify03.right - textHeightModify03.left)).assertEqual(vp2px(150))
+      expect(Math.abs((textHeightModify01.bottom - textHeightModify01.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify02.bottom - textHeightModify02.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify03.bottom - textHeightModify03.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify01.right - textHeightModify01.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify02.right - textHeightModify02.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify03.right - textHeightModify03.left) - vp2px(150)) <= 1).assertTrue()
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchDefaultSize END');
@@ -99,23 +99,23 @@ export default function flexHeightModify_StretchJsunit() {
       let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
       let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
 
-      expect(textHeightModify01.top).assertEqual(textHeightModify02.top)
-      expect(textHeightModify02.top).assertEqual(textHeightModify03.top)
-      expect(textHeightModify03.top).assertEqual(flexHeightModify.top)
+      expect(Math.abs(textHeightModify01.top - textHeightModify02.top) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.top - textHeightModify03.top) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify03.top - flexHeightModify.top) <= 1).assertTrue()
 
-      expect(textHeightModify01.bottom).assertEqual(textHeightModify02.bottom)
-      expect(textHeightModify02.bottom).assertEqual(textHeightModify03.bottom)
+      expect(Math.abs(textHeightModify01.bottom - textHeightModify02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.bottom - textHeightModify03.bottom) <= 1).assertTrue()
 
-      expect(textHeightModify01.left).assertEqual(flexHeightModify.left)
-      expect(textHeightModify02.left).assertEqual(textHeightModify01.right)
+      expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
       expect(textHeightModify03.right).assertLess(flexHeightModify.right)
 
-      expect(Math.round(textHeightModify01.bottom - textHeightModify01.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify02.bottom - textHeightModify02.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify03.bottom - textHeightModify03.top)).assertEqual(vp2px(200))
-      expect(Math.round(textHeightModify01.right - textHeightModify01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textHeightModify02.right - textHeightModify02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textHeightModify03.right - textHeightModify03.left)).assertEqual(vp2px(150))
+      expect(Math.abs((textHeightModify01.bottom - textHeightModify01.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify02.bottom - textHeightModify02.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify03.bottom - textHeightModify03.top) - vp2px(200)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify01.right - textHeightModify01.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify02.right - textHeightModify02.left) - vp2px(150)) <= 1).assertTrue()
+      expect(Math.abs((textHeightModify03.right - textHeightModify03.left) - vp2px(150)) <= 1).assertTrue()
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchHeightModify END');

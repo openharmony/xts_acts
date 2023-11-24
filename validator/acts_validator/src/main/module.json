@@ -62,6 +62,66 @@
       },
       {
         "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name": "ohos.permission.ACCELEROMETER"
+      },
+      {
+        "name": "ohos.permission.REMOVE_CACHE_FILES"
+      },
+      {
+        "name": "ohos.permission.GET_INSTALLED_BUNDLE_LIST"
+      },
+      {
+        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.READ_IMAGEVIDEO"
+      },
+      {
+        "name": "ohos.permission.WRITE_IMAGEVIDEO"
+      },
+      {
+        "name": "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+      },
+      {
+        "name": "ohos.permission.INPUT_MONITORING"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_PEERS_MAC"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_LOCAL_MAC"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_CONFIG"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_CONFIG"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_CONNECTION"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_HOTSPOT"
+      },
+      {
+        "name": "ohos.permission.LOCATION"
+      },
+      {
+        "name": "ohos.permission.APPROXIMATELY_LOCATION"
       }
     ]
   }

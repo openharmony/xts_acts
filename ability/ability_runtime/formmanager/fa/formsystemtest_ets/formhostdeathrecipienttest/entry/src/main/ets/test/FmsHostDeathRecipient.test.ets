@@ -123,7 +123,10 @@ export default function test() {
                 createTempAndNormal: true,
                 subscribeTerminate: true
             });
-        });  
+
+            await sleep(3000);
+            done();
+        });
     });
 }
 

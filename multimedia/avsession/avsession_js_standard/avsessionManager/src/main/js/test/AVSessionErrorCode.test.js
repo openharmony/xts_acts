@@ -65,18 +65,22 @@ export default function AVSessionErrorCode() {
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
-            await session.destroy().then(() => {
+            if(session){
+                await session.destroy().then(() => {
                 console.info('TestLog: Session destroy success');
             }).catch((err) => {
                 console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+        }
+        if(controller){
             await controller.destroy().then(() => {
                 console.info('TestLog: Controller destroy success');
             }).catch((err) => {
                 console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+        }
             done();
         })
 
@@ -85,14 +89,14 @@ export default function AVSessionErrorCode() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0100
          * @tc.name      : SETMETADATA_0100
          * @tc.desc      : Testing set metadata - promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_ERRORCODE_0100', 0, async function (done) {
             let metadata1 = {
                 assetId: '121278',
             };
@@ -110,14 +114,14 @@ export default function AVSessionErrorCode() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_DESTROYCONTROLLER_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_DESTROYCONTROLLER_ERRORCODE_0100
          * @tc.name      : DESTROYCONTROLLER_0100
          * @tc.desc      : Testing destroy the controller - promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_DESTROYCONTROLLER_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_DESTROYCONTROLLER_ERRORCODE_0100', 0, async function (done) {
             await controller.destroy().then(() => {
                 console.info('TestLog: Controller destroy successfully');
                 expect(true).assertTrue();
@@ -127,18 +131,20 @@ export default function AVSessionErrorCode() {
                 console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            await sleep(200);
+            controller = await session.getController();
             done();
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0100
          * @tc.name      : OFFPLAY_0100
          * @tc.desc      : Testing offPlay callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_ERRORCODE_0100', 0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
                 expect(true).assertTrue();
@@ -159,14 +165,14 @@ export default function AVSessionErrorCode() {
         })
         
 		/* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_ERRORCODE_0100
          * @tc.name      : CAST_AUDIO_0100
          * @tc.desc      : Testing cast audio
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-         it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100', 0, async function (done) {
+         it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_ERRORCODE_0100', 0, async function (done) {
             sessionId = session.sessionId;
             sessionToken = { sessionId, pid, uid };
 
@@ -185,14 +191,14 @@ export default function AVSessionErrorCode() {
         })
 		
 		/* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0100
          * @tc.name      : ONHANDLEKEYEVENT_0100
          * @tc.desc      : Testing Handle KeyEvent callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_ERRORCODE_0100', 0, async function (done) {
             session.on('handleKeyEvent', (callback) => {
                 if (callback.action === 2) {
                     console.info('TestLog: Handle keyEvent callback registration successful');
@@ -216,14 +222,14 @@ export default function AVSessionErrorCode() {
         })
 		
 		/* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0100
          * @tc.name      : ONPLAY_0100
          * @tc.desc      : Testing onPlay callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_ERRORCODE_0100', 0, async function (done) {
             session.on('play', () => {
                 console.info('TestLog: Play command callback registration successful');
                 expect(true).assertTrue();

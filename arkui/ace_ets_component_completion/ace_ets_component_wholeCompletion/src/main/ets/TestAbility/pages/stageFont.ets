@@ -21,8 +21,12 @@ struct StageFont {
   controller: TextAreaController = new TextAreaController()
 
   aboutToAppear(){
-    let fontRegister = globalThis.uiContent.getFont();
-    console.info(fontRegister);
+    try{
+      let fontRegister = globalThis.uiContent.getFont();
+      console.info(fontRegister);
+    } catch(err){
+      console.error("Value of globalThis.uiContent.getFont(): " + globalThis.uiContent.getFont());
+    }
   }
 
   build(){

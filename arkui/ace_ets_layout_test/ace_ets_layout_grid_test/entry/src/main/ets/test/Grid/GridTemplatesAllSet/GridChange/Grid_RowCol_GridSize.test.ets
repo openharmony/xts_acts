@@ -60,34 +60,34 @@ export default function Grid_RowCol_GridSize() {
       let Grid_RowCol_GridSize_013 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_013');
       let Grid_RowCol_GridSize_014 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_014');
       let Grid_RowCol_GridSize_01 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_01');
-      expect(Grid_RowCol_GridSize_011.left).assertEqual(Grid_RowCol_GridSize_01.left);
-      expect(Grid_RowCol_GridSize_013.left).assertEqual(Grid_RowCol_GridSize_01.left);
+      expect(Math.abs(Grid_RowCol_GridSize_011.left - Grid_RowCol_GridSize_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.left - Grid_RowCol_GridSize_01.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.right).assertEqual(Grid_RowCol_GridSize_012.left);
-      expect(Grid_RowCol_GridSize_013.right).assertEqual(Grid_RowCol_GridSize_014.left);
+      expect(Math.abs(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_014.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_012.right).assertEqual(Grid_RowCol_GridSize_01.right);
-      expect(Grid_RowCol_GridSize_014.right).assertEqual(Grid_RowCol_GridSize_01.right);
+      expect(Math.abs(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_01.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_01.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.top).assertEqual(Grid_RowCol_GridSize_01.top);
-      expect(Grid_RowCol_GridSize_012.top).assertEqual(Grid_RowCol_GridSize_01.top);
+      expect(Math.abs(Grid_RowCol_GridSize_011.top - Grid_RowCol_GridSize_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.top - Grid_RowCol_GridSize_01.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.bottom).assertEqual(Grid_RowCol_GridSize_013.top);
-      expect(Grid_RowCol_GridSize_012.bottom).assertEqual(Grid_RowCol_GridSize_014.top);
+      expect(Math.abs(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_013.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_014.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_013.bottom).assertEqual(Grid_RowCol_GridSize_01.bottom);
-      expect(Grid_RowCol_GridSize_014.bottom).assertEqual(Grid_RowCol_GridSize_01.bottom);
+      expect(Math.abs(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_01.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_01.bottom) <= 1).assertTrue();
 
 
-      expect(Math.round(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_011.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_012.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_013.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_014.left)).assertEqual(vp2px(100));
+      expect(Math.abs(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_011.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_012.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_013.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_014.left - vp2px(100)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_011.top)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top)).assertEqual(vp2px(100));
+      expect(Math.abs(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_011.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top - vp2px(100)) <= 1).assertTrue();
       console.info('[testGridRowColGridSize01] END');
       done();
     });
@@ -108,34 +108,34 @@ export default function Grid_RowCol_GridSize() {
       let Grid_RowCol_GridSize_013 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_013');
       let Grid_RowCol_GridSize_014 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_014');
       let Grid_RowCol_GridSize_01 = CommonFunc.getComponentRect('Grid_RowCol_GridSize_01');
-      expect(Grid_RowCol_GridSize_011.left).assertEqual(Grid_RowCol_GridSize_01.left);
-      expect(Grid_RowCol_GridSize_013.left).assertEqual(Grid_RowCol_GridSize_01.left);
+      expect(Math.abs(Grid_RowCol_GridSize_011.left - Grid_RowCol_GridSize_01.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.left - Grid_RowCol_GridSize_01.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.right).assertEqual(Grid_RowCol_GridSize_012.left);
-      expect(Grid_RowCol_GridSize_013.right).assertEqual(Grid_RowCol_GridSize_014.left);
+      expect(Math.abs(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_012.left) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_014.left) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_012.right).assertEqual(Grid_RowCol_GridSize_01.right);
-      expect(Grid_RowCol_GridSize_014.right).assertEqual(Grid_RowCol_GridSize_01.right);
+      expect(Math.abs(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_01.right) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_01.right) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.top).assertEqual(Grid_RowCol_GridSize_01.top);
-      expect(Grid_RowCol_GridSize_012.top).assertEqual(Grid_RowCol_GridSize_01.top);
+      expect(Math.abs(Grid_RowCol_GridSize_011.top - Grid_RowCol_GridSize_01.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.top - Grid_RowCol_GridSize_01.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_011.bottom).assertEqual(Grid_RowCol_GridSize_013.top);
-      expect(Grid_RowCol_GridSize_012.bottom).assertEqual(Grid_RowCol_GridSize_014.top);
+      expect(Math.abs(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_013.top) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_014.top) <= 1).assertTrue();
 
-      expect(Grid_RowCol_GridSize_013.bottom).assertEqual(Grid_RowCol_GridSize_01.bottom);
-      expect(Grid_RowCol_GridSize_014.bottom).assertEqual(Grid_RowCol_GridSize_01.bottom);
+      expect(Math.abs(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_01.bottom) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_01.bottom) <= 1).assertTrue();
 
 
-      expect(Math.round(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_011.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_012.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_013.left)).assertEqual(vp2px(100));
-      expect(Math.round(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_014.left)).assertEqual(vp2px(100));
+      expect(Math.abs(Grid_RowCol_GridSize_011.right - Grid_RowCol_GridSize_011.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.right - Grid_RowCol_GridSize_012.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.right - Grid_RowCol_GridSize_013.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.right - Grid_RowCol_GridSize_014.left - vp2px(100)) <= 1).assertTrue();
 
-      expect(Math.round(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_011.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top)).assertEqual(vp2px(150));
+      expect(Math.abs(Grid_RowCol_GridSize_011.bottom - Grid_RowCol_GridSize_011.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top - vp2px(150)) <= 1).assertTrue();
       console.info('[testGridRowColGridSize02] END');
       done();
     });

@@ -17,7 +17,7 @@ import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "CameraUnitTest: ";
 
 let captureLocation = {
@@ -74,15 +74,16 @@ let videoSurfaceId;
 let fdPath;
 let fileAsset;
 let fdNumber;
+let receiver;
 
 let mMetadataObjectTypeArray;
 let mMetadataObjectArray;
-
+let context = featureAbility.getContext();
 export default function cameraJSUnitOutput() {
 
   async function getImageReceiverSurfaceId() {
     console.log(TAG + 'Entering create Image receiver')
-    var receiver = image.createImageReceiver(640, 480, 4, 8)
+    receiver = image.createImageReceiver(640, 480, 4, 8)
     console.log(TAG + 'before receiver check')
     if (receiver !== undefined) {
       console.log(TAG + 'Receiver is ok')
@@ -233,7 +234,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering GET_CAMERA_MANAGER cameraManager == null || undefined")
         expect().assertFail();
       } else {
-        cameraManager = cameraObj.getCameraManager(null);
+        cameraManager = cameraObj.getCameraManager(context);
         await sleep(1000);
         done();
       }
@@ -422,7 +423,7 @@ export default function cameraJSUnitOutput() {
         console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
         expect(isEmpty(cameraOutputCap)).assertFalse();
         mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
-        if (isEmpty(mMetadataObjectTypeArray)) {
+        if (isEmpty(mMetadataObjectTypeArray) || mMetadataObjectTypeArray.length < 1) {
           console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 end with mMetadataObjectTypeArray is null");
         } else {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 start createMetadataOutput")
@@ -1230,10 +1231,6 @@ export default function cameraJSUnitOutput() {
           if (!err) {
             expect(true).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-            // count++;
-            // console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-            // await sleep(1000);
-            // done();
           } else {
             expect().assertFail();
             console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " + err.message);
@@ -1241,7 +1238,6 @@ export default function cameraJSUnitOutput() {
         })
         await sleep(1000);
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
       }
       await sleep(1000);
       done();
@@ -1281,7 +1277,7 @@ export default function cameraJSUnitOutput() {
         await sleep(1000);
         done();
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
+
       }
       await sleep(1000);
       done();
@@ -1319,7 +1315,7 @@ export default function cameraJSUnitOutput() {
         await sleep(1000);
         done();
         photoOutput.capture();
-        // expect(count == 1).assertTrue();
+
       }
       await sleep(1000);
       done();

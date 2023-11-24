@@ -1750,7 +1750,7 @@ describe('LRUCacheTest', function () {
     it('testLRUCachePut001', 0, function () {
         var that = new util.LRUCache()
         var temp = that.put('1111','bcjdshc')
-        expect(temp).assertEqual(undefined)
+        expect(temp).assertEqual('bcjdshc')
     })
 
     /**
@@ -1761,7 +1761,7 @@ describe('LRUCacheTest', function () {
         var that = new util.LRUCache()
         var temp1 = that.put('1111','bcjdshc')
         var temp2 = that.put('1111',13)
-        expect(temp2).assertEqual('bcjdshc')
+        expect(temp2).assertEqual(13)
     })
 
     /**
@@ -1775,10 +1775,10 @@ describe('LRUCacheTest', function () {
         var temp2 = that.put(2,5)
         var temp3 = that.put(2,'adasfdad')
         var temp4 = that.put('abc',10)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(5)
-        expect(temp4).assertEqual(undefined)
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual('adasfdad')
+        expect(temp4).assertEqual(10)
     })
 
     /**
@@ -1793,11 +1793,11 @@ describe('LRUCacheTest', function () {
         that.updateCapacity(2)
         var temp3 = that.put(2,'adasfdad')
         var temp4 = that.put('1111',10)
-        expect(temp).assertEqual(undefined)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(5)
-        expect(temp4).assertEqual(undefined)
+        expect(temp).assertEqual('bcjdshc')
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual('adasfdad')
+        expect(temp4).assertEqual(10)
     })
 
     /**
@@ -1812,12 +1812,12 @@ describe('LRUCacheTest', function () {
         var temp3 = that.put(1,10)
         var temp4 = that.put(2,22)
         var temp5 = that.put(2,30)
-        expect(temp).assertEqual(undefined)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(12)
-        expect(temp4).assertEqual(5)
-        expect(temp5).assertEqual(22)
+        expect(temp).assertEqual('bcjdshc')
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual(10)
+        expect(temp4).assertEqual(22)
+        expect(temp5).assertEqual(30)
     })
 
     /**
@@ -3981,7 +3981,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
         }
     })
 
@@ -4051,7 +4051,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeToStringSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
         }
     })
 
@@ -4142,7 +4142,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([99,122,69,122]);
             var result = that.decodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array or string")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array or string")
         }
     })
 
@@ -4302,7 +4302,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
         }
 
     })
@@ -4378,7 +4378,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encodeToString(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
         }
     })
 
@@ -4555,7 +4555,7 @@ describe('Base64HelperTest', function () {
             var array = new Uint16Array([99,122,69,122]);
             that.decode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array or string")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array or string")
         }
     })
 
@@ -4734,7 +4734,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testTextDecoderCreate007', 0, function () {
-        var that = util.TextDecoder.create({ ignoreBOM : false })
+        var that = util.TextDecoder.create(undefined, { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-8')
     })
@@ -4809,7 +4809,7 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be string.")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
         }
     })
 
@@ -4823,7 +4823,7 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be object.")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be object.")
         }
     })
 
@@ -4837,8 +4837,41 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be object.")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be object.")
         }
+    })
+
+    /**
+     * @tc.name: decodeWithStream001
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream001', 0, function () {
+        const that = util.TextDecoder.create('utf-8');
+        const uint8arr = new Uint8Array([0,65,49,53,79,75,70,69]);
+        var retStr = that.decodeWithStream(uint8arr);
+        expect(retStr).assertEqual(' A15OKFE')
+    })
+
+    /**
+     * @tc.name: decodeWithStream002
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream002', 0, function () {
+        const that = util.TextDecoder.create('utf-8');
+        const uint8arr = new Uint8Array([67,65,49,53,0,109,112]);
+        let retStr = that.decodeWithStream(uint8arr);
+        expect(retStr).assertEqual('CA15 mp')
+    })
+
+    /**
+     * @tc.name: decodeWithStream003
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream003', 0, function () {
+        const that = util.TextDecoder.create('utf-8');
+        const uint8arr = new Uint8Array([84,67,65,53,49,79,0]);
+        var retStr = that.decodeWithStream(uint8arr);
+        expect(retStr).assertEqual('TCA51O ')
     })
 
     /**
@@ -4982,7 +5015,7 @@ describe('DecodeEncodeTest', function () {
             result = that.encodeInto(123)
             expect(result[0]).assertEqual(0x61)
         } catch (e) {
-                expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be string.")
+                expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
             }
     })
 
@@ -4998,7 +5031,7 @@ describe('DecodeEncodeTest', function () {
             result = that.encodeInto({ ignoreBOM : true })
             expect(result[0]).assertEqual(0x61)
         } catch (e) {
-                expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be string.")
+                expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
             }
     })
 
@@ -5128,7 +5161,7 @@ describe('DecodeEncodeTest', function () {
             expect(result.read).assertEqual(7)
             expect(result.written).assertEqual(13)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be string.")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
         }
     })
 
@@ -5146,7 +5179,7 @@ describe('DecodeEncodeTest', function () {
             expect(result.read).assertEqual(7)
             expect(result.written).assertEqual(13)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of Parameter must be Uint8Array.")
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array.")
         }
     })
 })

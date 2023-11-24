@@ -131,7 +131,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore Backup Restore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0100
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0100
          * @tc.desc RelationalStore backup and restore function test
          */
         it('RdbBackupRestoreCallbackTest_0100', 0, async function (done) {
@@ -199,7 +199,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore Backup test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0200
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0200
          * @tc.desc RelationalStore backup function test
          */
         it('RdbBackupRestoreCallbackTest_0200', 0, function (done) {
@@ -216,7 +216,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreTest_0300
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0300
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0300', 0, async function (done) {
@@ -236,7 +236,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0400
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0400
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0400', 0, async function (done) {
@@ -257,7 +257,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0500
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0500
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0500', 0, async function (done) {
@@ -301,7 +301,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0600
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0600
          * @tc.desc RelationalStore restore function test
          */
          it('RdbBackupRestoreCallbackTest_0600', 0, async function (done) {
@@ -323,7 +323,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0700
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0700
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0700', 0, async function (done) {
@@ -353,7 +353,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0800
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0800
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0800', 0, async function (done) {
@@ -365,7 +365,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_0900
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0900
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_0900', 0, async function (done) {
@@ -377,7 +377,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_1000
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1000
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_1000', 0, async function (done) {
@@ -393,7 +393,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
         })
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_1100
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1100
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_1100', 0, async function (done) {
@@ -427,7 +427,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_1200
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1200
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_1200', 0, async function (done) {
@@ -448,7 +448,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         /**
          * @tc.name RelationalStore BackupRestore test
-         * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_1300
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1300
          * @tc.desc RelationalStore restore function test
          */
         it('RdbBackupRestoreCallbackTest_1300', 0, function (done) {

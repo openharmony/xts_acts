@@ -55,7 +55,7 @@ export default function rdbstoreTransactionTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0100
      * @tc.name   : testRdbStoreTransaction001
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -74,7 +74,12 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.insert("test", valueBucket);
       await rdbStore.commit();
       let predicates = new relationalStore.RdbPredicates("test");
-      let resultSet = await rdbStore.query(predicates);
+      let resultSet = await rdbStore.query(predicates, ["name", "age"]);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -82,7 +87,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0110
      * @tc.name   : testRdbStoreTransaction002
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -119,6 +124,11 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.commit();
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(3).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -126,7 +136,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0120
      * @tc.name   : testRdbStoreTransaction003
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -157,7 +167,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0130
      * @tc.name   : testRdbStoreTransaction004
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -190,6 +200,11 @@ export default function rdbstoreTransactionTest() {
 
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(2).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -197,7 +212,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0140
      * @tc.name   : testRdbStoreRollBack001
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest
@@ -230,6 +245,11 @@ export default function rdbstoreTransactionTest() {
 
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -237,7 +257,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0150
      * @tc.name   : testRdbStoreRollBack002
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest
@@ -255,10 +275,12 @@ export default function rdbstoreTransactionTest() {
           salary: 100.5,
           blobType: new Uint8Array([1, 2, 3]),
         };
+
         await rdbStore.insert("test", valueBucket);
         await rdbStore.insert("test", valueBucket);
 
         await rdbStore.commit();
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         await rdbStore.rollBack();
         let predicates = new relationalStore.RdbPredicates("test");

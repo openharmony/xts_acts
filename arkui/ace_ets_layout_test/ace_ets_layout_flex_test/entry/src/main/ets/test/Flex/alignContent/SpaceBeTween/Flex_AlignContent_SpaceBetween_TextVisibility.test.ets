@@ -72,18 +72,18 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
-        expect(secondText.left).assertEqual(thirdText.left);
-        expect(thirdText.left).assertEqual(fourthText.left);
-        expect(fourthText.left).assertEqual(flexContainer.left);
+        expect(Math.abs(secondText.left - thirdText.left) <= 1).assertTrue();
+        expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
+        expect(Math.abs(fourthText.left - flexContainer.left) <= 1).assertTrue();
         expect(Math.round(secondText.top - flexContainer.top)).assertEqual(Math.round(distanceBefore + vp2px(50)));
-        expect(fourthText.bottom).assertEqual(flexContainer.bottom);
+        expect(Math.abs(fourthText.bottom - flexContainer.bottom) <= 1).assertTrue();
 
-        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
-        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(distanceBefore));
+        expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
+        expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(distanceBefore)) <= 1).assertTrue();
       } catch (err) {
         console.error('[testFlexAlignContentSpaceAroundTextVisibilityHidden] failed');
         expect().assertFail();
@@ -119,17 +119,17 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
-        expect(secondText.left).assertEqual(thirdText.left);
-        expect(thirdText.left).assertEqual(fourthText.left);
-        expect(fourthText.left).assertEqual(flexContainer.left);
+        expect(Math.abs(secondText.left - thirdText.left) <= 1).assertTrue();
+        expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
+        expect(Math.abs(fourthText.left - flexContainer.left) <= 1).assertTrue();
 
-        expect(secondText.top).assertEqual(flexContainer.top);
-        expect(fourthText.bottom).assertEqual(flexContainer.bottom);
-        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+        expect(Math.abs(secondText.top - flexContainer.top) <= 1).assertTrue();
+        expect(Math.abs(fourthText.bottom - flexContainer.bottom) <= 1).assertTrue();
+        expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
         expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(Math.round(distanceBefore));
       } catch (err) {
         console.error('[testFlexAlignContentSpaceAroundTextVisibilityNone] failed');

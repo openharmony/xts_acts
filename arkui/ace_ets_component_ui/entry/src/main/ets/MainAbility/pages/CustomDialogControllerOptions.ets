@@ -18,8 +18,7 @@
 struct CustomDialogExample {
   @Link textValue: string
   @Link inputValue: string
-  @Link openAnimation: AnimateParam
-  @Link closeAnimation: AnimateParam
+  
   @State widthSize: number = 250
   @State heightSize: number = 100
   private flag: boolean = true
@@ -74,25 +73,26 @@ struct CustomDialogUser {
       confirm: this.onAccept,
       textValue: $textValue,
       inputValue: $inputValue,
-      openAnimation:{
-        duration: 2000,
-        iterations: 3,
-        onFinish: () => {
-          console.info('openAnimation play end')
-        },
-      },
-      closeAnimation:{
-        duration: 2000,
-        iterations: 3,
-        onFinish: () => {
-          console.info('closeAnimation play end')
-        },
-      }
     }),
+	  openAnimation:{
+		duration: 2000,
+		iterations: 3,
+		onFinish: () => {
+		  console.info('openAnimation play end')
+		}
+	  },
+	  closeAnimation:{
+		duration: 2000,
+		iterations: 3,
+		onFinish: () => {
+		  console.info('closeAnimation play end')
+		}
+	  },
     cancel: this.existApp,
-    autoCancel: true,
-    alignment: DialogAlignment.Default,
-    offset: { dx: 0, dy: -20 },
+    alignment: DialogAlignment.Top,
+    offset: { dx: 10, dy: 100 },
+    maskRect: { x: 0, y: 100, width: '100%', height: '80%'  },
+    cornerRadius: "5vp",
     gridCount: 4,
     customStyle: false
   })
@@ -117,12 +117,13 @@ struct CustomDialogUser {
 
   build() {
     Column() {
-      Button(this.inputValue)
+      Button(this.inputValue).key('CustomDialog')
         .onClick(() => {
           if (this.dialogController != undefined) {
             this.dialogController.open()
           }
-        }).backgroundColor(0x317aff)
+        })
+		.backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
   }
 }

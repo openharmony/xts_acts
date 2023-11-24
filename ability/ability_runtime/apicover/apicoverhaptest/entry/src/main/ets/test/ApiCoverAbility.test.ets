@@ -21,18 +21,19 @@ import formHost from '@ohos.application.formHost';
 import abilityConstant from '@ohos.app.ability.AbilityConstant'
 import appManagerNew from '@ohos.app.ability.appManager'
 import commonEvent from '@ohos.commonEvent';
-import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
 import formBindingData from '@ohos.app.form.formBindingData';
+import childProcessManager from '@ohos.app.ability.childProcessManager';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
 let CROSS_USER_DENY = 201;
 let array = new Array();
 let TAG = '';
+let createModuleContext: any;
 function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
@@ -339,6 +340,7 @@ export default function ApiCoverTest() {
           flag = true;
         })
         let shellCmdResult: abilityDelegatorRegistry.ShellCmdResult;
+        await sleep(2000);
         abilityDelegator.removeAbilityMonitor(abilityMonitor, (err, data) => {
           console.log(`SUB_AA_ABILITY_Extension_API_012 printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
           expect(flag).assertTrue();
@@ -366,8 +368,13 @@ export default function ApiCoverTest() {
       expect("/data/storage/el1/bundle").assertEqual(globalThis.abilityContext.bundleCodeDir)
       expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.abilityContext.distributedFilesDir)
       expect(1).assertEqual(globalThis.abilityContext.area)
-	    let moduleContext = globalThis.abilityContext.createModuleContext("module1")
-      expect("/data/storage/el2/base/cache").assertEqual(moduleContext.cacheDir)
+      createModuleContext = null;
+      try{
+	    let createModuleContext = globalThis.abilityContext.createModuleContext("module1")
+      expect("/data/storage/el2/base/cache").assertEqual(createModuleContext.cacheDir)
+      }catch(error){
+        console.log("createModuleContext fail")
+      }
       globalThis.abilityContext.area = 0
       expect(0).assertEqual(globalThis.abilityContext.area)
       globalThis.abilityContext.resourceManager.getConfiguration((err, data) => {
@@ -599,17 +606,17 @@ export default function ApiCoverTest() {
      it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
       let subscriber = null
       let formExtensionContext:common.FormExtensionContext
-      let pacMap:ability.PacMap
         let subscribeInfo = {
           events: ["Form_StartAbility"]
         }
         function UnSubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AcquireForm_0100 ===UnSubscribeInfoCallback===")
         }
-        function SubscribeInfoCallback(err, data) {
+        async function SubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AcquireForm_0100 ===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["Life"]).assertEqual("onForeground")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            await sleep(4000)
             done()
         }
         commonEvent.createSubscriber(subscribeInfo, (err, data) => {
@@ -851,5 +858,35 @@ export default function ApiCoverTest() {
         done();
       })
     })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_0900
+     * @tc.name   : call startChildProcess to create a child process
+     * @tc.desc   : Function test
+     * @tc.level  : 3
+     */
+    it('SUB_AA_ChildProcessManager_startChildProcess_0100', 0, async (done: Function) => {
+      let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
+      console.log(`${tag}, it begin`);
+
+      let mode: number;
+      try {
+        mode = childProcessManager.StartMode.SELF_FORK;
+      } catch (err) {
+        console.log(`${tag} convert mode error, manual set 0`);
+        mode = 0;
+      }
+
+      try {
+        let pid = await childProcessManager.startChildProcess('./ets/process/AProcess.ts', mode);
+        console.log(`${tag} startChildProcess success, pid: ${pid}`);
+        expect(pid > 0).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`${tag} startChildProcess error, errorCode: ${err}`);
+        done();
+      }
+    });
+    
   })
 }

@@ -37,6 +37,14 @@
       "value": "label"
     },
     {
+      "name": "MainAbility5_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility5_label",
+      "value": "label"
+    },
+    {
       "name": "app_name",
       "value": "AbilityMonitorTest"
     },

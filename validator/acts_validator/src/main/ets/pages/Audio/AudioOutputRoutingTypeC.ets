@@ -16,7 +16,7 @@ import {CustomContainer} from '../common/AudioContainer';
 import FirstDialog from '../model/FirstDialog';
 import AudioRenderer from '../model/AudioRenderer'
 import Logger from '../model/Logger'
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import audio from '@ohos.multimedia.audio'
 import router from '@ohos.router';
 @Entry
@@ -157,7 +157,8 @@ struct audioOutputRouting {
                 }
               }
             }
-          }
+          }.scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
         }
       }.width('100%').height('80%').backgroundColor(Color.Black)

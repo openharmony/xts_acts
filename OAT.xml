@@ -56,6 +56,7 @@ Note:If the text contains special characters, please escape them according to th
         <licensefile></licensefile>
         <policylist>
             <policy name="projectPolicy" desc="">
+                <policyitem type="copyright" name="Hunan OpenValley Digital Industry Development Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By OpenValley Digital Co., Ltd."/>
                 <policyitem type="copyright" name="Copyright (c) 2022 Shenzhen Kaihong Digital" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
                 <policyitem type="copyright" name="Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
             </policy>
@@ -69,6 +70,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.input" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.ms" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.out" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.abc" desc="all bin file have check"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>

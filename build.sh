@@ -91,6 +91,8 @@ parse_cmdline()
 
 do_make()
 {
+    BUILD_TARGET=$(echo "$BUILD_TARGET" | sed 's/,/ /g')
+    echo "BUILD_TARGET: $BUILD_TARGET"
     cd $BASE_HOME
     ACTS_ROOT="$BASE_HOME/test/xts/acts"
 
@@ -103,7 +105,7 @@ do_make()
                         MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"			
 		    fi
         fi
-       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH
+       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false  --gn-args skip_generate_module_list_file=true
     else
        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
          ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"

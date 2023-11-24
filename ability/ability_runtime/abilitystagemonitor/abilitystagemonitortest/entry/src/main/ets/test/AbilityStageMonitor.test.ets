@@ -110,7 +110,7 @@ export default function abilityStageMonitorTest() {
          * @tc.level: 3
          */
     it('SUB_AA_AbilityStageMonitor_0200', 0, async function (done) {
-      console.log("SUB_AA_AbilityStage_0100 begin")
+      console.log("SUB_AA_AbilityStage_0200 begin")
 
       monitor = {
         moduleName: "feature_assistd",
@@ -370,7 +370,7 @@ export default function abilityStageMonitorTest() {
       await abilityDelegator.waitAbilityStageMonitor(monitor).then((abilityStage) => {
         console.info("stageMonitor waitAbilityStageMonitor callback, abilityStage: " + JSON.stringify(abilityStage));
       }).catch((err) => {
-        console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
+        console.info("SUB_AA_AbilityStageMonitor_0700 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
       })
 
@@ -424,7 +424,7 @@ export default function abilityStageMonitorTest() {
       await abilityDelegator.waitAbilityStageMonitor(monitor).then((abilityStage) => {
         console.info("stageMonitor waitAbilityStageMonitor callback, abilityStage: " + JSON.stringify(abilityStage));
       }).catch((err) => {
-        console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
+        console.info("SUB_AA_AbilityStageMonitor_0800 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
       })
 
@@ -540,6 +540,40 @@ export default function abilityStageMonitorTest() {
       });
       expect(addMonitor).assertTrue();
       expect(removeMonitor).assertTrue();
+      done()
+    })
+
+    /**
+         * @tc.number: SUB_AA_AbilityStageMonitorSync_0100
+         * @tc.name:  Call the synchronous method of addAbilityStageMonitorSync to add monitoring,
+         * call the ynchronous method of removeAbilityStageMonitorSync to cancel monitoring,
+         * @tc.desc: Verify that addAbilityStageMonitorSync can add monitoring,
+         * verify that removeAbilityStageMonitorSync can cancel monitoring
+         * @tc.level: 3
+         */
+    it('SUB_AA_AbilityStageMonitorSync_0100', 0, async function (done) {
+      console.info("SUB_AA_AbilityStageMonitor_1000 begin")
+      monitor = {
+        moduleName: "feature_assa",
+        srcEntrance: "./ets/Application/MyAbilityStage.ts",
+      }
+      console.info("SUB_AA_AbilityStageMonitorSync_0100 wait abilityStage");
+      globalThis.delegator = abilityDelegator
+      try {
+        await globalThis.delegator.addAbilityStageMonitorSync(monitor);
+        console.info("SUB_AA_AbilityStageMonitorSync_0100 addAbilityStageMonitorSyce finish");
+      } catch (error) {
+        expect().assertFail()
+        done()
+      }
+      try{
+        await globalThis.delegator.removeAbilityStageMonitorSync(monitor);
+        console.info("SUB_AA_AbilityStageMonitorSync_0100 removeAbilityStageMonitorSync finish");
+      } catch(error) {
+        expect().assertFail()
+        done()
+      }
+      expect(true).assertTrue();
       done()
     })
   })

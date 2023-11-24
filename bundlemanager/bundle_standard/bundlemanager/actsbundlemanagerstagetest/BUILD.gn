@@ -11,7 +11,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
+
+group("ActsBundleMgrStageEtsTestGroup") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      ":ActsBundleMgrStageEtsTest",
+      ":copy_abc",
+    ]
+  }
+}
 
 ohos_js_hap_suite("ActsBundleMgrStageEtsTest") {
   hap_profile = "entry/src/main/module.json"
@@ -39,4 +50,9 @@ ohos_resources("actbmsstageetstest_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":actbmsstageetstest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
+}
+
+ohos_copy("copy_abc") {
+  sources = [ "entry/src/main/resources/base/media/testAbc.abc" ]
+  outputs = [ "${root_out_dir}/suites/acts/testcases/testAbc.abc" ]
 }

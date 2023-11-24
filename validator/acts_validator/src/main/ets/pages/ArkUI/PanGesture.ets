@@ -51,7 +51,7 @@ struct PanGestureExample {
       )
       Text('偏移坐标x: ' + this.X + '\n' + '偏移坐标y: ' + this.Y)
           }
-        }
+        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

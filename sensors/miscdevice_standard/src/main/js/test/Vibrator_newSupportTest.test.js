@@ -51,9 +51,6 @@ describe("VibratorJsTest_misc_6", function () {
          * @tc.teardown: teardown invoked after each testcases
          */
         console.info('afterEach caled')
-		vibrator.stop("preset");
-        vibrator.stop("time");
-        console.info('afterEach called')
     })
 
     const OPERATION_FAIL_CODE = 14600101; 

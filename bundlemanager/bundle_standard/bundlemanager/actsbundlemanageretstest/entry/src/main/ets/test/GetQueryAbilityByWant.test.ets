@@ -38,11 +38,11 @@ export default function ActsBmsQueryAbilityByWant() {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0100
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0500
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0500', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": ""
@@ -56,11 +56,11 @@ export default function ActsBmsQueryAbilityByWant() {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0520
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0520', 0, async function (done) {
       bundle.queryAbilityByWant(
         {}, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
         expect(res).assertFail()
@@ -72,21 +72,21 @@ export default function ActsBmsQueryAbilityByWant() {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0300
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0540
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0540', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           action: "action_a"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_0300' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0540' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.actionSingleString')
         expect(res[0].description).assertEqual('actionSingleString')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0300' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0540' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
@@ -94,63 +94,63 @@ export default function ActsBmsQueryAbilityByWant() {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0560
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0560', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_b2"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_0400' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0560' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.actionDoubleString')
         expect(res[0].description).assertEqual('actionDoubleString')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0400' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0560' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0500
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0580
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0580', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_c1"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_0500' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0580' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.actionDoubleSkill')
         expect(res[0].description).assertEqual('actionDoubleSkill')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0500' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0580' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0600
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0600
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third appl
     */
-    it('bms_queryAbilityByWant_0600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0600', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_d2"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_0600' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0600' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.actionDoubleSkill')
         expect(res[0].description).assertEqual('actionDoubleSkill')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0600' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0600' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
@@ -158,11 +158,11 @@ export default function ActsBmsQueryAbilityByWant() {
 
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0700
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0620
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0620', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_not_exist"
@@ -170,24 +170,24 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(res).assertFail()
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0700' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0620' + JSON.stringify(err))
         expect(err).assertEqual(INVALID_CODE)
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0800
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0640
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0640', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
           "entities": []
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_0800 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0640 ' + JSON.stringify(res))
         const list = ['entityDoubleSkill', 'entityDoubleString', 'entitySingleString', 'entityEmpty']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -196,18 +196,18 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0800 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0640 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0900
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0660
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0660', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -216,106 +216,106 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(res).assertFail()
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_0900' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0660' + JSON.stringify(err))
         expect(err).assertEqual(INVALID_CODE)
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1000
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0680
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1000', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0680', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
           "entities": ["entity_a"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1000' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0680' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.entitySingleString')
         expect(res[0].description).assertEqual('entitySingleString')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1000' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0680' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1100
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0700
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0700', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
           "entities": ["entity_b2"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1100' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_0700' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.entityDoubleString')
         expect(res[0].description).assertEqual('entityDoubleString')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1100' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_0700' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5020
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5020', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
           "entities": ["entity_d1"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1200' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5020' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.entityDoubleSkill')
         expect(res[0].description).assertEqual('entityDoubleSkill')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1200' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5020' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1300
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5520
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5520', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
           "entities": ["entity_c1", "entity_c2"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1300' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5520' + JSON.stringify(res))
         expect(res[0].name).assertEqual('com.example.third7.entityDoubleSkill')
         expect(res[0].description).assertEqual('entityDoubleSkill')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1300' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5520' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5540
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5540', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -324,18 +324,18 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(res).assertFail()
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1400' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5540' + JSON.stringify(err))
         expect(err).assertEqual(INVALID_CODE)
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1500
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5080
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5080', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -344,18 +344,18 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(res).assertFail()
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1500' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5080' + JSON.stringify(err))
         expect(err).assertEqual(INVALID_CODE)
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1600
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5040
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5040', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -364,23 +364,23 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(res).assertFail()
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1600' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5040' + JSON.stringify(err))
         expect(err).assertEqual(INVALID_CODE)
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1700
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_4940
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_4940', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1700 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_4940 ' + JSON.stringify(res))
         const list = ['entityDoubleSkill', 'entityDoubleString', 'entitySingleString', 'entityEmpty']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -389,18 +389,18 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1700 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_4940 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1800
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5660
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5660', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -408,7 +408,7 @@ export default function ActsBmsQueryAbilityByWant() {
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
         expect(res.length).assertEqual(2);
         for (let count = 0; count < 2; count++) {
-          console.info(' success bms_queryAbilityByWant_1800 ' + JSON.stringify(res[count]));
+          console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5660 ' + JSON.stringify(res[count]));
           if (res[count].name == BUNDLE_NAME2 + '.uriEmpty') {
             expect(res[count].description).assertEqual('uriEmpty');
           } else {
@@ -418,24 +418,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1800 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5660 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_1900
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5560
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_1900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5560', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1900 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5560 ' + JSON.stringify(res))
         const list = ['uriHostEmpty', 'uriScheme']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -444,18 +444,18 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_1900 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5560 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2000
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5100
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2000', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5100', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -473,24 +473,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done();
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2000 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5100 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2100
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5120
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5120', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content://www.test.com:8080"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2100 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5120 ' + JSON.stringify(res))
         expect(res.length).assertEqual(4);
         for (let count = 0; count < 4; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -505,24 +505,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2100 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5120 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5580
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5580', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content://www.test.com:8080/query/student/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2200 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5580 ' + JSON.stringify(res))
         expect(res.length).assertEqual(7);
         for (let count = 0; count < 7; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -543,24 +543,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2200 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5580 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2300
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5140
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5140', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content://www.test.com/query/student/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2300 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5140 ' + JSON.stringify(res))
         expect(res.length).assertEqual(6);
         for (let count = 0; count < 6; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -579,24 +579,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2300 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5140 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5180
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5180', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content://www.test.com:8080/query/teacher/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2400 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5180 ' + JSON.stringify(res))
         expect(res.length).assertEqual(5);
         for (let count = 0; count < 5; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -613,24 +613,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2400 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5180 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2500
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5160
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5160', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "content://www.test.com:8080/query/student/jack"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2500 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5160 ' + JSON.stringify(res))
         expect(res.length).assertEqual(5);
         for (let count = 0; count < 5; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -647,60 +647,60 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2500 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5160 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2600
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5680
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5680', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "file://www.test.com:8080/query/student/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2600 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5680 ' + JSON.stringify(res))
         expect(res[0].description).assertEqual('uriMultiPath')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2600 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5680 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2700
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5700
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5700', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
           "uri": "file://www.test.com:8080/query/teacher/hello"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2700 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5700 ' + JSON.stringify(res))
         expect(res[0].description).assertEqual('uriMultiPath')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2700 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5700 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2800
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5720
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5720', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -716,23 +716,23 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2800' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5720' + JSON.stringify(err))
         expect(err).assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_2900
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5200
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_2900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5200', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "*/*"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_2900 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5200 ' + JSON.stringify(res))
         const list = ['TypeDoubleWildCard', 'TypeSingleWildCard', 'TypeString', 'TypeStringExt']
         let cnt = 0;
         if (res && res.length) {
@@ -745,23 +745,23 @@ export default function ActsBmsQueryAbilityByWant() {
         expect(cnt).assertEqual(list.length)
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_2900' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5200' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3000
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5220
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3000', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5220', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixType/*"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3000 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5220 ' + JSON.stringify(res))
         const list = ['TypeDoubleWildCard', 'TypeSingleWildCard', 'TypeString']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -770,23 +770,23 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3000 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5220 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3100
+    * @tc.number: sub_Bms_Framework_Query_AbilityInfo_5240
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3100', 0, async function (done) {
+    it('sub_Bms_Framework_Query_AbilityInfo_5240', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixType/suffixType"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3100 ' + JSON.stringify(res))
+        console.info(' success sub_Bms_Framework_Query_AbilityInfo_5240 ' + JSON.stringify(res))
         const list = ['TypeDoubleWildCard', 'TypeSingleWildCard', 'TypeString']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -795,23 +795,23 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3100' + JSON.stringify(err))
+        console.error(' fail sub_Bms_Framework_Query_AbilityInfo_5240' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5740
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5740', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixTypeExt/suffixTypeExt"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3200 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5740 ' + JSON.stringify(res))
         const list = ['TypeStringExt', 'TypeDoubleWildCard']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -820,23 +820,23 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3200' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5740' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3300
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5760
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5760', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "type_reserved"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3300 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5760 ' + JSON.stringify(res))
         const list = ['TypeEmpty', 'TypeEmptyExt']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -845,24 +845,24 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3300 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5760 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5600
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5600', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "type_reserved",
           "type": ""
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3400 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5600 ' + JSON.stringify(res))
         const list = ['TypeEmpty', 'TypeEmptyExt']
         if (res && res.length) {
           for (let i = 0; i < res.length; i++) {
@@ -871,185 +871,185 @@ export default function ActsBmsQueryAbilityByWant() {
         }
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3400 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5600 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3500
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5780
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5780', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "none/none"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3500' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5780' + JSON.stringify(res))
         expect(res[0].description).assertEqual('TypeDoubleWildCard')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3500' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5780' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3600
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5900
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5900', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_a",
           "entities": ["all_entity_a"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3600' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5900' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allAE')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3600' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5900' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3700
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5920
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5920', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_b",
           "entities": ["all_entity_b1", "all_entity_b2"]
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3700' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5920' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allAEs')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3700' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5920' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3800
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5800
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5800', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/student/name",
           "type": "text/plain"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3800' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5800' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3800' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5800' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_3900
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5820
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_3900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5820', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/student/name",
           "type": "text/*"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_3900' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5820' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_3900' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5820' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_4000
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5840
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_4000', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5840', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/teacher",
           "type": "text/plain"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_4000' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5840' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_4000' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5840' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_4100
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5860
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_4100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5860', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/teacher/hello",
           "type": "text/plain"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_4100' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5860' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_4100' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5860' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_4200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5880
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_4200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5880', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/update/hello/world/name",
           "type": "text/plain"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_4200 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5880 ' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_4200 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5880 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_4300
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5620
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_4300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5620', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_c",
@@ -1057,22 +1057,22 @@ export default function ActsBmsQueryAbilityByWant() {
           "uri": "https://www.test.com:8080/query/student/name",
           "type": "text/plain"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_4300 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5620 ' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allAEUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_4300 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5620 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_4400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_5640
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_4400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5640', 0, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_c",
@@ -1080,11 +1080,11 @@ export default function ActsBmsQueryAbilityByWant() {
           "uri": "https://www.test.com:8080/query/student/name",
           "type": "text/*"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_4400 ' + JSON.stringify(res))
+        console.info(' success Sub_Bms_Framework_Query_AbilityInfo_5640 ' + JSON.stringify(res))
         expect(res[0].description).assertEqual('allAEUT')
         done()
       }).catch(err => {
-        console.error(' fail bms_queryAbilityByWant_4400 ' + JSON.stringify(err))
+        console.error(' fail Sub_Bms_Framework_Query_AbilityInfo_5640 ' + JSON.stringify(err))
         expect().assertFail()
         done()
       })

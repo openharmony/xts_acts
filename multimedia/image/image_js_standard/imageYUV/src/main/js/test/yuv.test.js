@@ -29,7 +29,6 @@ export default function imageYuv() {
         });
 
         beforeEach(function () {
-            isTimeOut = false;
             console.info("beforeEach case");
         });
 
@@ -360,115 +359,115 @@ export default function imageYuv() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0100
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0100", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0100", sourceOptions, yuvData);
+            yuvToJpegByPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0100", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0200
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0200", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0200", sourceOptions, yuvData);
+            yuvToJpegByPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0200", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0300 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0300 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0300", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0300", sourceOptions, yuvData);
+            yuvToJpegByPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0300", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0400 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0400 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0400", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 5 } };
             yuvToJpegByPixelMapPromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0400",
+                "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0400",
                 sourceOptions,
                 yuvData
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0500
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0500 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0500 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0500", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapPromise(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0500", sourceOptions, yuvData);
+            yuvToJpegByPixelMapPromise(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0500", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0600
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0600 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0600 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0600", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 5 } };
             yuvToJpegByPixelMapPromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0600",
+                "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0600",
                 sourceOptions,
                 yuvData
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0700
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0700 - Promise - wrong format
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0700 - Promise - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0700", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = {
                 sourceDensity: 120,
@@ -477,35 +476,35 @@ export default function imageYuv() {
             };
             yuvToJpegByPixelMapPromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0700",
+                "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0700",
                 sourceOptions,
                 yuvData
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0800
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0800 - Promise - format null
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0800 - Promise - format null
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0800", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourceSize: { height: 4, width: 6 } };
             yuvToJpegByPixelMapPromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_PROMISE_0800",
+                "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_PROMISE_0800",
                 sourceOptions,
                 yuvData
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0100
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -514,13 +513,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0100", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0100",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0100",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -528,8 +527,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0200
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -538,13 +537,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0200", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0200",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0200",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -552,8 +551,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0300 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0300 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -562,13 +561,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0300", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0300",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0300",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -576,8 +575,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0400 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0400 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -586,13 +585,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0400", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 5 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0400",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0400",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -600,8 +599,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0500
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0500 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0500 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -610,13 +609,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0500", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0500",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0500",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -624,8 +623,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0600
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0600 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0600 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -634,13 +633,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0600", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 5 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0600",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0600",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -648,8 +647,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0700
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0700 - Promise - wrong format
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0700 - Promise - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -658,7 +657,7 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0700", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = {
                 sourceDensity: 120,
@@ -668,7 +667,7 @@ export default function imageYuv() {
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0700",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0700",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -676,8 +675,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0800
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0800 - Promise - format null
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0800 - Promise - format null
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -686,13 +685,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0800", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourcePromise_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_PROMISE_0800",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_PROMISE_0800",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -700,7 +699,7 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0100
          * @tc.name      : SUB_IMAGE_yuv_pixelmap_CB_001
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
@@ -708,14 +707,14 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0100", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapCallback(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0100", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0100", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0200
          * @tc.name      : SUB_IMAGE_yuv_pixelmap_CB_002
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
@@ -723,109 +722,109 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0200", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapCallback(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0200", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0200", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0300 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0300 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0300", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapCallback(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0300", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0300", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0400 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0400 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0400", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 5 } };
-            yuvToJpegByPixelMapCallback_Fail(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0400", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback_Fail(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0400", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0500
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0500 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0500 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0500", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapCallback(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0500", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0500", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0600
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0600 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0600 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0600", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 5 } };
-            yuvToJpegByPixelMapCallback_Fail(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0600", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback_Fail(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0600", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0700
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0700 - Promise - wrong format
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0700 - Promise - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0700", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = {
                 sourceDensity: 120,
                 sourcePixelFormat: WRONG_FORMAT,
                 sourceSize: { height: 4, width: 6 },
             };
-            yuvToJpegByPixelMapCallback_Fail(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0700", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback_Fail(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0700", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0800
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0800 - Promise - format null
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0800 - Promise - format null
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0800", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourceSize: { height: 4, width: 6 } };
-            yuvToJpegByPixelMapCallback_Fail(done, "SUB_GRAPHIC_IMAGE_YUV_PIXELMAP_CB_0800", sourceOptions, yuvData);
+            yuvToJpegByPixelMapCallback_Fail(done, "SUB_MULTIMEDIA_IMAGE_YUV_PIXELMAP_CB_0800", sourceOptions, yuvData);
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0100
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0100
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -834,13 +833,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0100", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0100",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0100",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -848,7 +847,7 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0200
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0200
          * @tc.name      : SUB_IMAGE_yuv_imagesource_CB_002
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
@@ -858,13 +857,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0200", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0200",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0200",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -872,8 +871,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0300 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0300 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -882,13 +881,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0300", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0300",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0300",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -896,8 +895,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0400 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0400 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -906,13 +905,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0400", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV21, sourceSize: { height: 4, width: 5 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0400",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0400",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -920,8 +919,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0500
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0500 - Promise - wrong buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0500 - Promise - wrong buffer
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -930,13 +929,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0500", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0500", 0, async function (done) {
             let yuvData = new ArrayBuffer(5);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0500",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0500",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -944,8 +943,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0600
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0600 - Promise - wrong width
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0600 - Promise - wrong width
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -954,13 +953,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0600", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0600", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourcePixelFormat: NV12, sourceSize: { height: 4, width: 5 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0600",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0600",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -968,8 +967,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0700
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0700 - Promise - wrong format
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0700 - Promise - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -978,7 +977,7 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0700", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0700", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = {
                 sourceDensity: 120,
@@ -988,7 +987,7 @@ export default function imageYuv() {
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0700",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0700",
                 sourceOptions,
                 packOpts,
                 yuvData
@@ -996,8 +995,8 @@ export default function imageYuv() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0800
-         * @tc.name      : SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0800 - Promise - format null
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0800 - Promise - format null
          * @tc.desc      : 1.create ImageSource
          *                 2.create pixelmap
          *                 3.create ImagePacker
@@ -1006,13 +1005,13 @@ export default function imageYuv() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0800", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0800", 0, async function (done) {
             let yuvData = createBuffer(4, 6);
             let sourceOptions = { sourceDensity: 120, sourceSize: { height: 4, width: 6 } };
             let packOpts = { format: "image/jpeg", quality: 99 };
             yuvToJpegByImageSourceCallback_Fail(
                 done,
-                "SUB_GRAPHIC_IMAGE_YUV_IMAGESOURCE_CB_0800",
+                "SUB_MULTIMEDIA_IMAGE_YUV_IMAGESOURCE_CB_0800",
                 sourceOptions,
                 packOpts,
                 yuvData

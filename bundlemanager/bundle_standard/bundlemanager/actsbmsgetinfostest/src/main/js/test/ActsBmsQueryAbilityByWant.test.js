@@ -38,7 +38,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0008
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_6420
     * @tc.name: queryAbilityByWantThirdApp
     * @tc.desc: 1.queryAbilityByWant callback
     *           2.queryAbilityByWant for third app
@@ -67,7 +67,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0007
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_6400
     * @tc.name: queryAbilityByWantSystemApp
     * @tc.desc: 1.queryAbilityByWant callback
     *           2.queryAbilityByWant for systemapp
@@ -107,7 +107,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0084
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_4000
     * @tc.name: queryAbilityByWantImplicitByEntities
     * @tc.desc: The entities in the parameter want pass in the new field, and use the implicit query to get abilitInfos
     */

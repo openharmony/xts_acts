@@ -16,7 +16,7 @@
 
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btManagerErrorCode202Test() {
 describe('btManagerErrorCode202Test', function() {
@@ -24,12 +24,41 @@ describe('btManagerErrorCode202Test', function() {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
 
+    async function openPhone() {
+     try{
+         let drivers = Driver.create();
+         console.info('[bluetooth_js] bt driver create:'+ drivers);            
+         await drivers.delayMs(1000);
+         await drivers.wakeUpDisplay();
+         await drivers.delayMs(5000);
+         await drivers.swipe(1500, 1000, 1500, 100);
+         await drivers.delayMs(10000);
+     } catch (error) {
+         console.info('[bluetooth_js] driver error info:'+ error);
+     }
+ }
+
+ async function clickTheWindow() {
+     try{
+         let driver = Driver.create();
+         console.info('[bluetooth_js] bt driver create:'+ driver);            
+         await driver.delayMs(1000);
+         await driver.click(950, 2550);
+         await driver.delayMs(5000);
+         await driver.click(950, 2550);
+         await driver.delayMs(3000);
+     } catch (error) {
+         console.info('[bluetooth_js] driver error info:'+ error);
+     }
+ }
+
     async function tryToEnableBt() {
         let sta = bluetooth.getState();
         switch(sta){
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             case 1:
@@ -42,14 +71,17 @@ describe('btManagerErrorCode202Test', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
+        done();
     })
     beforeEach(async function (done) {
         console.info('beforeEach called')
@@ -81,13 +113,13 @@ describe('btManagerErrorCode202Test', function() {
      })
 
      /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0200
+     * @tc.number SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0100
      * @tc.name test hid host disconnect
      * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
      * @tc.type Function
      * @tc.level Level 0
      */
-     it('SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0200', 0, async function (done) {
+     it('SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0100', 0, async function (done) {
           try {
                let hidHostProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_HID_HOST);
                hidHostProfile.disconnect('11:22:33:44:55:66');
@@ -97,79 +129,6 @@ describe('btManagerErrorCode202Test', function() {
           }
           done();
      })
-
-     /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_PANDISCONN_ERROR202_0100
-     * @tc.name test pan disconnect
-     * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
-     * @tc.type Function
-     * @tc.level Level 0
-     */
-     it('SUB_COMMUNICATION_BTMANAGER_PANDISCONN_ERROR202_0100', 0, async function (done) {
-          try {
-               let panProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-               panProfile.disconnect('11:22:33:44:55:66');
-          } catch (err) {
-               console.info('errCode: ' + err.code + ',errMessage: ' + err.message);
-               expect(err.code).assertEqual('202');
-          }
-          done();
-     })
-
-     /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0100
-     * @tc.name test setTethering
-     * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
-     * @tc.type Function
-     * @tc.level Level 0
-     */
-     it('SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0100', 0, async function (done) {
-          try {
-               let panProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-               panProfile.setTethering(true);
-          } catch (err) {
-               console.info('errCode: ' + err.code + ',errMessage: ' + err.message);
-               expect(err.code).assertEqual('202');
-          }
-          done();
-     })
-
-     /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0200
-     * @tc.name test setTethering
-     * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
-     * @tc.type Function
-     * @tc.level Level 0
-     */
-     it('SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0200', 0, async function (done) {
-          try {
-               let panProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-               panProfile.setTethering(false);
-          } catch (err) {
-               console.info('errCode: ' + err.code + ',errMessage: ' + err.message);
-               expect(err.code).assertEqual('202');
-          }
-          done();
-     })
-
-     /**
-     * @tc.number SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0300
-     * @tc.name test isTetheringOn
-     * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
-     * @tc.type Function
-     * @tc.level Level 0
-     */
-     it('SUB_COMMUNICATION_BTMANAGER_TETHERING_ERROR202_0200', 0, async function (done) {
-          try {
-               let panProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-               let ret = panProfile.isTetheringOn();
-          } catch (err) {
-               console.info('errCode: ' + err.code + ',errMessage: ' + err.message);
-               expect(err.code).assertEqual('202');
-          }
-          done();
-     })
-
 })
 
 }

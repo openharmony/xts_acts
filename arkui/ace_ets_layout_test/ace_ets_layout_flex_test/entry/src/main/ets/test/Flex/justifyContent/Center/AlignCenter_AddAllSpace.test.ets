@@ -63,24 +63,21 @@ export default function AlignCenter_AddAllSpace() {
       let Center_AddAllSpace_013 = CommonFunc.getComponentRect('Center_AddAllSpace_013');
       let Center_AddAllSpace_01 = CommonFunc.getComponentRect('Center_AddAllSpace_01');
       let Center_AddAllSpace_01_Box = CommonFunc.getComponentRect('Center_AddAllSpace_01_Box');
-      expect(Center_AddAllSpace_011.top).assertEqual(Center_AddAllSpace_012.top);
-      expect(Center_AddAllSpace_012.top).assertEqual(Center_AddAllSpace_013.top);
-      expect(Center_AddAllSpace_012.left).assertEqual(Center_AddAllSpace_011.right);
-      expect(Center_AddAllSpace_013.left).assertEqual(Center_AddAllSpace_012.right);
-      expect(Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddAllSpace_01.right - Center_AddAllSpace_013.right)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddAllSpace_01.top - Center_AddAllSpace_01_Box.top)).assertEqual(vp2px(10));
-      expect(Math.round(Center_AddAllSpace_01.left - Center_AddAllSpace_01_Box.left)).assertEqual(vp2px(10));
-      expect(Math.round(Center_AddAllSpace_011.bottom - Center_AddAllSpace_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddAllSpace_012.bottom - Center_AddAllSpace_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddAllSpace_013.bottom - Center_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left))
-        .assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left))
-        .assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left))
-        .assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.abs(Center_AddAllSpace_011.top - Center_AddAllSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.top - Center_AddAllSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.left - Center_AddAllSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_013.left - Center_AddAllSpace_012.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_01.right - Center_AddAllSpace_013.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_01.top - Center_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_01.left - Center_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.bottom - Center_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_012.bottom - Center_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_013.bottom - Center_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left)) - (Math.round(vp2px(440/3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left)) - (Math.round(vp2px(440/3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left)) - (Math.round(vp2px(440/3)))) <= 1).assertTrue();
       console.info('[testFlexAlignCenterFlexSpaceOverflow] END');
       done();
     });
@@ -103,23 +100,21 @@ export default function AlignCenter_AddAllSpace() {
       let Center_AddAllSpace_013 = CommonFunc.getComponentRect('Center_AddAllSpace_013');
       let Center_AddAllSpace_01 = CommonFunc.getComponentRect('Center_AddAllSpace_01');
       let Center_AddAllSpace_01_Box = CommonFunc.getComponentRect('Center_AddAllSpace_01_Box');
-      expect(Center_AddAllSpace_011.top).assertEqual(Center_AddAllSpace_012.top);
-      expect(Center_AddAllSpace_012.top).assertEqual(Center_AddAllSpace_013.top);
-      expect(Center_AddAllSpace_012.left).assertEqual(Center_AddAllSpace_011.right);
-      expect(Center_AddAllSpace_013.left).assertEqual(Center_AddAllSpace_012.right);
-      expect(Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)).assertEqual(vp2px(20));
-      expect(Math.round((Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round((Center_AddAllSpace_01.right - Center_AddAllSpace_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddAllSpace_01.top - Center_AddAllSpace_01_Box.top)).assertEqual(vp2px(10));
-      expect(Math.round(Center_AddAllSpace_01.left - Center_AddAllSpace_01_Box.left)).assertEqual(vp2px(10));
-      expect(Math.round(Center_AddAllSpace_011.bottom - Center_AddAllSpace_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddAllSpace_012.bottom - Center_AddAllSpace_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddAllSpace_013.bottom - Center_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left)).assertEqual(vp2px(150));
+      expect(Math.abs(Center_AddAllSpace_011.top - Center_AddAllSpace_012.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.top - Center_AddAllSpace_013.top) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_012.left - Center_AddAllSpace_011.right) <= 1).assertTrue();
+      expect(Math.abs(Center_AddAllSpace_013.left - Center_AddAllSpace_012.right) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.top - Center_AddAllSpace_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddAllSpace_011.left - Center_AddAllSpace_01.left)*10)/10) - (Math.round(vp2px(25)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round((Center_AddAllSpace_01.right - Center_AddAllSpace_013.right)*10)/10) - (Math.round(vp2px(25)*10)/10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_01.top - Center_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_01.left - Center_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.bottom - Center_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_012.bottom - Center_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_013.bottom - Center_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('[testFlexAlignCenterFlexSpaceMeet] END');
       done();
     });

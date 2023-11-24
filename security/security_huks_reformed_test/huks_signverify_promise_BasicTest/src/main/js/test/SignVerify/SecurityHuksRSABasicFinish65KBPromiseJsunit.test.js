@@ -31,7 +31,7 @@ export default function SecurityHuksRSABasicFinish65KBPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it('testReformedSignVerifyRSA103', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_RSA_103', 0, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1MD5KeyAlias103';
       let HuksOptions = {
         properties: new Array(

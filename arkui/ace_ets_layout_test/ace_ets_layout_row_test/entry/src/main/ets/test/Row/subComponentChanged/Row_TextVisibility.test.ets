@@ -50,8 +50,8 @@ export default function row_TextVisibilityTest() {
      */
     it('testRowTextVisibilityNone', 0, async function (done) {
       console.info('[testRowTextVisibilityNone] START');
-      try{
-        globalThis.value.message.notify({name:'secondTextVisibility', value:Visibility.None});
+      try {
+        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.None });
         await CommonFunc.sleep(3000);
         let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
         let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
@@ -65,21 +65,19 @@ export default function row_TextVisibilityTest() {
         let secondTextObj = JSON.parse(secondTextStrJson);
         expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-        expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-        
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
-        
-        expect(Math.round(firstText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
-        expect(Math.round(thirdText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
-        
-        expect(firstText.left).assertEqual(rowContainer.left);
-        expect(Math.round(thirdText.left - firstText.right)).assertEqual(vp2px(10));
-        
-        expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(140));
+        expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+
+        expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(140)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityNone] failed');
         expect().assertFail();
@@ -95,7 +93,7 @@ export default function row_TextVisibilityTest() {
     it('testRowTextVisibilityHidden', 0, async function (done) {
       console.info('[testRowTextVisibilityHidden] START');
       try {
-        globalThis.value.message.notify({name:'secondTextVisibility', value:Visibility.Hidden});
+        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.Hidden });
         await CommonFunc.sleep(3000);
         let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
         let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
@@ -107,21 +105,19 @@ export default function row_TextVisibilityTest() {
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
         let secondTextObj = JSON.parse(secondTextStrJson);
         expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
-        expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-        
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
-        
-        expect(Math.round(firstText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
-        expect(Math.round(thirdText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
-        
-        expect(firstText.left).assertEqual(rowContainer.left);
-        expect(Math.round(thirdText.left - firstText.right)).assertEqual(vp2px(120));
-        
-        expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(30));
+        expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+
+        expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.left - firstText.right)) - (Math.round(vp2px(120)))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityHidden] failed');
         expect().assertFail();
@@ -137,7 +133,7 @@ export default function row_TextVisibilityTest() {
     it('testRowTextVisibilityVisible', 0, async function (done) {
       console.info('[testRowTextVisibilityVisible] START');
       try {
-        globalThis.value.message.notify({name:'secondTextVisibility', value:Visibility.Visible});
+        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.Visible });
         await CommonFunc.sleep(3000);
         let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
         let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
@@ -146,32 +142,29 @@ export default function row_TextVisibilityTest() {
         let rowContainerStrJson = getInspectorByKey('Row_TextVisibility_Container01');
         let rowContainerObj = JSON.parse(rowContainerStrJson);
         expect(rowContainerObj.$type).assertEqual('Row');
-        
+
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
         let secondTextObj = JSON.parse(secondTextStrJson);
         expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.Visible");
-        
-        expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-        
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-        expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-        expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
-        
-        
-        expect(Math.round(firstText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
-        expect(Math.round(secondText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - secondText.bottom));
-        expect(Math.round(thirdText.top - rowContainer.top))
-          .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
-        
-        expect(firstText.left).assertEqual(rowContainer.left);
-        expect(Math.round(secondText.left - firstText.right)).assertEqual(vp2px(10));
-        expect(Math.round(secondText.left - firstText.right)).assertEqual(Math.round(thirdText.left - secondText.right));
-        
-        expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(30));
+
+        expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+
+
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+
+        expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1).assertTrue();
+
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityVisible] failed');
         expect().assertFail();

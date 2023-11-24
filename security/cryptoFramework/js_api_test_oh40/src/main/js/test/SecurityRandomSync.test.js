@@ -18,10 +18,12 @@ import * as asyRandomCommon from "./utils/securityrandom/publicSecurityRandomCom
 import cryptoFrameworks from "@ohos.security.cryptoFramework";
 
 export default function SecurityRandomSyncJsunit() {
-  describe("SecurityRandomSyncJsunit", function () {
-    console.log("##########start SecurityRandomSyncJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("SecurityRandomSyncJsunit", function () {
+        console.log("##########start SecurityRandomSyncJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_RandomSync_Func_0100
@@ -65,7 +67,7 @@ export default function SecurityRandomSyncJsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.log("[RandomSync]: 0 error code: 401");
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -73,7 +75,7 @@ export default function SecurityRandomSyncJsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.log("[RandomSync]: string error code: 401");
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -81,7 +83,7 @@ export default function SecurityRandomSyncJsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.log("[RandomSync]: -1 error code: 401");
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -89,7 +91,7 @@ export default function SecurityRandomSyncJsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.log("[RandomSync]: null error code: 401");
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
 
         try {
@@ -97,7 +99,7 @@ export default function SecurityRandomSyncJsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.log("[RandomSync]: super large data error code: 401");
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }

@@ -18,6 +18,7 @@ group("ets_utils") {
     deps = [
       "atomics_lib_standard:atomics_js_hap",
       "buffer_lib_standard:buffer_js_test",
+      "codeparsingtest:codeparsingtest",
       "containerLine_lib_standard:containerLine_js_test",
       "containerRelation_lib_standard:containerRelation_js_test",
       "convertxml_lib_standard:convertxml_js_test",

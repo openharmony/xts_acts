@@ -763,7 +763,7 @@ export default function abilityTest() {
       })
       setTimeout(() => {
         appManager.getProcessRunningInfos().then((data) => {
-          console.info(TAG + '====>ACTS_KillProcess_0100 getProcessRunningInfos=====>' + JSON.stringify(data))
+          console.info(TAG + '====>ACTS_KillProcess_0200 getProcessRunningInfos=====>' + JSON.stringify(data))
           for (var i = 0; i < data.length; i++) {
             if (data[i].processName == 'com.acts.killprocessthirdhap2') {
               console.info('====>has com.acts.killprocessthirdhap2=====>')
@@ -778,7 +778,7 @@ export default function abilityTest() {
       },1000)
       setTimeout(() => {
         appManager.getProcessRunningInfos().then((data) => {
-          console.info(TAG + '====>ACTS_KillProcess_0100 getProcessRunningInfos2=====>' + JSON.stringify(data))
+          console.info(TAG + '====>ACTS_KillProcess_0200 getProcessRunningInfos2=====>' + JSON.stringify(data))
           for (var i = 0; i < data.length; i++) {
             if (data[i].processName == 'com.acts.killprocessthirdhap2') {
               break

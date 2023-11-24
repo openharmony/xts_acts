@@ -270,7 +270,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherRSABasicPromiseJsunit() {
   describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
-    it('testReformedCipherRSA101', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_RSA_101', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias101';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -305,7 +305,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherRSA102', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_RSA_102', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -327,7 +327,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherRSA103', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_RSA_103', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias103';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias103';
       genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -361,7 +361,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherRSA104', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_RSA_104', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias104';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias104';
       genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);

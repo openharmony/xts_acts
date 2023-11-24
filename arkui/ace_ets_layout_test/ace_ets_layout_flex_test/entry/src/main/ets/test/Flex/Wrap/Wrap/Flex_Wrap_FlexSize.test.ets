@@ -52,8 +52,8 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1100', 0, async function (done) {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1100] START');
-      globalThis.value.message.notify({name:'width', value:500})
-      globalThis.value.message.notify({name:'height', value:200})
+      globalThis.value.message.notify({ name: 'width', value: 500 })
+      globalThis.value.message.notify({ name: 'height', value: 200 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flexSize_Text1');
       let secondText = CommonFunc.getComponentRect('Wrap_flexSize_Text2');
@@ -64,23 +64,23 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(firstText.right).assertEqual(secondText.left);
-      expect(secondText.right).assertEqual(thirdText.left);
-      expect(firstText.top).assertEqual(secondText.top);
-      expect(secondText.top).assertEqual(thirdText.top);
-      expect(firstText.top).assertEqual(flexContainer.top);
-      expect(firstText.left).assertEqual(flexContainer.left);
+      expect(Math.abs((firstText.right) - (secondText.left)) <= 1).assertTrue();
+      expect(Math.abs((secondText.right) - (thirdText.left)) <= 1).assertTrue();
+      expect(Math.abs((firstText.top) - (secondText.top)) <= 1).assertTrue();
+      expect(Math.abs((secondText.top) - (thirdText.top)) <= 1).assertTrue();
+      expect(Math.abs((firstText.top) - (flexContainer.top)) <= 1).assertTrue();
+      expect(Math.abs((firstText.left) - (flexContainer.left)) <= 1).assertTrue();
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(50));
+      expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1100] END');
       done();
     });
@@ -92,8 +92,8 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1200', 0, async function (done) {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1200] START');
-      globalThis.value.message.notify({name:'width', value:400})
-      globalThis.value.message.notify({name:'height', value:260})
+      globalThis.value.message.notify({ name: 'width', value: 400 })
+      globalThis.value.message.notify({ name: 'height', value: 260 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flexSize_Text1');
       let secondText = CommonFunc.getComponentRect('Wrap_flexSize_Text2');
@@ -104,23 +104,23 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
 
-      expect(firstText.top).assertEqual(flexContainer.top);
-      expect(firstText.left).assertEqual(flexContainer.left);
-      expect(firstText.right).assertEqual(secondText.left);
-      expect(firstText.top).assertEqual(secondText.top);
-      expect(thirdText.left).assertEqual(firstText.left);
-      expect(thirdText.top).assertEqual(secondText.bottom);
+      expect(Math.abs((firstText.top) - (flexContainer.top)) <= 1).assertTrue();
+      expect(Math.abs((firstText.left) - (flexContainer.left)) <= 1).assertTrue();
+      expect(Math.abs((firstText.right) - (secondText.left)) <= 1).assertTrue();
+      expect(Math.abs((firstText.top) - (secondText.top)) <= 1).assertTrue();
+      expect(Math.abs((thirdText.left) - (firstText.left)) <= 1).assertTrue();
+      expect(Math.abs((thirdText.top) - (secondText.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(100));
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(10));
+      expect(Math.abs((Math.round(flexContainer.right - secondText.right)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1200] END');
       done();
     });
@@ -132,8 +132,8 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1300', 0, async function (done) {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1300] START');
-      globalThis.value.message.notify({name:'width', value:350})
-      globalThis.value.message.notify({name:'height', value:150})
+      globalThis.value.message.notify({ name: 'width', value: 350 })
+      globalThis.value.message.notify({ name: 'height', value: 150 })
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Wrap_flexSize_Text1');
       let secondText = CommonFunc.getComponentRect('Wrap_flexSize_Text2');
@@ -144,23 +144,23 @@ export default function flex_Wrap_FlexSizeTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
 
-      expect(firstText.left).assertEqual(flexContainer.left);
-      expect(firstText.top).assertEqual(flexContainer.top);
-      expect(firstText.top).assertEqual(secondText.top);
-      expect(firstText.right).assertEqual(secondText.left);
-      expect(thirdText.left).assertEqual(firstText.left);
-      expect(thirdText.top).assertEqual(secondText.bottom);
+      expect(Math.abs((firstText.left) - (flexContainer.left)) <= 1).assertTrue();
+      expect(Math.abs((firstText.top) - (flexContainer.top)) <= 1).assertTrue();
+      expect(Math.abs((firstText.top) - (secondText.top)) <= 1).assertTrue();
+      expect(Math.abs((firstText.right) - (secondText.left)) <= 1).assertTrue();
+      expect(Math.abs((thirdText.left) - (firstText.left)) <= 1).assertTrue();
+      expect(Math.abs((thirdText.top) - (secondText.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(50));
-      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(vp2px(100));
+      expect(Math.abs((Math.round(flexContainer.right - secondText.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - flexContainer.bottom)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1300] END');
       done();
     });

@@ -33,9 +33,11 @@ export default function swiperMargin() {
           let result = await router.push(options)
           console.info("push swiperMargin page success " + JSON.stringify(result));
         }
+
       } catch (err) {
         console.error("push swiperMargin page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

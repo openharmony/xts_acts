@@ -22,8 +22,17 @@
         "rom": "~256KB",
         "ram": "0KB",
         "deps": {
-            "components": [],
-            "third_party": []
+            "components": [
+                "graphic_2d",
+                "window_manager"
+            ],
+            "third_party": [
+                "zlib",
+                "libpng",
+                "glslang",
+                "spirv-tools",
+                "vk-gl-cts"
+            ]
         },
         "build": {
             "sub_component": [ "//test/xts/acts/build:acts_lite" ],

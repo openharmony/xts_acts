@@ -5,7 +5,8 @@
         "test-timeout": "600000",
         "bundle-name": "com.acts.actscallfunction",
         "module-name": "entry_test",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "testcase-timeout": "15000"
     },
     "kits": [
 		{
@@ -22,7 +23,8 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
             ]
         }
     ]

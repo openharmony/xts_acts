@@ -28,7 +28,7 @@
             ],
             "actions": [
               "action.system.home",
-              "ohos.nfc.tag.action.TAG_FOUND"
+              "ohos.nfc.tag.test.action"
             ],
             "uris": [
               {

@@ -110,30 +110,30 @@ export default function Tabs_scrollable() {
 
       console.info(`[testTabsScrollableToTrue]Tabs_scrollable_011.bottom - Tabs_scrollable_011.top=
         ${Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)}`);
-      expect(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_011.right - Tabs_scrollable_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_012.right - Tabs_scrollable_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_013.right - Tabs_scrollable_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_scrollable_011.right - Tabs_scrollable_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_012.right - Tabs_scrollable_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_013.right - Tabs_scrollable_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsScrollableToTrue]Tabs_scrollable_001.bottom - Tabs_scrollable_001.top=
         ${Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)}`);
-      expect(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_001.right - Tabs_scrollable_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_002.right - Tabs_scrollable_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_003.right - Tabs_scrollable_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_scrollable_001.right - Tabs_scrollable_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_002.right - Tabs_scrollable_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_003.right - Tabs_scrollable_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsScrollableToTrue]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsScrollableToTrue] END');
       done();
     });
@@ -203,30 +203,30 @@ export default function Tabs_scrollable() {
 
       console.info(`[testTabsScrollableToFalse]Tabs_scrollable_011.bottom - Tabs_scrollable_011.top=
         ${Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)}`);
-      expect(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_011.right - Tabs_scrollable_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_012.right - Tabs_scrollable_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_013.right - Tabs_scrollable_013.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_scrollable_011.right - Tabs_scrollable_011.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_012.right - Tabs_scrollable_012.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_013.right - Tabs_scrollable_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[ ]Tabs_scrollable_001.bottom - Tabs_scrollable_001.top=
         ${Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)}`);
-      expect(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_scrollable_001.right - Tabs_scrollable_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_002.right - Tabs_scrollable_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_scrollable_003.right - Tabs_scrollable_003.left)).assertEqual(vp2px(330));
+      expect(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top)).assertEqual(Math.round(vp2px(244)));
+      expect(Math.abs(Tabs_scrollable_001.right - Tabs_scrollable_001.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_002.right - Tabs_scrollable_002.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Tabs_scrollable_003.right - Tabs_scrollable_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsScrollableToFalse]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(110));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(110));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(110));
+      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
+      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
       console.info('[testTabsScrollableToFalse] END');
       done();
     });

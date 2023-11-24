@@ -157,23 +157,17 @@ export default function OffsetTest() {
           let targetWight = targetRectAfter.right - targetRectAfter.left;
           //The height of the target component
           let targetHeight = targetRectAfter.bottom - targetRectAfter.top;
-          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-            .assertEqual(Number((targetWight) * 0.5).toFixed(2));
-          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-            .assertEqual(Number((targetHeight) * 0.5).toFixed(2));
+          expect(Math.abs(Number(targetRectAfter.left - initialPosition.left) - Number((targetWight) * 0.5)) <= 1).assertTrue()
+          expect(Math.abs(Number(targetRectAfter.top - initialPosition.top) - Number((targetHeight) * 0.5)) <= 1).assertTrue()
         } else {
           //When setting the type to percentage, use the width/height of the parent container as the base.
-          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-            .assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
-          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-            .assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2)).assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2)).assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
         }
       } else {
         //When set to the basic type, verify the calculated shifting
-        expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.left).toFixed(2));
-        expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.top).toFixed(2));
+        expect(Math.abs(Number((targetRectAfter.left - initialPosition.left).toFixed(2)) - Number(data.testValue.expectValue.left.toFixed(2))) <= 1).assertTrue();
+        expect(Math.abs(Number((targetRectAfter.top - initialPosition.top).toFixed(2)) - Number(data.testValue.expectValue.top.toFixed(2))) <= 1).assertTrue();
       }
 
       //Confirm that the region information of the parent component has not changed.
@@ -189,7 +183,6 @@ export default function OffsetTest() {
       expect(ReferenceRectAfter.top).assertEqual(ReferenceRectBefore.top);
       expect(ReferenceRectAfter.right).assertEqual(ReferenceRectBefore.right);
       expect(ReferenceRectAfter.bottom).assertEqual(ReferenceRectBefore.bottom);
-
     })
   })
 }

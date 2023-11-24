@@ -301,7 +301,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           );
         } catch (err) {
           console.error("getX509CertItem err code is:" + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -329,7 +329,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           );
         } catch (err) {
           console.error("getX509CertItem err code is:" + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -360,7 +360,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           );
         } catch (err) {
           console.error("getX509CertItem err code is:" + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -650,7 +650,7 @@ export default function CertFrameworkFuncTestJSUnit() {
               "createX509CertExtensionNormalPromise error, error code is: " +
                 err.code
             );
-            expect(err.code == 401).assertTrue();
+            expect(err.code).assertEqual(401);
           });
         done();
       }
@@ -677,7 +677,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(oidListObj != null && oidListObj != undefined).assertTrue();
         } catch (err) {
           console.error("getOidList error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -704,7 +704,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(oidListObj != null && oidListObj != undefined).assertTrue();
         } catch (err) {
           console.error("getOidList error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -734,7 +734,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(oidListObj != null && oidListObj != undefined).assertTrue();
         } catch (err) {
           console.error("getOidList error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -768,7 +768,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(entryObj != null && entryObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEntry error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -803,7 +803,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(entryObj != null && entryObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEntry error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -838,7 +838,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(entryObj != null && entryObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEntry error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -867,7 +867,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(entryObj != null && entryObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEntry error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -902,7 +902,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(entryObj != null && entryObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEntry error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -929,7 +929,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(encodedObj != null && encodedObj != undefined).assertTrue();
         } catch (err) {
           console.error("getEncoded error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -956,7 +956,7 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(encodedObj != null && encodedObj != undefined).assertTrue();
         } catch (err) {
           console.error("checkCA error , error code is: " + err.code);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -983,7 +983,8 @@ export default function CertFrameworkFuncTestJSUnit() {
           expect(encodedObj != null && encodedObj != undefined).assertTrue();
         } catch (err) {
           console.error("checkCA error , error code is: " + err.code);
-          expect(err.code == 19030001).assertTrue();
+
+          expect(err.code).assertEqual(19030001);
         }
         done();
       }

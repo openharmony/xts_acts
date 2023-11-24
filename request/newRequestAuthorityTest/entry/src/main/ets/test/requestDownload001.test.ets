@@ -31,6 +31,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0140
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0140
      * @tc.desc      Create a download Task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -77,6 +78,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0140
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0140
      * @tc.desc      Create a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -119,6 +121,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0160
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0160
      * @tc.desc      Create a download Task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -163,6 +166,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0160
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0160
      * @tc.desc      Create a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -203,6 +207,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0170
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0170
      * @tc.desc      Create a download Task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -249,6 +254,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0170
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0170
      * @tc.desc      Create a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -291,6 +297,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0180
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0180
      * @tc.desc      Create a download Task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -333,6 +340,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0180
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0180
      * @tc.desc      Create a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -371,6 +379,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0090
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0090
      * @tc.desc      Create a download Task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -428,6 +437,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0090
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0090
      * @tc.desc      Create a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -483,6 +493,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0020
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0020
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -508,8 +519,8 @@ export default function requestDownloadOneJSUnitTest() {
           }
           expect(task !== undefined).assertEqual(true);
           console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 remove success: " + task);
-          console.info("====>-----------------SUB_Misc_REQUEST_Remove_Download_Callback_0020 end--------------------");
           done();
+          console.info("====>-----------------SUB_Misc_REQUEST_Remove_Download_Callback_0020 end--------------------");
         } catch (err) {
           console.info("====>SUB_Misc_REQUEST_Remove_Download_Callback_0020 remove fail: " + JSON.stringify(err));
           done();
@@ -527,6 +538,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0020
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0020
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -558,7 +570,8 @@ export default function requestDownloadOneJSUnitTest() {
     });
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0030
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
+     * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -591,6 +604,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0030
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0030
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -613,6 +627,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0040
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0040
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -635,6 +650,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0040
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0040
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -667,6 +683,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0050
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0050
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -717,6 +734,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0050
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0050
      * @tc.desc      remove the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -751,6 +769,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0060
+     * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0060
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -771,7 +790,8 @@ export default function requestDownloadOneJSUnitTest() {
     });
 
     /**
-     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0060
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060
+     * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -798,6 +818,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0030
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0030
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -843,6 +864,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0040
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0040
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -888,6 +910,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Promise_0020
+     * @tc.name    SUB_Misc_REQUEST_Create_Download_Promise_0020
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -925,6 +948,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0130
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0130
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -968,6 +992,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0060
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0060
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1012,6 +1037,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Callback_0050
+     * @tc.name    SUB_Misc_REQUEST_Create_Download_Callback_0050
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1040,6 +1066,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0070
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0070
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1079,6 +1106,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0070
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0070
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1116,6 +1144,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0080
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0080
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1158,6 +1187,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0080
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0080
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1193,6 +1223,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0110
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0110
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1228,6 +1259,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0110
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0110
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1270,6 +1302,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0150
+     * @tc.name    SUB_Misc_REQUEST_Create_Promise_0150
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -1306,6 +1339,7 @@ export default function requestDownloadOneJSUnitTest() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0150
+     * @tc.name    SUB_Misc_REQUEST_Create_Callback_0150
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function

@@ -24,3 +24,6 @@ export const INVALID_INPUT_PARAMETER_401 = 401;
 export const INVALID_INPUT_PARAMETER_6800101 = 6800101;
 export const UNSUPORTED_OPTION_6800104 = 6800104;
 export const DEAFULT_MEDIA_DB = 0.08370080590248108;
+
+//---------------AudioVolumeType: not steamapi------------------
+export const AudioVolumeType = [0, 2, 3, 4, 5, 9];

@@ -39,7 +39,7 @@ export default function DeviceStatusUnitTest() {
          * parameter unknown
          */
         it('msdp_test_devices_status_001', 0, function (done) {
-            console.log("msdp_test_devices_status_001 start");
+            console.log("msdp_test_devices_status_001 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
@@ -48,17 +48,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error Log' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_002
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_002', 0, function (done) {
-            console.log("msdp_test_devices_status_002 start");
+            console.log("msdp_test_devices_status_001 once start");
             try {
                 p_done = done;
                 stationary.once("still", pub_callback);
@@ -66,17 +56,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_003
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_003', 0, function (done) {
-            console.log("msdp_test_devices_status_003 start");
+            console.log("msdp_test_devices_status_001 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -90,16 +70,14 @@ export default function DeviceStatusUnitTest() {
             }, 200);
         })
 
-
-
         /**
-         * @tc.number DeviceStatus_004
+         * @tc.number DeviceStatus_002
          * @tc.name
          * @tc.callback:AsyncCallback<HighStillResponse>
          * parameter unknown
          */
-        it('msdp_test_devices_status_004', 0, function (done) {
-            console.log("msdp_test_devices_status_004 start");
+        it('msdp_test_devices_status_002', 0, function (done) {
+            console.log("msdp_test_devices_status_002 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
@@ -108,17 +86,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error Log' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_005
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_005', 0, function (done) {
-            console.log("msdp_test_devices_status_005 start");
+            console.log("msdp_test_devices_status_002 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -126,17 +94,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_006
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_006', 0, function (done) {
-            console.log("msdp_test_devices_status_006 start");
+            console.log("msdp_test_devices_status_002 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -151,13 +109,13 @@ export default function DeviceStatusUnitTest() {
         })
 
         /**
-        * @tc.number DeviceStatus_007
-        * @tc.name
-        * @tc.callback:AsyncCallback<HighStillResponse>
-        * parameter unknown
-        */
-        it('msdp_test_devices_status_007', 0, function (done) {
-            console.log("msdp_test_devices_status_007 start");
+         * @tc.number DeviceStatus_003
+         * @tc.name
+         * @tc.callback:AsyncCallback<HighStillResponse>
+         * parameter unknown
+         */
+        it('msdp_test_devices_status_003', 0, function (done) {
+            console.log("msdp_test_devices_status_003 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
@@ -166,17 +124,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error Log' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_008
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_008', 0, function (done) {
-            console.log("msdp_test_devices_status_008 start");
+            console.log("msdp_test_devices_status_003 once start");
             try {
                 p_done = done;
                 stationary.once("Type_Unknow", pub_callback);
@@ -184,17 +132,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_009
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_009', 0, function (done) {
-            console.log("msdp_test_devices_status_009 start");
+            console.log("msdp_test_devices_status_003 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -208,16 +146,14 @@ export default function DeviceStatusUnitTest() {
             }, 200);
         })
 
-
-
         /**
-        * @tc.number DeviceStatus_010
-        * @tc.name
-        * @tc.callback:AsyncCallback<HighStillResponse>
-        * parameter unknown
-        */
-        it('msdp_test_devices_status_010', 0, function (done) {
-            console.log("msdp_test_devices_status_010 start");
+         * @tc.number DeviceStatus_004
+         * @tc.name
+         * @tc.callback:AsyncCallback<HighStillResponse>
+         * parameter unknown
+         */
+        it('msdp_test_devices_status_004', 0, function (done) {
+            console.log("msdp_test_devices_status_004 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
@@ -226,17 +162,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error Log' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_011
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_011', 0, function (done) {
-            console.log("msdp_test_devices_status_011 start");
+            console.log("msdp_test_devices_status_004 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -244,17 +170,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_012
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_012', 0, function (done) {
-            console.log("msdp_test_devices_status_012 start");
+            console.log("msdp_test_devices_status_004 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -268,15 +184,14 @@ export default function DeviceStatusUnitTest() {
             }, 200);
         })
 
-
         /**
-             * @tc.number DeviceStatus_013
-             * @tc.name
-             * @tc.callback:AsyncCallback<HighStillResponse>
-             * parameter unknown
-             */
-        it('msdp_test_devices_status_013', 0, function (done) {
-            console.log("msdp_test_devices_status_013 start");
+         * @tc.number DeviceStatus_005
+         * @tc.name
+         * @tc.callback:AsyncCallback<HighStillResponse>
+         * parameter unknown
+         */
+        it('msdp_test_devices_status_005', 0, function (done) {
+            console.log("msdp_test_devices_status_005 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
@@ -285,17 +200,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error Log' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_014
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_014', 0, function (done) {
-            console.log("msdp_test_devices_status_014 start");
+            console.log("msdp_test_devices_status_005 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -303,17 +208,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-        })
-
-
-        /**
-         * @tc.number DeviceStatus_015
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
-         */
-        it('msdp_test_devices_status_015', 0, function (done) {
-            console.log("msdp_test_devices_status_015 start");
+            console.log("msdp_test_devices_status_005 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -326,6 +221,5 @@ export default function DeviceStatusUnitTest() {
                 }
             }, 200);
         })
-
     })
 }

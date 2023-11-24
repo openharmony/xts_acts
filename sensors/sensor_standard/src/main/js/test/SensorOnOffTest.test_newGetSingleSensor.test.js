@@ -71,7 +71,7 @@ describe("SensorJsTest_sensor_36", function () {
                 console.info('GetSingleSensor_JSTest_001 failed');
                 expect(false).assertTrue();
             } else {
-                console.info("GetSingleSensor_JSTest_001 " + JSON.stringify(data));
+                console.info("GetSingleSensor_JSTest_001 " + JSON.stringify(data));			
                 expect(typeof (data.sensorName)).assertEqual("string");
                 expect(typeof (data.vendorName)).assertEqual("string");
                 expect(typeof (data.firmwareVersion)).assertEqual("string");
@@ -119,7 +119,7 @@ describe("SensorJsTest_sensor_36", function () {
                     console.info('GetSingleSensor_JSTest_003 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info("GetSingleSensor_JSTest_003 " + JSON.stringify(data));
+                    console.info("GetSingleSensor_JSTest_003 " + JSON.stringify(data));					
 					expect(typeof (data.sensorName)).assertEqual("string");
 					expect(typeof (data.vendorName)).assertEqual("string");
 					expect(typeof (data.firmwareVersion)).assertEqual("string");

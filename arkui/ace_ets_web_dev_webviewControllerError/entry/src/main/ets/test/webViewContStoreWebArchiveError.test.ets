@@ -72,7 +72,7 @@ export default function webViewContStoreWebArchiveError() {
     it('teststoreWebArchiveInitErr',0,async function(done){
       emitKey="emitStoreWebArchiveCallBackPathErr";
       Utils.registerEvent("teststoreWebArchiveInitErr","17100001",700,done);
-      Utils.registerEvent("teststoreWebArchiveInitErr","Init error. The WebviewController must be associated with a Web component.",701,done);
+      Utils.registerEvent("teststoreWebArchiveInitErr","Init error. The WebviewController must be associated with a Web component",701,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
     /*
@@ -83,7 +83,7 @@ export default function webViewContStoreWebArchiveError() {
     it('testStoreWebArchiveCallBackPathErr',0,async function(done){
       emitKey="emitStoreWebArchiveCallBackUnAccessErr";
       Utils.registerEvent("testStoreWebArchiveCallBackPathErr",17100003,702,done);
-      Utils.registerEvent("testStoreWebArchiveCallBackPathErr","Invalid resource path or file type.",703,done);
+      Utils.registerEvent("testStoreWebArchiveCallBackPathErr","Invalid resource path or file type",703,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
     /*
@@ -94,7 +94,7 @@ export default function webViewContStoreWebArchiveError() {
     it('testStoreWebArchiveCallBackUnAccessErr',0,async function(done){
       emitKey="emitStoreWebArchivePromiseInitErr";
       Utils.registerEvent("testStoreWebArchiveCallBackUnAccessErr",17100003,704,done);
-      Utils.registerEvent("testStoreWebArchiveCallBackUnAccessErr","Invalid resource path or file type.",705,done);
+      Utils.registerEvent("testStoreWebArchiveCallBackUnAccessErr","Invalid resource path or file type",705,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
     /*
@@ -105,7 +105,7 @@ export default function webViewContStoreWebArchiveError() {
     it('testStoreWebArchivePromiseInitErr',0,async function(done){
       emitKey="emitStoreWebArchivePromisePathErr";
       Utils.registerEvent("testStoreWebArchivePromiseInitErr","17100001",706,done);
-      Utils.registerEvent("testStoreWebArchivePromiseInitErr","Init error. The WebviewController must be associated with a Web component.",707,done);
+      Utils.registerEvent("testStoreWebArchivePromiseInitErr","Init error. The WebviewController must be associated with a Web component",707,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
     /*
@@ -116,7 +116,7 @@ export default function webViewContStoreWebArchiveError() {
     it('testStoreWebArchivePromisePathErr',0,async function(done){
       emitKey="emitStoreWebArchivePromiseUnAccessErr";
       Utils.registerEvent("testStoreWebArchivePromisePathErr",17100003,708,done);
-      Utils.registerEvent("testStoreWebArchivePromisePathErr","Invalid resource path or file type.",709,done);
+      Utils.registerEvent("testStoreWebArchivePromisePathErr","Invalid resource path or file type",709,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
     /*
@@ -127,7 +127,7 @@ export default function webViewContStoreWebArchiveError() {
     it('testStoreWebArchivePromiseUnAccessErr',0,async function(done){
       emitKey="emitStoreWebArchivePromiseUnAccessErr";
       Utils.registerEvent("testStoreWebArchivePromiseUnAccessErr",17100003,710,done);
-      Utils.registerEvent("testStoreWebArchivePromiseUnAccessErr","Invalid resource path or file type.",711,done);
+      Utils.registerEvent("testStoreWebArchivePromiseUnAccessErr","Invalid resource path or file type",711,done);
       sendEventByKey('webViewContStoreWebArchiveError',10,'');
     })
   })

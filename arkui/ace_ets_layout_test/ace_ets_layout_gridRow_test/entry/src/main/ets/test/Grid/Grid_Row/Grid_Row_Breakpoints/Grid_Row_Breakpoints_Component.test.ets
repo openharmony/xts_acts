@@ -60,10 +60,10 @@ export default function Grid_Row_Breakpoints_Component() {
       let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component3');
       let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component4');
 
-      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(vp2px(20));
-      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(vp2px(20));
-      expect(Math.round(fourthBreakpoints.left - thirdBreakpoints.right)).assertEqual(vp2px(20));
-      expect(Math.round(fifthBreakpoints.top - firstBreakpoints.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(fourthBreakpoints.left - thirdBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(fifthBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(20)));
 
       console.info('SUB_ACE_GridRowBreakpoints_Component_0100 END');
       done();

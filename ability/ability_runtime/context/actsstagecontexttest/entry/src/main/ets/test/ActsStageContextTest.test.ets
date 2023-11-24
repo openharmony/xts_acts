@@ -19,6 +19,28 @@ import bundleManager from '@ohos.bundle.bundleManager';
 
 export default function actsStageContextTest() {
     describe('ActsStageContextTest', function () {
+        let count1 = 0;
+        let count2 = 0;
+        let count3 = 0;
+        let callback1 = ()=>{
+            console.info("===callback1 called");
+            count1++;
+        }
+        let callback2 = ()=>{
+            console.info("===callback2 called");
+            count2++;
+        }
+        let callback3 = ()=>{
+            console.info("===callback3 called");
+            count3++;
+        }
+
+        beforeEach(function() {
+            count1 = 0;
+            count2 = 0;
+            count3 = 0;
+          })
+
         /*
         * @tc.number    : ACTS_StageContext_0100
         * @tc.name      : get resource by $r
@@ -148,6 +170,178 @@ export default function actsStageContextTest() {
                 expect().assertFail()
                 done()
             })
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_0800
+        * @tc.name      : test EventHub
+        * @tc.desc      : test basic on/off/emit
+        */
+        it('ACTS_StageContext_0800',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            eventHub.on("event1", callback1);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            eventHub.off("event1", callback1);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_0900
+        * @tc.name      : test EventHub
+        * @tc.desc      : test multiple callbacks
+        */
+        it('ACTS_StageContext_0900',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            eventHub.on("event1", callback1);
+            eventHub.on("event1", callback2);
+            eventHub.on("event1", callback3);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(1);
+            expect(count3).assertEqual(1)
+            eventHub.off("event1", callback2);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(2);
+            expect(count2).assertEqual(1);
+            expect(count3).assertEqual(2);
+            eventHub.off("event1");
+            eventHub.emit("event1");
+            expect(count1).assertEqual(2);
+            expect(count2).assertEqual(1);
+            expect(count3).assertEqual(2);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_1000
+        * @tc.name      : test EventHub
+        * @tc.desc      : test different events
+        */
+        it('ACTS_StageContext_1000',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            eventHub.on("event1", callback1);
+            eventHub.on("event2", callback2);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(0);
+            eventHub.emit("event2");
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(1);
+            eventHub.off("event1");
+            eventHub.emit("event1");
+            eventHub.emit("event2");
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(2);
+            eventHub.off("event2");
+            eventHub.emit("event1");
+            eventHub.emit("event2");
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(2);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_1100
+        * @tc.name      : test EventHub
+        * @tc.desc      : test repeat on/off
+        */
+        it('ACTS_StageContext_1100',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            eventHub.on("event1", callback1);
+            eventHub.on("event1", callback1);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            eventHub.off("event1", callback1);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            eventHub.off("event1", callback1);
+            eventHub.emit("event1");
+            expect(count1).assertEqual(1);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_1200
+        * @tc.name      : test EventHub
+        * @tc.desc      : test call off() in callback
+        */
+        it('ACTS_StageContext_1200',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            let count = 0;
+            let func = ()=>{
+                let callback = ()=>{
+                    count++;
+                    eventHub.off("event1", callback);
+                }
+                eventHub.on("event1", callback);
+            }
+            func();
+            func();
+            func();
+            func();
+            eventHub.emit("event1");
+            expect(count).assertEqual(4);
+            eventHub.emit("event1");
+            expect(count).assertEqual(4);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_1300
+        * @tc.name      : test EventHub
+        * @tc.desc      : test call off() in callback
+        */
+        it('ACTS_StageContext_1300',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            let count = 0;
+            let func = ()=>{
+                let callback = ()=>{
+                    count++;
+                    eventHub.off("event1");
+                }
+                eventHub.on("event1", callback);
+            }
+            func();
+            func();
+            func();
+            func();
+            eventHub.emit("event1");
+            expect(count).assertEqual(4);
+            eventHub.emit("event1");
+            expect(count).assertEqual(4);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_StageContext_1400
+        * @tc.name      : test EventHub
+        * @tc.desc      : test call on/off in callback
+        */
+        it('ACTS_StageContext_1400',0, async function (done) {
+            const eventHub = globalThis.abilityContext.eventHub;
+            let count = 0;
+            let func = ()=>{
+                let callback = ()=>{
+                    count++;
+                    eventHub.off("event1", callback1);
+                    eventHub.on("event1", callback2);
+                }
+                eventHub.on("event1", callback);
+            }
+            func();
+            eventHub.on("event1", callback1);
+            eventHub.emit("event1");
+            expect(count).assertEqual(1);
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(0);
+            eventHub.emit("event1");
+            expect(count).assertEqual(2);
+            expect(count1).assertEqual(1);
+            expect(count2).assertEqual(1);
+            done();
         })
     })
 }

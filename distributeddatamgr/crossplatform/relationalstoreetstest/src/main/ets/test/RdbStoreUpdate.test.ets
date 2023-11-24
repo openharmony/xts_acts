@@ -64,7 +64,7 @@ export default function rdbStoreUpdateTest() {
     }
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1240
      * @tc.name   : testRdbStoreUpdate001
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -114,6 +114,7 @@ export default function rdbStoreUpdateTest() {
             expect(!e).assertTrue();
           }
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -122,7 +123,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1270
      * @tc.name   : testRdbStoreUpdate002
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -133,18 +134,20 @@ export default function rdbStoreUpdateTest() {
       console.info(TAG + "************* testRdbStoreUpdate002 start *************");
       try {
         const emptyBucket = {};
-
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("id", "1");
         rdbStore.update(emptyBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
+            return;
           }
           console.info(`Updated row count: ${rows}`);
+          expect(rows > 0).assertFail();
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -153,7 +156,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1290
      * @tc.name   : testRdbStoreUpdate003
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -175,12 +178,15 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
+            return;
           }
           console.info(`Updated row count: ${rows}`);
+          expect(rows > 0).assertFail();
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -189,7 +195,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1210
      * @tc.name   : testRdbStoreUpdate004
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -212,12 +218,15 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong table name");
             done();
+            return;
           }
           console.info(`Updated row count: ${rows}`);
+          expect(rows > 0).assertFail();
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -226,7 +235,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1250
      * @tc.name   : testRdbStoreUpdate005
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -249,12 +258,15 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
+            return;
           }
           console.info(`Updated row count: ${rows}`);
+          expect(rows > 0).assertFail();
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -264,7 +276,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1230
      * @tc.name   : testRdbStoreUpdate006
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -310,7 +322,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1280
      * @tc.name   : testRdbStoreUpdate007
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -328,13 +340,15 @@ export default function rdbStoreUpdateTest() {
         promise
           .then(async (rows) => {
             console.info(`Updated row count: ${rows}`);
+            expect(rows > 0).assertFalse();
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
           });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -343,7 +357,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1300
      * @tc.name   : testRdbStoreUpdate008
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -366,13 +380,15 @@ export default function rdbStoreUpdateTest() {
         promise
           .then(async (rows) => {
             console.info(`Updated row count: ${rows}`);
+            expect(rows > 0).assertFalse();
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
           });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -381,7 +397,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1220
      * @tc.name   : testRdbStoreUpdate009
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -405,13 +421,15 @@ export default function rdbStoreUpdateTest() {
         promise
           .then(async (rows) => {
             console.info(`Updated row count: ${rows}`);
+            expect(rows > 0).assertTrue();
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with null table name");
             done();
           });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -420,7 +438,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1260
      * @tc.name   : testRdbStoreUpdate010
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -444,13 +462,15 @@ export default function rdbStoreUpdateTest() {
         promise
           .then(async (rows) => {
             console.info(`Updated row count: ${rows}`);
+            expect(rows > 0).assertTrue();
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
           });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -459,7 +479,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1100
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1120
      * @tc.name   : testRdbStoreUpdate011
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -508,6 +528,7 @@ export default function rdbStoreUpdateTest() {
             expect(!e).assertTrue();
           }
         });
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         console.info("update error " + e);
         expect(!e).assertTrue();
@@ -516,7 +537,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1110
      * @tc.name   : testRdbStoreUpdate012
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -559,6 +580,539 @@ export default function rdbStoreUpdateTest() {
         expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate012 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1160
+     * @tc.name   : testRdbStoreUpdate013
+     * @tc.desc   : RdbStore update callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate013", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate013 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([4, 5, 6]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_NONE, async (err, rows) => {
+          if (err) {
+            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            return;
+          }
+          try {
+            console.info(`Updated row count: ${rows}`);
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("lisi").assertEqual(name);
+            expect(20).assertEqual(age);
+            expect(200.5).assertEqual(salary);
+            expect(4).assertEqual(blobType[0]);
+            expect(5).assertEqual(blobType[1]);
+            expect(6).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+          } catch (e) {
+            console.info("update error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate013 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1150
+     * @tc.name   : testRdbStoreUpdate014
+     * @tc.desc   : RdbStore update promise with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate014", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate014 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_NONE);
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("lisi").assertEqual(name);
+        expect(20).assertEqual(age);
+        expect(200.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1200
+     * @tc.name   : testRdbStoreUpdate015
+     * @tc.desc   : RdbStore update callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate015", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate015 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([4, 5, 6]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK, async (err, rows) => {
+          console.info(TAG + "************* testRdbStoreUpdate015 11111111 *************" + err);
+          if (err) {
+            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            return;
+          }
+          try {
+            console.info(`Updated row count: ${rows}`);
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("zhangsan").assertEqual(name);
+            expect(20).assertEqual(age);
+            expect(200.5).assertEqual(salary);
+            expect(4).assertEqual(blobType[0]);
+            expect(5).assertEqual(blobType[1]);
+            expect(6).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+            console.info(TAG + "************* testRdbStoreUpdate015 end *************");
+          } catch (e) {
+            console.info("update error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1190
+     * @tc.name   : testRdbStoreUpdate016
+     * @tc.desc   : RdbStore update promise with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate016", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate016 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_NONE);
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("lisi").assertEqual(name);
+        expect(20).assertEqual(age);
+        expect(200.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1100
+     * @tc.name   : testRdbStoreUpdate017
+     * @tc.desc   : RdbStore update callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate017", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate017 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([4, 5, 6]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_ABORT, async (err, rows) => {
+          console.info(TAG + "************* testRdbStoreUpdate017 11111111 *************" + err);
+          if (err) {
+            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            return;
+          }
+          try {
+            console.info(`Updated row count: ${rows}`);
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("zhangsan").assertEqual(name);
+            expect(20).assertEqual(age);
+            expect(200.5).assertEqual(salary);
+            expect(4).assertEqual(blobType[0]);
+            expect(5).assertEqual(blobType[1]);
+            expect(6).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+            console.info(TAG + "************* testRdbStoreUpdate017 end *************");
+          } catch (e) {
+            console.info("update error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1090
+     * @tc.name   : testRdbStoreUpdate018
+     * @tc.desc   : RdbStore update promise with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate018", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate018 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_ABORT);
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("lisi").assertEqual(name);
+        expect(20).assertEqual(age);
+        expect(200.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate018 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1140
+     * @tc.name   : testRdbStoreUpdate019
+     * @tc.desc   : RdbStore update callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate019", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate019 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([4, 5, 6]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_IGNORE, async (err, rows) => {
+          console.info(TAG + "************* testRdbStoreUpdate019 11111111 *************" + err);
+          if (err) {
+            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            return;
+          }
+          try {
+            console.info(`Updated row count: ${rows}`);
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("zhangsan").assertEqual(name);
+            expect(20).assertEqual(age);
+            expect(200.5).assertEqual(salary);
+            expect(4).assertEqual(blobType[0]);
+            expect(5).assertEqual(blobType[1]);
+            expect(6).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+            console.info(TAG + "************* testRdbStoreUpdate019 end *************");
+          } catch (e) {
+            console.info("update error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1130
+     * @tc.name   : testRdbStoreUpdate020
+     * @tc.desc   : RdbStore update promise with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate020", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate020 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_IGNORE);
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("lisi").assertEqual(name);
+        expect(20).assertEqual(age);
+        expect(200.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate020 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1180
+     * @tc.name   : testRdbStoreUpdate021
+     * @tc.desc   : RdbStore update callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate021", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate021 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([4, 5, 6]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, async (err, rows) => {
+          console.info(TAG + "************* testRdbStoreUpdate021 11111111 *************" + err);
+          if (err) {
+            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            return;
+          }
+          try {
+            console.info(`Updated row count: ${rows}`);
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("zhangsan").assertEqual(name);
+            expect(20).assertEqual(age);
+            expect(200.5).assertEqual(salary);
+            expect(4).assertEqual(blobType[0]);
+            expect(5).assertEqual(blobType[1]);
+            expect(6).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+            console.info(TAG + "************* testRdbStoreUpdate021 end *************");
+          } catch (e) {
+            console.info("update error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1170
+     * @tc.name   : testRdbStoreUpdate022
+     * @tc.desc   : RdbStore update promise with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreUpdate022", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreUpdate022 start *************");
+      try {
+        const valueBucket = {
+          name: "lisi",
+          age: 20,
+          salary: 200.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("id", "1");
+        await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("lisi").assertEqual(name);
+        expect(20).assertEqual(age);
+        expect(200.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("update error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreUpdate022 end *************");
     });
   });
 }

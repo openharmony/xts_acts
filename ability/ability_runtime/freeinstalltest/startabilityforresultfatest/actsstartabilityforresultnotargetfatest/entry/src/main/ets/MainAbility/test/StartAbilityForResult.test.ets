@@ -23,6 +23,7 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 
 export default function StartAbilityForResult() {
     var TAG = "";
+    let id:number = 0;
 
     describe('StartAbilityForResult', function () {
         var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -54,6 +55,7 @@ export default function StartAbilityForResult() {
 
         afterEach(async function (done) {
             console.info("StartAbilityForResult after each called");
+            clearTimeout(id);
             if ("FreeInstall_FA_StartAbilityForResult_2900" === TAG) {
                 var cmd4 = "bm uninstall -n com.ohos.hag.famanager";
                 delegator.executeShellCommand(cmd4, (err: any, d: any) => {
@@ -88,7 +90,7 @@ export default function StartAbilityForResult() {
                     "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
                 }
             }
-            setTimeout(async () => {
+            id = setTimeout(async () => {
                 await featureAbility.startAbilityForResult(str)
                     .then((data) => {
                         details = data;
@@ -98,7 +100,7 @@ export default function StartAbilityForResult() {
                     })
                 console.log(TAG + " resultCode: " + details.resultCode);
                 expect(details.resultCode).assertEqual(1);
-            },2000);
+            },4000);
             done();
         });
 
@@ -125,7 +127,7 @@ export default function StartAbilityForResult() {
                     "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
                 }
             }
-            setTimeout(async ()=>{
+            id = setTimeout(async ()=>{
                 await featureAbility.startAbilityForResult(str)
                 .then((data) => {
                     details = data;
@@ -135,7 +137,7 @@ export default function StartAbilityForResult() {
                 })
             console.log(TAG + " resultCode: " + details.resultCode);
             expect(details.resultCode).assertEqual(1);
-            },2000);
+            },4000);
             done();
         });
 
@@ -159,7 +161,7 @@ export default function StartAbilityForResult() {
             delegator.executeShellCommand(cmd8, (err: any, d: any) => {
                 console.info("executeShellCommand8: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            setTimeout(async ()=>{
+            id = setTimeout(async ()=>{
                 let details;
                 var str = {
                     'want': {
@@ -178,7 +180,7 @@ export default function StartAbilityForResult() {
                     })
                 console.log(TAG + " resultCode: " + details.resultCode);
                 expect(details.resultCode).assertEqual(1);
-            },2000);
+            },4000);
             done();
         });
     })

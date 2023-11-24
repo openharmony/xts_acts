@@ -61,19 +61,23 @@ export default function Telephony_NETSTACK_HTTPTest() {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NETSTACK_HttpTestHeader_0100', 0, function (done) {
-            let http = netHttp.createHttp();
-            http.request("https://httpbin.org/headers").then(function (data) {
-                http.destroy();
-                expect(data.responseCode === netHttp.ResponseCode.OK || data.responseCode > 500).assertTrue();
-                console.info("NETSTACK ####" + JSON.stringify(data.result));
-                if (data.responseCode === netHttp.ResponseCode.OK) {
-                    expect(data.result.toString().search("Content-Type") != -1).assertTrue();
-                    expect(data.result.toString().search("application/json") != -1).assertTrue();
-                }
-                done()
-            });
-        });
+		 it('Telephony_NETSTACK_HttpTestHeader_0100', 0, function (done) {
+		  let http = netHttp.createHttp();
+		  http.request("https://httpbin.org/get" ,{
+			method: netHttp.RequestMethod.GET,
+			extraData: "MineMine",
+			header: { 'Content-Type': 'application/json' }
+		  }).then(function (data) {
+			http.destroy();
+			expect(data.responseCode === netHttp.ResponseCode.OK || data.responseCode > 500).assertTrue();
+			console.info("Telephony_NETSTACK_HttpTestHeader_0100" + JSON.stringify(data.result));
+			if (data.responseCode === netHttp.ResponseCode.OK) {
+			  expect(data.result.toString().search("Content-Type") != -1).assertTrue();
+			  expect(data.result.toString().search("application/json") != -1).assertTrue();
+			}
+			done()
+		  });
+		});
 
         /**
          * @tc.number Telephony_NETSTACK_HttpTestPost

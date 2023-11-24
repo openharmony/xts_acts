@@ -14,8 +14,10 @@
  */
  import Telephony_NETMANAGER_TestDNSTest from './NetworkManagerDNS.test.js';
  import Telephony_NETMANAGER_MDNSTest from './NetworkManagerMdns.test';
+ import netSyncTest from './NetSync.test'
 
  export default function testsuite() {
     Telephony_NETMANAGER_TestDNSTest();
     Telephony_NETMANAGER_MDNSTest();
+	netSyncTest();
  }

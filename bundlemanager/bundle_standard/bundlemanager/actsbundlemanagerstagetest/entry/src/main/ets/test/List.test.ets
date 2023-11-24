@@ -20,8 +20,10 @@ import getSecondModuleTest from './GetSecondModule.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
 import PublicApiEightTest from './PublicApiEightTest.test.ets';
 import PublicApiNineTest from './PublicApiNineTest.test.ets';
+import VerifyAbcTest from './VerifyAbcTest.test.ets';
 
 export default function testsuite() {
+  VerifyAbcTest();
   getProfileByAbility();
   getProfileByExtensionAbility();
   getBundleInfoForSelf();

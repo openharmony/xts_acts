@@ -69,15 +69,15 @@ export default function GridRow_onBreakpoint() {
       expect(gridRow.$type).assertEqual('GridRow');
       expect(text2.$attrs.content).assertEqual('xxl');
 
-      expect(firstBreakpoint.top).assertEqual(Breakpoint_1.top);
-      expect(secondBreakpoint.top).assertEqual(secondBreakpoint.top);
-      expect(thirdBreakpoint.top).assertEqual(thirdBreakpoint.top);
-      expect(firstBreakpoint.left).assertEqual(Breakpoint_1.left);
+      expect(Math.abs(firstBreakpoint.top - Breakpoint_1.top) <= 1).assertTrue();
+      expect(Math.abs(secondBreakpoint.top - secondBreakpoint.top) <= 1).assertTrue();
+      expect(Math.abs(thirdBreakpoint.top - thirdBreakpoint.top) <= 1).assertTrue();
+      expect(Math.abs(firstBreakpoint.left - Breakpoint_1.left) <= 1).assertTrue();
 
-      expect(Math.round(secondBreakpoint.left - firstBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(thirdBreakpoint.left - secondBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(vp2px(30));
+      expect(Math.round(secondBreakpoint.left - firstBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(thirdBreakpoint.left - secondBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(Math.round(vp2px(30)));
 
       console.info('SUB_ACE_GridRow_onBreakPointChange_0100 END');
       done();

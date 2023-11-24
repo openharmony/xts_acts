@@ -31,7 +31,7 @@ const PARAM_ERROR_CODE = 401;
 export default function getBundleInfoForSelf() {
   describe('getBundleInfoForSelf', function () {
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0118
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5560
      * @tc.name: getBundleInfoForSelfPro
      * @tc.desc: Test getBundleInfoForSelf with default flag(by promise).
      */
@@ -61,7 +61,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0119
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5580
      * @tc.name: getBundleInfoForSelfCal
      * @tc.desc: Test getBundleInfoForSelf with default flag(by callback).
      */
@@ -87,7 +87,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0120
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5600
      * @tc.name: getBundleInfoForSelfApplicationPro
      * @tc.desc: Test getBundleInfoForSelf with application flag(by promise).
      */
@@ -124,6 +124,8 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.appProvisionType).assertEqual("release");
         expect(data.appInfo.permissions.length).assertEqual(0);
         expect(data.appInfo.systemApp).assertFalse();
+        expect(data.appInfo.dataUnclearable).assertFalse();
+        expect(data.appInfo.applicationReservedFlag).assertEqual(0);
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -138,7 +140,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0121
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5620
      * @tc.name: getBundleInfoForSelfApplicationCal
      * @tc.desc: Test getBundleInfoForSelf with application flag(by callback).
      */
@@ -187,7 +189,37 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0122
+     * @tc.number: SUB_BMS_APPINFO_QUERY_1121
+     * @tc.name: getBundleInfoForSelfMetadata
+     * @tc.desc: Test getBundleInfoForSelf with application and metadata flag(by callback).
+     */
+    it('getBundleInfoForSelfMetadata', 0, async function (done) {
+      bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+        | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA, (err, data) => {
+        console.info("ApplicationInfo" + JSON.stringify(data.appInfo));
+        for (let i in data.appInfo) {
+          console.info("name" + JSON.stringify(i));
+          console.info("name" + JSON.stringify(data.appInfo[i]));
+        }
+        checkCommonBundleInfo(data);
+        expect(data.appInfo.metadata["testModule"].length).assertLarger(0);
+        let metadataArray = data.appInfo.metadataArray;
+        expect(metadataArray.length).assertEqual(1);
+        let moduleMetadata = metadataArray[0];
+        expect(moduleMetadata.moduleName).assertEqual("testModule");
+        expect(moduleMetadata.metadata.length).assertLarger(0);
+
+        expect(data.hapModulesInfo.length).assertEqual(0);
+        expect(data.reqPermissionDetails.length).assertEqual(0);
+        expect(data.permissionGrantStates.length).assertEqual(0);
+        expect(data.signatureInfo).assertEqual(null);
+        expect(err).assertEqual(null);
+        done();
+      })
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5640
      * @tc.name: getBundleInfoForSelfModulePro
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by promise).
      */
@@ -225,7 +257,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0123
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5660
      * @tc.name: getBundleInfoForSelfModuleCal
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by callback).
      */
@@ -260,7 +292,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0124
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5680
      * @tc.name: getBundleInfoForSelfAbilityPro
      * @tc.desc: Test getBundleInfoForSelf with ability flag(by promise).
      */
@@ -286,13 +318,9 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(1);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
         console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
         console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
@@ -368,7 +396,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0125
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5700
      * @tc.name: getBundleInfoForSelfAbilityCal
      * @tc.desc: Test getBundleInfoForSelf with ability flag(by callback).
      */
@@ -392,13 +420,9 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(1);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
           console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
           console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
@@ -471,7 +495,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0126
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5720
      * @tc.name: getBundleInfoForSelfExtensionPro
      * @tc.desc: Test getBundleInfoForSelf with extensionAbility flag(by promise).
      */
@@ -485,9 +509,9 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
         let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-        expect(extensionList.length).assertEqual(18);
+        expect(extensionList.length).assertEqual(19);
         let count = 0;
-        for (let i = 0;i < 18; i++) {
+        for (let i = 0;i < 19; i++) {
           switch (extensionList[i].name) {
             case "Form":
               console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
@@ -499,6 +523,7 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].iconId).assertLarger(0);
               expect(extensionList[i].exported).assertTrue();
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+              expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
               expect(extensionList[i].permissions.length).assertEqual(0);
               expect(extensionList[i].applicationInfo).assertEqual(null);
               expect(extensionList[i].metadata.length).assertEqual(0);
@@ -600,10 +625,15 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
               count = count + 19;
               break;
+            case 'adsService':
+              console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+              count = count + 20;
+              break;
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(155);
+        expect(count).assertEqual(175);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -617,7 +647,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0127
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5740
      * @tc.name: getBundleInfoForSelfExtensionCal
      * @tc.desc: Test getBundleInfoForSelf with extensionAbility flag(by callback).
      */
@@ -631,9 +661,9 @@ export default function getBundleInfoForSelf() {
           expect(data.appInfo).assertEqual(null);
           expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
           let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-          expect(extensionList.length).assertEqual(18);
+          expect(extensionList.length).assertEqual(19);
           let count = 0;
-          for (let i = 0;i < 18; i++) {
+          for (let i = 0;i < 19; i++) {
             switch (extensionList[i].name) {
               case "Form":
                 console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
@@ -645,6 +675,7 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].iconId).assertLarger(0);
                 expect(extensionList[i].exported).assertTrue();
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+                expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
                 expect(extensionList[i].permissions.length).assertEqual(0);
                 expect(extensionList[i].applicationInfo).assertEqual(null);
                 expect(extensionList[i].metadata.length).assertEqual(0);
@@ -746,10 +777,15 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
                 count = count + 19;
                 break;
+              case 'adsService':
+                console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+                count = count + 20;
+                break;
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(155);
+          expect(count).assertEqual(175);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -763,7 +799,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0128
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5760
      * @tc.name: getBundleInfoForSelfPermissionPro
      * @tc.desc: Test getBundleInfoForSelf with permission flag(by promise).
      */
@@ -775,7 +811,7 @@ export default function getBundleInfoForSelf() {
         checkCommonBundleInfo(data);
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo.length).assertEqual(0);
-        expect(data.reqPermissionDetails.length).assertEqual(2);
+        expect(data.reqPermissionDetails.length).assertEqual(3);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
         expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -802,7 +838,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0129
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5780
      * @tc.name: getBundleInfoForSelfPermissionCal
      * @tc.desc: Test getBundleInfoForSelf with permission flag(by callback).
      */
@@ -813,7 +849,7 @@ export default function getBundleInfoForSelf() {
         console.info("PermissionPro" + JSON.stringify(data.permissionGrantStates));
         checkCommonBundleInfo(data);
         expect(data.appInfo).assertEqual(null);
-        expect(data.reqPermissionDetails.length).assertEqual(2);
+        expect(data.reqPermissionDetails.length).assertEqual(3);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
         expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -837,7 +873,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0130
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5800
      * @tc.name: getBundleInfoForSelfMetaPro
      * @tc.desc: Test getBundleInfoForSelf with metadata flag(by promise).
      */
@@ -868,7 +904,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0131
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5820
      * @tc.name: getBundleInfoForSelfMetaCal
      * @tc.desc: Test getBundleInfoForSelf with metadata flag(by callback).
      */
@@ -895,7 +931,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0132
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5840
      * @tc.name: getBundleInfoForSelfSigPro
      * @tc.desc: Test getBundleInfoForSelf with signatureInfo flag(by promise).
      */
@@ -919,7 +955,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0133
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5860
      * @tc.name: getBundleInfoForSelfSigCal
      * @tc.desc: Test getBundleInfoForSelf with signatureInfo flag(by callback).
      */
@@ -940,7 +976,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0134
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5880
      * @tc.name: getBundleInfoForSelfDisPro
      * @tc.desc: Test getBundleInfoForSelf with disable flag(by promise).
      */
@@ -962,7 +998,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0135
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5900
      * @tc.name: getBundleInfoForSelfDisCal
      * @tc.desc: Test getBundleInfoForSelf with disable flag(by callback).
      */
@@ -982,7 +1018,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0136
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_4560
      * @tc.name: getBundleInfoForSelfParamErrPro
      * @tc.desc: Test getBundleInfoForSelf with error param(by promise).
      */
@@ -1015,7 +1051,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0137
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_4580
      * @tc.name: getBundleInfoForSelfParamErrCal
      * @tc.desc: Test getBundleInfoForSelf with error param(by callback).
      */
@@ -1045,7 +1081,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0001
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_6980
      * @tc.name: getBundleInfoForSelfSyncParamNull
      * @tc.desc: Test getBundleInfoForSelfSync with null.
      */
@@ -1062,7 +1098,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0002
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7000
      * @tc.name: getBundleInfoForSelfSyncParamUndefined
      * @tc.desc: Test getBundleInfoForSelfSync with undefined.
      */
@@ -1079,7 +1115,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0003
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7020
      * @tc.name: getBundleInfoForSelfSyncDefault
      * @tc.desc: Test getBundleInfoForSelfSync with default flag
      */
@@ -1103,7 +1139,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0004
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7040
      * @tc.name: getBundleInfoForSelfSyncAppInfo
      * @tc.desc: Test getBundleInfoForSelfSync with appInfo flag.
      */
@@ -1149,7 +1185,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0005
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7060
      * @tc.name: getBundleInfoForSelfSyncHapModuleInfo
      * @tc.desc: Test getBundleInfoForSelfSync with hapModuleInfo flag.
      */
@@ -1182,7 +1218,42 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0006
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7061
+     * @tc.name: getBundleInfoForSelfSyncFileContextMenu
+     * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenu flag.
+     */
+    it('getBundleInfoForSelfSyncFileContextMenu', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE|bundle.BundleFlag.GET_BUNDLE_INFO_WITH_MENU);
+      console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
+      checkCommonBundleInfo(data);
+      console.info("data.hapModulesInfo[0].fileContextMenu" + JSON.stringify(data.hapModulesInfo[0].fileContextMenu));
+      //      expect(bundle.ApplicationReservedFlag.ENCRYPTED_APPLICATION).assertEqual(1);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(1);
+      expect(data.hapModulesInfo[0].name).assertEqual("testModule");
+      expect(data.hapModulesInfo[0].icon).assertEqual("$media:icon");
+      expect(data.hapModulesInfo[0].iconId).assertLarger(0);
+      expect(data.hapModulesInfo[0].label).assertEqual("$string:entry_label");
+      expect(data.hapModulesInfo[0].labelId).assertLarger(0);
+      expect(data.hapModulesInfo[0].description).assertEqual("$string:testModule_entry_dsc");
+      expect(data.hapModulesInfo[0].descriptionId).assertLarger(0);
+      expect(data.hapModulesInfo[0].mainElementName).assertEqual(ABILITY_NAME);
+      expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
+      expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
+      expect(data.hapModulesInfo[0].installationFree).assertFalse();
+      expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+      expect(data.hapModulesInfo[0].fileContextMenu).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      done();
+    })
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7080
      * @tc.name: getBundleInfoForSelfSyncAbilitiesInfo
      * @tc.desc: Test getBundleInfoForSelfSync with abilitiesInfo flag.
      */
@@ -1207,13 +1278,9 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
       expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(1);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("");
       expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
       console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
       console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
@@ -1284,7 +1351,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0007
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7100
      * @tc.name: getBundleInfoForSelfSyncExtensionAbilitiesInfo
      * @tc.desc: Test getBundleInfoForSelfSync with extensionAbilitiesInfo flag.
      */
@@ -1296,12 +1363,12 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-      expect(extensionList.length).assertEqual(18);
+      expect(extensionList.length).assertEqual(19);
       let count = 0;
-      for (let i = 0;i < 18; i++) {
+      for (let i = 0;i < 19; i++) {
         switch (extensionList[i].name) {
           case "Form":
-            console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
+            console.info("Form" + JSON.stringify(extensionList[i]));
             expect(extensionList[i].bundleName).assertEqual(BUNDLE_NAME);
             expect(extensionList[i].moduleName).assertEqual("testModule");
             expect(extensionList[i].name).assertEqual("Form");
@@ -1310,6 +1377,7 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].iconId).assertLarger(0);
             expect(extensionList[i].exported).assertTrue();
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM);
+            expect(extensionList[i].extensionAbilityTypeName).assertEqual("form");
             expect(extensionList[i].permissions.length).assertEqual(0);
             expect(extensionList[i].applicationInfo).assertEqual(null);
             expect(extensionList[i].metadata.length).assertEqual(0);
@@ -1411,10 +1479,15 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
             count = count + 19;
             break;
+          case 'adsService':
+            console.info("adsService" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ADS_SERVICE)
+            count = count + 20;
+            break;
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(155);
+      expect(count).assertEqual(175);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1423,7 +1496,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0008
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7120
      * @tc.name: getBundleInfoForSelfSyncReqPermissionDetails
      * @tc.desc: Test getBundleInfoForSelfSync with reqPermissionDetails flag.
      */
@@ -1434,7 +1507,7 @@ export default function getBundleInfoForSelf() {
       checkCommonBundleInfo(data);
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(0);
-      expect(data.reqPermissionDetails.length).assertEqual(2);
+      expect(data.reqPermissionDetails.length).assertEqual(3);
       expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
       expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
       expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
@@ -1456,7 +1529,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0009
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7140
      * @tc.name: getBundleInfoForSelfSyncMetadata
      * @tc.desc: Test getBundleInfoForSelfSync with metadata flag.
      */
@@ -1479,7 +1552,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0010
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7160
      * @tc.name: getBundleInfoForSelfSyncDisable
      * @tc.desc: Test getBundleInfoForSelfSync with disable flag.
      */
@@ -1496,7 +1569,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0011
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7180
      * @tc.name: getBundleInfoForSelfSyncSignatureInfo
      * @tc.desc: Test getBundleInfoForSelfSync with signatureInfo flag.
      */
@@ -1510,6 +1583,7 @@ export default function getBundleInfoForSelf() {
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo.appId).assertEqual(APPID);
       expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+      expect(data.signatureInfo.appIdentifier).assertEqual("");
       done();
     })
 
@@ -1587,11 +1661,7 @@ export default function getBundleInfoForSelf() {
       expect(data.iconId).assertLarger(0);
       expect(data.process).assertEqual("");
       expect(data.exported).assertTrue();
-      expect(data.type).assertEqual(1);
       expect(data.permissions.length).assertEqual(0);
-      expect(data.readPermission).assertEqual("");
-      expect(data.writePermission).assertEqual("");
-      expect(data.uri).assertEqual("");
       expect(data.deviceTypes.length).assertEqual(2);
       console.info("checkComm" + JSON.stringify(data.deviceTypes[0]));
       console.info("checkComm" + JSON.stringify(data.deviceTypes[1]));

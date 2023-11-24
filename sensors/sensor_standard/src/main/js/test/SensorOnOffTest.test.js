@@ -59,4 +59,38 @@ describe('SystemParameterTest', function () {
         }
         console.info('testRegisterSensortest001 end');
     })
+	
+   /**
+   * @tc.number SUB_SENSORS_Sensor_JSTest_0020
+   * @tc.name   testRegisterSensortest002
+   * @tc.desc   test precision
+   */
+    it('testRegisterSensortest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testRegisterSensortest002 start');
+        function onSensorCallback(data) {
+          if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_HIGH) {
+            console.info('accuracy verified' + JSON.stringify(data));
+           if (data.accuracy = sensor.SensorAccuracy.ACCURACY_LOW || data.accuracy <=
+            sensor.SensorAccuracy.ACCURACY_MEDIUM) {
+				console.info('Precision in the middle two terms:' + JSON.stringify(data));
+			}		
+            expect(true).assertTrue();
+          } else {
+            console.info('invalid accuracy encountered' + JSON.stringify(data));
+            expect(false).assertTrue();
+          }
+        console.info("callback2" + JSON.stringify(data));
+        expect(typeof (data.x)).assertEqual("number");
+        expect(typeof (data.y)).assertEqual("number");
+        expect(typeof (data.z)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
+        }
+        sensor.on(sensor.SensorId.ACCELEROMETER, onSensorCallback);
+        setTimeout(()=>{
+             sensor.off(sensor.SensorId.ACCELEROMETER);
+             done();
+        }, 500);
+        console.info('testRegisterSensortest002 end');
+    })
 })}

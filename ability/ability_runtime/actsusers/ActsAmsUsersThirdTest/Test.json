@@ -12,6 +12,14 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
                 "acm create -n user101 -t normal",
                 "acm switch -i 101"
             ],

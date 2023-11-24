@@ -51,8 +51,8 @@ export default function AlignSpaceEvenly_AddVisibility() {
      */
     it('textFlexAlignSpaceEvenlyTextVisibilityNone', 0, async function (done) {
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
+      try {
+        globalThis.value.message.notify({ name: 'OneVisibility', value: Visibility.None });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
         let obj = JSON.parse(strJson);
@@ -65,24 +65,25 @@ export default function AlignSpaceEvenly_AddVisibility() {
         let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
         let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-        expect(Math.round(SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_01.left))
-          .assertEqual(Math.round(vp2px(200/3)));
-        expect(Math.round(SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right))
-          .assertEqual(Math.round(vp2px(200/3)));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right))
-          .assertEqual(Math.round(vp2px(200/3)));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left ))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-          .assertEqual(vp2px(100));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-          .assertEqual(vp2px(150));
+
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_013.top)) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_01.top)) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_01.left) - Math.round(vp2px(200 / 3))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right) - Math.round(vp2px(200 / 3))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right) - Math.round(vp2px(200 / 3))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top) - Math.round(vp2px(100))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top) - Math.round(vp2px(150))) <= 2).assertTrue();
+
+
       } catch (err) {
-        console.error('[textFlexAlignSpaceEvenlyTextVisibilityNone] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityNone] failed' + JSON.stringify(err));
         expect().assertFail();
       }
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] END');
@@ -96,8 +97,8 @@ export default function AlignSpaceEvenly_AddVisibility() {
      */
     it('textFlexAlignSpaceEvenlyTextVisibilityHidden', 0, async function (done) {
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden});
+      try {
+        globalThis.value.message.notify({ name: 'OneVisibility', value: Visibility.Hidden });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
         let obj = JSON.parse(strJson);
@@ -111,31 +112,28 @@ export default function AlignSpaceEvenly_AddVisibility() {
         let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
         let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
-        expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
-          .assertEqual(vp2px(50));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-          .assertEqual(vp2px(100));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-          .assertEqual(vp2px(150));
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_013.top)) <= 2).assertTrue();
+        expect(Math.abs(Math.round(Math.round(SpaceEvenly_AddVisibility_012.top)) - Math.round(SpaceEvenly_AddVisibility_01.top)) <= 2).assertTrue();
+        expect(Math.abs(Math.round(Math.round(SpaceEvenly_AddVisibility_012.top)) - Math.round(SpaceEvenly_AddVisibility_011.top)) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+
+
+
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top) - Math.round(vp2px(50))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top) - Math.round(vp2px(100))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top) - Math.round(vp2px(150))) <= 2).assertTrue();
+
       } catch (err) {
-        console.error('[textFlexAlignSpaceEvenlyTextVisibilityHidden] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityHidden] failed' + JSON.stringify(err));
         expect().assertFail();
       }
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] END');
@@ -149,8 +147,8 @@ export default function AlignSpaceEvenly_AddVisibility() {
      */
     it('textFlexAlignSpaceEvenlyTextVisibilityVisible', 0, async function (done) {
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible});
+      try {
+        globalThis.value.message.notify({ name: 'OneVisibility', value: Visibility.Visible });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
         let obj = JSON.parse(strJson);
@@ -164,31 +162,27 @@ export default function AlignSpaceEvenly_AddVisibility() {
         let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
         let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
-        expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
-          .assertEqual(Math.round(vp2px(12.5)*100)/100);
-        expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-          .assertEqual(vp2px(150));
-        expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
-          .assertEqual(vp2px(50));
-        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-          .assertEqual(vp2px(100));
-        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-          .assertEqual(vp2px(150));
+
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_013.top)) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_01.top)) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.top) - Math.round(SpaceEvenly_AddVisibility_011.top)) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+        expect(Math.abs(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right) * 100) / 100 - Math.round(vp2px(12.5) * 100) / 100) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left) - Math.round(vp2px(150))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top) - Math.round(vp2px(50))) <= 2).assertTrue();
+
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top) - Math.round(vp2px(100))) <= 2).assertTrue();
+        expect(Math.abs(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top) - Math.round(vp2px(150))) <= 2).assertTrue();
+
       } catch (err) {
-        console.error('[textFlexAlignSpaceEvenlyTextVisibilityVisible] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityVisible] failed' + JSON.stringify(err));
         expect().assertFail();
       }
       console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] END');

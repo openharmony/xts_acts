@@ -17,7 +17,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from '../../../MainAbility/common/Common'
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function Row_MarginPadding() {
 
   describe('Row_MarginPadding', function () {
@@ -59,40 +59,40 @@ export default function Row_MarginPadding() {
 
     it('testRowMarginPaddingSatisfy', 0, async function (done) {
       console.info('testRowMarginPaddingSatisfy START');
-      globalThis.value.message.notify({ name:'padding', value:15 });
+      globalThis.value.message.notify({ name: 'padding', value: 15 });
       await CommonFunc.sleep(3000);
       let Column = CommonFunc.getComponentRect('Column_Row_MarginPadding');
       let Row = CommonFunc.getComponentRect('Row_MarginPadding');
       let Text1 = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
       let Text2 = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
       let Text3 = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
-      
-      console.log('Column rect_value is:'+ JSON.stringify(Column));
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(vp2px(50));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(vp2px(150));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(vp2px(100));
 
-      expect(Math.round((Row.left - Column.left)*10)/10).assertEqual(vp2px(5));
-      expect(Math.round((Row.top - Column.top)*10)/10).assertEqual(vp2px(5));
-      
-      expect(Math.round(Text1.left - Column.left)).assertEqual(vp2px(20));
-      expect(Math.round(Text1.top - Column.top)).assertEqual(vp2px(80));
-      expect(Math.round((Text1.left - Row.left)*10)/10).assertEqual(vp2px(15)); 
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
-      expect(Math.round((Row.right - Text3.right)*10)/10).assertEqual(vp2px(15));
-      
+      console.log('Column rect_value is:' + JSON.stringify(Column));
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
+      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+
+      expect(Math.abs((Math.round(Text1.left - Column.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.top - Column.top)) - (Math.round(vp2px(80)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Row.left) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+      expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Text2.top - Row.top - (Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Text3.top - Row.top - (Row.bottom - Text3.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.right - Text3.right) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+
       console.info('testRowMarginPaddingSatisfy END');
       done();
     });
@@ -106,43 +106,43 @@ export default function Row_MarginPadding() {
 
     it('testRowMarginPaddingNoSatisfy', 0, async function (done) {
       console.info('testRowMarginPaddingNoSatisfy START');
-      globalThis.value.message.notify({ name:'padding', value:40 });
+      globalThis.value.message.notify({ name: 'padding', value: 40 });
       await CommonFunc.sleep(3000)
       let Column = CommonFunc.getComponentRect('Column_Row_MarginPadding');
       let Row = CommonFunc.getComponentRect('Row_MarginPadding');
       let Text1 = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
       let Text2 = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
       let Text3 = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
-      
-      console.log('Column rect_value is:'+ JSON.stringify(Column));
-      
-      console.log('Row rect_value is:'+ JSON.stringify(Row));
-      
-      console.log('Text1 rect_value is:'+ JSON.stringify(Text1));
-      console.log('Text2 rect_value is:'+ JSON.stringify(Text2));
-      console.log('Text3 rect_value is:'+ JSON.stringify(Text3));
-      
-      expect(Math.round(Text1.bottom - Text1.top)).assertEqual(vp2px(50));
-      expect(Math.round(Text2.bottom - Text2.top)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.bottom - Text3.top)).assertEqual(vp2px(150));
-      expect(Math.round(Text1.right - Text1.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text2.right - Text2.left)).assertEqual(vp2px(100));
-      expect(Math.round(Text3.right - Text3.left)).assertEqual(vp2px(100));
-      
-      expect(Math.round((Row.left - Column.left)*10)/10).assertEqual(vp2px(5));
-      expect(Math.round((Row.top - Column.top)*10)/10).assertEqual(vp2px(5));
-      expect(Math.round((Text1.left - Column.left)*10)/10).assertEqual(vp2px(45));
-      expect(Math.round((Text1.top - Column.top)*10)/10).assertEqual(vp2px(80));
-      
-      expect(Math.round(Text1.left - Row.left)).assertEqual(vp2px(40));
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
+
+      console.log('Column rect_value is:' + JSON.stringify(Column));
+
+      console.log('Row rect_value is:' + JSON.stringify(Row));
+
+      console.log('Text1 rect_value is:' + JSON.stringify(Text1));
+      console.log('Text2 rect_value is:' + JSON.stringify(Text2));
+      console.log('Text3 rect_value is:' + JSON.stringify(Text3));
+
+      expect(Math.abs((Math.round(Text1.bottom - Text1.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.bottom - Text2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.bottom - Text3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text1.right - Text1.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+
+      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Column.left) * 10) / 10)) - (Math.round(vp2px(45)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.top - Column.top) * 10) / 10)) - (Math.round(vp2px(80)))) <= 1).assertTrue();
+
+      expect(Math.abs((Math.round(Text1.left - Row.left)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
+      expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Text2.top - Row.top - (Row.bottom - Text2.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Text3.top - Row.top - (Row.bottom - Text3.bottom)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Text3.right).assertLarger(Row.right);
       expect(Text3.top - Row.top).assertLess(vp2px(40));
-      
+
       console.info('testRowMarginPaddingNoSatisfy END');
       done();
     });

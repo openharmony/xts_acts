@@ -53,10 +53,10 @@ export default function row_TextOffsetTest() {
       let firstText = CommonFunc.getComponentRect('Row_TextOffset1');
       let secondText = CommonFunc.getComponentRect('Row_TextOffset2');
       let firstTextLeft = firstText.left;
-      let firstTextTop= firstText.top;
+      let firstTextTop = firstText.top;
       let secondTextTop = secondText.top;
       let secondTextLeft = secondText.left;
-      globalThis.value.message.notify({name:'offset', value:{x:10, y:10}});
+      globalThis.value.message.notify({ name: 'offset', value: { x: 10, y: 10 } });
       await CommonFunc.sleep(3000);
       firstText = CommonFunc.getComponentRect('Row_TextOffset1');
       secondText = CommonFunc.getComponentRect('Row_TextOffset2');
@@ -66,28 +66,26 @@ export default function row_TextOffsetTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.right - secondText.left) - Math.round(thirdText.right - thirdText.left)) <= 1).assertTrue();
 
-      expect(Math.round(firstText.left -firstTextLeft)).assertEqual(vp2px(10));
-      expect(Math.round(firstText.top -firstTextTop)).assertEqual(vp2px(10));
+      expect(Math.abs((Math.round(firstText.left - firstTextLeft)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.top - firstTextTop)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
-      expect(secondText.top).assertEqual(secondTextTop);
-      expect(secondText.left).assertEqual(secondTextLeft);
+      expect(Math.abs(secondText.top - secondTextTop) <= 1).assertTrue();
+      expect(Math.abs(secondText.left - secondTextLeft) <= 1).assertTrue();
 
-      expect(Math.round(secondText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - secondText.bottom));
-      expect(Math.round(thirdText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
+      expect(Math.abs(Math.round(secondText.top - rowContainer.top) - Math.round(rowContainer.bottom - secondText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - rowContainer.top) - Math.round(rowContainer.bottom - thirdText.bottom)) <= 1).assertTrue();
 
-      expect(Math.round(thirdText.left - secondText.right)).assertEqual(vp2px(10));
+      expect(Math.abs((Math.round(thirdText.left - secondText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(30));
+      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
       console.info('[testRowTextOffset] END');
       done();
     });

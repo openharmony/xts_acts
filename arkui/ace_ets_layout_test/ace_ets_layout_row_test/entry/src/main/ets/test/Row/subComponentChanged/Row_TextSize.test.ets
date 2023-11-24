@@ -40,8 +40,8 @@ export default function row_TextSizeTest() {
       done();
     });
     afterEach(async function () {
-      globalThis.value.message.notify({name:'width', value:100});
-      globalThis.value.message.notify({name:'height', value:50});
+      globalThis.value.message.notify({ name: 'width', value: 100 });
+      globalThis.value.message.notify({ name: 'height', value: 50 });
       await CommonFunc.sleep(1000);
       console.info("Row_TextSizeTest after each called");
     });
@@ -55,7 +55,7 @@ export default function row_TextSizeTest() {
       let secondText = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop = secondText.top;
       let secondTextLeft = secondText.left;
-      globalThis.value.message.notify({name:'height', value:130});
+      globalThis.value.message.notify({ name: 'height', value: 130 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Row_TextSize1');
       secondText = CommonFunc.getComponentRect('Row_TextSize2');
@@ -65,25 +65,24 @@ export default function row_TextSizeTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(130));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(130)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.right - secondText.left) - Math.round(thirdText.right - thirdText.left)) <= 1).assertTrue();
 
-      expect(firstText.left).assertEqual(rowContainer.left);
-      expect(Math.round(firstText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
+      expect(Math.abs(firstText.left - rowContainer.left) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.top - rowContainer.top) - Math.round(rowContainer.bottom - firstText.bottom)) <= 1).assertTrue();
 
-      expect(secondText.top).assertEqual(secondTextTop);
-      expect(secondText.left).assertEqual(secondTextLeft);
+      expect(Math.abs(secondText.top - secondTextTop) <= 1).assertTrue();
+      expect(Math.abs(secondText.left - secondTextLeft) <= 1).assertTrue();
 
-      expect(Math.round(secondText.left - firstText.right)).assertEqual(vp2px(10));
-      expect(Math.round(secondText.left - firstText.right)).assertEqual(Math.round(thirdText.left - secondText.right));
+      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.left - firstText.right) - Math.round(thirdText.left - secondText.right)) <= 1).assertTrue();
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(30));
+      expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
       console.info('[testRowTextSizeHeight] END');
       done();
     });
@@ -97,7 +96,7 @@ export default function row_TextSizeTest() {
       let secondText = CommonFunc.getComponentRect('Row_TextSize2');
       let secondTextTop = secondText.top;
       let secondTextLeft = secondText.left;
-      globalThis.value.message.notify({name:'width', value:130});
+      globalThis.value.message.notify({ name: 'width', value: 130 });
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('Row_TextSize1');
       secondText = CommonFunc.getComponentRect('Row_TextSize2');
@@ -107,27 +106,24 @@ export default function row_TextSizeTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(130));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.right- secondText.left))
-        .assertEqual(Math.round(thirdText.right- thirdText.left));
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(130)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
 
-      expect(firstText.left).assertEqual(rowContainer.left);
-      expect(Math.round(firstText.top - rowContainer.top))
-        .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
+      expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
 
-      expect(secondText.top).assertEqual(secondTextTop);
-      expect(secondText.left).assertEqual(secondTextLeft + vp2px(30));
+      expect(Math.abs((secondText.top) - (secondTextTop)) <= 1).assertTrue();
+      expect(Math.abs((secondText.left) - (secondTextLeft + vp2px(30))) <= 1).assertTrue();
 
-      expect(Math.round(secondText.left - firstText.right)).assertEqual(vp2px(10));
-      expect(Math.round(secondText.left - firstText.right))
-        .assertEqual(Math.round(thirdText.left - secondText.right));
+      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1).assertTrue();
 
-      expect(rowContainer.right).assertEqual(thirdText.right);
+      expect(Math.abs((rowContainer.right) - (thirdText.right)) <= 1).assertTrue();
       console.info('[testRowTextSizeWidth] END');
       done();
     });

@@ -46,11 +46,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0100
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_8500
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data when update.
     */
-    it('bms_getMetaData_0100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_8500', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 "bundleName": BUNDLE_NAME1,
@@ -77,11 +77,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0200
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_8520
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data which contains two HAP packages.
     */
-    it('bms_getMetaData_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_8520', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 "bundleName": BUNDLE_NAME6,
@@ -108,11 +108,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0400
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0080
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data which has two ability.
     */
-    it('bms_getMetaData_0400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0080', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME2,
@@ -139,11 +139,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0500
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0100
     * @tc.name: test to get meta data for an application that does not exist.
     * @tc.desc: get an ability's meta data which does not exist.
     */
-    it('bms_getMetaData_0500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0100', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME3,
@@ -165,11 +165,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0600
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0120
     * @tc.name: test to get meta data for a system application.
     * @tc.desc: get a system ability's meta data.
     */
-    it('bms_getMetaData_0600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0120', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME4,
@@ -196,11 +196,11 @@ describe('ActsBmsMetaDataTest', function () {
     });
 
     /*
-    * @tc.number: bms_getMetaData_0700
+    * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_0140
     * @tc.name: test to get meta data for a vendor application.
     * @tc.desc: get a vendor ability's meta data.
     */
-    it('bms_getMetaData_0700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0140', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME5,

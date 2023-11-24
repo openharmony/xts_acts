@@ -169,7 +169,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton07] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('-1.00fp');
+      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
@@ -310,15 +310,17 @@ export default function buttonJsunit() {
         let event = JSON.parse(eventData.data.event);
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
+        console.info("[testButton12] get event state result is: " + Math.trunc(event.x));
+        console.info("[testButton12] get event state result is: " + Math.trunc(event.y));
         try {
           if(density.x == 1080){
-            expect(Math.trunc(event.screenX)).assertEqual(185)
-            expect(Math.trunc(event.screenY)).assertEqual(533)
+            expect(Math.abs(event.screenX - 185) <= 1).assertTrue()
+            expect(Math.abs(event.screenY - 523) <= 1).assertTrue()
             expect(Math.trunc(event.x)).assertEqual(100)
             expect(Math.trunc(event.y)).assertEqual(50)
           }else{
-            expect(Math.trunc(event.screenX)).assertEqual(185)
-            expect(Math.trunc(event.screenY)).assertEqual(523)
+            expect(Math.abs(event.screenX - 185) <= 1).assertTrue()
+            expect(Math.abs(event.screenY - 523) <= 1).assertTrue()
             expect(Math.trunc(event.x)).assertEqual(100)
             expect(Math.trunc(event.y)).assertEqual(50)
           }

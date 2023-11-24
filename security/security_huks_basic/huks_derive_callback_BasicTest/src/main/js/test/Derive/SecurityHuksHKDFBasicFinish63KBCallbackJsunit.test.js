@@ -34,7 +34,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksHKDFBasicFinish63KBCallbackJsunit() {
 describe('SecurityHuksHKDFBasicFinish63KBCallbackJsunit', function () {
-  it('testDeriveHKDF001', 0, async function (done) {
+  it('Security_HUKS_Derive_API8_HKDF_001', 0, async function (done) {
     const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA256Finish63KBDeriveKeyAlias_01_001';
     let huksOptionsFinish = {
       properties: new Array(

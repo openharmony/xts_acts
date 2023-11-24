@@ -122,7 +122,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0100
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0001', 0, async function (done) {
@@ -151,7 +151,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0011
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0200
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0002', 0, async function (done) {
@@ -181,7 +181,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0012
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0300
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0003', 0, async function (done) {
@@ -209,7 +209,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isStarted normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0400
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0001', 0, async function (done) {
@@ -228,7 +228,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isStarted normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0021
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0500
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0002', 0, async function (done) {
@@ -248,7 +248,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isStarted normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0022
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0600
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0003', 0, async function (done) {
@@ -271,7 +271,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isStarted with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0023
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0700
      * @tc.desc resultSet isStarted with no result test
      */
     it('testIsStarted0004', 0, async function (done) {
@@ -293,7 +293,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isEnded normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0800
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0001', 0, async function (done) {
@@ -313,7 +313,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isEnded normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0031
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_0900
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0002', 0, async function (done) {
@@ -333,7 +333,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isEnded normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0032
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1000
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0003', 0, async function (done) {
@@ -353,7 +353,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isEnded normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0033
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1100
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0004', 0, async function (done) {
@@ -374,7 +374,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowCount normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1200
      * @tc.desc resultSet rowCount normal test
      */
     it('testRowCount0001', 0, async function (done) {
@@ -393,7 +393,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowCount with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0041
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1300
      * @tc.desc resultSet rowCount with no result test
      */
     it('testRowCount0002', 0, async function (done) {
@@ -413,7 +413,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowCount test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0042
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1400
      * @tc.desc resultSet rowCount test
      */
     it('testRowCount0003', 0, async function (done) {
@@ -433,7 +433,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowCount test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0043
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1500
      * @tc.desc resultSet rowCount test
      */
     it('testRowCount0004', 0, async function (done) {
@@ -454,7 +454,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getLong test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1600
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0001', 0, async function (done) {
@@ -481,7 +481,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getLong test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0051
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1700
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0002', 0, async function (done) {
@@ -507,7 +507,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getLong test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0052
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1800
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0003', 0, async function (done) {
@@ -533,7 +533,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getString test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_1900
      * @tc.desc resultSet getString test
      */
     it('testGetString0001', 0, async function (done) {
@@ -552,7 +552,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getString test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0061
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2000
      * @tc.desc resultSet getString test
      */
     it('testGetString0002', 0, async function (done) {
@@ -571,7 +571,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getString test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0062
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2100
      * @tc.desc resultSet getString test
      */
     it('testGetString0003', 0, async function (done) {
@@ -591,7 +591,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getString test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0063
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2200
      * @tc.desc resultSet getString test
      */
     it('testGetString0004', 0, async function (done) {
@@ -616,7 +616,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isClosed test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0070
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2300
      * @tc.desc resultSet isClosed test
      */
     it('testIsClosed0001', 0, async function (done) {
@@ -635,7 +635,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isClosed with not close test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0071
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2400
      * @tc.desc resultSet isClosed with not close test
      */
     it('testIsClosed0002', 0, async function (done) {
@@ -651,7 +651,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isClosed with not close test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0072
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2500
      * @tc.desc resultSet isClosed with not close test
      */
     it('testIsClosed0003', 0, async function (done) {
@@ -668,7 +668,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet columnCount test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0080
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2600
      * @tc.desc resultSet columnCount test
      */
     it('testColumnCount0001', 0, async function (done) {
@@ -685,7 +685,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet columnCount test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0081
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2700
      * @tc.desc resultSet columnCount test
      */
     it('testColumnCount0002', 0, async function (done) {
@@ -703,7 +703,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowIndex test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0090
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2800
      * @tc.desc resultSet rowIndex test
      */
     it('testRowIndex0001', 0, async function (done) {
@@ -724,7 +724,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet rowIndex at last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0091
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_2900
      * @tc.desc resultSet rowIndex at last row test
      */
     it('testRowIndex0002', 0, async function (done) {
@@ -745,7 +745,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToFirstRow normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3000
      * @tc.desc resultSet goToFirstRow normal test
      */
     it('testGoToFirstRow0001', 0, async function (done) {
@@ -766,7 +766,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToFirstRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0101
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3100
      * @tc.desc resultSet goToFirstRow with no result test
      */
     it('testGoToFirstRow0002', 0, async function (done) {
@@ -787,7 +787,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToFirstRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0102
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3200
      * @tc.desc resultSet goToFirstRow test
      */
     it('testGoToFirstRow0003', 0, async function (done) {
@@ -809,7 +809,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToLastRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0110
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3300
      * @tc.desc resultSet goToFirstRow test
      */
     it('testGoToLastRow0001', 0, async function (done) {
@@ -828,7 +828,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToLastRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0111
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3400
      * @tc.desc resultSet goToLastRow with no result test
      */
     it('testGoToLastRow0002', 0, async function (done) {
@@ -848,7 +848,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToLastRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0112
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3500
      * @tc.desc resultSet goToLastRow test
      */
     it('testGoToLastRow0003', 0, async function (done) {
@@ -869,7 +869,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToNextRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0120
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3600
      * @tc.desc resultSet goToNextRow test
      */
     it('testGoToNextRow0001', 0, async function (done) {
@@ -888,7 +888,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToNextRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0121
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3700
      * @tc.desc resultSet goToNextRow with no result test
      */
     it('testGoToNextRow0002', 0, async function (done) {
@@ -908,7 +908,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToNextRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0122
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3800
      * @tc.desc resultSet goToNextRow test
      */
     it('testGoToNextRow0003', 0, async function (done) {
@@ -930,7 +930,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToNextRow after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0123
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_3900
      * @tc.desc resultSet goToNextRow after last row test
      */
     it('testGoToNextRow0004', 0, async function (done) {
@@ -950,7 +950,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToPreviousRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0130
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4000
      * @tc.desc resultSet goToPreviousRow test
      */
     it('testGoToPreviousRow0001', 0, async function (done) {
@@ -969,7 +969,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToPreviousRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0131
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4100
      * @tc.desc resultSet goToPreviousRow with no result test
      */
     it('testGoToPreviousRow0002', 0, async function (done) {
@@ -989,7 +989,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToPreviousRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0132
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4200
      * @tc.desc resultSet goToPreviousRow test
      */
     it('testGoToPreviousRow0003', 0, async function (done) {
@@ -1010,7 +1010,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToPreviousRow after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0133
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4300
      * @tc.desc resultSet goToPreviousRow after last row test
      */
     it('testGoToPreviousRow0004', 0, async function (done) {
@@ -1030,7 +1030,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goTo test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0140
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4400
      * @tc.desc resultSet goTo test
      */
     it('testGoTo0001', 0, async function (done) {
@@ -1051,7 +1051,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goTo with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0141
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4500
      * @tc.desc resultSet goTo with no result test
      */
     it('testGoTo0002', 0, async function (done) {
@@ -1072,7 +1072,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goTo test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0142
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4600
      * @tc.desc resultSet goTo test
      */
     it('testGoTo0003', 0, async function (done) {
@@ -1094,7 +1094,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goTo after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0143
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4700
      * @tc.desc resultSet goTo after last row test
      */
     it('testGoTo0004', 0, async function (done) {
@@ -1115,7 +1115,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0150
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_480
      * @tc.desc resultSet goToRow test
      */
     it('testGoToRow0001', 0, async function (done) {
@@ -1136,7 +1136,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0151
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_4900
      * @tc.desc resultSet goToRow with no result test
      */
     it('testGoToRow0002', 0, async function (done) {
@@ -1157,7 +1157,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0152
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5000
      * @tc.desc resultSet goToRow test
      */
     it('testGoToRow0003', 0, async function (done) {
@@ -1180,7 +1180,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet goToRow after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0153
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5100
      * @tc.desc resultSet goToRow after last row test
      */
     it('testGoToRow0004', 0, async function (done) {
@@ -1201,7 +1201,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0160
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5200
      * @tc.desc resultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0001', 0, async function (done) {
@@ -1221,7 +1221,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0161
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5300
      * @tc.desc resultSet isAtFirstRow with no result test
      */
     it('testIsAtFirstRow0002', 0, async function (done) {
@@ -1241,7 +1241,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0162
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5400
      * @tc.desc resultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0003', 0, async function (done) {
@@ -1262,7 +1262,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0163
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5500
      * @tc.desc resultSet isAtFirstRow after last row test
      */
     it('testIsAtFirstRow0004', 0, async function (done) {
@@ -1282,7 +1282,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0165
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5600
      * @tc.descresultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0005', 0, async function (done) {
@@ -1303,7 +1303,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtFirstRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0166
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5700
      * @tc.descresultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0006', 0, async function (done) {
@@ -1324,7 +1324,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtLastRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0170
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5800
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0001', 0, async function (done) {
@@ -1344,7 +1344,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtLastRow with no result test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0171
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_5900
      * @tc.desc resultSet isAtLastRow with no result test
      */
     it('testIsAtLastRow0002', 0, async function (done) {
@@ -1364,7 +1364,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtLastRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0172
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6000
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0003', 0, async function (done) {
@@ -1385,7 +1385,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtLastRow after last row test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0173
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6100
      * @tc.desc resultSet isAtLastRow after last row test
      */
     it('testIsAtLastRow0004', 0, async function (done) {
@@ -1405,7 +1405,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isAtLastRow test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0174
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6200
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0005', 0, async function (done) {
@@ -1426,7 +1426,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getDouble test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0180
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6300
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0001', 0, async function (done) {
@@ -1447,7 +1447,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getDouble test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0181
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6400
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0002', 0, async function (done) {
@@ -1468,7 +1468,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getDouble test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0182
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6500
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0003', 0, async function (done) {
@@ -1489,7 +1489,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getDouble test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0183
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6600
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0004', 0, async function (done) {
@@ -1510,7 +1510,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isColumnNull test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0190
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6700
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0001', 0, async function (done) {
@@ -1533,7 +1533,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isColumnNull test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0191
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6800
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0002', 0, async function (done) {
@@ -1556,7 +1556,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet isColumnNull test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0192
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_6900
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0003', 0, async function (done) {
@@ -1577,7 +1577,7 @@ describe('relationalStoreResultSetTest', function () {
     })
     /**
      * @tc.name resultSet isColumnNull test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0193
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7000
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0004', 0, async function (done) {
@@ -1597,7 +1597,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnIndex test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7100
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0001', 0, async function (done) {
@@ -1616,7 +1616,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnIndex test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0201
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7200
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0002', 0, async function (done) {
@@ -1635,7 +1635,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnIndex test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0202
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7300
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0003', 0, async function (done) {
@@ -1653,7 +1653,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnIndex test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0203
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7400
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0004', 0, async function (done) {
@@ -1676,7 +1676,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnName test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0210
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7500
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0001', 0, async function (done) {
@@ -1696,7 +1696,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnName test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0211
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7600
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0002', 0, async function (done) {
@@ -1717,7 +1717,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnName test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0212
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7700
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0003', 0, async function (done) {
@@ -1736,7 +1736,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getColumnName test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0213
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7800
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0004', 0, async function (done) {
@@ -1756,7 +1756,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet close test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0220
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_7900
      * @tc.desc resultSet close test
      */
     it('testClose0001', 0, async function (done) {
@@ -1776,7 +1776,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet close test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0221
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8000
      * @tc.desc resultSet close test
      */
     it('testClose0002', 0, async function (done) {
@@ -1796,7 +1796,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet columnNames test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0240
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8100
      * @tc.desc resultSet columnNames test
      */
      it('testcolumnNames0001', 0, async function (done) {
@@ -1817,7 +1817,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name big resultSet data test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_ResultSet_0250
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsAPITest_8200
      * @tc.desc big resultSet data test
      */
      it('testBigData0001', 0, async function (done) {

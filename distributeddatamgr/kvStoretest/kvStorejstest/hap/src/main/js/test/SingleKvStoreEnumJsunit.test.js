@@ -19,7 +19,7 @@ export default function singleKvStoreEnumTest(){
 describe('singleKvStoreEnumTest', function () {
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_USERTYPE_SAMEUSERID_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2300
      * @tc.name [JS-API8]Usertype.SAME_USER_ID
      * @tc.desc Test Js Enum Value Usertype.SAME_USER_ID
      */
@@ -30,7 +30,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXKEYLENGTH_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0300
      * @tc.name [JS-API8]Constants.MAX_KEY_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH
      */
@@ -41,7 +41,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXVALUELENGTH_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0600
      * @tc.name [JS-API8]Constants.MAX_VALUE_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_VALUE_LENGTH
      */
@@ -53,7 +53,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXVALUELENGTH_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0700
      * @tc.name [JS-API8]Constants.MAX_VALUE_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_VALUE_LENGTH
      */
@@ -67,7 +67,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXKEYLENGTHDEVICE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0200
      * @tc.name [JS-API8]Constants.MAX_KEY_LENGTH_DEVICE
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH_DEVICE
      */
@@ -78,7 +78,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXSTOREIDLENGTH_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0500
      * @tc.name [JS-API8]Constants.MAX_STORE_ID_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_STORE_ID_LENGTH
      */
@@ -89,7 +89,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXQUERYLENGTH_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0400
      * @tc.name [JS-API8]Constants.MAX_QUERY_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_QUERY_LENGTH
      */
@@ -100,7 +100,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_CONSTANTS_MAXBATCHSIZE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0100
      * @tc.name [JS-API8]Constants.MAX_BATCH_SIZE
      * @tc.desc Test Js Enum Value Constants.MAX_BATCH_SIZE
      */
@@ -111,7 +111,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_STRING_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2900
      * @tc.name [JS-API8]Valuetype.STRING
      * @tc.desc Test Js Enum Value Valuetype.STRING
      */
@@ -122,7 +122,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_INTEGER_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2800
      * @tc.name [JS-API8]Valuetype.INTEGER
      * @tc.desc Test Js Enum Value Valuetype.INTEGER
      */
@@ -133,7 +133,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_FLOAT_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2700
      * @tc.name [JS-API8]Valuetype.FLOAT
      * @tc.desc Test Js Enum Value Valuetype.FLOAT
      */
@@ -144,7 +144,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_BYTEARRAY_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2500
      * @tc.name [JS-API8]Valuetype.BYTEARRAY
      * @tc.desc Test Js Enum Value Valuetype.BYTEARRAY
      */
@@ -155,7 +155,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_BOOLEAN_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2400
      * @tc.name [JS-API8]Valuetype.BOOLEAN
      * @tc.desc Test Js Enum Value Valuetype.BOOLEAN
      */
@@ -166,7 +166,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_VALUETYPE_DOUBLE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2600
      * @tc.name [JS-API8]Valuetype.DOUBLE
      * @tc.desc Test Js Enum Value Valuetype.DOUBLE
      */
@@ -177,7 +177,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SYNCMODE_PULLONLY_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2000
      * @tc.name [JS-API8]Syncmode.PULL_ONLY
      * @tc.desc Test Js Enum Value Syncmode.PULL_ONLY
      */
@@ -188,7 +188,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SYNCMODE_PUSHONLY_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2100
      * @tc.name [JS-API8]Syncmode.PUSH_ONLY
      * @tc.desc Test Js Enum Value Syncmode.PUSH_ONLY
      */
@@ -199,7 +199,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SYNCMODE_PUSHPULL_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2200
      * @tc.name [JS-API8]Syncmode.PUSH_PULL
      * @tc.desc Test Js Enum Value Syncmode.PUSH_PULL
      */
@@ -210,7 +210,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SUBSCRIBETYPE_LOCAL_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1800
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_LOCAL
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_LOCAL
      */
@@ -221,7 +221,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SUBSCRIBETYPE_REMOTE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1900
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_REMOTE
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_REMOTE
      */
@@ -232,7 +232,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SUBSCRIBETYPE_ALL_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1700
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_ALL
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_ALL
      */
@@ -243,7 +243,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORETYPE_DEVICECOLLABORATION_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0800
      * @tc.name [JS-API8]Kvstoretype.DEVICE_COLLABORATION
      * @tc.desc Test Js Enum Value Kvstoretype.DEVICE_COLLABORATION
      */
@@ -254,7 +254,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORETYPE_SINGLEVERSION_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1000
      * @tc.name [JS-API8]Kvstoretype.SINGLE_VERSION
      * @tc.desc Test Js Enum Value Kvstoretype.SINGLE_VERSION
      */
@@ -265,7 +265,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORETYPE_MULTIVERSION_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0900
      * @tc.name [JS-API8]Kvstoretype.MULTI_VERSION
      * @tc.desc Test Js Enum Value Kvstoretype.MULTI_VERSION
      */
@@ -276,7 +276,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_NOLEVEL_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1100
      * @tc.name [JS-API8]Securitylevel.NO_LEVEL
      * @tc.desc Test Js Enum Value Securitylevel.NO_LEVEL
      */
@@ -287,7 +287,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_S0_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1200
      * @tc.name [JS-API8]Securitylevel.S0
      * @tc.desc Test Js Enum Value Securitylevel.S0
      */
@@ -298,7 +298,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_S1_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1300
      * @tc.name [JS-API8]Securitylevel.S1
      * @tc.desc Test Js Enum Value Securitylevel.S1
      */
@@ -309,7 +309,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_S2_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1400
      * @tc.name [JS-API8]Securitylevel.S2
      * @tc.desc Test Js Enum Value Securitylevel.S2
      */
@@ -320,7 +320,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_S3_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1500
      * @tc.name [JS-API8]Securitylevel.S3
      * @tc.desc Test Js Enum Value Securitylevel.S3
      */
@@ -331,7 +331,7 @@ describe('singleKvStoreEnumTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SECURITYLEVEL_S4_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1600
      * @tc.name [JS-API8]Securitylevel.S4
      * @tc.desc Test Js Enum Value Securitylevel.S4
      */

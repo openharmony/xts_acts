@@ -65,11 +65,41 @@ export default function rdbStoreQuerySqlTest() {
       await rdbStore.executeSql(USER_TABLE);
 
       const users = [
-        { userId: 1, firstName: "Zhang", lastName: "San", age: 29, balance: 100.51 },
-        { userId: 2, firstName: "Li", lastName: "Si", age: 30, balance: 200.51 },
-        { userId: 3, firstName: "wang", lastName: "wu", age: 30, balance: 300.51 },
-        { userId: 4, firstName: "sun", lastName: "liu", age: 30, balance: 400.51 },
-        { userId: 5, firstName: "ma", lastName: "qi", age: 32, balance: 500.51 },
+        {
+          userId: 1,
+          firstName: "Zhang",
+          lastName: "San",
+          age: 29,
+          balance: 100.51
+        },
+        {
+          userId: 2,
+          firstName: "Li",
+          lastName: "Si",
+          age: 30,
+          balance: 200.51
+        },
+        {
+          userId: 3,
+          firstName: "wang",
+          lastName: "wu",
+          age: 30,
+          balance: 300.51
+        },
+        {
+          userId: 4,
+          firstName: "sun",
+          lastName: "liu",
+          age: 30,
+          balance: 400.51
+        },
+        {
+          userId: 5,
+          firstName: "ma",
+          lastName: "qi",
+          age: 32,
+          balance: 500.51
+        },
       ];
 
       var objects = new Array();
@@ -90,9 +120,15 @@ export default function rdbStoreQuerySqlTest() {
       await rdbStore.executeSql(BOOK_TABLE);
 
       var books = [
-        { id: 1, name: "sanguo", userId: 1 },
-        { id: 2, name: "xiyouji", userId: 2 },
-        { id: 3, name: "shuihuchuan", userId: 3 },
+        {
+          id: 1, name: "sanguo", userId: 1
+        },
+        {
+          id: 2, name: "xiyouji", userId: 2
+        },
+        {
+          id: 3, name: "shuihuchuan", userId: 3
+        },
       ];
 
       var objects = new Array();
@@ -109,7 +145,7 @@ export default function rdbStoreQuerySqlTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0970
      * @tc.name   : testRdbStoreQuerySql001
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -142,7 +178,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1010
      * @tc.name   : testRdbStoreQuerySql002
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -175,7 +211,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0980   8
      * @tc.name   : testRdbStoreQuerySql003
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
@@ -200,7 +236,7 @@ export default function rdbStoreQuerySqlTest() {
       console.info(TAG + "testRdbStoreQuerySql003 end.");
     });
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1020
      * @tc.name   : testRdbStoreQuerySql004
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
@@ -224,5 +260,71 @@ export default function rdbStoreQuerySqlTest() {
       done();
       console.info(TAG + "testRdbStoreQuerySql004 end.");
     });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0990
+     * @tc.name   : testRdbStoreQuerySql005
+     * @tc.desc   : RdbStore querySql callback test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreQuerySql005", 0, async function (done) {
+      console.info(TAG + " testRdbStoreQuerySql005 begin.");
+      try {
+        rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'hongloumeng'", async (err, resultSet) => {
+          if (err) {
+            console.error(`testRdbStoreQuerySql005 :Query failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertFail();
+            done();
+          }
+          console.info(`testRdbStoreQuerySql005 :ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+          expect(0).assertEqual(resultSet.rowCount);
+          resultSet.close();
+          done();
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info("testRdbStoreQuerySql005 :update error " + e);
+        expect(!e).assertFail();
+        done();
+      }
+      console.info(TAG + " testRdbStoreQuerySql005 end.");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1000
+     * @tc.name   : testRdbStoreQuerySql006
+     * @tc.desc   : RdbStore querySql callback test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreQuerySql006", 0, async function (done) {
+      console.info(TAG + " testRdbStoreQuerySql006 begin.");
+      try {
+        rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'maoxuan'", async (err, resultSet) => {
+          if (err) {
+            console.error(TAG + `testRdbStoreQuerySql006 Query failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertFail();
+            done();
+          }
+          try {
+            console.info(TAG + `testRdbStoreQuerySql006 ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+            expect(0).assertEqual(resultSet.rowCount);
+            resultSet.close();
+            done();
+          } catch (e) {
+            console.info(TAG + "testRdbStoreQuerySql006 resultSet error" + e);
+            expect(!e).assertFail();
+          }
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info(TAG + "testRdbStoreQuerySql006 querySql error " + e);
+        expect(!e).assertFail();
+      }
+      console.info(TAG + " testRdbStoreQuerySql006 end.");
+    })
   });
 }

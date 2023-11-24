@@ -154,7 +154,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 mimeType: "audio/mpeg",
                 displayName: "01.mp3",
                 relativePath: "Audios/Static/",
-                size: 1958311,
+                size: 1958302,
                 mediaType: AUDIO_TYPE.toString(),
                 title: "test",
                 artist: "元数据测试",
@@ -178,8 +178,8 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         async function checkFileAssetAttr(done, testNum, fetchOps, type, count, typesArr) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, count);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, count);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 if (count > 1) {
                     type = asset.mimeType.match(/[a-z]+/g)[0];
@@ -253,7 +253,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         const getFileAssetsZero = async (done, testNum, fetchOps) => {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 0);
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 0);
                 expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();
                 done();
@@ -267,8 +267,8 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         const createAssetTest = async (done, testNum, fetchOps, type, name, path) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 const creatAsset = await media.createAsset(type, name, path);
                 const fd = await asset.open("rw");
@@ -289,8 +289,8 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         const createAssetSameNameTest = async (done, testNum, fetchOps, type, name, path) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 const creatAsset = await media.createAsset(type, name, path);
                 const fd = await asset.open("rw");

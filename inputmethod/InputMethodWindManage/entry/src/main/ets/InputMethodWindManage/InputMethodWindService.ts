@@ -26,6 +26,5 @@ export default class inputMethodWindService extends InputMethodExtensionAbility 
 
   onDestroy() {
     console.log("onDestroy inputMethodEngine**");
-    this.context.destroy();
   }
 }

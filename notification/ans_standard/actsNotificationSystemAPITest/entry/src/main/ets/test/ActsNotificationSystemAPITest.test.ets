@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import notificationSubscribe from '@ohos.notificationSubscribe';
 
 export default function ActsNotificationSystemAPITest() {
@@ -22,17 +23,17 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
     console.info(TAG + 'SUB_NOTIFICATION_ANS_SYSTEM_API_TEST START')
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0100
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4100
      * @tc.name: publish
      * @tc.desc: test function publish takes userId
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0100 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4100 START`);
 
         let notificationRequest : notificationManager.NotificationRequest = {
             id: 1,
             content: {
-                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -41,7 +42,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0100 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4100 PUBLISH`);
         try{
             notificationManager.publish(notificationRequest, 0, (err) => {
                 if (err) {
@@ -60,21 +61,21 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             done()
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0200
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4200
      * @tc.name: publishAsBundle 
      * @tc.desc: test function publishAsBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0200 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4200 START`);
 
         let notificationRequest : notificationManager.NotificationRequest = {
             id: 1,
             content: {
-                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -95,16 +96,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0300
+     * @tc.number: Sub_Notification_Ans_Publish_Cancel_0150
      * @tc.name: cancelAsBundle
      * @tc.desc: test function cancelAsBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0300 START`);
+    it('Sub_Notification_Ans_Publish_Cancel_0150', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0150 START`);
 
         notificationManager.cancelAsBundle(1, "example.bundleName", 0, (err) => {
             if (err) {
@@ -118,19 +119,19 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0300 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0150 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0400
+     * @tc.number: Sub_Notification_Ans_Slot_CreateSlot_3550
      * @tc.name: addSlot
      * @tc.desc: test function addSlot
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0400 START`);
+    it('Sub_Notification_Ans_Slot_CreateSlot_3550', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3550 START`);
 
         let slot : notificationManager.NotificationSlot = {
-            type: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+            type: notification.SlotType.SOCIAL_COMMUNICATION,
             level: notificationManager.SlotLevel.LEVEL_HIGH,
             desc: 'xts test'
         }
@@ -146,16 +147,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0400 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3550 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0500
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_0700
      * @tc.name: setNotificationEnable
      * @tc.desc: test function setNotificationEnable
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0500', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0500 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_0700', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0700 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -173,16 +174,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0500 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0700 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0600
+     * @tc.number: Sub_Notification_Ans_Enable_Query_0100
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0600', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0600 START`);
+    it('Sub_Notification_Ans_Enable_Query_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0100 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -200,16 +201,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0600 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0700
+     * @tc.number: Sub_Notification_Ans_Enable_Query_0200
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled no parameter
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0700', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0700 START`);
+    it('Sub_Notification_Ans_Enable_Query_0200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0200 START`);
 
         notificationManager.isNotificationEnabled((err, data) => {
             if (err) {
@@ -223,16 +224,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0700 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0800
+     * @tc.number: Sub_Notification_Ans_Enable_Query_0300
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled take userId
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0800', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0800 START`);
+    it('Sub_Notification_Ans_Enable_Query_0300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0300 START`);
 
         notificationManager.isNotificationEnabled(0, (err, data) => {
             if (err) {
@@ -246,16 +247,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0800 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0300 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0900
+     * @tc.number: Sub_Notification_Ans_Corner_Query_0100
      * @tc.name: displayBadge
      * @tc.desc: test function displayBadge
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0900', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0900 START`);
+    it('Sub_Notification_Ans_Corner_Query_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Corner_Query_0100 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -273,16 +274,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_0900 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Corner_Query_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1000
+     * @tc.number: Sub_Notification_Ans_Slot_CreateSlot_3700
      * @tc.name: isBadgeDisplayed
      * @tc.desc: test function isBadgeDisplayed
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1000', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1000 START`);
+    it('Sub_Notification_Ans_Slot_CreateSlot_3700', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3700 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -300,23 +301,23 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1000 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3700 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1100
+     * @tc.number: Sub_Notification_Ans_Slot_CreateSlot_3850
      * @tc.name: setSlotByBundle
      * @tc.desc: test function setSlotByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1100 START`);
+    it('Sub_Notification_Ans_Slot_CreateSlot_3850', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3850 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
             uid: 0
         }
         let slot : notificationManager.NotificationSlot = {
-            type: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+            type: notification.SlotType.SOCIAL_COMMUNICATION,
             level: notificationManager.SlotLevel.LEVEL_HIGH,
             desc: 'xts test'
         }
@@ -333,16 +334,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3850 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1200
+     * @tc.number: Sub_Notification_Ans_Slot_GetSlot_0900
      * @tc.name: getSlotsByBundle
      * @tc.desc: test function getSlotsByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1200 START`);
+    it('Sub_Notification_Ans_Slot_GetSlot_0900', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_0900 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -361,16 +362,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_0900 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1300
+     * @tc.number: Sub_Notification_Ans_Slot_GetSlot_1000
      * @tc.name: getSlotNumByBundle
      * @tc.desc: test function getSlotNumByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1300 START`);
+    it('Sub_Notification_Ans_Slot_GetSlot_1000', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_1000 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -389,16 +390,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1300 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_1000 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1400
+     * @tc.number: Sub_Notification_Ans_Distributed_Search_2000
      * @tc.name: getAllActiveNotifications
      * @tc.desc: test function getAllActiveNotifications
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1400 START`);
+    it('Sub_Notification_Ans_Distributed_Search_2000', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_2000 START`);
 
         notificationManager.getAllActiveNotifications((err, data) => {
             if (err) {
@@ -412,16 +413,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1400 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_2000 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1500
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0100
      * @tc.name: removeGroupByBundle
      * @tc.desc: test function removeGroupByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1500', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1500 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0100 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -439,16 +440,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1500 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1600
+     * @tc.number: Sub_Notification_Ans_NoDistrub_SetTime_0100
      * @tc.name: setDoNotDisturbDate
      * @tc.desc: test function setDoNotDisturbDate
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1600', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1600 START`);
+    it('Sub_Notification_Ans_NoDistrub_SetTime_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0100 START`);
 
         let date : notificationManager.DoNotDisturbDate = {
             type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -467,16 +468,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1600 END`);
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1700
+     * @tc.number: Sub_Notification_Ans_NoDistrub_SetTime_0200
      * @tc.name: setDoNotDisturbDate
      * @tc.desc: test function setDoNotDisturbDate take userId
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1700', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1700 START`);
+    it('Sub_Notification_Ans_NoDistrub_SetTime_0200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0200 START`);
 
         let date : notificationManager.DoNotDisturbDate = {
             type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -495,16 +496,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1700 END`);
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1800
+     * @tc.number: Sub_Notification_Ans_NoDistrub_GetTime_0100
      * @tc.name: getDoNotDisturbDate
      * @tc.desc: test function getDoNotDisturbDate
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1800', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1800 START`);
+    it('Sub_Notification_Ans_NoDistrub_GetTime_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0100 START`);
 
         notificationManager.getDoNotDisturbDate((err, data) => {
             if (err) {
@@ -518,16 +519,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1800 END`);
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1900
+     * @tc.number: Sub_Notification_Ans_NoDistrub_GetTime_0200
      * @tc.name: getDoNotDisturbDate
      * @tc.desc: test function getDoNotDisturbDate take userId
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1900', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1900 START`);
+    it('Sub_Notification_Ans_NoDistrub_GetTime_0200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0200 START`);
 
         notificationManager.getDoNotDisturbDate(0, (err, data) => {
             if (err) {
@@ -541,16 +542,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_1900 END`);
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2000
+     * @tc.number: Sub_Notification_Ans_NoDistrub_Query_0100
      * @tc.name: isSupportDoNotDisturbMode
      * @tc.desc: test function isSupportDoNotDisturbMode
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2000', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2000 START`);
+    it('Sub_Notification_Ans_NoDistrub_Query_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_0100 START`);
 
         notificationManager.isSupportDoNotDisturbMode((err, data) => {
             if (err) {
@@ -564,16 +565,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2000 END`);
+        console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2100
+     * @tc.number: Sub_Notification_Ans_Distributed_Enable_4300
      * @tc.name: setDistributedEnable
      * @tc.desc: test function setDistributedEnable
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2100 START`);
+    it('Sub_Notification_Ans_Distributed_Enable_4300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4300 START`);
 
         notificationManager.setDistributedEnable(true, (err) => {
             if (err) {
@@ -587,16 +588,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4300 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2200
+     * @tc.number: Sub_Notification_Ans_Distributed_Enable_4400
      * @tc.name: setDistributedEnableByBundle
      * @tc.desc: test function setDistributedEnableByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2200 START`);
+    it('Sub_Notification_Ans_Distributed_Enable_4400', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4400 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -614,16 +615,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4400 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2300
+     * @tc.number: Sub_Notification_Ans_Distributed_Enable_4500
      * @tc.name: isDistributedEnabledByBundle
      * @tc.desc: test function isDistributedEnabledByBundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2300 START`);
+    it('Sub_Notification_Ans_Distributed_Enable_4500', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4500 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -641,16 +642,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2300 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4500 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2400
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_9500
      * @tc.name: getDeviceRemindType
      * @tc.desc: test function getDeviceRemindType
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2400 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_9500', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9500 START`);
 
         notificationManager.getDeviceRemindType((err, data) => {
             if (err) {
@@ -664,16 +665,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2400 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9500 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2500
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_9600
      * @tc.name: setNotificationEnableSlot
      * @tc.desc: test function setNotificationEnableSlot
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2500', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2500 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_9600', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9600 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -692,16 +693,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2500 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9600 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2600
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_9700
      * @tc.name: isNotificationSlotEnabled
      * @tc.desc: test function isNotificationSlotEnabled
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2600', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2600 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_9700', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9700 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
             bundle: "example.bundleName",
@@ -720,16 +721,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2600 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9700 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2700
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_0800
      * @tc.name: setSyncNotificationEnabledWithoutApp
      * @tc.desc: test function setSyncNotificationEnabledWithoutApp
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2700', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2700 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_0800', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0800 START`);
 
         notificationManager.setSyncNotificationEnabledWithoutApp(0, true, (err) => {
             if (err) {
@@ -743,16 +744,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2700 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0800 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2800
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_9800
      * @tc.name: getSyncNotificationEnabledWithoutApp
      * @tc.desc: test function getSyncNotificationEnabledWithoutApp
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2800', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2800 START`);
+    it('Sub_Notification_Ans_Enable_SetEnable_9800', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9800 START`);
 
         notificationManager.getSyncNotificationEnabledWithoutApp(0, (err, data) => {
             if (err) {
@@ -766,7 +767,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2800 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9800 END`);
     });
 
     let subscriber = {
@@ -777,12 +778,12 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
     };
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2900
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_0100
      * @tc.name: subscribe
      * @tc.desc: test function subscribe
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2900', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2900 START`);
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0100 START`);
 
         notificationSubscribe.subscribe(subscriber, (err) => {
             if (err) {
@@ -796,16 +797,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_2900 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3000
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_0200
      * @tc.name: subscribe
      * @tc.desc: test function subscribe take NotificationSubscribeInfo
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3000', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3000 START`);
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0200 START`);
 
         let subscribeInfo : notificationSubscribe.NotificationSubscribeInfo = {
             bundleNames: ["example.bundleName"],
@@ -823,16 +824,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3000 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3100
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_0300
      * @tc.name: subscribe
      * @tc.desc: test function subscribe take NotificationSubscribeInfo
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3100 START`);
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0300 START`);
 
         let subscribeInfo : notificationSubscribe.NotificationSubscribeInfo = {
             bundleNames: ["example.bundleName"],
@@ -849,16 +850,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             done()
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0300 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3200
+     * @tc.number: Sub_Notification_Ans_Subscriber_Unsubscribe_0100
      * @tc.name: unsubscribe
      * @tc.desc: test function unsubscribe
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3200 START`);
+    it('Sub_Notification_Ans_Subscriber_Unsubscribe_0100', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_0100 START`);
 
         notificationSubscribe.unsubscribe(subscriber, (err) => {
             if (err) {
@@ -872,16 +873,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_0100 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3300
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0200
      * @tc.name: remove
      * @tc.desc: test function remove
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3300 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0200', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0200 START`);
 
         let bundleOpt : notificationSubscribe.BundleOption = {
             bundle: "example.bundleName",
@@ -903,16 +904,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3300 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0200 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3400
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0300
      * @tc.name: remove
      * @tc.desc: test function remove
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3400 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0300 START`);
 
         notificationSubscribe.remove("device_0_1", notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE, (err) => {
             if (err) {
@@ -926,16 +927,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3400 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0300 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3500
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0400
      * @tc.name: removeAll
      * @tc.desc: test function removeAll take bundle
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3500', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3500 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0400', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0400 START`);
 
         let bundleOpt : notificationSubscribe.BundleOption = {
             bundle: "example.bundleName",
@@ -953,16 +954,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3500 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0400 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3600
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0500
      * @tc.name: removeAll
      * @tc.desc: test function removeAll
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3600', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3600 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0500', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0500 START`);
 
         notificationSubscribe.removeAll((err) => {
             if (err) {
@@ -976,16 +977,16 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3600 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0500 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3700
+     * @tc.number: Sub_Notification_Ans_Delete_SpecifiedGroup_0600
      * @tc.name: removeAll
      * @tc.desc: test function removeAll take userId
      */
-    it('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3700', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3700 START`);
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0600', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0600 START`);
 
         notificationSubscribe.removeAll(0, (err) => {
             if (err) {
@@ -999,7 +1000,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             }
         });
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SYSTEM_API_TEST_3700 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0600 END`);
     });
 
 }) } 

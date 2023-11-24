@@ -20,14 +20,14 @@ import { CustomContainer } from '../common/CameraVideoContainer'
 import FirstDialog from '../model/FirstDialog'
 import router from '@ohos.router'
 import mediaPlay from '../model/mediaPlay'
-import prompt from '@ohos.prompt'
+import promptAction from '@ohos.promptAction'
 
 @Entry
 @Component
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraVideo';
-  @State StepTips: string = '测试目的：用于测试相机录像分辨率能力\n预期结果：所有分辨率均可以录像，录像与预览一致';
+  @State StepTips: string = '测试目的：用于测试相机录像分辨率能力\n-对于前置摄像头会有镜像效果\n预期结果：所有分辨率均可以录像，录像与预览一致';
   private tag: string = 'qlw CameraVideo'
   private mXComponentController: XComponentController = new XComponentController()
   private mXComponentController1: XComponentController = new XComponentController()
@@ -247,7 +247,7 @@ struct cameraOrientation {
                 .onClick(async () => {
                   this.testEnabled = false
                   this.nextEnabled = true
-                  prompt.showToast({
+                  promptAction.showToast({
                     message: '录制中，请等待三秒', duration: 1000
                   });
                   CameraService.startVideo().then(() => {
@@ -273,7 +273,8 @@ struct cameraOrientation {
             }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
           }.size({ width: '100%', height: '30%' })
         }
-      }.height('80%')
+      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
 
       CustomContainer({

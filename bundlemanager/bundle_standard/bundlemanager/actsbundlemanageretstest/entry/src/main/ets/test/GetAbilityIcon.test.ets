@@ -29,13 +29,13 @@ export default function getAbilityIcon() {
     describe('ActsBmsGetAbilityIconTest', function () {
 
         /*
-         * @tc.number: bms_getAbilityIcon_0100
+         * @tc.number: Sub_Bms_Framework_Query_Icon_2800
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('bms_getAbilityIcon_0100', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2800', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
-                console.log('bms_getAbilityIcon_0100 success: ' + pixelmap.getBytesNumberPerRow());
+                console.log('Sub_Bms_Framework_Query_Icon_2800 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err));
@@ -49,13 +49,13 @@ export default function getAbilityIcon() {
         });
 
         /*
-         * @tc.number: bms_getAbilityIcon_0200
+         * @tc.number: Sub_Bms_Framework_Query_Icon_2700
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('bms_getAbilityIcon_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2700', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME).then(pixelmap => {
-                console.log('bms_getAbilityIcon_0200 success: ' + pixelmap.getBytesNumberPerRow());
+                console.log('Sub_Bms_Framework_Query_Icon_2700 success: ' + pixelmap.getBytesNumberPerRow());
                 expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err));
@@ -69,11 +69,11 @@ export default function getAbilityIcon() {
         });
 
         /*
-         * @tc.number: bms_getAbilityIcon_0300
+         * @tc.number: Sub_Bms_Framework_Query_Icon_2900
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('bms_getAbilityIcon_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_2900', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, SERVICE_NAME).then(pixelmap => {
                 expect().assertFail();
             }).catch(err => {
@@ -87,11 +87,11 @@ export default function getAbilityIcon() {
         });
 
         /*
-         * @tc.number: bms_getAbilityIcon_0400
+         * @tc.number: Sub_Bms_Framework_Query_Icon_3200
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('bms_getAbilityIcon_0400', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_3200', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME_ERROR).then(pixelmap => {
                 expect(pixelmap !== null).assertFail();
             }).catch(err => {
@@ -124,11 +124,11 @@ export default function getAbilityIcon() {
         });
 
         /*
-         * @tc.number: bms_getAbilityIcon_0500
+         * @tc.number: Sub_Bms_Framework_Query_Icon_3000
          * @tc.name: test getAbilityIcon
          * @tc.desc: get the abilityIcon
          */
-        it('bms_getAbilityIcon_0500', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_Icon_3000', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, undefined).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {

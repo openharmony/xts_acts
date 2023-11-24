@@ -83,7 +83,7 @@ describe('audioInterrupt', function () {
 
 
 
-    it('SUB_AUDIO_INTERRUPT_001', 0, async function (done) {
+    it('SUB_MULTMEDIA_AUDIO_INTERRUPT_ON_1100', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,

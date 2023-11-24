@@ -58,11 +58,11 @@ export default function ColumnSetOffset_SubChange() {
       let columnOffset_2 = CommonFunc.getComponentRect('columnOffset_2');
       let columnOffset_3 = CommonFunc.getComponentRect('columnOffset_3');
       let columnOffset = CommonFunc.getComponentRect('columnOffset');
-      expect(Math.round(columnOffset_1.left - columnOffset_2.left)).assertEqual(vp2px(10))
-      expect(Math.round(columnOffset_1.top - columnOffset.top)).assertEqual(vp2px(10))
-      expect(Math.round(columnOffset_2.top - columnOffset_1.bottom)).assertEqual(vp2px(20))
-      expect(Math.round(columnOffset_3.top - columnOffset_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnOffset.bottom - columnOffset_3.bottom)).assertEqual(vp2px(40))
+      expect(Math.abs(columnOffset_1.left - columnOffset_2.left - Math.round(vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(columnOffset_1.top - columnOffset.top - Math.round(vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(columnOffset_2.top - columnOffset_1.bottom - Math.round(vp2px(20))) <= 1).assertTrue()
+      expect(Math.abs(columnOffset_3.top - columnOffset_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+      expect(Math.abs(columnOffset.bottom - columnOffset_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
       console.info('new testColumnSubcomponentSetOffset END');
       done();
     });

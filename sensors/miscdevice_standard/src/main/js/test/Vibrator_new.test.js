@@ -47,9 +47,6 @@ describe("VibratorJsTest_misc_4", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
-        vibrator.stop("preset");
-        vibrator.stop("time");
         console.info('afterEach called')
     })
 
@@ -80,6 +77,7 @@ describe("VibratorJsTest_misc_4", function () {
             }, 500);
         }
         vibrator.vibrate(10, vibrateCallback);
+        await vibrator.stopVibration();
     })
 
     /*
@@ -143,6 +141,7 @@ describe("VibratorJsTest_misc_4", function () {
             }, 500);
         }
         vibrator.vibrate(1800000, vibrateCallback);
+        await vibrator.stopVibration();
     })
 
     /*
@@ -206,6 +205,7 @@ describe("VibratorJsTest_misc_4", function () {
             }, 500);
         }
         vibrator.vibrate("haptic.clock.timer", vibrateCallback);
+        await vibrator.stopVibration();
     })
 
     /*
@@ -329,6 +329,7 @@ describe("VibratorJsTest_misc_4", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -392,6 +393,7 @@ describe("VibratorJsTest_misc_4", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*

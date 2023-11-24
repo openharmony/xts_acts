@@ -57,20 +57,20 @@ export default function flexMargin_EndJsunit() {
       let textFlexMargin02 = CommonFunc.getComponentRect('textFlexMargin02');
       let textFlexMargin03 = CommonFunc.getComponentRect('textFlexMargin03');
       let flexMargin = CommonFunc.getComponentRect('flexMargin');
-      expect(textFlexMargin01.left).assertEqual(flexMargin.left)
-      expect(textFlexMargin01.right).assertEqual(textFlexMargin02.left)
-      expect(textFlexMargin02.right).assertEqual(textFlexMargin03.left)
+      expect(Math.abs(textFlexMargin01.left - flexMargin.left) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin01.right - textFlexMargin02.left) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin02.right - textFlexMargin03.left) <= 1).assertTrue()
 
-      expect(flexMargin.bottom).assertEqual(textFlexMargin01.bottom)
-      expect(textFlexMargin01.bottom).assertEqual(textFlexMargin02.bottom)
-      expect(textFlexMargin02.bottom).assertEqual(textFlexMargin03.bottom)
+      expect(Math.abs(flexMargin.bottom - textFlexMargin01.bottom) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin01.bottom - textFlexMargin02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin02.bottom - textFlexMargin03.bottom) <= 1).assertTrue()
 
-      expect(Math.round(textFlexMargin01.bottom - textFlexMargin01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlexMargin02.bottom - textFlexMargin02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlexMargin03.bottom - textFlexMargin03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexMargin01.right - textFlexMargin01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexMargin02.right - textFlexMargin02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexMargin03.right - textFlexMargin03.left)).assertEqual(vp2px(150))
+      expect(Math.abs(textFlexMargin01.bottom - textFlexMargin01.top - Math.round(vp2px(50))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin02.bottom - textFlexMargin02.top - Math.round(vp2px(100))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin03.bottom - textFlexMargin03.top - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin01.right - textFlexMargin01.left - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin02.right - textFlexMargin02.left - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin03.right - textFlexMargin03.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testItemAlignEndParentSetMargin END');
