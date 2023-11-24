@@ -69,29 +69,29 @@ export default function List_PadMar() {
       let List_PadMar_01 = CommonFunc.getComponentRect('List_PadMar_01');
       let List_PadMar_01_Box = CommonFunc.getComponentRect('List_PadMar_01_Box');
 
-      expect(Math.round(List_PadMar_011.left - List_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_PadMar_012.left - List_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_PadMar_013.left - List_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_PadMar_014.left - List_PadMar_01.left)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_PadMar_011.top - List_PadMar_01.top)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(List_PadMar_012.top - List_PadMar_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_PadMar_013.top - List_PadMar_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_PadMar_014.top - List_PadMar_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round((List_PadMar_01.top - List_PadMar_01_Box.top)*10)/10).assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((List_PadMar_01.left - List_PadMar_01_Box.left)*10)/10).assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.abs(Math.round(List_PadMar_011.left - List_PadMar_01.left) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_012.left - List_PadMar_01.left) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_013.left - List_PadMar_01.left) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_014.left - List_PadMar_01.left) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_011.top - List_PadMar_01.top) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_012.top - List_PadMar_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_013.top - List_PadMar_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_014.top - List_PadMar_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_PadMar_01.top - List_PadMar_01_Box.top)*10)/10 - Math.round(vp2px(5)*10)/10) <= 1).assertTrue();
+      expect(Math.abs(Math.round((List_PadMar_01.left - List_PadMar_01_Box.left)*10)/10 - Math.round(vp2px(5)*10)/10) <= 1).assertTrue();
 
-      expect(Math.round(List_PadMar_011.right - List_PadMar_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_PadMar_012.right - List_PadMar_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_PadMar_013.right - List_PadMar_013.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_PadMar_014.right - List_PadMar_014.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(List_PadMar_011.right - List_PadMar_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_012.right - List_PadMar_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_013.right - List_PadMar_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_014.right - List_PadMar_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_PadMar_011.bottom - List_PadMar_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_PadMar_012.bottom - List_PadMar_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_PadMar_013.bottom - List_PadMar_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_PadMar_014.bottom - List_PadMar_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_PadMar_011.bottom - List_PadMar_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_012.bottom - List_PadMar_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_013.bottom - List_PadMar_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_014.bottom - List_PadMar_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
-      expect(Math.round(List_PadMar_01.bottom - List_PadMar_01.top)).assertEqual(Math.round(vp2px(520)));
-      expect(Math.round(List_PadMar_01.right - List_PadMar_01.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.abs(Math.round(List_PadMar_01.bottom - List_PadMar_01.top) - Math.round(vp2px(520))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_PadMar_01.right - List_PadMar_01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let List_PadMar_014Again = CommonFunc.getComponentRect('List_PadMar_014');

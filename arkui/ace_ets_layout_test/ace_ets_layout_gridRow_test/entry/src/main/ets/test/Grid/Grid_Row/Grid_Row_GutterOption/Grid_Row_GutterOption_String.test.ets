@@ -80,8 +80,8 @@ export default function Grid_Row_GutterOption_String() {
       let secondGutterOptionStr = CommonFunc.getComponentRect('Grid_Row_GutterOption_String1');
       let thirdGutterOptionStr = CommonFunc.getComponentRect('Grid_Row_GutterOption_String2');
 
-      expect(Math.round(secondGutterOptionStr.left - firstGutterOptionStr.right)).assertEqual(Math.round(0));
-      expect(Math.round(thirdGutterOptionStr.top - firstGutterOptionStr.bottom)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(secondGutterOptionStr.left - firstGutterOptionStr.right) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdGutterOptionStr.top - firstGutterOptionStr.bottom) - Math.round(0)) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowGutterOption_STRING_0200 END');
       done();

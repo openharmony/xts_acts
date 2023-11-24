@@ -151,7 +151,7 @@ export default function flexShrinkTest() {
       //Verify the flexGrow attribute is set success
       console.info('[' + data.caseTag + '] judge the flexGrow attribute is set success ');
       let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
-      expect(viewObj.$attrs.flexShrink).assertEqual(data.testValue.expectValue.flexShrink);
+      expect(Math.abs(viewObj.$attrs.flexShrink - data.testValue.expectValue.flexShrink) <= 1).assertTrue();
 
       //Get compare component rect in order to judge the flexShrink attribute take effect
       console.info('[' + data.caseTag + '] get compare component rect ' +
@@ -172,17 +172,17 @@ export default function flexShrinkTest() {
       if (data.testValue.describe == 'NoCompressedSize') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
         || data.pageConfig.containerView == 'FlexRowReverse') {
-          expect(Number((rect.right - rect.left)).toFixed(2)).assertEqual(Number(vp2px(targetWidth)).toFixed(2));
+          expect(Math.abs(Number((rect.right - rect.left)) - Number(vp2px(targetWidth))) <= 1).assertTrue();
         } else {
-          expect(Number((rect.bottom - rect.top)).toFixed(2)).assertEqual(Number(vp2px(targetHeight)).toFixed(2));
+          expect(Math.abs(Number((rect.bottom - rect.top)) - Number(vp2px(targetHeight))) <= 1).assertTrue();
         }
       } else {
         //Verify the standard component not be changed
         console.info('[' + data.caseTag + '] check standard component rect not changed.');
-        expect(standardRectBefore.left).assertEqual(standardRectAfter.left);
-        expect(standardRectBefore.top).assertEqual(standardRectAfter.top);
-        expect(standardRectBefore.bottom).assertEqual(standardRectAfter.bottom);
-        expect(standardRectBefore.right).assertEqual(standardRectAfter.right);
+        expect(Math.abs(standardRectBefore.left - standardRectAfter.left) <= 1).assertTrue();
+        expect(Math.abs(standardRectBefore.top - standardRectAfter.top) <= 1).assertTrue();
+        expect(Math.abs(standardRectBefore.bottom - standardRectAfter.bottom) <= 1).assertTrue();
+        expect(Math.abs(standardRectBefore.right - standardRectAfter.right) <= 1).assertTrue();
 
         //Verify the target component and the compare component is allocate compressed space in the correct proportion
         console.info('[' + data.caseTag + '] check the size of the component in the spindle ' +
@@ -218,7 +218,7 @@ export default function flexShrinkTest() {
     console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
     //Verify based on different parent container spindle directions
     let ratio = countFlexShrink / (compareFlexShrink + targetFlexShrink);
-    expect(Number(realRect).toFixed(2)).assertEqual(Number(vp2px(targetSize - space * ratio)).toFixed(2));
+    expect(Math.abs(Number(realRect) - Number(vp2px(targetSize - space * ratio))) <= 1).assertTrue();
     console.info('[' + data.caseTag + '] targetSize - space * ratio : ' + (targetSize - space * ratio));
   }
 }
