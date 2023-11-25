@@ -394,7 +394,9 @@ export default function abilityTest() {
       expect(app3 === null).assertTrue();
       expect(app4 === null).assertTrue();
       let cancel = await driver.findComponents(ON.clickable(true));
-      await cancel[0].click();
+      if (cancel !== null) {
+        await cancel[0].click();
+      }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 end');
       done();
     })
