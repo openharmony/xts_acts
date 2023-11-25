@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
@@ -100,7 +101,7 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[0]).assertEqual(1);
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);     
           }
           catch (error) {
             console.log("An error is generated");
@@ -110,6 +111,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0100');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0100 Create Subscribe");
           subscriber = data;
@@ -171,12 +173,12 @@ export default function abilityTest() {
           catch {
             console.log("An error is generated");
           }
-
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0200');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0200 Create Subscribe");
           subscriber = data;
@@ -192,7 +194,7 @@ export default function abilityTest() {
               console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000);
+          }, 3000);         
         })
       }, 700);
     })
@@ -243,6 +245,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0300');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0300 Create Subscribe");
           subscriber = data;
@@ -310,6 +313,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0400');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0400 Create Subscribe");
           subscriber = data;
@@ -377,6 +381,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0500');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0500 Create Subscribe");
           subscriber = data;
@@ -444,6 +449,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0600');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0600 Create Subscribe");
           subscriber = data;
@@ -507,6 +513,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0700');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0700 Create Subscribe");
           subscriber = data;
@@ -571,6 +578,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0800');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0800 Create Subscribe");
           subscriber = data;
@@ -740,8 +748,6 @@ export default function abilityTest() {
           }, 3000);
         })
       }, 1000);
-
     })
-
   })
 }
