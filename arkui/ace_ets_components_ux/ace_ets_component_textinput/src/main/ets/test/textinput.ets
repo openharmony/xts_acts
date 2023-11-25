@@ -288,7 +288,7 @@ export default function textInputTest() {
     /*
      *tc.number ArkUX_Stage_TextInput_CaretPosition_1200
      *tc.name   Support modifying the cursor position change of TextInput component
-     *tc.desc   Set the caretPosition property parameter to 7 and set the caretPosition property 
+     *tc.desc   Set the caretPosition property parameter to 7 and set the caretPosition property
                 parameter to undefined again
      */
     it('ArkUX_Stage_TextInput_CaretPosition_1200', 0, async function (done) {
@@ -673,7 +673,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0100 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF00FF00");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#3300FF00");
           console.info('ArkUX_Stage_TextInput_selectedColor_0100 END ');
         } catch (err) {
           expect().assertFail();
@@ -697,7 +697,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0200 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FFFD0000");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#33FD0000");
           console.info('ArkUX_Stage_TextInput_selectedColor_0200 END ');
         } catch (err) {
           expect().assertFail();
@@ -721,7 +721,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0300 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF8A2BE2");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#338A2BE2");
           console.info('ArkUX_Stage_TextInput_selectedColor_0300 END ');
         } catch (err) {
           expect().assertFail();
@@ -745,7 +745,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0400 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FFFFC0CB");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#33FFC0CB");
           console.info('ArkUX_Stage_TextInput_selectedColor_0400 END ');
         } catch (err) {
           expect().assertFail();
@@ -769,7 +769,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0500 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FFFD0000");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#33FD0000");
           console.info('ArkUX_Stage_TextInput_selectedColor_0500 END ');
         } catch (err) {
           expect().assertFail();
@@ -866,7 +866,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_0900 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FFFD0000");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#33FD0000");
           console.info('ArkUX_Stage_TextInput_selectedColor_0900 END ');
         } catch (err) {
           expect().assertFail();
@@ -916,7 +916,7 @@ export default function textInputTest() {
           let obj = JSON.parse(strJson);
           console.info("ArkUX_Stage_TextInput_selectedColor_1100 component obj.$attrs.selectedBackgroundColor is: " +
           JSON.stringify(obj.$attrs.selectedBackgroundColor));
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF00FF00");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#3300FF00");
           console.info('ArkUX_Stage_TextInput_selectedColor_1100 END ');
         } catch (err) {
           expect().assertFail();
@@ -945,7 +945,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_selectedColor_1200 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF00FF00");
+          expect(obj.$attrs.selectedBackgroundColor).assertEqual("#3300FF00");
           expect(obj.$attrs.caretPosition).assertEqual("4");
           expect(cursorStyle.width ).assertEqual("7.00vp");
           console.info('ArkUX_Stage_TextInput_selectedColor_1200 END ');
