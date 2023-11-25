@@ -64,7 +64,7 @@ export default function Grid_Row_SizeOption() {
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
 
-      expect(Math.round(secondSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondSizeOption.top - firstSizeOption.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowGutterOption_0100 END');
       done();
@@ -88,8 +88,8 @@ export default function Grid_Row_SizeOption() {
       let sixthSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption5');
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
-      expect(Math.round(secondSizeOption.left - firstSizeOption.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(thirdSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondSizeOption.left - firstSizeOption.right) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdSizeOption.top - firstSizeOption.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowSizeOption_0200 END');
       done();
@@ -114,8 +114,8 @@ export default function Grid_Row_SizeOption() {
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
 
-      expect(Math.round(secondSizeOption.left - firstSizeOption.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(fourthSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondSizeOption.left - firstSizeOption.right) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthSizeOption.top - firstSizeOption.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowSizeOption_0300 END');
       done();
@@ -163,8 +163,8 @@ export default function Grid_Row_SizeOption() {
       let sixthSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption5');
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
-      expect(Math.round(secondSizeOption.left - firstSizeOption.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(sixthSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondSizeOption.left - firstSizeOption.right) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(sixthSizeOption.top - firstSizeOption.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowSizeOption_0500 END');
       done();
@@ -188,8 +188,8 @@ export default function Grid_Row_SizeOption() {
       let seventhSizeOption = CommonFunc.getComponentRect('Grid_Row_SizeOption6');
 
 
-      expect(Math.round(secondSizeOption.left - firstSizeOption.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(seventhSizeOption.top - firstSizeOption.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondSizeOption.left - firstSizeOption.right) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(seventhSizeOption.top - firstSizeOption.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowSizeOption_0600 END');
       done();

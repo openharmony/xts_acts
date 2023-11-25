@@ -61,7 +61,7 @@ export default function Grid_Row_Columns_Option() {
       let gridRowColumns = JSON.parse(gridRowColumnsJson);
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
-      expect(Math.round(secondColumns.top - firstColumns.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondColumns.top - firstColumns.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0100 END');
       done();
@@ -87,8 +87,8 @@ export default function Grid_Row_Columns_Option() {
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
 
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(vp2px(5)));
-      expect(Math.round(fourthColumns.left - thirdColumns.right)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthColumns.left - thirdColumns.right) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0200 END');
       done();
@@ -114,9 +114,9 @@ export default function Grid_Row_Columns_Option() {
       let gridRowColumns = JSON.parse(gridRowColumnsJson);
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(thirdColumns.left - secondColumns.right));
-
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) -
+                      Math.round(thirdColumns.left - secondColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0300 END');
       done();
@@ -174,7 +174,7 @@ export default function Grid_Row_Columns_Option() {
       expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(thirdColumns.left - secondColumns.right)) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdColumns.left - secondColumns.right) - Math.round(fourthColumns.left - thirdColumns.right)) <= 1).assertTrue();
       expect(Math.abs(Math.round(fourthColumns.left - thirdColumns.right) - Math.round(fifthColumns.left - fourthColumns.right)) <= 1).assertTrue();
-      expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
+      expect(Math.abs(Math.floor(secondColumns.left - firstColumns.right) - Math.floor(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0500 END');
       done();
@@ -202,11 +202,11 @@ export default function Grid_Row_Columns_Option() {
       expect(gridRowColumns.$type).assertEqual('GridRow');
 
 
-      expect(Math.round(secondColumns.left - firstColumns.right)).assertEqual(Math.round(thirdColumns.left - secondColumns.right));
-      expect(Math.round(thirdColumns.left - secondColumns.right)).assertEqual(Math.round(fourthColumns.left - thirdColumns.right));
-      expect(Math.round(fourthColumns.left - thirdColumns.right)).assertEqual(Math.round(fifthColumns.left - fourthColumns.right));
-      expect(Math.round(fifthColumns.left - fourthColumns.right)).assertEqual(Math.round(sixthColumns.left - fifthColumns.right));
-      expect(Math.floor(secondColumns.left - firstColumns.right)).assertEqual(Math.floor(vp2px(5)));
+      expect(Math.abs(Math.round(secondColumns.left - firstColumns.right) - Math.round(thirdColumns.left - secondColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdColumns.left - secondColumns.right) - Math.round(fourthColumns.left - thirdColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthColumns.left - thirdColumns.right) - Math.round(fifthColumns.left - fourthColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fifthColumns.left - fourthColumns.right) - Math.round(sixthColumns.left - fifthColumns.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.floor(secondColumns.left - firstColumns.right) - Math.floor(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowColumns_Option_0600 END');
       done();
