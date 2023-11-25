@@ -89,6 +89,12 @@ export default function inputMethodEngineJSUnit() {
       await abilityDelegator.executeShellCommand(cmd);
     }
 
+    /*
+    * @tc.number  inputMethodEngine_test_getInputMethodEngine_001
+    * @tc.name   inputMethodEngine_test_getInputMethodEngine_001
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_getInputMethodEngine_001', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_getInputMethodEngine_001 unSubscriberCallback start");
@@ -141,6 +147,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_getKeyboardDelegate_001
+    * @tc.name   inputMethodEngine_test_getKeyboardDelegate_001
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_getKeyboardDelegate_001', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_getKeyboardDelegate_001 unSubscriberCallback start");
@@ -193,6 +205,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_028
+    * @tc.name   inputMethodEngine_test_028
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_028', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -249,6 +267,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_029
+    * @tc.name   inputMethodEngine_test_029
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_029', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -305,6 +329,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_030
+    * @tc.name   inputMethodEngine_test_030
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_030', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -361,6 +391,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_031
+    * @tc.name   inputMethodEngine_test_031
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_031', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_031 unSubscriberCallback start");
@@ -416,6 +452,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_032
+    * @tc.name   inputMethodEngine_test_032
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_032', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_032 unSubscriberCallback start");
@@ -471,6 +513,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_033
+    * @tc.name   inputMethodEngine_test_033
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_033', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_033 unSubscriberCallback start");
@@ -526,6 +574,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_034
+    * @tc.name   inputMethodEngine_test_034
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_034', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_034 unSubscriberCallback start");
@@ -581,6 +635,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_035
+    * @tc.name   inputMethodEngine_test_035
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_035', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -637,6 +697,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_036
+    * @tc.name   inputMethodEngine_test_036
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_036', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -693,6 +759,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_037
+    * @tc.name   inputMethodEngine_test_037
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_037', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -749,6 +821,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_038
+    * @tc.name   inputMethodEngine_test_038
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_038', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -805,6 +883,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_039
+    * @tc.name   inputMethodEngine_test_039
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_039', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -861,6 +945,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_040
+    * @tc.name   inputMethodEngine_test_040
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_040', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -917,6 +1007,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_041
+    * @tc.name   inputMethodEngine_test_041
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_041', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -973,6 +1069,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_042
+    * @tc.name   inputMethodEngine_test_042
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_042', 0, async function (done) {
 
       function unSubscriberCallback(err) {
@@ -1029,6 +1131,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+     * @tc.number  inputMethodEngine_test_043
+     * @tc.name   inputMethodEngine_test_043
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
     it('inputMethodEngine_test_043', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_043 unSubscriberCallback start");
@@ -1084,6 +1192,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_049
+    * @tc.name   inputMethodEngine_test_049
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_049', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_049 unSubscriberCallback start");
@@ -1139,6 +1253,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_050
+    * @tc.name   inputMethodEngine_test_050
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_050', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_050 unSubscriberCallback start");
@@ -1194,6 +1314,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_071
+    * @tc.name   inputMethodEngine_test_071
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_071', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_071 unSubscriberCallback start");
@@ -1249,6 +1375,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_072
+    * @tc.name   inputMethodEngine_test_072
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_072', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_072 unSubscriberCallback start");
@@ -1304,6 +1436,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_073
+    * @tc.name   inputMethodEngine_test_073
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_073', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_073 unSubscriberCallback start");
@@ -1363,6 +1501,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_074
+    * @tc.name   inputMethodEngine_test_074
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_074', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_074 unSubscriberCallback start");
@@ -1418,6 +1562,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_076
+    * @tc.name   inputMethodEngine_test_076
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_076', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_076 unSubscriberCallback start");
@@ -1473,6 +1623,12 @@ export default function inputMethodEngineJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_077
+    * @tc.name   inputMethodEngine_test_077
+    * @tc.desc    Function test
+    * @tc.level   2
+    */
     it('inputMethodEngine_test_077', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>inputMethodEngine_test_077 unSubscriberCallback start");
