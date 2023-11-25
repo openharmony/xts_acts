@@ -15,8 +15,10 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import data_preferences from '@ohos.data.preferences';
-import {context} from '../testability/TestAbility'
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
 const NAME = 'test_preferences_store';
 const TAG = "[preferencesDataGroupIdSync]"
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
@@ -26,6 +28,8 @@ export default function preferencesDataGroupIdSync() {
   describe('preferencesDataGroupIdSync', function () {
     beforeAll(async function () {
       console.info('beforeAll');
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context
     })
     afterAll(async function () {
       console.info('afterAll');
@@ -112,7 +116,7 @@ export default function preferencesDataGroupIdSync() {
         done();
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect(errInfo.code).assertEqual('15501002');
         done();
       }
     })
@@ -190,7 +194,7 @@ export default function preferencesDataGroupIdSync() {
         done();
       } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect(errInfo.code).assertEqual('15501002');
         done();
       }
     })
