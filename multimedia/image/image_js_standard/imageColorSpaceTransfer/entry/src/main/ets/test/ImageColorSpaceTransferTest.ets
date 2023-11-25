@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,17 +14,16 @@
  */
 
 import { describe, it, expect } from 'hypium/index'
-// @ts-ignore
 import featureAbility from '@ohos.ability.featureAbility';
 import image from "@ohos.multimedia.image";
 import fs from "@ohos.file.fs";
 import colorSpaceManager from "@ohos.graphics.colorSpaceManager";
+import { BusinessError } from '@ohos.base';
 
 export default function ImageColorSpaceTransferTest() {
     describe('ImageColorSpaceTransferTest', function () {
         const ERR_CODE = 62980115;
-        const WIDTH = 3472;
-        const HEIGHT = 4640;
+        const { ADOBE_RGB_1998, DCI_P3, DISPLAY_P3, SRGB, CUSTOM } = colorSpaceManager.ColorSpace;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             let filePath;
@@ -33,7 +31,7 @@ export default function ImageColorSpaceTransferTest() {
                 filePath = data + "/" + fileName;
                 console.info("image case filePath is " + filePath);
             });
-            let file = await fs.open(filePath, 0o0)
+            let file = await fs.open(filePath, 0o0);
             return file.fd
         }
         function Logger(caseName) {
@@ -44,23 +42,22 @@ export default function ImageColorSpaceTransferTest() {
                 },
             };
         }
-        async function createPixelmapTestPromise(done, testNum, ...colorSpaceName) {
+        async function createPixelmapTestPromise(done, testNum, colorSpace, gamma, checkColorSpace) {
             let logger = Logger(testNum);
             try {
-                let fd = await getFd("colorspace.jpg")
+                let fd = await getFd("colorspace.jpg");
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let csm = colorSpaceManager.create(...colorSpaceName);
-                    let decodingOptions = { desiredColorSpace: csm };
-                    let pixelMap = await imageSource.createPixelMap(decodingOptions);
+                    let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpace, gamma);
+                    let decodingOptions: image.DecodingOptions = { desiredColorSpace: csm };
+                    let pixelMap: image.PixelMap = await imageSource.createPixelMap(decodingOptions);
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
-                        let info = await pixelMap.getImageInfo();
-                        console.log(`${testNum} file size width: ${info.size.width}`);
-                        console.log(`${testNum} file size height: ${info.size.height}`);
-                        expect(info.size.width == WIDTH).assertTrue();
-                        expect(info.size.height == HEIGHT).assertTrue();
+                        let cs = pixelMap.getColorSpace();
+                        let csmn = cs.getColorSpaceName();
+                        logger.log('csmn ' + csmn);
+                        checkColorSpace(csmn);
                         done();
                     } else {
                         logger.log('creat pixelMap failed ');
@@ -78,27 +75,27 @@ export default function ImageColorSpaceTransferTest() {
                 done();
             }
         }
-        async function createPixelmapTestCb(done, testNum, ...colorSpaceName) {
+        async function createPixelmapTestCb(done, testNum, colorSpace, gamma, checkColorSpace) {
             let logger = Logger(testNum);
             try {
-                let fd = await getFd("colorspace.jpg")
+                let fd = await getFd("colorspace.jpg");
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let csm = colorSpaceManager.create(...colorSpaceName);
+                    let csm = colorSpaceManager.create(colorSpace, gamma);
+                    logger.log('colorSpace name ' + csm.getColorSpaceName());
                     let decodingOptions = { desiredColorSpace: csm };
                     imageSource.createPixelMap(decodingOptions, async (err, pixelMap) => {
                         if (err) {
-                            logger.log("PixelMap err " + err)
+                            logger.log("PixelMap err " + err);
                             expect(false).assertTrue();
                             done();
                             return;
                         }
-                        let info = await pixelMap.getImageInfo();
-                        console.log(`${testNum} file size width: ${info.size.width}`);
-                        console.log(`${testNum} file size height: ${info.size.height}`);
-                        expect(info.size.width == WIDTH).assertTrue();
-                        expect(info.size.height == HEIGHT).assertTrue();
+                        let cs = pixelMap.getColorSpace();
+                        let csmn = cs.getColorSpaceName();
+                        logger.log('csmn ' + csmn);
+                        checkColorSpace(csmn);
                         done();
                     });
                 } else {
@@ -113,28 +110,31 @@ export default function ImageColorSpaceTransferTest() {
             }
         }
 
-        async function applyColorSpacePromiseTest(done, testNum, ...colorSpaceName) {
+        async function applyColorSpacePromiseTest(done, testNum, checkColorSpace, colorSpace, gamma) {
             let logger = Logger(testNum);
             try {
-                let fd = await getFd("colorspace.jpg")
+                let fd = await getFd("colorspace.jpg");
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let decodingOptions = {};
-                    let pixelMap = await imageSource.createPixelMap(decodingOptions);
+                    let pixelMap = await imageSource.createPixelMap();
                     if (pixelMap != undefined) {
-                        let csmModify = colorSpaceManager.create(...colorSpaceName);
-                        await pixelMap.applyColorSpace(csmModify)
-                        let pixelSize = pixelMap.getPixelBytesNumber();
-                        logger.log(`new pixel size ${pixelSize}`);
-                        let readBuffer0 = new ArrayBuffer(pixelSize);
-                        await pixelMap.readPixelsToBuffer(readBuffer0);
-                        let bufferArr0 = new Uint8Array(readBuffer0);
-                        for (let i = 0; i < 50; i++) {
-                            logger.log("PixelMap buffer[" + i + "] = " + bufferArr0[i]);
-                        }
-                        expect(true).assertTrue();
-                        done();
+                        let csmModify = colorSpaceManager.create(colorSpace, gamma);
+                        logger.log("csmModify " + csmModify);
+                        pixelMap.applyColorSpace(csmModify).then(async () => {
+                            let csm1 = pixelMap.getColorSpace();
+                            logger.log("getColorSpace " + csm1);
+                            let csmn = csm1.getColorSpaceName();
+                            logger.log("getColorSpaceName " + csmn);
+                            checkColorSpace(csmn);
+                            let pixelSize = pixelMap.getPixelBytesNumber();
+                            logger.log(`new pixel size ${pixelSize}`);
+                            done();
+                        }).catch(error => {
+                            logger.log("apply colorSpace failed " + error);
+                            expect().assertFail();
+                            done();
+                        })
                     } else {
                         logger.log('creat pixelMap failed ');
                         expect(false).assertTrue();
@@ -152,33 +152,30 @@ export default function ImageColorSpaceTransferTest() {
             }
         }
 
-        async function applyColorSpaceCbTest(done, testNum, ...colorSpaceName) {
+        async function applyColorSpaceCbTest(done, testNum, checkColorSpace, colorSpace, gamma) {
             let logger = Logger(testNum);
             try {
-                let fd = await getFd("colorspace.jpg")
+                let fd = await getFd("colorspace.jpg");
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let decodingOptions = {};
-                    let pixelMap = await imageSource.createPixelMap(decodingOptions);
+                    let pixelMap = await imageSource.createPixelMap();
                     if (pixelMap != undefined) {
-                        let csmModify = colorSpaceManager.create(...colorSpaceName);
+                        let csmModify = colorSpaceManager.create(colorSpace, gamma);
                         pixelMap.applyColorSpace(csmModify, async (err) => {
                             if (err) {
+                                expect(false).assertTrue();
                                 logger.log("applyColorSpace err " + err);
                                 done();
                                 return;
                             }
+                            let csm1 = pixelMap.getColorSpace();
+                            logger.log("getColorSpace " + csm1);
+                            let csmn = csm1.getColorSpaceName();
+                            logger.log("getColorSpaceName " + csmn);
+                            checkColorSpace(csmn);
                             let pixelSize = pixelMap.getPixelBytesNumber();
                             logger.log(`new pixel size ${pixelSize}`);
-                            let readBuffer0 = new ArrayBuffer(pixelSize);
-                            await pixelMap.readPixelsToBuffer(readBuffer0);
-                            logger.log(`new readBuffer0 size ${readBuffer0.byteLength}`);
-                            let bufferArr0 = new Uint8Array(readBuffer0);
-                            for (let i = 0; i < 50; i++) {
-                                logger.log("PixelMap buffer[" + i + "] = " + bufferArr0[i]);
-                            }
-                            expect(true).assertTrue();
                             done();
                         })
                     } else {
@@ -205,10 +202,9 @@ export default function ImageColorSpaceTransferTest() {
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let decodingOptions = {};
-                    let pixelMap = await imageSource.createPixelMap(decodingOptions);
+                    let pixelMap = await imageSource.createPixelMap();
                     if (pixelMap != undefined) {
-                        pixelMap.applyColorSpace(csmModify, async (err) => {
+                        pixelMap.applyColorSpace(csmModify, async (err: BusinessError | number) => {
                             logger.log('applyColorSpace failed ' + err);
                             expect(err == ERR_CODE).assertTrue();
                             done();
@@ -237,8 +233,7 @@ export default function ImageColorSpaceTransferTest() {
                 let imageSource = image.createImageSource(fd);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
-                    let decodingOptions = {};
-                    let pixelMap = await imageSource.createPixelMap(decodingOptions);
+                    let pixelMap = await imageSource.createPixelMap();
                     if (pixelMap != undefined) {
                         try {
                             await pixelMap.applyColorSpace(csmModify);
@@ -276,8 +271,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0100', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
+            }
             await createPixelmapTestPromise(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0100',
-                colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+                colorSpaceManager.ColorSpace.ADOBE_RGB_1998, undefined, checkColorSpace)
         })
 
         /**
@@ -290,8 +288,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0200', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DCI_P3).assertTrue();
+            }
             await createPixelmapTestPromise(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0200',
-                colorSpaceManager.ColorSpace.DCI_P3)
+                colorSpaceManager.ColorSpace.DCI_P3, undefined, checkColorSpace)
         })
 
         /**
@@ -304,13 +305,16 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0300', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DISPLAY_P3).assertTrue();
+            }
             await createPixelmapTestPromise(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0300',
-                colorSpaceManager.ColorSpace.DISPLAY_P3)
+                colorSpaceManager.ColorSpace.DISPLAY_P3, undefined, checkColorSpace)
         })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400
-         * @tc.name      : SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400
+         * @tc.name      : createPixelmap_promise_004
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
          * @tc.size      : MEDIUM
@@ -318,8 +322,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == SRGB).assertTrue();
+            }
             await createPixelmapTestPromise(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0400',
-                colorSpaceManager.ColorSpace.SRGB)
+                colorSpaceManager.ColorSpace.SRGB, undefined, checkColorSpace)
         })
 
         /**
@@ -343,8 +350,11 @@ export default function ImageColorSpaceTransferTest() {
                 whitePointY: 0.32902
             }
             let gamma = 2.4;
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == CUSTOM).assertTrue();
+            }
             await createPixelmapTestPromise(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_PROMISE_0500',
-                bt2020, gamma)
+                bt2020, gamma, checkColorSpace)
         })
 
         /**
@@ -357,13 +367,16 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0100', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
+            }
             await createPixelmapTestCb(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0100',
-                colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+                colorSpaceManager.ColorSpace.ADOBE_RGB_1998, undefined, checkColorSpace)
         })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200
-         * @tc.name      : SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200
+         * @tc.name      : createPixelmap_callback_002
          * @tc.desc      : 1.create imagesource
          *               : 2.create pixelmap
          * @tc.size      : MEDIUM
@@ -371,8 +384,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DCI_P3).assertTrue();
+            }
             await createPixelmapTestCb(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0200',
-                colorSpaceManager.ColorSpace.DCI_P3)
+                colorSpaceManager.ColorSpace.DCI_P3, undefined, checkColorSpace)
         })
 
         /**
@@ -385,8 +401,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0300', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DISPLAY_P3).assertTrue();
+            }
             await createPixelmapTestCb(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0300',
-                colorSpaceManager.ColorSpace.DISPLAY_P3)
+                colorSpaceManager.ColorSpace.DISPLAY_P3, undefined, checkColorSpace)
         })
 
         /**
@@ -399,8 +418,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0400', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == SRGB).assertTrue();
+            }
             await createPixelmapTestCb(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0400',
-                colorSpaceManager.ColorSpace.SRGB)
+                colorSpaceManager.ColorSpace.SRGB, undefined, checkColorSpace)
         })
 
         /**
@@ -424,8 +446,11 @@ export default function ImageColorSpaceTransferTest() {
                 whitePointY: 0.32902
             }
             let gamma = 2.4;
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == CUSTOM).assertTrue();
+            }
             await createPixelmapTestCb(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_DECODE_CALLBACK_0500',
-                bt2020, gamma)
+                bt2020, gamma, checkColorSpace)
         })
 
         /**
@@ -439,8 +464,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0100', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
+            }
             await applyColorSpacePromiseTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0100',
-                colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+                checkColorSpace, colorSpaceManager.ColorSpace.ADOBE_RGB_1998, undefined)
         })
 
         /**
@@ -454,8 +482,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0200', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DCI_P3).assertTrue();
+            }
             await applyColorSpacePromiseTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0200',
-                colorSpaceManager.ColorSpace.DCI_P3)
+                checkColorSpace, colorSpaceManager.ColorSpace.DCI_P3, undefined)
         })
 
         /**
@@ -469,8 +500,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0300', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DISPLAY_P3).assertTrue();
+            }
             await applyColorSpacePromiseTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0300',
-                colorSpaceManager.ColorSpace.DISPLAY_P3)
+                checkColorSpace, colorSpaceManager.ColorSpace.DISPLAY_P3, undefined)
         })
 
         /**
@@ -484,8 +518,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0400', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == SRGB).assertTrue();
+            }
             await applyColorSpacePromiseTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0400',
-                colorSpaceManager.ColorSpace.SRGB)
+                checkColorSpace, colorSpaceManager.ColorSpace.SRGB, undefined)
         })
 
         /**
@@ -510,8 +547,11 @@ export default function ImageColorSpaceTransferTest() {
                 whitePointY: 0.32902
             }
             let gamma = 2.4;
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == CUSTOM).assertTrue();
+            }
             await applyColorSpacePromiseTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_PROMISE_0500',
-                bt2020, gamma)
+                checkColorSpace, bt2020, gamma)
         })
 
         /**
@@ -525,8 +565,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0100', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == ADOBE_RGB_1998).assertTrue();
+            }
             await applyColorSpaceCbTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0100',
-                colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+                checkColorSpace, colorSpaceManager.ColorSpace.ADOBE_RGB_1998, undefined)
         })
 
         /**
@@ -540,8 +583,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0200', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DCI_P3).assertTrue();
+            }
             await applyColorSpaceCbTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0200',
-                colorSpaceManager.ColorSpace.DCI_P3)
+                checkColorSpace, colorSpaceManager.ColorSpace.DCI_P3, undefined)
         })
 
         /**
@@ -555,8 +601,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0300', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == DISPLAY_P3).assertTrue();
+            }
             await applyColorSpaceCbTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0300',
-                colorSpaceManager.ColorSpace.DISPLAY_P3)
+                checkColorSpace, colorSpaceManager.ColorSpace.DISPLAY_P3, undefined)
         })
 
         /**
@@ -570,8 +619,11 @@ export default function ImageColorSpaceTransferTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0400', 0, async function (done) {
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == SRGB).assertTrue();
+            }
             await applyColorSpaceCbTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0400',
-                colorSpaceManager.ColorSpace.SRGB)
+                checkColorSpace, colorSpaceManager.ColorSpace.SRGB, undefined)
         })
 
         /**
@@ -596,8 +648,11 @@ export default function ImageColorSpaceTransferTest() {
                 whitePointY: 0.32902
             }
             let gamma = 2.4;
+            function checkColorSpace(colorSpaceName) {
+                expect(colorSpaceName == CUSTOM).assertTrue();
+            }
             await applyColorSpaceCbTest(done, 'SUB_MULTIMEDIA_IMAGE_COLORSPACE_TRANSFER_CALLBACK_0500',
-                bt2020, gamma)
+                checkColorSpace, bt2020, gamma)
         })
 
         /**
