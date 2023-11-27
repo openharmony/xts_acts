@@ -50,6 +50,10 @@
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/01.jpg",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/01.mp4",
 
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumImageVideoCount01.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/albumImageVideoCount01.mp4",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumImageVideoCount02.jpg",
+
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumGetAssetsCb01.jpg",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/albumGetAssetsCb01.mp4",
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumGetAssetsPro01.jpg",
