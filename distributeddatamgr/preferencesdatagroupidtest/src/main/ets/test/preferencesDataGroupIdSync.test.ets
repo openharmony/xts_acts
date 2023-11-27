@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import data_preferences from '@ohos.data.preferences';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-
+let context: Context
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
 const NAME = 'test_preferences_store';
 const TAG = "[preferencesDataGroupIdSync]"
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
@@ -26,10 +28,12 @@ export default function preferencesDataGroupIdSync() {
   describe('preferencesDataGroupIdSync', function () {
     beforeAll(async function () {
       console.info('beforeAll');
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context
     })
     afterAll(async function () {
       console.info('afterAll');
-      await data_preferences.deletePreferences(globalThis.abilityContext, NAME);
+      await data_preferences.deletePreferences(context, NAME);
       mPreferences = null
     })
 
@@ -44,7 +48,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: null,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect().assertFail();
         done();
       } catch (errInfo) {
@@ -65,7 +69,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: undefined,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect().assertFail();
         done();
       } catch (errInfo) {
@@ -86,7 +90,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123456',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect(Options.dataGroupId).assertEqual('123456')
         done();
       } catch (errInfo) {
@@ -107,7 +111,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123123',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -132,8 +136,8 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: null,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -158,8 +162,8 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: undefined,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -184,8 +188,8 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123123',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -207,7 +211,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123456',
       };
 
-      mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+      mPreferences = data_preferences.getPreferencesSync(context, Options)
       await mPreferences.clearSync();
       await mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test')
       await mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
@@ -218,7 +222,7 @@ export default function preferencesDataGroupIdSync() {
           done();
         }
         console.log("flush done.");
-        await data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options)
+        await data_preferences.removePreferencesFromCacheSync(context, Options)
         let value = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
         console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 end." + value);
         expect('test').assertEqual(value);

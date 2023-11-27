@@ -15,12 +15,17 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import dataPreferences from '@ohos.data.preferences';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TAG = "[ttt]"
-
+let context: Context
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
 export default function preferencesDataGroupIdPromise() {
   describe('preferencesDataGroupIdPromise', function () {
-
+    beforeAll(async function () {
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context
+    })
     console.log(TAG + "*************Unit Test Begin*************");
 
 
@@ -35,11 +40,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: null,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -71,11 +76,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: undefined,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -107,11 +112,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: '112233',
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -143,11 +148,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: null,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
@@ -179,11 +184,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: undefined,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
@@ -215,11 +220,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: '112233',
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();

@@ -15,13 +15,18 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import dataPreferences from '@ohos.data.preferences';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TAG = "[ttt]"
-
+let context: Context
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
 
 export default function preferencesDataGroupIdCallback() {
   describe('preferencesDataGroupIdCallback', function () {
-
+    beforeAll(async function () {
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context
+    })
     console.log(TAG + "*************Unit Test Begin*************");
 
     /**
@@ -35,11 +40,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: null,
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (error) {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -63,11 +68,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: undefined,
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (error) {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -90,11 +95,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: '112233',
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (error) {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -118,13 +123,13 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: '123456',
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           if (err) {
             console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
             return false;
           }
           console.info(TAG, `getPreferences successfully.`);
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (error) {
             if (error) {
               console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
               return false;
@@ -151,11 +156,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: null,
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
@@ -179,11 +184,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: undefined,
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
@@ -206,11 +211,11 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: '112233',
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
@@ -223,7 +228,7 @@ export default function preferencesDataGroupIdCallback() {
       }
     })
 
-        /**
+    /**
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1300
      * @tc.name preferences dataGroupId callback test
      * @tc.desc preferences removePreferencesFromCache dataGroupId callback test
@@ -234,13 +239,13 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: '123456',
       };
       try {
-        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (err) {
           if (err) {
             console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
             return false;
           }
           console.info(TAG, `getPreferences successfully.`);
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
             if (error) {
               console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
               return false;
