@@ -76,7 +76,7 @@ describe('file_uri_test', function () {
       expect(false).assertTrue();
     } catch (e) {
       console.log('FileUri_GetUriFromPath_002 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
     }
   });
 
@@ -91,7 +91,7 @@ describe('file_uri_test', function () {
       expect(false).assertTrue();
     } catch (e) {
       console.log('FileUri_GetUriFromPath_003 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
     }
   });
 
