@@ -34,6 +34,7 @@ let path9 = path + '/MultimodalInput';
 let path10 = path + '/Power';
 let path1_1 = path + '/Notification';
 let path1_2 = path + '/Wifi';
+let path1_3 = path + '/Bluetooth';
 let picturePath = path + '/screenshot';
 let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
@@ -46,6 +47,7 @@ let MultimodalInputColorBackPath = path + '/MultimodalInputColorBack.txt'; // �
 let PowerColorBackPath = path + '/PowerColorBack.txt'; // 电源管理
 let NotificationColorBackPath = path + '/NotificationColorBack.txt'; // 通知管理
 let WifiColorBackPath = path + '/WifiColorBack.txt'; // wifi管理
+let BluetoothColorBackPath = path + '/BluetoothColorBack.txt'; // bluetooth管理
 let PlayerNetWorkColorBackPath = path4 + '/PlayerNetWorkColorBack.txt'; // 播放网络视频
 let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
 let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
@@ -61,6 +63,7 @@ fs.openSync(MultimodalInputColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.C
 fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(BluetoothColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let TimePath = path + '/Time.txt';
 fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let xmlPath = path + '/Test.xml';
@@ -76,9 +79,10 @@ let path55 = path5 + '/ExperienceReport.txt';
 let path66 = path6 + '/SensorReport.txt';
 let path88 = path8 + '/ScreenReport.txt'; // 屏幕
 let path99 = path9 + '/MultimodalInputReport.txt'; // 多模输入
-let pathPower = path10 + '/PowerReport.txt'; // 多模输入
-let pathNotification = path1_1 + '/NotificationReport.txt'; // 多模输入
-let pathWifi = path1_2 + '/WifiReport.txt'; // wifi模块
+let pathPower = path10 + '/PowerReport.txt';
+let pathNotification = path1_1 + '/NotificationReport.txt';
+let pathWifi = path1_2 + '/WifiReport.txt';
+let pathBluetooth = path1_3 + '/BluetoothReport.txt';
 @Entry
 @Component
 struct IndexPage {
@@ -93,7 +97,8 @@ struct IndexPage {
     {title:'MultimodalInput',uri:'pages/MultimodalInput/MultimodalInput_index'},
     {title:'Power',uri:'pages/Power/Power_index'},
     {title:'Notification',uri:'pages/Notification/Notification_index'},
-    {title:'Wifi',uri:'pages/Wifi/Wifi_index'}
+    {title:'Wifi',uri:'pages/Wifi/Wifi_index'},
+    {title:'Bluetooth',uri:'pages/Bluetooth/BlueTooth_index'}
   ]
   @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
   async onPageShow(){
@@ -128,6 +133,8 @@ struct IndexPage {
       fs.mkdirSync(path1_1);
       // wifi管理
       fs.mkdirSync(path1_2);
+      // 蓝牙
+      fs.mkdirSync(path1_3);
       fs.mkdirSync(picturePath);
       fs.mkdirSync(ExperienceDataPath);
 
@@ -157,6 +164,7 @@ struct IndexPage {
     fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathBluetooth, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
   build(){
     Column(){
@@ -263,6 +271,7 @@ struct IndexPage {
     fs.unlinkSync(pathPower);
     fs.unlinkSync(pathNotification);
     fs.unlinkSync(pathWifi);
+    fs.unlinkSync(pathBluetooth);
     fs.unlinkSync(ArkUIColorBackPath);
     fs.unlinkSync(AudioColorBackPath);
     fs.unlinkSync(CameraColorBackPath);
@@ -277,6 +286,7 @@ struct IndexPage {
     fs.unlinkSync(PowerColorBackPath);
     fs.unlinkSync(NotificationColorBackPath);
     fs.unlinkSync(WifiColorBackPath);
+    fs.unlinkSync(BluetoothColorBackPath);
     fs.rmdirSync(picturePath);
     fs.mkdirSync(picturePath);
     fs.rmdirSync(ExperienceDataPath);
@@ -297,6 +307,7 @@ struct IndexPage {
     fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(pathBluetooth, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -311,6 +322,7 @@ struct IndexPage {
     fs.openSync(PowerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(NotificationColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(WifiColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(BluetoothColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
@@ -324,6 +336,7 @@ struct IndexPage {
     FlushData.ResetPower();
     FlushData.ResetNotification();
     FlushData.ResetWifi();
+    FlushData.ResetBluetooth();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
@@ -348,6 +361,7 @@ struct IndexPage {
     let PowerReport; // 电源管理
     let NotificationReport; // 通知
     let WifiReport; // wifi管理
+    let BluetoothReport; // bluetooth管理
     /*
      * ArkUI
      */
@@ -509,10 +523,24 @@ struct IndexPage {
       result12[i] = str12[i * 2 + 1];
     }
 
+    /**
+     * Bluetooth 通知
+     */
+    let OP13 = fs.openSync(pathBluetooth, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buf13 = new ArrayBuffer(40960);
+    fs.readSync(OP13.fd,buf13);
+    BluetoothReport = String.fromCharCode.apply(null, new Uint8Array(buf13));
+    let str13 = BluetoothReport.split(";");
+    let title13 = [];
+    let result13 = [];
+    for (let i = 0; i < Math.floor(str13.length / 2); i++) {
+      title13[i] = str13[i * 2];
+      result13[i] = str13[i * 2 + 1];
+    }
 
     let report = ArkUIReport + AudioReport + CameraReport + PlayerReport +
     ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport
-    + PowerReport + NotificationReport + WifiReport;
+    + PowerReport + NotificationReport + BluetoothReport + WifiReport;
     let FailIndex = report.indexOf('false');
     let FailNum = 0;
     while(FailIndex != -1) {
@@ -757,6 +785,26 @@ struct IndexPage {
     let WifiTestNum = WifiFailNum + WifiPassNum;
     let wifiTestNum = (WifiTestNum).toString();
 
+    /**
+     * Bluetooth 蓝牙管理
+     */
+    let BluetoothFailIndex = BluetoothReport.indexOf('false');
+    let BluetoothFailNum = 0;
+    while (BluetoothFailIndex != -1) {
+      console.log(BluetoothFailIndex);
+      BluetoothFailNum++;
+      BluetoothFailIndex = BluetoothReport.indexOf('false',BluetoothFailIndex + 1);
+    }
+    let bluetoothFailNum = (BluetoothFailNum).toString();
+    let BluetoothPassIndex = BluetoothReport.indexOf('true ');
+    let BluetoothPassNum = 0;
+    while (BluetoothPassIndex != -1) {
+      console.log(BluetoothPassIndex);
+      BluetoothPassNum++;
+      BluetoothPassIndex = BluetoothReport.indexOf('true ',BluetoothPassIndex + 1);
+    }
+    let BluetoothTestNum = BluetoothFailNum + BluetoothPassNum;
+    let bluetoothTestNum = (BluetoothTestNum).toString();
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -1051,6 +1099,32 @@ struct IndexPage {
       serializer.setAttributes("time", "*");
       serializer.setAttributes("classname", "ActsWifiTest");
       serializer.setAttributes("result", String(result12[i]));
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
+      serializer.endElement();
+    }
+    serializer.endElement();
+
+    /**
+     * Bluetooth
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsBluetoothTest");
+    serializer.setAttributes("time", "*");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", bluetoothFailNum);
+    serializer.setAttributes("ignored", "0");
+    serializer.setAttributes("tests", bluetoothTestNum);
+    serializer.setAttributes("message", "*");
+    serializer.setAttributes("modulename", "ActsValidator");
+    for (let i = 0; i < title13.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title13[i]));
+      serializer.setAttributes("status", "run");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "ActsBluetoothTest");
+      serializer.setAttributes("result", String(result13[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
       serializer.endElement();
