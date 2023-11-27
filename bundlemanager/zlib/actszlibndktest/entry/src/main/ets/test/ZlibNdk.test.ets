@@ -496,6 +496,21 @@ export default function zlibNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_THIRDPARTY_ZLIB_DEFLATEBOUND_0100
+     * @tc.name       : testZLibInflateSync001
+     * @tc.desc       : test deflateBound
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDeflateBound001', 0, async (done: Function) => {
+      let data = zLib.deflateBound();
+      console.info("testDeflateBound001 data = " + JSON.stringify(data));
+      expect(data).assertEqual(TEST_SUCCESS)
+      done()
+    });
+
+    /**
      * @tc.number     : SUB_THIRDPARTY_ZLIB_INFLATERESETKEEP_0100
      * @tc.name       : testZLibInflateResetKeep001
      * @tc.desc       : test inflateResetKeep
