@@ -812,15 +812,13 @@ export class KeyboardController {
             inputMethodEngine.off("keyboardHide");
             console.info(TAG + '====>inputMethodEngine.off("keyboardHide") count: ' + count);
         });
-        inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
+        inputMethodEngine.on('inputStart', async (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_071 inputMethodEngine.on("inputStart")');
-            let t = setInterval(async () => {
+            let t = setTimeout(async () => {
+                clearTimeout(t);
                 await keyboardController.hideKeyboard();
-                console.info(TAG + '====>keyboardController.hideKeyboard count: ' +  count);
-                if(count === 1){
-                    clearInterval(t);
-                }
+                console.info(TAG + '====>inputMethodEngine_test_071 hideKeyboard success');
             },100);
         });
 
@@ -908,12 +906,10 @@ export class KeyboardController {
         inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_074 inputMethodEngine.on("inputStart")');
-            let t = setInterval(async () => {
+            let t = setTimeout(async () => {
+                clearTimeout(t);
                 await TextInputClient.insertText("ttt");
                 console.info(TAG + '====>keyboardController.insertText count: ' +  count);
-                if(count === 2){
-                    clearInterval(t);
-                }
             },100);
         });
 
@@ -964,12 +960,14 @@ export class KeyboardController {
         inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_077 inputMethodEngine.on("inputStart")');
+            let loopCount = 0;
             let t = setInterval(async () => {
                 await TextInputClient.insertText("tttt");
                 console.info(TAG + '====>keyboardController.insertText count: ' +  count);
-                if(count === 2){
+                if (loopCount === 2) {
                     clearInterval(t);
                 }
+                loopCount += 1;
             },100);
         });
         let t = setTimeout(() => {
