@@ -43,7 +43,8 @@ struct StandardBluetooth {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'StandardBluetooth';
-  @State StepTips: string = '操作步骤：\n1、打开监听' + '\n2、将设备灭屏' + '\n3、停止监听' + '\n预期结果：监听状态和实际一致';
+  @State StepTips: string = '操作步骤：\n1、请打开蓝牙' + '\n2、自己创建一个蓝牙' + '\n3、应用是否扫描到自己创建的蓝牙MAC地址'
+  + '\n4、选择点击蓝牙后进行配对' + '\n预期结果：列表能扫描到自己的蓝牙，能配对成功则通过';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State isOn: boolean = false
