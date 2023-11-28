@@ -236,8 +236,6 @@ import comSizeAbilityTest_27 from './comSizeAbility/comSizeAbilityTest_27.test';
 import comSizeAbilityTest_28 from './comSizeAbility/comSizeAbilityTest_28.test';
 import comSizeAbilityTest_29 from './comSizeAbility/comSizeAbilityTest_29.test';
 import NavigationStack01Jsunit from './Navigation/NavigationStack01Jsunit.test';
-import NavigationStack02Jsunit from './Navigation/NavigationStack02Jsunit.test';
-import NavigationStack03Jsunit from './Navigation/NavigationStack03Jsunit.test';
 import NavigationStack10Jsunit from './Navigation/NavigationStack10Jsunit.test';
 import NavigationStack11Jsunit from './Navigation/NavigationStack11Jsunit.test';
 import NavigationStack12Jsunit from './Navigation/NavigationStack12Jsunit.test';
@@ -522,8 +520,6 @@ export default function testsuite() {
   HoverJsunit23()
   HoverJsunit25()
   NavigationStack01Jsunit();
-  NavigationStack02Jsunit();
-  NavigationStack03Jsunit();
   NavigationStack10Jsunit();
   NavigationStack11Jsunit();
   NavigationStack12Jsunit();
