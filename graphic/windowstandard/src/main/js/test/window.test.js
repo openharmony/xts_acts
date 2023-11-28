@@ -3584,6 +3584,7 @@ export default function window_test() {
                 expect(1).assertEqual(window.AvoidAreaType.TYPE_CUTOUT);
                 expect(2).assertEqual(window.AvoidAreaType.TYPE_SYSTEM_GESTURE);
                 expect(3).assertEqual(window.AvoidAreaType.TYPE_KEYBOARD);
+                expect(4).assertEqual(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
                 done();
             } catch (err) {
                 console.info(msgStr + 'test enum value of AvoidArea error :' + JSON.stringify(err));
