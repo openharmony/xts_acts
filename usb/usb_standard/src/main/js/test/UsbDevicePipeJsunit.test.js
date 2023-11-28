@@ -27,7 +27,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   var gPipe;
   var portCurrentMode;
 
-  beforeAll(function () {
+  beforeAll(async function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest Begin*************');
     var Version = usbManager.getVersion();
     console.info('usb unit begin test getversion :' + Version)
@@ -41,7 +41,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2;
             console.info('usb case setPortRoles return: ' + data);
           }).catch(error => {
@@ -154,7 +154,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: bulkTransfer
    * @tc.desc: Positive test: bulk transfer, receive data
    */
-  it('SUB_USB_HostManager_JS_TranFunc_1000', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_1000', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_1000 begin');
     console.info('usb SUB_USB_HostManager_JS_TranFunc_1000 portcurrentMode ret : ' + portCurrentMode);
     if (portCurrentMode == 1) {
@@ -173,7 +173,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
     console.info('usb case readData begin');
     var tmpUint8Array = new Uint8Array(testParam.maxInSize);
-    usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+    await usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case readData tmpUint8Array buffer : ' + CheckEmptyUtils.ab2str(tmpUint8Array));
       console.info('usb case readData ret: ' + data);
       expect(data >= 0).assertTrue();
@@ -190,7 +190,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: bulkTransfer
    * @tc.desc: Positive test: bulk transfer, send data
    */
-  it('SUB_USB_HostManager_JS_TranFunc_1100', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_1100', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_1100 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -215,7 +215,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
-    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+    await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_HostManager_JS_TranFunc_1100 ret: ' + data);
       console.info('usb case SUB_USB_HostManager_JS_TranFunc_1100 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
@@ -232,7 +232,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: bulkTransfer
    * @tc.desc: Undefined option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0400', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0400', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0400 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -257,7 +257,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
-    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, undefined).then(data => {
+    await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, undefined).then(data => {
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0400 ret: ' + data);
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0400 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
@@ -274,7 +274,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: bulkTransfer
    * @tc.desc: Null option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0500', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0500', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0500 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -299,7 +299,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
-    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, null).then(data => {
+    await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, null).then(data => {
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0500 ret: ' + data);
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0500 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
@@ -316,7 +316,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: bulkTransfer
    * @tc.desc: Ignore option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0600', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0600', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0600 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -341,7 +341,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
-    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array).then(data => {
+    await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array).then(data => {
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0600 ret: ' + data);
       console.info('usb case SUB_USB_HostManager_JS_TranCompatibility_0600 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
@@ -720,8 +720,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4100 :  PASS');
   })
 
-  function callControlTransfer(pip, controlParam, timeout, caseName) {
-    usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
+  async function callControlTransfer(pip, controlParam, timeout, caseName) {
+    await usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
       console.info('usb controlTransfer controlParam.data buffer : ' + controlParam.data + ' ' + caseName);
       expect(data >= 0).assertTrue();
@@ -739,7 +739,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, GetDescriptor: cmd 6 target 2 reqType 128 value 512 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0100', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0100', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0100 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -756,7 +756,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0100 GetDescriptor');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0100 GetDescriptor');
   })
 
   /**
@@ -764,7 +765,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, GetStatus: cmd 0 target 0 reqType 128 value 0 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0200', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -781,7 +782,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0200 GetStatus');
+    await callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0200 GetStatus');
   })
 
   /**
@@ -790,7 +791,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc: Test the bulkTransfer interface
    * Undefined option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0100', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0100', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0100 begin');
     if (portCurrentMode == 1) {
       console.info('usb case HostManager_JS_TranCompatibility_0100 get_device port is device');
@@ -806,7 +807,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, undefined,
+    await callControlTransfer(testParam.pip, controlParam, undefined,
       'SUB_USB_HostManager_JS_TranCompatibility_0100 GetStatus');
   })
 
@@ -816,7 +817,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc: Test the bulkTransfer interface
    * Null option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0200', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case HostManager_JS_TranCompatibility_0200 get_device port is device')
@@ -832,7 +833,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, null, 'SUB_USB_HostManager_JS_TranCompatibility_0200 GetStatus');
+    await callControlTransfer(testParam.pip, controlParam, null,
+      'SUB_USB_HostManager_JS_TranCompatibility_0200 GetStatus');
   })
 
   /**
@@ -841,7 +843,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc: Test the bulkTransfer interface
    * Ignore option arguments, use default options.
    */
-  it('SUB_USB_HostManager_JS_TranCompatibility_0300', 0, function () {
+  it('SUB_USB_HostManager_JS_TranCompatibility_0300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case HostManager_JS_TranCompatibility_0300 get_device port is device');
@@ -857,7 +859,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    usbManager.controlTransfer(testParam.pip, controlParam).then(data => {
+    await usbManager.controlTransfer(testParam.pip, controlParam).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' '
         + 'HostManager_JS_TranCompatibility_0300 GetStatus');
       console.info('usb controlTransfer controlParam.data buffer : '
@@ -877,7 +879,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, GetConfiguration: cmd 8 target 0 reqType 128 value 0 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0300', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -894,7 +896,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(8, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0300 GetConfiguration');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0300 GetConfiguration');
   })
 
   /**
@@ -902,7 +905,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, GetInterface: cmd 10 target 0 reqType 129 value 0 index 1
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0400', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0400', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0400 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device');
@@ -919,7 +922,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(10, usbManager.USB_REQUEST_TARGET_INTERFACE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0400 GetInterface');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0400 GetInterface');
   })
 
   /**
@@ -927,7 +931,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, ClearFeature: cmd 1 target 0 reqType 0 value 0 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0500', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0500', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0500 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -944,7 +948,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(1, usbManager.USB_REQUEST_TARGET_DEVICE,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0500 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0500 ClearFeature');
   })
 
   /**
@@ -952,7 +957,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 1 reqType 129 value 512 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0600', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0600', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0600 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -969,7 +974,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_INTERFACE,
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), (2 << 8), 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0600 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0600 ClearFeature');
   })
 
   /**
@@ -977,7 +983,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 2 reqType 34 value 512 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0700', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0700', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0700 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -994,7 +1000,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_ENDPOINT,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
       | (usbManager.USB_REQUEST_TARGET_ENDPOINT & 0x1f), (2 << 8), 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0700 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0700 ClearFeature');
   })
 
   /**
@@ -1002,7 +1009,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 67 value 512 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0800', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0800', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0800 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -1019,7 +1026,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_VENDOR << 5)
       | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), (2 << 8), 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0800 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0800 ClearFeature');
   })
 
   /**
@@ -1027,7 +1035,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 35 value 0 index 0
    */
-  it('SUB_USB_HostManager_JS_TranFunc_0900', 0, function () {
+  it('SUB_USB_HostManager_JS_TranFunc_0900', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_TranFunc_0900 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -1044,11 +1052,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
       | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_TranFunc_0900 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_TranFunc_0900 ClearFeature');
   })
 
-  function callControlTransferEx(pip, controlParam, timeout, caseName) {
-    usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
+  async function callControlTransferEx(pip, controlParam, timeout, caseName) {
+    await usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
       expect(false).assertTrue();
       console.info('usb' + caseName + ':  FAILED');
@@ -1065,7 +1074,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Negative test: control transfer, parameter number exception, input a parameter
    */
-  it('SUB_USB_HostManager_JS_ErrCode_1300', 0, function () {
+  it('SUB_USB_HostManager_JS_ErrCode_1300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -1078,7 +1087,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      usbManager.controlTransfer("invalid").then(data => {
+      await usbManager.controlTransfer("invalid").then(data => {
         console.info('usb HostManager_JS_ErrCode_1300 case controlTransfer ret data : ' + data);
         expect(false).assertTrue();
       }).catch(error => {
@@ -1097,7 +1106,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Negative test: control transfer, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_HostManager_JS_ErrCode_2300', 0, function () {
+  it('SUB_USB_HostManager_JS_ErrCode_2300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -1110,7 +1119,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      usbManager.controlTransfer().then(data => {
+      await usbManager.controlTransfer().then(data => {
         console.info('usb HostManager_JS_ErrCode_2300 case controlTransfer ret data : ' + data);
         expect(false).assertTrue();
       }).catch(error => {
@@ -1129,7 +1138,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Negative test: control transfer, parameter pipe type error
    */
-  it('SUB_USB_HostManager_JS_ErrCode_3200', 0, function () {
+  it('SUB_USB_HostManager_JS_ErrCode_3200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -1147,7 +1156,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
       | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     try {
-      callControlTransferEx(testParamPip, controlParam, timeout, 'SUB_USB_HostManager_JS_ErrCode_3200 ClearFeature');
+      await callControlTransferEx(testParamPip, controlParam, timeout,
+        'SUB_USB_HostManager_JS_ErrCode_3200 ClearFeature');
     } catch (err) {
       console.info('usb HostManager_JS_ErrCode_3200 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
@@ -1161,7 +1171,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc: Negative test: control transfer,
    * parameter contrlparam type error(The controlParam should have the data property)
    */
-  it('SUB_USB_HostManager_JS_ErrCode_4400', 0, function () {
+  it('SUB_USB_HostManager_JS_ErrCode_4400', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_4400 begin');
     if (portCurrentMode == 1) {
       console.info('usb HostManager_JS_ErrCode_4400 case get_device port is device')
@@ -1176,7 +1186,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = "invalid";
     var timeout = 5000;
     try {
-      callControlTransferEx(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_ErrCode_4400 ClearFeature');
+      await callControlTransferEx(testParam.pip, controlParam, timeout,
+        'SUB_USB_HostManager_JS_ErrCode_4400 ClearFeature');
     } catch (err) {
       console.info('usb HostManager_JS_ErrCode_4400 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
@@ -1189,14 +1200,14 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Negative test: control transfer, parameter timeout type error, use default options.
    */
-  it('SUB_USB_HostManager_JS_ErrCode_2900', 0, function () {
+  it('SUB_USB_HostManager_JS_ErrCode_2900', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2900 begin');
     if (portCurrentMode == 1) {
-      console.info('usb 1570 case get_device port is device')
+      console.info('usb 1570 case get_device port is device');
       expect(false).assertFalse();
       return
     }
-    var testParam = getTransferTestParam()
+    var testParam = getTransferTestParam();
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
       return
@@ -1205,7 +1216,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
       | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
-    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_HostManager_JS_ErrCode_2900 ClearFeature');
+    await callControlTransfer(testParam.pip, controlParam, timeout,
+      'SUB_USB_HostManager_JS_ErrCode_2900 ClearFeature');
   })
 })
 }
