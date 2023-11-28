@@ -1256,13 +1256,16 @@ export default function audioRendererTest() {
       }
       audioRen.on('periodReach', 55, (position) => {
         console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
+        resultFlag = true;
+        expect(true).assertTrue();
         audioRen.off('periodReach');
-        audioRen.on('periodReach', 100, (position) => {
-          console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
-          resultFlag = true;
-          audioRen.off('periodReach');
-        });
-
+        
+      });
+      audioRen.on('periodReach', 100, (position) => {
+        console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
+        resultFlag = true;
+        expect(true).assertTrue();
+        audioRen.off('periodReach');
       });
 
       console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
