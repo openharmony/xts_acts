@@ -114,7 +114,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "blurValue": 0x7FFFFFFF
+            "blurValue": 10000
           }
         }
         var innerEvent = {
@@ -130,7 +130,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects004] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.blur).assertEqual(2147483648);
+      expect(objNew.$attrs.blur).assertEqual(10000);
       done();
     });
 
@@ -654,7 +654,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "invertValue": "20"
+            "invertValue": 20
           }
         }
         var innerEvent = {
@@ -680,7 +680,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "invertValue": 0x80000000
+            "invertValue": 0
           }
         }
         var innerEvent = {
@@ -706,7 +706,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "invertValue": 0x7FFFFFFF
+            "invertValue": 10000
           }
         }
         var innerEvent = {
@@ -722,7 +722,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow8');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects029] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.invert).assertEqual(2147483647);
+      expect(objNew.$attrs.invert).assertEqual(10000);
       done();
     });
 
