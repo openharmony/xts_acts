@@ -81,7 +81,7 @@ export default function webViewSetHttpDns() {
      */
     it('testSetHttpDnsSecureOnlyUserDefine',0,async function(done){
       emitKey="emitSetHttpDnsAutoExample";
-      Utils.registerEvent("testSetHttpDnsSecureOnlyUserDefine","微博",356,done);
+      Utils.registerEvent("testSetHttpDnsSecureOnlyUserDefine","success",356,done);
       sendEventByKey('webViewSetHttpDns',10,'');
     })
     /*

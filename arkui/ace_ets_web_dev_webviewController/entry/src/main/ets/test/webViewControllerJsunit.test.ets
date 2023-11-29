@@ -60,7 +60,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetUserAgent',0,async function(done){
       emitKey="emitgetUserAgentAgain";
-      let userAgent= "Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgent",userAgent,1020,done);
       sendEventByKey('webcomponent',10,'');
     })
@@ -71,7 +71,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetUserAgentAgain',0,async function(done){
       emitKey="emitpageDown";
-      let userAgent= "\"Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36\"";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgentAgain",userAgent,104,done);
       sendEventByKey('webcomponent',10,'');
     })    
