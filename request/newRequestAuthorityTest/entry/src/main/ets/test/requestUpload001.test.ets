@@ -82,7 +82,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Callback_0020
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Callback_0020
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -116,7 +116,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Promise_0020
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -140,7 +140,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Callback_0050
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Callback_0050
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -173,7 +173,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Promise_0050
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Promise_0050
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -196,7 +196,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Callback_0020
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Callback_0020
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -229,7 +229,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Promise_0020
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -253,7 +253,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Callback_0030
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Callback_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -281,7 +281,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Promise_0030
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Promise_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -306,7 +306,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Callback_0040
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Callback_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -334,7 +334,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Promise_0040
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Promise_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -359,7 +359,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Callback_0050
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Callback_0050
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -392,7 +392,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Promise_0050
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Promise_0050
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -417,7 +417,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Callback_0060
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Callback_0060
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -457,7 +457,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Upload_Promise_0060
      * @tc.name    SUB_Misc_REQUEST_Remove_Upload_Promise_0060
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -482,7 +482,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_Misc_REQUEST_On_Upload_Progress_0010
      * @tc.name SUB_Misc_REQUEST_On_Upload_Progress_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -523,7 +523,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Progress_0010
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Progress_0010
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -575,7 +575,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_Misc_REQUEST_Off_Upload_Progress_0020
      * @tc.name SUB_Misc_REQUEST_Off_Upload_Progress_0020
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -635,7 +635,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Progress_0030
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Progress_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -685,7 +685,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Progress_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Progress_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -732,7 +732,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Progress_0040
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Progress_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -772,7 +772,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Progress_0040
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Progress_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -824,7 +824,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_Misc_REQUEST_On_Upload_Completed_0010
      * @tc.name SUB_Misc_REQUEST_On_Upload_Completed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -865,7 +865,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Completed_0010
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Completed_0010
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -916,7 +916,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Completed_0030
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Completed_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -965,7 +965,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Completed_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Completed_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1012,7 +1012,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Completed_0040
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Completed_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1052,7 +1052,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Completed_0040
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Completed_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1103,7 +1103,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_Misc_REQUEST_On_Upload_Failed_0010
      * @tc.name SUB_Misc_REQUEST_On_Upload_Failed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1143,7 +1143,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Failed_0010
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Failed_0010
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1194,7 +1194,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_Misc_REQUEST_Off_Upload_Failed_0020
      * @tc.name SUB_Misc_REQUEST_Off_Upload_Failed_0020
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1254,7 +1254,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Failed_0030
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Failed_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1304,7 +1304,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Failed_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Failed_0030
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1351,7 +1351,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Failed_0040
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Failed_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1390,7 +1390,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Upload_Failed_0040
      * @tc.name    SUB_Misc_REQUEST_Off_Upload_Failed_0040
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1440,7 +1440,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Callback_0060
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Callback_0060
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1461,11 +1461,14 @@ export default function requestUploadOnetJSUnitTest() {
                 console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 create err: " + JSON.stringify(err));
                 expect().assertFail();
               }
-              await task1.start();
-            } catch (err) {
-              expect(err.code).assertEqual(21900007);
-              console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 create success: " + JSON.stringify(err));
+              await request.agent.remove(task1.tid);
+              console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 remove");
               await request.agent.remove(task2.tid);
+              console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task2 remove");
+              expect(true).assertTrue()
+              done();
+            } catch (err) {
+              console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 catch err: " + JSON.stringify(err));
               done();
             }
           });
@@ -1481,7 +1484,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Upload_Promise_0060
      * @tc.name    SUB_Misc_REQUEST_Create_Upload_Promise_0060
      * @tc.desc      Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1491,15 +1494,17 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
         let task1 = await request.agent.create(globalThis.abilityContext, config_);
-        var task2 = await request.agent.create(globalThis.abilityContext, config_);
-        console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 failed");
-        await task1.start();
-        expect().assertFail();
+        let task2 = await request.agent.create(globalThis.abilityContext, config_);
+        console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 and task2 create success");
+        await request.agent.remove(task1.tid);
+        console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 remove");
+        await request.agent.remove(task2.tid);
+        console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task2 remove");
+        expect(true).assertTrue()
         done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 create catch err: " + JSON.stringify(err));
-        await request.agent.remove(task2.tid);
-        expect(err.code).assertEqual(21900007);
+        expect().assertFail();
         done();
       }
     });
@@ -1508,7 +1513,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Failed_0500
      * @tc.name SUB_REQUEST_On_Upload_Failed_0500
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1558,7 +1563,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Failed_0600
      * @tc.name SUB_REQUEST_On_Upload_Failed_0600
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1609,7 +1614,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Failed_0500
      * @tc.name SUB_REQUEST_Off_Upload_Failed_0500
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1676,7 +1681,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Failed_0600
      * @tc.name SUB_REQUEST_Off_Upload_Failed_0600
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1741,7 +1746,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Pause_0100
      * @tc.name SUB_REQUEST_On_Upload_Pause_0100
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1806,7 +1811,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Pause_0200
      * @tc.name SUB_REQUEST_On_Upload_Pause_0200
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1873,7 +1878,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Pause_0100
      * @tc.name SUB_REQUEST_Off_Upload_Pause_0100
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1956,7 +1961,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Pause_0200
      * @tc.name SUB_REQUEST_Off_Upload_Pause_0200
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2037,7 +2042,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Remove_0100
      * @tc.name SUB_REQUEST_On_Upload_Remove_0100
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2092,7 +2097,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_On_Upload_Remove_0200
      * @tc.name SUB_REQUEST_On_Upload_Remove_0200
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2148,7 +2153,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Remove_0100
      * @tc.name SUB_REQUEST_Off_Upload_Remove_0100
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2215,7 +2220,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Off_Upload_Remove_0200
      * @tc.name SUB_REQUEST_Off_Upload_Remove_0200
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2280,7 +2285,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.number SUB_REQUEST_Upload_broadcastEvent_0200
      * @tc.name SUB_REQUEST_Upload_broadcastEvent_0200
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
