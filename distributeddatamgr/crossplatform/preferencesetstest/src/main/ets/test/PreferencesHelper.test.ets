@@ -14,18 +14,20 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
+import common from "@ohos.app.ability.common";
 
 const NAME = "test_preferences";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 let mPreferences;
-let context;
+let context: common.UIAbilityContext ;
 
 export default function preferencesHelperTest() {
   describe("preferencesHelperTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      context = globalThis.abilityContext;
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
+      console.info("context=======>"+context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
