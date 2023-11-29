@@ -355,7 +355,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for window size changes.
      */
     it('testWindow_off_WindowSizeChange_No_Callback', 0, async function (done) {
-      let caseName = 'window_off_windowSizeChange_Test_001';
+      let caseName = 'testWindow_off_WindowSizeChange_No_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -418,7 +418,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for window size changes.
      */
     it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async function (done) {
-      let caseName = 'window_off_windowSizeChange_Test_002';
+      let caseName = 'testWindow_off_WindowSizeChange_SecondCall_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -487,7 +487,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Disable listening for system avoidance zone changes.
      */
     it('testWindow_off_AvoidAreaChange_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_avoidAreaChange_Test_001';
+      let caseName = 'testWindow_off_AvoidAreaChange_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -538,7 +538,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Disable listening for system avoidance zone changes.
      */
     it('testWindow_off_AvoidAreaChange_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_avoidAreaChange_Test_002';
+      let caseName = 'testWindow_off_AvoidAreaChange_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -594,7 +594,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Disable the monitoring of screenshots.
      */
     it('testWindow_off_screenshot_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_screenshot_Test_001';
+      let caseName = 'testWindow_off_screenshot_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -666,7 +666,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Disable the monitoring of screenshots.
      */
     it('testWindow_off_screenshot_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_screenshot_Test_002';
+      let caseName = 'testWindow_off_screenshot_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -741,7 +741,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turns on modal window listener for click events on target Windows.
      */
     it('testWindow_off_dialogTargetTouch_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_dialogTargetTouch_Test_001';
+      let caseName = 'testWindow_off_dialogTargetTouch_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -804,7 +804,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turns on modal window listener for click events on target Windows.
      */
     it('testWindow_off_dialogTargetTouch_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_dialogTargetTouch_Test_002';
+      let caseName = 'testWindow_off_dialogTargetTouch_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -872,7 +872,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for keyboard height changes
      */
     it('testWindow_off_keyboardHeightChange_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_001';
+      let caseName = 'testWindow_off_keyboardHeightChange_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -938,7 +938,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for keyboard height changes
      */
     it('testWindow_off_keyboardHeightChange_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_002';
+      let caseName = 'testWindow_off_keyboardHeightChange_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1013,7 +1013,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for Windows Stage life cycle changes.
      */
     it('testWindowStage_off_windowStageEvent_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'windowStage_off_windowStageEvent_Test_001';
+      let caseName = 'testWindowStage_off_windowStageEvent_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1057,7 +1057,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Turn off listening for Windows Stage life cycle changes.
      */
     it('testWindowStage_off_windowStageEvent_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'windowStage_off_windowStageEvent_Test_002';
+      let caseName = 'testWindowStage_off_windowStageEvent_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1104,7 +1104,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable the monitor that shows device changes.
      */
     it('testDisplay_off_add_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_add_Test_001';
+      let caseName = 'testDisplay_off_add_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1178,7 +1178,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable the monitor that shows device changes.
      */
     it('testDisplay_off_add_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_add_Test_002';
+      let caseName = 'testDisplay_off_add_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1253,7 +1253,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable the monitor that shows device changes.
      */
     it('testDisplay_off_remove_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_remove_Test_001';
+      let caseName = 'testDisplay_off_remove_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1327,7 +1327,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable the monitor that shows device changes.
      */
     it('testDisplay_off_remove_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_remove_Test_002';
+      let caseName = 'testDisplay_off_remove_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1402,7 +1402,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable monitoring of screen status changes.
      */
     it('testDisplay_off_change_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_change_Test_001';
+      let caseName = 'testDisplay_off_change_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1455,7 +1455,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Enable monitoring of screen status changes.
      */
     it('testDisplay_off_change_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_change_Test_002';
+      let caseName = 'testDisplay_off_change_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1508,7 +1508,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Get the UIContext instance.
      */
     it('testGetUIContext_Instances', 0, async function (done) {
-      let caseName = 'getUIContext_Test_001';
+      let caseName = 'testGetUIContext_Instances';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let uiContext = null;
       console.log(msgStr + 'begin');

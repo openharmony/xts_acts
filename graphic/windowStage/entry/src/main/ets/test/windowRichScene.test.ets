@@ -43,7 +43,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testCreateWindow_Invalid_WinType_Promise', 0, async function (done) {
-      let caseName = 'createWindow_Test_001';
+      let caseName = 'testCreateWindow_Invalid_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_001'
@@ -68,7 +68,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testCreateWindow_Invalid_WinType_Callback', 0, async function (done) {
-      let caseName = 'createWindow_Test_002';
+      let caseName = 'testCreateWindow_Invalid_WinType_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_002'
@@ -99,7 +99,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Find the window corresponding to name
      */
     it('testFindWindow_WinName_Is_Exist', 0, async function (done) {
-      let caseName = 'findWindow_Test_001';
+      let caseName = 'testFindWindow_WinName_Is_Exist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'findWindow_Test_001'
@@ -131,7 +131,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testFindWindow_WinName_IsNot_Exist', 0, async function (done) {
-      let caseName = 'findWindow_Test_002';
+      let caseName = 'testFindWindow_WinName_IsNot_Exist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -151,7 +151,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testCreate_Invalid_WinType_Promise', 0, async function (done) {
-      let caseName = 'create_Test_001';
+      let caseName = 'testCreate_Invalid_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       ohosWindow.create(context, 'create_Test_001', 20).catch((err) => {
@@ -167,7 +167,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testCreate_Invalid_WinType_Callback', 0, async function (done) {
-      let caseName = 'create_Test_002';
+      let caseName = 'testCreate_Invalid_WinType_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       ohosWindow.create(context, 'create_Test_002', 20, (err, data) => {
@@ -196,7 +196,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Find the window corresponding to name
      */
     it('testFind_Invoke_Interface_Continuously', 0, async function (done) {
-      let caseName = 'find_Test_001';
+      let caseName = 'testFind_Invoke_Interface_Continuously';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'find_Test_001'
@@ -239,7 +239,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testFind_WinName_IsNot_Exist', 0, async function (done) {
-      let caseName = 'find_Test_002';
+      let caseName = 'testFind_WinName_IsNot_Exist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -270,7 +270,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the last window displayed in the current app
      */
     it('testGetTopWindow_Invoke_Interfae_Two_Times', 0, async function (done) {
-      let caseName = 'getTopWindow_Test_001';
+      let caseName = 'testGetTopWindow_Invoke_Interfae_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       ohosWindow.getTopWindow(context, (err, data) => {
@@ -307,7 +307,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testShowWindow_Invoked_Twice', 0, async function (done) {
-      let caseName = 'showWindow_Test_001';
+      let caseName = 'testShowWindow_Invoked_Twice';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -345,7 +345,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testShowWindow_Window_NotExist', 0, async function (done) {
-      let caseName = 'showWindow_Test_002';
+      let caseName = 'testShowWindow_Window_NotExist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "showWindow_Test_002"
@@ -376,7 +376,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testDestroyWindow_Destory_Same_Win_Type', 0, async function (done) {
-      let caseName = 'destroyWindow_Test_001';
+      let caseName = 'testDestroyWindow_Destory_Same_Win_Type';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "destroyWindow_Test_001"
@@ -413,7 +413,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
     it('testGetWindowProperties_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getWindowProperties_Test_001';
+      let caseName = 'testGetWindowProperties_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getWindowProperties_Test_001"
@@ -452,7 +452,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testGetWindowAvoidArea_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getWindowAvoidArea_Test_001';
+      let caseName = 'testGetWindowAvoidArea_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getWindowAvoidArea_Test_001"
@@ -493,7 +493,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify The optional parameter is error
      */
     it('testGetWindowAvoidArea_Invalid_Parameter', 0, async function (done) {
-      let caseName = 'getWindowAvoidArea_Test_002';
+      let caseName = 'testGetWindowAvoidArea_Invalid_Parameter';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getWindowAvoidArea_Test_002"
@@ -522,7 +522,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the layout of the window is immersive
      */
     it('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'setWindowLayoutFullScreen_Test_001';
+      let caseName = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowLayoutFullScreen_Test_001"
@@ -578,7 +578,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the layout of the window is immersive
      */
     it('testSetWindowLayoutFullScreen_Destroyed_Win', 0, async function (done) {
-      let caseName = 'setWindowLayoutFullScreen_Test_002';
+      let caseName = 'testSetWindowLayoutFullScreen_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowLayoutFullScreen_Test_002"
@@ -637,7 +637,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
      */
     it('testSetWindowColorSpace_Invalid_ParamsOne', 0, async function (done) {
-      let caseName = 'setWindowColorSpace_Test_001';
+      let caseName = 'testSetWindowColorSpace_Invalid_ParamsOne';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -668,7 +668,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
      */
     it('testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default', 0, async function (done) {
-      let caseName = 'setWindowColorSpace_Test_002';
+      let caseName = 'testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -714,7 +714,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the current window gamut mode
      */
     it('testGetWindowColorSpace_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getWindowColorSpace_Test_001';
+      let caseName = 'testGetWindowColorSpace_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -737,7 +737,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the background color of the window
      */
     it('testSetWindowBackgroundColor_Multiple_Calls', 0, async function (done) {
-      let caseName = 'setWindowBackgroundColor_Test_001';
+      let caseName = 'testSetWindowBackgroundColor_Multiple_Calls';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -770,7 +770,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the background color of the window
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsOne', 0, async function (done) {
-      let caseName = 'setWindowBackgroundColor_Test_002';
+      let caseName = 'testSetWindowBackgroundColor_Invalid_ParamsOne';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -794,7 +794,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the screen brightness value
      */
     it('testSetWindowBrightness_Invalid_ParamsOne_Promise', 0, async function (done) {
-      let caseName = 'setWindowBrightness_Test_001';
+      let caseName = 'testSetWindowBrightness_Invalid_ParamsOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -826,7 +826,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the screen brightness value
      */
     it('testSetWindowBrightness_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
-      let caseName = 'setWindowBrightness_Test_002';
+      let caseName = 'testSetWindowBrightness_Multiple_Calls_Promise_And_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -877,7 +877,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set whether to switch focus window when clicking
      */
     it('testSetWindowFocusable_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
-      let caseName = 'setWindowFocusable_Test_001';
+      let caseName = 'testSetWindowFocusable_Multiple_Calls_Promise_And_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -927,7 +927,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set whether the screen is steady on
      */
     it('testSetWindowKeepScreenOn_Window_State_Abnorma', 0, async function (done) {
-      let caseName = 'setWindowKeepScreenOn_Test_001';
+      let caseName = 'testSetWindowKeepScreenOn_Window_State_Abnorma';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowKeepScreenOn_Test_001"
@@ -962,7 +962,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set whether the screen is steady on
      */
     it('testSetWindowKeepScreenOn_Multiple_Calls', 0, async function (done) {
-      let caseName = 'setWindowKeepScreenOn_Test_002';
+      let caseName = 'testSetWindowKeepScreenOn_Multiple_Calls';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowKeepScreenOn_Test_002"
@@ -1017,7 +1017,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window is in private mode
      */
     it('testSetWindowPrivacyMode_Window_State_Abnorma', 0, async function (done) {
-      let caseName = 'setWindowPrivacyMode_Test_001';
+      let caseName = 'testSetWindowPrivacyMode_Window_State_Abnorma';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowPrivacyMode_Test_001"
@@ -1052,7 +1052,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window is in private mode
      */
     it('testSetWindowPrivacyMode_Window_Multiple_Calls', 0, async function (done) {
-      let caseName = 'setWindowPrivacyMode_Test_002';
+      let caseName = 'testSetWindowPrivacyMode_Window_Multiple_Calls';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowPrivacyMode_Test_002"
@@ -1105,7 +1105,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window is touchable
      */
     it('testSetWindowTouchable_Promise_Form', 0, async function (done) {
-      let caseName = 'setWindowTouchable_Test_001';
+      let caseName = 'testSetWindowTouchable_Promise_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowTouchable_Test_001"
@@ -1160,7 +1160,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window is touchable
      */
     it('testSetWindowTouchable_Window_NotExist', 0, async function (done) {
-      let caseName = 'setWindowTouchable_Test_002';
+      let caseName = 'testSetWindowTouchable_Window_NotExist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowTouchable_Test_002"
@@ -1195,7 +1195,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the proportion of the window content layout
      */
     it('testSetAspectRatio_Non_Main_Win', 0, async function (done) {
-      let caseName = 'setAspectRatio_Test_001';
+      let caseName = 'testSetAspectRatio_Non_Main_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setAspectRatio_Test_001"
@@ -1231,7 +1231,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Unset the proportion of the window content layout
      */
     it('testResetAspectRatio_Non_Main_Win', 0, async function (done) {
-      let caseName = 'resetAspectRatio_Test_001';
+      let caseName = 'testResetAspectRatio_Non_Main_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "resetAspectRatio_Test_001"
@@ -1266,7 +1266,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
     it('testGetProperties_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getProperties_Test_001';
+      let caseName = 'testGetProperties_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getProperties_Test_001"
@@ -1309,7 +1309,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the properties of the current window Continuous call interface
      */
     it('testGetProperties_Destroyed_Win', 0, async function (done) {
-      let caseName = 'getProperties_Test_002';
+      let caseName = 'testGetProperties_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getProperties_Test_002"
@@ -1338,7 +1338,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the area where the window content is avoided
      */
     it('testGetAvoidArea_Invoke_Interfaca_Two_Times', 0, async function (done) {
-      let caseName = 'getAvoidArea_Test_001';
+      let caseName = 'testGetAvoidArea_Invoke_Interfaca_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_001"
@@ -1383,7 +1383,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the area where the window content is avoided
      */
     it('testGetAvoidArea_Invalid_Parameter', 0, async function (done) {
-      let caseName = 'getAvoidArea_Test_002';
+      let caseName = 'testGetAvoidArea_Invalid_Parameter';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_002"
@@ -1414,7 +1414,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the area where the window content is avoided
      */
     it('testGetAvoidArea_Type_CutOut_Destroyed_Win', 0, async function (done) {
-      let caseName = 'getAvoidArea_Test_003';
+      let caseName = 'testGetAvoidArea_Type_CutOut_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_003"
@@ -1445,7 +1445,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window layout is full-screen
      */
     it('testSetFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'setFullScreen_Test_001';
+      let caseName = 'testSetFullScreen_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setFullScreen_Test_001"
@@ -1486,7 +1486,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window layout is full-screen
      */
     it('testSetFullScreen_Destroyed_Win', 0, async function (done) {
-      let caseName = 'setFullScreen_Test_002';
+      let caseName = 'testSetFullScreen_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setFullScreen_Test_002"
@@ -1516,7 +1516,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window layout is full-screen
      */
     it('testSetLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'setLayoutFullScreen_Test_001';
+      let caseName = 'testSetLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setLayoutFullScreen_Test_001"
@@ -1557,7 +1557,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether the window layout is full-screen
      */
     it('testSetLayoutFullScreen_Destroyed_Win', 0, async function (done) {
-      let caseName = 'setLayoutFullScreen_Test_002';
+      let caseName = 'testSetLayoutFullScreen_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setLayoutFullScreen_Test_002"
@@ -1587,7 +1587,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
     it('testSetSystemBarEnable_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'setSystemBarEnable_Test_001';
+      let caseName = 'testSetSystemBarEnable_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setSystemBarEnable_Test_001"
@@ -1628,7 +1628,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
     it('testSetSystemBarEnable_Destroyed_Win', 0, async function (done) {
-      let caseName = 'setSystemBarEnable_Test_002';
+      let caseName = 'testSetSystemBarEnable_Destroyed_Win';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setSystemBarEnable_Test_002"
@@ -1659,7 +1659,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the main window under the WindowStage instance
      */
     it('testGetMainWindow_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getMainWindow_Test_001';
+      let caseName = 'testGetMainWindow_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -1696,7 +1696,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets the main window under the WindowStage instance
      */
     it('testGetMainWindowSync_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getMainWindowSync_Test_001';
+      let caseName = 'testGetMainWindowSync_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -1727,7 +1727,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Create a child window under the WindowStage instance
      */
     it('testCreateSubWindow_Two_Consecutive_Calls', 0, async function (done) {
-      let caseName = 'createSubWindow_Test_001';
+      let caseName = 'testCreateSubWindow_Two_Consecutive_Calls';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -1780,7 +1780,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Gets all the child Windows under the WindowStage instance
      */
     it('testGetSubWindow_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'getSubWindow_Test_001';
+      let caseName = 'testGetSubWindow_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = null;
@@ -1814,7 +1814,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Check whether the current window supports the wide color gamut mode
      */
     it('testIsWindowSupportWideGamut_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'isWindowSupportWideGamut_Test_001';
+      let caseName = 'testIsWindowSupportWideGamut_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -1845,7 +1845,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Check whether the current window is displayed
      */
     it('testIsWindowShowing_Invoke_Interface_Two_Times', 0, async function (done) {
-      let caseName = 'isWindowShowing_Test_001';
+      let caseName = 'testIsWindowShowing_Invoke_Interface_Two_Times';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "isWindowShowing_Test_001"
@@ -1886,7 +1886,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the display direction property of the window
      */
     it('testSetUIContent_Window_State_Abnorma_Callback', 0, async function (done) {
-      let caseName = 'setUIContent_Test_001';
+      let caseName = 'testSetUIContent_Window_State_Abnorma_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setUIContent_Test_001"
@@ -1925,7 +1925,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the display direction property of the window
      */
     it('testSetUIContent_Multiple_Calls', 0, async function (done) {
-      let caseName = 'setUIContent_Test_002';
+      let caseName = 'testSetUIContent_Multiple_Calls';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setUIContent_Test_002"
@@ -1958,7 +1958,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
     it('testSetWindowSystemBarEnable_More_Params', 0, async function (done) {
-      let caseName = 'setWindowSystemBarEnable_Test_001';
+      let caseName = 'testSetWindowSystemBarEnable_More_Params';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass;
@@ -1992,7 +1992,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
      */
     it('testSetWindowSystemBarEnable_Window_State_Abnorma', 0, async function (done) {
-      let caseName = 'setWindowSystemBarEnable_Test_002';
+      let caseName = 'testSetWindowSystemBarEnable_Window_State_Abnorma';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = "setWindowSystemBarEnable_Test_002"

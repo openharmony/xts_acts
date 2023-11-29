@@ -71,7 +71,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('testSetWindowSystemBarProperties_Callback', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let listenerFlag = listenerStatus.ready;
-      let caseName = 'setWindowSystemBarPropertiesTest1';
+      let caseName = 'testSetWindowSystemBarProperties_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
@@ -128,7 +128,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         NBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
         NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
       };
-      let caseName = 'setWindowSystemBarPropertiesTest2';
+      let caseName = 'testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
@@ -181,7 +181,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 	   */
     it('testSetWindowSystemBarProperties_SetColor_By_Name', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
-      let caseName = 'setWindowSystemBarPropertiesTest3';
+      let caseName = 'testSetWindowSystemBarProperties_SetColor_By_Name';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let tempWnd = windowStage.getMainWindowSync();
       expect(tempWnd != null).assertTrue();
@@ -288,7 +288,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc        To verify the widow isshowing
      */
     it('testIswindowShowingTest', 0, async function (done) {
-      console.info('windowTest isWindowShowing begin');
+      console.info('windowTest testIswindowShowingTest begin');
       let config = {
         name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
@@ -355,7 +355,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     */
     it('testSetUIContentTestCallback1', 0, async function (done) {
       let windowClass = null;
-      let msgStr='setUIContentTestCallBack1'
+      let msgStr='testSetUIContentTestCallback1'
       let config = {
         name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
@@ -496,7 +496,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc        To verify the setting of the wide color gamut color space
     */
     it('testSetWindowColorSpace_Multiple_Wide_Gamut', 0, async function (done) {
-      console.info('windowTest setWindowColorSpace1 begin');
+      console.info('windowTest testSetWindowColorSpace_Multiple_Wide_Gamut begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).catch((err) => {
@@ -523,7 +523,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc        To verify that the color space of invaild values is set successfully
      */
     it('testSetWindowColorSpace_Invalid_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowColorSpaceTest2 begin');
+      console.info('windowTest testSetWindowColorSpace_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -552,7 +552,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc      To verify the setting of the wide color gamut color space
     */
     it('testSetWindowColorSpaceTest', 0, async function (done) {
-      console.info('windowTest SetWindowColorSpaceTest3 begin');
+      console.info('windowTest testSetWindowColorSpaceTest begin');
       let wnd = windowStage.getMainWindowSync();
       let msgStr = 'setColorSpace_Test_003'
       expect(wnd != null).assertTrue();
@@ -605,7 +605,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the window background color to red and Default opacity
     */
     it('testSetWindowBackgroundColor_Base_ParamsOne', 0, async function (done) {
-      console.info('windowTest01 setWindowBackgroundColorTest1 begin');
+      console.info('windowTest01 testSetWindowBackgroundColor_Base_ParamsOne begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#00ff33';
@@ -635,7 +635,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the window background color to red opaque
      */
     it('testSetWindowBackgroundColor_Base_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest2 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Base_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#ffffff00';
@@ -665,7 +665,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the window background color to red transparent
      */
     it('testSetWindowBackgroundColor_Base_ParamsThree', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest3 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Base_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#00ffff00';
@@ -696,7 +696,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the background color input parameter as an outlier
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest4 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#ff00';
@@ -717,7 +717,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting window background color input exception ARGB
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsThree', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest5 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#hhgghhgg';
@@ -746,7 +746,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting window background color input exception RGB
      */
     it('testSetWindowBackgroundColor_Base_ParamsFour', 0, async function (done) {
-      console.log('windowTest setWindwoBackgroundColorTest6 begin');
+      console.log('windowTest testSetWindowBackgroundColor_Base_ParamsFour begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#hhgghhgg';
@@ -766,7 +766,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting the brightness bar input parameter is normal
      */
     it('testSetWindowBrightness_Multiple_Calls_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest1 begin');
+      console.info('windowTest testSetWindowBrightness_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(0).catch((err) => {
@@ -801,7 +801,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
     it('testSetWindowBrightness_Invalid_ParamsTwo_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest2 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(0.564789).then(() => {
@@ -822,7 +822,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to number max
      */
     it('testSetWindowBrightness_Invalid_ParamsThree_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest3 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = Number.MAX_VALUE;
@@ -852,7 +852,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to number min
      */
     it('testSetWindowBrightness_Invalid_ParamsFour_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest4 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsFour_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(Number.MIN_VALUE).then(() => {
@@ -872,7 +872,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting brightness bar input parameter exception
      */
     it('testSetWindowBrightness_Invalid_ParamsFive_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest5 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsFive_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = 1.1;
@@ -919,7 +919,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
     it('testSetWindowBrightness_Multiple_Calls_Callback', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTestCallBack2 begin');
+      console.info('windowTest testSetWindowBrightness_Multiple_Calls_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -972,7 +972,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to number max
      */
     it('testSetWindowBrightness_Invalid_ParamsOne_Callback', 0, async function (done) {
-      console.info('windowTest setBrightnessTestCallback3 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsOne_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = Number.MAX_VALUE;
@@ -1010,7 +1010,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set the brightness bar input parameter to number min
      */
     it('testSetWindowBrightness_Invalid_ParamsTwo_Callback', 0, async function (done) {
-      console.info('windowTest setBrightnessTestCallBack4 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -1047,7 +1047,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting brightness bar input parameter exception
      */
     it('testSetWindowBrightness_Invalid_ParamsThree_Callback', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest5 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -1084,9 +1084,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Setting window focus acquisition and defocus
     */
     it('testSetWindowFocusable_Multiple_Calls_Callback', 0, async function (done) {
-      console.info('windowTest setFocusableTest1 begin');
+      console.info('windowTest testSetWindowFocusable_Multiple_Calls_Callback begin');
       let wnd = windowStage.getMainWindowSync();
-      let msgStr ='setWindowFocusableCallBack_Test_001'
+      let msgStr ='testSetWindowFocusable_Multiple_Calls_Callback'
       expect(wnd != null).assertTrue();
       function setWindowFocusableFun(){
         return new Promise((resolve, reject) => {
@@ -1141,7 +1141,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc			Setting window focus acquisition and defocus
     */
     it('testSetWindowFocusable_Multiple_Calls_Promise', 0, async function (done) {
-      console.info('windowTest setWindowFocusableTest1 begin');
+      console.info('windowTest testSetWindowFocusable_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowFocusable(false).then(async () => {
@@ -1170,7 +1170,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc			Set whether the window can be touched or not
     */
     it('testSetWindowTouchable_Invoked_Twice', 0, async function (done) {
-      console.info('windowTest setTouchableTest1 begin');
+      console.info('windowTest testSetWindowTouchable_Invoked_Twice begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let data = wnd.getWindowProperties();
@@ -1202,7 +1202,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set whether the window can be touched or not
     */
     it('testSetWindowTouchable_Callback_Form', 0, async function (done) {
-      let msgStr ='setWindowTouchableCallBack_Test_001'
+      let msgStr ='testSetWindowTouchable_Callback_Form'
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       function setWindowTouchableFun(){
@@ -1254,7 +1254,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc			Set whether the window screenOn
     */
     it('testSetWindowKeepScreenOn_Base_True_Promise', 0, async function (done) {
-      console.info('windowTest setWindowKeepScreenOnTest2 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1277,7 +1277,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set whether the window screenOn
     */
     it('testSetWindowKeepScreenOn_Base_False_Promise', 0, async function (done) {
-      console.info('windowTest setWindowKeepScreenOnTest1 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowKeepScreenOn(false).then(() => {
@@ -1298,7 +1298,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc			Set whether setKeepScreenOn or not
     */
     it('testSetWindowKeepScreenOn_Base_Callback', 0, async function (done) {
-      console.info('windowTest setCallBackKeepScreenOnTest1 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       wnd.setWindowKeepScreenOn(true, (err, data) => {
@@ -1329,7 +1329,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc       Verify the window privacy mode
     */
     it('testSetWindowPrivacyMode_False_Promise', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyMode begin');
+      console.info('windowTest testSetWindowPrivacyMode_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1352,7 +1352,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc       Verify the window privacy mode
     */
     it('testSetWindowPrivacyMode_True_Promise', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyMode2 begin');
+      console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1375,7 +1375,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     * @tc.desc			Set whether setWindowPrivacyMode or not
     */
     it('testSetWindowPrivacyMode_True_Callback', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyModecallback1 begin');
+      console.info('windowTest testSetWindowPrivacyMode_True_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {

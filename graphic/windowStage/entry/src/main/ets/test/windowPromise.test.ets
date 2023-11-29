@@ -103,7 +103,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      */
     it('testListener_Sys_AvoidAreaChange_Promise', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest1';
+      let caseName = 'testListener_Sys_AvoidAreaChange_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
@@ -153,7 +153,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      */
     it('testListener_windowSizeChange', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest2';
+      let caseName = 'testListener_windowSizeChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
       let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
@@ -206,7 +206,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      */
     it('testListener_SystemAvoidAreaChange_Off', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest3';
+      let caseName = 'testListener_SystemAvoidAreaChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOffFlag = listenerStatus.ready;
       console.log(msgStr + 'begin 1');
@@ -254,7 +254,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      */
     it('testListener_windowSizeChange_Off', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest4';
+      let caseName = 'testListener_windowSizeChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest4';
       let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
@@ -309,7 +309,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify that the scene shows the status bar and hides the navigation bar
      */
     it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest1';
+      let caseName = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -343,7 +343,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify that the scene hides the status bar and displays the navigation bar
      */
     it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest2';
+      let caseName = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -377,7 +377,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify that the scene displays both the status bar and the navigation bar
      */
     it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest3';
+      let caseName = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -411,7 +411,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify that the scene hides both the status bar and the navigation bar
      */
     it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest4';
+      let caseName = 'testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -445,7 +445,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene where illegal values are entered when the status bar and navigation bar are displayed
      */
     it('testSetSystemBarEnable_Invalid_Parameter_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest5';
+      let caseName = 'testSetSystemBarEnable_Invalid_Parameter_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -480,7 +480,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene where the colors of the status bar and navigation bar are set in RGB
      */
     it('testSetSystemBarProperties_RGB_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest1';
+      let caseName = 'testSetSystemBarProperties_RGB_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
@@ -531,7 +531,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
      */
     it('testSetSystemBarProperties_KeywordForm_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest2';
+      let caseName = 'testSetSystemBarProperties_KeywordForm_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
         SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
@@ -587,7 +587,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene where the status bar and navigation bar colors are set as keywords
      */
     it('testSetSystemBarProperties_Hexadecimal_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest3';
+      let caseName = 'testSetSystemBarProperties_Hexadecimal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
@@ -638,7 +638,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of creating the application type window
      */
     it('testCreate_App_Type_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest1';
+      let caseName = 'testCreate_App_Type_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeDicArr.length;
@@ -669,7 +669,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of creating the system type window
      */
     it('testCreate_Sys_Type_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest2';
+      let caseName = 'testCreate_Sys_Type_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
@@ -723,7 +723,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of creating a window of a type that does not exist
      */
     it('testCreate_Not_Exist_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest3';
+      let caseName = 'testCreate_Not_Exist_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempType = 5000;
@@ -741,7 +741,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of creating a window with duplicate IDs
      */
     it('testCreate_Repeate_Id_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest4';
+      let caseName = 'testCreate_Repeate_Id_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'sameids'
@@ -768,7 +768,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of loading an existing page
      */
     it('testLoadContent_Exist_Create_SysWin_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest1';
+      let caseName = 'testLoadContent_Exist_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest1';
@@ -805,7 +805,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene of loading the page with illegal values
      */
     it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest2';
+      let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest2';
@@ -855,7 +855,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of loading an existing page
      */
     it('testLoadContent_Exist_Input_Para_Path_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest3';
+      let caseName = 'testLoadContent_Exist_Input_Para_Path_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load3 = await windowStage.loadContent('MainAbility/pages/second/second').catch((err) => {
@@ -872,7 +872,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of loading an existing page
      */
     it('testLoadContent_Input_Para_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest4';
+      let caseName = 'testLoadContent_Input_Para_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -894,7 +894,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of loading an existing page
      */
     it('testLoadContent_Exist_Input_Para_PathAndStorage_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest5';
+      let caseName = 'testLoadContent_Exist_Input_Para_PathAndStorage_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -916,7 +916,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of loading an existing page
      */
     it('testLoadContent_Para_PathAndStorage_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest6';
+      let caseName = 'testLoadContent_Para_PathAndStorage_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load6 = await windowStage.loadContent('MainAbility/pages/second/second', null).catch((err) => {
@@ -932,7 +932,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of creating an auxiliary window
      */
     it('testCreateSubWindow_WinName_IsNot_Empty_Promise', 0, async function (done) {
-      let caseName = 'createSubWindowTest1';
+      let caseName = 'testCreateSubWindow_WinName_IsNot_Empty_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWindow = await windowStage.createSubWindow('createSubWindowTest1').catch((err) => {
@@ -951,7 +951,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene of entering illegal values to create an auxiliary window
      */
     it('testCreateSubWindow_WinName_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'createSubWindowTest2';
+      let caseName = 'testCreateSubWindow_WinName_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -973,7 +973,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene of obtaining all auxiliary sub windows
      */
     it('testGetSubWindow_Promise', 0, async function (done) {
-      let caseName = 'getSubWindowTest1';
+      let caseName = 'testGetSubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWindow = await windowStage.getSubWindow().catch((err) => {
@@ -990,7 +990,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scene where the application sub window is set as a security layer
      */
     it('testSetPrivacyMode_SppSubWin_Promise', 0, async function (done) {
-      let caseName = 'setPrivacyModeTest1';
+      let caseName = 'testSetPrivacyMode_SppSubWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
       let mainWnd = null;
@@ -1040,7 +1040,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verification window destruction scenario.
      */
     it('testDestroy_Promise', 0, async function (done) {
-      let caseName = 'destroyTest1';
+      let caseName = 'testDestroy_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'destroyTest1';
@@ -1079,7 +1079,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets the display direction property of the window
      */
     it('testSetPreferredOrientation_Promise', 0, async function (done) {
-      let caseName = 'setPreferredOrientationTest1';
+      let caseName = 'testSetPreferredOrientation_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1111,7 +1111,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Sets whether Windows are forbidden to move in split screen mode
      */
     it('testSetForbidSplitMove_Promise', 0, async function (done) {
-      let caseName = 'setForbidSplitMoveTest1';
+      let caseName = 'testSetForbidSplitMove_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1138,7 +1138,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Scenario of screenshot of verification window
      */
     it('testSnapshotTest_Promise_Form', 0, async function (done) {
-      let caseName = 'snapshotTest1';
+      let caseName = 'testSnapshotTest_Promise_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch((err) => {
@@ -1160,7 +1160,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify the scenario of opening modal window
      */
     it('testDialogTargetTouch_Promise', 0, async function (done) {
-      let caseName = 'dialogTargetTouchTest1';
+      let caseName = 'testDialogTargetTouch_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
@@ -1189,7 +1189,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Verify window custom animation configuration of the scene
      */
     it('testAnimationForShown_Promise', 0, async function (done) {
-      let caseName = 'animationForShownTest1';
+      let caseName = 'testAnimationForShown_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
@@ -1241,7 +1241,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
      */
     it('testGetCutoutInfo_Promise', 0, async function (done) {
-      let caseName = 'getCutoutInfoTest1';
+      let caseName = 'testGetCutoutInfo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let dpClass = display.getDefaultDisplaySync();
@@ -1259,7 +1259,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Validate the scenario cancelled after setting the proportion of the content layout of the main window
      */
     it('testSetAspectRatio_Cancel_Upon_Success_Promise', 0, async function (done) {
-      let caseName = 'setAspectRatioTest2';
+      let caseName = 'testSetAspectRatio_Cancel_Upon_Success_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1297,7 +1297,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Validate the scenario where the content layout proportion of the main window is abnormal
      */
     it('testSetAspectRatio_Invalid_Params_Promise', 0, async function (done) {
-      let caseName = 'setAspectRatioTest4';
+      let caseName = 'testSetAspectRatio_Invalid_Params_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1326,7 +1326,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Test the enumeration value of WindowEventType
      */
     it('testWindowEventType_Enum', 0, async function (done) {
-      let caseName = 'windowEventType_Test_001';
+      let caseName = 'testWindowEventType_Enum';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       console.log(msgStr + 'ohosWindow.WindowEventType:' + JSON.stringify(ohosWindow.WindowEventType));
@@ -1348,7 +1348,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.desc Test the enumeration value of Orientation
      */
     it('testOrientation_Enum', 0, async function (done) {
-      let caseName = 'orientation_Test_001';
+      let caseName = 'testOrientation_Enum';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       console.log(msgStr + 'display.orientation:' + JSON.stringify(display.Orientation));

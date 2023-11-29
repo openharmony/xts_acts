@@ -178,7 +178,69 @@ HWTEST_F(NativeBufferTest, OHNativeBufferGetSeqNum003, Function | MediumTest | L
     buffer = OH_NativeBuffer_Alloc(&config);
     ASSERT_EQ(oldSeq + 1, OH_NativeBuffer_GetSeqNum(buffer));
 }
+/*
+ * @tc.name  OHNativeBufferSetColorSpace001
+ * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
+ * @tc.type  FUNC
+ */
+HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace001, Function | MediumTest | Level2)
+{
+    int32_t ret = OH_NativeBuffer_SetColorSpace(nullptr, OH_COLORSPACE_DISPLAY_BT2020_PQ);
+    ASSERT_EQ(ret, GSERROR_INVALID_ARGUMENTS);
+}
 
+/*
+ * @tc.name  OHNativeBufferSetColorSpace002
+ * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
+ * @tc.type  FUNC
+ */
+HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace002, Function | MediumTest | Level2)
+{
+    if (buffer == nullptr) {
+        buffer = OH_NativeBuffer_Alloc(&config);
+        ASSERT_NE(buffer, nullptr);
+    }
+
+    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_P3_PQ_FULL);
+    std::cout << ret << std::endl;
+    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
+        ASSERT_EQ(ret, GSERROR_OK);
+    }
+}
+/*
+ * @tc.name  OHNativeBufferSetColorSpace003
+ * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
+ * @tc.type  FUNC
+ */
+HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace003, Function | MediumTest | Level2)
+{
+    if (buffer == nullptr) {
+        buffer = OH_NativeBuffer_Alloc(&config);
+        ASSERT_NE(buffer, nullptr);
+    }
+
+    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_NONE);
+    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
+        ASSERT_EQ(ret, GSERROR_OK);
+    }
+}
+/*
+ * @tc.name  OHNativeBufferSetColorSpace004
+ * @tc.desc  test for call OH_NativeBuffer_SetColorSpace
+ * @tc.type  FUNC
+ */
+HWTEST_F(NativeBufferTest, OHNativeBufferSetColorSpace004, Function | MediumTest | Level2)
+{
+    if (buffer == nullptr) {
+        buffer = OH_NativeBuffer_Alloc(&config);
+        ASSERT_NE(buffer, nullptr);
+    }
+
+    int32_t ret = OH_NativeBuffer_SetColorSpace(buffer, OH_COLORSPACE_DISPLAY_BT2020_PQ);
+    if (ret != GSERROR_NOT_SUPPORT) { // some device not support set colorspace
+        ASSERT_EQ(ret, GSERROR_OK);
+    }
+}
 /*
  * @tc.name  OHNativeBufferMap001
  * @tc.desc  test for call OH_NativeBuffer_Map by abnormal input and check ret
