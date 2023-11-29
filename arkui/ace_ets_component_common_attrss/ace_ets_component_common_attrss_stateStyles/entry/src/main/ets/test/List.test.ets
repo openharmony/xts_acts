@@ -16,9 +16,11 @@
 
 
 import stateStylesTest from './stateStyles/StateStylesTest.test';
+import StateStylesTestTwo from './stateStyles/StateStylesTestTwo.test';
 
 export default function testsuite() {
 
   stateStylesTest();
+  StateStylesTestTwo();
 
 }
