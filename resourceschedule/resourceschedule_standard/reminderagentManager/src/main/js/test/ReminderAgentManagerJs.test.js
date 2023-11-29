@@ -162,6 +162,61 @@ export default function ReminderAgentManagerTest() {
 
         /**
          * @tc.number    
+         * @tc.name      reminderRequestAttribute_0005
+         * @tc.desc      test ReminderRequest snoozeSlotType
+         */
+        it("reminderRequestAttribute_0005", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0005---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 10,
+                slotType: 2,
+                snoozeSlotType: 2
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0005 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0005 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0005 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0006
+         * @tc.desc      test ReminderRequest customRingUri
+         */
+        it("reminderRequestAttribute_0006", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0006---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 10,
+                customRingUri: "#"
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0006 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0006 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0006 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
          * @tc.name      reminderRequestAttribute_0004
          * @tc.desc      test timer normal parameter,return with promise.
          */
