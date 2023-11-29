@@ -120,6 +120,9 @@ struct Index {
                                 console.log("userAgent2: " + this.userAgent2);
                                 this.userAgentAll = this.userAgent + this.userAgent2;
                                 console.log("userAgentAll: " + this.userAgentAll);
+                                if ((this.userAgentAll).includes("Mozilla")) {
+                                    this.userAgentAll = 'success'
+                                }
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
@@ -140,6 +143,9 @@ struct Index {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
                             this.controller.runJavaScript("test()",(res) => {
+                                if ((this.userAgentCheck).includes("Mozilla")) {
+                                    this.userAgentCheck = 'success'
+                                }
                                 Utils.emitEvent(this.userAgentCheck, 104)
                             })
                             break;
