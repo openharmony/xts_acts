@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,36 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webgl1Test_webgl1 from './WebGL.test01.js'
-import webgl1Test_webgl2 from './WebGL.test02.js'
-import webgl1Test_webgl3 from './WebGL.test03.js'
-import webgl1Test_webgl4 from './WebGL.test04.js'
-import webgl1Test_webgl5 from './WebGL.test05.js'
-import webgl1Test_webgl6 from './WebGL.test06.js'
-import webgl1Test_webgl7 from './WebGL.test07.js'
-import webgl1Test_webgl8 from './WebGL.test08.js'
-import webgl1Test_webgl9 from './WebGL.test09.js'
-import webgl1Test_webgl10 from './WebGL.test10.js'
-import webgl1Test_webgl11 from './WebGL.test11.js'
-import webgl1Test_webgl12 from './WebGL.test12.js'
-import webgl1Test_webgl13 from './WebGL.test13.js'
-import webgl1Test_webgl14 from './WebGL.test14.js'
-import webgl1Test_webgl15 from './WebGL.test15.js'
 
-export default function testsuite(){
-	webgl1Test_webgl1()
-	webgl1Test_webgl2()
-	webgl1Test_webgl3()
-	webgl1Test_webgl4()
-	webgl1Test_webgl5()
-	webgl1Test_webgl6()
-	webgl1Test_webgl7()
-	webgl1Test_webgl8()
-	webgl1Test_webgl9()
-	webgl1Test_webgl10()
-	webgl1Test_webgl11()
-	webgl1Test_webgl12()
-	webgl1Test_webgl13()
-	webgl1Test_webgl14()
-	webgl1Test_webgl15()
+import webgl1_attribute from './WebGL1.attribute.js'
+import webgl1_buffer from './WebGL1.buffer.js'
+import webgl1_common from './WebGL1.common.js'
+import webgl1_enum from './WebGL1.enum.js'
+import webgl1_program from './WebGL1.program.js'
+import webgl1_shader from './WebGL1.shader.js'
+import webgl1_texture from './WebGL1.texture.js'
+import webgl1_uniform from './WebGL1.uniform.js'
+
+import webgl2_enum from './WebGL2.enum.js'
+import webgl2_buffer from './WebGL2.buffer.js'
+import webgl2_query from './WebGL2.query.js'
+import webgl2_sampler from './WebGL2.sampler.js'
+import webgl2_sync from './WebGL2.sync.js'
+import webgl2_texture from './WebGL2.texture.js'
+import webgl2_transform from './WebGL2.transform.js'
+import webgl2_uniform from './WebGL2.uniform.js'
+import webgl2_vertex from './WebGL2.vertex.js'
+
+export default function testsuite() {
+    webgl1_attribute()
+    webgl1_enum()
+    webgl1_program()
+    webgl1_shader()
+    webgl1_uniform()
+    webgl1_texture()
+    webgl1_buffer()
+    webgl1_common()
+    webgl2_enum()
+    webgl2_buffer()
+    webgl2_query()
+    webgl2_sampler()
+    webgl2_sync()
+    webgl2_texture()
+    webgl2_transform()
+    webgl2_uniform()
+    webgl2_vertex()
 }
