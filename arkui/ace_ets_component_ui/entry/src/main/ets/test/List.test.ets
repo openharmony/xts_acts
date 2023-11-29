@@ -298,6 +298,10 @@ import getWaterFlowItemRect2 from './getItemRect/waterFlow/getWaterFlowItemRect2
 import getWaterFlowItemRect3 from './getItemRect/waterFlow/getWaterFlowItemRect3.test';
 import getWaterFlowItemRect4 from './getItemRect/waterFlow/getWaterFlowItemRect4.test';
 import getWaterFlowItemRect5 from './getItemRect/waterFlow/getWaterFlowItemRect5.test';
+import search_maxLength from './TextNewInterFace/search_maxLength.test';
+import search_maxLength2 from './TextNewInterFace/search_maxLength2.test';
+import textInput_caret from './TextNewInterFace/textInput_caret.test';
+import search_caret from './TextNewInterFace/search_caret.test';
 
 export default function testsuite() {
  comSizeAbilityTest_01();
@@ -554,4 +558,8 @@ export default function testsuite() {
   NavigationMode16Jsunit();
   NavigationMode17Jsunit();
   AnimationJsunit();
+  search_maxLength();
+  search_maxLength2();
+  textInput_caret();
+  search_caret();
 }
