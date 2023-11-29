@@ -137,6 +137,14 @@
       "value": "label"
     },
     {
+      "name": "SandboxConfigPromise_desc",
+      "value": "description"
+    },
+    {
+      "name": "SandboxConfigPromise_label",
+      "value": "label"
+    },
+    {
       "name": "SetRetentionStateCallback_desc",
       "value": "description"
     },
