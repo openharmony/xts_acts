@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
+import common from "@ohos.app.ability.common";
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
@@ -27,13 +28,14 @@ const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
 const TAG = "[PREFERENCES_PROMISE_JSUNIT_TEST]";
 let mPreferences;
-let context;
+let context: common.UIAbilityContext;
 
 export default function preferencesPromiseTest() {
   describe("preferencesPromiseTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      context = globalThis.abilityContext;
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
+      console.info("context=======>"+context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
@@ -517,7 +519,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolean0001", 0, async function (done) {
+    it("testPreferencesGetSyncStringArray0001", 0, async function (done) {
       await mPreferences.clear();
       var stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -537,7 +539,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolean0001", 0, async function (done) {
+    it("testPreferencesGetSyncNumArray0001", 0, async function (done) {
       await mPreferences.clear();
       var doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);

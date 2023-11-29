@@ -29,6 +29,7 @@ export default function relationalStoreCloudCursor() {
             const config = {
                 "name": STORE_NAME,
                 securityLevel: relationalStore.SecurityLevel.S1,
+                autoCleanDirtyData: false,
             }
             try {
                 rdbStore = await relationalStore.getRdbStore(context, config);
