@@ -46,18 +46,20 @@ export default function imageGetImagePropertySecond() {
             PixelYDimension: "4608",
             WhiteBalance: "Auto white balance",
             FocalLengthIn35mmFilm: "26",
+            HwMnoteCaptureMode:"0",
+            HwMnotePhysicalAperture:"1",
             HwMnoteRollAngle: "default_exif_value",
             HwMnotePitchAngle: "default_exif_value",
-            HwMnoteSceneFoodConf: "default_exif_value",
+            HwMnoteSceneFoodConf: "71",
             HwMnoteSceneStageConf: "default_exif_value",
-            HwMnoteSceneBlueSkyConf: "default_exif_value",
-            HwMnoteSceneGreenPlantConf: "default_exif_value",
+            HwMnoteSceneBlueSkyConf: "71",
+            HwMnoteSceneGreenPlantConf: "98",
             HwMnoteSceneBeachConf: "default_exif_value",
             HwMnoteSceneSnowConf: "default_exif_value",
-            HwMnoteSceneSunsetConf: "default_exif_value",
-            HwMnoteSceneFlowersConf: "default_exif_value",
-            HwMnoteSceneNightConf: "default_exif_value",
-            HwMnoteSceneTextConf: "default_exif_value",
+            HwMnoteSceneSunsetConf: "78",
+            HwMnoteSceneFlowersConf: "100",
+            HwMnoteSceneNightConf: "99",
+            HwMnoteSceneTextConf: "100",
             HwMnoteFaceCount: "default_exif_value",
             HwMnoteFocusMode: "default_exif_value",
         }
@@ -100,8 +102,8 @@ export default function imageGetImagePropertySecond() {
             console.info("afterAll case");
         });
 
-        async function getImagePropertyPromise(done, testNum, key) {
-            await getFd("test_hw.jpg");
+        async function getImagePropertyPromise(filename,done, testNum, key) {
+            await getFd(filename);
             let imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(`${testNum} create image source failed`);
@@ -122,8 +124,8 @@ export default function imageGetImagePropertySecond() {
                     });
             }
         }
-        async function getImagePropertyCb(done, testNum, key) {
-            await getFd("test_hw.jpg");
+        async function getImagePropertyCb(filename,done, testNum, key) {
+            await getFd(filename);
             let imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(`${testNum} create image source failed`);
@@ -143,8 +145,8 @@ export default function imageGetImagePropertySecond() {
                 });
             }
         }
-        async function getImagePropertyCb2(done, testNum, key) {
-            await getFd("test_hw.jpg");
+        async function getImagePropertyCb2(filename,done, testNum, key) {
+            await getFd(filename);
             let imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info(`${testNum} create image source failed`);
@@ -197,7 +199,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", DATE_TIME);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", DATE_TIME);
         });
 
         /**
@@ -211,7 +213,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", GPS_TIME_STAMP);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", GPS_TIME_STAMP);
         });
 
         /**
@@ -225,7 +227,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", GPS_DATE_STAMP);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", GPS_DATE_STAMP);
         });
 
         /**
@@ -239,7 +241,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", IMAGE_DESCRIPTION);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", IMAGE_DESCRIPTION);
         });
 
         /**
@@ -253,7 +255,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", MAKE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", MAKE);
         });
 
         /**
@@ -267,7 +269,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0600", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0600", MODEL);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0600", MODEL);
         });
 
         /**
@@ -281,7 +283,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0700", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0700", SENSITIVITY_TYPE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0700", SENSITIVITY_TYPE);
         });
 
         /**
@@ -295,7 +297,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0800", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0800",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0800",
                 RECOMMENDED_EXPOSURE_INDEX);
         });
 
@@ -310,7 +312,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0900", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0900", ISO_SPEED);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0900", ISO_SPEED);
         });
 
         /**
@@ -324,7 +326,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1000", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1000", APERTURE_VALUE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1000", APERTURE_VALUE);
         });
 
         /**
@@ -338,7 +340,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1100", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1100", EXPOSURE_BIAS_VALUE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1100", EXPOSURE_BIAS_VALUE);
         });
 
         /**
@@ -352,7 +354,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1200", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1200", METERING_MODE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1200", METERING_MODE);
         });
 
         /**
@@ -366,7 +368,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1300", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1300", LIGHT_SOURCE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1300", LIGHT_SOURCE);
         });
 
         /**
@@ -380,7 +382,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1400", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1400", FLASH);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1400", FLASH);
         });
 
         /**
@@ -394,7 +396,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1500", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1500", FOCAL_LENGTH);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1500", FOCAL_LENGTH);
         });
 
         /**
@@ -408,7 +410,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1600", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1600", USER_COMMENT);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1600", USER_COMMENT);
         });
 
         /**
@@ -422,7 +424,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1700", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1700", PIXEL_X_DIMENSION);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1700", PIXEL_X_DIMENSION);
         });
 
         /**
@@ -436,7 +438,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1800", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1800", PIXEL_Y_DIMENSION);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1800", PIXEL_Y_DIMENSION);
         });
 
         /**
@@ -450,7 +452,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1900", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1900", WHITE_BALANCE);
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_1900", WHITE_BALANCE);
         });
 
         /**
@@ -464,7 +466,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2000", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2000",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2000",
                 FOCAL_LENGTH_IN_35_MM_FILM);
         });
 
@@ -479,7 +481,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2100",
             ROLL_ANGLE);
         });
 
@@ -494,7 +496,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2200",
             PITCH_ANGLE);
         });
 
@@ -509,7 +511,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300",
+            getImagePropertyPromise("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2300",
             SCENE_FOOD_CONF);
         });
 
@@ -524,7 +526,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2400",
             SCENE_STAGE_CONF);
         });
 
@@ -539,7 +541,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500",
+            getImagePropertyPromise("bluesky.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2500",
             SCENE_BLUE_SKY_CONF);
         });
 
@@ -554,7 +556,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600",
+            getImagePropertyPromise("greenplant.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2600",
             SCENE_GREEN_PLANT_CONF);
         });
 
@@ -569,7 +571,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2700",
             SCENE_BEACH_CONF);
         });
 
@@ -584,7 +586,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800",
+            getImagePropertyPromise("snow.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2800",
             SCENE_SNOW_CONF);
         });
 
@@ -599,7 +601,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900",
+            getImagePropertyPromise("sunset.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_2900",
             SCENE_SUNSET_CONF);
         });
 
@@ -614,7 +616,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000",
+            getImagePropertyPromise("flower.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3000",
             SCENE_FLOWERS_CONF);
         });
 
@@ -629,7 +631,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100",
+            getImagePropertyPromise("night.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3100",
             SCENE_NIGHT_CONF);
         });
 
@@ -644,7 +646,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200",
+            getImagePropertyPromise("text.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3200",
             SCENE_TEXT_CONF);
         });
 
@@ -659,7 +661,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3300",
             FACE_COUNT);
         });
 
@@ -674,8 +676,38 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400", 0, async function (done) {
-            getImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400",
+            getImagePropertyPromise("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3400",
             FOCUS_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3500
+         * @tc.name      : getImageProperty(CAPTURE_MODE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(CAPTURE_MODE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3500", 0, async function (done) {
+            getImagePropertyPromise("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3500",
+            CAPTURE_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3600
+         * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(PHYSICAL_APERTURE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3600", 0, async function (done) {
+            getImagePropertyPromise("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_3600",
+            PHYSICAL_APERTURE);
         });
 
         /**
@@ -688,7 +720,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", DATE_TIME);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", DATE_TIME);
         });
 
         /**
@@ -701,7 +733,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", GPS_TIME_STAMP);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", GPS_TIME_STAMP);
         });
 
         /**
@@ -714,7 +746,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", GPS_DATE_STAMP);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", GPS_DATE_STAMP);
         });
 
         /**
@@ -727,7 +759,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", IMAGE_DESCRIPTION);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", IMAGE_DESCRIPTION);
         });
 
         /**
@@ -740,7 +772,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", MAKE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", MAKE);
         });
 
         /**
@@ -753,7 +785,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", SENSITIVITY_TYPE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", SENSITIVITY_TYPE);
         });
 
         /**
@@ -766,7 +798,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", RECOMMENDED_EXPOSURE_INDEX);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", RECOMMENDED_EXPOSURE_INDEX);
         });
 
         /**
@@ -779,7 +811,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", MODEL);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", MODEL);
         });
 
         /**
@@ -792,7 +824,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", ISO_SPEED);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", ISO_SPEED);
         });
 
         /**
@@ -805,7 +837,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", APERTURE_VALUE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", APERTURE_VALUE);
         });
 
         /**
@@ -818,7 +850,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1100", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1100", EXPOSURE_BIAS_VALUE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1100", EXPOSURE_BIAS_VALUE);
         });
 
         /**
@@ -831,7 +863,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1200", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1200", METERING_MODE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1200", METERING_MODE);
         });
 
         /**
@@ -844,7 +876,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1300", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1300", LIGHT_SOURCE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1300", LIGHT_SOURCE);
         });
 
         /**
@@ -857,7 +889,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1400", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1400", FLASH);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1400", FLASH);
         });
 
         /**
@@ -870,7 +902,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1500", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1500", FOCAL_LENGTH);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1500", FOCAL_LENGTH);
         });
 
         /**
@@ -883,7 +915,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1600", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1600", USER_COMMENT);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1600", USER_COMMENT);
         });
 
         /**
@@ -896,7 +928,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1700", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1700", PIXEL_X_DIMENSION);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1700", PIXEL_X_DIMENSION);
         });
 
         /**
@@ -909,7 +941,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1800", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1800", PIXEL_Y_DIMENSION);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1800", PIXEL_Y_DIMENSION);
         });
 
         /**
@@ -922,7 +954,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1900", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1900", WHITE_BALANCE);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1900", WHITE_BALANCE);
         });
 
         /**
@@ -935,7 +967,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2000", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2000", FOCAL_LENGTH_IN_35_MM_FILM);
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2000", FOCAL_LENGTH_IN_35_MM_FILM);
         });
 
         /**
@@ -949,7 +981,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2100",
             ROLL_ANGLE);
         });
 
@@ -964,7 +996,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2200",
             PITCH_ANGLE);
         });
 
@@ -979,7 +1011,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300",
+            getImagePropertyCb("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2300",
             SCENE_FOOD_CONF);
         });
 
@@ -994,7 +1026,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2400",
             SCENE_STAGE_CONF);
         });
 
@@ -1009,7 +1041,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500",
+            getImagePropertyCb("bluesky.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2500",
             SCENE_BLUE_SKY_CONF);
         });
 
@@ -1024,7 +1056,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600",
+            getImagePropertyCb("greenplant.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2600",
             SCENE_GREEN_PLANT_CONF);
         });
 
@@ -1039,7 +1071,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2700",
             SCENE_BEACH_CONF);
         });
 
@@ -1054,7 +1086,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800",
+            getImagePropertyCb("snow.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2800",
             SCENE_SNOW_CONF);
         });
 
@@ -1069,7 +1101,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900",
+            getImagePropertyCb("sunset.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_2900",
             SCENE_SUNSET_CONF);
         });
 
@@ -1084,7 +1116,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000",
+            getImagePropertyCb("flower.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3000",
             SCENE_FLOWERS_CONF);
         });
 
@@ -1099,7 +1131,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100",
+            getImagePropertyCb("night.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3100",
             SCENE_NIGHT_CONF);
         });
 
@@ -1114,7 +1146,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200",
+            getImagePropertyCb("text.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3200",
             SCENE_TEXT_CONF);
         });
 
@@ -1129,7 +1161,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3300",
             FACE_COUNT);
         });
 
@@ -1144,8 +1176,38 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400", 0, async function (done) {
-            getImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400",
+            getImagePropertyCb("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3400",
             FOCUS_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3500
+         * @tc.name      : getImageProperty(CAPTURE_MODE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(CAPTURE_MODE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3500", 0, async function (done) {
+            getImagePropertyCb("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3500",
+            CAPTURE_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3600
+         * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(PHYSICAL_APERTURE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3600", 0, async function (done) {
+            getImagePropertyCb("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_3600",
+            PHYSICAL_APERTURE);
         });
 
         /**
@@ -1159,7 +1221,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0100", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0100", DATE_TIME);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0100", DATE_TIME);
         });
 
         /**
@@ -1173,7 +1235,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0200", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0200", GPS_TIME_STAMP);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0200", GPS_TIME_STAMP);
         });
 
         /**
@@ -1187,7 +1249,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0300", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0300", GPS_DATE_STAMP);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0300", GPS_DATE_STAMP);
         });
 
         /**
@@ -1201,7 +1263,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0400", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0400", IMAGE_DESCRIPTION);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0400", IMAGE_DESCRIPTION);
         });
 
         /**
@@ -1215,7 +1277,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0500", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0500", MAKE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0500", MAKE);
         });
 
         /**
@@ -1229,7 +1291,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0600", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0600", MODEL);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0600", MODEL);
         });
 
         /**
@@ -1243,7 +1305,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0700", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0700", SENSITIVITY_TYPE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0700", SENSITIVITY_TYPE);
         });
 
         /**
@@ -1257,7 +1319,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0800", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0800", RECOMMENDED_EXPOSURE_INDEX);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0800", RECOMMENDED_EXPOSURE_INDEX);
         });
 
         /**
@@ -1271,7 +1333,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0900", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0900", ISO_SPEED);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_0900", ISO_SPEED);
         });
 
         /**
@@ -1285,7 +1347,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1000", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1000", APERTURE_VALUE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1000", APERTURE_VALUE);
         });
 
         /**
@@ -1299,7 +1361,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1100", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1100", EXPOSURE_BIAS_VALUE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1100", EXPOSURE_BIAS_VALUE);
         });
 
         /**
@@ -1313,7 +1375,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1200", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1200", METERING_MODE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1200", METERING_MODE);
         });
 
         /**
@@ -1327,7 +1389,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1300", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1300", LIGHT_SOURCE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1300", LIGHT_SOURCE);
         });
 
         /**
@@ -1341,7 +1403,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1400", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1400", FLASH);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1400", FLASH);
         });
 
         /**
@@ -1355,7 +1417,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1500", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1500", FOCAL_LENGTH);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1500", FOCAL_LENGTH);
         });
 
         /**
@@ -1369,7 +1431,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1600", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1600", USER_COMMENT);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1600", USER_COMMENT);
         });
 
         /**
@@ -1383,7 +1445,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1700", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1700", PIXEL_X_DIMENSION);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1700", PIXEL_X_DIMENSION);
         });
 
         /**
@@ -1397,7 +1459,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1800", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1800", PIXEL_Y_DIMENSION);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1800", PIXEL_Y_DIMENSION);
         });
 
         /**
@@ -1411,7 +1473,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1900", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1900", WHITE_BALANCE);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_1900", WHITE_BALANCE);
         });
 
         /**
@@ -1425,7 +1487,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2000", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2000", FOCAL_LENGTH_IN_35_MM_FILM);
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2000", FOCAL_LENGTH_IN_35_MM_FILM);
         });
 
                 /**
@@ -1439,7 +1501,7 @@ export default function imageGetImagePropertySecond() {
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2100",
             ROLL_ANGLE);
         });
 
@@ -1454,7 +1516,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2200",
             PITCH_ANGLE);
         });
 
@@ -1469,7 +1531,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300",
+            getImagePropertyCb2("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2300",
             SCENE_FOOD_CONF);
         });
 
@@ -1484,7 +1546,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2400",
             SCENE_STAGE_CONF);
         });
 
@@ -1499,7 +1561,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500",
+            getImagePropertyCb2("bluesky.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2500",
             SCENE_BLUE_SKY_CONF);
         });
 
@@ -1514,7 +1576,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600",
+            getImagePropertyCb2("greenplant.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2600",
             SCENE_GREEN_PLANT_CONF);
         });
 
@@ -1529,7 +1591,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2700",
             SCENE_BEACH_CONF);
         });
 
@@ -1544,7 +1606,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800",
+            getImagePropertyCb2("snow.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2800",
             SCENE_SNOW_CONF);
         });
 
@@ -1559,7 +1621,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900",
+            getImagePropertyCb2("sunset.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_2900",
             SCENE_SUNSET_CONF);
         });
 
@@ -1574,7 +1636,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000",
+            getImagePropertyCb2("flower.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3000",
             SCENE_FLOWERS_CONF);
         });
 
@@ -1589,7 +1651,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100",
+            getImagePropertyCb2("night.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3100",
             SCENE_NIGHT_CONF);
         });
 
@@ -1604,7 +1666,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200",
+            getImagePropertyCb2("text.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3200",
             SCENE_TEXT_CONF);
         });
 
@@ -1619,7 +1681,7 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3300",
             FACE_COUNT);
         });
 
@@ -1634,8 +1696,38 @@ export default function imageGetImagePropertySecond() {
             * @tc.level     : Level 0
             */
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400", 0, async function (done) {
-            getImagePropertyCb2(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400",
+            getImagePropertyCb2("test_hw.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3400",
             FOCUS_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3500
+         * @tc.name      : getImageProperty(CAPTURE_MODE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(CAPTURE_MODE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3500", 0, async function (done) {
+            getImagePropertyCb2("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3500",
+            CAPTURE_MODE);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3600
+         * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
+         * @tc.desc      : 1.create imagesource
+         *                 2.set property
+         *                 3.call getImageProperty(PHYSICAL_APERTURE)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3600", 0, async function (done) {
+            getImagePropertyCb2("food.jpg",done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK2_3600",
+            PHYSICAL_APERTURE);
         });
 
         /**
@@ -1665,33 +1757,5 @@ export default function imageGetImagePropertySecond() {
         it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0200", 0, async function (done) {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0200", STANDARD_OUTPUT_SENSITIVITY);
         });
-
-        // /**
-        //  * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300
-        //  * @tc.name      : getImageProperty(CAPTURE_MODE)
-        //  * @tc.desc      : 1.create imagesource
-        //  *                 2.set property
-        //  *                 3.call getImageProperty(CAPTURE_MODE)
-        //  * @tc.size      : MEDIUM
-        //  * @tc.type      : Functional
-        //  * @tc.level     : Level 0
-        //  */
-        // it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300", 0, async function (done) {
-        //     getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0300 ", CAPTURE_MODE);
-        // });
-
-        // /**
-        //  * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400
-        //  * @tc.name      : getImageProperty(PHYSICAL_APERTURE)
-        //  * @tc.desc      : 1.create imagesource
-        //  *                 2.set property
-        //  *                 3.call getImageProperty(PHYSICAL_APERTURE)
-        //  * @tc.size      : MEDIUM
-        //  * @tc.type      : Functional
-        //  * @tc.level     : Level 0
-        //  */
-        // it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400", 0, async function (done) {
-        //     getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_ERR_0400 ", PHYSICAL_APERTURE);
-        // });
     });
 }
