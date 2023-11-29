@@ -178,7 +178,7 @@ struct ImageEffectsExample {
       Image('/images/download.png').width('90%').height(40).contrast(this.contrastValue).key('centerRow7')
 
       Text('invert').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).invert(`${this.invertValue}`).key('centerRow8')
+      Image('/images/download.png').width('90%').height(40).invert(this.invertValue).key('centerRow8')
 
       Text('hueRotate').fontSize(15).fontColor(0xCCCCCC).width('90%')
       Image('/images/download.png').width('90%').height(40).hueRotate(`${this.hueRotateValue}`).key('centerRow9')
