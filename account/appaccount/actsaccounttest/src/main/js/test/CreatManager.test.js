@@ -25,17 +25,17 @@ export default function ActsCreatAppAccountManager() {
         *                 the other object deletes the application account
         */
         it('ActsCreatAppAccountManager_0100', 0, async function (done) {
-            console.debug("====>ActsCreatAppAccountManager_0100 start====");
+            console.info("====>ActsCreatAppAccountManager_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var appAccountManagerTwo = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("creatappaccount_name_first", (err)=>{
-                console.debug("====>add account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManagerTwo.deleteAccount("creatappaccount_name_first", (err)=>{
-                    console.debug("====>delete Account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
+                    console.info("====>delete Account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsCreatAppAccountManager_0100 end====");
+                    console.info("====>ActsCreatAppAccountManager_0100 end====");
                     done();
                 });
             });
@@ -49,25 +49,25 @@ export default function ActsCreatAppAccountManager() {
         *                 the application account
         */
         it('ActsCreatAppAccountManager_0200', 0, async function (done) {
-            console.debug("====>ActsCreatAppAccountManager_0200 start====");
+            console.info("====>ActsCreatAppAccountManager_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var appAccountManagerTwo = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("creatappaccount_name_second", (err)=>{
-                console.debug("====>add account ActsCreatAppAccountManager_0200 err:" + JSON.stringify(err));
+                console.info("====>add account ActsCreatAppAccountManager_0200 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManagerTwo.setAccountExtraInfo("creatappaccount_name_second", "creatappaccount_extra", (err)=>{
-                    console.debug("====>setAccountExtraInfo err:" + JSON.stringify(err));
+                    console.info("====>setAccountExtraInfo err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAccountExtraInfo("creatappaccount_name_second", (err, data)=>{
-                        console.debug("====>getAccountExtraInfo err:" + JSON.stringify(err));
-                        console.debug("====>getAccountExtraInfo data:" + JSON.stringify(data));
+                        console.info("====>getAccountExtraInfo err:" + JSON.stringify(err));
+                        console.info("====>getAccountExtraInfo data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("creatappaccount_extra");
                         appAccountManagerTwo.deleteAccount("creatappaccount_name_second", (err)=>{
-                            console.debug("====>delete Account err:" + JSON.stringify(err));
+                            console.info("====>delete Account err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsCreatAppAccountManager_0200 end====");
+                            console.info("====>ActsCreatAppAccountManager_0200 end====");
                             done();
                         });
                     });

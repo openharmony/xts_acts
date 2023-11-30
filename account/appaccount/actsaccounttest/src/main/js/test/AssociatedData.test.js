@@ -26,24 +26,24 @@ export default function ActsAccountAssociatedData() {
         *                 are correct, and then getAssociatedData is called for the value(callback)
         */
         it('ActsAccountAssociatedData_0100', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0100 start====");
+            console.info("====>ActsAccountAssociatedData_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_0100",(err)=>{
-                console.debug("====>add accountActsAccountAssociatedData_0100 err:" + JSON.stringify(err));
+                console.info("====>add accountActsAccountAssociatedData_0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_0100", "key1", "value1", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_0100 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAssociatedData("account_name_0100", "key1", (err, data)=>{
-                        console.debug("====>getAssociatedData 0100 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 0100 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 0100 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 0100 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value1");
                         appAccountManager.deleteAccount("account_name_0100", (err)=>{
-                            console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 0100 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountAssociatedData_0100 end====");
+                            console.info("====>ActsAccountAssociatedData_0100 end====");
                             done();
                         });
                     });
@@ -58,10 +58,10 @@ export default function ActsAccountAssociatedData() {
         *                 are correct, and then getAssociatedData is called for the value(promise)
         */
         it('ActsAccountAssociatedData_0200', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0200 start====");
+            console.info("====>ActsAccountAssociatedData_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_0200 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_0200 start====");
             try{
                 await appAccountManager.addAccount("account_name_0200");
             }
@@ -70,7 +70,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>setAssociatedData ActsAccountAssociatedData_0200 start====");
+            console.info("====>setAssociatedData ActsAccountAssociatedData_0200 start====");
             try{
                 await appAccountManager.setAssociatedData("account_name_0200", "key2", "value2");
             }
@@ -79,7 +79,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 start====");
+            console.info("====>getAssociatedData ActsAccountAssociatedData_0200 start====");
             try{
                 var data = await appAccountManager.getAssociatedData("account_name_0200", "key2");
             }
@@ -88,9 +88,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 data:" + JSON.stringify(data));
+            console.info("====>getAssociatedData ActsAccountAssociatedData_0200 data:" + JSON.stringify(data));
             expect(data).assertEqual("value2");
-            console.debug("====>delete account ActsAccountAssociatedData_0200 start====");
+            console.info("====>delete account ActsAccountAssociatedData_0200 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_0200");
             }
@@ -99,7 +99,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_0200 end====");
+            console.info("====>ActsAccountAssociatedData_0200 end====");
             done();
         });
 
@@ -109,21 +109,21 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(callback)
         */
         it('ActsAccountAssociatedData_0300', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0300 start====");
+            console.info("====>ActsAccountAssociatedData_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_0300", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_0300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAssociatedData("account_name_0300", "key3", (err, data)=>{
-                    console.debug("====>getAssociatedData 0300 err:" + JSON.stringify(err));
-                    console.debug("====>getAssociatedData 0300 data:" + JSON.stringify(data));
+                    console.info("====>getAssociatedData 0300 err:" + JSON.stringify(err));
+                    console.info("====>getAssociatedData 0300 data:" + JSON.stringify(data));
                     expect(err.code != 0).assertEqual(true);
                     expect(data).assertEqual(null);
                     appAccountManager.deleteAccount("account_name_0300", (err)=>{
-                        console.debug("====>delete Account 0300 err:" + JSON.stringify(err));
+                        console.info("====>delete Account 0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_0300 end====");
+                        console.info("====>ActsAccountAssociatedData_0300 end====");
                         done();
                     });
                 });
@@ -136,10 +136,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(promise)
         */
         it('ActsAccountAssociatedData_0400', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0400 start====");
+            console.info("====>ActsAccountAssociatedData_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_0400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_0400 start====");
             try{
                 await appAccountManager.addAccount("account_name_0400");
             }
@@ -155,9 +155,9 @@ export default function ActsAccountAssociatedData() {
                 done();
             }
             catch(err){
-                console.debug("====>getAssociatedData ActsAccountAssociatedData_0400 err:" + JSON.stringify(err));
+                console.info("====>getAssociatedData ActsAccountAssociatedData_0400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_0400 start====");
+                console.info("====>delete account ActsAccountAssociatedData_0400 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_0400");
                 }
@@ -166,7 +166,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_0400 end====");
+                console.info("====>ActsAccountAssociatedData_0400 end====");
                 done();
             }
         });
@@ -178,23 +178,23 @@ export default function ActsAccountAssociatedData() {
         *                 call the getAssociatedData of the pass error to check if you get the value(callback)
         */
         it('ActsAccountAssociatedData_0500', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0500 start====");
+            console.info("====>ActsAccountAssociatedData_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_0500",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_0500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_0500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_0500", "key5", "value5", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_0500 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_0500 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAssociatedData("account_name_0500", "keyerr", (err, data)=>{
-                        console.debug("====>getAssociatedData 0500 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 0500 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 0500 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 0500 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
                         appAccountManager.deleteAccount("account_name_0500", (err)=>{
-                            console.debug("====>delete Account 0500 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 0500 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountAssociatedData_0500 end====");
+                            console.info("====>ActsAccountAssociatedData_0500 end====");
                             done();
                         });
                     });
@@ -209,10 +209,10 @@ export default function ActsAccountAssociatedData() {
         *                 call the getAssociatedData of the pass error to check if you get the value(promise)
         */
         it('ActsAccountAssociatedData_0600', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0600 start====");
+            console.info("====>ActsAccountAssociatedData_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_0600 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_0600 start====");
             try{
                 await appAccountManager.addAccount("account_name_0600");
             }
@@ -226,9 +226,9 @@ export default function ActsAccountAssociatedData() {
                 var data = await appAccountManager.getAssociatedData("account_name_0600", "keyerr");
             }
             catch(err){
-                console.debug("====>getAssociatedData 0600 err:" + JSON.stringify(err));
+                console.info("====>getAssociatedData 0600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_0600 start====");
+                console.info("====>delete account ActsAccountAssociatedData_0600 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_0600");
                 }
@@ -237,7 +237,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_0600 end====");
+                console.info("====>ActsAccountAssociatedData_0600 end====");
                 done();
             }
         });
@@ -250,27 +250,27 @@ export default function ActsAccountAssociatedData() {
         *                 can get the second value(callback)
         */
         it('ActsAccountAssociatedData_0700', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0700 start====");
+            console.info("====>ActsAccountAssociatedData_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_0700",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_0700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_0700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_0700", "key7", "value7", (err)=>{
-                    console.debug("====>setAssociatedDatafir first time 0700 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedDatafir first time 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAssociatedData("account_name_0700", "key7", "newvalue7", (err)=>{
-                        console.debug("====>setAssociatedDatafir second time 0700 err:" + JSON.stringify(err));
+                        console.info("====>setAssociatedDatafir second time 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAssociatedData("account_name_0700", "key7", (err, data)=>{
-                            console.debug("====>getAssociatedData 0700 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData 0700 data:" + JSON.stringify(data));
+                            console.info("====>getAssociatedData 0700 err:" + JSON.stringify(err));
+                            console.info("====>getAssociatedData 0700 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("newvalue7");
                             appAccountManager.deleteAccount("account_name_0700", (err)=>{
-                                console.debug("====>delete Account 0700 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0700 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsAccountAssociatedData_0700 end====");
+                                console.info("====>ActsAccountAssociatedData_0700 end====");
                                 done();
                             });
                         });
@@ -287,9 +287,9 @@ export default function ActsAccountAssociatedData() {
         *                 can get the second value(promise)
         */
         it('ActsAccountAssociatedData_0800', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0800 start====");
+            console.info("====>ActsAccountAssociatedData_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             try{
                 await appAccountManager.addAccount("account_name_0800");
             }
@@ -314,9 +314,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountAssociatedData_0800 data:" + JSON.stringify(data));
+            console.info("====>getAssociatedData ActsAccountAssociatedData_0800 data:" + JSON.stringify(data));
             expect(data).assertEqual("newvalue8");
-            console.debug("====>delete account ActsAccountAssociatedData_0800 start====");
+            console.info("====>delete account ActsAccountAssociatedData_0800 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_0800");
             }
@@ -325,7 +325,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_0800 end====");
+            console.info("====>ActsAccountAssociatedData_0800 end====");
             done();
         });
 
@@ -337,27 +337,27 @@ export default function ActsAccountAssociatedData() {
         *                 can get the second value(callback)
         */
         it('ActsAccountAssociatedData_0900', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_0900 start====");
+            console.info("====>ActsAccountAssociatedData_0900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_0900",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_0900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_0900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_0900", "key9", "value9", (err)=>{
-                    console.debug("====>setAssociatedData first time 0900 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData first time 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAssociatedData("account_name_0900", "key9", "value9", (err)=>{
-                        console.debug("====>setAssociatedData second time 0900 err:" + JSON.stringify(err));
+                        console.info("====>setAssociatedData second time 0900 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAssociatedData("account_name_0900", "key9", (err, data)=>{
-                            console.debug("====>getAssociatedData 0900 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData 0900 data:" + JSON.stringify(data));
+                            console.info("====>getAssociatedData 0900 err:" + JSON.stringify(err));
+                            console.info("====>getAssociatedData 0900 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value9");
                             appAccountManager.deleteAccount("account_name_0900", (err)=>{
-                                console.debug("====>delete Account 0900 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0900 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsAccountAssociatedData_0900 end====");
+                                console.info("====>ActsAccountAssociatedData_0900 end====");
                                 done();
                             });
                         });
@@ -374,10 +374,10 @@ export default function ActsAccountAssociatedData() {
         *                 can get the second value(promise)
         */
         it('ActsAccountAssociatedData_1000', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1000 start====");
+            console.info("====>ActsAccountAssociatedData_1000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>addAccount ActsAccountAssociatedData_1000 start====");
+            console.info("====>creat finish====");
+            console.info("====>addAccount ActsAccountAssociatedData_1000 start====");
             try{
                 await appAccountManager.addAccount("account_name_1000");
             }
@@ -403,9 +403,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData 1000 data:" + JSON.stringify(data));
+            console.info("====>getAssociatedData 1000 data:" + JSON.stringify(data));
             expect(data).assertEqual("value10");
-            console.debug("====>delete account ActsAccountAssociatedData_1000 start====");
+            console.info("====>delete account ActsAccountAssociatedData_1000 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_1000");
             }
@@ -414,7 +414,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_1000 end====");
+            console.info("====>ActsAccountAssociatedData_1000 end====");
             done();
         });
 
@@ -425,32 +425,32 @@ export default function ActsAccountAssociatedData() {
         *                 different value, and then call getAssociatedData twice to get the set value(callback)
         */
         it('ActsAccountAssociatedData_1100', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1100 start====");
+            console.info("====>ActsAccountAssociatedData_1100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_1100",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_1100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_1100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_1100", "key11_first", "value11_first", (err)=>{
-                    console.debug("====>setAssociatedData first time 1100 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData first time 1100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAssociatedData("account_name_1100", "key11_second", "value11_second", (err)=>{
-                        console.debug("====>setAssociatedData second time 1100 err:" + JSON.stringify(err));
+                        console.info("====>setAssociatedData second time 1100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAssociatedData("account_name_1100", "key11_first", (err,data)=>{
-                            console.debug("====>getAssociatedData key11_first 1100 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData key11_first 1100 data:" + JSON.stringify(data));
+                            console.info("====>getAssociatedData key11_first 1100 err:" + JSON.stringify(err));
+                            console.info("====>getAssociatedData key11_first 1100 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value11_first");
                             appAccountManager.getAssociatedData("account_name_1100", "key11_second", (err,data)=>{
-                                console.debug("====>getAssociatedData key11_second 1100 err:" + JSON.stringify(err));
-                                console.debug("====>getAssociatedData key11_second 1100 data:" + JSON.stringify(data));
+                                console.info("====>getAssociatedData key11_second 1100 err:" + JSON.stringify(err));
+                                console.info("====>getAssociatedData key11_second 1100 data:" + JSON.stringify(data));
                                 expect(err).assertEqual(null);
                                 expect(data).assertEqual("value11_second");
                                 appAccountManager.deleteAccount("account_name_1100", (err)=>{
-                                    console.debug("====>delete Account 1100 err:" + JSON.stringify(err));
+                                    console.info("====>delete Account 1100 err:" + JSON.stringify(err));
                                 });
-                                console.debug("====>ActsAccountAssociatedData_1100 end====");
+                                console.info("====>ActsAccountAssociatedData_1100 end====");
                                 done();
                             });
                         });
@@ -466,10 +466,10 @@ export default function ActsAccountAssociatedData() {
         *                 different value, and then call getAssociatedData twice to get the set value(promise)
         */
         it('ActsAccountAssociatedData_1200', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1200 start====");
+            console.info("====>ActsAccountAssociatedData_1200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>addAccount ActsAccountAssociatedData_1200 start====");
+            console.info("====>creat finish====");
+            console.info("====>addAccount ActsAccountAssociatedData_1200 start====");
             try{
                 await appAccountManager.addAccount("account_name_1200");
             }
@@ -496,11 +496,11 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_1200 getAssociatedData dataFir:" + JSON.stringify(dataFir));
+            console.info("====>ActsAccountAssociatedData_1200 getAssociatedData dataFir:" + JSON.stringify(dataFir));
             expect(dataFir).assertEqual("value12_first");
-            console.debug("====>ActsAccountAssociatedData_1200 getAssociatedData dataSec:" + JSON.stringify(dataSec));
+            console.info("====>ActsAccountAssociatedData_1200 getAssociatedData dataSec:" + JSON.stringify(dataSec));
             expect(dataSec).assertEqual("value12_second");
-            console.debug("====>delete account ActsAccountAssociatedData_1200 start====");
+            console.info("====>delete account ActsAccountAssociatedData_1200 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_1200");
             }
@@ -509,7 +509,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_1200 end====");
+            console.info("====>ActsAccountAssociatedData_1200 end====");
             done();
         });
 
@@ -519,19 +519,19 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter KEY is wrong(callback)
         */
         it('ActsAccountAssociatedData_1300', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1300 start====");
+            console.info("====>ActsAccountAssociatedData_1300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_1300", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_1300", "", "value13", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1300", (err)=>{
-                        console.debug("====>delete account ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
+                        console.info("====>delete account ActsAccountAssociatedData_1300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_1300 end====");
+                        console.info("====>ActsAccountAssociatedData_1300 end====");
                         done();
                     });
                 });
@@ -544,10 +544,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter KEY is wrong(promise)
         */
         it('ActsAccountAssociatedData_1400', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1400 start====");
+            console.info("====>ActsAccountAssociatedData_1400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_1400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_1400 start====");
             try{
                 await appAccountManager.addAccount("account_name_1400");
             }
@@ -560,9 +560,9 @@ export default function ActsAccountAssociatedData() {
                 await appAccountManager.setAssociatedData("account_name_1400", "", "value14");
             }
             catch(err){
-                console.debug("====>setAssociatedData ActsAccountAssociatedData_1400 err:" + JSON.stringify(err));
+                console.info("====>setAssociatedData ActsAccountAssociatedData_1400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_1400 start====");
+                console.info("====>delete account ActsAccountAssociatedData_1400 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_1400");
                 }
@@ -571,7 +571,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_1400 end====");
+                console.info("====>ActsAccountAssociatedData_1400 end====");
                 done();
             }
         });
@@ -582,24 +582,24 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting key when the incoming parameter KEY is wrong(callback)
         */
         it('ActsAccountAssociatedData_1500', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1500 start====");
+            console.info("====>ActsAccountAssociatedData_1500 start====");
             var keyOverSize = "K"
             for(var i = 0;i < 256;i++)
             keyOverSize = keyOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_1500", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                console.debug("====>1500 keyOverSize.length:" + JSON.stringify(keyOverSize.length));
+                console.info("====>1500 keyOverSize.length:" + JSON.stringify(keyOverSize.length));
                 expect(keyOverSize.length).assertEqual(1025);
                 appAccountManager.setAssociatedData("account_name_1500", keyOverSize, "value15", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1500", (err)=>{
-                        console.debug("====>delete account ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
+                        console.info("====>delete account ActsAccountAssociatedData_1500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_1500 end====");
+                        console.info("====>ActsAccountAssociatedData_1500 end====");
                         done();
                     });
                 });
@@ -612,14 +612,14 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting key when the incoming parameter KEY is wrong(promise)
         */
         it('ActsAccountAssociatedData_1600', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1600 start====");
+            console.info("====>ActsAccountAssociatedData_1600 start====");
             var keyOverSize = "K"
             for(var i=0;i<256;i++)
             keyOverSize = keyOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(keyOverSize.length).assertEqual(1025);
-            console.debug("====>add account ActsAccountAssociatedData_1600 start====");
+            console.info("====>add account ActsAccountAssociatedData_1600 start====");
             try{
                 await appAccountManager.addAccount("account_name_1600");
             }
@@ -632,9 +632,9 @@ export default function ActsAccountAssociatedData() {
                 await appAccountManager.setAssociatedData("account_name_1600", keyOverSize, "value16");
             }
             catch(err){
-                console.debug("====>setAssociatedData ActsAccountAssociatedData_1600 err:" + JSON.stringify(err));
+                console.info("====>setAssociatedData ActsAccountAssociatedData_1600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_1600 start====");
+                console.info("====>delete account ActsAccountAssociatedData_1600 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_1600");
                 }
@@ -643,7 +643,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_1600 end====");
+                console.info("====>ActsAccountAssociatedData_1600 end====");
                 done();
             }
         });
@@ -654,24 +654,24 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(callback)
         */
         it('ActsAccountAssociatedData_1700', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1700 start====");
+            console.info("====>ActsAccountAssociatedData_1700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_1700", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_1700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_1700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_1700", " ", "value17", (err)=>{
-                    console.debug("====>ActsAccountAssociatedData_1700 setAssociatedData:" + JSON.stringify(err));
+                    console.info("====>ActsAccountAssociatedData_1700 setAssociatedData:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAssociatedData("account_name_1700", " ", (err, data)=>{
-                        console.debug("====>getAssociatedData 1700 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 1700 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 1700 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 1700 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value17");
                         appAccountManager.deleteAccount("account_name_1700", (err)=>{
-                            console.debug("====>delete Account 1700 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 1700 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountAssociatedData_1700 end====");
+                            console.info("====>ActsAccountAssociatedData_1700 end====");
                             done();
                         });
                     });
@@ -685,10 +685,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(promise)
         */
         it('ActsAccountAssociatedData_1800', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1800 start====");
+            console.info("====>ActsAccountAssociatedData_1800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_1800 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_1800 start====");
             try{
                 await appAccountManager.addAccount("account_name_1800");
             }
@@ -706,9 +706,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountAssociatedData_1800 data:" + JSON.stringify(data));
+            console.info("====>getAssociatedData ActsAccountAssociatedData_1800 data:" + JSON.stringify(data));
             expect(data).assertEqual("value18");
-            console.debug("====>delete account ActsAccountAssociatedData_1800 start====");
+            console.info("====>delete account ActsAccountAssociatedData_1800 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_1800");
             }
@@ -717,7 +717,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_1800 end====");
+            console.info("====>ActsAccountAssociatedData_1800 end====");
             done();
         });
 
@@ -727,24 +727,24 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(callback)
         */
         it('ActsAccountAssociatedData_1900', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_1900 start====");
+            console.info("====>ActsAccountAssociatedData_1900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_1900", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_1900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_1900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_1900", "key19", "", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_1900 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_1900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAssociatedData("account_name_1900", "key19", (err, data)=>{
-                        console.debug("====>getAssociatedData 1900 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 1900 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 1900 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 1900 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("");
                         appAccountManager.deleteAccount("account_name_1900", (err)=>{
-                            console.debug("====>delete Account 1900 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 1900 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountAssociatedData_1900 end====");
+                            console.info("====>ActsAccountAssociatedData_1900 end====");
                             done();
                         });
                     });
@@ -758,10 +758,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(promise)
         */
         it('ActsAccountAssociatedData_2000', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2000 start====");
+            console.info("====>ActsAccountAssociatedData_2000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_2000 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_2000 start====");
             try{
                 await appAccountManager.addAccount("account_name_2000");
             }
@@ -786,9 +786,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountAssociatedData_2000 data:" + JSON.stringify(data));
+            console.info("====>getAssociatedData ActsAccountAssociatedData_2000 data:" + JSON.stringify(data));
             expect(data).assertEqual("");
-            console.debug("====>delete account ActsAccountAssociatedData_2000 start====");
+            console.info("====>delete account ActsAccountAssociatedData_2000 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_2000");
             }
@@ -797,7 +797,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_2000 end====");
+            console.info("====>ActsAccountAssociatedData_2000 end====");
             done();
         });
 
@@ -807,23 +807,23 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter value is wrong(callback)
         */
         it('ActsAccountAssociatedData_2100', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2100 start====");
+            console.info("====>ActsAccountAssociatedData_2100 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
             valueOverSize = valueOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_2100",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(valueOverSize.length).assertEqual(1025);
                 appAccountManager.setAssociatedData("account_name_2100", "key21", valueOverSize, (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_2100", (err)=>{
-                        console.debug("====>delete Account ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountAssociatedData_2100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_2100 end====");
+                        console.info("====>ActsAccountAssociatedData_2100 end====");
                         done();
                     });
                 });
@@ -836,12 +836,12 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting value when the incoming parameter value is wrong(promise)
         */
         it('ActsAccountAssociatedData_2200', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2200 start====");
+            console.info("====>ActsAccountAssociatedData_2200 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
             valueOverSize = valueOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(valueOverSize.length).assertEqual(1025);
             try{
                 await appAccountManager.addAccount("account_name_2200");
@@ -855,9 +855,9 @@ export default function ActsAccountAssociatedData() {
                 await appAccountManager.setAssociatedData("account_name_2200", "key22", valueOverSize);
             }
             catch(err){
-                console.debug("====>setAssociatedData ActsAccountAssociatedData_2200 err:" + JSON.stringify(err));
+                console.info("====>setAssociatedData ActsAccountAssociatedData_2200 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_2200 start====");
+                console.info("====>delete account ActsAccountAssociatedData_2200 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_2200");
                 }
@@ -866,7 +866,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_2200 end====");
+                console.info("====>ActsAccountAssociatedData_2200 end====");
                 done();
             }
         });
@@ -877,24 +877,24 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(callback)
         */
         it('ActsAccountAssociatedData_2300', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2300 start====");
+            console.info("====>ActsAccountAssociatedData_2300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_2300", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_2300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_2300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_2300", "key23", " ", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_2300 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_2300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAssociatedData("account_name_2300", "key23", (err, data)=>{
-                        console.debug("====>getAssociatedData 2300 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 2300 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 2300 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 2300 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual(" ");
                         appAccountManager.deleteAccount("account_name_2300", (err)=>{
-                            console.debug("====>delete Account 2300 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 2300 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountAssociatedData_2300 end====");
+                            console.info("====>ActsAccountAssociatedData_2300 end====");
                             done();
                         });
                     });
@@ -908,10 +908,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(promise)
         */
         it('ActsAccountAssociatedData_2400', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2400 start====");
+            console.info("====>ActsAccountAssociatedData_2400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountAssociatedData_2400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountAssociatedData_2400 start====");
             try{
                 await appAccountManager.addAccount("account_name_2400");
             }
@@ -929,9 +929,9 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData 2400 err:" + JSON.stringify(data));
+            console.info("====>getAssociatedData 2400 err:" + JSON.stringify(data));
             expect(data).assertEqual(" ");
-            console.debug("====>delete account ActsAccountAssociatedData_2400 start====");
+            console.info("====>delete account ActsAccountAssociatedData_2400 start====");
             try{
                 await appAccountManager.deleteAccount("account_name_2400");
             }
@@ -940,7 +940,7 @@ export default function ActsAccountAssociatedData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountAssociatedData_2400 end====");
+            console.info("====>ActsAccountAssociatedData_2400 end====");
             done();
         });
 
@@ -950,19 +950,19 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(callback)
         */
         it('ActsAccountAssociatedData_2500', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2500 start====");
+            console.info("====>ActsAccountAssociatedData_2500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_2500", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("", "key25", "value25", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_2500", (err)=>{
-                        console.debug("====>delete Account ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountAssociatedData_2500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_2500 end====");
+                        console.info("====>ActsAccountAssociatedData_2500 end====");
                         done();
                     });
                 });
@@ -975,10 +975,10 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(promise)
         */
         it('ActsAccountAssociatedData_2600', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2600 start====");
+            console.info("====>ActsAccountAssociatedData_2600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>ActsAccountAssociatedData_2600 addAccount start====");
+            console.info("====>creat finish====");
+            console.info("====>ActsAccountAssociatedData_2600 addAccount start====");
             try{
                 await appAccountManager.addAccount("account_name_2600");
             }
@@ -991,9 +991,9 @@ export default function ActsAccountAssociatedData() {
                 await appAccountManager.setAssociatedData("", "key26", "value26");
             }
             catch(err){
-                console.debug("====>setAssociatedData ActsAccountAssociatedData_2600 err:" + JSON.stringify(err));
+                console.info("====>setAssociatedData ActsAccountAssociatedData_2600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_2600 start====");
+                console.info("====>delete account ActsAccountAssociatedData_2600 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_2600");
                 }
@@ -1002,7 +1002,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_2600 end====");
+                console.info("====>ActsAccountAssociatedData_2600 end====");
                 done();
             }
         });
@@ -1013,23 +1013,23 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting name when the incoming parameter name is wrong(callback)
         */
         it('ActsAccountAssociatedData_2700', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2700 start====");
+            console.info("====>ActsAccountAssociatedData_2700 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
             nameOverSize = nameOverSize+"name";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_2700",(err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_2700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_2700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(nameOverSize.length).assertEqual(1025);
                 appAccountManager.setAssociatedData(nameOverSize, "key27", "value27", (err)=>{
-                    console.debug("====>ActsAccountAssociatedData_2700 setAssociatedData:" + JSON.stringify(err));
+                    console.info("====>ActsAccountAssociatedData_2700 setAssociatedData:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_2700", (err)=>{
-                        console.debug("====>delete Account ActsAccountAssociatedData_2700 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountAssociatedData_2700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_2700 end====");
+                        console.info("====>ActsAccountAssociatedData_2700 end====");
                         done();
                     });
                 });
@@ -1042,14 +1042,14 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData setting name when the incoming parameter name is wrong(promise)
         */
         it('ActsAccountAssociatedData_2800', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2800 start====");
+            console.info("====>ActsAccountAssociatedData_2800 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
             nameOverSize = nameOverSize + "name";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(nameOverSize.length).assertEqual(1025);
-            console.debug("====>add account ActsAccountAssociatedData_2800 start====");
+            console.info("====>add account ActsAccountAssociatedData_2800 start====");
             try{
                 await appAccountManager.addAccount("account_name_2800");
             }
@@ -1062,9 +1062,9 @@ export default function ActsAccountAssociatedData() {
                 await appAccountManager.setAssociatedData(nameOverSize, "key28", "value28");
             }
             catch(err){
-                console.debug("====>setAssociatedData ActsAccountAssociatedData_2800 err:" + JSON.stringify(err));
+                console.info("====>setAssociatedData ActsAccountAssociatedData_2800 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountAssociatedData_2800 start====");
+                console.info("====>delete account ActsAccountAssociatedData_2800 start====");
                 try{
                     await appAccountManager.deleteAccount("account_name_2800");
                 }
@@ -1073,7 +1073,7 @@ export default function ActsAccountAssociatedData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountAssociatedData_2800 end====");
+                console.info("====>ActsAccountAssociatedData_2800 end====");
                 done();
             }
         });
@@ -1084,20 +1084,20 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(callback)
         */
         it('ActsAccountAssociatedData_2900', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_2900 start====");
+            console.info("====>ActsAccountAssociatedData_2900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount(" ", (err)=>{
-                console.debug("====>add account ActsAccountAssociatedData_2900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_2900 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
                 appAccountManager.setAssociatedData(" ", "key29", "value29", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_2900 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_2900 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.getAssociatedData(" ", "key29", (err, data)=>{
-                        console.debug("====>getAssociatedData 2900 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 2900 data:" + JSON.stringify(data));
+                        console.info("====>getAssociatedData 2900 err:" + JSON.stringify(err));
+                        console.info("====>getAssociatedData 2900 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
-                        console.debug("====>ActsAccountAssociatedData_2900 end====");
+                        console.info("====>ActsAccountAssociatedData_2900 end====");
                         done();
                     });
                 });
@@ -1110,14 +1110,14 @@ export default function ActsAccountAssociatedData() {
         * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(promise)
         */
         it('ActsAccountAssociatedData_3000', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_3000 start====");
+            console.info("====>ActsAccountAssociatedData_3000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             try{
                 await appAccountManager.addAccount(" ");
             }
             catch(err){
-                console.debug("====>add account ActsAccountAssociatedData_3000 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountAssociatedData_3000 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
                 try{
                     await appAccountManager.setAssociatedData(" ", "key30", "value30");
@@ -1131,7 +1131,7 @@ export default function ActsAccountAssociatedData() {
                     catch(err){
                         console.error("====>getAssociatedData ActsAccountAssociatedData_3000 err:" + JSON.stringify(err));
                         expect(err.code != 0).assertEqual(true);
-                        console.debug("====>ActsAccountAssociatedData_3000 end====");
+                        console.info("====>ActsAccountAssociatedData_3000 end====");
                         done();
                     }
                 }
@@ -1146,22 +1146,22 @@ export default function ActsAccountAssociatedData() {
         *                 are correct, and then getAssociatedData is called for the value(callback)
         */
         it('ActsAccountAssociatedData_3100', 0, async function (done) {
-            console.debug("====>ActsAccountAssociatedData_3100 start====");
+            console.info("====>ActsAccountAssociatedData_3100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("account_name_3100",(err)=>{
-                console.debug("====>add ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
+                console.info("====>add ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAssociatedData("account_name_3100", "key31", "value31", (err)=>{
-                    console.debug("====>setAssociatedData ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
+                    console.info("====>setAssociatedData ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     var result = appAccountManager.getAssociatedDataSync("account_name_3100", "key31")
-                    console.debug("====>getAssociatedData ActsAccountAssociatedData_3100 result:" + JSON.stringify(result));
+                    console.info("====>getAssociatedData ActsAccountAssociatedData_3100 result:" + JSON.stringify(result));
                     expect(result).assertEqual("value31");
                     appAccountManager.deleteAccount("account_name_3100", (err)=>{
-                        console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account 0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountAssociatedData_3100 end====");
+                        console.info("====>ActsAccountAssociatedData_3100 end====");
                         done();
                     });
                 });

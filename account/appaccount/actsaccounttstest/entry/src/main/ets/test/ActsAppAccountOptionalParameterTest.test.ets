@@ -30,7 +30,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     }
 
     beforeEach(async (done)=>{
-      console.debug("====>afterEach start====");
+      console.info("====>afterEach start====");
       var appAccountManager = account.createAppAccountManager();
       var accounts = await appAccountManager.getAccountsByOwner(owner)
       for (var i=0;i<accounts.length;i++){
@@ -48,16 +48,16 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : createAccount in callback form without optional information
     */
     it('ActsAccountOptionalParameter_0100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0100 start====");
+      console.info("====>ActsAccountOptionalParameter_0100 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>create finish====");
+      console.info("====>create finish====");
       appAccountManager.createAccount(name, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount(name, async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_0100 end====");
+          console.info("====>ActsAccountOptionalParameter_0100 end====");
           done();
         });
       });
@@ -69,10 +69,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : createAccount in promise form without optional information
     */
     it('ActsAccountOptionalParameter_0200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0200 start====");
+      console.info("====>ActsAccountOptionalParameter_0200 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>creat finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount(name);
       }
@@ -81,9 +81,9 @@ export default function ActsAppAccountOptionalParameterTest() {
         expect().assertFail();
         done();
       }
-      console.debug("====>delete account start====");
+      console.info("====>delete account start====");
       await appAccountManager.removeAccount(name);
-      console.debug("====>ActsAccountOptionalParameter_0200 end====");
+      console.info("====>ActsAccountOptionalParameter_0200 end====");
       done();
     });
 
@@ -93,16 +93,16 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined callback
     */
     it('ActsAccountOptionalParameter_0300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0300 start====");
+      console.info("====>ActsAccountOptionalParameter_0300 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount(name, undefined, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount(name, async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_0100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_0300 end====");
+          console.info("====>ActsAccountOptionalParameter_0300 end====");
           done();
         });
       });
@@ -114,10 +114,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined Promise
     */
     it('ActsAccountOptionalParameter_0400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0400 start====");
+      console.info("====>ActsAccountOptionalParameter_0400 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>creat finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount(name, undefined);
       }
@@ -126,9 +126,9 @@ export default function ActsAppAccountOptionalParameterTest() {
         expect().assertFail();
         done();
       }
-      console.debug("====>delete account start====");
+      console.info("====>delete account start====");
       await appAccountManager.removeAccount(name);
-      console.debug("====>ActsAccountOptionalParameter_0400 end====");
+      console.info("====>ActsAccountOptionalParameter_0400 end====");
       done();
     });
 
@@ -138,16 +138,16 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null callback
     */
     it('ActsAccountOptionalParameter_0500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0500 start====");
+      console.info("====>ActsAccountOptionalParameter_0500 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount(name, null, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount(name, async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_0500 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_0500 end====");
+          console.info("====>ActsAccountOptionalParameter_0500 end====");
           done();
         });
       });
@@ -159,10 +159,10 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null Promise
     */
     it('ActsAccountOptionalParameter_0600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0600 start====");
+      console.info("====>ActsAccountOptionalParameter_0600 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>creat finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount(name, null);
       }
@@ -171,9 +171,9 @@ export default function ActsAppAccountOptionalParameterTest() {
         expect().assertFail();
         done();
       }
-      console.debug("====>delete account start====");
+      console.info("====>delete account start====");
       await appAccountManager.removeAccount(name);
-      console.debug("====>ActsAccountOptionalParameter_0600 end====");
+      console.info("====>ActsAccountOptionalParameter_0600 end====");
       done();
     });
 
@@ -183,17 +183,17 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no customData callback
     */
     it('ActsAccountOptionalParameter_0700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0700 start====");
+      console.info("====>ActsAccountOptionalParameter_0700 start====");
       let createAccountOptions = {}
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount("account_name_callback_second", async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_0700 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_0700 end====");
+          console.info("====>ActsAccountOptionalParameter_0700 end====");
           done();
         });
       });
@@ -205,11 +205,11 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no customData promise
     */
     it('ActsAccountOptionalParameter_0800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_0800 start====");
+      console.info("====>ActsAccountOptionalParameter_0800 start====");
       let createAccountOptions = {}
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>creat finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount("account_name_promise_second", createAccountOptions);
       }
@@ -218,9 +218,9 @@ export default function ActsAppAccountOptionalParameterTest() {
         expect().assertFail();
         done();
       }
-      console.debug("====>delete account start====");
+      console.info("====>delete account start====");
       await appAccountManager.removeAccount("account_name_promise_second");
-      console.debug("====>ActsAccountOptionalParameter_0800 end====");
+      console.info("====>ActsAccountOptionalParameter_0800 end====");
       done();
     });
 
@@ -230,19 +230,19 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : customData is undefined callback
     */
     it('ActsAccountOptionalParameter_0900', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0300 start====");
+      console.info("====>ActsAccountCreateAccount_0300 start====");
       let createAccountOptions = {
         customData: undefined
       };
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount("account_name_callback_second", async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_0900 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_0900 end====");
+          console.info("====>ActsAccountOptionalParameter_0900 end====");
           done();
         });
       });
@@ -254,13 +254,13 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : customData is undefined promise
     */
     it('ActsAccountOptionalParameter_1000', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0400 start====");
+      console.info("====>ActsAccountCreateAccount_0400 start====");
       let createAccountOptions = {
         customData: undefined
       }
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>creat finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount("account_name_promise_second", createAccountOptions);
       }
@@ -269,9 +269,9 @@ export default function ActsAppAccountOptionalParameterTest() {
         expect().assertFail();
         done();
       }
-      console.debug("====>delete account start====");
+      console.info("====>delete account start====");
       await appAccountManager.removeAccount("account_name_promise_second");
-      console.debug("====>ActsAccountOptionalParameter_1000 end====");
+      console.info("====>ActsAccountOptionalParameter_1000 end====");
       done();
     });
 
@@ -281,19 +281,19 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : customData is null callback
     */
     it('ActsAccountOptionalParameter_1100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1100 start====");
+      console.info("====>ActsAccountOptionalParameter_1100 start====");
       let createAccountOptions = {
         customData: null
       };
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
-        console.debug("====>createAccount ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount("account_name_callback_second", async (err) => {
-          console.debug("====>delete Account ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountOptionalParameter_1100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountOptionalParameter_1100 end====");
+          console.info("====>ActsAccountOptionalParameter_1100 end====");
           done();
         });
       });
@@ -305,18 +305,18 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : customData is null promise
     */
     it('ActsAccountOptionalParameter_1200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1200 start====");
+      console.info("====>ActsAccountOptionalParameter_1200 start====");
       let createAccountOptions = {
         customData: null
       }
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>createAppAccountManager finish====");
-      console.debug("====>createAccount start====");
+      console.info("====>createAppAccountManager finish====");
+      console.info("====>createAccount start====");
       try {
         await appAccountManager.createAccount(name, createAccountOptions);
-        console.debug("====>delete account start====");
+        console.info("====>delete account start====");
         await appAccountManager.removeAccount(name);
-        console.debug("====>ActsAccountOptionalParameter_1200 end====");
+        console.info("====>ActsAccountOptionalParameter_1200 end====");
         done();
       }
       catch (err) {
@@ -324,7 +324,7 @@ export default function ActsAppAccountOptionalParameterTest() {
         await appAccountManager.removeAccount(name);
         done();
       }
-      console.debug("====>ActsAccountOptionalParameter_1200 end====");
+      console.info("====>ActsAccountOptionalParameter_1200 end====");
       done();
     });
 
@@ -334,33 +334,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no option
     */
     it('ActsAccountOptionalParameter_1300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1300 start====");
+      console.info("====>ActsAccountOptionalParameter_1300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", {
           onResult: async (resultCode) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1300 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1300 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_1300 end====");
+              console.info("====>ActsAccountOptionalParameter_1300 end====");
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1300 end====");
+              console.info("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1300 end====");
               done();
             }
           },
           onRequestRedirected: null
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1300 end====");
+        console.info("====>ActsAccountOptionalParameter_1300 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1300 end====");
         expect().assertFail()
         done();
       }
@@ -372,35 +372,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : with option
     */
     it('ActsAccountOptionalParameter_1400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1400 start====");
+      console.info("====>ActsAccountOptionalParameter_1400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1400 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1400 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1400 end====");
+              console.info("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1400 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_1400 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_1400 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1400 end====");
+        console.info("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1400 end====");
         expect().assertFail()
         done();
       }
@@ -412,24 +412,24 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined option
     */
     it('ActsAccountOptionalParameter_1500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1500 start====");
+      console.info("====>ActsAccountOptionalParameter_1500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", undefined, {
           onResult: async (resultCode, undefined) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1500 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1500 end====");
+              console.info("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1500 end====");
               done();
             }
           },
@@ -437,8 +437,8 @@ export default function ActsAppAccountOptionalParameterTest() {
           onRequestContinued: undefined
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1500 end====");
+        console.info("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1500 end====");
         expect().assertFail()
         done();
       }
@@ -450,24 +450,24 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null option
     */
     it('ActsAccountOptionalParameter_1600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1600 start====");
+      console.info("====>ActsAccountOptionalParameter_1600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN", requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", null, {
           onResult: async (resultCode) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1600 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1600 end====");
+              console.info("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1600 end====");
               done();
             }
           },
@@ -475,8 +475,8 @@ export default function ActsAppAccountOptionalParameterTest() {
           onRequestContinued: null
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1600 end====");
+        console.info("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1600 end====");
         expect().assertFail()
         done();
       }
@@ -488,31 +488,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : empty option
     */
     it('ActsAccountOptionalParameter_1700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1700 start====");
+      console.info("====>ActsAccountOptionalParameter_1700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {}
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1700 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1700 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1700 end====");
+              console.info("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1700 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_1700 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_1700 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1700 end====");
+        console.info("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1700 end====");
         expect().assertFail()
         done();
       }
@@ -524,33 +524,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined options
     */
     it('ActsAccountOptionalParameter_1800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1800 start====");
+      console.info("====>ActsAccountOptionalParameter_1800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: undefined, authType: undefined, parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1800 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1800 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1800 end====");
+              console.info("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1800 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_1800 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_1800 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1800 end====");
+        console.info("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1800 end====");
         expect().assertFail()
         done();
       }
@@ -562,33 +562,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null options
     */
     it('ActsAccountOptionalParameter_1900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_1900 start====");
+      console.info("====>ActsAccountOptionalParameter_1900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: null, authType: null, parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_1900 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_1900 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_1900 end====");
+              console.info("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_1900 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_1900 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_1900 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_1900 end====");
+        console.info("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_1900 end====");
         expect().assertFail()
         done();
       }
@@ -600,33 +600,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType options
     */
     it('ActsAccountOptionalParameter_2000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2000 start====");
+      console.info("====>ActsAccountOptionalParameter_2000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN"
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2000 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2000 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2000 end====");
+              console.info("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2000 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2000 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2000 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2000 end====");
+        console.info("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2000 end====");
         expect().assertFail()
         done();
       }
@@ -638,33 +638,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType options
     */
     it('ActsAccountOptionalParameter_2100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2100 start====");
+      console.info("====>ActsAccountOptionalParameter_2100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: undefined, authType: "PIN", parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2100 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2100 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2100 end====");
+              console.info("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2100 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2100 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2100 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2100 end====");
+        console.info("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2100 end====");
         expect().assertFail()
         done();
       }
@@ -676,33 +676,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType options
     */
     it('ActsAccountOptionalParameter_2200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2200 start====");
+      console.info("====>ActsAccountOptionalParameter_2200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: null, authType: "PIN", parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2200 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2200 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2200 end====");
+              console.info("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2200 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2200 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2200 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2200 end====");
+        console.info("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2200 end====");
         expect().assertFail()
         done();
       }
@@ -714,33 +714,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_2300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2300 start====");
+      console.info("====>ActsAccountOptionalParameter_2300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40']
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2300 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2300 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2300 end====");
+              console.info("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2300 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2300 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2300 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2300 end====");
+        console.info("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2300 end====");
         expect().assertFail()
         done();
       }
@@ -752,33 +752,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_2400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2400 start====");
+      console.info("====>ActsAccountOptionalParameter_2400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: undefined, parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2400 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2400 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2400 end====");
+              console.info("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2400 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2400 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2400 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2400 end====");
+        console.info("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2400 end====");
         expect().assertFail()
         done();
       }
@@ -790,33 +790,33 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_2500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2500 start====");
+      console.info("====>ActsAccountOptionalParameter_2500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: null, parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2500 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2500 end====");
+              console.info("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2500 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2500 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2500 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2500 end====");
+        console.info("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2500 end====");
         expect().assertFail()
         done();
       }
@@ -828,35 +828,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_2600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2600 start====");
+      console.info("====>ActsAccountOptionalParameter_2600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2600 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2600 end====");
+              console.info("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2600 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2600 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2600 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2600 end====");
+        console.info("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2600 end====");
         expect(null).assertFail()
         done();
       }
@@ -868,35 +868,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_2700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2700 start====");
+      console.info("====>ActsAccountOptionalParameter_2700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: undefined, authType: undefined, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2700 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2700 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2700 end====");
+              console.info("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2700 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2700 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2700 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2700 end====");
+        console.info("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2700 end====");
         expect().assertFail()
         done();
       }
@@ -908,38 +908,38 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_2800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2800 start====");
+      console.info("====>ActsAccountOptionalParameter_2800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: null, authType: null, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2800 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2800 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_2800 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_2800 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2800 end====");
+              console.info("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2800 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2800 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2800 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2800 end====");
+        console.info("====>ActsAccountOptionalParameter_2800 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2800 end====");
         expect().assertFail()
         done();
       }
@@ -951,36 +951,36 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&requiredLabels options
     */
     it('ActsAccountOptionalParameter_2900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_2900 start====");
+      console.info("====>ActsAccountOptionalParameter_2900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: "PIN"
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_2900 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_2900 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_2900 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_2900 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_2900 end====");
+              console.info("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_2900 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_2900 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_2900 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_2900 end====");
+        console.info("====>ActsAccountOptionalParameter_2900 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_2900 end====");
         expect().assertFail()
         done();
       }
@@ -992,36 +992,36 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&requiredLabels options
     */
     it('ActsAccountOptionalParameter_3000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3000 start====");
+      console.info("====>ActsAccountOptionalParameter_3000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: "PIN", parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3000 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3000 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_3000 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3000 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3000 end====");
+              console.info("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3000 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3000 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3000 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3000 end====");
+        console.info("====>ActsAccountOptionalParameter_3000 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3000 end====");
         expect().assertFail()
         done();
       }
@@ -1033,36 +1033,36 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&requiredLabels options
     */
     it('ActsAccountOptionalParameter_3100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3100 start====");
+      console.info("====>ActsAccountOptionalParameter_3100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: "PIN", parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3100 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3100 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_3100 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3100 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3100 end====");
+              console.info("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3100 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3100 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3100 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3100 end====");
+        console.info("====>ActsAccountOptionalParameter_3100 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3100 end====");
         expect().assertFail()
         done();
       }
@@ -1074,38 +1074,38 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&parameters options
     */
     it('ActsAccountOptionalParameter_3200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3200 start====");
+      console.info("====>ActsAccountOptionalParameter_3200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         authType: "PIN", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3200 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3200 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_3200 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3200 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3200 end====");
+              console.info("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3200 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3200 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3200 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3200 end====");
+        console.info("====>ActsAccountOptionalParameter_3200 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3200 end====");
         expect().assertFail()
         done();
       }
@@ -1117,38 +1117,38 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&parameters options
     */
     it('ActsAccountOptionalParameter_3300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3300 start====");
+      console.info("====>ActsAccountOptionalParameter_3300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: undefined, authType: "PIN", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3300 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3300 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_3300 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3300 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3300 end====");
+              console.info("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3300 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3300 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3300 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3300 end====");
+        console.info("====>ActsAccountOptionalParameter_3300 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3300 end====");
         expect().assertFail()
         done();
       }
@@ -1160,38 +1160,38 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : authType&parameters options
     */
     it('ActsAccountOptionalParameter_3400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3400 start====");
+      console.info("====>ActsAccountOptionalParameter_3400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: null, authType: "PIN", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3400 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3400 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
-              console.debug("====>ActsAccountOptionalParameter_3400 resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3400 resultData:" + JSON.stringify(resultData));
               expect(resultData.account.name).assertEqual("createNewAccountName")
               expect(resultData.account.owner).assertEqual("com.example.accounttstest")
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3400 end====");
+              console.info("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3400 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3400 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3400 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3400 end====");
+        console.info("====>ActsAccountOptionalParameter_3400 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3400 end====");
         expect().assertFail()
         done();
       }
@@ -1203,35 +1203,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels&parameters options
     */
     it('ActsAccountOptionalParameter_3500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3500 start====");
+      console.info("====>ActsAccountOptionalParameter_3500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3500 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3500 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3500 end====");
+              console.info("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3500 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3500 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3500 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3500 end====");
+        console.info("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3500 end====");
         expect().assertFail()
         done();
       }
@@ -1243,35 +1243,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels&parameters options
     */
     it('ActsAccountOptionalParameter_3600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3600 start====");
+      console.info("====>ActsAccountOptionalParameter_3600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: undefined, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3600 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3600 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3600 end====");
+              console.info("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3600 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3600 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3600 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3600 end====");
+        console.info("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3600 end====");
         expect().assertFail()
         done();
       }
@@ -1283,35 +1283,35 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      :
     */
     it('ActsAccountOptionalParameter_3700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3700 start====");
+      console.info("====>ActsAccountOptionalParameter_3700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ['male', '30-40'], authType: null, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccountImplicitly("com.example.accounttstest", options, {
           onResult: async (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3700 resultcode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3700 resultcode:" + JSON.stringify(resultCode));
               expect(resultCode).assertEqual(12300002)
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3700 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3700 end====");
+              console.info("====>ActsAccountOptionalParameter_3700 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3700 end====");
               done();
             }
           },
           onRequestRedirected: null,
           onRequestContinued: function () {
-            console.debug("====>ActsAccountOptionalParameter_3700 onRequestContinued")
+            console.info("====>ActsAccountOptionalParameter_3700 onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3700 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3700 end====");
+        console.info("====>ActsAccountOptionalParameter_3700 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3700 end====");
         expect().assertFail()
         done();
       }
@@ -1323,27 +1323,27 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no option
     */
     it('ActsAccountOptionalParameter_3800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3800 start====");
+      console.info("====>ActsAccountOptionalParameter_3800 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.example.accountauthenticator", "authType", {
           onResult: (resultCode) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3800 authenticate resultCode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3800 authenticate resultCode:" + JSON.stringify(resultCode));
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3800 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3800 end====");
+              console.info("====>ActsAccountOptionalParameter_3800 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3800 end====");
               done();
             }
           },
           onRequestRedirected: function () {
-            console.debug("====>onRequestRedirected")
+            console.info("====>onRequestRedirected")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3800 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3800 end====");
+        console.info("====>ActsAccountOptionalParameter_3800 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3800 end====");
         expect().assertFail()
         done();
       }
@@ -1355,32 +1355,32 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : empty option
     */
     it('ActsAccountOptionalParameter_3900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_3900 start====");
+      console.info("====>ActsAccountOptionalParameter_3900 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.example.accountauthenticator", "authType", {}, {
           onResult: (resultCode, resultData) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_3900 authenticate resultCode:" + JSON.stringify(resultCode));
-              console.debug("====>ActsAccountOptionalParameter_3900 authenticate resultData:" + JSON.stringify(resultData));
+              console.info("====>ActsAccountOptionalParameter_3900 authenticate resultCode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_3900 authenticate resultData:" + JSON.stringify(resultData));
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_3900 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_3900 end====");
+              console.info("====>ActsAccountOptionalParameter_3900 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_3900 end====");
               done();
             }
 
           },
           onRequestRedirected: function () {
-            console.debug("====>onRequestRedirected")
+            console.info("====>onRequestRedirected")
           },
           onRequestContinued: function () {
-            console.debug("====>_onRequestContinued")
+            console.info("====>_onRequestContinued")
           }
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_3900 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_3900 end====");
+        console.info("====>ActsAccountOptionalParameter_3900 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_3900 end====");
         expect().assertFail()
         done();
       }
@@ -1392,28 +1392,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined option,
     */
     it('ActsAccountOptionalParameter_4000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4000 start====");
+      console.info("====>ActsAccountOptionalParameter_4000 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.example.accountauthenticator", "authType", undefined, {
           onResult: (resultCode, undefined) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_4000 authenticate resultCode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_4000 authenticate resultCode:" + JSON.stringify(resultCode));
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_4000 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_4000 end====");
+              console.info("====>ActsAccountOptionalParameter_4000 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_4000 end====");
               done();
             }
           },
           onRequestRedirected: function () {
-            console.debug("====>onRequestRedirected")
+            console.info("====>onRequestRedirected")
           },
           onRequestContinued: undefined
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_4000 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_4000 end====");
+        console.info("====>ActsAccountOptionalParameter_4000 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4000 end====");
         expect().assertFail()
         done();
       }
@@ -1425,28 +1425,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null option
     */
     it('ActsAccountOptionalParameter_4100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4100 start====");
+      console.info("====>ActsAccountOptionalParameter_4100 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.auth("authenticate_test_account", "com.example.accountauthenticator", "authType", null, {
           onResult: (resultCode) => {
             try {
-              console.debug("====>ActsAccountOptionalParameter_4100 authenticate resultCode:" + JSON.stringify(resultCode));
+              console.info("====>ActsAccountOptionalParameter_4100 authenticate resultCode:" + JSON.stringify(resultCode));
               done();
             } catch (err) {
-              console.debug("====>ActsAccountOptionalParameter_4100 err:" + JSON.stringify(err));
-              console.debug("====>ActsAccountOptionalParameter_4100 end====");
+              console.info("====>ActsAccountOptionalParameter_4100 err:" + JSON.stringify(err));
+              console.info("====>ActsAccountOptionalParameter_4100 end====");
               done();
             }
           },
           onRequestRedirected: function () {
-            console.debug("====>onRequestRedirected")
+            console.info("====>onRequestRedirected")
           },
           onRequestContinued: null
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_4100 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountOptionalParameter_4100 end====");
+        console.info("====>ActsAccountOptionalParameter_4100 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4100 end====");
         expect().assertFail()
         done();
       }
@@ -1458,28 +1458,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no option
     */
     it('ActsAccountOptionalParameter_4200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4200 start====");
+      console.info("====>ActsAccountOptionalParameter_4200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       try {
         appAccountManager.createAccount(name, (err) => {
-          console.debug("====>ActsAccountOptionalParameter_4200 add_account_err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4200 add_account_err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           appAccountManager.verifyCredential(name, owner, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4200 success")
+                console.info("====>ActsAccountOptionalParameter_4200 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1488,7 +1488,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           });
         });
       } catch (err) {
-        console.debug("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4200 err:" + JSON.stringify(err));
         await appAccountManager.removeAccount(name);
         expect().assertFail()
         done()
@@ -1501,40 +1501,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : with full option
     */
     it('ActsAccountOptionalParameter_4300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4300 start====");
+      console.info("====>ActsAccountOptionalParameter_4300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
-                console.debug("====>ActsAccountOptionalParameter_4300 verifyCredential_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_4300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4300 verifyCredential_resultData:" + JSON.stringify(resultData));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4300 success")
+                console.info("====>ActsAccountOptionalParameter_4300 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>_onRequestContinued")
+              console.info("====>_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1548,28 +1548,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined option
     */
     it('ActsAccountOptionalParameter_4400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4400 start====");
+      console.info("====>ActsAccountOptionalParameter_4400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', undefined, {
             onResult: async (resultCode, undefined) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4400 success")
+                console.info("====>ActsAccountOptionalParameter_4400 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1578,7 +1578,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestContinued: undefined
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1592,28 +1592,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null option
     */
     it('ActsAccountOptionalParameter_4500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4500 start====");
+      console.info("====>ActsAccountOptionalParameter_4500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', null, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4500 success")
+                console.info("====>ActsAccountOptionalParameter_4500 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1622,7 +1622,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestContinued: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1636,24 +1636,24 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : empty option
     */
     it('ActsAccountOptionalParameter_4600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4600 start====");
+      console.info("====>ActsAccountOptionalParameter_4600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {}
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4600 success")
+                console.info("====>ActsAccountOptionalParameter_4600 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1661,7 +1661,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1675,26 +1675,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined options
     */
     it('ActsAccountOptionalParameter_4700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4700 start====");
+      console.info("====>ActsAccountOptionalParameter_4700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: undefined, credential: undefined, parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4700 success")
+                console.info("====>ActsAccountOptionalParameter_4700 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1702,7 +1702,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1716,26 +1716,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null options
     */
     it('ActsAccountOptionalParameter_4800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4800 start====");
+      console.info("====>ActsAccountOptionalParameter_4800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: null, credential: null, parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4800 success")
+                console.info("====>ActsAccountOptionalParameter_4800 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1743,7 +1743,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1757,26 +1757,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType options
     */
     it('ActsAccountOptionalParameter_4900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_4900 start====");
+      console.info("====>ActsAccountOptionalParameter_4900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN"
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_4900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_4900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_4900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_4900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_4900 success")
+                console.info("====>ActsAccountOptionalParameter_4900 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1784,7 +1784,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_4900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1798,26 +1798,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType options
     */
     it('ActsAccountOptionalParameter_5000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5000 start====");
+      console.info("====>ActsAccountOptionalParameter_5000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: undefined, parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5000 success")
+                console.info("====>ActsAccountOptionalParameter_5000 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1825,7 +1825,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1839,26 +1839,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType options
     */
     it('ActsAccountOptionalParameter_5100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5100 start====");
+      console.info("====>ActsAccountOptionalParameter_5100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: null, parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5100 success")
+                console.info("====>ActsAccountOptionalParameter_5100 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1866,7 +1866,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1880,26 +1880,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credential options
     */
     it('ActsAccountOptionalParameter_5200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5200 start====");
+      console.info("====>ActsAccountOptionalParameter_5200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credential: "123456"
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5200 success")
+                console.info("====>ActsAccountOptionalParameter_5200 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1907,7 +1907,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1921,26 +1921,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credential options
     */
     it('ActsAccountOptionalParameter_5300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5300 start====");
+      console.info("====>ActsAccountOptionalParameter_5300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: undefined, credential: "123456", parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5300 success")
+                console.info("====>ActsAccountOptionalParameter_5300 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1948,7 +1948,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -1962,26 +1962,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credential options
     */
     it('ActsAccountOptionalParameter_5400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5400 start====");
+      console.info("====>ActsAccountOptionalParameter_5400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: null, credential: "123456", parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5400 success")
+                console.info("====>ActsAccountOptionalParameter_5400 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -1989,7 +1989,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2003,28 +2003,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_5500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5500 start====");
+      console.info("====>ActsAccountOptionalParameter_5500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5500 success")
+                console.info("====>ActsAccountOptionalParameter_5500 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2032,7 +2032,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2046,28 +2046,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_5600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5600 start====");
+      console.info("====>ActsAccountOptionalParameter_5600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: undefined, credential: undefined, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5600 success")
+                console.info("====>ActsAccountOptionalParameter_5600 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2075,7 +2075,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2089,28 +2089,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_5700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5700 start====");
+      console.info("====>ActsAccountOptionalParameter_5700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: null, credential: null, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5700 success")
+                console.info("====>ActsAccountOptionalParameter_5700 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2118,7 +2118,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2132,26 +2132,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&credential options
     */
     it('ActsAccountOptionalParameter_5800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5800 start====");
+      console.info("====>ActsAccountOptionalParameter_5800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456"
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5800 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5800 success")
+                console.info("====>ActsAccountOptionalParameter_5800 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2159,7 +2159,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2173,26 +2173,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&credential options
     */
     it('ActsAccountOptionalParameter_5900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_5900 start====");
+      console.info("====>ActsAccountOptionalParameter_5900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_5900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_5900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_5900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_5900 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_5900 success")
+                console.info("====>ActsAccountOptionalParameter_5900 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2200,7 +2200,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_5900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2214,26 +2214,26 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&credential options
     */
     it('ActsAccountOptionalParameter_6000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6000 start====");
+      console.info("====>ActsAccountOptionalParameter_6000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6000 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6000 success")
+                console.info("====>ActsAccountOptionalParameter_6000 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2241,7 +2241,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2255,28 +2255,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&parameters options
     */
     it('ActsAccountOptionalParameter_6100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6100 start====");
+      console.info("====>ActsAccountOptionalParameter_6100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6100 success")
+                console.info("====>ActsAccountOptionalParameter_6100 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 expect().assertFail()
                 done()
@@ -2285,7 +2285,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done()
         }
@@ -2298,28 +2298,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&parameters options
     */
     it('ActsAccountOptionalParameter_6200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6200 start====");
+      console.info("====>ActsAccountOptionalParameter_6200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: undefined, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6200 success")
+                console.info("====>ActsAccountOptionalParameter_6200 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2327,7 +2327,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2341,28 +2341,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&parameters options
     */
     it('ActsAccountOptionalParameter_6300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6300 start====");
+      console.info("====>ActsAccountOptionalParameter_6300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: null, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6300 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6300 success")
+                console.info("====>ActsAccountOptionalParameter_6300 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 expect().assertFail()
                 done()
@@ -2371,7 +2371,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done()
         }
@@ -2384,28 +2384,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credential&parameters options
     */
     it('ActsAccountOptionalParameter_6400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6400 start====");
+      console.info("====>ActsAccountOptionalParameter_6400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6400 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6400 success")
+                console.info("====>ActsAccountOptionalParameter_6400 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2413,7 +2413,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2427,28 +2427,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credential&parameters options
     */
     it('ActsAccountOptionalParameter_6500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6500 start====");
+      console.info("====>ActsAccountOptionalParameter_6500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: undefined, credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6500 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6500 success")
+                console.info("====>ActsAccountOptionalParameter_6500 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2456,7 +2456,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2470,28 +2470,28 @@ export default function ActsAppAccountOptionalParameterTest() {
             * @tc.desc      : credential&parameters options
             */
     it('ActsAccountOptionalParameter_6600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6600 start====");
+      console.info("====>ActsAccountOptionalParameter_6600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: null, credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6600 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6600 success")
+                console.info("====>ActsAccountOptionalParameter_6600 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2499,7 +2499,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2513,28 +2513,28 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : credentialType&credential options
     */
     it('ActsAccountOptionalParameter_6700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6700 start====");
+      console.info("====>ActsAccountOptionalParameter_6700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         credentialType: "PIN", credential: "123456", parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.verifyCredential(name, 'com.example.accountauthenticator', options, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6700 verifyCredential_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(0)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6700 success")
+                console.info("====>ActsAccountOptionalParameter_6700 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done()
               }
@@ -2542,7 +2542,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done()
@@ -2556,7 +2556,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : no option
     */
     it('ActsAccountOptionalParameter_6800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6800 start====");
+      console.info("====>ActsAccountOptionalParameter_6800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2565,21 +2565,21 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6800 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6800 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6800 success")
+                console.info("====>ActsAccountOptionalParameter_6800 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
@@ -2587,7 +2587,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestRedirected: null
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2601,7 +2601,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : with option
     */
     it('ActsAccountOptionalParameter_6900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_6900 start====");
+      console.info("====>ActsAccountOptionalParameter_6900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2610,33 +2610,33 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_6900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_6900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_6900 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_6900 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_6900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_6900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_6900 success")
+                console.info("====>ActsAccountOptionalParameter_6900 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_6900 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_6900 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_6900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2650,7 +2650,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             * @tc.desc      : undefined option
             */
     it('ActsAccountOptionalParameter_7000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7000 start====");
+      console.info("====>ActsAccountOptionalParameter_7000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2659,21 +2659,21 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, undefined, {
             onResult: async (resultCode, undefined) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7000 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7000 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7000 success")
+                console.info("====>ActsAccountOptionalParameter_7000 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
@@ -2682,7 +2682,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestContinued: undefined
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2696,7 +2696,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             * @tc.desc      : null option
             */
     it('ActsAccountOptionalParameter_7100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7100 start====");
+      console.info("====>ActsAccountOptionalParameter_7100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2705,21 +2705,21 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, null, {
             onResult: async (resultCode) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7100 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7100 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7100 success")
+                console.info("====>ActsAccountOptionalParameter_7100 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
@@ -2728,7 +2728,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             onRequestContinued: null
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2742,36 +2742,36 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : empty option
     */
     it('ActsAccountOptionalParameter_7200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7200 start====");
+      console.info("====>ActsAccountOptionalParameter_7200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {}
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7200 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7200 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7200 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7200 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7200 success")
+                console.info("====>ActsAccountOptionalParameter_7200 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7200 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7200 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7200 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2785,7 +2785,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined options
     */
     it('ActsAccountOptionalParameter_7300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7300 start====");
+      console.info("====>ActsAccountOptionalParameter_7300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2794,33 +2794,33 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': undefined
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7300 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7300 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7300 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7300 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7300 success")
+                console.info("====>ActsAccountOptionalParameter_7300 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7300 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7300 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2834,7 +2834,7 @@ export default function ActsAppAccountOptionalParameterTest() {
             * @tc.desc      : null options
             */
     it('ActsAccountOptionalParameter_7400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7400 start====");
+      console.info("====>ActsAccountOptionalParameter_7400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
@@ -2843,33 +2843,33 @@ export default function ActsAppAccountOptionalParameterTest() {
           'sex': null
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7400 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7400 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7400 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7400 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7400 success")
+                console.info("====>ActsAccountOptionalParameter_7400 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7400 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7400 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7400 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2883,40 +2883,40 @@ export default function ActsAppAccountOptionalParameterTest() {
             * @tc.desc      : properties options
             */
     it('ActsAccountOptionalParameter_7500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7500 start====");
+      console.info("====>ActsAccountOptionalParameter_7500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
           "prop1": "value1"
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7500 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7500 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7500 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7500 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7500 success")
+                console.info("====>ActsAccountOptionalParameter_7500 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7500 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7500 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2930,40 +2930,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : properties options
     */
     it('ActsAccountOptionalParameter_7600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7600 start====");
+      console.info("====>ActsAccountOptionalParameter_7600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
           "prop1": "value1"
         }, parameters: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7600 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7600 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7600 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7600 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7600 success")
+                console.info("====>ActsAccountOptionalParameter_7600 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7600 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7600 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7600 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -2977,40 +2977,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : properties options
     */
     it('ActsAccountOptionalParameter_7700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7700 start====");
+      console.info("====>ActsAccountOptionalParameter_7700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: {
           "prop1": "value1"
         }, parameters: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7700 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7700 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7700 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7700 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7700 success")
+                console.info("====>ActsAccountOptionalParameter_7700 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7700 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7700 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3024,40 +3024,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_7800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7800 start====");
+      console.info("====>ActsAccountOptionalParameter_7800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7800 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7800 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7800 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7800 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7800 success")
+                console.info("====>ActsAccountOptionalParameter_7800 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7800 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7800 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7800 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3071,40 +3071,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_7900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_7900 start====");
+      console.info("====>ActsAccountOptionalParameter_7900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: undefined, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_7900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_7900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_7900 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_7900 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_7900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_7900 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_7900 success")
+                console.info("====>ActsAccountOptionalParameter_7900 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_7900 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_7900 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_7900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3118,40 +3118,40 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : parameters options
     */
     it('ActsAccountOptionalParameter_8000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8000 start====");
+      console.info("====>ActsAccountOptionalParameter_8000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         properties: null, parameters: {
           'sex': 'male'
         }
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.setAuthenticatorProperties(owner, options, {
             onResult: async (resultCode, resultData) => {
               try {
-                console.debug("====>ActsAccountOptionalParameter_8000 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
+                console.info("====>ActsAccountOptionalParameter_8000 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
                 expect(resultCode).assertEqual(12300113)
-                console.debug("====>ActsAccountOptionalParameter_8000 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
+                console.info("====>ActsAccountOptionalParameter_8000 setAuthenticatorProperties_resultData:" + JSON.stringify(resultData));
                 await appAccountManager.removeAccount(name);
-                console.debug("====>ActsAccountOptionalParameter_8000 success")
+                console.info("====>ActsAccountOptionalParameter_8000 success")
                 done();
               } catch (err) {
-                console.debug("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
+                console.info("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
                 await appAccountManager.removeAccount(name);
                 done();
               }
             },
             onRequestRedirected: null,
             onRequestContinued: function () {
-              console.debug("====>ActsAccountOptionalParameter_8000 verifyCredential_onRequestContinued")
+              console.info("====>ActsAccountOptionalParameter_8000 verifyCredential_onRequestContinued")
             }
           });
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8000 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3165,23 +3165,23 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : empty option
      */
     it('ActsAccountOptionalParameter_8100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8100 start====");
+      console.info("====>ActsAccountOptionalParameter_8100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {}
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
         try {
-          console.debug("====>ActsAccountOptionalParameter_8100 add_account_err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8100 add_account_err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_8100 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_8100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8100 success")
+            console.info("====>ActsAccountOptionalParameter_8100 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3194,27 +3194,27 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : empty option
     */
     it('ActsAccountOptionalParameter_8200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8200 start====");
+      console.info("====>ActsAccountOptionalParameter_8200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {}
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8200 success")
+            console.info("====>ActsAccountOptionalParameter_8200 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3227,27 +3227,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : with option
      */
     it('ActsAccountOptionalParameter_8300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8300 start====");
+      console.info("====>ActsAccountOptionalParameter_8300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_8300 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_8300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8300 success")
+            console.info("====>ActsAccountOptionalParameter_8300 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3260,31 +3260,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : with option
     */
     it('ActsAccountOptionalParameter_8400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8400 start====");
+      console.info("====>ActsAccountOptionalParameter_8400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8400 success")
+            console.info("====>ActsAccountOptionalParameter_8400 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3297,25 +3297,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : undefined options
      */
     it('ActsAccountOptionalParameter_8500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8500 start====");
+      console.info("====>ActsAccountOptionalParameter_8500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_8500 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_8500 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8500 success")
+            console.info("====>ActsAccountOptionalParameter_8500 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3329,29 +3329,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : undefined option
     */
     it('ActsAccountOptionalParameter_8600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8600 start====");
+      console.info("====>ActsAccountOptionalParameter_8600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8600 success")
+            console.info("====>ActsAccountOptionalParameter_8600 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3365,25 +3365,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : null option
      */
     it('ActsAccountOptionalParameter_8700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8700 start====");
+      console.info("====>ActsAccountOptionalParameter_8700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_8700 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_8700 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8700 success")
+            console.info("====>ActsAccountOptionalParameter_8700 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3397,29 +3397,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : null option
     */
     it('ActsAccountOptionalParameter_8800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8800 start====");
+      console.info("====>ActsAccountOptionalParameter_8800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8800 success")
+            console.info("====>ActsAccountOptionalParameter_8800 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3433,27 +3433,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts options
      */
     it('ActsAccountOptionalParameter_8900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_8900 start====");
+      console.info("====>ActsAccountOptionalParameter_8900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_8900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_8900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_8900 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_8900 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_8900 success")
+            console.info("====>ActsAccountOptionalParameter_8900 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_8900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_8900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3467,31 +3467,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts options
     */
     it('ActsAccountOptionalParameter_9000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9000 start====");
+      console.info("====>ActsAccountOptionalParameter_9000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9000 success")
+            console.info("====>ActsAccountOptionalParameter_9000 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3505,27 +3505,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts options
      */
     it('ActsAccountOptionalParameter_9100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9100 start====");
+      console.info("====>ActsAccountOptionalParameter_9100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_9100 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_9100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9100 success")
+            console.info("====>ActsAccountOptionalParameter_9100 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_9100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_9100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3538,31 +3538,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts options
     */
     it('ActsAccountOptionalParameter_9200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9200 start====");
+      console.info("====>ActsAccountOptionalParameter_9200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9200 success")
+            console.info("====>ActsAccountOptionalParameter_9200 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3576,27 +3576,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts options
      */
     it('ActsAccountOptionalParameter_9300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9300 start====");
+      console.info("====>ActsAccountOptionalParameter_9300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_9300 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_9300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9300 success")
+            console.info("====>ActsAccountOptionalParameter_9300 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_9300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_9300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3609,31 +3609,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts options
     */
     it('ActsAccountOptionalParameter_9400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9400 start====");
+      console.info("====>ActsAccountOptionalParameter_9400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9400 success")
+            console.info("====>ActsAccountOptionalParameter_9400 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3647,25 +3647,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners options
      */
     it('ActsAccountOptionalParameter_9500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9500 start====");
+      console.info("====>ActsAccountOptionalParameter_9500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedOwners: ["com.example.accounttstest"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_9500 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_9500 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9500 success")
+            console.info("====>ActsAccountOptionalParameter_9500 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_9500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_9500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3679,29 +3679,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners options
     */
     it('ActsAccountOptionalParameter_9600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9600 start====");
+      console.info("====>ActsAccountOptionalParameter_9600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedOwners: ["com.example.accounttstest"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9600 success")
+            console.info("====>ActsAccountOptionalParameter_9600 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3715,25 +3715,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners options
      */
     it('ActsAccountOptionalParameter_9700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9700 start====");
+      console.info("====>ActsAccountOptionalParameter_9700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_9700 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_9700 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9700 success")
+            console.info("====>ActsAccountOptionalParameter_9700 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_9700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_9700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3746,29 +3746,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners options
     */
     it('ActsAccountOptionalParameter_9800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9800 start====");
+      console.info("====>ActsAccountOptionalParameter_9800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9800 success")
+            console.info("====>ActsAccountOptionalParameter_9800 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3782,25 +3782,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners options
      */
     it('ActsAccountOptionalParameter_9900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_9900 start====");
+      console.info("====>ActsAccountOptionalParameter_9900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_9900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_9900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_9900 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_9900 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_9900 success")
+            console.info("====>ActsAccountOptionalParameter_9900 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_9900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_9900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -3813,29 +3813,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners options
     */
     it('ActsAccountOptionalParameter_10000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10000 start====");
+      console.info("====>ActsAccountOptionalParameter_10000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10000 success")
+            console.info("====>ActsAccountOptionalParameter_10000 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3849,25 +3849,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : requiredLabels options
      */
     it('ActsAccountOptionalParameter_10100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10100 start====");
+      console.info("====>ActsAccountOptionalParameter_10100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_10100 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_10100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10100 success")
+            console.info("====>ActsAccountOptionalParameter_10100 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_10100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_10100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3881,29 +3881,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_10200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10200 start====");
+      console.info("====>ActsAccountOptionalParameter_10200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10200 success")
+            console.info("====>ActsAccountOptionalParameter_10200 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3917,25 +3917,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : requiredLabels options
      */
     it('ActsAccountOptionalParameter_10300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10300 start====");
+      console.info("====>ActsAccountOptionalParameter_10300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_10300 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_10300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10300 success")
+            console.info("====>ActsAccountOptionalParameter_10300 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_10300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_10300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3949,29 +3949,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_10400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10400 start====");
+      console.info("====>ActsAccountOptionalParameter_10400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: undefined, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10400 success")
+            console.info("====>ActsAccountOptionalParameter_10400 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -3985,25 +3985,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : requiredLabels options
      */
     it('ActsAccountOptionalParameter_10500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10500 start====");
+      console.info("====>ActsAccountOptionalParameter_10500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_10500 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_10500 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10500 success")
+            console.info("====>ActsAccountOptionalParameter_10500 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_10500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_10500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           done();
         }
@@ -4016,29 +4016,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : requiredLabels options
     */
     it('ActsAccountOptionalParameter_10600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10600 start====");
+      console.info("====>ActsAccountOptionalParameter_10600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: null, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10600 success")
+            console.info("====>ActsAccountOptionalParameter_10600 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4052,27 +4052,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&allowedOwners options
      */
     it('ActsAccountOptionalParameter_10700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10700 start====");
+      console.info("====>ActsAccountOptionalParameter_10700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_10700 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_10700 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10700 success")
+            console.info("====>ActsAccountOptionalParameter_10700 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_10700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_10700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4086,31 +4086,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&allowedOwners options
     */
     it('ActsAccountOptionalParameter_10800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10800 start====");
+      console.info("====>ActsAccountOptionalParameter_10800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10800 success")
+            console.info("====>ActsAccountOptionalParameter_10800 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4124,27 +4124,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&allowedOwners options
      */
     it('ActsAccountOptionalParameter_10900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_10900 start====");
+      console.info("====>ActsAccountOptionalParameter_10900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_10900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_10900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_10900 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_10900 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_10900 success")
+            console.info("====>ActsAccountOptionalParameter_10900 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_10900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_10900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4158,31 +4158,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&allowedOwners options
     */
     it('ActsAccountOptionalParameter_11000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11000 start====");
+      console.info("====>ActsAccountOptionalParameter_11000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: undefined
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11000 success")
+            console.info("====>ActsAccountOptionalParameter_11000 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4196,27 +4196,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&allowedOwners options
      */
     it('ActsAccountOptionalParameter_11100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11100 start====");
+      console.info("====>ActsAccountOptionalParameter_11100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_11100 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_11100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11100 success")
+            console.info("====>ActsAccountOptionalParameter_11100 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_11100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_11100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4230,31 +4230,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&allowedOwners options
     */
     it('ActsAccountOptionalParameter_11200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11200 start====");
+      console.info("====>ActsAccountOptionalParameter_11200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: ["com.example.accounttstest"], requiredLabels: null
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(1)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11200 success")
+            console.info("====>ActsAccountOptionalParameter_11200 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4268,27 +4268,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&requiredLabels options
      */
     it('ActsAccountOptionalParameter_11300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11300 start====");
+      console.info("====>ActsAccountOptionalParameter_11300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_11300 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_11300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11300 success")
+            console.info("====>ActsAccountOptionalParameter_11300 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_11300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_11300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4302,31 +4302,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&requiredLabels options
     */
     it('ActsAccountOptionalParameter_11400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11400 start====");
+      console.info("====>ActsAccountOptionalParameter_11400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11400 success")
+            console.info("====>ActsAccountOptionalParameter_11400 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4340,27 +4340,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&requiredLabels options
      */
     it('ActsAccountOptionalParameter_11500', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11500 start====");
+      console.info("====>ActsAccountOptionalParameter_11500 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11500 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11500 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_11500 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_11500 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11500 success")
+            console.info("====>ActsAccountOptionalParameter_11500 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_11500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_11500 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4374,31 +4374,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&requiredLabels options
     */
     it('ActsAccountOptionalParameter_11600', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11600 start====");
+      console.info("====>ActsAccountOptionalParameter_11600 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: undefined, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11600 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11600 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11600 success")
+            console.info("====>ActsAccountOptionalParameter_11600 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4412,27 +4412,27 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedAccounts&requiredLabels options
      */
     it('ActsAccountOptionalParameter_11700', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11700 start====");
+      console.info("====>ActsAccountOptionalParameter_11700 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11700 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11700 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_11700 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_11700 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11700 success")
+            console.info("====>ActsAccountOptionalParameter_11700 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_11700 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_11700 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4446,31 +4446,31 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedAccounts&requiredLabels options
     */
     it('ActsAccountOptionalParameter_11800', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11800 start====");
+      console.info("====>ActsAccountOptionalParameter_11800 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: [{
           "name": name, "owner": owner
         }], allowedOwners: null, requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11800 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11800 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11800 success")
+            console.info("====>ActsAccountOptionalParameter_11800 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4484,25 +4484,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners&requiredLabels options
      */
     it('ActsAccountOptionalParameter_11900', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_11900 start====");
+      console.info("====>ActsAccountOptionalParameter_11900 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_11900 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_11900 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_11900 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_11900 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_11900 success")
+            console.info("====>ActsAccountOptionalParameter_11900 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_11900 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_11900 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4516,29 +4516,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners&requiredLabels options
     */
     it('ActsAccountOptionalParameter_12000', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_12000 start====");
+      console.info("====>ActsAccountOptionalParameter_12000 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_12000 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_12000 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_12000 success")
+            console.info("====>ActsAccountOptionalParameter_12000 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4552,25 +4552,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners&requiredLabels options
      */
     it('ActsAccountOptionalParameter_12100', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_12100 start====");
+      console.info("====>ActsAccountOptionalParameter_12100 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_12100 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_12100 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_12100 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_12100 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_12100 success")
+            console.info("====>ActsAccountOptionalParameter_12100 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_12100 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_12100 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4584,29 +4584,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners&requiredLabels options
     */
     it('ActsAccountOptionalParameter_12200', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_12200 start====");
+      console.info("====>ActsAccountOptionalParameter_12200 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: undefined, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_12200 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_12200 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_12200 success")
+            console.info("====>ActsAccountOptionalParameter_12200 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4620,25 +4620,25 @@ export default function ActsAppAccountOptionalParameterTest() {
      * @tc.desc      : allowedOwners&requiredLabels options
      */
     it('ActsAccountOptionalParameter_12300', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_12300 start====");
+      console.info("====>ActsAccountOptionalParameter_12300 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_12300 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_12300 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           appAccountManager.selectAccountsByOptions(options, async (err, accountArr) => {
-            console.debug("====>ActsAccountOptionalParameter_12300 accountArr:" + JSON.stringify(accountArr));
+            console.info("====>ActsAccountOptionalParameter_12300 accountArr:" + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_12300 success")
+            console.info("====>ActsAccountOptionalParameter_12300 success")
             done();
           })
         } catch (err) {
-          console.debug("====>ActsAccountOptionalParameter_12300 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountOptionalParameter_12300 err:" + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
@@ -4652,29 +4652,29 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.desc      : allowedOwners&requiredLabels options
     */
     it('ActsAccountOptionalParameter_12400', 0, async function (done) {
-      console.debug("====>ActsAccountOptionalParameter_12400 start====");
+      console.info("====>ActsAccountOptionalParameter_12400 start====");
       var appAccountManager = account.createAppAccountManager();
       var options = {
         allowedAccounts: null, allowedOwners: ["com.example.accounttstest"], requiredLabels: ["student"]
       }
-      console.debug("====>start finish====");
+      console.info("====>start finish====");
       appAccountManager.createAccount(name, async (err) => {
-        console.debug("====>ActsAccountOptionalParameter_12400 add_account_err:" + JSON.stringify(err));
+        console.info("====>ActsAccountOptionalParameter_12400 add_account_err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         try {
           await appAccountManager.selectAccountsByOptions(options).then(async (accountArr) => {
-            console.debug("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
+            console.info("====>selectAccountsByOptions successfully, accountArr: " + JSON.stringify(accountArr));
             expect(accountArr.length).assertEqual(0)
             await appAccountManager.removeAccount(name);
-            console.debug("====>ActsAccountOptionalParameter_12400 success")
+            console.info("====>ActsAccountOptionalParameter_12400 success")
             done()
           }).catch(async (err) => {
-            console.debug("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
+            console.info("====>selectAccountsByOptions failed, error: " + JSON.stringify(err));
             await appAccountManager.removeAccount(name);
             done()
           });
         } catch (err) {
-          console.debug("====>selectAccountsByOptions exception: " + JSON.stringify(err));
+          console.info("====>selectAccountsByOptions exception: " + JSON.stringify(err));
           await appAccountManager.removeAccount(name);
           expect().assertFail()
           done();
