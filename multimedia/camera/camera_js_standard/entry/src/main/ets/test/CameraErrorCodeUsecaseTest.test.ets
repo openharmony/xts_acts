@@ -2325,7 +2325,7 @@ export default function CameraErrorCodeUsecaseTest() {
             if (!isEmpty(mCameraInput)) {
                 mCameraInput.on('error', mCameraDevicesArray[0], (error) => {
                     console.log(`SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100 Camera input error code: ${error.code}`);
-                    expect(error.code == cameraObj.CameraErrorCode.CONFLICT_CAMERA).assertTrue();
+                    expect(error.code == cameraObj.CameraErrorCode.DEVICE_PREEMPTED).assertTrue();
                 });
                 mCameraInput.open(async (err) => {
                     console.info(TAG + "Entering mCameraInput open callback");
@@ -2364,7 +2364,7 @@ export default function CameraErrorCodeUsecaseTest() {
             if (!isEmpty(mCameraInput)) {
                 mCameraInput.on('error', mCameraDevicesArray[0], (error) => {
                     console.log(`SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0200 Camera input error code: ${error.code}`);
-                    expect(error.code == cameraObj.CameraErrorCode.CONFLICT_CAMERA).assertTrue();
+                    expect(error.code == cameraObj.CameraErrorCode.DEVICE_PREEMPTED).assertTrue();
                 });
                 await mCameraInput.open().then((result) => {
                     console.info('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0200 success :' + result);
