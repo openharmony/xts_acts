@@ -125,7 +125,7 @@ export default function webStorage() {
     it('testWebStorageOriginQuota001', 0, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginQuota001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebStorageOriginQuota001", "4039514521", 20344, done);
+      Utils.registerEvent("testWebStorageOriginQuota001", true, 20344, done);
       sendEventByKey('WebStorageButton', 10, '');
     })
 

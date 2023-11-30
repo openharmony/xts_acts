@@ -70,9 +70,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue001": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeEditText.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70101)
                   }
@@ -84,9 +84,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue002": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeEmail.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70103)
                   }
@@ -98,9 +98,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue003": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchor.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70105)
                   }
@@ -112,9 +112,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue004": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchorImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70107)
                   }
@@ -126,9 +126,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue005": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70109)
                   }
@@ -140,9 +140,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue006": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeMap.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70111)
                   }
@@ -154,9 +154,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue007": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypePhone.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70113)
                   }
@@ -168,9 +168,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue008": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeUnknown.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.type, 70115)
                   }
@@ -182,9 +182,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue009": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeEmail.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.extra, 70117)
                   }
@@ -196,9 +196,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue010": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchor.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.extra, 70119)
                   }
@@ -210,9 +210,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue011": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchorImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.extra, 70121)
                   }
@@ -224,9 +224,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue012": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.extra, 70123)
                   }
@@ -238,9 +238,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTestValue013": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypePhone.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   if (this.hitTestValue) {
                     Utils.emitEvent(this.hitTestValue.extra, 70125)
                   }
@@ -252,9 +252,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest001": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeEditText.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70127)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -264,9 +264,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest002": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeEmail.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70129)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -276,9 +276,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest003": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchor.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70131)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -288,9 +288,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest004": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeHttpAnchorImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70133)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -300,9 +300,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest005": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeImg.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70135)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -312,9 +312,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest006": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeMap.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70137)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -324,9 +324,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest007": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypePhone.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70139)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -336,9 +336,9 @@ struct WebViewControllerHitTest {
               case "emitGetHitTest008": {
                 try {
                   this.controller.loadUrl('resource://rawfile/hitTypeUnknown.html')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   await Utils.clickComponent('WebViewControllerHitTestWebView')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(3000)
                   Utils.emitEvent(this.hitType, 70141)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);

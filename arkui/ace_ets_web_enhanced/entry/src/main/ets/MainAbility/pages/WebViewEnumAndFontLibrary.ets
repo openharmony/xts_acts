@@ -149,14 +149,14 @@ struct WebViewEnumAndFontLibrary {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
-              Utils.emitEvent(Number(this.menuX), 801)
+              Utils.emitEvent(this.menuX >= 0, 801)
               break;
             }
             case "emitWebContextMenuParamY": {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
-              Utils.emitEvent(Number(this.menuY), 802)
+              Utils.emitEvent(this.menuY >= 0, 802)
               break;
             }
             case "emitWebContextMenuParamGetLinkUrl": {
