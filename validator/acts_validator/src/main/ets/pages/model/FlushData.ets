@@ -358,4 +358,29 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
+  
+  static ResetBluetooth = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Bluetooth', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Bluetooth'. Data: " + data);
+    });
+    promise = preferences.put('Bluetooth', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Bluetooth'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

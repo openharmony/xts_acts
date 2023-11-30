@@ -122,6 +122,18 @@
       },
       {
         "name": "ohos.permission.APPROXIMATELY_LOCATION"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.DISCOVER_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.MANAGE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH"
       }
     ]
   }

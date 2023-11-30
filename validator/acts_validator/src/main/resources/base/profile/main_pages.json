@@ -82,7 +82,9 @@
     "pages/Notification/CommonEvent/page/CommonEvent",
     "pages/Notification/CustomNotification/CustomNotification",
     "pages/Wifi/Wifi_index",
-    "pages/Wifi/WifiScan"
+    "pages/Wifi/WifiScan",
+    "pages/Bluetooth/BlueTooth_index",
+    "pages/Bluetooth/StandardBluetooth/page/StandardBluetooth"
   ]
 }
 
