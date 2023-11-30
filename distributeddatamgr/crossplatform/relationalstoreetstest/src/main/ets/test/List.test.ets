@@ -24,7 +24,7 @@ import RdbStoreExecuteSql from './RdbStoreExecuteSql.test'
 import RdbStoreTransaction from './RdbStoreTransaction.test'
 import RdbStoreBackupRestore from './RdbStoreBackupRestore.test'
 import RelationalStore from './RelationalStore.test'
-import RdbStoreIgnore from './RdbStoreIgnoretest.ets'
+import RdbStoreIgnore from './RdbStoreIgnoretest'
 import relationalStoreAssetResultSetTest from './AssetResultSet.test'
 
 export default function testsuite() {
