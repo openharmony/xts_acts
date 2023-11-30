@@ -1052,7 +1052,7 @@ export class KeyboardController {
         }
     }
 
-    private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
+        private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
         let commonEventPublishData = {
             data: 'SUCCESS'
         };
@@ -1084,7 +1084,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0800(): void {
         let commonEventPublishData = {
-            data: 'SUCCEED'
+            data: 'SUCCESS'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success');
         try {
@@ -1098,7 +1098,7 @@ export class KeyboardController {
                     if (err.code === 401) {
                         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 Failed to set privacy mode002: ' + err);
                         commonEventPublishData = {
-                            data: 'SUCCEED'
+                            data: 'SUCCESS'
                         };
                     }
 

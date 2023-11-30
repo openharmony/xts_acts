@@ -1564,7 +1564,7 @@ export default function inputMethodWindManageAbility() {
         commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
           try {
-            expect(data.data).assertEqual('SUCCEED');
+            expect(data.data).assertEqual('SUCCESS');
             console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success end<====');
             clearTimeout(t);
             done();
