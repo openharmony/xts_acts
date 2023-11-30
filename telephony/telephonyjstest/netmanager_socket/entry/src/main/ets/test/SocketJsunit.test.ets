@@ -16,10 +16,55 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
 import socket from '@ohos.net.socket'
+import http from '@ohos.net.http';
 import utils from './Utils.ets'
 
 export default function socketJsunit() {
   describe('socketTest', function () {
+  
+	let udpSocket = socket.constructUDPSocketInstance();
+	let multicastSocket = socket.constructMulticastSocketInstance();
+	let multicastAddress = {
+	  address: '239.255.0.1',
+	  family: 1,
+	  port: 32123
+	}
+
+	let multicastAddress_invalid = {
+	  address: '1.1.1.1',
+	  family: 1,
+	  port: 32123
+	}
+	let multicastAddress_null = {
+	  address: '',
+	  family: 1,
+	  port: 32123
+	}
+
+	let ttl = 100;
+	let ttl_invalid = 256;
+	let ttl_undefined = undefined;
+
+	let options = {
+	  data: 'Hello',
+	  address: multicastAddress,
+	}
+
+
+	function expectFalse() {
+	  try {
+		expect().assertFail();
+	  } catch (err) {
+		console.info('assertion failure');
+	  }
+	};
+	
+	function sleep(time) {
+		return new Promise((resolve) => setTimeout(resolve, time))
+	}
+  
+  
+  
     console.log("************* socket Test start*************");
 	let tcp = socket.constructTCPSocketInstance();
 	let udp = socket.constructUDPSocketInstance();
@@ -2032,6 +2077,428 @@ export default function socketJsunit() {
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_error_0200 Test end*************");
       done();
+    });
+
+// addMembership:
+    /**
+     * @tc.number NetworkManager_UDPSocket_addMembership_Async_0100
+     * @tc.name UDPSocket::addMembership
+     * @tc.desc Test addMembership property.
+     */
+    it("NetworkManager_UDPSocket_addMembership_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_addMembership_Async_0100"
+      multicastSocket.addMembership(multicastAddress, (err, data) => {
+        if (err) {
+          console.log(`${caseName} addMembership failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_addMembership_Async_0200
+     * @tc.name UDPSocket::addMembership
+     * @tc.desc Test addMembership property.
+     */
+    it("NetworkManager_UDPSocket_addMembership_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_addMembership_Async_0200"
+      multicastSocket.addMembership(multicastAddress_invalid, (err, data) => {
+        if (err) {
+          console.log(`${caseName} addMembership failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_addMembership_Async_0300
+     * @tc.name UDPSocket::addMembership
+     * @tc.desc Test addMembership property.
+     */
+    it("NetworkManager_UDPSocket_addMembership_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_addMembership_Async_0300"
+      multicastSocket.addMembership(multicastAddress_null, (err, data) => {
+        if (err) {
+          console.log(`${caseName} addMembership failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_addMembership_Async_0400
+     * @tc.name UDPSocket::addMembership
+     * @tc.desc Test addMembership property.
+     */
+    it("NetworkManager_UDPSocket_addMembership_Async_0400", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_addMembership_Async_0400"
+      try {
+        multicastSocket.addMembership(undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} addMembership failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} addMembership success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    // //send
+    /**
+     * @tc.number NetworkManager_UDPSocket_send_Async_0100
+     * @tc.name UDPSocket::send
+     * @tc.desc Test send property.
+     */
+    it("NetworkManager_UDPSocket_send_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_send_Async_0100"
+      let result;
+      multicastSocket.on('message', (data) => {
+        console.info(caseName + ' on message,data.remoteInfo.size: ' + JSON.stringify(data.remoteInfo.size));
+        result = JSON.stringify(data.remoteInfo.size);
+        done();
+      })
+      await sleep(2000);
+      multicastSocket.send(options, (err, data) => {
+        if (err) {
+          console.log(`${caseName} send failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} send success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+      await sleep(2000);
+      expect(result).assertEqual(5);
+    });
+
+
+    //setMulticastTTL:
+    /**
+     * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Async_0100
+     * @tc.name UDPSocket::setMulticastTTL
+     * @tc.desc Test setMulticastTTL property.
+     */
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0100"
+      multicastSocket.setMulticastTTL(ttl, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setMulticastTTL failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} setMulticastTTL success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Async_0200
+     * @tc.name UDPSocket::setMulticastTTL
+     * @tc.desc Test setMulticastTTL property.
+     */
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0200"
+      multicastSocket.setMulticastTTL(ttl_invalid, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setMulticastTTL failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} setMulticastTTL success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Async_0300
+     * @tc.name UDPSocket::setMulticastTTL
+     * @tc.desc Test setMulticastTTL property.
+     */
+    it("NetworkManager_UDPSocket_setMulticastTTL_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Async_0300"
+      try {
+        multicastSocket.setMulticastTTL(ttl_undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} setMulticastTTL failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} setMulticastTTL success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    // //getMulticastTTL
+    /**
+     * @tc.number NetworkManager_UDPSocket_getMulticastTTL_Async_0100
+     * @tc.name UDPSocket::getMulticastTTL
+     * @tc.desc Test getMulticastTTL property.
+     */
+    it("NetworkManager_UDPSocket_getMulticastTTL_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_getMulticastTTL_Async_0100"
+      multicastSocket.getMulticastTTL((err, data) => {
+        if (err) {
+          console.log(`${caseName} getMulticastTTL failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} getMulticastTTL success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(100);
+          done();
+        }
+      })
+    });
+
+    // setLoopbackMode:
+    /**
+     * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Async_0100
+     * @tc.name UDPSocket::setLoopbackMode
+     * @tc.desc Test setLoopbackMode property.
+     */
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0100"
+      multicastSocket.setLoopbackMode(true, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setLoopbackMode failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Async_0200
+     * @tc.name UDPSocket::setLoopbackMode
+     * @tc.desc Test setLoopbackMode property.
+     */
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0200"
+      multicastSocket.setLoopbackMode(false, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setLoopbackMode failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Async_0300
+     * @tc.name UDPSocket::setLoopbackMode
+     * @tc.desc Test setLoopbackMode property.
+     */
+    it("NetworkManager_UDPSocket_setLoopbackMode_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Async_0300"
+      try {
+        multicastSocket.setLoopbackMode(undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} setLoopbackMode failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
+            expect(data).assertEqual(undefined);
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    // getLoopbackMode
+    /**
+     * @tc.number NetworkManager_UDPSocket_getLoopbackMode_Async_0100
+     * @tc.name UDPSocket::getLoopbackMode
+     * @tc.desc Test getLoopbackMode property.
+     */
+    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Async_0100"
+      multicastSocket.setLoopbackMode(true, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setLoopbackMode failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          multicastSocket.getLoopbackMode((err, data) => {
+            if (err) {
+              console.log(`${caseName} getLoopbackMode failed, err: ${JSON.stringify(err)}`);
+              expectFalse();
+              done();
+            } else {
+              console.log(`${caseName} getLoopbackMode success, data: ${JSON.stringify(data)}`);
+              expect(data).assertEqual(true);
+              done();
+            }
+          });
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_getLoopbackMode_Async_0200
+     * @tc.name UDPSocket::getLoopbackMode
+     * @tc.desc Test getLoopbackMode property.
+     */
+    it("NetworkManager_UDPSocket_getLoopbackMode_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Async_0200"
+      multicastSocket.setLoopbackMode(false, (err, data) => {
+        if (err) {
+          console.log(`${caseName} setLoopbackMode failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} setLoopbackMode success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          multicastSocket.getLoopbackMode((err, data) => {
+            if (err) {
+              console.log(`${caseName} getLoopbackMode failed, err: ${JSON.stringify(err)}`);
+              expectFalse();
+              done();
+            } else {
+              console.log(`${caseName} getLoopbackMode success, data: ${JSON.stringify(data)}`);
+              expect(data).assertEqual(false);
+              done();
+            }
+          });
+        }
+      });
+    });
+
+
+    // dropMembership
+    /**
+     * @tc.number NetworkManager_UDPSocket_dropMembership_Async_0100
+     * @tc.name UDPSocket::dropMembership
+     * @tc.desc Test dropMembership property.
+     */
+    it("NetworkManager_UDPSocket_dropMembership_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0100"
+      multicastSocket.dropMembership(multicastAddress, (err, data) => {
+        if (err) {
+          console.log(`${caseName} dropMembership failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        } else {
+          console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
+          expect(data).assertEqual(undefined);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_dropMembership_Async_0200
+     * @tc.name UDPSocket::dropMembership
+     * @tc.desc Test dropMembership property.
+     */
+    it("NetworkManager_UDPSocket_dropMembership_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0200"
+      multicastSocket.dropMembership(multicastAddress_invalid, (err, data) => {
+        if (err) {
+          console.log(`${caseName} dropMembership failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} dropMembershipp success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_dropMembership_Async_0300
+     * @tc.name UDPSocket::dropMembership
+     * @tc.desc Test dropMembership property.
+     */
+    it("NetworkManager_UDPSocket_dropMembership_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0300"
+      multicastSocket.dropMembership(multicastAddress_null, (err, data) => {
+        if (err) {
+          console.log(`${caseName} dropMembership failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_UDPSocket_dropMembership_Async_0400
+     * @tc.name UDPSocket::dropMembership
+     * @tc.desc Test dropMembership property.
+     */
+    it("NetworkManager_UDPSocket_dropMembership_Async_0400", 0, async function (done) {
+      let caseName = "NetworkManager_UDPSocket_dropMembership_Async_0400"
+      try {
+        multicastSocket.dropMembership(undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} dropMembership failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} dropMembership success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
     });
 
     console.log("************* socket Test end*************");
