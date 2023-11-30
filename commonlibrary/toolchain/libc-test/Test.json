@@ -98,7 +98,9 @@
                 "rm -rf /data/local/tmp/libc-test/tgkill_ext",
                 "rm -rf /data/local/tmp/libc-test/res_send",
                 "rm -rf /data/local/tmp/libc-test/unittest_ldso_ns_config",
-                "rm -rf /data/local/tmp/libc-test/unittest_ldso_dynlink"
+                "rm -rf /data/local/tmp/libc-test/unittest_ldso_dynlink",
+                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_right_test",
+                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_left_test"
             ],
             "cleanup-apps": true
         }
