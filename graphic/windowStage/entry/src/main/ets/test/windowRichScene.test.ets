@@ -41,6 +41,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0110
      * @tc.name testCreateWindow_Invalid_WinType_Promise
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testCreateWindow_Invalid_WinType_Promise', 0, async function (done) {
       let caseName = 'testCreateWindow_Invalid_WinType_Promise';
@@ -66,6 +69,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
      * @tc.name testCreateWindow_Invalid_WinType_Callback
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testCreateWindow_Invalid_WinType_Callback', 0, async function (done) {
       let caseName = 'testCreateWindow_Invalid_WinType_Callback';
@@ -97,6 +103,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0410
      * @tc.name testFindWindow_WinName_Is_Exist
      * @tc.desc Find the window corresponding to name
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testFindWindow_WinName_Is_Exist', 0, async function (done) {
       let caseName = 'testFindWindow_WinName_Is_Exist';
@@ -129,6 +138,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0400
      * @tc.name testFindWindow_WinName_IsNot_Exist
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testFindWindow_WinName_IsNot_Exist', 0, async function (done) {
       let caseName = 'testFindWindow_WinName_IsNot_Exist';
@@ -149,6 +161,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
      * @tc.name testCreate_Invalid_WinType_Promise
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testCreate_Invalid_WinType_Promise', 0, async function (done) {
       let caseName = 'testCreate_Invalid_WinType_Promise';
@@ -165,6 +180,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0190
      * @tc.name testCreate_Invalid_WinType_Callback
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testCreate_Invalid_WinType_Callback', 0, async function (done) {
       let caseName = 'testCreate_Invalid_WinType_Callback';
@@ -194,6 +212,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0420
      * @tc.name testFind_Invoke_Interface_Continuously
      * @tc.desc Find the window corresponding to name
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testFind_Invoke_Interface_Continuously', 0, async function (done) {
       let caseName = 'testFind_Invoke_Interface_Continuously';
@@ -237,6 +258,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0430
      * @tc.name testFind_WinName_IsNot_Exist
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testFind_WinName_IsNot_Exist', 0, async function (done) {
       let caseName = 'testFind_WinName_IsNot_Exist';
@@ -268,6 +292,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0600
      * @tc.name testGetTopWindow_Invoke_Interfae_Two_Times
      * @tc.desc Gets the last window displayed in the current app
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetTopWindow_Invoke_Interfae_Two_Times', 0, async function (done) {
       let caseName = 'testGetTopWindow_Invoke_Interfae_Two_Times';
@@ -305,6 +332,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2130
      * @tc.name testShowWindow_Invoked_Twice
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testShowWindow_Invoked_Twice', 0, async function (done) {
       let caseName = 'testShowWindow_Invoked_Twice';
@@ -343,6 +373,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2140
      * @tc.name testShowWindow_Window_NotExist
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testShowWindow_Window_NotExist', 0, async function (done) {
       let caseName = 'testShowWindow_Window_NotExist';
@@ -374,6 +407,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0280
      * @tc.name testDestroyWindow_Destory_Same_Win_Type
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testDestroyWindow_Destory_Same_Win_Type', 0, async function (done) {
       let caseName = 'testDestroyWindow_Destory_Same_Win_Type';
@@ -411,6 +447,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0700
      * @tc.name testGetWindowProperties_Invoke_Interface_Two_Times
      * @tc.desc Gets the properties of the current window Continuous call interface
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetWindowProperties_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetWindowProperties_Invoke_Interface_Two_Times';
@@ -450,6 +489,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0630
      * @tc.name testGetWindowAvoidArea_Invoke_Interface_Two_Times
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetWindowAvoidArea_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetWindowAvoidArea_Invoke_Interface_Two_Times';
@@ -491,6 +533,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0620
      * @tc.name testGetWindowAvoidArea_Invalid_Parameter
      * @tc.desc Verify The optional parameter is error
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetWindowAvoidArea_Invalid_Parameter', 0, async function (done) {
       let caseName = 'testGetWindowAvoidArea_Invalid_Parameter';
@@ -520,6 +565,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1160
      * @tc.name testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the layout of the window is immersive
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
@@ -576,6 +624,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1150
      * @tc.name testSetWindowLayoutFullScreen_Destroyed_Win
      * @tc.desc Sets whether the layout of the window is immersive
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowLayoutFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'testSetWindowLayoutFullScreen_Destroyed_Win';
@@ -635,6 +686,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1660
      * @tc.name testSetWindowColorSpace_Invalid_ParamsOne
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowColorSpace_Invalid_ParamsOne', 0, async function (done) {
       let caseName = 'testSetWindowColorSpace_Invalid_ParamsOne';
@@ -666,6 +720,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1680
      * @tc.name testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default
      * @tc.desc Set the current window to wide gamut mode or default gamut mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default', 0, async function (done) {
       let caseName = 'testSetWindowColorSpace_Multiple_Calls_Wide_Gamut_And_Default';
@@ -712,6 +769,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0680
      * @tc.name testGetWindowColorSpace_Invoke_Interface_Two_Times
      * @tc.desc Gets the current window gamut mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetWindowColorSpace_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetWindowColorSpace_Invoke_Interface_Two_Times';
@@ -735,6 +795,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1470
      * @tc.name testSetWindowBackgroundColor_Multiple_Calls
      * @tc.desc Set the background color of the window
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowBackgroundColor_Multiple_Calls', 0, async function (done) {
       let caseName = 'testSetWindowBackgroundColor_Multiple_Calls';
@@ -768,6 +831,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1490
      * @tc.name testSetWindowBackgroundColor_Invalid_ParamsOne
      * @tc.desc Set the background color of the window
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsOne', 0, async function (done) {
       let caseName = 'testSetWindowBackgroundColor_Invalid_ParamsOne';
@@ -792,6 +858,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1590
      * @tc.name testSetWindowBrightness_Invalid_ParamsOne_Promise
      * @tc.desc Set the screen brightness value
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsOne_Promise', 0, async function (done) {
       let caseName = 'testSetWindowBrightness_Invalid_ParamsOne_Promise';
@@ -824,6 +893,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1610
      * @tc.name testSetWindowBrightness_Multiple_Calls_Promise_And_Callback
      * @tc.desc Set the screen brightness value
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowBrightness_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
       let caseName = 'testSetWindowBrightness_Multiple_Calls_Promise_And_Callback';
@@ -875,6 +947,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1710
      * @tc.name testSetWindowFocusable_Multiple_Calls_Promise_And_Callback
      * @tc.desc Set whether to switch focus window when clicking
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowFocusable_Multiple_Calls_Promise_And_Callback', 0, async function (done) {
       let caseName = 'testSetWindowFocusable_Multiple_Calls_Promise_And_Callback';
@@ -925,6 +1000,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1740
      * @tc.name testSetWindowKeepScreenOn_Window_State_Abnorma
      * @tc.desc Set whether the screen is steady on
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowKeepScreenOn_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'testSetWindowKeepScreenOn_Window_State_Abnorma';
@@ -960,6 +1038,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1760
      * @tc.name testSetWindowKeepScreenOn_Multiple_Calls
      * @tc.desc Set whether the screen is steady on
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowKeepScreenOn_Multiple_Calls', 0, async function (done) {
       let caseName = 'testSetWindowKeepScreenOn_Multiple_Calls';
@@ -1015,6 +1096,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1880
      * @tc.name testSetWindowPrivacyMode_Window_State_Abnorma
      * @tc.desc Sets whether the window is in private mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowPrivacyMode_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'testSetWindowPrivacyMode_Window_State_Abnorma';
@@ -1050,6 +1134,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
      * @tc.name testSetWindowPrivacyMode_Window_Multiple_Calls
      * @tc.desc Sets whether the window is in private mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowPrivacyMode_Window_Multiple_Calls', 0, async function (done) {
       let caseName = 'testSetWindowPrivacyMode_Window_Multiple_Calls';
@@ -1103,6 +1190,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2040
      * @tc.name testSetWindowTouchable_Promise_Form
      * @tc.desc Sets whether the window is touchable
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowTouchable_Promise_Form', 0, async function (done) {
       let caseName = 'testSetWindowTouchable_Promise_Form';
@@ -1158,6 +1248,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2060
      * @tc.name testSetWindowTouchable_Window_NotExist
      * @tc.desc Sets whether the window is touchable
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowTouchable_Window_NotExist', 0, async function (done) {
       let caseName = 'testSetWindowTouchable_Window_NotExist';
@@ -1193,6 +1286,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1090
      * @tc.name testSetAspectRatio_Non_Main_Win
      * @tc.desc Set the proportion of the window content layout
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetAspectRatio_Non_Main_Win', 0, async function (done) {
       let caseName = 'testSetAspectRatio_Non_Main_Win';
@@ -1229,6 +1325,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0990
      * @tc.name testResetAspectRatio_Non_Main_Win
      * @tc.desc Unset the proportion of the window content layout
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testResetAspectRatio_Non_Main_Win', 0, async function (done) {
       let caseName = 'testResetAspectRatio_Non_Main_Win';
@@ -1264,6 +1363,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0560
      * @tc.name testGetProperties_Invoke_Interface_Two_Times
      * @tc.desc Gets the properties of the current window Continuous call interface
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetProperties_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetProperties_Invoke_Interface_Two_Times';
@@ -1307,6 +1409,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0550
      * @tc.name testGetProperties_Destroyed_Win
      * @tc.desc Gets the properties of the current window Continuous call interface
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetProperties_Destroyed_Win', 0, async function (done) {
       let caseName = 'testGetProperties_Destroyed_Win';
@@ -1336,6 +1441,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0470
      * @tc.name testGetAvoidArea_Invoke_Interfaca_Two_Times
      * @tc.desc Gets the area where the window content is avoided
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetAvoidArea_Invoke_Interfaca_Two_Times', 0, async function (done) {
       let caseName = 'testGetAvoidArea_Invoke_Interfaca_Two_Times';
@@ -1381,6 +1489,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0460
      * @tc.name testGetAvoidArea_Invalid_Parameter
      * @tc.desc Gets the area where the window content is avoided
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetAvoidArea_Invalid_Parameter', 0, async function (done) {
       let caseName = 'testGetAvoidArea_Invalid_Parameter';
@@ -1412,6 +1523,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0480
      * @tc.name testGetAvoidArea_Type_CutOut_Destroyed_Win
      * @tc.desc Gets the area where the window content is avoided
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetAvoidArea_Type_CutOut_Destroyed_Win', 0, async function (done) {
       let caseName = 'testGetAvoidArea_Type_CutOut_Destroyed_Win';
@@ -1443,6 +1557,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1140
      * @tc.name testSetFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the window layout is full-screen
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testSetFullScreen_Invoke_Interface_Two_Times';
@@ -1484,6 +1601,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1130
      * @tc.name testSetFullScreen_Destroyed_Win
      * @tc.desc Sets whether the window layout is full-screen
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'testSetFullScreen_Destroyed_Win';
@@ -1514,6 +1634,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1160
      * @tc.name testSetLayoutFullScreen_Invoke_Interface_Two_Times
      * @tc.desc Sets whether the window layout is full-screen
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetLayoutFullScreen_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testSetLayoutFullScreen_Invoke_Interface_Two_Times';
@@ -1555,6 +1678,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1150
      * @tc.name testSetLayoutFullScreen_Destroyed_Win
      * @tc.desc Sets whether the window layout is full-screen
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetLayoutFullScreen_Destroyed_Win', 0, async function (done) {
       let caseName = 'testSetLayoutFullScreen_Destroyed_Win';
@@ -1585,6 +1711,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1290
      * @tc.name testSetSystemBarEnable_Invoke_Interface_Two_Times
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetSystemBarEnable_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testSetSystemBarEnable_Invoke_Interface_Two_Times';
@@ -1626,6 +1755,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1220
      * @tc.name testSetSystemBarEnable_Destroyed_Win
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetSystemBarEnable_Destroyed_Win', 0, async function (done) {
       let caseName = 'testSetSystemBarEnable_Destroyed_Win';
@@ -1657,6 +1789,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0540
      * @tc.name testGetMainWindow_Invoke_Interface_Two_Times
      * @tc.desc Gets the main window under the WindowStage instance
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetMainWindow_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetMainWindow_Invoke_Interface_Two_Times';
@@ -1694,6 +1829,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0530
      * @tc.name testGetMainWindowSync_Invoke_Interface_Two_Times
      * @tc.desc Gets the main window under the WindowStage instance
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetMainWindowSync_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetMainWindowSync_Invoke_Interface_Two_Times';
@@ -1725,6 +1863,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0030
      * @tc.name testCreateSubWindow_Two_Consecutive_Calls
      * @tc.desc Create a child window under the WindowStage instance
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testCreateSubWindow_Two_Consecutive_Calls', 0, async function (done) {
       let caseName = 'testCreateSubWindow_Two_Consecutive_Calls';
@@ -1778,6 +1919,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0580
      * @tc.name testGetSubWindow_Invoke_Interface_Two_Times
      * @tc.desc Gets all the child Windows under the WindowStage instance
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testGetSubWindow_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testGetSubWindow_Invoke_Interface_Two_Times';
@@ -1812,6 +1956,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0730
      * @tc.name testIsWindowSupportWideGamut_Invoke_Interface_Two_Times
      * @tc.desc Check whether the current window supports the wide color gamut mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testIsWindowSupportWideGamut_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testIsWindowSupportWideGamut_Invoke_Interface_Two_Times';
@@ -1843,6 +1990,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0720
      * @tc.name testIsWindowShowing_Invoke_Interface_Two_Times
      * @tc.desc Check whether the current window is displayed
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testIsWindowShowing_Invoke_Interface_Two_Times', 0, async function (done) {
       let caseName = 'testIsWindowShowing_Invoke_Interface_Two_Times';
@@ -1884,6 +2034,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1440
      * @tc.name testSetUIContent_Window_State_Abnorma_Callback
      * @tc.desc Set the display direction property of the window
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetUIContent_Window_State_Abnorma_Callback', 0, async function (done) {
       let caseName = 'testSetUIContent_Window_State_Abnorma_Callback';
@@ -1923,6 +2076,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1450
      * @tc.name testSetUIContent_Multiple_Calls
      * @tc.desc Set the display direction property of the window
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetUIContent_Multiple_Calls', 0, async function (done) {
       let caseName = 'testSetUIContent_Multiple_Calls';
@@ -1956,6 +2112,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1970
      * @tc.name testSetWindowSystemBarEnable_More_Params
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowSystemBarEnable_More_Params', 0, async function (done) {
       let caseName = 'testSetWindowSystemBarEnable_More_Params';
@@ -1990,6 +2149,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1980
      * @tc.name testSetWindowSystemBarEnable_Window_State_Abnorma
      * @tc.desc Set the visibility mode of the navigation bar and status bar when the window is in full-screen mode
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level4
      */
     it('testSetWindowSystemBarEnable_Window_State_Abnorma', 0, async function (done) {
       let caseName = 'testSetWindowSystemBarEnable_Window_State_Abnorma';
