@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'hypium/index';
+import {describe, expect, it, afterEach, afterAll, beforeAll} from 'hypium/index';
 import connection from '@ohos.net.connection'
 import http from "@ohos.net.http";
 import socket from "@ohos.net.socket";
 import utils from './Utils.ets'
+import statistics from '@ohos.net.statistics';
 
 export default function connectionJsunit() {
   describe('connectionTest', function () {
@@ -26,6 +27,17 @@ export default function connectionJsunit() {
     const NETID_IVVALID = 99;
     const NETID_IVVALID2 = 0;
     let envReady = false;
+	
+	let sockfd1 = 10;
+	let sockfd2 = -1;
+	
+	function expectFalse() {
+		try {
+		expect().assertFail();
+		} catch (err) {
+		console.info('assertion failure');
+		}
+	};
     console.log("************* connection Test start*************");
 
     it('Telephony_Connection_Request_Socket_0100', 0, function (done) {
@@ -1363,6 +1375,359 @@ export default function connectionJsunit() {
           done();
         })
       })
+    });
+	
+	
+	/**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100"
+      statistics.getSockfdTxBytes(sockfd1, (err, data) => {
+        if (err) {
+          console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200"
+      statistics.getSockfdTxBytes(sockfd2, (err, data) => {
+        if (err) {
+          console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300"
+      try {
+        statistics.getSockfdTxBytes(undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400"
+      try {
+        statistics.getSockfdTxBytes(null, (err, data) => {
+          if (err) {
+            console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100"
+      statistics.getSockfdTxBytes(sockfd1).then((data) => {
+        console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+        expectFalse();
+        done();
+      }).catch((err) => {
+        console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+        expect(err.code !== undefined).assertTrue();
+        done();
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200"
+      statistics.getSockfdTxBytes(sockfd2).then((data) => {
+        console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+        expectFalse();
+        done();
+      }).catch((err) => {
+        console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+        expect(err.code !== undefined).assertTrue();
+        done();
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300"
+      try {
+        statistics.getSockfdTxBytes(undefined).then((data) => {
+          console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }).catch((err) => {
+          console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400
+     * @tc.name Statistics::getSockTxBytes
+     * @tc.desc Test getSockTxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400"
+      try {
+        statistics.getSockfdTxBytes(null).then((data) => {
+          console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }).catch((err) => {
+          console.log(`${caseName} getSockTxBytes failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100"
+      statistics.getSockfdRxBytes(sockfd1, (err, data) => {
+        if (err) {
+          console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200"
+      statistics.getSockfdRxBytes(sockfd2, (err, data) => {
+        if (err) {
+          console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+          expect(err.code !== undefined).assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300"
+      try {
+        statistics.getSockfdRxBytes(undefined, (err, data) => {
+          if (err) {
+            console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400"
+      try {
+        statistics.getSockfdRxBytes(null, (err, data) => {
+          if (err) {
+            console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+            expectFalse();
+            done();
+          } else {
+            console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+            expectFalse();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100"
+      statistics.getSockfdRxBytes(sockfd1).then((data) => {
+        console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+        expectFalse();
+        done();
+      }).catch((err) => {
+        console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+        expect(err.code !== undefined).assertTrue();
+        done();
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200"
+      statistics.getSockfdRxBytes(sockfd2).then((data) => {
+        console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+        expectFalse();
+        done();
+      }).catch((err) => {
+        console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+        expect(err.code !== undefined).assertTrue();
+        done();
+      });
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300"
+      try {
+        statistics.getSockfdRxBytes(undefined).then((data) => {
+          console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }).catch((err) => {
+          console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400
+     * @tc.name Statistics::getSockRxBytes
+     * @tc.desc Test getSockRxBytes property
+     */
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400", 0, async function (done) {
+      let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400"
+      try {
+        statistics.getSockfdRxBytes(null).then((data) => {
+          console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
+          expectFalse();
+          done();
+        }).catch((err) => {
+          console.log(`${caseName} getSockRxBytes failed, err: ${JSON.stringify(err)}`);
+          expectFalse();
+          done();
+        });
+      } catch (error) {
+        console.log(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
     });
 
     console.log("************* connection Test end*************");
