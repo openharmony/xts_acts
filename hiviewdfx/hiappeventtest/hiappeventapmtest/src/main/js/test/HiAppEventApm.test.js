@@ -104,6 +104,7 @@ export default function HiAppEventJSTest() {
                 name: 'analyticskit_native',
                 debugMode: false,
                 routeInfo: '',
+                appId: '',
                 onStartReport: true,
                 onBackgroundReport: true,
                 periodReport: -1,
