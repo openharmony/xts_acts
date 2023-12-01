@@ -38,18 +38,6 @@
             "type": "PushKit"
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test",
-                "cd /data/local/tmp"
-            ],
-            "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanApiTest.qpa ActsVulkanApiTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanBinding_modelTest binding-model.txt"
-            ]
-        },
-        {
             "type": "CommandKit",
             "teardown": [
                 {
@@ -57,7 +45,17 @@
                     "value": "/data/local/tmp/ActsVulkanBinding_modelTest.qpa->ActsVulkanBinding_modelTest.qpa"
                 }
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test",
+                "cd /data/local/tmp"
+            ],
+            "teardown-localcommand": [
+                "python testcases/vulkandata/genlocal.py ActsVulkanBinding_modelTest binding-model.txt"
+            ]
         }
-
     ]
 }
