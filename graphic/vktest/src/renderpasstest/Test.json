@@ -38,6 +38,15 @@
             "type": "PushKit"
         },
         {
+            "type": "CommandKit",
+            "teardown": [
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsVulkanRenderpassTest.qpa->ActsVulkanRenderpassTest.qpa"
+                }
+            ]
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "remount",
@@ -45,17 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanRenderpassTest.qpa ActsVulkanRenderpassTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanRenderpassTest renderpass.txt"
-            ]
-        },
-        {
-            "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanRenderpassTest.qpa->ActsVulkanRenderpassTest.qpa"
-                }
             ]
         }
 

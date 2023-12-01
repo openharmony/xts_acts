@@ -38,6 +38,15 @@
             "type": "PushKit"
         },
         {
+            "type": "CommandKit",
+            "teardown": [
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsVulkanInfoTest.qpa->ActsVulkanInfoTest.qpa"
+                }
+            ]
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "remount",
@@ -47,15 +56,6 @@
             "teardown-localcommand": [
                 "hdc file recv /data/local/tmp/ActsVulkanInfoTest.qpa ActsVulkanInfoTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanInfoTest info.txt"
-            ]
-        },
-        {
-            "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanInfoTest.qpa->ActsVulkanInfoTest.qpa"
-                }
             ]
         }
 

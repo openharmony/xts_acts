@@ -38,18 +38,6 @@
             "type": "PushKit"
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test",
-                "cd /data/local/tmp"
-            ],
-            "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanDescriptorindexingTest.qpa ActsVulkanDescriptorindexingTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanDescriptorindexingTest descriptor-indexing.txt"
-            ]
-        },
-        {
             "type": "CommandKit",
             "teardown": [
                 {
@@ -57,7 +45,17 @@
                     "value": "/data/local/tmp/ActsVulkanDescriptorindexingTest.qpa->ActsVulkanDescriptorindexingTest.qpa"
                 }
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test",
+                "cd /data/local/tmp"
+            ],
+            "teardown-localcommand": [
+                "python testcases/vulkandata/genlocal.py ActsVulkanDescriptorindexingTest descriptor-indexing.txt"
+            ]
         }
-
     ]
 }

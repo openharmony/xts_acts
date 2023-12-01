@@ -38,18 +38,6 @@
             "type": "PushKit"
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test",
-                "cd /data/local/tmp"
-            ],
-            "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanDynamicstateTest.qpa ActsVulkanDynamicstateTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanDynamicstateTest dynamic-state.txt"
-            ]
-        },
-        {
             "type": "CommandKit",
             "teardown": [
                 {
@@ -57,7 +45,17 @@
                     "value": "/data/local/tmp/ActsVulkanDynamicstateTest.qpa->ActsVulkanDynamicstateTest.qpa"
                 }
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test",
+                "cd /data/local/tmp"
+            ],
+            "teardown-localcommand": [
+                "python testcases/vulkandata/genlocal.py ActsVulkanDynamicstateTest dynamic-state.txt"
+            ]
         }
-
     ]
 }

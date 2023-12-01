@@ -38,18 +38,6 @@
             "type": "PushKit"
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test",
-                "cd /data/local/tmp"
-            ],
-            "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanConditional_renderingTest.qpa ActsVulkanConditional_renderingTest.qpa",
-                "python testcases/vulkandata/genlocal.py ActsVulkanConditional_renderingTest conditional-rendering.txt"
-            ]
-        },
-        {
             "type": "CommandKit",
             "teardown": [
                 {
@@ -57,7 +45,17 @@
                     "value": "/data/local/tmp/ActsVulkanConditional_renderingTest.qpa->ActsVulkanConditional_renderingTest.qpa"
                 }
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test",
+                "cd /data/local/tmp"
+            ],
+            "teardown-localcommand": [
+                "python testcases/vulkandata/genlocal.py ActsVulkanConditional_renderingTest conditional-rendering.txt"
+            ]
         }
-
     ]
 }

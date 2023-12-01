@@ -38,6 +38,15 @@
             "type": "PushKit"
         },
         {
+            "type": "CommandKit",
+            "teardown": [
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsVulkanMemorymodelTest.qpa->ActsVulkanMemorymodelTest.qpa"
+                }
+            ]
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "remount",
@@ -45,17 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "hdc file recv /data/local/tmp/ActsVulkanMemorymodelTest.qpa ActsVulkanMemorymodelTest.qpa",
                 "python testcases/vulkandata/genlocal.py ActsVulkanMemorymodelTest memory-model.txt"
-            ]
-        },
-        {
-            "type": "CommandKit",
-            "teardown": [
-                {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanMemorymodelTest.qpa->ActsVulkanMemorymodelTest.qpa"
-                }
             ]
         }
 
