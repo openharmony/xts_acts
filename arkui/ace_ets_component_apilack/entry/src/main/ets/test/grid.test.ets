@@ -57,5 +57,41 @@ export default function gridMaxCountJsunit() {
       expect(maxCount == 5).assertTrue();
       done();
     });
+    
+    it('testEdgeEffectOptions0002', 0, async function (done) {
+      console.info('testEdgeEffectOptions testEdgeEffectOptions0002 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('maxCountTest');
+      let obj1 = JSON.parse(strJson);
+      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
+      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
+      done();
+    });
+
+    it('testEdgeEffectOptions0003', 0, async function (done) {
+      console.info('testEdgeEffectOptions testEdgeEffectOptions0003 START');
+      await Utils.sleep(2000);
+      try {
+        var eventData = {
+          data: {
+            "alwaysEnabled": false
+          }
+        }
+        var innerEvent = {
+          eventId: 321,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testEdgeEffectOptions0003] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testEdgeEffectOptions0003] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('maxCountTest');
+      let obj1 = JSON.parse(strJson);
+      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
+      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
+      done();
+    });
   })
 }

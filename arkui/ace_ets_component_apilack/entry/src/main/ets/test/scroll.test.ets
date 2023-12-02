@@ -156,7 +156,43 @@ export default function scrollOnScrollBeginJsunit() {
       }
       console.info('testscrollOnScrollBegin0006 END');
       done();
+    });
 
+    it('testscrollOnScrollBegin0007', 0, async function (done) {
+      console.info('scrollOnScrollBegin testscrollOnScrollBegin0007 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('Scroll');
+      console.info("[testscrollOnScrollBegin0007] component align strJson:" + strJson);
+      let obj7 = JSON.parse(strJson);
+      expect(obj7.$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
+      console.info("EdgeEffectOptions value :" +obj7.$attrs.edgeEffectOptions.alwaysEnabled);
+      done();
+    });
+
+    it('testscrollOnScrollBegin0008', 0, async function (done) {
+      console.info('testEdgeEffectOptions testscrollOnScrollBegin0008 START');
+      await Utils.sleep(2000);
+      try {
+        var eventData = {
+          data: {
+            "alwaysEnabled": true
+          }
+        }
+        var innerEvent = {
+          eventId: 323,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testscrollOnScrollBegin0008] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testscrollOnScrollBegin0008] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('Scroll');
+      let obj1 = JSON.parse(strJson);
+      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
+      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
+      done();
     });
   })
 }
