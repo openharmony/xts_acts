@@ -158,6 +158,14 @@ export default function scrollOnScrollBeginJsunit() {
       done();
     });
 
+    /**
+     * @tc.number    : testscrollOnScrollBegin0007
+     * @tc.name      : test edgeEffectOptions default
+     * @tc.desc      : expect edgeEffectOptions.alwaysEnabled false
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
     it('testscrollOnScrollBegin0007', 0, async function (done) {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0007 START');
       await Utils.sleep(2000);
@@ -169,6 +177,14 @@ export default function scrollOnScrollBeginJsunit() {
       done();
     });
 
+    /**
+     * @tc.number    : testscrollOnScrollBegin0008
+     * @tc.name      : test edgeEffectOptions set true
+     * @tc.desc      : expect edgeEffectOptions.alwaysEnabled true
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
     it('testscrollOnScrollBegin0008', 0, async function (done) {
       console.info('testEdgeEffectOptions testscrollOnScrollBegin0008 START');
       await Utils.sleep(2000);
