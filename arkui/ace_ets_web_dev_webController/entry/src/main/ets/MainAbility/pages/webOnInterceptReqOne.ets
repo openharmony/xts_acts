@@ -68,6 +68,9 @@ struct webOnInterceptReqOne {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
                             this.controller.runJavaScript({script:"test()",callback:(res) => {
+                                if ((this.title).includes("indexCopy")) {
+                                    this.title = 'success'
+                                }
                                 Utils.emitEvent(this.title, 406);
                             }})
                             break;

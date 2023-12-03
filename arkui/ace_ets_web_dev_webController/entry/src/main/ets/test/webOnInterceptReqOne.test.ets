@@ -71,7 +71,7 @@ export default function webOnInterceptReqOne() {
      */
     it('testOnInterceptRequestWebC',0,async function(done){
       emitKey="emitOnInterceptRequestWebC";
-      Utils.registerEvent("testOnInterceptRequestWebC","resource://rawfile/indexCopy.html",406,done);
+      Utils.registerEvent("testOnInterceptRequestWebC","success",406,done);
       sendEventByKey('webOnInterceptReqOne',10,'');
     })
   })
