@@ -1342,7 +1342,7 @@ describe('audioRendererChange', function () {
                     let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                     let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                     console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
-                    if (Id > 0 && dType == 2 && dRole == 2 && sRate != null && cCount != null && cMask != null) {
+                    if (Id > 0 && dType == 0 && dRole == 0 && sRate != null && cCount != null && cMask != null) {
                         resultFlag = true;
                     }
                 }
