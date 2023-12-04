@@ -84,5 +84,130 @@ export default function printTest() {
         expect().assertFail();
       }
     })
+
+    it('print_function_0003', 0, function () {
+      let file = ['file://data/print/a.png', 'file://data/print/b.png'];
+      let context = getContext();
+      try {
+        // Permissions required: ohos.permission.PRINT
+        print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
+          if (err) {
+            expect(false).assertTrue();
+          } else {
+            expect(typeof (printTask)).assertEqual('object');
+            expect(!!printTask).assertTrue();
+            registerPrintTask(printTask);
+            UnregisterPrintTask(printTask);
+          }
+        })
+      } catch (error) {
+        expect().assertFail();
+      }
+    })
+
+    it('print_function_0004', 0, function () {
+      let file = ['file://data/print/a.png', 'file://data/print/b.png'];
+      let context = getContext();
+      // Permissions required: ohos.permission.PRINT
+      print.print(file, context).then((printTask) => {
+        expect(typeof (printTask)).assertEqual('object');
+        expect(!!printTask).assertTrue();
+        registerPrintTask(printTask);
+        UnregisterPrintTask(printTask);
+      }).catch((error: BusinessError) => {
+        expect(false).assertTrue();
+      })
+    })
+
+    class MyPrintDocumentAdapter implements print.PrintDocumentAdapter{
+      onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.Attributes, fd: number,
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
+        writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
+        writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED);
+      };
+      onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
+        if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
+          console.log('PREVIEW_DESTROY');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
+          console.log('PRINT_TASK_SUCCEED');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
+          console.log('PRINT_TASK_FAIL');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
+          console.log('PRINT_TASK_CANCEL');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
+          console.log('PRINT_TASK_BLOCK');
+        }
+      };
+    }
+
+    class MyPrintAttributes implements print.PrintAttributes{
+      copyNumber?: number;
+      pageRange?: print.PrinterRange;
+      pageSize?: print.PrintPageSize | print.PrintPageType;
+      directionMode?: print.PrintDirectionMode;
+      colorMode?: print.PrintColorMode;
+      duplexMode?: print.PrintDuplexMode;
+    }
+
+    class MyPrinterRange implements print.PrinterRange{
+      startRange?: number;
+      endPage?: number;
+      pages?: Array<number>;
+    }
+
+    class MyPrintPageSize implements print.PrintPageSize{
+      id: string;
+      name: string;
+      width: number;
+      height: number;
+    }
+
+    it('print_function_0005', 0, function () {
+      let jobName : string = 'jobName';
+      let printAdapter = new MyPrintDocumentAdapter();
+      let printAttributes = new MyPrintAttributes();
+      printAttributes.copyNumber = 2;
+      printAttributes.pageRange = new MyPrinterRange();
+      printAttributes.pageRange.startRange = 0;
+      printAttributes.pageRange.endPage = 5;
+      printAttributes.pageRange.pages = [1,3];
+      printAttributes.pageSize = new MyPrintPageSize();
+      printAttributes.pageSize.id = 'id';
+      printAttributes.pageSize.name = 'name';
+      printAttributes.pageSize.width = 210;
+      printAttributes.pageSize.height = 297;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_B5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_C5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_DL;
+      printAttributes.pageSize = print.PrintPageType.PAGE_LETTER;
+      printAttributes.pageSize = print.PrintPageType.PAGE_LEGAL;
+      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_4X6;
+      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_5X7;
+      printAttributes.pageSize = print.PrintPageType.PAGE_INT_DL_ENVELOPE;
+      printAttributes.pageSize = print.PrintPageType.PAGE_B_TABLOID;
+      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_AUTO;
+      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT;
+      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_LANDSCAPE;
+      printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_MONOCHROME;
+      printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_COLOR;
+      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
+      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_LONG_EDGE;
+      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE;
+      let context = getContext();
+      // Permissions required: ohos.permission.PRINT
+      print.print(jobName, printAdapter, printAttributes, context).then((printTask) => {
+        expect(typeof (printTask)).assertEqual('object');
+        expect(!!printTask).assertTrue();
+        registerPrintTask(printTask);
+        UnregisterPrintTask(printTask);
+      }).catch((error: BusinessError) => {
+        expect(false).assertTrue();
+      })
+    })
+
   })
 }
