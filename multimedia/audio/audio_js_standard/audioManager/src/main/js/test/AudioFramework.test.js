@@ -3775,7 +3775,7 @@ describe('audioFramework', function () {
             let flag = true;
             let outputDeviceDescription = await audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
             console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
-            if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+            if (outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER) {
                 flag = false;
             }
             await audioManager.setDeviceActive(2, false).then(() => {
