@@ -32,6 +32,13 @@
                 "AtomizationResultStageEntry.hap -> /data/test/AtomizationResultStageEntry.hap",
                 "MockService.hap -> /data/test/MockService.hap"
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "bm install -p /data/test/AtomizationResultStageEntry.hap",
+                "bm install -p /data/test/MockService.hap"
+            ]
         }
     ]
 }
