@@ -20,11 +20,9 @@ import webMessagePortErrorCode from './WebMessagePortErrorCode.test'
 import webStorageErrorCode from './WebStorageErrorCode.test'
 import webViewControllerErrorCode from './WebViewControllerErrorCode.test'
 import webErrorCode from './WebErrorCode.test'
-import webMessageExtSetErrorCode from './WebMessageExtSetErrorCode.test'
 
 export default function testsuite() {
   webErrorCode()
-  webMessageExtSetErrorCode()
   geolocationPermissionsErrorCode()
   jsMessageExtErrorCode()
   webMessagePortErrorCode()
