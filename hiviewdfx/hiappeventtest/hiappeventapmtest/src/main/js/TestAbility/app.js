@@ -26,6 +26,6 @@ export default {
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   },
   onDestroy() {
-    console.info("TestApplication onDestroy");
+    console.info('TestApplication onDestroy');
   }
 };

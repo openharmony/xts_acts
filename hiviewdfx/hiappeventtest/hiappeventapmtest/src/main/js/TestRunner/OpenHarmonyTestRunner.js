@@ -20,7 +20,7 @@ function translateParamsToString(parameters) {
     '-s class', '-s notClass', '-s suite', '-s itName',
     '-s level', '-s testType', '-s size', '-s timeout',
     '-s package', '-s dryRun'
-  ])
+  ]);
   let targetParams = '';
   for (const key in parameters) {
     if (keySet.has(key)) {
@@ -43,8 +43,8 @@ export default {
 
     let cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
-    let debug = abilityDelegatorArguments.parameters["-D"];
-    console.info('debug value : '+debug);
+    let debug = abilityDelegatorArguments.parameters['-D'];
+    console.info('debug value : ' + debug);
     if (debug === 'true')
     {
       cmd += ' -D';
@@ -54,6 +54,6 @@ export default {
       console.info('executeShellCommand : err : ' + JSON.stringify(err));
       console.info('executeShellCommand : data : ' + data.stdResult);
       console.info('executeShellCommand : data : ' + data.exitCode);
-    })
+    });
   }
 };
