@@ -54,6 +54,7 @@ const adDisplayOptions: advertising.AdDisplayOptions = {
   userId: '7',
   useMobileDataReminder: false,
   mute: true,
+  audioFocusType: 1,
 };
 const advertisement: advertising.Advertisement = {
   adType: 7,
