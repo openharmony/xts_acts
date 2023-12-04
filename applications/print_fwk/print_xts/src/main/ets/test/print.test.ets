@@ -16,6 +16,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import print from '@ohos.print'
+import { BusinessError } from '@ohos.base';
 
 const DOMAIN: number = 0x0023
 const TAG: string = 'printTestXTS';
@@ -120,7 +121,7 @@ export default function printTest() {
     })
 
     class MyPrintDocumentAdapter implements print.PrintDocumentAdapter{
-      onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.Attributes, fd: number,
+      onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
@@ -151,7 +152,7 @@ export default function printTest() {
     }
 
     class MyPrinterRange implements print.PrinterRange{
-      startRange?: number;
+      startPage?: number;
       endPage?: number;
       pages?: Array<number>;
     }
@@ -169,7 +170,7 @@ export default function printTest() {
       let printAttributes = new MyPrintAttributes();
       printAttributes.copyNumber = 2;
       printAttributes.pageRange = new MyPrinterRange();
-      printAttributes.pageRange.startRange = 0;
+      printAttributes.pageRange.startPage = 0;
       printAttributes.pageRange.endPage = 5;
       printAttributes.pageRange.pages = [1,3];
       printAttributes.pageSize = new MyPrintPageSize();
