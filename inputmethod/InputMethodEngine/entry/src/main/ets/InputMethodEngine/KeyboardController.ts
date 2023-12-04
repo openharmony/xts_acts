@@ -160,6 +160,14 @@ export class KeyboardController {
                     console.debug(TAG + '====>inputMethodEngine_test_077 event:' + data.event);
                     that.inputMethodEngine_test_077();
                     break;
+                case 78:
+                    console.debug(TAG + '====>Sub_InputMethod_IME_VisualInput_0500 event:' + data.event);
+                    that.Sub_InputMethod_IME_VisualInput_0500();
+                    break;
+                case 79:
+                    console.debug(TAG + '====>Sub_InputMethod_IME_VisualInput_0600 event:' + data.event);
+                    that.Sub_InputMethod_IME_VisualInput_0600();
+                    break;
             }
         }
 
@@ -979,6 +987,63 @@ export class KeyboardController {
             commoneventmanager.publish("inputMethodEngine_test_077", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
         },1000);
+    }
+
+    private Sub_InputMethod_IME_VisualInput_0500(): void {
+        console.info(TAG + '====>receive Sub_InputMethod_IME_VisualInput_0500 data');
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
+            inputMethodEngine.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (TextInputClient == null) {
+                console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0500 TextInputClient is null');
+                commoneventmanager.publish('Sub_InputMethod_IME_VisualInput_0500', commonEventPublishData, this.publishCallback);
+            } else {
+                try{
+                    console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0500 exitCurrentInputType start');
+                    await keyboardController.exitCurrentInputType();
+                    console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0500 exitCurrentInputType success');
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                }catch(err){
+                    console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0500 exitCurrentInputType catch err:' + JSON.stringify(err));
+                    if (err.code === 12800010) {
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish('Sub_InputMethod_IME_VisualInput_0500', commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_InputMethod_IME_VisualInput_0600(): void {
+        console.info(TAG + '====>receive Sub_InputMethod_IME_VisualInput_0600 data');
+        inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) =>{
+            inputMethodEngine.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (TextInputClient == null) {
+                console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0600 TextInputClient is null');
+                commoneventmanager.publish('Sub_InputMethod_IME_VisualInput_0600', commonEventPublishData, this.publishCallback);
+            } else {
+                keyboardController.exitCurrentInputType((err) => {
+                    console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0600 exitCurrentInputType failed: ' + JSON.stringify(err));
+                    if (err.code === 12800010) {
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    } else {
+                        console.info(TAG + '====>Sub_InputMethod_IME_VisualInput_0600 exitCurrentInputType not throw 12800010');
+                    }
+                    commoneventmanager.publish('Sub_InputMethod_IME_VisualInput_0600', commonEventPublishData, this.publishCallback);
+                });
+            }
+        });
     }
 
 }

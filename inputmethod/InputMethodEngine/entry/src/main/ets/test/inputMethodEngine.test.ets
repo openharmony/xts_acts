@@ -93,6 +93,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_getInputMethodEngine_001
     * @tc.name   inputMethodEngine_test_getInputMethodEngine_001
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_getInputMethodEngine_001', 0, async function (done) {
@@ -151,6 +153,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_getKeyboardDelegate_001
     * @tc.name   inputMethodEngine_test_getKeyboardDelegate_001
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_getKeyboardDelegate_001', 0, async function (done) {
@@ -209,6 +213,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_028
     * @tc.name   inputMethodEngine_test_028
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_028', 0, async function (done) {
@@ -271,6 +277,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_029
     * @tc.name   inputMethodEngine_test_029
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_029', 0, async function (done) {
@@ -333,6 +341,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_030
     * @tc.name   inputMethodEngine_test_030
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_030', 0, async function (done) {
@@ -395,6 +405,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_031
     * @tc.name   inputMethodEngine_test_031
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_031', 0, async function (done) {
@@ -456,6 +468,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_032
     * @tc.name   inputMethodEngine_test_032
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_032', 0, async function (done) {
@@ -517,6 +531,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_033
     * @tc.name   inputMethodEngine_test_033
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_033', 0, async function (done) {
@@ -578,6 +594,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_034
     * @tc.name   inputMethodEngine_test_034
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_034', 0, async function (done) {
@@ -639,6 +657,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_035
     * @tc.name   inputMethodEngine_test_035
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_035', 0, async function (done) {
@@ -701,6 +721,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_036
     * @tc.name   inputMethodEngine_test_036
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_036', 0, async function (done) {
@@ -763,6 +785,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_037
     * @tc.name   inputMethodEngine_test_037
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_037', 0, async function (done) {
@@ -825,6 +849,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_038
     * @tc.name   inputMethodEngine_test_038
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_038', 0, async function (done) {
@@ -887,6 +913,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_039
     * @tc.name   inputMethodEngine_test_039
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_039', 0, async function (done) {
@@ -949,6 +977,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_040
     * @tc.name   inputMethodEngine_test_040
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_040', 0, async function (done) {
@@ -1011,6 +1041,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_041
     * @tc.name   inputMethodEngine_test_041
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_041', 0, async function (done) {
@@ -1073,6 +1105,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_042
     * @tc.name   inputMethodEngine_test_042
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_042', 0, async function (done) {
@@ -1135,6 +1169,8 @@ export default function inputMethodEngineJSUnit() {
      * @tc.number  inputMethodEngine_test_043
      * @tc.name   inputMethodEngine_test_043
      * @tc.desc    Function test
+     * @tc.size    MEDIUMTEST
+     * @tc.type    Function
      * @tc.level   2
      */
     it('inputMethodEngine_test_043', 0, async function (done) {
@@ -1196,6 +1232,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_049
     * @tc.name   inputMethodEngine_test_049
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_049', 0, async function (done) {
@@ -1257,6 +1295,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_050
     * @tc.name   inputMethodEngine_test_050
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_050', 0, async function (done) {
@@ -1318,6 +1358,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_071
     * @tc.name   inputMethodEngine_test_071
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_071', 0, async function (done) {
@@ -1379,6 +1421,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_072
     * @tc.name   inputMethodEngine_test_072
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_072', 0, async function (done) {
@@ -1440,6 +1484,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_073
     * @tc.name   inputMethodEngine_test_073
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_073', 0, async function (done) {
@@ -1505,6 +1551,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_074
     * @tc.name   inputMethodEngine_test_074
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_074', 0, async function (done) {
@@ -1566,6 +1614,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_076
     * @tc.name   inputMethodEngine_test_076
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_076', 0, async function (done) {
@@ -1627,6 +1677,8 @@ export default function inputMethodEngineJSUnit() {
     * @tc.number  inputMethodEngine_test_077
     * @tc.name   inputMethodEngine_test_077
     * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
     * @tc.level   2
     */
     it('inputMethodEngine_test_077', 0, async function (done) {
@@ -1679,6 +1731,132 @@ export default function inputMethodEngineJSUnit() {
 
         var commonEventPublishData = {
           code: 77
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IME_VisualInput_0500
+    * @tc.name   Sub_InputMethod_IME_VisualInput_0500
+    * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
+    * @tc.level   2
+    */
+    it('Sub_InputMethod_IME_VisualInput_0500', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0500 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0500 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0500 unSubscriberCallback finish")
+        }
+
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0500 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(async() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_VisualInput_0500 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_VisualInput_0500 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0500 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0500 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_InputMethod_IME_VisualInput_0500"]
+      }
+      var subscriber;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>Sub_InputMethod_IME_VisualInput_0500 subscriber data:" + JSON.stringify(data))
+        commoneventmanager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_InputMethod_IME_VisualInput_0500 subscriber finish");
+        var commonEventPublishData = {
+          code: 78
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IME_VisualInput_0600
+    * @tc.name   Sub_InputMethod_IME_VisualInput_0600
+    * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
+    * @tc.level   2
+    */
+    it('Sub_InputMethod_IME_VisualInput_0600', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0600 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0600 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0600 unSubscriberCallback finish")
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0600 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_VisualInput_0600 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_VisualInput_0600 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_VisualInput_0600 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_VisualInput_0600 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_InputMethod_IME_VisualInput_0600"]
+      }
+      var subscriber;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        subscriber = data;
+        console.info("====>Sub_InputMethod_IME_VisualInput_0600 subscriber data:" + JSON.stringify(data))
+        commoneventmanager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_InputMethod_IME_VisualInput_0600 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 79
         }
         commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
       })
