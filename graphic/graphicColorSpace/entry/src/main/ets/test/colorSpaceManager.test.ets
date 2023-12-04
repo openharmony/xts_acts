@@ -46,6 +46,31 @@ export default function colorSpaceManagerTest(context, windowStage, abilityStora
         expect(3).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_P3);
         expect(4).assertEqual(colorSpaceManager.ColorSpace.SRGB);
         expect(5).assertEqual(colorSpaceManager.ColorSpace.CUSTOM);
+        expect(6).assertEqual(colorSpaceManager.ColorSpace.BT709);
+        expect(7).assertEqual(colorSpaceManager.ColorSpace.BT601_EBU);
+        expect(8).assertEqual(colorSpaceManager.ColorSpace.BT601_SMPTE_C);
+        expect(9).assertEqual(colorSpaceManager.ColorSpace.BT2020_HLG);
+        expect(10).assertEqual(colorSpaceManager.ColorSpace.BT2020_PQ);
+        expect(11).assertEqual(colorSpaceManager.ColorSpace.P3_HLG);
+        expect(12).assertEqual(colorSpaceManager.ColorSpace.P3_PQ);
+        expect(13).assertEqual(colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT);
+        expect(14).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT);
+        expect(15).assertEqual(colorSpaceManager.ColorSpace.SRGB_LIMIT);
+        expect(16).assertEqual(colorSpaceManager.ColorSpace.BT709_LIMIT);
+        expect(17).assertEqual(colorSpaceManager.ColorSpace.BT601_EBU_LIMIT);
+        expect(18).assertEqual(colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT);
+        expect(19).assertEqual(colorSpaceManager.ColorSpace.BT2020_HLG_LIMIT);
+        expect(20).assertEqual(colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT);
+        expect(21).assertEqual(colorSpaceManager.ColorSpace.P3_HLG_LIMIT);
+        expect(22).assertEqual(colorSpaceManager.ColorSpace.P3_PQ_LIMIT);
+        expect(23).assertEqual(colorSpaceManager.ColorSpace.LINEAR_P3);
+        expect(24).assertEqual(colorSpaceManager.ColorSpace.LINEAR_SRGB);
+        expect(25).assertEqual(colorSpaceManager.ColorSpace.LINEAR_BT2020);
+        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.LINEAR_BT709)
+        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_SRGB)
+        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB)
+        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
+        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
         done();
       } catch (err) {
         console.info('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
