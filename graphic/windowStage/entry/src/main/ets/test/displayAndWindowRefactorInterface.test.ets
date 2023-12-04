@@ -101,7 +101,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0450
      * @tc.name tesGetAllDisplays_Promise
      * @tc.desc Gets all current display objects
-     * @tc.size  : MEDIUM
+     * @tc.size  : Medium
      * @tc.type  : Function
      * @tc.level : Level3
      */
