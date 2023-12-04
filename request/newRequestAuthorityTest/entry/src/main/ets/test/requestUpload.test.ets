@@ -230,7 +230,7 @@ export default function requestUploadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 catch err: " + JSON.stringify(err));
           }
           console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 end-----------------------");
-          await sleep(10);
+          await sleep(100);
           done();
         });
       });
@@ -255,7 +255,7 @@ export default function requestUploadJSUnit() {
         expect().assertFail();
       }
       console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -287,7 +287,7 @@ export default function requestUploadJSUnit() {
         });
       });
       console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -315,7 +315,7 @@ export default function requestUploadJSUnit() {
         }
       });
       console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -349,7 +349,7 @@ export default function requestUploadJSUnit() {
           })
         });
         console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 end-----------------------");
-        await sleep(10);
+        await sleep(100);
         done();
       });
     });
@@ -381,7 +381,7 @@ export default function requestUploadJSUnit() {
         });
       });
       console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -412,7 +412,7 @@ export default function requestUploadJSUnit() {
           });
         });
         console.info("-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 end-----------------------");
-        await sleep(10);
+        await sleep(100);
         done();
       });
     });
@@ -437,7 +437,7 @@ export default function requestUploadJSUnit() {
           done();
         } catch (err) {
           console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 upload stop err: " + JSON.stringify(err));
-          await sleep(10);
+          await sleep(100);
           done();
         }
       })

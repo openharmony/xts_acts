@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,16 +13,12 @@
  * limitations under the License.
  */
 
-import requestUploadJSUnit from './requestUpload.test';
-import requestUploadOneJSUnit from './requestUpload001.test';
-import requestDownloadJSUnit from './requestDownload.test';
-import requestDownloadOneJSUnit from './requestDownload001.test';
-import requestDownloadTwoJSUnit from './requestDownload002.test';
+import hilog from '@ohos.hilog';
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-export default function testsuite() {
-  requestUploadJSUnit();
-  requestUploadOneJSUnit();
-  requestDownloadJSUnit();
-  requestDownloadOneJSUnit();
-  requestDownloadTwoJSUnit();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage onCreate');
+    }
 }

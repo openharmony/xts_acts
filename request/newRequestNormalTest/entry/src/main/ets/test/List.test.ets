@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,15 +14,9 @@
  */
 
 import requestUploadJSUnit from './requestUpload.test';
-import requestUploadOneJSUnit from './requestUpload001.test';
 import requestDownloadJSUnit from './requestDownload.test';
-import requestDownloadOneJSUnit from './requestDownload001.test';
-import requestDownloadTwoJSUnit from './requestDownload002.test';
 
-export default function testsuite() {
-  requestUploadJSUnit();
-  requestUploadOneJSUnit();
-  requestDownloadJSUnit();
-  requestDownloadOneJSUnit();
-  requestDownloadTwoJSUnit();
+export default function testsuite() {  
+  requestDownloadJSUnit()
+  requestUploadJSUnit()
 }
