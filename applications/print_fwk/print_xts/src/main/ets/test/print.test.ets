@@ -173,11 +173,6 @@ export default function printTest() {
       printAttributes.pageRange.startPage = 0;
       printAttributes.pageRange.endPage = 5;
       printAttributes.pageRange.pages = [1,3];
-      printAttributes.pageSize = new MyPrintPageSize();
-      printAttributes.pageSize.id = 'id';
-      printAttributes.pageSize.name = 'name';
-      printAttributes.pageSize.width = 210;
-      printAttributes.pageSize.height = 297;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
@@ -190,6 +185,11 @@ export default function printTest() {
       printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_5X7;
       printAttributes.pageSize = print.PrintPageType.PAGE_INT_DL_ENVELOPE;
       printAttributes.pageSize = print.PrintPageType.PAGE_B_TABLOID;
+      printAttributes.pageSize = new MyPrintPageSize();
+      printAttributes.pageSize.id = '0'; // PAGE_ISO_A3
+      printAttributes.pageSize.name = '0';
+      printAttributes.pageSize.width = 210;
+      printAttributes.pageSize.height = 297;
       printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_AUTO;
       printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT;
       printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_LANDSCAPE;
