@@ -193,7 +193,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testWebContextMenuParamX001', 0, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamX", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebContextMenuParamX001", 360, 801, done);
+      Utils.registerEvent("testWebContextMenuParamX001", true, 801, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -208,7 +208,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testWebContextMenuParamY001', 0, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamY", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebContextMenuParamY001", 472, 802, done);
+      Utils.registerEvent("testWebContextMenuParamY001", true, 802, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 

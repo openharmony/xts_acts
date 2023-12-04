@@ -43,7 +43,6 @@ struct webStorage {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -160,12 +159,12 @@ struct webStorage {
                       console.log('usage: ' + origins[i].usage);
                       console.log('quota: ' + origins[i].quota);
                     }
-                    Utils.emitEvent(origins[0].quota + '', 20344)
+                    Utils.emitEvent(origins[0].quota > 0, 20344)
                   })
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent(String(e.code), 20344)
+                Utils.emitEvent(false, 20344)
               }
               break;
             }

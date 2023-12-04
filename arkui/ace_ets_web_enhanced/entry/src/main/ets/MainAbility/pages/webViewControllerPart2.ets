@@ -53,7 +53,6 @@ struct webViewControllerPart2 {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -220,13 +219,7 @@ struct webViewControllerPart2 {
 
             case "testGetUserAgent001": {
               try {
-                let getUserAgent = this.controller.getUserAgent()
-                if (getUserAgent == "Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 " +
-                "(KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36") {
-                  Utils.emitEvent(true, 37009)
-                  return;
-                }
-                Utils.emitEvent(false, 37009)
+                Utils.emitEvent(this.controller.getUserAgent().indexOf('OpenHarmony') >= 0, 37009)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -362,13 +355,7 @@ struct webViewControllerPart2 {
 
             case "testGetCustomUserAgent001": {
               try {
-                let userAgent = this.controller.getCustomUserAgent()
-                if (userAgent == "Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 " +
-                "(KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36") {
-                  Utils.emitEvent(true, 37018);
-                  return;
-                }
-                Utils.emitEvent(false, 37018);
+                Utils.emitEvent(this.controller.getCustomUserAgent().indexOf('OpenHarmony') >= 0, 37018)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
               }
