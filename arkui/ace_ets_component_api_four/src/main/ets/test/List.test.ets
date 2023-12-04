@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 import ListScrollTest from './ListScroll.test'
+import ListScrollToItemInGroup from './ListScrollToItemInGroup.test'
+
 import CustomDialogMaskTest from './CustomDialogMask.test'
 
 export default function testsuite() {
   CustomDialogMaskTest()
   ListScrollTest()
+  ListScrollToItemInGroup()
 }

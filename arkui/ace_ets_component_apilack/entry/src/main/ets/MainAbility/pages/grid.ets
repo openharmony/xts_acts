@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+
+import events_emitter from '@ohos.events.emitter'
 import Log from '../common/Log.ets';
 const TAG = 'ets_apiLack_add';
 
@@ -20,6 +22,9 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct GridMaxCount {
   @State Number: String[] = ['5', '6', '7', '8', '9']
+  @State edgeEffect: EdgeEffect = EdgeEffect.None;
+  @State alwaysEnabled: boolean = true
+  
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear GridMaxCount start`)
   }
@@ -27,6 +32,25 @@ struct GridMaxCount {
   aboutToDisappear(){
     Log.showInfo(TAG, `aboutToDisAppear GridMaxCount end`)
   }
+
+ private stateChangCallBack = (eventData) => {
+    console.info("grid page state change called:" + JSON.stringify(eventData));
+    if (eventData != null) {
+      if (eventData.data.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      }
+    }
+  }
+
+  onPageShow() {
+    console.info('list page show called');
+    var stateChangeEvent = {
+      eventId: 321,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+  }
+
 
   build(){
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
@@ -69,6 +93,7 @@ struct GridMaxCount {
       .backgroundColor(0xFAEEE0)
       .height(300)
       .maxCount(5)
+      .edgeEffect(this.edgeEffect, {alwaysEnabled:this.alwaysEnabled})
       .key("maxCountTest")
 
     }

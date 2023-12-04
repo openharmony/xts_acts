@@ -15,6 +15,52 @@
 
 import events_emitter from '@ohos.events.emitter';
 export default class Utils {
+  public static instance;
+
+  static sleep(time) {
+    return new Promise((resolve, reject) => {
+      try {
+        setTimeout(() => {
+          resolve(0)
+        }, time)
+      } catch (err) {
+        console.error('sleep error:' + err);
+        reject()
+      }
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
+
+  static getComponentRect(key) {
+    let strJson = getInspectorByKey(key);
+    let obj = JSON.parse(strJson);
+    console.info('[getInspectorByKey] key is: ' + key);
+    return Utils.getComponentRectByObj(obj);
+  }
+
+  static getComponentRectByObj(obj) {
+    console.info('[getInspectorByKey] current component type: ' + obj.$type + 'rectInfo:' + JSON.stringify(obj.$rect));
+    let rectStr = obj.$rect.replaceAll('[','').replace(']', ',').replace(']','')
+    let rectInfo = rectStr.split(',', 4);
+
+    let rect_value = {
+      'left': Math.round(Number(rectInfo[0])),
+      'top': Math.round(Number(rectInfo[1])),
+      'right': Math.round(Number(rectInfo[2])),
+      'bottom': Math.round(Number(rectInfo[3]))
+    };
+    return rect_value;
+  }
+
+  static getComponentByKey(componentKey) {
+    let strJson = getInspectorByKey(componentKey);
+    console.info('component Json is:' + strJson);
+    let obj = JSON.parse(strJson);
+    console.info('[' + componentKey + '] obj is: ' + JSON.stringify(obj));
+    return obj;
+  }
+
   static sendEvent(message, eventId) {
     var eventData = {
       data: {
