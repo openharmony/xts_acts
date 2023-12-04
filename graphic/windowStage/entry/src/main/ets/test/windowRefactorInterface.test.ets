@@ -67,7 +67,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
 	   * @tc.name      : testSetWindowSystemBarProperties_Callback
 	   * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
-	   * @tc.size      : MEDIUM
+	   * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -123,7 +123,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
 	   * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
 	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-	   * @tc.size      : MEDIUM
+	   * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -184,7 +184,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
 	   * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
 	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
-	   * @tc.size      : MEDIUM
+	   * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -239,7 +239,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1990
      * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_RGB
      * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -298,7 +298,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0710
      * @tc.name      : testIswindowShowingTest
      * @tc.desc      : To verify the widow isshowing
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -332,7 +332,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1410
      * @tc.name      : testSetUIContent_Existence_page
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -370,7 +370,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1400
      * @tc.name      : testSetUIContentTestCallback1
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -434,7 +434,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1420
      * @tc.name      : testSetUIContent_Invalid_Parameter
      * @tc.desc      : Verify the scene of loading the page with illegal values
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -481,7 +481,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1430
      * @tc.name      : testSetUIContent_Not_Existent_Parameter
      * @tc.desc      : Verify the scene of loading the page with illegal values
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -521,7 +521,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1650
      * @tc.name      : testSetWindowColorSpace_Multiple_Wide_Gamut
      * @tc.desc      : To verify the setting of the wide color gamut color space
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -551,7 +551,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1670
      * @tc.name      : testSetWindowColorSpace_Invalid_ParamsTwo
      * @tc.desc      : To verify that the color space of invaild values is set successfully
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -583,7 +583,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
      * @tc.name      : testSetWindowColorSpaceTest
      * @tc.desc      : To verify the setting of the wide color gamut color space
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -639,7 +639,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1460
      * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsOne
      * @tc.desc      :	Set the window background color to red and Default opacity
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -672,7 +672,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1480
      * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsTwo
      * @tc.desc      :	Set the window background color to red opaque
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -705,7 +705,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
      * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsThree
      * @tc.desc      :	Set the window background color to red transparent
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -739,7 +739,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1510
      * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsTwo
      * @tc.desc      :	Set the background color input parameter as an outlier
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -763,7 +763,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1520
      * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsThree
      * @tc.desc      :	Setting window background color input exception ARGB
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -795,7 +795,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1530
      * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsFour
      * @tc.desc      :	Setting window background color input exception RGB
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -818,7 +818,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1580
      * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Promise
      * @tc.desc      :	Setting the brightness bar input parameter is normal
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -856,7 +856,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Promise
      * @tc.desc      :	Set the brightness bar input parameter to decimal
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -880,7 +880,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1620
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Promise
      * @tc.desc      :	Set the brightness bar input parameter to number max
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -913,7 +913,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1630
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFour_Promise
      * @tc.desc      :	Set the brightness bar input parameter to number min
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -936,7 +936,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1640
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFive_Promise
      * @tc.desc      :	Setting brightness bar input parameter exception
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -986,7 +986,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1540
      * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Callback
      * @tc.desc      :	et the brightness bar input parameter to decimal
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1042,7 +1042,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1550
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsOne_Callback
      * @tc.desc      :	Set the brightness bar input parameter to number max
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1083,7 +1083,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1560
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Callback
      * @tc.desc      :	Set the brightness bar input parameter to number min
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1123,7 +1123,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1570
      * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Callback
      * @tc.desc      :	Setting brightness bar input parameter exception
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1163,7 +1163,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1690
      * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Callback
      * @tc.desc      :	Setting window focus acquisition and defocus
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1223,7 +1223,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
      * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Promise
      * @tc.desc      :	Setting window focus acquisition and defocus
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1255,7 +1255,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2050
      * @tc.name      :	testSetWindowTouchable_Invoked_Twice
      * @tc.desc      :	Set whether the window can be touched or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1290,7 +1290,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2030
      * @tc.name      :	testSetWindowTouchable_Callback_Form
      * @tc.desc      :	Set whether the window can be touched or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1345,7 +1345,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1750
      * @tc.name      :	testSetWindowKeepScreenOn_Base_True_Promise
      * @tc.desc      :	Set whether the window screenOn
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1371,7 +1371,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1730
      * @tc.name      :	testSetWindowKeepScreenOn_Base_False_Promise
      * @tc.desc      :	Set whether the window screenOn
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1395,7 +1395,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1720
      * @tc.name      :	testSetWindowKeepScreenOn_Base_Callback
      * @tc.desc      :	Set whether setKeepScreenOn or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1429,7 +1429,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1870
      * @tc.name      : testSetWindowPrivacyMode_False_Promise
      * @tc.desc      : Verify the window privacy mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1455,7 +1455,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1890
      * @tc.name      : testSetWindowPrivacyMode_True_Promise
      * @tc.desc      : Verify the window privacy mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -1481,7 +1481,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1860
      * @tc.name      :	testSetWindowPrivacyMode_True_Callback
      * @tc.desc      :	Set whether setWindowPrivacyMode or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */

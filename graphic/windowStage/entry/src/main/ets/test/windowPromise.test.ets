@@ -100,7 +100,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0760
      * @tc.name      : testListener_Sys_AvoidAreaChange_Promise
      * @tc.desc      : Verify whether the change monitoring of avoidance area can be started normally.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -153,7 +153,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0770
      * @tc.name      : testListener_windowSizeChange
      * @tc.desc      : Verify that the window size avoidance area changes and monitor whether it can be opened normally.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -209,7 +209,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0740
      * @tc.name      : testListener_SystemAvoidAreaChange_Off
      * @tc.desc      : Verify whether the change monitoring of avoidance area can be started normally.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -260,7 +260,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0780
      * @tc.name      : testListener_windowSizeChange_Off
      * @tc.desc      : Verify whether the window size change monitoring can be closed normally.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -319,7 +319,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1310
      * @tc.name      : testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise
      * @tc.desc      : Verify that the scene shows the status bar and hides the navigation bar
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -356,7 +356,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1240
      * @tc.name      : testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise
      * @tc.desc      : Verify that the scene hides the status bar and displays the navigation bar
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -393,7 +393,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1330
      * @tc.name      : testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise
      * @tc.desc      : Verify that the scene displays both the status bar and the navigation bar
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -430,7 +430,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1260
      * @tc.name      : testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise
      * @tc.desc      : Verify that the scene hides both the status bar and the navigation bar
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -467,7 +467,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
      * @tc.name      : testSetSystemBarEnable_Invalid_Parameter_Promise
      * @tc.desc      : Verify the scene where illegal values are entered when the status bar and navigation bar are displayed
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -505,7 +505,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1390
      * @tc.name      : testSetSystemBarProperties_RGB_Promise
      * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -559,7 +559,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1370
      * @tc.name      : testSetSystemBarProperties_KeywordForm_Promise
      * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -618,7 +618,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1350
      * @tc.name      : testSetSystemBarProperties_Hexadecimal_Promise
      * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -672,7 +672,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0180
      * @tc.name      : testCreate_App_Type_Win_Promise
      * @tc.desc      : Verify the scenario of creating the application type window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -706,7 +706,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0260
      * @tc.name      : testCreate_Sys_Type_Win_Promise
      * @tc.desc      : Verify the scenario of creating the system type window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -763,7 +763,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0220
      * @tc.name      : testCreate_Not_Exist_Win_Promise
      * @tc.desc      : Verify the scenario of creating a window of a type that does not exist
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -784,7 +784,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0240
      * @tc.name      : testCreate_Repeate_Id_Win_Promise
      * @tc.desc      : Verify the scenario of creating a window with duplicate IDs
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -814,7 +814,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0800
      * @tc.name      : testLoadContent_Exist_Create_SysWin_Promise
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -854,7 +854,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0880
      * @tc.name      : testLoadContent_Para_Is_Null_Create_SysWin_Promise
      * @tc.desc      : Verify the scene of loading the page with illegal values
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -907,7 +907,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0840
      * @tc.name      : testLoadContent_Exist_Input_Para_Path_Promise
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -927,7 +927,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0860
      * @tc.name      : testLoadContent_Input_Para_Is_Null_Promise
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -952,7 +952,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0820
      * @tc.name      : testLoadContent_Exist_Input_Para_PathAndStorage_Promise
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -977,7 +977,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
      * @tc.name      : testLoadContent_Para_PathAndStorage_Is_Null_Promise
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -996,7 +996,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0050
      * @tc.name      : testCreateSubWindow_WinName_IsNot_Empty_Promise
      * @tc.desc      : Verify the scenario of creating an auxiliary window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1018,7 +1018,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0070
      * @tc.name      : testCreateSubWindow_WinName_Is_Null_Promise
      * @tc.desc      : Verify the scene of entering illegal values to create an auxiliary window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1043,7 +1043,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0590
      * @tc.name      : testGetSubWindow_Promise
      * @tc.desc      : Verify the scene of obtaining all auxiliary sub windows
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1063,7 +1063,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
      * @tc.name      : testSetPrivacyMode_SppSubWin_Promise
      * @tc.desc      : Verify the scene where the application sub window is set as a security layer
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1116,7 +1116,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0310
      * @tc.name      : testDestroy_Promise
      * @tc.desc      : Verification window destruction scenario.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1158,7 +1158,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1180
      * @tc.name      : testSetPreferredOrientation_Promise
      * @tc.desc      : Sets the display direction property of the window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1193,7 +1193,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1120
      * @tc.name      : testSetForbidSplitMove_Promise
      * @tc.desc      : Sets whether Windows are forbidden to move in split screen mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1223,7 +1223,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2160
      * @tc.name      : testSnapshotTest_Promise_Form
      * @tc.desc      : Scenario of screenshot of verification window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1248,7 +1248,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0330
      * @tc.name      : testDialogTargetTouch_Promise
      * @tc.desc      : Verify the scenario of opening modal window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1280,7 +1280,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0020
      * @tc.name      : testAnimationForShown_Promise
      * @tc.desc      : Verify window custom animation configuration of the scene
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1335,7 +1335,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
      * @tc.name      : testGetCutoutInfo_Promise
      * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1356,7 +1356,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1080
      * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Promise
      * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1397,7 +1397,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2340
      * @tc.name      : testSetAspectRatio_Invalid_Params_Promise
      * @tc.desc      : Validate the scenario where the content layout proportion of the main window is abnormal
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1429,7 +1429,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2320
      * @tc.name      : testWindowEventType_Enum
      * @tc.desc      : Test the enumeration value of WindowEventType
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1454,7 +1454,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2310
      * @tc.name      : testOrientation_Enum
      * @tc.desc      : Test the enumeration value of Orientation
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */

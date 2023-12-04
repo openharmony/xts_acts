@@ -109,7 +109,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
      * @tc.name      : testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback
      * @tc.desc      : Test ohosWindow.setSystemBarEnable API function test1.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTestTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -225,7 +225,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1230
      * @tc.name      : testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback
      * @tc.desc      : Verify that the scene hides the status bar and displays the navigation bar.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -334,7 +334,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1320
      * @tc.name      : testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback
      * @tc.desc      : Verify that the scene displays both the status bar and the navigation bar.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -425,7 +425,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1250
      * @tc.name      : testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback
      * @tc.desc      : Verify that the scene hides both the status bar and the navigation bar.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -532,7 +532,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1270
      * @tc.name      :  testSetSystemBarEnable_Invalid_Parameter_Callback
      * @tc.desc      : Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -638,7 +638,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1380
      * @tc.name      :  testSetSystemBarEnable_RGB_Callback
      * @tc.desc      : TVerify the scene where the colors of the status bar and navigation bar are set in RGB
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -693,7 +693,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1340
      * @tc.name      : testSetSystemBarEnable_Hexadecimal_Callback
      * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -767,7 +767,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1360
      * @tc.name      : testSetSystemBarEnable_KeywordForm_Callback
      * @tc.desc      : TVerify the scene where the status bar and navigation bar colors are set as keywords
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -832,7 +832,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0170
      * @tc.name      : testCreate_App_Type_Win_Callback
      * @tc.desc      : Scheme of Failed to Create Application Type Window in Stage Mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -874,7 +874,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0250
      * @tc.name      : testCreate_Sys_Type_Win_Callback
      * @tc.desc      : Verify the scenario of creating the system type window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -942,7 +942,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0210
      * @tc.name      : testCreate_Not_Exist_Win_Type_Callback
      * @tc.desc      : Verify the scenario of creating a window of a type that does not exist
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -972,7 +972,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0230
      * @tc.name      : testCreate_Repeate_Id_Win_Callback
      * @tc.desc      : Verify the scenario of creating a window with duplicate IDs
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1024,7 +1024,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0750
      * @tc.name      : testListener_Sys_AvoidAreaChange_Callback
      * @tc.desc      : Verify whether the change of avoidance area and change monitoring can be turned on normally
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1098,7 +1098,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
      * @tc.name      : testDestroy_Callbcak
      * @tc.desc      : Verification window destruction scenario
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1151,7 +1151,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
      * @tc.name      : testLoadContent_Exist_Create_SysWin_Callback
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1200,7 +1200,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0870
      * @tc.name      : testLoadContent_Para_Is_Null_Create_SysWin_Callback
      * @tc.desc      : Verify the scenario of loading a page that does not exist
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1249,7 +1249,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0830
      * @tc.name      : testLoadContent_Exist_Input_Para_Path_Callback
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1276,7 +1276,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0850
      * @tc.name      : testLoadContent_Input_Para_Is_Null_Callback
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1310,7 +1310,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0810
      * @tc.name      : testLoadContent_Exist_Input_Para_PathAndStorage_Callback
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1338,7 +1338,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0890
      * @tc.name      : testLoadContent_Para_PathAndStorage_Is_Null_Callback
      * @tc.desc      : Verify the scenario of loading an existing page
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1371,7 +1371,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0040
      * @tc.name      : testCreateSubWindow_WinName_IsNot_Empty_Callback
      * @tc.desc      : Verify the scenario of creating an auxiliary window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1449,7 +1449,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0060
      * @tc.name      : testCreateSubWindow_WinName_Is_Null_Callback
      * @tc.desc      : Verify the scene of entering illegal values to create an auxiliary window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1481,7 +1481,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0570
      * @tc.name      : testGetSubWindow_Callback
      * @tc.desc      : Verify the scene of obtaining all auxiliary sub windows
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1509,7 +1509,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1190
      * @tc.name      : testSetPrivacyMode_AppSubWin_Callback
      * @tc.desc      : Verify the scene where the application sub window is set as a security layer
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1597,7 +1597,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1210
      * @tc.name      : testSetPrivacyMode_createSubWindow_Callback
      * @tc.desc      : Verify that the auxiliary window is set as the security layer
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1684,7 +1684,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1170
      * @tc.name      : testSetPreferredOrientation_Callback
      * @tc.desc      : Sets the display direction property of the window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1739,7 +1739,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1110
      * @tc.name      : testSetForbidSplitMove_Callback
      * @tc.desc      : Sets whether Windows are forbidden to move in split screen mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1787,7 +1787,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2150
      * @tc.name      : testSnapshotTest_Callback_Form
      * @tc.desc      : Scenario of screenshot of verification window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1823,7 +1823,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0320
      * @tc.name      : testDialogTargetTouch_Callback
      * @tc.desc      : Verify the scenario of opening modal window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1853,7 +1853,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0010
      * @tc.name      : testAnimationForShown_Callback
      * @tc.desc      : Verify window custom animation configuration of the scene
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1908,7 +1908,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
      * @tc.name      : testGetCutoutInfo_Callbcak
      * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1931,7 +1931,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1070
      * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Callback
      * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
@@ -1999,7 +1999,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2330
      * @tc.name      : testSetAspectRatio_Invalid_Params_Callback
      * @tc.desc      : Validate the scenario where the content layout proportion of the main window is abnormal
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
