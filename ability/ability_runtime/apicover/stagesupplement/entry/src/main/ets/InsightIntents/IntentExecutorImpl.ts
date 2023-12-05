@@ -22,6 +22,9 @@ import hilog from '@ohos.hilog';
 import Want from '@ohos.app.ability.Want';
 
 const LOG_TAG: string = 'testTag-IntentExecutor';
+let UI_ABILITY_FOREGROUND: number = insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND;
+let UI_ABILITY_BACKGROUND: number = insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND;
+let UI_EXTENSION_ABILITY: number = insightIntent.ExecuteMode.UI_EXTENSION_ABILITY;
 
 function startAnotherAbility(context: IntentContext) {
   let want: Want = {
@@ -85,6 +88,7 @@ export default class IntentExecutorImpl extends IntentExecutor {
       });
     }
 
+    hilog.info(0x0000, LOG_TAG, 'Execute mode %{public}d', UI_ABILITY_FOREGROUND);
     let result: insightIntent.ExecuteResult;
     if (name !== 'PlayMusic') {
       hilog.warn(0x0000, LOG_TAG, 'Unsupported intentName %{public}s', name);
@@ -110,6 +114,7 @@ export default class IntentExecutorImpl extends IntentExecutor {
 
   onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>): insightIntent.ExecuteResult {
     hilog.info(0x0000, LOG_TAG, 'IntentName %{public}s, IntentParam %{public}s', name, JSON.stringify(param) ?? '');
+    hilog.info(0x0000, LOG_TAG, 'Execute mode %{public}d', UI_ABILITY_BACKGROUND);
     let result: insightIntent.ExecuteResult = {
       code: 404,
       result: {
@@ -122,6 +127,7 @@ export default class IntentExecutorImpl extends IntentExecutor {
 
   onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult {
     hilog.info(0x0000, LOG_TAG, 'IntentName %{public}s, IntentParam %{public}s', name, JSON.stringify(param) ?? '');
+    hilog.info(0x0000, LOG_TAG, 'Execute mode %{public}d', UI_EXTENSION_ABILITY);
     let result: insightIntent.ExecuteResult = {
       code: 404,
       result: {
