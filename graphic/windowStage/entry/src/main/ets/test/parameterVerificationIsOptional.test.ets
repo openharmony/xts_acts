@@ -92,9 +92,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
     }
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
-     * @tc.name testTouchOutsideBaseTest
-     * @tc.desc Enable listening for click events outside the area of this window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
+     * @tc.name      : testTouchOutsideBaseTest
+     * @tc.desc      : Enable listening for click events outside the area of this window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testTouchOutsideBaseTest', 0, async function (done) {
       let caseName = 'testTouchOutsideBaseTest';
@@ -127,9 +130,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     });
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2370
-     * @tc.name testWindowOffTouchOutsideCancelAll
-     * @tc.desc Turns off listening for click events outside this window area.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2370
+     * @tc.name      : testWindowOffTouchOutsideCancelAll
+     * @tc.desc      : Turns off listening for click events outside this window area.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindowOffTouchOutsideCancelAll', 0, async function (done) {
       let caseName = 'testWindowOffTouchOutsideCancelAll';
@@ -238,9 +244,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2380
-     * @tc.name Test testWindowOffTouchOutsideCancelSingle
-     * @tc.desc Turns off listening for click events outside this window area.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2380
+     * @tc.name      : Test testWindowOffTouchOutsideCancelSingle
+     * @tc.desc      : Turns off listening for click events outside this window area.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindowOffTouchOutsideCancelSingle', 0, async function (done) {
       let caseName = 'testWindowOffTouchOutsideCancelSingle';
@@ -333,9 +342,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2170
-     * @tc.name testWindowStage_loadContent_Test_001
-     * @tc.desc Verify The optional parameter is undefined
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2170
+     * @tc.name      : testWindowStage_loadContent_Test_001
+     * @tc.desc      : Verify The optional parameter is undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindowStage_loadContent_Test_001', 0, async function (done) {
       let caseName = 'windowStage_loadContent_Test_001';
@@ -350,12 +362,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2280
-     * @tc.name testWindow_off_WindowSizeChange_No_Callback
-     * @tc.desc Turn off listening for window size changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2280
+     * @tc.name      : testWindow_off_WindowSizeChange_No_Callback
+     * @tc.desc      : Turn off listening for window size changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_WindowSizeChange_No_Callback', 0, async function (done) {
-      let caseName = 'window_off_windowSizeChange_Test_001';
+      let caseName = 'testWindow_off_WindowSizeChange_No_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -413,12 +428,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2290
-     * @tc.name testWindow_off_WindowSizeChange_SecondCall_Callback
-     * @tc.desc Turn off listening for window size changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2290
+     * @tc.name      : testWindow_off_WindowSizeChange_SecondCall_Callback
+     * @tc.desc      : Turn off listening for window size changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async function (done) {
-      let caseName = 'window_off_windowSizeChange_Test_002';
+      let caseName = 'testWindow_off_WindowSizeChange_SecondCall_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -482,12 +500,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2200
-     * @tc.name testWindow_off_AvoidAreaChange_AllListening_LogOut
-     * @tc.desc Disable listening for system avoidance zone changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2200
+     * @tc.name      : testWindow_off_AvoidAreaChange_AllListening_LogOut
+     * @tc.desc      : Disable listening for system avoidance zone changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_AvoidAreaChange_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_avoidAreaChange_Test_001';
+      let caseName = 'testWindow_off_AvoidAreaChange_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -533,12 +554,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2210
-     * @tc.name testWindow_off_AvoidAreaChange_FirstCall_LogOut
-     * @tc.desc Disable listening for system avoidance zone changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2210
+     * @tc.name      : testWindow_off_AvoidAreaChange_FirstCall_LogOut
+     * @tc.desc      : Disable listening for system avoidance zone changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_AvoidAreaChange_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_avoidAreaChange_Test_002';
+      let caseName = 'testWindow_off_AvoidAreaChange_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -589,12 +613,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2260
-     * @tc.name testWindow_off_screenshot_AllListening_LogOut
-     * @tc.desc Disable the monitoring of screenshots.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2260
+     * @tc.name      : testWindow_off_screenshot_AllListening_LogOut
+     * @tc.desc      : Disable the monitoring of screenshots.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_screenshot_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_screenshot_Test_001';
+      let caseName = 'testWindow_off_screenshot_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -661,12 +688,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2270
-     * @tc.name testWindow_off_screenshot_FirstCall_LogOut
-     * @tc.desc Disable the monitoring of screenshots.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2270
+     * @tc.name      : testWindow_off_screenshot_FirstCall_LogOut
+     * @tc.desc      : Disable the monitoring of screenshots.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_screenshot_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_screenshot_Test_002';
+      let caseName = 'testWindow_off_screenshot_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -736,12 +766,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2220
-     * @tc.name testWindow_off_dialogTargetTouch_AllListening_LogOut
-     * @tc.desc Turns on modal window listener for click events on target Windows.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2220
+     * @tc.name      : testWindow_off_dialogTargetTouch_AllListening_LogOut
+     * @tc.desc      : Turns on modal window listener for click events on target Windows.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_dialogTargetTouch_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_dialogTargetTouch_Test_001';
+      let caseName = 'testWindow_off_dialogTargetTouch_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -799,12 +832,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2230
-     * @tc.name testWindow_off_dialogTargetTouch_FirstCall_LogOut
-     * @tc.desc Turns on modal window listener for click events on target Windows.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2230
+     * @tc.name      : testWindow_off_dialogTargetTouch_FirstCall_LogOut
+     * @tc.desc      : Turns on modal window listener for click events on target Windows.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_dialogTargetTouch_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_dialogTargetTouch_Test_002';
+      let caseName = 'testWindow_off_dialogTargetTouch_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -867,12 +903,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2240
-     * @tc.name testWindow_off_keyboardHeightChange_AllListening_LogOut
-     * @tc.desc Turn off listening for keyboard height changes
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2240
+     * @tc.name      : testWindow_off_keyboardHeightChange_AllListening_LogOut
+     * @tc.desc      : Turn off listening for keyboard height changes
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_keyboardHeightChange_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_001';
+      let caseName = 'testWindow_off_keyboardHeightChange_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -933,12 +972,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2250
-     * @tc.name testWindow_off_keyboardHeightChange_FirstCall_LogOut
-     * @tc.desc Turn off listening for keyboard height changes
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2250
+     * @tc.name      : testWindow_off_keyboardHeightChange_FirstCall_LogOut
+     * @tc.desc      : Turn off listening for keyboard height changes
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindow_off_keyboardHeightChange_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_002';
+      let caseName = 'testWindow_off_keyboardHeightChange_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1008,12 +1050,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2180
-     * @tc.name testWindowStage_off_windowStageEvent_AllListening_LogOut
-     * @tc.desc Turn off listening for Windows Stage life cycle changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2180
+     * @tc.name      : testWindowStage_off_windowStageEvent_AllListening_LogOut
+     * @tc.desc      : Turn off listening for Windows Stage life cycle changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindowStage_off_windowStageEvent_AllListening_LogOut', 0, async function (done) {
-      let caseName = 'windowStage_off_windowStageEvent_Test_001';
+      let caseName = 'testWindowStage_off_windowStageEvent_AllListening_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1052,12 +1097,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2190
-     * @tc.name testWindowStage_off_windowStageEvent_FirstCall_LogOut
-     * @tc.desc Turn off listening for Windows Stage life cycle changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2190
+     * @tc.name      : testWindowStage_off_windowStageEvent_FirstCall_LogOut
+     * @tc.desc      : Turn off listening for Windows Stage life cycle changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testWindowStage_off_windowStageEvent_FirstCall_LogOut', 0, async function (done) {
-      let caseName = 'windowStage_off_windowStageEvent_Test_002';
+      let caseName = 'testWindowStage_off_windowStageEvent_FirstCall_LogOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1099,12 +1147,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0340
-     * @tc.name testDisplay_off_add_Deregister_All_Listeners
-     * @tc.desc Enable the monitor that shows device changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0340
+     * @tc.name      : testDisplay_off_add_Deregister_All_Listeners
+     * @tc.desc      : Enable the monitor that shows device changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_add_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_add_Test_001';
+      let caseName = 'testDisplay_off_add_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1173,12 +1224,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0350
-     * @tc.name testDisplay_off_add_Deregister_FirstCall_Listeners
-     * @tc.desc Enable the monitor that shows device changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0350
+     * @tc.name      : testDisplay_off_add_Deregister_FirstCall_Listeners
+     * @tc.desc      : Enable the monitor that shows device changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_add_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_add_Test_002';
+      let caseName = 'testDisplay_off_add_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1248,12 +1302,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0380
-     * @tc.name testDisplay_off_remove_Deregister_All_Listeners
-     * @tc.desc Enable the monitor that shows device changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0380
+     * @tc.name      : testDisplay_off_remove_Deregister_All_Listeners
+     * @tc.desc      : Enable the monitor that shows device changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_remove_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_remove_Test_001';
+      let caseName = 'testDisplay_off_remove_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1322,12 +1379,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0390
-     * @tc.name testDisplay_off_remove_Deregister_FirstCall_Listeners
-     * @tc.desc Enable the monitor that shows device changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0390
+     * @tc.name      : testDisplay_off_remove_Deregister_FirstCall_Listeners
+     * @tc.desc      : Enable the monitor that shows device changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_remove_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_remove_Test_002';
+      let caseName = 'testDisplay_off_remove_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1397,12 +1457,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0360
-     * @tc.name testDisplay_off_change_Deregister_All_Listeners
-     * @tc.desc Enable monitoring of screen status changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0360
+     * @tc.name      : testDisplay_off_change_Deregister_All_Listeners
+     * @tc.desc      : Enable monitoring of screen status changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_change_Deregister_All_Listeners', 0, async function (done) {
-      let caseName = 'display_off_change_Test_001';
+      let caseName = 'testDisplay_off_change_Deregister_All_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let num = 0
@@ -1450,12 +1513,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0370
-     * @tc.name testDisplay_off_change_Deregister_FirstCall_Listeners
-     * @tc.desc Enable monitoring of screen status changes.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0370
+     * @tc.name      : testDisplay_off_change_Deregister_FirstCall_Listeners
+     * @tc.desc      : Enable monitoring of screen status changes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testDisplay_off_change_Deregister_FirstCall_Listeners', 0, async function (done) {
-      let caseName = 'display_off_change_Test_002';
+      let caseName = 'testDisplay_off_change_Deregister_FirstCall_Listeners';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let firstListenFlag = false
@@ -1503,12 +1569,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0610
-     * @tc.name testGetUIContext_Instances
-     * @tc.desc Get the UIContext instance.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0610
+     * @tc.name      : testGetUIContext_Instances
+     * @tc.desc      : Get the UIContext instance.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testGetUIContext_Instances', 0, async function (done) {
-      let caseName = 'getUIContext_Test_001';
+      let caseName = 'testGetUIContext_Instances';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let uiContext = null;
       console.log(msgStr + 'begin');
