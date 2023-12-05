@@ -3259,9 +3259,11 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100', 0, async function (done) {
+            session.on('play', () => {});
+            await sleep(500);
             await controller.getValidCommands().then((data) => {
                 console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
-                expect(true).assertTrue();
+                expect(data[0]).assertEqual('play');
             }).catch((err) => {
                 console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -3279,20 +3281,23 @@ export default function AVSession() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100', 0, async function (done) {
             try {
+                session.on('play', () => {});
+                await sleep(500);
                 controller.getValidCommands((err, data) => {
                     if (err) {
                         console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                         expect(false).assertTrue();
                     } else {
                         console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
-                        expect(true).assertTrue();
+                        expect(data[0]).assertEqual('play');
                     }
-                })
+                    done();
+                });
             } catch (err) {
                 console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
+                done();
             }
-            done();
         })
     })
 }

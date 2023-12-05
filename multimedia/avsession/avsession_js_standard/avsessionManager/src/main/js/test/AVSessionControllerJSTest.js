@@ -1674,7 +1674,7 @@ export default function AVSessionControllerJsTest() {
       sleep(200);
       let validCommands = controller.getValidCommandsSync();
       console.log(`Get valid commands: ${validCommands}`);
-      expect(validCommands[0]).assertEqual(0);
+      expect(validCommands[0]).assertEqual('play');
     } catch (err) {
       expect().assertFail();
     }
