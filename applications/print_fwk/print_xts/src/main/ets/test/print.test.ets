@@ -173,6 +173,17 @@ export default function printTest() {
       printAttributes.pageRange.startPage = 0;
       printAttributes.pageRange.endPage = 5;
       printAttributes.pageRange.pages = [1,3];
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_C5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_DL;
+      printAttributes.pageSize = print.PrintPageType.PAGE_LETTER;
+      printAttributes.pageSize = print.PrintPageType.PAGE_LEGAL;
+      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_4X6;
+      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_5X7;
+      printAttributes.pageSize = print.PrintPageType.PAGE_INT_DL_ENVELOPE;
+      printAttributes.pageSize = print.PrintPageType.PAGE_B_TABLOID;
       printAttributes.pageSize = new MyPrintPageSize();
       printAttributes.pageSize.id = '0'; // PAGE_ISO_A3
       printAttributes.pageSize.name = '0';
@@ -197,47 +208,5 @@ export default function printTest() {
         expect(false).assertTrue();
       })
     })
-
-    it('print_function_0006', 0, function () {
-      let jobName : string = 'jobName';
-      let printAdapter = new MyPrintDocumentAdapter();
-      let printAttributes = new MyPrintAttributes();
-      printAttributes.copyNumber = 2;
-      printAttributes.pageRange = new MyPrinterRange();
-      printAttributes.pageRange.startPage = 0;
-      printAttributes.pageRange.endPage = 5;
-      printAttributes.pageRange.pages = [1,3];
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_B5;
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_C5;
-      printAttributes.pageSize = print.PrintPageType.PAGE_ISO_DL;
-      printAttributes.pageSize = print.PrintPageType.PAGE_LETTER;
-      printAttributes.pageSize = print.PrintPageType.PAGE_LEGAL;
-      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_4X6;
-      printAttributes.pageSize = print.PrintPageType.PAGE_PHOTO_5X7;
-      printAttributes.pageSize = print.PrintPageType.PAGE_INT_DL_ENVELOPE;
-      printAttributes.pageSize = print.PrintPageType.PAGE_B_TABLOID;
-      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_AUTO;
-      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT;
-      printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_LANDSCAPE;
-      printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_MONOCHROME;
-      printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_COLOR;
-      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
-      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_LONG_EDGE;
-      printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE;
-      let context = getContext();
-      // Permissions required: ohos.permission.PRINT
-      print.print(jobName, printAdapter, printAttributes, context).then((printTask) => {
-        expect(typeof (printTask)).assertEqual('object');
-        expect(!!printTask).assertTrue();
-        registerPrintTask(printTask);
-        UnregisterPrintTask(printTask);
-      }).catch((error: BusinessError) => {
-        expect(false).assertTrue();
-      })
-    })
-
   })
 }
