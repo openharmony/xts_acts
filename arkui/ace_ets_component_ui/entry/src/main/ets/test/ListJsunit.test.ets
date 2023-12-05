@@ -46,7 +46,7 @@ export default function ListJsunit() {
     it('ListJsunit_0100', 0, async function (done) {
       // Get the information of the List component
       console.info('[ListJsunit_0100] START');
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(5000);
       let strJson = getInspectorByKey('list');
       let obj = JSON.parse(strJson);
       console.info("[ListJsunit_0100] component obj is: " + JSON.stringify(obj));
