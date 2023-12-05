@@ -16,9 +16,11 @@
 import preferencesDataGroupIdCallback from './preferencesDataGroupIdCallback.test'
 import preferencesDataGroupIdPromise from './preferencesDataGroupIdPromise.test'
 import preferencesDataGroupIdSync from './preferencesDataGroupIdSync.test'
+import preferencesEncryptPromiseTest from './PreferencesEncryptPromiseJsunit.test'
 
 export default function testsuite() {
   preferencesDataGroupIdCallback()
   preferencesDataGroupIdPromise()
   preferencesDataGroupIdSync()
+  preferencesEncryptPromiseTest()
 }
