@@ -30,8 +30,6 @@ struct WebOnFullScreenExit {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State onFullScreenExitCalled: boolean = false;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-  " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State checkEleResult: string = "";
 
   onPageShow() {
@@ -115,7 +113,6 @@ struct WebOnFullScreenExit {
         .domStorageAccess(this.domStorageAccess)
         .onlineImageAccess(this.onlineImageAccess)
         .databaseAccess(this.databaseAccess)
-        .userAgent(this.userAgent)
         .onFullScreenExit(() => {
           console.log("onFullScreenExit...")
           this.onFullScreenExitCalled = true
