@@ -602,7 +602,7 @@ export default function requestDownloadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.index: " + pro.index);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.processed: " + pro.processed);
-            console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.size: " + pro.size);
+            console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.size: " + pro.sizes);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.extras: " + JSON.stringify(pro.extras));
             try {
               await request.agent.remove(task.tid);
@@ -716,7 +716,7 @@ export default function requestDownloadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.index: " + pro.index);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.processed: " + pro.processed);
-            console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.size: " + pro.size);
+            console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.sizes: " + pro.sizes);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.extras: " + JSON.stringify(pro.extras));
             expect(true).assertTrue();
             done();

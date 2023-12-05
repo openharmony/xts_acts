@@ -466,7 +466,7 @@ export default function requestUploadOnetJSUnitTest() {
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
         await request.agent.remove(task.tid);
-        await sleep(10);
+        await sleep(100);
         await request.agent.remove(task.tid);
         expect().assertFail();
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0060 remove success: " + task);
@@ -496,7 +496,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.off('progress', on_progressCallback);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0010 pro: " + JSON.stringify(pro));
             expect(true).assertTrue();
-            await sleep(10);
+            await sleep(100);
             done();
           }
 
@@ -560,13 +560,13 @@ export default function requestUploadOnetJSUnitTest() {
             }, 100)
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0010 catch err: " + JSON.stringify(err));
-            await sleep(10);
+            await sleep(100);
             done();
           }
         });
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0010 create catch err: " + JSON.stringify(err));
-        await sleep(10);
+        await sleep(100);
         done();
       }
     });
@@ -665,7 +665,7 @@ export default function requestUploadOnetJSUnitTest() {
               arr.push(2);
             });
             await task.start();
-            await sleep(20);
+            await sleep(100);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 task progress on arr: " + JSON.stringify(arr));
             task.off('progress');
             expect(arr.join()).assertEqual(arr1.join());
@@ -713,7 +713,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.on('progress', on_progressCallback2);
             task.off('progress');
             await task.start();
-            await sleep(10);
+            await sleep(100);
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0030 task progress on arr: " + JSON.stringify(arr));
             expect(arr.length).assertEqual(0);
             done();
@@ -746,7 +746,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.off('progress', on_progressCallback);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0040 pro: " +  JSON.stringify(pro));
             expect(true).assertTrue();
-            await sleep(10);
+            await sleep(100);
             done();
           }
 
@@ -809,13 +809,13 @@ export default function requestUploadOnetJSUnitTest() {
             }, 100)
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0040 catch err: " + JSON.stringify(err));
-            await sleep(10);
+            await sleep(100);
             done();
           }
         });
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0040 create catch err: " + JSON.stringify(err));
-        await sleep(10);
+        await sleep(100);
         done();
       }
     });
@@ -848,7 +848,7 @@ export default function requestUploadOnetJSUnitTest() {
             //@ts-ignore
             task.on('completed', on_completedCallback, 'a');
             await task.start();
-            await sleep(10);
+            await sleep(100);
             done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_On_Upload_Completed_001 catch err: " + JSON.stringify(err));
@@ -901,13 +901,13 @@ export default function requestUploadOnetJSUnitTest() {
             }, 100)
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 catch err: " + JSON.stringify(err));
-            await sleep(10);
+            await sleep(100);
             done();
           }
         });
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 create catch err: " + JSON.stringify(err));
-        await sleep(10);
+        await sleep(100);
         done();
       }
     });
@@ -945,7 +945,7 @@ export default function requestUploadOnetJSUnitTest() {
               arr.push(2);
             });;
             await task.start();
-            await sleep(10);
+            await sleep(100);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Completed_0030 task completed on arr: " + arr);
             task.off('completed');
             expect(true).assertEqual(true);
@@ -993,7 +993,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.on('completed', on_offCompletedCallback2);
             task.off('completed');
             await task.start();
-            await sleep(10);
+            await sleep(100);
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0030 task completed on arr: " + JSON.stringify(arr));
             expect(arr.length).assertEqual(0);
             done();
@@ -1035,7 +1035,7 @@ export default function requestUploadOnetJSUnitTest() {
             }
             task.on('completed', on_completedCallback);
             await task.start();
-            await sleep(10);
+            await sleep(100);
             done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_On_Upload_Completed_0040 catch err: " + JSON.stringify(err));
@@ -1087,13 +1087,13 @@ export default function requestUploadOnetJSUnitTest() {
             }, 100)
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 catch err: " + JSON.stringify(err));
-            await sleep(10);
+            await sleep(100);
             done();
           }
         });
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 create catch err: " + JSON.stringify(err));
-        await sleep(10);
+        await sleep(100);
         done();
       }
     });
@@ -1284,7 +1284,7 @@ export default function requestUploadOnetJSUnitTest() {
               arr.push(2);
             });
             await task.start();
-            await sleep(20);
+            await sleep(100);
             task.off('failed');
             console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0030 task progress on arr: " + JSON.stringify(arr));
             expect(arr.join()).assertEqual(arr1.join());
@@ -1332,7 +1332,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.on('failed', on_offCompletedCallback2);
             task.off('failed');
             await task.start();
-            await sleep(10);
+            await sleep(100);
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0030 task failed on arr: " + JSON.stringify(arr));
             expect(arr.length).assertEqual(0);
             done();
