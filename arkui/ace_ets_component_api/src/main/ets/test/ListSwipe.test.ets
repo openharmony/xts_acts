@@ -68,7 +68,7 @@ export default function ListSwipeTest() {
     });
 
     afterEach(async function (done) {
-      await sleep(2)
+      await sleep(1000)
       done()
     });
 
