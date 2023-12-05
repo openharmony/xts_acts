@@ -58,7 +58,7 @@ export default function printTest() {
      * @tc.number     print_function_0100
      * @tc.name       Test print
      * @tc.desc       check the print function
-     * @tc.size       MEDIUMTEST
+     * @tc.size       MEDIUM
      * @tc.type       Function
      * @tc.level      Level 2
     */
@@ -79,7 +79,7 @@ export default function printTest() {
      * @tc.number     print_function_0200
      * @tc.name       Test print
      * @tc.desc       check the print function
-     * @tc.size       MEDIUMTEST
+     * @tc.size       MEDIUM
      * @tc.type       Function
      * @tc.level      Level 2
     */
@@ -106,7 +106,7 @@ export default function printTest() {
      * @tc.number     print_function_0300
      * @tc.name       Test print
      * @tc.desc       check the print function
-     * @tc.size       MEDIUMTEST
+     * @tc.size       MEDIUM
      * @tc.type       Function
      * @tc.level      Level 2
     */
@@ -134,7 +134,7 @@ export default function printTest() {
      * @tc.number     print_function_0400
      * @tc.name       Test print
      * @tc.desc       check the print function
-     * @tc.size       MEDIUMTEST
+     * @tc.size       MEDIUM
      * @tc.type       Function
      * @tc.level      Level 2
     */
@@ -200,7 +200,7 @@ export default function printTest() {
      * @tc.number     print_function_0500
      * @tc.name       Test print
      * @tc.desc       check the print function
-     * @tc.size       MEDIUMTEST
+     * @tc.size       MEDIUM
      * @tc.type       Function
      * @tc.level      Level 2
     */
