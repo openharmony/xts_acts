@@ -54,7 +54,15 @@ export default function printTest() {
       })
     }
 
-    it('print_function_0001', 0, function () {
+    /**
+     * @tc.number     print_function_0100
+     * @tc.name       Test print
+     * @tc.desc       check the print function
+     * @tc.size       MEDIUMTEST
+     * @tc.type       Function
+     * @tc.level      Level 2
+    */
+    it('print_function_0100', 0, function () {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       // Permissions required: ohos.permission.PRINT
       print.print(file).then((printTask) => {
@@ -67,7 +75,15 @@ export default function printTest() {
       })
     })
 
-    it('print_function_0002', 0, function () {
+    /**
+     * @tc.number     print_function_0200
+     * @tc.name       Test print
+     * @tc.desc       check the print function
+     * @tc.size       MEDIUMTEST
+     * @tc.type       Function
+     * @tc.level      Level 2
+    */
+    it('print_function_0200', 0, function () {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       try {
         // Permissions required: ohos.permission.PRINT
@@ -86,7 +102,15 @@ export default function printTest() {
       }
     })
 
-    it('print_function_0003', 0, function () {
+    /**
+     * @tc.number     print_function_0300
+     * @tc.name       Test print
+     * @tc.desc       check the print function
+     * @tc.size       MEDIUMTEST
+     * @tc.type       Function
+     * @tc.level      Level 2
+    */
+    it('print_function_0300', 0, function () {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       try {
@@ -106,7 +130,15 @@ export default function printTest() {
       }
     })
 
-    it('print_function_0004', 0, function () {
+    /**
+     * @tc.number     print_function_0400
+     * @tc.name       Test print
+     * @tc.desc       check the print function
+     * @tc.size       MEDIUMTEST
+     * @tc.type       Function
+     * @tc.level      Level 2
+    */
+    it('print_function_0400', 0, function () {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
@@ -164,7 +196,15 @@ export default function printTest() {
       height: number;
     }
 
-    it('print_function_0005', 0, function () {
+    /**
+     * @tc.number     print_function_0500
+     * @tc.name       Test print
+     * @tc.desc       check the print function
+     * @tc.size       MEDIUMTEST
+     * @tc.type       Function
+     * @tc.level      Level 2
+    */
+    it('print_function_0500', 0, function () {
       let jobName : string = 'jobName';
       let printAdapter = new MyPrintDocumentAdapter();
       let printAttributes = new MyPrintAttributes();
