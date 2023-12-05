@@ -22,7 +22,7 @@ export default function ModelSheetTest() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'testability/pages/Index',
+        uri: 'TestAbility/pages/Index',
       }
       try {
         router.clear();
@@ -59,7 +59,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "323", subtitle: "156"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.POPUP);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -98,7 +98,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "title", subtitle: "subtitle"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.CENTER);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.CENTER);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -137,7 +137,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "asdasd", subtitle: "1232561"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.POPUP);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -176,7 +176,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: " ", subtitle: " "
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.CENTER);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.CENTER);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -215,7 +215,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: " ", subtitle: " "
           });
-          expect(indexEvent.data.type).assertEqual(" ");
+          expect(indexEvent.data.preferType).assertEqual(" ");
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -254,7 +254,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "标题", subtitle: "文字"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.POPUP);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -293,7 +293,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "@@@", subtitle: "+++"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.POPUP);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -332,7 +332,7 @@ export default function ModelSheetTest() {
           expect(indexEvent.data.title).assertEqual({
             title: "。。。", subtitle: "，，，"
           });
-          expect(indexEvent.data.type).assertEqual(SheetType.CENTER);
+          expect(indexEvent.data.preferType).assertEqual(SheetType.CENTER);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
           done();
         }
@@ -350,5 +350,6 @@ export default function ModelSheetTest() {
       }
       done();
     });
+
   })
 }

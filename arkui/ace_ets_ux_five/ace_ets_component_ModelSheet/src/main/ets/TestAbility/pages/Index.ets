@@ -28,42 +28,42 @@ struct Index {
   @State blurStyle1: Object = BlurStyle.Thin
   @State showClose1: Object = false
   @State title1: Object = { title: "323", subtitle: "156" }
-  @State type1: Object = SheetType.POPUP
+  @State preferType1: Object = SheetType.POPUP
   @State detents2: Object = [SheetSize.MEDIUM, SheetSize.LARGE, 100]
   @State blurStyle2: Object = BlurStyle.Thick
   @State showClose2: Object = true
   @State title2: Object = { title: "title", subtitle: "subtitle" }
-  @State type2: Object = SheetType.CENTER
+  @State preferType2: Object = SheetType.CENTER
   @State detents3: Object = [100, 100, SheetSize.LARGE]
   @State blurStyle3: Object = BlurStyle.Regular
   @State showClose3: Object = false
   @State title3: Object = { title: "asdasd", subtitle: "1232561" }
-  @State type3: Object = SheetType.POPUP
+  @State preferType3: Object = SheetType.POPUP
   @State detents4: Object = [0, 0, 0]
   @State blurStyle4: Object = BlurStyle.BACKGROUND_REGULAR
   @State showClose4: Object = true
   @State title4: Object = { title: " ", subtitle: " " }
-  @State type4: Object = SheetType.CENTER
+  @State preferType4: Object = SheetType.CENTER
   @State detents5: Object = [, ,]
   @State blurStyle5: Object = " "
   @State showClose5: Object = " "
   @State title5: Object = { title: " ", subtitle: " " }
-  @State type5: Object = " "
+  @State preferType5: Object = " "
   @State detents6: Object = [SheetSize.LARGE, 10000, SheetSize.MEDIUM]
   @State blurStyle6: Object = BlurStyle.BACKGROUND_THIN
   @State showClose6: Object = false
   @State title6: Object = { title: "标题", subtitle: "文字" }
-  @State type6: Object = SheetType.POPUP
+  @State preferType6: Object = SheetType.POPUP
   @State detents7: Object = [0, 100, 12345]
   @State blurStyle7: Object = BlurStyle.BACKGROUND_ULTRA_THICK
   @State showClose7: Object = false
   @State title7: Object = { title: "@@@", subtitle: "+++" }
-  @State type7: Object = SheetType.POPUP
+  @State preferType7: Object = SheetType.POPUP
   @State detents8: Object = [54321, 11111, 123456]
   @State blurStyle8: Object = BlurStyle.NONE
   @State showClose8: Object = true
   @State title8: Object = { title: "。。。", subtitle: "，，，" }
-  @State type8: Object = SheetType.CENTER
+  @State preferType8: Object = SheetType.CENTER
   @State shouldDismiss: Object = true
 
   aboutToAppear() {
@@ -98,7 +98,6 @@ struct Index {
         .margin(10)
         .backgroundColor(Color.Pink)
     }
-
   }
 
   build() {
@@ -115,7 +114,7 @@ struct Index {
                 "blurStyle": this.blurStyle1,
                 "showClose": this.showClose1,
                 "title": this.title1,
-                "type": this.type1,
+                "preferType": this.preferType1,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -134,12 +133,13 @@ struct Index {
           blurStyle: BlurStyle.Thick,
           showClose: true,
           title: { title: "title", subtitle: "subtitle" },
-          type: SheetType.CENTER,
+          preferType: SheetType.CENTER,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
           })
         })
+
 
       Button('ArkUX_Model_Visual_0160')
         .width(200)
@@ -153,7 +153,7 @@ struct Index {
                 "blurStyle": this.blurStyle2,
                 "showClose": this.showClose2,
                 "title": this.title2,
-                "type": this.type2,
+                "preferType": this.preferType2,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -172,7 +172,7 @@ struct Index {
           blurStyle: BlurStyle.Thin,
           showClose: false,
           title: { title: "323", subtitle: "156" },
-          type: SheetType.POPUP,
+          preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -191,7 +191,7 @@ struct Index {
                 "blurStyle": this.blurStyle3,
                 "showClose": this.showClose3,
                 "title": this.title3,
-                "type": this.type3,
+                "preferType": this.preferType3,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -211,7 +211,7 @@ struct Index {
           showClose: false,
           maskColor: Color.Green,
           title: { title: "asdasd", subtitle: "1232561" },
-          type: SheetType.POPUP,
+          preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -230,7 +230,7 @@ struct Index {
                 "blurStyle": this.blurStyle4,
                 "showClose": this.showClose4,
                 "title": this.title4,
-                "type": this.type4,
+                "preferType": this.preferType4,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -250,7 +250,7 @@ struct Index {
           showClose: true,
           maskColor: Color.Green,
           title: { title: " ", subtitle: " " },
-          type: SheetType.CENTER,
+          preferType: SheetType.CENTER,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -269,7 +269,7 @@ struct Index {
                 "blurStyle": this.blurStyle5,
                 "showClose": this.showClose5,
                 "title": this.title5,
-                "type": this.type5,
+                "preferType": this.preferType5,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -289,7 +289,7 @@ struct Index {
           showClose: null,
           maskColor: Color.Green,
           title: { title: null, subtitle: null },
-          type: null,
+          preferType: null,
           shouldDismiss: (null)
         })
 
@@ -305,7 +305,7 @@ struct Index {
                 "blurStyle": this.blurStyle6,
                 "showClose": this.showClose6,
                 "title": this.title6,
-                "type": this.type6,
+                "preferType": this.preferType6,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -325,7 +325,7 @@ struct Index {
           showClose: false,
           maskColor: Color.Green,
           title: { title: "标题", subtitle: "文字" },
-          type: SheetType.POPUP,
+          preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -344,7 +344,7 @@ struct Index {
                 "blurStyle": this.blurStyle7,
                 "showClose": this.showClose7,
                 "title": this.title7,
-                "type": this.type7,
+                "preferType": this.preferType7,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -364,7 +364,7 @@ struct Index {
           showClose: false,
           maskColor: Color.Green,
           title: { title: "@@@", subtitle: "+++" },
-          type: SheetType.POPUP,
+          preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -383,7 +383,7 @@ struct Index {
                 "blurStyle": this.blurStyle8,
                 "showClose": this.showClose8,
                 "title": this.title8,
-                "type": this.type8,
+                "preferType": this.preferType8,
                 "shouldDismiss": this.shouldDismiss,
               }
             }
@@ -403,7 +403,7 @@ struct Index {
           showClose: true,
           maskColor: Color.Green,
           title: { title: "。。。", subtitle: "，，，" },
-          type: SheetType.CENTER,
+          preferType: SheetType.CENTER,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
