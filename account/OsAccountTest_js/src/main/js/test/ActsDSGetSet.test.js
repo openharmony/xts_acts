@@ -56,7 +56,7 @@ export default function ActsDAGetSetTest() {
                         expect(distributedInfo.name).assertEqual('ZhangSan');
                         expect(distributedInfo.id).assertEqual(uid)
                         accountAbility.setOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
-                            console.debug('====>ActsDADeviceId_0100 logout_result:'+ JSON.stringify(err))
+                            console.info('====>ActsDADeviceId_0100 logout_result:'+ JSON.stringify(err))
                             expect(err).assertEqual(null)
                             console.log("====>test query distribtued id end");
                             done();
@@ -74,7 +74,7 @@ export default function ActsDAGetSetTest() {
         it('getDistributedAccountAbility_test', 0, async function (done) {
             var ret = false;
             const accountAbility = account.getDistributedAccountAbility()
-            console.debug("====>getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
+            console.info("====>getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
             if(accountAbility !== null){
                 ret = true;
             }
@@ -90,7 +90,7 @@ export default function ActsDAGetSetTest() {
         it('getOsAccountDistributedInfo_test001', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo().then( (data) => {
-                console.debug('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                console.info('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
                 expect(data.status).assertEqual(0)
@@ -106,8 +106,8 @@ export default function ActsDAGetSetTest() {
         it('getOsAccountDistributedInfo_test002', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfo((err, data) => {
-                console.debug('====>getOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
-                console.debug('====>getOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
+                console.info('====>getOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                console.info('====>getOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
                 expect(err).assertEqual(null)
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
@@ -124,7 +124,7 @@ export default function ActsDAGetSetTest() {
         it('getOsAccountDistributedInfoByLocalId_test001', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100).then(function (data) {
-                console.debug('====>getOsAccountDistributedInfoByLocalId_test001 data:' + JSON.stringify(data))
+                console.info('====>getOsAccountDistributedInfoByLocalId_test001 data:' + JSON.stringify(data))
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
                 expect(data.status).assertEqual(0)
@@ -140,8 +140,8 @@ export default function ActsDAGetSetTest() {
         it('getOsAccountDistributedInfoByLocalId_test002', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
             accountAbility.getOsAccountDistributedInfoByLocalId(100, function (err, data) {
-                console.debug('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))
-                console.debug('====>getOsAccountDistributedInfoByLocalId_test002 data:' + JSON.stringify(data))
+                console.info('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))
+                console.info('====>getOsAccountDistributedInfoByLocalId_test002 data:' + JSON.stringify(data))
                 expect(err).assertEqual(null)
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
@@ -165,8 +165,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(function () {
                 accountAbility.getOsAccountDistributedInfo(function (err, data) {
-                    console.debug('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
-                    console.debug('====>setOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                    console.info('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
+                    console.info('====>setOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -177,13 +177,13 @@ export default function ActsDAGetSetTest() {
                     };
                     accountAbility.setOsAccountDistributedInfo(obj).then(function () {
                         accountAbility.getOsAccountDistributedInfo(function (err, data) {
-                            console.debug('====>setOsAccountDistributedInfo_test001 get ccerr:' + JSON.stringify(err))
-                            console.debug('====>setOsAccountDistributedInfo_test001 get ccdata:' + JSON.stringify(data))
+                            console.info('====>setOsAccountDistributedInfo_test001 get ccerr:' + JSON.stringify(err))
+                            console.info('====>setOsAccountDistributedInfo_test001 get ccdata:' + JSON.stringify(data))
                             expect(err).assertEqual(null)
                             done();
                         })
                     }).catch((err) => {
-                        console.debug('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
@@ -206,10 +206,10 @@ export default function ActsDAGetSetTest() {
                 scalableData:{}
             };
             accountAbility.setOsAccountDistributedInfo(obj, function (err) {
-                console.debug('====>setOsAccountDistributedInfo_test002 ccerr callback:' + JSON.stringify(err))
+                console.info('====>setOsAccountDistributedInfo_test002 ccerr callback:' + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(function (err, data) {
-                    console.debug('====>setOsAccountDistributedInfo_test002 get ccerr:' + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfo_test002 get data:" + JSON.stringify(data))
+                    console.info('====>setOsAccountDistributedInfo_test002 get ccerr:' + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test002 get data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -221,7 +221,7 @@ export default function ActsDAGetSetTest() {
                     accountAbility.setOsAccountDistributedInfo(obj).then(function () {
                         done();
                     }).catch((err) => {
-                        console.debug('====>setOsAccountDistributedInfo_test002 set ccerr:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test002 set ccerr:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     });
@@ -243,7 +243,7 @@ export default function ActsDAGetSetTest() {
                 scalableData:{}
             };
             accountAbility.setOsAccountDistributedInfo(obj, async (err)=> {
-                console.debug("====>setOsAccountDistributedInfo_test003 set_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test003 set_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300001)
                 done();
             });
@@ -263,10 +263,10 @@ export default function ActsDAGetSetTest() {
                 scalableData:{}
             };
             accountAbility.setOsAccountDistributedInfo(obj, async (err)=>{
-                console.debug("====>setOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) => {
-                    console.debug("====>setOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -277,10 +277,10 @@ export default function ActsDAGetSetTest() {
                     };
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>setOsAccountDistributedInfo_test004 end')
+                        console.info('====>setOsAccountDistributedInfo_test004 end')
                         done();
                     }catch(err){
-                        console.debug('====>setOsAccountDistributedInfo_test004 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test004 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -304,10 +304,10 @@ export default function ActsDAGetSetTest() {
                 nickname:'test'
             };
             accountAbility.setOsAccountDistributedInfo(obj, function (err) {
-                console.debug("====>updateOsAccountDistributedInfo_test005 set_err:" + JSON.stringify(err))
+                console.info("====>updateOsAccountDistributedInfo_test005 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) => {
-                    console.debug("====>updateOsAccountDistributedInfo_test005 get_err:" + JSON.stringify(err))
-                    console.debug("====>updateOsAccountDistributedInfo_test005 get_data:" + JSON.stringify(data))
+                    console.info("====>updateOsAccountDistributedInfo_test005 get_err:" + JSON.stringify(err))
+                    console.info("====>updateOsAccountDistributedInfo_test005 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -316,13 +316,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>setOsAccountDistributedInfo_test005 end')
+                        console.info('====>setOsAccountDistributedInfo_test005 end')
                         done();
                     }catch(err){
-                        console.debug('====>setOsAccountDistributedInfo_test005 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test005 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -347,8 +347,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(() => {
                 accountAbility.getOsAccountDistributedInfo(function (err, data) {
-                    console.debug("====>setOsAccountDistributedInfo_test006 get_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfo_test006 get_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfo_test006 get_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test006 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -357,14 +357,14 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfo(obj).then(function (err) {
-                        console.debug("====>LOGOFF err:" + JSON.stringify(err))
+                        console.info("====>LOGOFF err:" + JSON.stringify(err))
                         expect(err).assertEqual(null)
                         done();
                     });
                 }).catch((err) => {
-                    console.debug("====>setOsAccountDistributedInfo_test006 update_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test006 update_err:" + JSON.stringify(err))
                     expect().assertFail();
                     done();
                 })
@@ -387,10 +387,10 @@ export default function ActsDAGetSetTest() {
                 avatar:'test'
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err) => {
-                console.debug("====>setOsAccountDistributedInfo_test007 set_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test007 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
-                    console.debug("====>setOsAccountDistributedInfo_test007 get_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfo_test007 get_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfo_test007 get_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test007 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -399,13 +399,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>setOsAccountDistributedInfo_test007 end')
+                        console.info('====>setOsAccountDistributedInfo_test007 end')
                         done();
                     }catch(err){
-                        console.debug('====>setOsAccountDistributedInfo_test007 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test007 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -430,8 +430,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(() => {
                 accountAbility.getOsAccountDistributedInfo((err, data) => {
-                    console.debug("====>setOsAccountDistributedInfo_test008 get_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfo_test008 get_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfo_test008 get_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfo_test008 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -440,18 +440,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfo(obj).then(() => {
-                        console.debug('====>setOsAccountDistributedInfo_test008 end')
+                        console.info('====>setOsAccountDistributedInfo_test008 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>setOsAccountDistributedInfo_test008 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfo_test008 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>setOsAccountDistributedInfo_test008 throw_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test008 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -478,7 +478,7 @@ export default function ActsDAGetSetTest() {
                 avatar:'test'
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
-                console.debug("====>setOsAccountDistributedInfo_test009 set_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test009 set_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
                 done();
             })
@@ -505,11 +505,11 @@ export default function ActsDAGetSetTest() {
                 avatar:'test'
             };
             accountAbility.setOsAccountDistributedInfo(obj).then((err) => {
-                console.debug("====>setOsAccountDistributedInfo_test010 err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test010 err:" + JSON.stringify(err))
                 expect().assertFail()
                 done();
             }).catch((err) => {
-                console.debug("====>setOsAccountDistributedInfo_test010 throw_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test010 throw_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
                 done();
             })
@@ -524,7 +524,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test011', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
-            console.debug('====>setOsAccountDistributedInfo_test011 avatar_length:' + limitAvatar.length)
+            console.info('====>setOsAccountDistributedInfo_test011 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
                 name: 'ZhangSan',
@@ -532,9 +532,9 @@ export default function ActsDAGetSetTest() {
                 scalableData:{},
                 avatar: limitAvatar
             };
-            console.debug(JSON.stringify(obj))
+            console.info(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
-                console.debug("====>setOsAccountDistributedInfo_test011 update_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test011 update_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
                 done();
             })
@@ -549,8 +549,8 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test012', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
-            console.debug(limitAvatar.length)
-            console.debug('====>setOsAccountDistributedInfo_test012 avatar_length:' + limitAvatar.length)
+            console.info(limitAvatar.length)
+            console.info('====>setOsAccountDistributedInfo_test012 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
                 name: 'ZhangSan',
@@ -560,11 +560,11 @@ export default function ActsDAGetSetTest() {
             };
             try{
                 await accountAbility.setOsAccountDistributedInfo(obj)
-                console.debug("====>setOsAccountDistributedInfo_test012 set_err")
+                console.info("====>setOsAccountDistributedInfo_test012 set_err")
                 expect().assertFail()
                 done();
             }catch(err){
-                console.debug("====>setOsAccountDistributedInfo_test012 throw_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test012 throw_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
                 done();
             }
@@ -588,9 +588,9 @@ export default function ActsDAGetSetTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:limitInfo,
             };
-            console.debug(JSON.stringify(obj))
+            console.info(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
-                console.debug("====>setOsAccountDistributedInfo_test013 update_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test013 update_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
                 done();
             })
@@ -619,7 +619,7 @@ export default function ActsDAGetSetTest() {
                 expect().assertFail()
                 done();
             }catch(err){
-                console.debug("====>setOsAccountDistributedInfo_test014 throw_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test014 throw_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002)
                 done();
             }
@@ -640,10 +640,10 @@ export default function ActsDAGetSetTest() {
                 status: 0
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
-                console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 set_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfoByLocalId_test0100 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
-                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfoByLocalId_test0100 get_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfoByLocalId_test0100 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -653,13 +653,13 @@ export default function ActsDAGetSetTest() {
                         event: 'Ohos.account.event.LOGOFF',
                         status: 0
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
-                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0100 end')
+                        console.info('====>setOsAccountDistributedInfoByLocalId_test0100 end')
                         done();
                     }catch(err){
-                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0100 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfoByLocalId_test0100 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -683,8 +683,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
-                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_err:" + JSON.stringify(err))
-                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_data:" + JSON.stringify(data))
+                    console.info("====>setOsAccountDistributedInfoByLocalId_test0200 get_err:" + JSON.stringify(err))
+                    console.info("====>setOsAccountDistributedInfoByLocalId_test0200 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -694,18 +694,18 @@ export default function ActsDAGetSetTest() {
                         event: 'Ohos.account.event.LOGOFF',
                         status: 0
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
-                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0200 end')
+                        console.info('====>setOsAccountDistributedInfoByLocalId_test0200 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0200 err:' + JSON.stringify(err))
+                        console.info('====>setOsAccountDistributedInfoByLocalId_test0200 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 throw_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfoByLocalId_test0200 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -719,10 +719,10 @@ export default function ActsDAGetSetTest() {
         it('DistributedAccountEnum_0100', 0, async function (done) {
             try {
                 expect(0).assertEqual(account.DistributedAccountStatus.NOT_LOGGED_IN)
-                console.debug("====>DistributedAccountEnum_0100 success:")
+                console.info("====>DistributedAccountEnum_0100 success:")
                 done()
             } catch (err) {
-                console.debug("====>DistributedAccountEnum_0100 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountEnum_0100 throw_err:" + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -736,10 +736,10 @@ export default function ActsDAGetSetTest() {
         it('DistributedAccountEnum_0200', 0, async function (done) {
             try {
                 expect(1).assertEqual(account.DistributedAccountStatus.LOGGED_IN)
-                console.debug("====>DistributedAccountEnum_0200 success:")
+                console.info("====>DistributedAccountEnum_0200 success:")
                 done()
             } catch (err) {
-                console.debug("====>DistributedAccountEnum_0200 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountEnum_0200 throw_err:" + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -763,10 +763,10 @@ export default function ActsDAGetSetTest() {
                 status:undefined
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0100 set_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0100 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
-                    console.debug("====>DistributedAccountOptionalParameter_0100 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0100 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0100 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0100 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -775,13 +775,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>DistributedAccountOptionalParameter_0100 end')
+                        console.info('====>DistributedAccountOptionalParameter_0100 end')
                         done();
                     }catch(err){
-                        console.debug('====>DistributedAccountOptionalParameter_0100 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0100 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -808,8 +808,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(() => {
                 accountAbility.getOsAccountDistributedInfo((err, data) => {
-                    console.debug("====>DistributedAccountOptionalParameter_0200 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0200 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0200 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0200 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -818,18 +818,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF',
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfo(obj).then(() => {
-                        console.debug('====>DistributedAccountOptionalParameter_0200 end')
+                        console.info('====>DistributedAccountOptionalParameter_0200 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>DistributedAccountOptionalParameter_0200 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0200 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0200 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0200 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -853,10 +853,10 @@ export default function ActsDAGetSetTest() {
                 status:null
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err) => {
-                console.debug("====>setOsAccountDistributedInfo_test017 set_err:" + JSON.stringify(err))
+                console.info("====>setOsAccountDistributedInfo_test017 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
-                    console.debug("====>DistributedAccountOptionalParameter_0300 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0300 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0300 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0300 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -865,13 +865,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>DistributedAccountOptionalParameter_0300 end')
+                        console.info('====>DistributedAccountOptionalParameter_0300 end')
                         done();
                     }catch(err){
-                        console.debug('====>DistributedAccountOptionalParameter_0300 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0300 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -898,8 +898,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(() => {
                 accountAbility.getOsAccountDistributedInfo((err, data) => {
-                    console.debug("====>DistributedAccountOptionalParameter_0400 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0400 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0400 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0400 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -908,18 +908,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF',
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfo(obj).then(() => {
-                        console.debug('====>DistributedAccountOptionalParameter_0400 end')
+                        console.info('====>DistributedAccountOptionalParameter_0400 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>DistributedAccountOptionalParameter_0400 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0400 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0400 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0400 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -939,10 +939,10 @@ export default function ActsDAGetSetTest() {
                 event: 'Ohos.account.event.LOGIN'
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0500 set_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0500 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
-                    console.debug("====>DistributedAccountOptionalParameter_0500 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0500 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0500 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0500 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -951,13 +951,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfo(obj)
-                        console.debug('====>DistributedAccountOptionalParameter_0500 end')
+                        console.info('====>DistributedAccountOptionalParameter_0500 end')
                         done();
                     }catch(err){
-                        console.debug('====>DistributedAccountOptionalParameter_0500 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0500 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -980,8 +980,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(() => {
                 accountAbility.getOsAccountDistributedInfo((err, data) => {
-                    console.debug("====>DistributedAccountOptionalParameter_0600 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0600 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0600 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0600 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -990,18 +990,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF',
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfo(obj).then(() => {
-                        console.debug('====>DistributedAccountOptionalParameter_0600 end')
+                        console.info('====>DistributedAccountOptionalParameter_0600 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>DistributedAccountOptionalParameter_0600 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0600 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0600 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0600 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -1025,10 +1025,10 @@ export default function ActsDAGetSetTest() {
                 status:null
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0700 set_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0700 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
-                    console.debug("====>DistributedAccountOptionalParameter_0700 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0700 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0700 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0700 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -1037,13 +1037,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
-                        console.debug('====>DistributedAccountOptionalParameter_0700 end')
+                        console.info('====>DistributedAccountOptionalParameter_0700 end')
                         done();
                     }catch(err){
-                        console.debug('====>DistributedAccountOptionalParameter_0700 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0700 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -1070,8 +1070,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
-                    console.debug("====>DistributedAccountOptionalParameter_0800 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0800 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0800 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0800 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -1080,18 +1080,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
-                        console.debug('====>DistributedAccountOptionalParameter_0800 end')
+                        console.info('====>DistributedAccountOptionalParameter_0800 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>DistributedAccountOptionalParameter_0800 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0800 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0800 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0800 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })
@@ -1115,10 +1115,10 @@ export default function ActsDAGetSetTest() {
                 status:undefined
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
-                console.debug("====>DistributedAccountOptionalParameter_0900 set_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_0900 set_err:" + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
-                    console.debug("====>DistributedAccountOptionalParameter_0900 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_0900 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_0900 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_0900 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -1127,13 +1127,13 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     try{
                         await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
-                        console.debug('====>DistributedAccountOptionalParameter_0900 end')
+                        console.info('====>DistributedAccountOptionalParameter_0900 end')
                         done();
                     }catch(err){
-                        console.debug('====>DistributedAccountOptionalParameter_0900 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_0900 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     }
@@ -1160,8 +1160,8 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
                 accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
-                    console.debug("====>DistributedAccountOptionalParameter_1000 get_err:" + JSON.stringify(err))
-                    console.debug("====>DistributedAccountOptionalParameter_1000 get_data:" + JSON.stringify(data))
+                    console.info("====>DistributedAccountOptionalParameter_1000 get_err:" + JSON.stringify(err))
+                    console.info("====>DistributedAccountOptionalParameter_1000 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
@@ -1170,18 +1170,18 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOFF'
                     };
-                    console.debug("====>start LOGOFF")
+                    console.info("====>start LOGOFF")
                     accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
-                        console.debug('====>DistributedAccountOptionalParameter_1000 end')
+                        console.info('====>DistributedAccountOptionalParameter_1000 end')
                         done();
                     }).catch((err) => {
-                        console.debug('====>DistributedAccountOptionalParameter_1000 err:' + JSON.stringify(err))
+                        console.info('====>DistributedAccountOptionalParameter_1000 err:' + JSON.stringify(err))
                         expect().assertFail();
                         done();
                     })
                 });
             }).catch((err) => {
-                console.debug("====>DistributedAccountOptionalParameter_1000 throw_err:" + JSON.stringify(err))
+                console.info("====>DistributedAccountOptionalParameter_1000 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
             })

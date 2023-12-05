@@ -24,19 +24,19 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : Set the added account to allow synchronization without permission
         */
         it('ActsAccountErrPermission_0100', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0100 start====");
+            console.info("====>ActsAccountErrPermission_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("syncenable_callback_setnopermission", (err)=>{
-                console.debug("====>add account ActsAccountErrPermission_0100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountErrPermission_0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setDataSyncEnabled("syncenable_callback_setnopermission", true, (err)=>{
-                    console.debug("====>setDataSyncEnabled 0100 err:" + JSON.stringify(err));
+                    console.info("====>setDataSyncEnabled 0100 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
                     appAccountManager.removeAccount("syncenable_callback_setnopermission", (err)=>{
-                        console.debug("====>delete Account ActsAccountErrPermission_0100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountErrPermission_0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountErrPermission_0100 end====");
+                        console.info("====>ActsAccountErrPermission_0100 end====");
                         done();
                     }); 
                 })
@@ -49,21 +49,21 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : Set the added account to allow synchronization without permission
         */
         it('ActsAccountErrPermission_0200', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0200 start====");
+            console.info("====>ActsAccountErrPermission_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountErrPermission_0200 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountErrPermission_0200 start====");
             await appAccountManager.createAccount("syncenable_promise_setnopermission");
-            console.debug("====>setDataSyncEnabled ActsAccountErrPermission_0200 start====");
+            console.info("====>setDataSyncEnabled ActsAccountErrPermission_0200 start====");
             try{
                 await appAccountManager.setDataSyncEnabled("syncenable_promise_setnopermission", true);
             }
             catch(err){
-                console.debug("====>setDataSyncEnabled 0200 err:" + JSON.stringify(err));
+                console.info("====>setDataSyncEnabled 0200 err:" + JSON.stringify(err));
                 expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
-                console.debug("====>delete account ActsAccountErrPermission_0200 start====");
+                console.info("====>delete account ActsAccountErrPermission_0200 start====");
                 await appAccountManager.removeAccount("syncenable_promise_setnopermission");
-                console.debug("====>ActsAccountErrPermission_0200 end====");
+                console.info("====>ActsAccountErrPermission_0200 end====");
                 done();
             }
         });
@@ -74,19 +74,19 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : Check the added account synchronization without permission
         */
         it('ActsAccountErrPermission_0300', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0300 start====");
+            console.info("====>ActsAccountErrPermission_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("syncenable_callback_checknopermission", (err)=>{
-                console.debug("====>add account ActsAccountErrPermission_0300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountErrPermission_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.checkDataSyncEnabled("syncenable_callback_checknopermission", (err, data)=>{
-                    console.debug("====>checkDataSyncEnable 0300 err:" + JSON.stringify(err));
+                    console.info("====>checkDataSyncEnable 0300 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
                     appAccountManager.removeAccount("syncenable_callback_checknopermission", (err)=>{
-                        console.debug("====>delete Account ActsAccountErrPermission_0300 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountErrPermission_0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountErrPermission_0300 end====");
+                        console.info("====>ActsAccountErrPermission_0300 end====");
                         done();
                     });
                 })
@@ -99,20 +99,20 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : Check the added account synchronization without permission
         */
         it('ActsAccountErrPermission_0400', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0400 start====");
+            console.info("====>ActsAccountErrPermission_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountErrPermission_0400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountErrPermission_0400 start====");
             await appAccountManager.createAccount("syncenable_promise_checknopermission");
-            console.debug("====>checkDataSyncEnable ActsAccountErrPermission_0400 start====");
+            console.info("====>checkDataSyncEnable ActsAccountErrPermission_0400 start====");
             try{
                 var data = await appAccountManager.checkDataSyncEnabled("syncenable_promise_checknopermission");
             }
             catch(err){
-                console.debug("====>checkDataSyncEnable 0400 err:" + JSON.stringify(err));
+                console.info("====>checkDataSyncEnable 0400 err:" + JSON.stringify(err));
                 expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
                 await appAccountManager.removeAccount("syncenable_promise_checknopermission");
-                console.debug("====>ActsAccountErrPermission_0400 end====");
+                console.info("====>ActsAccountErrPermission_0400 end====");
                 done();
             }
         });
@@ -123,21 +123,21 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : This application gets authorization after adding a single account without permission
         */
         it('ActsAccountErrPermission_0500', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0500 start====");
+            console.info("====>ActsAccountErrPermission_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("accessibleAccount_callback_nopermission", (err)=>{
-                console.debug("====>add account ActsAccountErrPermission_0500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountErrPermission_0500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);                
                 appAccountManager.getAllAccounts((err, data)=>{
-                    console.debug("====>getAllAccounts 0500 err:" + JSON.stringify(err));
+                    console.info("====>getAllAccounts 0500 err:" + JSON.stringify(err));
                     expect(data.length).assertEqual(1);
                     expect(data[0].name).assertEqual("accessibleAccount_callback_nopermission");
                     expect(data[0].owner).assertEqual("com.example.actsaccountoperatetest");
                     appAccountManager.removeAccount("accessibleAccount_callback_nopermission", (err)=>{
-                        console.debug("====>delete Account ActsAccountErrPermission_0500 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountErrPermission_0500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountErrPermission_0500 end====");
+                        console.info("====>ActsAccountErrPermission_0500 end====");
                         done();
                     })
                 });
@@ -150,24 +150,24 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : This application gets authorization after adding a single account without permission
         */
         it('ActsAccountErrPermission_0600', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0600 start====");
+            console.info("====>ActsAccountErrPermission_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountErrPermission_0600 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountErrPermission_0600 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_nopermission");
-            console.debug("====>getAllAccounts 0600 start====");
+            console.info("====>getAllAccounts 0600 start====");
             try{
                 var data = await appAccountManager.getAllAccounts();
                 expect(data.length).assertEqual(1);
                 expect(data[0].name).assertEqual("accessibleAccount_promise_nopermission");
                 expect(data[0].owner).assertEqual("com.example.actsaccountoperatetest");
-                console.debug("====>getAllAccounts 0600 err:" + JSON.stringify(data));
+                console.info("====>getAllAccounts 0600 err:" + JSON.stringify(data));
                 await appAccountManager.removeAccount("accessibleAccount_promise_nopermission");
-                console.debug("====>ActsAccountErrPermission_0600 end====");
+                console.info("====>ActsAccountErrPermission_0600 end====");
                 done();
             }
             catch(err){
-                console.debug("====>getAllAccounts 0600 err:" + JSON.stringify(err));
+                console.info("====>getAllAccounts 0600 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
@@ -179,21 +179,21 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : This application gets its own application information after adding an account without permission
         */
         it('ActsAccountErrPermission_0700', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0700 start====");
+            console.info("====>ActsAccountErrPermission_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var selfBundle = "com.example.actsaccountoperatetest";
             appAccountManager.createAccount("getAll_callback_nopermission", (err)=>{
-                console.debug("====>add account 0700 err:" + JSON.stringify(err));
+                console.info("====>add account 0700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAccountsByOwner(selfBundle, (err, data)=>{
-                    console.debug("====>getAccountsByOwner 0700 err:" + JSON.stringify(err));
+                    console.info("====>getAccountsByOwner 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     expect(data.length>0).assertEqual(true);
                     appAccountManager.removeAccount("getAll_callback_nopermission", (err)=>{
-                        console.debug("====>delete account 0700 err:" + JSON.stringify(err));
+                        console.info("====>delete account 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountErrPermission_0700 end====");
+                        console.info("====>ActsAccountErrPermission_0700 end====");
                         done();
                     });
                 })
@@ -206,16 +206,16 @@ export default function ActsAccountErrPermission() {
         * @tc.desc      : This application gets its own application information after adding an account without permission
         */
         it('ActsAccountErrPermission_0800', 0, async function (done) {
-            console.debug("====>ActsAccountErrPermission_0800 start====");
+            console.info("====>ActsAccountErrPermission_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var selfBundle = "com.example.actsaccountoperatetest";
-            console.debug("====>add account 0800 start====");
+            console.info("====>add account 0800 start====");
             await appAccountManager.createAccount("getAll_promise_nopermission");
-            console.debug("====>getAccountsByOwner 0800 start====");
+            console.info("====>getAccountsByOwner 0800 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(selfBundle);
-                console.debug("====>getAll_promise_nopermission data:" + JSON.stringify(data))
+                console.info("====>getAll_promise_nopermission data:" + JSON.stringify(data))
                 expect(data.length>0).assertEqual(true);
                 done();
             }
@@ -223,7 +223,7 @@ export default function ActsAccountErrPermission() {
                 console.error("====>getAccountsByOwner 0800 err:" + JSON.stringify(err));
                 expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
                 await appAccountManager.removeAccount("getAll_promise_nopermission");      
-                console.debug("====>ActsAccountErrPermission_0800 end====");
+                console.info("====>ActsAccountErrPermission_0800 end====");
                 done();
             }          
         });

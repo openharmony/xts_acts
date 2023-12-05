@@ -24,19 +24,19 @@ export default {
         this.title = "scene accessible account";
     },
     onShow() {
-        console.debug('====>scene accessible account start====');
+        console.info('====>scene accessible account start====');
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>creat scene manager finish====");
+        console.info("====>creat scene manager finish====");
         var enableBundle = "com.example.actsgetallaccessibleaccounts";
         var enableBundle2 = "com.example.getallaccountsnoparameter";
-        console.debug("====>add account scene start====");
+        console.info("====>add account scene start====");
         appAccountManager.createAccount("account_name_scene_single", (err)=>{
-            console.debug("====>add account scene err:" + JSON.stringify(err));
+            console.info("====>add account scene err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
-                console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
             });
             appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
-                console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
             });
         });
     },

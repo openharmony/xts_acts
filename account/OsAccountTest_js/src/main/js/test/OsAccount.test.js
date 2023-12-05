@@ -39,7 +39,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
         it('ActsDistributedAccountDeviceId_0100', 0, async function(done){
-            console.debug('====>ActsDistributedAccountDeviceId_0100 start====')
+            console.info('====>ActsDistributedAccountDeviceId_0100 start====')
             try {
                 console.log("====>test query distribtued id start");
                 const accountAbility = account.getDistributedAccountAbility();
@@ -56,9 +56,9 @@ export default function AccountTest() {
                             console.log("====>query distributedInfo:" + JSON.stringify(distributedInfo));
                             expect(distributedInfo.name).assertEqual('ZhangSan');
                             expect(distributedInfo.id).assertEqual(uid)
-                            console.debug('success')
+                            console.info('success')
                             accountAbility.updateOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
-                                console.debug('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
+                                console.info('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
                                 expect(err).assertEqual(undefined)
                                 console.log("====>test query distribtued id end");
                                 done();
@@ -67,7 +67,7 @@ export default function AccountTest() {
                     })
                 })
             } catch (err){
-                console.debug('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
+                console.info('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -80,18 +80,18 @@ export default function AccountTest() {
         * @tc.desc      Test distributedAccount.getDistributedAccountAbility API functionality.
         */
         it('account_getDistributedAccountAbility_test', 0, async function (done) {
-            console.debug('====>account_getDistributedAccountAbility_test start====')
+            console.info('====>account_getDistributedAccountAbility_test start====')
             try {
                 var ret = false;
                 const accountAbility = account.getDistributedAccountAbility()
-                console.debug("====>account_getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
+                console.info("====>account_getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
                 if(accountAbility !== null){
                     ret = true;
                 }
                 expect(ret).assertTrue()
                 done();
             } catch (err){
-                console.debug('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
+                console.info('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -103,17 +103,17 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality.
         */
         it('account_queryOsAccountDistributedInfo_test001', 0, async function (done) {
-            console.debug('====>account_queryOsAccountDistributedInfo_test001 start====')
+            console.info('====>account_queryOsAccountDistributedInfo_test001 start====')
             try {
                 let accountAbility = account.getDistributedAccountAbility()
                 accountAbility.queryOsAccountDistributedInfo().then(function (data) {
-                    console.debug('====>account_queryOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                    console.info('====>account_queryOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ohosAnonymousName')
                     expect(data.id).assertEqual('ohosAnonymousUid')
                     done();
                 });
             } catch (err){
-                console.debug('====>account_queryOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
+                console.info('====>account_queryOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -125,19 +125,19 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
         it('account_queryOsAccountDistributedInfo_test002', 0, async function (done) {
-            console.debug('====>account_queryOsAccountDistributedInfo_test002 start')
+            console.info('====>account_queryOsAccountDistributedInfo_test002 start')
             try {
                 let accountAbility = account.getDistributedAccountAbility()
                 accountAbility.queryOsAccountDistributedInfo(function (err, data) {
-                    console.debug('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
-                    console.debug('====>account_queryOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
+                    console.info('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                    console.info('====>account_queryOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
                     expect(err).assertEqual(undefined)
                     expect(data.name).assertEqual('ohosAnonymousName')
                     expect(data.id).assertEqual('ohosAnonymousUid')
                     done();
                 });
             } catch (err){
-                console.debug('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                console.info('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -149,7 +149,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
         */
         it('account_updateOsAccountDistributedInfo_test001', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test001 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test001 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
             let obj = {
@@ -161,7 +161,7 @@ export default function AccountTest() {
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                        console.info('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -176,7 +176,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -188,7 +188,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test002', 0,  async function (done)  {
-            console.debug('====>account_updateOsAccountDistributedInfo_test002 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test002 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -199,7 +199,7 @@ export default function AccountTest() {
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -214,7 +214,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -226,7 +226,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test003', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test003 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test003 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
             let obj = {
@@ -237,15 +237,15 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, async function (result) {
-                    console.debug("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
+                    console.info("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
                     await accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual("ohosAnonymousName")
                         done();
                     })
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test003 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test003 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -257,7 +257,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test004', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test004 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test004 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -267,10 +267,10 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function (err) {
-                    console.debug("====>account_updateOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
+                    console.info("====>account_updateOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
-                        console.debug("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
+                        console.info("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -285,7 +285,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test004 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test004 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -297,7 +297,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
         it('account_updateOsAccountDistributedInfo_test005', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test005 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test005 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -311,7 +311,7 @@ export default function AccountTest() {
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug('====>account_updateOsAccountDistributedInfo_test005 data:' + JSON.stringify(data))
+                        console.info('====>account_updateOsAccountDistributedInfo_test005 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -330,7 +330,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test005 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test005 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -342,7 +342,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
         it('account_updateOsAccountDistributedInfo_test006', 0,  async function (done)  {
-            console.debug('====>account_updateOsAccountDistributedInfo_test006 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test006 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -356,7 +356,7 @@ export default function AccountTest() {
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test006 data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test006 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -371,7 +371,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test006 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test006 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -383,7 +383,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
         it('account_updateOsAccountDistributedInfo_test007', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test007 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test007 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -397,7 +397,7 @@ export default function AccountTest() {
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug('====>account_updateOsAccountDistributedInfo_test007 data:' + JSON.stringify(data))
+                        console.info('====>account_updateOsAccountDistributedInfo_test007 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -412,7 +412,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test007 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test007 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -424,7 +424,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
         it('account_updateOsAccountDistributedInfo_test008', 0,  async function (done)  {
-            console.debug('====>account_updateOsAccountDistributedInfo_test008 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test008 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -438,7 +438,7 @@ export default function AccountTest() {
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test008 data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test008 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -453,7 +453,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test008 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test008 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -465,7 +465,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
          */
         it('account_updateOsAccountDistributedInfo_test009', 0, async function (done) {
-            console.debug('====>account_updateOsAccountDistributedInfo_test009 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test009 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -475,7 +475,7 @@ export default function AccountTest() {
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug('====>account_updateOsAccountDistributedInfo_test009 data:' + JSON.stringify(data))
+                        console.info('====>account_updateOsAccountDistributedInfo_test009 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -490,7 +490,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test009 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test009 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }
@@ -502,7 +502,7 @@ export default function AccountTest() {
          * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
          */
         it('account_updateOsAccountDistributedInfo_test010', 0,  async function (done)  {
-            console.debug('====>account_updateOsAccountDistributedInfo_test010 start====')
+            console.info('====>account_updateOsAccountDistributedInfo_test010 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -512,7 +512,7 @@ export default function AccountTest() {
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
-                        console.debug("====>account_updateOsAccountDistributedInfo_test010 data:" + JSON.stringify(data))
+                        console.info("====>account_updateOsAccountDistributedInfo_test010 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
@@ -527,7 +527,7 @@ export default function AccountTest() {
                     });
                 });
             } catch (err){
-                console.debug('====>account_updateOsAccountDistributedInfo_test010 err:' + JSON.stringify(err))
+                console.info('====>account_updateOsAccountDistributedInfo_test010 err:' + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }

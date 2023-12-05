@@ -26,9 +26,9 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : get distributed virtual device ID
         */
         it('ActsOsAccountDeviceId_0100', 0, async function (done) {
-            console.debug("====>ActsOsAccountDeviceId_0100 start====");
+            console.info("====>ActsOsAccountDeviceId_0100 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             accountAbility.updateOsAccountDistributedInfo(
                 {
@@ -36,13 +36,13 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
                     id: '12345',
                     event: "Ohos.account.event.LOGIN"
                 }, (err) => {
-                    console.debug("====>update distributedInfo err:" + JSON.stringify(err));
+                    console.info("====>update distributedInfo err:" + JSON.stringify(err));
                     AccountManager.getDistributedVirtualDeviceId((err, id) => {
-                        console.debug("====>getDistributedVirtualDeviceId err:" + JSON.stringify(err));
-                        console.debug("====>getDistributedVirtualDeviceId deviceId:" + id);
+                        console.info("====>getDistributedVirtualDeviceId err:" + JSON.stringify(err));
+                        console.info("====>getDistributedVirtualDeviceId deviceId:" + id);
                         expect(err).assertEqual(null);
                         expect(id !== 'ohosAnonymousUid').assertTrue()
-                        console.debug("====>ActsOsAccountDeviceId_0100 end====");
+                        console.info("====>ActsOsAccountDeviceId_0100 end====");
                         done();
                     })
                 })
@@ -54,9 +54,9 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : get distributed virtual device ID
         */
         it('ActsOsAccountDeviceId_0200', 0, async function (done) {
-            console.debug("====>ActsOsAccountDeviceId_0200 start====");
+            console.info("====>ActsOsAccountDeviceId_0200 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             accountAbility.updateOsAccountDistributedInfo(
                 {
@@ -64,12 +64,12 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
                     id: '12345',
                     event: "Ohos.account.event.LOGIN"
                 }, async (err) => {
-                    console.debug("====>update distributedInfo err:" + JSON.stringify(err));
-                    console.debug("====>getDistributedVirtualDeviceId start====");
+                    console.info("====>update distributedInfo err:" + JSON.stringify(err));
+                    console.info("====>getDistributedVirtualDeviceId start====");
                     var id = await AccountManager.getDistributedVirtualDeviceId();
-                    console.debug("====>getDistributedVirtualDeviceId:" + id);
+                    console.info("====>getDistributedVirtualDeviceId:" + id);
                     expect(id !== 'ohosAnonymousUid').assertTrue()
-                    console.debug("====>ActsOsAccountDeviceId_0200 end====");
+                    console.info("====>ActsOsAccountDeviceId_0200 end====");
                     done();
                 })
         })
@@ -80,15 +80,15 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query 0 user status is true
         */
         it('ActsOsAccountIsActived_0100', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0100 start====");
+            console.info("====>ActsOsAccountIsActived_0100 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isOsAccountActived(0, (err, isActived) => {
-                console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
-                console.debug("====>isOsAccountActived isActived:" + isActived);
+                console.info("====>isOsAccountActived err:" + JSON.stringify(err));
+                console.info("====>isOsAccountActived isActived:" + isActived);
                 expect(err).assertEqual(null);
                 expect(isActived).assertEqual(true);
-                console.debug("====>ActsOsAccountIsActived_0100 end");
+                console.info("====>ActsOsAccountIsActived_0100 end");
                 done();
             })
         })
@@ -99,19 +99,19 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query 0 user status is true
         */
         it('ActsOsAccountIsActived_0200', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0200 start====");
+            console.info("====>ActsOsAccountIsActived_0200 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             try {
                 var isActived = await AccountManager.isOsAccountActived(0);
             } catch (err) {
-                console.debug("====>catch isOsAccountActived err:" + JSON.stringify(err));
+                console.info("====>catch isOsAccountActived err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>isOsAccountActived:" + isActived);
+            console.info("====>isOsAccountActived:" + isActived);
             expect(isActived).assertEqual(true);
-            console.debug("====>ActsOsAccountIsActived_0200 end");
+            console.info("====>ActsOsAccountIsActived_0200 end");
             done();
         })
 
@@ -121,14 +121,14 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Authentication failed to query the active status of the user that does not exist
         */
         it('ActsOsAccountIsActived_0300', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0300 start");
+            console.info("====>ActsOsAccountIsActived_0300 start");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var nonExistLocalId = 1000;
             AccountManager.isOsAccountActived(nonExistLocalId, (err) => {
-                console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
+                console.info("====>isOsAccountActived err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsOsAccountIsActived_0300 end");
+                console.info("====>ActsOsAccountIsActived_0300 end");
                 done();
             })
         })
@@ -139,16 +139,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Authentication failed to query the active status of the user that does not exist
         */
         it('ActsOsAccountIsActived_0400', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0400 start====");
+            console.info("====>ActsOsAccountIsActived_0400 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var nonExistLocalId = 1000;
             try {
                 await AccountManager.isOsAccountActived(nonExistLocalId);
             } catch (err) {
-                console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
+                console.info("====>isOsAccountActived err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsOsAccountIsActived_0400 end");
+                console.info("====>ActsOsAccountIsActived_0400 end");
                 done();
             }
         })
@@ -159,14 +159,14 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the query active state is not received with parameter type mismatch
         */
         it('ActsOsAccountIsActived_0500', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0500 start");
+            console.info("====>ActsOsAccountIsActived_0500 start");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdStr = "100";
             AccountManager.isOsAccountActived(localIdStr, (err, data) => {
-                console.debug("====>receive isOsAccountActived err: " + JSON.stringify(err));
+                console.info("====>receive isOsAccountActived err: " + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true)
-                console.debug("====>receive isOsAccountActived data: " + JSON.stringify(data));
+                console.info("====>receive isOsAccountActived data: " + JSON.stringify(data));
                 done();
             });
         })
@@ -177,16 +177,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the query active state is not received with parameter type mismatch
         */
         it('ActsOsAccountIsActived_0600', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0600 start====");
+            console.info("====>ActsOsAccountIsActived_0600 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdStr = "100";
             AccountManager.isOsAccountActived(localIdStr).then((data) => {
-                console.debug("====>get active status is: " + JSON.stringify(data));
+                console.info("====>get active status is: " + JSON.stringify(data));
                 done();
             }).catch((err) => {
                 expect(err.code != 0).assertEqual(true)
-                console.debug("====>ActsOsAccountIsActived_0600 err:" + JSON.stringify(err));
+                console.info("====>ActsOsAccountIsActived_0600 err:" + JSON.stringify(err));
                 done();
             })
         })
@@ -197,13 +197,13 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the query active state is not received with parameter undefined
         */
         it('ActsOsAccountIsActived_0700', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0700 start");
+            console.info("====>ActsOsAccountIsActived_0700 start");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isOsAccountActived(undefined, (err, data) => {
-                console.debug("====>ActsOsAccountIsActived_0700 err:" + JSON.stringify(err));
+                console.info("====>ActsOsAccountIsActived_0700 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true)
-                console.debug("====>receive isOsAccountActived data: " + JSON.stringify(data));
+                console.info("====>receive isOsAccountActived data: " + JSON.stringify(data));
                 done();
             })
         })
@@ -214,16 +214,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the query active state is not received with parameter undefined
         */
         it('ActsOsAccountIsActived_0800', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsActived_0800 start====");
+            console.info("====>ActsOsAccountIsActived_0800 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>ActsOsAccountIsActived_0800 get os AccountManager finish====");
+            console.info("====>ActsOsAccountIsActived_0800 get os AccountManager finish====");
             AccountManager.isOsAccountActived(undefined).then((data) => {
-                console.debug("====>ActsOsAccountIsActived_0800 get active status is: " + JSON.stringify(data));
+                console.info("====>ActsOsAccountIsActived_0800 get active status is: " + JSON.stringify(data));
                 done();
             }).catch((err) => {
-                console.debug("====>ActsOsAccountIsActived_0800 err:" + JSON.stringify(err))
+                console.info("====>ActsOsAccountIsActived_0800 err:" + JSON.stringify(err))
                 expect(err != 0).assertEqual(true);
-                console.debug("====>ActsOsAccountIsActived_0800 end====");
+                console.info("====>ActsOsAccountIsActived_0800 end====");
                 done();
             })
         })
@@ -234,15 +234,15 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
         it('ActsOsAccountIsMulty_0100', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsMulty_0100 start====");
+            console.info("====>ActsOsAccountIsMulty_0100 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isMultiOsAccountEnable((err, data) => {
-                console.debug("====>isMultiOsAccountEnable err:" + JSON.stringify(err));
-                console.debug("====>isMultiOsAccountEnable data:" + data);
+                console.info("====>isMultiOsAccountEnable err:" + JSON.stringify(err));
+                console.info("====>isMultiOsAccountEnable data:" + data);
                 expect(err).assertEqual(null);
                 expect(data !== null).assertTrue();
-                console.debug("====>ActsOsAccountIsMulty_0100 end====");
+                console.info("====>ActsOsAccountIsMulty_0100 end====");
                 done();
             })
         })
@@ -253,19 +253,19 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
         it('ActsOsAccountIsMulty_0200', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsMulty_0200 start====");
+            console.info("====>ActsOsAccountIsMulty_0200 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             try {
                 var data = await AccountManager.isMultiOsAccountEnable();
             } catch (err) {
-                console.debug("====>catch isMultiOsAccountEnable err:" + JSON.stringify(err));
+                console.info("====>catch isMultiOsAccountEnable err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>isMultiOsAccountEnable data:" + JSON.stringify(data));
+            console.info("====>isMultiOsAccountEnable data:" + JSON.stringify(data));
             expect(data !== null).assertTrue();
-            console.debug("====>ActsOsAccountIsMulty_0200 end====");
+            console.info("====>ActsOsAccountIsMulty_0200 end====");
             done();
         })
 
@@ -275,15 +275,15 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the initial state query is unlocked to false
         */
         it('ActsOsAccountVerified_0100', 0, async function (done) {
-            console.debug("====>isOsAccountVerified_0100 start====");
+            console.info("====>isOsAccountVerified_0100 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isOsAccountVerified((err, data) => {
-                console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
-                console.debug("====>isOsAccountVerified data:" + data);
+                console.info("====>isOsAccountVerified err:" + JSON.stringify(err));
+                console.info("====>isOsAccountVerified data:" + data);
                 expect(err).assertEqual(null);
                 expect(data).assertEqual(true);
-                console.debug("====>ActsOsAccountVerified_0100 end====");
+                console.info("====>ActsOsAccountVerified_0100 end====");
                 done();
             })
         })
@@ -294,13 +294,13 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the initial state query is unlocked to false
         */
         it('ActsOsAccountVerified_0200', 0, async function (done) {
-            console.debug("====>isOsAccountVerified_0200 start====");
+            console.info("====>isOsAccountVerified_0200 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var isVerified = await AccountManager.isOsAccountVerified();
-            console.debug("====>isOsAccountVerified data:" + isVerified);
+            console.info("====>isOsAccountVerified data:" + isVerified);
             expect(isVerified).assertEqual(true);
-            console.debug("====>ActsOsAccountVerified_0200 end====");
+            console.info("====>ActsOsAccountVerified_0200 end====");
             done();
         })
 
@@ -310,14 +310,14 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the initial state query 0 user is unlocked to false
         */
         it('ActsOsAccountIsVerified_0300', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0300 start====");
+            console.info("====>ActsOsAccountIsVerified_0300 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isOsAccountVerified(0, (err, data) => {
-                console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
+                console.info("====>isOsAccountVerified err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(data).assertFalse();
-                console.debug("====>ActsOsAccountIsVerified_0300 end====");
+                console.info("====>ActsOsAccountIsVerified_0300 end====");
                 done();
             })
         })
@@ -328,12 +328,12 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify that the initial state query 0 user is unlocked to false
         */
         it('ActsOsAccountIsVerified_0400', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0400 start====");
+            console.info("====>ActsOsAccountIsVerified_0400 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var isVerified = await AccountManager.isOsAccountVerified(0);
             expect(isVerified).assertFalse();
-            console.debug("====>ActsOsAccountIsVerified_0400 end====");
+            console.info("====>ActsOsAccountIsVerified_0400 end====");
             done();
         })
 
@@ -343,16 +343,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query "100" user is unlocked failed
         */
         it('ActsOsAccountIsVerified_0500', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0500 start====");
+            console.info("====>ActsOsAccountIsVerified_0500 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdStr = "100";
             AccountManager.isOsAccountVerified(localIdStr, (err, data) => {
-                console.debug("====>error received callback====");
-                console.debug("====>receive isOsAccountVerified err: " + JSON.stringify(err));
+                console.info("====>error received callback====");
+                console.info("====>receive isOsAccountVerified err: " + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(data).assertEqual(true);
-                console.debug("====>receive isOsAccountVerified data: " + JSON.stringify(data));
+                console.info("====>receive isOsAccountVerified data: " + JSON.stringify(data));
                 done();
             })
         })
@@ -363,16 +363,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query "100" user is unlocked failed
         */
         it('ActsOsAccountIsVerified_0600', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0600 start====");
+            console.info("====>ActsOsAccountIsVerified_0600 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdStr = "100";
             AccountManager.isOsAccountVerified(localIdStr).then((data) => {
                 expect(data).assertEqual(true);                                    //
-                console.debug("====>ActsOsAccountIsVerified_0600 end====");
+                console.info("====>ActsOsAccountIsVerified_0600 end====");
                 done();
             }).catch((err) => {
-                console.debug("====>get verified err: " + JSON.stringify(err));
+                console.info("====>get verified err: " + JSON.stringify(err));
                 expect().assertFail()
                 done();
             })
@@ -384,16 +384,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query undefined user is unlocked failed
         */
         it('ActsOsAccountIsVerified_0700', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0700 start====");
+            console.info("====>ActsOsAccountIsVerified_0700 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdUndefined = undefined;
             AccountManager.isOsAccountVerified(localIdUndefined, (err, data) => {
-                console.debug("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_err:" + JSON.stringify(err))
+                console.info("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_err:" + JSON.stringify(err))
                 expect(err).assertEqual(null);
-                console.debug("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_data:" + JSON.stringify(data))
+                console.info("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_data:" + JSON.stringify(data))
                 expect(data).assertEqual(true)
-                console.debug("====>ActsOsAccountIsVerified_0700 end====");
+                console.info("====>ActsOsAccountIsVerified_0700 end====");
                 done();
             });
         })
@@ -404,17 +404,17 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query undefined user is unlocked failed
         */
         it('ActsOsAccountIsVerified_0800', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0800 start====");
+            console.info("====>ActsOsAccountIsVerified_0800 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var localIdUndefined = undefined;
             AccountManager.isOsAccountVerified(localIdUndefined).then((data) => {
-                console.debug("====>ActsOsAccountIsVerified_0800 isOsAccountVerified_data:" + JSON.stringify(data))
+                console.info("====>ActsOsAccountIsVerified_0800 isOsAccountVerified_data:" + JSON.stringify(data))
                 expect(data).assertEqual(true)
-                console.debug("====>ActsOsAccountIsVerified_0700 end====");
+                console.info("====>ActsOsAccountIsVerified_0700 end====");
                 done();
             }).catch((err) => {
-                console.debug("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_err:" + JSON.stringify(err))
+                console.info("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_err:" + JSON.stringify(err))
                 expect(err.code != 0).assertEqual(true)
                 done();
             })
@@ -426,14 +426,14 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query does not exist user unlock failed
         */
         it('ActsOsAccountIsVerified_0900', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_0900 start====");
+            console.info("====>ActsOsAccountIsVerified_0900 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var osAccountLocalId = 1000;
             AccountManager.isOsAccountVerified(osAccountLocalId, (err) => {
-                console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
+                console.info("====>isOsAccountVerified err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsOsAccountIsVerified_0900 end====");
+                console.info("====>ActsOsAccountIsVerified_0900 end====");
                 done();
             })
         })
@@ -444,16 +444,16 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : Verify query does not exist user unlock failed
         */
         it('ActsOsAccountIsVerified_1000', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsVerified_1000 start====");
+            console.info("====>ActsOsAccountIsVerified_1000 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var osAccountLocalId = 1000;
             try {
                 await AccountManager.isOsAccountVerified(osAccountLocalId);
             } catch (err) {
-                console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
+                console.info("====>isOsAccountVerified err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsOsAccountIsVerified_1000 end====");
+                console.info("====>ActsOsAccountIsVerified_1000 end====");
                 done();
             }
         })
@@ -464,15 +464,15 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : check whether this OS account is a test OS account
         */
         it('ActsOsAccountIsTest_0100', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsTest_0100 start====");
+            console.info("====>ActsOsAccountIsTest_0100 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             AccountManager.isTestOsAccount((err, data) => {
-                console.debug("====>isTestOsAccount err:" + JSON.stringify(err));
-                console.debug("====>isTestOsAccount data:" + JSON.stringify(data));
+                console.info("====>isTestOsAccount err:" + JSON.stringify(err));
+                console.info("====>isTestOsAccount data:" + JSON.stringify(data));
                 expect(err).assertEqual(null);
                 expect(data).assertEqual(false);
-                console.debug("====>ActsOsAccountIsTest_0100 end====");
+                console.info("====>ActsOsAccountIsTest_0100 end====");
                 done();
             })
         })
@@ -483,12 +483,12 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
         * @tc.desc    : check whether this OS account is a test OS account
         */
         it('ActsOsAccountIsTest_0200', 0, async function (done) {
-            console.debug("====>ActsOsAccountIsTest_0200 start====");
+            console.info("====>ActsOsAccountIsTest_0200 start====");
             var AccountManager = osAccount.getAccountManager();
-            console.debug("====>get os AccountManager finish====");
+            console.info("====>get os AccountManager finish====");
             var isTest = await AccountManager.isTestOsAccount();
             expect(isTest).assertFalse();
-            console.debug("====>ActsOsAccountIsTest_0200 end====");
+            console.info("====>ActsOsAccountIsTest_0200 end====");
             done();
         })
     })

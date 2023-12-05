@@ -26,22 +26,22 @@ export default {
         this.title = "scene AppAccess";
     },
     onShow() {
-        console.debug('====>scene application start====');
+        console.info('====>scene application start====');
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>creat scene manager finish====");
+        console.info("====>creat scene manager finish====");
         var enableBundle = "com.example.actsaccountpressure";
-        console.debug("====>add first account start====");
+        console.info("====>add first account start====");
         appAccountManager.createAccount("account_name_scene_first", (err)=>{
-            console.debug("====>add first account err:" + JSON.stringify(err));
+            console.info("====>add first account err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_first", enableBundle, true, (err)=>{
-                console.debug("====>enableAppAccess first account err:" + JSON.stringify(err));
+                console.info("====>enableAppAccess first account err:" + JSON.stringify(err));
                 appAccountManager.createAccount("account_name_scene_second", (err)=>{
-                    console.debug("====>add second account err:" + JSON.stringify(err));
+                    console.info("====>add second account err:" + JSON.stringify(err));
                     appAccountManager.setAppAccess("account_name_scene_second", enableBundle, true, (err)=>{
-                        console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
+                        console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
                         featureAbility.terminateSelf(
                             (err, data)=>{
-                                console.debug('====>Terminate Ability Success====')
+                                console.info('====>Terminate Ability Success====')
                         });
                     })
                 })

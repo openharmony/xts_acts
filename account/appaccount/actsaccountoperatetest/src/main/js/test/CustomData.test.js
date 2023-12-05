@@ -25,24 +25,24 @@ export default function ActsAccountCustomData() {
         *                 are correct, and then getCustomData is called for the value(callback)
         */
         it('ActsAccountCustomData_0100', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0100 start====");
+            console.info("====>ActsAccountCustomData_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_0100",(err)=>{
-                console.debug("====>add accountActsAccountCustomData_0100 err:" + JSON.stringify(err));
+                console.info("====>add accountActsAccountCustomData_0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_0100", "key1", "value1", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_0100 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData("account_name_0100", "key1", (err, data)=>{
-                        console.debug("====>getCustomData 0100 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 0100 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 0100 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 0100 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value1");
                         appAccountManager.removeAccount("account_name_0100", (err)=>{
-                            console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 0100 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountCustomData_0100 end====");
+                            console.info("====>ActsAccountCustomData_0100 end====");
                             done();
                         });
                     });
@@ -57,10 +57,10 @@ export default function ActsAccountCustomData() {
         *                 are correct, and then getCustomData is called for the value(promise)
         */
         it('ActsAccountCustomData_0200', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0200 start====");
+            console.info("====>ActsAccountCustomData_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_0200 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_0200 start====");
             try{
                 await appAccountManager.createAccount("account_name_0200");
             }
@@ -69,7 +69,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>setCustomData ActsAccountCustomData_0200 start====");
+            console.info("====>setCustomData ActsAccountCustomData_0200 start====");
             try{
                 await appAccountManager.setCustomData("account_name_0200", "key2", "value2");
             }
@@ -78,7 +78,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData ActsAccountCustomData_0200 start====");
+            console.info("====>getCustomData ActsAccountCustomData_0200 start====");
             try{
                 var data = await appAccountManager.getCustomData("account_name_0200", "key2");
             }
@@ -87,9 +87,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData ActsAccountCustomData_0200 data:" + JSON.stringify(data));
+            console.info("====>getCustomData ActsAccountCustomData_0200 data:" + JSON.stringify(data));
             expect(data).assertEqual("value2");
-            console.debug("====>delete account ActsAccountCustomData_0200 start====");
+            console.info("====>delete account ActsAccountCustomData_0200 start====");
             try{
                 await appAccountManager.removeAccount("account_name_0200");
             }
@@ -98,7 +98,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_0200 end====");
+            console.info("====>ActsAccountCustomData_0200 end====");
             done();
         });
 
@@ -108,21 +108,21 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call getCustomData directly to get value without calling setCustomData(callback)
         */
         it('ActsAccountCustomData_0300', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0300 start====");
+            console.info("====>ActsAccountCustomData_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_0300", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_0300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getCustomData("account_name_0300", "key3", (err, data)=>{
-                    console.debug("====>getCustomData 0300 err:" + JSON.stringify(err));
-                    console.debug("====>getCustomData 0300 data:" + JSON.stringify(data));
+                    console.info("====>getCustomData 0300 err:" + JSON.stringify(err));
+                    console.info("====>getCustomData 0300 data:" + JSON.stringify(data));
                     expect(err.code != 0).assertEqual(true);
                     expect(data).assertEqual(null);
                     appAccountManager.removeAccount("account_name_0300", (err)=>{
-                        console.debug("====>delete Account 0300 err:" + JSON.stringify(err));
+                        console.info("====>delete Account 0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_0300 end====");
+                        console.info("====>ActsAccountCustomData_0300 end====");
                         done();
                     });
                 });
@@ -135,10 +135,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call getCustomData directly to get value without calling setCustomData(promise)
         */
         it('ActsAccountCustomData_0400', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0400 start====");
+            console.info("====>ActsAccountCustomData_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_0400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_0400 start====");
             try{
                 await appAccountManager.createAccount("account_name_0400");
             }
@@ -154,9 +154,9 @@ export default function ActsAccountCustomData() {
                 done();
             }
             catch(err){
-                console.debug("====>getCustomData ActsAccountCustomData_0400 err:" + JSON.stringify(err));
+                console.info("====>getCustomData ActsAccountCustomData_0400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_0400 start====");
+                console.info("====>delete account ActsAccountCustomData_0400 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_0400");
                 }
@@ -165,7 +165,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_0400 end====");
+                console.info("====>ActsAccountCustomData_0400 end====");
                 done();
             }
         });
@@ -177,23 +177,23 @@ export default function ActsAccountCustomData() {
         *                 call the getCustomData of the pass error to check if you get the value(callback)
         */
         it('ActsAccountCustomData_0500', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0500 start====");
+            console.info("====>ActsAccountCustomData_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_0500",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_0500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_0500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_0500", "key5", "value5", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_0500 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_0500 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData("account_name_0500", "keyerr", (err, data)=>{
-                        console.debug("====>getCustomData 0500 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 0500 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 0500 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 0500 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
                         appAccountManager.removeAccount("account_name_0500", (err)=>{
-                            console.debug("====>delete Account 0500 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 0500 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountCustomData_0500 end====");
+                            console.info("====>ActsAccountCustomData_0500 end====");
                             done();
                         });
                     });
@@ -208,10 +208,10 @@ export default function ActsAccountCustomData() {
         *                 call the getCustomData of the pass error to check if you get the value(promise)
         */
         it('ActsAccountCustomData_0600', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0600 start====");
+            console.info("====>ActsAccountCustomData_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_0600 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_0600 start====");
             try{
                 await appAccountManager.createAccount("account_name_0600");
             }
@@ -225,9 +225,9 @@ export default function ActsAccountCustomData() {
                 var data = await appAccountManager.getCustomData("account_name_0600", "keyerr");
             }
             catch(err){
-                console.debug("====>getCustomData 0600 err:" + JSON.stringify(err));
+                console.info("====>getCustomData 0600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_0600 start====");
+                console.info("====>delete account ActsAccountCustomData_0600 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_0600");
                 }
@@ -236,7 +236,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_0600 end====");
+                console.info("====>ActsAccountCustomData_0600 end====");
                 done();
             }
         });
@@ -249,27 +249,27 @@ export default function ActsAccountCustomData() {
         *                 can get the second value(callback)
         */
         it('ActsAccountCustomData_0700', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0700 start====");
+            console.info("====>ActsAccountCustomData_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_0700",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_0700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_0700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_0700", "key7", "value7", (err)=>{
-                    console.debug("====>setCustomDatafir first time 0700 err:" + JSON.stringify(err));
+                    console.info("====>setCustomDatafir first time 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setCustomData("account_name_0700", "key7", "newvalue7", (err)=>{
-                        console.debug("====>setCustomDatafir second time 0700 err:" + JSON.stringify(err));
+                        console.info("====>setCustomDatafir second time 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getCustomData("account_name_0700", "key7", (err, data)=>{
-                            console.debug("====>getCustomData 0700 err:" + JSON.stringify(err));
-                            console.debug("====>getCustomData 0700 data:" + JSON.stringify(data));
+                            console.info("====>getCustomData 0700 err:" + JSON.stringify(err));
+                            console.info("====>getCustomData 0700 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("newvalue7");
                             appAccountManager.removeAccount("account_name_0700", (err)=>{
-                                console.debug("====>delete Account 0700 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0700 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsAccountCustomData_0700 end====");
+                                console.info("====>ActsAccountCustomData_0700 end====");
                                 done();
                             });
                         });
@@ -286,9 +286,9 @@ export default function ActsAccountCustomData() {
         *                 can get the second value(promise)
         */
         it('ActsAccountCustomData_0800', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0800 start====");
+            console.info("====>ActsAccountCustomData_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             try{
                 await appAccountManager.createAccount("account_name_0800");
             }
@@ -313,9 +313,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData ActsAccountCustomData_0800 data:" + JSON.stringify(data));
+            console.info("====>getCustomData ActsAccountCustomData_0800 data:" + JSON.stringify(data));
             expect(data).assertEqual("newvalue8");
-            console.debug("====>delete account ActsAccountCustomData_0800 start====");
+            console.info("====>delete account ActsAccountCustomData_0800 start====");
             try{
                 await appAccountManager.removeAccount("account_name_0800");
             }
@@ -324,7 +324,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_0800 end====");
+            console.info("====>ActsAccountCustomData_0800 end====");
             done();
         });
 
@@ -336,27 +336,27 @@ export default function ActsAccountCustomData() {
         *                 can get the second value(callback)
         */
         it('ActsAccountCustomData_0900', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_0900 start====");
+            console.info("====>ActsAccountCustomData_0900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_0900",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_0900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_0900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_0900", "key9", "value9", (err)=>{
-                    console.debug("====>setCustomData first time 0900 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData first time 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setCustomData("account_name_0900", "key9", "value9", (err)=>{
-                        console.debug("====>setCustomData second time 0900 err:" + JSON.stringify(err));
+                        console.info("====>setCustomData second time 0900 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getCustomData("account_name_0900", "key9", (err, data)=>{
-                            console.debug("====>getCustomData 0900 err:" + JSON.stringify(err));
-                            console.debug("====>getCustomData 0900 data:" + JSON.stringify(data));
+                            console.info("====>getCustomData 0900 err:" + JSON.stringify(err));
+                            console.info("====>getCustomData 0900 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value9");
                             appAccountManager.removeAccount("account_name_0900", (err)=>{
-                                console.debug("====>delete Account 0900 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0900 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsAccountCustomData_0900 end====");
+                                console.info("====>ActsAccountCustomData_0900 end====");
                                 done();
                             });
                         });
@@ -373,10 +373,10 @@ export default function ActsAccountCustomData() {
         *                 can get the second value(promise)
         */
         it('ActsAccountCustomData_1000', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1000 start====");
+            console.info("====>ActsAccountCustomData_1000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>createAccount ActsAccountCustomData_1000 start====");
+            console.info("====>creat finish====");
+            console.info("====>createAccount ActsAccountCustomData_1000 start====");
             try{
                 await appAccountManager.createAccount("account_name_1000");
             }
@@ -402,9 +402,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData 1000 data:" + JSON.stringify(data));
+            console.info("====>getCustomData 1000 data:" + JSON.stringify(data));
             expect(data).assertEqual("value10");
-            console.debug("====>delete account ActsAccountCustomData_1000 start====");
+            console.info("====>delete account ActsAccountCustomData_1000 start====");
             try{
                 await appAccountManager.removeAccount("account_name_1000");
             }
@@ -413,7 +413,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_1000 end====");
+            console.info("====>ActsAccountCustomData_1000 end====");
             done();
         });
 
@@ -424,32 +424,32 @@ export default function ActsAccountCustomData() {
         *                 different value, and then call getCustomData twice to get the set value(callback)
         */
         it('ActsAccountCustomData_1100', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1100 start====");
+            console.info("====>ActsAccountCustomData_1100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_1100",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_1100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_1100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_1100", "key11_first", "value11_first", (err)=>{
-                    console.debug("====>setCustomData first time 1100 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData first time 1100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setCustomData("account_name_1100", "key11_second", "value11_second", (err)=>{
-                        console.debug("====>setCustomData second time 1100 err:" + JSON.stringify(err));
+                        console.info("====>setCustomData second time 1100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getCustomData("account_name_1100", "key11_first", (err,data)=>{
-                            console.debug("====>getCustomData key11_first 1100 err:" + JSON.stringify(err));
-                            console.debug("====>getCustomData key11_first 1100 data:" + JSON.stringify(data));
+                            console.info("====>getCustomData key11_first 1100 err:" + JSON.stringify(err));
+                            console.info("====>getCustomData key11_first 1100 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value11_first");
                             appAccountManager.getCustomData("account_name_1100", "key11_second", (err,data)=>{
-                                console.debug("====>getCustomData key11_second 1100 err:" + JSON.stringify(err));
-                                console.debug("====>getCustomData key11_second 1100 data:" + JSON.stringify(data));
+                                console.info("====>getCustomData key11_second 1100 err:" + JSON.stringify(err));
+                                console.info("====>getCustomData key11_second 1100 data:" + JSON.stringify(data));
                                 expect(err).assertEqual(null);
                                 expect(data).assertEqual("value11_second");
                                 appAccountManager.removeAccount("account_name_1100", (err)=>{
-                                    console.debug("====>delete Account 1100 err:" + JSON.stringify(err));
+                                    console.info("====>delete Account 1100 err:" + JSON.stringify(err));
                                 });
-                                console.debug("====>ActsAccountCustomData_1100 end====");
+                                console.info("====>ActsAccountCustomData_1100 end====");
                                 done();
                             });
                         });
@@ -465,10 +465,10 @@ export default function ActsAccountCustomData() {
         *                 different value, and then call getCustomData twice to get the set value(promise)
         */
         it('ActsAccountCustomData_1200', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1200 start====");
+            console.info("====>ActsAccountCustomData_1200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>createAccount ActsAccountCustomData_1200 start====");
+            console.info("====>creat finish====");
+            console.info("====>createAccount ActsAccountCustomData_1200 start====");
             try{
                 await appAccountManager.createAccount("account_name_1200");
             }
@@ -495,11 +495,11 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_1200 getCustomData dataFir:" + JSON.stringify(dataFir));
+            console.info("====>ActsAccountCustomData_1200 getCustomData dataFir:" + JSON.stringify(dataFir));
             expect(dataFir).assertEqual("value12_first");
-            console.debug("====>ActsAccountCustomData_1200 getCustomData dataSec:" + JSON.stringify(dataSec));
+            console.info("====>ActsAccountCustomData_1200 getCustomData dataSec:" + JSON.stringify(dataSec));
             expect(dataSec).assertEqual("value12_second");
-            console.debug("====>delete account ActsAccountCustomData_1200 start====");
+            console.info("====>delete account ActsAccountCustomData_1200 start====");
             try{
                 await appAccountManager.removeAccount("account_name_1200");
             }
@@ -508,7 +508,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_1200 end====");
+            console.info("====>ActsAccountCustomData_1200 end====");
             done();
         });
 
@@ -518,19 +518,19 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting value when the incoming parameter KEY is wrong(callback)
         */
         it('ActsAccountCustomData_1300', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1300 start====");
+            console.info("====>ActsAccountCustomData_1300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_1300", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_1300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_1300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_1300", "", "value13", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_1300 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_1300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.removeAccount("account_name_1300", (err)=>{
-                        console.debug("====>delete account ActsAccountCustomData_1300 err:" + JSON.stringify(err));
+                        console.info("====>delete account ActsAccountCustomData_1300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_1300 end====");
+                        console.info("====>ActsAccountCustomData_1300 end====");
                         done();
                     });
                 });
@@ -543,10 +543,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting value when the incoming parameter KEY is wrong(promise)
         */
         it('ActsAccountCustomData_1400', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1400 start====");
+            console.info("====>ActsAccountCustomData_1400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_1400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_1400 start====");
             try{
                 await appAccountManager.createAccount("account_name_1400");
             }
@@ -559,9 +559,9 @@ export default function ActsAccountCustomData() {
                 await appAccountManager.setCustomData("account_name_1400", "", "value14");
             }
             catch(err){
-                console.debug("====>setCustomData ActsAccountCustomData_1400 err:" + JSON.stringify(err));
+                console.info("====>setCustomData ActsAccountCustomData_1400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_1400 start====");
+                console.info("====>delete account ActsAccountCustomData_1400 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_1400");
                 }
@@ -570,7 +570,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_1400 end====");
+                console.info("====>ActsAccountCustomData_1400 end====");
                 done();
             }
         });
@@ -581,24 +581,24 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting key when the incoming parameter KEY is wrong(callback)
         */
         it('ActsAccountCustomData_1500', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1500 start====");
+            console.info("====>ActsAccountCustomData_1500 start====");
             var keyOverSize = "K"
             for(var i = 0;i < 256;i++)
             keyOverSize = keyOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_1500", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_1500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_1500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                console.debug("====>1500 keyOverSize.length:" + JSON.stringify(keyOverSize.length));
+                console.info("====>1500 keyOverSize.length:" + JSON.stringify(keyOverSize.length));
                 expect(keyOverSize.length).assertEqual(1025);
                 appAccountManager.setCustomData("account_name_1500", keyOverSize, "value15", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_1500 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_1500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.removeAccount("account_name_1500", (err)=>{
-                        console.debug("====>delete account ActsAccountCustomData_1500 err:" + JSON.stringify(err));
+                        console.info("====>delete account ActsAccountCustomData_1500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_1500 end====");
+                        console.info("====>ActsAccountCustomData_1500 end====");
                         done();
                     });
                 });
@@ -611,14 +611,14 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting key when the incoming parameter KEY is wrong(promise)
         */
         it('ActsAccountCustomData_1600', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1600 start====");
+            console.info("====>ActsAccountCustomData_1600 start====");
             var keyOverSize = "K"
             for(var i=0;i<256;i++)
             keyOverSize = keyOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(keyOverSize.length).assertEqual(1025);
-            console.debug("====>add account ActsAccountCustomData_1600 start====");
+            console.info("====>add account ActsAccountCustomData_1600 start====");
             try{
                 await appAccountManager.createAccount("account_name_1600");
             }
@@ -631,9 +631,9 @@ export default function ActsAccountCustomData() {
                 await appAccountManager.setCustomData("account_name_1600", keyOverSize, "value16");
             }
             catch(err){
-                console.debug("====>setCustomData ActsAccountCustomData_1600 err:" + JSON.stringify(err));
+                console.info("====>setCustomData ActsAccountCustomData_1600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_1600 start====");
+                console.info("====>delete account ActsAccountCustomData_1600 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_1600");
                 }
@@ -642,7 +642,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_1600 end====");
+                console.info("====>ActsAccountCustomData_1600 end====");
                 done();
             }
         });
@@ -653,24 +653,24 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming key is a space(callback)
         */
         it('ActsAccountCustomData_1700', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1700 start====");
+            console.info("====>ActsAccountCustomData_1700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_1700", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_1700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_1700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_1700", " ", "value17", (err)=>{
-                    console.debug("====>ActsAccountCustomData_1700 setCustomData:" + JSON.stringify(err));
+                    console.info("====>ActsAccountCustomData_1700 setCustomData:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData("account_name_1700", " ", (err, data)=>{
-                        console.debug("====>getCustomData 1700 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 1700 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 1700 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 1700 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value17");
                         appAccountManager.removeAccount("account_name_1700", (err)=>{
-                            console.debug("====>delete Account 1700 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 1700 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountCustomData_1700 end====");
+                            console.info("====>ActsAccountCustomData_1700 end====");
                             done();
                         });
                     });
@@ -684,10 +684,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming key is a space(promise)
         */
         it('ActsAccountCustomData_1800', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1800 start====");
+            console.info("====>ActsAccountCustomData_1800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_1800 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_1800 start====");
             try{
                 await appAccountManager.createAccount("account_name_1800");
             }
@@ -705,9 +705,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData ActsAccountCustomData_1800 data:" + JSON.stringify(data));
+            console.info("====>getCustomData ActsAccountCustomData_1800 data:" + JSON.stringify(data));
             expect(data).assertEqual("value18");
-            console.debug("====>delete account ActsAccountCustomData_1800 start====");
+            console.info("====>delete account ActsAccountCustomData_1800 start====");
             try{
                 await appAccountManager.removeAccount("account_name_1800");
             }
@@ -716,7 +716,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_1800 end====");
+            console.info("====>ActsAccountCustomData_1800 end====");
             done();
         });
 
@@ -726,24 +726,24 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming value is null(callback)
         */
         it('ActsAccountCustomData_1900', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_1900 start====");
+            console.info("====>ActsAccountCustomData_1900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_1900", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_1900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_1900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_1900", "key19", "", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_1900 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_1900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData("account_name_1900", "key19", (err, data)=>{
-                        console.debug("====>getCustomData 1900 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 1900 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 1900 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 1900 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("");
                         appAccountManager.removeAccount("account_name_1900", (err)=>{
-                            console.debug("====>delete Account 1900 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 1900 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountCustomData_1900 end====");
+                            console.info("====>ActsAccountCustomData_1900 end====");
                             done();
                         });
                     });
@@ -757,10 +757,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming value is null(promise)
         */
         it('ActsAccountCustomData_2000', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2000 start====");
+            console.info("====>ActsAccountCustomData_2000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_2000 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_2000 start====");
             try{
                 await appAccountManager.createAccount("account_name_2000");
             }
@@ -785,9 +785,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData ActsAccountCustomData_2000 data:" + JSON.stringify(data));
+            console.info("====>getCustomData ActsAccountCustomData_2000 data:" + JSON.stringify(data));
             expect(data).assertEqual("");
-            console.debug("====>delete account ActsAccountCustomData_2000 start====");
+            console.info("====>delete account ActsAccountCustomData_2000 start====");
             try{
                 await appAccountManager.removeAccount("account_name_2000");
             }
@@ -796,7 +796,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_2000 end====");
+            console.info("====>ActsAccountCustomData_2000 end====");
             done();
         });
 
@@ -806,23 +806,23 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting value when the incoming parameter value is wrong(callback)
         */
         it('ActsAccountCustomData_2100', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2100 start====");
+            console.info("====>ActsAccountCustomData_2100 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
             valueOverSize = valueOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_2100",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_2100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_2100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(valueOverSize.length).assertEqual(1025);
                 appAccountManager.setCustomData("account_name_2100", "key21", valueOverSize, (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_2100 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_2100 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.removeAccount("account_name_2100", (err)=>{
-                        console.debug("====>delete Account ActsAccountCustomData_2100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountCustomData_2100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_2100 end====");
+                        console.info("====>ActsAccountCustomData_2100 end====");
                         done();
                     });
                 });
@@ -835,12 +835,12 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting value when the incoming parameter value is wrong(promise)
         */
         it('ActsAccountCustomData_2200', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2200 start====");
+            console.info("====>ActsAccountCustomData_2200 start====");
             var valueOverSize = "K"
             for(var i = 0;i < 256;i++)
             valueOverSize = valueOverSize + "K!@#";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(valueOverSize.length).assertEqual(1025);
             try{
                 await appAccountManager.createAccount("account_name_2200");
@@ -854,9 +854,9 @@ export default function ActsAccountCustomData() {
                 await appAccountManager.setCustomData("account_name_2200", "key22", valueOverSize);
             }
             catch(err){
-                console.debug("====>setCustomData ActsAccountCustomData_2200 err:" + JSON.stringify(err));
+                console.info("====>setCustomData ActsAccountCustomData_2200 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_2200 start====");
+                console.info("====>delete account ActsAccountCustomData_2200 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_2200");
                 }
@@ -865,7 +865,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_2200 end====");
+                console.info("====>ActsAccountCustomData_2200 end====");
                 done();
             }
         });
@@ -876,24 +876,24 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming value is a space(callback)
         */
         it('ActsAccountCustomData_2300', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2300 start====");
+            console.info("====>ActsAccountCustomData_2300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_2300", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_2300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_2300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_2300", "key23", " ", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_2300 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_2300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData("account_name_2300", "key23", (err, data)=>{
-                        console.debug("====>getCustomData 2300 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 2300 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 2300 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 2300 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual(" ");
                         appAccountManager.removeAccount("account_name_2300", (err)=>{
-                            console.debug("====>delete Account 2300 err:" + JSON.stringify(err));
+                            console.info("====>delete Account 2300 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsAccountCustomData_2300 end====");
+                            console.info("====>ActsAccountCustomData_2300 end====");
                             done();
                         });
                     });
@@ -907,10 +907,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming value is a space(promise)
         */
         it('ActsAccountCustomData_2400', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2400 start====");
+            console.info("====>ActsAccountCustomData_2400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsAccountCustomData_2400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsAccountCustomData_2400 start====");
             try{
                 await appAccountManager.createAccount("account_name_2400");
             }
@@ -928,9 +928,9 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getCustomData 2400 err:" + JSON.stringify(data));
+            console.info("====>getCustomData 2400 err:" + JSON.stringify(data));
             expect(data).assertEqual(" ");
-            console.debug("====>delete account ActsAccountCustomData_2400 start====");
+            console.info("====>delete account ActsAccountCustomData_2400 start====");
             try{
                 await appAccountManager.removeAccount("account_name_2400");
             }
@@ -939,7 +939,7 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_2400 end====");
+            console.info("====>ActsAccountCustomData_2400 end====");
             done();
         });
 
@@ -949,19 +949,19 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming name is null(callback)
         */
         it('ActsAccountCustomData_2500', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2500 start====");
+            console.info("====>ActsAccountCustomData_2500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_2500", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_2500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_2500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("", "key25", "value25", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_2500 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_2500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.removeAccount("account_name_2500", (err)=>{
-                        console.debug("====>delete Account ActsAccountCustomData_2500 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountCustomData_2500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_2500 end====");
+                        console.info("====>ActsAccountCustomData_2500 end====");
                         done();
                     });
                 });
@@ -974,10 +974,10 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming name is null(promise)
         */
         it('ActsAccountCustomData_2600', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2600 start====");
+            console.info("====>ActsAccountCustomData_2600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>ActsAccountCustomData_2600 createAccount start====");
+            console.info("====>creat finish====");
+            console.info("====>ActsAccountCustomData_2600 createAccount start====");
             try{
                 await appAccountManager.createAccount("account_name_2600");
             }
@@ -990,9 +990,9 @@ export default function ActsAccountCustomData() {
                 await appAccountManager.setCustomData("", "key26", "value26");
             }
             catch(err){
-                console.debug("====>setCustomData ActsAccountCustomData_2600 err:" + JSON.stringify(err));
+                console.info("====>setCustomData ActsAccountCustomData_2600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_2600 start====");
+                console.info("====>delete account ActsAccountCustomData_2600 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_2600");
                 }
@@ -1001,7 +1001,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_2600 end====");
+                console.info("====>ActsAccountCustomData_2600 end====");
                 done();
             }
         });
@@ -1012,23 +1012,23 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting name when the incoming parameter name is wrong(callback)
         */
         it('ActsAccountCustomData_2700', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2700 start====");
+            console.info("====>ActsAccountCustomData_2700 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
             nameOverSize = nameOverSize+"name";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_2700",(err)=>{
-                console.debug("====>add account ActsAccountCustomData_2700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsAccountCustomData_2700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 expect(nameOverSize.length).assertEqual(1025);
                 appAccountManager.setCustomData(nameOverSize, "key27", "value27", (err)=>{
-                    console.debug("====>ActsAccountCustomData_2700 setCustomData:" + JSON.stringify(err));
+                    console.info("====>ActsAccountCustomData_2700 setCustomData:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.removeAccount("account_name_2700", (err)=>{
-                        console.debug("====>delete Account ActsAccountCustomData_2700 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsAccountCustomData_2700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_2700 end====");
+                        console.info("====>ActsAccountCustomData_2700 end====");
                         done();
                     });
                 });
@@ -1041,14 +1041,14 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData setting name when the incoming parameter name is wrong(promise)
         */
         it('ActsAccountCustomData_2800', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2800 start====");
+            console.info("====>ActsAccountCustomData_2800 start====");
             var nameOverSize = "n"
             for(var i = 0;i < 256;i++)
             nameOverSize = nameOverSize + "name";
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             expect(nameOverSize.length).assertEqual(1025);
-            console.debug("====>add account ActsAccountCustomData_2800 start====");
+            console.info("====>add account ActsAccountCustomData_2800 start====");
             try{
                 await appAccountManager.createAccount("account_name_2800");
             }
@@ -1061,9 +1061,9 @@ export default function ActsAccountCustomData() {
                 await appAccountManager.setCustomData(nameOverSize, "key28", "value28");
             }
             catch(err){
-                console.debug("====>setCustomData ActsAccountCustomData_2800 err:" + JSON.stringify(err));
+                console.info("====>setCustomData ActsAccountCustomData_2800 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>delete account ActsAccountCustomData_2800 start====");
+                console.info("====>delete account ActsAccountCustomData_2800 start====");
                 try{
                     await appAccountManager.removeAccount("account_name_2800");
                 }
@@ -1072,7 +1072,7 @@ export default function ActsAccountCustomData() {
                     expect().assertFail();
                     done();
                 }
-                console.debug("====>ActsAccountCustomData_2800 end====");
+                console.info("====>ActsAccountCustomData_2800 end====");
                 done();
             }
         });
@@ -1083,18 +1083,18 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming name is a space(callback)
         */
         it('ActsAccountCustomData_2900', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_2900 start====");
+            console.info("====>ActsAccountCustomData_2900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount(" ", (err)=>{
-                console.debug("====>createAccount ActsAccountCustomData_2900 err:" + JSON.stringify(err));
+                console.info("====>createAccount ActsAccountCustomData_2900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData(" ", "key29", "value29", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_2900 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_2900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getCustomData(" ", "key29", (err, data)=>{
-                        console.debug("====>getCustomData 2900 err:" + JSON.stringify(err));
-                        console.debug("====>getCustomData 2900 data:" + JSON.stringify(data));
+                        console.info("====>getCustomData 2900 err:" + JSON.stringify(err));
+                        console.info("====>getCustomData 2900 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value29");
                         appAccountManager.removeAccount(" ", (err)=>{
@@ -1113,9 +1113,9 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : Call setCustomData and then getCustomData when the incoming name is a space(promise)
         */
         it('ActsAccountCustomData_3000', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_3000 start====");
+            console.info("====>ActsAccountCustomData_3000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             try {
                 await appAccountManager.createAccount(" ");
                 await appAccountManager.setCustomData(" ", "key30", "value30");
@@ -1139,22 +1139,22 @@ export default function ActsAccountCustomData() {
         *                 are correct, and then getCustomData is called for the value(callback)
         */
         it('ActsAccountCustomData_3100', 0, async function (done) {
-            console.debug("====>ActsAccountCustomData_3100 start====");
+            console.info("====>ActsAccountCustomData_3100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_name_3100",(err)=>{
-                console.debug("====>add ActsAccountCustomData_3100 err:" + JSON.stringify(err));
+                console.info("====>add ActsAccountCustomData_3100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setCustomData("account_name_3100", "key31", "value31", (err)=>{
-                    console.debug("====>setCustomData ActsAccountCustomData_3100 err:" + JSON.stringify(err));
+                    console.info("====>setCustomData ActsAccountCustomData_3100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     var result = appAccountManager.getCustomDataSync("account_name_3100", "key31")
-                    console.debug("====>getCustomData ActsAccountCustomData_3100 result:" + JSON.stringify(result));
+                    console.info("====>getCustomData ActsAccountCustomData_3100 result:" + JSON.stringify(result));
                     expect(result).assertEqual("value31");
                     appAccountManager.removeAccount("account_name_3100", (err)=>{
-                        console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account 0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_3100 end====");
+                        console.info("====>ActsAccountCustomData_3100 end====");
                         done();
                     });
                 });

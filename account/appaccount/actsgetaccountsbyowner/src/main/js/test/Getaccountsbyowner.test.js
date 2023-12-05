@@ -23,7 +23,7 @@ const createAccountOptions = {customData:{age:'12'}}
 export default function GetAccountsByOwner() {
     describe('GetAccountsByOwner', function () {
         beforeAll(async function (done) {
-            console.debug("====>startAbility start====");
+            console.info("====>startAbility start====");
                 await featureAbility.startAbility(
                     {
                         want:
@@ -58,15 +58,15 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : This application gets its own application information after adding an account
         */
         it('GetAccountsByOwner_0100', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0100 start====");
+            console.info("====>GetAccountsByOwner_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("Account_this_application_callback", (err)=>{
-                console.debug("====>add account 0100 err:" + JSON.stringify(err));
+                console.info("====>add account 0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                    console.debug("====>getAccountsByOwner 0100 err:" + JSON.stringify(err));
-                    console.debug("====>getAccountsByOwner 0100 data:" + JSON.stringify(data));
+                    console.info("====>getAccountsByOwner 0100 err:" + JSON.stringify(err));
+                    console.info("====>getAccountsByOwner 0100 data:" + JSON.stringify(data));
                     expect(err).assertEqual(null);
                     try{
                         expect(data[0].name).assertEqual("Account_this_application_callback");
@@ -78,9 +78,9 @@ export default function GetAccountsByOwner() {
                         done();
                     }
                     appAccountManager.removeAccount("Account_this_application_callback", (err)=>{
-                        console.debug("====>delete account 0100 err:" + JSON.stringify(err));
+                        console.info("====>delete account 0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>GetAccountsByOwner_0100 end====");
+                        console.info("====>GetAccountsByOwner_0100 end====");
                         done();
                     });
                 })
@@ -93,10 +93,10 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : This application gets its own application information after adding an account
         */
         it('GetAccountsByOwner_0200', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0200 start====");
+            console.info("====>GetAccountsByOwner_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAccountsByOwner for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAccountsByOwner for clean====");
             try{
                 var acclist = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -105,15 +105,15 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add account 0200 start====");
+            console.info("====>add account 0200 start====");
             await appAccountManager.createAccount("Account_this_application_promise");
-            console.debug("====>getAccountsByOwner 0200 start====");
+            console.info("====>getAccountsByOwner 0200 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -131,9 +131,9 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete account 0200 start====");
+            console.info("====>delete account 0200 start====");
             await appAccountManager.removeAccount("Account_this_application_promise");      
-            console.debug("====>GetAccountsByOwner_0200 end====");
+            console.info("====>GetAccountsByOwner_0200 end====");
             done();
         });
 
@@ -144,15 +144,15 @@ export default function GetAccountsByOwner() {
         *                 obtain account information for this application
         */
         it('GetAccountsByOwner_0300', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0300 start====");
+            console.info("====>GetAccountsByOwner_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                console.debug("====>getAccountsByOwner 0300 err:" + JSON.stringify(err));
-                console.debug("====>getAccountsByOwner 0300 data:" + JSON.stringify(data));
+                console.info("====>getAccountsByOwner 0300 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 0300 data:" + JSON.stringify(data));
                 expect(err).assertEqual(null);
                 expect(data.length).assertEqual(0);
-                console.debug("====>GetAccountsByOwner_0300 end====");
+                console.info("====>GetAccountsByOwner_0300 end====");
                 done();
             })
         });
@@ -164,10 +164,10 @@ export default function GetAccountsByOwner() {
         *                 obtain account information for this application
         */
         it('GetAccountsByOwner_0400', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0400 start====");
+            console.info("====>GetAccountsByOwner_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAccountsByOwner for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAccountsByOwner for clean====");
             try{
                 var acclist = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -176,16 +176,16 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
             var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
-            console.debug("====>getAccountsByOwner 0400 data:" + JSON.stringify(data));   
+            console.info("====>getAccountsByOwner 0400 data:" + JSON.stringify(data));   
             expect(data.length).assertEqual(0);
-            console.debug("====>GetAccountsByOwner_0400 end====");
+            console.info("====>GetAccountsByOwner_0400 end====");
             done();
         });
 
@@ -195,14 +195,14 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is an empty string
         */
         it('GetAccountsByOwner_0500', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0500 start====");
+            console.info("====>GetAccountsByOwner_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var emptyBundle = "";
             appAccountManager.getAccountsByOwner(emptyBundle, (err, data)=>{
-                console.debug("====>getAccountsByOwner 0500 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 0500 err:" + JSON.stringify(err));
                 expect(err.code == 12300002).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_0500 end====");
+                console.info("====>GetAccountsByOwner_0500 end====");
                 done();
             })
         });
@@ -213,17 +213,17 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is an empty string
         */
         it('GetAccountsByOwner_0600', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0600 start====");
+            console.info("====>GetAccountsByOwner_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var emptyBundle = "";
             try{
                 var data = await appAccountManager.getAccountsByOwner(emptyBundle);
             }
             catch(err){
-                console.debug("====>getAccountsByOwner 0600 err:" + JSON.stringify(err));   
+                console.info("====>getAccountsByOwner 0600 err:" + JSON.stringify(err));   
                 expect(err.code == 12300002).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_0600 end====");
+                console.info("====>GetAccountsByOwner_0600 end====");
                 done();
             }
         });
@@ -234,17 +234,17 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is a string that exceeds the length limit
         */
         it('GetAccountsByOwner_0700', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0700 start====");
+            console.info("====>GetAccountsByOwner_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var limitBundle = '';
             for (var i = 0; i < LENGTHLIMIT + 1; i++) {
                 limitBundle += 't';
             }
             appAccountManager.getAccountsByOwner(limitBundle, (err, data)=>{
-                console.debug("====>getAccountsByOwner 0700 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 0700 err:" + JSON.stringify(err));
                 expect(err.code == 12300002).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_0700 end====");
+                console.info("====>GetAccountsByOwner_0700 end====");
                 done();
             })
         });
@@ -255,9 +255,9 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is a string that exceeds the length limit
         */
         it('GetAccountsByOwner_0800', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0800 start====");
+            console.info("====>GetAccountsByOwner_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var limitBundle = '';
             for (var i = 0; i < LENGTHLIMIT + 1; i++) {
                 limitBundle += 'n';
@@ -266,9 +266,9 @@ export default function GetAccountsByOwner() {
                 var data = await appAccountManager.getAccountsByOwner(limitBundle);
             }
             catch(err){
-                console.debug("====>getAccountsByOwner 0800 err:" + JSON.stringify(err));   
+                console.info("====>getAccountsByOwner 0800 err:" + JSON.stringify(err));   
                 expect(err.code == 12300002).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_0800 end====");
+                console.info("====>GetAccountsByOwner_0800 end====");
                 done();
             }
         });
@@ -280,26 +280,26 @@ export default function GetAccountsByOwner() {
         *                 application, this application obtains the information of its own application
         */
         it('GetAccountsByOwner_0900', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_0900 start====");
+            console.info("====>GetAccountsByOwner_0900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account 0900 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account 0900 start====");
             await appAccountManager.createAccount("Account_application_callback");
             function getAllCallback(err, data){
-                console.debug("====>getAccountsByOwner 0900 err:" + JSON.stringify(err));
-                console.debug("====>getAccountsByOwner 0900 data:" + JSON.stringify(data));
+                console.info("====>getAccountsByOwner 0900 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 0900 data:" + JSON.stringify(data));
                 expect(err).assertEqual(null);
                 expect(data[0].name).assertEqual("Account_application_callback");
                 expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
                 appAccountManager.removeAccount("Account_application_callback", (err)=>{
-                    console.debug("====>delete account 0900 err:" + JSON.stringify(err));
+                    console.info("====>delete account 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>GetAccountsByOwner_0900 end====");
+                    console.info("====>GetAccountsByOwner_0900 end====");
                     done();
                 });
             }
             await sleep(TIMEOUT)
-            console.debug("====>getAccountsByOwner 0900 start====");
+            console.info("====>getAccountsByOwner 0900 start====");
             appAccountManager.getAccountsByOwner(SELFBUNDLE, getAllCallback);
         });
 
@@ -310,13 +310,13 @@ export default function GetAccountsByOwner() {
         *                 application, this application obtains the information of its own application
         */
         it('GetAccountsByOwner_1000', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1000 start====");
+            console.info("====>GetAccountsByOwner_1000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account 1000 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account 1000 start====");
             await appAccountManager.createAccount("Account_application_promise");
             await sleep(TIMEOUT)
-            console.debug("====>getAccountsByOwner 1000 start====");
+            console.info("====>getAccountsByOwner 1000 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -325,7 +325,7 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAccountsByOwner 1000 data:" + JSON.stringify(data));
+            console.info("====>getAccountsByOwner 1000 data:" + JSON.stringify(data));
             try{
                 expect(data[0].name).assertEqual("Account_application_promise");
                 expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
@@ -335,9 +335,9 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete account 1000 start====");
+            console.info("====>delete account 1000 start====");
             await appAccountManager.removeAccount("Account_application_promise");
-            console.debug("====>GetAccountsByOwner_1000 end====");
+            console.info("====>GetAccountsByOwner_1000 end====");
             done();
         });
 
@@ -348,21 +348,21 @@ export default function GetAccountsByOwner() {
         *                 application, this application obtains the information of its own application
         */
         it('GetAccountsByOwner_1100', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1100 start====");
+            console.info("====>GetAccountsByOwner_1100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var specifiedBundle = "com.example.actsscenegetallaccounts";
             function getAllCallback(err, data){
-                console.debug("====>getAccountsByOwner 1100 err:" + JSON.stringify(err));
-                console.debug("====>getAccountsByOwner 1100 data:" + JSON.stringify(data));
+                console.info("====>getAccountsByOwner 1100 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 1100 data:" + JSON.stringify(data));
                 expect(err).assertEqual(null);
                 expect(data[0].name).assertEqual("account_name_scene_single");
                 expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
-                console.debug("====>GetAccountsByOwner_1100 end====");
+                console.info("====>GetAccountsByOwner_1100 end====");
                 done();
             }
             await sleep(TIMEOUT)
-            console.debug("====>getAccountsByOwner 1100 start====");
+            console.info("====>getAccountsByOwner 1100 start====");
             appAccountManager.getAccountsByOwner(specifiedBundle, getAllCallback);
         });
 
@@ -373,12 +373,12 @@ export default function GetAccountsByOwner() {
         *                 application, this application obtains the information of its own application
         */
         it('GetAccountsByOwner_1200', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1200 start====");
+            console.info("====>GetAccountsByOwner_1200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var specifiedBundle = "com.example.actsscenegetallaccounts";
             await sleep(TIMEOUT)
-            console.debug("====>getAccountsByOwner 1200 start====");
+            console.info("====>getAccountsByOwner 1200 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(specifiedBundle);
             }
@@ -387,10 +387,10 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAccountsByOwner 1200 data:" + JSON.stringify(data));
+            console.info("====>getAccountsByOwner 1200 data:" + JSON.stringify(data));
             expect(data[0].name).assertEqual("account_name_scene_single");
             expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
-            console.debug("====>GetAccountsByOwner_1200 end====");
+            console.info("====>GetAccountsByOwner_1200 end====");
             done();
         });
 
@@ -400,14 +400,14 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is a bundlename that does not exist
         */
         it('GetAccountsByOwner_1300', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1300 start====");
+            console.info("====>GetAccountsByOwner_1300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
             appAccountManager.getAccountsByOwner(nonexistentBundle, (err, data)=>{
-                console.debug("====>getAccountsByOwner 1300 err:" + JSON.stringify(err));
+                console.info("====>getAccountsByOwner 1300 err:" + JSON.stringify(err));
                 expect(err.code == 12400001).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_1300 end====");
+                console.info("====>GetAccountsByOwner_1300 end====");
                 done();
             })
         });
@@ -418,9 +418,9 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : The parameter owner is a bundlename that does not exist
         */
         it('GetAccountsByOwner_1400', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1400 start====");
+            console.info("====>GetAccountsByOwner_1400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             var nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
             try{
                 var data = await appAccountManager.getAccountsByOwner(nonexistentBundle);
@@ -428,9 +428,9 @@ export default function GetAccountsByOwner() {
                 done();
             }
             catch(err){
-                console.debug("====>getAccountsByOwner 1400 err:" + JSON.stringify(err));   
+                console.info("====>getAccountsByOwner 1400 err:" + JSON.stringify(err));   
                 expect(err.code == 12400001).assertEqual(true);
-                console.debug("====>GetAccountsByOwner_1400 end====");
+                console.info("====>GetAccountsByOwner_1400 end====");
                 done();
             }
         });
@@ -441,27 +441,27 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : Get account information after adding and deleting account
         */
         it('GetAccountsByOwner_1500', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1500 start====");
+            console.info("====>GetAccountsByOwner_1500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_callback_delete", (err)=>{
-                console.debug("====>add account 1500 err:" + JSON.stringify(err));
+                console.info("====>add account 1500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                    console.debug("====>getAccountsByOwner 1500 err:" + JSON.stringify(err));
-                    console.debug("====>getAccountsByOwner 1500 data:" + JSON.stringify(data));
+                    console.info("====>getAccountsByOwner 1500 err:" + JSON.stringify(err));
+                    console.info("====>getAccountsByOwner 1500 data:" + JSON.stringify(data));
                     expect(err).assertEqual(null);
                     expect(data[0].name).assertEqual("account_callback_delete");
                     expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
                     appAccountManager.removeAccount("account_callback_delete", (err)=>{
-                        console.debug("====>delete account 1500 err:" + JSON.stringify(err));
+                        console.info("====>delete account 1500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                            console.debug("====>getAccountsByOwner 1500 err:" + JSON.stringify(err));
-                            console.debug("====>getAccountsByOwner 1500 data:" + JSON.stringify(data));
+                            console.info("====>getAccountsByOwner 1500 err:" + JSON.stringify(err));
+                            console.info("====>getAccountsByOwner 1500 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data.length).assertEqual(0);
-                            console.debug("====>GetAccountsByOwner_1500 end====");
+                            console.info("====>GetAccountsByOwner_1500 end====");
                             done();
                         })
                     });
@@ -475,10 +475,10 @@ export default function GetAccountsByOwner() {
         * @tc.desc      : Get account information after adding and deleting account
         */
         it('GetAccountsByOwner_1600', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1600 start====");
+            console.info("====>GetAccountsByOwner_1600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAccountsByOwner for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAccountsByOwner for clean====");
             try{
                 var acclist = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -487,15 +487,15 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add account 1600 start====");
+            console.info("====>add account 1600 start====");
             await appAccountManager.createAccount("account_promise_delete");
-            console.debug("====>first getAccountsByOwner 1600 start====");
+            console.info("====>first getAccountsByOwner 1600 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -506,9 +506,9 @@ export default function GetAccountsByOwner() {
             }       
             expect(data[0].name).assertEqual("account_promise_delete");
             expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
-            console.debug("====>delete account 1600 start====");
+            console.info("====>delete account 1600 start====");
             await appAccountManager.removeAccount("account_promise_delete");  
-            console.debug("====>second getAccountsByOwner 1600 start====");
+            console.info("====>second getAccountsByOwner 1600 start====");
             try{
                 var dataDelete = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -518,7 +518,7 @@ export default function GetAccountsByOwner() {
                 done();
             }       
             expect(dataDelete.length).assertEqual(0);
-            console.debug("====>GetAccountsByOwner_1600 end====");
+            console.info("====>GetAccountsByOwner_1600 end====");
             done();
         });
 
@@ -529,27 +529,27 @@ export default function GetAccountsByOwner() {
         *                 account
         */
         it('GetAccountsByOwner_1700', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1700 start====");
+            console.info("====>GetAccountsByOwner_1700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("account_callback_additional", createAccountOptions, (err)=>{
-                console.debug("====>add account 1700 err:" + JSON.stringify(err));
+                console.info("====>add account 1700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                    console.debug("====>getAccountsByOwner 1700 err:" + JSON.stringify(err));
-                    console.debug("====>getAccountsByOwner 1700 data:" + JSON.stringify(data));
+                    console.info("====>getAccountsByOwner 1700 err:" + JSON.stringify(err));
+                    console.info("====>getAccountsByOwner 1700 data:" + JSON.stringify(data));
                     expect(err).assertEqual(null);
                     expect(data[0].name).assertEqual("account_callback_additional");
                     expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
                     appAccountManager.removeAccount("account_callback_additional", (err)=>{
-                        console.debug("====>delete account 1700 err:" + JSON.stringify(err));
+                        console.info("====>delete account 1700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAccountsByOwner(SELFBUNDLE, (err, data)=>{
-                            console.debug("====>getAccountsByOwner 1700 err:" + JSON.stringify(err));
-                            console.debug("====>getAccountsByOwner 1700 data:" + JSON.stringify(data));
+                            console.info("====>getAccountsByOwner 1700 err:" + JSON.stringify(err));
+                            console.info("====>getAccountsByOwner 1700 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data.length).assertEqual(0);
-                            console.debug("====>GetAccountsByOwner_1700 end====");
+                            console.info("====>GetAccountsByOwner_1700 end====");
                             done();
                         })
                     });
@@ -564,10 +564,10 @@ export default function GetAccountsByOwner() {
         *                 account
         */
         it('GetAccountsByOwner_1800', 0, async function (done) {
-            console.debug("====>GetAccountsByOwner_1800 start====");
+            console.info("====>GetAccountsByOwner_1800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAccountsByOwner for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAccountsByOwner for clean====");
             try{
                 var acclist = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -576,15 +576,15 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add account 1800 start====");
+            console.info("====>add account 1800 start====");
             await appAccountManager.createAccount("account_promise_additional", createAccountOptions);
-            console.debug("====>first getAccountsByOwner 1800 start====");
+            console.info("====>first getAccountsByOwner 1800 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -593,12 +593,12 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>first getAccountsByOwner 1800 data:" + JSON.stringify(data)); 
+            console.info("====>first getAccountsByOwner 1800 data:" + JSON.stringify(data)); 
             expect(data[0].name).assertEqual("account_promise_additional");
             expect(data[0].owner).assertEqual("com.example.actsgetaccountsbyowner");
-            console.debug("====>delete account 1800 start====");
+            console.info("====>delete account 1800 start====");
             await appAccountManager.removeAccount("account_promise_additional");  
-            console.debug("====>second getAccountsByOwner 1800 start====");
+            console.info("====>second getAccountsByOwner 1800 start====");
             try{
                 var dataDelete = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
             }
@@ -607,9 +607,9 @@ export default function GetAccountsByOwner() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>second getAccountsByOwner 1800 data:" + JSON.stringify(data));
+            console.info("====>second getAccountsByOwner 1800 data:" + JSON.stringify(data));
             expect(dataDelete.length).assertEqual(0);
-            console.debug("====>GetAccountsByOwner_1800 end====");
+            console.info("====>GetAccountsByOwner_1800 end====");
             done();
         });
     })
