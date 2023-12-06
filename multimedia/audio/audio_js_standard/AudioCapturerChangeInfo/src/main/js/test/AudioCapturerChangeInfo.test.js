@@ -625,6 +625,7 @@ export default function audioCapturerChange() {
                 streamInfo: AudioStreamInfo,
                 capturerInfo: AudioCapturerInfo
             }
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
             audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -636,7 +637,7 @@ export default function audioCapturerChange() {
                         let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                         let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
-                        if (Id > 0 && dType == 0 && dRole == 0 && sRate != null && cCount != null && cMask != null) {
+                        if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                             audioStreamManager.off('audioCapturerChange');
                             expect(true).assertTrue();
                             done();
@@ -645,7 +646,7 @@ export default function audioCapturerChange() {
                 }
             });
             try {
-                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+                await audioCap.start();
                 await audioCap.release();
             } catch (err) {
                 console.log('err :' + JSON.stringify(err));
@@ -907,7 +908,7 @@ export default function audioCapturerChange() {
                 capturerInfo: AudioCapturerInfo
             }
             let audioCap;
-
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
             audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -919,7 +920,7 @@ export default function audioCapturerChange() {
                         let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                         let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
-                        if (Id > 0 && dType == 0 && dRole == 0 && sRate != null && cCount != null && cMask != null) {
+                        if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                             audioStreamManager.off('audioCapturerChange');
                             expect(true).assertTrue();
                             done();
@@ -928,7 +929,7 @@ export default function audioCapturerChange() {
                 }
             });
             try {
-                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+                await audioCap.start();
                 await audioCap.release();
             } catch (err) {
                 console.log('err :' + JSON.stringify(err));
@@ -1314,7 +1315,12 @@ export default function audioCapturerChange() {
                 streamInfo: AudioStreamInfo,
                 capturerInfo: AudioCapturerInfo
             }
-
+            await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
+                audioCap = data;
+                console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
+            }).catch((err) => {
+                console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
+            });
             audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -1326,12 +1332,7 @@ export default function audioCapturerChange() {
             });
             await sleep(100);
 
-            await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
-                audioCap = data;
-                console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
-            }).catch((err) => {
-                console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
-            });
+            await audioCap.start();
 
             await sleep(100);
 
