@@ -49,7 +49,8 @@ export default function stageAppContextTest(abilityContext) {
         })
 
         afterEach(async (done) => {
-            await sleep(2000)
+            console.log("ActsStageContextPropertiesTest run afterEach with await");
+            await sleep(2000);
             done()
         })
 
@@ -58,6 +59,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Validating the context obtained by the AbilityContext call 
           * getApplicationContext can be obtained using getApplicationContext
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   0
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_0200', 0, async function (done) {
@@ -76,6 +79,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Verify that the AbilityContext call getApplicationContext 
           * gets the context using resourceManger
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_0300', 0, async function (done) {
@@ -93,6 +98,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Verify that the AbilityContext call getApplicationContext 
           * gets the context using applicationInfo
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_0400', 0, async function (done) {
@@ -111,6 +118,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Validating the context obtained by the AbilityStageContext call 
           * getApplicationContext can be obtained using getApplicationContext
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_0500', 0, async function (done) {
@@ -129,6 +138,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Verify that the AbilityStageContext call getApplicationContext 
           * gets the context using applicationInfo
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_0600', 0, async function (done) {
@@ -146,6 +157,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Verify that the app-level context calls the interface 
           * getApplicationContext to get the context using getApplicationContext
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_1200', 0, async function (done) {
@@ -165,6 +178,8 @@ export default function stageAppContextTest(abilityContext) {
           * @tc.name: Verify that the context obtained by the application-level 
           * context calling interface getApplicationContext can use resourceManger
           * @tc.desc: Function test
+          * @tc.size: MediumTest
+          * @tc.type: Function
           * @tc.level   3
           */
         it('SUB_AA_OpenHarmony_ApplicationContext_1300', 0, async function (done) {
@@ -183,6 +198,8 @@ export default function stageAppContextTest(abilityContext) {
            * @tc.name: Verify that the application-level context calling interface 
            * getApplicationContext gets the context using applicationInfo
            * @tc.desc: Function test
+           * @tc.size: MediumTest
+           * @tc.type: Function
            * @tc.level   3
            */
         it('SUB_AA_OpenHarmony_ApplicationContext_1400', 0, async function (done) {
@@ -201,6 +218,8 @@ export default function stageAppContextTest(abilityContext) {
            * @tc.name: Verify that the context obtained by the app-level context 
            * calling interface getApplicationContext can be obtained using getApplicationContext
            * @tc.desc: Function test
+           * @tc.size: MediumTest
+           * @tc.type: Function
            * @tc.level   3
            */
         it('SUB_AA_OpenHarmony_ApplicationContext_1500', 0, async function (done) {
@@ -224,6 +243,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: getProcessRunningInformation test 1
          * getProcessRunningInformation test
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   3
          */
         it('SUB_AA_OpenHarmony_ApplicationContext_1600', 0, async function (done) {
@@ -242,6 +263,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: getProcessRunningInformation test 2
          * getProcessRunningInformation test
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   3
          */
         it('SUB_AA_OpenHarmony_ApplicationContext_1700', 0, async function (done) {
@@ -260,6 +283,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: getProcessRunningInformation test 2
          * getProcessRunningInformation test
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   3
          */
         it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async function (done) {
@@ -279,6 +304,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 1
          * calling interface clearUpApplicationData can be cleaning application data, run entry applicationData use Promise
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100', 0, async function (done) {
@@ -344,6 +371,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 2
          * calling interface clearUpApplicationData can be cleaning application data, run entry applicationData use Callback
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200', 0, async function (done) {
@@ -409,6 +438,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 3
          * calling interface clearUpApplicationData can be cleaning application data, run feature applicationData use Promise
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300', 0, async function (done) {
@@ -477,6 +508,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 4
          * calling interface clearUpApplicationData can be cleaning application data, run feature applicationData use Callback
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400', 0, async function (done) {
@@ -538,12 +571,14 @@ export default function stageAppContextTest(abilityContext) {
         });
 
         /**
-      * @tc.number: SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500
-      * @tc.name: Verify that the clearUpApplicationData cleaning application data test 5
-      * calling interface clearUpApplicationData can be cleaning application data, run system applicationData use Promise
-      * @tc.desc: Function test
-      * @tc.level   1
-      */
+         * @tc.number: SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500
+         * @tc.name: Verify that the clearUpApplicationData cleaning application data test 5
+         * calling interface clearUpApplicationData can be cleaning application data, run system applicationData use Promise
+         * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level   1
+         */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500', 0, async function (done) {
             let TAG = "SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500";
             let startType = "Promise";
@@ -607,6 +642,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 6
          * calling interface clearUpApplicationData can be cleaning application data, run system applicationData use Callback
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600', 0, async function (done) {
@@ -672,6 +709,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 7
          * calling interface clearUpApplicationData can be cleaning application data, run applicationDatas use Promise
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700', 0, async function (done) {
@@ -718,8 +757,8 @@ export default function stageAppContextTest(abilityContext) {
             } catch (error) {
                 console.log(TAG + "Subscriber create fail " + JSON.stringify(error));
             }
-            await sleep(100);
-            abilityDelegator.startAbility({
+            await sleep(1000);
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelp",
                 abilityName: "MainAbility",
                 parameters: {
@@ -727,15 +766,19 @@ export default function stageAppContextTest(abilityContext) {
                     createFile: true,
                     notClear: true
                 }
-            })
-            abilityDelegator.startAbility({
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelp failed:" + JSON.stringify(error));
+            });
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelpSystem",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: true
                 }
-            })
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelpSystem failed:" + JSON.stringify(error));
+            });
             await sleep(2000);
             console.log(TAG + "create file status  createFileFlag" + createFileFlag + "createFileFlagSys" + createFileFlagSys);
             expect(createFileFlag).assertTrue();
@@ -745,22 +788,26 @@ export default function stageAppContextTest(abilityContext) {
                     console.log(TAG + "stdResult : open" + JSON.stringify(data));
                 })
             await sleep(2000);
-            abilityDelegator.startAbility({
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelp",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: false
                 }
-            })
-            abilityDelegator.startAbility({
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelp failed:" + JSON.stringify(error));
+            });
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelpSystem",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: false
                 }
-            })
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelpSystem failed:" + JSON.stringify(error));
+            });
             await sleep(2000);
             console.log(TAG + "delete file status createFileFlag" + createFileFlag + "createFileFlagSys" + createFileFlagSys);
             expect(createFileFlag).assertTrue();
@@ -768,8 +815,8 @@ export default function stageAppContextTest(abilityContext) {
             console.log(TAG + "Close Subscriber");
             commonEventManager.unsubscribe(Subscriber);
             commonEventManager.unsubscribe(SubscriberSys);
-            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelp')
-            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelpSystem')
+            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelp');
+            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelpSystem');
             done();
         });
 
@@ -778,6 +825,8 @@ export default function stageAppContextTest(abilityContext) {
          * @tc.name: Verify that the clearUpApplicationData cleaning application data test 7
          * calling interface clearUpApplicationData can be cleaning application data, run applicationDatas use Callback
          * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0800', 0, async function (done) {
@@ -824,8 +873,8 @@ export default function stageAppContextTest(abilityContext) {
             } catch (error) {
                 console.log(TAG + "Subscriber create fail " + JSON.stringify(error));
             }
-            await sleep(100);
-            abilityDelegator.startAbility({
+            await sleep(1000);
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelp",
                 abilityName: "MainAbility",
                 parameters: {
@@ -833,15 +882,19 @@ export default function stageAppContextTest(abilityContext) {
                     createFile: true,
                     notClear: true
                 }
-            })
-            abilityDelegator.startAbility({
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelp failed:" + JSON.stringify(error));
+            });
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelpSystem",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: true
                 }
-            })
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelpSystem failed:" + JSON.stringify(error));
+            });
             await sleep(2000);
             console.log(TAG + "create file status  createFileFlag" + createFileFlag + "createFileFlagSys" + createFileFlagSys);
             expect(createFileFlag).assertTrue();
@@ -851,22 +904,26 @@ export default function stageAppContextTest(abilityContext) {
                     console.log(TAG + "stdResult : open" + JSON.stringify(data));
                 })
             await sleep(2000);
-            abilityDelegator.startAbility({
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelp",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: false
                 }
-            })
-            abilityDelegator.startAbility({
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelp failed:" + JSON.stringify(error));
+            });
+            await abilityDelegator.startAbility({
                 bundleName: "com.example.clearUpApplicationDataHelpSystem",
                 abilityName: "MainAbility",
                 parameters: {
                     startType,
                     createFile: false
                 }
-            })
+            }).catch((error)=>{
+                console.log(TAG + "start clearUpApplicationDataHelpSystem failed:" + JSON.stringify(error));
+            });
             await sleep(2000);
             console.log(TAG + "delete file status createFileFlag" + createFileFlag + "createFileFlagSys" + createFileFlagSys);
             expect(createFileFlag).assertTrue();
@@ -874,8 +931,8 @@ export default function stageAppContextTest(abilityContext) {
             console.log(TAG + "Close Subscriber");
             commonEventManager.unsubscribe(Subscriber);
             commonEventManager.unsubscribe(SubscriberSys);
-            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelp')
-            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelpSystem')
+            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelp');
+            await abilityDelegator.executeShellCommand('aa force-stop com.example.clearUpApplicationDataHelpSystem');
             done();
         });
 
