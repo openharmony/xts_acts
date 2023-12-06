@@ -27,7 +27,7 @@ import CanvasAPITest from './CanvasAPI.test'
 import CanvasShaderTest from './CanvasShader.test'
 
 export default function testsuite() {
-  //ListDeleteTest()
+  ListDeleteTest()
   ListSwipeTest()
   ListReboundTest()
   TextAreaCallbackTest()
