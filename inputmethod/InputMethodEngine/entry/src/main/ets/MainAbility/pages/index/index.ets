@@ -15,7 +15,7 @@
 
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
-import testsuite from '../../test/List.test'
+import testsuite from '../../../test/List.test'
 
 @Entry
 @Component
@@ -30,34 +30,15 @@ struct Index {
   'nputMethodEngine33inputMethodEngine34inputMethodEngine35inputMethodEngine36inputMethodEngine37inputMethodEngine3' +
   '8inputMethodEngine39inputMethodEngine40inputMethodEngine41inputMethodEngine42inputMethodEngine43inputMethodEngine' +
   '44inputMethodEngine45inputMethodEngine46inputMethodEngine47inputMethodEngine48inputMethodEngine49inputMethodEngi' +
-  'ne50inputMethodEngine51inputMethodEngine52inputMethodEngine53inputMethodEngine54inputMethodEngine55inputMethodEngi' +
-  'ne5inputMethodEngine57inputMethodEngine58inputMethodEngine59inputMethodEngine60inputMethodEngine61inputMethodEn' +
-  'gine62inputMethodEngine63inputMethodEngine64inputMethodEngine65inputMethodEngine66';
+  'ne50';
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .defaultFocus(true)
         TextArea({ text: this.inputValue })
-          .height('80%')
+          .height('90%')
           .onChange((value: string) => {
             this.inputValue = value;
           })
-        Button() {
-          Text('next page')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('35%')
-        .height('5%')
-        .onClick(() => {
-        })
       }
       .width('100%')
     }

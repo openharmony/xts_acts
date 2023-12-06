@@ -36,7 +36,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_switchInputMethod_001
      * @tc.name    Test Indicates the input method which will replace the current one.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_switchInputMethod_001', 0, async function (done) {
       console.info("====>************* inputmethodNomal_test_switchInputMethod_001 Test start*************");
@@ -67,7 +69,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_switchInputMethod_002
      * @tc.name    Test Indicates the input method which will replace the current one.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_switchInputMethod_002', 0, async function (done) {
       console.info("====>************* inputmethodNomal_test_switchInputMethod_002 Test start*************");
@@ -103,7 +107,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_showSoftKeyboard_001
      * @tc.name    Test Indicates the input method which will show softboard with calback.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_showSoftKeyboard_001', 0, async function (done) {
       console.info("====>*************inputmethodNomal_test_showSoftKeyboard_001 start******************");
@@ -131,7 +137,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_showSoftKeyboard_002
      * @tc.name    Test Indicates the input method which will show softboard with Promise.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_showSoftKeyboard_002', 0, async function (done) {
       console.info("====>*********inputmethodNomal_test_showSoftKeyboard_002 start************");
@@ -154,7 +162,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_hideSoftKeyboard_001
      * @tc.name    Test Indicates the input method which will hide softboard with calback.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_hideSoftKeyboard_001', 0, async function (done) {
       console.info("====>*********inputmethodNomal_test_hideSoftKeyboard_001 start************");
@@ -182,7 +192,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.number  inputmethodNomal_test_hideSoftKeyboard_002
      * @tc.name    Test Indicates the input method which will hide softboard with Promise.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethodNomal_test_hideSoftKeyboard_002', 0, async function (done) {
       console.info("====>*********inputmethodNomal_test_hideSoftKeyboard_002 start************");
