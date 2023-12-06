@@ -27,12 +27,12 @@ export default function pasteComponentTest() {
       try {
         router.clear();
         let pages = router.getState();
-        console.debug("====>pasteComponentTest get state success " + JSON.stringify(pages));
+        console.info("====>pasteComponentTest get state success " + JSON.stringify(pages));
         if (!("pasteButton" == pages.name)) {
-          console.debug("====>pasteComponentTest get state success " + JSON.stringify(pages.name));
+          console.info("====>pasteComponentTest get state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.debug("====>pasteComponentTest push page success " + JSON.stringify(result));
+          console.info("====>pasteComponentTest push page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("====>pasteComponentTest push page error: " + err);
@@ -42,11 +42,11 @@ export default function pasteComponentTest() {
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.debug("====>pasteComponentTest after each called");
+      console.info("====>pasteComponentTest after each called");
     });
 
     it('Test_Security_Button_Paste_0100', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0100] START');
+      console.info('====>[Test_Security_Button_Paste_0100] START');
       let strJson = getInspectorByKey('keyPaste');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.icon).assertEqual(0);
@@ -79,18 +79,18 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = async (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0100] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0100] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0100] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0100] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
             await Utils.sleep(500);
-            console.debug("====>[Test_Security_Button_Paste_0100] END====");
+            console.info("====>[Test_Security_Button_Paste_0100] END====");
             done()
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0100] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0100] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0100] END====");
+            console.info("====>[Test_Security_Button_Paste_0100] END====");
             done()
           }
         }
@@ -100,23 +100,23 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0100] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0100] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0100] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0100] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0100] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0100] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
 
     it('Test_Security_Button_Paste_0200', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0200] START====');
+      console.info('====>[Test_Security_Button_Paste_0200] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -154,10 +154,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0200] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0200] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0200] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -166,17 +166,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0200] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0200] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0200] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0200] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0200] END====");
+            console.info("====>[Test_Security_Button_Paste_0200] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0200] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0200] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0200] END====");
+            console.info("====>[Test_Security_Button_Paste_0200] END====");
             done();
           }
         }
@@ -186,22 +186,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0200] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0200] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0200] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0200] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0200] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0200] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0300', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0300] START====');
+      console.info('====>[Test_Security_Button_Paste_0300] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -239,10 +239,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0300] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0300] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0300] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -254,17 +254,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0300] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0300] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0300] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0300] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0300] END====");
+            console.info("====>[Test_Security_Button_Paste_0300] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0300] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0300] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0300] END====");
+            console.info("====>[Test_Security_Button_Paste_0300] END====");
             done();
           }
         }
@@ -274,23 +274,23 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0300] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0300] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0300] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0300] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0300] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0300] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
 
     it('Test_Security_Button_Paste_0400', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0400] START====');
+      console.info('====>[Test_Security_Button_Paste_0400] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -328,10 +328,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0400] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0400] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0400] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste1');
@@ -343,17 +343,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0400] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0400] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0400] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0400] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0400] END====");
+            console.info("====>[Test_Security_Button_Paste_0400] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0400] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0400] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0400] END====");
+            console.info("====>[Test_Security_Button_Paste_0400] END====");
             done();
           }
         }
@@ -363,22 +363,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0400] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0400] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponents(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0400] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0400] button is:" + JSON.stringify(button));
         await button[1].click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0400] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0400] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0500', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0500] START====');
+      console.info('====>[Test_Security_Button_Paste_0500] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -416,10 +416,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0500] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0500] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0500] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -428,17 +428,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0500] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0500] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0500] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0500] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0500] END====");
+            console.info("====>[Test_Security_Button_Paste_0500] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0500] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0500] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0500] END====");
+            console.info("====>[Test_Security_Button_Paste_0500] END====");
             done();
           }
         }
@@ -448,22 +448,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0500] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0500] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0500] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0500] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0500] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0500] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0600', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0600] START====');
+      console.info('====>[Test_Security_Button_Paste_0600] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -501,10 +501,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0600] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0600] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0600] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -513,17 +513,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0600] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0600] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0600] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0600] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0600] END====");
+            console.info("====>[Test_Security_Button_Paste_0600] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0600] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0600] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0600] END====");
+            console.info("====>[Test_Security_Button_Paste_0600] END====");
             done();
           }
         }
@@ -533,22 +533,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0600] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0600] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0600] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0600] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0600] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0600] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0700', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0700] START====');
+      console.info('====>[Test_Security_Button_Paste_0700] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -586,10 +586,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0700] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0700] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0700] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -598,17 +598,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0700] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0700] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0700] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0700] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0700] END====");
+            console.info("====>[Test_Security_Button_Paste_0700] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0700] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0700] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0700] END====");
+            console.info("====>[Test_Security_Button_Paste_0700] END====");
             done();
           }
         }
@@ -618,22 +618,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0700] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0700] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0700] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0700] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0700] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0700] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0800', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0800] START====');
+      console.info('====>[Test_Security_Button_Paste_0800] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -671,10 +671,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0800] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0800] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0800] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -683,17 +683,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0800] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0800] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0800] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0800] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0800] END====");
+            console.info("====>[Test_Security_Button_Paste_0800] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0800] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0800] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0800] END====");
+            console.info("====>[Test_Security_Button_Paste_0800] END====");
             done();
           }
         }
@@ -703,22 +703,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0800] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0800] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0800] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0800] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0800] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0800] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_0900', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_0900] START====');
+      console.info('====>[Test_Security_Button_Paste_0900] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -756,10 +756,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_0900] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0900] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_0900] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -768,17 +768,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_0900] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_0900] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_0900] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_0900] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_0900] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_0900] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_0900] END====");
+            console.info("====>[Test_Security_Button_Paste_0900] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_0900] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_0900] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_0900] END====");
+            console.info("====>[Test_Security_Button_Paste_0900] END====");
             done();
           }
         }
@@ -788,22 +788,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0900] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0900] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_0900] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_0900] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_0900] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_0900] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1000', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1000] START====');
+      console.info('====>[Test_Security_Button_Paste_1000] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -841,10 +841,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1000] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1000] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1000] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -853,17 +853,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1000] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1000] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_1000] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_1000] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1000] END====");
+            console.info("====>[Test_Security_Button_Paste_1000] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1000] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_1000] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1000] END====");
+            console.info("====>[Test_Security_Button_Paste_1000] END====");
             done();
           }
         }
@@ -873,22 +873,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1000] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1000] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1000] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1000] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1000] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1000] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1100', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1100] START====');
+      console.info('====>[Test_Security_Button_Paste_1100] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -926,10 +926,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1100] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1100] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1100] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -941,17 +941,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1100] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1100] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_1100] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_1100] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1100] END====");
+            console.info("====>[Test_Security_Button_Paste_1100] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1100] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_1100] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1100] END====");
+            console.info("====>[Test_Security_Button_Paste_1100] END====");
             done();
           }
         }
@@ -961,22 +961,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1100] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1100] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1100] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1100] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1100] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1100] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1200', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1200] START====');
+      console.info('====>[Test_Security_Button_Paste_1200] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1014,10 +1014,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1200] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1200] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1200] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1029,17 +1029,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1200] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1200] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_1200] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_1200] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1200] END====");
+            console.info("====>[Test_Security_Button_Paste_1200] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1200] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_1200] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1200] END====");
+            console.info("====>[Test_Security_Button_Paste_1200] END====");
             done();
           }
         }
@@ -1049,22 +1049,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1200] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1200] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1200] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1200] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1200] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1200] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1300', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1300] START====');
+      console.info('====>[Test_Security_Button_Paste_1300] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1102,10 +1102,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1300] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1300] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1300] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1117,17 +1117,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1300] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1300] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
-            console.debug("====>[Test_Security_Button_Paste_1300] 设置权限成功");
+            console.info("====>[Test_Security_Button_Paste_1300] 设置权限成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1300] END====");
+            console.info("====>[Test_Security_Button_Paste_1300] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1300] 设置权限失败");
+            console.info("====>[Test_Security_Button_Paste_1300] 设置权限失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1300] END====");
+            console.info("====>[Test_Security_Button_Paste_1300] END====");
             done();
           }
         }
@@ -1137,22 +1137,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1300] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1300] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1300] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1300] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1300] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1300] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1400', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1400] START====');
+      console.info('====>[Test_Security_Button_Paste_1400] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1190,10 +1190,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1400] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1400] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1400] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste1');
@@ -1202,17 +1202,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1400] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1400] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1400] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1400] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1400] END====");
+            console.info("====>[Test_Security_Button_Paste_1400] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1400] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1400] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1400] END====");
+            console.info("====>[Test_Security_Button_Paste_1400] END====");
             done();
           }
         }
@@ -1222,22 +1222,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1400] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1400] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponents(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1400] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1400] button is:" + JSON.stringify(button));
         await button[1].click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1400] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1400] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1500', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1500] START====');
+      console.info('====>[Test_Security_Button_Paste_1500] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1275,10 +1275,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1500] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1500] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1500] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste1');
@@ -1287,17 +1287,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1500] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1500] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1500] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1500] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1500] END====");
+            console.info("====>[Test_Security_Button_Paste_1500] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1500] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1500] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1500] END====");
+            console.info("====>[Test_Security_Button_Paste_1500] END====");
             done();
           }
         }
@@ -1307,22 +1307,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1500] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1500] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponents(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1500] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1500] button is:" + JSON.stringify(button));
         await button[1].click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1500] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1500] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1600', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1600] START====');
+      console.info('====>[Test_Security_Button_Paste_1600] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1360,10 +1360,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1600] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1600] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1600] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1372,17 +1372,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1600] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1600] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1600] END====");
+            console.info("====>[Test_Security_Button_Paste_1600] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1600] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1600] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1600] END====");
+            console.info("====>[Test_Security_Button_Paste_1600] END====");
             done();
           }
         }
@@ -1392,22 +1392,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1600] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1600] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1600] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1600] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1600] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1600] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1700', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1700] START====');
+      console.info('====>[Test_Security_Button_Paste_1700] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1445,10 +1445,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1700] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1700] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1700] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1457,17 +1457,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1700] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1700] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1700] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1700] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1700] END====");
+            console.info("====>[Test_Security_Button_Paste_1700] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1700] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1700] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1700] END====");
+            console.info("====>[Test_Security_Button_Paste_1700] END====");
             done();
           }
         }
@@ -1477,22 +1477,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1700] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1700] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1700] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1700] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1700] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1700] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1800', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1800] START====');
+      console.info('====>[Test_Security_Button_Paste_1800] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1530,10 +1530,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1800] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1800] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1800] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1545,17 +1545,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1800] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1800] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1800] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1800] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1800] END====");
+            console.info("====>[Test_Security_Button_Paste_1800] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1800] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1800] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1800] END====");
+            console.info("====>[Test_Security_Button_Paste_1800] END====");
             done();
           }
         }
@@ -1565,22 +1565,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1800] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1800] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1800] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1800] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1800] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1800] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_1900', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_1900] START====');
+      console.info('====>[Test_Security_Button_Paste_1900] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1618,10 +1618,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_1900] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_1900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1900] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_1900] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1631,17 +1631,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_1900] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_1900] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_1900] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_1900] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_1900] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_1900] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_1900] END====");
+            console.info("====>[Test_Security_Button_Paste_1900] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_1900] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_1900] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_1900] END====");
+            console.info("====>[Test_Security_Button_Paste_1900] END====");
             done();
           }
         }
@@ -1651,22 +1651,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1900] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1900] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_1900] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_1900] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_1900] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_1900] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_2000', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_2000] START====');
+      console.info('====>[Test_Security_Button_Paste_2000] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1704,10 +1704,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_2000] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_2000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2000] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_2000] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1716,17 +1716,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_2000] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_2000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_2000] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_2000] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_2000] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_2000] END====");
+            console.info("====>[Test_Security_Button_Paste_2000] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_2000] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_2000] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_2000] END====");
+            console.info("====>[Test_Security_Button_Paste_2000] END====");
             done();
           }
         }
@@ -1736,22 +1736,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2000] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2000] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_2000] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_2000] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2000] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2000] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_2100', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_2100] START====');
+      console.info('====>[Test_Security_Button_Paste_2100] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1789,10 +1789,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_2100] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_2100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2100] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_2100] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1801,17 +1801,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_2100] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_2100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_2100] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_2100] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_2100] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_2100] END====");
+            console.info("====>[Test_Security_Button_Paste_2100] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_2100] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_2100] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_2100] END====");
+            console.info("====>[Test_Security_Button_Paste_2100] END====");
             done();
           }
         }
@@ -1821,22 +1821,22 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2100] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2100] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_2100] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_2100] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2100] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2100] clickSecComponent err : " + JSON.stringify(err));
       }
     });
 
     it('Test_Security_Button_Paste_2200', 0, async function (done) {
-      console.debug('====>[Test_Security_Button_Paste_2200] START====');
+      console.info('====>[Test_Security_Button_Paste_2200] START====');
       await Utils.sleep(1000);
       try {
         var eventData = {
@@ -1852,11 +1852,11 @@ export default function pasteComponentTest() {
             "anchorY": 0,
             "offsetX": 0,
             "offsetY": 0,
-            "fontSize": 20,
+            "fontSize": 16,
             "fontStyle": FontStyle.Normal,
             "fontWeight": FontWeight.Medium,
             "fontFamily": 'HarmonyOS Sans',
-            "fontColor": 0xffffffff,
+            "fontColor": Color.Transparent,
             "iconColor":0xffffffff,
             "bgColor": Color.Transparent,
             "borderSty": BorderStyle.Dashed,
@@ -1874,10 +1874,10 @@ export default function pasteComponentTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.debug("====>[Test_Security_Button_Paste_2200] start to publish emit");
+        console.info("====>[Test_Security_Button_Paste_2200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2200] change component data error: " + err.message);
+        console.info("====>[Test_Security_Button_Paste_2200] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
@@ -1886,17 +1886,17 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {
-          console.debug("====>[Test_Security_Button_Paste_2200] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.debug("====>[Test_Security_Button_Paste_2200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          console.info("====>[Test_Security_Button_Paste_2200] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
           if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.debug("====>[Test_Security_Button_Paste_2200] ERR CASE 成功");
+            console.info("====>[Test_Security_Button_Paste_2200] ERR CASE 成功");
             expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
-            console.debug("====>[Test_Security_Button_Paste_2200] END====");
+            console.info("====>[Test_Security_Button_Paste_2200] END====");
             done();
           } else {
-            console.debug("====>[Test_Security_Button_Paste_2200] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_2200] ERR CASE 失败");
             expect().assertFail()
-            console.debug("====>[Test_Security_Button_Paste_2200] END====");
+            console.info("====>[Test_Security_Button_Paste_2200] END====");
             done();
           }
         }
@@ -1906,17 +1906,587 @@ export default function pasteComponentTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2200] once clickEvent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2200] once clickEvent err : " + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('PasteButton'));
         await Utils.sleep(500);
-        console.debug("====>[Test_Security_Button_Paste_2200] button is:" + JSON.stringify(button));
+        console.info("====>[Test_Security_Button_Paste_2200] button is:" + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
       } catch (err) {
-        console.debug("====>[Test_Security_Button_Paste_2200] clickSecComponent err : " + JSON.stringify(err));
+        console.info("====>[Test_Security_Button_Paste_2200] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2300', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2300] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2300] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2300] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2300] get obj is: " + JSON.stringify(obj));
+      // size.width的默认值取值
+      expect(obj.$attrs.size.width).assertEqual('10.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2300] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2300] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2300] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2300] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2300] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2300] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2300] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2300] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2400', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2400] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2400] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2400] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2400] get obj is: " + JSON.stringify(obj));
+      // size.height的默认值取值
+      expect(obj.$attrs.size.height).assertEqual('15.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2400] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2400] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2400] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2400] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2400] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2400] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2400] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2400] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2500', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2500] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2500] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2500] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2500] get obj is: " + JSON.stringify(obj));
+      // constraintSize.minWidth的默认值取值
+      expect(constraintSize.minWidth).assertEqual('20.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2500] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2500] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2500] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2500] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2500] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2500] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2500] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2500] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2600', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2600] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2600] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2600] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2600] get obj is: " + JSON.stringify(obj));
+      // constraintSize.maxWidth的默认值取值
+      expect(constraintSize.maxWidth).assertEqual('25.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2600] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2600] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2600] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2600] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2600] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2600] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2600] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2600] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2700', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2700] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2700] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2700] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2700] get obj is: " + JSON.stringify(obj));
+      // constraintSize.minHeight的默认值取值
+      expect(constraintSize.minHeight).assertEqual('30.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2700] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2700] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2700] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2700] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2700] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2700] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2700] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2700] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    it('Test_Security_Button_Paste_2800', 0, async function (done) {
+      console.info('====>[Test_Security_Button_Paste_2800] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Paste_2800] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2800] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyPaste');
+      let obj = JSON.parse(strJsonNew);
+      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
+      console.info("====>[Test_Security_Button_Paste_2800] get constraintSize is: " + JSON.stringify(constraintSize));
+      console.info("====>[Test_Security_Button_Paste_2800] get obj is: " + JSON.stringify(obj));
+      // constraintSize.maxHeight的默认值取值
+      expect(constraintSize.maxHeight).assertEqual('35.00vp');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_Paste_2800] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_Paste_2800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2800] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_Paste_2800] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_Paste_2800] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Paste_2800] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2800] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('PasteButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Paste_2800] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Paste_2800] clickSecComponent err : " + JSON.stringify(err));
       }
     });
   })
