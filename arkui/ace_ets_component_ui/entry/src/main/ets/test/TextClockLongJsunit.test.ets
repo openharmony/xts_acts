@@ -44,6 +44,9 @@ export default function TextClockLongJsunit() {
      * @tc.number TextClockLongJsunit_0100
      * @tc.name scenario testing
      * @tc.desc Does the onDateChange stop when testing pauses.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it('TextClockLongJsunit_0100', 0, async function (done) {
       // Test stop
@@ -72,6 +75,9 @@ export default function TextClockLongJsunit() {
      * @tc.number TextClockLongJsunit_0200
      * @tc.name scenario testing
      * @tc.desc Does the onDateChange Visible when testing pauses.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it('TextClockLongJsunit_0200', 0, async function (done) {
       // Test Visible
@@ -94,13 +100,16 @@ export default function TextClockLongJsunit() {
      * @tc.number TextClockLongJsunit_0200
      * @tc.name scenario testing
      * @tc.desc Test whether the onDateChange stops when sliding out of the field of view.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it('TextClockLongJsunit_0300', 0, async function (done) {
       // Test sliding out screen
       console.info('[TextClockLongJsunit_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
-      let list = await driver.findComponent(ON.id("list"));
+      let list = await driver.findComponent(ON.id("TextClockLongPageList"));
       await list.scrollToBottom()
       let accumulateTime1 = await driver.findComponent(ON.id("accumulateTime2"));
       let accumulateTimeTextStart = await accumulateTime1.getText()
