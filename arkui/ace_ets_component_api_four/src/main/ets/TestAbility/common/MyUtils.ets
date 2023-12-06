@@ -15,6 +15,11 @@
 
 import events_emitter from '@ohos.events.emitter';
 export default class Utils {
+  static rect_left;
+  static rect_top;
+  static rect_right;
+  static rect_bottom;
+  static rect_value;
   public static instance;
 
   static sleep(time) {
@@ -35,30 +40,16 @@ export default class Utils {
   static getComponentRect(key) {
     let strJson = getInspectorByKey(key);
     let obj = JSON.parse(strJson);
-    console.info('[getInspectorByKey] key is: ' + key);
-    return Utils.getComponentRectByObj(obj);
-  }
-
-  static getComponentRectByObj(obj) {
-    console.info('[getInspectorByKey] current component type: ' + obj.$type + 'rectInfo:' + JSON.stringify(obj.$rect));
-    let rectStr = obj.$rect.replaceAll('[','').replace(']', ',').replace(']','')
-    let rectInfo = rectStr.split(',', 4);
-
-    let rect_value = {
-      'left': Math.round(Number(rectInfo[0])),
-      'top': Math.round(Number(rectInfo[1])),
-      'right': Math.round(Number(rectInfo[2])),
-      'bottom': Math.round(Number(rectInfo[3]))
-    };
-    return rect_value;
-  }
-
-  static getComponentByKey(componentKey) {
-    let strJson = getInspectorByKey(componentKey);
-    console.info('component Json is:' + strJson);
-    let obj = JSON.parse(strJson);
-    console.info('[' + componentKey + '] obj is: ' + JSON.stringify(obj));
-    return obj;
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
+    let rectInfo = JSON.parse('[' + obj.$rect + ']')
+    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
+    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
+    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
+    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
+    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
+    return this.rect_value = {
+      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    }
   }
 
   static sendEvent(message, eventId) {

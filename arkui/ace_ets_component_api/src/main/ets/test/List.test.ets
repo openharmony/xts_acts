@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 import ListDeleteTest from './ListDelete.test'
-import ListSwipeTest from './ListSwipe.test'
+import ListSwipeTest1 from './ListSwipe1.test'
+import ListSwipeTest2 from './ListSwipe2.test'
+import ListSwipeTest3 from './ListSwipe3.test'
+import ListSwipeTest4 from './ListSwipe4.test'
 import ListReboundTest from './ListRebound.test'
 import TextAreaCallbackTest from './TextAreaCallback.test'
 import BindMenuTest from './BindMenu.test'
@@ -27,8 +30,11 @@ import CanvasAPITest from './CanvasAPI.test'
 import CanvasShaderTest from './CanvasShader.test'
 
 export default function testsuite() {
+  ListSwipeTest1()
+  ListSwipeTest2()
+  ListSwipeTest3()
+  ListSwipeTest4()
   ListDeleteTest()
-  ListSwipeTest()
   ListReboundTest()
   TextAreaCallbackTest()
   BindMenuTest()
