@@ -553,7 +553,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
       expect(!!windowClass).assertTrue();
       try {
-        let avoidArea = windowClass.getWindowAvoidArea(4);
+        let avoidArea = windowClass.getWindowAvoidArea(888);
       } catch (exception) {
         console.error(msgStr + 'Failed to obtain the area. Cause:' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
