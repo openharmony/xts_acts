@@ -19,7 +19,12 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ListSwipe {
   private listScroller = new ListScroller();
-  @State swipeOffset: string = ''
+  @State list1Item0State: string = ''
+  @State list1Item1Offset: string = ''
+  @State closeButtonContent: string = ''
+  @State list2Item0State: string = ''
+  @State stateContent: string = ''
+  @State offsetContent: string = ''
 
   @Builder itemStart() {
     Row () {
@@ -56,16 +61,16 @@ struct ListSwipe {
             onStateChange:(state : SwipeActionState)=> {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList1_ListItem0 swipe action state COLLAPSED')
-                MyUtils.sendEvent('end COLLAPSED', 74000)
+                this.list1Item0State = 'end COLLAPSED'
               } else if (state == SwipeActionState.EXPANDED) {
                 console.info('MyList1_ListItem0 swipe action state EXPANDED')
-                MyUtils.sendEvent('end EXPANDED', 74000)
+                this.list1Item0State = 'end EXPANDED'
               } else if (state == SwipeActionState.ACTIONING) {
                 console.info('MyList1_ListItem0 swipe action state ACTIONING')
-                MyUtils.sendEvent('end ACTIONING', 74000)
+                this.list1Item0State = 'end ACTIONING'
               } else {
                 console.info('MyList1_ListItem0 swipe action state UNKOWN')
-                MyUtils.sendEvent('end UNKOWN', 74000)
+                this.list1Item0State = 'end UNKOWN'
               }
             }
           },
@@ -73,10 +78,10 @@ struct ListSwipe {
           onOffsetChange: (offset: number) => {
             if (offset > 0) {
               console.info('MyList1_Item0 swipe start')
-              MyUtils.sendEvent('swipe start', 70000)
+              this.offsetContent = 'swipe start'
             } else {
               console.info('MyList1_Item0 swipe end')
-              MyUtils.sendEvent('swipe end', 70000)
+              this.offsetContent = 'swipe end'
             }
           }
         })
@@ -101,10 +106,10 @@ struct ListSwipe {
           onOffsetChange: (offset: number) => {
             if (offset > 0) {
               console.info('MyList1_Item0 swipe start')
-              MyUtils.sendEvent('swipe start', 70000)
+              this.list1Item1Offset = 'swipe start'
             } else {
               console.info('MyList1_Item0 swipe end')
-              MyUtils.sendEvent('swipe end', 70000)
+              this.list1Item1Offset = 'swipe end'
             }
           }
         })
@@ -131,16 +136,16 @@ struct ListSwipe {
             onStateChange:(state : SwipeActionState)=> {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList2_ListItem0 swipe action state COLLAPSED')
-                MyUtils.sendEvent('COLLAPSED', 74000)
+                this.list2Item0State = 'COLLAPSED'
               } else if (state == SwipeActionState.EXPANDED) {
                 console.info('MyList2_ListItem0 swipe action state EXPANDED')
-                MyUtils.sendEvent('EXPANDED',  74000)
+                this.list2Item0State = 'EXPANDED'
               } else if (state == SwipeActionState.ACTIONING) {
                 console.info('MyList2_ListItem0 swipe action state ACTIONING')
-                MyUtils.sendEvent('ACTIONING',  74000)
+                this.list2Item0State = 'ACTIONING'
               } else {
                 console.info('MyList2_ListItem0 swipe action state UNKOWN')
-                MyUtils.sendEvent('UNKOWN', 74000)
+                this.list2Item0State = 'UNKOWN'
               }
             }
           },
@@ -170,24 +175,24 @@ struct ListSwipe {
             onStateChange:(state : SwipeActionState)=> {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList2_ListItem1 swipe action state COLLAPSED')
-                MyUtils.sendEvent('COLLAPSED', 74000)
+                this.stateContent = 'COLLAPSED'
               } else if (state == SwipeActionState.EXPANDED) {
                 console.info('MyList2_ListItem1 swipe action state EXPANDED')
-                MyUtils.sendEvent('EXPANDED', 74000)
+                this.stateContent = 'EXPANDED'
               } else if (state == SwipeActionState.ACTIONING) {
                 console.info('MyList2_ListItem1 swipe action state ACTIONING')
-                MyUtils.sendEvent('ACTIONING', 74000)
+                this.stateContent = 'ACTIONING'
               } else {
                 console.info('MyList2_ListItem1 swipe action state UNKOWN')
-                MyUtils.sendEvent('UNKOWN', 74000)
+                this.stateContent = 'UNKOWN'
               }
             }
           },
           onOffsetChange: (offset: number) => {
             if (offset > 0) {
-              MyUtils.sendEvent('swipe start', 70000)
+              this.offsetContent = 'swipe start'
             } else {
-              MyUtils.sendEvent('swipe left', 70000)
+              this.offsetContent = 'swipe left'
             }
           },
           edgeEffect:SwipeEdgeEffect.Spring
@@ -205,10 +210,14 @@ struct ListSwipe {
         console.info("onClick closeAllSwipeActions")
         this.listScroller.closeAllSwipeActions({
           onFinish:()=>{
-            MyUtils.sendEvent("onFinish", 79000)
+            this.closeButtonContent = 'onFinish'
           }
         });
       })
+      Text(this.list1Item0State).key('swipe0100').width("60%").height(80).backgroundColor(0x0000ff)
+      Text(this.list2Item0State).key('swipe0300').width("60%").height(80).backgroundColor(0x0000ff)
+      Text(this.closeButtonContent).key('swipe0400').width("60%").height(80).backgroundColor(0x0000ff)
+      Text(this.list1Item1Offset).key('swipe0500').width("60%").height(80).backgroundColor(0x0000ff)
     }
     .padding(10)
     .backgroundColor(0xDCDCDC)
