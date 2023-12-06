@@ -457,5 +457,25 @@ describe('display_test', function () {
                     done();
                }
        })
+
+    /**
+        * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_ORIENTATION_JS_API_0290
+        * @tc.name			testOrientation_attr
+        * @tc.desc			To test the attributes of Orientation
+    */
+    it('testOrientation_attr',0, async function (done){
+        let msg = "testOrientation_attr"
+        try {
+            expect(display.Orientation.PORTRAIT).assertEqual(0)
+            expect(display.Orientation.LANDSCAPE).assertEqual(1)
+            expect(display.Orientation.PORTRAIT_INVERTED).assertEqual(2)
+            expect(display.Orientation.LANDSCAPE_INVERTED).assertEqual(3)
+            done()
+        } catch (error) {
+            expect().assertFail()
+            done()
+        }
+    })
+
 })
 }
