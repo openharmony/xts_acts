@@ -122,8 +122,8 @@ function GetAesDecryptProperties() {
   return properties;
 }
 
-export default function preferencesEncryptPromiseTest(){
-  describe('preferencesPromiseTest', function () {
+export default function preferencesSpecialCharacterPromiseTest(){
+  describe('preferencesSpecialCharacterPromiseTest', function () {
     beforeAll(async function () {
       console.info('beforeAll');
       context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
@@ -137,8 +137,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0010
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0100
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0010', 0, async function () {
       let uInt8Array = new util.TextEncoder().encodeInto("!@#$%^&*() _+-~");
@@ -159,8 +162,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0020
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0200
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0020', 0, async function () {
       let uInt8Array = new util.TextEncoder().encodeInto("abc123");
@@ -181,8 +187,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0030
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0300
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0030', 0, async function () {
       let uInt8Array = new util.TextEncoder().encodeInto("abc@#$%123");
@@ -203,8 +212,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0040
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0400
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0040', 0, async function () {
       let uInt8Array = new Uint8Array(8192);
@@ -226,8 +238,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0050
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0500
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0050', 0, async function (done) {
       let uInt8Array = new Uint8Array(8193);
@@ -243,8 +258,11 @@ export default function preferencesEncryptPromiseTest(){
 
     /**
      * @tc.name put Uint8Array promise interface test
-     * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0060
+     * @tc.number SUB_DistributedData_Preference_SDK_SpecialCharacter_0600
      * @tc.desc put Uint8Array promise interface test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('testPreferencesPutUint8Array0060', 0, async function () {
       let genProperties = GetAesGenerateProperties();
