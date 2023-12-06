@@ -42,35 +42,35 @@ export class KeyboardController {
         });
 
         function subscriberCallback(err, data) {
-            console.debug(TAG + '====>receive event err: ' + JSON.stringify(err));
-            console.debug(TAG + '====>receive event data ' + JSON.stringify(data));
+            console.info(TAG + '====>receive event err: ' + JSON.stringify(err));
+            console.info(TAG + '====>receive event data ' + JSON.stringify(data));
             switch (data.code) {
                 case 10:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0010();
                     break;
                 case 20:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0020();
                     break;
                 case 30:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0030();
                     break;
                 case 40:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0040();
                     break;
                 case 50:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0050();
                     break;
                 case 60:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0060();
                     break;
                 case 70:
-                    console.debug(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 event:' + data.event);
+                    console.info(TAG + '====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 event:' + data.event);
                     that.SUB_Misc_InputMethod_Manage_Physical_Buttons_0070();
                     break;
             }
@@ -84,7 +84,7 @@ export class KeyboardController {
         commoneventmanager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
             subscriber = data;
             commoneventmanager.subscribe(subscriber, subscriberCallback);
-            console.debug(TAG + '====>scene subscribe finish====');
+            console.info(TAG + '====>scene subscribe finish====');
         });
     }
 
@@ -225,7 +225,7 @@ export class KeyboardController {
             inputKeyboardDelegate.off("keyEvent");
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 arr: " + JSON.stringify(arr));
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 arr: " + arr.join());
-            if (arr.join() === '1,2017,1,2047,2,2017,2,2047'){
+            if (arr.join() === '1,2017,1,2047,2,2047,2,2017'){
                 commonEventPublishData = {
                     data: "SUCCESS"
                 };
