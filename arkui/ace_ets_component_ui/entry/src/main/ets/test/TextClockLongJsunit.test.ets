@@ -100,7 +100,7 @@ export default function TextClockLongJsunit() {
       console.info('[TextClockLongJsunit_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
-      let list = await driver.findComponent(ON.id("list"));
+      let list = await driver.findComponent(ON.id("TextClockLongPageList"));
       await list.scrollToBottom()
       let accumulateTime1 = await driver.findComponent(ON.id("accumulateTime2"));
       let accumulateTimeTextStart = await accumulateTime1.getText()
