@@ -39,7 +39,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTCREATE_0100
      * @tc.name       : testMindSporeContextCreateOne
      * @tc.desc       : test the normal condition of OH_AI_ContextCreate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -54,7 +54,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTDESTROY_0100
      * @tc.name       : testMindSporeContextDestroyOne
      * @tc.desc       : test the normal condition of OH_AI_ContextDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -69,7 +69,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADNUM_0100
      * @tc.name       : testMindSporeContextSetThreadNumOne
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -84,7 +84,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADNUM_0200
      * @tc.name       : testMindSporeContextSetThreadNumTwo
      * @tc.desc       : test the abnormal condition of OH_AI_ContextSetThreadNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -99,7 +99,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADNUM_0300
      * @tc.name       : testMindSporeContextSetThreadNumThree
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -114,7 +114,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADNUM_0100
      * @tc.name       : testMindSporeContextGetThreadNumOne
      * @tc.desc       : test the normal condition of OH_AI_ContextGetThreadNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -129,7 +129,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADNUM_0200
      * @tc.name       : testMindSporeContextGetThreadNumTwo
      * @tc.desc       : test the abnormal condition of OH_AI_ContextGetThreadNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -144,7 +144,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYMODE_0100
      * @tc.name       : testMindSporeContextSetThreadAffinityModeOne
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -159,7 +159,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYMODE_0200
      * @tc.name       : testMindSporeContextSetThreadAffinityModeTwo
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -174,7 +174,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYMODE_0300
      * @tc.name       : testMindSporeContextSetThreadAffinityModeThree
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -189,7 +189,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYMODE_0400
      * @tc.name       : testMindSporeContextSetThreadAffinityModeFour
      * @tc.desc       : test the abnormal condition of OH_AI_ContextSetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -204,7 +204,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYMODE_0500
      * @tc.name       : testMindSporeContextSetThreadAffinityModeFive
      * @tc.desc       : test the abnormal condition of OH_AI_ContextSetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -219,7 +219,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADAFFINITYMODE_0100
      * @tc.name       : testMindSporeContextGetThreadAffinityModeOne
      * @tc.desc       : test the normal condition of OH_AI_ContextGetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -234,7 +234,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADAFFINITYMODE_0200
      * @tc.name       : testMindSporeContextGetThreadAffinityModeTwo
      * @tc.desc       : test the abnormal condition of OH_AI_ContextGetThreadAffinityMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -249,7 +249,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOCREATE_0100
      * @tc.name       : testMindSporeDeviceInfoCreateOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoCreate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -264,7 +264,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETDEVICETYPE_0100
      * @tc.name       : testMindSporeDeviceInfoGetDeviceTypeOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetDeviceType
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -279,7 +279,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETDEVICETYPE_0200
      * @tc.name       : testMindSporeDeviceInfoGetDeviceTypeTwo
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetDeviceType
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -294,7 +294,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETDEVICETYPE_0300
      * @tc.name       : testMindSporeDeviceInfoGetDeviceTypeThree
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetDeviceType
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -310,7 +310,7 @@ export default function mindSporeTest() {
      * @tc.name       : testMindSporeDeviceInfoGetDeviceTypeFour
      * @tc.desc       : When use function OH_AI_DeviceInfoGetDeviceType (), do not use the OH_AI_DeviceInfoHandle
      * parameter created by function OH_AI_DeviceInfoCreate(), just input nullptr as parameter
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -325,7 +325,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFODESTROY_0100
      * @tc.name       : testMindSporeDeviceInfoDestroyOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -340,7 +340,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDER_0100
      * @tc.name       : testMindSporeDeviceInfoSetProviderOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -356,7 +356,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDER_0200
      * @tc.name       : testMindSporeDeviceInfoSetProviderTwo
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -372,7 +372,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDER_0300
      * @tc.name       : testMindSporeDeviceInfoSetProviderThree
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -388,7 +388,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDER_0400
      * @tc.name       : testMindSporeDeviceInfoSetProviderFour
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoSetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -404,7 +404,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPROVIDER_0100
      * @tc.name       : testMindSporeDeviceInfoGetProviderOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -420,7 +420,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPROVIDER_0200
      * @tc.name       : testMindSporeDeviceInfoGetProviderTwo
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetProvider
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -435,7 +435,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDERDEVICE_0100
      * @tc.name       : testMindSporeDeviceInfoSetProviderDeviceOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProviderDevice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -451,7 +451,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDERDEVICE_0200
      * @tc.name       : testMindSporeDeviceInfoSetProviderDeviceTwo
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProviderDevice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -467,7 +467,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPROVIDERDEVICE_0300
      * @tc.name       : testMindSporeDeviceInfoSetProviderDeviceThree
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetProviderDevice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -483,7 +483,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPROVIDERDEVICE_0100
      * @tc.name       : testMindSporeDeviceInfoGetProviderDeviceOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetProviderDevice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -499,7 +499,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPROVIDERDEVICE_0200
      * @tc.name       : testMindSporeDeviceInfoGetProviderDeviceTwo
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetProviderDevice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -514,7 +514,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETENABLEFP16_0100
      * @tc.name       : testMindSporeDeviceInfoSetEnableFP16One
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetEnableFP16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -529,7 +529,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETENABLEFP16_0200
      * @tc.name       : testMindSporeDeviceInfoSetEnableFP16Two
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetEnableFP16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -544,7 +544,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETENABLEFP16_0300
      * @tc.name       : testMindSporeDeviceInfoSetEnableFP16Three
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoSetEnableFP16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -559,7 +559,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETENABLEFP16_0100
      * @tc.name       : testMindSporeDeviceInfoGetEnableFP16One
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetEnableFP16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -574,7 +574,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETENABLEFP16_0200
      * @tc.name       : testMindSporeDeviceInfoGetEnableFP16Two
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetEnableFP16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -589,7 +589,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETDEVICEID_0100
      * @tc.name       : testMindSporeDeviceInfoSetDeviceIdOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetDeviceId
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -605,7 +605,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETDEVICEID_0200
      * @tc.name       : testMindSporeDeviceInfoSetDeviceIdTwo
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoSetDeviceId
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -621,7 +621,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETDEVICEID_0100
      * @tc.name       : testMindSporeDeviceInfoGetDeviceIdOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetDeviceId
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -637,7 +637,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETDEVICEID_0200
      * @tc.name       : testMindSporeDeviceInfoGetDeviceIdTwo
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetDeviceId
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -652,7 +652,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPERFORMANCEMODE_0100
      * @tc.name       : testMindSporeDeviceInfoSetPerformanceModeOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -668,7 +668,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPERFORMANCEMODE_0200
      * @tc.name       : testMindSporeDeviceInfoSetPerformanceModeTwo
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -684,7 +684,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPERFORMANCEMODE_0300
      * @tc.name       : testMindSporeDeviceInfoSetPerformanceModeThree
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -700,7 +700,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPERFORMANCEMODE_0400
      * @tc.name       : testMindSporeDeviceInfoSetPerformanceModeFour
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -716,7 +716,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPERFORMANCEMODE_0500
      * @tc.name       : testMindSporeDeviceInfoSetPerformanceModeFive
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -732,7 +732,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPERFORMANCEMODE_0100
      * @tc.name       : testMindSporeDeviceInfoGetPerformanceModeOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -747,7 +747,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETPERFORMANCEMODE_0200
      * @tc.name       : testMindSporeDeviceInfoGetPerformanceModeTwo
      * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetPerformanceMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -761,7 +761,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYCORELIST_0100
      * @tc.name       : testMindSporeContextSetThreadAffinityCoreListOne
      * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadAffinityCoreList
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -775,7 +775,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADAFFINITYCORELIST_0100
      * @tc.name       : testMindSporeContextGetThreadAffinityCoreListOne
      * @tc.desc       : test the normal condition of OH_AI_ContextGetThreadAffinityCoreList
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -789,7 +789,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETENABLEPARALLEL_0100
      * @tc.name       : testMindSporeContextSetEnableParallelOne
      * @tc.desc       : test the normal condition of OH_AI_ContextSetEnableParallel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -803,7 +803,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETENABLEPARALLEL_0200
      * @tc.name       : testMindSporeContextSetEnableParallelTwo
      * @tc.desc       : test the normal condition of OH_AI_ContextSetEnableParallel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -817,7 +817,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETENABLEPARALLEL_0100
      * @tc.name       : testMindSporeContextGetEnableParallelOne
      * @tc.desc       : test the normal condition of OH_AI_ContextGetEnableParallel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -831,7 +831,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETENABLEPARALLEL_0200
      * @tc.name       : testMindSporeContextGetEnableParallelTwo
      * @tc.desc       : test the abnormal condition of OH_AI_ContextGetEnableParallel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -845,7 +845,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETFREQUENCY_0100
      * @tc.name       : testMindSporeDeviceInfoSetFrequencyOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetFrequency
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -860,7 +860,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETFREQUENCY_0100
      * @tc.name       : testMindSporeDeviceInfoGetFrequencyOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoGetFrequency
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -875,7 +875,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELCREATE_0100
      * @tc.name       : testMindSporeModelCreateOne
      * @tc.desc       : test the normal condition of OH_AI_ModelCreate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -889,7 +889,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELDESTROY_0100
      * @tc.name       : testMindSporeModelDestroyOne
      * @tc.desc       : test the normal condition of OH_AI_ModelDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -903,7 +903,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORCREATE_0100
      * @tc.name       : testMindSporeTensorCreateOne
      * @tc.desc       : test the normal condition of OH_AI_TensorCreate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -917,7 +917,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORDESTROY_0100
      * @tc.name       : testMindSporeTensorDestroyOne
      * @tc.desc       : test the normal condition of OH_AI_TensorDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -931,7 +931,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORCLONE_0100
      * @tc.name       : testMindSporeTensorCloneOne
      * @tc.desc       : test the normal condition of OH_AI_TensorClone
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -945,7 +945,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETNAME_0100
      * @tc.name       : testMindSporeTensorSetNameOne
      * @tc.desc       : test the normal condition of OH_AI_TensorSetName
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -960,7 +960,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETNAME_0100
      * @tc.name       : testMindSporeTensorGetNameOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetName
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -975,7 +975,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETDATATYPE_0100
      * @tc.name       : testMindSporeTensorSetDataTypeOne
      * @tc.desc       : test the normal condition of OH_AI_TensorSetDataType
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -989,7 +989,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATATYPE_0100
      * @tc.name       : testMindSporeTensorGetDataTypeOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetDataType
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1003,7 +1003,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETSHAPE_0100
      * @tc.name       : testMindSporeTensorSetShapeOne
      * @tc.desc       : test the normal condition of OH_AI_TensorSetShape
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1017,7 +1017,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETSHAPE_0100
      * @tc.name       : testMindSporeTensorGetShapeOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetShape
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1031,7 +1031,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETFORMAT_0100
      * @tc.name       : testMindSporeTensorSetFormatOne
      * @tc.desc       : test the normal condition of OH_AI_TensorSetFormat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1045,7 +1045,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETFORMAT_0100
      * @tc.name       : testMindSporeTensorGetFormatOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetFormat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1059,7 +1059,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETDATA_0100
      * @tc.name       : testMindSporeTensorSetDataOne
      * @tc.desc       : test the normal condition of OH_AI_TensorSetData
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1073,7 +1073,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATA_0100
      * @tc.name       : testMindSporeTensorGetDataOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetData
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1087,7 +1087,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETMUTABLEDATA_0100
      * @tc.name       : testMindSporeTensorGetMutableDataOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetMutableData
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1101,7 +1101,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETELEMENTNUM_0100
      * @tc.name       : testMindSporeTensorGetElementNumOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetElementNum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1115,7 +1115,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATASIZE_0100
      * @tc.name       : testMindSporeTensorGetDataSizeOne
      * @tc.desc       : test the normal condition of OH_AI_TensorGetDataSize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1129,7 +1129,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPRIORITY_0100
      * @tc.name       : testMindSporeDeviceInfoSetPriorityOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1143,7 +1143,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOADDEXTENSION_0100
      * @tc.name       : testMindSporeDeviceInfoAddExtensionOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoAddExtension
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1157,7 +1157,7 @@ export default function mindSporeTest() {
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTADDDEVICEINFO_0100
      * @tc.name       : testMindSporeContextAddDeviceInfoOne
      * @tc.desc       : test the normal condition of OH_AI_ContextAddDeviceInfo
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

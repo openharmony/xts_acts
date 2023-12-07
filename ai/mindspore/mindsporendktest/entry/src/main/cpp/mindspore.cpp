@@ -1085,7 +1085,7 @@ static napi_value OHAITensorCloneOne(napi_env env, napi_callback_info)
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
     size_t len = 1 * 48 * 48 * 3 * sizeof(float);
-    int32_t value_one[len];
+    size_t value_one[len];
     OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
                                                    create_shape_num, (void *)value_one, len);
     NAPI_ASSERT(env, tensor != nullptr, "tensor Create Error");
