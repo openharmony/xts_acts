@@ -219,8 +219,8 @@ export default function npiObjectTest() {
                   };
       napitest.FreezeTest(obj);
       expect(Object.isFrozen(obj)).assertDeepEquals(true);
-      expect(assignFreeze).assertThrowError("Cannot set readonly property");
-      expect(addFreeze).assertThrowError("Cannot add property in prevent extensions ");
+      expect(assignFreeze).assertThrowError("Cannot assign to read only property");
+      expect(addFreeze).assertThrowError("Cannot add property in prevent extensions");
       expect(deleteFreeze).assertThrowError("Cannot delete property");
     })
 
@@ -237,7 +237,7 @@ export default function npiObjectTest() {
                   };
       napitest.SealTest(obj);
       expect(Object.isSealed(obj)).assertDeepEquals(true);
-      expect(addSeal).assertThrowError("Cannot add property in prevent extensions ");
+      expect(addSeal).assertThrowError("Cannot add property in prevent extensions");
       expect(deleteSeal).assertThrowError("Cannot delete property");
       obj.x = 'd';
     })
