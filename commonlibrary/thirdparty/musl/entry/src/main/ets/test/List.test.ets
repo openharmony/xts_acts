@@ -76,6 +76,7 @@ import semaphoreNdkTest from './SemaphoreNdk.test';
 import semNdkTest from './SemNdk.test';
 import sendfileNdkTest from './SendfileNdk.test';
 import shmNdkTest from './ShmNdk.test';
+import signalNdkTest from './SignalNdk.test';
 import SocketNdkTest from './SocketNdk.test';
 import statfsNdkTest from './StatfsNdk.test';
 import statNdkTest from './StatNdk.test';
@@ -171,4 +172,5 @@ export default function testsuite() {
   timeNdkTest();
   termiosNdkTest();
   unistdNdkTest();
+  signalNdkTest();
 }

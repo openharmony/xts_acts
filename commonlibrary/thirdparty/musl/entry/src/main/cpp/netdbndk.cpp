@@ -273,7 +273,7 @@ static napi_value GetHostByAddrR(napi_env env, napi_callback_info info)
     in_addr_t address = inet_addr("127.0.0.1");
     hostent host_buf;
     hostent *host_result = nullptr;
-    char buffer[8192];
+    char buffer[2048];
     int errNum = PARAM_0;
     getInfo = gethostbyaddr_r(&address, PARAM_4, AF_INET, &host_buf, buffer, sizeof(buffer), &host_result, &errNum);
     napi_value result = nullptr;

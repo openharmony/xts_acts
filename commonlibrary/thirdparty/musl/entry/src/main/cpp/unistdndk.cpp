@@ -220,7 +220,7 @@ static napi_value GetUid(napi_env env, napi_callback_info info)
 static napi_value GetLogin(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
-    char *getInfo;
+    char *getInfo = nullptr;
     getInfo = getlogin();
     int ret = FAIL;
     if (getInfo != nullptr) {

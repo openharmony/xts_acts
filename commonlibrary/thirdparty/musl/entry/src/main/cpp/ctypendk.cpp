@@ -47,12 +47,11 @@ static napi_value Isalnum(napi_env env, napi_callback_info info)
     int retVal = isalnum((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsalnumL(napi_env env, napi_callback_info info)
@@ -67,12 +66,11 @@ static napi_value IsalnumL(napi_env env, napi_callback_info info)
     int retVal = isalnum_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isalpha(napi_env env, napi_callback_info info)
@@ -87,12 +85,11 @@ static napi_value Isalpha(napi_env env, napi_callback_info info)
     int retVal = isalpha((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsalphaL(napi_env env, napi_callback_info info)
@@ -107,12 +104,11 @@ static napi_value IsalphaL(napi_env env, napi_callback_info info)
     int retVal = isalpha_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isascii(napi_env env, napi_callback_info info)
@@ -125,12 +121,11 @@ static napi_value Isascii(napi_env env, napi_callback_info info)
     int retVal = isascii(first);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isblank(napi_env env, napi_callback_info info)
@@ -145,12 +140,11 @@ static napi_value Isblank(napi_env env, napi_callback_info info)
     int retVal = isblank((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsblankL(napi_env env, napi_callback_info info)
@@ -165,12 +159,11 @@ static napi_value IsblankL(napi_env env, napi_callback_info info)
     int retVal = isblank_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Iscntrl(napi_env env, napi_callback_info info)
@@ -183,12 +176,11 @@ static napi_value Iscntrl(napi_env env, napi_callback_info info)
     int retVal = iscntrl(first);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IscntrlL(napi_env env, napi_callback_info info)
@@ -201,12 +193,11 @@ static napi_value IscntrlL(napi_env env, napi_callback_info info)
     int retVal = iscntrl_l(first, INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isdigit(napi_env env, napi_callback_info info)
@@ -221,12 +212,11 @@ static napi_value Isdigit(napi_env env, napi_callback_info info)
     int retVal = isdigit((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsdigitL(napi_env env, napi_callback_info info)
 {
@@ -240,12 +230,11 @@ static napi_value IsdigitL(napi_env env, napi_callback_info info)
     int retVal = isdigit_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isgraph(napi_env env, napi_callback_info info)
@@ -260,12 +249,11 @@ static napi_value Isgraph(napi_env env, napi_callback_info info)
     int retVal = isgraph((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsgraphL(napi_env env, napi_callback_info info)
 {
@@ -279,12 +267,11 @@ static napi_value IsgraphL(napi_env env, napi_callback_info info)
     int retVal = isgraph_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Islower(napi_env env, napi_callback_info info)
@@ -299,12 +286,11 @@ static napi_value Islower(napi_env env, napi_callback_info info)
     int retVal = islower((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IslowerL(napi_env env, napi_callback_info info)
@@ -319,12 +305,11 @@ static napi_value IslowerL(napi_env env, napi_callback_info info)
     int retVal = islower_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isprint(napi_env env, napi_callback_info info)
@@ -339,12 +324,11 @@ static napi_value Isprint(napi_env env, napi_callback_info info)
     int retVal = isprint((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsprintL(napi_env env, napi_callback_info info)
@@ -359,12 +343,11 @@ static napi_value IsprintL(napi_env env, napi_callback_info info)
     int retVal = isprint_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Ispunct(napi_env env, napi_callback_info info)
@@ -379,12 +362,11 @@ static napi_value Ispunct(napi_env env, napi_callback_info info)
     int retVal = ispunct((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IspunctL(napi_env env, napi_callback_info info)
@@ -399,12 +381,11 @@ static napi_value IspunctL(napi_env env, napi_callback_info info)
     int retVal = ispunct_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isspace(napi_env env, napi_callback_info info)
@@ -419,12 +400,11 @@ static napi_value Isspace(napi_env env, napi_callback_info info)
     int retVal = isspace((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsspaceL(napi_env env, napi_callback_info info)
 {
@@ -438,12 +418,11 @@ static napi_value IsspaceL(napi_env env, napi_callback_info info)
     int retVal = isspace_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isupper(napi_env env, napi_callback_info info)
@@ -458,12 +437,11 @@ static napi_value Isupper(napi_env env, napi_callback_info info)
     int retVal = isupper((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsupperL(napi_env env, napi_callback_info info)
@@ -478,12 +456,11 @@ static napi_value IsupperL(napi_env env, napi_callback_info info)
     int retVal = isupper_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isxdigit(napi_env env, napi_callback_info info)
@@ -498,12 +475,11 @@ static napi_value Isxdigit(napi_env env, napi_callback_info info)
     int retVal = isxdigit((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsxdigitL(napi_env env, napi_callback_info info)
@@ -518,12 +494,11 @@ static napi_value IsxdigitL(napi_env env, napi_callback_info info)
     int retVal = isxdigit_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Toascii(napi_env env, napi_callback_info info)

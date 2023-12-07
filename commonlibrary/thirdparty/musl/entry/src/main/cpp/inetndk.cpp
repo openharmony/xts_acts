@@ -35,9 +35,10 @@ static napi_value InetAddr(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
 
     in_addr_t ret = inet_addr(cp);
     napi_value result = nullptr;
@@ -49,9 +50,10 @@ static napi_value InetAton(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
     struct sockaddr_in adr_inet;
     memset(&adr_inet, FALSE, sizeof(adr_inet));
     adr_inet.sin_family = AF_INET;
@@ -112,9 +114,10 @@ static napi_value InetNetwork(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
     in_addr_t addr = inet_network(cp);
     napi_value result = nullptr;
     napi_create_int32(env, addr, &result);
