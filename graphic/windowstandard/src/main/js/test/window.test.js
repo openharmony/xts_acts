@@ -2009,6 +2009,8 @@ export default function window_test() {
                 expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
                 expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
                 expect(4).assertEqual(window.WindowStageEventType.HIDDEN);
+                expect(5).assertEqual(window.WindowStageEventType.RESUMED);
+                expect(6).assertEqual(window.WindowStageEventType.PAUSED);
                 done();
             } catch (err) {
                 console.log(msgStr + ' error ' + JSON.stringify(err));
