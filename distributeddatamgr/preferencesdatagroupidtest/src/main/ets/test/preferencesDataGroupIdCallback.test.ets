@@ -15,17 +15,17 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import dataPreferences from '@ohos.data.preferences';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from "@ohos.app.ability.common"
 
 const TAG = "[ttt]"
-let context: Context
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+let context: common.UIAbilityContext
+
 
 export default function preferencesDataGroupIdCallback() {
   describe('preferencesDataGroupIdCallback', function () {
     beforeAll(async function () {
-      let ability = await delegator.getCurrentTopAbility();
-      context = ability.context
+      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
+
     })
     console.log(TAG + "*************Unit Test Begin*************");
 
@@ -61,6 +61,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0400
      * @tc.name preferences dataGroupId undefined callback test
      * @tc.desc preferences getPreferences dataGroupId undefined callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0200', 0, async function (done) {
       const Options = {
@@ -88,6 +91,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0800
      * @tc.name preferences dataGroupId callback test
      * @tc.desc preferences getPreferences dataGroupId callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0300', 0, async function (done) {
       const Options = {
@@ -116,6 +122,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1200
      * @tc.name preferences dataGroupId callback test
      * @tc.desc preferences deletePreferences dataGroupId callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0400', 0, async function (done) {
       const Options = {
@@ -149,6 +158,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0200
      * @tc.name preferences dataGroupId null callback test
      * @tc.desc preferences getPreferences dataGroupId null callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0500', 0, async function (done) {
       const Options = {
@@ -177,6 +189,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0500
      * @tc.name preferences dataGroupId undefined callback test
      * @tc.desc preferences removePreferencesFromCache dataGroupId undefined callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0600', 0, async function (done) {
       const Options = {
@@ -204,6 +219,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0900
      * @tc.name preferences dataGroupId callback test
      * @tc.desc preferences removePreferencesFromCache dataGroupId callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0700', 0, async function (done) {
       const Options = {
@@ -232,6 +250,9 @@ export default function preferencesDataGroupIdCallback() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1300
      * @tc.name preferences dataGroupId callback test
      * @tc.desc preferences removePreferencesFromCache dataGroupId callback test
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0800', 0, async function (done) {
       const Options = {
