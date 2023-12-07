@@ -623,7 +623,8 @@ static napi_value InflateResetKeep(napi_env env, napi_callback_info info)
     inflate(&d_stream, Z_NO_FLUSH);
     err = inflateResetKeep(&d_stream);
     NAPI_ASSERT(env, err == Z_OK, "inflateResetKeep error");
-    ;
+    free(comp);
+    free(unComp);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -655,6 +656,8 @@ static napi_value InflateReset2(napi_env env, napi_callback_info info)
     inflate(&d_stream, Z_NO_FLUSH);
     err = inflateReset2(&d_stream, windowBits);
     NAPI_ASSERT(env, err == Z_OK, "inflateReset2 error");
+    free(comp);
+    free(unComp);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -683,6 +686,8 @@ static napi_value InflateReset(napi_env env, napi_callback_info info)
     inflate(&d_stream, Z_NO_FLUSH);
     err = inflateReset(&d_stream);
     NAPI_ASSERT(env, err == Z_OK, "inflateReset error");
+    free(comp);
+    free(unComp);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -956,9 +961,6 @@ static napi_value InflateBackInit(napi_env env, napi_callback_info info)
     unsigned char *window;
     z_stream strm;
     unsigned char match[65280 + 2];
-    Byte *cunComp;
-    uLong uncomprLen = 100 * sizeof(int);
-    cunComp = static_cast<Byte *>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     window = match;
     strm.zalloc = nullptr;
     strm.zfree = nullptr;
@@ -1005,6 +1007,7 @@ static napi_value InflateBack(napi_env env, napi_callback_info info)
     strm.avail_in = VALUE_ONE;
     err = inflateBack(&strm, pull, nullptr, push, &strm);
     NAPI_ASSERT(env, err == Z_BUF_ERROR, "inflateBack error");
+    free(cunComp);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1030,6 +1033,7 @@ static napi_value InflateBackEnd(napi_env env, napi_callback_info info)
     strm.avail_in = VALUE_ONE;
     err = inflateBackEnd(&strm);
     NAPI_ASSERT(env, err == Z_OK, "inflateBackEnd error");
+    free(cunComp);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1990,6 +1994,7 @@ static napi_value DeflateCopy(napi_env env, napi_callback_info info)
     z_stream outStream;
     err = deflateCopy(&defstream, &outStream);
     NAPI_ASSERT(env, err == Z_STREAM_ERROR, "deflateCopy error");
+    free(outBuf);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
