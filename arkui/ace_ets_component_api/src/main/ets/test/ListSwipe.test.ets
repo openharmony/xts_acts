@@ -32,14 +32,15 @@ export default function ListSwipeTest() {
   }
 
   function getRectCenter(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
+    let rtn = rect.replace(/\[/g, '').replace(/\]/g, '').split(',')
     return [
     parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2,
     parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2,
     ]
   }
+
   function getRectCenterVp(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
+    let rtn = rect.replace(/\[/g, '').replace(/\]/g, '').split(',')
     return [
       px2vp(parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2),
       px2vp(parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2),
@@ -67,11 +68,6 @@ export default function ListSwipeTest() {
       done()
     });
 
-    afterEach(async function (done) {
-      await sleep(2)
-      done()
-    });
-
     /*
      * @tc.number :ArkUI_List_Swipe_0100
      * @tc.name   :test onStateChange callback when swipe left
@@ -82,17 +78,6 @@ export default function ListSwipeTest() {
       console.info(`${SUITE} ${CASE} START`);
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      // 1.register state change callback
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('end EXPANDED');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
-      }
-      let event = {
-        eventId: 74000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
       // 3.swipe item to left
       let baseKey = 'MyList1_ListItem0'
       let strJson = getInspectorByKey(baseKey);
@@ -100,7 +85,17 @@ export default function ListSwipeTest() {
       let rectCenter = getRectCenter(obj.$rect)
       await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
         0, Math.round(rectCenter[1]))
+
+      await sleep(8000) // wait for ui update
+      console.info('get getInspectorByKey swipe0100')
+      let strJson2 = getInspectorByKey('swipe0100')
+      let obj2 = JSON.parse(strJson2);
+      console.info('ArkUI_List_Swipe_0100 text: '+JSON.stringify(obj2))
+      expect(obj2.$type).assertEqual('Text')
+      console.info("obj2.$attrs.content: " + obj2.$attrs.content)
+      expect(obj2.$attrs.content).assertEqual('end EXPANDED')
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
 
     /*
@@ -111,21 +106,9 @@ export default function ListSwipeTest() {
     it('ArkUI_List_Swipe_0300', 0, async function (done) {
       let CASE = 'ArkUI_List_Swipe_0300'
       console.info(`${SUITE} ${CASE} START`);
-      events_emitter.off(74000);
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      // 1.register state change callback
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('EXPANDED');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
-      }
 
-      let event = {
-        eventId: 74000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
       let baseKey = 'MyList2_ListItem0'
       let strJson = getInspectorByKey(baseKey);
       let obj = JSON.parse(strJson);
@@ -135,7 +118,17 @@ export default function ListSwipeTest() {
         Math.round(rectCenter[1]), 
         Math.round(rectCenter[0] + 150), 
         Math.round(rectCenter[1]))
+
+      await sleep(8000) // wait for ui update
+      console.info('get getInspectorByKey swipe0300')
+      let strJson2 = getInspectorByKey('swipe0300')
+      let obj2 = JSON.parse(strJson2);
+      console.info('ArkUI_List_Swipe_0300 text: '+JSON.stringify(obj2))
+      expect(obj2.$type).assertEqual('Text')
+      console.info("obj2.$attrs.content: " + obj2.$attrs.content)
+      expect(obj2.$attrs.content).assertEqual('EXPANDED')
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
 
     /*
@@ -148,22 +141,18 @@ export default function ListSwipeTest() {
       console.info(`${SUITE} ${CASE} START`);
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      events_emitter.off(74000);
-
-      let callback2 = (event) => {
-        expect(event.data.msg).assertEqual('onFinish');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
-      }
-      let event2 = {
-        eventId: 79000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event2, callback2);
 
       // 2.trigger button click, expect state change COLLAPSED and onFinish be called
       sendEventByKey('MyList2CloseButton', 10, null)
+      await sleep(8000) // wait for ui update
+      let strJson2 = getInspectorByKey('swipe0400')
+      let obj2 = JSON.parse(strJson2);
+      console.info('ArkUI_List_Swipe_0400 text: '+JSON.stringify(obj2))
+      expect(obj2.$type).assertEqual('Text')
+      console.info("obj2.$attrs.content: " + obj2.$attrs.content)
+      expect(obj2.$attrs.content).assertEqual('onFinish')
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
 
     /*
@@ -174,21 +163,8 @@ export default function ListSwipeTest() {
     it('ArkUI_List_Swipe_0500', 0, async function (done) {
       let CASE = 'ArkUI_List_Swipe_0500'
       console.info(`${SUITE} ${CASE} START`);
-      events_emitter.off(74000);
-      events_emitter.off(79000);
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      // 1.register state change callback
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('swipe end');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
-      }
-      let event = {
-        eventId: 70000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
       // 2.swipe item to left
       let baseKey = 'MyList1_ListItem1'
       let strJson = getInspectorByKey(baseKey);
@@ -196,7 +172,15 @@ export default function ListSwipeTest() {
       let rectCenter = getRectCenter(obj.$rect)
       await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
         0, Math.round(rectCenter[1]))
+      await sleep(8000) // wait for ui update
+      let strJson2 = getInspectorByKey('swipe0500')
+      let obj2 = JSON.parse(strJson2);
+      console.info('ArkUI_List_Swipe_0500 text: '+JSON.stringify(obj2))
+      expect(obj2.$type).assertEqual('Text')
+      console.info("obj2.$attrs.content: " + obj2.$attrs.content)
+      expect(obj2.$attrs.content).assertEqual('swipe end')
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
   })
 }
