@@ -33,9 +33,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0300
      * @tc.name preferences dataGroupId null promise test
      * @tc.desc preferences getPreferences dataGroupId null promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async function (done) {
       const Options = {
@@ -72,9 +72,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0600
      * @tc.name preferences dataGroupId undefined promise test
      * @tc.desc preferences getPreferences dataGroupId undefined promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async function (done) {
       const Options = {
@@ -111,9 +111,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1000
      * @tc.name preferences dataGroupId promise test
      * @tc.desc preferences getPreferences dataGroupId promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async function (done) {
       const Options = {
@@ -150,9 +150,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1400
      * @tc.name preferences dataGroupId null promise test
      * @tc.desc preferences getPreferences dataGroupId null promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async function (done) {
       const Options = {
@@ -189,9 +189,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0700
      * @tc.name preferences dataGroupId undefined promise test
      * @tc.desc preferences removePreferencesFromCache dataGroupId undefined promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async function (done) {
       const Options = {
@@ -228,9 +228,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1100
      * @tc.name preferences dataGroupId promise test
      * @tc.desc preferences removePreferencesFromCache dataGroupId promise test
-     * @tc.size MEDIUM
+     * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async function (done) {
       const Options = {
