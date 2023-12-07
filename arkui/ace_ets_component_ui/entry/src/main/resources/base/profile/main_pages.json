@@ -338,6 +338,7 @@
         "MainAbility/pages/TextNewInterFace/search_maxLength",
         "MainAbility/pages/TextNewInterFace/search_maxLength2",
         "MainAbility/pages/TextNewInterFace/textInput_caret",
-        "MainAbility/pages/TextNewInterFace/search_caret"
+        "MainAbility/pages/TextNewInterFace/search_caret",
+        "MainAbility/pages/measureSize"
     ]
 }

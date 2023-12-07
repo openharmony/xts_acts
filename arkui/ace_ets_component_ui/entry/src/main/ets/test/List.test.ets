@@ -302,7 +302,7 @@ import search_maxLength from './TextNewInterFace/search_maxLength.test';
 import search_maxLength2 from './TextNewInterFace/search_maxLength2.test';
 import textInput_caret from './TextNewInterFace/textInput_caret.test';
 import search_caret from './TextNewInterFace/search_caret.test';
-
+import MeasureJsunit from './MeasureJsunit.test.ets';
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -562,4 +562,5 @@ export default function testsuite() {
   search_maxLength2();
   textInput_caret();
   search_caret();
+  MeasureJsunit();
 }
