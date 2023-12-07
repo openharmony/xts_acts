@@ -184,20 +184,18 @@ export default function UiTest() {
 
         /*
          * @tc.number: uiTest_10008
-         * @tc.name: testType
+         * @tc.name: testDescription
          * @tc.desc: find UiComponent by description attribute and get it's description attribute.
          */
-        it('testType', 0, async function () {
+        it('testDescription', 0, async function () {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = UiDriver.create()
+            let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(BY.type('Text').description(''))
+            let text = await driver.findComponent(ON.type('Text').description(''))
             let description = await text.getDescription()
             expect(description == '').assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
-
-
     })
 
     describe('UiTest_API10', function () {        
