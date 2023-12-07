@@ -37,8 +37,7 @@ struct Index {
     maxLines: 3,
     textIndent: this.textIndent
   })
-  
-  
+    
   build() {
     Row() {
       Column() {
