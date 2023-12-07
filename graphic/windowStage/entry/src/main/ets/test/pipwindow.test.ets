@@ -578,6 +578,12 @@ export default function pipWindowTest() {
       it('testPiPTemplateType',0, async function (done){
         let msg = "testPiPTemplateType"
         try {
+
+          let event: pipWindow.PiPActionEventType = "playbackStateChanged"
+          let event2: pipWindow.PiPVideoActionEvent = "playbackStateChanged"
+          let event3: pipWindow.PiPCallActionEvent = "hangUp"
+          let event4: pipWindow.PiPMeetingActionEvent = "hangUp"
+
           expect(pipWindow.PiPState.ABOUT_TO_START).assertEqual(1)
           expect(pipWindow.PiPState.STARTED).assertEqual(2)
           expect(pipWindow.PiPState.ABOUT_TO_STOP).assertEqual(3)
