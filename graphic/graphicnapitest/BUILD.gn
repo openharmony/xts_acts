@@ -41,7 +41,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   include_dirs = [
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
-    "$comPath/frameworks/surface/include",
+    "../../../../../foundation/graphic/graphic_surface/surface/include",
     "../../../../../drivers/peripheral/display/interfaces/include",
   ]
 
