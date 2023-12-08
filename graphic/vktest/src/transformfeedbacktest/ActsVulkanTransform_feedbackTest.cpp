@@ -22,27 +22,27 @@ namespace OHOS {
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanTransform_feedbackTest::SetUpTestCase(void)
+    void ActsVulkanTransformfeedbackTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanTransform_feedbackTest::TearDownTestCase(void)
+    void ActsVulkanTransformfeedbackTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanTransform_feedbackTest::SetUp()
+    void ActsVulkanTransformfeedbackTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanTransform_feedbackTest::TearDown()
+    void ActsVulkanTransformfeedbackTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanTransform_feedbackTest, TestVulkanTransform_feedbackTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanTransformfeedbackTest, TestVulkanTransform_feedbackTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanTransform_feedbackTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/transform-feedback.txt --deqp-log-filename=ActsVulkanTransform_feedbackTest.qpa");
+        printf("------start ActsVulkanTransformfeedbackTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/transform-feedback.txt --deqp-log-filename=ActsVulkanTransformfeedbackTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanTransform_feedbackTest------\n");
+        printf("------end ActsVulkanTransformfeedbackTest------\n");
     }
 }

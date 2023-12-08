@@ -42,7 +42,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanTransform_feedbackTest.qpa->ActsVulkanTransform_feedbackTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanTransformfeedbackTest.qpa->ActsVulkanTransformfeedbackTest.qpa"
                 }
             ]
         },
@@ -54,7 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanTransform_feedbackTest transform-feedback.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanTransformfeedbackTest transform-feedback.txt"
             ]
         }
 
