@@ -626,5 +626,57 @@ export default function ContextDirTest() {
         }
       })
     })
+
+    /**
+     * @tc.number     : SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1500
+     * @tc.name       : Test the system application obtains ApplicationContext under the same application, sets the area to EL3.
+     * @tc.desc       : The sandbox path is correct and contains el3.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1500', 0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1500';
+      hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
+      try {
+        await abilityDelegator.getCurrentTopAbility().then(async (ability) => {
+          let abilityContext = ability.context;
+          abilityContext.getApplicationContext().area = contextConstant.AreaMode.EL3;
+          areaMode = "el3";
+          let result = checkApplicationContextDir(abilityContext.getApplicationContext());
+          expect(result).assertTrue();
+          done();
+        })
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1600
+     * @tc.name       : Test the system application obtains ApplicationContext under the same application, sets the area to EL4.
+     * @tc.desc       : The sandbox path is correct and contains el4.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1600', 0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_ApplicationContext_Dir_1600';
+      hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
+      try {
+        await abilityDelegator.getCurrentTopAbility().then(async (ability) => {
+          let abilityContext = ability.context;
+          abilityContext.getApplicationContext().area = contextConstant.AreaMode.EL4;
+          areaMode = "el4";
+          let result = checkApplicationContextDir(abilityContext.getApplicationContext());
+          expect(result).assertTrue();
+          done();
+        })
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        done();
+      }
+    })
   })
 }
