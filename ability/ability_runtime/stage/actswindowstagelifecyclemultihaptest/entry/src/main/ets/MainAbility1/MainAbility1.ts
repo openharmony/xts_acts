@@ -24,47 +24,47 @@ export default class MainAbility1 extends Ability {
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityCreate")
+                console.log(abilityName + ' onAbilityCreate')
             },
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onWindowStageCreate")
-                listKey.push(abilityName + " onWindowStageCreate");
+                console.log(abilityName + ' onWindowStageCreate')
+                listKey.push(abilityName + ' onWindowStageCreate');
                 console.log("listKey is :" + listKey);
             },
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onWindowStageActive")
-                listKey.push(abilityName + " onWindowStageActive");
+                console.log(abilityName + ' onWindowStageActive')
+                listKey.push(abilityName + ' onWindowStageActive');
                 console.log("listKey is :" + listKey);
             },
             onWindowStageInactive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onWindowStageInactive")
-                listKey.push(abilityName + " onWindowStageInactive");
+                console.log(abilityName + ' onWindowStageInactive')
+                listKey.push(abilityName + ' onWindowStageInactive');
                 console.log("listKey is :" + listKey);
             },
             onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onWindowStageDestroy")
-                listKey.push(abilityName + " onWindowStageDestroy");
+                console.log(abilityName + ' onWindowStageDestroy')
+                listKey.push(abilityName + ' onWindowStageDestroy');
                 console.log("listKey is :" + listKey);
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityForeground")
+                console.log(abilityName + ' onAbilityForeground')
             },
             onAbilityBackground(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityBackground")
+                console.log(abilityName + ' onAbilityBackground')
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityDestroy")
+                console.log(abilityName + ' onAbilityDestroy')
             },
             onAbilityContinue(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityContinue")
+                console.log(abilityName + ' onAbilityContinue')
             }
         }
 
