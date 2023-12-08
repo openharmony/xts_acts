@@ -165,6 +165,37 @@ export default function UiTest() {
             expect(button2 != null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
+
+        /*
+         * @tc.number: uiTest_10007
+         * @tc.name: testWindowAttr
+         * @tc.desc: find window by WindowFilter and get it's active status.
+         */
+        it('testWindowAttr', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,active:true,title:''})
+            await window.focus()
+            let isActive = await window.isActive()
+            expect(isActive == true).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_10008
+         * @tc.name: testDescription
+         * @tc.desc: find UiComponent by description attribute and get it's description attribute.
+         */
+        it('testDescription', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.type('Text').description(''))
+            let description = await text.getDescription()
+            expect(description == '').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
     })
 
     describe('UiTest_API10', function () {        
