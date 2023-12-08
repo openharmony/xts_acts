@@ -152,7 +152,6 @@ describe('audioFramework', function () {
         console.info(`${TagFrmwk}: afterAll: Test suite-level cleanup condition`);
     })
 
-
      /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUMESYNC_0100
      *@tc.name      : getVolumeSync - Media - Sync
@@ -3772,17 +3771,21 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100', 1, async function (done) {
         try {
-            let flag = true;
+            let flag = null;
             let outputDeviceDescription = await audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
             console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
-            if (outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER) {
+            if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                flag = true;
+            }
+            if(outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER){
                 flag = false;
             }
             await audioManager.setDeviceActive(2, false).then(() => {
                 console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 Promise returned to indicate that the device is set to the active status.`);
             });
             await audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
-                if (flag == true && value == false) {
+                console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : value is ${flag}`);
+                if (flag == true && value == true) {
                     console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
                     expect(true).assertTrue();
                 }
@@ -3795,11 +3798,11 @@ describe('audioFramework', function () {
                     expect(false).assertTrue();
                 }
             }).catch((err) => {
-                console.log('err :' + JSON.stringify(err));
+                console.log('err :' + JSON.stringify(err.message));
                 expect(false).assertTrue();
             });
         } catch (err) {
-            console.log('err :' + JSON.stringify(err));
+            console.log('err :' + JSON.stringify(err.message));
             expect(false).assertTrue();
         }
         done();
@@ -3841,15 +3844,19 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300', 2,async function (done) {
-        let flag = true
-        let outputDeviceDescription = await audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-        console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
-        if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
-            flag = false;
-        }
-        audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false, (err) => {
+        let flag = null;
+        let outputDeviceDescription = await audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
+            console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
+            if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                flag = true;
+            }
+            if(outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER){
+                flag = false;
+            }
+        
+        await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false, (err) => {
             if (err) {
-                console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
+                console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
                 done();
             } else {
@@ -3858,7 +3865,7 @@ describe('audioFramework', function () {
                     if (err) {
                         console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
-                    } else if (value == false && flag == true) {
+                    } else if (value == true && flag == true) {
                         console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
                         expect(true).assertTrue();
                     } else if (value == true && flag == false) {
