@@ -42,7 +42,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanRay_queryTest.qpa->ActsVulkanRay_queryTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanRayqueryTest.qpa->ActsVulkanRayqueryTest.qpa"
                 }
             ]
         },
@@ -54,7 +54,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanRay_queryTest ray-query.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanRayqueryTest ray-query.txt"
             ]
         }
 
