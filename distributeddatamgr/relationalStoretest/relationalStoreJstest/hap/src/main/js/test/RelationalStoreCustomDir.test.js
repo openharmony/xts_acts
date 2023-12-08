@@ -17,7 +17,6 @@ import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 var context = ability_featureAbility.getContext();
-//var contextApplication = context.getApplicationContext();
 
 const TAG = "[RelationalStore_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
@@ -739,7 +738,6 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        //customDir: "data/app/el2/100/database/bundleName/rdb/ttst/tee00/11/tee2288000000/#% 0t00"
         customDir:"data/app/el2/100/database/bundleName/rdb/ttst/tee00/11/tee2288000000/#% 0t00/123323vjkdfn/48378498/nvnvnvn/88999/vvbbb/nvjdnvj/78"
       }
       try {
@@ -774,7 +772,6 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        //customDir: "data/app/el2/100/database/bundleName/rdb/ttst/tee00/11/tee2288000000/#% 0t0"
         customDir:"data/app/el2/100/database/bundleName/rdb/ttst/tee00/11/tee2288000000/#% 0t00/123323vjkdfn/48378498/nvnvnvn/88999/vvbbb/nvjdnvj/78"
       }
       try{
@@ -962,7 +959,6 @@ export default function relationalStoreCustomDirTest() {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
         customDir:"dataappel66teeeeeeeee67eeeehfghfgheeeeeeeee!@#@$$#%%(*  (eeee9988711ssssssssss+_)25555555555555hfhfg55gggggghgfhhhfghfghgfhfhfgh5"
-        //customDir: "dataappel66teeeeeeeee67eeeeeeeeeeeee!@#@$$#%%(*  (eeee9988711ssssssssss+_)2"
       }
       try {
         data_Rdb.getRdbStore(context, STORE_CONFIG, async (err, store) => {
@@ -998,7 +994,6 @@ export default function relationalStoreCustomDirTest() {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
         customDir:"dataappel66teeeeeeeee67eeeehfghfgheeeeeeeee!@#@$$#%%(*  (eeee9988711ssssssssss+_)25555555555555hfhfg55gggggghgfhhhfghfghgfhfhfgh5"
-        //customDir: "dataappel66teeeeeeeee67eeeeeeeeeeeee!@#@$$#%%(*  (eeee9988711ssssssssss+_)2"
       }
       try{
         await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (rdbStore) => {
