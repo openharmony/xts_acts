@@ -22,7 +22,7 @@ import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import pipWindow from '@ohos.PiPWindow';
 
 export default function pipWindowTest() {
-  describe('window_richScene_test', function () {
+  describe('window_pipWindow_test', function () {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
 
@@ -38,7 +38,7 @@ export default function pipWindowTest() {
     }
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0010
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
      * @tc.name			isPiPEnabled_test
      * @tc.desc			To test the function of isPiPEnabled
      */
@@ -58,7 +58,7 @@ export default function pipWindowTest() {
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0020
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
      * @tc.name			create_Function_Callback
      * @tc.desc			To test the function of create
      */
@@ -107,7 +107,7 @@ export default function pipWindowTest() {
 
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0030
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
      * @tc.name			create_Function_Promise
      * @tc.desc			To test the function of create
      */
@@ -150,7 +150,7 @@ export default function pipWindowTest() {
     } )
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0040
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0400
      * @tc.name			startPiP_Function_Callback
      * @tc.desc			To test the function of startPiP
      */
@@ -198,7 +198,7 @@ export default function pipWindowTest() {
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0050
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
      * @tc.name			startPiP_Function_Promise
      * @tc.desc			To test the function of startPiP
      */
@@ -240,9 +240,105 @@ export default function pipWindowTest() {
 
     })
 
+    /**
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0600
+     * @tc.name			stopPiP_Functon_Callback
+     * @tc.desc			To test the function of stopPiP
+     */
+    it('stopPiP_Functon_Callback', 0,  async function (done){
+        let pipController = undefined;
+        let mXComponentController = new XComponentController(); 
+        let navId = ""; 
+        let contentWidth = 400; 
+        let contentHeight = 600; 
+        
+        let config = {
+            context: getContext(this),
+            componentController: mXComponentController,
+            navigationId: navId,
+            templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+            contentWidth: contentWidth,  
+            contentHeight: contentHeight,
+        };
+        pipController = await pipWindow.create(config)
+        console.log('www data stopPiP_Functon_Callback begin')
+        try {
+            console.log('www data try begin')
+            await pipController.startPiP();
+            pipController.stopPiP((err) => {
+              const errCode = err.code;
+              if (errCode) {
+                console.error(`Failed to stopping pip. Cause:${errCode}, message:${err.message}`);
+                console.log('www data Failed to stopping pip. Cause:' + errCode)
+                expect().assertTrue();
+                done();
+              }else{
+                console.info('Succeeded instop pip.');
+                console.log('www data Succeeded in stop pip.')
+                expect(true).assertTrue();
+                done();
+              }
+            });
+        } catch (exception) {
+            console.error(`Failed to stop pip:${exception}`);
+            console.log('www data Failed to stop pip:' + exception)
+            expect().assertFail();
+            done();
+        }
+    })
+
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0060
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0700
+     * @tc.name			stopPiP_Function_Promis
+     * @tc.desc			To test the function of stopPiP
+     */
+    it('stopPiP_Function_Promise', 0, async function (done){
+        let pipController = undefined;
+        let mXComponentController = new XComponentController(); 
+        let navId = ""; 
+        let contentWidth = 400; 
+        let contentHeight = 600; 
+        
+        let config = {
+            context: getContext(this),
+            componentController: mXComponentController,
+            navigationId: navId,
+            templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+            contentWidth: contentWidth,  
+            contentHeight: contentHeight,
+        };
+    
+        try {
+            pipController = await pipWindow.create(config)
+            console.log('www data stopPiP_Function_Promise begin ')
+            await pipController.startPiP()
+            let promise = pipController.stopPiP()
+            promise.then(() => {
+                console.log('www data Succeeded in stopping pip')
+                expect(true).assertTrue();
+                done();
+            }).catch((err) => {
+                if (err.code == 1300015) {
+                    console.log('www data window is stopping')
+                    expect(true).assertTrue()
+                    done()
+                } else {
+                    console.log('www data Failed to stop pip in stopPiP . Cause:' + JSON.stringify(err))
+                    expect().assertFail();
+                    done();
+                }
+            });
+        } catch (error) {
+            console.log('www data Failed to stop pip. Cause:' + JSON.stringify(error))
+            expect().assertFail();
+            done();
+        }
+    })
+
+
+    /**
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0800
      * @tc.name			setAutoStartEnabled_test
      * @tc.desc			To test the function of setAutoStartEnabled
      */
@@ -278,7 +374,7 @@ export default function pipWindowTest() {
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0070
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
      * @tc.name			updateContentSize_test
      * @tc.desc			To test the function of updateContentSize
      */
@@ -315,7 +411,7 @@ export default function pipWindowTest() {
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0080
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1000
      * @tc.name			stateChange_Function_Callback
      * @tc.desc			To test the function of stateChange
      */
@@ -376,7 +472,7 @@ export default function pipWindowTest() {
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0090
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
      * @tc.name			stateChange_Function_Callback
      * @tc.desc			To test the function of stateChange
      */
@@ -437,7 +533,6 @@ export default function pipWindowTest() {
           expect().assertFail();
           done();
         }
-
         } catch (error) {
           console.log('www data Failed to stateChange_test' + JSON.stringify(error))
           expect().assertFail();
@@ -446,7 +541,7 @@ export default function pipWindowTest() {
     })
 
       /**
-       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0100
+       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
        * @tc.name			controlPanelActionEvent_Function_Callback
        * @tc.desc			To test the function of controlPanelActionEvent
        */
@@ -493,12 +588,11 @@ export default function pipWindowTest() {
       })
 
       /**
-       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0110
+       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
        * @tc.name			controlPanelActionEvent_test
        * @tc.desc			To test the function of controlPanelActionEvent
        */
       it('controlPanelActionEvent_test', 0, async function (done){
-
         let pipController = undefined;
         let mXComponentController = new XComponentController();
         let navId = "";
@@ -547,12 +641,10 @@ export default function pipWindowTest() {
           expect().assertFail();
           done();
         }
-
       })
 
-
       /**
-       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_PiPTemplateType_JS_API_0120
+       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1400
        * @tc.name			testPiPTemplateType
        * @tc.desc			To test the attributes of PiPTemplateType
        */
@@ -569,21 +661,18 @@ export default function pipWindowTest() {
         }
       })
 
-
       /**
-       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_PiPTemplateType_JS_API_0130
+       * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
        * @tc.name			testPiPTemplateType
        * @tc.desc			To test the attributes of PiPTemplateType
        */
       it('testPiPTemplateType',0, async function (done){
         let msg = "testPiPTemplateType"
         try {
-
           let event: pipWindow.PiPActionEventType = "playbackStateChanged"
           let event2: pipWindow.PiPVideoActionEvent = "playbackStateChanged"
           let event3: pipWindow.PiPCallActionEvent = "hangUp"
           let event4: pipWindow.PiPMeetingActionEvent = "hangUp"
-
           expect(pipWindow.PiPState.ABOUT_TO_START).assertEqual(1)
           expect(pipWindow.PiPState.STARTED).assertEqual(2)
           expect(pipWindow.PiPState.ABOUT_TO_STOP).assertEqual(3)
@@ -597,102 +686,6 @@ export default function pipWindowTest() {
         }
       })
 
-      /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0140
-     * @tc.name			stopPiP_Functon_Callback
-     * @tc.desc			To test the function of stopPiP
-     */
-    it('stopPiP_Functon_Callback', 0,  async function (done){
-        let pipController = undefined;
-        let mXComponentController = new XComponentController(); 
-        let navId = ""; 
-        let contentWidth = 400; 
-        let contentHeight = 600; 
-        
-        let config = {
-            context: getContext(this),
-            componentController: mXComponentController,
-            navigationId: navId,
-            templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
-            contentWidth: contentWidth,  
-            contentHeight: contentHeight,
-        };
-        pipController = await pipWindow.create(config)
-        console.log('www data stopPiP_Functon_Callback begin')
-        try {
-            console.log('www data try begin')
-            await pipController.startPiP();
-            pipController.stopPiP((err) => {
-              const errCode = err.code;
-              if (errCode) {
-                console.error(`Failed to stopping pip. Cause:${errCode}, message:${err.message}`);
-                console.log('www data Failed to stopping pip. Cause:' + errCode)
-                expect().assertTrue();
-                done();
-              }else{
-                console.info('Succeeded instop pip.');
-                console.log('www data Succeeded in stop pip.')
-                expect(true).assertTrue();
-                done();
-              }
-            });
-        } catch (exception) {
-            console.error(`Failed to stop pip:${exception}`);
-            console.log('www data Failed to stop pip:' + exception)
-            expect().assertFail();
-            done();
-        }
     })
-
-
-    /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0150
-     * @tc.name			stopPiP_Function_Promis
-     * @tc.desc			To test the function of stopPiP
-     */
-    it('stopPiP_Function_Promise', 0, async function (done){
-        let pipController = undefined;
-        let mXComponentController = new XComponentController(); 
-        let navId = ""; 
-        let contentWidth = 400; 
-        let contentHeight = 600; 
-        
-        let config = {
-            context: getContext(this),
-            componentController: mXComponentController,
-            navigationId: navId,
-            templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
-            contentWidth: contentWidth,  
-            contentHeight: contentHeight,
-        };
-    
-        try {
-            pipController = await pipWindow.create(config)
-            console.log('www data stopPiP_Function_Promise begin ')
-            await pipController.startPiP()
-            let promise = pipController.stopPiP()
-            promise.then(() => {
-                console.log('www data Succeeded in stopping pip')
-                expect(true).assertTrue();
-                done();
-            }).catch((err) => {
-                if (err.code == 1300015) {
-                    console.log('www data window is stopping')
-                    expect(true).assertTrue()
-                    done()
-                } else {
-                    console.log('www data Failed to stop pip in stopPiP . Cause:' + JSON.stringify(err))
-                    expect().assertFail();
-                    done();
-                }
-            });
-        } catch (error) {
-            console.log('www data Failed to stop pip. Cause:' + JSON.stringify(error))
-            expect().assertFail();
-            done();
-        }
-    })
-
-  })
-}
+  }
 
