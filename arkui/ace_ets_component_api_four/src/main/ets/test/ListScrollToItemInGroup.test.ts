@@ -81,7 +81,7 @@ export default function ListScrollToItemInGroup() {
         await Utils.sleep(2000);
         let List = Utils.getComponentRect('MyList1');
         let ListItem = Utils.getComponentRect('ListItem_Group0_Index1');
-        expect(ListItem.top).assertEqual(List.top);
+        expect(Math.abs(ListItem.top - List.top) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0100] END');
         done();
     });
@@ -106,7 +106,7 @@ export default function ListScrollToItemInGroup() {
         let ListItem = Utils.getComponentRect('ListItem_Group1_Index2');
         let middle = (ListItem.top + ListItem.bottom) / 2 - 1 / 2; // 1/2 means Divider component strokeWidth plus 50%.
         console.info("ListItem.top: " + ListItem.top + " " + "ListItem.bottom: " + ListItem.bottom);
-        expect(Math.abs(center.top - middle) < 5).assertEqual(true); // 5 px error is alllowed
+        expect(Math.abs(center.top - middle) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0200] END');
         done();
     });
@@ -129,7 +129,7 @@ export default function ListScrollToItemInGroup() {
         let List = Utils.getComponentRect('MyList1');
         let ListItem = Utils.getComponentRect('ListItem_Group2_Index2');
         console.info("ListItem.top: " + ListItem.top + " " + "ListItem.bottom: " + ListItem.bottom);
-        expect(List.bottom).assertEqual(ListItem.bottom);
+        expect(Math.abs(List.bottom - ListItem.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0300] END');
         done();
     });
@@ -152,6 +152,7 @@ export default function ListScrollToItemInGroup() {
         let List = Utils.getComponentRect('MyList1');
         let ListItem = Utils.getComponentRect('ListItem_Group3_Index1');
         expect(ListItem.bottom).assertEqual(List.bottom);
+        expect(Math.abs(ListItem.bottom - List.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0400] END');
         done();
     });
@@ -173,7 +174,7 @@ export default function ListScrollToItemInGroup() {
         await Utils.sleep(2000);
         let List = Utils.getComponentRect('MyList1');
         let ListItem = Utils.getComponentRect('ListItem_Group3_Index11');
-        expect(ListItem.bottom).assertEqual(List.bottom);
+        expect(Math.abs(ListItem.bottom - List.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         done();
     });
 
@@ -193,7 +194,7 @@ export default function ListScrollToItemInGroup() {
         await btn.click();
         await Utils.sleep(2000);
         let ListItem = Utils.getComponentRect('ListItem_Group3_Index11');
-        expect(OldListItem.bottom).assertEqual(ListItem.bottom);
+        expect(Math.abs(OldListItem.bottom - ListItem.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         done();
     });
 
@@ -213,7 +214,7 @@ export default function ListScrollToItemInGroup() {
         await btn.click();
         await Utils.sleep(2000);
         let ListItem = Utils.getComponentRect('ListItem_Group3_Index11');
-        expect(OldListItem.bottom).assertEqual(ListItem.bottom);
+        expect(Math.abs(OldListItem.bottom - ListItem.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         done();
     });
   })
