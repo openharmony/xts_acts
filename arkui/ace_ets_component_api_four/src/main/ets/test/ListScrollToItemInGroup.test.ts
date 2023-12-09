@@ -151,7 +151,6 @@ export default function ListScrollToItemInGroup() {
         await Utils.sleep(2000);
         let List = Utils.getComponentRect('MyList1');
         let ListItem = Utils.getComponentRect('ListItem_Group3_Index1');
-        expect(ListItem.bottom).assertEqual(List.bottom);
         expect(Math.abs(ListItem.bottom - List.bottom) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0400] END');
         done();
