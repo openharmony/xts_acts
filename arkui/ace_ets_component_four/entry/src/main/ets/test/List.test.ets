@@ -44,6 +44,8 @@ import polylineJsunit from './PolylineJsunit.test.ets';
 import imageJsunit from './ImageJsunit.test.ets';
 
 export default function testsuite() {
+  textAreaJsunit();
+  textInputJsunit();
   videoJsunit();
   enmusItemAlignJsunit();
   patternLockJsunit();
@@ -66,8 +68,6 @@ export default function testsuite() {
   GestureModeJsunit();
   basicJsunit();
   focusJsunit();
-  textAreaJsunit();
-  textInputJsunit();
   polylineJsunit();
   calendarJsunit();
   PanDirectionJsunit();

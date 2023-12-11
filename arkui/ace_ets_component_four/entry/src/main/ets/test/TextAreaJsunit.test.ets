@@ -244,10 +244,10 @@ export default function textAreaJsunit() {
       await Utils.sleep(1000);
       let driver = UiDriver.create();
       await Utils.sleep(1000);
-      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
       await Utils.sleep(2000);
-      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index0');
       done();
@@ -279,10 +279,10 @@ export default function textAreaJsunit() {
       await Utils.sleep(2000);
       let driver = UiDriver.create();
       await Utils.sleep(1000);
-      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
       await Utils.sleep(1000);
-      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index9');
       done();
@@ -314,10 +314,10 @@ export default function textAreaJsunit() {
       await Utils.sleep(2000);
       let driver = UiDriver.create();
       await Utils.sleep(1000);
-      let btn = await driver.findComponent(BY.key('caretOffsetBtn'));
+      let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
       await Utils.sleep(1000);
-      let caretText = await driver.findComponent(BY.key('caretOffsetText'));
+      let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index10');
       done();
