@@ -84,7 +84,8 @@
     "pages/Wifi/Wifi_index",
     "pages/Wifi/WifiScan",
     "pages/Bluetooth/BlueTooth_index",
-    "pages/Bluetooth/StandardBluetooth/page/StandardBluetooth"
+    "pages/Bluetooth/StandardBluetooth/page/StandardBluetooth",
+    "pages/Bluetooth/BleBluetooth/page/BleBluetooth"
   ]
 }
 

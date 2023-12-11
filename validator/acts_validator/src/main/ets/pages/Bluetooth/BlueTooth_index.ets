@@ -30,7 +30,9 @@ let ColorBackPath = path + '/BluetoothColorBack.txt';
 let txtPath = path1 + '/BluetoothReport.txt';
 let ColorTxtPath = path1 + '/ColorReport.txt';
 let xmlPath = path1 + '/BluetoothTest.xml';
+let StandardBluetoothTxtPath = path1 + '/StandardBluetoothReport.txt';
 let BleBluetoothTxtPath = path1 + '/BleBluetoothReport.txt';
+
 @Entry
 @Component
 struct BlueTooth_index {
@@ -40,7 +42,8 @@ struct BlueTooth_index {
   @State result: string = '';
   @State TEST: number = 0;
   private TestCaseList = [
-    { title: 'StandardBluetooth', uri: 'pages/Bluetooth/StandardBluetooth/page/StandardBluetooth' }
+    { title: 'StandardBluetooth', uri: 'pages/Bluetooth/StandardBluetooth/page/StandardBluetooth' },
+    { title: 'BleBluetooth', uri: 'pages/Bluetooth/BleBluetooth/page/BleBluetooth' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: Object[] = [];
@@ -280,6 +283,7 @@ struct BlueTooth_index {
     fs.mkdirSync(path1);
     fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(BleBluetoothTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(StandardBluetoothTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(ColorTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     for (let i = 0; i < this.TestCaseList.length; i++) {
