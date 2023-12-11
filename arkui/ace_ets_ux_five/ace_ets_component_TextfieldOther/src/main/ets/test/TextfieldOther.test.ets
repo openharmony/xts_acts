@@ -55,8 +55,10 @@ export default function TextfieldOtherTest() {
           let value = showCounter.value
           let options = showCounter.options
           let thresholdPercentage = options.thresholdPercentage
+          let highlightBorder = options.highlightBorder
           expect(value).assertEqual(true);
-          expect(thresholdPercentage).assertEqual(50);
+          expect(thresholdPercentage).assertEqual(40);
+          expect(highlightBorder).assertEqual(true);
           console.info('ArkUX_Text_Visual_0070 END ');
         } catch (err) {
           expect().assertFail()
@@ -83,8 +85,10 @@ export default function TextfieldOtherTest() {
           let value = showCounter.value
           let options = showCounter.options
           let thresholdPercentage = options.thresholdPercentage
+          let highlightBorder = options.highlightBorder
           expect(value).assertEqual(false);
-          expect(thresholdPercentage).assertEqual(50);
+          expect(thresholdPercentage).assertEqual(40);
+          expect(highlightBorder).assertEqual(false);
           console.info('ArkUX_Text_Visual_0080 END ');
         } catch (err) {
           expect().assertFail()
@@ -111,8 +115,10 @@ export default function TextfieldOtherTest() {
           let value = showCounter.value
           let options = showCounter.options
           let thresholdPercentage = options.thresholdPercentage
+          let highlightBorder = options.highlightBorder
           expect(value).assertEqual(true);
-          expect(thresholdPercentage).assertEqual(50);
+          expect(thresholdPercentage).assertEqual(40);
+          expect(highlightBorder).assertEqual(false);
           console.info('ArkUX_Text_Visual_0090 END ');
         } catch (err) {
           expect().assertFail()
@@ -140,8 +146,10 @@ export default function TextfieldOtherTest() {
           let value = showCounter.value
           let options = showCounter.options
           let thresholdPercentage = options.thresholdPercentage
+          let highlightBorder = options.highlightBorder
           expect(value).assertEqual(false);
           expect(thresholdPercentage).assertEqual(-1);
+          expect(highlightBorder).assertEqual(true);
           console.info('ArkUX_Text_Visual_0100 END ');
         } catch (err) {
           expect().assertFail()
