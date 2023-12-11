@@ -19,6 +19,7 @@ import MyUtils from '../common/MyUtils';
 struct ListDelete {
   @State arr: number[] = [0, 1, 2]
   @State arr2: number[] = [0, 1, 2]
+  @State tSting:string = "no action trigger"
 
   @Builder itemEnd(index: number, which: string) {
     Row () {
@@ -48,6 +49,7 @@ struct ListDelete {
 
   build() {
     Column() {
+      Text(this.tSting).key('MyList5ListItemOnDeleteH')
       List({ space: 20, initialIndex: 0 }) {
         ForEach(this.arr, (item, index) => {
           ListItem() {
@@ -124,7 +126,8 @@ struct ListDelete {
             onAction: () => {
               console.info('MyList5_ListItem' + index + ' onAction')
               this.arr2.splice(index, 1)
-              MyUtils.sendEvent('MyList5_ListItem' + index + 'onDelete', 72000)
+              this.tSting = "action trigger";
+
             },
             actionAreaDistance: 5,
             onEnterActionArea: () => {

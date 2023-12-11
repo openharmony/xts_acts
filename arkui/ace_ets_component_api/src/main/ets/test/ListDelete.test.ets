@@ -20,15 +20,26 @@ import events_emitter from '@ohos.events.emitter';
 export default function ListDeleteTest() {
 
   const SUITE = 'ListDelete'
+  
+  async function sleep(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("sleep")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
+
   function getRectCenter(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
+    let rtn = rect.replace(/\[/g, '').replace(/\]/g, '').split(',')
     return [
     parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2,
     parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2,
     ]
   }
   function getRectCenterVp(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
+    let rtn = rect.replace(/\[/g, '').replace(/\]/g, '').split(',')
     return [
       px2vp(parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2),
       px2vp(parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2),
@@ -68,14 +79,15 @@ export default function ListDeleteTest() {
 
       let baseKey = 'MyList1_ListItem0'
       let strJson = getInspectorByKey(baseKey);
+      console.info("the rect json is " + strJson );
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
 
       let rectCenter = getRectCenter(obj.$rect)
       let driver = Driver.create()
-      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
-
+      await driver.swipe(Math.round(rectCenter[0]), Math.round(rectCenter[1]), 0, Math.round(rectCenter[1]))
+      await sleep(3000);
       let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
       let objButtonDel = JSON.parse(strJsonButtonDel);
       expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
@@ -108,7 +120,7 @@ export default function ListDeleteTest() {
         Math.round(rectCenter[1]), 
         Math.round(rectCenter[0] + 200), 
         Math.round(rectCenter[1]))
-
+      await sleep(3000);
       let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
       let objButtonDel = JSON.parse(strJsonButtonDel);
       expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
@@ -136,21 +148,16 @@ export default function ListDeleteTest() {
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("5.00vp");
-
-      let callback = (event) => {
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg)
-        expect(event.data.msg).assertEqual('MyList5_ListItem0onDelete')
-        done()
-      }
-      let event = {
-        eventId: 72000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
+      
       let rectCenter = getRectCenter(obj.$rect)
       await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
         0, Math.round(rectCenter[1]))
+      await sleep(3000);
+      let strJson2 = getInspectorByKey('MyList5ListItemOnDeleteH');
+      let obj2 = JSON.parse(strJson2);
+      expect(obj2.$attrs.content).assertEqual("action trigger");
       console.info(`${SUITE} ${CASE} END`);
+      done();
     });
 
   })
