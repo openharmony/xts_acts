@@ -38,19 +38,17 @@ struct Ble {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'BleBluetooth';
-  @State StepTips: string = '操作步骤：\n1、先在另一台设备中安装validator的hap包，进入本页面的同级目录BleService中开启广播' +
-  '\n2、再打开BLE蓝牙开始扫描' + '\n3、连接另一台设备BleService中获取的ble蓝牙名称'
-  + '\n4、连接成功后等待接收数据' + '\n预期结果：成功收到数据则通过';
+  @State StepTips: string = '操作步骤：\n1、点击右侧的按钮，开启ble蓝牙扫描' + '\n预期结果：能够搜索到周边的ble设备';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State isOn: boolean = false
   @State isConnect: boolean = false;
   @State data: string = ''
+  @State intervalNum: number = 0;
   @State deviceList: Array<string> = []
   @State discoveryList: Array<string> = []
   @StorageLink('availableDevices') @Watch('onAvailableDevicesChange') availableDevices: Array<BluetoothDevice> = []
-  @StorageLink('connectBluetoothDevice') @Watch('onConnectBluetoothDeviceChange') connectBluetoothDevice: BluetoothDevice = {
-  }
+  @StorageLink('connectBluetoothDevice') @Watch('onConnectBluetoothDeviceChange') connectBluetoothDevice: BluetoothDevice = {}
   @State connectBluetoothDevice1: BluetoothDevice = {}
 
   onAvailableDevicesChange() {
@@ -62,7 +60,6 @@ struct Ble {
     this.connectBluetoothDevice1 = this.connectBluetoothDevice
   }
 
-  private intervalId: number = -1
   handlerClickButton = () => {
     let context = getContext(this) as any
     context.terminateSelf()
@@ -88,14 +85,21 @@ struct Ble {
 
   async onPageHide() {
     Logger.info("enter onPageHide");
+    clearInterval(this.intervalNum)
   }
 
   async aboutToDisappear() {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalNum)
     bluetoothViewModel.close()
   }
 
   async onPageShow() {
+    this.intervalNum = setInterval(() => {
+      if (this.availableDevices.length > 0) {
+        this.Vue = true
+      }
+    }, 500)
+
     let innerEvent: emitter.InnerEvent = {
       eventId: 12
     };
@@ -393,25 +397,6 @@ struct Item {
   @Link isConnect: boolean;
   private index: number
 
-  getConnectionStateDescription(): ResourceStr {
-    let description = '连接'
-    switch (this.bluetoothDevice.connectionState) {
-      case ConnectionState.STATE_CONNECTING:
-        description = '连接中'
-        break
-      case ConnectionState.STATE_DISCONNECTING:
-        description = '断连中'
-        break
-      case ConnectionState.STATE_DISCONNECTED:
-        description = '连接'
-        break
-      case ConnectionState.STATE_CONNECTED:
-        description = '断连'
-        break
-    }
-    return description
-  }
-
   async aboutToAppear() {
     Logger.info(TAG, `aboutToAppear: bluetoothDevice = ${JSON.stringify(this.bluetoothDevice)}`)
     await globalThis.setOrientation(window.Orientation.AUTO_ROTATION_LANDSCAPE)
@@ -436,29 +421,6 @@ struct Item {
       Text(this.bluetoothDevice.rssi.toString() + ' dbm')
         .fontSize(14)
         .margin({ right: 10 })
-
-      Button(this.getConnectionStateDescription())
-        .fontSize(16)
-        .fontColor(this.bluetoothDevice.connectionState === ConnectionState.STATE_CONNECTED ? Color.White : Color.Black)
-        .backgroundColor(this.bluetoothDevice.connectionState === ConnectionState.STATE_CONNECTED ? Color.Green : '#0D000000')
-        .padding({ left: 20, right: 20 })
-        .margin({ right: 16 })
-        .onClick(() => {
-          Logger.info(TAG, '连接 onClick ==》')
-          if (this.bluetoothDevice.connectionState === ConnectionState.STATE_DISCONNECTED) {
-            Logger.info(TAG, '连接 onClick =ret=》')
-            let ret: boolean = bluetoothViewModel.connect(this.bluetoothDevice)
-            if (ret) {
-              Logger.info(TAG, '连接 onClick = if ret=》')
-              promptAction.showToast({ message: '正在连接请稍等', duration: 2000 })
-            }
-          } else if (this.bluetoothDevice.connectionState === ConnectionState.STATE_CONNECTED) {
-            Logger.info(TAG, '连接 onClick = else if ret=》')
-            bluetoothViewModel.disconnect()
-            promptAction.showToast({ message: '断连成功', duration: 2000 })
-            this.isConnect = true
-          }
-        })
     }
     .width('100%')
     .height('100%')

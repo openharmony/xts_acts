@@ -24,7 +24,7 @@ import access from '@ohos.bluetooth.access';
 import constant from '@ohos.bluetooth.constant';
 import emitter from '@ohos.events.emitter';
 
-const TAG = '[Sample_BluetoothManager]';
+const TAG = '[BleManager]';
 
 export class ConnectionState {
   static STATE_CONNECTING = 1;
@@ -97,7 +97,6 @@ export class BluetoothViewModel {
 
   connect(bluetoothDevice: BluetoothDevice): boolean {
     Log.info(TAG, `connect: bluetoothDevice = ${JSON.stringify(bluetoothDevice)}`);
-
     if (this.mGattClientDevice && this.mConnectBluetoothDevice && this.mConnectBluetoothDevice.deviceId === bluetoothDevice.deviceId) {
       Log.warn(TAG, `Trying to use an existing ${JSON.stringify(bluetoothDevice.deviceId)} for connection.`);
       let ret: boolean = this.connectInner(this.mGattClientDevice);
@@ -357,7 +356,6 @@ export class BluetoothViewModel {
         Log.warn(TAG, `disconnectInner: mGattClientDevice is null`);
         return;
       }
-
       this.offBLEConnectionStateChange();
       this.offBLECharacteristicChange();
       if (this.getConnectionState() === ConnectionState.STATE_CONNECTING) {
