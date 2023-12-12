@@ -117,10 +117,9 @@ int32_t MockIDevice::GetDeviceStatus(DeviceStatus& status)
 
 int32_t MockIDevice::GetVersion(uint32_t &majorVersion, uint32_t &minorVersion)
 {
-    int twoNum = 2;
-    int zeroNum = 0;
-    majorVersion = reinterpret_cast<uint32_t>(twoNum);
-    minorVersion = reinterpret_cast<uint32_t>(zeroNum);
+    uint32_t twoNum = 2;
+    majorVersion = twoNum;
+    minorVersion = 0;
     return HDF_SUCCESS;
 }
 
