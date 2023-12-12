@@ -960,7 +960,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_GetOutputDimensions_0600,
     int32_t *outputDimensions = nullptr;
     uint32_t outputDimensionCount{0};
     uint32_t addOutputIndex = {0};
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN,
+    ASSERT_EQ(OH_NN_SUCCESS,
               OH_NNExecutor_GetOutputShape(executor, addOutputIndex, &outputDimensions, &outputDimensionCount));
 
     Free(model, compilation, executor);
