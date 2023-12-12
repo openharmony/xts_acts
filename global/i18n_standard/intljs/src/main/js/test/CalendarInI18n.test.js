@@ -414,5 +414,25 @@ describe('CalendarInI18nTest', function () {
         expect(value).assertTrue();
     })
 
+    /**
+    *@tc.number   :SUB_GLOBAL_I18N_SR000IFGNH_0010
+    *@tc.name     :HolidayManager-input.ics file
+    *@tc.desc     :HolidayManager
+    *@tc.size     :MEDIUM
+    *@tc.type     :Function
+    *@tc.level    :Level 0
+    */
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', 0, function(done){
+        try{
+          let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
+          console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010' + holidayManager);
+        }catch(e){
+          expect(e.code==null).assertTrue();
+          console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010_errorCode'+e.code);
+          console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010_errorMessage'+e.message);
+        }
+        done();
+    })
+
     console.log('*************end CalendarInI18nTest*************');
 })}

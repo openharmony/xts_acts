@@ -313,5 +313,32 @@ describe('I18nTest', function () {
         expect(value).assertTrue();
     })
 
+    /**
+    *@tc.number   :SUB_GLOBAL_I18N_EntityRecognizer_0100
+    *@tc.name     :findEntityInfo - Identifying Entity Information in Text
+    *@tc.desc     :findEntityInfo
+    *@tc.size     :MEDIUM
+    *@tc.type     :Function
+    *@tc.level    :Level 0
+    */
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0100',0,function(done){
+        try{
+          let entityRecognizer = new I18n.EntityRecognizer("zh-CN");
+          let text = "如有疑问，请联系13801048417";
+          // @ts-ignore
+          let result = entityRecognizer.findEntityInfo(text);
+          expect(result[0].type == "phone_number").assertTrue();
+          expect(result[0].begin == 8).assertTrue();
+          expect(result[0].end == 19).assertTrue();
+          console.log('SUB_GLOBAL_I18N_EntityRecognizer_0100' + result[0].type);
+          console.log('SUB_GLOBAL_I18N_EntityRecognizer_0100' + result[0].begin);
+          console.log('SUB_GLOBAL_I18N_EntityRecognizer_0100' + result[0].end);
+        }catch(e){
+          console.log('SUB_GLOBAL_I18N_EntityRecognizer_0100_errorCode'+e.code);
+          console.log('SUB_GLOBAL_I18N_EntityRecognizer_0100_errorMessage'+e.message);
+        }
+        done();
+    })
+
     console.log('*************end I18NTest*************');
 })}
