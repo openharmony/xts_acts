@@ -42,7 +42,12 @@ struct IndexPage {
   @State result: string = '';
   @State TEST: number = 0;
   private TestCaseList = [
-    { title: 'SensorAccelerometer', uri: 'pages/Sensor/SensorAccelerometer' }
+    { title: 'SensorAccelerometer', uri: 'pages/Sensor/SensorAccelerometer' },
+    { title: 'Hall', uri: 'pages/Sensor/Hall' },
+    { title: 'HeartRate', uri: 'pages/Sensor/HeartRate' },
+    { title: 'Humidity', uri: 'pages/Sensor/Humidity' },
+    { title: 'Light', uri: 'pages/Sensor/Light' },
+    { title: 'LinearAccelerometer', uri: 'pages/Sensor/LinearAccelerometer' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: Object[] = [];
