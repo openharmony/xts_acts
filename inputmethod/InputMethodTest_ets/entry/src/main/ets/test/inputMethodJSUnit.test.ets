@@ -133,12 +133,14 @@ export default function inputMethodJSUnit() {
       inputMethodCtrl.stopInput((err, res) => {
         try{
           if (err) {
-            console.error(`Failed to stopInput: ${JSON.stringify(err)}`);
+            console.error(`====>Failed to stopInput: ${JSON.stringify(err)}`);
+            expect(err.code === 1).assertTrue();
+            done();
+          }else{
+            console.info("====>inputmethoh_test_005 stopInput result----" + res);
             expect().assertFail();
+            done();
           }
-          console.info("====>inputmethoh_test_005 stopInput result----" + res);
-          expect(true).assertTrue();
-          done();
         }catch(err){
           console.info("====>inputmethoh_test_005 stopInput throw err" + JSON.stringify(err));
           done();
