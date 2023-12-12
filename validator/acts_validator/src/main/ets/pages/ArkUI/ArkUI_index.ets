@@ -60,6 +60,9 @@ struct IndexPage {
     {title:'CanvasShadowColor',uri:'pages/ArkUI/CanvasShadowColor'},
     {title:'CanvasShadowOffsetX',uri:'pages/ArkUI/CanvasShadowOffsetX'},
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
+    { title: 'TextPicker', uri: 'pages/ArkUI/TextPicker' },
+    { title: 'TimePicker', uri: 'pages/ArkUI/TimePicker' },
+    { title: 'TimePickerDialog', uri: 'pages/ArkUI/TimePickerDialog' }
   ]
   @State ColorObject : Object[] = VarColor;
   @State ColorTrue : Object[] = [];
