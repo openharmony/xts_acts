@@ -35,7 +35,7 @@ struct ImageCrop {
   @State FillColor: string = '#FF000000';
   @State name: string = 'ImageCrop';
   @State StepTips: string = '操作步骤：1、点击选择图片按钮，在图库选择一张图片\n' +
-  '2、分别点击1：1、4：3、12：9按钮进行图片裁剪' + '\n' + '预期结果：图片裁剪成功';
+  '2、分别点击1：1、4：3、3：2按钮进行图片裁剪' + '\n' + '预期结果：图片裁剪成功';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -336,14 +336,14 @@ struct ImageCrop {
               }
             })
 
-          Button('16:9')
+          Button('3:2')
             .backgroundColor(this.is16_9 ? Color.Green : Color.Blue)
             .onClick(async () => {
               if (this.isClick) {
                 this.isClick = false
                 this.pixelMap = await this.copyPixelMap(this.originBM);
                 try {
-                  await this.cropImage(16 / 9)
+                  await this.cropImage(3 / 2)
                   this.is16_9 = true
                 }catch (err){
                   Logger.info(TAG,'err'+ JSON.stringify(err.message))
