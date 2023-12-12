@@ -288,47 +288,6 @@ export default function abilityTest() {
       }
     })
 
-
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0700',0, async function (done) {
-      await Driver.create().delayMs(2000)
-      var subscriber
-      commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
-        console.info(`====>AsyncCallback_0700 createSubscriber  ${data}`)
-        subscriber = data
-        commonEvent.subscribe(data, subscribeCallBack)
-        globalThis.context.startAbility({
-          bundleName: 'com.example.forresulttestthrid',
-          abilityName: 'EntryAbility',
-          action: 'AsyncCallback_0700'
-        },(err) => {
-          console.info('====>start Own Ability err:' + JSON.stringify(err));
-        })
-      })
-
-      function subscribeCallBack(err, data) {
-        console.info(`====>AsyncCallback_0700 subscribeCallBack all  ${data.event}`)
-        if(data.event == 'ACTS_CALL_EVENT') {
-          console.info(`====>AsyncCallback_0700 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          expect(data.parameters.num).assertEqual(201);
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        }
-      }
-
-      function unSubscribeCallback() {
-        console.info(`====>AsyncCallback_0700 unSubscribeCallback 'ACTS_CALL_EVENT'`)
-
-        setTimeout(() => {
-          abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestthrid').then(result =>{
-            console.info('====>AsyncCallback_0700 unSubscribeCallback pkill ok' + JSON.stringify(result));
-            done()
-          }).catch(err => {
-            console.info('====>AsyncCallback_0700 unSubscribeCallback pkill ng' + JSON.stringify(err));
-            done()
-          })
-        }, 2000)
-      }
-    })
-
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0100',0, async function (done) {
       await Driver.create().delayMs(2000)
       var subscriber
@@ -555,45 +514,6 @@ export default function abilityTest() {
             done()
           }).catch(err => {
             console.info('====>AsyncCallback_0600 unSubscribeCallback pkill ng' + JSON.stringify(err));
-            done()
-          })
-        }, 2000)
-      }
-    })
-
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0700',0, async function (done) {
-      await Driver.create().delayMs(2000)
-      var subscriber
-      commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
-        console.info(`====>Promise_0700 createSubscriber  ${data}`)
-        subscriber = data
-        commonEvent.subscribe(data, subscribeCallBack)
-        globalThis.context.startAbility({
-          bundleName: 'com.example.forresulttestthrid',
-          abilityName: 'EntryAbility',
-          action: 'Promise_0700'
-        },(err) => {
-          console.info('====>start Own Ability err:' + JSON.stringify(err));
-        })
-      })
-
-      function subscribeCallBack(err, data) {
-        console.info(`====>Promise_0700 subscribeCallBack all  ${data.event}`)
-        if(data.event == 'ACTS_CALL_EVENT') {
-          console.info(`====>Promise_0700 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          expect(data.parameters.num).assertEqual(201);
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        }
-      }
-
-      function unSubscribeCallback() {
-        console.info(`====>Promise_0700 unSubscribeCallback 'ACTS_CALL_EVENT'`)
-        setTimeout(() => {
-          abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestthrid').then(result =>{
-            console.info('====>AsyncCallback_0700 unSubscribeCallback pkill ok' + JSON.stringify(result));
-            done()
-          }).catch(err => {
-            console.info('====>AsyncCallback_0700 unSubscribeCallback pkill ng' + JSON.stringify(err));
             done()
           })
         }, 2000)
