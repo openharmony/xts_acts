@@ -60,6 +60,10 @@ struct IndexPage {
     {title:'CanvasShadowColor',uri:'pages/ArkUI/CanvasShadowColor'},
     {title:'CanvasShadowOffsetX',uri:'pages/ArkUI/CanvasShadowOffsetX'},
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
+    { title: 'Progress', uri: 'pages/ArkUI/Progress' },
+    { title: 'Rating', uri: 'pages/ArkUI/Rating' },
+    { title: 'Search', uri: 'pages/ArkUI/Search' },
+    { title: 'SharedTransition', uri: 'pages/ArkUI/SharedTransition' }
   ]
   @State ColorObject : Object[] = VarColor;
   @State ColorTrue : Object[] = [];
