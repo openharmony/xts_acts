@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent';
 
 export default class Hap2MainAbility4 extends Ability {
     onCreate(want, launchParam) {
@@ -30,6 +31,9 @@ export default class Hap2MainAbility4 extends Ability {
 
     onDestroy() {
         console.log("[Demo] Hap2MainAbility4 onDestroy")
+        commonEvent.publish('Hap2MainAbility4onDestroy', (err) => {
+            console.log('Hap2MainAbility4onDestroy');
+        });
     }
 
     onWindowStageCreate(windowStage) {
