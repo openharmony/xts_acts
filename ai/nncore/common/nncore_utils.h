@@ -146,6 +146,8 @@ public:
 };
 
 NN_TensorDesc* createTensorDesc(const int32_t* shape, size_t shapeNum, OH_NN_DataType dataType, OH_NN_Format format);
+int MultiModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs);
+int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 int BuildSingleOpGraphWithQuantParams(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 void Free(OH_NNModel *model = nullptr, OH_NNCompilation *compilation = nullptr, OH_NNExecutor *executor = nullptr);
@@ -169,12 +171,13 @@ void ConstructAddModel(OH_NNModel **model);
 void ConstructCompilation(OH_NNCompilation **compilation);
 void CreateExecutor(OH_NNExecutor **executor);
 void CreateDynamicExecutor(OH_NNExecutor **executor);
-void GetExecutorInputOutputTensorDesc(OH_NNExecutor* executor, std::vector<NN_TensorDesc*>& inputTensorDescs, size_t& inputCount, 
+void GetExecutorInputOutputTensorDesc(OH_NNExecutor* executor,
+                                      std::vector<NN_TensorDesc*>& inputTensorDescs, size_t& inputCount,
                                       std::vector<NN_TensorDesc*>& outputTensorDescs, size_t& outputCount);
 void GetExecutorInputOutputTensorByDesc(OH_NNExecutor* executor,
     std::vector<NN_Tensor*>& inputTensors, const std::vector<NN_TensorDesc*>& inputTensorDescs,
     std::vector<NN_Tensor*>& outputTensors, const std::vector<NN_TensorDesc*>& outputTensorDescs);
-void GetExecutorInputOutputTensor(OH_NNExecutor* executor, std::vector<NN_Tensor*>& inputTensors, size_t& inputCount, 
+void GetExecutorInputOutputTensor(OH_NNExecutor* executor, std::vector<NN_Tensor*>& inputTensors, size_t& inputCount,
                                   std::vector<NN_Tensor*>& outputTensors, size_t& outputCount);
 OH_NN_ReturnCode DestroyTensorDesc(std::vector<NN_TensorDesc*>& inputTensorDescs,
                                    std::vector<NN_TensorDesc*>& outputTensorDescs);

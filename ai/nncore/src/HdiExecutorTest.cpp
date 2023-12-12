@@ -145,7 +145,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0100, Functi
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount));
 }
 
 /**
@@ -161,7 +162,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0200, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, nullptr, inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, nullptr, inputCount,
+                                                             outputTensors.data(), outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -179,7 +181,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0300, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, nullptr, outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             nullptr, outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -198,7 +201,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0400, Functi
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     inputCount = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -217,7 +221,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0500, Functi
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     outputCount = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -235,7 +240,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0600, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount - 1, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount - 1,
+                                                             outputTensors.data(), outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -253,7 +259,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0700, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount + 1, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount + 1,
+                                                             outputTensors.data(), outputCount));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -271,7 +278,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0800, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount - 1));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount - 1));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -289,7 +297,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunSync_0900, Functi
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount + 1));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount + 1));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -311,7 +320,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0100, Funct
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount,
+                                                              outputTensors.data(), outputCount, timeout, userData));
 }
 
 /**
@@ -330,7 +340,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0200, Funct
     void* userData = (void*) executor;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     inputCount = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount,
+                                                              outputTensors.data(), outputCount, timeout, userData));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -351,7 +362,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0300, Funct
     void* userData = (void*) executor;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
     outputCount = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount,
+                                                              outputTensors.data(), outputCount, timeout, userData));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -371,7 +383,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0400, Funct
     int32_t timeout = 60;
     void* userData = (void*) executor;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, nullptr, inputCount, outputTensors.data(), outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, nullptr, inputCount,
+                                                              outputTensors.data(), outputCount, timeout, userData));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -391,7 +404,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0500, Funct
     int32_t timeout = 60;
     void* userData = (void*) executor;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount, nullptr, outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount,
+                                                              nullptr, outputCount, timeout, userData));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -411,7 +425,9 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_RunASync_0600, Funct
     int32_t timeout = 60;
     void* userData = (void*) executor;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount, timeout, userData));
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNExecutor_RunAsync(executor, inputTensors.data(), inputCount,
+                                                                outputTensors.data(), outputCount,
+                                                                timeout, userData));
     OH_NNExecutor_Destroy(&executor);
     ASSERT_EQ(OH_NN_SUCCESS, DestroyTensor(inputTensors, outputTensors));
 }
@@ -426,7 +442,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Shape_010
     int32_t *outputDimensions = nullptr;
     uint32_t outputDimensionCount = 0;
     uint32_t outputIndex = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetOutputShape(nullptr, outputIndex, &outputDimensions, &outputDimensionCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetOutputShape(nullptr, outputIndex,
+                                                                    &outputDimensions, &outputDimensionCount));
 }
 
 /**
@@ -442,7 +459,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Shape_020
     int32_t *outputDimensions = nullptr;
     uint32_t outputDimensionCount = 0;
     uint32_t addOutputIndex = 4;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetOutputShape(executor, addOutputIndex, &outputDimensions, &outputDimensionCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetOutputShape(executor, addOutputIndex,
+                                                                    &outputDimensions, &outputDimensionCount));
     OH_NNExecutor_Destroy(&executor);
 }
 
@@ -461,12 +479,14 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Shape_030
     size_t inputCount = 0;
     size_t outputCount = 0;
     GetExecutorInputOutputTensor(executor, inputTensors, inputCount, outputTensors, outputCount);
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                   outputTensors.data(), outputCount));
 
     int32_t *outputDimensions = nullptr;
     uint32_t outputDimensionCount = 0;
     uint32_t addOutputIndex = 0;
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetOutputShape(executor, addOutputIndex, &outputDimensions, &outputDimensionCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetOutputShape(executor, addOutputIndex,
+                                                          &outputDimensions, &outputDimensionCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -495,23 +515,27 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Shape_040
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], (int32_t*)minInputDims, shapeLength));
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                   outputTensors.data(), outputCount));
 
     int32_t *outputDimensions = nullptr;
     uint32_t outputDimensionCount = 0;
     uint32_t addOutputIndex = 0;
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetOutputShape(executor, addOutputIndex, &outputDimensions, &outputDimensionCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetOutputShape(executor, addOutputIndex,
+                                                          &outputDimensions, &outputDimensionCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -605,7 +629,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Output_Count_030
  * @tc.desc: excutor为空，返回失败
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0100, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0100,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -620,7 +645,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorD
  * @tc.desc: 遍历创建输入tensorDesc，index小于输出个数，成功
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0200, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0200,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -639,7 +665,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorD
  * @tc.desc: index等于输出个数，返回失败
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0300, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorDesc_0300,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -655,7 +682,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Input_TensorD
  * @tc.desc: excutor为空，返回失败
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0100, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0100,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -670,7 +698,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_Tensor
  * @tc.desc: 遍历创建输入tensorDesc，index小于输出个数，成功
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0200, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0200,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -689,7 +718,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_Tensor
  * @tc.desc: index等于输出个数，返回失败
  * @tc.type: FUNC
  */
-HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0300, Function | MediumTest | Level1)
+HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Create_Output_TensorDesc_0300,
+         Function | MediumTest | Level1)
 {
     OH_NNExecutor* executor = nullptr;
     CreateExecutor(&executor);
@@ -711,7 +741,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *minInputDims = nullptr;
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims, &maxInputDims, &shapeLength));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims,
+                                                                      &maxInputDims, &shapeLength));
 }
 
 /**
@@ -729,7 +760,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
 
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims, &maxInputDims, &shapeLength));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims,
+                                                                      &maxInputDims, &shapeLength));
     OH_NNExecutor_Destroy(&executor);
 }
 
@@ -755,18 +787,21 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], (int32_t*)minInputDims, shapeLength));
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                   outputTensors.data(), outputCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -796,18 +831,21 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], (int32_t*)maxInputDims, shapeLength));
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                   outputTensors.data(), outputCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -837,7 +875,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         for (size_t i = 0; i < shapeLength; ++i) {
             minInputDims[i] -= 1;
         }
@@ -845,13 +884,15 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -881,7 +922,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         for (size_t i = 0; i < shapeLength; ++i) {
             maxInputDims[i] += 1;
         }
@@ -889,13 +931,15 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount,
+                                                             outputTensors.data(), outputCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -925,18 +969,21 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength));
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(inputTensorDescs[i], (int32_t*)maxInputDims, shapeLength));
     }
     std::vector<int32_t> outputShape{1, 2, 2, 1};
     for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size()));
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size()));
     }
     
     vector<NN_Tensor*> inputTensors;
     vector<NN_Tensor*> outputTensors;
     GetExecutorInputOutputTensorByDesc(executor, inputTensors, inputTensorDescs, outputTensors, outputTensorDescs);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount + 1, outputTensors.data(), outputCount));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_RunSync(executor, inputTensors.data(), inputCount + 1,
+                                                             outputTensors.data(), outputCount));
 
     // 销毁Executor
     OH_NNExecutor_Destroy(&executor);
@@ -958,7 +1005,8 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t *minInputDims = nullptr;
     size_t *maxInputDims = nullptr;
     size_t shapeLength = ZERO;
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims, &maxInputDims, &shapeLength));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims,
+                                                            &maxInputDims, &shapeLength));
     ASSERT_EQ(*minInputDims, *maxInputDims);
     OH_NNExecutor_Destroy(&executor);
 }

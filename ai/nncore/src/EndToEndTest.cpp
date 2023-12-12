@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include <string>
 #include <vector>
 #include <gtest/gtest.h>
@@ -9,7 +23,7 @@
 using namespace testing::ext;
 using namespace OHOS::NeuralNetworkRuntime::Test;
 
-class EndToEndTest: public testing::Test {
+class EndToEndTest : public testing::Test {
 public:
     void SetUp()
     {
@@ -133,7 +147,7 @@ OH_NN_ReturnCode SetInputData(NN_Tensor* inputTensor[], size_t inputSize)
             LOGE("End2EndTest::OH_NNTensorDesc_GetElementCount failed.");
             return ret;
         }
-        switch(dataType) {
+        switch (dataType) {
             case OH_NN_FLOAT32: {
                 float* floatValue = reinterpret_cast<float*>(data);
                 for (size_t j = 0; j < elementNum; ++j) {
@@ -200,18 +214,21 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
         size_t *maxInputDims = nullptr;
         size_t shapeLength = ZERO;
         for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-            if (OH_NN_SUCCESS != OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims, &maxInputDims, &shapeLength)) {
+            if (OH_NN_SUCCESS != OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength)) {
                 LOGE("End2EndTest::OH_NNExecutor_GetInputDimRange failed.");
                 return nullptr;
             }
-            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i], (int32_t*)minInputDims, shapeLength)) {
+            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i],
+                                                          (int32_t*)minInputDims, shapeLength)) {
                 LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
                 return nullptr;
             }
         }
         std::vector<int32_t> outputShape{1, 2, 2, 1};
         for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(outputTensorDescs[i], outputShape.data(), outputShape.size())) {
+            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size())) {
                 LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
                 return nullptr;
             }

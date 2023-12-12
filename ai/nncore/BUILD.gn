@@ -27,13 +27,13 @@ config("nncore_config") {
 ohos_moduletest_suite("ActsNncoreTest") {
   module_out_path = module_output_path
   sources = [
-    "common/nncore_utils.cpp",
     "common/mock_idevice.cpp",
+    "common/nncore_utils.cpp",
     "src/HdiCompilationTest.cpp",
     "src/HdiExecutorTest.cpp",
     "src/HdiModelTest.cpp",
-    "src/HdiTensorTest.cpp",
     "src/HdiTensorDescTest.cpp",
+    "src/HdiTensorTest.cpp",
   ]
 
   configs = [ ":nncore_config" ]
@@ -58,10 +58,10 @@ ohos_moduletest_suite("ActsNncoreTest") {
 
 ohos_moduletest_suite("ActsEndtoendTest") {
   module_out_path = module_output_path
-  sources = [ 
-    "src/EndToEndTest.cpp",
-    "common/nncore_utils.cpp",
+  sources = [
     "common/mock_idevice.cpp",
+    "common/nncore_utils.cpp",
+    "src/EndToEndTest.cpp",
   ]
 
   configs = [ ":nncore_config" ]
@@ -86,8 +86,8 @@ ohos_moduletest_suite("ActsEndtoendTest") {
 
 group("ActsHdfNncoreTest") {
   testonly = true
-  deps = [ 
-    ":ActsNncoreTest",
+  deps = [
     ":ActsEndtoendTest",
+    ":ActsNncoreTest",
   ]
 }

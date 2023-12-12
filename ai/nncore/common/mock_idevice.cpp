@@ -44,7 +44,7 @@ MockIDevice::~MockIDevice()
 
 MockIDevice::MockIDevice()
 {
-    m_bufferFd = 0; 
+    m_bufferFd = 0;
 }
 
 MockIPreparedModel::~MockIPreparedModel()
@@ -161,8 +161,8 @@ int32_t MockIDevice::IsModelCacheSupported(bool& isSupported)
 int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
-    for(auto ash:m_ashmems){
-        if(ash.second->GetAshmemSize() <= 0){
+    for (auto ash:m_ashmems) {
+        if (ash.second->GetAshmemSize() <= 0) {
             ash.second->CloseAshmem();
         }
     }
@@ -229,14 +229,14 @@ int32_t MockIDevice::PrepareModel(const Model& model, const ModelConfig& config,
 }
 
 int32_t MockIDevice::PrepareOfflineModel(const std::vector<SharedBuffer>& offlineModels, const ModelConfig& config,
-     sptr<OHOS::HDI::Nnrt::V2_0::IPreparedModel>& preparedModel)
+                                         sptr<OHOS::HDI::Nnrt::V2_0::IPreparedModel>& preparedModel)
 {
     preparedModel = new (std::nothrow) V2_0::MockIPreparedModel();
     return V2_0::NNRT_ReturnCode::NNRT_SUCCESS;
 }
 
 int32_t MockIDevice::PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
-    sptr<IPreparedModel>& preparedModel)
+                                                sptr<IPreparedModel>& preparedModel)
 {
     preparedModel = new (std::nothrow) V2_0::MockIPreparedModel();
     return HDF_SUCCESS;
@@ -288,7 +288,8 @@ int32_t MockIPreparedModel::Run(const std::vector<IOTensor>& inputs, const std::
     return HDF_SUCCESS;
 }
 
-int32_t MockIPreparedModel::GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims)
+int32_t MockIPreparedModel::GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims,
+                                              std::vector<std::vector<uint32_t>>& maxInputDims)
 {
     minInputDims = {{2, 2, 2, 2}, {2, 2, 2, 2}};
     maxInputDims = {{2, 100, 100, 10}, {2, 100, 100, 10}};

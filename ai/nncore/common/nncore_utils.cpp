@@ -57,47 +57,9 @@ NN_TensorDesc* createTensorDesc(const int32_t* shape, size_t shapeNum, OH_NN_Dat
     return tensorDescTmp;
 }
 
-int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
+int MultiModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
 {
-     int ret = 0;
-    int opCnt = 0;
-    for (size_t j = 0; j < graphArgs.operationTypes.size(); j++) {
-        for (size_t i = 0; i < graphArgs.operands[j].size(); i++) {
-            const OHNNOperandTest &operandTem = graphArgs.operands[j][i];
-            auto quantParam = operandTem.quantParam;
-            NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                         (uint32_t) operandTem.shape.size(), operandTem.dataType, operandTem.format);
-            ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
-            if (ret != OH_NN_SUCCESS) {
-                LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
-                return ret;
-            }
-            ret = OH_NNModel_SetTensorType(model, i, operandTem.type);
-            if (ret != OH_NN_SUCCESS) {
-                LOGE("[NNRtTest] OH_NNBackend_SetModelTensorType failed! ret=%d\n", ret);
-                return ret;
-            }
-            if (std::find(graphArgs.paramIndices[j].begin(), graphArgs.paramIndices[j].end(), opCnt) !=
-                graphArgs.paramIndices[j].end()) {
-                ret = OH_NNModel_SetTensorData(model, opCnt, operandTem.data, operandTem.length);
-                if (ret != OH_NN_SUCCESS) {
-                    LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%d\n", ret);
-                    return ret;
-                }
-                opCnt += 1;
-            }
-        }
-        auto paramIndices = TransformUInt32Array(graphArgs.paramIndices[j]);
-        auto inputIndices = TransformUInt32Array(graphArgs.inputIndices[j]);
-        auto outputIndices = TransformUInt32Array(graphArgs.outputIndices[j]);
-
-        ret = OH_NNModel_AddOperation(model, graphArgs.operationTypes[j], &paramIndices, &inputIndices,
-        &outputIndices);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNModel_AddOperation failed! ret=%d\n", ret);
-            return ret;
-        }
-    }
+    int ret = 0;
     auto graphInputs = TransformUInt32Array(graphArgs.graphInput);
     auto graphOutputs = TransformUInt32Array(graphArgs.graphOutput);
     ret = OH_NNModel_SpecifyInputsAndOutputs(model, &graphInputs, &graphOutputs);
@@ -113,33 +75,53 @@ int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
     return ret;
 }
 
-int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
+int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
 {
     int ret = 0;
-    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
-        const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        auto quantParam = operandTem.quantParam;
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(), operandTem.dataType, operandTem.format);
-        ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
-            return ret;
-        }
-        ret = OH_NNModel_SetTensorType(model, i, operandTem.type);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNBackend_SetModelTensorType failed! ret=%d\n", ret);
-            return ret;
-        }
-        if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
-            graphArgs.paramIndices.end()) {
-            ret = OH_NNModel_SetTensorData(model, i, operandTem.data, operandTem.length);
+    int opCnt = 0;
+    for (size_t j = 0; j < graphArgs.operationTypes.size(); j++) {
+        for (size_t i = 0; i < graphArgs.operands[j].size(); i++) {
+            const OHNNOperandTest &operandTem = graphArgs.operands[j][i];
+            NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                                         (uint32_t) operandTem.shape.size(),
+                                                         operandTem.dataType, operandTem.format);
+            ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
+            if (ret != OH_NN_SUCCESS) {
+                LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
+                return ret;
+            }
+            ret = OH_NNModel_SetTensorType(model, i, operandTem.type);
+            if (ret != OH_NN_SUCCESS) {
+                LOGE("[NNRtTest] OH_NNBackend_SetModelTensorType failed! ret=%d\n", ret);
+                return ret;
+            }
+            if (std::find(graphArgs.paramIndices[j].begin(), graphArgs.paramIndices[j].end(), opCnt) !=
+                graphArgs.paramIndices[j].end()) {
+                ret = OH_NNModel_SetTensorData(model, opCnt, operandTem.data, operandTem.length);
+                opCnt += 1;
+            }
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%d\n", ret);
                 return ret;
             }
         }
+        auto paramIndices = TransformUInt32Array(graphArgs.paramIndices[j]);
+        auto inputIndices = TransformUInt32Array(graphArgs.inputIndices[j]);
+        auto outputIndices = TransformUInt32Array(graphArgs.outputIndices[j]);
+        ret = OH_NNModel_AddOperation(model, graphArgs.operationTypes[j], &paramIndices, &inputIndices,
+        &outputIndices);
+        if (ret != OH_NN_SUCCESS) {
+            LOGE("[NNRtTest] OH_NNModel_AddOperation failed! ret=%d\n", ret);
+            return ret;
+        }
     }
+    ret = MultiModelBuildEndStep(model, graphArgs);
+    return ret;
+}
+
+int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
+{
+    int ret = 0;
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
@@ -168,13 +150,45 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
     return ret;
 }
 
+int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
+{
+    int ret = 0;
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
+        const OHNNOperandTest &operandTem = graphArgs.operands[i];
+        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                                     (uint32_t) operandTem.shape.size(),
+                                                     operandTem.dataType, operandTem.format);
+        ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
+        if (ret != OH_NN_SUCCESS) {
+            LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
+            return ret;
+        }
+        ret = OH_NNModel_SetTensorType(model, i, operandTem.type);
+        if (ret != OH_NN_SUCCESS) {
+            LOGE("[NNRtTest] OH_NNBackend_SetModelTensorType failed! ret=%d\n", ret);
+            return ret;
+        }
+        if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
+            graphArgs.paramIndices.end()) {
+            ret = OH_NNModel_SetTensorData(model, i, operandTem.data, operandTem.length);
+            if (ret != OH_NN_SUCCESS) {
+                LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%d\n", ret);
+                return ret;
+            }
+        }
+    }
+    ret = SingleModelBuildEndStep(model, graphArgs);
+    return ret;
+}
+
 int BuildSingleOpGraphWithQuantParams(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
 {
     int ret = 0;
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(), operandTem.dataType, operandTem.format);
+                                                     (uint32_t) operandTem.shape.size(),
+                                                     operandTem.dataType, operandTem.format);
         ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
         if (ret != OH_NN_SUCCESS) {
             LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
@@ -204,31 +218,7 @@ int BuildSingleOpGraphWithQuantParams(OH_NNModel *model, const OHNNGraphArgs &gr
             }
         }
     }
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
-    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
-    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    if (graphArgs.addOperation) {
-        ret = OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices,
-                                      &outputIndices);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNModel_AddOperation failed! ret=%d\n", ret);
-            return ret;
-        }
-    }
-    if (graphArgs.specifyIO) {
-        ret = OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNModel_SpecifyInputsAndOutputs failed! ret=%d\n", ret);
-            return ret;
-        }
-    }
-    if (graphArgs.build) {
-        ret = OH_NNModel_Finish(model);
-        if (ret != OH_NN_SUCCESS) {
-            LOGE("[NNRtTest] OH_NNModel_Finish failed! ret=%d\n", ret);
-            return ret;
-        }
-    }
+    ret = SingleModelBuildEndStep(model, graphArgs);
     return ret;
 }
 
@@ -535,8 +525,9 @@ void CreateDynamicExecutor(OH_NNExecutor **executor)
     OH_NNCompilation_Destroy(&compilation);
 }
 
-void GetExecutorInputOutputTensorDesc(OH_NNExecutor* executor, std::vector<NN_TensorDesc*>& inputTensorDescs, size_t& inputCount, 
-    std::vector<NN_TensorDesc*>& outputTensorDescs, size_t& outputCount)
+void GetExecutorInputOutputTensorDesc(OH_NNExecutor* executor,
+                                      std::vector<NN_TensorDesc*>& inputTensorDescs, size_t& inputCount,
+                                      std::vector<NN_TensorDesc*>& outputTensorDescs, size_t& outputCount)
 {
     OH_NN_ReturnCode ret = OH_NNExecutor_GetInputCount(executor, &inputCount);
     ASSERT_EQ(OH_NN_SUCCESS, ret);
@@ -580,7 +571,7 @@ void GetExecutorInputOutputTensorByDesc(OH_NNExecutor* executor,
     }
 }
 
-void GetExecutorInputOutputTensor(OH_NNExecutor* executor, std::vector<NN_Tensor*>& inputTensors, size_t& inputCount, 
+void GetExecutorInputOutputTensor(OH_NNExecutor* executor, std::vector<NN_Tensor*>& inputTensors, size_t& inputCount,
                                   std::vector<NN_Tensor*>& outputTensors, size_t& outputCount)
 {
     std::vector<NN_TensorDesc*> inputTensorDescs;
