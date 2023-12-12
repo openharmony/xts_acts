@@ -71,7 +71,7 @@ OH_NNCompilation* ConstructCompilation(OH_NNModel* model, size_t deviceId, bool 
             LOGE("End2EndTest::OH_NNCompilation_ConstructForCache failed.");
             return nullptr;
         }
-    }else {
+    } else {
         compilation = OH_NNCompilation_Construct(model);
         if (compilation == nullptr) {
             LOGE("End2EndTest::OH_NNCompilation_Construct failed.");

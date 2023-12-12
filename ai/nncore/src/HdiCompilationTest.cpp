@@ -46,15 +46,14 @@ public:
     {
         OH_NNModel *model = nullptr;
         ConstructAddModel(&model);
-        const char* SupportModelPath = SUPPORTMODELPATH.c_str();
-        std::ofstream ofs(SupportModelPath, std::ios::out | std::ios::binary);
+        std::ofstream ofs(SUPPORTMODELPATH, std::ios::out | std::ios::binary);
         if (ofs) {
             ofs.write(reinterpret_cast<char*>(model), sizeof(reinterpret_cast<char*>(model)));
             ofs.close();
         }
         OH_NNModel_Destroy(&model);
     }
-    void GetBuffer(const char* filePath, char **buffer, int &cacheSize)
+    void GetBuffer(std::string filePath, char **buffer, int &cacheSize)
     {
         std::ifstream ifs(filePath, std::ios::in | std::ios::binary);
         if (ifs) {
