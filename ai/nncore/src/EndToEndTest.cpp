@@ -168,6 +168,113 @@ OH_NN_ReturnCode SetInputData(NN_Tensor* inputTensor[], size_t inputSize)
     }
     return OH_NN_SUCCESS;
 }
+OH_NN_ReturnCode GetInputAndOutputTensorDesc(OH_NNExecutor *executor,
+                                 size_t *inputCount, std::vector<NN_TensorDesc*>& inputTensorDescs,
+                                 size_t *outputCount, std::vector<NN_TensorDesc*>& outputTensorDescs)
+{
+    OH_NN_ReturnCode returnCode = OH_NNExecutor_GetInputCount(executor, inputCount);
+    if (returnCode != OH_NN_SUCCESS) {
+        LOGE("End2EndTest::OH_NNExecutor_GetInputCount failed.");
+        return returnCode;
+    }
+    NN_TensorDesc* tensorDescTmp = nullptr;
+    for (size_t i = 0; i < *inputCount; ++i) {
+        tensorDescTmp = OH_NNExecutor_CreateInputTensorDesc(executor, i);
+        if (tensorDescTmp == nullptr) {
+            LOGE("End2EndTest::OH_NNExecutor_CreateInputTensorDesc failed.");
+            return OH_NN_FAILED;
+        }
+        inputTensorDescs.emplace_back(tensorDescTmp);
+    }
+    returnCode = OH_NNExecutor_GetOutputCount(executor, outputCount);
+    if (returnCode != OH_NN_SUCCESS) {
+        LOGE("End2EndTest::OH_NNExecutor_GetOutputCount failed.");
+        return returnCode;
+    }
+    for (size_t i = 0; i < *outputCount; ++i) {
+        tensorDescTmp = OH_NNExecutor_CreateOutputTensorDesc(executor, i);
+        if (tensorDescTmp == nullptr) {
+            LOGE("End2EndTest::OH_NNExecutor_CreateOutputTensorDesc failed.");
+            return OH_NN_FAILED;
+        }
+        outputTensorDescs.emplace_back(tensorDescTmp);
+    }
+    
+    return returnCode;
+}
+
+OH_NN_ReturnCode GetInputDimAndSetShape(OH_NNExecutor *executor, std::vector<NN_TensorDesc*>& inputTensorDescs,
+                                             std::vector<NN_TensorDesc*>& outputTensorDescs, bool isDynamic)
+{
+    if (isDynamic) {
+        size_t *minInputDims = nullptr;
+        size_t *maxInputDims = nullptr;
+        size_t shapeLength = ZERO;
+        for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
+            if (OH_NN_SUCCESS != OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
+                                                                &maxInputDims, &shapeLength)) {
+                LOGE("End2EndTest::OH_NNExecutor_GetInputDimRange failed.");
+                return OH_NN_FAILED;
+            }
+            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i],
+                                                          (int32_t*)minInputDims, shapeLength)) {
+                LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
+                return OH_NN_FAILED;
+            }
+        }
+        std::vector<int32_t> outputShape{1, 2, 2, 1};
+        for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
+            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(outputTensorDescs[i],
+                                                          outputShape.data(), outputShape.size())) {
+                LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
+                return OH_NN_FAILED;
+            }
+        }
+    }
+    return OH_NN_SUCCESS;
+}
+
+OH_NN_ReturnCode CreateTensorAndDestroyTensorDesc(NN_Tensor* tensors[], size_t count,
+                              std::vector<NN_TensorDesc*>& tensorDescs, size_t deviceId)
+{
+    NN_Tensor* tensor = nullptr;
+    for (size_t i = 0; i < count; ++i) {
+        tensor = nullptr;
+        tensor = OH_NNTensor_Create(deviceId, tensorDescs[i]);
+        if (tensor == nullptr) {
+            LOGE("End2EndTest::OH_NNTensor_Create failed.");
+            return OH_NN_FAILED;
+        }
+        tensors[i] = tensor;
+    }
+    for (size_t i = 0; i < count; ++i) {
+        if (OH_NN_SUCCESS != OH_NNTensorDesc_Destroy(&tensorDescs[i])) {
+            LOGE("End2EndTest::OH_NNTensorDesc_Destroy failed.");
+            return OH_NN_FAILED;
+        }
+    }
+    return OH_NN_SUCCESS;
+}
+
+OH_NN_ReturnCode DestroyInputAndOutputTensor(NN_Tensor** inputTensors, size_t inputCount,
+                                             NN_Tensor** outputTensors, size_t outputCount)
+{
+    OH_NN_ReturnCode returnCode = OH_NN_SUCCESS;
+    for (size_t i = 0; i < inputCount; ++i) {
+        returnCode = OH_NNTensor_Destroy(&inputTensors[i]);
+        if (returnCode != OH_NN_SUCCESS) {
+            LOGE("End2EndTest::OH_NNTensor_Destroy failed.");
+            return OH_NN_FAILED;
+        }
+    }
+    for (size_t i = 0; i < outputCount; ++i) {
+        returnCode = OH_NNTensor_Destroy(&outputTensors[i]);
+        if (returnCode != OH_NN_SUCCESS) {
+            LOGE("End2EndTest::OH_NNTensor_Destroy failed.");
+            return OH_NN_FAILED;
+        }
+    }
+}
 
 OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool isDynamic = false)
 {
@@ -177,129 +284,42 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
         return nullptr;
     }
     size_t inputCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNExecutor_GetInputCount(executor, &inputCount);
-    if (returnCode != OH_NN_SUCCESS) {
-        LOGE("End2EndTest::OH_NNExecutor_GetInputCount failed.");
-        return nullptr;
-    }
     std::vector<NN_TensorDesc*> inputTensorDescs;
-    NN_TensorDesc* tensorDescTmp = nullptr;
-    for (size_t i = 0; i < inputCount; ++i) {
-        tensorDescTmp = OH_NNExecutor_CreateInputTensorDesc(executor, i);
-        if (tensorDescTmp == nullptr) {
-            LOGE("End2EndTest::OH_NNExecutor_CreateInputTensorDesc failed.");
-            return nullptr;
-        }
-        inputTensorDescs.emplace_back(tensorDescTmp);
-    }
     size_t outputCount = 0;
-    returnCode = OH_NNExecutor_GetOutputCount(executor, &outputCount);
+    std::vector<NN_TensorDesc*> outputTensorDescs;
+    OH_NN_ReturnCode returnCode = GetInputAndOutputTensorDesc(executor, &inputCount, inputTensorDescs,
+                                                              &outputCount, outputTensorDescs);
     if (returnCode != OH_NN_SUCCESS) {
-        LOGE("End2EndTest::OH_NNExecutor_GetOutputCount failed.");
+        LOGE("End2EndTest::GetInputAndOutputTensorDesc failed.");
         return nullptr;
     }
-    std::vector<NN_TensorDesc*> outputTensorDescs;
-    for (size_t i = 0; i < outputCount; ++i) {
-        tensorDescTmp = OH_NNExecutor_CreateOutputTensorDesc(executor, i);
-        if (tensorDescTmp == nullptr) {
-            LOGE("End2EndTest::OH_NNExecutor_CreateOutputTensorDesc failed.");
-            return nullptr;
-        }
-        outputTensorDescs.emplace_back(tensorDescTmp);
+    returnCode = GetInputDimAndSetShape(executor, inputTensorDescs, outputTensorDescs, isDynamic);
+    if (returnCode != OH_NN_SUCCESS) {
+        LOGE("End2EndTest::GetInputDimAndSetShape failed.");
+        return nullptr;
     }
-
-    if (isDynamic) {
-        // 修改tensorDesc中shape为最小临界值
-        size_t *minInputDims = nullptr;
-        size_t *maxInputDims = nullptr;
-        size_t shapeLength = ZERO;
-        for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
-            if (OH_NN_SUCCESS != OH_NNExecutor_GetInputDimRange(executor, i, &minInputDims,
-                                                                &maxInputDims, &shapeLength)) {
-                LOGE("End2EndTest::OH_NNExecutor_GetInputDimRange failed.");
-                return nullptr;
-            }
-            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(inputTensorDescs[i],
-                                                          (int32_t*)minInputDims, shapeLength)) {
-                LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
-                return nullptr;
-            }
-        }
-        std::vector<int32_t> outputShape{1, 2, 2, 1};
-        for (size_t i = 0; i < outputTensorDescs.size(); ++i) {
-            if (OH_NN_SUCCESS != OH_NNTensorDesc_SetShape(outputTensorDescs[i],
-                                                          outputShape.data(), outputShape.size())) {
-                LOGE("End2EndTest::OH_NNTensorDesc_SetShape failed.");
-                return nullptr;
-            }
-        }
-    }
-
-    // 创建输入输出Tensor
     NN_Tensor* inputTensors[inputCount];
-    NN_Tensor* tensor = nullptr;
-    for (size_t i = 0; i < inputCount; ++i) {
-        tensor = nullptr;
-        tensor = OH_NNTensor_Create(deviceId, inputTensorDescs[i]);
-        if (tensor == nullptr) {
-            LOGE("End2EndTest::OH_NNTensor_Create failed.");
-            return nullptr;
-        }
-        inputTensors[i] = tensor;
-    }
+    OH_NN_ReturnCode returnCodeTmp = CreateTensorAndDestroyTensorDesc(inputTensors, inputCount, inputTensorDescs, deviceId);
     NN_Tensor* outputTensors[outputCount];
-    for (size_t i = 0; i < outputCount; ++i) {
-        tensor = nullptr;
-        tensor = OH_NNTensor_Create(deviceId, outputTensorDescs[i]);
-        if (tensor == nullptr) {
-            LOGE("End2EndTest::OH_NNTensor_Create failed.");
-            return nullptr;
-        }
-        outputTensors[i] = tensor;
+    returnCode = CreateTensorAndDestroyTensorDesc(outputTensors, outputCount, outputTensorDescs, deviceId);
+    if (returnCode != OH_NN_SUCCESS || returnCodeTmp != OH_NN_SUCCESS) {
+        LOGE("End2EndTest::Tensors create failed.");
+        return nullptr;
     }
-
-    // 销毁输入输出tensordesc
-    for (size_t i = 0; i < inputCount; ++i) {
-        returnCode = OH_NNTensorDesc_Destroy(&inputTensorDescs[i]);
-        if (returnCode != OH_NN_SUCCESS) {
-            LOGE("End2EndTest::OH_NNTensorDesc_Destroy failed.");
-            return nullptr;
-        }
-    }
-    for (size_t i = 0; i < outputCount; ++i) {
-        returnCode = OH_NNTensorDesc_Destroy(&outputTensorDescs[i]);
-        if (returnCode != OH_NN_SUCCESS) {
-            LOGE("End2EndTest::OH_NNTensorDesc_Destroy failed.");
-            return nullptr;
-        }
-    }
-
-    // 设置输入元素值
     returnCode = SetInputData(inputTensors, inputCount);
     if (returnCode != OH_NN_SUCCESS) {
         LOGE("End2EndTest::SetInputData failed.");
         return nullptr;
     }
-    // 执行run
     returnCode = OH_NNExecutor_RunSync(executor, inputTensors, inputCount, outputTensors, outputCount);
     if (returnCode != OH_NN_SUCCESS) {
         LOGE("End2EndTest::OH_NNExecutor_RunSync failed.");
         return nullptr;
     }
-    // 清理输入输出Tensor
-    for (size_t i = 0; i < inputCount; ++i) {
-        returnCode = OH_NNTensor_Destroy(&inputTensors[i]);
-        if (returnCode != OH_NN_SUCCESS) {
-            LOGE("End2EndTest::OH_NNTensor_Destroy failed.");
-            return nullptr;
-        }
-    }
-    for (size_t i = 0; i < outputCount; ++i) {
-        returnCode = OH_NNTensor_Destroy(&outputTensors[i]);
-        if (returnCode != OH_NN_SUCCESS) {
-            LOGE("End2EndTest::OH_NNTensor_Destroy failed.");
-            return nullptr;
-        }
+    returnCode = DestroyInputAndOutputTensor(inputTensors, inputCount, outputTensors, outputCount);
+    if (returnCode != OH_NN_SUCCESS) {
+        LOGE("End2EndTest::OH_NNExecutor_RunSync failed.");
+        return nullptr;
     }
     return executor;
 }
