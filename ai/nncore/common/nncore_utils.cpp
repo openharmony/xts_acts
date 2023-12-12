@@ -238,7 +238,7 @@ OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation)
     }
 
     const char *name = nullptr;
-    std::string m_deviceName{"Device-CPU_TestVendor_v2_0"};
+    std::string deviceName{"Device-CPU_TestVendor_v2_0"};
     for (uint32_t i = 0; i < devicesCount; i++) {
         name = nullptr;
         ret = OH_NNDevice_GetName(devicesID[i], &name);
@@ -248,7 +248,7 @@ OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation)
         }
 
         std::string sName(name);
-        if (m_deviceName == sName) {
+        if (deviceName == sName) {
             ret = OH_NNCompilation_SetDevice(compilation, devicesID[i]);
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] OH_NNCompilation_SetDevice failed! ret=%d\n", ret);

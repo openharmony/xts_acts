@@ -46,16 +46,17 @@ public:
     {
         OH_NNModel *model = nullptr;
         ConstructAddModel(&model);
-        std::ofstream ofs(SUPPORTMODELPATH.c_str(), std::ios::out | std::ios::binary);
+        char* SupportModelPath = SUPPORTMODELPATH.c_str();
+        std::ofstream ofs(SupportModelPath, std::ios::out | std::ios::binary);
         if (ofs) {
             ofs.write(reinterpret_cast<char*>(model), sizeof(reinterpret_cast<char*>(model)));
             ofs.close();
         }
         OH_NNModel_Destroy(&model);
     }
-    void GetBuffer(std::string filePath, char **buffer, int &cacheSize)
+    void GetBuffer(char* filePath, char **buffer, int &cacheSize)
     {
-        std::ifstream ifs(filePath.c_str(), std::ios::in | std::ios::binary);
+        std::ifstream ifs(filePath., std::ios::in | std::ios::binary);
         if (ifs) {
             cacheSize = ifs.tellg();
             ifs.read(*buffer, cacheSize);
@@ -244,7 +245,8 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Construct_Compilation_With
 HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Construct_Compilation_With_Offline_ModelBuffer_0200,
          Function | MediumTest | Level1)
 {
-    OH_NNCompilation *compilation = OH_NNCompilation_ConstructWithOfflineModelBuffer(reinterpret_cast<const void*>(TEST_BUFFER), 28);
+    OH_NNCompilation *compilation =
+        OH_NNCompilation_ConstructWithOfflineModelBuffer(reinterpret_cast<const void*>(TEST_BUFFER), 28);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
     ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));

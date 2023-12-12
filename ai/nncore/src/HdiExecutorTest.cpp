@@ -25,7 +25,7 @@ void runDone(void *pointer, OH_NN_ReturnCode returnCode, void* pointerArray[], i
     return;
 }
 
-void serviceDied(void* point)
+void ServiceDied(void* point)
 {
     return;
 }
@@ -109,7 +109,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_OnRunDone_0200, 
  */
 HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_Service_Died_0100, Function | MediumTest | Level1)
 {
-    NN_OnServiceDied onServiceDied = serviceDied;
+    NN_OnServiceDied onServiceDied = ServiceDied;
     OH_NNExecutor *executor = nullptr;
 
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetOnServiceDied(executor, onServiceDied));
@@ -122,7 +122,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_Service_Died_010
  */
 HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_Service_Died_0200, Function | MediumTest | Level1)
 {
-    NN_OnServiceDied onServiceDied = serviceDied;
+    NN_OnServiceDied onServiceDied = ServiceDied;
     OH_NNExecutor *executor = nullptr;
     CreateExecutor(&executor);
 

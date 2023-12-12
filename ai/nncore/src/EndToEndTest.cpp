@@ -71,8 +71,7 @@ OH_NNCompilation* ConstructCompilation(OH_NNModel* model, size_t deviceId, bool 
             LOGE("End2EndTest::OH_NNCompilation_ConstructForCache failed.");
             return nullptr;
         }
-    }
-    else {
+    }else {
         compilation = OH_NNCompilation_Construct(model);
         if (compilation == nullptr) {
             LOGE("End2EndTest::OH_NNCompilation_Construct failed.");
@@ -169,8 +168,8 @@ OH_NN_ReturnCode SetInputData(NN_Tensor* inputTensor[], size_t inputSize)
     return OH_NN_SUCCESS;
 }
 OH_NN_ReturnCode GetInputAndOutputTensorDesc(OH_NNExecutor *executor,
-                                 size_t *inputCount, std::vector<NN_TensorDesc*>& inputTensorDescs,
-                                 size_t *outputCount, std::vector<NN_TensorDesc*>& outputTensorDescs)
+                                             size_t *inputCount, std::vector<NN_TensorDesc*>& inputTensorDescs,
+                                             size_t *outputCount, std::vector<NN_TensorDesc*>& outputTensorDescs)
 {
     OH_NN_ReturnCode returnCode = OH_NNExecutor_GetInputCount(executor, inputCount);
     if (returnCode != OH_NN_SUCCESS) {
@@ -204,7 +203,7 @@ OH_NN_ReturnCode GetInputAndOutputTensorDesc(OH_NNExecutor *executor,
 }
 
 OH_NN_ReturnCode GetInputDimAndSetShape(OH_NNExecutor *executor, std::vector<NN_TensorDesc*>& inputTensorDescs,
-                                             std::vector<NN_TensorDesc*>& outputTensorDescs, bool isDynamic)
+                                        std::vector<NN_TensorDesc*>& outputTensorDescs, bool isDynamic)
 {
     if (isDynamic) {
         size_t *minInputDims = nullptr;
@@ -235,7 +234,7 @@ OH_NN_ReturnCode GetInputDimAndSetShape(OH_NNExecutor *executor, std::vector<NN_
 }
 
 OH_NN_ReturnCode CreateTensorAndDestroyTensorDesc(NN_Tensor* tensors[], size_t count,
-                              std::vector<NN_TensorDesc*>& tensorDescs, size_t deviceId)
+                                                  std::vector<NN_TensorDesc*>& tensorDescs, size_t deviceId)
 {
     NN_Tensor* tensor = nullptr;
     for (size_t i = 0; i < count; ++i) {
@@ -299,7 +298,8 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
         return nullptr;
     }
     NN_Tensor* inputTensors[inputCount];
-    OH_NN_ReturnCode returnCodeTmp = CreateTensorAndDestroyTensorDesc(inputTensors, inputCount, inputTensorDescs, deviceId);
+    OH_NN_ReturnCode returnCodeTmp = CreateTensorAndDestroyTensorDesc(inputTensors, inputCount,
+                                                                      inputTensorDescs, deviceId);
     NN_Tensor* outputTensors[outputCount];
     returnCode = CreateTensorAndDestroyTensorDesc(outputTensors, outputCount, outputTensorDescs, deviceId);
     if (returnCode != OH_NN_SUCCESS || returnCodeTmp != OH_NN_SUCCESS) {
