@@ -708,6 +708,7 @@ struct Index {
                                 console.log("In eTS side send true start");
                                 if (this.nativePort) {
                                     setTimeout(()=>{
+                                    this.message.setType(2);
                                     this.message.setNumber(1);
                                     this.nativePort.postMessageEventExt(this.message);
                                     },2000)
@@ -742,6 +743,7 @@ struct Index {
                                 console.log("In eTS side send true start");
                                 if (this.nativePort) {
                                     setTimeout(()=>{
+                                    this.message.setType(3);
                                     this.message.setBoolean(true);
                                     this.nativePort.postMessageEventExt(this.message);
                                     },2000)
@@ -778,6 +780,7 @@ struct Index {
                                     setTimeout(()=>{
                                     const fruits = [];
                                     fruits.push("apple");
+                                    this.message.setType(5);
                                     this.message.setArray(fruits);
                                     this.nativePort.postMessageEventExt(this.message);
                                     },2000)
@@ -813,6 +816,7 @@ struct Index {
                                 if (this.nativePort) {
                                     setTimeout(()=>{
                                     let buffer = new ArrayBuffer(8);
+                                    this.message.setType(4);
                                     this.message.setArrayBuffer(buffer);
                                     this.nativePort.postMessageEventExt(this.message);
                                     },2000)
@@ -854,6 +858,7 @@ struct Index {
                                     setTimeout(()=>{
                                     var message =new web_webview.WebMessageExt();
                                     message.setType(web_webview.WebMessageType.ERROR)
+                                    this.message.setType(6);
                                     this.message.setError(e);
                                     this.nativePort.postMessageEventExt(message);
                                     },2000)
