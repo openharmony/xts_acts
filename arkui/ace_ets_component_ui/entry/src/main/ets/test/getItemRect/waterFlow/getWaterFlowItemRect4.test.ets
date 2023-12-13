@@ -117,12 +117,15 @@ export default function getWaterFlowItemRect4() {
     it('getWaterFlowItemRect4_0200', 0, async function (done) {
 
       console.info('[getWaterFlowItemRect4_0200] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'visibility1', value:Visibility.Hidden});
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
+
+      console.log('button click')
+      let btn2 = await driver.findComponent(ON.id('getWaterFlowItemRect4_button2'));
+      await btn2.click();
+      await CommonFunc.sleep(1000);
 
       console.log('button click')
       let btn = await driver.findComponent(ON.id('getWaterFlowItemRect4_button'));
@@ -178,12 +181,15 @@ export default function getWaterFlowItemRect4() {
     it('getWaterFlowItemRect4_0300', 0, async function (done) {
 
       console.info('[getWaterFlowItemRect4_0300] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'visibility1', value:Visibility.None});
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
+
+      console.log('button click')
+      let btn3 = await driver.findComponent(ON.id('getWaterFlowItemRect4_button3'));
+      await btn3.click();
+      await CommonFunc.sleep(1000);
 
       console.log('button click')
       let btn = await driver.findComponent(ON.id('getWaterFlowItemRect4_button'));
@@ -218,8 +224,8 @@ export default function getWaterFlowItemRect4() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(85)));
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(x)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(y)).assertEqual(Math.round(vp2px(0)));
 
       console.log('assert size')
       expect(Math.round(width)).assertEqual(Math.round(vp2px(0)));

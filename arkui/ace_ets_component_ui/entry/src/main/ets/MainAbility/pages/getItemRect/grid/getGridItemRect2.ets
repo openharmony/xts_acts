@@ -82,7 +82,7 @@ struct getGridItemRect2 {
       Text('' + this.height1).key('getGridItemRect2_text4')
 
       Button('点击滚动到底部').onClick((event: ClickEvent) => {
-        this.scroller.scrollEdge(Edge.End)
+        this.scroller.scrollTo({ xOffset: 0, yOffset: 500 })
       }).id('getGridItemRect2_button2')
 
 

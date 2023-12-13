@@ -89,7 +89,6 @@ struct getListItemGroupRect1 {
             .key('getListItemGroupRect1_listItemGroup_' + item)
           })
         }
-        .key('getListItemGroupRect1_listItemGroup_1')
         .padding(this.padding1)
       }
       .key('getListItemGroupRect1_list_1')
