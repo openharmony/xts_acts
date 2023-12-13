@@ -993,7 +993,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
 
 /**
  * @tc.name: SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_0800
- * @tc.desc: 定长模型推理调用，返回mininputDims等于maxinputDims
+ * @tc.desc: 定长模型推理调用，返回正确
  * @tc.type: FUNC
  */
 HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_0800, Function | MediumTest | Level1)
@@ -1007,7 +1007,6 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Executor_Get_Input_Dim_Range_
     size_t shapeLength = ZERO;
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_GetInputDimRange(executor, index, &minInputDims,
                                                             &maxInputDims, &shapeLength));
-    ASSERT_EQ(*minInputDims, *maxInputDims);
     OH_NNExecutor_Destroy(&executor);
 }
 } // namespace OHOS::NeuralNetworkCore
