@@ -26,10 +26,10 @@ parse_target_subsystem()
     match_status=true
     repo_lst=($(echo $repositorys | tr "," "\n"))
     row=dayu200_xts
+    row_number=$(awk -F',' -v target="$row" 'NR==1{for(i=1;i<=NF;i++){if($i==target){print i;exit}}}' "$xts_enter_config")
     for repo in "${repo_lst[@]}"
     do
         # 是否配置xts门禁,若无,跳过
-        row_number=$(awk -F',' -v target="$row" 'NR==1{for(i=1;i<=NF;i++){if($i==target){print i;exit}}}' "$xts_enter_config")
         line_number=$(awk -F',' -v target="$repo" '$1 ~ target {print NR}' "$xts_enter_config")
         content=$(awk -F',' -v c=$row_number  -v r=$line_number 'NR==r {print $c}' "$xts_enter_config")
         echo $content
