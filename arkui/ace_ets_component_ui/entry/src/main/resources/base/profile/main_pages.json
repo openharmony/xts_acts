@@ -367,6 +367,11 @@
         "MainAbility/pages/TextNewInterFace/search_maxLength2",
         "MainAbility/pages/TextNewInterFace/textInput_caret",
         "MainAbility/pages/TextNewInterFace/search_caret",
-        "MainAbility/pages/measureSize"
+        "MainAbility/pages/measureSize",
+		"MainAbility/pages/ScrollToIndex/ScrollToIndexForWaterFlow01",
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForWaterFlow02",
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid01",
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid02",
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03"
     ]
 }

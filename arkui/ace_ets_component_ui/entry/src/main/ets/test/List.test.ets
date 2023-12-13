@@ -303,6 +303,11 @@ import search_maxLength2 from './TextNewInterFace/search_maxLength2.test';
 import textInput_caret from './TextNewInterFace/textInput_caret.test';
 import search_caret from './TextNewInterFace/search_caret.test';
 import MeasureJsunit from './MeasureJsunit.test.ets';
+import ScrollToIndexForWaterFlowJsunit01 from './ScrollToIndex/ScrollToIndexForWaterFlowJsunit01.test';
+import ScrollToIndexForWaterFlowJsunit02 from './ScrollToIndex/ScrollToIndexForWaterFlowJsunit02.test';
+import ScrollToIndexForGridJsunit01 from './ScrollToIndex/ScrollToIndexForGridJsunit01.test';
+import ScrollToIndexForGridJsunit02 from './ScrollToIndex/ScrollToIndexForGridJsunit02.test';
+import ScrollToIndexForGridJsunit03 from './ScrollToIndex/ScrollToIndexForGridJsunit03.test';
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -591,4 +596,9 @@ export default function testsuite() {
   getWaterFlowItemRect4();
   getWaterFlowItemRect5();
   MeasureJsunit();
+  ScrollToIndexForWaterFlowJsunit01();
+  ScrollToIndexForWaterFlowJsunit02();
+  ScrollToIndexForGridJsunit01();
+  ScrollToIndexForGridJsunit02();
+  ScrollToIndexForGridJsunit03();
 }
