@@ -55,7 +55,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options.dataGroupId).assertEqual(null);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -79,7 +78,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options.dataGroupId).assertEqual(undefined);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -103,7 +101,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options.dataGroupId).assertEqual('123456')
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -157,7 +154,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options2.dataGroupId).assertEqual(null)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -187,7 +183,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options2.dataGroupId).assertEqual(undefined)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
