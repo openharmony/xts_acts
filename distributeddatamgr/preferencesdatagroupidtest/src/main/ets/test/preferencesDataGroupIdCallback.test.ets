@@ -43,19 +43,18 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: null,
       };
       try {
-        dataPreferences.getPreferences(context, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (pre) {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(pre).assertEqual(undefined);
           done();
-          dataPreferences.deletePreferences(context, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (pre) {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(pre).assertEqual(undefined);
             done();
           })
         })
-      } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+      } catch (err) {
+        expect().assertFail();
         done();
       }
     })
@@ -74,19 +73,18 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: undefined,
       };
       try {
-        dataPreferences.getPreferences(context, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (pre) {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(pre).assertEqual(undefined);
           done();
-          dataPreferences.deletePreferences(context, Options, function (error) {
+          dataPreferences.deletePreferences(context, Options, function (pre) {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(pre).assertEqual(undefined);
             done();
           })
         })
-      } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+      } catch (err) {
+        expect().assertFail();
         done();
       }
     })
@@ -171,19 +169,18 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: null,
       };
       try {
-        dataPreferences.getPreferences(context, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (pre) {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(pre).assertEqual(undefined);
           done();
-          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (pre) {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(pre).assertEqual(undefined);
             done();
           })
         })
-      } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+      } catch (err) {
+        expect().assertFail();
         done();
       }
     })
@@ -202,19 +199,18 @@ export default function preferencesDataGroupIdCallback() {
         dataGroupId: undefined,
       };
       try {
-        dataPreferences.getPreferences(context, Options, async function (err) {
+        dataPreferences.getPreferences(context, Options, async function (pre) {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(pre).assertEqual(undefined);
           done();
-          dataPreferences.removePreferencesFromCache(context, Options, function (error) {
+          dataPreferences.removePreferencesFromCache(context, Options, function (pre) {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(pre).assertEqual(undefined);
             done();
           })
         })
-      } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+      } catch (err) {
+        expect().assertFail();
         done();
       }
     })
