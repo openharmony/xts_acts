@@ -124,16 +124,17 @@ export default function getListItemGroupRect4() {
     it('getListItemGroupRect4_0200', 0, async function (done) {
 
       console.info('[getListItemGroupRect4_0200] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
-      globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
-      await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
       let listItemGroup_0 = CommonFunc.getComponentRect('getListItemGroupRect4_listItemGroup_0');
 
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
+
+      console.log('button click')
+      let btn2 = await driver.findComponent(ON.id('getListItemGroupRect4_button2'));
+      await btn2.click();
+      await CommonFunc.sleep(1000);
 
       console.log('button click')
       let btn = await driver.findComponent(ON.id('getListItemGroupRect4_button'));
@@ -193,16 +194,17 @@ export default function getListItemGroupRect4() {
     it('getListItemGroupRect4_0300', 0, async function (done) {
 
       console.info('[getListItemGroupRect4_0300] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
-      globalThis.value.message.notify({name:'visibility', value:Visibility.None});
-      await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
       let listItemGroup_0 = CommonFunc.getComponentRect('getListItemGroupRect4_listItemGroup_0');
 
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
+
+      console.log('button click')
+      let btn3 = await driver.findComponent(ON.id('getListItemGroupRect4_button3'));
+      await btn3.click();
+      await CommonFunc.sleep(1000);
 
       console.log('button click')
       let btn = await driver.findComponent(ON.id('getListItemGroupRect4_button'));

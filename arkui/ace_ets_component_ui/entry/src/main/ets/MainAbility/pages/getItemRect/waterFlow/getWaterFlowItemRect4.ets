@@ -224,6 +224,12 @@ struct getWaterFlowItemRect4 {
       Text('' + this.y).key('getWaterFlowItemRect4_text2')
       Text('' + this.width1).key('getWaterFlowItemRect4_text3')
       Text('' + this.height1).key('getWaterFlowItemRect4_text4')
+      Button('Hidden').onClick(() => {
+        this.visibility1 = Visibility.Hidden
+      }).id('getWaterFlowItemRect4_button2')
+      Button('None').onClick(() => {
+        this.visibility1 = Visibility.None
+      }).id('getWaterFlowItemRect4_button3')
     }
   }
 }

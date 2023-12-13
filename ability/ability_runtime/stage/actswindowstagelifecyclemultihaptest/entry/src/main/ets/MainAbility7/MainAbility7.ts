@@ -76,13 +76,10 @@ export default class MainAbility7 extends Ability {
         }
         globalThis.ApplicationContext7 = globalThis.ability7context.getApplicationContext();
         var callBackId = globalThis.ApplicationContext7.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+        globalThis.mainAbility7CallBackId = callBackId;
         setTimeout(() => {
-            globalThis.mainAbility7ListKey = listKey
-            globalThis.mainAbility7CallBackId = callBackId
-            console.log("listKey is :" + listKey);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
-
+            globalThis.testEvent.push('MainAbility7onForeground');
+        }, 500);
     }
 
     onBackground() {

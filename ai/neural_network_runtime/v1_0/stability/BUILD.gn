@@ -36,7 +36,6 @@ ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
   configs = [ ":nnrt_config" ]
 
   deps = [
-    "../../../../../../../foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
   ]
@@ -50,6 +49,7 @@ ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
     "hitrace:libhitracechain",
     "ipc:ipc_single",
     "mindspore:mindir",
+    "neural_network_runtime:nnrt_target",
   ]
 
   subsystem_name = "ai"

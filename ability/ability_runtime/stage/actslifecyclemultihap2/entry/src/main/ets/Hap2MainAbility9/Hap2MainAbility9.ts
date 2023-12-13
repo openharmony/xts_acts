@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility'
-
+import commonEvent from '@ohos.commonEvent';
 export default class Hap2MainAbility9 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap2MainAbility9 onCreate")
@@ -23,6 +23,9 @@ export default class Hap2MainAbility9 extends Ability {
 
     onDestroy() {
         console.log("[Demo] Hap2MainAbility9 onDestroy")
+        commonEvent.publish('Hap2MainAbility9onDestroy', (err) => {
+            console.log('Hap2MainAbility9onDestroy');
+        });
     }
 
     onWindowStageCreate(windowStage) {

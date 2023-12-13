@@ -28,7 +28,7 @@ export default class MainAbility3 extends Ability {
         var a;
 
         function SubscribeCallBackContext(err, data) {
-            console.log(" Subscribe CallBack data:" + JSON.stringify(data));
+            console.log(' Subscribe CallBack data:' + JSON.stringify(data));
             a = data.parameters;
             if (data.event != "") {
                 for (var key in data.parameters) {
@@ -38,7 +38,7 @@ export default class MainAbility3 extends Ability {
         }
 
         commonEvent.createSubscriber(getauxMainAbilityContext).then(async (data) => {
-            console.debug("====>Create Subscriber====>");
+            console.debug('====>Create Subscriber====>');
             var Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBackContext);
         });
@@ -48,13 +48,13 @@ export default class MainAbility3 extends Ability {
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityCreate")
+                console.log(abilityName + ' onAbilityCreate')
             },
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onWindowStageCreate")
-                listKey.push(abilityName + " onWindowStageCreate");
-                console.log("listKey is :" + listKey);
+                console.log(abilityName + ' onWindowStageCreate')
+                listKey.push(abilityName + ' onWindowStageCreate');
+                console.log('listKey is :' + listKey);
             },
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;

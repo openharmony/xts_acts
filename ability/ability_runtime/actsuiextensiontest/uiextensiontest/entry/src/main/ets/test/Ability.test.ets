@@ -1139,7 +1139,7 @@ export default function abilityTest() {
             done();
           }
         }
-        context.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
           if (err) {
             console.error(TAG + "startAbilityByType002 fail, err:" + JSON.stringify(err));
           } else {
@@ -1169,7 +1169,7 @@ export default function abilityTest() {
             done();
           }
         }
-        context.startAbilityByType("share", wantParam, abilityStartCallback).then(() => {
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
             console.log(TAG + "startAbilityByType003 success");
           }).catch((err)=> {
             console.error(TAG + "startAbilityByType003 fail, err:" + JSON.stringify(err));

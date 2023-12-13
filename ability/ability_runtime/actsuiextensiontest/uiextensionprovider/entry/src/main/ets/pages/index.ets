@@ -1011,7 +1011,7 @@ struct Index {
         console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
       }
     }
-    this.session.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+    this.session.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
       if (err) {
         commonEventManager.publish(failStartAbilityByTypeEvent, (err) => { });
         console.error(TAG + "startAbilityByType001 fail, err:" + JSON.stringify(err));

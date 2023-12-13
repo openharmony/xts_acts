@@ -162,7 +162,7 @@ OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation)
             }
             return OH_NN_SUCCESS;
         }
-    }  
+    }
     return OH_NN_FAILED;
 }
 

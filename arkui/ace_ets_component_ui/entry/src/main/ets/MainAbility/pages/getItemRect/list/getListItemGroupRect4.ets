@@ -116,6 +116,12 @@ struct getListItemGroupRect4 {
       Text('' + this.y).key('getListItemGroupRect4_text2')
       Text('' + this.width1).key('getListItemGroupRect4_text3')
       Text('' + this.height1).key('getListItemGroupRect4_text4')
+      Button('Hidden').onClick(() => {
+        this.visibility1 = Visibility.Hidden
+      }).id('getListItemGroupRect4_button2')
+      Button('None').onClick(() => {
+        this.visibility1 = Visibility.None
+      }).id('getListItemGroupRect4_button3')
 
     }
     .width('100%')
