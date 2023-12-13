@@ -46,7 +46,7 @@ from '@ohos/hypium'
       expect(directoryUri + '/fileuri_test_getFullDirectoryUri_async_001' == fileUriObject).assertTrue();
     } catch (e) {
       console.log('fileuri_test_getFullDirectoryUri_async_001 has failed for ' + e);
-      expect(null).assertFail();
+      expect(false).assertTrue();
     }
   });
 
@@ -70,7 +70,7 @@ from '@ohos/hypium'
       expect(directoryUri == fileUriObject).assertTrue()
     } catch (e) {
       console.log('fileuri_test_getFullDirectoryUri_async_002 has failed for ' + e);
-      expect(null).assertFail();
+      expect(false).assertTrue();
     }
   });
   
@@ -93,7 +93,7 @@ from '@ohos/hypium'
       except(false).assertTrue();
     } catch (e) {
       console.log('fileiuri_test_getFullDirectoryUri_async_003 has failed for ' + e);
-      expect(e.message == 'No such file or directory').assertTrue();
+      expect(e.code == 13900002 && e.message == 'No such file or directory').assertTrue();
     }
   });
 
@@ -116,7 +116,7 @@ from '@ohos/hypium'
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileuri_test_getFullDirectoryUri_async_004 has failed for ' + e);
-      expect(e.message == 'Invalid argument').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
@@ -139,7 +139,7 @@ from '@ohos/hypium'
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileuri_test_getFullDirectoryUri_async_005 has failed for ' + e);
-      expect(e.message == 'Invalid argument').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 });
