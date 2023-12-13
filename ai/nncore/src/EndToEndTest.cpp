@@ -198,7 +198,7 @@ OH_NN_ReturnCode GetInputAndOutputTensorDesc(OH_NNExecutor *executor,
         }
         outputTensorDescs.emplace_back(tensorDescTmp);
     }
-    
+
     return returnCode;
 }
 
@@ -273,6 +273,7 @@ OH_NN_ReturnCode DestroyInputAndOutputTensor(NN_Tensor** inputTensors, size_t in
             return OH_NN_FAILED;
         }
     }
+    return OH_NN_SUCCESS;
 }
 
 OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool isDynamic = false)
@@ -318,7 +319,7 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
     }
     returnCode = DestroyInputAndOutputTensor(inputTensors, inputCount, outputTensors, outputCount);
     if (returnCode != OH_NN_SUCCESS) {
-        LOGE("End2EndTest::OH_NNExecutor_RunSync failed.");
+        LOGE("End2EndTest::DestroyInputAndOutputTensor failed.");
         return nullptr;
     }
     return executor;
