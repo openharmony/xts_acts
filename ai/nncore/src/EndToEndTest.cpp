@@ -332,10 +332,7 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0100, Function | MediumTest | Level1)
 {
     size_t deviceId = 0;
-    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
-        LOGE("Get deviceid failed.");
-        return;
-    }
+    ASSERT_EQ(OH_NN_SUCCESS, GetDeviceID(&deviceId));
 
     OH_NNModel* model = nullptr;
     BuildModel(&model);
@@ -358,10 +355,7 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0100, Function | Med
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0200, Function | MediumTest | Level1)
 {
     size_t deviceId = 0;
-    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
-        LOGE("Get deviceid failed.");
-        return;
-    }
+    ASSERT_EQ(OH_NN_SUCCESS, GetDeviceID(&deviceId));
     OH_NNModel* model = nullptr;
     BuildDynamicModel(&model);
 
@@ -382,10 +376,7 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0200, Function | Med
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0300, Function | MediumTest | Level1)
 {
     size_t deviceId = 0;
-    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
-        LOGE("Get deviceid failed.");
-        return;
-    }
+    ASSERT_EQ(OH_NN_SUCCESS, GetDeviceID(&deviceId));
 
     OH_NNModel* model = nullptr;
     BuildModelWithQuantParams(&model);
@@ -407,10 +398,7 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0300, Function | Med
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0100, Reliability | MediumTest | Level2)
 {
     size_t deviceId = 0;
-    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
-        LOGE("Get deviceid failed.");
-        return;
-    }
+    ASSERT_EQ(OH_NN_SUCCESS, GetDeviceID(&deviceId));
 
     OH_NNModel* model = nullptr;
     BuildModel(&model);
@@ -436,10 +424,7 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0100, Reliability
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0200, Reliability | MediumTest | Level2)
 {
     size_t deviceId = 0;
-    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
-        LOGE("Get deviceid failed.");
-        return;
-    }
+    ASSERT_EQ(OH_NN_SUCCESS, GetDeviceID(&deviceId));
 
     OH_NNModel* model = nullptr;
     BuildDynamicModel(&model);
