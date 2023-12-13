@@ -222,6 +222,40 @@ int BuildSingleOpGraphWithQuantParams(OH_NNModel *model, const OHNNGraphArgs &gr
     return ret;
 }
 
+OH_NN_ReturnCode GetDeviceID(size_t *deviceId)
+{
+    OH_NN_ReturnCode ret = OH_NN_FAILED;
+    const size_t *devicesID{nullptr};
+    uint32_t devicesCount{0};
+    ret = OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount);
+    if (ret != OH_NN_SUCCESS) {
+        LOGE("[NNRtTest] OH_NNDevice_GetAllDevicesID failed! ret=%d\n", ret);
+        return ret;
+    }
+    if (devicesCount <= NO_DEVICE_COUNT) {
+        LOGE("[NNRtTest] devicesCount <= 0  devicesCount=%d\n", devicesCount);
+        return OH_NN_FAILED;
+    }
+
+    const char *name = nullptr;
+    std::string deviceName{"Device-CPU_TestVendor_v2_0"};
+    for (uint32_t i = 0; i < devicesCount; i++) {
+        name = nullptr;
+        ret = OH_NNDevice_GetName(devicesID[i], &name);
+        if (ret != OH_NN_SUCCESS) {
+            LOGE("[NNRtTest] OH_NNDevice_GetName failed! ret=%d\n", ret);
+            return ret;
+        }
+
+        std::string sName(name);
+        if (deviceName == sName) {
+            *deviceId = devicesID[i];
+            return OH_NN_SUCCESS;
+        }
+    }
+    return OH_NN_FAILED;
+}
+
 OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation)
 {
     OH_NN_ReturnCode ret = OH_NN_FAILED;
@@ -551,10 +585,11 @@ void GetExecutorInputOutputTensorByDesc(OH_NNExecutor* executor,
     std::vector<NN_Tensor*>& inputTensors, const std::vector<NN_TensorDesc*>& inputTensorDescs,
     std::vector<NN_Tensor*>& outputTensors, const std::vector<NN_TensorDesc*>& outputTensorDescs)
 {
-    const size_t *devicesID{nullptr};
-    uint32_t devicesCount{0};
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
-    size_t deviceID = devicesID[0];
+    size_t deviceID = 0;
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceID)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
     NN_Tensor* tensor = nullptr;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
         tensor = nullptr;
@@ -593,10 +628,11 @@ void GetExecutorInputOutputTensor(OH_NNExecutor* executor, std::vector<NN_Tensor
         outputTensorDescs.emplace_back(tensorDescTmp);
     }
 
-    const size_t *devicesID{nullptr};
-    uint32_t devicesCount{0};
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
-    size_t deviceID = devicesID[0];
+    size_t deviceID = 0;
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceID)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
     NN_Tensor* tensor = nullptr;
     for (size_t i = 0; i < inputTensorDescs.size(); ++i) {
         tensor = nullptr;

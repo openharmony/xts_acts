@@ -20,7 +20,7 @@ using namespace testing::ext;
 using namespace OHOS::NeuralNetworkRuntime::Test;
 
 namespace OHOS::NeuralNetworkCore {
-void runDone(void *pointer, OH_NN_ReturnCode returnCode, void* pointerArray[], int32_t intNum)
+void RunDone(void *pointer, OH_NN_ReturnCode returnCode, void* pointerArray[], int32_t intNum)
 {
     return;
 }
@@ -83,7 +83,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Destroy_Executor_0200, Functi
  */
 HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_OnRunDone_0100, Function | MediumTest | Level1)
 {
-    NN_OnRunDone onRunDone = runDone;
+    NN_OnRunDone onRunDone = RunDone;
     OH_NNExecutor *executor = nullptr;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_SetOnRunDone(executor, onRunDone));
 }
@@ -95,7 +95,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_OnRunDone_0100, 
  */
 HWTEST_F(ExecutorTest, SUB_AI_NNRt_Core_Func_North_Set_Executor_OnRunDone_0200, Function | MediumTest | Level1)
 {
-    NN_OnRunDone onRunDone= runDone;
+    NN_OnRunDone onRunDone= RunDone;
     OH_NNExecutor *executor = nullptr;
     CreateExecutor(&executor);
     ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNExecutor_SetOnRunDone(executor, onRunDone));

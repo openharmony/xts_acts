@@ -156,6 +156,7 @@ OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation);
 int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs);
 OH_NN_UInt32Array GetUInt32Array(std::vector<uint32_t> indices);
 bool CheckOutput(const float* output, const float* expect);
+OH_NN_ReturnCode GetDeviceID(size_t *deviceId);
 
 //文件相关
 enum class PathType { FILE, DIR, UNKNOWN, NOT_FOUND };

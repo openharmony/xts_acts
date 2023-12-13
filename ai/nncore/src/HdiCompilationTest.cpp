@@ -53,15 +53,6 @@ public:
         }
         OH_NNModel_Destroy(&model);
     }
-    void GetBuffer(std::string filePath, char **buffer, int &cacheSize)
-    {
-        std::ifstream ifs(filePath, std::ios::in | std::ios::binary);
-        if (ifs) {
-            cacheSize = ifs.tellg();
-            ifs.read(*buffer, cacheSize);
-            ifs.close();
-        }
-    }
 
 protected:
     OHNNCompileParam m_compileParam;
@@ -338,11 +329,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Import_Compilation_Cache_F
     ConstructCompilation(&compilation);
 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetCache(compilation, CACHE_DIR.c_str(), CACHEVERSION));
-    const size_t *devicesID{nullptr};
-    uint32_t devicesCount{0};
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
-    ASSERT_LT(ZERO, devicesCount);
-    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetDevice(compilation, devicesID[0]));
+    ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetPerformanceMode(compilation, OH_NN_PERFORMANCE_EXTREME));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetPriority(compilation, OH_NN_PRIORITY_HIGH));
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_EnableFloat16(compilation, false));

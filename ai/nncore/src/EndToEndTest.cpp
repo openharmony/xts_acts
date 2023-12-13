@@ -71,7 +71,7 @@ OH_NNCompilation* ConstructCompilation(OH_NNModel* model, size_t deviceId, bool 
             LOGE("End2EndTest::OH_NNCompilation_ConstructForCache failed.");
             return nullptr;
         }
-    } else {
+    }else {
         compilation = OH_NNCompilation_Construct(model);
         if (compilation == nullptr) {
             LOGE("End2EndTest::OH_NNCompilation_Construct failed.");
@@ -331,16 +331,11 @@ OH_NNExecutor* RunExecutor(OH_NNCompilation* compilation, size_t deviceId, bool 
 */
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0100, Function | MediumTest | Level1)
 {
-    const size_t *allDevicesID = nullptr;
-    uint32_t deviceCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNDevice_GetAllDevicesID(&allDevicesID, &deviceCount);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    ASSERT_NE(deviceCount, 0);
-    const char *name = nullptr;
     size_t deviceId = 0;
-    returnCode = OH_NNDevice_GetName(allDevicesID[0], &name);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    deviceId = allDevicesID[0];
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
 
     OH_NNModel* model = nullptr;
     BuildModel(&model);
@@ -362,17 +357,11 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0100, Function | Med
 */
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0200, Function | MediumTest | Level1)
 {
-    const size_t *allDevicesID = nullptr;
-    uint32_t deviceCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNDevice_GetAllDevicesID(&allDevicesID, &deviceCount);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    ASSERT_NE(deviceCount, 0);
-    const char *name = nullptr;
     size_t deviceId = 0;
-    returnCode = OH_NNDevice_GetName(allDevicesID[0], &name);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    deviceId = allDevicesID[0];
-
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
     OH_NNModel* model = nullptr;
     BuildDynamicModel(&model);
 
@@ -392,16 +381,11 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0200, Function | Med
 */
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0300, Function | MediumTest | Level1)
 {
-    const size_t *allDevicesID = nullptr;
-    uint32_t deviceCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNDevice_GetAllDevicesID(&allDevicesID, &deviceCount);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    ASSERT_NE(deviceCount, 0);
-    const char *name = nullptr;
     size_t deviceId = 0;
-    returnCode = OH_NNDevice_GetName(allDevicesID[0], &name);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    deviceId = allDevicesID[0];
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
 
     OH_NNModel* model = nullptr;
     BuildModelWithQuantParams(&model);
@@ -422,13 +406,11 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_EndToEnd_0300, Function | Med
 */
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0100, Reliability | MediumTest | Level2)
 {
-    const size_t *allDevicesID = nullptr;
-    uint32_t deviceCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNDevice_GetAllDevicesID(&allDevicesID, &deviceCount);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    ASSERT_NE(deviceCount, 0);
     size_t deviceId = 0;
-    deviceId = allDevicesID[0];
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
 
     OH_NNModel* model = nullptr;
     BuildModel(&model);
@@ -453,13 +435,11 @@ HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0100, Reliability
 */
 HWTEST_F(EndToEndTest, sub_AI_NNRt_Core_Func_North_Reliability_0200, Reliability | MediumTest | Level2)
 {
-    const size_t *allDevicesID = nullptr;
-    uint32_t deviceCount = 0;
-    OH_NN_ReturnCode returnCode = OH_NNDevice_GetAllDevicesID(&allDevicesID, &deviceCount);
-    ASSERT_EQ(returnCode, OH_NN_SUCCESS);
-    ASSERT_NE(deviceCount, 0);
     size_t deviceId = 0;
-    deviceId = allDevicesID[0];
+    if (OH_NN_SUCCESS != GetDeviceID(&deviceId)) {
+        LOGE("Get deviceid failed.");
+        return;
+    }
 
     OH_NNModel* model = nullptr;
     BuildDynamicModel(&model);
