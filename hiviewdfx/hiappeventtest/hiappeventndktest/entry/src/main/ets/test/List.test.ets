@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hitraceNdkTest from './hitraceNdk.test';
+import hiappeventNdkTest from './hiappeventNdk.test';
 
 export default function testsuite() {
-  hitraceNdkTest();
+  hiappeventNdkTest();
 }

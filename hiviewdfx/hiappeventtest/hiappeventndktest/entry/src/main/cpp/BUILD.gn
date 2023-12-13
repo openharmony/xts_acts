@@ -14,7 +14,9 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
+import("//foundation/barrierfree/accessibility/accessibility_aafwk.gni")
 
+BASE_PATH = ability_out_base_path
 config("config") {
   visibility = [ ":*" ]
 
@@ -29,17 +31,16 @@ config("config") {
 config("public_config") {
 }
 
-ohos_shared_library("hitracendk") {
+ohos_shared_library("hiappeventndk") {
   testonly = true
   subsystem_name = "hiviewdfx"
-  part_name = "hitrace"
-  sources = [ "./hitracendk.cpp" ]
+  part_name = "hiappevent"
+  sources = [ "./hiappeventndk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
-  include_dirs =
-      [ "//base/hiviewdfx/hitrace/interfaces/native/kits/include/hitrace" ]
+  include_dirs = [ "../../../../../../../$BASE_PATH/hiviewdfx/hiappevent/interfaces/native/kits/include/hiappevent" ]
 
   configs = [ ":config" ]
-  deps = [ "//base/hiviewdfx/hitrace/frameworks/hitrace_ndk:hitrace_ndk" ]
+  deps = [ "../../../../../../../$BASE_PATH/hiviewdfx/hiappevent/frameworks/native/ndk:hiappevent_ndk" ]
 
   external_deps = [ "napi:ace_napi" ]
 

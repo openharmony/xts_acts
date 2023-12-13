@@ -14,20 +14,20 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsHitraceNdkTest") {
+ohos_js_hap_suite("ActsHiappeventNdkTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":acts_hitracendktest_js_assets",
-    ":acts_hitracendktest_resources",
+    ":acts_hiviewdfx_hiappeventndktest_js_assets",
+    ":acts_hiviewdfx_hiappeventndktest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsHitraceNdkTest"
+  hap_name = "ActsHiappeventNdkTest"
   subsystem_name = "hiviewdfx"
-  part_name = "hitrace"
+  part_name = "hiappevent"
   shared_libraries = [
-    "./entry/src/main/cpp:hitracendk",
+    "./entry/src/main/cpp:hiappeventndk",
     ":libcppsharedso",
   ]
 }
@@ -35,20 +35,20 @@ ohos_js_hap_suite("ActsHitraceNdkTest") {
 ohos_prebuilt_shared_library("libcppsharedso") {
   source = rebase_path(libcxx_ndk_shared_file)
   subsystem_name = "hiviewdfx"
-  part_name = "hitrace"
+  part_name = "hiappevent"
 }
 
-ohos_app_scope("acts_hitracendktest_app_profile") {
+ohos_app_scope("acts_hiviewdfx_hiappeventndktest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("acts_hitracendktest_js_assets") {
+ohos_js_assets("acts_hiviewdfx_hiappeventndktest_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("acts_hitracendktest_resources") {
+ohos_resources("acts_hiviewdfx_hiappeventndktest_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_hitracendktest_app_profile" ]
+  deps = [ ":acts_hiviewdfx_hiappeventndktest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

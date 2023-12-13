@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.hitrace.napitest",
+    "name": "com.hiappevent.napitest",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:module_desc",
