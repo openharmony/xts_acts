@@ -1,0 +1,18 @@
+{
+    "kits": [
+        {
+            "push": [
+                "ActsHdfNncoreTest->/data/local/tmp/ActsHdfNncoreTest"
+            ],
+            "type": "PushKit"
+        }
+    ],
+    "driver": {
+        "native-test-timeout": "120000",
+        "type": "CppTest",
+        "module-name": "ActsHdfNncoreTest",
+        "runtime-hint": "1s",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "description": "Configuration for ActsHdfNncoreTest Tests"
+}
