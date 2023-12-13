@@ -493,8 +493,6 @@ export function SecurityHuksAccessControlJsunit() {
         console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
         expect(null).assertFail();
       }
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 

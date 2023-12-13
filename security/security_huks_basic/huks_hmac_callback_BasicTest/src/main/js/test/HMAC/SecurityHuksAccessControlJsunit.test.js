@@ -444,8 +444,6 @@ export function SecurityHuksAccessControlJsunit() {
           console.log(`test init err: " + ${JSON.stringify(err)}`);
           expect(err.code == -3).assertTrue();
         });
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 

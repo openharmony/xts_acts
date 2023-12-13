@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-
+import commonEvent from '@ohos.commonEvent';
 export default class Hap2MainAbility8 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap2MainAbility8 onCreate")
         globalThis.abilityWant = want;
+        commonEvent.createSubscriber({ events: ['Hap2MainAbility8doTerminateSelf'] }).then((data)=>{
+            commonEvent.subscribe(data, (err, data2)=>{
+                commonEvent.unsubscribe(data);
+                this.context.terminateSelf();
+            });
+        });
     }
 
     onDestroy() {
@@ -40,7 +46,9 @@ export default class Hap2MainAbility8 extends Ability {
         // Ability has brought to foreground
         console.log("[Demo] Hap2MainAbility8 onForeground")
 
-
+        commonEvent.publish('Hap2MainAbility8onForeground', (err) => {
+            console.log('Hap2MainAbility8onForeground');
+        });
     }
 
     onBackground() {
