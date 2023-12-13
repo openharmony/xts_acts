@@ -63,7 +63,10 @@ struct IndexPage {
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
     { title: 'ImageCrop', uri: 'pages/ArkUI/ImageCrop' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
-    { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' }
+    { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
+    { title: 'TextPicker', uri: 'pages/ArkUI/TextPicker' },
+    { title: 'TimePicker', uri: 'pages/ArkUI/TimePicker' },
+    { title: 'TimePickerDialog', uri: 'pages/ArkUI/TimePickerDialog' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: Object[] = [];
