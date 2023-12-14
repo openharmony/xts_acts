@@ -34,7 +34,7 @@ parse_target_subsystem()
         line_number=$(awk -F',' -v target="$repo" '$1 == target {print NR}' "$xts_enter_config")
         content=$(awk -F',' -v c=$row_number  -v r=$line_number 'NR==r {print $c}' "$xts_enter_config")
         echo $content
-        if [ ! $content = "Y" ]||[ -z $content ]; then
+        if [ ! "$content" = "Y" ]||[ -z "$content" ]; then
             continue
         fi
         # 仓名映射target名
