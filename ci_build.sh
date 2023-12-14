@@ -29,11 +29,12 @@ parse_target_subsystem()
     row_number=$(awk -F',' -v target="$row" 'NR==1{for(i=1;i<=NF;i++){if($i==target){print i;exit}}}' "$xts_enter_config")
     for repo in "${repo_lst[@]}"
     do
+        echo $repo
         # 是否配置xts门禁,若无,跳过
-        line_number=$(awk -F',' -v target="$repo" '$1 ~ target {print NR}' "$xts_enter_config")
+        line_number=$(awk -F',' -v target="$repo" '$1 == target {print NR}' "$xts_enter_config")
         content=$(awk -F',' -v c=$row_number  -v r=$line_number 'NR==r {print $c}' "$xts_enter_config")
         echo $content
-        if [ $content = "N" ]; then
+        if [ ! $content = "Y" ]||[ -z $content ]; then
             continue
         fi
         # 仓名映射target名
