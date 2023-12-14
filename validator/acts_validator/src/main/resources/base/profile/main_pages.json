@@ -72,6 +72,8 @@
     "pages/Screen/ScreenShot",
     "pages/Screen/Brightness",
     "pages/Screen/ScreenLock",
+    "pages/Screen/ScreenOrientation",
+    "pages/Screen/ScreenDensityDpi",
     "pages/MultimodalInput/MultimodalInput_index",
     "pages/MultimodalInput/InputMonitor",
     "pages/MultimodalInput/KeyBoard",
