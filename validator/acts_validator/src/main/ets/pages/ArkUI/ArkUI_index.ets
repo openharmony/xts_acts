@@ -66,7 +66,11 @@ struct IndexPage {
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
     { title: 'TextPicker', uri: 'pages/ArkUI/TextPicker' },
     { title: 'TimePicker', uri: 'pages/ArkUI/TimePicker' },
-    { title: 'TimePickerDialog', uri: 'pages/ArkUI/TimePickerDialog' }
+    { title: 'TimePickerDialog', uri: 'pages/ArkUI/TimePickerDialog' },
+    { title: 'Progress', uri: 'pages/ArkUI/Progress' },
+    { title: 'Rating', uri: 'pages/ArkUI/Rating' },
+    { title: 'Search', uri: 'pages/ArkUI/Search' },
+    { title: 'SharedTransition', uri: 'pages/ArkUI/SharedTransition' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: Object[] = [];
