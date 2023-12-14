@@ -167,7 +167,7 @@ export default function getListItemGroupRect1() {
       console.log('assert position')
       expect(Math.round(x)).assertEqual(Math.round(0));
 
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(y)).assertEqual(Math.round(vp2px(150)));
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))

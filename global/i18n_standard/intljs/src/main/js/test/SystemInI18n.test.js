@@ -570,5 +570,26 @@ describe('SystemInI18nTest', function () {
         expect(value).assertFalse();
     })
 
+    /**
+    *@tc.number   :SUB_GLOBAL_I18N_AppPreferredLanguage_0400
+    *@tc.name     :setAppPreferredLanguage - Set App Preferred Language
+    *@tc.desc     :setAppPreferredLanguage
+    *@tc.size     :MEDIUM
+    *@tc.type     :Function
+    *@tc.level    :Level 0
+    */
+    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0400',0,function(done){
+        try{
+          I18n.System.setAppPreferredLanguage('zh-CN');//设置应用偏好语言为"zh-CN"
+          let appPreferredLanguage = I18n.System.getAppPreferredLanguage();
+          console.log('SUB_GLOBAL_I18N_AppPreferredLanguage_0400' + appPreferredLanguage);
+          expect(appPreferredLanguage == "zh-CN").assertTrue();
+        }catch(e){
+          console.log('SUB_GLOBAL_I18N_AppPreferredLanguage_0400_errorCode'+e.code);
+          console.log('SUB_GLOBAL_I18N_AppPreferredLanguage_0400_errorMessage'+e.message);
+        }
+        done();
+    })
+
     console.log('*************end SystemInI18nTest*************');
 })}

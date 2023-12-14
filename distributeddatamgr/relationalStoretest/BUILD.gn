@@ -20,6 +20,7 @@ group("relationalStoretest") {
       "RdbJstest/hap:rdb_js_test",
       "rdbnapitest:ActsRdbNapiEtsTest",
       "relationalStoreJstest/hap:relationalstore_js_test",
+      "relationalStoreNdktest:ActsRelationalStoreNdkTest",
       "relationalStoreStagetest:relationalstore_ets_test",
     ]
   }

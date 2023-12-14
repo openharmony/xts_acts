@@ -2764,5 +2764,270 @@ describe('threadWorkerTest', function () {
         expect(res).assertEqual(3)
         done();
     })
+
+    // Check the RestrictedWorker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0001
+     * @tc.name: restrictedWorker_test_001
+     * @tc.desc: Check the listener of worker is ok.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level : Level 2
+     */
+    it('restrictedWorker_test_001', 0, async function (done) {
+        let ss = new worker.RestrictedWorker("entry/ets/workers/newworker_002.js");
+        let res = 0;
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res += 1;
+            ss.terminate();
+        };
+
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual(1);
+        done();
+    })
+
+    // Check the RestrictedWorker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0002
+     * @tc.name: restrictedWorker_test_002
+     * @tc.desc: Check the listener of worker is ok.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('restrictedWorker_test_002', 0, async function (done) {
+        let ss = new worker.RestrictedWorker("entry/ets/workers/restrictedWorker_001.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        };
+
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("Cannot read property tid of undefined");
+        done();
+    })
+
+    function resolveAfterSeconds() {
+        return new Promise((resolve, reject) => {
+            resolve('resolved');
+        })
+    }
+
+    class TestObj {
+        message = "TestObj"
+        getMessage() {
+          return this.message;
+        }
+        getMessageWithInput(str) {
+          return this.message + str;
+        }
+        executeForThreeSeconds() {
+            let now = Date.now()
+            while (now + 3000 > Date.now()) {
+                let number = 2;
+            }
+            return "done";
+        }
+        async asyncGetMessage() {
+            let res = await resolveAfterSeconds()
+            console.log("asyncGetMessage log: " + res)
+            return res
+        }
+    }
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0003
+     * @tc.name: threadWorker_worker_callObject_test_001
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_001', 0, async function (done) {       
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_031.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data
+            ss.terminate()
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("success")
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0004
+     * @tc.name: threadWorker_worker_callObject_test_002
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_002', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_032.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data
+            ss.terminate()
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("failed")
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0005
+     * @tc.name: threadWorker_worker_callObject_test_003
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_003', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_033.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        let err =
+             "The method called on globalCallObject does not exist or is not callable or is async/generator function";
+        expect(res).assertEqual(err);
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0006
+     * @tc.name: threadWorker_worker_callObject_test_004
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_004', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_033.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.unregisterGlobalCallObject("obj1");
+        ss.unregisterGlobalCallObject("obj2");
+        ss.unregisterGlobalCallObject("obj3");
+        ss.postMessage("1");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("The globalCallObject is not registered");
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0007
+     * @tc.name: threadWorker_worker_callObject_test_005
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_005', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_034.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.registerGlobalCallObject("obj2", obj);
+        ss.registerGlobalCallObject("obj3", obj);
+        ss.registerGlobalCallObject("obj4", obj);
+        ss.unregisterGlobalCallObject();
+        ss.postMessage("1");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("The globalCallObject is not registered");
+        done();
+    })
 })
 }

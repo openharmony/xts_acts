@@ -43,6 +43,11 @@ struct IndexPage {
   @State TEST: number = 0;
   private TestCaseList = [
     { title: 'SensorAccelerometer', uri: 'pages/Sensor/SensorAccelerometer' },
+    { title: 'AccelerometerUncalibrated', uri: 'pages/Sensor/AccelerometerUncalibrated' },
+    { title: 'Barometer', uri: 'pages/Sensor/Barometer' },
+    { title: 'Gravity', uri: 'pages/Sensor/Gravity' },
+    { title: 'Gyroscope', uri: 'pages/Sensor/Gyroscope' },
+    { title: 'GyroscopeUncalibrated', uri: 'pages/Sensor/GyroscopeUncalibrated' },
     { title: 'Hall', uri: 'pages/Sensor/Hall' },
     { title: 'HeartRate', uri: 'pages/Sensor/HeartRate' },
     { title: 'Humidity', uri: 'pages/Sensor/Humidity' },

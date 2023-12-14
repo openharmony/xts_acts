@@ -2040,5 +2040,107 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       await setAspectRatio()
     })
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2340
+     * @tc.name test_loadContentByName_callback_withstorage
+     * @tc.desc Test the function of loadContentByName withstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+        it('test_loadContentByName_callback_withstorage', 0, async function (done) {
+
+          let msg = "test_loadContentByName_callback_withstorage"
+
+          try {
+            windowStage.loadContentByName("Index1", abilityStorage, (err) => {
+              const errCode = err.code;
+              if (errCode) {
+                console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+                expect().assertFail()
+                done()
+              } else {
+                console.info(msg + 'Succeeded in loading the content.');
+                expect(true).assertTrue()
+                done()
+              }
+              
+            });
+          } catch (exception) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+            expect().assertFail()
+            done()
+          }
+          
+          
+        });
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2350
+     * @tc.name test_loadContentByName_callback_withoutstorage
+     * @tc.desc Test the function of loadContentByName withoutstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('test_loadContentByName_callback_withoutstorage', 0, async function (done) {
+
+      let msg = "test_loadContentByName_callback_withoutstorage"
+
+      try {
+        windowStage.loadContentByName("Index1", (err) => {
+          const errCode = err.code;
+          if (errCode) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          }else{
+              console.info(msg + 'Succeeded in loading the content.');
+              expect(true).assertTrue()
+              done()
+          }
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+      
+      
+    });
+
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2360
+     * @tc.name test_loadContentByName_Promise
+     * @tc.desc Test the function of loadContentByName Promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('test_loadContentByName_Promise', 0, async function (done) {
+
+      let msg = "test_loadContentByName_Promise"
+
+      try {
+        let promise = windowStage.loadContentByName("Index1", abilityStorage);
+        promise.then(() => {
+          console.info(msg + 'Succeeded in loading the content.');
+          expect(true).assertTrue()
+          done()
+        }).catch((err) => {
+          console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+          expect().assertFail()
+          done()
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+      
+      
+    });
   })
 }

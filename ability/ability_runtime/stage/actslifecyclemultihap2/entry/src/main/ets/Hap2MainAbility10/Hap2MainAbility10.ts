@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent';
 
 export default class Hap2MainAbility10 extends Ability {
     onCreate(want, launchParam) {
@@ -40,6 +41,9 @@ export default class Hap2MainAbility10 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] Hap2MainAbility10 onForeground")
+        commonEvent.publish('Hap2MainAbility10onForeground', (err) => {
+            console.log('Hap2MainAbility10onForeground');
+        });
     }
 
     onBackground() {
