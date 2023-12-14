@@ -398,6 +398,58 @@ describe('SecurityHuksCipherAESCallbackJsunit', function () {
     await publicCipherFunc(srcKeyAlies, genHuksOptions, HuksOptions, 'abort', true);
     done();
   });
+
+        /**
+         * @tc.number SUB_Security_HUKS_isPwdSet_0060
+         * @tc.name Test generate key when password tag is true and password is not set;
+         * @tc.desc HuksOptions with AlgName AES
+         * @tc.desc Test generate key with Callback. Test fail
+         * @tc.size Medium
+         * @tc.type Func
+         * @tc.level Level2
+         */
+        it('SUB_Security_HUKS_isPwdSet_0060', 0, async function (done) {
+          const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0060';
+          let huksProperties = new Array();
+          let index = 0;
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+              value: huks.HuksKeyAlg.HUKS_ALG_AES
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+              value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+              value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_PADDING,
+              value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+              value: huks.HuksCipherMode.HUKS_MODE_CBC
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_IS_DEVICE_PASSWORD_SET,
+              value: true
+          };
+          let huksOptions = {
+              properties: huksProperties
+          };
+          huks.generateKeyItem(srcKeyAlies, huksOptions, (err, data) => {
+              if (err) {
+                  console.log("SUB_Security_HUKS_isPwdSet_0020: success");
+                  done();
+              } else {
+                  console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
+                  expect(null).assertFail();
+              }
+          });
+      });
+  
 });
 }
 export {publicCipherFunc, IV, updateResult};
