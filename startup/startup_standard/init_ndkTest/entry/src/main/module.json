@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.security.huks.napitest",
+    "name": "com.startup.init.napitest",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:module_desc",

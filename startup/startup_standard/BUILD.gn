@@ -18,6 +18,7 @@ group("startup_standard") {
   if (is_standard_system) {
     deps = [
       "deviceinfo:startup_deviceinfo_js_test",
+      "init_ndkTest:ActsInitNdkTest",
       "syscap_ndk:startup_syscapability_js_test",
     ]
   }

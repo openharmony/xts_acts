@@ -2,11 +2,11 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsHuksNdkTest"
+      "value": "ActsInitNdkTest"
     },
     {
       "name": "description_application",
-      "value": "ActsHuksNdkTest"
+      "value": "ActsInitNdkTest"
     }
   ]
 }
