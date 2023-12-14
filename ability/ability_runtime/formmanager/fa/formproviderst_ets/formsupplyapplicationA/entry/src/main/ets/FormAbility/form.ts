@@ -74,6 +74,12 @@ export default {
         };
         commonEvent.publish(supplyForm_Event, commonEventPublishData, publishCallBack);
     },
+    onShare(formId) {
+        console.info('FormAbility onShare, formId: ' + formId);
+    },
+    onShareForm(formId) {
+        console.info('FormAbility onShareForm, formId: ' + formId);
+    },
     onDestroy(formId) {
         console.info('FormAbility onDestroy, formId: ' + formId);
         var commonEventPublishData = {
