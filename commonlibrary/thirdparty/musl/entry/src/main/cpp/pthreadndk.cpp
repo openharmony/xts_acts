@@ -329,7 +329,6 @@ static int testAttrSetGuardSize(int input)
 {
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
-    size_t guardSize = GUARDSIZE;
     if (input == NORMAL) {
         err = pthread_attr_init(&attr);
         if (err != NORMAL) {
@@ -337,7 +336,7 @@ static int testAttrSetGuardSize(int input)
         }
     }
     if (input == NORMAL) {
-        err = pthread_attr_setguardsize(&attr, guardSize);
+        err = pthread_attr_setguardsize(&attr, GUARDSIZE);
     }
     return err;
 }
@@ -392,7 +391,6 @@ static napi_value PThreadAttrSetSchedParam(napi_env env, napi_callback_info info
 }
 static int testAttrSetSchedPolicy(int input)
 {
-    int setpolicy = TRUE;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -402,7 +400,7 @@ static int testAttrSetSchedPolicy(int input)
         }
     }
     if (input == NORMAL) {
-        err = pthread_attr_setschedpolicy(&attr, setpolicy);
+        err = pthread_attr_setschedpolicy(&attr, ONE);
     }
     return err;
 }
@@ -414,7 +412,6 @@ static napi_value PThreadAttrSetSchedPolicy(napi_env env, napi_callback_info inf
 }
 static int testAttrSetScope(int input)
 {
-    size_t scope = NORMAL;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -424,7 +421,7 @@ static int testAttrSetScope(int input)
         }
     }
     if (input == NORMAL) {
-        err = pthread_attr_setscope(&attr, scope);
+        err = pthread_attr_setscope(&attr, PARAM_0);
     }
     return err;
 }
@@ -436,7 +433,6 @@ static napi_value PThreadAttrSetScope(napi_env env, napi_callback_info info)
 }
 static int testAttrSetStack(int input)
 {
-    size_t stacksize = STACK_SIZE;
     void *stackAddr = nullptr;
 
     int err = DEFAULTVALUE;
@@ -456,7 +452,7 @@ static int testAttrSetStack(int input)
         if (ret != PARAM_0) {
             return MEMALIGN_ERROR;
         }
-        err = pthread_attr_setstack(&attr, stackAddr, stacksize);
+        err = pthread_attr_setstack(&attr, stackAddr, STACK_SIZE);
     }
     return err;
 }
@@ -468,7 +464,6 @@ static napi_value PThreadAttrSetStack(napi_env env, napi_callback_info info)
 }
 static int testAttrSetStackSize(int input)
 {
-    size_t stacksize = STACK_SIZE;
     int err = DEFAULTVALUE;
     pthread_attr_t attr;
     if (input == NORMAL) {
@@ -478,7 +473,7 @@ static int testAttrSetStackSize(int input)
         }
     }
     if (input == NORMAL) {
-        err = pthread_attr_setstacksize(&attr, stacksize);
+        err = pthread_attr_setstacksize(&attr, STACK_SIZE);
     }
     return err;
 }
@@ -490,12 +485,11 @@ static napi_value PThreadAttrSetStackSize(napi_env env, napi_callback_info info)
 }
 static int testBarrierInit(int input)
 {
-    unsigned int baInt = BARRIERNUM;
     int err = DEFAULTVALUE;
     pthread_barrier_t barrierT;
     pthread_barrierattr_t barrierAttr;
     if (input == NORMAL) {
-        err = pthread_barrier_init(&barrierT, &barrierAttr, baInt);
+        err = pthread_barrier_init(&barrierT, &barrierAttr, BARRIERNUM);
     }
     return err;
 }
@@ -629,7 +623,6 @@ static int testBarrierAttrSetPShared(int input)
 {
     int err = DEFAULTVALUE;
     pthread_barrierattr_t barrierAttr;
-    int shared = PARAM_0;
     if (input == NORMAL) {
         err = pthread_barrierattr_init(&barrierAttr);
         if (err != NORMAL) {
@@ -637,7 +630,7 @@ static int testBarrierAttrSetPShared(int input)
         }
     }
     if (input == NORMAL) {
-        err = pthread_barrierattr_setpshared(&barrierAttr, shared);
+        err = pthread_barrierattr_setpshared(&barrierAttr, PARAM_0);
     }
     return err;
 }
@@ -712,12 +705,12 @@ static napi_value PThreadCondSignal(napi_env env, napi_callback_info info)
     int result = testCondSignal(input);
     return intOutput(env, result);
 }
-pthread_cond_t condTestCondWait;
-pthread_cond_t condT;
+pthread_cond_t condTestCondWaits;
+pthread_cond_t condTs;
 static void *threadFunc2(void *)
 {
     sleep(SLEEPTIME);
-    pthread_cond_broadcast(&condTestCondWait);
+    pthread_cond_broadcast(&condTestCondWaits);
     return nullptr;
 }
 
@@ -732,7 +725,7 @@ static int testCondWait(int input)
         }
         static pthread_mutex_t gmutex;
         pthread_mutex_lock(&gmutex);
-        err = pthread_cond_wait(&condTestCondWait, &gmutex);
+        err = pthread_cond_wait(&condTestCondWaits, &gmutex);
     }
     return err;
 }
@@ -751,7 +744,7 @@ static void *threadTimedWait(void *)
     gettimeofday(&now, nullptr);
     outTime.tv_sec = now.tv_sec + 1;
     outTime.tv_nsec = now.tv_usec * thousand;
-    pthread_cond_timedwait(&condT, &gmutex, &outTime);
+    pthread_cond_timedwait(&condTs, &gmutex, &outTime);
     return nullptr;
 }
 static int testCondTimedWait(int input)
@@ -830,13 +823,12 @@ static int testCondAttrGetPShared(int input)
 {
     int err = DEFAULTVALUE;
     pthread_condattr_t condAttr;
-    int shared;
     if (input == NORMAL) {
         err = pthread_condattr_init(&condAttr);
         if (err != NORMAL) {
             return CONDATTR_INIT_FAIL;
         }
-        err = pthread_condattr_getpshared(&condAttr, &shared);
+        err = pthread_condattr_getpshared(&condAttr, PARAM_0);
     }
     return err;
 }
