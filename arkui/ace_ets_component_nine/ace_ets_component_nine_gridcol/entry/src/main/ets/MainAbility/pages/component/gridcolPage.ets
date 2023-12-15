@@ -23,7 +23,7 @@ class MyGridColOffsetModifier1 implements AttributeModifier<GridColAttribute> {
     } else if (this.isNum === 1) {
       instance.gridColOffset(1);
     } else if (this.isNum === 2) {
-      instance.gridColOffset({ xs: 1, sm: 2, md: 3 });
+      instance.gridColOffset({ xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 });
     }
   }
 }
@@ -33,7 +33,7 @@ class MyGridColSpanModifier1 implements AttributeModifier<GridColAttribute> {
     if (this.isNum === 0) {
       instance.span(1)
     } else if (this.isNum === 1) {
-      instance.span({ xs: 1, sm: 2, md: 3 });
+      instance.span({ xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 });
     }
   }
 }
