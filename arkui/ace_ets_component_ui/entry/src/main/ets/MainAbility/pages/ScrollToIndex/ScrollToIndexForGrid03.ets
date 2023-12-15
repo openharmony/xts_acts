@@ -45,7 +45,7 @@ struct ScrollToIndexForGrid03 {
     Column({ space: 5 }) {
       Text('have smooth...').fontSize(16).width('95%').height(30).backgroundColor(Color.Orange).textAlign(TextAlign.Center)
         .visibility(this.isSmooth ? Visibility.Visible : Visibility.None)
-        .id('isHaveSmooth').position({x:12,y:500})
+        .id('isHaveSmooth_Grid03').position({x:12,y:500})
       Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
       // 不使用scroll，需要undefined占位
       Grid(this.scrollerForGrid, this.layoutOptions2) {
@@ -57,7 +57,7 @@ struct ScrollToIndexForGrid03 {
               .width('100%')
               .height(80)
               .textAlign(TextAlign.Center)
-          }.id('gridIndex_'+ day)
+          }.id('gridIndex03_'+ day)
         }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -67,7 +67,7 @@ struct ScrollToIndexForGrid03 {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height('35%')
-      .id("GridID")
+      .id("GridID_Grid03")
 
       Column(){
         Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent:FlexAlign.SpaceBetween }) { // 子组件在容器主轴上行布局

@@ -69,7 +69,7 @@ struct ScrollToIndexForWaterFlow02 {
     Column(){
       Text('have smooth...').fontSize(16).width('100%').height(60).backgroundColor(Color.Orange)
         .visibility(this.isSmooth ? Visibility.Visible : Visibility.None)
-        .id('isHaveSmooth').position({x:10, y: 10})
+        .id('isHaveSmooth_WaterFlow02').position({x:10, y: 10})
       Stack({ alignContent: Alignment.TopStart }) {
         Column({ space: 2 }) {
           WaterFlow({scroller: this.scrollerForWaterFlow}) {
@@ -84,7 +84,7 @@ struct ScrollToIndexForWaterFlow02 {
                         Column() {
                           Text("NN" + item).textAlign(TextAlign.End)
                             .fontSize(16)
-                            .width('100%').id("ItemText_" + item)
+                            .width('100%').id("ItemTextWaterFlow02_" + item)
                           Image('res/waterFlowTest(' + item % 5 + ').jpg')
                             .objectFit(ImageFit.Fill)
                             .width('100%')
