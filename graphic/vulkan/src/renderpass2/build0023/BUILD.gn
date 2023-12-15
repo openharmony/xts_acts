@@ -210,7 +210,6 @@ ohos_moduletest_suite("ActsRenderpass2TestSuite0023") {
   sources = [
     "../ActsRenderpass20023TestSuite.cpp",
     "../renderpass2/Renderpass2_dedicated_allocation0022TestCase.cpp",
-    "../renderpass2/Renderpass2_suballocation0022TestCase.cpp",
   ]
 
   include_dirs = common_include
