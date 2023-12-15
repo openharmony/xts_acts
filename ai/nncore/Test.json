@@ -2,12 +2,7 @@
     "kits": [
         {
             "push": [
-                "ActsEndtoendTest->/data/local/tmp/ActsEndtoendTest"
-            ],
-            "type": "PushKit"
-        },
-        {
-            "push": [
+                "ActsEndtoendTest->/data/local/tmp/ActsEndtoendTest",
                 "ActsNncoreTest->/data/local/tmp/ActsNncoreTest"
             ],
             "type": "PushKit"
