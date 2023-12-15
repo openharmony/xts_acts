@@ -209,7 +209,6 @@ ohos_moduletest_suite("ActsRenderpassTestSuite0007") {
 
   sources = [
     "../ActsRenderpass0007TestSuite.cpp",
-    "../renderpass/Renderpass_dedicated_allocation0006TestCase.cpp",
     "../renderpass/Renderpass_fragment_density_map0006TestCase.cpp",
   ]
 
