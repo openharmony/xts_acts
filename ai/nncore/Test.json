@@ -2,7 +2,13 @@
     "kits": [
         {
             "push": [
-                "ActsHdfNncoreTest->/data/local/tmp/ActsHdfNncoreTest"
+                "ActsEndtoendTest->/data/local/tmp/ActsEndtoendTest"
+            ],
+            "type": "PushKit"
+        },
+        {
+            "push": [
+                "ActsNncoreTest->/data/local/tmp/ActsNncoreTest"
             ],
             "type": "PushKit"
         }
