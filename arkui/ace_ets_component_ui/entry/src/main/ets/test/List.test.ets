@@ -308,6 +308,10 @@ import ScrollToIndexForWaterFlowJsunit02 from './ScrollToIndex/ScrollToIndexForW
 import ScrollToIndexForGridJsunit01 from './ScrollToIndex/ScrollToIndexForGridJsunit01.test';
 import ScrollToIndexForGridJsunit02 from './ScrollToIndex/ScrollToIndexForGridJsunit02.test';
 import ScrollToIndexForGridJsunit03 from './ScrollToIndex/ScrollToIndexForGridJsunit03.test';
+import ChipAction from './Chip/ChipAction.test';
+import ChipOnClose from './Chip/ChipOnClose.test';
+import ChipAction2 from './Chip/ChipAction2.test';
+import ChipOnClose2 from './Chip/ChipOnClose2.test';
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -567,6 +571,10 @@ export default function testsuite() {
   search_maxLength2();
   textInput_caret();
   search_caret();
+  ChipAction();
+  ChipOnClose();
+  ChipAction2();
+  ChipOnClose2();
   getListItemRect1();
   getListItemRect2();
   getListItemRect3();
