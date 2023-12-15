@@ -81,7 +81,7 @@ struct ScrollToIndexForWaterFlow01 {
               Column() {
                 Text("N" + item).textAlign(TextAlign.End)
                   .fontSize(16)
-                  .width('100%').id("ItemText_" + item)
+                  .width('100%').id("ItemTextWaterFlow01_" + item)
                 Image('res/waterFlowTest(' + item % 5 + ').jpg')
                   .objectFit(ImageFit.Fill)
                   .width('100%')

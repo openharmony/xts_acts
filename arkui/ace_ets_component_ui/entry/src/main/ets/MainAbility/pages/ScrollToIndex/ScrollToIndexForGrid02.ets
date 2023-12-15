@@ -38,7 +38,7 @@ struct ScrollToIndexForGrid02 {
       Column() {
         Text('have smooth...').fontSize(16).width('95%').height(20).backgroundColor(Color.Orange).textAlign(TextAlign.Center)
           .visibility(this.isSmooth ? Visibility.Visible : Visibility.None)
-          .id('isHaveSmooth').position({x:12, y:10})
+          .id('isHaveSmooth_Grid02').position({x:12, y:10})
         Column(){
           Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent:FlexAlign.SpaceBetween }) { // 子组件在容器主轴上行布局
             Button('grid-66-true-center', { type: ButtonType.Normal, stateEffect: true })
@@ -120,7 +120,7 @@ struct ScrollToIndexForGrid02 {
                         .width('90%')
                         .height(60)
                         .textAlign(TextAlign.Center)
-                    }.id('gridIndex_' + day)
+                    }.id('gridIndex02_' + day)
                   })
                 }
                 .columnsTemplate(!this.moreItem ? "1fr 1fr 1fr" : "1fr 1fr 1fr 1fr")
@@ -133,7 +133,7 @@ struct ScrollToIndexForGrid02 {
                   top: 5,
                   bottom: 5
                 })
-                .id("GridID")
+                .id("GridID_Grid02")
               }
             }else{
               GridItem() {
