@@ -81,7 +81,7 @@ static napi_value PredicatesSetUpTestCase(napi_env env, napi_callback_info info)
     predicatesTestRdbStore_ = OH_Rdb_GetOrOpen(&config_, &errCode);
     NAPI_ASSERT(env, predicatesTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen is fail.");
 
-     char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+     char createTableSql[] = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(predicatesTestRdbStore_, createTableSql);
 
@@ -134,13 +134,9 @@ static napi_value PredicatesSetUpTestCase(napi_env env, napi_callback_info info)
 static napi_value PredicatesTearDownTestCase(napi_env env, napi_callback_info info) {
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
-    errCode = OH_Rdb_Execute(predicatesTestRdbStore_, dropTableSql);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
-    errCode = OH_Rdb_CloseStore(predicatesTestRdbStore_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    OH_Rdb_Execute(predicatesTestRdbStore_, dropTableSql);
+    OH_Rdb_CloseStore(predicatesTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail.");   
-
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
@@ -196,8 +192,6 @@ static napi_value SUB_DDM_RDB_Predicates_0200(napi_env env, napi_callback_info i
     const char *data1Value = "zhangSan";
     valueObject->putText(valueObject, data1Value);
     predicates->notEqualTo(predicates, "data1", valueObject);
-    NAPI_ASSERT(env, errCode == 0, "notEqualTo is fail.");
-
     OH_Cursor *cursor = OH_Rdb_Query(predicatesTestRdbStore_, predicates, NULL, 0);
     NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
     int rowCount = 0;

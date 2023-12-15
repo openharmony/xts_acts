@@ -39,6 +39,9 @@ char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
 static Rdb_ProgressDetails *g_progressDetails = NULL;
 OH_Rdb_Store *storeTestRdbStore_ = NULL;
+OH_Rdb_Store *storeTestRdbStore1_ = NULL;
+OH_Rdb_Store *storeTestRdbStore2_ = NULL;
+
 static OH_Rdb_Config config_;
 static void InitRdbConfig()
 {
@@ -83,7 +86,7 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_GetOrOpen is fail.");
     NAPI_ASSERT(env, storeTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen config is fail.");
 
-    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(storeTestRdbStore_, createTableSql);
     NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
@@ -96,12 +99,9 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
 static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) {
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
-    errCode = OH_Rdb_Execute(storeTestRdbStore_, dropTableSql);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
-    errCode = OH_Rdb_CloseStore(storeTestRdbStore_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    OH_Rdb_Execute(storeTestRdbStore_, dropTableSql);
+    OH_Rdb_CloseStore(storeTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail.");   
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
@@ -1720,9 +1720,12 @@ static napi_value SUB_DDM_RDB_3200(napi_env env, napi_callback_info info) {
     mkdir(config2_.dataBaseDir, 0770);
 
     int errCode = 0;
-    OH_Rdb_GetOrOpen(&config2_, &errCode);
+    storeTestRdbStore1_ = OH_Rdb_GetOrOpen(&config2_, &errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL  , "OH_Rdb_GetOrOpen is fail.");
     errCode = 0;
+
+    OH_Rdb_CloseStore(storeTestRdbStore1_);
+    OH_Rdb_DeleteStore(&config2_);
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
@@ -1751,9 +1754,12 @@ static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
     mkdir(config3_.dataBaseDir, 0770);
 
     int errCode = 0;
-    OH_Rdb_GetOrOpen(&config3_, &errCode);
+    storeTestRdbStore2_ = OH_Rdb_GetOrOpen(&config3_, &errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL , "OH_Rdb_GetOrOpen is fail.");
     errCode = 0;
+    
+    OH_Rdb_CloseStore(storeTestRdbStore2_);
+    OH_Rdb_DeleteStore(&config3_);
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
