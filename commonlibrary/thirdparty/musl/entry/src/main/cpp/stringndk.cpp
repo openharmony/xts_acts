@@ -88,7 +88,10 @@ static napi_value Strerror(napi_env env, napi_callback_info info)
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
             error_value = strerror(errno);
+        }else{
+            fclose(file);
         }
+        
     } else if (valueFirst == ONE) {
         error_value = strerror(FAIL);
 
@@ -154,6 +157,7 @@ static napi_value Strerror_r(napi_env env, napi_callback_info info)
         if (file == nullptr) {
             error_value = strerror_r(errno, src, MIM_NUMBER);
         }
+        
     }
     napi_value result = nullptr;
     napi_create_int32(env, error_value, &result);

@@ -19,7 +19,7 @@ import hilog from "@ohos.hilog";
 import { Hypium } from "@ohos/hypium";
 import testsuite from "../test/List.test";
 import window from "@ohos.window";
-
+import common from "@ohos.app.ability.common"
 export default class TestAbility extends UIAbility {
     onCreate(want, launchParam) {
         hilog.info(0x0000, "testTag", "%{public}s", "TestAbility onCreate");
@@ -31,6 +31,7 @@ export default class TestAbility extends UIAbility {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         hilog.info(0x0000, "testTag", "%{public}s", "start run testcase!!!");
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+		AppStorage.SetOrCreate<common.UIAbilityContext>("TestAbilityContext",this.context)
     }
 
     onDestroy() {

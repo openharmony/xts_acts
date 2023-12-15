@@ -17,7 +17,7 @@
 #include <vector>
 #include <thread>
 
-#include "interfaces/kits/c/neural_network_runtime.h"
+#include "interfaces/kits/c/neural_network_runtime/neural_network_runtime.h"
 #include "nnrt_utils.h"
 #include "model.h"
 
