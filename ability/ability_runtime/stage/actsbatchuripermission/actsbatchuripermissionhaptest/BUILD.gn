@@ -53,6 +53,7 @@ ohos_resources("actsbatchuripermissionhaptest_resources") {
 }
 
 copy("proxy_authorization_uri") {
-  sources = [ "config/proxy_authorization_uri.json"]
-  outputs = [ "${root_out_dir}/suites/acts/testcases/proxy_authorization_uri.json" ]
+  sources = [ "config/proxy_authorization_uri.json" ]
+  outputs =
+      [ "${root_out_dir}/suites/acts/testcases/proxy_authorization_uri.json" ]
 }
