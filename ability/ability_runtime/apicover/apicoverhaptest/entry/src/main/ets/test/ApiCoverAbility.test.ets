@@ -887,6 +887,37 @@ export default function ApiCoverTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_AppSpawn_0100
+     * @tc.name   : Call startChildProcess to create a child process by APP_SPAWN_FORK mode
+     * @tc.desc   : startChildProcess api cover
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100', 0, async (done: Function) => {
+      let tag = `SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100`;
+      console.log(`${tag}, it begin`);
+
+      let mode: number;
+      try {
+        mode = childProcessManager.StartMode.APP_SPAWN_FORK;
+      } catch (err) {
+        console.log(`${tag} convert mode error, manual set 1`);
+        mode = 1;
+      }
+
+      try {
+        let pid = await childProcessManager.startChildProcess('./ets/process/AProcess.ts', mode);
+        console.log(`${tag} startChildProcess success, pid: ${pid}`);
+        done();
+      } catch (err) {
+        console.error(`${tag} startChildProcess error, err: ${err}`);
+        expect(err.code == 16000061).assertTrue();
+        done();
+      }
+    });
     
   })
 }
