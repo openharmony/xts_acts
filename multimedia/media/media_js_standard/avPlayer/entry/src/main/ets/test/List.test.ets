@@ -20,7 +20,7 @@ import AVPlayerLocalTest from './AVPlayerLocalTest.test.js'
 import AVPlayerStabilityTest from './AVPlayerStabilityTest.test.js'
 import AvPlayerEnumTest from './AvPlayerEnumTest.test.js'
 import AVPlayerMultiTrackTest from './AVPlayerMultiTrackTest.test.js'
-import AVMetadata from './AVMetadata.test.ets'
+import AVMetadata from './AVPlayerAVMetadata.test.ets'
 
 
 export default function testsuite() {
