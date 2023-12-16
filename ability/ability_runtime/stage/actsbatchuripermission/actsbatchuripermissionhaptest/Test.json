@@ -19,6 +19,22 @@
             "cleanup-apps": true
         },
         {
+            "type": "PushKit",
+            "pre-push": [
+                "mount -o rw,remount /"
+            ],
+            "post-push" : [
+                "reboot"
+            ],
+            "push": [
+                "proxy_authorization_uri.json ->/system/etc/proxy_authorization_uri.json",
+                "proxy_authorization_uri.json ->/system/variant/phone/base/etc/proxy_authorization_uri.json",
+                "proxy_authorization_uri.json ->/system/variant/pc/base/etc/proxy_authorization_uri.json",
+                "proxy_authorization_uri.json ->/system/variant/tablet/base/etc/proxy_authorization_uri.json",
+                "proxy_authorization_uri.json ->/system/variant/watch/base/etc/proxy_authorization_uri.json"
+            ]
+        },
+        {
           "type": "ShellKit",
           "run-command": [
               "power-shell wakeup",
