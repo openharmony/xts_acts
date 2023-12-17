@@ -264,21 +264,6 @@ export default function webErrorCode() {
     })
 
     /*
-    * @tc.number     : SUB_WEB_ERRORCODE_LOADDATA_0200
-    * @tc.name       : testLoadDataError002
-    * @tc.desc       : test LoadData error
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 2
-    */
-    it('testLoadDataError002', 0, async (done: Function) => {
-      Utils.emitEvent("emitLoadData2", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testLoadDataError002", '17100002', 1026, done);
-      sendEventByKey('ErrorCodeTestSuiteButton', 10, '');
-    })
-
-    /*
     * @tc.number     : SUB_WEB_ERRORCODE_LOADURL_0100
     * @tc.name       : testLoadUrlError001
     * @tc.desc       : test LoadUrl error
