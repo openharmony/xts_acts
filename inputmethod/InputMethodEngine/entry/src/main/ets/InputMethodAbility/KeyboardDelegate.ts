@@ -871,7 +871,7 @@ export class KeyboardDelegate {
         };
         console.info(TAG + '====>receive inputMethodAbility_test_070 success');
         let count = 0;
-        this.keyboardController.hideKeyboard()
+        await this.keyboardController.hideKeyboard();
         inputMethodAbility.on('keyboardShow', () => {
             inputMethodAbility.off('keyboardShow');
             console.info(TAG + '====>inputMethodAbility.on("keyboardShow") count: ' + count);
@@ -926,7 +926,7 @@ export class KeyboardDelegate {
         };
         console.info(TAG + '====>receive inputMethodAbility_test_072 success');
         let count = 0;
-        await this.keyboardController.hideKeyboard()
+        await this.keyboardController.hideKeyboard();
         inputMethodAbility.on('keyboardShow', () => {
             count += 1;
             inputMethodAbility.off("keyboardShow");
