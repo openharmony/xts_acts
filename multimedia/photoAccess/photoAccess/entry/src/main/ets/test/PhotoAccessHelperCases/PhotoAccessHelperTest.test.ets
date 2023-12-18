@@ -207,10 +207,10 @@ export default function PhotoAccessHelperTest() {
         }
 
         let suffixNum1 = 0
-        function createAssetForSuffixesCallback1(phAccessHelper, photoType, extension, options, extensions, done){
-            console.info('createAssetForSuffixesCallback1 start');
+        function createAssetWithSuffixesCallback1(phAccessHelper, photoType, extension, options, extensions, done){
+            console.info('createAssetWithSuffixesCallback1 start');
             extension = extensions[suffixNum1]
-            console.info(`createAssetForSuffixesCallback1 set suffix is:` + extension);
+            console.info(`createAssetWithSuffixesCallback1 set suffix is:` + extension);
             phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
@@ -219,10 +219,10 @@ export default function PhotoAccessHelperTest() {
                     suffixNum1++
                     if(suffixNum1==extensions.length){
                         suffixNum1 = 0
-                        console.info('createAssetForSuffixesCallback1 getAssets end');
+                        console.info('createAssetWithSuffixesCallback1 getAssets end');
                         releaseHelperCallback(phAccessHelper,done)
                     }else{
-                        createAssetForSuffixesCallback1(phAccessHelper, photoType, extension, options, extensions, done)
+                        createAssetWithSuffixesCallback1(phAccessHelper, photoType, extension, options, extensions, done)
                     }
                 } else {
                     console.error('createAsset failed, message = ', err);
@@ -233,10 +233,10 @@ export default function PhotoAccessHelperTest() {
         }
 
         let suffixNum2 = 0
-        function createAssetForSuffixesCallback2(phAccessHelper, photoType, extension, extensions, done){
-            console.info('createAssetForSuffixesCallback2 start');
+        function createAssetWithSuffixesCallback2(phAccessHelper, photoType, extension, extensions, done){
+            console.info('createAssetWithSuffixesCallback2 start');
             extension = extensions[suffixNum2]
-            console.info(`createAssetForSuffixesCallback2 set suffix is:` + extension);
+            console.info(`createAssetWithSuffixesCallback2 set suffix is:` + extension);
             phAccessHelper.createAsset(photoType, extension, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
@@ -245,10 +245,10 @@ export default function PhotoAccessHelperTest() {
                     suffixNum2++
                     if(suffixNum2==extensions.length){
                         suffixNum2 = 0
-                        console.info('createAssetForSuffixesCallback2 getAssets end');
+                        console.info('createAssetWithSuffixesCallback2 getAssets end');
                         releaseHelperCallback(phAccessHelper,done)
                     }else{
-                        createAssetForSuffixesCallback2(phAccessHelper, photoType, extension, extensions, done)
+                        createAssetWithSuffixesCallback2(phAccessHelper, photoType, extension, extensions, done)
                     }
                 } else {
                     console.error('createAsset failed, message = ', err);
@@ -259,10 +259,10 @@ export default function PhotoAccessHelperTest() {
         }
 
         let suffixNum3 = 0
-        async function createAssetForSuffixesPromise(phAccessHelper, photoType, extension, options, extensions, done){
-            console.info('createAssetForSuffixesPromise start');
+        async function createAssetWithSuffixesPromise(phAccessHelper, photoType, extension, options, extensions, done){
+            console.info('createAssetWithSuffixesPromise start');
             extension = extensions[suffixNum3]
-            console.info(`createAssetForSuffixesPromise set suffix is:` + extension);
+            console.info(`createAssetWithSuffixesPromise set suffix is:` + extension);
             try {
                 let uri;
                 if(options.title == "no"){
@@ -278,10 +278,10 @@ export default function PhotoAccessHelperTest() {
                 suffixNum3++
                 if(suffixNum3==extensions.length){
                     suffixNum3 = 0
-                    console.info('createAssetForSuffixesPromise getAssets end');
+                    console.info('createAssetWithSuffixesPromise getAssets end');
                     releaseHelperPromise(phAccessHelper,done)
                 }else{
-                    createAssetForSuffixesPromise(phAccessHelper, photoType, extension, options, extensions, done)
+                    createAssetWithSuffixesPromise(phAccessHelper, photoType, extension, options, extensions, done)
                 }
             } catch (err) {
                 console.error('createAsset failed, message = ', err);
@@ -344,7 +344,7 @@ export default function PhotoAccessHelperTest() {
             releaseHelperPromise(phAccessHelper,done)
         }
 
-        function createPhotoAssetGet(photoAsset){
+        function getPhotoAssetAttrs(photoAsset){
             let photoAssetUri: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.URI.toString());
             expect(photoAssetUri).not().assertUndefined()
             console.info('photoAsset.uri : ' + photoAssetUri);
@@ -356,7 +356,7 @@ export default function PhotoAccessHelperTest() {
             console.info('photoAsset.displayName : ' + photoAssetName);
         }
 
-        function getPhotoAssetCallback(phAccessHelper,fetchOptions, done){
+        function getPhotoAssetAttrsCallback(phAccessHelper,fetchOptions, done){
             console.info('photoAsset.get start');
             phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
                 if (fetchResult != undefined) {
@@ -365,7 +365,7 @@ export default function PhotoAccessHelperTest() {
                         let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
                         console.info('fetchResult success2');
                         if (photoAsset != undefined) {
-                            createPhotoAssetGet(photoAsset)
+                            getPhotoAssetAttrs(photoAsset)
                         }
                     }catch(err){
                         console.error('getFirstObject fail, err is: ' + err.message);
@@ -379,16 +379,16 @@ export default function PhotoAccessHelperTest() {
             });
         }
 
-        async function getPhotoAssetPromise(phAccessHelper,fetchOptions,done) {
+        async function getPhotoAssetAttrsPromise(phAccessHelper,fetchOptions,done) {
             console.info('photoAsset.get start');
             try {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
                 let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
                 expect(photoAsset).not().assertUndefined()
-                createPhotoAssetGet(photoAsset)
+                getPhotoAssetAttrs(photoAsset)
                 releaseHelperPromise(phAccessHelper,done)
             } catch (err) {
-                console.error('getPhotoAssetPromise failed. message = ', err);
+                console.error('getPhotoAssetAttrsPromise failed. message = ', err);
                 expect(false).assertTrue();
             }
         }
@@ -1048,7 +1048,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesCallback1(photoHelper,imageType, 'jpg', options, photoExtensions, done)
+            createAssetWithSuffixesCallback1(photoHelper,imageType, 'jpg', options, photoExtensions, done)
         })
 
         /* *
@@ -1061,7 +1061,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesCallback1(photoHelper, videoType, 'mp4', options, videoExtensions, done)
+            createAssetWithSuffixesCallback1(photoHelper, videoType, 'mp4', options, videoExtensions, done)
         })
 
         /* *
@@ -1074,7 +1074,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesCallback2(photoHelper, imageType, 'jpg', photoExtensions, done)
+            createAssetWithSuffixesCallback2(photoHelper, imageType, 'jpg', photoExtensions, done)
         })
 
         /* *
@@ -1087,7 +1087,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesCallback2(photoHelper, videoType, 'mp4', videoExtensions, done)
+            createAssetWithSuffixesCallback2(photoHelper, videoType, 'mp4', videoExtensions, done)
         })
 
         /* *
@@ -1100,7 +1100,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesPromise(photoHelper, imageType, 'jpg', options, photoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', options, photoExtensions, done)
         })
 
         /* *
@@ -1113,7 +1113,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
-            createAssetForSuffixesPromise(photoHelper, videoType, 'mp4', options, videoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', options, videoExtensions, done)
         })
 
         /* *
@@ -1129,7 +1129,7 @@ export default function PhotoAccessHelperTest() {
             let withoutOptions =  {
                 title: 'no'
             }
-            createAssetForSuffixesPromise(photoHelper, imageType, 'jpg', withoutOptions, photoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', withoutOptions, photoExtensions, done)
         })
 
         /* *
@@ -1145,7 +1145,7 @@ export default function PhotoAccessHelperTest() {
             let withoutOptions =  {
                 title: 'no'
             }
-            createAssetForSuffixesPromise(photoHelper, videoType, 'mp4', withoutOptions, videoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', withoutOptions, videoExtensions, done)
         })
 
         /* *
@@ -1161,7 +1161,7 @@ export default function PhotoAccessHelperTest() {
             let optionsErr =  {
                 testError: 'testError'
             }
-            createAssetForSuffixesPromise(photoHelper, imageType, 'jpg', optionsErr, photoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, imageType, 'jpg', optionsErr, photoExtensions, done)
         })
 
         /* *
@@ -1177,7 +1177,7 @@ export default function PhotoAccessHelperTest() {
             let optionsErr =  {
                 testError: 'testError'
             }
-            createAssetForSuffixesPromise(photoHelper, videoType, 'mp4', optionsErr, videoExtensions, done)
+            createAssetWithSuffixesPromise(photoHelper, videoType, 'mp4', optionsErr, videoExtensions, done)
         })
 
         /* *
@@ -1467,7 +1467,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            getPhotoAssetCallback(photoHelper,fetchOptions, done)
+            getPhotoAssetAttrsCallback(photoHelper,fetchOptions, done)
         })
 
         /* *
@@ -1480,7 +1480,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
-            getPhotoAssetPromise(photoHelper, fetchOptions, done)
+            getPhotoAssetAttrsPromise(photoHelper, fetchOptions, done)
         })
 
         /* *
