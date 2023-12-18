@@ -18,6 +18,7 @@ group("graphic") {
     deps = [
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
+      "graphicGLES3:ActsGraphicGles3Test",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "webGL:webGL_hap_test",
