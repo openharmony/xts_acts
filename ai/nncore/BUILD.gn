@@ -14,7 +14,7 @@
 group("ActsHdfNncoreTest") {
   testonly = true
   deps = [
-    "nncoretest:ActsNncoreTest",
     "e2etest:ActsEndtoendTest",
+    "nncoretest:ActsNncoreTest",
   ]
 }
