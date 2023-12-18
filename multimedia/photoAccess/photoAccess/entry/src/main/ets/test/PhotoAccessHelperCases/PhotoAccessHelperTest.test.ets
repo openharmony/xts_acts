@@ -1680,7 +1680,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100
-           * @tc.name      : 051.getFirstObject
+           * @tc.name      : 051.getNextObject
            * @tc.desc      : getNextObject callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
