@@ -22,6 +22,7 @@ let module1FormInfo: formInfo.FormInfo = {
     moduleName: "module1",
     abilityName: "FormAbility",
     name: "module1_widget",
+    displayName: "GetFormsInfo Demo1",
     descriptionId: 0,
     description: "This is a service widget.",
     type:1,
@@ -45,6 +46,7 @@ let module2FormInfo: formInfo.FormInfo = {
     moduleName: "module2",
     abilityName: "FormAbility",
     name: "module2_widget",
+    displayName: "GetFormsInfo Demo2",
     descriptionId: 0,
     description: "This is a service widget.",
     type:1,
@@ -367,6 +369,8 @@ export default function abilityTest() {
         expect(expectInfo.abilityName).assertEqual(result.abilityName);
         console.info("formProvider::GetFormsInfoTest: name expect " + expectInfo.name);
         expect(expectInfo.name).assertEqual(result.name);
+        console.info("formProvider::GetFormsInfoTest: displayName expect " + expectInfo.displayName);
+        expect(expectInfo.displayName).assertEqual(result.displayName);
         console.info("formProvider::GetFormsInfoTest: description expect " + expectInfo.description);
         expect(expectInfo.description).assertEqual(result.description);
         console.info("formProvider::GetFormsInfoTest: type expect " + expectInfo.type);
