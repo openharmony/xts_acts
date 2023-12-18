@@ -15,6 +15,7 @@
 
 import pointer from '@ohos.multimodalInput.pointer'
 import window from '@ohos.window'
+import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 export default function Pointer_test() {
   describe('Pointer_test', function () {
@@ -33,8 +34,11 @@ export default function Pointer_test() {
 
     /**
      * @tc.number MultimodalInputPointer_Test_001
-     * @tc.name MultimodalInputDevice_SetPointerVisibleSync_Test_001
+     * @tc.name Pointer_SetPointerVisibleSync_Test_001
      * @tc.desc Pointer interface SetPointerVisibleSync test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_SetPointerVisibleSync_Test_001', 0, async function (done) {
       console.info(`Pointer_SetPointerVisibleSync_Test_001 enter`);
@@ -49,8 +53,11 @@ export default function Pointer_test() {
 
     /**
      * @tc.number MultimodalInputPointer_Test_002
-     * @tc.name MultimodalInputDevice_IsPointerVisibleSync_Test_002
+     * @tc.name Pointer_IsPointerVisibleSync_Test_002
      * @tc.desc Pointer interface isPointerVisibleSync test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_IsPointerVisibleSync_Test_002', 0, async function (done) {
       console.info(`Pointer_IsPointerVisibleSync_Test_002 enter`);
@@ -66,8 +73,11 @@ export default function Pointer_test() {
 
     /**
      * @tc.number MultimodalInputPointer_Test_003
-     * @tc.name MultimodalInputDevice_GetPointerStyleSyncTest_Test_003
+     * @tc.name Pointer_GetPointerStyleSync_Test_003
      * @tc.desc Pointer interface getPointerStyleSync test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_GetPointerStyleSync_Test_003', 0, async function (done) {
       console.info(`Pointer_GetPointerStyleSync_Test_003 enter`);
@@ -81,6 +91,14 @@ export default function Pointer_test() {
       done();
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_004
+     * @tc.name Pointer_PointerVisibleTest_001
+     * @tc.desc Pointer interface SetPointerVisible test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_PointerVisibleTest_001', 0, async function (done) {
       console.info(`Pointer_SetPointerVisibleTest_001 enter`);
       try {
@@ -113,6 +131,14 @@ export default function Pointer_test() {
       console.info(`Pointer_PointerVisibleTest_001 exit`);
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_005
+     * @tc.name Pointer_PointerVisibleTest_002
+     * @tc.desc Pointer interface SetPointerVisible test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_PointerVisibleTest_002', 0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_002 enter`);
       var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
@@ -153,6 +179,14 @@ export default function Pointer_test() {
       console.info(`Pointer_PointerVisibleTest_002 exit`);
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_006
+     * @tc.name Pointer_SetPointerStyle_001
+     * @tc.desc Pointer interface SetPointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_SetPointerStyle_001', 0, async function (done) {
       console.info(`SetPointerStyle_001 enter`);
       function getPropertiesPromise(windowClass) {
@@ -202,6 +236,14 @@ export default function Pointer_test() {
       }
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_007
+     * @tc.name Pointer_SetPointerStyle_002
+     * @tc.desc Pointer interface SetPointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_SetPointerStyle_002', 0, async function (done) {
       console.info(`SetPointerStyle_002 enter`);
       function getPropertiesPromise(windowClass) {
@@ -257,6 +299,14 @@ export default function Pointer_test() {
       }
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_008
+     * @tc.name Pointer_GetPointerStyle_001
+     * @tc.desc Pointer interface GetPointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_GetPointerStyle_001', 0, async function (done) {
       console.info(`GetPointerStyle_001 enter`);
       function getPropertiesPromise(windowClass) {
@@ -306,6 +356,14 @@ export default function Pointer_test() {
       }
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_009
+     * @tc.name Pointer_GetPointerStyle_002
+     * @tc.desc Pointer interface GetPointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_GetPointerStyle_002', 0, async function (done) {
       console.info(`GetPointerStyle_002 enter`);
       function getPropertiesPromise(windowClass) {
@@ -359,6 +417,14 @@ export default function Pointer_test() {
       }
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_010
+     * @tc.name Pointer_PointerStyle_test
+     * @tc.desc Pointer interface PointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_PointerStyle_test', 0, function () {
       console.info('Pointer_PointerStyle_test = ' + pointer.PointerStyle.DEFAULT);
       expect(pointer.PointerStyle.DEFAULT == 0).assertTrue();
@@ -487,16 +553,40 @@ export default function Pointer_test() {
       expect(pointer.PointerStyle.CURSOR_CIRCLE == 41).assertTrue();
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_011
+     * @tc.name Pointer_PointerStyle_Loading_test
+     * @tc.desc Pointer interface PointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_PointerStyle_Loading_test', 0, function () {
       console.info('Pointer_LOADING_test = ' + pointer.PointerStyle.LOADING);
       expect(pointer.PointerStyle.LOADING == 42).assertTrue();
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_012
+     * @tc.name Pointer_PointerStyle_Running_test
+     * @tc.desc Pointer interface PointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Pointer_PointerStyle_Running_test', 0, function () {
       console.info('Pointer_RUNNING_test = ' + pointer.PointerStyle.RUNNING);
       expect(pointer.PointerStyle.RUNNING == 43).assertTrue();
     })
 
+    /**
+     * @tc.number MultimodalInputPointer_Test_013
+     * @tc.name Touchpad_RightClickType_test
+     * @tc.desc Pointer interface PointerStyle test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
     it('Touchpad_RightClickType_test', 0, function () {
       console.info('Touchpad_TOUCHPAD_RIGHT_BUTTON_test = ' + pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON);
       expect(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON == 1).assertTrue();
@@ -509,9 +599,12 @@ export default function Pointer_test() {
     })
     
     /**
-     * @tc.number MultimodalInputPointer_Test_001
-     * @tc.name MultimodalInputDevice_PointerVisibleTest_Exception_Test_001
+     * @tc.number MultimodalInputPointer_Test_014
+     * @tc.name Pointer_PointerVisibleTest_Exception_Test_001
      * @tc.desc Pointer interface PointerVisible exception test
+     * @tc.level Level4
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_PointerVisibleTest_Exception_Test_001', 0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_Exception_Test_001 enter`);
@@ -540,9 +633,12 @@ export default function Pointer_test() {
     })
 
     /**
-     * @tc.number MultimodalInputPointer_Test_002
-     * @tc.name MultimodalInputDevice_PointerVisibleTest_Exception_Test_002
+     * @tc.number MultimodalInputPointer_Test_015
+     * @tc.name Pointer_PointerVisibleTest_Exception_Test_002
      * @tc.desc Pointer interface PointerVisible exception test
+     * @tc.level Level4
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_PointerVisibleTest_Exception_Test_002', 0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_Exception_Test_002 enter`);
@@ -574,9 +670,12 @@ export default function Pointer_test() {
     })
 
     /**
-     * @tc.number MultimodalInputPointer_Test_005
-     * @tc.name MultimodalInputDevice_PointerStyleTest_Exception_Test_001
+     * @tc.number MultimodalInputPointer_Test_016
+     * @tc.name Pointer_PointerStyleTest_Exception_Test_001
      * @tc.desc Pointer interface PointerStyle exception test
+     * @tc.level Level4
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_PointerStyleTest_Exception_Test_001', 0, async function (done) {
       console.info(`Pointer_PointerStyleTest_Exception_Test_001 enter`);
@@ -606,9 +705,12 @@ export default function Pointer_test() {
     })
 
     /**
-     * @tc.number MultimodalInputPointer_Test_006
-     * @tc.name MultimodalInputDevice_PointerStyleTest_Exception_Test_002
+     * @tc.number MultimodalInputPointer_Test_017
+     * @tc.name Pointer_PointerStyleTest_Exception_Test_002
      * @tc.desc Pointer interface PointerStyle exception test
+     * @tc.level Level4
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_PointerStyleTest_Exception_Test_002', 0, async function (done) {
       console.info(`Pointer_PointerStyleTest_Exception_Test_002 enter`);
@@ -638,9 +740,12 @@ export default function Pointer_test() {
     })
 
     /**
-     * @tc.number MultimodalInputPointer_Test_007
-     * @tc.name Pointer_PointerStyleSyncTest_Test_001
+     * @tc.number MultimodalInputPointer_Test_018
+     * @tc.name Pointer_SetPointerStyleSyncTest_Test_001
      * @tc.desc Pointer interface PointerStyle exception test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
      */
     it('Pointer_SetPointerStyleSyncTest_Test_001', 0, async function (done) {
       console.info(`Pointer_SetPointerStyleSyncTest_Test_001 enter`);
@@ -652,6 +757,78 @@ export default function Pointer_test() {
         expect(error.message).assertEqual(errMsg.PARAMETER_WINDOWID_TYPE_MSG);
       }
       console.info(`Pointer_SetPointerStyleSyncTest_Test_001 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_019
+     * @tc.name Pointer_setCustomCursorTest_Test_001
+     * @tc.desc set custom cursor test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
+    it('Pointer_setCustomCursorTest_Test_001', 0, async function (done) {
+      console.info(`Pointer_setCustomCursorSyncTest_Test_001 enter`);
+      const color = new ArrayBuffer(96);
+      let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } };
+      image.createPixelMap(color, opts).then((pixelMap) => {
+        console.log('Succeeded in creating pixelmap.');
+        try {
+          pointer.setCustomCursorSync(0, pixelMap, 25, 25);
+          expect(true).assertTrue();
+        } catch (error) {
+          expect(false).assertTrue();
+        }
+      })
+      console.info(`Pointer_setCustomCursorSyncTest_Test_001 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_020
+     * @tc.name Pointer_setCustomCursorTest_Test_002
+     * @tc.desc set custom cursor test
+     * @tc.level Level3
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
+    it('Pointer_setCustomCursorTest_Test_002', 0, async function (done) {
+      console.info(`Pointer_setCustomCursorTest_Test_002 enter`);
+      const color = new ArrayBuffer(96);
+      let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      image.createPixelMap(color, opts).then((pixelMap) => {
+        console.log('Succeeded in creating pixelmap.');
+        try {
+          pointer.setCustomCursor(0, pixelMap, 0, 0).then(() => {
+            console.log(`setCustomCursor success`);
+            expect(true).assertTrue();
+          });
+        } catch (error) {
+          expect(false).assertTrue();
+        }
+      })
+      console.info(`Pointer_setCustomCursorTest_Test_002 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_021
+     * @tc.name Pointer_setCustomCursorTest_Exception_Test_001
+     * @tc.desc Set custom cursor test
+     * @tc.level Level4
+     * @tc.size SmallTest
+     * @tc.type Function
+     */
+    it('Pointer_setCustomCursorTest_Exception_Test_001', 0, async function (done) {
+      console.info(`Pointer_setCustomCursorTest_Exception_Test_001 enter`);
+      try {
+        pointer.setCustomCursorSync(0, 1);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+      }
+      console.info(`Pointer_setCustomCursorTest_Exception_Test_001 exit`);
       done();
     })
   })
