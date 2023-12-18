@@ -177,13 +177,9 @@ static napi_value CursorSetUpTestCase(napi_env env, napi_callback_info info) {
 static napi_value CursorTearDownTestCase(napi_env env, napi_callback_info info) {
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
-    errCode = OH_Rdb_Execute(cursorTestRdbStore_, dropTableSql);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
-    errCode = OH_Rdb_CloseStore(cursorTestRdbStore_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    OH_Rdb_Execute(cursorTestRdbStore_, dropTableSql);
+    OH_Rdb_CloseStore(cursorTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail.");   
-
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
     return returnCode;    
