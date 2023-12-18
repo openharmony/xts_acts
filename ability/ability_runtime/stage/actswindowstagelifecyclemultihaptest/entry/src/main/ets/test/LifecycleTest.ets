@@ -113,8 +113,16 @@ export default function abilityTest() {
 
     afterEach(async function (done) {
       console.info('LifeCycleTest after each called');
-      if ("Multihap_WindowStageLifecycleTest_007" != TAG || "Multihap_WindowStageLifecycleTest_010" != TAG
-      || "Multihap_WindowStageLifecycleTest_006" != TAG) {
+      if (!("Multihap_WindowStageLifecycleTest_007" == TAG ||
+        "Multihap_WindowStageLifecycleTest_010" == TAG || "Multihap_WindowStageLifecycleTest_006" == TAG)) {
+        function eventCallback (event: string){
+          console.log(TAG + " eventCallback, event is :" + event);
+          if (event === 'MainAbility4onDestroy') {
+            clearInterval(intervalId);
+            done()
+          }
+        }
+        handlerMessage(eventCallback);
         let para = {
           resultCode: 2,
           want: {
@@ -129,8 +137,9 @@ export default function abilityTest() {
           }).catch((error) => {
             console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
+      } else {
+        done();
       }
-      done();
     });
 
     afterAll(()=>{
@@ -535,7 +544,7 @@ export default function abilityTest() {
           });
         } else if (event === 'MainAbility6onForeground'){
           if (!isMainAbility6SecondOnForeground) {
-            globalThis.abilityContext.startAbility({
+            globalThis.abilityContext6.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility9"
             }, (error, data) => {
