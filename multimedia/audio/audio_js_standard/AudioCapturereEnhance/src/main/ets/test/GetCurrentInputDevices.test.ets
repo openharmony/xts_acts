@@ -18,13 +18,14 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import * as env from './Const';
 import uitest from "@ohos.UiTest";
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function audioCapturerEnhanceTest() {
   describe('getCurrentInputDevices', function () {
     let Tag = 'AudioCpaturerEnhanceTest: ';
     let dirPath;
     let audioCap = null;
-
+    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -43,6 +44,10 @@ export default function audioCapturerEnhanceTest() {
       let driver = uitest.Driver.create();
       await sleep(2000);
       let button = await driver.findComponent(uitest.ON.text("允许"));
+      if(button == null){
+        let cmd = "hidumper -s WindowManagerService -a'-a'"
+        await delegator.executeShellCommand(cmd);
+      }
       await button.click();
       await sleep(2000);
       let isGranted1 = await featureAbility.getContext().verifyPermission("ohos.permission.MICROPHONE");

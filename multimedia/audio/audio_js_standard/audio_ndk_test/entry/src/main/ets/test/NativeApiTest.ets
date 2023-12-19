@@ -15,6 +15,7 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import { UiDriver, BY } from '@ohos.UiTest'
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 // @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 // @ts-ignore
@@ -25,6 +26,7 @@ export default function nativeApiImageJsunit() {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
+        const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         async function getPermission() {
             let permissions = ['ohos.permission.MICROPHONE'];
             featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
@@ -38,6 +40,10 @@ export default function nativeApiImageJsunit() {
             await sleep(100);
             console.info(Tag + `UiDriver start`);
             let button = await driver.findComponent(BY.text('允许'));
+            if(button == null){
+                let cmd = "hidumper -s WindowManagerService -a'-a'"
+                await delegator.executeShellCommand(cmd);
+            }
             console.info(Tag + `button is ${JSON.stringify(button)}`);
             await sleep(100);
             await button.click();

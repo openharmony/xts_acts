@@ -18,6 +18,7 @@ import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import { UiDriver, BY } from '@ohos.UiTest'
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 export default function audioCapturer() {
 
     describe('audioCapturer', function () {
@@ -46,6 +47,7 @@ export default function audioCapturer() {
         const GET_STREAMINFO_EVENT = 'getStreamInfo';
         const GET_AUDIOSCENE_EVENT = 'getAudioScene';
         const ERROR_EVENT = 'error';
+        const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         let eventEmitter = new events.EventEmitter();
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -455,6 +457,10 @@ export default function audioCapturer() {
             await sleep(100);
             console.info(`UiDriver start`);
             let button = await driver.findComponent(BY.text('允许'));
+            if(button == null){
+                let cmd = "hidumper -s WindowManagerService -a'-a'"
+                await delegator.executeShellCommand(cmd);
+            }
             console.info(`button is ${JSON.stringify(button)}`);
             await sleep(100);
             await button.click();
