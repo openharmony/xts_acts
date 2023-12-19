@@ -966,7 +966,7 @@ export default function PhotoAccessHelperTest() {
         })
 
         /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_02100
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210
            * @tc.name      : 00201.getAssets
            * @tc.desc      : getAssets with promise fetchOptions.fetchColumns = []
            * @tc.size      : MediumTest
@@ -982,7 +982,7 @@ export default function PhotoAccessHelperTest() {
                 expect(false).assertTrue();
                 done();
             }
-            console.info('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_02100 excute pass');
+            console.info('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210 excute pass');
         })
 
         /* *
