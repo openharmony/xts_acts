@@ -15,7 +15,10 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import data_relationalStore from '@ohos.data.relationalStore'
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context;
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 "data1 asset, " + "data2 asset, " + "data3 assets )";
@@ -59,7 +62,10 @@ export default function relationalStoreAssetResultSetTest() {
   describe('relationalStoreAssetResultSetTest', function () {
     beforeAll(async function () {
       console.info(TAG + 'beforeAll')
-      rdbStore = await data_relationalStore.getRdbStore(globalThis.abilityContext, STORE_CONFIG);
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context;
+      console.info(TAG + 'Get context successful. context=' + context);
+      rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
     })
 
     beforeEach(async function () {
@@ -75,7 +81,7 @@ export default function relationalStoreAssetResultSetTest() {
     afterAll(async function () {
       console.info(TAG + 'afterAll')
       rdbStore = null
-      await data_relationalStore.deleteRdbStore(globalThis.abilityContext, "Asset.db");
+      await data_relationalStore.deleteRdbStore(context, "Asset.db");
     })
 
     async function createTest() {

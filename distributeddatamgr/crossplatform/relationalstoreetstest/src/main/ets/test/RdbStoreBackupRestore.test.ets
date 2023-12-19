@@ -15,11 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context;
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS backupTest (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 let RdbStore = undefined;
-let context = null;
 const STORE_CONFIG = {
   name: "BackupResotreTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
@@ -27,7 +29,6 @@ const STORE_CONFIG = {
 const DATABASE_BACKUP_NAME = "Backup.db";
 
 async function CreatRdbStore(context, STORE_CONFIG) {
-  context = globalThis.abilityContext;
   let RdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
   await RdbStore.executeSql(CREATE_TABLE_TEST, null);
   let u8 = new Uint8Array([1, 2, 3]);
@@ -65,6 +66,9 @@ export default function RdbStoreBackupRestoreCallbackTest() {
   describe("RdbStoreBackupRestoreCallbackTest", function () {
     beforeAll(async function () {
       console.info(TAG + "beforeAll");
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context;
+      console.info(TAG + 'Get context successful. context=' + context);
     });
 
     beforeEach(async function () {
@@ -74,7 +78,6 @@ export default function RdbStoreBackupRestoreCallbackTest() {
 
     afterEach(async function () {
       console.info(TAG + "afterEach");
-      context = globalThis.abilityContext;
       await relationalStore.deleteRdbStore(context, STORE_CONFIG.name);
       await relationalStore.deleteRdbStore(context, DATABASE_BACKUP_NAME);
       await relationalStore.deleteRdbStore(context, "BackupTest003.db");
