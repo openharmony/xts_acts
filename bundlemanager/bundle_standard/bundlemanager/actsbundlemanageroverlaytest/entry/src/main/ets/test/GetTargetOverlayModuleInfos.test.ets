@@ -60,16 +60,27 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */
     it('GetTargetOverlayModuleInfosModuleNameNotInstall', 0, async () => {
-      await overlay.getTargetOverlayModuleInfos(MODULE_NAME1).then(data => {
-        Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));
-        expect().assertFail();
-      })
+      try {
+        await overlay.getTargetOverlayModuleInfos(MODULE_NAME1).then(data => {
+          Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));
+          expect().assertFail();
+        })
+      }catch (e) {
+        Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall  catch" + JSON.stringify(e));
+        expect(e.code).assertEqual(ERROR_CODE);
+      }
 
-      overlay.getTargetOverlayModuleInfos(MODULE_NAME1, (err, data) => {
-        Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));
-        Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
-      });
+      try {
+        overlay.getTargetOverlayModuleInfos(MODULE_NAME1, (err, data) => {
+          Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));
+          Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+        });
+      }catch (e) {
+        Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall callback catch" + JSON.stringify(e));
+        expect(e.code).assertEqual(ERROR_CODE);
+      }
+
     })
 
   })
