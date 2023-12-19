@@ -33,11 +33,11 @@
 #include "oh_value_object.h"
 #include "oh_values_bucket.h"
 
+napi_env g_env =0;
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
-static Rdb_ProgressDetails *g_progressDetails = NULL;
 OH_Rdb_Store *storeTestRdbStore_ = NULL;
 OH_Rdb_Store *storeTestRdbStore1_ = NULL;
 OH_Rdb_Store *storeTestRdbStore2_ = NULL;
@@ -109,8 +109,17 @@ static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info
 }
 
 static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
-{
-    g_progressDetails = progressDetails;    
+{   
+
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails != nullptr, "progressDetails is fail.");   
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->tableLength == 0, "tableLength is fail."); 
+    Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
+    NAPI_ASSERT_RETURN_VOID(g_env, tableDetails != nullptr, "tableDetails is fail.");
+
+
 }
 
 /**
@@ -1773,6 +1782,7 @@ static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
  */
 static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    g_env = env;
     constexpr int TABLE_COUNT = 1;
     const char *table[TABLE_COUNT];
     table[0] = "store_test";
@@ -1780,13 +1790,6 @@ static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
     Rdb_SyncCallback callback = CloudSyncCallback;
     auto errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_TIME_FIRST, table, TABLE_COUNT, &callback);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync TIME_FIRST is fail.");
-    NAPI_ASSERT(env, g_progressDetails != nullptr, "g_progressDetails is fail.");   
-    NAPI_ASSERT(env, g_progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->tableLength == 0, "tableLength is fail."); 
-    Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(g_progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
-    NAPI_ASSERT(env, tableDetails != nullptr, "tableDetails is fail.");
     errCode = 0;
 
     napi_value returnCode;
