@@ -94,7 +94,7 @@ export default class MainAbility2 extends Ability {
         console.log('[Demo] MainAbility2 onForeground')
         setTimeout(() => {
             globalThis.testEvent.push('MainAbility2onForeground');
-        }, 500);
+        }, 1500);
     }
 
     onBackground() {
