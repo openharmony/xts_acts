@@ -108,18 +108,14 @@ static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info
     return returnCode;
 }
 
-static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
-{   
-
+static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails) {   
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails != nullptr, "progressDetails is fail.");   
-    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version fail"); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->tableLength == 0, "tableLength is fail."); 
     Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
     NAPI_ASSERT_RETURN_VOID(g_env, tableDetails != nullptr, "tableDetails is fail.");
-
-
 }
 
 /**
