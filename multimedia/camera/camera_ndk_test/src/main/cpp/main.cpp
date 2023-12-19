@@ -23,7 +23,7 @@ static napi_value InitCamera(napi_env env, napi_callback_info info)
     napi_value result;
 
     size_t typeLen = 0;
-    char * surfaceId = nullptr;
+    char* surfaceId = nullptr;
 
     napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
 
