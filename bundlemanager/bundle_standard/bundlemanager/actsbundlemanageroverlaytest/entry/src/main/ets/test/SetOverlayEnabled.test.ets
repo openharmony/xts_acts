@@ -67,7 +67,7 @@ export default function setOverlayEnabled() {
         })
       } catch (e) {
         Utils.info("SetOverlayEnabledModuleNameNotInstall catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
       try {
@@ -78,7 +78,7 @@ export default function setOverlayEnabled() {
         });
       }catch (e) {
         Utils.info("SetOverlayEnabledModuleNameNotInstall callback" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
     })
@@ -96,18 +96,18 @@ export default function setOverlayEnabled() {
         })
       }catch (e) {
         Utils.info("SetOverlayEnabledModuleNameIsNotOverlay catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
       try {
         overlay.setOverlayEnabled(MODULE_NAME, true, (err, data) => {
           Utils.info("SetOverlayEnabledModuleNameIsNotOverlay result" + JSON.stringify(data));
           Utils.info("SetOverlayEnabledModuleNameIsNotOverlay fail" + JSON.stringify(err));
-          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
         });
       }catch (e) {
         Utils.info("SetOverlayEnabledModuleNameIsNotOverlay callback" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
     })

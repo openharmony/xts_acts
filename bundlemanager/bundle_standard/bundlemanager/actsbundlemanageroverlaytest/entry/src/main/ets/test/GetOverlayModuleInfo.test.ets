@@ -68,7 +68,7 @@ export default function getOverlayModuleInfo() {
         })
       }catch (e) {
         Utils.info("GetOverlayModuleInfoModuleNameNotInstall  catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       }
 
       try {
@@ -79,7 +79,7 @@ export default function getOverlayModuleInfo() {
         });
       }catch (e) {
         Utils.info("GetOverlayModuleInfoModuleNameNotInstall callback catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       }
 
     })
@@ -97,7 +97,7 @@ export default function getOverlayModuleInfo() {
         })
       }catch (e) {
         Utils.info("GetOverlayModuleInfoModuleNameNotOverlay  catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       }
 
       try {
@@ -108,7 +108,7 @@ export default function getOverlayModuleInfo() {
         });
       }catch (e) {
         Utils.info("GetOverlayModuleInfoModuleNameNotOverlay callback catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       }
 
     })

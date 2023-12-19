@@ -67,7 +67,7 @@ export default function getTargetOverlayModuleInfos() {
         })
       }catch (e) {
         Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall  catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
       try {
@@ -78,7 +78,7 @@ export default function getTargetOverlayModuleInfos() {
         });
       }catch (e) {
         Utils.info("GetTargetOverlayModuleInfosModuleNameNotInstall callback catch" + JSON.stringify(e));
-        expect(e.code).assertEqual(ERROR_CODE);
+        expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
 
     })
