@@ -959,6 +959,14 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       tempWnd.off('keyboardHeightChange');
       firstListenFlag = false
       secondListenFlag = false
+      await sleep(1000);
+      await buttonClick('点击按钮获取焦点', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      await sleep(1000);
       await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
         console.info(msgStr + err);
         await tempWnd.destroyWindow();
@@ -1030,6 +1038,14 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       tempWnd.off('keyboardHeightChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
+      await sleep(1000);
+      await buttonClick('点击按钮获取焦点', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      await sleep(1000);
       await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
         console.info(msgStr + err);
         await tempWnd.destroyWindow();
