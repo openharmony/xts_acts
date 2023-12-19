@@ -2067,6 +2067,12 @@ export default function window_test() {
                         width: 20,
                         height: 20
                     },
+                    drawableRect: {
+                        left: 20,
+                        top: 20,
+                        width: 20,
+                        height: 20
+                    },
                     type: 0,
                     isFullScreen: false,
                     isLayoutFullScreen: false,
@@ -2083,6 +2089,10 @@ export default function window_test() {
                 expect(20).assertEqual(windowP.windowRect.top);
                 expect(20).assertEqual(windowP.windowRect.width);
                 expect(20).assertEqual(windowP.windowRect.height);
+                expect(20).assertEqual(windowP.drawableRect.left);
+                expect(20).assertEqual(windowP.drawableRect.top);
+                expect(20).assertEqual(windowP.drawableRect.width);
+                expect(20).assertEqual(windowP.drawableRect.height);
                 expect(0).assertEqual(windowP.type);
                 expect(!windowP.isFullScreen).assertTrue();
                 expect(!windowP.isLayoutFullScreen).assertTrue();
