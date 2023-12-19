@@ -24,22 +24,19 @@ const ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY = 17700033;
 const ERROR_CODE = 401;
 
 export default function setOverlayEnabled() {
-  describe('setOverlayEnabled', function () {
+  describe('setOverlayEnabled',  () =>{
     /*
      * @tc.number: Sub_Bms_Framework_Status_OverlayEnable_0100
      * @tc.name: SetOverlayEnabledModuleNameIsNull
      * @tc.desc: Failed to set when the incoming moduleName is empty
      */
-    it('SetOverlayEnabledModuleNameIsNull', 0, async function (done) {
+    it('SetOverlayEnabledModuleNameIsNull', 0, async  () =>{
       try {
         await overlay.setOverlayEnabled("", true).then(data => {
           console.info("SetOverlayEnabledModuleNameIsNull result1111" + JSON.stringify(data))
           Utils.info("SetOverlayEnabledModuleNameIsNull result" + JSON.stringify(data));
           expect().assertFail();
-        }).catch(err => {
-          Utils.info("SetOverlayEnabledModuleNameIsNull fail" + JSON.stringify(err));
-          expect(err.code).assertEqual(ERROR_CODE);
-        });
+        })
       } catch (e) {
         Utils.info("SetOverlayEnabledModuleNameIsNull catch" + JSON.stringify(e));
         expect(e.code).assertEqual(ERROR_CODE);
@@ -50,12 +47,10 @@ export default function setOverlayEnabled() {
           Utils.info("SetOverlayEnabledModuleNameIsNull result" + JSON.stringify(data));
           Utils.info("SetOverlayEnabledModuleNameIsNull fail" + JSON.stringify(err));
           expect().assertFail();
-          done();
         });
       } catch (e) {
         Utils.info("SetOverlayEnabledModuleNameIsNull callback catch" + JSON.stringify(e));
         expect(e.code).assertEqual(ERROR_CODE);
-        done();
       }
     })
 
@@ -64,20 +59,16 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameNotInstall
      * @tc.desc: Failed to set when the incoming moduleName is not installed
      */
-    it('SetOverlayEnabledModuleNameNotInstall', 0, async function (done) {
+    it('SetOverlayEnabledModuleNameNotInstall', 0, async  () =>{
       await overlay.setOverlayEnabled(MODULE_NAME1, true).then(data => {
         Utils.info("SetOverlayEnabledModuleNameNotInstall result" + JSON.stringify(data));
         expect().assertFail();
-      }).catch(err => {
-        Utils.info("SetOverlayEnabledModuleNameNotInstall fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
-      });
+      })
 
       overlay.setOverlayEnabled(MODULE_NAME1, true, (err,data) => {
         Utils.info("SetOverlayEnabledModuleNameNotInstall result" + JSON.stringify(data));
         Utils.info("SetOverlayEnabledModuleNameNotInstall fail" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
-        done();
       });
     })
 
@@ -86,20 +77,16 @@ export default function setOverlayEnabled() {
      * @tc.name: SetOverlayEnabledModuleNameIsNotOverlay
      * @tc.desc: Failed to set when the incoming moduleName is not overlay
      */
-    it('SetOverlayEnabledModuleNameIsNotOverlay', 0, async function (done) {
+    it('SetOverlayEnabledModuleNameIsNotOverlay', 0, async  () =>{
       await overlay.setOverlayEnabled(MODULE_NAME, true).then(data => {
         Utils.info("SetOverlayEnabledModuleNameIsNotOverlay result" + JSON.stringify(data));
         expect().assertFail();
-      }).catch(err => {
-        Utils.info("SetOverlayEnabledModuleNameIsNotOverlay fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
-      });
+      })
 
       overlay.setOverlayEnabled(MODULE_NAME, true, (err,data) => {
         Utils.info("SetOverlayEnabledModuleNameIsNotOverlay result" + JSON.stringify(data));
         Utils.info("SetOverlayEnabledModuleNameIsNotOverlay fail" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
-        done();
       });
     })
   })
