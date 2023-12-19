@@ -17,7 +17,7 @@ module_output_path = "acts/nnrt"
 config("nncore_config") {
   include_dirs = [
     "../common",
-    "../../../../../foundation/ai/neural_network_runtime",
+    "../../../../../../foundation/ai/neural_network_runtime",
     "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
