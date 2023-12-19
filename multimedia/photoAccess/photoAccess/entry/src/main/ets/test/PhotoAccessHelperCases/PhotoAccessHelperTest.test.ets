@@ -723,6 +723,23 @@ export default function PhotoAccessHelperTest() {
             }
         }
 
+        async function getFirstObjectPromise(phAccessHelper,fetchOptions,done){
+            try {
+                let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+                let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+                if (photoAsset != undefined) {
+                    console.info('photoAsset displayName: ', photoAsset.displayName);
+                    releaseHelperPromise(phAccessHelper,done)
+                } else {
+                    console.error('getFirstObjectPromise failed');
+                    expect(false).assertTrue();
+                }
+            } catch (err) {
+                console.error('getFirstObjectPromise fail. message = ' + err);
+                expect(false).assertTrue();
+            }
+        }
+
         async function getNextObjectCallback(phAccessHelper,fetchOptions,done){
             try {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
@@ -1676,6 +1693,19 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000', 2, function (done) {
             let photoHelper = getPhotoHelper(context)
             getFirstObjectCallback(photoHelper,fetchOptions,done)
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010
+           * @tc.name      : 050.getFirstObject
+           * @tc.desc      : getFirstObject promise
+           * @tc.size      : MediumTest
+           * @tc.type      : Function test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010', 2, function (done) {
+            let photoHelper = getPhotoHelper(context)
+            getFirstObjectPromise(photoHelper,fetchOptions,done)
         })
 
         /* *
