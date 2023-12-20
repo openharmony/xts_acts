@@ -36,7 +36,10 @@ ohos_shared_library("ImageSourceNDKTest") {
   } else {
     libs = []
   }
-  include_dirs = [ "../cpp" ]
+  include_dirs = [
+    "../cpp",
+    "${resource_management_subsystem}/interfaces/native/resource/include",
+  ]
   configs = [ ":config" ]
 
   deps = [ "$image_subsystem/frameworks/kits/js/common/ndk:image_source_ndk" ]
