@@ -25,9 +25,6 @@ let gInData512 = 'RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttt
   'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
   'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
   'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
-
-
-
   
 let gInData512Array = stringToUint8Array(gInData512);
 let defaultData = '0';
