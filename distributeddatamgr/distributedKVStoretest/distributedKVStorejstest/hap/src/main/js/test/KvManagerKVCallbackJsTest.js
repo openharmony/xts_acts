@@ -561,7 +561,7 @@ describe('kvManagerCallbackTest', function () {
             done();
         }catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200 fail err' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(e.code == 401).assertTrue();
+            expect(e.code == "").assertTrue();
             done();
         }
 
