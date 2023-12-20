@@ -273,16 +273,6 @@ struct Index {
               }
               break;
             }
-
-            case "emitLoadData2": {
-              try {
-                this.controller.loadData("<html></html>", "text/html", "UTF-8", "ww.Openharmony.cn");
-                Utils.emitEvent(this.no_error, 1026)
-              } catch (error) {
-                Utils.emitEvent(error.code, 1026)
-              }
-              break;
-            }
             case "emitLoadUrl": {
               try {
                 this.controllerNull.loadUrl('https://docs.openharmony.cn/');
@@ -444,7 +434,7 @@ struct Index {
 
             case "emitLoadUrl2": {
               try {
-                this.controller.loadUrl('ww.docs.openharmony.cn/');
+                this.controller.loadUrl($rawfile(''));
                 Utils.emitEvent(this.no_error, 1058)
               } catch (error) {
                 Utils.emitEvent(error.code, 1058)
@@ -453,7 +443,7 @@ struct Index {
             }
             case "emitLoadUrl3": {
               try {
-                this.controller.loadUrl($rawfile('i.html'));
+                this.controller.loadUrl('file://');
                 Utils.emitEvent(this.no_error, 1059)
               } catch (error) {
                 Utils.emitEvent(error.code, 1059)
