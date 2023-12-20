@@ -266,7 +266,11 @@ export default function cameraSessionTest() {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002--------------");
       await cameraObj.sessionBegin();
       await createInput();
-      cameraObj.sessionAddInput();
+      let addInput = cameraObj.sessionAddInput();
+      if (addInput != 0) {
+        console.info(TAG + "addInput FAILED");
+        expect().assertFail();
+      }
       cameraObj.sessionRemoveInput();
       await releaseInput();
       cameraObj.sessionStop();
@@ -359,7 +363,10 @@ export default function cameraSessionTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006--------------");
-      await cameraObj.sessionRelease();
+      let ret = cameraObj.sessionRelease();
+      if (ret != 0) {
+        expect().assertFail();
+      }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006 ends here");
     });
   })

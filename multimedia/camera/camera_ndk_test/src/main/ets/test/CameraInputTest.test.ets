@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
 import { GlobalThis } from './Constants';
 
@@ -191,7 +191,10 @@ export default function CameraInputTest() {
       let functionTag = "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100";
       console.info(functionTag);
       await startCameraSession();
-      await releaseInput();
+      let ret = cameraObj.cameraInputClose();
+      if (ret != 0) {
+        expect().assertFail();
+      }
       console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 ends here");
     });
   })

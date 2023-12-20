@@ -163,6 +163,9 @@ export default function cameraJSUnitOutput() {
     it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100--------------");
       cameraManager = cameraObj.initCamera(GlobalThis.getInstance().getValue());
+      if (cameraManager != 0) {
+        expect().assertFail();
+      }
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100
@@ -432,25 +435,6 @@ export default function cameraJSUnitOutput() {
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100
-     * @tc.name      : captureSession add metadataOutput
-     * @tc.desc      : captureSession add metadataOutput
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    // it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_0100', 1, async () => {
-    //   console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100--------------");
-    //   cameraObj.createMetadataOutput();
-    //   console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100 sessionAddVideoOutput fail");
-    //   let ret = await cameraObj.sessionAddMetadataOutput();
-    //   console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100 sessionAddVideoOutput fail");
-    //   if (ret) {
-    //     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 sessionAddMetadataOutput fail");
-    //     // expect().assertFail();
-    //   }
-    // });
-    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100
      * @tc.name      : captureSession commitConfig
      * @tc.desc      : captureSession commitConfig
@@ -464,36 +448,6 @@ export default function cameraJSUnitOutput() {
       if (ret) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100 sessionCommitConfig fail");
         expect().assertFail();
-      }
-    });
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100
-     * @tc.name      : Start metadataOutput type async api
-     * @tc.desc      : Start metadataOutput type async api
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100', 1, async () => {
-      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100--------------");
-      let ret = cameraObj.metadataOutputStart();
-      if (ret) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 metadataOutputStart fail");
-      }
-    });
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100
-     * @tc.name      : Stop metadataOutput type async api
-     * @tc.desc      : Stop metadataOutput type async api
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100', 1, async () => {
-      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100--------------");
-      let ret = cameraObj.metadataOutputStop();
-      if (ret) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100 metadataOutputStop fail");
       }
     });
     /**

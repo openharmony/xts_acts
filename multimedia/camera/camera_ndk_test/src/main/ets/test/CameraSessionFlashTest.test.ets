@@ -307,7 +307,10 @@ export default function cameraSessionFlashTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003--------------");
-      cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_CLOSE);
+      let ret = cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_CLOSE);
+      if (ret != 0) {
+        expect().assertFail();
+      }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003 finish");
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003 PASSED with FlashMode is: " + 0);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003 ends here");
