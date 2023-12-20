@@ -1773,6 +1773,203 @@ export default function audioRendererTest() {
 
     }
 
+     /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100
+       *@tc.name      : Get All AudioChannel
+       *@tc.desc      : Get All AudioChannel
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 2
+       */
+       it("SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100", 2, async function (done) {
+        console.log(`get CHANNEL_1 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_1));
+        expect(audio.AudioChannel.CHANNEL_2 ).assertEqual(0x1 << 1);
+        console.log(`get CHANNEL_2 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_2));
+        expect(audio.AudioChannel.CHANNEL_3 ).assertEqual(3);
+        console.log(`get CHANNEL_3 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_3));
+        expect(audio.AudioChannel.CHANNEL_4 ).assertEqual(4);
+        console.log(`get CHANNEL_4 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_4));
+        expect(audio.AudioChannel.CHANNEL_5 ).assertEqual(5);
+        console.log(`get CHANNEL_5 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_5));
+        expect(audio.AudioChannel.CHANNEL_6 ).assertEqual(6);
+        console.log(`get CHANNEL_6 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_6));
+        expect(audio.AudioChannel.CHANNEL_7 ).assertEqual(7);
+        console.log(`get CHANNEL_7 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_7));
+        expect(audio.AudioChannel.CHANNEL_8 ).assertEqual(8);
+        console.log(`get CHANNEL_8 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_8));
+        expect(audio.AudioChannel.CHANNEL_9 ).assertEqual(9);
+        console.log(`get CHANNEL_9 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_9));
+        expect(audio.AudioChannel.CHANNEL_10 ).assertEqual(10);
+        console.log(`get CHANNEL_10 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_10));
+        expect(audio.AudioChannel.CHANNEL_12 ).assertEqual(12);
+        console.log(`get CHANNEL_12 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_12));
+        expect(audio.AudioChannel.CHANNEL_14 ).assertEqual(14);
+        console.log(`get CHANNEL_14 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_14));
+        expect(audio.AudioChannel.CHANNEL_16 ).assertEqual(16);
+        console.log(`get CHANNEL_16 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_16));
+        done();
+      })
+
+      /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100
+       *@tc.name      : All AudioChannelLayout 
+       *@tc.desc      : All AudioChannelLayout 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 2
+       49
+       */
+       it("SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100", 2, async function (done) {
+        console.log(`get CH_LAYOUT_UNKNOWN success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN).assertEqual(0x0);
+        console.log(`get CH_LAYOUT_MONO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_MONO));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_MONO).assertEqual(0x4);
+        console.log(`get CH_LAYOUT_STEREO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO).assertEqual(0x3);
+        console.log(`get CH_LAYOUT_STEREO_DOWNMIX success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX).assertEqual(0x60000000);
+        console.log(`get CH_LAYOUT_2POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1).assertEqual(0xB);
+        console.log(`get CH_LAYOUT_3POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0).assertEqual(0x103);
+        console.log(`get CH_LAYOUT_SURROUND success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_SURROUND));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_SURROUND).assertEqual(0x7);
+        console.log(`get CH_LAYOUT_3POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1).assertEqual(0xF);
+        console.log(`get CH_LAYOUT_4POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT0));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT0).assertEqual(0x107);
+        console.log(`get CH_LAYOUT_QUAD success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD).assertEqual(0x33);
+        console.log(`get CH_LAYOUT_QUAD_SIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE).assertEqual(0x603);
+        console.log(`get CH_LAYOUT_2POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2).assertEqual(0x3000000003);
+        console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D).assertEqual(0x100000000001);
+        console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D).assertEqual(0x100000001001);
+        console.log(`get CH_LAYOUT_AMB_ORDER1_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA).assertEqual(0x100000000101);
+        console.log(`get CH_LAYOUT_4POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT1).assertEqual(0x10F);
+        console.log(`get CH_LAYOUT_5POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0).assertEqual(0x607);
+        console.log(`get CH_LAYOUT_5POINT0_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK).assertEqual(0x37);
+        console.log(`get CH_LAYOUT_2POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2).assertEqual(0x300000000B);
+        console.log(`get CH_LAYOUT_3POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2).assertEqual(0x3000000007);
+        console.log(`get CH_LAYOUT_5POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1).assertEqual(0x60F);
+        console.log(`get CH_LAYOUT_5POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK).assertEqual(0x3F);
+        console.log(`get CH_LAYOUT_6POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0).assertEqual(0x707);
+        console.log(`get CH_LAYOUT_HEXAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL).assertEqual(0x137);
+        console.log(`get CH_LAYOUT_3POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2).assertEqual(0x500F);
+        console.log(`get CH_LAYOUT_6POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT).assertEqual(0x6C3);
+        console.log(`get CH_LAYOUT_6POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1).assertEqual(0x70F);
+        console.log(`get CH_LAYOUT_6POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK).assertEqual(0x13F);
+        console.log(`get CH_LAYOUT_6POINT1_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT).assertEqual(0x6CB);
+        console.log(`get CH_LAYOUT_7POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0).assertEqual(0x637);
+        console.log(`get CH_LAYOUT_7POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT).assertEqual(0x6C7);
+        console.log(`get CH_LAYOUT_7POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1).assertEqual(0x63F);
+        console.log(`get CH_LAYOUT_OCTAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL).assertEqual(0x737);
+        console.log(`get CH_LAYOUT_5POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2).assertEqual(0x300000060F);
+        console.log(`get CH_LAYOUT_7POINT1_WIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE).assertEqual(0x6CF);
+        console.log(`get CH_LAYOUT_7POINT1_WIDE_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK).assertEqual(0xFF);
+        console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D).assertEqual(0x100000000002);
+        console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D).assertEqual(0x100000001002);
+        console.log(`get CH_LAYOUT_AMB_ORDER2_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA).assertEqual(0x100000000102);
+        console.log(`get CH_LAYOUT_5POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4).assertEqual(0x2D60F);
+        console.log(`get CH_LAYOUT_7POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2).assertEqual(0x300000063F);
+        console.log(`get CH_LAYOUT_7POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4).assertEqual(0x2D63F);
+        console.log(`get CH_LAYOUT_10POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_10POINT2));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_10POINT2).assertEqual(0x180005737);
+        console.log(`get CH_LAYOUT_9POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4).assertEqual(0x18002D63F);
+        console.log(`get CH_LAYOUT_9POINT1POINT6 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6).assertEqual(0x318002D63F);
+        console.log(`get CH_LAYOUT_HEXADECAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL).assertEqual(0x18003F737);
+        console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D).assertEqual(0x100000000003);
+        console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D).assertEqual(0x100000001003);
+        console.log(`get CH_LAYOUT_AMB_ORDER3_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA));
+        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA).assertEqual(0x100000000103);
+        done();
+      })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETSTREAMINFO_0100
+     * @tc.name      : AudioRenderer-GetStreamInfo
+     * @tc.desc      : AudioRenderer-GetStreamInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETSTREAMINFO_0100', 2, async function (done) {
+
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRen = await audio.createAudioRenderer(AudioRendererOptions);
+      await audioRen.getStreamInfo().then((streamInfo) => {
+        console.info('Renderer GetStreamInfo:');
+        console.info(`Renderer sampling rate: ${streamInfo.samplingRate}`);
+        expect(streamInfo.samplingRate).assertEqual(audio.AudioSamplingRate.SAMPLE_RATE_44100);
+        console.info(`Renderer channel: ${streamInfo.channels}`);
+        expect(streamInfo.channels).assertEqual(audio.AudioChannel.CHANNEL_1);
+        console.info(`Renderer format: ${streamInfo.sampleFormat}`);
+        expect(streamInfo.sampleFormat).assertEqual(audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE);
+        console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
+        expect(streamInfo.encodingType).assertEqual(audio.AudioEncodingType.ENCODING_TYPE_RAW);
+        console.info(`Renderer channelLayout type: ${streamInfo.channelLayout}`);
+        expect(streamInfo.channelLayout).assertEqual(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN);
+        audioRen.release();
+        done();
+      }).catch((err) => {
+        console.error(`ERROR: ${err}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_SYNC_0100
