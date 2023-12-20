@@ -334,16 +334,21 @@ export default function cameraSessionVideoStabilizationTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004--------------");
-      cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW);
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 finish");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 PASSED with VideoStabilizationMode is: " + 1);
-      let videoStabilizationMode = cameraObj.sessionGetVideoStabilizationMode();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 finish");
-      if (videoStabilizationMode == Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 PASSED with VideoStabilizationMode is: " + videoStabilizationMode);
-      }
-      else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 FAILED with VideoStabilizationMode is: " + videoStabilizationMode);
+      if (mIsVideoStabilizationModeSupportedArray[0] == true) {
+        cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 finish");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 PASSED with VideoStabilizationMode is: " + 1);
+        let videoStabilizationMode = cameraObj.sessionGetVideoStabilizationMode();
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 finish");
+        if (videoStabilizationMode == Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW) {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 PASSED with VideoStabilizationMode is: " + videoStabilizationMode);
+        }
+        else {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 FAILED with VideoStabilizationMode is: " + videoStabilizationMode);
+          expect().assertFail();
+        }
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 PASSED");
       }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004 ends here");
     });

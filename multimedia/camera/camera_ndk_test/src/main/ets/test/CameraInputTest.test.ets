@@ -158,7 +158,10 @@ export default function CameraInputTest() {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 start for camera");
       await startCameraSession();
       await createInput();
-      await cameraObj.cameraInputOpen();
+      let ret = cameraObj.cameraInputOpen();
+      if (ret != 0) {
+        expect().assertFail();
+      }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 end for camera");
     });
     /**
