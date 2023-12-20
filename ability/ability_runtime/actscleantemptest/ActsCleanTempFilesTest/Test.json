@@ -6,7 +6,7 @@
         "bundle-name": "com.example.cleancachefilestest",
         "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": 20000
+        "testcase-timeout": "9500"
     },
     "kits": [
 		{
@@ -23,9 +23,6 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D",
                 "setenforce 0"
             ]
         }

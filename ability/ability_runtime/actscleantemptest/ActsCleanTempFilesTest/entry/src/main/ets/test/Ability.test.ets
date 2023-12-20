@@ -62,7 +62,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0101 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(5000);
+        await sleep(1500);
         console.info('Acts_CleanTempFiles_0100 startAbility two');
         getContext().startAbility(
           {
@@ -110,7 +110,7 @@ export default function abilityTest() {
 
       async function unSubscribeCallback() {
         console.log('Acts_CleanTempFiles_0100 unSubscribeCallback');
-        await sleep(5000);
+        await sleep(500);
         done();
       }
     })
@@ -145,7 +145,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0201 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(5000);
+        await sleep(1500);
         console.info('Acts_CleanTempFiles_0200 startAbility two');
         getContext().startAbility(
           {
@@ -197,7 +197,7 @@ export default function abilityTest() {
 
       async function unSubscribeCallback() {
         console.log('Acts_CleanTempFiles_0200 unSubscribeCallback');
-        await sleep(5000);
+        await sleep(500);
         done();
       }
     })
@@ -230,7 +230,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0301 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(5000);
+        await sleep(1500);
         console.info('Acts_CleanTempFiles_0300 startAbility two');
         getContext().startAbility(
           {
@@ -266,7 +266,7 @@ export default function abilityTest() {
 
       async function unSubscribeCallback() {
         console.log('Acts_CleanTempFiles_0300 unSubscribeCallback');
-        await sleep(5000);
+        await sleep(500);
         done();
       }
     })
@@ -308,7 +308,7 @@ export default function abilityTest() {
               key: 'Acts_CleanTempFiles_0401'
             }
           }, options)
-        await sleep(5000);
+        await sleep(1500);
         console.info('Acts_CleanTempFiles_0400 startAbility two');
         getContext().connectServiceExtensionAbility(
           {
@@ -344,7 +344,7 @@ export default function abilityTest() {
 
       async function unSubscribeCallback() {
         console.log('Acts_CleanTempFiles_0400 unSubscribeCallback');
-        await sleep(5000);
+        await sleep(500);
         done();
       }
     })
