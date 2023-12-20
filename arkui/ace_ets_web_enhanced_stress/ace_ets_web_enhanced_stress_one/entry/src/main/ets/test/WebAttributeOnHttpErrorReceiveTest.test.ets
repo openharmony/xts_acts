@@ -57,13 +57,14 @@ export default function webAttributeOnHttpErrorReceiveTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONHTTPERRORRECEIVE_0100
     * @tc.name        : testWebAttributeOnHttpErrorReceive001
-    * @tc.desc        : stress testing onHttpErrorReceive when using the raw file
+    * @tc.desc        : stress testing onHttpErrorReceive
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
     it('testWebAttributeOnHttpErrorReceive001', 0, async (done: Function) => {
-      Utils.doIt("testWebAttributeOnHttpErrorReceive001", 110026, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebAttributeOnHttpErrorReceive001", 110026,
+        Constants.USE_LOW_STRESS_TIMES ? Constants.LOW_STRESS_TIMES : Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_ATTRIBUTE_ONHTTPERRORRECEIVE_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);

@@ -24,9 +24,7 @@ struct WebResourceErrorGetErrorInfoTest {
   @State str: string = "";
   @State callBackId: number = 0;
   @State stressTimes: number = 0;
-  @State successTimes: number = 0;
   @State buttonKey: string = '';
-  @State errorInfo: string = ''
 
   onPageShow() {
     Utils.registerEventPage((eventData: events_emitter.EventData) => {
@@ -55,7 +53,6 @@ struct WebResourceErrorGetErrorInfoTest {
                 try {
                   this.controller.clearHistory()
                   await Utils.sleep(2000);
-                  this.errorInfo =''
                   this.controller.loadUrl('https://wrong.host.badssl.com');
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -72,18 +69,15 @@ struct WebResourceErrorGetErrorInfoTest {
           .databaseAccess(true)
           .onErrorReceive((event) => {
             if (event) {
-              this.successTimes++
-              Utils.stressingLog('WebResourceError.getErrorInfo()', this.successTimes, this.stressTimes)
-              console.log('getErrorInfo:' + event.error.getErrorInfo())
-              if (this.successTimes < this.stressTimes) {
-                try {
-                  this.controller.loadUrl($rawfile('indexNotExist.html'))
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                  Utils.emitEvent(false, this.callBackId)
+              try {
+                for (let i = 0; i < this.stressTimes; i++) {
+                  event.error.getErrorInfo()
+                  Utils.stressingLog('WebResourceError.getErrorInfo()', i + 1, this.stressTimes)
                 }
-              } else {
                 Utils.emitEvent(true, this.callBackId)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(false, this.callBackId)
               }
             }
           })
