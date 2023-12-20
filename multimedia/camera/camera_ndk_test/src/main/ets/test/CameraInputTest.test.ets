@@ -149,7 +149,7 @@ export default function CameraInputTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100
      * @tc.name      : camera status callback on CameraInput async api for error
      * @tc.desc      : camera status callback on CameraInput async api for error
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -165,14 +165,17 @@ export default function CameraInputTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100
      * @tc.name      : open/close Camera with cameraInput callback api
      * @tc.desc      : open/close Camera with cameraInput callback api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100--------------");
       await startCameraSession();
-      cameraObj.sessionBegin();
+      let ret = cameraObj.sessionBegin();
+      if (ret != 0) {
+        expect().assertFail();
+      }
       console.info(TAG + "CameraCallbackCode = " + cameraObj.getCameraCallbackCode());
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 ends here");
     });
@@ -180,7 +183,7 @@ export default function CameraInputTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100
      * @tc.name      : open/close Camera with cameraInput promise api
      * @tc.desc      : open/close Camera with cameraInput promise api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */

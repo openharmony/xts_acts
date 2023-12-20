@@ -271,7 +271,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100
      * @tc.name      : Check capture session get zoom ratio range with promise
      * @tc.desc      : Check capture session get zoom ratio range with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -297,7 +297,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100
      * @tc.name      : Check capture session set zoom ratio with promise
      * @tc.desc      : Check capture session set zoom ratio with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -321,7 +321,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101
      * @tc.name      : Check capture session set zoom ratio with promise(invalid value, max + 1)
      * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, max + 1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -345,7 +345,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102
      * @tc.name      : Check capture session set zoom ratio with promise(invalid value, max + 0.1)
      * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, max + 0.1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -369,7 +369,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103
      * @tc.name      : Check capture session set zoom ratio with promise(invalid value, min - 1)
      * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, min - 1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -393,7 +393,7 @@ export default function cameraSessionZoomRatioTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104
      * @tc.name      : Check capture session set zoom ratio with promise(invalid value, min - 0.1)
      * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, min - 0.1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

@@ -353,7 +353,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_001
      * @tc.name      : Check capture session support focus manual mode with promise or not
      * @tc.desc      : Check capture session support focus manual mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -374,7 +374,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_MODE_PROMISE_002
      * @tc.name      : Check capture session set focus manual mode with promise
      * @tc.desc      : Check capture session set focus manual mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -398,7 +398,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_003
      * @tc.name      : Check capture session support focus continuous auto mode with promise or not
      * @tc.desc      : Check capture session support focus continuous auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -419,7 +419,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_MODE_PROMISE_004
      * @tc.name      : Check capture session set focus continuous auto mode with promise
      * @tc.desc      : Check capture session set focus continuous auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -443,7 +443,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_005
      * @tc.name      : Check capture session support focus auto mode with promise or not
      * @tc.desc      : Check capture session support focus auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -464,7 +464,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_MODE_PROMISE_006
      * @tc.name      : Check capture session set focus auto mode with promise
      * @tc.desc      : Check capture session set focus auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -488,7 +488,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_007
      * @tc.name      : Check capture session support focus locked mode with promise or not
      * @tc.desc      : Check capture session support focus locked mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -509,7 +509,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_MODE_PROMISE_008
      * @tc.name      : Check capture session set focus locked mode with promise
      * @tc.desc      : Check capture session set focus locked mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -533,7 +533,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_009
      * @tc.name      : Check capture session set focus point with promise
      * @tc.desc      : Check capture session set focus point with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -557,7 +557,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_009
      * @tc.name      : Check capture session set focus point with promise(left-top point)
      * @tc.desc      : Check capture session set focus point with promise(left-top point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -581,7 +581,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_010
      * @tc.name      : Check capture session set focus point with promise(right-top point)
      * @tc.desc      : Check capture session set focus point with promise(right-top point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -605,7 +605,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_011
      * @tc.name      : Check capture session set focus point with promise(left-bottom point)
      * @tc.desc      : Check capture session set focus point with promise(left-bottom point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -629,7 +629,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_012
      * @tc.name      : Check capture session set focus point with promise(right-bottom point)
      * @tc.desc      : Check capture session set focus point with promise(right-bottom point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -654,7 +654,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_013
      * @tc.name      : Check capture session set focus point with promise(left-top invalid point)
      * @tc.desc      : Check capture session set focus point with promise(left-top invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -678,7 +678,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_014
      * @tc.name      : Check capture session set focus point with promise(right-top invalid point)
      * @tc.desc      : Check capture session set focus point with promise(right-top invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -702,7 +702,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_015
      * @tc.name      : Check capture session set focus point with promise(left-bottom invalid point)
      * @tc.desc      : Check capture session set focus point with promise(left-bottom invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -726,7 +726,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FOCUS_POINT_PROMISE_016
      * @tc.name      : Check capture session set focus point with promise(right-bottom invalid point)
      * @tc.desc      : Check capture session set focus point with promise(right-bottom invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -750,7 +750,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ON_FOCUSSTATECHANGE_017
      * @tc.name      : camera session focusstatechange api
      * @tc.desc      : camera session focusstatechange api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -772,7 +772,7 @@ export default function cameraSessionFocusTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_SESSION_ON_ERROR_018
      * @tc.name      : camera session callback on error
      * @tc.desc      : camera session callback on error
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */

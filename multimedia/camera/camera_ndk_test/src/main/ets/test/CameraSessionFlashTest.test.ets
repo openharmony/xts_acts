@@ -259,7 +259,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_HAS_FLASH_PROMISE_001
      * @tc.name      : Check capture session has flash with promise or not
      * @tc.desc      : Check capture session has flash with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -280,7 +280,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_002
      * @tc.name      : Check capture session support flash close mode with promise or not
      * @tc.desc      : Check capture session support flash close mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -301,7 +301,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_003
      * @tc.name      : Check capture session set flash close mode with promise
      * @tc.desc      : Check capture session set flash close mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -316,7 +316,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_004
      * @tc.name      : Check capture session support flash open mode with promise or not
      * @tc.desc      : Check capture session support flash open mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -337,7 +337,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_005
      * @tc.name      : Check capture session set flash open mode with promise
      * @tc.desc      : Check capture session set flash open mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -361,7 +361,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_006
      * @tc.name      : Check capture session support flash auto mode with promise or not
      * @tc.desc      : Check capture session support flash auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -387,7 +387,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_007
      * @tc.name      : Check capture session set flash auto mode with promise
      * @tc.desc      : Check capture session set flash auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -416,7 +416,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_008
      * @tc.name      : Check capture session support flash always open mode with promise or not
      * @tc.desc      : Check capture session support flash always open mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -442,7 +442,7 @@ export default function cameraSessionFlashTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_FLASH_MODE_PROMISE_009
      * @tc.name      : Check capture session set flash always open mode with promise
      * @tc.desc      : Check capture session set flash always open mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

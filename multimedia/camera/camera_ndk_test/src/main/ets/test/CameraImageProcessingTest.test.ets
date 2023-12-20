@@ -228,7 +228,7 @@ export default function CameraImageProcessingTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -255,7 +255,7 @@ export default function CameraImageProcessingTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */

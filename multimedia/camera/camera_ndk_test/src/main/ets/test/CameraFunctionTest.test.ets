@@ -234,7 +234,7 @@ export default function CameraFunctionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -260,7 +260,7 @@ export default function CameraFunctionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_001
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -288,7 +288,7 @@ export default function CameraFunctionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -314,7 +314,7 @@ export default function CameraFunctionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -344,7 +344,7 @@ export default function CameraFunctionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -374,7 +374,7 @@ export default function CameraFunctionTest() {
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100
       * @tc.name      : CameraInput  open api
       * @tc.desc      : CameraInput  open api
-      * @tc.size      : MEDIUM
+      * @tc.size      : MediumTest
       * @tc.type      : Function
       * @tc.level     : Level 0
     */

@@ -308,7 +308,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0100
      * @tc.name      : Check capture session support exposure locked mode with promise or not
      * @tc.desc      : Check capture session support exposure locked mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -330,7 +330,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_002
      * @tc.name      : Check capture session set exposure locked mode with promise
      * @tc.desc      : Check capture session set exposure locked mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -354,7 +354,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_003
      * @tc.name      : Check capture session support exposure auto mode with promise or not
      * @tc.desc      : Check capture session support exposure auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -375,7 +375,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_004
      * @tc.name      : Check capture session set exposure auto mode with promise
      * @tc.desc      : Check capture session set exposure auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -399,7 +399,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_005
      * @tc.name      : Check capture session support exposure continuous auto mode with promise or not
      * @tc.desc      : Check capture session support exposure continuous auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -420,7 +420,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_MODE_PROMISE_006
      * @tc.name      : Check capture session set exposure continuous auto mode with promise
      * @tc.desc      : Check capture session set exposure continuous auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -444,7 +444,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_007
      * @tc.name      : Check capture session set METERING point with promise
      * @tc.desc      : Check capture session set METERING point with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -468,7 +468,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_008
      * @tc.name      : Check capture session set METERING point with promise(left-top point)
      * @tc.desc      : Check capture session set METERING point with promise(left-top point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -492,7 +492,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_009
      * @tc.name      : Check capture session set METERING point with promise(right-top point)
      * @tc.desc      : Check capture session set METERING point with promise(right-top point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -516,7 +516,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_010
      * @tc.name      : Check capture session set METERING point with promise(left-bottom point)
      * @tc.desc      : Check capture session set METERING point with promise(left-bottom point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -540,7 +540,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_011
      * @tc.name      : Check capture session set METERING point with promise(right-bottom point)
      * @tc.desc      : Check capture session set METERING point with promise(right-bottom point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -564,7 +564,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_012
      * @tc.name      : Check capture session set METERING point with promise(left-top invalid point)
      * @tc.desc      : Check capture session set METERING point with promise(left-top invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -588,7 +588,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_013
      * @tc.name      : Check capture session set METERING point with promise(right-top invalid point)
      * @tc.desc      : Check capture session set METERING point with promise(right-top invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -612,7 +612,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_014
      * @tc.name      : Check capture session set METERING point with promise(left-bottom invalid point)
      * @tc.desc      : Check capture session set METERING point with promise(left-bottom invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -636,7 +636,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_015
      * @tc.name      : Check capture session set METERING point with promise(right-bottom invalid point)
      * @tc.desc      : Check capture session set METERING point with promise(right-bottom invalid point)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -660,7 +660,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016
      * @tc.name      : Check capture session get exposure bias range with promise
      * @tc.desc      : Check capture session get exposure bias range with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -675,6 +675,7 @@ export default function cameraSessionExposureTest() {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016 finish");
       if (exposureBiasRangeLength < 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016 FAILED with ExposureBiasRange length is: " + exposureBiasRangeLength);
+        expect().assertFail();
       }
       else {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_016 PASSED with ExposureBiasRange length is: " + exposureBiasRangeLength);
@@ -688,7 +689,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_017
      * @tc.name      : Check capture session set exposure bias with promise
      * @tc.desc      : Check capture session set exposure bias with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -718,7 +719,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_018
      * @tc.name      : Check capture session set exposure bias with promise(invalid value, min - 1)
      * @tc.desc      : Check capture session set exposure bias with promise(invalid value, min - 1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -748,7 +749,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_019
      * @tc.name      : Check capture session set exposure bias with promise(invalid value, min - 0.1)
      * @tc.desc      : Check capture session set exposure bias with promise(invalid value, min - 0.1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -778,7 +779,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_020
      * @tc.name      : Check capture session set exposure bias with promise(invalid value, max + 1)
      * @tc.desc      : Check capture session set exposure bias with promise(invalid value, max + 1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -808,7 +809,7 @@ export default function cameraSessionExposureTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_020
      * @tc.name      : Check capture session set exposure bias with promise(invalid value, max + 0.1)
      * @tc.desc      : Check capture session set exposure bias with promise(invalid value, max + 0.1)
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

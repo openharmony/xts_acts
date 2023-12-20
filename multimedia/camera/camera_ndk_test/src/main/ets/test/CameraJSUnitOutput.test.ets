@@ -156,7 +156,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100
      * @tc.name      : Create CameraManager instance async api
      * @tc.desc      : Create CameraManager instance async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -168,7 +168,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100
      * @tc.name      : Get camera from cameramanager to get array of camera async api
      * @tc.desc      : Get camera from cameramanager to get array of camera async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -201,7 +201,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100
      * @tc.name      : Create previewOutput instance async api
      * @tc.desc      : Create previewOutput instance async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -222,7 +222,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100
      * @tc.name      : Create previewOutput instance async api
      * @tc.desc      : Create previewOutput instance async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -250,7 +250,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100
      * @tc.name      : Create photoOutput instance async api
      * @tc.desc      : Create photoOutput instance async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -277,7 +277,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100
      * @tc.name      : Create videoOutput instance api
      * @tc.desc      : Create videoOutput instance api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -302,7 +302,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100
      * @tc.name      : Create metadataOutput instance api
      * @tc.desc      : Create metadataOutput instance api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -329,7 +329,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100
      * @tc.name      : Create CaptureSession instance api
      * @tc.desc      : Create CaptureSession instance api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -352,7 +352,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_BEGIN_CONFIG_CALLBACK_0100
      * @tc.name      : captureSession beginConfig
      * @tc.desc      : captureSession beginConfig
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -368,7 +368,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_INPUT_CALLBACK_0100
      * @tc.name      : captureSession addInput
      * @tc.desc      : captureSession addInput
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -384,7 +384,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_CALLBACK_0100
      * @tc.name      : captureSession add previewOutput
      * @tc.desc      : captureSession add previewOutput
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -401,7 +401,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_CALLBACK_0100
      * @tc.name      : captureSession add photoOutput
      * @tc.desc      : captureSession add photoOutput
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -418,7 +418,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100
      * @tc.name      : captureSession remove photoOutput
      * @tc.desc      : captureSession remove photoOutput
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -435,7 +435,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100
      * @tc.name      : captureSession add metadataOutput
      * @tc.desc      : captureSession add metadataOutput
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -454,7 +454,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100
      * @tc.name      : captureSession commitConfig
      * @tc.desc      : captureSession commitConfig
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -470,7 +470,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100
      * @tc.name      : Start metadataOutput type async api
      * @tc.desc      : Start metadataOutput type async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -485,7 +485,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100
      * @tc.name      : Stop metadataOutput type async api
      * @tc.desc      : Stop metadataOutput type async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -500,7 +500,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_PROMISE_0100
      * @tc.name      : Create previewOutput instance promise api
      * @tc.desc      : Create previewOutput instance promise api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -516,7 +516,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_PROMISE_0100
      * @tc.name      : Create previewOutput instance promise api
      * @tc.desc      : Create previewOutput instance promise api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -532,7 +532,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100
      * @tc.name      : videoOutput start promise api
      * @tc.desc      : videoOutput start promise api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -548,7 +548,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100
      * @tc.name      : videoOutput stop promise api
      * @tc.desc      : videoOutput stop promise api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -564,7 +564,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100
      * @tc.name      : preview output callback on frameStart api
      * @tc.desc      : preview output callback on frameStart api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -582,7 +582,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100
      * @tc.name      : preview output callback on frameEnd api
      * @tc.desc      : preview output callback on frameEnd api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -600,7 +600,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100
      * @tc.name      : preview output callback on frameEnd api
      * @tc.desc      : preview output callback on frameEnd api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -618,7 +618,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100
      * @tc.name      : photoOutput capture with promise mode
      * @tc.desc      : photoOutput capture with promise mode
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -637,7 +637,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
      * @tc.name      : photo output callback on captureStart
      * @tc.desc      : photo output callback on captureStart
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -663,7 +663,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100
      * @tc.name      : photo output callback on frameShutter
      * @tc.desc      : photo output callback on frameShutter
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -689,7 +689,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100
      * @tc.name      : photo output callback on captureEnd
      * @tc.desc      : photo output callback on captureEnd
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -715,7 +715,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100
      * @tc.name      : photo output callback on error
      * @tc.desc      : photo output callback on error
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -741,7 +741,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100
      * @tc.name      : Create previewOutput instance async api
      * @tc.desc      : Create previewOutput instance async api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -757,7 +757,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100
      * @tc.name      : Start metadataOutput sync api
      * @tc.desc      : Start metadataOutput sync api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
@@ -776,7 +776,7 @@ export default function cameraJSUnitOutput() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100
      * @tc.name      : Stop metadataOutput sync api
      * @tc.desc      : Stop metadataOutput aync api
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */

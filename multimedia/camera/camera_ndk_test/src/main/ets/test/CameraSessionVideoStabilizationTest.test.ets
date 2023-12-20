@@ -262,7 +262,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_001
      * @tc.name      : Check capture session support video stabilization off mode with promise or not
      * @tc.desc      : Check capture session support video stabilization off mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -283,7 +283,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_002
      * @tc.name      : Check capture session set video stabilization off mode with promise
      * @tc.desc      : Check capture session set video stabilization off mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -307,7 +307,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_003
      * @tc.name      : Check capture session support video stabilization low mode with promise or not
      * @tc.desc      : Check capture session support video stabilization low mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -328,7 +328,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_004
      * @tc.name      : Check capture session set video stabilization low mode with promise
      * @tc.desc      : Check capture session set video stabilization low mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -351,7 +351,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_005
      * @tc.name      : Check capture session support video stabilization middle mode with promise or not
      * @tc.desc      : Check capture session support video stabilization middle mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -372,7 +372,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_006
      * @tc.name      : Check capture session set video stabilization middle mode with promise
      * @tc.desc      : Check capture session set video stabilization middle mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -401,7 +401,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_007
      * @tc.name      : Check capture session support video stabilization high mode with promise or not
      * @tc.desc      : Check capture session support video stabilization high mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -422,7 +422,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_008
      * @tc.name      : Check capture session set video stabilization high mode with promise
      * @tc.desc      : Check capture session set video stabilization high mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -451,7 +451,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_009
      * @tc.name      : Check capture session support video stabilization auto mode with promise or not
      * @tc.desc      : Check capture session support video stabilization auto mode with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -472,7 +472,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_010
      * @tc.name      : Check capture session set video stabilization auto mode with promise
      * @tc.desc      : Check capture session set video stabilization auto mode with promise
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

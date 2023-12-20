@@ -241,13 +241,16 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001
      * @tc.name      : Check capture session begin config
      * @tc.desc      : Check capture session begin config
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001--------------");
-      cameraObj.sessionBegin();
+      let ret = cameraObj.sessionBegin();
+      if (ret != 0) {
+        expect().assertFail();
+      }
       cameraObj.sessionStop();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001 PASSED");
     });
@@ -255,7 +258,7 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002
      * @tc.name      : Check capture session can add input with promise or not
      * @tc.desc      : Check capture session can add input with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -273,13 +276,16 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003
      * @tc.name      : Check capture session can add output with promise or not for preview
      * @tc.desc      : Check capture session can add output with promise or not for preview
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003--------------");
-      createOutput();
+      let ret = createOutput();
+      if (ret != true) {
+        expect().assertFail();
+      }
       cameraObj.sessionAddPreviewOutput();
       cameraObj.sessionAddPhotoOutput();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003 add PASSED");
@@ -292,14 +298,17 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004
      * @tc.name      : Check capture session start/stop/release output with promise or not
      * @tc.desc      : Check capture session start/stop/release output with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004--------------");
       releaseCameraSessionInstance();
-      createCameraSessionInstance();
+      let ret = createCameraSessionInstance();
+      if (ret != true) {
+        expect().assertFail();
+      }
       await cameraObj.cameraInputClose();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 start for camera[0]");
       await startCameraSession();
@@ -314,14 +323,17 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005
      * @tc.name      : Check capture session commit config
      * @tc.desc      : Check capture session commit config
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005--------------");
       releaseCameraSessionInstance();
-      createCameraSessionInstance();
+      let ret = createCameraSessionInstance();
+      if (ret != true) {
+        expect().assertFail();
+      }
       await cameraObj.cameraInputClose();
       await createInput();
       createOutput();
@@ -341,7 +353,7 @@ export default function cameraSessionTest() {
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006
      * @tc.name      : Check capture session release with promise or not
      * @tc.desc      : Check capture session release with promise or not
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
