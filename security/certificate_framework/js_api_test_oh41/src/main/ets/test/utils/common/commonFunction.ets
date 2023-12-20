@@ -23,7 +23,7 @@ function stringToArray(str: string) {
   return arr;
 }
 
-//字节流转成可理解的字符串
+//input stream convert to string
 function uInt8ArrayToString(fileData: Uint8Array) {
   let dataString = "";
   for (let i = 0; i < fileData.length; i++) {
@@ -32,7 +32,7 @@ function uInt8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-//可理解的字符串转成自字节流
+//string convert to input stream
 function stringTouInt8Array(str: string): Uint8Array {
   if (str.length == 0) {
     console.error("stringTouInt8Array length is 0");
@@ -45,7 +45,7 @@ function stringTouInt8Array(str: string): Uint8Array {
   return tmpUint8Array;
 }
 
-//字节流以16进制形式输出
+//input stream convert to hex format
 function uInt8ArrayToShowStr(uInt8Array: Uint8Array): string {
   if (uInt8Array.length == 0) {
     console.error("uInt8ArrayToShowStr length is 0");
@@ -119,19 +119,19 @@ function genCcmParamsSpec() {
 function genKeyMaterialBlob(keyLen: number) {
   let arr: number[];
   if (keyLen == 128) {
-    //16字节
+    //16 bytes
     arr = [
       0xba, 0x3b, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56, 0xad, 0x47, 0xfc, 0x5a,
       0x46, 0x39, 0xee, 0x7c,
     ];
   } else if (keyLen == 192) {
-    //24字节
+    //24 bytes
     arr = [
       0xba, 0x3b, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56, 0xad, 0x47, 0xfc, 0x5a,
       0x46, 0x39, 0xee, 0x7c, 0xba, 0x3b, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
     ];
   } else if (keyLen == 256) {
-    //32字节
+    //32 bytes
     arr = [
       0xba, 0x3b, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56, 0xad, 0x47, 0xfc, 0x5a,
       0x46, 0x39, 0xee, 0x7c, 0xba, 0x3b, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
