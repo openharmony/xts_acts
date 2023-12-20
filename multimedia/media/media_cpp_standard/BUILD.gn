@@ -62,11 +62,11 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_adec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_aenc",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
-    "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_core",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_vdec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_venc",
     "../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
     "../../../../../../foundation/graphic/graphic_2d/rosen/modules/render_service_client:librender_service_client",
+    "../../../../../../foundation/multimedia/histreamer/src:media_foundation",
     "../../../../../../foundation/window/window_manager/wm:libwm",
   ]
 
