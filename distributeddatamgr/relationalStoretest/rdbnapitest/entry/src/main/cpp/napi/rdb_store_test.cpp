@@ -33,7 +33,7 @@
 #include "oh_value_object.h"
 #include "oh_values_bucket.h"
 
-napi_env g_env =0;
+napi_env g_env = 0;
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
