@@ -876,6 +876,56 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
           done();
       });
 
+        /**
+         * @tc.number SUB_Security_HUKS_hasKeyItem_0010
+         * @tc.name test has key by alias, Promise style, test success;
+         * @tc.desc HuksOptions with AlgName AES
+         * @tc.size Medium
+         * @tc.type Func
+         * @tc.level Level2
+         */
+        it('SUB_Security_HUKS_hasKeyItem_0010', 0, async function (done) {
+          const srcKeyAlias = 'SUB_Security_HUKS_hasKeyItem_0010';
+          let huksProperties = new Array();
+          let index = 0;
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+              value: huks.HuksKeyAlg.HUKS_ALG_AES
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+              value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+              value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_PADDING,
+              value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+          };
+          huksProperties[index++] = {
+              tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+              value: huks.HuksCipherMode.HUKS_MODE_CBC
+          };
+          let huksOptions = {
+              properties: huksProperties
+          };
+          try {
+              await publicGenerateKeyFunc(srcKeyAlias, huksOptions);
+              let res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
+              expect(res).assertTrue();
+              await publicDeleteKeyFunc(srcKeyAlias, huksOptions);
+              res = await huks.hasKeyItem(srcKeyAlias, huksOptions);
+              expect(!res).assertTrue();
+          } catch (err) {
+              console.error(srcKeyAlias + `: fail, code: ${err.code}, msg: ${err.message}`);
+              expect(null).assertFail();
+          }
+          console.log(srcKeyAlias + ": success");
+          done();
+      });
+
   });
 }
 
