@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
@@ -54,10 +55,10 @@ export default function flexBasis_Type() {
         name: 'addflexBasis1', value: 100
       });
       await CommonFunc.sleep(3000);
-      let Column_flexBasis_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_011');
-      let Column_flexBasis_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_012');
-      let Column_flexBasis_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_013');
-      let Column_flexBasis_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_01');
+      let Column_flexBasis_011: RectValue = CommonFunc.getComponentRect('Column_flexBasis_011');
+      let Column_flexBasis_012: RectValue = CommonFunc.getComponentRect('Column_flexBasis_012');
+      let Column_flexBasis_013: RectValue = CommonFunc.getComponentRect('Column_flexBasis_013');
+      let Column_flexBasis_01: RectValue = CommonFunc.getComponentRect('Column_flexBasis_01');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_011.left - Column_flexBasis_01.left) - (Column_flexBasis_01.right - Column_flexBasis_011.right)) <= 1)
         .assertTrue();
@@ -97,10 +98,10 @@ export default function flexBasis_Type() {
         name: 'addflexBasis1', value: 0
       });
       await CommonFunc.sleep(3000);
-      let Column_flexBasis_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_011');
-      let Column_flexBasis_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_012');
-      let Column_flexBasis_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_013');
-      let Column_flexBasis_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_01');
+      let Column_flexBasis_011: RectValue = CommonFunc.getComponentRect('Column_flexBasis_011');
+      let Column_flexBasis_012: RectValue = CommonFunc.getComponentRect('Column_flexBasis_012');
+      let Column_flexBasis_013: RectValue = CommonFunc.getComponentRect('Column_flexBasis_013');
+      let Column_flexBasis_01: RectValue = CommonFunc.getComponentRect('Column_flexBasis_01');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_011.left - Column_flexBasis_01.left) - (Column_flexBasis_01.right - Column_flexBasis_011.right)) <= 1)
         .assertTrue();
@@ -141,10 +142,10 @@ export default function flexBasis_Type() {
         name: 'addflexBasis2', value: 'auto'
       });
       await CommonFunc.sleep(3000);
-      let Column_flexBasis_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_021');
-      let Column_flexBasis_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_022');
-      let Column_flexBasis_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_023');
-      let Column_flexBasis_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_02');
+      let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');
+      let Column_flexBasis_022: RectValue = CommonFunc.getComponentRect('Column_flexBasis_022');
+      let Column_flexBasis_023: RectValue = CommonFunc.getComponentRect('Column_flexBasis_023');
+      let Column_flexBasis_02: RectValue = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_021.left - Column_flexBasis_02.left) - (Column_flexBasis_02.right - Column_flexBasis_021.right)) <= 1)
         .assertTrue();
@@ -183,10 +184,10 @@ export default function flexBasis_Type() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexBasis_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_021');
-      let Column_flexBasis_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_022');
-      let Column_flexBasis_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_023');
-      let Column_flexBasis_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_02');
+      let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');
+      let Column_flexBasis_022: RectValue = CommonFunc.getComponentRect('Column_flexBasis_022');
+      let Column_flexBasis_023: RectValue = CommonFunc.getComponentRect('Column_flexBasis_023');
+      let Column_flexBasis_02: RectValue = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_021.left - Column_flexBasis_02.left) - (Column_flexBasis_02.right - Column_flexBasis_021.right)) <= 1)
         .assertTrue();
@@ -225,10 +226,10 @@ export default function flexBasis_Type() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexBasis_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_021');
-      let Column_flexBasis_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_022');
-      let Column_flexBasis_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_023');
-      let Column_flexBasis_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_02');
+      let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');
+      let Column_flexBasis_022: RectValue = CommonFunc.getComponentRect('Column_flexBasis_022');
+      let Column_flexBasis_023: RectValue = CommonFunc.getComponentRect('Column_flexBasis_023');
+      let Column_flexBasis_02: RectValue = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_021.left - Column_flexBasis_02.left) - (Column_flexBasis_02.right - Column_flexBasis_021.right)) <= 1)
         .assertTrue();
@@ -267,10 +268,10 @@ export default function flexBasis_Type() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexBasis_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_021');
-      let Column_flexBasis_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_022');
-      let Column_flexBasis_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_023');
-      let Column_flexBasis_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_02');
+      let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');
+      let Column_flexBasis_022: RectValue = CommonFunc.getComponentRect('Column_flexBasis_022');
+      let Column_flexBasis_023: RectValue = CommonFunc.getComponentRect('Column_flexBasis_023');
+      let Column_flexBasis_02: RectValue = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_021.left - Column_flexBasis_02.left) - (Column_flexBasis_02.right - Column_flexBasis_021.right)) <= 1)
         .assertTrue();
@@ -309,10 +310,10 @@ export default function flexBasis_Type() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexBasis_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_021');
-      let Column_flexBasis_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_022');
-      let Column_flexBasis_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_023');
-      let Column_flexBasis_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexBasis_02');
+      let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');
+      let Column_flexBasis_022: RectValue = CommonFunc.getComponentRect('Column_flexBasis_022');
+      let Column_flexBasis_023: RectValue = CommonFunc.getComponentRect('Column_flexBasis_023');
+      let Column_flexBasis_02: RectValue = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.abs((Column_flexBasis_021.left - Column_flexBasis_02.left) - (Column_flexBasis_02.right - Column_flexBasis_021.right)) <= 1)
         .assertTrue();

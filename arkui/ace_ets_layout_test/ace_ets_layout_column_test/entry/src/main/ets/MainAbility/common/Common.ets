@@ -12,12 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class RectValue {
-  left: number = 0;
-  top: number = 0;
-  right: number = 0;
-  bottom: number = 0;
-}
+
+import RectValue from './Rect';
 
 export default class CommonFunc {
   static rect_left: number;

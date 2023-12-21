@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
@@ -59,10 +60,10 @@ export default function flexGrow_Part() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexGrow_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_011');
-      let Column_flexGrow_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_012');
-      let Column_flexGrow_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_013');
-      let Column_flexGrow_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_01');
+      let Column_flexGrow_011: RectValue = CommonFunc.getComponentRect('Column_flexGrow_011');
+      let Column_flexGrow_012: RectValue = CommonFunc.getComponentRect('Column_flexGrow_012');
+      let Column_flexGrow_013: RectValue = CommonFunc.getComponentRect('Column_flexGrow_013');
+      let Column_flexGrow_01: RectValue = CommonFunc.getComponentRect('Column_flexGrow_01');
       console.log('assert position')
       expect(Math.abs(Column_flexGrow_011.left - Column_flexGrow_01.left - Math.round(Column_flexGrow_01.right - Column_flexGrow_011.right)) <= 1)
         .assertTrue();
@@ -107,10 +108,10 @@ export default function flexGrow_Part() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexGrow_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_011');
-      let Column_flexGrow_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_012');
-      let Column_flexGrow_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_013');
-      let Column_flexGrow_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_01');
+      let Column_flexGrow_011: RectValue = CommonFunc.getComponentRect('Column_flexGrow_011');
+      let Column_flexGrow_012: RectValue = CommonFunc.getComponentRect('Column_flexGrow_012');
+      let Column_flexGrow_013: RectValue = CommonFunc.getComponentRect('Column_flexGrow_013');
+      let Column_flexGrow_01: RectValue = CommonFunc.getComponentRect('Column_flexGrow_01');
       console.log('assert position')
       expect(Math.abs(Column_flexGrow_011.left - Column_flexGrow_01.left - Math.round(Column_flexGrow_01.right - Column_flexGrow_011.right)) <= 1)
         .assertTrue();
@@ -155,10 +156,10 @@ export default function flexGrow_Part() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexGrow_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_011');
-      let Column_flexGrow_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_012');
-      let Column_flexGrow_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_013');
-      let Column_flexGrow_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_01');
+      let Column_flexGrow_011: RectValue = CommonFunc.getComponentRect('Column_flexGrow_011');
+      let Column_flexGrow_012: RectValue = CommonFunc.getComponentRect('Column_flexGrow_012');
+      let Column_flexGrow_013: RectValue = CommonFunc.getComponentRect('Column_flexGrow_013');
+      let Column_flexGrow_01: RectValue = CommonFunc.getComponentRect('Column_flexGrow_01');
       console.log('assert position')
       expect(Math.abs(Column_flexGrow_011.left - Column_flexGrow_01.left - Math.round(Column_flexGrow_01.right - Column_flexGrow_011.right)) <= 1)
         .assertTrue();
@@ -206,10 +207,10 @@ export default function flexGrow_Part() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexGrow_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_011');
-      let Column_flexGrow_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_012');
-      let Column_flexGrow_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_013');
-      let Column_flexGrow_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_01');
+      let Column_flexGrow_011: RectValue = CommonFunc.getComponentRect('Column_flexGrow_011');
+      let Column_flexGrow_012: RectValue = CommonFunc.getComponentRect('Column_flexGrow_012');
+      let Column_flexGrow_013: RectValue = CommonFunc.getComponentRect('Column_flexGrow_013');
+      let Column_flexGrow_01: RectValue = CommonFunc.getComponentRect('Column_flexGrow_01');
       console.log('assert position')
       expect(Math.abs(Column_flexGrow_011.left - Column_flexGrow_01.left - Math.round(Column_flexGrow_01.right - Column_flexGrow_011.right)) <= 1)
         .assertTrue();
@@ -248,10 +249,10 @@ export default function flexGrow_Part() {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0500] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexGrow_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_021');
-      let Column_flexGrow_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_022');
-      let Column_flexGrow_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_023');
-      let Column_flexGrow_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexGrow_02');
+      let Column_flexGrow_021: RectValue = CommonFunc.getComponentRect('Column_flexGrow_021');
+      let Column_flexGrow_022: RectValue = CommonFunc.getComponentRect('Column_flexGrow_022');
+      let Column_flexGrow_023: RectValue = CommonFunc.getComponentRect('Column_flexGrow_023');
+      let Column_flexGrow_02: RectValue = CommonFunc.getComponentRect('Column_flexGrow_02');
       console.log('assert position')
       expect(Math.abs(Column_flexGrow_021.left - Column_flexGrow_02.left - Math.round(Column_flexGrow_02.right - Column_flexGrow_021.right)) <= 1)
         .assertTrue();

@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
@@ -56,10 +57,10 @@ export default function flexShrink_Default() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: RectValue = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: RectValue = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: RectValue = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: RectValue = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
       expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
         .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
@@ -101,10 +102,10 @@ export default function flexShrink_Default() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: RectValue = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: RectValue = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: RectValue = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: RectValue = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
       expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
         .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
@@ -146,10 +147,10 @@ export default function flexShrink_Default() {
       });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: RectValue = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: RectValue = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: RectValue = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: RectValue = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
       expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
         .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
@@ -188,10 +189,10 @@ export default function flexShrink_Default() {
       console.info('[SUB_ACE_flexShrink_Default_TEST_0400] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_021');
-      let Column_flexShrink_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_022');
-      let Column_flexShrink_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_023');
-      let Column_flexShrink_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_02');
+      let Column_flexShrink_021: RectValue = CommonFunc.getComponentRect('Column_flexShrink_021');
+      let Column_flexShrink_022: RectValue = CommonFunc.getComponentRect('Column_flexShrink_022');
+      let Column_flexShrink_023: RectValue = CommonFunc.getComponentRect('Column_flexShrink_023');
+      let Column_flexShrink_02: RectValue = CommonFunc.getComponentRect('Column_flexShrink_02');
       console.log('assert position')
       expect(Math.round(Column_flexShrink_021.left - Column_flexShrink_02.left))
         .assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_021.right));
