@@ -264,7 +264,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100",
                 "buffer",
-                "Orientation",
+                image.PropertyKey.ORIENTATION,
                 "2",
                 checkProps
             );
@@ -288,7 +288,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200",
                 "buffer",
-                "GPSLatitude",
+                image.PropertyKey.GPS_LATITUDE,
                 "114,3",
                 checkProps
             );
@@ -312,7 +312,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300",
                 "buffer",
-                "GPSLongitude",
+                image.PropertyKey.GPS_LONGITUDE,
                 "18,2",
                 checkProps
             );
@@ -336,7 +336,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400",
                 "buffer",
-                "GPSLatitudeRef",
+                image.PropertyKey.GPS_LATITUDE_REF,
                 "N",
                 checkProps
             );
@@ -360,7 +360,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500",
                 "buffer",
-                "GPSLongitudeRef",
+                image.PropertyKey.GPS_LONGITUDE_REF,
                 "W",
                 checkProps
             );
@@ -380,7 +380,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Top-right").assertTrue();
             }
-            modifyPromise(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", "fd", "Orientation", "2", checkProps);
+            modifyPromise(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", "fd", image.PropertyKey.ORIENTATION, "2", checkProps);
         });
 
         /**
@@ -401,7 +401,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0700",
                 "fd",
-                "GPSLatitude",
+                image.PropertyKey.GPS_LATITUDE,
                 "114,3",
                 checkProps
             );
@@ -425,7 +425,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0800",
                 "fd",
-                "GPSLongitude",
+                image.PropertyKey.GPS_LONGITUDE,
                 "18,2",
                 checkProps
             );
@@ -449,7 +449,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0900",
                 "fd",
-                "GPSLatitudeRef",
+                image.PropertyKey.GPS_LATITUDE_REF,
                 "N",
                 checkProps
             );
@@ -473,7 +473,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1000",
                 "fd",
-                "GPSLongitudeRef",
+                image.PropertyKey.GPS_LONGITUDE_REF,
                 "W",
                 checkProps
             );
@@ -497,7 +497,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100",
                 "fd",
-                "BitsPerSample",
+                image.PropertyKey.BITS_PER_SAMPLE,
                 "4, 4, 4",
                 checkProps
             );
@@ -521,7 +521,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200",
                 "fd",
-                "ImageLength",
+                image.PropertyKey.IMAGE_LENGTH,
                 "800",
                 checkProps
             );
@@ -545,7 +545,7 @@ export default function imageModifyProperty() {
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300",
                 "fd",
-                "ImageWidth",
+                image.PropertyKey.IMAGE_WIDTH,
                 "500",
                 checkProps
             );
