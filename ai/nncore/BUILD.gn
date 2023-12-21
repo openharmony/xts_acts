@@ -11,83 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
-module_output_path = "acts/nnrt"
-
-config("nncore_config") {
-  include_dirs = [
-    "common",
-    "../../../../../foundation/ai/neural_network_runtime",
-    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
-  ]
-  cflags = [ "-Wno-error" ]
-  cflags_cc = [ "-fexceptions" ]
-}
-
-ohos_moduletest_suite("ActsNncoreTest") {
-  module_out_path = module_output_path
-  sources = [
-    "common/mock_idevice.cpp",
-    "common/nncore_utils.cpp",
-    "src/HdiCompilationTest.cpp",
-    "src/HdiExecutorTest.cpp",
-    "src/HdiModelTest.cpp",
-    "src/HdiTensorDescTest.cpp",
-    "src/HdiTensorTest.cpp",
-  ]
-
-  configs = [ ":nncore_config" ]
-
-  deps = [
-    "//third_party/googletest:gmock",
-    "//third_party/googletest:gtest",
-  ]
-
-  external_deps = [
-    "c_utils:utils",
-    "drivers_interface_nnrt:libnnrt_proxy_2.0",
-    "hilog:libhilog",
-    "ipc:ipc_single",
-    "mindspore:mindir",
-    "neural_network_runtime:nnrt_target",
-  ]
-
-  subsystem_name = "ai"
-  part_name = "neural_network_runtime"
-}
-
-ohos_moduletest_suite("ActsEndtoendTest") {
-  module_out_path = module_output_path
-  sources = [
-    "common/mock_idevice.cpp",
-    "common/nncore_utils.cpp",
-    "src/EndToEndTest.cpp",
-  ]
-
-  configs = [ ":nncore_config" ]
-
-  deps = [
-    "//third_party/googletest:gmock",
-    "//third_party/googletest:gtest",
-  ]
-
-  external_deps = [
-    "c_utils:utils",
-    "drivers_interface_nnrt:libnnrt_proxy_2.0",
-    "hilog:libhilog",
-    "ipc:ipc_single",
-    "mindspore:mindir",
-    "neural_network_runtime:nnrt_target",
-  ]
-
-  subsystem_name = "ai"
-  part_name = "neural_network_runtime"
-}
-
 group("ActsHdfNncoreTest") {
   testonly = true
   deps = [
-    ":ActsEndtoendTest",
-    ":ActsNncoreTest",
+    "e2etest:ActsEndtoendTest",
+    "nncoretest:ActsNncoreTest",
   ]
 }
