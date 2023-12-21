@@ -15,12 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function flexShrink_Default() {
-  describe('flexShrink_Default', function () {
-    beforeEach(async function (done) {
+  describe('flexShrink_Default', () => {
+    beforeEach(async () => {
       console.info("flexShrink_Default beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Column/flexShrink/flexShrink_Default",
       }
       try {
@@ -37,151 +38,169 @@ export default function flexShrink_Default() {
         console.error("push flexShrink_Default page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("flexShrink_Default after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_flexShrink_Default_TEST_0100
-     * @tc.name      testflexShrink
-     * @tc.desc      column1、column2、column3 set flexShrink(null)
+     * @tc.number SUB_ACE_flexShrink_Default_TEST_0100
+     * @tc.name testflexShrink
+     * @tc.desc column1、column2、column3 set flexShrink(null)
      */
-    it('SUB_ACE_flexShrink_Default_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_flexShrink_Default_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Default_TEST_0100] START');
-      globalThis.value.message.notify({name:'addflexShrink', value:null});
+      globalThis.value.message.notify({
+        name: 'addflexShrink', value: null
+      });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011 = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012 = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013 = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01 = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
-      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
-      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
-      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
-      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
+      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
+      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
+      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
+      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+        .assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       console.log('assert space')
       expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom)).assertEqual(Math.round(vp2px(10)));
-      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', + Column_flexShrink_012.top - Column_flexShrink_011.bottom)
-      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', + Column_flexShrink_013.top - Column_flexShrink_012.bottom)
+      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', +(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', +(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       expect(Column_flexShrink_01.top).assertEqual(Column_flexShrink_011.top);
       expect(Column_flexShrink_013.bottom).assertLess(Column_flexShrink_01.bottom);
       console.log('assert height')
       expect(Math.round(Column_flexShrink_011.bottom - Column_flexShrink_011.top)).assertEqual(Math.round(vp2px(200)));
-      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', + Column_flexShrink_011.bottom - Column_flexShrink_011.top)
+      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', +(Column_flexShrink_011.bottom - Column_flexShrink_011.top))
       expect(Math.round(Column_flexShrink_012.bottom - Column_flexShrink_012.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', + Column_flexShrink_012.bottom - Column_flexShrink_012.top)
+      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', +(Column_flexShrink_012.bottom - Column_flexShrink_012.top))
       expect(Math.round(Column_flexShrink_013.bottom - Column_flexShrink_013.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', + Column_flexShrink_013.bottom - Column_flexShrink_013.top)
+      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', +(Column_flexShrink_013.bottom - Column_flexShrink_013.top))
       console.log('assert weight')
       expect(Math.round(Column_flexShrink_011.right - Column_flexShrink_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_012.right - Column_flexShrink_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_013.right - Column_flexShrink_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_flexShrink_Default_TEST_0100] END');
-      done();
     });
     /**
-     * @tc.number    SUB_ACE_flexShrink_Default_TEST_0200
-     * @tc.name      testflexShrink
-     * @tc.desc     column1、column2、column3 set flexShrink(undefined)
+     * @tc.number SUB_ACE_flexShrink_Default_TEST_0200
+     * @tc.name testflexShrink
+     * @tc.desc column1、column2、column3 set flexShrink(undefined)
      */
-    it('SUB_ACE_flexShrink_Default_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_flexShrink_Default_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Default_TEST_0200] START');
-      globalThis.value.message.notify({name:'addflexShrink', value:undefined});
+      globalThis.value.message.notify({
+        name: 'addflexShrink', value: undefined
+      });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011 = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012 = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013 = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01 = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
-      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
-      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
-      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
-      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
+      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
+      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
+      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
+      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+        .assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       console.log('assert space')
       expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom)).assertEqual(Math.round(vp2px(10)));
-      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', + Column_flexShrink_012.top - Column_flexShrink_011.bottom)
-      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', + Column_flexShrink_013.top - Column_flexShrink_012.bottom)
+      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', +(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', +(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       expect(Column_flexShrink_01.top).assertEqual(Column_flexShrink_011.top);
       expect(Column_flexShrink_013.bottom).assertLess(Column_flexShrink_01.bottom);
       console.log('assert height')
       expect(Math.round(Column_flexShrink_011.bottom - Column_flexShrink_011.top)).assertEqual(Math.round(vp2px(200)));
-      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', + Column_flexShrink_011.bottom - Column_flexShrink_011.top)
+      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', +(Column_flexShrink_011.bottom - Column_flexShrink_011.top))
       expect(Math.round(Column_flexShrink_012.bottom - Column_flexShrink_012.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', + Column_flexShrink_012.bottom - Column_flexShrink_012.top)
+      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', +(Column_flexShrink_012.bottom - Column_flexShrink_012.top))
       expect(Math.round(Column_flexShrink_013.bottom - Column_flexShrink_013.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', + Column_flexShrink_013.bottom - Column_flexShrink_013.top)
+      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', +(Column_flexShrink_013.bottom - Column_flexShrink_013.top))
       console.log('assert weight')
       expect(Math.round(Column_flexShrink_011.right - Column_flexShrink_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_012.right - Column_flexShrink_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_013.right - Column_flexShrink_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_flexShrink_Default_TEST_0200] END');
-      done();
     });
     /**
-     * @tc.number    SUB_ACE_flexShrink_Default_TEST_0300
-     * @tc.name      testflexShrink
-     * @tc.desc     column1、column2、column3 set flexShrink(undefined)
+     * @tc.number SUB_ACE_flexShrink_Default_TEST_0300
+     * @tc.name testflexShrink
+     * @tc.desc column1、column2、column3 set flexShrink(undefined)
      */
-    it('SUB_ACE_flexShrink_Default_TEST_0300', 0, async function (done) {
+    it('SUB_ACE_flexShrink_Default_TEST_0300', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Default_TEST_0300] START');
-      globalThis.value.message.notify({name:'addflexShrink', value:-5});
+      globalThis.value.message.notify({
+        name: 'addflexShrink', value: -5
+      });
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_011 = CommonFunc.getComponentRect('Column_flexShrink_011');
-      let Column_flexShrink_012 = CommonFunc.getComponentRect('Column_flexShrink_012');
-      let Column_flexShrink_013 = CommonFunc.getComponentRect('Column_flexShrink_013');
-      let Column_flexShrink_01 = CommonFunc.getComponentRect('Column_flexShrink_01');
+      let Column_flexShrink_011: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_011');
+      let Column_flexShrink_012: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_012');
+      let Column_flexShrink_013: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_013');
+      let Column_flexShrink_01: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_01');
       console.log('assert position')
-      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
-      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
-      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left)).assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
-      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
+      expect(Math.round(Column_flexShrink_011.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_011.right));
+      expect(Math.round(Column_flexShrink_012.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_012.right));
+      expect(Math.round(Column_flexShrink_013.left - Column_flexShrink_01.left))
+        .assertEqual(Math.round(Column_flexShrink_01.right - Column_flexShrink_013.right));
+      expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+        .assertEqual(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       console.log('assert space')
       expect(Math.round(Column_flexShrink_012.top - Column_flexShrink_011.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Column_flexShrink_013.top - Column_flexShrink_012.bottom)).assertEqual(Math.round(vp2px(10)));
-      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', + Column_flexShrink_012.top - Column_flexShrink_011.bottom)
-      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', + Column_flexShrink_013.top - Column_flexShrink_012.bottom)
+      console.log('Column_flexShrink_012.top - Column_flexShrink_011.bottom', +(Column_flexShrink_012.top - Column_flexShrink_011.bottom))
+      console.log('Column_flexShrink_013.top - Column_flexShrink_012.bottom', +(Column_flexShrink_013.top - Column_flexShrink_012.bottom))
       expect(Column_flexShrink_01.top).assertEqual(Column_flexShrink_011.top);
       expect(Column_flexShrink_013.bottom).assertLess(Column_flexShrink_01.bottom);
       console.log('assert height')
       expect(Math.round(Column_flexShrink_011.bottom - Column_flexShrink_011.top)).assertEqual(Math.round(vp2px(200)));
-      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', + Column_flexShrink_011.bottom - Column_flexShrink_011.top)
+      console.log('Column_flexShrink_011.bottom - Column_flexShrink_011.top', +(Column_flexShrink_011.bottom - Column_flexShrink_011.top))
       expect(Math.round(Column_flexShrink_012.bottom - Column_flexShrink_012.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', + Column_flexShrink_012.bottom - Column_flexShrink_012.top)
+      console.log('Column_flexShrink_012.bottom - Column_flexShrink_012.top', +(Column_flexShrink_012.bottom - Column_flexShrink_012.top))
       expect(Math.round(Column_flexShrink_013.bottom - Column_flexShrink_013.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', + Column_flexShrink_013.bottom - Column_flexShrink_013.top)
+      console.log('Column_flexShrink_013.bottom - Column_flexShrink_013.top', +(Column_flexShrink_013.bottom - Column_flexShrink_013.top))
       console.log('assert weight')
       expect(Math.round(Column_flexShrink_011.right - Column_flexShrink_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_012.right - Column_flexShrink_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_013.right - Column_flexShrink_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_flexShrink_Default_TEST_0300] END');
-      done();
     });
     /**
-     * @tc.number    SUB_ACE_flexShrink_Default_TEST_0400
-     * @tc.name      testflexShrink
-     * @tc.desc      column1、column2 and column3 do not set flexShrink
+     * @tc.number SUB_ACE_flexShrink_Default_TEST_0400
+     * @tc.name testflexShrink
+     * @tc.desc column1、column2 and column3 do not set flexShrink
      */
-    it('SUB_ACE_flexShrink_Default_TEST_0400', 0, async function (done) {
+    it('SUB_ACE_flexShrink_Default_TEST_0400', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Default_TEST_0400] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let Column_flexShrink_021 = CommonFunc.getComponentRect('Column_flexShrink_021');
-      let Column_flexShrink_022 = CommonFunc.getComponentRect('Column_flexShrink_022');
-      let Column_flexShrink_023 = CommonFunc.getComponentRect('Column_flexShrink_023');
-      let Column_flexShrink_02 = CommonFunc.getComponentRect('Column_flexShrink_02');
+      let Column_flexShrink_021: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_021');
+      let Column_flexShrink_022: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_022');
+      let Column_flexShrink_023: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_023');
+      let Column_flexShrink_02: CommonFunc.rect_value = CommonFunc.getComponentRect('Column_flexShrink_02');
       console.log('assert position')
-      expect(Math.round(Column_flexShrink_021.left - Column_flexShrink_02.left)).assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_021.right));
-      expect(Math.round(Column_flexShrink_022.left - Column_flexShrink_02.left)).assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_022.right));
-      expect(Math.round(Column_flexShrink_023.left - Column_flexShrink_02.left)).assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_023.right));
-      expect(Math.round(Column_flexShrink_022.top - Column_flexShrink_021.bottom)).assertEqual(Math.round(Column_flexShrink_023.top - Column_flexShrink_022.bottom))
+      expect(Math.round(Column_flexShrink_021.left - Column_flexShrink_02.left))
+        .assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_021.right));
+      expect(Math.round(Column_flexShrink_022.left - Column_flexShrink_02.left))
+        .assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_022.right));
+      expect(Math.round(Column_flexShrink_023.left - Column_flexShrink_02.left))
+        .assertEqual(Math.round(Column_flexShrink_02.right - Column_flexShrink_023.right));
+      expect(Math.round(Column_flexShrink_022.top - Column_flexShrink_021.bottom))
+        .assertEqual(Math.round(Column_flexShrink_023.top - Column_flexShrink_022.bottom))
       console.log('assert space')
       expect(Math.round(Column_flexShrink_022.top - Column_flexShrink_021.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Column_flexShrink_023.top - Column_flexShrink_022.bottom)).assertEqual(Math.round(vp2px(10)));
@@ -189,17 +208,16 @@ export default function flexShrink_Default() {
       expect(Column_flexShrink_023.bottom).assertLess(Column_flexShrink_02.bottom);
       console.log('assert height')
       expect(Math.round(Column_flexShrink_021.bottom - Column_flexShrink_021.top)).assertEqual(Math.round(vp2px(200)));
-      console.log('Column_flexShrink_021.bottom - Column_flexShrink_021.top', + Column_flexShrink_021.bottom - Column_flexShrink_021.top)
+      console.log('Column_flexShrink_021.bottom - Column_flexShrink_021.top', +(Column_flexShrink_021.bottom - Column_flexShrink_021.top))
       expect(Math.round(Column_flexShrink_022.bottom - Column_flexShrink_022.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_022.bottom - Column_flexShrink_022.top', + Column_flexShrink_022.bottom - Column_flexShrink_022.top)
+      console.log('Column_flexShrink_022.bottom - Column_flexShrink_022.top', +(Column_flexShrink_022.bottom - Column_flexShrink_022.top))
       expect(Math.round(Column_flexShrink_023.bottom - Column_flexShrink_023.top)).assertEqual(Math.round(vp2px(100)));
-      console.log('Column_flexShrink_023.bottom - Column_flexShrink_023.top', + Column_flexShrink_023.bottom - Column_flexShrink_023.top)
+      console.log('Column_flexShrink_023.bottom - Column_flexShrink_023.top', +(Column_flexShrink_023.bottom - Column_flexShrink_023.top))
       console.log('assert weight')
       expect(Math.round(Column_flexShrink_021.right - Column_flexShrink_021.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_022.right - Column_flexShrink_022.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(Column_flexShrink_023.right - Column_flexShrink_023.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_flexShrink_Default_TEST_0400] END');
-      done();
     });
 
   })

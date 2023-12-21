@@ -15,12 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function columnNesting_alignItems() {
-  describe('columnNesting_alignItems', function () {
-    beforeEach(async function (done) {
+  describe('columnNesting_alignItems', () => {
+    beforeEach(async () => {
       console.info("columnNesting_alignItems beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Column/columnNesting/columnNesting_alignItems",
       }
       try {
@@ -39,31 +40,30 @@ export default function columnNesting_alignItems() {
         console.error("push columnNesting_alignItems page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("columnNesting_alignItems after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_columnNesting_alignItems_TEST_0100
-     * @tc.name      testColumnSpace
-     * @tc.desc      column_1 and column_01, column_02 settings justifyContent do not affect each other
+     * @tc.number SUB_ACE_columnNesting_alignItems_TEST_0100
+     * @tc.name testColumnSpace
+     * @tc.desc column_1 and column_01, column_02 settings justifyContent do not affect each other
      */
-    it('SUB_ACE_columnNesting_alignItems_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_columnNesting_alignItems_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_columnNesting_alignItems_TEST_0100] START');
       await CommonFunc.sleep(4000);
       console.log('get Initial value')
-      let columnNesting_alignItems_011 = CommonFunc.getComponentRect('columnNesting_alignItems_011');
-      let columnNesting_alignItems_012 = CommonFunc.getComponentRect('columnNesting_alignItems_012');
-      let columnNesting_alignItems_013 = CommonFunc.getComponentRect('columnNesting_alignItems_013');
-      let columnNesting_alignItems_01 = CommonFunc.getComponentRect('columnNesting_alignItems_01');
-      let columnNesting_alignItems_021 = CommonFunc.getComponentRect('columnNesting_alignItems_021');
-      let columnNesting_alignItems_022 = CommonFunc.getComponentRect('columnNesting_alignItems_022');
-      let columnNesting_alignItems_023 = CommonFunc.getComponentRect('columnNesting_alignItems_023');
-      let columnNesting_alignItems_02 = CommonFunc.getComponentRect('columnNesting_alignItems_02');
-      let columnNesting_alignItems_1 = CommonFunc.getComponentRect('columnNesting_alignItems_1');
+      let columnNesting_alignItems_011: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_011');
+      let columnNesting_alignItems_012: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_012');
+      let columnNesting_alignItems_013: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_013');
+      let columnNesting_alignItems_01: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_01');
+      let columnNesting_alignItems_021: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_021');
+      let columnNesting_alignItems_022: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_022');
+      let columnNesting_alignItems_023: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_023');
+      let columnNesting_alignItems_02: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_02');
+      let columnNesting_alignItems_1: CommonFunc.rect_value = CommonFunc.getComponentRect('columnNesting_alignItems_1');
       console.log('assert position')
       expect(Math.abs((columnNesting_alignItems_011.left - columnNesting_alignItems_01.left)) <= 1).assertTrue();
       expect(Math.abs((columnNesting_alignItems_012.left - columnNesting_alignItems_01.left)) <= 1).assertTrue();
@@ -77,50 +77,72 @@ export default function columnNesting_alignItems() {
       expect(Math.abs((columnNesting_alignItems_1.top - columnNesting_alignItems_01.top)) <= 1).assertTrue();
 
       console.log('assert space')
-      expect(Math.abs((columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom) - (columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom)) <= 1).assertTrue();
-      expect(Math.abs((columnNesting_alignItems_022.top - columnNesting_alignItems_021.bottom) - (columnNesting_alignItems_023.top - columnNesting_alignItems_022.bottom)) <= 1).assertTrue();
+      expect(Math.abs((columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom) - (columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs((columnNesting_alignItems_022.top - columnNesting_alignItems_021.bottom) - (columnNesting_alignItems_023.top - columnNesting_alignItems_022.bottom)) <= 1)
+        .assertTrue();
 
-      expect(Math.abs((columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom) - vp2px(10)) <= 1).assertTrue();
-      console.log('columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom', + columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom)
-      expect(Math.abs((columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom) - vp2px(10)) <= 1).assertTrue();
-      console.log('columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom', + columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom)
-      expect(Math.abs((columnNesting_alignItems_022.top - columnNesting_alignItems_021.bottom) - vp2px(10)) <= 1).assertTrue();
-      console.log('columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom', + columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom)
-      expect(Math.abs((columnNesting_alignItems_023.top - columnNesting_alignItems_022.bottom) - vp2px(10)) <= 1).assertTrue();
-      console.log('columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom', + columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom)
-      expect(Math.abs((columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom) - vp2px(30)) <= 1).assertTrue();
-      console.log('columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom', + columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom)
+      expect(Math.abs((columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      console.log('columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom', +(columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom))
+      expect(Math.abs((columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      console.log('columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom', +(columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom))
+      expect(Math.abs((columnNesting_alignItems_022.top - columnNesting_alignItems_021.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      console.log('columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom', +(columnNesting_alignItems_012.top - columnNesting_alignItems_011.bottom))
+      expect(Math.abs((columnNesting_alignItems_023.top - columnNesting_alignItems_022.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      console.log('columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom', +(columnNesting_alignItems_013.top - columnNesting_alignItems_012.bottom))
+      expect(Math.abs((columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom) - vp2px(30)) <= 1)
+        .assertTrue();
+      console.log('columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom', +(columnNesting_alignItems_02.top - columnNesting_alignItems_01.bottom))
 
       console.log('assert height')
       console.log('column_01 assert height')
-      expect(Math.abs(columnNesting_alignItems_011.bottom - columnNesting_alignItems_011.top - Math.round(vp2px(50))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_012.bottom - columnNesting_alignItems_012.top - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_013.bottom - columnNesting_alignItems_013.top - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_011.bottom - columnNesting_alignItems_011.top - Math.round(vp2px(50))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_012.bottom - columnNesting_alignItems_012.top - Math.round(vp2px(100))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_013.bottom - columnNesting_alignItems_013.top - Math.round(vp2px(150))) <= 1)
+        .assertTrue();
 
       console.log('column_02 assert height')
-      expect(Math.abs(columnNesting_alignItems_021.bottom - columnNesting_alignItems_021.top - Math.round(vp2px(50))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_022.bottom - columnNesting_alignItems_022.top - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_023.bottom - columnNesting_alignItems_023.top - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_021.bottom - columnNesting_alignItems_021.top - Math.round(vp2px(50))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_022.bottom - columnNesting_alignItems_022.top - Math.round(vp2px(100))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_023.bottom - columnNesting_alignItems_023.top - Math.round(vp2px(150))) <= 1)
+        .assertTrue();
 
-      expect(Math.abs(columnNesting_alignItems_01.bottom - columnNesting_alignItems_01.top - Math.round(vp2px(400))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_02.bottom - columnNesting_alignItems_02.top - Math.round(vp2px(400))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_01.bottom - columnNesting_alignItems_01.top - Math.round(vp2px(400))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_02.bottom - columnNesting_alignItems_02.top - Math.round(vp2px(400))) <= 1)
+        .assertTrue();
 
       console.log('assert weight')
       console.log('column_01 assert weight')
-      expect(Math.abs(columnNesting_alignItems_011.right - columnNesting_alignItems_011.left - Math.round(vp2px(300))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_012.right - columnNesting_alignItems_012.left - Math.round(vp2px(300))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_013.right - columnNesting_alignItems_013.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_011.right - columnNesting_alignItems_011.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_012.right - columnNesting_alignItems_012.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_013.right - columnNesting_alignItems_013.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
 
       console.log('column_02 assert weight')
-      expect(Math.abs(columnNesting_alignItems_021.right - columnNesting_alignItems_021.left - Math.round(vp2px(300))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_022.right - columnNesting_alignItems_022.left - Math.round(vp2px(300))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_023.right - columnNesting_alignItems_023.left - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_021.right - columnNesting_alignItems_021.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_022.right - columnNesting_alignItems_022.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_023.right - columnNesting_alignItems_023.left - Math.round(vp2px(300))) <= 1)
+        .assertTrue();
 
-      expect(Math.abs(columnNesting_alignItems_01.right - columnNesting_alignItems_01.left - Math.round(vp2px(350))) <= 1).assertTrue();
-      expect(Math.abs(columnNesting_alignItems_02.right - columnNesting_alignItems_02.left - Math.round(vp2px(350))) <= 1).assertTrue();
+      expect(Math.abs(columnNesting_alignItems_01.right - columnNesting_alignItems_01.left - Math.round(vp2px(350))) <= 1)
+        .assertTrue();
+      expect(Math.abs(columnNesting_alignItems_02.right - columnNesting_alignItems_02.left - Math.round(vp2px(350))) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_columnNesting_alignItems_TEST_0100] END');
-      done();
     });
   })
 }
