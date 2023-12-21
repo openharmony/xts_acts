@@ -16,6 +16,7 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import buffer from '@ohos.buffer';
+import { checkSet,checkUri,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
@@ -33,52 +34,9 @@ export default function PhotoAccessHelperTest() {
             title: 'testPhoto'
         }
         let fetchResultCount = 0
-        let columns = [
-            photoKeys.URI,
-            photoKeys.PHOTO_TYPE,
-            photoKeys.DISPLAY_NAME,
-            photoKeys.DATE_ADDED,
-            photoKeys.DATE_MODIFIED,
-            photoKeys.DURATION,
-            photoKeys.WIDTH,
-            photoKeys.HEIGHT,
-            photoKeys.DATE_TAKEN,
-            photoKeys.ORIENTATION,
-            photoKeys.FAVORITE,
-            photoKeys.SIZE,
-            photoKeys.TITLE,
-            photoKeys.POSITION,
-            photoKeys.DATE_TRASHED,
-            photoKeys.HIDDEN,
-            photoKeys.CAMERA_SHOT_KEY,
-            photoKeys.USER_COMMENT,
-        ]
         const context = globalThis.abilityContext
         const imageType = photoAccessHelper.PhotoType.IMAGE
         const videoType = photoAccessHelper.PhotoType.VIDEO
-        const DEFAULT_PHOTO_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI;
-        const photoExtensions = [
-            "jpg",
-            "jpeg",
-            "png",
-            "svg",
-            "bmp",
-            "gif"
-        ]
-        const videoExtensions = [
-            "mp4",
-            "ts",
-            "webm",
-            "mkv"
-        ]
-        let sizes = [
-            { width: -1, height: -1 },
-            { width: 0, height: 0 },
-            { width: 100, height: 0 },
-            { width: 0, height: 100 },
-            { width: 720, height: 720 },
-            { width: 1000, height: 1000 }
-        ]
 
         function getPhotoHelper(context){
             return photoAccessHelper.getPhotoAccessHelper(context);
@@ -213,9 +171,8 @@ export default function PhotoAccessHelperTest() {
             console.info(`createAssetWithSuffixesCallback1 set suffix is:` + extension);
             phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
                 if (uri != undefined) {
-                    console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    console.info('createAsset uri: ' + uri);
+                    checkUri(uri, photoType, extension)
                     suffixNum1++
                     if(suffixNum1==extensions.length){
                         suffixNum1 = 0
@@ -240,8 +197,7 @@ export default function PhotoAccessHelperTest() {
             phAccessHelper.createAsset(photoType, extension, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                     suffixNum2++
                     if(suffixNum2==extensions.length){
                         suffixNum2 = 0
@@ -267,12 +223,10 @@ export default function PhotoAccessHelperTest() {
                 let uri;
                 if(options.title == "no"){
                     uri= await phAccessHelper.createAsset(photoType, extension);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                 }else {
                     uri= await phAccessHelper.createAsset(photoType, extension, options);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                 }
                 console.info('createAsset uri' + uri);
                 suffixNum3++
@@ -287,24 +241,6 @@ export default function PhotoAccessHelperTest() {
                 console.error('createAsset failed, message = ', err);
                 expect(false).assertTrue();
                 done();
-            }
-        }
-
-        function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, photoAsset, onCallback1){
-            if(uriSet){
-                phAccessHelper.registerChange(photoAsset.uri, forChildUris, onCallback1);
-                if(callBackSet){
-                    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
-                }else {
-                    phAccessHelper.unRegisterChange(photoAsset.uri);
-                }
-            }else{
-                phAccessHelper.registerChange(DEFAULT_PHOTO_URI, forChildUris, onCallback1);
-                if(callBackSet){
-                    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
-                }else {
-                    phAccessHelper.unRegisterChange(photoAsset.uri);
-                }
             }
         }
 

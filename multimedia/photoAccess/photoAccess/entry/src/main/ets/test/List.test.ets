@@ -50,6 +50,7 @@ import getReadOnlyFdTest from './PhotoAsset/getReadOnlyFd'
 import getThumbnailTest from './PhotoAsset/getThumbnail'
 import photoPickerTest from './PhotoAccessHelper/photoPicker'
 import PhotoAccessHelperTest from  './PhotoAccessHelperCases/PhotoAccessHelperTest.test.ets'
+import PhotoAccessHelperStabilityTest from  './PhotoAccessHelperCases/PhotoAccessHelperStabilityTest.test.ets'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -89,4 +90,5 @@ export default function testsuite () {
   getThumbnailTest()
   photoPickerTest()
   PhotoAccessHelperTest()
+  PhotoAccessHelperStabilityTest()
 }
