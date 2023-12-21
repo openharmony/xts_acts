@@ -20,6 +20,7 @@ export default class Hap1MainAbility2 extends Ability {
         globalThis.ability2Hap1Want = want;
         setTimeout(() => {
             this.context.terminateSelf().then((data) => {
+                globalThis.Hap1MainAbility2terminateSelf = true;
                 console.log("Hap1MainAbility2 EventTest terminateSelf data: " + JSON.stringify(data));
             }).catch((error) => {
                 console.log("Hap1MainAbility2 EventTest terminateSelf error: " + JSON.stringify(error));
@@ -52,6 +53,7 @@ export default class Hap1MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] Hap1MainAbility2 onForeground")
+        globalThis.Hap1MainAbility2onForeground = true;
     }
 
     onBackground() {
