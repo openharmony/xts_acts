@@ -301,7 +301,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.space).assertEqual('0.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('0');
       expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical');
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.cachedCount).assertEqual('0');
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');
