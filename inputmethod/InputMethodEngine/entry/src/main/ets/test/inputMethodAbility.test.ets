@@ -2069,7 +2069,7 @@ export default function inputMethodAbility() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 300)
         } 
       }
 
@@ -2201,7 +2201,7 @@ export default function inputMethodAbility() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 300)
         }
       }
 
@@ -2829,7 +2829,7 @@ export default function inputMethodAbility() {
           console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange err: ' + JSON.stringify(err));
           done();
         }
-      },500);
+      },1000);
 
       var commonEventPublishData = {
         code:130
