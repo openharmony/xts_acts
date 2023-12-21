@@ -20,18 +20,18 @@ export default class MainAbility6 extends Ability {
         console.log("[Demo] MainAbility6 onCreate")
         globalThis.abilityWant = want;
 
-        var listKey = [];
+        globalThis.mainAbility6ListKey = [];
         var abilityName = "";
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityCreate")
-                listKey.push(abilityName + " onAbilityCreate");
+                globalThis.mainAbility6ListKey.push(abilityName + " onAbilityCreate");
             },
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageCreate")
-                listKey.push(abilityName + " onWindowStageCreate");
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageCreate");
             },
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
@@ -44,42 +44,39 @@ export default class MainAbility6 extends Ability {
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityForeground")
-                listKey.push(abilityName + " onAbilityForeground");
+                globalThis.mainAbility6ListKey.push(abilityName + " onAbilityForeground");
             },
             onAbilityBackground(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityBackground")
-                listKey.push(abilityName + " onAbilityBackground");
+                globalThis.mainAbility6ListKey.push(abilityName + " onAbilityBackground");
             },
             onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageDestroy")
-                listKey.push(abilityName + " onWindowStageDestroy");
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityDestroy")
-                listKey.push(abilityName + " onAbilityDestroy");
+                globalThis.mainAbility6ListKey.push(abilityName + " onAbilityDestroy");
             },
             onAbilityContinue(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityContinue")
-                listKey.push(abilityName + " onAbilityContinue");
+                globalThis.mainAbility6ListKey.push(abilityName + " onAbilityContinue");
             }
         }
         globalThis.ApplicationContext6 = this.context.getApplicationContext();
-        var callBackId = globalThis.ApplicationContext6.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
-        console.log("callBackId is aaa :" + callBackId);
-        setTimeout(() => {
-            globalThis.mainAbility6ListKey = listKey
-            globalThis.mainAbility6CallBackId = callBackId
-            console.log("listKey is :" + listKey);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
+        globalThis.abilityContext6 = this.context;
+        globalThis.mainAbility6CallBackId = globalThis.ApplicationContext6.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
     }
 
     onDestroy() {
         console.log("[Demo] MainAbility6 onDestroy")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility6onDestroy');
+        }, 1500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -97,6 +94,9 @@ export default class MainAbility6 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility6 onForeground")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility6onForeground');
+        }, 1500);
     }
 
     onBackground() {

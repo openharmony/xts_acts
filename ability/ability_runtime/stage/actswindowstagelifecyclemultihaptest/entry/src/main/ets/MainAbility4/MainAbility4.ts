@@ -74,6 +74,9 @@ export default class MainAbility4 extends Ability {
 
     onDestroy() {
         console.log("[Demo] MainAbility4 onDestroy")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility4onDestroy');
+        }, 1500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -93,7 +96,7 @@ export default class MainAbility4 extends Ability {
         console.log("[Demo] MainAbility4 onForeground")
         setTimeout(() => {
             globalThis.testEvent.push('MainAbility4onForeground');
-        }, 500);
+        }, 1500);
     }
 
     onBackground() {

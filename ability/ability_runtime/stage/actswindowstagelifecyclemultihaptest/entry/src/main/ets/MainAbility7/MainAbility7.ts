@@ -79,7 +79,7 @@ export default class MainAbility7 extends Ability {
         globalThis.mainAbility7CallBackId = callBackId;
         setTimeout(() => {
             globalThis.testEvent.push('MainAbility7onForeground');
-        }, 500);
+        }, 1500);
     }
 
     onBackground() {

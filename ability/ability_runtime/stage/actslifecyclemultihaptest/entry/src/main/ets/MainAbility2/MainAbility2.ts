@@ -19,20 +19,20 @@ export default class MainAbility2 extends Ability {
         console.log("[Demo] MainAbility2 onCreate")
         globalThis.abilityWant = want;
 
-        var listKey = [];
+        globalThis.mainAbility2ListKey = [];
         var abilityName = "";
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityCreate")
-                listKey.push(abilityName + " onAbilityCreate");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onAbilityCreate");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageCreate")
-                listKey.push(abilityName + " onWindowStageCreate");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onWindowStageCreate");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
@@ -45,44 +45,37 @@ export default class MainAbility2 extends Ability {
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityForeground")
-                listKey.push(abilityName + " onAbilityForeground");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onAbilityForeground");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onAbilityBackground(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityBackground")
-                listKey.push(abilityName + " onAbilityBackground");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onAbilityBackground");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageDestroy")
-                listKey.push(abilityName + " onWindowStageDestroy");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onWindowStageDestroy");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityDestroy")
-                listKey.push(abilityName + " onAbilityDestroy");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onAbilityDestroy");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             },
             onAbilityContinue(ability) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityContinue")
-                listKey.push(abilityName + " onAbilityContinue");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility2ListKey.push(abilityName + " onAbilityContinue");
+                console.log("listKey is :" + globalThis.mainAbility2ListKey);
             }
         }
 
         globalThis.ApplicationContext2 = this.context.getApplicationContext();
-        var callBackId = globalThis.ApplicationContext2.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
-
-        setTimeout(() => {
-            globalThis.mainAbility2ListKey = listKey
-            globalThis.mainAbility2CallBackId = callBackId
-            console.log("listKey is :" + listKey);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
+        globalThis.mainAbility2CallBackId = globalThis.ApplicationContext2.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
     }
 
     onDestroy() {
@@ -104,6 +97,9 @@ export default class MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility2 onForeground")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility2onForeground');
+        }, 1500);
     }
 
     onBackground() {

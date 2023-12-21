@@ -116,7 +116,7 @@ export default class MainAbility6 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility6.onForeground", ()=>{
                 console.log("[Demo] MainAbility1 onDestroy")
             });
-        }, 500)
+        }, 1500)
     }
 
     onBackground() {
