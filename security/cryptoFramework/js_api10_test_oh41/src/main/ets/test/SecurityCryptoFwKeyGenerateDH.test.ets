@@ -277,6 +277,9 @@ export default function SecurityCryptoFwKeyGenerateDHTestUnit() {
         let keyPairBySpec: cryptoFramework.KeyPair = await asyKeyGenCallbackFunc.genKeyPair(spec);
         let keyPair: cryptoFramework.KeyPair = await asyKeyGenCallbackFunc.genKeyPair(param);
         console.log(testNumber + ": genKeyPair succeed");
+        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_P_BN)).assertEqual(spec.p);
+        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_G_BN)).assertEqual(spec.g);
+        expect(512).assertEqual(spec.l);
         let res: boolean = compareSpecFunc.DHKey(keyPair, keyPairBySpec);
         expect(res).assertTrue();
         console.log(testNumber + ": compareSpec succeed");

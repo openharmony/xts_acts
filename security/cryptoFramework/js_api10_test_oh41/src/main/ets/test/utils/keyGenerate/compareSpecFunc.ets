@@ -27,7 +27,7 @@ function DHKeyPair(priKey: cpFw.PriKey, pubKey: cpFw.PubKey): boolean {
 function DHKey(keyPair1: cpFw.KeyPair, keyPair2: cpFw.KeyPair): boolean {
   return keyPair1.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN) == keyPair2.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN)
     && keyPair1.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN) == keyPair2.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN)
-    && keyPair1.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN) == keyPair2.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN)
+    && keyPair1.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN) == keyPair2.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN)
     && keyPair1.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN) == keyPair2.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN);
 }
 
