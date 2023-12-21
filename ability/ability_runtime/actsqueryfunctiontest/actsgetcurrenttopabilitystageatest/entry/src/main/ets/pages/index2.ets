@@ -15,7 +15,7 @@
  
 @Entry
 @Component
-struct Index {
+struct Index2 {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('this is B')
