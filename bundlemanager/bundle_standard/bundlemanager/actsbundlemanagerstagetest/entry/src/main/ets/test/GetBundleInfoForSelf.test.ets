@@ -1227,7 +1227,7 @@ export default function getBundleInfoForSelf() {
       console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
       checkCommonBundleInfo(data);
       console.info("data.hapModulesInfo[0].fileContextMenu" + JSON.stringify(data.hapModulesInfo[0].fileContextMenu));
-      //      expect(bundle.ApplicationReservedFlag.ENCRYPTED_APPLICATION).assertEqual(1);
+      expect(bundle.ApplicationReservedFlag.ENCRYPTED_APPLICATION).assertEqual(1);
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(1);
       expect(data.hapModulesInfo[0].name).assertEqual("testModule");
