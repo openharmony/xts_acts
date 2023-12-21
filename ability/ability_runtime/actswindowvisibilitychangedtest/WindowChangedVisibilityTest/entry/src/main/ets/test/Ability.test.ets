@@ -57,11 +57,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0100
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0100
     * @tc.name: Test two uiabilities foregrounding and two single window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0100', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0100', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0100_TAG';
       let subscriber;
       let driver = Driver.create();
@@ -109,11 +109,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0200
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0200
     * @tc.name: Test two uiabilities backgrounding and two single window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0200', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0200', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0200_TAG';
       let driver = Driver.create();
       let subscriber;
@@ -164,11 +164,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0300
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0300
     * @tc.name: Test two uiabilities backgrounding and two single window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0300', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0300', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0300_TAG';
       let driver = Driver.create();
       let subscriber;
@@ -218,11 +218,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0400
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0400
     * @tc.name: Test two uiabilities foregrounding and multiple window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0400', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0400', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0400_TAG';
       let driver = Driver.create();
       let subscriber;
@@ -266,11 +266,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0500
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0500
     * @tc.name: Test two uiabilities backgrounding and multiple window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0500', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0500', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0500_TAG';
       let driver = Driver.create();
       let subscriber;
@@ -316,11 +316,11 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0600
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0600
     * @tc.name: Test two single service abilities and multiple window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0600', 0, async function (done) {
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0600', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0600_TAG';
       let subscriber;
       let driver = Driver.create();
@@ -364,12 +364,12 @@ export default function abilityTest() {
     })
 
     /**
-    * @tc.number: Acts_WindowVisibility_0800
+    * @tc.number: SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0800
     * @tc.name: Test ui ability and multiple window service abilities
     * @tc.desc: Verify state
     */
-    it('Acts_WindowVisibility_0800', 0, async function (done) {
-      let TAG1 = 'Acts_WindowVisibility_0600_TAG';
+    it('SUB_Ability_AbilityRuntime_ABILITY_StateInfo_WindowVisibilityState_0800', 0, async function (done) {
+      let TAG1 = 'Acts_WindowVisibility_0800_TAG';
       let subscriber;
       let driver = Driver.create();
       let want = {
