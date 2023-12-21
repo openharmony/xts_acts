@@ -27,5 +27,5 @@ export default function testsuite() {
   displayAndWindowRefactorInterfaceTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRichScene(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
-  pipWindowTest()
+  pipWindowTest(globalThis.abilityContext)
 }
