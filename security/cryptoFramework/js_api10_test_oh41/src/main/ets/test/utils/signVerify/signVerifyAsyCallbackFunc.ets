@@ -117,6 +117,52 @@ async function normalProcess(signVerifyAlgName: string, spec: cpFw.AsyKeySpec | 
   }
 }
 
+async function ECCCurveProcess(signVerifyAlgName: string, spec: cpFw.AsyKeySpec | string): Promise<boolean> {
+  let input: cpFw.DataBlob = { data: stringToUint8Array("This is a signVerify test.") };
+  let signVerifyKeyPair: cpFw.KeyPair;
+  let signedText: cpFw.DataBlob;
+  let sign: cpFw.Sign = cpFw.createSign(signVerifyAlgName);
+  let verify: cpFw.Verify = cpFw.createVerify(signVerifyAlgName);
+  console.log("[Callback] signVerifyCallbackNormalProcess: signVerify start");
+  try {
+    signVerifyKeyPair = await asyKeyGenCallbackFunc.genKeyPair(spec);
+    console.log("[Callback] signVerifyCallbackNormalProcess: generateKeyPair succeed");
+    await signInit(sign, signVerifyKeyPair.priKey);
+    console.log("[Callback] signVerifyCallbackNormalProcess: sign init succeed");
+    signedText = await signSign(sign, input);
+    await verifyInit(verify, signVerifyKeyPair.pubKey);
+    console.log("[Callback] signVerifyCallbackNormalProcess: verify init succeed");
+    return await verifyVerify(verify, input, signedText);
+  } catch (err) {
+    console.error("[Callback] signVerifyCallbackNormalProcess: signVerify failed")
+    throw err as Error;
+  }
+}
+
+async function ECCCurveErrProcess(signVerifyAlgName: string, spec: cpFw.AsyKeySpec | string): Promise<boolean> {
+  let input: cpFw.DataBlob = { data: stringToUint8Array("This is a signVerify test.") };
+  let signVerifyKeyPair1: cpFw.KeyPair;
+  let signVerifyKeyPair2: cpFw.KeyPair;
+  let signedText: cpFw.DataBlob;
+  let sign: cpFw.Sign = cpFw.createSign(signVerifyAlgName);
+  let verify: cpFw.Verify = cpFw.createVerify(signVerifyAlgName);
+  console.log("[Callback] signVerifyCallbackNormalProcess: signVerify start");
+  try {
+    signVerifyKeyPair1 = await asyKeyGenCallbackFunc.genKeyPair(spec);
+    signVerifyKeyPair2 = await asyKeyGenCallbackFunc.genKeyPair(spec);
+    console.log("[Callback] signVerifyCallbackNormalProcess: generateKeyPair succeed");
+    await signInit(sign, signVerifyKeyPair1.priKey);
+    console.log("[Callback] signVerifyCallbackNormalProcess: sign init succeed");
+    signedText = await signSign(sign, input);
+    await verifyInit(verify, signVerifyKeyPair2.pubKey);
+    console.log("[Callback] signVerifyCallbackNormalProcess: verify init succeed");
+    return await verifyVerify(verify, input, signedText);
+  } catch (err) {
+    console.error("[Callback] signVerifyCallbackNormalProcess: signVerify failed")
+    throw err as Error;
+  }
+}
+
 async function setUseridProcess(signVerifyAlgName: string, spec: cpFw.AsyKeySpec | string, userid1: string | null, userid2: string | null): Promise<boolean> {
   let input1: cpFw.DataBlob = { data: stringToUint8Array("This is a signVerify test1.") };
   let input2: cpFw.DataBlob = { data: stringToUint8Array("This is a signVerify test2.") };
@@ -153,5 +199,14 @@ async function setUseridProcess(signVerifyAlgName: string, spec: cpFw.AsyKeySpec
 }
 
 export {
-  normalProcess, setUseridProcess, signInit, signUpdate, signSign, verifyInit, verifyUpdate, verifyVerify
+  normalProcess,
+  setUseridProcess,
+  signInit,
+  signUpdate,
+  signSign,
+  verifyInit,
+  verifyUpdate,
+  verifyVerify,
+  ECCCurveProcess,
+  ECCCurveErrProcess
 }
