@@ -33,6 +33,7 @@ group("communication") {
       "wifi_ErrorCode401:ActsErrorcode401Test",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
+      "netstack_websocket:ActsWebSocketNdkTest",
     ]
   } else {
     deps = [ "wifi_standard:ActsWifiJSTest" ]
