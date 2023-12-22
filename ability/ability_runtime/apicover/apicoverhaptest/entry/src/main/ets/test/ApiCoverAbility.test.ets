@@ -27,6 +27,7 @@ import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
 import formBindingData from '@ohos.app.form.formBindingData';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
+import fs from '@ohos.file.fs';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -368,6 +369,15 @@ export default function ApiCoverTest() {
       expect("/data/storage/el1/bundle").assertEqual(globalThis.abilityContext.bundleCodeDir)
       expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.abilityContext.distributedFilesDir)
       expect(1).assertEqual(globalThis.abilityContext.area)
+      if (globalThis.abilityContext.resourceDir != "") {
+        fs.access(globalThis.abilityContext.resourceDir, (err,res) => {
+          if (err == undefined) {
+            expect(true).assertTrue;
+          } else {
+            expect(false).assertTrue;
+          }
+        })
+      }
       createModuleContext = null;
       try{
 	    let createModuleContext = globalThis.abilityContext.createModuleContext("module1")

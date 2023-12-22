@@ -244,6 +244,30 @@ export default function ApplicationContext() {
     })
 
     /**
+     * @tc.number    : ABILITY_TEST_RESOURCE_DIR_0100
+     * @tc.name      : testTempDir001
+     * @tc.desc      : test filed of tempDir
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testResourceDir001', 0, async function (done) {
+      try {
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+        let context: common.ApplicationContext = abilityContext.getApplicationContext();
+        console.log(`testResourceDir001 resourceDir:` + context.resourceDir);
+        expect(typeof (context.resourceDir) == 'string').assertTrue();
+        console.log(`testResourceDir001 success`);
+        done();
+      } catch (err) {
+        console.log(`testResourceDir001 fail: ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : ABILITY_TEST_FILESDIR_0100
      * @tc.name      : testFilesDir001
      * @tc.desc      : test filed of filesDir
