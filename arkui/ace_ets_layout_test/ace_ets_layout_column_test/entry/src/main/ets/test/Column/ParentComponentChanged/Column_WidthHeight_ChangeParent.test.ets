@@ -14,17 +14,18 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_WidthHeight_ChangeParent() {
 
-  describe('Column_WidthHeight_ChangeParentTest', function () {
-    beforeEach(async function (done) {
+  describe('Column_WidthHeight_ChangeParentTest',  () =>{
+    beforeEach(async () => {
       console.info("Column_WidthHeight_ChangeParent beforeEach called");
-      let options = {
-        uri: 'MainAbility/pages/Column/ParentComponentChanged/Column_WidthHeight_ChangeParent',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/ParentComponentChanged/Column_WidthHeight_ChangeParent',
       }
       try {
         router.clear();
@@ -40,10 +41,9 @@ export default function column_WidthHeight_ChangeParent() {
         console.error("push Column_WidthHeight_ChangeParent page error:" + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(1000);
       console.info("Column_WidthHeight_ChangeParent afterEach called");
     });
@@ -53,7 +53,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentHeightInRange
      * @tc.desc      The parent component changes the width 350 and height 400 attributes, Other parameters default
      */
-    it('testColumnWidthHeightChangeParentHeightInRange', 0, async function (done) {
+    it('testColumnWidthHeightChangeParentHeightInRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightInRange START');
       globalThis.value.message.notify({ name: 'height', value: 400 })
       globalThis.value.message.notify({ name: 'width', value: 350 })
@@ -61,10 +61,10 @@ export default function column_WidthHeight_ChangeParent() {
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
-      let locationText1 = CommonFunc.getComponentRect('WidthHeight_Test1');
-      let locationText2 = CommonFunc.getComponentRect('WidthHeight_Test2');
-      let locationText3 = CommonFunc.getComponentRect('WidthHeight_Test3');
-      let locationColumn = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
+      let locationText1 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test1');
+      let locationText2 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test2');
+      let locationText3 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test3');
+      let locationColumn : CommonFunc.rect_value = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
       expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1).assertTrue();
@@ -81,7 +81,6 @@ export default function column_WidthHeight_ChangeParent() {
       expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('new testColumnWidthHeightChangeParentHeightInRange END');
-      done();
     });
 
     /**
@@ -89,7 +88,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentHeightOutRange
      * @tc.desc      The parent component changes the width 350 and height 300 attributes,Other parameters default
      */
-    it('testColumnWidthHeightChangeParentHeightOutRange', 0, async function (done) {
+    it('testColumnWidthHeightChangeParentHeightOutRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightOutRange START');
       globalThis.value.message.notify({ name: 'height', value: 300 })
       globalThis.value.message.notify({ name: 'width', value: 350 })
@@ -97,10 +96,10 @@ export default function column_WidthHeight_ChangeParent() {
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
-      let locationText1 = CommonFunc.getComponentRect('WidthHeight_Test1');
-      let locationText2 = CommonFunc.getComponentRect('WidthHeight_Test2');
-      let locationText3 = CommonFunc.getComponentRect('WidthHeight_Test3');
-      let locationColumn = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
+      let locationText1 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test1');
+      let locationText2 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test2');
+      let locationText3 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test3');
+      let locationColumn : CommonFunc.rect_value = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
       expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText2.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText2.right))) <= 1).assertTrue();
@@ -117,7 +116,6 @@ export default function column_WidthHeight_ChangeParent() {
       expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('new testColumnWidthHeightChangeParentHeightOutRange END');
-      done();
     });
 
     /**
@@ -125,7 +123,7 @@ export default function column_WidthHeight_ChangeParent() {
      * @tc.name      testColumnWidthHeightChangeParentWidthOutRange
      * @tc.desc      The parent component changes the width 200 and height 400 attributes,Other parameters default
      */
-    it('testColumnWidthHeightChangeParentWidthOutRange', 0, async function (done) {
+    it('testColumnWidthHeightChangeParentWidthOutRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentWidthOutRange START');
       globalThis.value.message.notify({ name: 'height', value: 400 })
       globalThis.value.message.notify({ name: 'width', value: 200 })
@@ -133,10 +131,10 @@ export default function column_WidthHeight_ChangeParent() {
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
-      let locationText1 = CommonFunc.getComponentRect('WidthHeight_Test1');
-      let locationText2 = CommonFunc.getComponentRect('WidthHeight_Test2');
-      let locationText3 = CommonFunc.getComponentRect('WidthHeight_Test3');
-      let locationColumn = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
+      let locationText1 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test1');
+      let locationText2 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test2');
+      let locationText3 : CommonFunc.rect_value = CommonFunc.getComponentRect('WidthHeight_Test3');
+      let locationColumn : CommonFunc.rect_value = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
       expect(Math.abs((Math.round(locationColumn.left - locationText1.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationColumn.left - locationText1.left)) - (Math.round(locationText1.right - locationColumn.right))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationColumn.left - locationText2.left)) - (Math.round(locationText2.right - locationColumn.right))) <= 1).assertTrue();
@@ -153,7 +151,6 @@ export default function column_WidthHeight_ChangeParent() {
       expect(Math.abs((Math.round(locationText2.bottom - locationText2.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(locationText3.bottom - locationText3.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
       console.info('new testColumnWidthHeightChangeParentWidthOutRange END');
-      done();
     });
   })
 }
