@@ -84,7 +84,7 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0400
      * @tc.desc: 检验promise同步方式获取faultlog CPP_CRASH日志
      * @tc.require: AR000GICT2
-	 * @tc.number: test_0400
+     * @tc.number: test_0400
      * @tc.level: Level 2
      * @tc.size: MediumTest
      * @tc.type: Function
@@ -236,7 +236,7 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0100
      * @tc.desc: 检验通过回调方式获取faultlog日志
      * @tc.require: AR000GICT2
-	 * @tc.number: test_0100
+     * @tc.number: test_0100
      * @tc.level: Level 2
      * @tc.size: MediumTest
      * @tc.type: Function
