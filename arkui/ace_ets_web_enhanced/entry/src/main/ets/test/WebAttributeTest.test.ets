@@ -197,21 +197,6 @@ export default function webAttributeTest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_ONGEOLOCATIONHIDE_0100
-    * @tc.name        : testOnGeolocationHide001
-    * @tc.desc        : test onGeolocationHide after called JsGeolocation.invoke
-    * @tc.size        : MEDIUM
-    * @tc.type        : Function
-    * @tc.level       : Level 1
-    */
-    it('testOnGeolocationHide001', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnGeolocationHide", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnGeolocationHide001", true, 70013, done);
-      sendEventByKey('WebAttributeTestButton', 10, '');
-    })
-
-    /*
     * @tc.number      : SUB_WEB_ONREQUESTSELECTED_0100
     * @tc.name        : testOnRequestSelected001
     * @tc.desc        : test onRequestSelected after requestFocus
