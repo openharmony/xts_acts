@@ -454,7 +454,7 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_1100
      * @tc.desc: 检验通过回调方式获取faultlog日志
      * @tc.require: AR000GICT2
-	 * @tc.number: test_1100
+     * @tc.number: test_1100
      * @tc.level: Level 2
      * @tc.size: MediumTest
      * @tc.type: Function
