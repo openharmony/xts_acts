@@ -66,10 +66,10 @@ export default function column_MarPad_ChangeParent() {
       let strJson = getInspectorByKey('ColumnMarPadChange1');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
-      let locationText1 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test1');
-      let locationText2 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test2');
-      let locationText3 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test3');
-      let locationColumn : CommonFunc.rect_value = CommonFunc.getComponentRect('ColumnMarPadChange1');
+      let locationText1 : RectValue = CommonFunc.getComponentRect('MarPad_Test1');
+      let locationText2 : RectValue = CommonFunc.getComponentRect('MarPad_Test2');
+      let locationText3 : RectValue = CommonFunc.getComponentRect('MarPad_Test3');
+      let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnMarPadChange1');
       expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
         .assertTrue();
       expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
@@ -121,10 +121,10 @@ export default function column_MarPad_ChangeParent() {
       let strJson = getInspectorByKey('ColumnMarPadChange1');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
-      let locationText1 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test1');
-      let locationText2 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test2');
-      let locationText3 : CommonFunc.rect_value = CommonFunc.getComponentRect('MarPad_Test3');
-      let locationColumn : CommonFunc.rect_value = CommonFunc.getComponentRect('ColumnMarPadChange1');
+      let locationText1 : RectValue = CommonFunc.getComponentRect('MarPad_Test1');
+      let locationText2 : RectValue = CommonFunc.getComponentRect('MarPad_Test2');
+      let locationText3 : RectValue = CommonFunc.getComponentRect('MarPad_Test3');
+      let locationColumn : RectValue = CommonFunc.getComponentRect('ColumnMarPadChange1');
       expect(Math.abs((Math.round((locationText1.left - locationColumn.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
         .assertTrue();
       expect(Math.abs((Math.round(locationText1.left - locationColumn.left)) - (Math.round(locationColumn.right - locationText1.right))) <= 1)
