@@ -45,25 +45,22 @@ export default function preferencesDataGroupIdPromise() {
       try{
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
           dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
-          }).catch((error) => {
-            console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+          }).catch((err) => {
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -84,25 +81,22 @@ export default function preferencesDataGroupIdPromise() {
       try{
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
           dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -162,25 +156,22 @@ export default function preferencesDataGroupIdPromise() {
       try{
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
           dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -201,25 +192,22 @@ export default function preferencesDataGroupIdPromise() {
       try{
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
           dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
