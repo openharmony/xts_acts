@@ -55,6 +55,7 @@ export class KeyboardDelegate {
         inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
             this.keyboardController = keyboardController;
             this.InputClient = InputClient
+            console.info(TAG + '====>inputMethodAbility inputStart into');
         })
 
         function subscriberCallback(err, data) {
@@ -891,7 +892,7 @@ export class KeyboardDelegate {
             }
             commoneventmanager.publish("inputMethodAbility_test_070", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },500);
+        }, 2000);
     }
 
     async inputMethodAbility_test_071() {
@@ -908,7 +909,7 @@ export class KeyboardDelegate {
         let t = setTimeout(async () => {
             await this.keyboardController.hideKeyboard();
             console.info(TAG + '====>inputMethodAbility_test_071 hideKeyboard success');
-        },100);
+        }, 200);
         let t1 = setTimeout(() => {
             if(count === 1){
                 commonEventPublishData = {
@@ -917,7 +918,7 @@ export class KeyboardDelegate {
             }
             commoneventmanager.publish("inputMethodAbility_test_071", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },500);
+        }, 2000);
     }
 
     async inputMethodAbility_test_072() {
@@ -940,7 +941,7 @@ export class KeyboardDelegate {
             }
             commoneventmanager.publish("inputMethodAbility_test_072", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },300);
+        }, 2000);
     }
 
     async inputMethodAbility_test_073() {
@@ -1180,7 +1181,7 @@ export class KeyboardDelegate {
             if(timeCount === 2){
                 clearInterval(t);
             }
-        },100);
+        },300);
     }
 
     async  Sub_Misc_inputMethod_offSelectByMovement_0140() {
@@ -1194,7 +1195,7 @@ export class KeyboardDelegate {
             if(timeCount === 2){
                 clearInterval(t1);
             }
-        },100);
+        },300);
     }
 
     async Sub_Misc_inputMethod_sendExtendAction_0170() {
