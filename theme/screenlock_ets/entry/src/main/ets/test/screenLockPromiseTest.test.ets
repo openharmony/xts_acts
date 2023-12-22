@@ -19,11 +19,11 @@ import { describe, expect, it, beforeEach} from "hypium/index";
 const SLEEP_TIME = 1000;
 
 export default function ScreenLockPromiseTest(){
-  describe('ScreenLockServicePromiseTest', function () {
+  describe('ScreenLockServicePromiseTest', () => {
     console.info("-----------------------ScreenlockPromiseTest is starting-----------------------");
 
     let result = false
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
         result = await screenLock.isScreenLocked();
         done();
     });   
@@ -32,11 +32,11 @@ export default function ScreenLockPromiseTest(){
      * @tc.number    SUB_MISC_THEME_screenLock_API_Promise_001
      * @tc.name      Set to locked screen, query the lock screen state is locked state
      * @tc.desc      Test ScreenLock API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_001", 0, async function (done) {
+    it("SUB_MISC_THEME_screenLock_API_Promise_001", 0, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
       try {
         let data = await screenLock.isScreenLocked();
@@ -56,11 +56,11 @@ export default function ScreenLockPromiseTest(){
      * @tc.number    SUB_MISC_THEME_screenLock_API_Promise_002
      * @tc.name      Set to locked screen, query the lock screen state is locked state
      * @tc.desc      Test ScreenLock API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_002", 0, async function (done) {
+    it("SUB_MISC_THEME_screenLock_API_Promise_002", 0, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
       try {
         let data = await screenLock.isScreenLocked();
@@ -80,11 +80,11 @@ export default function ScreenLockPromiseTest(){
      * @tc.number    SUB_MISC_THEME_screenLock_API_Promise_003
      * @tc.name      Set to locked screen, query the lock screen state is locked state
      * @tc.desc      Test ScreenLock API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_003", 0, async function (done) {
+    it("SUB_MISC_THEME_screenLock_API_Promise_003", 0, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_003-------------------");
       try {
         let data = await screenLock.isSecureMode();
@@ -103,11 +103,11 @@ export default function ScreenLockPromiseTest(){
      * @tc.number    SUB_MISC_THEME_screenLock_API_Promise_004
      * @tc.name      Set to locked screen, query the lock screen state is locked state
      * @tc.desc      Test ScreenLock API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async function (done) {
+    it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
       try {
         let data = await screenLock.unlockScreen();
