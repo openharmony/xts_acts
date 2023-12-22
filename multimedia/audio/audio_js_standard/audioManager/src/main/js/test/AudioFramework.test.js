@@ -16,13 +16,16 @@
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
-import { UiDriver, BY } from '@ohos.UiTest'
+import { UiDriver, BY } from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+
 
 export default function audioFramework() {
 
 describe('audioFramework', function () {
     let TagFrmwk = "AudioFrameworkTest";
     console.info(`${TagFrmwk}: Create AudioManger Object JS Framework`);
+    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     let audioManager = null;
     let audioVolumeManager = null;
     let audioVolumeGroupManager = null;
@@ -125,6 +128,10 @@ describe('audioFramework', function () {
         await sleep(100);
         console.info(`UiDriver start`);
         let button = await driver.findComponent(BY.text('允许'));
+        if(button == null){
+            let cmd = "hidumper -s WindowManagerService -a'-a'"
+            await delegator.executeShellCommand(cmd);
+        }
         console.info(`button is ${JSON.stringify(button)}`);
         await sleep(100);
         await button.click();

@@ -17,6 +17,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import featureAbility from '@ohos.ability.featureAbility';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import {UiDriver, BY} from '@ohos.UiTest'
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 const TAG = "CameraInputTest: ";
 
 // Define global variables
@@ -29,6 +30,7 @@ let mCameraNum;
 let mCameraInput;
 let mPreviewOutput;
 let context = featureAbility.getContext();
+const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 export default function CameraInputTest() {
     function sleep(ms) {
         console.info(TAG + "Entering sleep -> Promise constructor");
@@ -60,6 +62,10 @@ export default function CameraInputTest() {
         await sleep(2000);
         console.info(`UiDriver start`);
         let button = await driver.findComponent(BY.text('允许'));
+        if(button == null){
+            let cmd = "hidumper -s WindowManagerService -a'-a'"
+            await delegator.executeShellCommand(cmd);
+        }
         while(button){
             console.info(`button is ${JSON.stringify(button)}`);
             await button.click();
