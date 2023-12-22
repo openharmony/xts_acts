@@ -26,27 +26,27 @@ static constexpr OHOS::HiviewDFX::HiLogLabel LABEL = {LOG_CORE, WEBSOCKET_LOG_DO
 
 static void OnOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OnOpen  at line：%{public}d", __LINE__);
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OnOpen");
 }
 
 static void OnMessage(struct WebSocket *client, char *data, uint32_t length)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OnMessage  at line：%{public}d,data=：%{public}s", __LINE__, data);
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OnMessage ,data=：%{public}s", data);
 }
 
 static void OnError(struct WebSocket *client, WebSocket_ErrorResult error)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OnError  at line：%{public}d", __LINE__);
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OnError");
 }
 
 static void OnClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OnClose  at line：%{public}d", __LINE__);
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OnClose");
 }
 
 static napi_value OHWebsocketClientConstruct(napi_env env, napi_callback_info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebsocketClientConstruct start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebsocketClientConstruct start");
     int ret;
     struct WebSocket *client = new WebSocket();
     const char *url = "www.baidu.com";
@@ -59,9 +59,9 @@ static napi_value OHWebsocketClientConstruct(napi_env env, napi_callback_info)
 
 static napi_value OHWebSocketClientAddHeader(napi_env env, napi_callback_info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebSocketClientAddHeader start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebSocketClientAddHeader start");
     napi_value result = nullptr;
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "test case begin:TestConnet,  at line：%{public}d", __LINE__);
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "test case begin:TestConnet");
     struct WebSocket *client = new WebSocket();
     struct WebSocket_Header header1;
     header1.fieldName = "Content-Type";
@@ -75,7 +75,7 @@ static napi_value OHWebSocketClientAddHeader(napi_env env, napi_callback_info)
 
 static napi_value OHWebSocketClientConnect(napi_env env, napi_callback_info info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebSocketClientConnect start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebSocketClientConnect start");
     struct WebSocket *client = new WebSocket();
     const char *url1 = "www.baidu.com";
     client = OH_WebSocketClient_Constructor(OnOpen, OnMessage, OnError, OnClose);
@@ -87,7 +87,7 @@ static napi_value OHWebSocketClientConnect(napi_env env, napi_callback_info info
 
 static napi_value OHWebSocketClientSend(napi_env env, napi_callback_info info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebSocketClientSend start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebSocketClientSend start");
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     client = OH_WebSocketClient_Constructor(OnOpen, OnMessage, OnError, OnClose);
@@ -100,7 +100,7 @@ static napi_value OHWebSocketClientSend(napi_env env, napi_callback_info info)
 
 static napi_value OHWebSocketClientClose(napi_env env, napi_callback_info info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebSocketClientClose start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebSocketClientClose start");
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
@@ -113,7 +113,7 @@ static napi_value OHWebSocketClientClose(napi_env env, napi_callback_info info)
 
 static napi_value OHWebsocketClientDestroy(napi_env env, napi_callback_info info)
 {
-    OHOS::HiviewDFX::HiLog::Error(LABEL, "OHWebsocketClientDestroy start");
+    OHOS::HiviewDFX::HiLog::Debug(LABEL, "OHWebsocketClientDestroy start");
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
