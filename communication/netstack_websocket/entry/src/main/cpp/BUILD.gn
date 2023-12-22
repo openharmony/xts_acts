@@ -42,9 +42,7 @@ ohos_shared_library("websocketndknapitest") {
   ]
   configs = [ ":config" ]
 
-  deps = [
-     "//foundation/communication/netstack/interfaces/kits/c/net_websocket:net_websocket",
-  ]
+  deps = [ "//foundation/communication/netstack/interfaces/kits/c/net_websocket:net_websocket" ]
   external_deps = [
     "hilog:libhilog",
     "napi:ace_napi",
