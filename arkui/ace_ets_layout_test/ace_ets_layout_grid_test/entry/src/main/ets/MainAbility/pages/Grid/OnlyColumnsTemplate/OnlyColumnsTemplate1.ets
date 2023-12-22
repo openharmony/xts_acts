@@ -82,8 +82,14 @@ struct OnlyColumnsTemplate1 {
       .rowsGap(10)
       .width(300)
       .backgroundColor(0xFAEEE0)
-      .height("100%")
+      .height("80%")
       .key('OnlyColumnsTemplate1_Grid_1')
+      Button('ÖØÖÃ').onClick((event: ClickEvent) => {
+        this.columnStart1 = 1
+        this.columnEnd1 = 2
+        this.columnStart2 = 1
+        this.columnEnd2 = 2
+      }).key('OnlyColumnsTemplate1_button')
     }.width('100%')
   }
 }

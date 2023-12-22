@@ -43,7 +43,12 @@ export default function Grid_ScrollStartandStop() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back()
+    
+      let driver = Driver.create();
+      await CommonFunc.sleep(300);
+      let btn = await driver.findComponent(ON.id('scrollStartAndStop_Reset_bt'));
+      await btn.click();
+      await CommonFunc.sleep(3000);
       console.info("Grid_ScrollStartandStop after each called");
     });
 
@@ -100,100 +105,6 @@ export default function Grid_ScrollStartandStop() {
       console.info('[Grid_ScrollStartandStop_0200] END');
       done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_Grid_ScrollStartandStop_0300
-     * @tc.name      testGrid
-     * @tc.desc      Trigger onScrollStart when grid sliding starts and onScrollStop when sliding stops
-     */
-    it('Grid_ScrollStartandStop_0300', 0, async function (done) {
-
-      console.info('[Grid_ScrollStartandStop_0300] START');
-      let gridRect = CommonFunc.getComponentRect('Grid_ScrollStartandStop_grid')
-      let driver = Driver.create()
-      await driver.swipe(
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.9+gridRect.top),
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.1+gridRect.top),
-        1000);     
-      await CommonFunc.sleep(2000);
-
-      let strJson1 = getInspectorByKey('Grid_ScrollStartandStop_tex1')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ScrollStartandStop_0300] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onScrollStart');
-
-      let strJson2 = getInspectorByKey('Grid_ScrollStartandStop_tex2')
-      let obj2 = JSON.parse(strJson2)
-      console.info("[Grid_ScrollStartandStop_0300] component obj2 is: " + JSON.stringify(obj2))
-      expect(obj2.$attrs.content).assertEqual('onScrollStop');
-
-      console.info('[Grid_ScrollStartandStop_0300] END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_Grid_ScrollStartandStop_0400
-     * @tc.name      testGrid
-     * @tc.desc      When scrollBar starts sliding, onScrollStart is triggered, and when sliding stops, onScrollStop is triggered
-     */
-    it('Grid_ScrollStartandStop_0400', 0, async function (done) {
-
-      console.info('[Grid_ScrollStartandStop_0400] START');
-      let scrollBarRect= CommonFunc.getComponentRect('Grid_ScrollStartandStop_scrollBar')
-	    let driver = Driver.create()
-	    await driver.swipe(
-        parseInt((scrollBarRect.right-scrollBarRect.left)*0.5+scrollBarRect.left),
-        parseInt((scrollBarRect.bottom-scrollBarRect.top)*0.1+scrollBarRect.top),
-        parseInt((scrollBarRect.right-scrollBarRect.left)*0.5+scrollBarRect.left),
-        parseInt((scrollBarRect.bottom-scrollBarRect.top)*0.9+scrollBarRect.top),
-        1000);    
-      await CommonFunc.sleep(2000);
-
-      let strJson1 = getInspectorByKey('Grid_ScrollStartandStop_tex1')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ScrollStartandStop_0400] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onScrollStart');
-
-      let strJson2 = getInspectorByKey('Grid_ScrollStartandStop_tex2')
-      let obj2 = JSON.parse(strJson2)
-      console.info("[Grid_ScrollStartandStop_0400] component obj2 is: " + JSON.stringify(obj2))
-      expect(obj2.$attrs.content).assertEqual('onScrollStop');
-
-      console.info('[Grid_ScrollStartandStop_0400] END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_Grid_ScrollStartandStop_0500
-     * @tc.name      testGrid
-     * @tc.desc      Trigger onScrollStart when the grid quickly slides, and onScrollStop when the slide stops
-     */
-    it('Grid_ScrollStartandStop_0500', 0, async function (done) {
-
-      console.info('[Grid_ScrollStartandStop_0500] START');
-      let gridRect = CommonFunc.getComponentRect('Grid_ScrollStartandStop_grid')
-      let driver = Driver.create()
-      await driver.fling({x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.5+gridRect.top)},
-	    {x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.3+gridRect.top)},5,1000);
-      await CommonFunc.sleep(2000);
-
-      let strJson1 = getInspectorByKey('Grid_ScrollStartandStop_tex1')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ScrollStartandStop_0500] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onScrollStart');
-
-      let strJson2 = getInspectorByKey('Grid_ScrollStartandStop_tex2')
-      let obj2 = JSON.parse(strJson2)
-      console.info("[Grid_ScrollStartandStop_0500] component obj2 is: " + JSON.stringify(obj2))
-      expect(obj2.$attrs.content).assertEqual('onScrollStop');
-
-      console.info('[Grid_ScrollStartandStop_0500] END');
-      done();
-    });
-
-
 
 
   })

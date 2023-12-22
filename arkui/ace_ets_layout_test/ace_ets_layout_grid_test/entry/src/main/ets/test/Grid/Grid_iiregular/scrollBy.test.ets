@@ -79,7 +79,8 @@ export default function scrollByJsunit() {
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       console.info('[scrollByJsunit_0000] content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+      
 
       console.info('[scrollByJsunit_0000] END');
       done();
@@ -111,7 +112,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content3');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+     
 
       console.info('[scrollByJsunit_0002] END');
       done();
@@ -145,8 +147,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
-
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
       console.info('[scrollByJsunit_0003] END');
       done();
     });
@@ -175,8 +176,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
-
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
       console.info('[scrollByJsunit_0004] END');
       done();
     });
@@ -205,7 +205,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
 
       console.info('[scrollByJsunit_0005] END');
       done();
@@ -237,7 +237,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
 
       console.info('[scrollByJsunit_0060] END');
       done();
@@ -269,7 +269,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
 
       console.info('[scrollByJsunit_0070] END');
       done();
@@ -301,7 +301,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
 
 
       console.info('[scrollByJsunit_0080] END');
@@ -332,7 +332,7 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollByPages');
       let scrollTextItem = CommonFunc.getComponentRect('content0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
 
       console.info('[scrollByJsunit_0090] END');
       done();

@@ -84,6 +84,12 @@ struct OnlyRowsTemplate1 {
       .backgroundColor(0xFAEEE0)
       .height(400)
       .key('OnlyRowsTemplate1_Grid_1')
+      Button('ÖØÖÃ').onClick((event: ClickEvent) => {
+        this.rowStart1 = 1
+        this.rowEnd1 = 2
+        this.rowStart2 = 1
+        this.rowEnd2 = 2
+      }).key('OnlyRowsTemplate1_button')
     }.width('100%')
   }
 }
