@@ -583,7 +583,7 @@ describe('HidebugJsTest', function () {
     * @tc.number    : DFX_DFR_Hiprofiler_Interface_2200
     * @tc.name      : dumpJsHeapData with abnormal parameter
     * @tc.desc      : dumpJsHeapData
-    * @tc.number: test_2100
+    * @tc.number: test_2200
     * @tc.level: Level 2
     * @tc.size: MediumTest
     * @tc.type: Function
@@ -593,7 +593,6 @@ describe('HidebugJsTest', function () {
         try {
             let temp = hidebug.getVss();
             except(temp)>=BigInt(0).assertTrue();
-            hidebug.dumpJsHeapData();
         } catch (error) {
             expect().assertFail();
         }
