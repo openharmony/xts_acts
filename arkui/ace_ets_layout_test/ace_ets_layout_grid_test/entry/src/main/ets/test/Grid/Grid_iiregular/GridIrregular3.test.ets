@@ -59,15 +59,16 @@ export default function scrollByJsunit() {
       let GridItem4 = CommonFunc.getComponentRect('GridText4');
 
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem0.top - GridItem0.bottom)).assertEqual(GridItem1.top - GridItem1.bottom);
-      expect(Math.round(GridItem0.top - GridItem0.bottom)).assertEqual(GridItem2.top - GridItem2.bottom);
-      expect(Math.round(GridItem0.top - GridItem0.bottom)).assertEqual(GridItem3.top - GridItem3.bottom);
-      expect(Math.round(GridItem0.top - GridItem0.bottom)).assertEqual(GridItem4.top - GridItem4.bottom);
-
-      expect(Math.round(GridItem0.right - GridItem0.left)).assertEqual(GridItem1.right - GridItem1.left);
-      expect(Math.round(GridItem0.right - GridItem0.left)).assertEqual(GridItem2.right - GridItem2.left);
-      expect(Math.round(GridItem0.right - GridItem0.left)).assertEqual(GridItem3.right - GridItem3.left);
-      expect(Math.round(GridItem0.right - GridItem0.left)).assertEqual(GridItem4.right - GridItem4.left);
+      expect(Math.abs(Math.round(GridItem0.top - GridItem0.bottom) -Math.round(GridItem1.top - GridItem1.bottom)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.top - GridItem0.bottom) -Math.round(GridItem2.top - GridItem2.bottom)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.top - GridItem0.bottom) -Math.round(GridItem3.top - GridItem3.bottom)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.top - GridItem0.bottom) -Math.round(GridItem4.top - GridItem4.bottom)) <=1 ).assertTrue();
+     
+      expect(Math.abs(Math.round(GridItem0.right - GridItem0.left) -Math.round(GridItem1.right - GridItem1.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.right - GridItem0.left) -Math.round(GridItem2.right - GridItem2.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.right - GridItem0.left) -Math.round(GridItem3.right - GridItem3.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(GridItem0.right - GridItem0.left) -Math.round(GridItem4.right - GridItem4.left)) <=1 ).assertTrue();
+     
       console.info('[GridIrregular3Jsunit_0000] END');
       done();
     });

@@ -43,7 +43,11 @@ export default function Grid_ScrollAndScrollIndex() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back()
+      let driver = Driver.create();
+      await CommonFunc.sleep(300);
+      let btn = await driver.findComponent(ON.id('scroll_Reset_bt'));
+      await btn.click();
+      await CommonFunc.sleep(3000);
       console.info("Grid_ScrollAndScrollIndex after each called");
     });
 

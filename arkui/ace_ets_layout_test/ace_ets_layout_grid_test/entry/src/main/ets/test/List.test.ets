@@ -17,14 +17,26 @@
 import OnlyColumnsTemplate1 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate1.test';
 import OnlyColumnsTemplate2 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate2.test';
 import OnlyColumnsTemplate3 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate3.test';
+import OnlyColumnsTemplate4 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate4.test';
+import OnlyColumnsTemplate5 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate5.test';
 import OnlyRowsTemplate1 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate1.test';
 import OnlyRowsTemplate2 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate2.test';
+import OnlyRowsTemplate3 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate3.test';
+import OnlyRowsTemplate4 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate4.test';
+import OnlyRowsTemplate5 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate5.test';
 import ColumnsTemplateAndRowsTemplate1 from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate1.test';
 import ColumnsTemplateAndRowsTemplate2 from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2.test';
 import ColumnsTemplateAndRowsTemplateNoSet from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet.test';
 
 import Grid_ReachStartAndEnd from './Grid/Grid_scroll/Grid_ReachStartAndEnd.test';
+import Grid_ReachStartAndEnd2 from './Grid/Grid_scroll/Grid_ReachStartAndEnd2.test';
+import Grid_ReachStartAndEnd3 from './Grid/Grid_scroll/Grid_ReachStartAndEnd3.test';
+import Grid_ReachStartAndEnd4 from './Grid/Grid_scroll/Grid_ReachStartAndEnd4.test';
+import Grid_ReachStartAndEnd5 from './Grid/Grid_scroll/Grid_ReachStartAndEnd5.test';
 import Grid_ScrollStartAndStop from './Grid/Grid_scroll/Grid_ScrollStartAndStop.test';
+import Grid_ScrollStartAndStop2 from './Grid/Grid_scroll/Grid_ScrollStartAndStop2.test';
+import Grid_ScrollStartAndStop3 from './Grid/Grid_scroll/Grid_ScrollStartAndStop3.test';
+import Grid_ScrollStartAndStop4 from './Grid/Grid_scroll/Grid_ScrollStartAndStop4.test';
 import Grid_ScrollAndScrollIndex from './Grid/Grid_scroll/Grid_ScrollAndScrollIndex.test';
 import Grid_ScrollFrameBegin from './Grid/Grid_scroll/Grid_ScrollFrameBegin.test';
 
@@ -68,10 +80,16 @@ import StartAndEnd from './Grid/Grid_iiregular/StartAndEnd.test';
 import StartAndStop from './Grid/Grid_iiregular/StartAndStop.test';
 
 export default function testsuite() {
+  OnlyRowsTemplate3();
+  OnlyColumnsTemplate4();
+  OnlyRowsTemplate4();
   OnlyColumnsTemplate1();
+  OnlyRowsTemplate1();
+  OnlyColumnsTemplate5();
+  OnlyRowsTemplate5();
   OnlyColumnsTemplate2();
   OnlyColumnsTemplate3();
-  OnlyRowsTemplate1();
+
   OnlyRowsTemplate2();
   ColumnsTemplateAndRowsTemplate1();
   ColumnsTemplateAndRowsTemplate2();
@@ -79,6 +97,13 @@ export default function testsuite() {
 
   Grid_ReachStartAndEnd();
   Grid_ScrollStartAndStop();
+Grid_ReachStartAndEnd2();
+  Grid_ScrollStartAndStop2();
+  Grid_ReachStartAndEnd3();
+  Grid_ScrollStartAndStop3();
+  Grid_ReachStartAndEnd4();
+  Grid_ScrollStartAndStop4();
+  Grid_ReachStartAndEnd5();
   Grid_ScrollAndScrollIndex();
   Grid_ScrollFrameBegin();
 

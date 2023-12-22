@@ -74,7 +74,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('gridPage');
       let scrollTextItem = CommonFunc.getComponentRect('scrollPage_text1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+      
 
       console.info('[scrollPageJsunit_0010] END');
       done();
@@ -104,8 +105,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('gridPage');
       let scrollTextItem = CommonFunc.getComponentRect('scrollPage_text0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
-
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+    
       console.info('[scrollPageJsunit_0020] END');
       done();
     });

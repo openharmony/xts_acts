@@ -69,6 +69,13 @@ struct Grid_ScrollAndScrollIndex {
       Text(`onScrollIndex${this.index}`).id('Grid_ScrollAndScrollIndex_tex1')
       Text(this.text2).id('Grid_ScrollAndScrollIndex_tex2')
 
+       Button('scroll_Reset_bt')
+        .id('scroll_Reset_bt')
+        .onClick(() => { // reset the init state
+           this.scroller.scrollEdge(Edge.Top);
+           this.index = 0;
+           this.text2 = ""
+        })
 
 
     }.width('100%').margin({ top: 5 })
