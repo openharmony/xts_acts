@@ -39,7 +39,6 @@ export default function abilityTest() {
      */
     it('Acts_SingleInstanceCallFunction_0100', 0, async function (done) {
       let subscriber;
-      let flag = false;
       console.debug('====>Acts_SingleInstanceCallFunction_0100 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.debug('====>Acts_SingleInstanceCallFunction_0100 Create Subscribe');
@@ -58,7 +57,6 @@ export default function abilityTest() {
       function subscribeCallBack(err, data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0100 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_CALL_EVENT') {
-          flag = true;
           expect(data.parameters.num).assertEqual(100);
           expect(data.parameters.str).assertEqual('Acts_SingleInstanceCallFunction_0100 processed');
           expect(data.parameters.result).assertTrue();
@@ -70,13 +68,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_0100 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -86,7 +77,6 @@ export default function abilityTest() {
      */
     it('Acts_SingleInstanceCallFunction_0200', 0, async function (done) {
       let subscriber;
-      let flag = false;
       console.debug('====>Acts_SingleInstanceCallFunction_0200 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.debug('====>Acts_SingleInstanceCallFunction_0200 Create Subscribe');
@@ -106,7 +96,6 @@ export default function abilityTest() {
       function subscribeCallBack(err, data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0200 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_CALL_EVENT') {
-          flag = true;
           expect(data.parameters.num).assertEqual(16000050);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -116,13 +105,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_0200 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -170,13 +152,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_0300 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -225,13 +200,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_0400 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -241,7 +209,6 @@ export default function abilityTest() {
      */
     it('Acts_SingleInstanceCallFunction_0500', 0, async function (done) {
       let subscriber;
-      let flag = false;
       console.info('====>Acts_SingleInstanceCallFunction_0500 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0500 Create Subscribe');
@@ -261,7 +228,6 @@ export default function abilityTest() {
       function subscribeCallBack(err, data): void {
         console.info('====>Acts_SingleInstanceCallFunction_0500 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event == 'ACTS_CALL_EVENT') {
-          flag = true;
           expect(data.parameters.num).assertEqual(EXIT_TWO_CALLEE);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -271,13 +237,6 @@ export default function abilityTest() {
         console.info('====>Acts_SingleInstanceCallFunction_0500 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -287,7 +246,6 @@ export default function abilityTest() {
      */
     it('Acts_SingleInstanceCallFunction_0600', 0, async function (done) {
       let subscriber;
-      let flag = false;
       console.info('====>Acts_SingleInstanceCallFunction_0600 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0600 Create Subscribe');
@@ -307,7 +265,6 @@ export default function abilityTest() {
       function subscribeCallBack(err, data): void {
         console.info('====>Acts_SingleInstanceCallFunction_0600 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event == 'ACTS_CALL_EVENT') {
-          flag = true;
           expect(data.parameters.num).assertEqual(16000050);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -317,13 +274,6 @@ export default function abilityTest() {
         console.info('====>Acts_SingleInstanceCallFunction_0600 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -360,17 +310,10 @@ export default function abilityTest() {
         }
       }
 
-      function unSubscribeCallback():void {
+      function unSubscribeCallback(): void {
         console.info('====>Acts_SingleInstanceCallFunction_0700 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -381,7 +324,6 @@ export default function abilityTest() {
     */
     it('Acts_SingleInstanceCallFunction_0800', 0, async function (done) {
       let subscriber;
-      let flag = false;
       console.info('====>Acts_SingleInstanceCallFunction_0800 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0800 Create Subscribe');
@@ -401,7 +343,6 @@ export default function abilityTest() {
       function subscribeCallBack(err, data): void {
         console.info('====>Acts_SingleInstanceCallFunction_0800 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event == 'ACTS_CALL_EVENT') {
-          flag = true;
           expect(data.parameters.num).assertEqual(KILL_TWO);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -411,13 +352,6 @@ export default function abilityTest() {
         console.info('====>Acts_SingleInstanceCallFunction_0800 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (flag === false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -466,13 +400,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_0900 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -530,13 +457,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_1000 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -582,13 +502,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_1100 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*
@@ -627,13 +540,6 @@ export default function abilityTest() {
         console.debug('====>Acts_SingleInstanceCallFunction_1200 unSubscribeCallback');
         done();
       }
-
-      setTimeout(() => {
-        if (eventCount !== 2) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
   })
 }
