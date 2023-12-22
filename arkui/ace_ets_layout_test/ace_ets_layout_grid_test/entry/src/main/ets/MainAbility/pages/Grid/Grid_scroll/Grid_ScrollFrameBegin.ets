@@ -78,7 +78,12 @@ struct Grid_ScrollFrameBegin {
 
       Text(this.text).id('Grid_ScrollFrameBegin_text')
 
-
+      Button('scrollFrame_Reset_bt')
+        .id('scrollFrame_Reset_bt')
+        .onClick(() => { // reset the init state
+          this.scroller.scrollEdge(Edge.Top);
+          this.text = ""    
+        })
 
     }.width('100%').margin({ top: 5 })
   }

@@ -89,6 +89,17 @@ struct Grid_ScorllStartAndStop {
       Text(this.text1).id('Grid_ScrollStartandStop_tex1')
       Text(this.text2).id('Grid_ScrollStartandStop_tex2')
 
+      Button('scrollStartAndStop_Reset_bt')
+        .id('scrollStartAndStop_Reset_bt')
+        .onClick(() => { // reset the init state
+          this.text1 = ""
+          this.text2 = ""  
+          this.scroller.scrollEdge(Edge.Top);
+          
+        })
+
+
+
     }.width('100%').margin({ top: 5 })
   }
 }
