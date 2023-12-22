@@ -28,15 +28,12 @@ config("config") {
 
 ohos_shared_library("AudioNDK") {
   sources = [ "./AudioPlayerNDK.cpp" ]
-  include_dirs = [ "$MEDIA_ROOT_DIR/interfaces/kits/c/",
+  include_dirs = [
+    "$MEDIA_ROOT_DIR/interfaces/kits/c/",
     "//foundation/multimedia/histreamer/interface/kits/c/",
   ]
-  external_deps = [
-    "napi:ace_napi",
-  ]
-  deps = [
-    "$MEDIA_ROOT_DIR/interfaces/kits/c:avplayer",
-  ]
+  external_deps = [ "napi:ace_napi" ]
+  deps = [ "$MEDIA_ROOT_DIR/interfaces/kits/c:avplayer" ]
   configs = [ ":config" ]
   output_extension = "so"
   part_name = "player_framework"

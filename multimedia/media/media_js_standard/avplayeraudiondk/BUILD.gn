@@ -25,9 +25,7 @@ ohos_js_hap_suite("avplayer_audio_ndk_ets_hap") {
   hap_name = "ActsAVPlayerAudioNDKTest"
   subsystem_name = "multimedia"
   part_name = "player_framework"
-  shared_libraries = [
-    "./src/main/cpp:AudioNDK",
-  ]
+  shared_libraries = [ "./src/main/cpp:AudioNDK" ]
 }
 
 ohos_app_scope("hts_demo_ets_app_profile") {
