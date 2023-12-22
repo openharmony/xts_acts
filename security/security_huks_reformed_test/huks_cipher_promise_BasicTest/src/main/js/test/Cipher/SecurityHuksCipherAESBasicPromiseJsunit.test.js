@@ -808,11 +808,18 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
           let huksOptions = {
               properties: huksProperties
           };
+          expect(12000016).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET);
+          expect(4).assertEqual(huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_ALWAYS_VALID);
+          expect(536871228).assertEqual(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
+          let enum1 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_DE;
+          let enum2 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+          let enum3 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE;
           try {
               await huks.generateKeyItem(srcKeyAlies, huksOptions);
               console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
               expect(null).assertFail();
           } catch (err) {
+              expect(err.code).assertEqual(12000016);
               console.log("SUB_Security_HUKS_isPwdSet_0020: success");
           }
           done();
