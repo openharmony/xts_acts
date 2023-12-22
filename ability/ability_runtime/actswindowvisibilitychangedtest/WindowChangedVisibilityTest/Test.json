@@ -23,8 +23,9 @@
             "run-command": [
                 "param set persist.sys.suspend_manager_enabled false",
                 "reboot",
+                "wait 5",
                 "power-shell wakeup",
-                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602",
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",
