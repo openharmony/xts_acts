@@ -169,7 +169,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testCreate_Invalid_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      ohosWindow.create(context, 'create_Test_001', 20).catch((err) => {
+      ohosWindow.create(context, 'create_Test_001', 888).catch((err) => {
         console.error(msgStr + 'Failed to create the subWindow. Cause: ' + JSON.stringify(err));
         expect(err.code).assertEqual(1003);
         done();
@@ -188,7 +188,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testCreate_Invalid_WinType_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      ohosWindow.create(context, 'create_Test_002', 20, (err, data) => {
+      ohosWindow.create(context, 'create_Test_002', 888, (err, data) => {
         if (err.code) {
           console.error(msgStr + 'Failed to create the subWindow. Cause: ' + JSON.stringify(err));
           try {
