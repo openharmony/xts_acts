@@ -45,6 +45,7 @@ group("ability_runtime") {
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",
       "actssystemapitest:ActsSystemAPITest",
+      "actsturipermisssiontest:actsturipermisssiontest",
       "actsuiextensionforresulttest:actsuiextensionforresulttest",
       "actsuiextensiontest:actsuiextensiontest",
       "actsusers:actsusers",
