@@ -21,7 +21,7 @@ import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 
 import pipWindow from '@ohos.PiPWindow';
 
-export default function pipWindowTest() {
+export default function pipWindowTest(context1) {
   describe('window_pipWindow_test', function () {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
@@ -71,7 +71,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -120,7 +120,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -162,7 +162,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -210,7 +210,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -253,7 +253,7 @@ export default function pipWindowTest() {
         let contentHeight = 600; 
         
         let config = {
-            context: getContext(this),
+            context: context1,
             componentController: mXComponentController,
             navigationId: navId,
             templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -301,7 +301,7 @@ export default function pipWindowTest() {
         let contentHeight = 600; 
         
         let config = {
-            context: getContext(this),
+            context: context1,
             componentController: mXComponentController,
             navigationId: navId,
             templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -350,7 +350,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -386,7 +386,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -423,7 +423,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -484,7 +484,7 @@ export default function pipWindowTest() {
       let contentHeight = 600;
 
       let config = {
-        context: getContext(this),
+        context: context1,
         componentController: mXComponentController,
         navigationId: navId,
         templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -553,7 +553,7 @@ export default function pipWindowTest() {
         let contentHeight = 600;
 
         let config = {
-          context: getContext(this),
+          context: context1,
           componentController: mXComponentController,
           navigationId: navId,
           templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
@@ -600,7 +600,7 @@ export default function pipWindowTest() {
         let contentHeight = 600;
 
         let config = {
-          context: getContext(this),
+          context: context1,
           componentController: mXComponentController,
           navigationId: navId,
           templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
