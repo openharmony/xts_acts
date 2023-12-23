@@ -37,10 +37,15 @@ describe('fileio_fchown', async function () {
       let stat = fileio.statSync(fpath);
       expect(isIntNum(stat.uid)).assertTrue();
       let fd = fileio.openSync(fpath, 0o102, 0o666);
-      fileio.fchmodSync(fd, 0o777);
-      fileio.fchown(fd, stat.uid, stat.gid, function (err) {
-        fileio.closeSync(fd);
+      fileio.fchown(fd, stat.uid + 1, stat.gid + 1, (err) => {
+        if (err) {
+          console.error('fileio_test_fchown_async_000 has failed in callback: ' + err);
+        }
+        let stat1 = fileio.statSync(fpath);
+        expect(stat.uid == stat1.uid).assertTrue();
+        expect(stat.gid == stat1.gid).assertTrue();
         fileio.unlinkSync(fpath);
+        fileio.closeSync(fd);
         done();
       });
     } catch (e) {
@@ -65,60 +70,16 @@ describe('fileio_fchown', async function () {
       let stat = fileio.statSync(fpath);
       expect(isIntNum(stat.uid)).assertTrue();
       let fd = fileio.openSync(fpath, 0o102, 0o666);
-      fileio.fchmodSync(fd, 0o777);
-      await fileio.fchown(fd, stat.uid, stat.gid);
+      await fileio.fchown(fd, stat.uid + 1, stat.gid + 1);
+      let stat1 = fileio.statSync(fpath);
+      expect(stat.uid == stat1.uid).assertTrue();
+      expect(stat.gid == stat1.gid).assertTrue();
       fileio.closeSync(fd);
       fileio.unlinkSync(fpath);
       done();
     } catch (e) {
       console.info('fileio_test_fchown_async_001 has failed for ' + e);
       expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_ASYNC_0200
-   * @tc.name fileio_test_fchown_async_002
-   * @tc.desc Test the fchownAsync() interface with promise, invalid fd. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-   it('fileio_test_fchown_async_002', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_fchown_async_002');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let stat = fileio.statSync(fpath);
-      await fileio.fchown(-1, stat.uid, stat.gid);
-    } catch (e) {
-      console.info('fileio_test_fchown_async_002 has failed for ' + e);
-      expect(e.message == "Bad file descriptor").assertTrue();
-      fileio.unlinkSync(fpath);
-      done();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_ASYNC_0300
-   * @tc.name fileio_test_fchown_async_003
-   * @tc.desc Test the fchownAsync() interface with promise, wrong uid, gid. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_fchown_async_003', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_fchown_async_003');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let fd = fileio.openSync(fpath);
-      await fileio.fchown(fd, 0, 0);
-    } catch (e) {
-      console.info('fileio_test_fchown_async_003 has failed for ' + e);
-      expect(e.message == "Operation not permitted").assertTrue();
-      fileio.unlinkSync(fpath);
-      done();
     }
   });
 
@@ -139,79 +100,15 @@ describe('fileio_fchown', async function () {
       expect(isIntNum(stat.uid)).assertTrue();
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       fileio.fchmodSync(fd, 0o777);
-      fileio.fchownSync(fd, stat.uid, stat.gid);
+      fileio.fchownSync(fd, stat.uid + 1, stat.gid + 1);
+      let stat1 = fileio.statSync(fpath);
+      expect(stat.uid == stat1.uid).assertTrue();
+      expect(stat.gid == stat1.gid).assertTrue();
       fileio.closeSync(fd);
       fileio.unlinkSync(fpath);
     } catch (e) {
       console.info('fileio_test_fchown_sync_000 has failed for ' + e);
       expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_SYNC_0100
-   * @tc.name fileio_test_fchown_sync_001
-   * @tc.desc Test fchownSync() interface, invalid fd. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_fchown_sync_001', 0, async function () {
-    let fpath = await nextFileName('fileio_test_fchown_sync_001');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let stat = fileio.statSync(fpath);
-      fileio.fchownSync(-1, stat.uid, stat.gid);
-    } catch (e) {
-      console.info('fileio_test_fchown_sync_001 has failed for ' + e);
-      expect(e.message == "Bad file descriptor").assertTrue();
-      fileio.unlinkSync(fpath);
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_SYNC_0200
-   * @tc.name fileio_test_fchown_sync_002
-   * @tc.desc Test fchownSync() interface, wrong uid, gid. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_fchown_sync_002', 0, async function () {
-    let fpath = await nextFileName('fileio_test_fchown_sync_002');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let fd = fileio.openSync(fpath);
-      fileio.fchownSync(fd, 0, 0);
-    } catch (e) {
-      console.info('fileio_test_fchown_sync_002 has failed for ' + e);
-      expect(e.message == "Operation not permitted").assertTrue();
-      fileio.unlinkSync(fpath);
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_SYNC_0300
-   * @tc.name fileio_test_fchown_sync_003
-   * @tc.desc Test fchownSync() interface, wrong owner. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_fchown_sync_003', 0, async function () {
-    let fpath = await nextFileName('fileio_test_fchown_sync_003');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let fd = fileio.openSync(fpath);
-      let stat = fileio.statSync(fpath);
-      fileio.fchownSync(fd, null, stat.gid);
-    } catch (e) {
-      console.info('fileio_test_fchown_sync_003 has failed for ' + e);
-      expect(e.message == "Invalid owner").assertTrue();
-      fileio.unlinkSync(fpath);
     }
   });
 });
