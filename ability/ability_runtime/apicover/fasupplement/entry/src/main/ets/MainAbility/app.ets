@@ -23,38 +23,38 @@ export default {
   },
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
-
-    commonEvent.publish(listPush1 + "onDestroy", (err) => {
-      console.info(printLog1 + listPush1 + "onDestroy");
-    });
   },
   onActive() {
     console.info(printLog1 + 'onActive');
 
-    ability_featureAbility.hasWindowFocus().then((data) => {
-      console.info(printLog1 + "hasWindowFocus data = " + data);
-      var CommonEventPublishData = {
-        parameters: {
-          hasWindowFocus: data
+    setTimeout(()=>{
+      ability_featureAbility.hasWindowFocus().then((data) => {
+        console.info(printLog1 + "hasWindowFocus data = " + data);
+        var CommonEventPublishData = {
+          parameters: {
+            hasWindowFocus: data
+          }
         }
-      }
-      commonEvent.publish(listPush1 + "HasWindowFocus", CommonEventPublishData, (err) => {
-        console.info(printLog1 + listPush1 + "HasWindowFocus");
-      });
-
-      setTimeout(()=>{
+        commonEvent.publish("Fa_MainAbility_HasWindowFocus", CommonEventPublishData, (err) => {
+          console.info(printLog1 + listPush1 + "HasWindowFocus");
+        });
         ability_featureAbility.terminateSelf().then((data) => {
           console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
         });
-      }, 3000)
-    }).catch((err) => {
-      console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
-    });
+      }).catch((err) => {
+        console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
+      });
+    }, 3000)
+
   },
   onInactive() {
     console.info(printLog1 + 'onInactive');
+    console.info(printLog1 + 'start send event message');
+    commonEvent.publish("Fa_MainAbility_onDestroy", (err) => {
+      console.info(printLog1 + listPush1 + "onDestroy" + JSON.stringify(err));
+    });
   },
   onShow() {
     console.info(printLog1 + 'onShow');
