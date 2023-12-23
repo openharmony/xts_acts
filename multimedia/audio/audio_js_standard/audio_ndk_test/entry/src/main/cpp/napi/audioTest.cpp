@@ -770,6 +770,20 @@ static napi_value AudioRenderGetChannelCount(napi_env env, napi_callback_info in
     napi_create_int32(env, result, &res);
     return res;
 }
+// OH_AudioStreamBuilder_SetFrameSizeInCallback
+static napi_value AudioStreamBuilderSetFrameSizeInCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    int32_t framesize = 960;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, framesize);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -824,6 +838,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioStreamBuilderSetCapturerCallback", nullptr, AudioStreamBuilderSetCapturerCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioCaptureGetChannelCount", nullptr, AudioCaptureGetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderGetChannelCount", nullptr, AudioRenderGetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetFrameSizeInCallback", nullptr, AudioStreamBuilderSetFrameSizeInCallback,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
