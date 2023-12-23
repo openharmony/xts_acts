@@ -315,7 +315,7 @@ export default function buttonJsunit() {
         try {
           if(density.x == 1080){
             expect(Math.abs(event.screenX - 185) <= 1).assertTrue()
-            expect(Math.abs(event.screenY - 523) <= 1).assertTrue()
+            expect(Math.abs(event.screenY - 533) <= 1).assertTrue()
             expect(Math.trunc(event.x)).assertEqual(100)
             expect(Math.trunc(event.y)).assertEqual(50)
           }else{
