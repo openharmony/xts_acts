@@ -43,12 +43,12 @@ export default function scrollByJsunit() {
     afterEach(async function () {
       await CommonFunc.sleep(1000);
       router.clear()
-      console.info("List_scrollToIndex1 after each called");
+      console.info("Grid_scrollToIndex1 after each called");
     });
     /* *
     * @tc.number: SUB_ACE_TS_COMPONENT_SR000IFDKV_0001
     * @tc.name  : scrollToJsunit_0001
-    * @tc.desc  : Y-axis slide 100
+    * @tc.desc  : Y-axis slide 90
     * @tc.level : Level 2
     */
     it('scrollToJsunit_0001', 0, async function (done) {
@@ -168,7 +168,7 @@ export default function scrollByJsunit() {
     /* *
      * @tc.number: SUB_ACE_TS_COMPONENT_SR000IFDKV_0005
      * @tc.name  : scrollToJsunit_0005
-     * @tc.desc  : Y-axis slide 1000
+     * @tc.desc  : Y-axis slide 900
      * @tc.level : Level 2
      */
 
@@ -196,7 +196,7 @@ export default function scrollByJsunit() {
     /* *
      * @tc.number: SUB_ACE_TS_COMPONENT_SR000IFDKV_0006
      * @tc.name  : scrollToJsunit_0006
-     * @tc.desc  : Slide 300px on the Y-axis
+     * @tc.desc  : Slide 270px on the Y-axis
      * @tc.level : Level 2
      */
 
