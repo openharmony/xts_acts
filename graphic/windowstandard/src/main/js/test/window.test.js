@@ -960,6 +960,7 @@ export default function window_test() {
                         data.on('windowSizeChange', windowSizeChangeCallback);
                         data.off('windowSizeChange');
                         expect(true).assertTrue()
+                        done()
                     }
                 })
             }, (err) => {
@@ -3733,6 +3734,78 @@ export default function window_test() {
             expect().assertFail();
             done();
         }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1170
+     * @tc.name      : testGetWindowLimits_Test
+     * @tc.desc      : test the function of getWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testGetWindowLimits_Test', 0,  async function (done) {
+        console.log('www data testGetWindowLimits_Test begin')
+        try {
+            let windowClass = await window.getTopWindow();
+            let WindowLimits = windowClass.getWindowLimits();
+            console.log('www data Succeeded in window limits'+ JSON.stringify(WindowLimits))
+            expect(WindowLimits.maxWidth != null).assertTrue();
+            expect(WindowLimits.maxHeight != null).assertTrue();
+            expect(WindowLimits.minWidth != null).assertTrue();
+            expect(WindowLimits.minHeight != null).assertTrue();
+            done();
+          } catch (error) {
+            console.log('www data Failed to obtain the window limits of window. Cause: ' + JSON.stringify(error));
+            if (error.code == 801) {
+                expect(true).assertTrue()
+                done()
+            } else {
+                expect().assertFail();
+                done();
+            }
+          }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
+     * @tc.name      : testSetWindowLimits_Function_Promise
+     * @tc.desc      : test the function of setWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSetWindowLimits_Function_Promise', 0, async function (done){
+        console.log('www data setWindowLimits_Function_Promise begin')
+        try {
+            let WindowLimits = {
+                maxWidth: 1500,
+                maxHeight: 1000,
+                minWidth: 500,
+                minHeight: 400
+            };
+            let windowClass= await window.getTopWindow();
+            let promise = windowClass.setWindowLimits(WindowLimits);
+                promise.then((data) => {
+                console.log('www data Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
+                expect(true).asserTrue();
+                done();
+            }).catch((error) => {
+                console.log('www data Failed to change the window limits. Cause: ' + JSON.stringify(error));
+                if (error.code == 801) {
+                    expect(true).assertTrue()
+                    done()
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            });
+            
+          } catch (error) {
+              console.log('www data Failed to change the window limits. Cause:' + JSON.stringify(error));
+              expect().assertFail();
+              done();
+          }
     })
 
     })
