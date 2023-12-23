@@ -46,8 +46,10 @@ export default function Stack_Text() {
     /* *
       * @tc.number: Stack_Text_001
       * @tc.name  : Stack_Text_001
-      * @tc.desc  : set enableScrollInteraction to false
+      * @tc.desc  : set api
       * @tc.level : Level 2
+      * @tc.type : 
+      * @tc.size : 
       */
     it('Stack_Text_001', 0, async function (done) {
 

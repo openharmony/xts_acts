@@ -46,7 +46,10 @@ export default function richEditorApi() {
     /**
      * @tc.number    SUB_ACE_RICHEDITOR_RICHEDITORAPI_0100
      * @tc.name      testRichEditor
-     * @tc.desc      set api
+     * @tc.desc       set api
+     * @tc.level        Level 2
+      * @tc.type 
+      * @tc.size 
      */
     it('testRichEditor_0100', 0, async function (done) {
       console.info('[testRichEditor_0100] START');
