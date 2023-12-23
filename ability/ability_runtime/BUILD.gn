@@ -49,6 +49,7 @@ group("ability_runtime") {
       "actsuiextensionforresulttest:actsuiextensionforresulttest",
       "actsuiextensiontest:actsuiextensiontest",
       "actsusers:actsusers",
+      "actswindowvisibilitychangedtest:actswindowvisibilitychangedtest",
       "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsdisplayIdtest:amsdisplayIdtest",
