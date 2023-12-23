@@ -28,16 +28,6 @@ export default class MainAbility extends Ability {
     console.log("MainAbility3 onWindowStageCreate")
     globalThis.abilityContext3 = this.context
     windowStage.setUIContent(this.context, "pages/index/second", null)
-    globalThis.abilityContext3.terminateSelfWithResult(
-      {
-        resultCode:1,
-        want:{
-          action:'ACTION'
-        }
-      },()=>{
-      console.debug("====>terminateSelfWithResult succese====>")
-    });
-    console.debug("====>terminateSelf end====>")
   }
 
   onWindowStageDestroy() {
@@ -45,14 +35,21 @@ export default class MainAbility extends Ability {
   }
 
   onForeground() {
-    console.log("MainAbility3 onForeground")
-
-    try {
-        globalThis.abilityContext3.terminateSelfWithResult({
-            resultCode: 1
-          })
-    } catch (error) {
-    }
+    console.log("MainAbility3 onForeground");
+    let sendMessageTime = 1000;
+    setTimeout(()=>{
+      globalThis.abilityContext3.terminateSelfWithResult(
+        {
+          resultCode:1,
+          want:{
+            action:'ACTION'
+          }
+        }, (err, data) => {
+          console.info("MainAbility3====>terminateSelfWithResult succese err====>" + JSON.stringify(err));
+          console.info("MainAbility3====>terminateSelfWithResult succese data====>" + JSON.stringify(data));
+        });
+      console.info("MainAbility3====>terminateSelf end====>");
+    }, sendMessageTime);
   }
 
   onBackground() {
