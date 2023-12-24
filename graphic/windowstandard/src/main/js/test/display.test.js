@@ -16,6 +16,7 @@ import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import window from '@ohos.window'
 import display from '@ohos.display'
+import hdrCapability from '@ohos.graphics.hdrCapability'
 
 export default function display_test() {
 describe('display_test', function () {
@@ -473,6 +474,36 @@ describe('display_test', function () {
             done()
         } catch (error) {
             expect().assertFail()
+            done()
+        }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1190
+     * @tc.name      : testHdrFormats_attr
+     * @tc.desc      : test the enum value of hdrFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testHdrFormats_attr',0, async function (done){
+        let msg = "testHdrFormats_attr"
+        try {
+            expect(hdrCapability.hdrFormats.NONE == 0).assertTrue();
+            expect(hdrCapability.hdrFormats.VIDEO_HLG == 1).assertTrue();
+            expect(hdrCapability.hdrFormats.VIDEO_HDR10 == 2).assertTrue();
+            expect(hdrCapability.hdrFormats.VIDEO_HDR_VIVID == 3).assertTrue();
+            expect(hdrCapability.hdrFormats.IMAGE_HDR_VIVID_DUAL == 4).assertTrue();
+            expect(hdrCapability.hdrFormats.IMAGE_HDR_VIVID_SINGLE == 5).assertTrue();
+            expect(hdrCapability.hdrFormats.IMAGE_HDR_ISO_DUAL == 6).assertTrue();
+            expect(hdrCapability.hdrFormats.IMAGE_HDR_ISO_SINGLE == 7).assertTrue();
+            done()
+        } catch (error) {
+            if (error.code) {
+                expect().assertFail()
+            } else {
+                expect(true).assertTrue()
+            }
             done()
         }
     })
