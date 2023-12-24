@@ -55,7 +55,7 @@ struct NavigationApi {
       this.pageInfos.pop()
       return true
     })
-    .mode(NavDestinationMode.STANDARD)
+    // .mode(NavDestinationMode.STANDARD)
   }
 
   @Builder pageTwoTmp() {
@@ -73,7 +73,7 @@ struct NavigationApi {
       this.pageInfos.pop()
       return true
     })
-    .mode(NavDestinationMode.DIALOG)
+     // .mode(NavDestinationMode.DIALOG)
   }
 
   @Builder pageThreeTmp() {
