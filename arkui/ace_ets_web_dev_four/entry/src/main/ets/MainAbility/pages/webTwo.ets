@@ -18,6 +18,7 @@ import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import business_error from '@ohos.base'
+import print from '@ohos.print'
 
 function Uint8ArrayToString(dataArray) {
   var dataString = ''
@@ -53,6 +54,8 @@ struct Second {
     webviewCtl: web_webview.WebviewController = new web_webview.WebviewController();
     delegate: web_webview.WebDownloadDelegate = new web_webview.WebDownloadDelegate();
     failedData: Uint8Array = new Uint8Array();
+    ports: web_webview.WebMessagePort[] = [];
+    scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
     @State str:string="emitGetCertificate"
     @State downloadStateCodeA:number=web_webview.WebDownloadState.IN_PROGRESS
     @State downloadStateCodeB:number=web_webview.WebDownloadState.COMPLETED
@@ -61,7 +64,6 @@ struct Second {
     @State downloadStateCodeE:number=web_webview.WebDownloadState.PENDING
     @State downloadStateCodeF:number=web_webview.WebDownloadState.PAUSED
     @State downloadStateCodeG:number=web_webview.WebDownloadState.UNKNOWN
-
     @State downloadErrorCodeA:number=web_webview.WebDownloadErrorCode.ERROR_UNKNOWN
     @State downloadErrorCodeB:number=web_webview.WebDownloadErrorCode.FILE_FAILED
     @State downloadErrorCodeC:number=web_webview.WebDownloadErrorCode.FILE_ACCESS_DENIED
@@ -90,6 +92,28 @@ struct Second {
     @State downloadErrorCodeZ:number=web_webview.WebDownloadErrorCode.USER_CANCELED
     @State downloadErrorCodeAA:number=web_webview.WebDownloadErrorCode.USER_SHUTDOWN
     @State downloadErrorCodeBB:number=web_webview.WebDownloadErrorCode.CRASH
+    //@State securityLevelA:number=web_webview.SecurityLevel.SECURE
+    //@State securityLevelB:number=web_webview.SecurityLevel.WARNING
+    //@State securityLevelC:number=web_webview.SecurityLevel.DANGEROUS
+    @State webMediaOptionsPar: WebMediaOptions = {resumeInterval: 10, audioExclusive: true}
+    @State sslErrorA:number=SslError.Invalid
+    @State sslErrorB:number=SslError.HostMismatch
+    @State sslErrorC:number=SslError.DateInvalid
+    @State sslErrorD:number=SslError.Untrusted
+    @State fileSelectorModeA:number=FileSelectorMode.FileOpenMode
+    @State fileSelectorModeB:number=FileSelectorMode.FileOpenMultipleMode
+    @State fileSelectorModeC:number=FileSelectorMode.FileOpenFolderMode
+    @State fileSelectorModeD:number=FileSelectorMode.FileSaveMode
+    @State protectedResourceTypeA:string=ProtectedResourceType.MidiSysex
+    @State protectedResourceTypeB:string=ProtectedResourceType.VIDEO_CAPTURE
+    @State protectedResourceTypeC:string=ProtectedResourceType.AUDIO_CAPTURE
+    //@State nativeEmbedStatusA:number=NativeEmbedStatus.UPDATE
+    //@State nativeEmbedStatusB:number=NativeEmbedStatus.DESTROY
+    @State navigationTypeA:number=NavigationType.MAIN_FRAME_NEW_ENTRY
+    @State navigationTypeB:number=NavigationType.MAIN_FRAME_EXISTING_ENTRY
+    @State navigationTypeC:number=NavigationType.NAVIGATION_TYPE_NEW_SUBFRAME
+    @State navigationTypeD:number=NavigationType.NAVIGATION_TYPE_AUTO_SUBFRAME
+
 
     @State modeA: OverScrollMode = OverScrollMode.ALWAYS
     @State modeB: WebLayoutMode = WebLayoutMode.FIT_CONTENT
@@ -167,6 +191,10 @@ struct Second {
                             try {
                                 if (this.setDownloadDelegateKey) {
                                     web_webview.WebDownloadManager.resumeDownload(web_webview.WebDownloadItem.deserialize(this.failedData));
+                                    this.ports = this.webviewCtl.createWebMessagePorts(true);
+                                    this.webviewCtl.startDownload('www.example.com');
+                                    let webPrintDocadapter = this.webviewCtl.createWebPrintDocumentAdapter('example.pdf');
+                                    let securityLevel = this.webviewCtl.getSecurityLevel()
                                 }
                                 Utils.emitEvent(true,12)
                             } catch (error) {
@@ -245,6 +273,47 @@ struct Second {
                 event.firstContentfulPaintMs)
                 this.firsttime = event.firstContentfulPaintMs - event.navigationStartTick/1000
                 this.arr.push(this.firsttime)
+            })
+            .onScreenCaptureRequest((event) => {
+                if (this.setDownloadDelegateKey) {
+                    if (event){
+                    AlertDialog.show({
+                    title: 'title: ' + event.handler.getOrigin(),
+                    message: 'text',
+                    primaryButton: {
+                        value: 'deny',
+                        action: () => {
+                        event.handler.deny()
+                        }
+                    },
+                    secondaryButton: {
+                        value: 'onConfirm',
+                        action: () => {
+                        event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN })
+                        }
+                    },
+                    cancel: () => {
+                        event.handler.deny()
+                    }
+                    })
+                }
+                }
+            })
+            .onNavigationEntryCommitted((details) => {
+                if (this.setDownloadDelegateKey) {
+                    if (details) {
+                    console.log("onNavigationEntryCommitted: [isMainFrame]= " + details.isMainFrame +
+                    ", [isSameDocument]=" + details.isSameDocument +
+                    ", [didReplaceEntry]=" + details.didReplaceEntry +
+                    ", [navigationType]=" + details.navigationType +
+                    ", [url]=" + details.url);
+                    }
+                }
+            })
+            .onContextMenuHide(() => {
+                if (this.setDownloadDelegateKey) {
+                    console.log("success")
+                }
             })
         }
     }
