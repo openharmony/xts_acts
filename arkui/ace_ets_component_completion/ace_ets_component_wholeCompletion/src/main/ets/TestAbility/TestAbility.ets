@@ -34,6 +34,7 @@ export default class TestAbility extends Ability {
     onWindowStageCreate(windowStage: Window.WindowStage) {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
+        globalThis.windowStage = windowStage
         windowStage.loadContent('TestAbility/pages/Index', (err, data) => {
             if (err.code) {
                 hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.ERROR);
@@ -43,21 +44,23 @@ export default class TestAbility extends Ability {
             hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
             hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
                 JSON.stringify(data) ?? '');
+
+            let windowClass = null;
+            try{
+                windowStage.getMainWindow((err, data) => {
+                    if (err.code) {
+                        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+                        return;
+                    }
+                    windowClass = data;
+                    globalThis.uiContent = windowClass.getUIContext();
+                    console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+                });
+            } catch(err){
+                console.info("windowClass getUIContext is error" + JSON.stringify(err))
+            }
         });
-        let windowClass = null;
-        try{
-            windowStage.getMainWindow((err, data) => {
-                if (err.code) {
-                    console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
-                    return;
-                }
-                windowClass = data;
-                globalThis.uiContent = windowClass.getUIContext();
-                console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-            });
-        } catch(err){
-            console.info("windowClass getUIContext is error" + JSON.stringify(err))
-        }
+
     }
     
     onWindowStageDestroy() {

@@ -57,6 +57,12 @@
           "MainAbility/pages/uiAppearance",
           "MainAbility/pages/video",
           "MainAbility/pages/web",
-          "MainAbility/pages/xcomponent"
+          "MainAbility/pages/xcomponent",
+          "MainAbility/pages/AttributeModifierDemo3API",
+          "MainAbility/pages/FolderStack3Api",
+          "MainAbility/pages/button_controlSize",
+          "MainAbility/pages/Grid_OnGetRectByIndex",
+          "MainAbility/pages/list_contentOffset",
+          "MainAbility/pages/navDestination_Observer"
     ]
 }

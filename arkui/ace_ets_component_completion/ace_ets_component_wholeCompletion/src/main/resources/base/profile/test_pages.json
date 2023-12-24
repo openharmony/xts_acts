@@ -30,6 +30,7 @@
     "TestAbility/pages/richeditor",
     "TestAbility/pages/navigationType",
     "TestAbility/pages/getcomponentadd",
-    "TestAbility/pages/getcomponent"
+    "TestAbility/pages/getcomponent",
+    "TestAbility/pages/arkui_node"
   ]
 }

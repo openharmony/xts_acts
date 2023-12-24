@@ -43,6 +43,9 @@ import navigationTypeTest from './navigationType.test';
 import ActsgetcomponentaddTest from './getcomponentadd.test';
 import ActsgetcomponentTest from './getcomponent.test';
 
+import arkUINodeTest from './arkuinode.test';
+import atomicServiceBarTest from './atomicServiceBar.test';
+
 export default function testsuite() {
   stageFontTest()
   stageRouterTest()
@@ -73,4 +76,6 @@ export default function testsuite() {
   navigationTypeTest()
   ActsgetcomponentaddTest()
   ActsgetcomponentTest()
+  arkUINodeTest()
+  atomicServiceBarTest()
 }
