@@ -299,16 +299,6 @@ struct Second {
                 }
                 }
             })
-            .onNavigationEntryCommitted((details) => {
-                if (this.setDownloadDelegateKey) {
-                    if (details) {
-                    console.log("onNavigationEntryCommitted: [isMainFrame]= " + details.isMainFrame +
-                    ", [isSameDocument]=" + details.isSameDocument +
-                    ", [didReplaceEntry]=" + details.didReplaceEntry +
-                    ", [url]=" + details.url);
-                    }
-                }
-            })
             .onContextMenuHide(() => {
                 if (this.setDownloadDelegateKey) {
                     console.log("success")
