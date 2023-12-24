@@ -1,0 +1,8 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/Stack/Stack_Text/Stack_Text",
+        "MainAbility/pages/richEditor/richEditorApi/richEditorApi"
+
+    ]
+}
