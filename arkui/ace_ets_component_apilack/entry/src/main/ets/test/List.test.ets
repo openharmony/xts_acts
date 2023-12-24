@@ -59,6 +59,16 @@ import textPickerDefaultPickerItemHeightJsunit from './textPicker.test.ets';
 import videoOnFullscreenChangeJsunit from './video.test.ets';
 import webGetTitleJsunit from './web.test.ets';
 import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
+import AttributeModifierDemo3APIJsunit from './AttributeModifierDemo3APIJsunit.test.ets';
+import FolderStack3ApiJsunit from './FolderStack3ApiJsunit.test.ets';
+
+import ButtonControlSizeJsunit from './button_controlSizeJsunit.test.ets';
+import Grid_OnGetRectByIndexJsunit from './Grid_OnGetRectByIndexJsunit.test';
+import list_contentOffsetJsunit from './list_contentOffsetJsunit.test';
+
+import navigationObserverJsunit from './navigationObserverJsunit.test';
+
+
 
 export default function testsuite() {
   lazyForEachOnDataAddJsunit()
@@ -104,4 +114,11 @@ export default function testsuite() {
   videoOnFullscreenChangeJsunit()
   webGetTitleJsunit()
   xcomponentGetXComponentContextJsunit()
+  AttributeModifierDemo3APIJsunit()
+  FolderStack3ApiJsunit()
+
+  ButtonControlSizeJsunit()
+  Grid_OnGetRectByIndexJsunit()
+  list_contentOffsetJsunit()
+  navigationObserverJsunit()
 }
