@@ -770,5 +770,19 @@ export default function nativeApiImageJsunit() {
             expect(a).assertEqual(0)
             done()
         })
+        /* *
+           * @tc.number    : TC_051
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_051', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetFrameSizeInCallback();
+            console.info("TC_051-------------audioStreamBuilderSetFrameSizeInCallback:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
     })
 }

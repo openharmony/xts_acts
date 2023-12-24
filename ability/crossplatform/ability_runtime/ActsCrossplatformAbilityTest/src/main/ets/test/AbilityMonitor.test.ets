@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
-import { describe, expect, it } from "@ohos/hypium";
+import { describe, beforeEach, expect, it } from "@ohos/hypium";
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
@@ -31,13 +31,23 @@ export default function AbilityMonitorTest() {
   };
 
   describe("AbilityMonitorTest", function () {
+    beforeEach(async function (done) {
+      console.info("AbilityMonitorTest before each called");
+      await sleep(1000);
+      done();
+    });
+
+    function sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
     /**
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name actsAddAbilityMonitorCallback0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -71,9 +81,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200
      * @tc.name actsAddAbilityMonitorCallback0200
      * @tc.desc Pass in a monitor
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", 0, async function (done) {
       const want = factoryWant(
@@ -88,8 +98,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let monitor = {
@@ -106,9 +121,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300
      * @tc.name actsAddAbilityMonitorCallback0300
      * @tc.desc Pass in a monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
       const want = factoryWant(
@@ -122,8 +137,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300 pass "
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let monitor = {
@@ -141,9 +161,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0100
      * @tc.name actsAddAbilityMonitorPromise0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -176,9 +196,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0200
      * @tc.name actsAddAbilityMonitorPromise0200
      * @tc.desc Pass in a monitor
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
       const want = factoryWant(
@@ -190,8 +210,13 @@ export default function AbilityMonitorTest() {
       function onAbilityCreateCallback(data) {
         expect(true).assertTrue();
         abilityDelegator.printSync('ACTS_ADD_ABILITY_MONITOR_PROMISE_0200 pass');
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let monitor = {
@@ -208,9 +233,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0300
      * @tc.name actsAddAbilityMonitorPromise0300
      * @tc.desc Pass in a monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
       const want = factoryWant(
@@ -221,11 +246,17 @@ export default function AbilityMonitorTest() {
 
       function onAbilityCreateCallback(data) {
         expect(true).assertTrue();
-        data.context.terminateSelf();
-        abilityDelegator.printSync(
-          "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
-        );
-        done();
+        data.context.terminateSelf().then((data) => {
+          abilityDelegator.printSync(
+            "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
+          );
+          done();
+        }).catch((error) => {
+          abilityDelegator.printSync(
+            "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
+          );
+          done();
+        });
       }
 
       let monitor = {
@@ -241,9 +272,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name actsRemoveAbilityMonitorCallback0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
       let monitor = null;
@@ -276,9 +307,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200
      * @tc.name actsRemoveAbilityMonitorCallback0200
      * @tc.desc Pass in an Add monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async function (done) {
       const want = factoryWant(
@@ -314,9 +345,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300
      * @tc.name actsRemoveAbilityMonitorCallback0300
      * @tc.desc Pass in an unadded monitor to monitor
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
       let result = 0;
@@ -351,9 +382,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400
      * @tc.name actsRemoveAbilityMonitorCallback0400
      * @tc.desc remove a monitor that has already been wait.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400", 0, async function (done) {
       const want = factoryWant(
@@ -387,9 +418,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500
      * @tc.name actsRemoveAbilityMonitorCallback0500
      * @tc.desc Pass in an Add monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500", 0, async function (done) {
       const want = factoryWant(
@@ -424,9 +455,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100
      * @tc.name actsRemoveAbilityMonitorPromise0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
       let monitor = null;
@@ -461,9 +492,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200
      * @tc.name actsRemoveAbilityMonitorPromise0200
      * @tc.desc Pass in an Add monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
       const want = factoryWant(
@@ -511,9 +542,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300
      * @tc.name actsRemoveAbilityMonitorPromise0300
      * @tc.desc Pass in an unadded monitor to monitor
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
       const want = factoryWant(
@@ -567,9 +598,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400
      * @tc.name actsRemoveAbilityMonitorPromise0400
      * @tc.desc remove a monitor that has already been wait.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400", 0, async function (done) {
       const want = factoryWant(
@@ -616,9 +647,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500
      * @tc.name actsRemoveAbilityMonitorPromise0500
      * @tc.desc Pass in an unadded monitor to monitor whether the monitor container size increases.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500", 0, async function (done) {
       const want = factoryWant(
@@ -669,9 +700,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name actsWaitAbilityMonitorCallback0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
       let monitor = null;
@@ -703,9 +734,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300
      * @tc.name actsWaitAbilityMonitorCallback0300
      * @tc.desc Pass in an added monitor and start the monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -713,8 +744,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let want = {
@@ -734,9 +770,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400
      * @tc.name actsWaitAbilityMonitorCallback0400
      * @tc.desc Pass in an empty monitor, timeout=6000.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400", 0, async function (done) {
       let monitor = null;
@@ -769,9 +805,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500
      * @tc.name actsWaitAbilityMonitorCallback0500
      * @tc.desc Pass in a monitor that has been added, timeout=10000.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500", 0, async function (done) {
       const want = factoryWant(
@@ -816,9 +852,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600
      * @tc.name actsWaitAbilityMonitorCallback0600
      * @tc.desc Pass in an already added monitor and start this monitor, timeout<5.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -826,8 +862,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       const want = factoryWant(
@@ -851,9 +892,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700
      * @tc.name actsWaitAbilityMonitorCallback0700
      * @tc.desc Pass in an already added monitor and start this monitor, timeout=0.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -861,8 +902,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       const want = factoryWant(
@@ -886,9 +932,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800
      * @tc.name actsWaitAbilityMonitorCallback0800
      * @tc.desc Pass in an already added monitor and start this monitor, timeout<5.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -896,8 +942,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       const want = factoryWant(
@@ -921,9 +972,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900
      * @tc.name actsWaitAbilityMonitorCallback0900
      * @tc.desc Pass in an already added monitor and start this monitor, timeout<0.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -931,8 +982,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900 pass"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       const want = factoryWant(
@@ -956,9 +1012,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000
      * @tc.name actsWaitAbilityMonitorCallback1000
      * @tc.desc Pass in an added monitor and start this monitor to get the current bundleName.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000", 0, async function (done) {
       function onAbilityCreateCallback(data) {
@@ -1004,9 +1060,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100
      * @tc.name actsWaitAbilityMonitorPromise0100
      * @tc.desc pass in a null monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
     it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
       let monitor = null;
@@ -1038,9 +1094,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200
      * @tc.name actsWaitAbilityMonitorPromise0200
      * @tc.desc Pass in a Monitor that has already been added.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
       const want = factoryWant(
@@ -1054,8 +1110,13 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback"
         );
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let monitor = {
@@ -1084,9 +1145,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300
      * @tc.name actsWaitAbilityMonitorPromise0300
      * @tc.desc Pass in an already added Monitor and start the Monitor.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
       const want = factoryWant(
@@ -1097,9 +1158,13 @@ export default function AbilityMonitorTest() {
 
       function onAbilityCreateCallback(data) {
         expect(true).assertTrue();
-        data.context.terminateSelf();
-        abilityDelegator.printSync("ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
-        done();
+        data.context.terminateSelf().then((data) => {
+          abilityDelegator.printSync("ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
+          done();
+        }).catch((error) => {
+          abilityDelegator.printSync("ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
+          done();
+        });
       }
 
       let monitor = {
@@ -1128,9 +1193,9 @@ export default function AbilityMonitorTest() {
      * @tc.number ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400
      * @tc.name actsWaitAbilityMonitorPromise0400
      * @tc.desc Pass in an already added StageMonitor and start this Monitor, passing in a timeout=0.
-     * @tc.size      : MediumTest
-     * @tc.type      : Method
-     * @tc.level     : Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400", 0, async function (done) {
       const want = factoryWant(
@@ -1142,8 +1207,13 @@ export default function AbilityMonitorTest() {
       function onAbilityCreateCallback(data) {
         expect(true).assertTrue();
         abilityDelegator.printSync("ACTS_WAITABILITYMONTOR_PROMISE_0400 pass");
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          done();
+        }).catch((error) => {
+          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          done();
+        });
       }
 
       let monitor = {

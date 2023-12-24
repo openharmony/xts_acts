@@ -14,7 +14,10 @@
                 "AACommand07.hap->/data/AACommand07.hap",
                 "AACommand08.hap->/data/AACommand08.hap",
                 "AACommandpackage.hap->/data/AACommandpackage.hap",
-                "AACommandRelyHap.hap->/data/AACommandRelyHap.hap"
+                "AACommandRelyHap.hap->/data/AACommandRelyHap.hap",
+                "AttachDebugExtensionTest.hap->/data/AttachDebugExtensionTest.hap",
+                "ServiceExtensionDemo.hap->/data/ServiceExtensionDemo.hap",
+                "AttachDebugUIExtensionTest.hap->/data/AttachDebugUIExtensionTest.hap"
             ]
         },
 		{
@@ -23,10 +26,19 @@
                 "AACommand07.hap",
                 "AACommand08.hap",
                 "AACommandpackage.hap",
-                "AACommandRelyHap.hap"
+                "AACommandRelyHap.hap",
+                "AttachDebugExtensionTest.hap",
+                "ServiceExtensionDemo.hap",
+                "AttachDebugUIExtensionTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "setenforce 0"
+            ]
         }
     ]
 }

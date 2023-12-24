@@ -20,7 +20,7 @@
 #include <GLES3/gl32.h>
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TRUE 1
 #define FALSE 0
 #define RGB_SIZE 0x08
@@ -50,8 +50,8 @@ static napi_value createMyEglWindow(napi_env env, MyEGLWindow *myEGLWindow)
     NAPI_ASSERT(env, myEGLWindow->eglDisplay != EGL_NO_DISPLAY, "eglInitialize error");
     EGLint majorVersion = GL_MAJOR_VERSION_2;
     EGLint minorVersion = GL_MINOR_VERSION_0;
-    EGLBoolean ret = eglInitialize(myEGLWindow->eglDisplay, &majorVersion, &minorVersion);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglInitialize error");
+    EGLBoolean Ret = eglInitialize(myEGLWindow->eglDisplay, &majorVersion, &minorVersion);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglInitialize error");
     myEGLWindow->eglVersion = majorVersion * GL_MAJOR_VERSION_MARK + minorVersion;
     EGLint clientVersion = majorVersion == GL_MAJOR_VERSION_3 ? EGL_OPENGL_ES3_BIT : EGL_OPENGL_ES2_BIT;
     const EGLint configAttribs[] = {
@@ -59,8 +59,8 @@ static napi_value createMyEglWindow(napi_env env, MyEGLWindow *myEGLWindow)
         EGL_ALPHA_SIZE, RGB_SIZE, EGL_RENDERABLE_TYPE, clientVersion, EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,
         EGL_NONE,       EGL_NONE};
     EGLint numConfigs = 0x00;
-    ret = eglChooseConfig(myEGLWindow->eglDisplay, configAttribs, &myEGLWindow->eglConfig, EGL_ONE, &numConfigs);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglChooseConfig error");
+    Ret = eglChooseConfig(myEGLWindow->eglDisplay, configAttribs, &myEGLWindow->eglConfig, EGL_ONE, &numConfigs);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglChooseConfig error");
     const EGLint surfaceAttribs[] = {EGL_WIDTH,          INIT_WIDTH,       EGL_HEIGHT,         INIT_HEIGHT,
                                      EGL_TEXTURE_FORMAT, EGL_TEXTURE_RGBA, EGL_TEXTURE_TARGET, EGL_TEXTURE_2D,
                                      EGL_NONE,           EGL_NONE};
@@ -70,9 +70,9 @@ static napi_value createMyEglWindow(napi_env env, MyEGLWindow *myEGLWindow)
     myEGLWindow->eglContext =
         eglCreateContext(myEGLWindow->eglDisplay, myEGLWindow->eglConfig, EGL_NO_CONTEXT, contextAttribs);
     NAPI_ASSERT(env, myEGLWindow->eglContext != EGL_NO_CONTEXT, "eglCreateContext error");
-    ret = eglMakeCurrent(myEGLWindow->eglDisplay, myEGLWindow->eglLSurface, myEGLWindow->eglLSurface,
+    Ret = eglMakeCurrent(myEGLWindow->eglDisplay, myEGLWindow->eglLSurface, myEGLWindow->eglLSurface,
                          myEGLWindow->eglContext);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglMakeCurrent error");
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglMakeCurrent error");
     return nullptr;
 }
 
@@ -82,8 +82,8 @@ static napi_value destroyMyEglWindow(napi_env env, MyEGLWindow *myEGLWindow)
         return nullptr;
     }
     if (myEGLWindow->eglDisplay != EGL_NO_DISPLAY) {
-        EGLBoolean ret = eglTerminate(myEGLWindow->eglDisplay);
-        NAPI_ASSERT_BASE(env, ret == EGL_TRUE, "eglTerminate error", EGL_FALSE);
+        EGLBoolean Ret = eglTerminate(myEGLWindow->eglDisplay);
+        NAPI_ASSERT_BASE(env, Ret == EGL_TRUE, "eglTerminate error", EGL_FALSE);
     }
     myEGLWindow->eglDisplay = EGL_NO_DISPLAY;
     myEGLWindow->eglLSurface = EGL_NO_SURFACE;
@@ -109,8 +109,8 @@ static napi_value EglChooseConfig(napi_env env, napi_callback_info info)
     EGLDisplay display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     NAPI_ASSERT(env, display != EGL_NO_DISPLAY, "eglGetDisplay error");
     eglInitialize(display, nullptr, nullptr);
-    EGLBoolean ret = eglChooseConfig(display, confAttr, &config, config_size, &numConfigs);
-    NAPI_ASSERT(env, ret == TRUE, "eglChooseConfig error");
+    EGLBoolean Ret = eglChooseConfig(display, confAttr, &config, config_size, &numConfigs);
+    NAPI_ASSERT(env, Ret == TRUE, "eglChooseConfig error");
     eglReleaseThread();
     eglTerminate(display);
     napi_value result = nullptr;
@@ -124,8 +124,8 @@ static napi_value EglChooseConfigAbnormal(napi_env env, napi_callback_info info)
     EGLConfig config = nullptr;
     EGLDisplay display = nullptr;
     EGLint config_size = 1;
-    EGLBoolean ret = eglChooseConfig(display, confAttr, &config, config_size, &numConfigs);
-    NAPI_ASSERT(env, ret == FALSE, "eglChooseConfig error");
+    EGLBoolean Ret = eglChooseConfig(display, confAttr, &config, config_size, &numConfigs);
+    NAPI_ASSERT(env, Ret == FALSE, "eglChooseConfig error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -144,8 +144,8 @@ static napi_value EglCopyBuffersAbnormal(napi_env env, napi_callback_info info)
     eglChooseConfig(m_eglDisplay, confAttr, &m_eglConf, config_size, &numConfigs);
     EGLSurface m_eglSurface = nullptr;
     EGLNativePixmapType mNativeDisplay = 0;
-    EGLBoolean ret = eglCopyBuffers(m_eglDisplay, m_eglSurface, mNativeDisplay);
-    NAPI_ASSERT(env, ret == FALSE, "eglCopyBuffers error");
+    EGLBoolean Ret = eglCopyBuffers(m_eglDisplay, m_eglSurface, mNativeDisplay);
+    NAPI_ASSERT(env, Ret == FALSE, "eglCopyBuffers error");
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
@@ -284,8 +284,8 @@ static napi_value EglDestroyContext(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
     const EGLint ctxAttr[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
     EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, ctxAttr);
-    EGLBoolean ret = eglDestroyContext(m_eglDisplay, m_eglCtx);
-    NAPI_ASSERT(env, ret == TRUE, "eglDestroyContext error");
+    EGLBoolean Ret = eglDestroyContext(m_eglDisplay, m_eglCtx);
+    NAPI_ASSERT(env, Ret == TRUE, "eglDestroyContext error");
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
@@ -299,8 +299,8 @@ static napi_value EglDestroyContextAbnormal(napi_env env, napi_callback_info inf
     EGLDisplay m_eglDisplay = nullptr;
     EGLConfig m_eglConf = nullptr;
     EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, nullptr);
-    EGLBoolean ret = eglDestroyContext(m_eglDisplay, m_eglCtx);
-    NAPI_ASSERT(env, ret == FALSE, "eglDestroyContext error");
+    EGLBoolean Ret = eglDestroyContext(m_eglDisplay, m_eglCtx);
+    NAPI_ASSERT(env, Ret == FALSE, "eglDestroyContext error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -321,8 +321,8 @@ static napi_value EglDestroySurface(napi_env env, napi_callback_info info)
 
     EGLSurface m_eglSurface = eglCreatePbufferSurface(m_eglDisplay, m_eglConf, surfaceAttr);
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
-    EGLBoolean ret = eglDestroySurface(m_eglDisplay, m_eglSurface);
-    NAPI_ASSERT(env, ret == TRUE, "eglDestroySurface error");
+    EGLBoolean Ret = eglDestroySurface(m_eglDisplay, m_eglSurface);
+    NAPI_ASSERT(env, Ret == TRUE, "eglDestroySurface error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -340,8 +340,8 @@ static napi_value EglDestroySurfaceAbnormal(napi_env env, napi_callback_info inf
 
     EGLSurface m_eglSurface = eglCreatePbufferSurface(m_eglDisplay, m_eglConf, surfaceAttr);
 
-    EGLBoolean ret = eglDestroySurface(m_eglDisplay, m_eglSurface);
-    NAPI_ASSERT(env, ret == FALSE, "eglDestroySurface error");
+    EGLBoolean Ret = eglDestroySurface(m_eglDisplay, m_eglSurface);
+    NAPI_ASSERT(env, Ret == FALSE, "eglDestroySurface error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -360,12 +360,12 @@ static napi_value EglGetConfigAttrib(napi_env env, napi_callback_info info)
     eglInitialize(m_eglDisplay, nullptr, nullptr);
 
     eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
-    EGLBoolean ret;
+    EGLBoolean Ret;
     for (int i = 0; i < numConfigs; ++i) {
-        ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
-        ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
+        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
+        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
     }
-    NAPI_ASSERT(env, ret == TRUE, "eglGetConfigAttrib error");
+    NAPI_ASSERT(env, Ret == TRUE, "eglGetConfigAttrib error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -380,12 +380,12 @@ static napi_value EglGetConfigAttribAbnormal(napi_env env, napi_callback_info in
     EGLint numConfigs;
     EGLint config_size = 10;
     eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
-    EGLBoolean ret;
+    EGLBoolean Ret;
     for (int i = 0; i < numConfigs; ++i) {
-        ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
-        ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
+        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
+        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_ALPHA_SIZE, &numConfigs);
     }
-    NAPI_ASSERT(env, ret == FALSE, "eglGetConfigAttrib error");
+    NAPI_ASSERT(env, Ret == FALSE, "eglGetConfigAttrib error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -403,8 +403,8 @@ static napi_value EglGetConfigs(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, m_eglDisplay != EGL_NO_DISPLAY, "eglGetDisplay error");
     eglInitialize(m_eglDisplay, nullptr, nullptr);
 
-    EGLBoolean ret = eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
-    NAPI_ASSERT(env, ret == TRUE, "eglGetConfigs error");
+    EGLBoolean Ret = eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
+    NAPI_ASSERT(env, Ret == TRUE, "eglGetConfigs error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -419,8 +419,8 @@ static napi_value EglGetConfigsAbnormal(napi_env env, napi_callback_info info)
     EGLint numConfigs;
     EGLint config_size = 10;
 
-    EGLBoolean ret = eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
-    NAPI_ASSERT(env, ret == FALSE, "eglGetConfigs error");
+    EGLBoolean Ret = eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
+    NAPI_ASSERT(env, Ret == FALSE, "eglGetConfigs error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -527,8 +527,8 @@ static napi_value EglGetError(napi_env env, napi_callback_info info)
     const EGLint ctxAttr[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
     EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, ctxAttr);
     NAPI_ASSERT(env, m_eglCtx == EGL_NO_CONTEXT, "eglGetCurrentSurface error");
-    EGLint ret = eglGetError();
-    NAPI_ASSERT(env, ret == EGL_BAD_DISPLAY, "eglGetError error");
+    EGLint Ret = eglGetError();
+    NAPI_ASSERT(env, Ret == EGL_BAD_DISPLAY, "eglGetError error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -561,8 +561,8 @@ static napi_value EglGetProcAddressAbnormal(napi_env env, napi_callback_info inf
 static napi_value EglInitialize(napi_env env, napi_callback_info info)
 {
     EGLDisplay m_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-    EGLBoolean ret = eglInitialize(m_eglDisplay, nullptr, nullptr);
-    NAPI_ASSERT(env, ret == TRUE, "eglGetProcAddress error");
+    EGLBoolean Ret = eglInitialize(m_eglDisplay, nullptr, nullptr);
+    NAPI_ASSERT(env, Ret == TRUE, "eglGetProcAddress error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -573,8 +573,8 @@ static napi_value EglInitialize(napi_env env, napi_callback_info info)
 static napi_value EglInitializeAbnormal(napi_env env, napi_callback_info info)
 {
     EGLDisplay m_eglDisplay = nullptr;
-    EGLBoolean ret = eglInitialize(m_eglDisplay, nullptr, nullptr);
-    NAPI_ASSERT(env, ret == FALSE, "eglGetProcAddress error");
+    EGLBoolean Ret = eglInitialize(m_eglDisplay, nullptr, nullptr);
+    NAPI_ASSERT(env, Ret == FALSE, "eglGetProcAddress error");
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
@@ -598,8 +598,8 @@ static napi_value EglMakeCurrent(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
     const EGLint ctxAttr[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
     EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, ctxAttr);
-    EGLBoolean ret = eglMakeCurrent(m_eglDisplay, m_eglSurface, m_eglSurface, m_eglCtx);
-    NAPI_ASSERT(env, ret == TRUE, "eglMakeCurrent error");
+    EGLBoolean Ret = eglMakeCurrent(m_eglDisplay, m_eglSurface, m_eglSurface, m_eglCtx);
+    NAPI_ASSERT(env, Ret == TRUE, "eglMakeCurrent error");
     eglDestroyContext(m_eglDisplay, m_eglCtx);
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
@@ -614,8 +614,8 @@ static napi_value EglMakeCurrentAbnormal(napi_env env, napi_callback_info info)
     EGLDisplay m_eglDisplay = nullptr;
     EGLSurface m_eglSurface = nullptr;
     EGLContext m_eglCtx = nullptr;
-    EGLBoolean ret = eglMakeCurrent(m_eglDisplay, m_eglSurface, m_eglSurface, m_eglCtx);
-    NAPI_ASSERT(env, ret == FALSE, "eglMakeCurrent error");
+    EGLBoolean Ret = eglMakeCurrent(m_eglDisplay, m_eglSurface, m_eglSurface, m_eglCtx);
+    NAPI_ASSERT(env, Ret == FALSE, "eglMakeCurrent error");
     eglDestroyContext(m_eglDisplay, m_eglCtx);
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
@@ -641,8 +641,8 @@ static napi_value EglQueryContext(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
     const EGLint ctxAttr[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
     EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, ctxAttr);
-    EGLBoolean ret = eglQueryContext(m_eglDisplay, m_eglCtx, EGL_CONTEXT_CLIENT_VERSION, &numConfigs);
-    NAPI_ASSERT(env, ret == TRUE, "eglQueryContext error");
+    EGLBoolean Ret = eglQueryContext(m_eglDisplay, m_eglCtx, EGL_CONTEXT_CLIENT_VERSION, &numConfigs);
+    NAPI_ASSERT(env, Ret == TRUE, "eglQueryContext error");
     eglDestroyContext(m_eglDisplay, m_eglCtx);
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
@@ -667,8 +667,8 @@ static napi_value EglQueryContextAbnormal(napi_env env, napi_callback_info info)
     EGLSurface m_eglSurface = eglCreatePbufferSurface(m_eglDisplay, m_eglConf, surfaceAttr);
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
     EGLContext m_eglCtx = nullptr;
-    EGLBoolean ret = eglQueryContext(m_eglDisplay, m_eglCtx, EGL_CONTEXT_CLIENT_VERSION, &numConfigs);
-    NAPI_ASSERT(env, ret == FALSE, "eglQueryContext error");
+    EGLBoolean Ret = eglQueryContext(m_eglDisplay, m_eglCtx, EGL_CONTEXT_CLIENT_VERSION, &numConfigs);
+    NAPI_ASSERT(env, Ret == FALSE, "eglQueryContext error");
     eglDestroyContext(m_eglDisplay, m_eglCtx);
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
@@ -695,7 +695,6 @@ static napi_value EglQueryString(napi_env env, napi_callback_info info)
 
 static napi_value EglQueryStringAbnormal(napi_env env, napi_callback_info info)
 {
-
     EGLDisplay m_eglDisplay = nullptr;
     const char *vendor = eglQueryString(m_eglDisplay, EGL_VENDOR);
     NAPI_ASSERT(env, vendor == nullptr, "eglQueryString error");
@@ -720,8 +719,8 @@ static napi_value EglQuerySurface(napi_env env, napi_callback_info info)
     EGLSurface m_eglSurface = eglCreatePbufferSurface(m_eglDisplay, m_eglConf, surfaceAttr);
     NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
     EGLint width;
-    EGLBoolean ret = eglQuerySurface(m_eglDisplay, m_eglSurface, EGL_WIDTH, &width);
-    NAPI_ASSERT(env, ret == TRUE, "eglQuerySurface error");
+    EGLBoolean Ret = eglQuerySurface(m_eglDisplay, m_eglSurface, EGL_WIDTH, &width);
+    NAPI_ASSERT(env, Ret == TRUE, "eglQuerySurface error");
     eglDestroySurface(m_eglDisplay, m_eglSurface);
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
@@ -743,8 +742,8 @@ static napi_value EglQuerySurfaceAbnormal(napi_env env, napi_callback_info info)
 
     EGLSurface m_eglSurface = nullptr;
     EGLint width;
-    EGLBoolean ret = eglQuerySurface(m_eglDisplay, m_eglSurface, EGL_WIDTH, &width);
-    NAPI_ASSERT(env, ret == FALSE, "eglQuerySurface error");
+    EGLBoolean Ret = eglQuerySurface(m_eglDisplay, m_eglSurface, EGL_WIDTH, &width);
+    NAPI_ASSERT(env, Ret == FALSE, "eglQuerySurface error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -755,8 +754,8 @@ static napi_value EglSwapBuffers(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglSwapBuffers(myEGLWindow.eglDisplay, myEGLWindow.eglLSurface);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglSwapBuffers error");
+    EGLBoolean Ret = eglSwapBuffers(myEGLWindow.eglDisplay, myEGLWindow.eglLSurface);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglSwapBuffers error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -766,8 +765,8 @@ static napi_value EglSwapBuffers(napi_env env, napi_callback_info info)
 static napi_value EglSwapBuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglSwapBuffers(EGL_NO_DISPLAY, EGL_NO_SURFACE);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglGetError error");
+    EGLBoolean Ret = eglSwapBuffers(EGL_NO_DISPLAY, EGL_NO_SURFACE);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglGetError error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -780,8 +779,8 @@ static napi_value EglTerminate(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglTerminate(myEGLWindow.eglDisplay);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglTerminate error");
+    EGLBoolean Ret = eglTerminate(myEGLWindow.eglDisplay);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglTerminate error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -790,8 +789,8 @@ static napi_value EglTerminate(napi_env env, napi_callback_info info)
 static napi_value EglTerminateAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglTerminate(EGL_NO_DISPLAY);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglGetError error");
+    EGLBoolean Ret = eglTerminate(EGL_NO_DISPLAY);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglGetError error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -804,8 +803,8 @@ static napi_value EglWaitGL(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglWaitGL();
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglWaitGL error");
+    EGLBoolean Ret = eglWaitGL();
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglWaitGL error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -817,8 +816,8 @@ static napi_value EglWaitNative(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglWaitNative(EGL_CORE_NATIVE_ENGINE);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglWaitNative error");
+    EGLBoolean Ret = eglWaitNative(EGL_CORE_NATIVE_ENGINE);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglWaitNative error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -841,12 +840,12 @@ static napi_value EglBindTexImage(napi_env env, napi_callback_info info)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    EGLBoolean ret = eglBindTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglBindTexImage error");
-    ret = eglReleaseTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglReleaseTexImage error");
-    ret = eglDestroySurface(myEGLWindow.eglDisplay, eglLSurface);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySurface error");
+    EGLBoolean Ret = eglBindTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglBindTexImage error");
+    Ret = eglReleaseTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglReleaseTexImage error");
+    Ret = eglDestroySurface(myEGLWindow.eglDisplay, eglLSurface);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySurface error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -856,8 +855,8 @@ static napi_value EglBindTexImage(napi_env env, napi_callback_info info)
 static napi_value EglBindTexImageAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglBindTexImage(EGL_NO_DISPLAY, EGL_NO_SURFACE, 0x00);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglBindTexImage error");
+    EGLBoolean Ret = eglBindTexImage(EGL_NO_DISPLAY, EGL_NO_SURFACE, 0x00);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglBindTexImage error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -879,12 +878,12 @@ static napi_value EglReleaseTexImage(napi_env env, napi_callback_info info)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    EGLBoolean ret = eglBindTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglBindTexImage error");
-    ret = eglReleaseTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglReleaseTexImage error");
-    ret = eglDestroySurface(myEGLWindow.eglDisplay, eglLSurface);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySurface error");
+    EGLBoolean Ret = eglBindTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglBindTexImage error");
+    Ret = eglReleaseTexImage(myEGLWindow.eglDisplay, eglLSurface, EGL_BACK_BUFFER);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglReleaseTexImage error");
+    Ret = eglDestroySurface(myEGLWindow.eglDisplay, eglLSurface);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySurface error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -894,8 +893,8 @@ static napi_value EglReleaseTexImage(napi_env env, napi_callback_info info)
 static napi_value EglReleaseTexImageAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglReleaseTexImage(EGL_NO_DISPLAY, EGL_NO_SURFACE, 0x00);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglReleaseTexImage error");
+    EGLBoolean Ret = eglReleaseTexImage(EGL_NO_DISPLAY, EGL_NO_SURFACE, 0x00);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglReleaseTexImage error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -906,8 +905,8 @@ static napi_value EglSurfaceAttrib(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglSurfaceAttrib(myEGLWindow.eglDisplay, myEGLWindow.eglLSurface, EGL_MIPMAP_LEVEL, EGL_ONE);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglSurfaceAttrib error");
+    EGLBoolean Ret = eglSurfaceAttrib(myEGLWindow.eglDisplay, myEGLWindow.eglLSurface, EGL_MIPMAP_LEVEL, EGL_ONE);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglSurfaceAttrib error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -918,8 +917,8 @@ static napi_value EglSurfaceAttribAbnormal(napi_env env, napi_callback_info info
 {
     (void)info;
     (void)info;
-    EGLBoolean ret = eglSurfaceAttrib(EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_MIPMAP_LEVEL, EGL_ONE);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglSurfaceAttrib error");
+    EGLBoolean Ret = eglSurfaceAttrib(EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_MIPMAP_LEVEL, EGL_ONE);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglSurfaceAttrib error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -932,8 +931,8 @@ static napi_value EglSwapInterval(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglSwapInterval(myEGLWindow.eglDisplay, EGL_ONE);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglSwapInterval error");
+    EGLBoolean Ret = eglSwapInterval(myEGLWindow.eglDisplay, EGL_ONE);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglSwapInterval error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -943,8 +942,8 @@ static napi_value EglSwapInterval(napi_env env, napi_callback_info info)
 static napi_value EglSwapIntervalAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglSwapInterval(EGL_NO_DISPLAY, EGL_ONE);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglSwapInterval error");
+    EGLBoolean Ret = eglSwapInterval(EGL_NO_DISPLAY, EGL_ONE);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglSwapInterval error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -957,8 +956,8 @@ static napi_value EglBindAPI(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglBindAPI(EGL_OPENGL_ES_API);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglBindAPI error");
+    EGLBoolean Ret = eglBindAPI(EGL_OPENGL_ES_API);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglBindAPI error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -970,10 +969,10 @@ static napi_value EglBindAPIAbnormal(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglBindAPI(EGL_OPENGL_API);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglBindAPI error");
-    ret = eglBindAPI(EGL_OPENVG_API);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglBindAPI error");
+    EGLBoolean Ret = eglBindAPI(EGL_OPENGL_API);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglBindAPI error");
+    Ret = eglBindAPI(EGL_OPENVG_API);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglBindAPI error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -1010,8 +1009,8 @@ static napi_value EglReleaseThread(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglReleaseThread();
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglReleaseThread error");
+    EGLBoolean Ret = eglReleaseThread();
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglReleaseThread error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -1023,8 +1022,8 @@ static napi_value EglWaitClient(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglWaitClient();
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglWaitClient error");
+    EGLBoolean Ret = eglWaitClient();
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglWaitClient error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
@@ -1053,8 +1052,8 @@ static napi_value EglCreateSync(napi_env env, napi_callback_info info)
         const EGLint attr[] = {EGL_NONE};
         EGLSync eglSync = eglCreateSync(myEGLWindow.eglDisplay, EGL_SYNC_FENCE, attr);
         NAPI_ASSERT(env, eglSync != EGL_NO_SYNC, "eglCreateSync error");
-        EGLBoolean ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySync error");
+        EGLBoolean Ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySync error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1086,8 +1085,8 @@ static napi_value EglDestroySync(napi_env env, napi_callback_info info)
         const EGLint attr[] = {EGL_NONE};
         EGLSync eglSync = eglCreateSync(myEGLWindow.eglDisplay, EGL_SYNC_FENCE, attr);
         NAPI_ASSERT(env, eglSync != EGL_NO_SYNC, "eglCreateSync error");
-        EGLBoolean ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySync error");
+        EGLBoolean Ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySync error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1098,8 +1097,8 @@ static napi_value EglDestroySync(napi_env env, napi_callback_info info)
 static napi_value EglDestroySyncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglDestroySync(EGL_NO_DISPLAY, EGL_NO_SYNC);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglDestroySync error");
+    EGLBoolean Ret = eglDestroySync(EGL_NO_DISPLAY, EGL_NO_SYNC);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglDestroySync error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -1116,10 +1115,10 @@ static napi_value EglClientWaitSync(napi_env env, napi_callback_info info)
         const EGLint attr[] = {EGL_NONE};
         EGLSync eglSync = eglCreateSync(myEGLWindow.eglDisplay, EGL_SYNC_FENCE, attr);
         NAPI_ASSERT(env, eglSync != EGL_NO_SYNC, "eglCreateSync error");
-        EGLBoolean ret = eglClientWaitSync(myEGLWindow.eglDisplay, eglSync, 0x00, EGL_FOREVER);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglClientWaitSync error");
-        ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySync error");
+        EGLBoolean Ret = eglClientWaitSync(myEGLWindow.eglDisplay, eglSync, 0x00, EGL_FOREVER);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglClientWaitSync error");
+        Ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySync error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1132,8 +1131,8 @@ static napi_value EglClientWaitSyncAbnormal(napi_env env, napi_callback_info inf
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglClientWaitSync(myEGLWindow.eglDisplay, EGL_NO_SYNC, 0x00, EGL_FOREVER);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglClientWaitSync error");
+    EGLBoolean Ret = eglClientWaitSync(myEGLWindow.eglDisplay, EGL_NO_SYNC, 0x00, EGL_FOREVER);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglClientWaitSync error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1149,10 +1148,10 @@ static napi_value EglGetSyncAttrib(napi_env env, napi_callback_info info)
         EGLSync eglSync = eglCreateSync(myEGLWindow.eglDisplay, EGL_SYNC_FENCE, attr);
         NAPI_ASSERT(env, eglSync != EGL_NO_SYNC, "eglCreateSync error");
         EGLint value[1] = {0x00};
-        EGLBoolean ret = eglGetSyncAttrib(myEGLWindow.eglDisplay, eglSync, EGL_SYNC_TYPE, value);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglGetSyncAttrib error");
-        ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySync error");
+        EGLBoolean Ret = eglGetSyncAttrib(myEGLWindow.eglDisplay, eglSync, EGL_SYNC_TYPE, value);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglGetSyncAttrib error");
+        Ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySync error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1164,8 +1163,8 @@ static napi_value EglGetSyncAttribAbnormal(napi_env env, napi_callback_info info
 {
     (void)info;
     EGLint value[1] = {0x00};
-    EGLBoolean ret = eglGetSyncAttrib(EGL_NO_DISPLAY, EGL_NO_SYNC, EGL_SYNC_TYPE, value);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglGetSyncAttrib error");
+    EGLBoolean Ret = eglGetSyncAttrib(EGL_NO_DISPLAY, EGL_NO_SYNC, EGL_SYNC_TYPE, value);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglGetSyncAttrib error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -1187,8 +1186,8 @@ static napi_value EglCreateImage(napi_env env, napi_callback_info info)
         EGLImage image = eglCreateImage(myEGLWindow.eglDisplay, myEGLWindow.eglContext, EGL_GL_TEXTURE_2D,
                                         (void *)(static_cast<intptr_t>(texture)), eglAttrib);
         NAPI_ASSERT(env, image != EGL_NO_IMAGE, "eglCreateImage error");
-        EGLBoolean ret = eglDestroyImage(myEGLWindow.eglDisplay, image);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroyImage error");
+        EGLBoolean Ret = eglDestroyImage(myEGLWindow.eglDisplay, image);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroyImage error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1222,8 +1221,8 @@ static napi_value EglDestroyImage(napi_env env, napi_callback_info info)
         EGLImage image = eglCreateImage(myEGLWindow.eglDisplay, myEGLWindow.eglContext, EGL_GL_TEXTURE_2D,
                                         (void *)(static_cast<intptr_t>(texture)), eglAttrib);
         NAPI_ASSERT(env, image != EGL_NO_IMAGE, "eglCreateImage error");
-        EGLBoolean ret = eglDestroyImage(myEGLWindow.eglDisplay, image);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroyImage error");
+        EGLBoolean Ret = eglDestroyImage(myEGLWindow.eglDisplay, image);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroyImage error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1234,8 +1233,8 @@ static napi_value EglDestroyImage(napi_env env, napi_callback_info info)
 static napi_value EglDestroyImageAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
-    EGLBoolean ret = eglDestroyImage(EGL_NO_DISPLAY, EGL_NO_IMAGE);
-    NAPI_ASSERT(env, ret != EGL_TRUE, "eglDestroyImage error");
+    EGLBoolean Ret = eglDestroyImage(EGL_NO_DISPLAY, EGL_NO_IMAGE);
+    NAPI_ASSERT(env, Ret != EGL_TRUE, "eglDestroyImage error");
     EGLint eglError = eglGetError();
     NAPI_ASSERT(env, eglError == EGL_BAD_DISPLAY, "eglGetError error");
     napi_value result = nullptr;
@@ -1248,8 +1247,8 @@ static napi_value EglGetPlatformDisplay(napi_env env, napi_callback_info info)
     (void)info;
     EGLDisplay eglDisplay = eglGetPlatformDisplay(EGL_PLATFORM_OHOS_KHR, EGL_DEFAULT_DISPLAY, nullptr);
     NAPI_ASSERT(env, eglDisplay != EGL_NO_DISPLAY, "eglGetPlatformDisplay error");
-    EGLBoolean ret = eglTerminate(eglDisplay);
-    NAPI_ASSERT(env, ret == EGL_TRUE, "eglTerminate error");
+    EGLBoolean Ret = eglTerminate(eglDisplay);
+    NAPI_ASSERT(env, Ret == EGL_TRUE, "eglTerminate error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1300,10 +1299,10 @@ static napi_value EglWaitSync(napi_env env, napi_callback_info info)
         const EGLint attr[] = {EGL_NONE};
         EGLSync eglSync = eglCreateSync(myEGLWindow.eglDisplay, EGL_SYNC_FENCE, attr);
         NAPI_ASSERT(env, eglSync != EGL_NO_SYNC, "eglCreateSync error");
-        EGLBoolean ret = eglWaitSync(myEGLWindow.eglDisplay, eglSync, 0x00);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglWaitSync error");
-        ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
-        NAPI_ASSERT(env, ret == EGL_TRUE, "eglDestroySync error");
+        EGLBoolean Ret = eglWaitSync(myEGLWindow.eglDisplay, eglSync, 0x00);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglWaitSync error");
+        Ret = eglDestroySync(myEGLWindow.eglDisplay, eglSync);
+        NAPI_ASSERT(env, Ret == EGL_TRUE, "eglDestroySync error");
     }
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
@@ -1316,8 +1315,8 @@ static napi_value EglWaitSyncAbnormal(napi_env env, napi_callback_info info)
     (void)info;
     MyEGLWindow myEGLWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     createMyEglWindow(env, &myEGLWindow);
-    EGLBoolean ret = eglWaitSync(myEGLWindow.eglDisplay, EGL_NO_SYNC, EGL_ONE);
-    NAPI_ASSERT(env, ret == EGL_FALSE, "eglWaitSync error");
+    EGLBoolean Ret = eglWaitSync(myEGLWindow.eglDisplay, EGL_NO_SYNC, EGL_ONE);
+    NAPI_ASSERT(env, Ret == EGL_FALSE, "eglWaitSync error");
     destroyMyEglWindow(env, &myEGLWindow);
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);

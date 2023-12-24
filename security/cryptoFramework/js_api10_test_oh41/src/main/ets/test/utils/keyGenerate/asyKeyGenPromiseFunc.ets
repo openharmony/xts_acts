@@ -24,7 +24,7 @@ async function genKeyPair(spec: cpFw.AsyKeySpec | string): Promise<cpFw.KeyPair>
       return await cpFw.createAsyKeyGeneratorBySpec(spec).generateKeyPair();
     }
   } catch (err) {
-    console.error("[Promise] genKeyPair: catch error:" + err + "errCode: " + err.code);
+    console.error("Promise genKeyPair: catch error:" + err + "errCode: " + err.code);
     throw err as Error;
   }
 }
@@ -33,7 +33,7 @@ async function genPubKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PubKey> {
   try {
     return await cpFw.createAsyKeyGeneratorBySpec(spec).generatePubKey();
   } catch (err) {
-    console.log("[Promise]genPubKey failed. catch error " + err);
+    console.log("Promise genPubKey failed. catch error " + err);
     throw err as Error;
   }
 }
@@ -42,7 +42,7 @@ async function genPriKey(spec: cpFw.AsyKeySpec): Promise<cpFw.PriKey> {
   try {
     return await cpFw.createAsyKeyGeneratorBySpec(spec).generatePriKey();
   } catch (err) {
-    console.log("[Promise]genPriKey failed. catch error " + err);
+    console.log("Promise genPriKey failed. catch error " + err);
     throw err as Error;
   }
 }
@@ -62,6 +62,69 @@ async function convertKey(algName: string): Promise<boolean> {
   }
 }
 
+async function convertDHKey(algName: string): Promise<boolean> {
+  try {
+    let generator: cpFw.AsyKeyGenerator = cpFw.createAsyKeyGenerator(algName);
+    console.log("Promise convertKey: createAsyKeyGenerator succeed.");
+    let keyPair: cpFw.KeyPair = await genKeyPair(algName);
+    console.log("Promise convertKey: generatePriKey succeed.");
+    let keyPairNew: cpFw.KeyPair = await generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded());
+    console.log("Promise convertKey: success.");
+    if (keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_L_NUM) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_L_NUM)
+      || keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_P_BN)
+      || keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_G_BN)
+      || keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_SK_BN) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_SK_BN)
+      || keyPairNew.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_PK_BN) == keyPair.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.DH_PK_BN)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log("Promise convertKey failed. catch error " + err);
+    throw err as Error;
+  }
+}
+
+async function convertX25519Key(algName: string): Promise<boolean> {
+  try {
+    let generator: cpFw.AsyKeyGenerator = cpFw.createAsyKeyGenerator(algName);
+    console.log("Promise convertKey: createAsyKeyGenerator succeed.");
+    let keyPair: cpFw.KeyPair = await genKeyPair(algName);
+    console.log("Promise convertKey: generatePriKey succeed.");
+    let keyPairNew: cpFw.KeyPair = await generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded());
+    console.log("Promise convertKey: success.");
+    if (keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.X25519_SK_BN) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.X25519_SK_BN)
+      || keyPairNew.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.X25519_PK_BN) == keyPair.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.X25519_PK_BN)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log("Promise convertKey failed. catch error " + err);
+    throw err as Error;
+  }
+}
+
+async function convertEd25519Key(algName: string): Promise<boolean> {
+  try {
+    let generator: cpFw.AsyKeyGenerator = cpFw.createAsyKeyGenerator(algName);
+    console.log("Promise convertKey: createAsyKeyGenerator succeed.");
+    let keyPair: cpFw.KeyPair = await genKeyPair(algName);
+    console.log("Promise convertKey: generatePriKey succeed.");
+    let keyPairNew: cpFw.KeyPair = await generator.convertKey(keyPair.pubKey.getEncoded(), keyPair.priKey.getEncoded());
+    console.log("Promise convertKey: success.");
+    if (keyPairNew.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.ED25519_SK_BN) == keyPair.priKey.getAsyKeySpec(cpFw.AsyKeySpecItem.ED25519_SK_BN)
+      || keyPairNew.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.ED25519_PK_BN) == keyPair.pubKey.getAsyKeySpec(cpFw.AsyKeySpecItem.ED25519_PK_BN)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log("Promise convertKey failed. catch error " + err);
+    throw err as Error;
+  }
+}
+
 export {
-  genKeyPair, genPubKey, genPriKey, convertKey
+  genKeyPair, genPubKey, genPriKey, convertKey, convertDHKey, convertX25519Key, convertEd25519Key
 }

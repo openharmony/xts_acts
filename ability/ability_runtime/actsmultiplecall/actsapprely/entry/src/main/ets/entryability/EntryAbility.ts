@@ -266,39 +266,48 @@ export default class EntryAbility extends Ability {
         caller.callWithResult('call', param).then((data2) => {
           let receivedData1 = new MyParcelable(0, '', false);
           data2.readParcelable(receivedData1);
+          let isCallerRelease = false;
           caller.onRelease((err) => {
             if (err === 'release') {
+              isCallerRelease = true;
               console.info('====>Acts_SingleInstanceCallFunction_0700  first onrelease :' + JSON.stringify(err));
               receivedData1.str = 'release the first caller successful';
             }
           })
           caller.release();
-          this.context.startAbilityByCall({
-            bundleName: 'com.acts.thirdpartyapprely',
-            abilityName: 'SecondAbility'
-          }).then((caller2) => {
-            caller2.callWithResult('call', receivedData1).then((data3) => {
-              console.info('====>Acts_SingleInstanceCallFunction_0700 call_result:' + JSON.stringify(data3));
-              let receivedData = new MyParcelable(0, '', false);
-              data3.readParcelable(receivedData);
-              caller2.onRelease((err) => {
-                if (err === 'release') {
-                  receivedData.str = `${receivedData.str}, release the second caller successful.`
-                }
+          let callerReleaseRetryNum = 0;
+          let intervalId = setInterval(()=>{
+            callerReleaseRetryNum ++;
+            if (callerReleaseRetryNum === 10 || isCallerRelease) {
+              clearInterval(intervalId);
+              this.context.startAbilityByCall({
+                bundleName: 'com.acts.thirdpartyapprely',
+                abilityName: 'SecondAbility'
+              }).then((caller2) => {
+                caller2.callWithResult('call', receivedData1).then((data3) => {
+                  console.info('====>Acts_SingleInstanceCallFunction_0700 call_result:' + JSON.stringify(data3));
+                  let receivedData = new MyParcelable(0, '', false);
+                  data3.readParcelable(receivedData);
+                  caller2.onRelease((err) => {
+                    if (err === 'release') {
+                      receivedData.str = `${receivedData.str}, release the second caller successful.`
+                      let commonEventData = {
+                        parameters: {
+                          num: receivedData.num,
+                          str: receivedData.str
+                        }
+                      };
+                      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+                        console.log('====>Acts_SingleInstanceCallFunction_0700 publish err:' + JSON.stringify(err));
+                        globalThis.terminate();
+                      })
+                    }
+                  })
+                  caller2.release();
+                })
               })
-              caller2.release();
-              let commonEventData = {
-                parameters: {
-                  num: receivedData.num,
-                  str: receivedData.str
-                }
-              };
-              commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-                console.log('====>Acts_SingleInstanceCallFunction_0700 publish err:' + JSON.stringify(err));
-                globalThis.terminate();
-              })
-            })
-          })
+            }
+          }, 200)
         }
         ).catch((err) => {
           console.info('====>Acts_SingleInstanceCallFunction_0700 callWithResult err:' + JSON.stringify(err));
@@ -310,6 +319,8 @@ export default class EntryAbility extends Ability {
 
     globalThis.MultipleCallFunction_0400 = () => {
       let count = 0;
+      let isCallerRelease = false;
+      let isCaller1Release = false;
       console.info('====>Acts_SingleInstanceCallFunction_0800 entryability data:');
       this.context.startAbilityByCall({
         bundleName: 'com.acts.thirdpartyapprely',
@@ -325,6 +336,7 @@ export default class EntryAbility extends Ability {
             if (err == 'died') {
               console.info('====>Acts_SingleInstanceCallFunction_0800 first onRelease :' + JSON.stringify(err));
               count++;
+              isCaller1Release = true;
               receivedData1.num = count;
             }
           })
@@ -340,6 +352,7 @@ export default class EntryAbility extends Ability {
                 if (err == 'died') {
                   count++;
                   receivedData.num = count;
+                  isCallerRelease = true;
                   console.info('====>Acts_SingleInstanceCallFunction_0800 second onRelease:' + receivedData.str);
                 }
               })
@@ -349,9 +362,15 @@ export default class EntryAbility extends Ability {
                 console.info('====>Acts_SingleInstanceCallFunction_0800 pkillCmd err:' + JSON.stringify(err));
               })
               setTimeout(()=>{
+                let resultNum = 0;
+                if (isCallerRelease && isCaller1Release) {
+                  resultNum = 2;
+                } else if (isCallerRelease || isCaller1Release) {
+                  resultNum = 1;
+                }
                 let commonEventData = {
                   parameters: {
-                    num: receivedData.num,
+                    num: resultNum,
                     str: receivedData.str,
                   }
                 };
@@ -359,7 +378,7 @@ export default class EntryAbility extends Ability {
                   console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
                   globalThis.terminate();
                 })
-              }, 500)
+              }, 1000)
             })
           })
         }).catch((err) => {

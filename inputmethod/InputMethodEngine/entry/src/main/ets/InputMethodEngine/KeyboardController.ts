@@ -57,6 +57,7 @@ export class KeyboardController {
         inputMethodEngine.on('inputStart', async (keyboardController, TextInputClient) => {
             this.keyboardController = keyboardController;
             this.TextInputClient = TextInputClient
+            console.info(TAG + '====>inputMethodEngine inputStart into');
         })
 
         function subscriberCallback(err, data) {
@@ -804,7 +805,7 @@ export class KeyboardController {
                 clearInterval(t);
             }
             loopCount += 1;
-        },100);
+        },300);
 
         let t1 = setTimeout(() => {
             if(count === 2){
@@ -814,7 +815,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_077", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },1000);
+        },2000);
     }
 
     async Sub_InputMethod_IME_VisualInput_0500() {

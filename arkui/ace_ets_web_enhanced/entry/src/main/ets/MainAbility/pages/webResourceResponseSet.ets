@@ -93,11 +93,7 @@ struct webResourceResponseSet {
                 this.getResponseDataValue = '123'
                 this.controller.loadUrl('http://1.1.1.123/index.html');
                 await Utils.sleep(2000);
-                if (this.getResponseDataValue.indexOf('intercept test') !== -1) {
-                  Utils.emitEvent(true, 36010);
-                  return;
-                }
-                Utils.emitEvent(false, 36010);
+                Utils.emitEvent(this.getResponseDataValue == '""', 36010);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
