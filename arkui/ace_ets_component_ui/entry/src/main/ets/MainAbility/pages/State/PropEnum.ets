@@ -22,6 +22,10 @@ struct PropEnum {
 
   build() {
     Column({space:5}) {
+      Button("Reset").id("PropEnum_reset")
+        .onClick(() => {
+          this.enumA = KFC.A11
+        })
       Text('@Prop 支持数据类型：enum').fontSize(18)
       Text('Father State: ' + this.enumA).margin(10).width("100%")
         .key("PropEnum").backgroundColor(this.enumA)

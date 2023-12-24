@@ -21,6 +21,11 @@ struct ParentLink {
 
   build() {
     Column({ space: 10 }) {
+      Button("Reset").id("ParentLink_reset")
+        .onClick(() => {
+          this.str = "before"
+          this.num = 0
+        })
       Text('父组件').fontSize(24).margin({ top: 20 })
       Text('Parent str: ' + this.str).key("str_parText")
       Button(`change parStr`)

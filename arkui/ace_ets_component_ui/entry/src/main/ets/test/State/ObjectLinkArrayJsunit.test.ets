@@ -43,8 +43,12 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
     afterEach(async function () {
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);      
+      let button = await driver.findComponent(ON.id('arrViewB_reset'));
+      await button.click();
+      console.log('reset button click succ')
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('ObjectLinkArrayJsunit_0100', 0, async function (done) {
@@ -62,8 +66,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0200', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0200 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('change_ArrObl'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('change_ArrObl'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
