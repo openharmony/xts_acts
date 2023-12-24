@@ -30,7 +30,7 @@ export default function atomicServiceBarTest() {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
       console.info("atomicServiceBar beforeEach start");
-      windowStage.loadContent('TestAbility/pages/arkui_node', (err, data) => {
+      windowStage.loadContent('TestAbility/pages/stageFont', (err, data) => {
       uiContext = windowStage.getMainWindowSync().getUIContext();
       if (uiContext != null) {
         let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
