@@ -3808,5 +3808,40 @@ export default function window_test() {
           }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1210
+     * @tc.name      : testWindowStatusType_attr
+     * @tc.desc      : test the enum value of WindowStatusType
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testWindowStatusType_attr', 0, async function (done) {
+        let msgStr = 'testWindowStatusType_attr';
+        console.log(msgStr + ' begin');
+        try {
+            if (window.WindowStatusType) {
+                expect(window.WindowStatusType.UNDEFINED == 0)
+                expect(window.WindowStatusType.FULL_SCREEN == 1)
+                expect(window.WindowStatusType.MAXIMIZE == 2)
+                expect(window.WindowStatusType.MINIMIZE == 3)
+                expect(window.WindowStatusType.FLOATING == 4)
+                expect(window.WindowStatusType.SPLIT_SCREEN == 5)
+            } else {
+                console.log(msgStr + 'WindowStatusType is not calleble')
+            }
+            expect(true).assertTrue()
+        } catch(err) {
+            if (err.code) {
+                console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
+                expect().assertFail()
+            } else {
+                expect(true).assertTrue()
+                console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
+            }
+        }
+        done()
+    })
+
     })
 }
