@@ -53,7 +53,6 @@ struct WebAttributeTest {
   @State blockNetwork: boolean = false
   @State progress: string = ""
   @State geoShow: boolean = false
-  @State geoHide: boolean = false
   @State pageBegin: string = ""
   @State pageEnd: string = ""
   @State alert: string = ""
@@ -285,18 +284,6 @@ struct WebAttributeTest {
                   this.geoShow = true
                   await Utils.sleep(1000)
                   this.controller.loadUrl("resource://rawfile/geo.html");
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                }
-                break;
-              }
-              case "emitOnGeolocationHide": {
-                try {
-                  this.geolocationAccess = true
-                  await Utils.sleep(1000)
-                  this.controller.loadUrl("resource://rawfile/geo.html");
-                  await Utils.sleep(3000)
-                  Utils.emitEvent(this.geoHide, 70013)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
@@ -760,10 +747,6 @@ struct WebAttributeTest {
               console.log("onGeolocationShow : " + event.origin);
               event.geolocation.invoke(event.origin, false, false)
             }
-          })
-          .onGeolocationHide(() => {
-            console.log("onGeolocationHide==>")
-            this.geoHide = true
           })
           .onPageBegin((event) => {
             if (event) {

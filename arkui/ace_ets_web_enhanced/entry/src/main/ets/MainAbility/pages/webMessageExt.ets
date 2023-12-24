@@ -42,7 +42,6 @@ struct webMessageExt {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -239,11 +238,10 @@ struct webMessageExt {
             case "testWebMessageExtSetType001": {
               try {
                 this.message.setType(webView.WebMessageType.NOT_SUPPORT);
-                let type_value = this.message.getType()
-                Utils.emitEvent(type_value, 36000)
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 36000)
               }
               break;
             }

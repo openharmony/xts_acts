@@ -74,7 +74,7 @@ export default function webResourceResponseSet() {
     it('testSetResponseEncoding001', 0, async (done: Function) => {
       Utils.emitEvent("testSetResponseEncoding001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testSetResponseEncoding001", "utf-8", 36011, done);
+      Utils.registerEvent("testSetResponseEncoding001", '', 36011, done);
       sendEventByKey('WebResourceResponseSetButton', 10, '');
     })
 

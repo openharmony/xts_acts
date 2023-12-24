@@ -16,7 +16,6 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { JsProxyObject } from '../../test/Interfaces';
 import business_error, { BusinessError } from '@ohos.base';
-import picker from '@ohos.file.picker';
 
 @Entry
 @Component
@@ -57,7 +56,6 @@ struct webController {
   @State isHttpErrorReceive: boolean = false
   @State isLargeThan: boolean = false
   @State registerJavaScriptProxyFlag: boolean = false
-  @State onFileSelectorShowCallBack: boolean = false
   @State zoomAccess: boolean = false
   @State requestFocus: boolean = false
 
@@ -385,22 +383,6 @@ struct webController {
               break;
             }
 
-            case "testOnFileSelectorShow001": {
-              try {
-                this.onFileSelectorShowCallBack = false
-                this.controller.loadUrl({ url: "resource://rawfile/showFileSelector.html" });
-                await Utils.sleep(2000);
-                await Utils.clickComponent('onFileSelectorShowKey')
-                await Utils.sleep(2000);
-                Utils.emitEvent(this.onFileSelectorShowCallBack, 31019)
-              }
-              catch (error) {
-                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(String(error.code), 31019)
-              }
-              break;
-            }
-
             case "testImageAccess001": {
               try {
                 this.imageAccess = false
@@ -561,7 +543,6 @@ struct webController {
         })
 
       Web({ src: $rawfile('webPart1index.html'), controller: this.controller })
-        .key("onFileSelectorShowKey")
         .visibility(this.webVisibility)
         .javaScriptAccess(this.javaScriptAccess)
         .fileAccess(this.fileAccess)
@@ -607,21 +588,6 @@ struct webController {
         .onResourceLoad((event) => {
           console.info("onResourceLoad==>" + event.url)
           this.loadedResource = event.url
-        })
-        .onFileSelectorShow((event) => {
-          if (event) {
-            console.log('MyFileUploader onShowFileSelector invoked')
-            const documentSelectOptions = new picker.DocumentSelectOptions();
-            let uri: string | null = null;
-            const documentViewPicker = new picker.DocumentViewPicker();
-            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-              uri = documentSelectResult[0];
-              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-            }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-            })
-            this.onFileSelectorShowCallBack = true
-          }
         })
         .zoomAccess(this.zoomAccess)
         .onBlur(() => {
