@@ -18,6 +18,8 @@ export default class MainAbility extends Ability {
         globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context
         windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
     }
 
     onWindowStageDestroy() {
