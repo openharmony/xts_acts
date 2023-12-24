@@ -3809,6 +3809,119 @@ export default function window_test() {
     })
 
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1190
+     * @tc.name      : testMinimize_Function_Callback
+     * @tc.desc      : test the function of minimize callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testMinimize_Function_Callback', 0, async function (done) {
+        let msgStr = 'testMinimize_Function_Callback';
+        console.log(msgStr + ' begin');
+        window.create('subWindow11', window.WindowType.TYPE_APP).then(wnd => {
+            expect(wnd != null).assertTrue();
+            console.log(msgStr + ' wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log(msgStr + ' wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log(msgStr + ' wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+
+                        wnd.minimize((err) => {
+                            if (!err.code) {
+                              console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                              expect().assertFail()
+                            }
+                            console.info(msgStr + 'Succeeded in minimizing the window.');
+                            expect(true).assertTrue()
+                        });
+
+                        wnd.destroy((err) => {
+                            if (err.code) {
+                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                return
+                            }
+                            console.info(msgStr + 'Succeeded in destroying the window.');
+                        });
+                        done();
+                    }, (err) => {
+                        console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log(msgStr + ' wnd.isShowing failed, err :' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err_resetSize) => {
+                console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+        })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1200
+     * @tc.name      : testMinimize_Function_Promise
+     * @tc.desc      : test the function of minimize promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testMinimize_Function_Promise', 0, async function (done) {
+        let msgStr = 'testMinimize_Function_Promise';
+        console.log(msgStr + ' begin');
+        window.create('subWindow12', window.WindowType.TYPE_APP).then(wnd => {
+            expect(wnd != null).assertTrue();
+            console.log(msgStr + ' wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log(msgStr + ' wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log(msgStr + ' wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+
+                        let promise = wnd.minimize();
+                        promise.then(() => {
+                            console.info(msgStr + 'Succeeded in minimizing the window.');
+                            expect(true).assertTrue()
+                        }).catch((err) => {
+                            console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                            if (!err.code || err.code == 202) {
+                                expect(true).assertTrue()
+                            } else {
+                                expect().assertFail()
+                            }
+                        });
+
+                        wnd.destroy((err) => {
+                            if (err.code) {
+                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                return
+                            }
+                            console.info(msgStr + 'Succeeded in destroying the window.');
+                        });
+                        done();
+                    }, (err) => {
+                        console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log(msgStr + ' wnd.isShowing failed, err :' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err_resetSize) => {
+                console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+        })
+    })
+
+
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1210
      * @tc.name      : testWindowStatusType_attr
      * @tc.desc      : test the enum value of WindowStatusType
