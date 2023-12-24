@@ -27,7 +27,7 @@ struct MyComponent_AZ {
         .onClick(() => {
           this.hight = 100
         })
-        .key('state1')
+        .key('state1_MyComponent_AZ')
 
       Text("设置变量string类型50-->'200'")
       Button('change')
@@ -35,7 +35,7 @@ struct MyComponent_AZ {
         .onClick(() => {
           this.hight = '200'
         })
-        .key('state2')
+        .key('state2_MyComponent_AZ')
 
       Text("设置变量Resource类型50-->Resource")
       Button('change')
@@ -43,7 +43,7 @@ struct MyComponent_AZ {
         .onClick(() => {
           this.hight = $r('app.string.number')
         })
-        .key('state3')
+        .key('state3_MyComponent_AZ')
 
     }.width('100%').margin({top:10})
   }
