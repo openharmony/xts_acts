@@ -36,18 +36,16 @@ ohos_shared_library("entry") {
     if (target_cpu == "arm") {
       libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]
     } else if (target_cpu == "arm64") {
-      libs = [ "${clang_base_path}/../libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so"]
+      libs = [ "${clang_base_path}/../libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so" ]
     } else {
       libs = []
     }
   }
-  include_dirs = [
-    "$MEDIA_ROOT_DIR/interfaces/kits/native/include/camera",
-  ]
+  include_dirs = [ "$MEDIA_ROOT_DIR/interfaces/kits/native/include/camera" ]
   external_deps = [
     "graphic_2d:surface",
+    "hilog:hilog_ndk",
     "napi:ace_napi",
-    "hilog:hilog_ndk"
   ]
   deps = [ "$MEDIA_ROOT_DIR/frameworks/native/ndk:ohcamera" ]
   configs = [ ":config" ]
