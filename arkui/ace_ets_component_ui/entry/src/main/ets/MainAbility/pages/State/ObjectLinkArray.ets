@@ -45,6 +45,11 @@ struct arrViewB {
 
   build() {
     Column({ space: 20 }) {
+      Button("Reset").id("arrViewB_reset")
+        .onClick(() => {
+          nextID = 0
+          this.arrA = [new ClassA(5), new ClassA(6)]
+        })
       Text('hello: ' + JSON.stringify(this.arrA)).fontSize(20).margin(15)
         .key("view_arrObl")
       Button(`ViewB: change`).fontSize(15).margin(5).margin(10)

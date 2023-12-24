@@ -37,6 +37,11 @@ struct StateArray {
 
   build() {
     Column({ space: 20 }) {
+      Button("Reset").id("StateArray_reset")
+        .onClick(() => {
+          this.title = [new sArrModel(11), new sArrModel(1)]
+          this.ClassA = new sArrClassA("Hello", new sArrModel(6))
+        })
       Text('title：' + JSON.stringify(this.title)).fontSize(20).margin(15)
         .key("text_Array")
       Button('Click to change value to the array').fontSize(15).margin(5).margin(10)
