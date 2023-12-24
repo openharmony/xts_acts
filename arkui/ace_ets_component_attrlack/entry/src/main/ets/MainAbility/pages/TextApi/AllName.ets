@@ -136,9 +136,9 @@ struct buttonExample {
       .width(300)
       .height(200)
       .backgroundColor('#F1F3F5')
-      .customContentTransition( (from: number, to: number) => {
-        return {timeout: 1000, transition:(proxy: TabContentTransitionProxy) => {}}
-      });
+      // .customContentTransition( (from: number, to: number) => {
+      //   return {timeout: 1000, transition:(proxy: TabContentTransitionProxy) => {}}
+      // });
 
 
       TextArea({
