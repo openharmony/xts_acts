@@ -138,6 +138,7 @@ struct OnWindowNew {
             case "emitBlockNetWorkTrue": {
               try {
                 this.block = true;
+                await Utils.sleep(2000);
                 this.controller.loadUrl('www.weibo.com');
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -147,6 +148,7 @@ struct OnWindowNew {
             case "emitBlockNetWorkFalse": {
               try {
                 this.block = false;
+                await Utils.sleep(2000);
                 this.controller.loadUrl('www.weibo.com');
                 let testTitle = this.controller.getTitle();
                 console.log(`testTitle is: ${testTitle}`);
