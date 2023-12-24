@@ -109,10 +109,10 @@ struct Second {
     @State protectedResourceTypeC:string=ProtectedResourceType.AUDIO_CAPTURE
     //@State nativeEmbedStatusA:number=NativeEmbedStatus.UPDATE
     //@State nativeEmbedStatusB:number=NativeEmbedStatus.DESTROY
-    @State navigationTypeA:number=NavigationType.MAIN_FRAME_NEW_ENTRY
-    @State navigationTypeB:number=NavigationType.MAIN_FRAME_EXISTING_ENTRY
-    @State navigationTypeC:number=NavigationType.NAVIGATION_TYPE_NEW_SUBFRAME
-    @State navigationTypeD:number=NavigationType.NAVIGATION_TYPE_AUTO_SUBFRAME
+    //@State navigationTypeA:number=NavigationType.MAIN_FRAME_NEW_ENTRY
+    //@State navigationTypeB:number=NavigationType.MAIN_FRAME_EXISTING_ENTRY
+    //@State navigationTypeC:number=NavigationType.NAVIGATION_TYPE_NEW_SUBFRAME
+    //@State navigationTypeD:number=NavigationType.NAVIGATION_TYPE_AUTO_SUBFRAME
 
 
     @State modeA: OverScrollMode = OverScrollMode.ALWAYS
@@ -305,7 +305,6 @@ struct Second {
                     console.log("onNavigationEntryCommitted: [isMainFrame]= " + details.isMainFrame +
                     ", [isSameDocument]=" + details.isSameDocument +
                     ", [didReplaceEntry]=" + details.didReplaceEntry +
-                    ", [navigationType]=" + details.navigationType +
                     ", [url]=" + details.url);
                     }
                 }
