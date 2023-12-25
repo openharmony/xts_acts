@@ -15,13 +15,11 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
-import common from "@ohos.app.ability.common";
-
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
 let mPreferences;
-let context: common.UIAbilityContext ;
+let context;
 
 const TAG = "[PREFERENCES_IGNORE_TEST]";
 
@@ -29,8 +27,7 @@ export default function preferencesIgnoreTest() {
   describe("preferencesIgnoreTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      context = globalThis.abilityContext;
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 

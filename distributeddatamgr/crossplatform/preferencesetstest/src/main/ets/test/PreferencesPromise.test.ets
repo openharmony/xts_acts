@@ -14,7 +14,6 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
-import common from "@ohos.app.ability.common";
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
@@ -28,14 +27,13 @@ const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
 const TAG = "[PREFERENCES_PROMISE_JSUNIT_TEST]";
 let mPreferences;
-let context: common.UIAbilityContext;
+let context;
 
 export default function preferencesPromiseTest() {
   describe("preferencesPromiseTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      context = globalThis.abilityContext;
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 

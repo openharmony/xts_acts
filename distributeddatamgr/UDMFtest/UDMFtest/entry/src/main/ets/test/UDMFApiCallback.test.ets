@@ -900,7 +900,7 @@ export default function UDMFApiCallback() {
      * @tc.name unifiedDataChannel deleteData callback interface test
      * @tc.desc unifiedDataChannel deleteData callback interface test.
      */
-    it('SUB_DDM_UDMF_DeleteData_Callback_0500', 0, function (done) {
+    it('SUB_DDM_UDMF_DeleteData_Callback_0300', 0, function (done) {
       let options1 = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
