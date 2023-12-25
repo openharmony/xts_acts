@@ -15,22 +15,24 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
-import commonEvent from '@ohos.commonEvent'
+import commonEvent from '@ohos.commonEvent';
+import Base from '@ohos.base';
+import CommonEventManager from '@ohos.commonEventManager';
 
 export default function systemTimeCommonEventTest() {
-  describe('systemTimeCommonEventTest', function () {
+  describe('systemTimeCommonEventTest', () => {
     console.info('====>---------------systemTimeCommonEventTest start-----------------------');
 
     /**
      * @tc.number    SUB_systemTime_commonEnevt_timeChanged_0010
-     * @tc.name
-    * @tc.desc
-     * @tc.size      : MEDIUM
+     * @tc.name      SUB_systemTime_commonEnevt_timeChanged_0010
+     * @tc.desc      SUB_systemTime_commonEnevt_timeChanged_0010
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timeChanged_0010', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_systemTime_commonEvent_timeChanged_0010', 0, async (done: Function) => {
+      function unSubscriberCallback (err:Base.BusinessError){
         console.debug("====>SUB_systemTime_commonEvent_timeChanged_0010 unSubscriberCallback start");
         if (err){
           console.debug("====>SUB_systemTime_commonEvent_timeChanged_0010 unSubscriberCallback failed:" +
@@ -40,7 +42,7 @@ export default function systemTimeCommonEventTest() {
         }
       }
 
-      function subscriberCallback (err, data){
+      function subscriberCallback (err:Base.BusinessError, data:CommonEventManager.CommonEventData){
         console.debug("====>SUB_systemTime_commonEvent_timeChanged_0010 subscriberCallback data:"
         + JSON.stringify(data));
         commonEvent.unsubscribe(subscriber, unSubscriberCallback);
@@ -49,11 +51,11 @@ export default function systemTimeCommonEventTest() {
         done();
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIME_CHANGED']
       }
-      var subscriber;
-      commonEvent.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+      let subscriber:CommonEventManager.CommonEventSubscriber;
+      commonEvent.createSubscriber(commonEventSubscribeInfo).then((data:CommonEventManager.CommonEventSubscriber)=>{
         subscriber = data;
         console.debug("====>SUB_systemTime_commonEvent_timeChanged_0010 subscriber data:" + JSON.stringify(data))
         commonEvent.subscribe(subscriber, subscriberCallback);
@@ -68,14 +70,14 @@ export default function systemTimeCommonEventTest() {
 
     /**
      * @tc.number    SUB_systemTime_commonEvent_timeTick_0010
-     * @tc.name
-    * @tc.desc
-     * @tc.size      : MEDIUM
+     * @tc.name      SUB_systemTime_commonEvent_timeTick_0010
+     * @tc.desc      SUB_systemTime_commonEvent_timeTick_0010
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timeTick_0010', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_systemTime_commonEvent_timeTick_0010', 0, async (done: Function) => {
+      function unSubscriberCallback (err:Base.BusinessError){
         console.debug("====>SUB_systemTime_commonEvent_timeTick_0010 unSubscriberCallback start");
         if (err){
           console.debug("====>SUB_systemTime_commonEvent_timeTick_0010 unSubscriberCallback failed:" +
@@ -85,7 +87,7 @@ export default function systemTimeCommonEventTest() {
         }
       }
 
-      function subscriberCallback (err, data){
+      function subscriberCallback (err:Base.BusinessError, data:CommonEventManager.CommonEventData){
         console.debug("====>SUB_systemTime_commonEvent_timeTick_0010 subscriberCallback data:"
         + JSON.stringify(data));
         commonEvent.unsubscribe(subscriber, unSubscriberCallback);
@@ -94,11 +96,11 @@ export default function systemTimeCommonEventTest() {
         done();
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIME_TICK']
       }
-      var subscriber;
-      commonEvent.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+      let subscriber:CommonEventManager.CommonEventSubscriber;
+      commonEvent.createSubscriber(commonEventSubscribeInfo).then((data:CommonEventManager.CommonEventSubscriber)=>{
         subscriber = data;
         console.debug("====>SUB_systemTime_commonEvent_timeTick_0010 subscriber data:" + JSON.stringify(data))
         commonEvent.subscribe(subscriber, subscriberCallback);
@@ -115,14 +117,14 @@ export default function systemTimeCommonEventTest() {
 
     /**
      * @tc.number    SUB_systemTime_commonEvent_timezoneChanged_0010
-     * @tc.name
-    * @tc.desc
-     * @tc.size      : MEDIUM
+     * @tc.name      SUB_systemTime_commonEvent_timezoneChanged_0010
+     * @tc.desc      SUB_systemTime_commonEvent_timezoneChanged_0010
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timezoneChanged_0010', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_systemTime_commonEvent_timezoneChanged_0010', 0, async (done: Function) => {
+      function unSubscriberCallback (err:Base.BusinessError){
         console.debug("====>SUB_systemTime_commonEvent_timezoneChanged_0010 unSubscriberCallback start");
         if (err){
           console.debug("====>SUB_systemTime_commonEvent_timezoneChanged_0010 unSubscriberCallback failed:" +
@@ -132,7 +134,7 @@ export default function systemTimeCommonEventTest() {
         }
       }
 
-      function subscriberCallback (err, data){
+      function subscriberCallback (err:Base.BusinessError, data:CommonEventManager.CommonEventData){
         console.debug("====>SUB_systemTime_commonEvent_timezoneChanged_0010 subscriberCallback data:"
         + JSON.stringify(data));
         commonEvent.unsubscribe(subscriber, unSubscriberCallback);
@@ -141,10 +143,10 @@ export default function systemTimeCommonEventTest() {
         done();
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIMEZONE_CHANGED']
       }
-      var subscriber;
+      let subscriber:CommonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(commonEventSubscribeInfo).then((data)=>{
         subscriber = data;
         console.debug("====>SUB_systemTime_commonEvent_timezoneChanged_0010 subscriber data:" + JSON.stringify(data))

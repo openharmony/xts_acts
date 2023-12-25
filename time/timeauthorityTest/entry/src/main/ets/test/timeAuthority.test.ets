@@ -15,21 +15,22 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
+import { BusinessError } from '@ohos.base';
 
 export default function systemTimeAuthorityJsunit() {
-  describe('systemTimeAuthorityTest', function () {
+  describe('systemTimeAuthorityTest', () => {
     console.info('====>---------------systemTimeAuthorityTest start-----------------------');
+
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-
-    var zone;
-    beforeEach(async function (done) {
+    let zone: string;
+    beforeEach(async (done: Function) => {
       systemTime.getTimezone().then( (data) => {
         console.info("====>beforeEach data " + data);
         zone = data
         done()
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>beforeEach error " + error);
       });
     });
@@ -37,11 +38,11 @@ export default function systemTimeAuthorityJsunit() {
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       systemTime.setTimezone(zone).then( () => {
         console.info("====>afterEach zone " + zone);
         done()
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>afterEach error " + JSON.stringify(error));
       });
     });
@@ -50,11 +51,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTime_JS_API_0100
      * @tc.name      Test systemTime.setTime
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0100', 0, async function (done) {
+    it('SUB_systemTime_setTime_JS_API_0100', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0100 start");
       let currentTime = new Date().getTime() + 2000;
       systemTime.setTime(currentTime, (err) => {
@@ -78,19 +79,19 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTime_JS_API_0200
      * @tc.name      Test systemTime.setTime Invalid value
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0200', 0, async function (done) {
+    it('SUB_systemTime_setTime_JS_API_0200', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0200 start");
       systemTime.setTime(15222).then(() => {
         console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime fail')
         expect().assertFail();
-      }).catch((err)=>{
-        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err))
-        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err.code))
-        expect(err.code).assertEqual(-1);
+      }).catch((error: BusinessError)=>{
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(error))
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(error.code))
+        expect(error.code).assertEqual(-1);
         console.debug('====>SUB_systemTime_setTime_JS_API_0200 end');
         done();
       })
@@ -100,19 +101,19 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTime_JS_API_0300
      * @tc.name      Test systemTime.setTime3
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0300', 0, async function (done) {
+    it('SUB_systemTime_setTime_JS_API_0300', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0300 start");
       let currentTime = new Date().getTime() + 2000;
       await systemTime.setTime(currentTime).then(() => {
         console.info('====>SUB_systemTime_setTime_JS_API_0300 success')
         expect(true).assertTrue();
         done();
-      }).catch((err)=>{
-        console.debug('====>SUB_systemTime_setTime_JS_API_0300 setTime fail:' + JSON.stringify(err))
+      }).catch((error: BusinessError)=>{
+        console.debug('====>SUB_systemTime_setTime_JS_API_0300 setTime fail:' + JSON.stringify(error))
         expect().assertFail();
         done();
       })
@@ -123,11 +124,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTime_JS_API_0400
      * @tc.name      Test systemTime.setTime4  Invalid value
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTime_JS_API_0400', 0, async function (done) {
+    it('SUB_systemTime_setTime_JS_API_0400', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTime_JS_API_0400 start");
       systemTime.setTime(18, (err) => {
         try {
@@ -145,18 +146,18 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setDate_JS_API_0200
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0200', 0, async function (done) {
+    it('SUB_systemTime_setDate_JS_API_0200', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0200 start");
       // @ts-ignore
       systemTime.setDate(0).then( () => {
         console.info("====>SUB_systemTime_setDate_JS_API_0200 setDate fail ");
         expect().assertFail();
         done();
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>SUB_systemTime_setDate_JS_API_0200 error: " + error);
         expect(error.code).assertEqual(-1);
         done();
@@ -167,11 +168,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setDate_JS_API_0400
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0400', 0, async function (done) {
+    it('SUB_systemTime_setDate_JS_API_0400', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0400 start");
       let currentTime = new Date().getTime();
       let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
@@ -205,11 +206,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setDate_JS_API_0500
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setDate_JS_API_0500', 0, async function (done) {
+    it('SUB_systemTime_setDate_JS_API_0500', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0500 start");
       let currentTime = new Date().getTime();
       let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
@@ -239,17 +240,17 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0100
      * @tc.name      Test systemTime.setTimezone Invalid value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0100', 0, async function (done) {
+    it('SUB_systemTime_setTimezone_JS_API_0100', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0100 start");
       systemTime.setTimezone('Asia, Shanghai').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0100 setTimezone fail");
         expect().assertFail();
         done();
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0100 error " + JSON.stringify(error));
         expect(error.code).assertEqual(-1);
         done();
@@ -260,17 +261,17 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0200
      * @tc.name      Test systemTime.setTimezone Invalid value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0200', 0, async function (done) {
+    it('SUB_systemTime_setTimezone_JS_API_0200', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0200 start");
       systemTime.setTimezone('Beijing,China').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0200 fail");
         expect().assertFail();
         done();
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0200 error " + JSON.stringify(error));
         expect(error.code).assertEqual(-1);
         done();
@@ -281,17 +282,17 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0300
      * @tc.name      Test systemTime.setTimezone Invalid value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0300', 0, async function (done) {
+    it('SUB_systemTime_setTimezone_JS_API_0300', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0300 start");
       systemTime.setTimezone('Baker Island, U.S.A.').then(() => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0300 data fail");
         expect().assertFail();
         done();
-      }).catch(error => {
+      }).catch((error: BusinessError) => {
         console.info("====>SUB_systemTime_setTimezone_JS_API_0300 error " + JSON.stringify(error));
         expect(error.code).assertEqual(-1);
         done();
@@ -302,11 +303,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0400
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0400', 0, function (done) {
+    it('SUB_systemTime_setTimezone_JS_API_0400', 0, (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0400 start");
       systemTime.setTimezone('Asia/Jakarta',async (err) => {
         try{
@@ -325,7 +326,7 @@ export default function systemTimeAuthorityJsunit() {
               console.info("====>SUB_systemTime_setTimezone_JS_API_0400 getTimezone catch error " + error);
               done();
             }
-          }).catch(error => {
+          }).catch((error: BusinessError) => {
             console.info("====>SUB_systemTime_setTimezone_JS_API_0400 error " + error);
             done();
           });
@@ -340,11 +341,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    SUB_systemTime_setTimezone_JS_API_0500
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_setTimezone_JS_API_0500', 0, async function (done) {
+    it('SUB_systemTime_setTimezone_JS_API_0500', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setTimezone_JS_API_0500 start");
       try{
         await systemTime.setTimezone('Europe/Moscow').then(() => {
@@ -358,12 +359,12 @@ export default function systemTimeAuthorityJsunit() {
               console.info("====>SUB_systemTime_setTimezone_JS_API_0500 getTimezone catch error " + error);
               done();
             }
-          }).catch(error => {
+          }).catch((error: BusinessError) => {
             console.info("====>SUB_systemTime_setTimezone_JS_API_0500 error " + error);
             expect().assertFail();
             done();
           });
-        }).catch(error => {
+        }).catch((error: BusinessError) => {
           console.info("====>SUB_systemTime_setTimezone_JS_API_0500 error " + error.code);
           expect().assertFail();
           done();
@@ -379,11 +380,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setDate_0010
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0010', 0, async function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0010', 0, async (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setDate_0010 start");
       let currentTime = new Date().getTime();
       let date = new Date(2023,1,28);
@@ -410,11 +411,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setDate_0020
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0020', 0, async function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setDate_0020', 0, async (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setDate_0020 start");
       let currentTime = new Date().getTime();
       let date = new Date(2024,1,29);
@@ -442,11 +443,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0010 start");
       systemTime.setTimezone('America/Mexico_City',async (err) => {
         try{
@@ -470,11 +471,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0020 start");
       systemTime.setTimezone('Asia/Kuala_Lumpur',async (err) => {
         try{
@@ -498,11 +499,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0030 start");
       systemTime.setTimezone('Pacific/Auckland',async (err) => {
         try{
@@ -526,11 +527,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0040 start");
       systemTime.setTimezone('Pacific/Tahiti',async (err) => {
         try{
@@ -554,11 +555,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0050 start");
       systemTime.setTimezone('Pacific/Port_Moresby',async (err) => {
         try{
@@ -582,11 +583,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0060 start");
       systemTime.setTimezone('Asia/Gaza',async (err) => {
         try{
@@ -610,11 +611,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0070 start");
       systemTime.setTimezone('Europe/Lisbon',async (err) => {
         try{
@@ -638,11 +639,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0080 start");
       systemTime.setTimezone('Europe/Moscow',async (err) => {
         try{
@@ -666,11 +667,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0090 start");
       systemTime.setTimezone('Europe/Kiev',async (err) => {
         try{
@@ -694,11 +695,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0100 start");
       systemTime.setTimezone('Pacific/Wake',async (err) => {
         try{
@@ -722,11 +723,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0110 start");
       systemTime.setTimezone('America/New_York',async (err) => {
         try{
@@ -750,11 +751,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0120 start");
       systemTime.setTimezone('Asia/Tashkent',async (err) => {
         try{
@@ -778,11 +779,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0130 start");
       systemTime.setTimezone('Beijing/China',async (err) => {
         try{
@@ -805,11 +806,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140', 0, function (done) {
+    it('Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140', 0, (done: Function) => {
       console.info("====>Sub_Misc_TimeManage_ChangeNotice_setTimezone_0140 start");
       systemTime.setTimezone('Shanghai/Asia',async (err) => {
         try{
@@ -832,11 +833,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test1
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test1', 0, async function (done) {
+    it('systemTime_setDate_test1', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test1 start");
       let date = new Date();
       systemTime.setDate(date,async (err) => {
@@ -859,11 +860,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test2
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test2', 0, async function (done) {
+    it('systemTime_setDate_test2', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test2 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,1);
@@ -890,11 +891,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test3
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test3', 0, async function (done) {
+    it('systemTime_setDate_test3', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test3 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,15);
@@ -921,11 +922,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test4
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test4', 0, async function (done) {
+    it('systemTime_setDate_test4', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test4 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,31);
@@ -952,11 +953,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test5
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test5', 0, async function (done) {
+    it('systemTime_setDate_test5', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test5 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,32);
@@ -983,11 +984,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test6
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test6', 0, async function (done) {
+    it('systemTime_setDate_test6', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test6 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,0,29);
@@ -1014,11 +1015,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test8
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test8', 0, async function (done) {
+    it('systemTime_setDate_test8', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test8 start");
       let currentTime = new Date().getTime();
       let date = new Date(2024,1,30);
@@ -1045,11 +1046,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test9
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test9', 0, async function (done) {
+    it('systemTime_setDate_test9', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test9 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,5,30);
@@ -1076,11 +1077,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test10
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test10', 0, async function (done) {
+    it('systemTime_setDate_test10', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test10 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,5,31);
@@ -1107,11 +1108,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setDate_test11
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setDate_test11', 0, async function (done) {
+    it('systemTime_setDate_test11', 0, async (done: Function) => {
       console.info("====>systemTime_setDate_test11 start");
       let currentTime = new Date().getTime();
       let date = new Date(2022,11,31);
@@ -1138,11 +1139,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test1
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test1', 0, function (done) {
+    it('systemTime_setTimezone_test1', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test1 start");
       systemTime.setTimezone('Antarctica/McMurdo',async (err) => {
         try{
@@ -1166,11 +1167,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test2
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test2', 0, function (done) {
+    it('systemTime_setTimezone_test2', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test2 start");
       systemTime.setTimezone('Europe/Madrid',async (err) => {
         try{
@@ -1194,11 +1195,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test7
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test7', 0, function (done) {
+    it('systemTime_setTimezone_test7', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test7 start");
       systemTime.setTimezone('Asia/Ulaanbaatar',async (err) => {
         try{
@@ -1222,11 +1223,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test10
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test10', 0, function (done) {
+    it('systemTime_setTimezone_test10', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test10 start");
       systemTime.setTimezone('America/Argentina/Buenos_Aires',async (err) => {
         try{
@@ -1250,11 +1251,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test11
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test11', 0, function (done) {
+    it('systemTime_setTimezone_test11', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test11 start");
       systemTime.setTimezone('Australia/Sydney',async (err) => {
         try{
@@ -1278,11 +1279,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test12
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test12', 0, function (done) {
+    it('systemTime_setTimezone_test12', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test12 start");
       systemTime.setTimezone('America/Noronha',async (err) => {
         try{
@@ -1306,11 +1307,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test13
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test13', 0, function (done) {
+    it('systemTime_setTimezone_test13', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test13 start");
       systemTime.setTimezone('America/St_Johns',async (err) => {
         try{
@@ -1334,11 +1335,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test14
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test14', 0, function (done) {
+    it('systemTime_setTimezone_test14', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test14 start");
       systemTime.setTimezone('Africa/Kinshasa',async (err) => {
         try{
@@ -1362,11 +1363,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test15
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test15', 0, function (done) {
+    it('systemTime_setTimezone_test15', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test15 start");
       systemTime.setTimezone('America/Santiago',async (err) => {
         try{
@@ -1390,11 +1391,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test16
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test16', 0, function (done) {
+    it('systemTime_setTimezone_test16', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test16 start");
       systemTime.setTimezone('Asia/Shanghai',async (err) => {
         try{
@@ -1418,11 +1419,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test17
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test17', 0, function (done) {
+    it('systemTime_setTimezone_test17', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test17 start");
       systemTime.setTimezone('Asia/Nicosia',async (err) => {
         try{
@@ -1446,11 +1447,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test18
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test18', 0, function (done) {
+    it('systemTime_setTimezone_test18', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test18 start");
       systemTime.setTimezone('Europe/Berlin',async (err) => {
         try{
@@ -1474,11 +1475,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test19
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test19', 0, function (done) {
+    it('systemTime_setTimezone_test19', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test19 start");
       systemTime.setTimezone('America/Guayaquil',async (err) => {
         try{
@@ -1502,11 +1503,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test20
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test20', 0, function (done) {
+    it('systemTime_setTimezone_test20', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test20 start");
       systemTime.setTimezone('Pacific/Pohnpei',async (err) => {
         try{
@@ -1530,11 +1531,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test22
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test22', 0, function (done) {
+    it('systemTime_setTimezone_test22', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test22 start");
       systemTime.setTimezone('America/Godthab',async (err) => {
         try{
@@ -1558,11 +1559,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test23
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test23', 0, function (done) {
+    it('systemTime_setTimezone_test23', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test23 start");
       systemTime.setTimezone('Asia/Jakarta',async (err) => {
         try{
@@ -1586,11 +1587,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test24
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test24', 0, function (done) {
+    it('systemTime_setTimezone_test24', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test24 start");
       systemTime.setTimezone('Pacific/Tarawa',async (err) => {
         try{
@@ -1614,11 +1615,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test25
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test25', 0, function (done) {
+    it('systemTime_setTimezone_test25', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test25 start");
       systemTime.setTimezone('Asia/Almaty',async (err) => {
         try{
@@ -1642,11 +1643,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTimezone_test26
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTimezone_test26', 0, function (done) {
+    it('systemTime_setTimezone_test26', 0, (done: Function) => {
       console.info("====>systemTime_setTimezone_test26 start");
       systemTime.setTimezone('Pacific/Majuro',async (err) => {
         try{
@@ -1670,11 +1671,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTime_test1
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test1', 0, async function (done) {
+    it('systemTime_setTime_test1', 0, async (done: Function) => {
       console.info("====>systemTime_setTime_test1 start");
       systemTime.setTime(0, (err) => {
         try {
@@ -1698,11 +1699,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTime_test2
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test2', 0, async function (done) {
+    it('systemTime_setTime_test2', 0, async (done: Function) => {
       console.info("====>systemTime_setTime_test2 start");
       systemTime.setTime(2, (err) => {
         try {
@@ -1726,11 +1727,11 @@ export default function systemTimeAuthorityJsunit() {
      * @tc.number    systemTime_setTime_test3
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('systemTime_setTime_test3', 0, async function (done) {
+    it('systemTime_setTime_test3', 0, async (done: Function) => {
       console.info("====>systemTime_setTime_test3 start");
       systemTime.setTime(Number.MAX_VALUE / 2, (err) => {
         console.info("====>systemTime_setTime_test3 Number.MAX_VALUE / 2" + Number.MAX_VALUE / 2);
