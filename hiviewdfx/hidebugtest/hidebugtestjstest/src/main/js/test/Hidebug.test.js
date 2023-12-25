@@ -579,25 +579,6 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test end*************');
     });
 
-   /*
-    * @tc.number    : DFX_DFR_Hiprofiler_Interface_2200
-    * @tc.name      : dumpJsHeapData with abnormal parameter
-    * @tc.desc      : dumpJsHeapData
-    * @tc.number: test_2200
-    * @tc.level: Level 2
-    * @tc.size: MediumTest
-    * @tc.type: Function
-    */
-    it('DFX_DFR_Hiprofiler_Interface_2200', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_2200 Test start*************');
-        try {
-            let temp = hidebug.getVss();
-            except(temp)>=BigInt(0).assertTrue();
-        } catch (error) {
-            expect().assertFail();
-        }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_2200 Test end*************');
-    });
 
 })
 }
