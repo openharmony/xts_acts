@@ -36,8 +36,8 @@ class TestObj {
 struct WebViewJavaScriptProxyAndOnPageVisible {
   testObj: TestObj = new TestObj()
   @State str: string = ""
-  @State FileSelectorMode: Number = 0
-  @State SslErrorCount: Number = 0
+  @State fileSelectorMode: number = 0
+  @State sslErrorType: number = -1
   @State zoomCounts: number = 200
   @State fontSize: number = 28
   @State onPageVisibleCalled: boolean = false
@@ -78,7 +78,7 @@ struct WebViewJavaScriptProxyAndOnPageVisible {
                 let changeFontSize = this.fontSize * 2 + 'px'
                 let changeResult = result.substring(1, result.length - 1)
                 console.log("font-size :" + changeFontSize + "result :" + changeResult + error)
-                if (changeResult === changeFontSize) {
+                if (changeResult == changeFontSize) {
                   Utils.emitEvent(true, 1403)
                 }
               })
@@ -88,10 +88,10 @@ struct WebViewJavaScriptProxyAndOnPageVisible {
               await Utils.sleep(2000);
               this.controller.loadUrl("resource://rawfile/indexFile2.html")
               let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenters'));
+              let button = await driver.findComponent(ON.id('WebViewJavaScriptProxyAndOnPageVisibleWebView'));
               await button.click();
               await Utils.sleep(2000);
-              Utils.emitEvent(Number(this.FileSelectorMode), 863)
+              Utils.emitEvent(Number(this.fileSelectorMode), 863)
               break;
             }
             case "emitOnPageVisible": {
@@ -116,7 +116,7 @@ struct WebViewJavaScriptProxyAndOnPageVisible {
             case "emitSslErrorHostMismatch": {
               this.controller.loadUrl('https://wrong.host.badssl.com');
               await Utils.sleep(4000);
-              Utils.emitEvent(Number(this.SslErrorCount), 891)
+              Utils.emitEvent(Number(this.sslErrorType), 891)
               break;
             }
           }
@@ -124,15 +124,15 @@ struct WebViewJavaScriptProxyAndOnPageVisible {
       }
 
       Web({ src: $rawfile("indexThree.html"), controller: this.controller })
-        .key("webCenters")
+        .key("WebViewJavaScriptProxyAndOnPageVisibleWebView")
         .textZoomAtio(this.zoomCounts)
         .defaultFontSize(this.fontSize)
         .onShowFileSelector((event) => {
-          console.log("333333344444444")
+          console.log('onShowFileSelector =====>')
           if (event) {
-            console.log("3333333333333", event.fileSelector.getMode())
+            console.log('onShowFileSelector event.fileSelector.getMode() return:', event.fileSelector.getMode())
             let fileSelectorObj: FileSelectorParam = event.fileSelector
-            this.FileSelectorMode = fileSelectorObj.getMode()
+            this.fileSelectorMode = fileSelectorObj.getMode()
           }
           return true
         })
@@ -151,7 +151,8 @@ struct WebViewJavaScriptProxyAndOnPageVisible {
         })
         .onSslErrorEventReceive((event) => {
           if (event) {
-            this.SslErrorCount = event.error
+            console.log('onSslErrorEventReceive =====> event.error:' + event.error)
+            this.sslErrorType = event.error
           }
         })
         .overviewModeAccess(false)

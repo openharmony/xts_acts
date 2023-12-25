@@ -56,7 +56,7 @@ export default function webOnPermissionRequest() {
     * @tc.number      : SUB_WEB_PERMISSIONREQUESTDENY_0100
     * @tc.name        : testPermissionRequestDeny001
     * @tc.desc        : test permissionRequest deny
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -71,7 +71,7 @@ export default function webOnPermissionRequest() {
     * @tc.number      : SUB_WEB_PERMISSIONREQUESTGRANT_0100
     * @tc.name        : testPermissionRequestGrant001
     * @tc.desc        : test permissionRequest grant
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
