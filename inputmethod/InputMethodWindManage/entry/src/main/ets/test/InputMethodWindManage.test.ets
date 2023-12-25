@@ -1601,5 +1601,65 @@ export default function inputMethodWindManageAbility() {
       })
     });
 
+    /**
+     * @tc.number   Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.name     Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.desc     getSecurityMode()
+     * @tc.size     MEDIUM
+     * @tc.type     Function
+     * @tc.level    Level 0
+     */
+    it('Sub_InputMethod_IMF_getSecurityMode_0100', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback start');
+        if (err) {
+          console.error('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
+        } else {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback finish');
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscriberCallback data: ' + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual('SUCCESS');
+            console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success end<====');
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 catch end<====' + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        if (err) {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 end<====' + JSON.stringify(err));
+        } else {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success ====' );
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ['Sub_InputMethod_IMF_getSecurityMode_0100']
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        subscriber = data;
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe data: ' + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe finish====');
+
+        var commonEventPublishData = {
+          code: 215
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
   });
 };
