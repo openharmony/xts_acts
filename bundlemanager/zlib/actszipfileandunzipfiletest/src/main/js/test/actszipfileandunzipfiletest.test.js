@@ -1290,7 +1290,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileOutFileNotExist
         * @tc.desc: test compressFile when outFile is not existed.
         */
-        it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
+        it('compressFileOutFileNotExist', Level.LEVEL3, async function (done) {
             console.info("==================compressFileOutFileNull start==================");
             let path1 = dir + "/compressFileOutFileNull.txt";
             let outFile = "/11111/22222.zip";

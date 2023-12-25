@@ -471,17 +471,17 @@ export default function getProfileByAbility() {
 
     /*
      * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0066
-     * @tc.name: testGetProfileByAbilitySyncByEmptyModuleName
+     * @tc.name: testGetProfileByAbilitySyncByInvalidModuleName
      * @tc.desc: Check the invalid moduleName (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByAbilitySyncByEmptyModuleName', 0, async function (done) {
+    it('testGetProfileByAbilitySyncByInvalidModuleName', 0, async function (done) {
       try {
         manager.getProfileByAbilitySync('INVALID_NAME', ABILITY_NAME, METADATA_NAME);
         expect().assertFail();
         done();
       } catch (err) {
-        console.info("testGetProfileByAbilitySyncByEmptyModuleName failed" + JSON.stringify(err));
+        console.info("testGetProfileByAbilitySyncByInvalidModuleName failed" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         done();
       }
