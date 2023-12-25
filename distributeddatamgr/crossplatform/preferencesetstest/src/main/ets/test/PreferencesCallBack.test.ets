@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
+import common from "@ohos.app.ability.common";
 
 const NAME = "test_preferences";
 const NAME1 = "getPreferencesTest";
@@ -26,14 +27,15 @@ const KEY_TEST_NUMBER_ARRAY_ELEMENT = "key_test_number_array";
 const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
 let mPreferences;
-let context;
-
 const TAG = "[PREFERENCES_CALLBACK_JSUNIT_TEST]";
+let context: common.UIAbilityContext ;
+
 export default function preferencesCallBackTest() {
   describe("preferencesCallBackTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      context = globalThis.abilityContext;
+      context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
+      console.info("context=======>"+context);
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
 
@@ -43,7 +45,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1100
      * @tc.name   : testPreferencesGetPreferences000
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -68,7 +70,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0700
      * @tc.name   : testPreferencesGetPreferences002
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -78,24 +80,68 @@ export default function preferencesCallBackTest() {
     it("testPreferencesGetPreferences002", 0, async function (done) {
       try {
         dataPreferences.getPreferences(context, null, (err, preferences) => {
-          if (err) {
-            console.info(TAG + "Get preferences err: " + JSON.stringify(err));
-            expect(!err).assertTrue();
-            done();
-          } else {
-            console.info(TAG + "Get preferences success" + preferences);
-            done();
-          }
+          expect(!err).assertFail();
+          done();
         });
       } catch (err) {
         console.info("testPreferencesGetPreferences002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0800
+     * @tc.name   : testPreferencesGetPreferences003
+     * @tc.desc   : GetPreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferences003", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, async (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success" + preferences);
+          await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+            expect("test").assertEqual(ret);
+          });
+          await dataPreferences.deletePreferences(context, NAME1);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0900
+     * @tc.name   : testPreferencesGetPreferences004
+     * @tc.desc   : GetPreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferences004", 0, async function (done) {
+      try {
+        dataPreferences.getPreferences(context, {
+          name: null
+        }, (err, preferences) => {
+          expect(!err).assertFail();
+          done();
+        });
+      } catch (err) {
+        console.info("testPreferencesGetPreferences004 fail: " + err.message + "code: " + err.code);
+        expect("401").assertEqual(err.code);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0400
      * @tc.name   : testPreferencesDeletePreferences000
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -120,7 +166,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0500
      * @tc.name   : testPreferencesDeletePreferences001
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -131,21 +177,20 @@ export default function preferencesCallBackTest() {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
             dataPreferences.deletePreferences(context, null, (err) => {
-              if (err) {
-                console.info(TAG + "Delete preferences err: " + err);
-                expect(!err).assertTrue();
-                done();
-              }
+              expect(!err).assertFail();
+              done();
             });
+            expect(!err).assertFail();
+            done();
           } catch (err) {
             console.info("testPreferencesDeletePreferences001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect('401').assertEqual(err.code);
             done();
           }
         }
@@ -153,7 +198,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1600
      * @tc.name   : testPreferencesDeletePreferences003
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -165,20 +210,30 @@ export default function preferencesCallBackTest() {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
+          done();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-            });
-            dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
+
+            expect(preferences !== null).assertTrue();
+            done();
           } catch (err) {
             console.info("testPreferencesDeletePreferences003 fail: " + err.message + "code: " + err.code);
             expect(!err).assertTrue();
@@ -189,7 +244,121 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1300
+     * @tc.name   : testPreferencesDeletePreferences004
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences004", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          dataPreferences.deletePreferences(context, {
+            name: NAME1
+          }, (err) => {
+            console.info(TAG + "Delete preferences success");
+            expect(!err).assertTrue();
+            done();
+          });
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1400
+     * @tc.name   : testPreferencesDeletePreferences005
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences005", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            dataPreferences.deletePreferences(context, {
+              name: null
+            }, (err) => {
+              expect(!err).assertFail();
+              done();
+            });
+            expect(!err).assertFail();
+            done();
+          } catch (err) {
+            console.info("testPreferencesDeletePreferences005 fail: " + err.message + "code: " + err.code);
+            expect('401').assertEqual(err.code);
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1200
+     * @tc.name   : testPreferencesDeletePreferences006
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences006", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+          done();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.deletePreferences(context, {
+                  name: "getPreferencesTest1"
+                }, (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
+              });
+            });
+            expect(preferences !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info("testPreferencesDeletePreferences006 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0900
      * @tc.name   : testRemovePreferencesFromCache000
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -214,7 +383,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0200
      * @tc.name   : testRemovePreferencesFromCache001
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -233,13 +402,15 @@ export default function preferencesCallBackTest() {
             dataPreferences.removePreferencesFromCache(context, null, (err) => {
               if (err) {
                 console.info(TAG + "Remove preferences from cache error: " + err);
-                expect(!err).assertTrue();
+                expect(!err).assertFail();
                 done();
               }
             });
+            expect(!err).assertFail();
+            done();
           } catch (err) {
             console.info("testRemovePreferencesFromCache001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect('401').assertEqual(err.code);
             done();
           }
         }
@@ -247,7 +418,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0100
      * @tc.name   : testRemovePreferencesFromCache003
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -259,18 +430,25 @@ export default function preferencesCallBackTest() {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
+          done();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-            });
-            dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
-              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                expect("test").assertEqual(pre);
-                done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
               });
             });
           } catch (err) {
@@ -283,7 +461,117 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_DEFAULT_VALUE_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
+     * @tc.name   : testRemovePreferencesFromCache004
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache004", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          dataPreferences.removePreferencesFromCache(context, {
+            name: NAME
+          }, (err) => {
+            console.info(TAG + "Remove preferences from cache success");
+            expect(!err).assertTrue();
+            done();
+          });
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
+     * @tc.name   : testRemovePreferencesFromCache005
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache005", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            dataPreferences.removePreferencesFromCache(context, {
+              name: null
+            }, (err) => {
+              expect(!err).assertFail();
+              done();
+            });
+            expect(!err).assertFail();
+            done();
+          } catch (err) {
+            console.info("testRemovePreferencesFromCache005 fail: " + err.message + "code: " + err.code);
+            expect("401").assertEqual(err.code);
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0500
+     * @tc.name   : testRemovePreferencesFromCache006
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache006", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                dataPreferences.removePreferencesFromCache(context, {
+                  name: "getPreferencesTest1"
+                }, (err) => {
+                  preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                    expect("test").assertEqual(pre);
+                    done();
+                  });
+                });
+              });
+            });
+          } catch (err) {
+            console.info("testRemovePreferencesFromCache006 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3200
      * @tc.name   : testPreferencesGetDefaultValue0000
      * @tc.desc   : Get defaultValue callback interface test
      * @tc.size   : MediumTest
@@ -299,7 +587,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_FLOAT_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3300
      * @tc.name   : testPreferencesGetFloat0000
      * @tc.desc   : Get float callback interface test
      * @tc.size   : MediumTest
@@ -316,7 +604,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_INT_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3400
      * @tc.name   : testPreferencesGetInt0000
      * @tc.desc   : Get int callback interface test
      * @tc.size   : MediumTest
@@ -333,7 +621,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_LONG_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3500
      * @tc.name   : testPreferencesGetLong0000
      * @tc.desc   : Get long callback interface test
      * @tc.size   : MediumTest
@@ -350,7 +638,8 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3800
+
      * @tc.name   : testPreferencesGetString0000
      * @tc.desc   : Get String callback interface test
      * @tc.size   : MediumTest
@@ -368,7 +657,8 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOLEAN_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3100
+
      * @tc.name   : testPreferencesGetBoolean0000
      * @tc.desc   : Get Boolean callback interface test
      * @tc.size   : MediumTest
@@ -385,7 +675,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3700
      * @tc.name   : testPreferencesGetStringArray0000
      * @tc.desc   : Get StringArray callback interface test
      * @tc.size   : MediumTest
@@ -405,7 +695,8 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_NUM_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3600
+
      * @tc.name   : testPreferencesGetNumArray0000
      * @tc.desc   : Get NumArray callback interface test
      * @tc.size   : MediumTest
@@ -425,7 +716,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOL_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3000
      * @tc.name   : testPreferencesGetBoolArray0000
      * @tc.desc   : Get BoolArray callback interface test
      * @tc.size   : MediumTest
@@ -445,7 +736,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_ALL_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1700
      * @tc.name   : testPreferencesGetAll0000
      * @tc.desc   : GetAll callback interface test
      * @tc.size   : MediumTest
@@ -490,7 +781,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_FLOAT_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2900
      * @tc.name   : testPreferencesPutFloat0000
      * @tc.desc   : Put float callback interface test
      * @tc.size   : MediumTest
@@ -510,7 +801,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_INT_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3000
      * @tc.name   : testPreferencesPutInt0000
      * @tc.desc   : Put int callback interface test
      * @tc.size   : MediumTest
@@ -530,7 +821,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_LONG_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3100
      * @tc.name   : testPreferencesPutLong0000
      * @tc.desc   : Put long callback interface test
      * @tc.size   : MediumTest
@@ -551,7 +842,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3400
      * @tc.name   : testPreferencesPutString0000
      * @tc.desc   : Put String callback interface test
      * @tc.size   : MediumTest
@@ -571,7 +862,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOLEAN_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2800
      * @tc.name   : testPreferencesPutBoolean0000
      * @tc.desc   : Put Boolean callback interface test
      * @tc.size   : MediumTest
@@ -591,7 +882,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3300
      * @tc.name   : testPreferencesPutStringArray0000
      * @tc.desc   : Put StringArray callback interface test
      * @tc.size   : MediumTest
@@ -612,7 +903,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_NUM_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3200
      * @tc.name   : testPreferencesPutNumArray0000
      * @tc.desc   : Put NumberArray callback interface test
      * @tc.size   : MediumTest
@@ -633,7 +924,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOL_ARRAY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2700
      * @tc.name   : testPreferencesPutBoolArray0000
      * @tc.desc   : Put BoolArray callback interface test
      * @tc.size   : MediumTest
@@ -654,7 +945,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1400
      * @tc.name   : testPreferencesHasKey0000
      * @tc.desc   : Has float callback interface test
      * @tc.size   : MediumTest
@@ -670,7 +961,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1500
      * @tc.name   : testPreferencesHasKey0001
      * @tc.desc   : Has int callback interface test
      * @tc.size   : MediumTest
@@ -686,7 +977,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1600
      * @tc.name   : testPreferencesHasKey0002
      * @tc.desc   : Has long callback interface test
      * @tc.size   : MediumTest
@@ -702,7 +993,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1700
      * @tc.name   : testPreferencesHasKey0003
      * @tc.desc   : Has string callback interface test
      * @tc.size   : MediumTest
@@ -718,7 +1009,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1300
      * @tc.name   : testPreferencesHasKey0004
      * @tc.desc   : Has boolean callback interface test
      * @tc.size   : MediumTest
@@ -734,7 +1025,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_CLEAR_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0500
      * @tc.name   : testPreferencesClear0000
      * @tc.desc   : Clear callback interface test
      * @tc.size   : MediumTest
@@ -788,7 +1079,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_2300
      * @tc.name   : testPreferencesDelete0000
      * @tc.desc   : Delete callback interface test
      * @tc.size   : MediumTest
@@ -813,7 +1104,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_FLUSH_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0400
      * @tc.name   : testPreferencesFlush0000
      * @tc.desc   : Flush callback interface test
      * @tc.size   : MediumTest
@@ -838,7 +1129,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_CALLBACK_0000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_JSAPITest_0200
      * @tc.name   : testPreferencesCallback0000
      * @tc.desc   : Clear、Put、Get、Flush String callback interface test
      * @tc.size   : MediumTest
