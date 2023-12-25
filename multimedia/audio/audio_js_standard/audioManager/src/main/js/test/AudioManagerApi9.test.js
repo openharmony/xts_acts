@@ -1205,7 +1205,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1252,7 +1252,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1391,7 +1391,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1438,7 +1438,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
