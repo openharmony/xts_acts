@@ -193,7 +193,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUMESYNC_0200', 0, async function (done) {
       try {
         let value = audioRen.getMinStreamVolumeSync()
         console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);

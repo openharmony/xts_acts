@@ -10169,7 +10169,7 @@ export default function audioRendererTest() {
         });
       }
       catch (error) {
-        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0400 : error = " + error);
+        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300 : error = " + error);
         expect(false).assertTrue();
       }
       await sleep(2000);
@@ -10606,7 +10606,7 @@ export default function audioRendererTest() {
         });
       }
       catch (error) {
-        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0400 : error = " + error);
+        console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2000 : error = " + error);
         expect(false).assertTrue();
       }
       await sleep(2000);
