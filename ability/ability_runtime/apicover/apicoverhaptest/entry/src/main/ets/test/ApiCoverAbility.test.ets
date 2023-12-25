@@ -710,6 +710,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_AbilityAppManager_0100', 0, async function (done) {
+      await sleep(1000)
       TAG = 'SUB_AA_AbilityAppManager_0100';
       await appManagerNew.getRunningProcessInformation().then((data)=>{
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
@@ -739,7 +740,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_AbilityAppManager_0200', 0, async function (done) {
-      TAG = 'SUB_AA_AbilityAppManager_0100';
+      TAG = 'SUB_AA_AbilityAppManager_0200';
       appManagerNew.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
         err: ${JSON.stringify(err)}`);

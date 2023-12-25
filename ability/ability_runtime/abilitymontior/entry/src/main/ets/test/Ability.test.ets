@@ -26,17 +26,17 @@ export default function abilityTest() {
         */
         it('ACTS_AddAbilityMonitor_Callback_0100', 0, async function (done) {
             function publishCallback(err) {
-                console.info("===>publishCallback" + err.code);
+                console.info("====>ACTS_AddAbilityMonitor_0100 publishCallback err: " + err.code);
                 expect(err.code).assertEqual(0);
             }
             function onAbilityCreate() {
-                console.debug("====>0100--onAbilityCreate====>");
+                console.info("====>ACTS_AddAbilityMonitor_0100 onAbilityCreate");
                 AddAbilityData = {
                     code: 1
                 }
                 Subscriber.publish("ACTS_AddAbilityMonitor_0100", AddAbilityData, publishCallback);
             }
-            console.debug("====>ACTS_AddAbilityMonitor_0100 start====>");
+            console.info("====>ACTS_AddAbilityMonitor_0100 start");
             var AddAbilityData;
             var commonEventSubscribeInfo = {
                 events: ["ACTS_AddAbilityMonitor_0100"]
@@ -44,13 +44,12 @@ export default function abilityTest() {
             var data = abilityDelegatorRegistry.getAbilityDelegator();
             console.log("0100getAbilityDelegator data is" + JSON.stringify(data));
             Subscriber.createSubscriber(commonEventSubscribeInfo, async (err, data) => {
-                console.info("===ACTS_AddAbilityMonitor_0100===createSubscriber" + JSON.stringify(data));
+                console.info("====>ACTS_AddAbilityMonitor_0100 createSubscriber. data: " + JSON.stringify(data));
                 var AddAbility = data;
                 await Subscriber.subscribe(AddAbility, (err, data) => {
-                    console.log('===ACTS_AddAbilityMonitor_0100CallBack==='
-                        + err.code + JSON.stringify(data));
+                    console.log('====>ACTS_AddAbilityMonitor_0100 CallBack err: ' + err.code + JSON.stringify(data));
                     Subscriber.unsubscribe(AddAbility, (err, data) => {
-                        console.log('===UnSubscribeCallBacka===' + err.code);
+                        console.log('====>ACTS_AddAbilityMonitor_0100 UnSubscribeCallBack err: ' + err.code);
                     });
                     if (data.code == 1) {
                         expect(data.code).assertEqual(1);
@@ -71,13 +70,13 @@ export default function abilityTest() {
                     abilityName: 'MainAbility2',
                     onAbilityCreate: onAbilityCreate
                 }, (async (err) => {
-                    console.debug("====>ACTS_AddAbilityMonitor_0100 addAbilityMonitor====>" + err.code);
+                    console.info("====>ACTS_AddAbilityMonitor_0100 addAbilityMonitor err: " + err.code);
                     await globalThis.abilitydelegator.startAbility(
                         {
                             bundleName: 'com.example.abilitymonitortest',
                             abilityName: 'MainAbility2'
                         }).then(async () => {
-                            console.debug("====>0100startAbility success====>");
+                            console.info("====>ACTS_AddAbilityMonitor_0100 success");
                         });
                 }));
         })
