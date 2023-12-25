@@ -25,6 +25,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0600
      * @tc.name      : getNativeHeapSize
      * @tc.desc      : Get total native heap memory size
+     * @tc.number: test_0600
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0600', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0600 Test start*************');
@@ -41,6 +45,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0400
      * @tc.name      : getNativeHeapAllocatedSize
      * @tc.desc      : Get Native heap memory allocation size.
+     * @tc.number: test_0400
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0400', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0400 Test start*************');
@@ -57,6 +65,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0500
      * @tc.name      : getNativeHeapFreeSize
      * @tc.desc      : Get Native heap memory free size
+     * @tc.number: test_0500
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0500', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0500 Test start*************');
@@ -73,6 +85,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0800
      * @tc.name      : getPss
      * @tc.desc      : Get application process proportional set size memory information
+     * @tc.number: test_0800
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0800', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test start*************');
@@ -96,6 +112,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1200
      * @tc.name      : getSharedDirty
      * @tc.desc      : Obtains the size of the shared dirty memory of a process.
+     * @tc.number: test_1200
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1200', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test start*************');
@@ -113,6 +133,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1600
      * @tc.name      : startProfiling with normal parameter
      * @tc.desc      : Start CPU Profiling.
+     * @tc.number: test_1600
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1600', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test start*************');
@@ -136,6 +160,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1500
      * @tc.name      : startProfiling repeatedly
      * @tc.desc      : Start CPU Profiling.
+     * @tc.number: test_1500
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1500', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test start*************');
@@ -163,6 +191,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1400
      * @tc.name      : startProfiling with empty parameter
      * @tc.desc      : Start CPU Profiling.
+     * @tc.number: test_1400
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1400', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test start*************');
@@ -190,6 +222,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1300
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
+     * @tc.number: test_1300
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
@@ -221,6 +257,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0300
      * @tc.name      : dumpHeapData with normal parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
+     * @tc.number: test_0300
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test start*************');
@@ -242,6 +282,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0200
      * @tc.name      : dumpHeapData with empty parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
+     * @tc.number: test_0200
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0200', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test start*************');
@@ -267,6 +311,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0100
      * @tc.name      : dumpHeapData with overlog parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
+     * @tc.number: test_0100
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0100', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test start*************');
@@ -296,6 +344,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0700
      * @tc.name      : getPrivateDirty
      * @tc.desc      : Get the size of the private dirty memory
+     * @tc.number: test_0700
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0700', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0700 Test start*************');
@@ -312,6 +364,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1700
      * @tc.name      : getCpuUsage
      * @tc.desc      : Get the cpu usage of a process
+     * @tc.number: test_1700
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1700', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1700 Test start*************');
@@ -336,6 +392,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1100
      * @tc.name      : getServiceDump with normal parameter
      * @tc.desc      : getServiceDump
+     * @tc.number: test_1100
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1100', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test start*************');
@@ -362,6 +422,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0900
      * @tc.name      : getServiceDump with parameter error
      * @tc.desc      : getServiceDump
+     * @tc.number: test_0900
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_0900', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test start*************');
@@ -388,6 +452,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1000
      * @tc.name      : getServiceDump with check system ability failed
      * @tc.desc      : getServiceDump
+     * @tc.number: test_1000
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
     it('DFX_DFR_Hiprofiler_Interface_1000', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test start*************');
@@ -414,6 +482,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1800
      * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with normal parameter
      * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     * @tc.number: test_1800
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
      it('DFX_DFR_Hiprofiler_Interface_1800', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test start*************');
@@ -444,6 +516,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1900
      * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with abnormal parameter
      * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     * @tc.number: test_1900
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
      it('DFX_DFR_Hiprofiler_Interface_1900', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test start*************');
@@ -465,6 +541,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_2000
      * @tc.name      : dumpJsHeapData with normal parameter
      * @tc.desc      : dumpJsHeapData
+     * @tc.number: test_2000
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
      it('DFX_DFR_Hiprofiler_Interface_2000', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test start*************');
@@ -482,6 +562,10 @@ describe('HidebugJsTest', function () {
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_2100
      * @tc.name      : dumpJsHeapData with abnormal parameter
      * @tc.desc      : dumpJsHeapData
+     * @tc.number: test_2100
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
      */
      it('DFX_DFR_Hiprofiler_Interface_2100', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test start*************');
@@ -494,6 +578,7 @@ describe('HidebugJsTest', function () {
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test end*************');
     });
+
 
 })
 }

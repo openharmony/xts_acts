@@ -14,6 +14,7 @@
  */
 import faultlogger from '@ohos.faultLogger'
 import hiSysEvent from '@ohos.hiSysEvent'
+import faultloggerTestNapi from "libfaultlogger_test_napi_xts.so"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function FaultlogJsTest() {
 
@@ -73,6 +74,54 @@ describe("FaultlogJsTest", function () {
         } catch(err) {
             console.info(err);
         }
+        expect(false).assertTrue();
+        done();
+    })
+
+    /**
+     * test
+     *
+     * @tc.name: DFX_DFR_Faultlogger_Interface_0400
+     * @tc.desc: 检验promise同步方式获取faultlog CPP_CRASH日志
+     * @tc.require: AR000GICT2
+     * @tc.number: test_0400
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('DFX_DFR_Faultlogger_Interface_0400', 0, async function (done) {
+        console.info("---------------------------DFX_DFR_Faultlogger_Interface_0400----------------------------------");
+        try {
+            let now = Date.now();
+            console.info("DFX_DFR_Faultlogger_Interface_0400 2 + " + now);
+            console.info("start triggerCppCrash");
+            const res = faultloggerTestNapi.triggerCppCrash();
+            console.info("DFX_DFR_Faultlogger_Interface_0400 res:" + res);
+            await msleep(3000);
+            console.info("--------DFX_DFR_Faultlogger_Interface_0400 4" + "----------");
+            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH);
+            console.info("DFX_DFR_Faultlogger_Interface_0400 query ret length:" + ret.length);
+            expect(ret.length).assertLarger(0);
+            console.info("DFX_DFR_Faultlogger_Interface_0400 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
+            expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
+            console.info("DFX_DFR_Faultlogger_Interface_0400 fullLog length:" + ret[0].fullLog.length);
+            console.info("DFX_DFR_Faultlogger_Interface_0400 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
+            expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+            expect(typeof(ret[0].pid) == "number").assertTrue();
+            expect(typeof(ret[0].uid) == "number").assertTrue();
+            expect(typeof(ret[0].type) == "number").assertTrue();
+            expect(typeof(ret[0].timestamp) == "number").assertTrue();
+            expect(typeof(ret[0].reason) == "string").assertTrue();
+            expect(typeof(ret[0].module) == "string").assertTrue();
+            expect(typeof(ret[0].summary) == "string").assertTrue();
+            expect(typeof(ret[0].fullLog) == "string").assertTrue();
+            console.info("--------DFX_DFR_Faultlogger_Interface_0400 5" + "----------");
+            done();
+            return;
+        } catch (err) {
+            console.info("catch (err) == " + err);
+        }
+        console.info("DFX_DFR_Faultlogger_Interface_0400 error");
         expect(false).assertTrue();
         done();
     })
@@ -177,6 +226,52 @@ describe("FaultlogJsTest", function () {
             console.info("catch (err) == " + err);
         }
         console.info("DFX_DFR_Faultlogger_Interface_0300 error");
+        expect(false).assertTrue();
+        done();
+    })
+
+    /**
+     * test
+     *
+     * @tc.name: DFX_DFR_Faultlogger_Interface_0100
+     * @tc.desc: 检验通过回调方式获取faultlog日志
+     * @tc.require: AR000GICT2
+     * @tc.number: test_0100
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('DFX_DFR_Faultlogger_Interface_0100', 0, async function (done) {
+        console.info("---------------------------DFX_DFR_Faultlogger_Interface_0100----------------------------------");
+        try {
+            let now = Date.now();
+            console.info("DFX_DFR_Faultlogger_Interface_0100 start + " + now);
+
+            console.info("start triggerCppCrash");
+            const res = faultloggerTestNapi.triggerCppCrash();
+            console.info("DFX_DFR_Faultlogger_Interface_0100 res:" + res);
+            await msleep(3000);
+
+            console.info("--------DFX_DFR_Faultlogger_Interface_0100 4----------");
+            function queryFaultLogCallback(error, ret) {
+                if (error) {
+                    console.info('DFX_DFR_Faultlogger_Interface_0100  once error is ' + error);
+                } else {
+                    console.info("DFX_DFR_Faultlogger_Interface_0100 query ret length:" + ret.length);
+                    expect(ret.length).assertLarger(0);
+                    console.info("DFX_DFR_Faultlogger_Interface_0100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
+                    expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_0100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                }
+                done();
+            }
+            faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
+            return;
+        } catch (err) {
+            console.info(err);
+        }
+        console.info("DFX_DFR_Faultlogger_Interface_0100 error");
         expect(false).assertTrue();
         done();
     })
@@ -349,6 +444,50 @@ describe("FaultlogJsTest", function () {
             console.info("catch (err) == " + err);
         }
         console.info("DFX_DFR_Faultlogger_Interface_1000 error");
+        expect(false).assertTrue();
+        done();
+    })
+
+    /**
+     * test
+     *
+     * @tc.name: DFX_DFR_Faultlogger_Interface_1100
+     * @tc.desc: 检验通过回调方式获取faultlog日志
+     * @tc.require: AR000GICT2
+     * @tc.number: test_1100
+     * @tc.level: Level 2
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('DFX_DFR_Faultlogger_Interface_1100', 0, async function (done) {
+        console.info("---------------------------DFX_DFR_Faultlogger_Interface_1100----------------------------------");
+        try {
+            let now = Date.now();
+            console.info("DFX_DFR_Faultlogger_Interface_1100 start + " + now);
+            console.info("start triggerCppCrash");
+            const res = faultloggerTestNapi.triggerCppCrash();
+            console.info("DFX_DFR_Faultlogger_Interface_1100 res:" + res);
+            await msleep(3000);
+            console.info("--------DFX_DFR_Faultlogger_Interface_1100 4----------");
+            function queryFaultLogCallback(error, ret) {
+                if (error) {
+                    console.info('DFX_DFR_Faultlogger_Interface_1100  once error is ' + error);
+                } else {
+                    console.info("DFX_DFR_Faultlogger_Interface_1100 query ret length:" + ret.length);
+                    expect(ret.length).assertLarger(0);
+                    console.info("DFX_DFR_Faultlogger_Interface_1100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
+                    expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                }
+                done();
+            }
+            faultlogger.query(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
+            return;
+        } catch (err) {
+            console.info(err);
+        }
+        console.info("DFX_DFR_Faultlogger_Interface_1100 error");
         expect(false).assertTrue();
         done();
     })
