@@ -1024,7 +1024,7 @@ export default function requestDownloadJSUnit() {
       try {
         let task = await request.agent.create(globalThis.abilityContext, config);
         let task1 = await request.agent.getTask(globalThis.abilityContext, task.tid);
-        expect(true).assertEqual(true);
+        expect(typeof(task1.tid) === 'string').assertTrue();
         console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + task);
         try {
           await request.agent.remove(task1.tid);
