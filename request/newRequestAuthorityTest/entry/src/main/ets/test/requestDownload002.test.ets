@@ -1225,6 +1225,7 @@ export default function requestDownloadTwoUnitTest() {
         network: request.agent.Network.WIFI,
         overwrite: true,
         mode:request.agent.Mode.FOREGROUND,
+        priority:0,
       };
       let task:request.agent.Task;
 
@@ -1251,6 +1252,8 @@ export default function requestDownloadTwoUnitTest() {
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.gauge: ' + taskInfo.gauge);
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.mtime: ' + taskInfo.mtime);
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.extras: ' + taskInfo.extras);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.priority: ' + taskInfo.priority);
+
             expect(typeof(taskInfo.saveas) === 'string').assertTrue();
             expect(typeof(taskInfo.tid) === 'string').assertTrue();
             expect(taskInfo.description).assertEqual("");
@@ -1259,6 +1262,7 @@ export default function requestDownloadTwoUnitTest() {
             expect(taskInfo.gauge === false).assertTrue();
             expect(typeof(taskInfo.mtime) === 'number').assertTrue();
             expect(typeof(taskInfo.extras) === 'object').assertTrue();
+            expect(typeof(taskInfo.priority) === 'number').assertTrue();
             done();
           }catch(err){
             console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 show throw_err:' + JSON.stringify(err));
