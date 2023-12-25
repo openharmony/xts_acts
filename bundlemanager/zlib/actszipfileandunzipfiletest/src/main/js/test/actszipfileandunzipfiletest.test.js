@@ -1281,9 +1281,9 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileOutFileNotExist
         * @tc.desc: test compressFile when outFile is not existed.
         */
-        it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
-            console.info("==================compressFileOutFileNull start==================");
-            let path1 = dir + "/compressFileOutFileNull.txt";
+        it('compressFileOutFileNotExist', Level.LEVEL3, async function (done) {
+            console.info("==================compressFileOutFileNotExist start==================");
+            let path1 = dir + "/compressFileOutFileNotExist.txt";
             let outFile = "/11111/22222.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
@@ -1295,10 +1295,10 @@ export default function ActsZlibTest() {
             await zlib.compressFile(path1, outFile, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
             }).then((data) => {
-                console.info("compressFileOutFileNull invalid src file success!");
+                console.info("compressFileOutFileNotExist invalid src file success!");
                 expect().assertFail();
             }).catch((err) => {
-                console.info("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
+                console.info("compressFileOutFileNotExist zipFile fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
 
             })
@@ -1309,7 +1309,7 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
                 done();
             })
-            console.info("==================compressFileOutFileNull end==================");
+            console.info("==================compressFileOutFileNotExist end==================");
         })
 
 
