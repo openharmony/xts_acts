@@ -549,16 +549,18 @@ export default function cameraSessionTest() {
                 done();
             }
             else {
+                await createInput(0);
                 createOutput(0);
-
+                mCameraSession.addInput(mCameraInput);
                 mCameraSession.addOutput(mPreviewOutput);
                 mCameraSession.addOutput(mPhotoOutput);
                 mCameraSession.addOutput(mVideoOutput);
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 add PASSED");
-
                 mCameraSession.removeOutput(mPreviewOutput);
                 mCameraSession.removeOutput(mPhotoOutput);
                 mCameraSession.removeOutput(mVideoOutput);
+                mCameraSession.removeInput(mCameraInput);
+                await releaseInput();
                 await releaseOutput();
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 ends here");
                 done();
