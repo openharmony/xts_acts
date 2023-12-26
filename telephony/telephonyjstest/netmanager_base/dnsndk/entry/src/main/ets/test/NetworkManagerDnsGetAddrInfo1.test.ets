@@ -40,7 +40,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.name    getAddrInfo
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
-    * @tc.type    Method
+    * @tc.type    Function
     * @tc.level   Level 2
     */
     it("NetworkManager_Dns_GetAddrInfo_0100", 0, async (done: Function) => {
@@ -62,7 +62,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.name    getAddrInfo
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
-    * @tc.type    Method
+    * @tc.type    Function
     * @tc.level   Level 2
     */
     it("NetworkManager_Dns_GetAddrInfo_0200", 0, async (done: Function) => {
@@ -84,7 +84,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.name    getAddrInfo
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
-    * @tc.type    Method
+    * @tc.type    Function
     * @tc.level   Level 2
     */
     it("NetworkManager_Dns_GetAddrInfo_0300", 0, async (done: Function) => {
@@ -106,7 +106,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.name    getAddrInfo
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
-    * @tc.type    Method
+    * @tc.type    Function
     * @tc.level   Level 2
     */
     it("NetworkManager_Dns_GetAddrInfo_0400", 0, async (done: Function) => {
