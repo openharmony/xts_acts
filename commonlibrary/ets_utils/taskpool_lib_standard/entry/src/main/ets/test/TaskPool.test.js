@@ -1659,13 +1659,15 @@ describe('ActsAbilityTest', function () {
             let sum = value1 + value2
             return sum;
         }
-        taskpool.Task.sendData(4);
         let task = new taskpool.Task(Add, 1, 3);
         let currentNum = 0;
         currentNum = task.onReceiveData(HandleData);
-        taskpool.execute(task).then((currentNum) => {
-            expect(currentNum).assertEqual(4);
-        });
+        taskpool.execute(task)
+        try {
+            taskpool.Task.sendData(4);
+        } catch(e) {
+            expect(e.toString()).assertEqual("BusinessError: The function is not called in the taskpool thread");
+        }
         done();
     })
 
