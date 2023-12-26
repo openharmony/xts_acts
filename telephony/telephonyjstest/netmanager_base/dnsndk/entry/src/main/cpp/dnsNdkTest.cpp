@@ -1,7 +1,7 @@
 #include "napi/native_api.h"
 #include "net_connection.h"
 #include <netdb.h>
-#include <string.h> 
+#include <cstring>
 #include "hilog/log.h"
 
 #undef LOG_DOMAIN
@@ -9,13 +9,19 @@
 #define LOG_DOMAIN 0x0000
 #define LOG_TAG "NetManagerNDK"
 
-static napi_value GetAddrInfo(napi_env env, napi_callback_info info) {
-    //size_t requireArgc = 3;
+#define DEFAULT_HOST_LEN 20
+#define DEFAULT_SERV_LEN 30
+#define HOST_POS 0
+#define SERV_POS 1
+#define NETID_POS 2
+
+static napi_value GetAddrInfo(napi_env env, napi_callback_info info)
+{
     size_t argc = 3;
     napi_value args[3] = {nullptr};
     napi_value ret;
     int status = 0;
-    int net_errno = 0;
+    int neterrno = 0;
 
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -25,15 +31,15 @@ static napi_value GetAddrInfo(napi_env env, napi_callback_info info) {
     napi_valuetype valuetype1;
     napi_typeof(env, args[1], &valuetype1);
 
-    char host[20] = {0};
+    char host[DEFAULT_HOST_LEN] = {0};
     size_t result;
-    napi_get_value_string_utf8(env, args[0], host, 20, &result);
+    napi_get_value_string_utf8(env, args[HOST_POS], host, DEFAULT_HOST_LEN, &result);
 
-    char serv[30] = {0};
-    napi_get_value_string_utf8(env, args[1], serv, 30, &result);
+    char serv[DEFAULT_SERV_LEN] = {0};
+    napi_get_value_string_utf8(env, args[SERV_POS], serv, DEFAULT_SERV_LEN, &result);
 
     int netid = 0;
-    napi_get_value_int32(env, args[2], &netid);
+    napi_get_value_int32(env, args[NETID_POS], &netid);
 
     struct addrinfo *res = NULL;
     status = OH_NetConn_GetAddrInfo(host, NULL, NULL, &res, netid);
@@ -41,8 +47,8 @@ static napi_value GetAddrInfo(napi_env env, napi_callback_info info) {
         status = OH_NetConn_FreeDnsResult(res);
     }
     
-    net_errno = status;
-    napi_create_int32(env, net_errno, &ret);
+    neterrno = status;
+    napi_create_int32(env, neterrno, &ret);
     return ret;
 }
 
