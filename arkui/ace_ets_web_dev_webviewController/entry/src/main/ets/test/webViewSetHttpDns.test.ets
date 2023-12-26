@@ -71,7 +71,7 @@ export default function webViewSetHttpDns() {
      */
     it('testSetHttpDnsSecureOnlyExample',0,async function(done){
       emitKey="emitSetHttpDnsSecureOnlyUserDefine";
-      Utils.registerEvent("testSetHttpDnsSecureOnlyExample","https://www.baidu.com",354,done);
+      Utils.registerEvent("testSetHttpDnsSecureOnlyExample","baidu.com",354,done);
       sendEventByKey('webViewSetHttpDns',10,'');
     })
     /*
