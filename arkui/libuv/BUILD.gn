@@ -32,7 +32,6 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-async-null-cb.c",
     "//third_party/libuv/test/test-async.c",
     "//third_party/libuv/test/test-barrier.c",
-    "//third_party/libuv/test/test-callback-order.c",
     "//third_party/libuv/test/test-callback-stack.c",
     "//third_party/libuv/test/test-close-fd.c",
     "//third_party/libuv/test/test-close-order.c",
@@ -134,6 +133,7 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-tcp-bind-error.c",
     "//third_party/libuv/test/test-tcp-bind6-error.c",
     "//third_party/libuv/test/test-tcp-close-accept.c",
+    "//third_party/libuv/test/test-tcp-close-after-read-timeout.c",
     "//third_party/libuv/test/test-tcp-close-reset.c",
     "//third_party/libuv/test/test-tcp-close-while-connecting.c",
     "//third_party/libuv/test/test-tcp-close.c",
@@ -145,6 +145,7 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-tcp-flags.c",
     "//third_party/libuv/test/test-tcp-oob.c",
     "//third_party/libuv/test/test-tcp-open.c",
+    "//third_party/libuv/test/test-tcp-rst.c",
 
     #    "//third_party/libuv/test/test-metrics-idle-time.c",
     #    "//third_party/libuv/test/test-metrics-idle-time-thread.c",
