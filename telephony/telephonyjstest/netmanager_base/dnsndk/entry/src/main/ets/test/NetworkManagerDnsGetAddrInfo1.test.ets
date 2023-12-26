@@ -35,6 +35,14 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     let netid_invalid = 10
     let netid_unreachable = 110
 
+    /* *
+    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0100
+    * @tc.name    getAddrInfo
+    * @tc.desc    check get DNS result
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
+    */
     it("NetworkManager_Dns_GetAddrInfo_0100", 0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0100"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_default);
@@ -49,6 +57,14 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
       }
     });
 
+    /* *
+    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0200
+    * @tc.name    getAddrInfo
+    * @tc.desc    check get DNS result
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
+    */
     it("NetworkManager_Dns_GetAddrInfo_0200", 0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0200"
       let status = testNapi.getaddrinfo(hostaddr_invalid, serv, netid_default);
@@ -63,6 +79,14 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
       }
     });
 
+    /* *
+    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0300
+    * @tc.name    getAddrInfo
+    * @tc.desc    check get DNS result
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
+    */
     it("NetworkManager_Dns_GetAddrInfo_0300", 0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0300"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_invalid);
@@ -77,6 +101,14 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
       }
     });
 
+    /* *
+    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0400
+    * @tc.name    getAddrInfo
+    * @tc.desc    check get DNS result
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
+    */
     it("NetworkManager_Dns_GetAddrInfo_0400", 0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0400"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_unreachable);
