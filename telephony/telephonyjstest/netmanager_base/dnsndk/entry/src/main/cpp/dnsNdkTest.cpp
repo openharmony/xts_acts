@@ -55,8 +55,8 @@ static napi_value GetAddrInfo(napi_env env, napi_callback_info info)
     int netid = 0;
     napi_get_value_int32(env, args[NETID_POS], &netid);
 
-    struct addrinfo *res = NULL;
-    status = OH_NetConn_GetAddrInfo(host, NULL, NULL, &res, netid);
+    struct addrinfo *res = nullptr;
+    status = OH_NetConn_GetAddrInfo(host, nullptr, nullptr, &res, netid);
     if (status == 0) {
         status = OH_NetConn_FreeDnsResult(res);
     }
