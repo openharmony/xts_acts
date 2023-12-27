@@ -211,92 +211,92 @@ export default function CameraErrorCodeUsecaseTest() {
       console.info('afterAll case');
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100
      * @tc.name      : createCameraInput api
      * @tc.desc      : createCameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100--------------");
       let ret = cameraObj.createCameraInput();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0200
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_COMMITCONFIG_0200
      * @tc.name      : commitConfig api
      * @tc.desc      : commitConfig api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0200', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0200--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_COMMITCONFIG_0200', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_COMMITCONFIG_0200--------------");
       cameraObj.createSession();
       let ret = cameraObj.sessionCommitConfig();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0200 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_COMMITCONFIG_0200 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_OPERATION_NOT_ALLOWED).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0300
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ADD_OUTPUT_0300
      * @tc.name      : addOutput api
      * @tc.desc      : addOutput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0300', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0300--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ADD_OUTPUT_0300', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ADD_OUTPUT_0300--------------");
       cameraObj.createSession();
       createOutput();
       let ret = cameraObj.sessionAddPreviewOutput();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0300 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ADD_OUTPUT_0300 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_OPERATION_NOT_ALLOWED).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
      * @tc.name      : removeOutput api
      * @tc.desc      : removeOutput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300--------------");
       cameraObj.createSession();
       createOutput();
       let ret = cameraObj.sessionRemovePreviewOutput();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_OPERATION_NOT_ALLOWED).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_START_0100
      * @tc.name      : capturesession start api
      * @tc.desc      : capturesession start api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_START_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_START_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -304,7 +304,7 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionStart();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_START_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         console.info(TAG + "Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG: " + Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
@@ -312,15 +312,15 @@ export default function CameraErrorCodeUsecaseTest() {
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100
      * @tc.name      : capturesession sessionHasFlash api
      * @tc.desc      : capturesession sessionHasFlash api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -330,22 +330,22 @@ export default function CameraErrorCodeUsecaseTest() {
         cameraObj.sessionHasFlash();
       }
       catch (error) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + error);
         console.info(TAG + "Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG: " + Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG);
         expect(error == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100
      * @tc.name      : capturesession sessionIsFlashModeSupported api
      * @tc.desc      : capturesession sessionIsFlashModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -355,22 +355,22 @@ export default function CameraErrorCodeUsecaseTest() {
         let ret = cameraObj.sessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_AUTO);
       }
       catch (error) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + error.code);
         expect(error.code == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100
      * @tc.name      : capturesession sessionGetFlashMode api
      * @tc.desc      : capturesession sessionGetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -379,22 +379,22 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionGetFlashMode();
       console.info(TAG + "sessionGetFlashMode: " + ret);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100
      * @tc.name      : capturesession sessionSetFlashMode api
      * @tc.desc      : capturesession sessionSetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -402,22 +402,22 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_AUTO);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0101
      * @tc.name      : capturesession sessionSetFlashMode api
      * @tc.desc      : capturesession sessionSetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -425,22 +425,22 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionStart();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SESSIONSTART_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100
      * @tc.name      : capturesession isExposureModeSupported api
      * @tc.desc      : capturesession isExposureModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -448,21 +448,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_AUTO);
       if (!ret) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100
      * @tc.name      : capturesession getExposureMode api
      * @tc.desc      : capturesession getExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -470,21 +470,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionGetExposureMode();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100
      * @tc.name      : capturesession setExposureMode api
      * @tc.desc      : capturesession setExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -492,21 +492,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_AUTO);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101
      * @tc.name      : capturesession setExposureMode api
      * @tc.desc      : capturesession setExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -517,21 +517,21 @@ export default function CameraErrorCodeUsecaseTest() {
         cameraObj.sessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
       }
       catch (error) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + error.code);
         expect(error.code != Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100
      * @tc.name      : capturesession getMeteringPoint api
      * @tc.desc      : capturesession getMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -539,21 +539,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionGetMeteringPoint();
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100
      * @tc.name      : capturesession setMeteringPoint api
      * @tc.desc      : capturesession setMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -563,21 +563,21 @@ export default function CameraErrorCodeUsecaseTest() {
         x: 1, y: 1
       });
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101
      * @tc.name      : capturesession setMeteringPoint api
      * @tc.desc      : capturesession setMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -588,21 +588,21 @@ export default function CameraErrorCodeUsecaseTest() {
         x: -1, y: -1
       });
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret != Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100
      * @tc.name      : capturesession getExposureBiasRange api
      * @tc.desc      : capturesession getExposureBiasRange api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -610,21 +610,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = Camera_ErrorCode.CAMERA_OK;
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100
      * @tc.name      : capturesession setExposureBias api
      * @tc.desc      : capturesession setExposureBias api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -634,22 +634,22 @@ export default function CameraErrorCodeUsecaseTest() {
       console.info(TAG + "range: " + range);
       let ret = cameraObj.sessionSetExposureBias(range[0]);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101
      * @tc.name      : capturesession setExposureBias api
      * @tc.desc      : capturesession setExposureBias api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -658,21 +658,21 @@ export default function CameraErrorCodeUsecaseTest() {
       await cameraObj.sessionStart();
       let ret = cameraObj.sessionSetExposureBias(-101);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret != Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100
      * @tc.name      : capturesession getExposureValue api
      * @tc.desc      : capturesession getExposureValue api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -680,21 +680,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionGetExposureMode();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100
      * @tc.name      : capturesession sessionIsFocusModeSupported api
      * @tc.desc      : capturesession sessionIsFocusModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -702,21 +702,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_AUTO);
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100
      * @tc.name      : capturesession sessionGetFocusMode api
      * @tc.desc      : capturesession sessionGetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -724,21 +724,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionGetFocusMode();
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100
      * @tc.name      : capturesession sessionSetFocusMode api
      * @tc.desc      : capturesession sessionSetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -746,21 +746,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_MANUAL);
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101
      * @tc.name      : capturesession sessionSetFocusMode api
      * @tc.desc      : capturesession sessionSetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -769,21 +769,21 @@ export default function CameraErrorCodeUsecaseTest() {
       await cameraObj.sessionStart();
       let ret = cameraObj.sessionSetFocusMode(5);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret != Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100
      * @tc.name      : capturesession sessionSetFocusPoint api
      * @tc.desc      : capturesession sessionSetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -793,21 +793,21 @@ export default function CameraErrorCodeUsecaseTest() {
         x: 1, y: 1
       });
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101
      * @tc.name      : capturesession sessionSetFocusPoint api
      * @tc.desc      : capturesession sessionSetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -818,21 +818,21 @@ export default function CameraErrorCodeUsecaseTest() {
         x: -1, y: -1
       });
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret != Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100
      * @tc.name      : capturesession sessionGetFocusPoint api
      * @tc.desc      : capturesession sessionGetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100--------------");
       console.info(TAG + "GETFOCUSPOINT FocusPoint: ");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -842,13 +842,13 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionGetFocusPoint();
       console.info(TAG + "FocusPoint: " + ret);
       if (!ret) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100
      * @tc.name      : capturesession sessionGetZoomRatioRange api
      * @tc.desc      : capturesession sessionGetZoomRatioRange api
      * @tc.size      : MediumTest
@@ -857,8 +857,8 @@ export default function CameraErrorCodeUsecaseTest() {
      *
      *
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100--------------");
       console.info(TAG + "GETZOOMRATIORANG");
       createCameraSessionInstance();
       console.info(TAG + "GETZOOMRATIORANG");
@@ -871,21 +871,21 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionGetZoomRatioRange();
       console.info(TAG + "GetZoomRatioRange: " + ret);
       if (!ret) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100
      * @tc.name      : capturesession sessionGetZoomRatio api
      * @tc.desc      : capturesession sessionGetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -894,21 +894,21 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionGetZoomRatio();
       console.info(TAG + "GetZoomRatio: " + ret);
       if (!ret) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100
      * @tc.name      : capturesession sessionSetZoomRatio api
      * @tc.desc      : capturesession sessionSetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -917,22 +917,22 @@ export default function CameraErrorCodeUsecaseTest() {
       try {
       }
       catch (error) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + error.code);
         expect(error.code == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101
      * @tc.name      : capturesession sessionSetZoomRatio api
      * @tc.desc      : capturesession sessionSetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -941,21 +941,21 @@ export default function CameraErrorCodeUsecaseTest() {
       await cameraObj.sessionStart();
       let ret = cameraObj.sessionSetZoomRatio(-101);
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100
      * @tc.name      : capturesession sessionIsVideoStabilizationModeSupported api
      * @tc.desc      : capturesession sessionIsVideoStabilizationModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -964,21 +964,21 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW);
       console.info(TAG + "IsVideoStabilizationModeSupported: " + ret);
       if (!ret) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100
      * @tc.name      : capturesession sessionGetVideoStabilizationMode api
      * @tc.desc      : capturesession sessionGetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -987,22 +987,22 @@ export default function CameraErrorCodeUsecaseTest() {
       let ret = cameraObj.sessionGetVideoStabilizationMode();
       console.info(TAG + "VideoStabilizationMode: " + ret);
       if (ret != null) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_OK).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100
      * @tc.name      : capturesession sessionSetVideoStabilizationMode api
      * @tc.desc      : capturesession sessionSetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -1010,22 +1010,22 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101
      * @tc.name      : capturesession sessionSetVideoStabilizationMode api
      * @tc.desc      : capturesession sessionSetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -1034,22 +1034,22 @@ export default function CameraErrorCodeUsecaseTest() {
       await cameraObj.sessionStart();
       let ret = cameraObj.sessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO);
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PREVIEW_START_0100
      * @tc.name      : PreviewOutput  start api
      * @tc.desc      : PreviewOutput  start api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PREVIEW_START_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PREVIEW_START_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -1057,21 +1057,21 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPhotoOutput();
       let ret = cameraObj.previewOutputStart();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PREVIEW_START_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_VIDEO_START_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_VIDEO_START_0100
      * @tc.name      : videooutput  start api
      * @tc.desc      : videooutput  start api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_VIDEO_START_0100', 0, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_VIDEO_START_0100', 0, async () => {
       let ret = createCameraSessionInstance();
       if (ret != true) {
         expect().assertFail();
@@ -1081,15 +1081,15 @@ export default function CameraErrorCodeUsecaseTest() {
       cameraObj.sessionAddPreviewOutput();
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0500
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0100
      * @tc.name      : photoOutput capture api
      * @tc.desc      : photoOutput capture api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0500', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0500--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0100--------------");
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
       createOutput();
@@ -1098,26 +1098,26 @@ export default function CameraErrorCodeUsecaseTest() {
       await commitCameraSessionConfig();
       let ret = cameraObj.photoOutputCapture();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0500 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_RUNNING).assertTrue();
         expect(true).assertTrue();
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_BEGINCONFIG_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_BEGINCONFIG_0100
      * @tc.name      : capturesession beginConfig api
      * @tc.desc      : capturesession beginConfig api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_BEGINCONFIG_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_BEGINCONFIG_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_BEGINCONFIG_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_BEGINCONFIG_0100--------------");
       cameraObj.createSession();
       let ret = cameraObj.sessionBegin();
       if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_BEGINCONFIG_0100 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_BEGINCONFIG_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SESSION_CONFIG_LOCKED).assertTrue();
         expect(true).assertTrue();
