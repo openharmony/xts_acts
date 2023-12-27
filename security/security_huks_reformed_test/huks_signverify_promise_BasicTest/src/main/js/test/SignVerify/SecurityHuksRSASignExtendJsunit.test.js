@@ -2823,6 +2823,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
                 });
                 await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    expect(data.certChains != null).assertTrue();
                     console.info(srcKeyAlies + ": deleteKeyItem succeed, data: " + data);
                 });
             } catch (err) {
@@ -2891,6 +2892,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
                     expect(null).assertFail();
                 } else {
+                    expect(data.certChains != null).assertTrue();
                     console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
                     huks.deleteKeyItem(srcKeyAlies, genKeyOption, (err) => {
                         if (err) {
@@ -2962,6 +2964,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 });
 
                 await huks.anonAttestKeyItem(srcKeyAlies, options).then(data => {
+                    expect(data.certChains != null).assertTrue();
                     console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
                 });
                 await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
