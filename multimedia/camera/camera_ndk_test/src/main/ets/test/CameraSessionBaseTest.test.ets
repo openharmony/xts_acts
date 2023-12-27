@@ -238,32 +238,32 @@ export default function cameraSessionTest() {
       console.info('afterAll case');
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001
      * @tc.name      : Check capture session begin config
      * @tc.desc      : Check capture session begin config
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001--------------");
       let ret = cameraObj.sessionBegin();
       if (ret != 0) {
         expect().assertFail();
       }
       cameraObj.sessionStop();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_001 PASSED");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_BEGIN_CONFIG_001 PASSED");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002
      * @tc.name      : Check capture session can add input with promise or not
      * @tc.desc      : Check capture session can add input with promise or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002--------------");
       await cameraObj.sessionBegin();
       await createInput();
       let addInput = cameraObj.sessionAddInput();
@@ -274,65 +274,65 @@ export default function cameraSessionTest() {
       cameraObj.sessionRemoveInput();
       await releaseInput();
       cameraObj.sessionStop();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_002 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_INPUT_PROMISE_002 ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003
      * @tc.name      : Check capture session can add output with promise or not for preview
      * @tc.desc      : Check capture session can add output with promise or not for preview
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003--------------");
       let ret = createOutput();
       if (ret != true) {
         expect().assertFail();
       }
       cameraObj.sessionAddPreviewOutput();
       cameraObj.sessionAddPhotoOutput();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003 add PASSED");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003 add PASSED");
       cameraObj.sessionRemovePreviewOutput();
       cameraObj.sessionRemovePhotoOutput();
       await releaseOutput();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ADD_REMOVE_OUTPUT_PROMISE_003 ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004
      * @tc.name      : Check capture session start/stop/release output with promise or not
      * @tc.desc      : Check capture session start/stop/release output with promise or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004--------------");
       releaseCameraSessionInstance();
       let ret = createCameraSessionInstance();
       if (ret != true) {
         expect().assertFail();
       }
       await cameraObj.cameraInputClose();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 start for camera[0]");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004 start for camera[0]");
       await startCameraSession();
       await cameraObj.sessionStart();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 start PASSED");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 stop PASSED");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004 start PASSED");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004 stop PASSED");
       await stopCameraSession();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 end for camera[0]");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_004 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004 end for camera[0]");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_START_STOP_PROMISE_004 ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005
      * @tc.name      : Check capture session commit config
      * @tc.desc      : Check capture session commit config
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005--------------");
       releaseCameraSessionInstance();
       let ret = createCameraSessionInstance();
       if (ret != true) {
@@ -351,23 +351,23 @@ export default function cameraSessionTest() {
       await cameraObj.sessionCommitConfig();
       cameraObj.sessionStart();
       await stopCameraSession();
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_005 PASSED");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_COMMIT_CONFIG_005 PASSED");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006
      * @tc.name      : Check capture session release with promise or not
      * @tc.desc      : Check capture session release with promise or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006', 2, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006', 2, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006--------------");
       let ret = cameraObj.sessionRelease();
       if (ret != 0) {
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_006 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_RELEASE_PROMISE_006 ends here");
     });
   })
 }

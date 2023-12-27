@@ -214,6 +214,8 @@ export default function CameraFunctionTest() {
   describe('CameraFunctionTest', () => {
     console.info(TAG + '-------------CameraFunctionTest--------------');
     beforeAll(async () => {
+      await getPermission();
+      await driveFn();
       await getPhotoReceiverSurface();
       getCameraManagerInstance();
       getCameraSupportDevicesArray();
@@ -231,15 +233,15 @@ export default function CameraFunctionTest() {
       console.info('afterAll case');
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -250,22 +252,22 @@ export default function CameraFunctionTest() {
         await cameraObj.previewOutputStart();
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PREVIEW ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PREVIEW ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_001
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_001
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_001', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_001', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -276,24 +278,24 @@ export default function CameraFunctionTest() {
         await cameraObj.photoOutputCapture();
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO ends here");
       cameraObj.getCameraCallbackCode();
       // done();
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -304,22 +306,22 @@ export default function CameraFunctionTest() {
         await cameraObj.takePictureWithSettings(photoSettings);
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002 FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FUNCTION_SINGLE_PHOTO_002 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_SINGLE_PHOTO_002 ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -333,23 +335,23 @@ export default function CameraFunctionTest() {
         await cameraObj.photoOutputCapture();
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001 FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_001 ends here");
       cameraObj.previewOutputStop();
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -363,23 +365,23 @@ export default function CameraFunctionTest() {
         await cameraObj.takePictureWithSettings(photoSettings);
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002 FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002 FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_FUNCTION_COMBINATION_PREVIEW_AND_PHOTO_002 ends here");
       cameraObj.previewOutputStop();
     });
     /**
-      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100
       * @tc.name      : CameraInput  open api
       * @tc.desc      : CameraInput  open api
       * @tc.size      : MediumTest
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100--------------");
       if (isEmpty(camera)) {
         console.info(TAG + "Entering createInputs FAILED with NoCamera");
       }
