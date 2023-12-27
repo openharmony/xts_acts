@@ -99,12 +99,22 @@ export default function ContextDirTest() {
     })
 
     beforeEach(async () => {
+      try {
+        await abilityDelegator.getCurrentTopAbility()
+          .then((ability) => {
+            ability?.lastRequestWant?.abilityName !== 'TestAbility' && ability?.context?.terminateSelf();
+          });
+        await sleep(1000);
+      } catch (error) {
+        hilog.info(0x0000, 'testTag', '%{public}s', "close TopAbility error: " + JSON.stringify(error));
+      }
       await abilityDelegator.startAbility({
         bundleName: 'com.example.contextdirtest',
         abilityName: 'TestAbility',
       })
-      await sleep(300);
+      await sleep(2000);
     })
+
     /**
      * @tc.number     : SUB_Ability_AbilityRuntime_AbilityContext_Dir_0100
      * @tc.name       : Test the system application obtains AbilityContext under the same application and module, sets the area to EL3.
