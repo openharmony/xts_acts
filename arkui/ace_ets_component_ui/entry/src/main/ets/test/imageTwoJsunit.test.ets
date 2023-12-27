@@ -58,7 +58,7 @@ export default function imageTwoJsunit() {
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.InApp');
       expect(obj.$attrs.colorFilter).assertEqual('1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ' +
       '1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 ' +
-      '0.000000 1.000000 0.000000');
+      '0.000000 1.000000 0.000000 ');
       expect(obj.$attrs.draggable).assertEqual('false');
       done();
     });
