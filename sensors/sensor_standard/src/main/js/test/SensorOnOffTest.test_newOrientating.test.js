@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,7 +26,7 @@ describe("SensorJsTest_sensor_48", function () {
         } else {
             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
             expect(false).assertTrue();
-        }       
+        }
         expect(typeof(data.beta)).assertEqual("number");
         expect(typeof(data.gamma)).assertEqual("number");
         expect(typeof(data.alpha)).assertEqual("number");
@@ -42,7 +42,7 @@ describe("SensorJsTest_sensor_48", function () {
         } else {
             console.info('callback2 invalid accuracy encountered' + JSON.stringify(data));
             expect(false).assertTrue();
-        }       
+        }
         expect(typeof(data.beta)).assertEqual("number");
         expect(typeof(data.gamma)).assertEqual("number");
         expect(typeof(data.alpha)).assertEqual("number");
@@ -86,11 +86,14 @@ describe("SensorJsTest_sensor_48", function () {
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let invalid  = -1;
-     
+
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0010
      * @tc.name: newOrientating_SensorJsTest001
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newOrientating_SensorJsTest001--------------');
@@ -119,6 +122,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0020
      * @tc.name: newOrientating_SensorJsTest002
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest002--------------');
@@ -140,6 +146,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0030
      * @tc.name: newOrientating_SensorJsTest003
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest003--------------');
@@ -148,7 +157,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest003 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");        
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback, {'interval': 100000000});
                     setTimeout(()=>{
                         console.info('---------newOrientating_SensorJsTest003 off in--------------');
@@ -170,6 +179,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0040
      * @tc.name: newOrientating_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest004--------------');
@@ -182,7 +194,7 @@ describe("SensorJsTest_sensor_48", function () {
             } else {
                 console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                 expect(false).assertTrue();
-            }           
+            }
             expect(typeof(data.beta)).assertEqual("number");
             expect(typeof(data.gamma)).assertEqual("number");
             expect(typeof(data.alpha)).assertEqual("number");
@@ -200,21 +212,24 @@ describe("SensorJsTest_sensor_48", function () {
                         sensor.off(sensor.SensorId.ORIENTATION);
                         console.info('---------newOrientating_SensorJsTest004 off end--------------');
                         done();
-                    }, 500);    
-                }       
+                    }, 500);
+                }
             })
         } catch (error) {
             console.info("newOrientating_SensorJsTest004 Device does not support! ");
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }           
+        }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0050
      * @tc.name: newOrientating_SensorJsTest005
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
@@ -222,7 +237,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest005 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");     
+                    expect(typeof(data)).assertEqual("object");
                     sensor.once(sensor.SensorId.ORIENTATION, callback);
                     setTimeout(()=>{
                         expect(true).assertTrue();
@@ -235,13 +250,16 @@ describe("SensorJsTest_sensor_48", function () {
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }               
+        }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0060
      * @tc.name: newOrientating_SensorJsTest006
      * @tc.desc: Use case of illegal parameter passed into once interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
@@ -263,6 +281,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0070
      * @tc.name: newOrientating_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
@@ -274,7 +295,7 @@ describe("SensorJsTest_sensor_48", function () {
             } else {
                 console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                 expect(false).assertTrue();
-            }           
+            }
             expect(typeof(data.beta)).assertEqual("number");
             expect(typeof(data.gamma)).assertEqual("number");
             expect(typeof(data.alpha)).assertEqual("number");
@@ -286,7 +307,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest007 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object"); 
+                    expect(typeof(data)).assertEqual("object");
                     sensor.once(sensor.SensorId.ORIENTATION, onceSensorCallback, 5);
                 }
             })
@@ -302,6 +323,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0080
      * @tc.name: newOrientating_SensorJsTest008
      * @tc.desc: Use case of illegal parameter passed into off interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
@@ -318,6 +342,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0090
      * @tc.name: newOrientating_SensorJsTest009
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
@@ -329,7 +356,7 @@ describe("SensorJsTest_sensor_48", function () {
             } else {
                 console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                 expect(false).assertTrue();
-            }           
+            }
             expect(typeof(data.beta)).assertEqual("number");
             expect(typeof(data.gamma)).assertEqual("number");
             expect(typeof(data.alpha)).assertEqual("number");
@@ -340,7 +367,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest009 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");         
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, onSensorCallback);
                     setTimeout(()=>{
                         sensor.off(sensor.SensorId.ORIENTATION, onSensorCallback);
@@ -360,6 +387,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0100
      * @tc.name: newOrientating_SensorJsTest010
      * @tc.desc:SensorId1000000 of incoming exception
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
@@ -380,14 +410,17 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0110
      * @tc.name: newOrientating_SensorJsTest011
      * @tc.desc:Call interface multiple times
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
                     console.info('newOrientating_SensorJsTest011 error');
-                } else {   
-                    expect(typeof(data)).assertEqual("object");             
+                } else {
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
                         console.info("newOrientating_SensorJsTest011 callback: " + JSON.stringify(data));
                         if (data.accuracy >= sensor.SensorAccuracy.ACCURACY_UNRELIABLE && data.accuracy <=
@@ -397,7 +430,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -412,7 +445,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -438,6 +471,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0120
      * @tc.name: newOrientating_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
@@ -454,14 +490,17 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0130
      * @tc.name: newOrientating_SensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest013--------------');
         try{
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
-                    console.info('newOrientating_SensorJsTest011 error');
-                } else {    
+                    console.info('newOrientating_SensorJsTest013 error');
+                } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
                         console.info("newOrientating_SensorJsTest013 callback: " + JSON.stringify(data));
@@ -472,7 +511,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -487,7 +526,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -506,21 +545,24 @@ describe("SensorJsTest_sensor_48", function () {
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }   
-    })      
+        }
+    })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0140
      * @tc.name: newOrientating_SensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
-                    console.info('newOrientating_SensorJsTest011 error');
-                } else { 
+                    console.info('newOrientating_SensorJsTest014 error');
+                } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
                         console.info("newOrientating_SensorJsTest014 callback: " + JSON.stringify(data));
@@ -531,7 +573,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -546,7 +588,7 @@ describe("SensorJsTest_sensor_48", function () {
                         } else {
                             console.info('callback invalid accuracy encountered' + JSON.stringify(data));
                             expect(false).assertTrue();
-                        }                       
+                        }
                         expect(typeof(data.beta)).assertEqual("number");
                         expect(typeof(data.gamma)).assertEqual("number");
                         expect(typeof(data.alpha)).assertEqual("number");
@@ -566,12 +608,15 @@ describe("SensorJsTest_sensor_48", function () {
         expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
         done();
     }
-    })  
+    })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0150
      * @tc.name: newOrientating_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest015--------------');
@@ -600,11 +645,14 @@ describe("SensorJsTest_sensor_48", function () {
             done();
         }
     })
-    
+
      /*
      * @tc.number: SUB_SensorsSystem_NEWORIENTATION_JSTest_0160
      * @tc.name: newOrientating_SensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest016--------------');
@@ -612,7 +660,7 @@ describe("SensorJsTest_sensor_48", function () {
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
                     console.info('newOrientating_SensorJsTest016 error');
-                } else { 
+                } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback);
                     sensor.on(sensor.SensorId.ORIENTATION, callback2);
@@ -640,19 +688,22 @@ describe("SensorJsTest_sensor_48", function () {
         done();
     }
     })
-    
+
      /*
      * @tc.number: SUB_SensorsSystem_NEWORIENTATION_JSTest_0170
      * @tc.name: newOrientating_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest017--------------');
         try{
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
-                    console.info('newOrientating_SensorJsTest016 error');
-                } else { 
+                    console.info('newOrientating_SensorJsTest017 error');
+                } else {
                     expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorId.ORIENTATION, callback2, { 'interval': 100000000 });
@@ -680,11 +731,14 @@ describe("SensorJsTest_sensor_48", function () {
         done();
     }
     })
-    
+
      /*
      * @tc.number: SUB_SensorsSystem_NEWORIENTATION_JSTest_0180
      * @tc.name: newOrientating_SensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest018--------------');
@@ -692,7 +746,7 @@ describe("SensorJsTest_sensor_48", function () {
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
                     console.info('newOrientating_SensorJsTest018 error');
-                } else { 
+                } else {
                     expect(typeof(data)).assertEqual("object");
                     console.info('----------------------newOrientating_SensorJsTest018 off in--------------');
                     try{
@@ -713,11 +767,14 @@ describe("SensorJsTest_sensor_48", function () {
         done();
     }
     })
-    
+
      /*
      * @tc.number: SUB_SensorsSystem_NEWORIENTATION_JSTest_0190
      * @tc.name: newOrientating_SensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest019--------------');
@@ -725,7 +782,7 @@ describe("SensorJsTest_sensor_48", function () {
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
                 if (error) {
                     console.info('newOrientating_SensorJsTest019 error');
-                } else { 
+                } else {
                     try {
                         sensor.on(sensor.SensorId.ORIENTATION, callback, {'interval': -100000000});
                         console.info('----------------------newOrientating_SensorJsTest019 off in---------------------------');
@@ -747,11 +804,14 @@ describe("SensorJsTest_sensor_48", function () {
         done();
     }
     })
-    
+
     /*
      * @tc.number:SUB_SensorsSystem_ORIENTATION_JSTest_0200
      * @tc.name: newOrientating_SensorJsTest020
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newOrientating_SensorJsTest020--------------');
@@ -780,6 +840,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0210
      * @tc.name: newOrientating_SensorJsTest021
      * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newOrientating_SensorJsTest021--------------');
@@ -817,6 +880,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0220
      * @tc.name: newOrientating_SensorJsTest022
      * @tc.desc: Illegal ID passed in
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
@@ -824,7 +890,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest022 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");        
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback, undefined);
                     try{
                     sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': undefined });
@@ -855,6 +921,9 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0230
      * @tc.name: newOrientating_SensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest023--------------');
@@ -873,22 +942,25 @@ describe("SensorJsTest_sensor_48", function () {
                         console.info("newOrientating_SensorJsTest023 error:" + error);
                         expect(false).assertTrue();
                         }
-                        done();         
+                        done();
                     }, 500);
-                }       
+                }
             })
         } catch (error) {
             console.info("newOrientating_SensorJsTest023 Device does not support! ");
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }           
+        }
     })
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0240
      * @tc.name: newOrientating_SensorJsTest024
      * @tc.desc: Once Normal Subscription Scenario Use Case
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try{
@@ -896,7 +968,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest024 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");     
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
                     try{
                         sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
@@ -921,14 +993,17 @@ describe("SensorJsTest_sensor_48", function () {
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }               
+        }
     })
-    
+
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0250
      * @tc.name: newOrientating_SensorJsTest025
      * @tc.desc: For normal scenarios
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("newOrientating_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest025--------------');
@@ -937,7 +1012,7 @@ describe("SensorJsTest_sensor_48", function () {
                 if (error) {
                     console.info('newOrientating_SensorJsTest025 error');
                 } else {
-                    expect(typeof(data)).assertEqual("object");        
+                    expect(typeof(data)).assertEqual("object");
                     sensor.on(sensor.SensorId.ORIENTATION, callback, null);
                     try{
                         sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': null });
@@ -962,5 +1037,5 @@ describe("SensorJsTest_sensor_48", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-    })      
+    })
 })}
