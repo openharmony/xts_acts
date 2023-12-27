@@ -43,9 +43,8 @@ ohos_shared_library("dnsndknapitest") {
   ]
   configs = [ ":config" ]
 
-  deps = [
-    "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient:net_connection",
-  ]
+  deps =
+      [ "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient:net_connection" ]
 
   external_deps = [
     "hilog:libhilog",
