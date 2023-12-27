@@ -486,12 +486,12 @@ export default function Row_Space_String() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Row_Space_String_TEST_1100
+     * @tc.number    SUB_ACE_Row_Space_String_TEST_1200
      * @tc.name      testColumnSpace
      * @tc.desc      The value of space is set to '3' + '0'
      */
-    it('SUB_ACE_Row_Space_String_TEST_1100', 0, async function (done) {
-      console.info('[SUB_ACE_Row_Space_String_TEST_1100] START');
+    it('SUB_ACE_Row_Space_String_TEST_1200', 0, async function (done) {
+      console.info('[SUB_ACE_Row_Space_String_TEST_1200] START');
       globalThis.value.message.notify({name:'addSpace', value:'3' + '0'});
 
       await CommonFunc.sleep(3000);
@@ -521,7 +521,7 @@ export default function Row_Space_String() {
       expect(Math.round(Row_Space_String_011.right - Row_Space_String_011.left)).assertEqual(vp2px(50));
       expect(Math.round(Row_Space_String_012.right - Row_Space_String_012.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_String_013.right - Row_Space_String_013.left)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_Row_Space_String_TEST_1100] END');
+      console.info('[SUB_ACE_Row_Space_String_TEST_1200] END');
       done();
     });
 

@@ -847,37 +847,7 @@ export default function datepicker() {
         done();
       });
 	  
-	 /*
-     * @tc.number       ArkUI_Stage_datepicker_selectedTextStyle_0900
-     * @tc.name         Tests the selectedTextStyle property of the picker component
-     * @tc.desc         set selectedTextStyle then get the value
-     */
-	  it('ArkUI_Stage_datepicker_selectedTextStyle_0900', 0, async function (done) { 
-        let value = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
-        try {
-          var eventData = {
-            data: {
-              "selectedTextStyle": JSON.stringify(value)
-            }
-          }
-          var innerEvent = {
-            eventId: 185,
-            priority: events_emitter.EventPriority.LOW
-          }
-          console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0900] start to publish emit");
-          events_emitter.emit(innerEvent, eventData);
-        } catch (err) {
-          console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0900] change component data error: " + err.message);
-        }
-        await Utils.sleep(3000);
-        let strJson = getInspectorByKey('datePicker');
-        let obj = JSON.parse(strJson);
-        expect(obj.$attrs.selectedTextStyle.color).assertEqual('#FF8A2BE2');
-        expect(obj.$attrs.selectedTextStyle.font.size).assertEqual('15.00lpx');
-        expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Normal');
-        done();
-      });
-
+	
     /*
      * @tc.number       ArkUI_Stage_datepicker_selectedTextStyle_0900
      * @tc.name         Tests the selectedTextStyle property of the picker component
