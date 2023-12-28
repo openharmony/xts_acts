@@ -83,8 +83,8 @@ export default function webONHttpErrorReceive() {
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","Forbidden",480,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","User-Agent",482,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36",484,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","User-Agent",486,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36",488,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","X-Frame-Options",486,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","SAMEORIGIN,488,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","403http://1.1.1.123/index.html",490,done);
       sendEventByKey('webONHttpErrorReceive',10,'');
     })
