@@ -58,6 +58,7 @@ struct ImageExample3 {
               width: 900,
               height: 900
             })
+            .syncLoad(true)
             .objectFit(ImageFit.Cover)
             .height(180).width(180)
             // 图片加载完成后，获取图片尺寸。
