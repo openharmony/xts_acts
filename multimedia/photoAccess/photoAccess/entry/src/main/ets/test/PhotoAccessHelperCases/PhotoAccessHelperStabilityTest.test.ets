@@ -20,7 +20,7 @@ import buffer from '@ohos.buffer';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
-import { checkSet,checkUri,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
+import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function PhotoAccessHelperStabilityTest() {
@@ -37,6 +37,7 @@ export default function PhotoAccessHelperStabilityTest() {
         const context = globalThis.abilityContext
         const imageType = photoAccessHelper.PhotoType.IMAGE
         const videoType = photoAccessHelper.PhotoType.VIDEO
+        let fetchResultCount;
         const CREATE_EVENT = 'getPhotoAccessHelper';
         const GET_ASSETS_CALLBACK_EVENT = 'getAssetsCallback';
         const GET_ASSETS_PROMISE_EVENT = 'getAssetsCallPromise';
@@ -47,6 +48,29 @@ export default function PhotoAccessHelperStabilityTest() {
         const GET_PHOTOASSET_EVENT = 'getPhotoAsset'
         const REGISTER_CHANGE_EVENT = 'registerChange'
         const PHOTOASSET_GET_ATTRS_EVENT = 'getPhotoAssetAttrs'
+        const PHOTOASSET_SET_ATTRS_EVENT = 'setPhotoAssetAttrs'
+        const PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT = 'commitModifyCallback'
+        const PHOTOASSET_COMMITMODIFY_PROMISE_EVENT = 'commitModifyPromise'
+        const PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT = 'getReadOnlyFdCallback'
+        const PHOTOASSET_GETREADONLYFD_PROMISE_EVENT = 'getReadOnlyFdPromise'
+        const PHOTOASSET_CLOSE_CALLBACK_EVENT = 'closePhotoAssetCallback'
+        const PHOTOASSET_CLOSE_PROMISE_EVENT = 'closePhotoAssetPromise'
+        const PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT = 'getThumbnailCallback'
+        const PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT = 'getThumbnailWithSizesCallback'
+        const PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT = 'getThumbnailWithSizesPromise'
+        const FETCHRESULT_GETCOUNT_EVENT = 'getCount'
+        const FETCHRESULT_ISAFTERLAST_EVENT = 'isAfterLast'
+        const FETCHRESULT_CLOSE_EVENT = 'closeFetchResult'
+        const FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT = 'getFirstObjectCallback'
+        const FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT = 'getFirstObjectPromise'
+        const FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT = 'getNextObjectCallback'
+        const FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT = 'getNextObjectPromise'
+        const FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT = 'getLastObjectCallback'
+        const FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT = 'getLastObjectPromise'
+        const FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT = 'getObjectByPositionCallback'
+        const FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT = 'getObjectByPositionPromise'
+        const FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT = 'getAllObjectsCallback'
+        const FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT = 'getAllObjectsPromise'
         const RELEASE_CALLBACK_EVENT = 'releaseCallback'
         const RELEASE_PROMISE_EVENT = 'releasePromise'
         const END_EVENT = 'end'
@@ -109,6 +133,7 @@ export default function PhotoAccessHelperStabilityTest() {
                 }
             } catch (err) {
                 console.error('GET_ASSETS_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -123,6 +148,7 @@ export default function PhotoAccessHelperStabilityTest() {
                 toNextStep(phAccessHelper, fetchOptions, param1, param2, options, steps, done)
             } catch (err) {
                 console.error('PRODUCE_EXTENSION failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -141,6 +167,7 @@ export default function PhotoAccessHelperStabilityTest() {
                 });
             } catch (err) {
                 console.error('CREATE_ASSET_CALLBACK_OPTIONS_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -159,6 +186,7 @@ export default function PhotoAccessHelperStabilityTest() {
                 });
             } catch (err) {
                 console.error('CREATE_ASSET_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -170,6 +198,7 @@ export default function PhotoAccessHelperStabilityTest() {
                 toNextStep(phAccessHelper, fetchOptions, photoType, extension, options, steps, done)
             } catch (err) {
                 console.error('CREATE_ASSET_PROMISE_OPTIONS_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -181,10 +210,11 @@ export default function PhotoAccessHelperStabilityTest() {
                 toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
             } catch (err) {
                 console.error('GET_PHOTOASSET_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
-        eventEmitter.on(REGISTER_CHANGE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+        eventEmitter.on(REGISTER_CHANGE_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
             steps.shift();
             try {
                 let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
@@ -197,10 +227,11 @@ export default function PhotoAccessHelperStabilityTest() {
                 toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
             } catch (err) {
                 console.error('REGISTER_CHANGE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
-        eventEmitter.on(PHOTOASSET_GET_ATTRS_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+        eventEmitter.on(PHOTOASSET_GET_ATTRS_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
             steps.shift();
             try {
                 let randomIndex;
@@ -216,6 +247,414 @@ export default function PhotoAccessHelperStabilityTest() {
                 toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
             } catch (err) {
                 console.error('PHOTOASSET_GET_ATTRS_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_SET_ATTRS_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+                photoAsset.set(title, 'newTitle');
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('PHOTOASSET_SET_ATTRS_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+                photoAsset.commitModify((err) => {
+                    if (err === undefined) {
+                        let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
+                        console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('commitModify failed, message =', err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_COMMITMODIFY_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+                await photoAsset.commitModify();
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('PHOTOASSET_COMMITMODIFY_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                photoAsset.getReadOnlyFd((err, fd) => {
+                    if (fd != undefined) {
+                        console.info('File fd' + fd);
+                        checkReadAndWrite(fd)
+                        photoAsset.close(fd);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('File err' + err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_GETREADONLYFD_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let fd: number = await photoAsset.getReadOnlyFd();
+                if (fd !== undefined) {
+                    console.info('File fd' + fd);
+                    checkReadAndWrite(fd)
+                    photoAsset.close(fd);
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                } else {
+                    console.error(' open File fail');
+                    expect(false).assertTrue();
+                }
+            } catch (err) {
+                console.error('PHOTOASSET_GETREADONLYFD_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_CLOSE_CALLBACK_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let fd: number = await photoAsset.getReadOnlyFd();
+                if (fd !== undefined) {
+                    console.info('File fd' + fd);
+                    checkReadAndWrite(fd)
+                    photoAsset.close(fd, (err) => {
+                        if (err === undefined) {
+                            console.info('asset close succeed.');
+                            toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                        } else {
+                            console.error('close failed, message = ' + err);
+                            expect(false).assertTrue();
+                        }
+                    });
+                } else {
+                    console.error(' open File fail');
+                    expect(false).assertTrue();
+                }
+            } catch (err) {
+                console.error('PHOTOASSET_CLOSE_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_CLOSE_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let fd: number = await photoAsset.getReadOnlyFd();
+                if (fd !== undefined) {
+                    console.info('File fd' + fd);
+                    checkReadAndWrite(fd)
+                    await photoAsset.close(fd);
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                } else {
+                    console.error(' open File fail');
+                }
+            } catch (err) {
+                console.error('PHOTOASSET_CLOSE_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                photoAsset.getThumbnail((err, pixelMap) => {
+                    if (err == undefined) {
+                        expect(pixelMap).not().assertUndefined()
+                        console.info('getThumbnail successful ' + pixelMap);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('getThumbnail fail', err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let size = [200,200]
+                photoAsset.getThumbnail(size, (err, pixelMap) => {
+                    if (err == undefined) {
+                        expect(pixelMap).not().assertUndefined()
+                        console.info('getThumbnail successful ' + pixelMap);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.info('getThumbnail fail', err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let size = [200,200]
+                photoAsset.getThumbnail(size).then((pixelMap) => {
+                    expect(pixelMap).not().assertUndefined()
+                    console.info('getThumbnail successful ' + pixelMap);
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                }).catch((err: BusinessError) => {
+                    console.error('getThumbnail fail' + err);
+                    expect(false).assertTrue();
+                });
+            } catch (err) {
+                console.error('PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETCOUNT_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                fetchResultCount = fetchResult.getCount();
+                console.info('fetchResultCount = ', fetchResultCount);
+                expect(fetchResultCount).assertLarger(0)
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('FETCHRESULT_GETCOUNT_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_ISAFTERLAST_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                photoAsset = await fetchResult.getLastObject();
+                let isAfterLast = fetchResult.isAfterLast()
+                expect(isAfterLast).assertTrue();
+                photoAsset = await fetchResult.getFirstObject();
+                isAfterLast = fetchResult.isAfterLast()
+                expect(isAfterLast).assertFalse();
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('FETCHRESULT_ISAFTERLAST_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_CLOSE_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                fetchResult.close();
+                try{
+                    fetchResult.getCount();
+                    expect(false).assertTrue();
+                } catch (err) {
+                    console.info('fetchResult.getCount() fail. message = ' + err);
+                    console.info('close succeed.');
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_CLOSE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                fetchResult.getFirstObject((err, photoAsset) => {
+                    if (photoAsset != undefined) {
+                        expect(photoAsset.displayName).not().assertUndefined()
+                        console.info('photoAsset displayName: ', photoAsset.displayName);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('photoAsset failed with err:' + err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                photoAsset = await fetchResult.getFirstObject();
+                if (photoAsset != undefined) {
+                    expect(photoAsset.displayName).not().assertUndefined()
+                    console.info('photoAsset displayName: ', photoAsset.displayName);
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                } else {
+                    console.error('getFirstObjectPromise failed');
+                    expect(false).assertTrue();
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                await fetchResult.getFirstObject();
+                if (!fetchResult.isAfterLast()) {
+                    fetchResult.getNextObject((err, photoAsset) => {
+                        if (photoAsset != undefined) {
+                            expect(photoAsset.displayName).not().assertUndefined()
+                            console.info('photoAsset displayName: ', photoAsset.displayName);
+                            toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                        } else {
+                            console.error('photoAsset failed with err: ' + err);
+                            expect(false).assertTrue();
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                await fetchResult.getFirstObject();
+                if (!fetchResult.isAfterLast()) {
+                    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getNextObject();
+                    expect(photoAsset).not().assertUndefined()
+                    console.info('photoAsset displayName: ', photoAsset.displayName);
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                if (!fetchResult.isAfterLast()) {
+                    fetchResult.getLastObject((err, photoAsset) => {
+                        if (photoAsset != undefined) {
+                            expect(fetchResult.isAfterLast()).assertTrue()
+                            console.info('photoAsset displayName: ', photoAsset.displayName);
+                            toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                        } else {
+                            console.error('photoAsset failed with err: ' + err);
+                            expect(false).assertTrue();
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                if (!fetchResult.isAfterLast()) {
+                    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+                    expect(fetchResult.isAfterLast()).assertTrue()
+                    toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                }
+            } catch (err) {
+                console.error('FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let position = Math.floor(Math.random() * fetchResultCount);
+                fetchResult.getObjectByPosition(position, (err, photoAsset) => {
+                    if (photoAsset != undefined) {
+                        expect(photoAsset.displayName).not().assertUndefined()
+                        console.info('photoAsset displayName: ', photoAsset.displayName);
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('getObjectByPosition failed with err: ' + err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let position = Math.floor(Math.random() * fetchResultCount);
+                photoAsset = await fetchResult.getObjectByPosition(positions[i]);
+                expect(photoAsset.displayName).not().assertUndefined()
+                console.info('photoAsset displayName: ', photoAsset.displayName);
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT, (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                fetchResult.getAllObjects((err, photoAssetList) => {
+                    if (photoAssetList != undefined) {
+                        console.info('photoAssetList length: ', photoAssetList.length);
+                        expect(photoAssetList.length).assertEqual(fetchResultCount)
+                        toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+                    } else {
+                        console.error('photoAssetList failed with err:' + err);
+                        expect(false).assertTrue();
+                    }
+                });
+            } catch (err) {
+                console.error('FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT failed, message = ', err);
+                expect(false).assertTrue();
+            }
+        });
+
+        eventEmitter.on(FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT, async (phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done) => {
+            steps.shift();
+            try {
+                let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+                console.info('photoAssetList length: ', photoAssetList.length);
+                expect(photoAssetList.length).assertEqual(fetchResultCount)
+                toNextStep(phAccessHelper, fetchOptions, fetchResult, photoAsset, options, steps, done)
+            } catch (err) {
+                console.error('FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT failed, message = ', err);
+                expect(false).assertTrue();
             }
         });
 
@@ -539,26 +978,26 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.type      : Stability test
            * @tc.level     : Level2
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1000', 2, function (done) {
-            let mySteps = new Array(
-                // getPhotoAccessHelper and createAsset
-                CREATE_EVENT, GET_PHOTOASSET_EVENT, REGISTER_CHANGE_EVENT
-            );
-            for(let i = 0; i< 999;i++)
-            {
-                mySteps.push(
-                    // createAsset callback
-                    REGISTER_CHANGE_EVENT
-                )
-            }
-            mySteps.push(
-                // release
-                RELEASE_CALLBACK_EVENT,
-                // end
-                END_EVENT
-            )
-            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
-        })
+        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1000', 2, function (done) {
+        //     let mySteps = new Array(
+        //         // getPhotoAccessHelper and createAsset
+        //         CREATE_EVENT, GET_PHOTOASSET_EVENT, REGISTER_CHANGE_EVENT
+        //     );
+        //     for(let i = 0; i< 999;i++)
+        //     {
+        //         mySteps.push(
+        //             // createAsset callback
+        //             REGISTER_CHANGE_EVENT
+        //         )
+        //     }
+        //     mySteps.push(
+        //         // release
+        //         RELEASE_CALLBACK_EVENT,
+        //         // end
+        //         END_EVENT
+        //     )
+        //     eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        // })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1100
@@ -622,27 +1061,27 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.type      : Stability test
            * @tc.level     : Level2
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1300', 2, function (done) {
-            let mySteps = new Array(
-                // getPhotoAccessHelper and getPhotoAsset
-                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GET_ATTRS_EVENT
-            );
-            for(let i = 0; i< 999;i++)
-            {
-                mySteps.push(
-                    // photoAsset.get
-                    PHOTOASSET_GET_ATTRS_EVENT
-                )
-            }
-            mySteps.push(
-                // release
-                RELEASE_CALLBACK_EVENT,
-                // end
-                END_EVENT
-            )
-            fetchOptions.fetchColumns = columns
-            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
-        })
+        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1300', 2, function (done) {
+        //     let mySteps = new Array(
+        //         // getPhotoAccessHelper and getPhotoAsset
+        //         CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GET_ATTRS_EVENT
+        //     );
+        //     for(let i = 0; i< 999;i++)
+        //     {
+        //         mySteps.push(
+        //             // photoAsset.get
+        //             PHOTOASSET_GET_ATTRS_EVENT
+        //         )
+        //     }
+        //     mySteps.push(
+        //         // release
+        //         RELEASE_CALLBACK_EVENT,
+        //         // end
+        //         END_EVENT
+        //     )
+        //     fetchOptions.fetchColumns = columns
+        //     eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        // })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1400
@@ -667,6 +1106,673 @@ export default function PhotoAccessHelperStabilityTest() {
             mySteps.push(
                 // release
                 RELEASE_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1500
+           * @tc.name      : 015.photoAsset.set
+           * @tc.desc      : photoAsset.set 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1500', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_SET_ATTRS_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_SET_ATTRS_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1600
+           * @tc.name      : 016.photoAsset.commitModify
+           * @tc.desc      : photoAsset.commitModify callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1600', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1700
+           * @tc.name      : 017.photoAsset.commitModify
+           * @tc.desc      : photoAsset.commitModify promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1700', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_COMMITMODIFY_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_COMMITMODIFY_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1800
+           * @tc.name      : 018.photoAsset.getReadOnlyFd
+           * @tc.desc      : photoAsset.getReadOnlyFd callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1800', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1900
+           * @tc.name      : 019.photoAsset.getReadOnlyFd
+           * @tc.desc      : photoAsset.getReadOnlyFd promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1900', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETREADONLYFD_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_GETREADONLYFD_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2000
+           * @tc.name      : 020.photoAsset.close
+           * @tc.desc      : photoAsset.close callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2000', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_CLOSE_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_CLOSE_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2100
+           * @tc.name      : 021.photoAsset.close
+           * @tc.desc      : photoAsset.close promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2100', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_CLOSE_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_CLOSE_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2200
+           * @tc.name      : 022.photoAsset.getThumbnail
+           * @tc.desc      : photoAsset.getThumbnail callback without sizes 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2200', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2300
+           * @tc.name      : 023.photoAsset.getThumbnail
+           * @tc.desc      : photoAsset.getThumbnail callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2300', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2400
+           * @tc.name      : 024.photoAsset.getThumbnail
+           * @tc.desc      : photoAsset.getThumbnail promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2400', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2500
+           * @tc.name      : 025.fetchResult.getCount
+           * @tc.desc      : fetchResult.getCount 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2500', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETCOUNT_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETCOUNT_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2600
+           * @tc.name      : 026.fetchResult.isAfterLast
+           * @tc.desc      : fetchResult.isAfterLast 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2600', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_ISAFTERLAST_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_ISAFTERLAST_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2700
+           * @tc.name      : 027.fetchResult.close
+           * @tc.desc      : fetchResult.close callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2700', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_CLOSE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_CLOSE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2900
+           * @tc.name      : 029.fetchResult.getFirstObject
+           * @tc.desc      : fetchResult.getFirstObject callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2900', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3000
+           * @tc.name      : 030.fetchResult.getFirstObject
+           * @tc.desc      : fetchResult.getFirstObject promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3000', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3100
+           * @tc.name      : 031.fetchResult.getNextObject
+           * @tc.desc      : fetchResult.getNextObject callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3100', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3200
+           * @tc.name      : 032.fetchResult.getNextObject
+           * @tc.desc      : fetchResult.getNextObject promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3200', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3300
+           * @tc.name      : 033.fetchResult.getLastObject
+           * @tc.desc      : fetchResult.getLastObject callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3300', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3400
+           * @tc.name      : 034.fetchResult.getLastObject
+           * @tc.desc      : fetchResult.getLastObject promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3400', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3500
+           * @tc.name      : 035.fetchResult.getObjectByPosition
+           * @tc.desc      : fetchResult.getObjectByPosition callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3500', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3600
+           * @tc.name      : 036.fetchResult.getObjectByPosition
+           * @tc.desc      : fetchResult.getObjectByPosition promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3600', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3700
+           * @tc.name      : 037.fetchResult.getAllObjects
+           * @tc.desc      : fetchResult.getAllObjects callback 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3700', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
+                // end
+                END_EVENT
+            )
+            eventEmitter.emit(mySteps[0],fetchOptions, videoType, "mp4", options, mySteps, done);
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3800
+           * @tc.name      : 038.fetchResult.getAllObjects
+           * @tc.desc      : fetchResult.getAllObjects promise 1000 times
+           * @tc.size      : MediumTest
+           * @tc.type      : Stability test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3800', 2, function (done) {
+            let mySteps = new Array(
+                // getPhotoAccessHelper and getPhotoAsset
+                CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT
+            );
+            for(let i = 0; i< 999;i++)
+            {
+                mySteps.push(
+                    // photoAsset.get
+                    FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT
+                )
+            }
+            mySteps.push(
+                // release
+                RELEASE_PROMISE_EVENT,
                 // end
                 END_EVENT
             )

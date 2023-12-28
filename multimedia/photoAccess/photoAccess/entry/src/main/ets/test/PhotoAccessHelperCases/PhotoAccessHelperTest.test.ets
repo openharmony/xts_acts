@@ -15,9 +15,8 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import buffer from '@ohos.buffer';
-import { checkSet,checkUri,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
-import fs from '@ohos.file.fs';
+import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -475,25 +474,6 @@ export default function PhotoAccessHelperTest() {
             }
         }
 
-        function checkReadAndWrite(fd){
-            let arrayBuffer = new ArrayBuffer(4096);
-            fs.read(fd, arrayBuffer).then((readLen: number) => {
-                console.info("read file data succeed");
-                let buf = buffer.from(arrayBuffer, 0, readLen);
-                console.info(`The content of file: ${buf.toString()}`);
-            }).catch((err: BusinessError) => {
-                console.info("read file data failed with error message: " + err.message + ", error code: " + err.code);
-                expect(false).assertTrue();
-            })
-            let str: string = "hello, world";
-            fs.write(fd, str).then((writeLen: number) => {
-                console.info("write data to file succeed and size is:" + writeLen);
-                expect(false).assertTrue();
-            }).catch((err: BusinessError) => {
-                console.info("write data to file failed with error message: " + err.message + ", error code: " + err.code);
-            })
-        }
-
         function getReadOnlyFdCallback(phAccessHelper, fetchOptions, done){
             phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
                 if (fetchResult != undefined) {
@@ -755,9 +735,9 @@ export default function PhotoAccessHelperTest() {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
                 await fetchResult.getFirstObject();
                 let positions = [
-                    0,1
+                    0,1,fetchResultCount-1
                 ]
-                for(let i = 0;i < 2; i++){
+                for(let i = 0;i < 3; i++){
                     console.log(`positions[${i}] is: ${positions[i]}`)
                     fetchResult.getObjectByPosition(positions[i], (err, photoAsset) => {
                         if (photoAsset != undefined) {
@@ -782,9 +762,9 @@ export default function PhotoAccessHelperTest() {
             try {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
                 let positions = [
-                    0,1
+                    0,1,fetchResultCount-1
                 ]
-                for(let i = 0;i < 2; i++){
+                for(let i = 0;i < 3; i++){
                     console.log(`positions[${i}] is: ${positions[i]}`)
                     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getObjectByPosition(positions[i]);
                     if (photoAsset != undefined) {
@@ -1374,14 +1354,64 @@ export default function PhotoAccessHelperTest() {
                     expect(false).assertTrue();
                 } else {
                     console.info('release1 ok.');
-                    photoHelper.release((err) => {
-                        console.info('releaseDemo');
-                        if (err != undefined) {
-                            console.error('release failed. message = ', err);
-                            expect(false).assertTrue();
+                    if(photoHelper==undefined){
+                        console.info('photoHelper is undefined');
+                    }else {
+                        console.info('photoHelper is not undefined');
+                    }
+                    photoHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+                        if (fetchResult !== undefined) {
+                            console.info('fetchResult success');
+                            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+                            if (photoAsset !== undefined) {
+                                console.info('photoAsset.displayName : ' + photoAsset.displayName);
+                                done()
+                            }
                         } else {
-                            console.info('release2 ok.');
+                            console.error('fetchResult fail' + err);
+                        }
+                    });
+                    // photoHelper.release((err) => {
+                    //     console.info('releaseDemo');
+                    //     if (err != undefined) {
+                    //         console.error('release failed. message = ', err);
+                    //         expect(false).assertTrue();
+                    //     } else {
+                    //         console.info('release2 ok.');
+                    //         done()
+                    //     }
+                    // });
+                }
+            });
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3210
+           * @tc.name      : 0321.release
+           * @tc.desc      : release promise, twice
+           * @tc.size      : MediumTest
+           * @tc.type      : Function test
+           * @tc.level     : Level2
+           */
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3210', 2, async function (done) {
+            let mgr = userFileManager.getUserFileMgr(context);
+            mgr.release((err) => {
+                if (err != undefined) {
+                    console.error('release failed. message = ', err);
+                } else {
+                    console.info('release ok.');
+                    if(mgr==undefined){
+                        console.info('mgr is undefined');
+                    }else {
+                        console.info('mgr is not undefined');
+                    }
+                    mgr.getPhotoAssets(fetchOptions, async (err, fetchResult) => {
+                        if (fetchResult != undefined) {
+                            console.info('fetchResult success');
                             done()
+                        } else {
+                            console.error('fetchResult fail' + err);
+                            expect(false).assertTrue();
                         }
                     });
                 }
@@ -1403,7 +1433,18 @@ export default function PhotoAccessHelperTest() {
                 console.info('release1 ok.');
                 await photoHelper.release();
                 console.info('release2 ok.');
-                done();
+                photoHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+                    if (fetchResult !== undefined) {
+                        console.info('fetchResult success');
+                        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+                        if (photoAsset !== undefined) {
+                            console.info('photoAsset.displayName : ' + photoAsset.displayName);
+                            done()
+                        }
+                    } else {
+                        console.error('fetchResult fail' + err);
+                    }
+                });
             } catch (err) {
                 console.error('release failed. message = ', err);
                 expect(false).assertTrue();

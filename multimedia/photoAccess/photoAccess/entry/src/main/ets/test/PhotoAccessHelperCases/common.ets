@@ -15,6 +15,9 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import { expect } from '@ohos/hypium';
+import fs from '@ohos.file.fs';
+import buffer from '@ohos.buffer';
+import { BusinessError } from '@ohos.base';
 
 const photoKeys = photoAccessHelper.PhotoKeys;
 let columns = [
@@ -86,6 +89,25 @@ export function checkUri(uri,photoType, extension) {
     expect(uri).assertContain("VID")
   }
   expect(uri).assertContain(extension)
+}
+
+export function checkReadAndWrite(fd){
+  let arrayBuffer = new ArrayBuffer(4096);
+  fs.read(fd, arrayBuffer).then((readLen: number) => {
+    console.info("read file data succeed");
+    let buf = buffer.from(arrayBuffer, 0, readLen);
+    console.info(`The content of file: ${buf.toString()}`);
+  }).catch((err: BusinessError) => {
+    console.info("read file data failed with error message: " + err.message + ", error code: " + err.code);
+    expect(false).assertTrue();
+  })
+  let str: string = "hello, world";
+  fs.write(fd, str).then((writeLen: number) => {
+    console.info("write data to file succeed and size is:" + writeLen);
+    expect(false).assertTrue();
+  }).catch((err: BusinessError) => {
+    console.info("write data to file failed with error message: " + err.message + ", error code: " + err.code);
+  })
 }
 
 export {
