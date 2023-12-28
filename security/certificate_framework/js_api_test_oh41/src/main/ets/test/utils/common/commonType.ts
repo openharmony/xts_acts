@@ -48,3 +48,9 @@ export interface X509CertParameters {
   publicKeyAlgID?: string;
   authorityKeyIdentifier?: Uint8Array;
 }
+
+export interface X509CertChainParameters {
+  subject?: Uint8Array;
+  publicKey?: Uint8Array;
+  certSerialNumber?: bigint;
+}
