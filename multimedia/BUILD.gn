@@ -35,6 +35,7 @@ group("multimedia") {
       "camera/camera_js_standard:camera_framework_ets_hap",
       "camera/camera_ndk_test:camera_framework_ndk_hap",
       "image/image_js_standard/image:image_js_hap",
+      "image/image_js_standard/imageColorSpaceTransfer:image_colorspace_transfer_hap",
       "image/image_js_standard/imageColorspace:image_colorspace_js_hap",
       "image/image_js_standard/imageCreator:image_creator_js_hap",
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
