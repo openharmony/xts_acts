@@ -23,6 +23,10 @@ struct TextAreaExample2 {
   @State fontSize: number = 30;
   @State textAlign: TextAlign = TextAlign.Center;
   @State text: String  = 'test text';
+  @State caretIndex : number = 9999
+  @State text2: string = ''
+  @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
+  controller: TextAreaController = new TextAreaController()
 
   onPageShow() {
     console.info('swiper page show called');
@@ -68,6 +72,9 @@ struct TextAreaExample2 {
       if (eventData.data.text != null) {
         this.text = eventData.data.text;
       }
+      if (eventData.data.text2 != null) {
+        this.text2 = eventData.data.text2;
+      }
     }
   }
 
@@ -91,6 +98,34 @@ struct TextAreaExample2 {
           this.text = value
         })
       Text(this.text).width('90%').key('text')
+
+      TextArea({ placeholder: 'input your word', text: this.text2, controller: this.controller})
+        .key('textArea2')
+        .placeholderColor("rgb(0,0,225)")
+        .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
+        .textAlign(this.textAlign)
+        .caretColor(Color.Blue)
+        .height(50)
+        .fontSize(this.fontSize)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily("sans-serif")
+        .fontStyle(FontStyle.Normal)
+        .fontColor(this.fontColor)
+        .maxLength(10)
+
+      Button('caretoffset')
+        .backgroundColor('#00FF00')
+        .margin(15)
+        .onClick(() => {
+          console.info('text length:' + this.text2.length)
+          this.controller.caretPosition(this.text2.length)
+          this.positionInfo = this.controller.getCaretOffset()
+          console.info("index:" + this.positionInfo.index)
+          this.caretIndex = this.positionInfo.index
+        })
+        .key('caretOffsetBtn1')
+
+      Text("Index" + this.caretIndex).key('caretOffsetText1')
     }
   }
 }

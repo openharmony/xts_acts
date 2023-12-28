@@ -56,11 +56,11 @@ describe('cipher2_test', function () {
   afterEach(function () {});
   
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0100
+   * @tc.number     SUB_Security_DataPro_cipher_0100
    * @tc.name       RSA algorithm encryption succeeded
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0100', 0, function () {
+   it('SUB_Security_DataPro_cipher_0100', 0, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: plainTextRsa,
@@ -82,11 +82,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0200
+   * @tc.number     SUB_Security_DataPro_cipher_0200
    * @tc.name       RSA algorithm decryption succeeded
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0200', 1, function () {
+   it('SUB_Security_DataPro_cipher_0200', 1, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: plainTextRsa,
@@ -108,11 +108,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0300
+   * @tc.number     SUB_Security_DataPro_cipher_0300
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0300', 2, function () {
+   it('SUB_Security_DataPro_cipher_0300', 2, function () {
 	  cipher.rsa({
 		action: 'encrypt123',
 		text: plainTextRsa,
@@ -134,11 +134,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0400
+   * @tc.number     SUB_Security_DataPro_cipher_0400
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0400', 2, function () {
+   it('SUB_Security_DataPro_cipher_0400', 2, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: plainTextRsa,
@@ -163,11 +163,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0500
+   * @tc.number     SUB_Security_DataPro_cipher_0500
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0500', 2, function () {
+   it('SUB_Security_DataPro_cipher_0500', 2, function () {
 	  cipher.rsa({
 		action: 'encrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -189,11 +189,11 @@ describe('cipher2_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0600
+   * @tc.number     SUB_Security_DataPro_cipher_0600
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0600', 2, function () {
+   it('SUB_Security_DataPro_cipher_0600', 2, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: plainTextRsa,
@@ -215,11 +215,11 @@ describe('cipher2_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0700
+   * @tc.number     SUB_Security_DataPro_cipher_0700
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0700', 2, function () {
+   it('SUB_Security_DataPro_cipher_0700', 2, function () {
 	  cipher.rsa({
 		action: 'decrypt123',
 		text: cipherTextRsa,
@@ -241,11 +241,11 @@ describe('cipher2_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0800
+   * @tc.number     SUB_Security_DataPro_cipher_0800
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0800', 3, function () {
+   it('SUB_Security_DataPro_cipher_0800', 3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: cipherTextRsa,
@@ -279,11 +279,11 @@ describe('cipher2_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_0900
+   * @tc.number     SUB_Security_DataPro_cipher_0900
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_0900', 3, function () {
+   it('SUB_Security_DataPro_cipher_0900', 3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -305,11 +305,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1000
+   * @tc.number     SUB_Security_DataPro_cipher_1000
    * @tc.name       RSA encryption test when the value of action is abnormal
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1000', 3, function () {
+   it('SUB_Security_DataPro_cipher_1000', 3, function () {
 	  cipher.rsa({
 		action: 'decrypt',
 		text: cipherTextRsa,
@@ -331,11 +331,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1100
+   * @tc.number     SUB_Security_DataPro_cipher_1100
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1100', 3, function () {
+   it('SUB_Security_DataPro_cipher_1100', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -360,11 +360,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1200
+   * @tc.number     SUB_Security_DataPro_cipher_1200
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1200', 3, function () {
+   it('SUB_Security_DataPro_cipher_1200', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -389,11 +389,11 @@ describe('cipher2_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2300
+   * @tc.number     SUB_Security_DataPro_cipher_2300
    * @tc.name       The AES algorithm is successfully encrypted
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2300', 3, function () {
+   it('SUB_Security_DataPro_cipher_2300', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,

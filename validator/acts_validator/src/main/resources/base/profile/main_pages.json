@@ -25,6 +25,23 @@
     "pages/ArkUI/CanvasGlobalAlpha",
     "pages/ArkUI/CanvasLineDashOffset",
     "pages/ArkUI/CanvasShadowOffsetY",
+    "pages/ArkUI/DatePickerDialog",
+    "pages/ArkUI/ImageCrop",
+    "pages/ArkUI/Marquee",
+    "pages/ArkUI/PatternLock",
+    "pages/ArkUI/TextPicker",
+    "pages/ArkUI/TimePicker",
+    "pages/ArkUI/TimePickerDialog",
+    "pages/ArkUI/Progress",
+    "pages/ArkUI/Rating",
+    "pages/ArkUI/Search",
+    "pages/ArkUI/SharedTransition",
+    "pages/ArkUI/SharedTransitionTo",
+    "pages/ArkUI/Swiper",
+    "pages/ArkUI/Gauge",
+    "pages/ArkUI/ImageAnimator",
+    "pages/ArkUI/TextPickerDialog",
+    "pages/ArkUI/Refresh",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
@@ -65,12 +82,54 @@
     "pages/model/FloatBall",
     "pages/Sensor/Sensor_index",
     "pages/Sensor/SensorAccelerometer",
+    "pages/Sensor/AccelerometerUncalibrated",
+    "pages/Sensor/Barometer",
+    "pages/Sensor/Gravity",
+    "pages/Sensor/Gyroscope",
+    "pages/Sensor/GyroscopeUncalibrated",
+    "pages/Sensor/Orientation",
+    "pages/Sensor/Pedometer",
+    "pages/Sensor/Proximity",
+    "pages/Sensor/SignificantMotion",
+    "pages/Sensor/Temperature",
+    "pages/Sensor/Hall",
+    "pages/Sensor/HeartRate",
+    "pages/Sensor/Humidity",
+    "pages/Sensor/Light",
+    "pages/Sensor/LinearAccelerometer",
     "pages/Player/PlayNetWorkList",
     "pages/Player/PlayNetWork",
     "pages/Screen/Screen_index",
     "pages/Screen/VirtualScreen",
     "pages/Screen/ScreenShot",
     "pages/Screen/Brightness",
-    "pages/Screen/ScreenLock"
+    "pages/Screen/ScreenLock",
+    "pages/Screen/ScreenOrientation",
+    "pages/Screen/ScreenDensityDpi",
+    "pages/MultimodalInput/MultimodalInput_index",
+    "pages/MultimodalInput/InputMonitor",
+    "pages/MultimodalInput/KeyBoard",
+    "pages/Power/Power_index",
+    "pages/Power/Dormancy",
+    "pages/Notification/Notification_index",
+    "pages/Notification/CommonEvent/page/CommonEventSetting",
+    "pages/Notification/CommonEvent/page/CommonEvent",
+    "pages/Notification/CustomNotification/CustomNotification",
+    "pages/Wifi/Wifi_index",
+    "pages/Wifi/WifiScan",
+    "pages/Bluetooth/BlueTooth_index",
+    "pages/Bluetooth/StandardBluetooth/page/StandardBluetooth",
+    "pages/Bluetooth/BleBluetooth/page/BleBluetooth"
   ]
 }
+
+
+
+
+
+
+
+
+
+
+

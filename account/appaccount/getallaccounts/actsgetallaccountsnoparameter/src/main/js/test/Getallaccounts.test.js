@@ -38,16 +38,16 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 obtain authorization
         */
         it('ActsGetAllAccountsNoParameter_0100', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0100 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.getAllAccounts((err, data)=>{
-                console.debug("====>getAllAccounts 0100 err:" + JSON.stringify(err));
-                console.debug("====>getAllAccounts 0100 data:" + JSON.stringify(data));
-                console.debug("====>getAllAccounts 0100 data.length:" + data.length);
+                console.info("====>getAllAccounts 0100 err:" + JSON.stringify(err));
+                console.info("====>getAllAccounts 0100 data:" + JSON.stringify(data));
+                console.info("====>getAllAccounts 0100 data.length:" + data.length);
                 expect(err).assertEqual(null);
                 expect(data.length).assertEqual(0);
-                console.debug("====>ActsGetAllAccountsNoParameter_0100 end====");
+                console.info("====>ActsGetAllAccountsNoParameter_0100 end====");
                 done();
             });
         });
@@ -59,10 +59,10 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 obtain authorization
         */
         it('ActsGetAllAccountsNoParameter_0200', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0200 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAllAccounts 0200 start====");
+            console.info("====>creat finish====");
+            console.info("====>getAllAccounts 0200 start====");
             try{
                 var data = await appAccountManager.getAllAccounts();
             }
@@ -71,10 +71,10 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 0200 data:" + JSON.stringify(data));
-            console.debug("====>getAllAccounts 0200 data.length:" + data.length);
+            console.info("====>getAllAccounts 0200 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 0200 data.length:" + data.length);
             expect(data.length).assertEqual(0);
-            console.debug("====>ActsGetAllAccountsNoParameter_0200 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_0200 end====");
             done();
         });
 
@@ -84,16 +84,16 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application gets authorization after adding a single account
         */
         it('ActsGetAllAccountsNoParameter_0300', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0300 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("accessibleAccount_callback_single", (err)=>{
-                console.debug("====> add account ActsGetAllAccountsNoParameter_0300 err:" + JSON.stringify(err));
+                console.info("====> add account ActsGetAllAccountsNoParameter_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.getAllAccounts((err, data)=>{
-                    console.debug("====>getAllAccounts 0300 err:" + JSON.stringify(err));
-                    console.debug("====>getAllAccounts 0300 data:" + JSON.stringify(data));
-                    console.debug("====>getAllAccounts 0300 data.length:" + data.length);
+                    console.info("====>getAllAccounts 0300 err:" + JSON.stringify(err));
+                    console.info("====>getAllAccounts 0300 data:" + JSON.stringify(data));
+                    console.info("====>getAllAccounts 0300 data.length:" + data.length);
                     expect(err).assertEqual(null);
                     expect(data.length).assertEqual(1);
                     try{
@@ -106,9 +106,9 @@ export default function ActsGetAllAccountsNoParameter() {
                         done();
                     }
                     appAccountManager.removeAccount("accessibleAccount_callback_single", (err)=>{
-                        console.debug("====>delete Account ActsGetAllAccountsNoParameter_0300 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsGetAllAccountsNoParameter_0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsGetAllAccountsNoParameter_0300 end====");
+                        console.info("====>ActsGetAllAccountsNoParameter_0300 end====");
                         done();
                     })
                 });
@@ -121,10 +121,10 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application gets authorization after adding a single account
         */
     it('ActsGetAllAccountsNoParameter_0400', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0400 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAllAccounts for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAllAccounts for clean====");
             try{
                 var acclist = await appAccountManager.getAllAccounts(SELFBUNDLE);
             }
@@ -133,15 +133,15 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add account ActsGetAllAccountsNoParameter_0400 start====");
+            console.info("====>add account ActsGetAllAccountsNoParameter_0400 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_single");
-            console.debug("====>getAllAccounts 0400 start====");
+            console.info("====>getAllAccounts 0400 start====");
             try{
                 var data = await appAccountManager.getAllAccounts();
             }
@@ -150,8 +150,8 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 0400 data:" + JSON.stringify(data));
-            console.debug("====>getAllAccounts 0400 data.length:" + data.length);
+            console.info("====>getAllAccounts 0400 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 0400 data.length:" + data.length);
             try{
                 expect(data[0].name).assertEqual("accessibleAccount_promise_single");
                 expect(data[0].owner).assertEqual("com.example.getallaccountsnoparameter");
@@ -162,7 +162,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 done();
             }
             await appAccountManager.removeAccount("accessibleAccount_promise_single");
-            console.debug("====>ActsGetAllAccountsNoParameter_0400 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_0400 end====");
             done();
         });
 
@@ -172,22 +172,22 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application is added to obtain authorization after adding multiple application accounts
         */
         it('ActsGetAllAccountsNoParameter_0500', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0500 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("accessibleAccount_callback_first", (err)=>{
-                console.debug("====>add account first time 0500 err:" + JSON.stringify(err));
+                console.info("====>add account first time 0500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("accessibleAccount_callback_second", (err)=>{
-                    console.debug("====>add account second time 0500 err:" + JSON.stringify(err));
+                    console.info("====>add account second time 0500 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.createAccount("accessibleAccount_callback_third", (err)=>{
-                        console.debug("====>add account third time 0500 err:" + JSON.stringify(err));
+                        console.info("====>add account third time 0500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.getAllAccounts((err, data)=>{
-                            console.debug("====>getAllAccounts 0500 err:" + JSON.stringify(err));
-                            console.debug("====>getAllAccounts 0500 data:" + JSON.stringify(data));
-                            console.debug("====>getAllAccounts 0500 data.length:" + data.length);
+                            console.info("====>getAllAccounts 0500 err:" + JSON.stringify(err));
+                            console.info("====>getAllAccounts 0500 data:" + JSON.stringify(data));
+                            console.info("====>getAllAccounts 0500 data.length:" + data.length);
                             expect(err).assertEqual(null);
                             expect(data.length).assertEqual(3);
                             try{
@@ -204,15 +204,15 @@ export default function ActsGetAllAccountsNoParameter() {
                                 done();
                             }
                             appAccountManager.removeAccount("accessibleAccount_callback_first", (err)=>{
-                                console.debug("====>delete Account first 0500 err:" + JSON.stringify(err));
+                                console.info("====>delete Account first 0500 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
                                 appAccountManager.removeAccount("accessibleAccount_callback_second", (err)=>{
-                                    console.debug("====>delete Account second 0500 err:" + JSON.stringify(err));
+                                    console.info("====>delete Account second 0500 err:" + JSON.stringify(err));
                                     expect(err).assertEqual(null);
                                     appAccountManager.removeAccount("accessibleAccount_callback_third", (err)=>{
-                                        console.debug("====>delete Account third 0500 err:" + JSON.stringify(err));
+                                        console.info("====>delete Account third 0500 err:" + JSON.stringify(err));
                                         expect(err).assertEqual(null);
-                                        console.debug("====>ActsGetAllAccountsNoParameter_0500 end====");
+                                        console.info("====>ActsGetAllAccountsNoParameter_0500 end====");
                                         done();
                                     })
                                 })
@@ -229,10 +229,10 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application is added to obtain authorization after adding multiple application accounts
         */
         it('ActsGetAllAccountsNoParameter_0600', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0600 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAllAccounts for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAllAccounts for clean====");
             try{
                 var acclist = await appAccountManager.getAllAccounts(SELFBUNDLE);
             }
@@ -241,17 +241,17 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add first account 0600 start====");
+            console.info("====>add first account 0600 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_first");
-            console.debug("====>add second account 0600 start====");
+            console.info("====>add second account 0600 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_second");
-            console.debug("====>add third account 0600 start====");
+            console.info("====>add third account 0600 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_third");
             try{
                 var data = await appAccountManager.getAllAccounts();
@@ -261,7 +261,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 0600 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 0600 data:" + JSON.stringify(data));
             expect(data.length).assertEqual(3);
             try{
                 expect(data[0].name).assertEqual("accessibleAccount_promise_first");
@@ -276,13 +276,13 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete first account 0600 start====");
+            console.info("====>delete first account 0600 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_first");
-            console.debug("====>delete second account 0600 start====");
+            console.info("====>delete second account 0600 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_second");
-            console.debug("====>delete third account 0600 start====");
+            console.info("====>delete third account 0600 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_third");
-            console.debug("====>ActsGetAllAccountsNoParameter_0600 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_0600 end====");
             done();
         });
 
@@ -293,25 +293,25 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 authorization after deleting the account added for the second time
         */
         it('ActsGetAllAccountsNoParameter_0700', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0700 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("accessibleAccount_callback_delete_first", (err)=>{
-                console.debug("====>add first account 0700 err:" + JSON.stringify(err));
+                console.info("====>add first account 0700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("accessibleAccount_callback_delete_second", (err)=>{
-                    console.debug("====>add second account 0700 err:" + JSON.stringify(err));
+                    console.info("====>add second account 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.createAccount("accessibleAccount_callback_delete_third", (err)=>{
-                        console.debug("====>add third account 0700 err:" + JSON.stringify(err));
+                        console.info("====>add third account 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.removeAccount("accessibleAccount_callback_delete_second", (err)=>{
-                            console.debug("====>delete second account 0700 err:" + JSON.stringify(err));
+                            console.info("====>delete second account 0700 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
                             appAccountManager.getAllAccounts((err, data)=>{
-                                console.debug("====>getAllAccounts 0700 err:" + JSON.stringify(err));
-                                console.debug("====>getAllAccounts 0700 data:" + JSON.stringify(data));
-                                console.debug("====>getAllAccounts 0700 data.length:" + data.length);
+                                console.info("====>getAllAccounts 0700 err:" + JSON.stringify(err));
+                                console.info("====>getAllAccounts 0700 data:" + JSON.stringify(data));
+                                console.info("====>getAllAccounts 0700 data.length:" + data.length);
                                 expect(err).assertEqual(null);
                                 expect(data.length).assertEqual(2);
                                 try{
@@ -326,12 +326,12 @@ export default function ActsGetAllAccountsNoParameter() {
                                     done();
                                 }
                                 appAccountManager.removeAccount("accessibleAccount_callback_delete_first", (err)=>{
-                                    console.debug("====>delete first account 0700 err:" + JSON.stringify(err));
+                                    console.info("====>delete first account 0700 err:" + JSON.stringify(err));
                                     expect(err).assertEqual(null);
                                     appAccountManager.removeAccount("accessibleAccount_callback_delete_third", (err)=>{
-                                        console.debug("====>delete third account 0700 err:" + JSON.stringify(err));
+                                        console.info("====>delete third account 0700 err:" + JSON.stringify(err));
                                         expect(err).assertEqual(null);
-                                        console.debug("====>ActsGetAllAccountsNoParameter_0700 end====");
+                                        console.info("====>ActsGetAllAccountsNoParameter_0700 end====");
                                         done();
                                     })
                                 })
@@ -349,10 +349,10 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 authorization after deleting the account added for the second time
         */
         it('ActsGetAllAccountsNoParameter_0800', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0800 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAllAccounts for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAllAccounts for clean====");
             try{
                 var acclist = await appAccountManager.getAllAccounts(SELFBUNDLE);
             }
@@ -361,19 +361,19 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add first account 0800 start====");
+            console.info("====>add first account 0800 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_first");
-            console.debug("====>add second account 0800 start====");
+            console.info("====>add second account 0800 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_second");
-            console.debug("====>add third account 0800 start====");
+            console.info("====>add third account 0800 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_third");
-            console.debug("====>delete second account 0800 start====");
+            console.info("====>delete second account 0800 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_second");
             try{
                 var data = await appAccountManager.getAllAccounts();
@@ -383,7 +383,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 0800 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 0800 data:" + JSON.stringify(data));
             expect(data.length).assertEqual(2);
             try{
                 expect(data[0].name).assertEqual("accessibleAccount_promise_first");
@@ -396,11 +396,11 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete first account 0800 start====");
+            console.info("====>delete first account 0800 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_first");
-            console.debug("====>delete third account 0800 start====");
+            console.info("====>delete third account 0800 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_third");
-            console.debug("====>ActsGetAllAccountsNoParameter_0800 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_0800 end====");
             done();
         });
 
@@ -411,19 +411,19 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 authorization multiple times
         */
         it('ActsGetAllAccountsNoParameter_0900', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_0900 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_0900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.createAccount("accessibleAccount_callback_multiple_first", (err)=>{
-                console.debug("====>add first account 0900 err:" + JSON.stringify(err));
+                console.info("====>add first account 0900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("accessibleAccount_callback_multiple_second", (err)=>{
-                    console.debug("====>add third account 0900 err:" + JSON.stringify(err));
+                    console.info("====>add third account 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAllAccounts((err, data)=>{
-                        console.debug("====>getAllAccounts first 0900 err:" + JSON.stringify(err));
-                        console.debug("====>getAllAccounts first 0900 data:" + JSON.stringify(data));
-                        console.debug("====>getAllAccounts first 0900 data.length:" + data.length);
+                        console.info("====>getAllAccounts first 0900 err:" + JSON.stringify(err));
+                        console.info("====>getAllAccounts first 0900 data:" + JSON.stringify(data));
+                        console.info("====>getAllAccounts first 0900 data.length:" + data.length);
                         expect(err).assertEqual(null);
                         expect(data.length).assertEqual(2);
                         try{
@@ -438,9 +438,9 @@ export default function ActsGetAllAccountsNoParameter() {
                             done();
                         }
                         appAccountManager.getAllAccounts((err, data)=>{
-                            console.debug("====>getAllAccounts second 0900 err:" + JSON.stringify(err));
-                            console.debug("====>getAllAccounts second 0900 data:" + JSON.stringify(data));
-                            console.debug("====>getAllAccounts second 0900 data.length:" + data.length);
+                            console.info("====>getAllAccounts second 0900 err:" + JSON.stringify(err));
+                            console.info("====>getAllAccounts second 0900 data:" + JSON.stringify(data));
+                            console.info("====>getAllAccounts second 0900 data.length:" + data.length);
                             expect(err).assertEqual(null);
                             expect(data.length).assertEqual(2);
                             try{
@@ -455,12 +455,12 @@ export default function ActsGetAllAccountsNoParameter() {
                                 done();
                             }
                             appAccountManager.removeAccount("accessibleAccount_callback_multiple_first", (err)=>{
-                                console.debug("====>delete first account 0900 err:" + JSON.stringify(err));
+                                console.info("====>delete first account 0900 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
                                 appAccountManager.removeAccount("accessibleAccount_callback_multiple_second", (err)=>{
-                                    console.debug("====>delete second account 0900 err:" + JSON.stringify(err));
+                                    console.info("====>delete second account 0900 err:" + JSON.stringify(err));
                                     expect(err).assertEqual(null);
-                                    console.debug("====>ActsGetAllAccountsNoParameter_0900 end====");
+                                    console.info("====>ActsGetAllAccountsNoParameter_0900 end====");
                                     done();
                                 })
                             })
@@ -477,10 +477,10 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 authorization multiple times
         */
         it('ActsGetAllAccountsNoParameter_1000', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_1000 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_1000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>getAllAccounts for clean====");
+            console.info("====>creat finish====");
+            console.info("====>getAllAccounts for clean====");
             try{
                 var acclist = await appAccountManager.getAllAccounts(SELFBUNDLE);
             }
@@ -489,17 +489,17 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>account list length: " + acclist.length);
+            console.info("====>account list length: " + acclist.length);
             if(acclist.length > 0){
                 for(var i = 0;i < acclist.length; i++){
                     await appAccountManager.removeAccount(acclist[i].name);
                 }
             }
-            console.debug("====>add first account 1000 start====");
+            console.info("====>add first account 1000 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_multiple_first");
-            console.debug("====>add second account 1000 start====");
+            console.info("====>add second account 1000 start====");
             await appAccountManager.createAccount("accessibleAccount_promise_multiple_second");
-            console.debug("====>getAllAccounts first 1000 start====");
+            console.info("====>getAllAccounts first 1000 start====");
             try{
                 var data = await appAccountManager.getAllAccounts();
             }
@@ -508,7 +508,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 1000 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 1000 data:" + JSON.stringify(data));
             expect(data.length).assertEqual(2);
             try{
                 expect(data[0].name).assertEqual("accessibleAccount_promise_multiple_first");
@@ -521,7 +521,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts second 1000 start====");
+            console.info("====>getAllAccounts second 1000 start====");
             try{
                 var dataTwo = await appAccountManager.getAllAccounts();
             }
@@ -530,7 +530,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 1000 dataTwo:" + JSON.stringify(dataTwo));
+            console.info("====>getAllAccounts 1000 dataTwo:" + JSON.stringify(dataTwo));
             expect(data.length).assertEqual(2);
             try{
                 expect(dataTwo[0].name).assertEqual("accessibleAccount_promise_multiple_first");
@@ -543,11 +543,11 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete first account 1000 start====");
+            console.info("====>delete first account 1000 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_multiple_first");
-            console.debug("====>delete second account 1000 start====");
+            console.info("====>delete second account 1000 start====");
             await appAccountManager.removeAccount("accessibleAccount_promise_multiple_second");
-            console.debug("====>ActsGetAllAccountsNoParameter_1000 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_1000 end====");
             done();
         });
 
@@ -558,12 +558,12 @@ export default function ActsGetAllAccountsNoParameter() {
         *                 and this application obtains authorization
         */
         it('ActsGetAllAccountsNoParameter_1100', 0, async function (done) {
-            console.debug("====>ActsGetAllAccountsNoParameter_1100 start====");
+            console.info("====>ActsGetAllAccountsNoParameter_1100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account 1100 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account 1100 start====");
             await appAccountManager.createAccount("accessibleAccount_this_application");
-            console.debug("====>startAbility 1100 start====");
+            console.info("====>startAbility 1100 start====");
             await featureAbility.startAbility(
                 {
                     want:
@@ -578,7 +578,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 },
             );
             await sleep(TIMEOUT)
-            console.debug("====>getAllAccounts 1100 start====");
+            console.info("====>getAllAccounts 1100 start====");
             try{
                 var data = await appAccountManager.getAllAccounts();
             }
@@ -587,7 +587,7 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAllAccounts 1100 data:" + JSON.stringify(data));
+            console.info("====>getAllAccounts 1100 data:" + JSON.stringify(data));
             expect(data.length).assertEqual(2);
             try{
                 expect(data[0].name).assertEqual("account_name_scene_single");
@@ -600,9 +600,9 @@ export default function ActsGetAllAccountsNoParameter() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>delete account 1100 start====");
+            console.info("====>delete account 1100 start====");
             await appAccountManager.removeAccount("accessibleAccount_this_application");
-            console.debug("====>ActsGetAllAccountsNoParameter_1100 end====");
+            console.info("====>ActsGetAllAccountsNoParameter_1100 end====");
             done();
         });
     })

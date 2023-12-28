@@ -223,9 +223,9 @@ export default function paddingTest() {
           console.info('[' + data.caseTag + '] targetRectAfter.right - referenceRect.right:'
           + (targetRectAfter.right - referenceRect.right));
           expect(Math.abs(referenceRect.top - targetRectAfter.top - (rectTabBar.bottom - rectTabBar.top) - data.testValue.expectValue.top) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.top) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.top) <= 1).assertTrue();
-          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.top) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.bottom - referenceRect.bottom - data.testValue.expectValue.bottom) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfter.right - referenceRect.right - data.testValue.expectValue.right) <= 1).assertTrue();
+          expect(Math.abs(referenceRect.left - targetRectAfter.left - data.testValue.expectValue.left) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetStringPercent') {
           console.info('[' + data.caseTag + '] referenceRect.top - targetRectAfter.top:'
           + (referenceRect.top - targetRectAfter.top));
@@ -258,7 +258,7 @@ export default function paddingTest() {
         } else {
           //Verify if other methods were successful.
           expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right)) <= 1).assertTrue();
-          expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1).assertTrue();
+          expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1).assertTrue();
         }
       }
     })

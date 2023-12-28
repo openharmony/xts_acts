@@ -55,7 +55,7 @@ export default function blankJsunit() {
       console.info("[testBlank01] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
       expect(obj.$attrs.color).assertEqual('#FF0000FF');
-      expect(obj.$attrs.min).assertEqual('0.00px');
+      expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
 

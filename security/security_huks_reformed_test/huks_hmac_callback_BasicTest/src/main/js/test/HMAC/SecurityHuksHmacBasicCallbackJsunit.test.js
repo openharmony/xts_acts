@@ -323,7 +323,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testReformedHmacSM3001", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_SM3_001", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
       let HuksOptions = {
         properties: new Array(

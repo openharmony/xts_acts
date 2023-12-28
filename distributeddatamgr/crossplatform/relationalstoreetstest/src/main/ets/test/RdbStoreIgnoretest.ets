@@ -15,7 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import curves from "@ohos.curves";
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context;
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_ALL_DATA_TYPE_SQL =
   "CREATE TABLE IF NOT EXISTS AllDataType " +
@@ -32,7 +35,6 @@ const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIM
 
 let rdbStore = undefined;
 let dbName = 'IgnorePredicates.db';
-let context = null;
 const STORE_CONFIG = {
   name: dbName,
   securityLevel: relationalStore.SecurityLevel.S1,
@@ -47,11 +49,13 @@ export default function RdbStoreIgnore() {
   describe("RdbStoreIgnore", function () {
     beforeAll(async function () {
       console.info(TAG + "beforeAll");
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context;
+      console.info(TAG + 'Get context successful. context=' + context);
     });
 
     beforeEach(async function () {
       console.info(TAG + "beforeEach");
-      context = globalThis.abilityContext;
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
@@ -759,7 +763,6 @@ export default function RdbStoreIgnore() {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
-      let context = globalThis.abilityContext
       rdbStore = await relationalStore.getRdbStore(context, config);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       let deleteResult = false;

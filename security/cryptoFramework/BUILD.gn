@@ -16,6 +16,7 @@ group("cryptoFramework") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "js_api10_test_oh41:ActsCryptoFrameworkAPI10JSFuncTest",
       "js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "js_api_test_oh41:ActsCryptoFrameworkThreeJSFuncTest",
       "js_api_test_one:ActsCryptoFrameworkJSNormalTest",

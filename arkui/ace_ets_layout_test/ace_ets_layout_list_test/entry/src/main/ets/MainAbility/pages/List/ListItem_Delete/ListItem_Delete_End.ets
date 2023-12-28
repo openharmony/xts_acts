@@ -21,7 +21,6 @@ struct ListItem_Delete_End{
   @State enterEndDeleteAreaString: string = "not enterEndDeleteArea"
   @State exitEndDeleteAreaString: string = "not exitEndDeleteArea"
 
-
   messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('ListItem_Delete_End onPageShow');
@@ -75,6 +74,13 @@ struct ListItem_Delete_End{
       Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_text_01")
       Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_text_02")
       Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_End_text_03")
+      Button('点击还原')
+        .onClick(() => {
+          this.arr = [0, 1, 2, 3, 4]
+          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
+          this.exitEndDeleteAreaString =  "not exitEndDeleteArea"
+        })
+        .id('ListItem_Delete_End_button1')
     }
     .backgroundColor(0xDCDCDC)
     .width('100%')

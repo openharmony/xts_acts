@@ -27,7 +27,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
   var gPipe;
   var portCurrentMode;
 
-  beforeAll(function () {
+  beforeAll(async function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx Begin*************');
     var Version = usbManager.getVersion();
     console.info('usb unit begin test getversion :' + Version);
@@ -42,7 +42,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
+          await usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2;
             console.info('usb case setPortRoles  return: ' + data);
           }).catch(error => {

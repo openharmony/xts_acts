@@ -17,7 +17,7 @@ import { describe, expect, it } from '@ohos/hypium'
 import ctype from 'libctypendk.so'
 
 export default function ctypeNdkTest() {
-  describe('MuslCtypeTest', () => {
+  describe('testMuslCtypeTest', () => {
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_0100
@@ -27,9 +27,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnum001", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isalnum(b);
+      let a: number = ctype.isalnum(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -42,9 +42,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnum002", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isalnum(b);
+      let a: number = ctype.isalnum(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -56,9 +56,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnum003", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnum003', 0, async (done: Function) => {
       let b = '?'
-      let a = ctype.isalnum(b);
+      let a: number = ctype.isalnum(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -71,38 +71,38 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnumL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isalnumL(b);
+      let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(1);
       done()
     });
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_L_0200
-     * @tc.name       : testMuslCtypeIsalnum_L002
+     * @tc.name       : testMuslCtypeIsalnumL002
      * @tc.desc       : test isalnum_l
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnumL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isalnumL(b);
+      let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(1);
       done()
     });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_L_0300
-     * @tc.name       : testMuslCtypeIsalnum_L003
+     * @tc.name       : testMuslCtypeIsalnumL003
      * @tc.desc       : test isalnum_l
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalnumL003", 0, async (done: Function) => {
+    it('testMuslCtypeIsalnumL003', 0, async (done: Function) => {
       let b = '?'
-      let a = ctype.isalnumL(b);
+      let a: number = ctype.isalnumL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -115,9 +115,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalpha001", 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isalpha(b);
+      let a: number = ctype.isalpha(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -129,9 +129,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalpha002", 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isalpha(b);
+      let a: number = ctype.isalpha(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -143,9 +143,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalpha003", 0, async (done: Function) => {
+    it('testMuslCtypeIsalpha003', 0, async (done: Function) => {
       let b = '?'
-      let a = ctype.isalpha(b);
+      let a: number = ctype.isalpha(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -158,9 +158,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalphaL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isalphaL(b);
+      let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -172,9 +172,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalphaL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isalphaL(b);
+      let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -186,9 +186,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsalphaL003", 0, async (done: Function) => {
+    it('testMuslCtypeIsalphaL003', 0, async (done: Function) => {
       let b = '!'
-      let a = ctype.isalphaL(b);
+      let a: number = ctype.isalphaL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -201,9 +201,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsascii001", 0, async (done: Function) => {
+    it('testMuslCtypeIsascii001', 0, async (done: Function) => {
       let b = 0
-      let a = ctype.isascii(b);
+      let a: number = ctype.isascii(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -215,9 +215,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsascii002", 0, async (done: Function) => {
+    it('testMuslCtypeIsascii002', 0, async (done: Function) => {
       let b = 127
-      let a = ctype.isascii(b);
+      let a: number = ctype.isascii(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -229,9 +229,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsascii003", 0, async (done: Function) => {
+    it('testMuslCtypeIsascii003', 0, async (done: Function) => {
       let b = 128
-      let a = ctype.isascii(b);
+      let a: number = ctype.isascii(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -244,9 +244,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsblank001", 0, async (done: Function) => {
+    it('testMuslCtypeIsblank001', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isblank(b);
+      let a: number = ctype.isblank(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -258,9 +258,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsblank002", 0, async (done: Function) => {
+    it('testMuslCtypeIsblank002', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isblank(b);
+      let a: number = ctype.isblank(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -273,9 +273,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsblankL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsblankL001', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isblankL(b);
+      let a: number = ctype.isblankL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -287,9 +287,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsblankL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsblankL002', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isblankL(b);
+      let a: number = ctype.isblankL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -302,9 +302,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrl001", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl001', 0, async (done: Function) => {
       let b = 0
-      let a = ctype.iscntrl(b);
+      let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -316,9 +316,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrl002", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl002', 0, async (done: Function) => {
       let b = 31
-      let a = ctype.iscntrl(b);
+      let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -330,9 +330,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrl003", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl003', 0, async (done: Function) => {
       let b = 127
-      let a = ctype.iscntrl(b);
+      let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -344,9 +344,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrl004", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrl004', 0, async (done: Function) => {
       let b = 32
-      let a = ctype.iscntrl(b);
+      let a: number = ctype.iscntrl(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -359,9 +359,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrlL001", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL001', 0, async (done: Function) => {
       let b = 0
-      let a = ctype.iscntrlL(b);
+      let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -373,9 +373,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrlL002", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL002', 0, async (done: Function) => {
       let b = 31
-      let a = ctype.iscntrlL(b);
+      let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -387,9 +387,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrlL003", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL003', 0, async (done: Function) => {
       let b = 127
-      let a = ctype.iscntrlL(b);
+      let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -401,9 +401,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIscntrlL004", 0, async (done: Function) => {
+    it('testMuslCtypeIscntrlL004', 0, async (done: Function) => {
       let b = 32
-      let a = ctype.iscntrlL(b);
+      let a: number = ctype.iscntrlL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -416,9 +416,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsdigit001", 0, async (done: Function) => {
+    it('testMuslCtypeIsdigit001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isdigit(b);
+      let a: number = ctype.isdigit(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -430,9 +430,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsdigit002", 0, async (done: Function) => {
+    it('testMuslCtypeIsdigit002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isdigit(b);
+      let a: number = ctype.isdigit(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -445,9 +445,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsdigitL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsdigitL001', 0, async (done: Function) => {
       let b = '1'
-      let a = ctype.isdigitL(b);
+      let a: number = ctype.isdigitL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -459,9 +459,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsdigitL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsdigitL002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isdigitL(b);
+      let a: number = ctype.isdigitL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -474,9 +474,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraphL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL001', 0, async (done: Function) => {
       let b = '2'
-      let a = ctype.isgraphL(b);
+      let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -488,9 +488,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraphL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL002', 0, async (done: Function) => {
       let b = 'b'
-      let a = ctype.isgraphL(b);
+      let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -502,9 +502,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraphL003", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraphL003', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isgraphL(b);
+      let a: number = ctype.isgraphL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -516,9 +516,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraph001", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph001', 0, async (done: Function) => {
       let b = '2'
-      let a = ctype.isgraph(b);
+      let a: number = ctype.isgraph(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -530,9 +530,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraph002", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph002', 0, async (done: Function) => {
       let b = 'b'
-      let a = ctype.isgraph(b);
+      let a: number = ctype.isgraph(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -544,9 +544,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsgraph003", 0, async (done: Function) => {
+    it('testMuslCtypeIsgraph003', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isgraph(b);
+      let a: number = ctype.isgraph(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -559,9 +559,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIslower001", 0, async (done: Function) => {
+    it('testMuslCtypeIslower001', 0, async (done: Function) => {
       let b = 'b'
-      let a = ctype.islower(b);
+      let a: number = ctype.islower(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -572,13 +572,10 @@ export default function ctypeNdkTest() {
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
      */
-    it("testMuslCtypeIslower002", 0, async (done: Function) => {
+    it('testMuslCtypeIslower002', 0, async (done: Function) => {
       let b = 'B'
-      let a = ctype.islower(b);
+      let a: number = ctype.islower(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -591,9 +588,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIslowerL001", 0, async (done: Function) => {
+    it('testMuslCtypeIslowerL001', 0, async (done: Function) => {
       let b = 'b'
-      let a = ctype.islowerL(b);
+      let a: number = ctype.islowerL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -605,9 +602,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIslowerL002", 0, async (done: Function) => {
+    it('testMuslCtypeIslowerL002', 0, async (done: Function) => {
       let b = 'B'
-      let a = ctype.islowerL(b);
+      let a: number = ctype.islowerL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -619,13 +616,10 @@ export default function ctypeNdkTest() {
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprint001", 0, async (done: Function) => {
+    it('testMuslCtypeIsprint001', 0, async (done: Function) => {
       let b = '3'
-      let a = ctype.isprint(b);
+      let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -637,9 +631,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprint002", 0, async (done: Function) => {
+    it('testMuslCtypeIsprint002', 0, async (done: Function) => {
       let b = 'c'
-      let a = ctype.isprint(b);
+      let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -651,9 +645,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprint003", 0, async (done: Function) => {
+    it('testMuslCtypeIsprint003', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isprint(b);
+      let a: number = ctype.isprint(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -665,9 +659,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprint004", 0, async (done: Function) => {
+    it('testMuslCtypeIsprint004', 0, async (done: Function) => {
       let b = '\t'
-      let a = ctype.isprint(b);
+      let a: number = ctype.isprint(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -680,9 +674,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprintL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL001', 0, async (done: Function) => {
       let b = '3'
-      let a = ctype.isprintL(b);
+      let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -694,9 +688,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprintL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL002', 0, async (done: Function) => {
       let b = 'c'
-      let a = ctype.isprintL(b);
+      let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -708,9 +702,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprintL003", 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL003', 0, async (done: Function) => {
       let b = ' '
-      let a = ctype.isprintL(b);
+      let a: number = ctype.isprintL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -722,9 +716,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsprintL004", 0, async (done: Function) => {
+    it('testMuslCtypeIsprintL004', 0, async (done: Function) => {
       let b = '\t'
-      let a = ctype.isprintL(b);
+      let a: number = ctype.isprintL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -738,9 +732,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIspunct001", 0, async (done: Function) => {
+    it('testMuslCtypeIspunct001', 0, async (done: Function) => {
       let b = '/'
-      let a = ctype.ispunct(b);
+      let a: number = ctype.ispunct(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -752,9 +746,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIspunct002", 0, async (done: Function) => {
+    it('testMuslCtypeIspunct002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.ispunct(b);
+      let a: number = ctype.ispunct(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -766,9 +760,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIspunctL001", 0, async (done: Function) => {
+    it('testMuslCtypeIspunctL001', 0, async (done: Function) => {
       let b = '/'
-      let a = ctype.ispunctL(b);
+      let a: number = ctype.ispunctL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -780,9 +774,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIspunctL002", 0, async (done: Function) => {
+    it('testMuslCtypeIspunctL002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.ispunctL(b);
+      let a: number = ctype.ispunctL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -794,9 +788,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsspace001", 0, async (done: Function) => {
+    it('testMuslCtypeIsspace001', 0, async (done: Function) => {
       let b = '\v'
-      let a = ctype.isspace(b);
+      let a: number = ctype.isspace(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -808,37 +802,37 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsspace002", 0, async (done: Function) => {
+    it('testMuslCtypeIsspace002', 0, async (done: Function) => {
       let b = 'v'
-      let a = ctype.isspace(b);
+      let a: number = ctype.isspace(b);
       expect(a).assertEqual(0);
       done()
     });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_L_0100
      * @tc.name       : testMuslCtypeIsspaceL001
-     * @tc.desc       : test MuslCtypeTest
+     * @tc.desc       : isspace_l
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsspaceL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsspaceL001', 0, async (done: Function) => {
       let b = '\v'
-      let a = ctype.isspaceL(b);
+      let a: number = ctype.isspaceL(b);
       expect(a).assertEqual(1);
       done()
     });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_L_0200
      * @tc.name       : testMuslCtypeIsspaceL002
-     * @tc.desc       : test isupper_l
+     * @tc.desc       : test isspace_l
      * @tc.size       : MEDIUM
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsspaceL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsspaceL002', 0, async (done: Function) => {
       let b = 'v'
-      let a = ctype.isspaceL(b);
+      let a: number = ctype.isspaceL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -851,9 +845,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsupperL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsupperL001', 0, async (done: Function) => {
       let b = 'A'
-      let a = ctype.isupperL(b);
+      let a: number = ctype.isupperL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -865,9 +859,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsupperL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsupperL002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isupperL(b);
+      let a: number = ctype.isupperL(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -880,9 +874,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsupper001", 0, async (done: Function) => {
+    it('testMuslCtypeIsupper001', 0, async (done: Function) => {
       let b = 'A'
-      let a = ctype.isupper(b);
+      let a: number = ctype.isupper(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -894,9 +888,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsupper002", 0, async (done: Function) => {
+    it('testMuslCtypeIsupper002', 0, async (done: Function) => {
       let b = 'a'
-      let a = ctype.isupper(b);
+      let a: number = ctype.isupper(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -910,9 +904,9 @@ export default function ctypeNdkTest() {
      * @tc.level      : Level 1
      *
      */
-    it("testMuslCtypeIsxdigit001", 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigit001', 0, async (done: Function) => {
       let b = '6'
-      let a = ctype.isxdigit(b);
+      let a: number = ctype.isxdigit(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -924,9 +918,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsxdigit002", 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigit002', 0, async (done: Function) => {
       let b = 'L'
-      let a = ctype.isxdigit(b);
+      let a: number = ctype.isxdigit(b);
       expect(a).assertEqual(0);
       done()
     });
@@ -939,9 +933,9 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsxdigitL001", 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigitL001', 0, async (done: Function) => {
       let b = '6'
-      let a = ctype.isxdigitL(b);
+      let a: number = ctype.isxdigitL(b);
       expect(a).assertEqual(1);
       done()
     });
@@ -953,11 +947,281 @@ export default function ctypeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testMuslCtypeIsxdigitL002", 0, async (done: Function) => {
+    it('testMuslCtypeIsxdigitL002', 0, async (done: Function) => {
       let b = 'L'
-      let a = ctype.isxdigitL(b);
+      let a: number = ctype.isxdigitL(b);
       expect(a).assertEqual(0);
       done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOASCII_0100
+     * @tc.name       : testMuslCtypeToascii001
+     * @tc.desc       : test toascii
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToascii001', 0, async (done: Function) => {
+      let a: number = ctype.toascii();
+      expect(a).assertContain("a");
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0100
+     * @tc.name       : testMuslCtypeTolower001
+     * @tc.desc       : test tolower
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolower001', 0, async (done: Function) => {
+      let a = 0;
+      let tolowerResult: number = ctype.tolower(a);
+      console.info("Test tolowerResult= " + tolowerResult);
+      expect(tolowerResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0200
+     * @tc.name       : testMuslCtypeTolower002
+     * @tc.desc       : test tolower
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolower002', 0, async (done: Function) => {
+      let a = 1;
+      let tolowerResult: number = ctype.tolower(a);
+      console.info("Test tolowerResult= " + tolowerResult);
+      expect(tolowerResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0300
+     * @tc.name       : testMuslCtypeTolower003
+     * @tc.desc       : test tolower
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolower003', 0, async (done: Function) => {
+      let a = 2;
+      let tolowerResult: number = ctype.tolower(a);
+      console.info("Test tolowerResult= " + tolowerResult);
+      expect(tolowerResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0400
+     * @tc.name       : testMuslCtypeTolower004
+     * @tc.desc       : test tolower
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolower004', 0, async (done: Function) => {
+      let a = -1;
+      let tolowerResult: number = ctype.tolower(a);
+      console.info("Test tolowerResult= " + tolowerResult);
+      expect(tolowerResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0100
+     * @tc.name       : testMuslCtypeTolowerL001
+     * @tc.desc       : test tolower_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolowerL001', 0, async (done: Function) => {
+      let a = 0;
+      let tolowerLResult: number = ctype.tolowerL(a);
+      console.info("Test tolowerLResult= " + tolowerLResult);
+      expect(tolowerLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0200
+     * @tc.name       : testMuslCtypeTolowerL002
+     * @tc.desc       : test tolower_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolowerL002', 0, async (done: Function) => {
+      let a = 1;
+      let tolowerLResult: number = ctype.tolowerL(a);
+      console.info("Test tolowerLResult= " + tolowerLResult);
+      expect(tolowerLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0300
+     * @tc.name       : testMuslCtypeTolowerL003
+     * @tc.desc       : test tolower_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolowerL003', 0, async (done: Function) => {
+      let a = 2;
+      let tolowerLResult: number = ctype.tolowerL(a);
+      console.info("Test tolowerLResult= " + tolowerLResult);
+      expect(tolowerLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0400
+     * @tc.name       : testMuslCtypeTolowerL004
+     * @tc.desc       : test tolower_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeTolowerL004', 0, async (done: Function) => {
+      let a = -1;
+      let tolowerLResult: number = ctype.tolowerL(a);
+      console.info("Test tolowerLResult= " + tolowerLResult);
+      expect(tolowerLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0100
+     * @tc.name       : testMuslCtypeToupper001
+     * @tc.desc       : test toupper
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupper001', 0, async (done: Function) => {
+      let a = 0;
+      let toupperResult: number = ctype.toupper(a);
+      console.info("Test toupperResult= " + toupperResult);
+      expect(toupperResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0200
+     * @tc.name       : testMuslCtypeToupper002
+     * @tc.desc       : test toupper
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupper002', 0, async (done: Function) => {
+      let a = 1;
+      let toupperResult: number = ctype.toupper(a);
+      console.info("Test toupperResult= " + toupperResult);
+      expect(toupperResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0300
+     * @tc.name       : testMuslCtypeToupper003
+     * @tc.desc       : test toupper
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupper003', 0, async (done: Function) => {
+      let a = 2;
+      let toupperResult: number = ctype.toupper(a);
+      console.info("Test toupperResult= " + toupperResult);
+      expect(toupperResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0400
+     * @tc.name       : testMuslCtypeToupper004
+     * @tc.desc       : test toupper
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupper004', 0, async (done: Function) => {
+      let a = -1;
+      let toupperResult: number = ctype.toupper(a);
+      console.info("Test toupperResult= " + toupperResult);
+      expect(toupperResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0100
+     * @tc.name       : testMuslCtypeToupperL001
+     * @tc.desc       : test toupper_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupperL001', 0, async (done: Function) => {
+      let a = 0;
+      let toupperLResult: number = ctype.toupperL(a);
+      console.info("Test toupperLResult= " + toupperLResult);
+      expect(toupperLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0200
+     * @tc.name       : testMuslCtypeToupperL002
+     * @tc.desc       : test tolower_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupperL002', 0, async (done: Function) => {
+      let a = 1;
+      let toupperLResult: number = ctype.tolowerL(a);
+      console.info("Test toupperLResult= " + toupperLResult);
+      expect(toupperLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0300
+     * @tc.name       : testMuslCtypeToupperL003
+     * @tc.desc       : test toupper_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupperL003', 0, async (done: Function) => {
+      let a = 2;
+      let toupperLResult: number = ctype.tolowerL(a);
+      console.info("Test toupperLResult= " + toupperLResult);
+      expect(toupperLResult).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0400
+     * @tc.name       : testMuslCtypeToupperL004
+     * @tc.desc       : test toupper_l
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslCtypeToupperL004', 0, async (done: Function) => {
+      let a = -1;
+      let toupperLResult: number = ctype.tolowerL(a);
+      console.info("Test toupperLResult= " + toupperLResult);
+      expect(toupperLResult).assertEqual(0);
+      done();
     });
   })
 }

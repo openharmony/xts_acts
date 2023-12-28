@@ -56,11 +56,13 @@ export default function imageTwoJsunit() {
       expect(obj.$attrs.autoResize).assertEqual('true');
       expect(obj.$attrs.syncLoad).assertEqual('false');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.InApp');
-      expect(obj.$attrs.colorFilter).assertEqual('');
+      expect(obj.$attrs.colorFilter).assertEqual('1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ' +
+      '1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 ' +
+      '0.000000 1.000000 0.000000');
       expect(obj.$attrs.draggable).assertEqual('false');
       done();
     });
-    
+
     it('imageTwoJsunit_0200', 0, async function (done) {
       console.info('imageOneJsunit_0200 START');
       await CommonFunc.sleep(1000);
@@ -104,7 +106,7 @@ export default function imageTwoJsunit() {
       let obj2 = JSON.parse(strJson2);
       console.info('imageTwoJsunit_0400  component obj2 is: ' + obj2.$attrs.interpolation);
       expect(obj2.$attrs.interpolation).assertEqual('ImageInterpolation.Medium');
-     
+
       globalThis.value.message.notify({name:'interpolation',value:ImageInterpolation.High})
       await CommonFunc.sleep(300);
       let strJson3 = getInspectorByKey('image1');
@@ -113,7 +115,7 @@ export default function imageTwoJsunit() {
       expect(obj3.$attrs.interpolation).assertEqual('ImageInterpolation.High');
       done();
     });
-  
+
     it('imageTwoJsunit_0500', 0, async function (done) {
       console.info('imageTwoJsunit_0500 START');
       await CommonFunc.sleep(1000);

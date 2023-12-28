@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -24,9 +25,21 @@ export default function requestUploadJSUnit() {
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
-      console.info('====>beforeAll: Prerequisites are executed.');
-    });
+    beforeAll(function (done) {
+      try {
+        let pathDir = globalThis.abilityContext.cacheDir;
+        let filePath = pathDir + `/test.txt`;
+        let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
+        let content = ''.padEnd(1 * 1024 *1024, 'h');
+        fileio.writeSync(fd, content);
+        fileio.closeSync(fd);
+        console.info('====>beforeAll: text.txt file generate');
+        done();
+      } catch (err) {
+        console.info('====>beforeAll: text.txt file generate failed' + err);
+        done();
+      }
+    })
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
@@ -217,7 +230,7 @@ export default function requestUploadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 catch err: " + JSON.stringify(err));
           }
           console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 end-----------------------");
-          await sleep(10);
+          await sleep(100);
           done();
         });
       });
@@ -242,7 +255,7 @@ export default function requestUploadJSUnit() {
         expect().assertFail();
       }
       console.info("-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -274,7 +287,7 @@ export default function requestUploadJSUnit() {
         });
       });
       console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -302,7 +315,7 @@ export default function requestUploadJSUnit() {
         }
       });
       console.info("-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -336,7 +349,7 @@ export default function requestUploadJSUnit() {
           })
         });
         console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 end-----------------------");
-        await sleep(10);
+        await sleep(100);
         done();
       });
     });
@@ -368,7 +381,7 @@ export default function requestUploadJSUnit() {
         });
       });
       console.info("-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 end-----------------------");
-      await sleep(10);
+      await sleep(100);
       done();
     });
 
@@ -399,7 +412,7 @@ export default function requestUploadJSUnit() {
           });
         });
         console.info("-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 end-----------------------");
-        await sleep(10);
+        await sleep(100);
         done();
       });
     });
@@ -424,7 +437,7 @@ export default function requestUploadJSUnit() {
           done();
         } catch (err) {
           console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 upload stop err: " + JSON.stringify(err));
-          await sleep(10);
+          await sleep(100);
           done();
         }
       })

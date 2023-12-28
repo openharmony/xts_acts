@@ -33,15 +33,15 @@ export default function RdbNdkStorePredicatesTest() {
     })
     beforeEach(function () {
       hilog.info(0x0000, TAG, 'testTag PredicatesSetUpTestCase' , ' begin');
-      let re = testNapi.PredicatesSetUpTestCase();
+      let re = testNapi.PredicatesTearDownTestCase();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      re = testNapi.PredicatesSetUpTestCase();
       hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
       expect(re == 0).assertTrue();
     })
     afterEach(function () {
       hilog.info(0x0000, TAG, 'testTag PredicatesTearDownTestCase' , ' begin');
-      let re = testNapi.PredicatesTearDownTestCase();
-      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
-      expect(re == 0).assertTrue();
+
     })
     afterAll(function () {
     })

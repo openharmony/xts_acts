@@ -28,7 +28,7 @@ export default function muslIfaddrsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslIfAddrsGetIfAddrs001', 0, async (done: Function) => {
-      let data = ifAddrs.getIfAddrs();
+      let data: string = ifAddrs.getIfAddrs();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
       done()
@@ -42,7 +42,7 @@ export default function muslIfaddrsNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslIfAddrsFreeIfAddrs001', 0, async (done: Function) => {
-      let data = ifAddrs.freeIfAddrs();
+      let data: string = ifAddrs.freeIfAddrs();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done()

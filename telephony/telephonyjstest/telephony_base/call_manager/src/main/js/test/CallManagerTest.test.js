@@ -235,14 +235,15 @@ export default function ActsBaseCallManagerTest() {
         it('Telephony_CallManager_formatPhoneNumber_Async_0600', 0, async function (done) {
             call.formatPhoneNumber('2000000000', {
                 countryCode: 'abcdefg'
-            }, (err) => {
+            }, (err,data) => {
                 if (err) {
-                    console.log(`Telephony_CallManager_formatPhoneNumber_Async_0600 finish err = ${err.message}`);
+                    console.log(`Telephony_CallManager_formatPhoneNumber_Async_0600 fail err = ${err.message}`);
+                    expect().assertFail();
                     done();
                     return;
                 }
-                expect().assertFail();
-                console.log('Telephony_CallManager_formatPhoneNumber_Async_0600 fail');
+                console.log(`Telephony_CallManager_formatPhoneNumber_Async_0600 success data = ${data}`);
+                expect(data == '').assertTrue();
                 done();
             });
         });
@@ -379,15 +380,16 @@ export default function ActsBaseCallManagerTest() {
          */
         it('Telephony_CallManager_formatPhoneNumber_Promise_0600', 0, async function (done) {
             try {
-                await call.formatPhoneNumber('20000000', {
+                let data = await call.formatPhoneNumber('20000000', {
                     countryCode: 'abcdefg'
                 });
-                expect().assertFail();
-                console.log('Telephony_CallManager_formatPhoneNumber_Promise_0600 fail');
+                console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0600 success data =${data}`);
+                expect(data == '').assertTrue();
                 done();
                 return;
             } catch (err) {
-                console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0600 finish err = ${err.message}`);
+                console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0600 fail err = ${err.message}`);
+                expect().assertFail();
                 done();
             }
         });
@@ -479,14 +481,15 @@ export default function ActsBaseCallManagerTest() {
          * @tc.desc    Function test
          */
         it('Telephony_CallManager_formatPhoneNumberToE164_Async_0400', 0, async function (done) {
-            call.formatPhoneNumberToE164('666666999999', 'CN', (err) => {
+            call.formatPhoneNumberToE164('666666999999', 'CN', (err,data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0400 finish err = ${err.message}`);
+                    expect().assertFail();
                     done();
                     return;
                 }
-                console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0400 fail');
-                expect().assertFail();
+                console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0400 success data = ${data}`);
+                expect(data == '').assertTrue();
                 done();
             });
         });
@@ -498,14 +501,15 @@ export default function ActsBaseCallManagerTest() {
          * @tc.desc    Function test
          */
         it('Telephony_CallManager_formatPhoneNumberToE164_Async_0500', 0, async function (done) {
-            call.formatPhoneNumberToE164('01000000000', 'abcdfg', (err) => {
+            call.formatPhoneNumberToE164('01000000000', 'abcdfg', (err,data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0500 finish err = ${err.message}`);
+                    expect().assertFail();
                     done();
                     return;
                 }
-                expect().assertFail();
-                console.log('Telephony_CallManager_formatPhoneNumberToE164_Async_0500 fail');
+                console.log(`Telephony_CallManager_formatPhoneNumberToE164_Async_0500 success data = ${data}`);
+                expect(data == '').assertTrue();
                 done();
             });
         });
@@ -598,14 +602,14 @@ export default function ActsBaseCallManagerTest() {
          */
         it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400', 0, async function (done) {
             try {
-                await call.formatPhoneNumberToE164('999999', 'CN');
-                console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 fail');
-                expect().assertFail();
+                let data = await call.formatPhoneNumberToE164('999999', 'CN');
+                console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 data= ${data}`);
+                expect(data == '').assertTrue();
                 done();
             } catch (err) {
                 console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0400 finish err = ${err.message}`);
+                expect().assertFail();
                 done();
-
             }
         });
 
@@ -617,14 +621,14 @@ export default function ActsBaseCallManagerTest() {
          */
         it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500', 0, async function (done) {
             try {
-                await call.formatPhoneNumberToE164('52300000000', 'abcdefg');
-                console.log('Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 fail');
-                expect().assertFail();
+                let data = await call.formatPhoneNumberToE164('52300000000', 'abcdefg');
+                console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 data= ${data}`);
+                expect(data == '').assertTrue();
                 done();
             } catch (err) {
                 console.log(`Telephony_CallManager_formatPhoneNumberToE164_Promise_0500 finish err = ${err.message}`);
+                expect().assertFail();
                 done();
-
             }
         });
 

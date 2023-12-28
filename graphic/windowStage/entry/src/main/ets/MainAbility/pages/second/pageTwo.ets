@@ -30,6 +30,12 @@ struct PageTwo {
           .margin(10)
           .borderRadius(0)
           .style(TextInputStyle.Inline)
+        Button('点击按钮获取焦点')
+          .focusable(true)
+          .focusOnTouch(true)
+          .onClick(()=>{
+            console.log("click the button name: 点击按钮获取焦点")
+          })
         TextInput()
           .key('pageTwoinputSecond')
           .width(400)

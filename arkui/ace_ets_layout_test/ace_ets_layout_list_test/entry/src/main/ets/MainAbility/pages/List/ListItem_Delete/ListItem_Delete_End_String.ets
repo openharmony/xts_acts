@@ -75,6 +75,13 @@ struct ListItem_Delete_End_String{
       Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_String_text_01")
       Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_String_text_02")
       Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_End_String_text_03")
+      Button('点击还原')
+        .onClick(() => {
+          this.arr = [0, 1, 2, 3, 4]
+          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
+          this.exitEndDeleteAreaString =  "not exitEndDeleteArea"
+        })
+        .id('ListItem_Delete_End_String_button1')
     }
     .backgroundColor(0xDCDCDC)
     .width('100%')

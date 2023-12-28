@@ -89,6 +89,51 @@
       },
       {
         "name": "ohos.permission.ACCESS_SCREEN_LOCK_INNER"
+      },
+      {
+        "name": "ohos.permission.INPUT_MONITORING"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_PEERS_MAC"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_LOCAL_MAC"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_CONFIG"
+      },
+      {
+        "name": "ohos.permission.SET_WIFI_CONFIG"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_CONNECTION"
+      },
+      {
+        "name": "ohos.permission.MANAGE_WIFI_HOTSPOT"
+      },
+      {
+        "name": "ohos.permission.LOCATION"
+      },
+      {
+        "name": "ohos.permission.APPROXIMATELY_LOCATION"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.DISCOVER_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.MANAGE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH"
       }
     ]
   }

@@ -71,7 +71,7 @@ export default function webViewSetHttpDns() {
      */
     it('testSetHttpDnsSecureOnlyExample',0,async function(done){
       emitKey="emitSetHttpDnsSecureOnlyUserDefine";
-      Utils.registerEvent("testSetHttpDnsSecureOnlyExample","https://www.baidu.com",354,done);
+      Utils.registerEvent("testSetHttpDnsSecureOnlyExample","baidu.com",354,done);
       sendEventByKey('webViewSetHttpDns',10,'');
     })
     /*
@@ -81,7 +81,7 @@ export default function webViewSetHttpDns() {
      */
     it('testSetHttpDnsSecureOnlyUserDefine',0,async function(done){
       emitKey="emitSetHttpDnsAutoExample";
-      Utils.registerEvent("testSetHttpDnsSecureOnlyUserDefine","微博",356,done);
+      Utils.registerEvent("testSetHttpDnsSecureOnlyUserDefine","success",356,done);
       sendEventByKey('webViewSetHttpDns',10,'');
     })
     /*

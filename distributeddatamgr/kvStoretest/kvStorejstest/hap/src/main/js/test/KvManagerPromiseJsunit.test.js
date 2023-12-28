@@ -52,14 +52,14 @@ describe('kvManagerPromiseTest', function () {
         await factory.createKVManager(config).then((manager) => {
             kvManager = manager;
             console.info('beforeAll createKVManager success');
-            kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
-                console.info("beforeAll getKVStore success");
-                kvStoreNew = store;
-            }).catch((err) => {
-                console.info("beforeAll getKVStore err: "  + JSON.stringify(err));
-            });
         }).catch((err) => {
             console.info('beforeAll createKVManager err ' + err);
+        });
+        await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
+            console.info("beforeAll getKVStore success");
+            kvStoreNew = store;
+        }).catch((err) => {
+            console.info("beforeAll getKVStore err: "  + JSON.stringify(err));
         });
         console.info('beforeAll end');
         done();
@@ -805,7 +805,7 @@ describe('kvManagerPromiseTest', function () {
     it('testKVStorePut001', 0, async function (done) {
         console.info('testKVStorePut001');
         try {
-            await kvStoreNew.put(TEST_BUNDLE_NAME, TEST_STORE_ID).then((data) => {
+            await kvStoreNew.put(TEST_BUNDLE_NAME, TEST_STORE_ID).then((err,data) => {
                 if (err != undefined){
                     console.info('testKVStorePut001 put promise fail');
                 } else {
@@ -839,7 +839,7 @@ describe('kvManagerPromiseTest', function () {
             }).catch((err) => {
                 console.info('testKVStoreDelete001 promise delete fail err' + err);
             });
-        }catch (e) {
+        }catch (err) {
             console.info('testKVStoreDelete001 promise delete fail err' + err);
         }
         done();

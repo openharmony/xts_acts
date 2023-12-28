@@ -15,7 +15,7 @@
 import inputMethodJSUnit from './inputMethodJSUnit.test';
 import inputMethodNormalJSUnit from './inputMethodNormalJSUnit.test';
 
-export default function testsuite() {
-  inputMethodJSUnit();
+export default function testsuite() {  
   inputMethodNormalJSUnit();
+  inputMethodJSUnit();
 }

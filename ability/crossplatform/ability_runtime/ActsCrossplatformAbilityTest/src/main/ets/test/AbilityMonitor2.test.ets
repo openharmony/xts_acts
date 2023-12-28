@@ -38,6 +38,16 @@ export default function AbilityMonitor2Test() {
   };
 
   describe("AbilityMonitor2Test", function () {
+    beforeEach(async function (done) {
+      console.info("AbilityMonitor2Test before each called");
+      await sleep(1000);
+      done();
+    });
+
+    function sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
     /**
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name ACTS_AddAbilityMonitor_Callback_0100
@@ -63,9 +73,14 @@ export default function AbilityMonitor2Test() {
               ability1.context.abilityInfo.name
           );
           abilityDelegator.removeAbilityMonitor(monitor);
-          ability1.context.terminateSelf();
+          ability1.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitor2Test terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error) => {
+            console.log("AbilityMonitor2Test terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
         });
-        done();
       }
 
       let monitor = {
@@ -111,9 +126,14 @@ export default function AbilityMonitor2Test() {
               ability1.context.abilityInfo.name
           );
           abilityDelegator.removeAbilityMonitor(monitor);
-          ability1.context.terminateSelf();
+          ability1.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitor2Test terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error) => {
+            console.log("AbilityMonitor2Test terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
         });
-        done();
       }
 
       let monitor = {
@@ -329,9 +349,14 @@ export default function AbilityMonitor2Test() {
               ability1.context.abilityInfo.name
           );
           abilityDelegator.removeAbilityMonitor(monitor);
-          ability1.context.terminateSelf();
+          ability1.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitor2Test terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error) => {
+            console.log("AbilityMonitor2Test terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
         });
-        done();
       }
 
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -377,9 +402,14 @@ export default function AbilityMonitor2Test() {
               ability1.context.abilityInfo.name
           );
           abilityDelegator.removeAbilityMonitor(monitor);
-          ability1.context.terminateSelf();
+          ability1.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitor2Test terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error) => {
+            console.log("AbilityMonitor2Test terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
         });
-        done();
       }
 
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -411,6 +441,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0300
      * @tc.name ACTS_AddAbilityMonitor_Promise_0300
      * @tc.desc Verify that addAbilityMonitor enters the parameter monitor to pass in the normal value, and executes the onAbilityBackground Promise when the ability status becomes background     * @tc.size MediumTest
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -425,8 +456,13 @@ export default function AbilityMonitor2Test() {
         expect(data!=null).assertTrue();
         console.log("ACTS_AddAbilityMonitor_Promise_0300 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
-        data.context.terminateSelf();
-        done();
+        data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitor2Test terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error) => {
+            console.log("AbilityMonitor2Test terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
       }
 
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -475,6 +511,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0400
      * @tc.name ACTS_AddAbilityMonitor_Promise_0400
      * @tc.desc Verify that addAbilityMonitor enters the parameter monitor to pass in the normal value, and executes the callback function (onWindowStageDestroy) Promise before the window stage is destroyed
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -533,6 +570,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_ADD_ABILITY_MONITOR_PROMISE_0500
      * @tc.name ACTS_AddAbilityMonitor_Promise_0500
      * @tc.desc Verify that the addAbilityMonitor parameter monitor passes in the normal value, and execute the onAbilityDestroy Promise before the ability is destroyed
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -590,6 +628,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name ACTS_RemoveABILITY_MONITOR_CALLBACK_0100
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onAbilityForeground callback CallBack
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -632,6 +671,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200
      * @tc.name ACTS_RemoveABILITY_MONITOR_CALLBACK_0200
      * @tc.desc After validating removeAbilityMonitor, you cannot listen to the onWindowStageCreate callback CallBack
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -676,6 +716,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300
      * @tc.name ACTS_RemoveABILITY_MONITOR_CALLBACK_0300
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onAbilityBackground callback callback
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -742,6 +783,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400
      * @tc.name ACTS_RemoveABILITY_MONITOR_CALLBACK_0400
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onAbilityDestroy callback CallBack
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -799,6 +841,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500
      * @tc.name ACTS_RemoveABILITY_MONITOR_CALLBACK_0500
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onWindowStageDestroy callback CallBack
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -856,6 +899,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100
      * @tc.name Acts_RemoveAbility_Monitor_Promise_0100
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to onAbilityForeground callback promises
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -908,6 +952,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200
      * @tc.name Acts_RemoveAbility_Monitor_Promise_0200
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onWindowStageCreate callback Promise
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -960,6 +1005,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300
      * @tc.name Acts_RemoveAbility_Monitor_Promise_0300
      * @tc.desc After validating removeAbilityMonitor, you cannot listen to the onAbilityBackground callback Promise
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -1034,6 +1080,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400
      * @tc.name Acts_RemoveAbility_Monitor_Promise_0400
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to onAbilityDestroy callback promises
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
@@ -1104,6 +1151,7 @@ export default function AbilityMonitor2Test() {
      * @tc.number ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500
      * @tc.name Acts_RemoveAbility_Monitor_Promise_0500
      * @tc.desc After verifying removeAbilityMonitor, you cannot listen to the onWindowStageDestroy callback Promise
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */

@@ -325,6 +325,1016 @@ void ModelPredict(OH_AI_ModelHandle model, OH_AI_ContextHandle context, string m
     printf("=========OH_AI_ModelDestroy End===========\n");
 }
 
+// model build and predict
+void ModelTrain(OH_AI_ModelHandle model, OH_AI_ContextHandle context, string model_name,
+            OH_AI_ShapeInfo shape_infos, bool build_by_graph, bool is_transpose, bool is_callback) {
+    string model_path = "/data/test/" + model_name + ".ms";
+    const char *graphPath = model_path.c_str();
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    OH_AI_Status ret = OH_AI_STATUS_SUCCESS;
+    if (build_by_graph) {
+        printf("==========Build model by graphBuf==========\n");
+        size_t size;
+        size_t *ptr_size = &size;
+        char *graphBuf = ReadFile(graphPath, ptr_size);
+        ASSERT_NE(graphBuf, nullptr);
+        ret = OH_AI_TrainModelBuild(model, graphBuf, size, OH_AI_MODELTYPE_MINDIR, context, train_cfg); 
+        delete[] graphBuf;
+    } else {
+        printf("==========Build model==========\n");
+        ret = OH_AI_TrainModelBuildFromFile(model, graphPath, OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    }
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    if (shape_infos.shape_num != 0) {
+        printf("==========Resizes==========\n");
+        OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, &shape_infos, inputs.handle_num);
+        printf("==========Resizes return code:%d\n", resize_ret);
+        ASSERT_EQ(resize_ret, OH_AI_STATUS_SUCCESS);
+    }
+    FillInputsData(inputs, model_name, is_transpose);
+    ret = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    if (is_callback) {
+        printf("==========Model RunStep Callback==========\n");
+        OH_AI_KernelCallBack before_call_back = PrintBeforeCallback;
+        OH_AI_KernelCallBack after_call_back = PrintAfterCallback;
+        ret = OH_AI_RunStep(model, before_call_back, after_call_back);
+    }else {
+        printf("==========Model RunStep==========\n");
+        ret = OH_AI_RunStep(model, nullptr, nullptr);
+    }
+    printf("==========Model RunStep End==========\n");
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+}
+char **TransStrVectorToCharArrays(const std::vector<std::string> &s) {
+  char **char_arr = static_cast<char **>(malloc(s.size() * sizeof(char *)));
+  for (size_t i = 0; i < s.size(); i++) {
+    char_arr[i] = static_cast<char *>(malloc((s[i].size() + 1)));
+    strcpy(char_arr[i], s[i].c_str());
+  }
+  return char_arr;
+}
+std::vector<std::string> TransCharArraysToStrVector(char **c, const size_t &num) {
+  std::vector<std::string> str;
+  for (size_t i = 0; i < num; i++) {
+    str.push_back(std::string(c[i]));
+  }
+  return str;
+}
+
+
+// 正常场景：更新权重
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    auto GenRandomData = [](size_t size, void *data) {
+      auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
+      std::mt19937 random_engine_;
+      size_t elements_num = size / sizeof(float);
+      (void)std::generate_n(static_cast<float *>(data), elements_num,
+                            [&]() { return static_cast<float>(generator(random_engine_)); });
+    };
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t create_shape_num = 1;
+    int64_t create_shape[create_shape_num] = {10};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("fc3.bias", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    GenRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
+    vec_inputs.push_back(tensor);
+    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
+    status = OH_AI_ModelUpdateWeights(model, update_weights);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：更新权重后导出训练图，再获取权重
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray get_update_weights = OH_AI_ModelGetWeights(model);
+    for (size_t i = 0; i < get_update_weights.handle_num; ++i) {
+        OH_AI_TensorHandle weights_tensor = get_update_weights.handle_list[i];
+        if (strcmp(OH_AI_TensorGetName(weights_tensor), "fc3.bias") == 0){
+            float *input_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(weights_tensor));
+            std::cout << "fc3.bias:" << input_data[0] << std::endl;
+        }
+    }
+    auto GenRandomData = [](size_t size, void *data) {
+      auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
+      std::mt19937 random_engine_;
+      size_t elements_num = size / sizeof(float);
+      (void)std::generate_n(static_cast<float *>(data), elements_num,
+                            [&]() { return static_cast<float>(generator(random_engine_)); });
+    };
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t create_shape_num = 1;
+    int64_t create_shape[create_shape_num] = {10};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("fc3.bias", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    GenRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
+    vec_inputs.push_back(tensor);
+    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
+    status = OH_AI_ModelUpdateWeights(model, update_weights);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray export_update_weights = OH_AI_ModelGetWeights(model);
+    for (size_t i = 0; i < export_update_weights.handle_num; ++i) {
+        OH_AI_TensorHandle weights_tensor = export_update_weights.handle_list[i];
+        if (strcmp(OH_AI_TensorGetName(weights_tensor), "fc3.bias") == 0){
+            float *input_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(weights_tensor));
+            std::cout << "fc3.bias:" << input_data[0] << std::endl;
+        }
+    }
+}
+// 异常场景：更新权重tensor name错误
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t create_shape_num = 1;
+    int64_t create_shape[create_shape_num] = {10};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("aaaaa", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    vec_inputs.push_back(tensor);
+    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
+    status = OH_AI_ModelUpdateWeights(model, update_weights);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：更新权重tensor type错误
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t create_shape_num = 1;
+    int64_t create_shape[create_shape_num] = {10};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("fc3.bias", OH_AI_DATATYPE_NUMBERTYPE_FLOAT16, create_shape, create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    vec_inputs.push_back(tensor);
+    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
+    status = OH_AI_ModelUpdateWeights(model, update_weights);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：设置学习率为0.01
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    auto learing_rate = OH_AI_ModelGetLearningRate(model);
+    std::cout << "learing_rate:" << learing_rate << std::endl;
+    status = OH_AI_ModelSetLearningRate(model, 0.01f);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    learing_rate = OH_AI_ModelGetLearningRate(model);
+    std::cout << "get_learing_rate:" << learing_rate << std::endl;
+    ASSERT_EQ(learing_rate, 0.01f);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：设置学习率值为1000.0
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    auto learing_rate = OH_AI_ModelGetLearningRate(model);
+    std::cout << "learing_rate:" << learing_rate << std::endl;
+    status = OH_AI_ModelSetLearningRate(model, 1000.0f);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    learing_rate = OH_AI_ModelGetLearningRate(model);
+    std::cout << "get_learing_rate:" << learing_rate << std::endl;
+    ASSERT_EQ(learing_rate, 1000.0f);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：设置虚拟batch_size为2
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetupVirtualBatch_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ModelSetupVirtualBatch(model, 2, -1.0f, -1.0f);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：设置优化等级
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetOptimizationLevel_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    auto opt_level = OH_AI_TrainCfgGetOptimizationLevel(train_cfg);
+    std::cout << "opt_level:" << opt_level << std::endl;
+    OH_AI_TrainCfgSetOptimizationLevel(train_cfg, OH_AI_KO2);
+    auto set_opt_level = OH_AI_TrainCfgGetOptimizationLevel(train_cfg);
+    std::cout << "set_opt_level:" << set_opt_level << std::endl;
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：创建TrainCfg对象并销毁
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    OH_AI_TrainCfgDestroy(&train_cfg);
+    ASSERT_EQ(train_cfg, nullptr);
+}
+// 正常场景：设置存在的损失函数名
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    size_t num = 0;
+    char **loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &num);
+    std::vector<std::string> train_cfg_loss_name = TransCharArraysToStrVector(loss_name, num);
+    for(auto ele : train_cfg_loss_name){
+        std::cout << "loss_name:" << ele << std::endl;
+    }
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    size_t get_num = 0;
+    char **get_loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &get_num);
+    std::vector<std::string> get_train_cfg_loss_name = TransCharArraysToStrVector(get_loss_name, get_num);
+    for(auto ele : get_train_cfg_loss_name){
+        std::cout << "get_loss_name:" << ele << std::endl;
+    }
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train", false);
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========Model RunStep==========\n");
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：设置不存在的损失函数名
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    size_t num = 0;
+    char **loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &num);
+    std::vector<std::string> train_cfg_loss_name = TransCharArraysToStrVector(loss_name, num);
+    for(auto ele : train_cfg_loss_name){
+        std::cout << "loss_name:" << ele << std::endl;
+    }
+    std::vector<std::string> set_train_cfg_loss_name = {"aaa", "bbb"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    size_t get_num = 0;
+    char **get_loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &get_num);
+    std::vector<std::string> get_train_cfg_loss_name = TransCharArraysToStrVector(get_loss_name, get_num);
+    for(auto ele : get_train_cfg_loss_name){
+        std::cout << "get_loss_name:" << ele << std::endl;
+    }
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：设置损失函数名个数大于num
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    size_t num = 0;
+    char **loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &num);
+    std::vector<std::string> train_cfg_loss_name = TransCharArraysToStrVector(loss_name, num);
+    for(auto ele : train_cfg_loss_name){
+        std::cout << "loss_name:" << ele << std::endl;
+    }
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), 1);
+    size_t get_num = 0;
+    char **get_loss_name = OH_AI_TrainCfgGetLossName(train_cfg, &get_num);
+    std::vector<std::string> get_train_cfg_loss_name = TransCharArraysToStrVector(get_loss_name, get_num);
+    for(auto ele : get_train_cfg_loss_name){
+        std::cout << "get_loss_name:" << ele << std::endl;
+    }
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：通过buffer加载模型，执行1轮训练并对比精度
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, true, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, true, false, false);
+}
+// 异常场景：加载模型buffer为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========Build model by graphBuf==========\n");
+    auto status = OH_AI_TrainModelBuild(model, nullptr, 0, OH_AI_MODELTYPE_MINDIR, context, train_cfg); 
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：加载模型文件路径不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/not_exist/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：加载模型文件路径为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    auto status = OH_AI_TrainModelBuildFromFile(model, "", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：加载模型文件路径为错误文件
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train_0.input", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：训练model导出推理图后对比精度
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：quantization_type为OH_AI_WEIGHT_QUANT
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_WEIGHT_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：quantization_type为OH_AI_FULL_QUANT
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_FULL_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：quantization_type为OH_AI_UNKNOWN_QUANT_TYPE
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_UNKNOWN_QUANT_TYPE, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    ModelPredict(model2, context, "lenet_train_infer", {}, false, false, false);
+}
+// 正常场景：export_inference_only为false
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_train.ms", OH_AI_NO_QUANT, false, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelTrain==========\n");
+    ModelTrain(model2, context, "lenet_train_train", {}, false, false, false);
+}
+// 正常场景：export_inference_only为false，再指定output_tensor_name
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0006, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    const std::vector<std::string> output_name = {"Default/network-WithLossCell/_loss_fn-L1Loss/ReduceMean-op127"};
+    auto output_tensor_name = TransStrVectorToCharArrays(output_name);
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_train.ms", OH_AI_NO_QUANT, false, output_tensor_name, 1);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelTrain==========\n");
+    ModelTrain(model2, context, "lenet_train_train", {}, false, false, false);
+}
+// 异常场景：OH_AI_MODELTYPE_INVALID
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0007, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_INVALID, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：指定导出不存在的output_tensor_name
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0008, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    const std::vector<std::string> output_name = {"aaa"};
+    auto output_tensor_name = TransStrVectorToCharArrays(output_name);
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, output_tensor_name, 1);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：output_tensor_name的个数与num不一致
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0009, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    const std::vector<std::string> output_name = {"Default/network-WithLossCell/_loss_fn-L1Loss/ReduceMean-op127"};
+    auto output_tensor_name = TransStrVectorToCharArrays(output_name);
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, output_tensor_name, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：model_file文件路径不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0010, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/not_exsit/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：model_file路径为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0011, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：model_file路径为文件夹
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0012, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：训练model导出micro权重
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1.bin", true, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1_fp32.bin", true, false, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 正常场景：训练model更新并导出micro权重
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "data-57"};
+    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1.bin", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1_fp32.bin", true, false, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==================== update weight ==================\n");
+    auto GenRandomData = [](size_t size, void *data) {
+      auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
+      std::mt19937 random_engine_;
+      size_t elements_num = size / sizeof(float);
+      (void)std::generate_n(static_cast<float *>(data), elements_num,
+                            [&]() { return static_cast<float>(generator(random_engine_)); });
+    };
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t create_shape_num = 2;
+    int64_t create_shape[create_shape_num] = {76, 8};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
+    GenRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
+    vec_inputs.push_back(tensor);
+    constexpr size_t create_shape_num2 = 2;
+    int64_t create_shape2[create_shape_num2] = {76, 8};
+    OH_AI_TensorHandle tensor2 = OH_AI_TensorCreate("moment1.app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape2, create_shape_num2, nullptr, 0);
+    GenRandomData(OH_AI_TensorGetDataSize(tensor2), OH_AI_TensorGetMutableData(tensor2));
+    vec_inputs.push_back(tensor2);
+    constexpr size_t create_shape_num3 = 2;
+    int64_t create_shape3[create_shape_num3] = {76, 8};
+    OH_AI_TensorHandle tensor3 = OH_AI_TensorCreate("moment2.app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape3, create_shape_num3, nullptr, 0);
+    GenRandomData(OH_AI_TensorGetDataSize(tensor3), OH_AI_TensorGetMutableData(tensor3));
+    vec_inputs.push_back(tensor3);
+    OH_AI_TensorHandleArray update_weights = {3, vec_inputs.data()};
+    status = OH_AI_ModelUpdateWeights(model, update_weights);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==================== train ===================\n");
+    status = OH_AI_ModelSetTrainMode(model, true);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_RunStep(model, nullptr, nullptr);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel2==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model2.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net2.bin", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net2_fp32.bin", true, false, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：weight_file文件路径不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "data-57"};
+    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/not_exist/xiaoyi_train_codegen_net1.bin", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：weight_file路径为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "data-57"};
+    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：weight_file路径为文件夹
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "data-57"};
+    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+// 异常场景：is_inference为false
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0006, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
+    OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ExportModel==========\n");
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+                                                 "data-57"};
+    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1.bin", false, true, set_changeble_weights_name, changeble_weights_name.size());
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+}
+
+
 // predict on cpu
 void Predict_CPU() {
     printf("==========Init Context==========\n");
@@ -413,7 +1423,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_LITE_NULLPTR);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -1426,7 +2436,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0009, Function | MediumTest | Level1) {
                                            create_shape_num, imageBuf, size1);
     ASSERT_NE(tensor, nullptr);
     OH_AI_Format data_format = OH_AI_TensorGetFormat(tensor);
-    ASSERT_EQ(data_format, OH_AI_FORMAT_NCHW);
+    ASSERT_EQ(data_format, OH_AI_FORMAT_NHWC);
     delete[] imageBuf;
     OH_AI_TensorDestroy(&tensor);
 }
@@ -1718,7 +2728,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
     printf("==========Build model==========\n");
     int ret2 = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     printf("==========build model return code:%d\n", ret2);
-    ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
+    ASSERT_EQ(ret2, OH_AI_STATUS_LITE_MODEL_REBUILD);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -1901,7 +2911,6 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0004, Function | MediumTest | Level1) {
     OH_AI_ModelDestroy(&model);
 }
 
-
 // 正常场景：离线模型支持NNRT后端,Model创建一次，Build多次
 HWTEST(MSLiteTest, OHOS_OfflineModel_0005, Function | MediumTest | Level1) {
     if (!IsNNRTAvailable()) {
@@ -1926,7 +2935,6 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0005, Function | MediumTest | Level1) {
     ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
     OH_AI_ModelDestroy(&model);
 }
-
 
 // 异常场景：离线模型支持NNRT后端,ModelPredict，input为空
 HWTEST(MSLiteTest, OHOS_OfflineModel_0006, Function | MediumTest | Level1) {
@@ -1954,7 +2962,6 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0006, Function | MediumTest | Level1) {
     ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
     OH_AI_ModelDestroy(&model);
 }
-
 
 // 异常场景：非离线模型支持NNRT后端,ms模型未转换为NNRT后端模型
 HWTEST(MSLiteTest, OHOS_OfflineModel_0007, Function | MediumTest | Level1) {

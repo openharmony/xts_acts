@@ -80,9 +80,9 @@ HWTEST_F(HuksAttestKeyNoIdsTest, Security_HUKS_NAPI_Attest_0100, TestSize.Level0
         const struct HksTestCertChain certParam = { true, true, true, g_size };
         (void)ConstructDataToCertChain(&certChain, &certParam);
         ret = OH_Huks_AttestKeyItem(&g_keyAlias, paramSet, certChain);
-        ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        ASSERT_TRUE(ret.errorCode != (int32_t)OH_HUKS_SUCCESS);
         ret = ValidateCertChainTest(certChain, g_commonParams, NON_IDS_PARAM);
-        ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        ASSERT_TRUE(ret.errorCode != (int32_t)OH_HUKS_SUCCESS);
         FreeCertChain(&certChain, certChain->certsCount);
         certChain = NULL;
 

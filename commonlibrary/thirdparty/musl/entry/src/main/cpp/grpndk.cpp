@@ -14,45 +14,166 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
+#include <cstring>
 #include <grp.h>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
+#include <malloc.h>
 #include <net/if.h>
 #include <sys/inotify.h>
 #include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
 
+#define ONEVAL 1
+#define MINUSONE -1
+#define TWOVAL 2
+#define THRVAL 3
+#define MAX_NAMBER 1024
 #define NO_ERR 0
 #define SUCCESS 1
 #define FAIL -1
-#define ZERO 0
+#define PARAM_0 0
 #define TEN 10
+#define ERRON_0 0
+
 static napi_value GetGrNamR(napi_env env, napi_callback_info info)
 {
-    struct group group, *grpPtr;
-    size_t size = sysconf(_SC_GETGR_R_SIZE_MAX);
-    char buf[size];
-    int getInfo = getgrnam_r("inhouse", &group, buf, size, &grpPtr);
+    char buf[512];
+    struct group *grp;
+    struct group grp_storage;
+    const char *group_name = "root";
+    int getInfo = getgrnam_r(group_name, &grp_storage, buf, sizeof(buf), &grp);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
 }
+
 static napi_value GetGroupList(napi_env env, napi_callback_info info)
 {
-    const char *user;
-    gid_t groups[10];
-    int nGroups = TEN;
-    int getInfo = getgrouplist(user, ZERO, groups, &nGroups);
+    static int server_ngroups;
+    static gid_t *server_groups;
+    int ret;
+    const char *server_user = "root";
+    struct passwd *pwd = getpwnam(server_user);
+    gid_t server_gid = pwd->pw_gid;
+    ret = getgrouplist(server_user, server_gid, nullptr, &server_ngroups);
+    server_groups = (gid_t *)malloc(server_ngroups * sizeof(gid_t));
+    ret = getgrouplist(server_user, server_gid, server_groups, &server_ngroups);
+    if (ret != FAIL) {
+        ret = SUCCESS;
+    }
     napi_value result = nullptr;
-    napi_create_int32(env, getInfo, &result);
+    napi_create_int32(env, ret, &result);
     return result;
 }
+
 static napi_value InitGroups(napi_env env, napi_callback_info info)
 {
-    int getInfo = initgroups(getlogin(), getpid());
     napi_value result = nullptr;
-    napi_create_int32(env, getInfo, &result);
+    return result;
+}
+static napi_value Setgrent(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    struct group *getval = getgrent();
+    napi_value result;
+    if (getval == nullptr) {
+        napi_create_int32(env, PARAM_0, &result);
+    }
+    if (errno != PARAM_0) {
+        napi_create_int32(env, ONEVAL, &result);
+    }
+    char buf[MAX_NAMBER] = {PARAM_0};
+    strcpy(buf, getval->gr_name);
+    setgrent();
+    getval = getgrent();
+    if (getval == nullptr) {
+        napi_create_int32(env, TWOVAL, &result);
+    }
+    if (strcmp(getval->gr_name, buf)) {
+        napi_create_int32(env, THRVAL, &result);
+    }
+    if (errno == PARAM_0) {
+        napi_create_int32(env, errno, &result);
+    } else {
+        napi_create_int32(env, MINUSONE, &result);
+    }
+    return result;
+}
+
+static napi_value EndGRent(napi_env env, napi_callback_info info)
+{
+    errno = NO_ERR;
+    struct group *getgrent(void);
+    setgrent();
+    endgrent();
+    napi_value result;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value Getgrgid(napi_env env, napi_callback_info info)
+{
+
+    gid_t gid = PARAM_0;
+    struct group *grp = getgrgid(gid);
+    int resultValue = FAIL;
+    if (grp) {
+        resultValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Getgrgid_r(napi_env env, napi_callback_info info)
+{
+
+    char buf[512];
+    gid_t gid = PARAM_0;
+    struct group *grp;
+    struct group grp_storage;
+
+    int resultValue = getgrgid_r(gid, &grp_storage, buf, sizeof(buf), &grp);
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Getgrnam(napi_env env, napi_callback_info info)
+{
+
+    const char *group_name = "root";
+    struct group *grp = getgrnam(group_name);
+
+    int resultValue = FAIL;
+    if (grp) {
+        resultValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Getgrent(napi_env env, napi_callback_info info)
+{
+    int resultValue = FAIL;
+    errno = NO_ERR;
+    struct group *grp = nullptr;
+    setgrent();
+    grp = getgrent();
+    if (grp != nullptr) {
+        resultValue = SUCCESS;
+    }
+
+    if (errno == NO_ERR) {
+        resultValue = SUCCESS;
+    }
+    endgrent();
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
@@ -60,9 +181,15 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
+        {"setgrent", nullptr, Setgrent, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getGrNamR", nullptr, GetGrNamR, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getGroupList", nullptr, GetGroupList, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"initGroups", nullptr, InitGroups, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"initGroups", nullptr, InitGroups, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getgrgid", nullptr, Getgrgid, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getgrgidR", nullptr, Getgrgid_r, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getgrnam", nullptr, Getgrnam, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"endgrent", nullptr, EndGRent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getgrent", nullptr, Getgrent, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -24,9 +25,21 @@ export default function requestUploadJSUnit() {
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
-      console.info('====>beforeAll: Prerequisites are executed.');
-    });
+    beforeAll(function (done) {
+      try {
+        let pathDir = globalThis.abilityContext.cacheDir;
+        let filePath = pathDir + `/test.txt`;
+        let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
+        let content = ''.padEnd(1 * 1024 *1024, 'h');
+        fileio.writeSync(fd, content);
+        fileio.closeSync(fd);
+        console.info('====>beforeAll: text.txt file generate');
+        done();
+      } catch (err) {
+        console.info('====>beforeAll: text.txt file generate failed' + err);
+        done();
+      }
+    })
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
@@ -140,6 +153,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0001
+     * @tc.nme    SUB_REQUEST_UPLOAD_API_DELETE_0001
      * @tc.desc      Delete the upload task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -158,10 +172,10 @@ export default function requestUploadJSUnit() {
                 expect().assertFail();
                 done();
               }
+              expect(typeof data == "boolean").assertTrue();
               console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask task delete success.');
-              expect(typeof data == "boolean").assertTrue();            
-              console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 end-----------------------");
               done();
+              console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 end-----------------------");
             }catch(err){
               console.error('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 delete error' + err);
               done();
@@ -176,6 +190,7 @@ export default function requestUploadJSUnit() {
 
     /**
      * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0002
+     * @tc.name    SUB_REQUEST_UPLOAD_API_DELETE_0002
      * @tc.desc      Delete the upload task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function

@@ -70,6 +70,20 @@ export default function EmitterTest() {
         expect(eventData.data.content).assertEqual('message_12');
       } else if (eventData.data.id == 13) {
         expect(eventData.data.content).assertEqual('message_13');
+      } else if (eventData.data.id == '1') {
+        expect(eventData.data.content).assertEqual('message_14');
+      } else if (eventData.data.id == '2') {
+        expect(eventData.data.content).assertEqual('message_15');
+      } else if (eventData.data.id == '') {
+        expect(eventData.data.content).assertEqual('message_16');
+      } else if (eventData.data.id == ' ') {
+        expect(eventData.data.content).assertEqual('message_17');
+      } else if (eventData.data.id == '19') {
+        expect(eventData.data.content).assertEqual('19');
+      } else if (eventData.data.id == '20') {
+        expect(eventData.data.content).assertEqual('20');
+      } else if (eventData.data.id == '21') {
+        expect(eventData.data.content).assertEqual('message_21');
       }
     }
 
@@ -342,6 +356,500 @@ export default function EmitterTest() {
       done()
     })
 
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1400
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : Register one string ID
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1400 START`)
+      eventData.data.id = '1'
+      eventData.data.content = 'message_14'
+      emitter.on('1', EmitterCallback)
+      expect(emitter.getListenerCount('1')).assertEqual(1);
+
+      emitter.emit('1', eventData)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1400 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1500
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : Register 2 identical string ID
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1500 START`)
+      eventData.data.id = '2'
+      eventData.data.content = 'message_15'
+      emitter.on('2', EmitterCallback)
+      emitter.on('2', EmitterCallback)
+      expect(emitter.getListenerCount('2')).assertEqual(1);
+
+      emitter.emit('2', eventData)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1500 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1600
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : emitter.on(''),emitter.emit(''),emitter.off('')
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1600 START`)
+      eventData.data.id = ''
+      eventData.data.content = 'message_16'
+      emitter.on('', EmitterCallback)
+      expect(emitter.getListenerCount('')).assertEqual(undefined);
+
+      emitter.emit('', eventData)
+      emitter.off('');
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1600 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1700
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : emitter.on(' '),emitter.emit(' '),emitter.off(' ')
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1700 START`)
+      eventData.data.id = ' '
+      eventData.data.content = 'message_17'
+      emitter.on(' ', EmitterCallback)
+      expect(emitter.getListenerCount(' ')).assertEqual(1);
+
+      emitter.emit(' ', eventData)
+      emitter.off(' ');
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1700 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1800
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1800', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1800 START`)
+      eventData.data.id = '1'
+      eventData.data.content = 'message_14'
+      emitter.on('1', EmitterCallback)
+      expect(emitter.getListenerCount('1')).assertEqual(1);
+
+      innerEvent.eventId = 1
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+
+      eventData.data.id = 1
+      eventData.data.content = 'message_1'
+      emitter.on(innerEvent, EmitterCallback)
+      expect(emitter.getListenerCount(1)).assertEqual(1);
+
+      emitter.emit('1', eventData)
+      emitter.emit(1, eventData)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1800 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_1900
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_1900', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1900 START`)
+      eventData.data.id = '19'
+      eventData.data.content = 'message_19'
+      emitter.on('19', EmitterCallback)
+      expect(emitter.getListenerCount('19')).assertEqual(1);
+
+      innerEvent.eventId = 19
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      emitter.emit(innerEvent, eventData)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_1900 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2000
+     * @tc.name      : verify on : on(eventId: string, callback: Callback<EventData>): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2000', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2000 START`)
+      innerEvent.eventId = 20
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+
+      eventData.data.id = 20
+      eventData.data.content = 'message_20'
+      emitter.on(innerEvent, EmitterCallback)
+      expect(emitter.getListenerCount(20)).assertEqual(1);
+
+      emitter.emit('20', eventData)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2000 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2100
+     * @tc.name      : verify on : off(eventId: number): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2100 START`)
+      innerEvent.eventId = 1
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+
+      emitter.on('22', EmitterCallback)
+      emitter.on(innerEvent, EmitterCallback)
+      emitter.off('22')
+      emitter.off(22)
+      expect(emitter.getListenerCount('22')).assertEqual(0)
+      expect(emitter.getListenerCount(22)).assertEqual(0)
+
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2100 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2200
+     * @tc.name      : verify on : emit(eventId: string, data?: EventData): void
+     * @tc.desc      : emitter.getListenerCount('23')
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2200 START`)
+
+      emitter.on('23', EmitterCallback)
+      emitter.off('23')
+      emitter.emit('23')
+
+      expect(emitter.getListenerCount('23')).assertEqual(0)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2200 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2300
+     * @tc.name      : verify on : emit(eventId: string, data?: EventData): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2300 START`)
+      innerEvent.eventId = 24
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      emitter.on(innerEvent, EmitterCallback)
+      emitter.off('24')
+      emitter.emit('24')
+      expect(emitter.getListenerCount('24')).assertEqual(0)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2300 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2400
+     * @tc.name      : verify on : emit(eventId: string, data?: EventData): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2400 START`)
+      innerEvent.eventId = 25
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      emitter.on('25', EmitterCallback)
+      emitter.off(25)
+      emitter.emit(innerEvent)
+      expect(emitter.getListenerCount(25)).assertEqual(0)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2400 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2500
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : emitter.getListenerCount('26')
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2500 START`)
+      emitter.on('26', EmitterCallback)
+      expect(emitter.getListenerCount('26')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2500 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2600
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : Register three identical string ID
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2600 START`)
+
+      emitter.on('27', EmitterCallback)
+      emitter.on('27', EmitterCallback)
+      emitter.on('27', EmitterCallback)
+
+      emitter.emit('27')
+      emitter.emit('27')
+      emitter.emit('27')
+      expect(emitter.getListenerCount('27')).assertEqual(1)
+
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2600 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2700
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : Register three different string ID
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2700 START`)
+      emitter.on('280', EmitterCallback)
+      emitter.on('281', EmitterCallback)
+      emitter.on('282', EmitterCallback)
+      emitter.emit('280')
+      emitter.emit('281')
+      emitter.emit('282')
+      expect(emitter.getListenerCount('280')).assertEqual(1)
+      expect(emitter.getListenerCount('281')).assertEqual(1)
+      expect(emitter.getListenerCount('282')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2700 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2800
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2800', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2800 START`)
+      emitter.on('290', EmitterCallback)
+      emitter.on('291', EmitterCallback)
+      emitter.on('292', EmitterCallback)
+      emitter.emit('290')
+      emitter.emit('291')
+      emitter.emit('292')
+      for (let i = 290; i < 293; i++) {
+        innerEvent.eventId = i
+        innerEvent.priority = emitter.EventPriority.IMMEDIATE
+        eventData.data.id = i
+        eventData.data.content = 'message_29'
+        emitter.on(innerEvent, EmitterCallback)
+        emitter.emit(innerEvent, eventData)
+      }
+      expect(emitter.getListenerCount('290')).assertEqual(1)
+      expect(emitter.getListenerCount('291')).assertEqual(1)
+      expect(emitter.getListenerCount('292')).assertEqual(1)
+      for (let i = 290; i < 293; i++) {
+        expect(emitter.getListenerCount(i)).assertEqual(1)
+      }
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2800 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_2900
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_2900', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2900 START`)
+      emitter.on('300', EmitterCallback)
+      emitter.on('301', EmitterCallback)
+      emitter.on('302', EmitterCallback)
+      emitter.on('303', EmitterCallback)
+      emitter.emit('300')
+      emitter.emit('301')
+      emitter.emit('302')
+      emitter.emit('303')
+      emitter.off('300');
+      emitter.off('301');
+      for (let i = 300; i < 304; i++) {
+        innerEvent.eventId = i;
+        innerEvent.priority = emitter.EventPriority.IMMEDIATE
+        emitter.on(innerEvent, EmitterCallback)
+        emitter.emit(innerEvent, eventData)
+      }
+      for (let i = 300; i < 302; i++) {
+        emitter.off(i);
+      }
+      expect(emitter.getListenerCount(300)).assertEqual(0)
+      expect(emitter.getListenerCount(303)).assertEqual(1)
+      expect(emitter.getListenerCount('300')).assertEqual(0)
+      expect(emitter.getListenerCount('303')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_2900 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3000
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : priority: emitter.EventPriority.HIGH
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3000', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3100 START`)
+      let options = {
+        priority: emitter.EventPriority.HIGH
+      }
+      innerEvent.eventId = 31
+      eventData.data.id = 31
+      emitter.on(innerEvent, EmitterCallback)
+      emitter.emit(innerEvent, options)
+      expect(emitter.getListenerCount(null)).assertEqual(undefined)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3100 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3100
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : priority: emitter.EventPriority.HIGH
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3100 START`)
+      let options = {
+        priority: emitter.EventPriority.HIGH
+      }
+      innerEvent.eventId = 31
+      eventData.data.id = 31
+      emitter.on(innerEvent, EmitterCallback)
+      emitter.emit(innerEvent, options, null)
+      expect(emitter.getListenerCount(31)).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3100 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3200
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : The parameter op in Emit is empty
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3200 START`)
+      eventData.data.id = '32'
+      eventData.data.content = 'message_32'
+      emitter.on('32', EmitterCallback)
+      emitter.emit('32', null, eventData)
+      expect(emitter.getListenerCount('32')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3200 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3300
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3300 START`)
+      for (let i = 330000; i < 340000; i++) {
+        innerEvent.eventId = i
+        innerEvent.priority = emitter.EventPriority.IMMEDIATE
+        emitter.on(innerEvent, EmitterCallback)
+        emitter.emit(innerEvent)
+      }
+      for (let i = 330000; i < 340000; i++) {
+        expect(emitter.getListenerCount(i)).assertEqual(1)
+      }
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3300 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3400
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : Emit and GetListenerCount type is string
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3400 START`)
+      emitter.on('340000', EmitterCallback)
+      for (let i = 340000; i < 350000; i++) {
+        emitter.emit('340000')
+      }
+      expect(emitter.getListenerCount('340000')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3400 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3500
+     * @tc.name      : verify on : getListenerCount(eventId: number|string): number
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3500 START`)
+      innerEvent.eventId = 35
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      emitter.on(innerEvent, EmitterCallback)
+      emitter.on('35', EmitterCallback)
+      for (let i = 350000; i < 360000; i++) {
+        emitter.emit(innerEvent)
+      }
+      for (let i = 350000; i < 360000; i++) {
+        emitter.emit('35')
+      }
+      expect(emitter.getListenerCount(35)).assertEqual(1)
+      expect(emitter.getListenerCount('35')).assertEqual(1)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3500 END`)
+      done()
+    })
+
+    /*
+    * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3600
+    * @tc.name      : verify on : emit(eventId: string, options: Options, data?: EventData): void
+    * @tc.desc      : emitter.EventPriority.IMMEDIATE
+    */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3600 START`)
+      innerEvent.eventId = 36
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      let options = {
+        priority: emitter.EventPriority.HIGH
+      }
+      let eventData = {
+        data: {
+          'content': 'c',
+          'id': 36,
+        }
+      }
+      emitter.once('36', EmitterCallback)
+      emitter.emit(innerEvent, options)
+      expect(emitter.getListenerCount('36')).assertEqual(1)
+      emitter.off('36', EmitterCallback)
+      emitter.emit(innerEvent, options, eventData)
+      expect(emitter.getListenerCount('36')).assertEqual(0)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3600 END`)
+      done()
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_3700
+     * @tc.name      : verify on : emit(eventId: string, options: Options, data?: EventData): void
+     * @tc.desc      : emitter.EventPriority.IMMEDIATE
+     */
+    it('SUB_NOTIFICATION_CES_EMITTER_TEST_3700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3700 START`)
+      innerEvent.eventId = 37
+      innerEvent.priority = emitter.EventPriority.IMMEDIATE
+      let options = {
+        priority: emitter.EventPriority.HIGH
+      }
+      let eventData = {
+        data: {
+          'content': 'c',
+          'id': 37,
+        }
+      }
+      emitter.on(null, null)
+      emitter.once('37', EmitterCallback)
+      emitter.off('37', EmitterCallback)
+      emitter.emit(innerEvent, options, eventData)
+      expect(emitter.getListenerCount('37')).assertEqual(0)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_3700 END`)
+      done()
+    })
     console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST END`)
   })  
 }

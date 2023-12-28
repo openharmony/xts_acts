@@ -18,20 +18,21 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import * as env from './Const';
 import uitest from "@ohos.UiTest";
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function audioCapturerEnhanceTest() {
   describe('getCurrentInputDevices', function () {
     let Tag = 'AudioCpaturerEnhanceTest: ';
     let dirPath;
     let audioCap = null;
-
+    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     beforeAll(async function () {
       console.info("beforeAll case");
-      let permissions = ["ohos.permission.MICROPHONE","ohos.permission.CAPTURE_SCREEN"];
+      let permissions = ["ohos.permission.MICROPHONE"];
       try {
         featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (err, data) => {
           console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
@@ -43,6 +44,10 @@ export default function audioCapturerEnhanceTest() {
       let driver = uitest.Driver.create();
       await sleep(2000);
       let button = await driver.findComponent(uitest.ON.text("允许"));
+      if(button == null){
+        let cmd = "hidumper -s WindowManagerService -a'-a'"
+        await delegator.executeShellCommand(cmd);
+      }
       await button.click();
       await sleep(2000);
       let isGranted1 = await featureAbility.getContext().verifyPermission("ohos.permission.MICROPHONE");
@@ -57,12 +62,13 @@ export default function audioCapturerEnhanceTest() {
       console.info(`${Tag} beforeEach: Prerequisites at the test case level`);
       await sleep(1000);
     })
-    afterEach(function () {
+    afterEach(async function () {
       if (audioCap != null) {
         releaseFun(audioCap);
         audioCap = null;
       }
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
+      await sleep(1000);
     })
     afterAll(function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
@@ -165,7 +171,7 @@ export default function audioCapturerEnhanceTest() {
       let descriptor = inputDeviceInfo[0];
       str += `Id:${descriptor.id}, DeviceType:${descriptor.deviceType}, DeviceRole:${descriptor.deviceRole},
               Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]},
-              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}\n`;
+              ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}, encodingTypes:${descriptor.encodingTypes}\n`;
       return str;
     }
 
@@ -210,6 +216,7 @@ export default function audioCapturerEnhanceTest() {
         expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
         expect(InputDeviceInfo[0].id).assertEqual(env.INPUT_DEVICE_MIC_ID);
+        expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
@@ -260,6 +267,7 @@ export default function audioCapturerEnhanceTest() {
         expect(InputDeviceInfo[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
@@ -295,7 +303,7 @@ export default function audioCapturerEnhanceTest() {
           capturerInfo: AudioCapturerInfo
         }
         try {
-          if (Number(audio.SourceType[index]) == -1 || Number(audio.SourceType[index]) == 3) {
+          if (Number(audio.SourceType[index]) == -1 || Number(audio.SourceType[index]) == 3 || Number(audio.SourceType[index]) == 4) {
             console.info(`SourceType ${index}:${audio.SourceType[index]}, change to MIC`)
             AudioCapturerOptions.capturerInfo.source = Number(audio.SourceType.SOURCE_TYPE_MIC);
           }
@@ -315,6 +323,7 @@ export default function audioCapturerEnhanceTest() {
           expect(InputDeviceInfo[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           expect(InputDeviceInfo[0].deviceType).assertEqual(audio.DeviceType.MIC);
           expect(InputDeviceInfo[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+          expect(InputDeviceInfo[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         } catch (error) {
           console.log(`${Tag}: getCurrentInputDevices : ERROR ${error.message},${error.code}`);
           expect(false).assertTrue();

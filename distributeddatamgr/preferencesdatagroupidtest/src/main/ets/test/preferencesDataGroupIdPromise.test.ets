@@ -15,12 +15,17 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import dataPreferences from '@ohos.data.preferences';
+import common from "@ohos.app.ability.common"
 
 const TAG = "[ttt]"
+let context: common.UIAbilityContext
 
 export default function preferencesDataGroupIdPromise() {
   describe('preferencesDataGroupIdPromise', function () {
+    beforeAll(async function () {
+      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
 
+    })
     console.log(TAG + "*************Unit Test Begin*************");
 
 
@@ -28,6 +33,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0300
      * @tc.name preferences dataGroupId null promise test
      * @tc.desc preferences getPreferences dataGroupId null promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async function (done) {
       const Options = {
@@ -35,27 +43,24 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: null,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
-          }).catch((error) => {
-            console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+          }).catch((err) => {
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -64,6 +69,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0600
      * @tc.name preferences dataGroupId undefined promise test
      * @tc.desc preferences getPreferences dataGroupId undefined promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async function (done) {
       const Options = {
@@ -71,27 +79,24 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: undefined,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -100,6 +105,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1000
      * @tc.name preferences dataGroupId promise test
      * @tc.desc preferences getPreferences dataGroupId promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async function (done) {
       const Options = {
@@ -107,11 +115,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: '112233',
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.deletePreferences(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.deletePreferences(context, Options).then(async (val) => {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
@@ -136,6 +144,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1400
      * @tc.name preferences dataGroupId null promise test
      * @tc.desc preferences getPreferences dataGroupId null promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async function (done) {
       const Options = {
@@ -143,27 +154,24 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: null,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -172,6 +180,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_0700
      * @tc.name preferences dataGroupId undefined promise test
      * @tc.desc preferences removePreferencesFromCache dataGroupId undefined promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async function (done) {
       const Options = {
@@ -179,27 +190,24 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: undefined,
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
-          expect().assertFail();
+          expect(JSON.stringify(data)).assertEqual('{}');
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
-            expect().assertFail();
+            expect(val).assertEqual(undefined);
             done();
           }).catch((error) => {
-            console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
-            expect(error !== null).assertFail();
+            expect().assertFail();
             done();
           })
         }).catch((err) => {
-          console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
-          expect(err !== null).assertFail();
+          expect().assertFail();
           done();
         })
       }catch(errInfo){
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -208,6 +216,9 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1100
      * @tc.name preferences dataGroupId promise test
      * @tc.desc preferences removePreferencesFromCache dataGroupId promise test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async function (done) {
       const Options = {
@@ -215,11 +226,11 @@ export default function preferencesDataGroupIdPromise() {
         dataGroupId: '112233',
       };
       try{
-        dataPreferences.getPreferences(globalThis.abilityContext, Options).then(async (data) => {
+        dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
           done();
-          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options).then(async (val) => {
+          dataPreferences.removePreferencesFromCache(context, Options).then(async (val) => {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();

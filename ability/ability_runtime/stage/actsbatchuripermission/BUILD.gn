@@ -18,7 +18,7 @@ group("ActsBatchUriPermission") {
   if (is_standard_system) {
     deps = [
       "actsbacthuripermissionuiexthap:ActsBatchUriPermissionUiextHap",
-      "actsbatchuripermissionhaptest:ActsBatchUriPermissionHapTest",
+      "actsbatchuripermissionhaptest:ActsBatchUriPermissionHapTestGroup",
       "actsbatchuripermissionrecvhap:ActsBatchUriPermissionRecvHap",
     ]
   }

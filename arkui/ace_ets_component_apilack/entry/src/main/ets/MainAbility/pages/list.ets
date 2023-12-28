@@ -22,6 +22,9 @@ import events_emitter from '@ohos.events.emitter';
 struct ListLanes {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State listPosition: number = 0 // 0代表滚动到List顶部，1代表中间值，2代表滚动到List底
+  @State edgeEffect: EdgeEffect = EdgeEffect.None;
+  @State alwaysEnabled: boolean = true
+
   private scroller: Scroller = new Scroller()
 
   aboutToAppear() {
@@ -30,6 +33,24 @@ struct ListLanes {
 
   aboutToDisappear(){
     Log.showInfo(TAG, `aboutToDisAppear ListLanes end`)
+  }
+
+  private stateChangCallBack = (eventData) => {
+    console.info("list page state change called:" + JSON.stringify(eventData));
+    if (eventData != null) {
+      if (eventData.data.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      }
+    }
+  }
+
+  onPageShow() {
+    console.info('list page show called');
+    var stateChangeEvent = {
+      eventId: 322,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   build(){
@@ -97,6 +118,7 @@ struct ListLanes {
           .editMode(true)
           .alignListItem(ListItemAlign.Start)
           .border({ width: 3, color: Color.Red })
+          .edgeEffect(this.edgeEffect, {alwaysEnabled: this.alwaysEnabled})
           .lanes(4)
           .onScrollFrameBegin((offset: number, state: ScrollState) => {
             if ((this.listPosition == 0 && offset >= 0) || (this.listPosition == 2 && offset <= 0)) {

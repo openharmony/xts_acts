@@ -982,14 +982,283 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass050
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0050
+     * @tc.name      : TaskPoolTestClass050
+     * @tc.desc      : SequenceRunner for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass050', 0,  async function (done) {
+        function AdditionDelay(delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+        }
+        function WaitforRunner(finalString) {
+            "use concurrent"
+            return finalString;
+        }
+
+        let finalString = "";
+        let task1 = new taskpool.Task(AdditionDelay, 300);
+        let task2 = new taskpool.Task(AdditionDelay, 200);
+        let task3 = new taskpool.Task(AdditionDelay, 100);
+        let task4 = new taskpool.Task(WaitforRunner, finalString);
+
+        let runner = new taskpool.SequenceRunner();
+        runner.execute(task1).then(() => {
+            finalString += 'a';
+        });
+        runner.execute(task2).then(() => {
+            finalString += 'b';
+        });
+        runner.execute(task3).then(() => {
+            finalString += 'c';
+        });
+
+        await runner.execute(task4);
+        expect(finalString).assertEqual("abc");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0051
+     * @tc.name      : TaskPoolTestClass051
+     * @tc.desc      : SequenceRunner for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass051', 0,  async function (done) {
+        function AdditionDelay(delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+        }
+        function WaitforRunner(finalString) {
+            "use concurrent"
+            return finalString;
+        }
+        let finalString = "";
+        let task1 = new taskpool.Task(AdditionDelay, 300);
+        let task2 = new taskpool.Task(AdditionDelay, 200);
+        let task3 = new taskpool.Task(AdditionDelay, 100);
+        let task4 = new taskpool.Task(WaitforRunner, finalString);
+        task1.addDependency(task2);
+        let runner = new taskpool.SequenceRunner();
+        try {
+            runner.execute(task1).then(() => {
+                finalString += 'a';
+            });
+        } catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: seqRunner:: dependent task not allowed.");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0052
+     * @tc.name      : TaskPoolTestClass052
+     * @tc.desc      : addDependency for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass052', 0, async function (done) {
+        function Sum(value1, value2, delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+            return value1 + value2;
+        }
+
+        let finalString = "";
+        let isTerminate1 = false;
+        let isTerminate2 = false;
+        let isTerminate3 = false;
+
+        let task1 = new taskpool.Task(Sum, 10, 20, 100)
+        let task2 = new taskpool.Task(Sum, 30, 40, 200)
+        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        task1.addDependency(task2);
+        task2.addDependency(task3);
+        taskpool.execute(task1).then(() => {
+            finalString += "a";
+            isTerminate1 = true;
+        })
+        taskpool.execute(task2).then(() => {
+            finalString += "b";
+            isTerminate2 = true;
+        })
+        taskpool.execute(task3).then(() => {
+            finalString += "c";
+            isTerminate3 = true;
+        })
+        while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+            await promiseCase()
+        }
+        expect(finalString).assertEqual("cba");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0053
+     * @tc.name      : TaskPoolTestClass053
+     * @tc.desc      : removeDependency for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass053', 0, async function (done) {
+        function Sum(value1, value2, delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+            return value1 + value2;
+        }
+
+        let finalString = "";
+        let isTerminate1 = false;
+        let isTerminate2 = false;
+        let isTerminate3 = false;
+
+        let task1 = new taskpool.Task(Sum, 10, 20, 100)
+        let task2 = new taskpool.Task(Sum, 30, 40, 200)
+        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        task1.addDependency(task2);
+        task2.addDependency(task3);
+        task1.removeDependency(task2);
+        task2.removeDependency(task3);
+        taskpool.execute(task1).then(() => {
+            finalString += "a";
+            isTerminate1 = true;
+        })
+        taskpool.execute(task2).then(() => {
+            finalString += "b";
+            isTerminate2 = true;
+        })
+        taskpool.execute(task3).then(() => {
+            finalString += "c";
+            isTerminate3 = true;
+        })
+        while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+            await promiseCase()
+        }
+        expect(finalString).assertEqual("abc");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0054
+     * @tc.name      : TaskPoolTestClass054
+     * @tc.desc      : addDependency for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass054', 0,  async function (done) {
+        function Sum(value1, value2, delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+            return value1 + value2;
+        }
+
+        let task1 = new taskpool.Task(Sum, 10, 20, 100)
+        let task2 = new taskpool.Task(Sum, 30, 40, 200)
+        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        let task4 = new taskpool.Task(Sum, 20, 20, 100)
+        let task5 = new taskpool.Task(Sum, 40, 40, 200)
+        let task6 = new taskpool.Task(Sum, 60, 60, 300)
+
+        try {
+            task1.addDependency(task2);
+            task2.addDependency(task3);
+            task3.addDependency(task4);
+            task4.addDependency(task5);
+            task5.addDependency(task6);
+            task6.addDependency(task1);
+            task1.addDependency(task3);
+            task1.addDependency(task5);
+            task3.addDependency(task6);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: taskpool:: there is a circular dependency");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0055
+     * @tc.name      : TaskPoolTestClass055
+     * @tc.desc      : removeDependency for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass055', 0,  async function (done) {
+        function Sum(value1, value2, delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+                continue;
+            }
+            return value1 + value2;
+        }
+
+        let task1 = new taskpool.Task(Sum, 10, 20, 100)
+        let task2 = new taskpool.Task(Sum, 30, 40, 200)
+        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        task1.addDependency(task2);
+        task2.addDependency(task3);
+        taskpool.execute(task1).then((d)=>{
+            console.info("task1 success");
+        })
+        taskpool.execute(task2).then((d)=>{
+            console.info("task2 success");
+        })
+        taskpool.execute(task3).then((d)=>{
+            console.info("task3 success");
+        })
+
+        task2.removeDependency(task3);
+        taskpool.execute(task1).then((d)=>{
+            console.info("task1 success");
+        })
+        taskpool.execute(task2).then((d)=>{
+            console.info("task2 success");
+        })
+        taskpool.execute(task3).then((d)=>{
+            console.info("task3 success");
+        })
+
+        try {
+            task2.removeDependency(task3);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: taskpool:: the dependency does not exist");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass056
      * @tc.name      : Async Function about priority task
      * @tc.desc      : Execute priority tasks
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass050', 0,  async function (done) {
+    it('TaskPoolTestClass056', 0,  async function (done) {
         function testTime() {
             "use concurrent";
             return Date.now();
@@ -1036,14 +1305,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass051
+     * @tc.number    : TaskPoolTestClass057
      * @tc.name      : Async function execute task
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass051', 0,  async function (done) {
+    it('TaskPoolTestClass057', 0,  async function (done) {
         async function func(value1, value2) {
             "use concurrent"
             let result = await new Promise((resolve, reject) => {
@@ -1058,14 +1327,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass052
+     * @tc.number    : TaskPoolTestClass058
      * @tc.name      : Async function execute task
      * @tc.desc      : Execute async function task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass052', 0,  async function (done) {
+    it('TaskPoolTestClass058', 0,  async function (done) {
         async function func(value1, value2) {
             "use concurrent"
             let result = await new Promise((resolve, reject) => {
@@ -1081,14 +1350,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass053
+     * @tc.number    : TaskPoolTestClass059
      * @tc.name      : Async function execute taskGroup
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass053', 0,  async function (done) {
+    it('TaskPoolTestClass059', 0,  async function (done) {
         function printArgs(args) {
             "use concurrent"
             return args;
@@ -1108,14 +1377,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass054
+     * @tc.number    : TaskPoolTestClass060
      * @tc.name      : Async function execute taskGroup
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass054', 0,  async function (done) {
+    it('TaskPoolTestClass060', 0,  async function (done) {
         function printArgs(args) {
             "use concurrent"
             return args;
@@ -1137,14 +1406,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass055
+     * @tc.number    : TaskPoolTestClass061
      * @tc.name      : SetTransferList for task
      * @tc.desc      : Set transfer list for the task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass055', 0,  async function (done) {
+    it('TaskPoolTestClass061', 0,  async function (done) {
         let buffer = new ArrayBuffer(8);
         let view = new Uint8Array(buffer);
         let buffer1 = new ArrayBuffer(16);
@@ -1163,370 +1432,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass056
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Cancel tasks that have not been executed
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass056', 0, async function (done) {
-        function inspectStatus(arg) {
-            "use concurrent"
-            let start = new Date().getTime();
-              while (new Date().getTime() - start < 1000) {
-                continue;
-            }
-            return arg;
-        }
-
-        let task1 = new taskpool.Task(inspectStatus, 100);
-        let task2 = new taskpool.Task(inspectStatus, 200);
-        let task3 = new taskpool.Task(inspectStatus, 300);
-        let task4 = new taskpool.Task(inspectStatus, 400);
-
-        taskpool.execute(task1);
-        taskpool.execute(task2);
-        taskpool.execute(task3);
-        taskpool.execute(task4);
-        setTimeout(()=>{
-          taskpool.cancel(task4);}, 500);
-
-        expect(taskpool.Task.isCanceled() == false);
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass057
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Cancel the task in progress
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass057', 0, async function (done) {
-        function inspectStatus(arg) {
-            "use concurrent"
-            return arg;
-        }
-
-        try {
-            let task1 = new taskpool.Task(inspectStatus, 100);
-            let task2 = new taskpool.Task(inspectStatus, 200);
-            let task3 = new taskpool.Task(inspectStatus, 300);
-            let task4 = new taskpool.Task(inspectStatus, 400);
-            let task5 = new taskpool.Task(inspectStatus, 500);
-            let task6 = new taskpool.Task(inspectStatus, 600);
-            let res1 = taskpool.execute(task1);
-            let res2 = taskpool.execute(task2);
-            let res3 = taskpool.execute(task3);
-            let res4 = taskpool.execute(task4);
-            let res5 = taskpool.execute(task5);
-            let res6 = taskpool.execute(task6);
-
-            taskpool.execute(task1);
-            taskpool.cancel(task1);
-        } catch(e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
-        }
-        expect(taskpool.Task.isCanceled() == false);
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass058
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Cancel the executed task
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass058', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            return arg + 1;
-        }
-        try {
-            let task1 = new taskpool.Task(addition, 100);
-            let task2 = new taskpool.Task(addition, 200);
-            let task3 = new taskpool.Task(addition, 300);
-
-            let result1 = taskpool.execute(task1);
-            let result2 = taskpool.execute(task2);
-            let result3 = taskpool.execute(task3);
-
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 1000) {
-              continue;
-            }
-
-            taskpool.cancel(task1);
-        }
-        catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
-        }
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass059
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Cancel nonexistent task
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass059', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            return arg + 1;
-        }
-        try {
-            let task1 = new taskpool.Task(addition, 100);
-            let task2 = new taskpool.Task(addition, 200);
-            let task3 = new taskpool.Task(addition, 300);
-
-            let result1 = taskpool.execute(task1);
-            let result2 = taskpool.execute(task2);
-
-            taskpool.cancel(task3);
-        }
-        catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
-        }
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass060
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Canceling unexecuted tasks multiple times
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass060', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            return arg + 1;
-        }
-        try {
-            let task1 = new taskpool.Task(addition, 100);
-            let task2 = new taskpool.Task(addition, 200);
-            let task3 = new taskpool.Task(addition, 300);
-
-            let result1 = taskpool.execute(task1);
-            let result2 = taskpool.execute(task2);
-            let result3 = taskpool.execute(task3);
-
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 1000) {
-              continue;
-            }
-
-            taskpool.cancel(task3);
-            taskpool.cancel(task3);
-        }
-        catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
-        }
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass061
-     * @tc.name      : Async Function Cancel task
-     * @tc.desc      : Cancel all tasks in sequence
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass061', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            return arg + 1;
-        }
-        try {
-            let task1 = new taskpool.Task(addition, 100);
-            let task2 = new taskpool.Task(addition, 200);
-            let task3 = new taskpool.Task(addition, 300);
-            let task4 = new taskpool.Task(addition, 400);
-            let task5 = new taskpool.Task(addition, 500);
-            let task6 = new taskpool.Task(addition, 600);
-
-            let result1 = taskpool.execute(task1);
-            let result2 = taskpool.execute(task2);
-            let result3 = taskpool.execute(task3);
-            let result4 = taskpool.execute(task4);
-            let result5 = taskpool.execute(task5);
-            let result6 = taskpool.execute(task6);
-
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 100) {
-              continue;
-            }
-
-            taskpool.cancel(task6);
-            taskpool.cancel(task5);
-            taskpool.cancel(task4);
-            taskpool.cancel(task3);
-            taskpool.cancel(task2);
-        }
-        catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
-        }
-        done();
-    })
-
-    /**
      * @tc.number    : TaskPoolTestClass062
-     * @tc.name      : Async Function Cancel taskGroup
-     * @tc.desc      : Cancel the taskGroup in progress
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass062', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 2000) {
-              continue;
-            }
-            return arg + 1;
-        }
-        let i = 10;
-        let taskGroup1 = new taskpool.TaskGroup();
-        taskGroup1.addTask(addition, 10);
-        taskGroup1.addTask(addition, 20);
-        taskGroup1.addTask(addition, 30);
-
-        let taskGroup2 = new taskpool.TaskGroup();
-        let task1 = new taskpool.Task(addition, 100);
-        let task2 = new taskpool.Task(addition, 200);
-        let task3 = new taskpool.Task(addition, 300);
-        taskGroup2.addTask(task1);
-        taskGroup2.addTask(task2);
-        taskGroup2.addTask(task3);
-        taskpool.execute(taskGroup1).then(() => {
-            ++i;
-        });
-        taskpool.execute(taskGroup2);
-
-        taskpool.cancel(taskGroup1);
-        expect(i).assertEqual(10)
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass063
-     * @tc.name      : Async Function Cancel taskGroup
-     * @tc.desc      : Cancel the taskGroup that have not been executed
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass063', 0, async function (done) {
-        function addition(arg) {
-            "use concurrent"
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 2000) {
-              continue;
-            }
-            return arg + 1;
-        }
-        let i = 10;
-        let taskGroup1 = new taskpool.TaskGroup();
-        taskGroup1.addTask(addition, 10);
-        taskGroup1.addTask(addition, 20);
-        taskGroup1.addTask(addition, 30);
-
-        let taskGroup2 = new taskpool.TaskGroup();
-        let task1 = new taskpool.Task(addition, 100);
-        let task2 = new taskpool.Task(addition, 200);
-        let task3 = new taskpool.Task(addition, 300);
-        taskGroup2.addTask(task1);
-        taskGroup2.addTask(task2);
-        taskGroup2.addTask(task3);
-        taskpool.execute(taskGroup1);
-        taskpool.execute(taskGroup2).then(() => {
-            ++i;
-        });
-
-        taskpool.cancel(taskGroup2);
-        expect(i).assertEqual(10)
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass064
-     * @tc.name      : Async Function Cancel taskGroup
-     * @tc.desc      : Cancel the non-existent taskGroup
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass064', 0, async function (done) {
-        try {
-            let taskGroup = new taskpool.TaskGroup();
-
-            taskpool.cancel(taskGroup);
-        } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
-        }
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass065
-     * @tc.name      : Async Function Cancel taskGroup
-     * @tc.desc      : Cancel the executed taskGroup
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass065', 0, async function (done) {
-        function printArgs(args) {
-            "use concurrent"
-            return args;
-        }
-
-        let taskGroup1 = new taskpool.TaskGroup();
-        taskGroup1.addTask(printArgs, 10);
-        taskGroup1.addTask(printArgs, 20);
-        taskGroup1.addTask(printArgs, 30);
-
-        let taskGroup2 = new taskpool.TaskGroup();
-        let task1 = new taskpool.Task(printArgs, 100);
-        let task2 = new taskpool.Task(printArgs, 200);
-        let task3 = new taskpool.Task(printArgs, 300);
-
-        taskGroup2.addTask(task1);
-        taskGroup2.addTask(task2);
-        taskGroup2.addTask(task3);
-
-        taskpool.execute(taskGroup1);
-        taskpool.execute(taskGroup2);
-
-        setTimeout(()=>{
-          try {
-            taskpool.cancel(taskGroup1);
-          } catch (e) {
-              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
-          }
-        }, 3000);
-        done();
-    })
-
-    /**
-     * @tc.number    : TaskPoolTestClass066
      * @tc.name      : Async Function GetTaskPoolInfo
      * @tc.desc      : Get the taskPoolInfo
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass066', 0, async function (done) {
+    it('TaskPoolTestClass062', 0, async function (done) {
         async function currentFun() {
             "use concurrent"
             await new Promise((resolve, reject) => {
@@ -1597,14 +1510,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass067
+     * @tc.number    : TaskPoolTestClass063
      * @tc.name      : sync Function GetTaskPoolInfo
      * @tc.desc      : Get the taskPoolInfo
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass067', 0, async function (done) {
+    it('TaskPoolTestClass063', 0, async function (done) {
         function delay() {
             "use concurrent"
             let start = new Date().getTime();
@@ -1673,14 +1586,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass068
+     * @tc.number    : TaskPoolTestClass064
      * @tc.name      : SharedArrayBuffer with taskpool
      * @tc.desc      : transfer SharedArrayBuffer with taskpool
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass068', 0,  async function (done) {
+    it('TaskPoolTestClass064', 0,  async function (done) {
         let sab = new SharedArrayBuffer(20);
         let int32 = new Uint32Array(sab);
         function testTransfer(arg1) {
@@ -1700,14 +1613,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass069
+     * @tc.number    : TaskPoolTestClass065
      * @tc.name      : SharedArrayBuffer and Atomics  with taskpool
      * @tc.desc      : transfer SharedArrayBuffer and Atomics with taskpool
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass069', 0,  async function (done) {
+    it('TaskPoolTestClass065', 0,  async function (done) {
         let sab = new SharedArrayBuffer(20);
         let int32 = new Int32Array(sab);
         function testTransfer(arg1) {
@@ -1724,6 +1637,441 @@ describe('ActsAbilityTest', function () {
         setTimeout(() => {
           Atomics.notify(int32, 0, 1);
         }, 1000);
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0066
+     * @tc.name      : TaskPoolTestClass066
+     * @tc.desc      : sendData and onReceiveData for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass066', 0,  async function (done) {
+        function HandleData(data) {
+            "use concurrent"
+            return data + 1;
+        }
+
+        function Add(value1, value2) {
+            "use concurrent"
+            let sum = value1 + value2
+            return sum;
+        }
+        taskpool.Task.sendData(4);
+        let task = new taskpool.Task(Add, 1, 3);
+        let currentNum = 0;
+        currentNum = task.onReceiveData(HandleData);
+        taskpool.execute(task).then((currentNum) => {
+            expect(currentNum).assertEqual(4);
+        });
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0067
+     * @tc.name      : TaskPoolTestClass067
+     * @tc.desc      : add name of task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+      it('TaskPoolTestClass067', 0, async function (done) {
+        function Sum(value1, value2) {
+          "use concurrent"
+          return value1 + value2;
+        }
+        let taskname = "taskName";
+        let task = new taskpool.Task(taskname, Sum, 10, 20);
+        let name = task.name;
+        expect(name).assertEqual("taskName");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0068
+     * @tc.name      : TaskPoolTestClass068
+     * @tc.desc      : add name of taskGroup for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass068', 0,  async function (done) {
+        function printArgs(args) {
+          "use concurrent"
+          return args;
+        }
+
+        let taskGroupName = "groupName";
+        let taskGroup = new taskpool.TaskGroup(taskGroupName);
+        taskGroup.addTask(printArgs, 10);
+        taskGroup.addTask(printArgs, 20);
+        taskGroup.addTask(printArgs, 30);
+
+        taskpool.execute(taskGroup).then((res) => {
+          expect(res[0]).assertEqual(10);
+          expect(res[1]).assertEqual(20);
+          expect(res[2]).assertEqual(30);
+        });
+        let name = taskGroup.name;
+        expect(name).assertEqual("groupName");
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass069
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel tasks that have not been executed
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass069', 0, async function (done) {
+        function inspectStatus(arg) {
+            "use concurrent"
+            let start = new Date().getTime();
+              while (new Date().getTime() - start < 1000) {
+                continue;
+            }
+            return arg;
+        }
+
+        let task1 = new taskpool.Task(inspectStatus, 100);
+        let task2 = new taskpool.Task(inspectStatus, 200);
+        let task3 = new taskpool.Task(inspectStatus, 300);
+        let task4 = new taskpool.Task(inspectStatus, 400);
+
+        taskpool.execute(task1);
+        taskpool.execute(task2);
+        taskpool.execute(task3);
+        taskpool.execute(task4);
+        setTimeout(()=>{
+          taskpool.cancel(task4);}, 500);
+
+        expect(taskpool.Task.isCanceled() == false);
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass070
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel the task in progress
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass070', 0, async function (done) {
+        function inspectStatus(arg) {
+            "use concurrent"
+            return arg;
+        }
+
+        try {
+            let task1 = new taskpool.Task(inspectStatus, 100);
+            let task2 = new taskpool.Task(inspectStatus, 200);
+            let task3 = new taskpool.Task(inspectStatus, 300);
+            let task4 = new taskpool.Task(inspectStatus, 400);
+            let task5 = new taskpool.Task(inspectStatus, 500);
+            let task6 = new taskpool.Task(inspectStatus, 600);
+            let res1 = taskpool.execute(task1);
+            let res2 = taskpool.execute(task2);
+            let res3 = taskpool.execute(task3);
+            let res4 = taskpool.execute(task4);
+            let res5 = taskpool.execute(task5);
+            let res6 = taskpool.execute(task6);
+
+            taskpool.execute(task1);
+            taskpool.cancel(task1);
+        } catch(e) {
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+        }
+        expect(taskpool.Task.isCanceled() == false);
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass071
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel the executed task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass071', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            return arg + 1;
+        }
+        try {
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
+            let task3 = new taskpool.Task(addition, 300);
+
+            let result1 = taskpool.execute(task1);
+            let result2 = taskpool.execute(task2);
+            let result3 = taskpool.execute(task3);
+
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 1000) {
+              continue;
+            }
+
+            taskpool.cancel(task1);
+        }
+        catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass072
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel nonexistent task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass072', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            return arg + 1;
+        }
+        try {
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
+            let task3 = new taskpool.Task(addition, 300);
+
+            let result1 = taskpool.execute(task1);
+            let result2 = taskpool.execute(task2);
+
+            taskpool.cancel(task3);
+        }
+        catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass073
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Canceling unexecuted tasks multiple times
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass073', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            return arg + 1;
+        }
+        try {
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
+            let task3 = new taskpool.Task(addition, 300);
+
+            let result1 = taskpool.execute(task1);
+            let result2 = taskpool.execute(task2);
+            let result3 = taskpool.execute(task3);
+
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 1000) {
+              continue;
+            }
+
+            taskpool.cancel(task3);
+            taskpool.cancel(task3);
+        }
+        catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass074
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel all tasks in sequence
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass074', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            return arg + 1;
+        }
+        try {
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
+            let task3 = new taskpool.Task(addition, 300);
+            let task4 = new taskpool.Task(addition, 400);
+            let task5 = new taskpool.Task(addition, 500);
+            let task6 = new taskpool.Task(addition, 600);
+
+            let result1 = taskpool.execute(task1);
+            let result2 = taskpool.execute(task2);
+            let result3 = taskpool.execute(task3);
+            let result4 = taskpool.execute(task4);
+            let result5 = taskpool.execute(task5);
+            let result6 = taskpool.execute(task6);
+
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 100) {
+              continue;
+            }
+
+            taskpool.cancel(task6);
+            taskpool.cancel(task5);
+            taskpool.cancel(task4);
+            taskpool.cancel(task3);
+            taskpool.cancel(task2);
+        }
+        catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass075
+     * @tc.name      : Async Function Cancel taskGroup
+     * @tc.desc      : Cancel the taskGroup in progress
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass075', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 2000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        let i = 10;
+        let taskGroup1 = new taskpool.TaskGroup();
+        taskGroup1.addTask(addition, 10);
+        taskGroup1.addTask(addition, 20);
+        taskGroup1.addTask(addition, 30);
+
+        let taskGroup2 = new taskpool.TaskGroup();
+        let task1 = new taskpool.Task(addition, 100);
+        let task2 = new taskpool.Task(addition, 200);
+        let task3 = new taskpool.Task(addition, 300);
+        taskGroup2.addTask(task1);
+        taskGroup2.addTask(task2);
+        taskGroup2.addTask(task3);
+        taskpool.execute(taskGroup1).then(() => {
+            ++i;
+        });
+        taskpool.execute(taskGroup2);
+
+        taskpool.cancel(taskGroup1);
+        expect(i).assertEqual(10)
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass076
+     * @tc.name      : Async Function Cancel taskGroup
+     * @tc.desc      : Cancel the taskGroup that have not been executed
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass076', 0, async function (done) {
+        function addition(arg) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 2000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        let i = 10;
+        let taskGroup1 = new taskpool.TaskGroup();
+        taskGroup1.addTask(addition, 10);
+        taskGroup1.addTask(addition, 20);
+        taskGroup1.addTask(addition, 30);
+
+        let taskGroup2 = new taskpool.TaskGroup();
+        let task1 = new taskpool.Task(addition, 100);
+        let task2 = new taskpool.Task(addition, 200);
+        let task3 = new taskpool.Task(addition, 300);
+        taskGroup2.addTask(task1);
+        taskGroup2.addTask(task2);
+        taskGroup2.addTask(task3);
+        taskpool.execute(taskGroup1);
+        taskpool.execute(taskGroup2).then(() => {
+            ++i;
+        });
+
+        taskpool.cancel(taskGroup2);
+        expect(i).assertEqual(10)
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass077
+     * @tc.name      : Async Function Cancel taskGroup
+     * @tc.desc      : Cancel the non-existent taskGroup
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass077', 0, async function (done) {
+        try {
+            let taskGroup = new taskpool.TaskGroup();
+
+            taskpool.cancel(taskGroup);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass078
+     * @tc.name      : Async Function Cancel taskGroup
+     * @tc.desc      : Cancel the executed taskGroup
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass078', 0, async function (done) {
+        function printArgs(args) {
+            "use concurrent"
+            return args;
+        }
+
+        let taskGroup1 = new taskpool.TaskGroup();
+        taskGroup1.addTask(printArgs, 10);
+        taskGroup1.addTask(printArgs, 20);
+        taskGroup1.addTask(printArgs, 30);
+
+        let taskGroup2 = new taskpool.TaskGroup();
+        let task1 = new taskpool.Task(printArgs, 100);
+        let task2 = new taskpool.Task(printArgs, 200);
+        let task3 = new taskpool.Task(printArgs, 300);
+
+        taskGroup2.addTask(task1);
+        taskGroup2.addTask(task2);
+        taskGroup2.addTask(task3);
+
+        taskpool.execute(taskGroup1);
+        taskpool.execute(taskGroup2);
+
+        setTimeout(()=>{
+          try {
+            taskpool.cancel(taskGroup1);
+          } catch (e) {
+              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+          }
+        }, 3000);
         done();
     })
 })

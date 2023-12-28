@@ -15,263 +15,637 @@
 
 #include <cerrno>
 #include <csignal>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fcntl.h>
 #include <js_native_api.h>
 #include <node_api.h>
+#include <pthread.h>
+#include <sys/signalfd.h>
 #include <unistd.h>
+
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_6000 6000
+#define PARAM_99999 99999
 #define FAIL -1
 #define NO_ERR 0
-#define ZERO 0
-
-static napi_value Sighold(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    if (valueFirst == NO_ERR) {
-        int sig = SIGALRM;
-        int sigValue = sighold(sig);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        int sigValue = sighold(valueSecond);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
-}
-
-static napi_value Sigrelse(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    if (valueFirst == NO_ERR) {
-        int sig = SIGALRM;
-        int sigValue = sigrelse(sig);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        int sigValue = sigrelse(valueSecond);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
-}
-
-static napi_value Sigdelset(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    sigset_t set;
-    if (valueFirst == NO_ERR) {
-        int sig = SIGINT;
-        sigemptyset(&set);
-        int sigValue = sigdelset(&set, sig);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        sigemptyset(&set);
-        int sigValue = sigdelset(&set, valueSecond);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
-}
-
-static napi_value Sigaddset(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    sigset_t set;
-    if (valueFirst == NO_ERR) {
-        int sig = SIGQUIT;
-        sigemptyset(&set);
-        int sigValue = sigaddset(&set, sig);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        sigemptyset(&set);
-        int sigValue = sigaddset(&set, valueSecond);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
-}
-
-static napi_value Sigemptyset(napi_env env, napi_callback_info info)
-{
-    sigset_t set;
-    int sigValue = sigemptyset(&set);
-    napi_value result;
-    napi_create_int32(env, sigValue, &result);
-    return result;
-}
-
-static napi_value Sigfillset(napi_env env, napi_callback_info info)
-{
-    sigset_t set;
-    int sigValue = sigfillset(&set);
-    napi_value result;
-    napi_create_int32(env, sigValue, &result);
-    return result;
-}
-
-void SignalHandler(int signum) { kill(getpid(), SIGSTOP); }
-
-static napi_value Sigaction(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    struct sigaction sigabrt = {.sa_handler = SignalHandler};
-    if (valueFirst == NO_ERR) {
-        int sigValue = sigaction(SIGABRT, &sigabrt, nullptr);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        int sigValue = sigaction(valueSecond, &sigabrt, nullptr);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
-}
-
-static napi_value Sigaltstack(napi_env env, napi_callback_info info)
+#define STRLENGTH 64
+#define SUCCESS 1
+#define ONE 1
+#define SFD_CLOEXEC O_CLOEXEC
+#define ONEVAL 1
+#define MINUSONE -1
+#define MINUSTWO -2
+#define THRVAL 3
+#define ERRON_0 0
+typedef void *(func)(void *);
+struct Sig {
+    int flag;
+    int param;
+};
+struct SigString {
+    int flag;
+    char param[STRLENGTH];
+};
+static int intInput(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    stack_t ss;
-    ss.ss_size = SIGSTKSZ;
-    if (valueFirst == NO_ERR) {
-        ss.ss_flags = NO_ERR;
-        int sigValue = sigaltstack(&ss, nullptr);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        ss.ss_flags = FAIL;
-        int sigValue = sigaltstack(&ss, nullptr);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
+    int expect;
+    napi_get_value_int32(env, args[0], &expect);
+    return expect;
 }
 
-static napi_value Sigignore(napi_env env, napi_callback_info info)
+static void structInput(napi_env env, napi_callback_info info, struct Sig *siginfo)
 {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    if (valueFirst == NO_ERR) {
-        int sigValue = sigignore(SIGALRM);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    } else {
-        int sigValue = sigignore(valueSecond);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
-    }
+    napi_get_value_int32(env, args[0], &(siginfo->flag));
+    napi_get_value_int32(env, args[1], &(siginfo->param));
 }
 
-static napi_value Sigpause(napi_env env, napi_callback_info info)
+static void structStringInput(napi_env env, napi_callback_info info, struct SigString *siginfo)
 {
-    int sigValue = sighold(SIGALRM);
-    if (sigValue != FAIL || errno != EINTR) {
-        napi_value result;
-        napi_create_int32(env, FAIL, &result);
-        return result;
-    } else {
-        napi_value result;
-        napi_create_int32(env, NO_ERR, &result);
-        return result;
-    }
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_get_value_int32(env, args[0], &(siginfo->flag));
+    size_t size = STRLENGTH;
+    size_t actualVal = PARAM_0;
+    napi_get_value_string_utf8(env, args[1], siginfo->param, size, &actualVal);
 }
 
-static napi_value Sigpending(napi_env env, napi_callback_info info)
+static int SigMain(struct Sig siginfo, func testfunction)
 {
-    sigset_t pending;
-    int sigValue = sigpending(&pending);
-    napi_value result;
-    napi_create_int32(env, sigValue, &result);
+    pthread_t pid;
+
+    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_detach(pid);
+
+    return NO_ERR;
+}
+static int SigMainInt(int siginfo, func testfunction)
+{
+    pthread_t pid;
+
+    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_detach(pid);
+
+    return NO_ERR;
+}
+static int SigMainNull(func testfunction)
+{
+    pthread_t pid;
+
+    pthread_create(&pid, NULL, testfunction, NULL);
+    pthread_detach(pid);
+
+    return NO_ERR;
+}
+static int SigMainString(struct SigString siginfo, func testfunction)
+{
+    pthread_t pid;
+
+    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_detach(pid);
+
+    return NO_ERR;
+}
+void *Sighold(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    if ((sigInfo->flag) == PARAM_0) {
+        int sig = SIGALRM;
+        sighold(sig);
+    } else {
+        sighold(sigInfo->param);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainHold(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sighold);
+    napi_create_int32(env, resSig, &result);
     return result;
 }
 
-static napi_value Sigprocmask(napi_env env, napi_callback_info info)
+void *Sigrelse(void *pro)
 {
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    sigset_t set, set2;
-    if (valueFirst == ZERO) {
-        int sigValue = sigprocmask(SIG_UNBLOCK, &set, &set2);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
+    Sig *sigInfo = (Sig *)pro;
+    if ((sigInfo->flag) == PARAM_0) {
+        int sig = SIGALRM;
+        sigrelse(sig);
     } else {
-        int sigValue = sigprocmask(valueSecond, &set, &set2);
-        napi_value result;
-        napi_create_int32(env, sigValue, &result);
-        return result;
+        sigrelse(sigInfo->param);
     }
+    return nullptr;
+}
+
+static napi_value SigMainRelse(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigrelse);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigdelset(void *pro)
+{
+    sigset_t set = {PARAM_0};
+    Sig *sigInfo = (Sig *)pro;
+    sigemptyset(&set);
+    if ((sigInfo->flag) == PARAM_0) {
+        int sig = SIGALRM;
+        sigdelset(&set, sig);
+    } else {
+        sigdelset(&set, sigInfo->param);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainDelset(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigdelset);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigaddset(void *pro)
+{
+    sigset_t set = {PARAM_0};
+    Sig *sigInfo = (Sig *)pro;
+    sigemptyset(&set);
+    if ((sigInfo->flag) == PARAM_0) {
+        int sig = SIGALRM;
+        sigaddset(&set, sig);
+    } else {
+        sigaddset(&set, sigInfo->param);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainAddset(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigaddset);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigemptyset(void *pro)
+{
+    sigset_t set = {PARAM_0};
+    sigemptyset(&set);
+    return nullptr;
+}
+
+static napi_value SigMainEmptyset(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigemptyset);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigfillset(void *pro)
+{
+    sigset_t set = {PARAM_0};
+    sigfillset(&set);
+    return nullptr;
+}
+
+static napi_value SigMainFillset(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigfillset);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void SignalHandler(int signum) {}
+void *Sigaction(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    struct sigaction sigabrt = {.sa_handler = SignalHandler};
+    if ((sigInfo->flag) == PARAM_0) {
+        sigaction(SIGABRT, &sigabrt, nullptr);
+    } else {
+        sigaction(sigInfo->param, &sigabrt, nullptr);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainAction(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigaction);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigaltstack(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    stack_t ss = {PARAM_0};
+    ss.ss_size = SIGSTKSZ;
+    if ((sigInfo->flag) == PARAM_0) {
+        ss.ss_flags = PARAM_0;
+        sigaltstack(&ss, nullptr);
+    } else {
+        ss.ss_flags = MINUSONE;
+        sigaltstack(&ss, nullptr);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainAltstack(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainInt(intInput(env, info), Sigaltstack);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigignore(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    if ((sigInfo->flag) == PARAM_0) {
+        sigignore(SIGALRM);
+    } else {
+        sigignore(sigInfo->param);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainIgnore(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigignore);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigpause(void *pro)
+{
+    sigpause(SIGALRM);
+    return nullptr;
+}
+
+static napi_value SigMainPause(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigpause);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigpending(void *pro)
+{
+    sigset_t pending = {PARAM_0};
+    sigpending(&pending);
+    return nullptr;
+}
+
+static napi_value SigMainPending(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigpending);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigprocmask(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    sigset_t set = {PARAM_0}, set2 = {PARAM_0};
+    if ((sigInfo->flag) == PARAM_0) {
+        sigprocmask(SIG_UNBLOCK, &set, &set2);
+    } else {
+        sigprocmask(sigInfo->param, &set, &set2);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainProcmask(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigprocmask);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+static napi_value Kill(napi_env env, napi_callback_info info)
+{
+
+    napi_value result = {PARAM_0};
+    napi_create_int32(env, PARAM_0, &result);
+    return result;
+}
+
+static napi_value Killpg(napi_env env, napi_callback_info info)
+{
+    napi_value result = {PARAM_0};
+    napi_create_int32(env, PARAM_0, &result);
+    return result;
+}
+void *Psignal(void *pro)
+{
+    SigString *sigInfo = (SigString *)pro;
+    psignal(sigInfo->flag, sigInfo->param);
+    return nullptr;
+}
+
+static napi_value SigMainPsignal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct SigString siginput;
+    structStringInput(env, info, &siginput);
+    int resSig = SigMainString(siginput, Psignal);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *PSigInfo(void *pro)
+{
+    char paramSecond[STRLENGTH];
+    siginfo_t siginfo = {PARAM_0};
+    psiginfo(&siginfo, paramSecond);
+    return nullptr;
+}
+
+static napi_value SigMainPSigInfo(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(PSigInfo);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+static napi_value Raise(napi_env env, napi_callback_info info)
+{
+    napi_value result = PARAM_0;
+    napi_create_int32(env, PARAM_0, &result);
+    return result;
+}
+void *Sigwait(void *pro)
+{
+    sigset_t set = {0};
+    sigemptyset(&set);
+    int sig = SIGALRM;
+    sigaddset(&set, sig);
+    sigprocmask(SIG_BLOCK, &set, nullptr);
+    union sigval sigval = {.sival_int = ONE};
+    sigqueue(getpid(), sig, sigval);
+    sig = PARAM_0;
+    sigwait(&set, &sig);
+    return nullptr;
+}
+
+static napi_value SigMainWait(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigwait);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigwaitinfo(void *pro)
+{
+    sigset_t set;
+    sigemptyset(&set);
+    int sig = SIGALRM;
+    sigaddset(&set, sig);
+    sigprocmask(SIG_BLOCK, &set, nullptr);
+    union sigval sigval = {.sival_int = ONE};
+    sigqueue(getpid(), sig, sigval);
+    siginfo_t info;
+    sigwaitinfo(&set, &info);
+    return nullptr;
+}
+
+static napi_value SigMainWaitinfo(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigwaitinfo);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigismember(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    sigset_t set = {PARAM_0};
+    if ((sigInfo->flag) == PARAM_0) {
+        int sig = SIGALRM;
+        sigismember(&set, sig);
+    } else if ((sigInfo->flag) == MINUSONE) {
+        sigismember(&set, sigInfo->param);
+    } else {
+        sigemptyset(&set);
+        sigaddset(&set, SIGINT);
+        sigismember(&set, SIGINT);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainIsmember(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigismember);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+static int g_count = PARAM_0;
+static void signal_handler(int signo) { g_count++; }
+void *Signal(void *pro)
+{
+    signal(SIGHUP, signal_handler);
+    return nullptr;
+}
+
+static napi_value SigMainSignal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Signal);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Signalfd(void *pro)
+{
+    const int sig = SIGALRM;
+    sigset_t mask = {};
+    sigaddset(&mask, sig);
+    sigprocmask(SIG_SETMASK, &mask, nullptr);
+    signalfd(MINUSONE, &mask, SFD_CLOEXEC);
+    return nullptr;
+}
+
+static napi_value SigMainNalfd(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Signalfd);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+static inline void unsupported_api(const char *func) { fprintf(stderr, "[ERR]Unsupported API %s\n", func); }
+void *Siginterrupt(void *pro)
+{
+    int sig = SIGABRT;
+    int flag = PARAM_0;
+    struct sigaction sa;
+    unsupported_api(__FUNCTION__);
+    struct sigaction sigabrt = {.sa_handler = SignalHandler};
+    sigaction(sig, &sigabrt, nullptr);
+    if (flag) {
+        sa.sa_flags &= ~SA_RESTART;
+    } else {
+        sa.sa_flags |= SA_RESTART;
+    }
+    siginterrupt(sig, ONEVAL);
+    return nullptr;
+}
+
+static napi_value SigMainInterrupt(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Siginterrupt);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigset(void *pro)
+{
+    if (*((int *)pro) == PARAM_0) {
+        sigset(SIGALRM, SIG_DFL);
+    } else {
+        sigset(PARAM_99999, SIG_DFL);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainSet(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainInt(intInput(env, info), Sigset);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigtimedwait(void *pro)
+{
+    sigset_t set2 = {PARAM_0};
+    siginfo_t siginfo = {PARAM_0};
+    struct timespec timeout = {THRVAL, PARAM_0};
+    sigemptyset(&set2);
+    sigaddset(&set2, SIGCHLD);
+    sigtimedwait(&set2, &siginfo, &timeout);
+    return nullptr;
+}
+
+static napi_value SigMainTimedwait(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigtimedwait);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigqueue(void *pro)
+{
+    Sig *sigInfo = (Sig *)pro;
+    union sigval sigval = {.sival_int = ONEVAL};
+    if (sigInfo->flag == PARAM_0) {
+        int sig = SIGALRM;
+        sigqueue(getpid(), sig, sigval);
+    } else {
+        sigqueue(getpid(), sigInfo->param, sigval);
+    }
+    return nullptr;
+}
+
+static napi_value SigMainQueue(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    struct Sig siginput;
+    structInput(env, info, &siginput);
+    int resSig = SigMain(siginput, Sigqueue);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+static int count = ERRON_0;
+static void signaler(int signo) { count++; }
+void *BsdSignal(void *pro)
+{
+    bsd_signal(SIGHUP, signaler);
+    return nullptr;
+}
+
+static napi_value SigMainBsdSignal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(BsdSignal);
+    napi_create_int32(env, resSig, &result);
+    return result;
 }
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"sighold", nullptr, Sighold, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigrelse", nullptr, Sigrelse, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigdelset", nullptr, Sigdelset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigaddset", nullptr, Sigaddset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigemptyset", nullptr, Sigemptyset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigfillset", nullptr, Sigfillset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigaction", nullptr, Sigaction, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigaltstack", nullptr, Sigaltstack, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigignore", nullptr, Sigignore, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigpause", nullptr, Sigpause, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigpending", nullptr, Sigpending, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigprocmask", nullptr, Sigprocmask, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
+        {"sighold", nullptr, SigMainHold, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigrelse", nullptr, SigMainRelse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigdelset", nullptr, SigMainDelset, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigaddset", nullptr, SigMainAddset, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigemptyset", nullptr, SigMainEmptyset, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigfillset", nullptr, SigMainFillset, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigaction", nullptr, SigMainAction, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigaltstack", nullptr, SigMainAltstack, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigignore", nullptr, SigMainIgnore, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigpause", nullptr, SigMainPause, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigpending", nullptr, SigMainPending, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigprocmask", nullptr, SigMainProcmask, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigismember", nullptr, SigMainIsmember, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"signal", nullptr, SigMainSignal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"signalfd", nullptr, SigMainNalfd, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"siginterrupt", nullptr, SigMainInterrupt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigset", nullptr, SigMainSet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigtimedwait", nullptr, SigMainTimedwait, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigqueue", nullptr, SigMainQueue, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigwait", nullptr, SigMainWait, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigwaitinfo", nullptr, SigMainWaitinfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"kill", nullptr, Kill, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"killpg", nullptr, Killpg, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"raise", nullptr, Raise, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"psignal", nullptr, SigMainPsignal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"pSigInfo", nullptr, SigMainPSigInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"bsdSignal", nullptr, SigMainBsdSignal, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

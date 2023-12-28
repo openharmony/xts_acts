@@ -32,16 +32,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Add account in callback form without additional information
     */
     it('ActsAccountCreateAccount_0100', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0100 start====");
+      console.info("====>ActsAccountCreateAccount_0100 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_first", (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_0100 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_0100 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount("account_name_callback_first", (err) => {
-          console.debug("====>delete Account ActsAccountCreateAccount_0100 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountCreateAccount_0100 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountCreateAccount_0100 end====");
+          console.info("====>ActsAccountCreateAccount_0100 end====");
           done();
         });
       });
@@ -53,10 +53,10 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Add account in promise form without additional information
     */
     it('ActsAccountCreateAccount_0200', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0200 start====");
+      console.info("====>ActsAccountCreateAccount_0200 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>add account start====");
+      console.info("====>creat finish====");
+      console.info("====>add account start====");
       try {
         await appAccountManager.createAccount("account_name_promise_first");
       } catch (err) {
@@ -64,12 +64,12 @@ export default function ActsAccountCreateAccount() {
         expect().assertFail();
       }
       try {
-        console.debug("====>delete account ActsAccountCreateAccount_0200 start====");
+        console.info("====>delete account ActsAccountCreateAccount_0200 start====");
         await appAccountManager.removeAccount("account_name_promise_first");
       } catch (err) {
-        console.debug("====>delete account err:" + JSON.stringify(err));
+        console.info("====>delete account err:" + JSON.stringify(err));
       }
-      console.debug("====>ActsAccountCreateAccount_0200 end====");
+      console.info("====>ActsAccountCreateAccount_0200 end====");
       done();
     });
 
@@ -79,16 +79,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Add account in callback form with additional information
     */
     it('ActsAccountCreateAccount_0300', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0300 start====");
+      console.info("====>ActsAccountCreateAccount_0300 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
+      console.info("====>creat finish====");
       appAccountManager.createAccount("account_name_callback_second", createAccountOptions, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_0300 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_0300 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount("account_name_callback_second", (err) => {
-          console.debug("====>delete Account ActsAccountCreateAccount_0300 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountCreateAccount_0300 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountCreateAccount_0300 end====");
+          console.info("====>ActsAccountCreateAccount_0300 end====");
           done();
         });
       });
@@ -100,10 +100,10 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Add account in promise form with additional information
     */
     it('ActsAccountCreateAccount_0400', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0400 start====");
+      console.info("====>ActsAccountCreateAccount_0400 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>creat finish====");
-      console.debug("====>add account start====");
+      console.info("====>creat finish====");
+      console.info("====>add account start====");
       try {
         await appAccountManager.createAccount("account_name_promise_second", createAccountOptions);
       } catch (err) {
@@ -111,12 +111,12 @@ export default function ActsAccountCreateAccount() {
         expect().assertFail();
       }
       try {
-        console.debug("====>delete account ActsAccountCreateAccount_0400 start====");
+        console.info("====>delete account ActsAccountCreateAccount_0400 start====");
         await appAccountManager.removeAccount("account_name_promise_second");
       } catch (err) {
-        console.debug("====>delete account err:" + JSON.stringify(err));
+        console.info("====>delete account err:" + JSON.stringify(err));
       }
-      console.debug("====>ActsAccountCreateAccount_0400 end====");
+      console.info("====>ActsAccountCreateAccount_0400 end====");
       done();
     });
 
@@ -127,19 +127,19 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
     it('ActsAccountCreateAccount_0500', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0500 start====");
+      console.info("====>ActsAccountCreateAccount_0500 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("account_name_callback_third", createAccountOptions, (err) => {
-        console.debug("====>add account first time ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
+        console.info("====>add account first time ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.createAccount("account_name_callback_third", createAccountOptions, (err) => {
-          console.debug("====>add account second time ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
-          console.debug("====>ActsAccountCreateAccount_0500 AccountErrCode.JsErrCode:" + AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
+          console.info("====>add account second time ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
+          console.info("====>ActsAccountCreateAccount_0500 AccountErrCode.JsErrCode:" + AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
           expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
           appAccountManager.removeAccount("account_name_callback_third", (err) => {
-            console.debug("====>delete Account ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
+            console.info("====>delete Account ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
             expect(err).assertEqual(null);
-            console.debug("====>ActsAccountCreateAccount_0500 end====");
+            console.info("====>ActsAccountCreateAccount_0500 end====");
             done();
           });
         });
@@ -152,18 +152,18 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
     it('ActsAccountCreateAccount_0600', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0600 start====");
+      console.info("====>ActsAccountCreateAccount_0600 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>add account for the first time ActsAccountCreateAccount_0600====");
+      console.info("====>add account for the first time ActsAccountCreateAccount_0600====");
       await appAccountManager.createAccount("account_name_promise_third", createAccountOptions);
-      console.debug("====>add account for the second time ActsAccountCreateAccount_0600 start====");
+      console.info("====>add account for the second time ActsAccountCreateAccount_0600 start====");
       try {
         await appAccountManager.createAccount("account_name_promise_third", createAccountOptions);
       } catch (err) {
-        console.debug("====>add account for the second time 0600 err:" + JSON.stringify(err));
+        console.info("====>add account for the second time 0600 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
         await appAccountManager.removeAccount("account_name_promise_third");
-        console.debug("====>ActsAccountCreateAccount_0600 end====");
+        console.info("====>ActsAccountCreateAccount_0600 end====");
         done();
       }
     });
@@ -174,16 +174,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name exceeds the length limit of 512 characters
     */
     it('ActsAccountCreateAccount_0700', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0700 start====");
+      console.info("====>ActsAccountCreateAccount_0700 start====");
       var limitAccountName = '';
       for (var i = 0; i < NAMELIMIT + 1; i++) {
         limitAccountName += 't';
       }
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount(limitAccountName, createAccountOptions, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_0700 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_0700 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_0700 end====");
+        console.info("====>ActsAccountCreateAccount_0700 end====");
         done();
       });
     });
@@ -194,7 +194,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name exceeds the length limit of 512 characters
     */
     it('ActsAccountCreateAccount_0800', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0800 start====");
+      console.info("====>ActsAccountCreateAccount_0800 start====");
       var limitAccountName = '';
       for (var i = 0; i < NAMELIMIT + 1; i++) {
         limitAccountName += 'n';
@@ -205,9 +205,9 @@ export default function ActsAccountCreateAccount() {
         expect().assertFail();
         done();
       } catch (err) {
-        console.debug("====>add account ActsAccountCreateAccount_0800 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_0800 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_0800 end====");
+        console.info("====>ActsAccountCreateAccount_0800 end====");
         done();
       }
     });
@@ -218,7 +218,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
     */
     it('ActsAccountCreateAccount_0900', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_0900 start====");
+      console.info("====>ActsAccountCreateAccount_0900 start====");
       var limitAccountExtra = '';
       for (var i = 0; i < LENGTHLIMIT + 1; i++) {
         limitAccountExtra += 't';
@@ -229,9 +229,9 @@ export default function ActsAccountCreateAccount() {
           age: limitAccountExtra
         }
       }, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_0900 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_0900 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_0900 end====");
+        console.info("====>ActsAccountCreateAccount_0900 end====");
         done();
       });
     });
@@ -242,7 +242,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information exceeds the length limit of 1024 characters
     */
     it('ActsAccountCreateAccount_1000', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1000 start====");
+      console.info("====>ActsAccountCreateAccount_1000 start====");
       var limitAccountExtra = '';
       for (var i = 0; i < LENGTHLIMIT + 1; i++) {
         limitAccountExtra += 'e';
@@ -255,9 +255,9 @@ export default function ActsAccountCreateAccount() {
           }
         });
       } catch (err) {
-        console.debug("====>add account ActsAccountCreateAccount_1000 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_1000 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_1000 end====");
+        console.info("====>ActsAccountCreateAccount_1000 end====");
         done();
       }
     });
@@ -268,12 +268,12 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is an empty string
     */
     it('ActsAccountCreateAccount_1100', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1100 start====");
+      console.info("====>ActsAccountCreateAccount_1100 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("", createAccountOptions, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_1100 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_1100 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_1100 end====");
+        console.info("====>ActsAccountCreateAccount_1100 end====");
         done();
       });
     });
@@ -284,15 +284,15 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is an empty string
     */
     it('ActsAccountCreateAccount_1200', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1200 start====");
-      console.debug("====>ActsAccountCreateAccount_1200 add account start====");
+      console.info("====>ActsAccountCreateAccount_1200 start====");
+      console.info("====>ActsAccountCreateAccount_1200 add account start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         await appAccountManager.createAccount("", createAccountOptions);
       } catch (err) {
-        console.debug("====>add account ActsAccountCreateAccount_1200 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_1200 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(ERR_INVALID_PARAMETER);
-        console.debug("====>ActsAccountCreateAccount_1200 end====");
+        console.info("====>ActsAccountCreateAccount_1200 end====");
         done();
       }
     });
@@ -303,7 +303,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is an empty string
     */
     it('ActsAccountCreateAccount_1300', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1300 start====");
+      console.info("====>ActsAccountCreateAccount_1300 start====");
       var appAccountManager = account.createAppAccountManager();
       try {
         appAccountManager.createAccount("account_name_callback_seventh", "", (err) => {
@@ -312,7 +312,7 @@ export default function ActsAccountCreateAccount() {
         });
       } catch (err) {
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_1300 end====");
+        console.info("====>ActsAccountCreateAccount_1300 end====");
         done();
       }
     });
@@ -323,9 +323,9 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is an empty string
     */
     it('ActsAccountCreateAccount_1400', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1400 start====");
+      console.info("====>ActsAccountCreateAccount_1400 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>add account ActsAccountCreateAccount_1400 start====");
+      console.info("====>add account ActsAccountCreateAccount_1400 start====");
       try {
         await appAccountManager.createAccount("account_name_promise_seventh", "");
       } catch (err) {
@@ -341,14 +341,14 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is a special character such as a space
     */
     it('ActsAccountCreateAccount_1500', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1500 start====");
+      console.info("====>ActsAccountCreateAccount_1500 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
       try {
         appAccountManager.createAccount(specialStr, createAccountOptions, (err) => {
           console.error("====>createAccount ActsAccountCreateAccount_1500 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountCreateAccount_1500 end====");
+          console.info("====>ActsAccountCreateAccount_1500 end====");
           appAccountManager.removeAccount(" ", (err) => {
             console.error("====>removeAccount ActsAccountCreateAccount_1500 err:" + JSON.stringify(err));
             expect(err).assertEqual(null);
@@ -367,7 +367,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is a special character such as a space
     */
     it('ActsAccountCreateAccount_1600', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1600 start====");
+      console.info("====>ActsAccountCreateAccount_1600 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
       try {
@@ -375,9 +375,9 @@ export default function ActsAccountCreateAccount() {
         await appAccountManager.removeAccount(specialStr);
         done();
       } catch (err) {
-        console.debug("====>createAccount ActsAccountCreateAccount_1600 err:" + JSON.stringify(err));
+        console.info("====>createAccount ActsAccountCreateAccount_1600 err:" + JSON.stringify(err));
         expect().assertFail();
-        console.debug("====>ActsAccountCreateAccount_1600 end====");
+        console.info("====>ActsAccountCreateAccount_1600 end====");
         done();
       }
     });
@@ -389,16 +389,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is a special string
     */
     it('ActsAccountCreateAccount_1700', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1700 start====");
+      console.info("====>ActsAccountCreateAccount_1700 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
       appAccountManager.createAccount(specialStr, createAccountOptions, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_1700 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_1700 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount(specialStr, (err) => {
-          console.debug("====>delete Account ActsAccountCreateAccount_1700 err" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountCreateAccount_1700 err" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountCreateAccount_1700 end====");
+          console.info("====>ActsAccountCreateAccount_1700 end====");
           done();
         });
       });
@@ -410,10 +410,10 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name is a special string
     */
     it('ActsAccountCreateAccount_1800', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1800 start====");
+      console.info("====>ActsAccountCreateAccount_1800 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
-      console.debug("====>add account ActsAccountCreateAccount_1800====");
+      console.info("====>add account ActsAccountCreateAccount_1800====");
       try {
         await appAccountManager.createAccount(specialStr, createAccountOptions);
       } catch (err) {
@@ -421,12 +421,12 @@ export default function ActsAccountCreateAccount() {
         expect().assertFail();
       }
       try {
-        console.debug("====>delete account ActsAccountCreateAccount_1800====");
+        console.info("====>delete account ActsAccountCreateAccount_1800====");
         await appAccountManager.removeAccount(specialStr);
       } catch (err) {
-        console.debug("====>delete account err:" + JSON.stringify(err));
+        console.info("====>delete account err:" + JSON.stringify(err));
       }
-      console.debug("====>ActsAccountCreateAccount_1800 end====");
+      console.info("====>ActsAccountCreateAccount_1800 end====");
       done();
     });
 
@@ -436,7 +436,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is a special character such as a space
     */
     it('ActsAccountCreateAccount_1900', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_1900 start====");
+      console.info("====>ActsAccountCreateAccount_1900 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
       try {
@@ -446,7 +446,7 @@ export default function ActsAccountCreateAccount() {
         });
       } catch (err) {
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_1900 end====");
+        console.info("====>ActsAccountCreateAccount_1900 end====");
         done();
       }
     });
@@ -457,16 +457,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is a special character such as a space
     */
     it('ActsAccountCreateAccount_2000', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2000 start====");
+      console.info("====>ActsAccountCreateAccount_2000 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = " ";
-      console.debug("====>add account ActsAccountCreateAccount_2000====");
+      console.info("====>add account ActsAccountCreateAccount_2000====");
       try {
         await appAccountManager.createAccount("account_name_promise_tenth", specialStr);
       } catch (err) {
         console.error("====>add Account ActsAccountCreateAccount_2000 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_2000 end====");
+        console.info("====>ActsAccountCreateAccount_2000 end====");
         done();
       }
     });
@@ -477,7 +477,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is a special string
     */
     it('ActsAccountCreateAccount_2100', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2100 start====");
+      console.info("====>ActsAccountCreateAccount_2100 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
       try {
@@ -487,7 +487,7 @@ export default function ActsAccountCreateAccount() {
         });
       } catch (err) {
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_2100 end====");
+        console.info("====>ActsAccountCreateAccount_2100 end====");
         done();
       }
     });
@@ -498,16 +498,16 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information is a special string
     */
     it('ActsAccountCreateAccount_2200', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2200 start====");
+      console.info("====>ActsAccountCreateAccount_2200 start====");
       var appAccountManager = account.createAppAccountManager();
       var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
-      console.debug("====>add account ActsAccountCreateAccount_2200====");
+      console.info("====>add account ActsAccountCreateAccount_2200====");
       try {
         await appAccountManager.createAccount("account_extraInfo_promise_eleventh", specialStr);
       } catch (err) {
         console.error("====>add Account ActsAccountCreateAccount_2200 err:" + JSON.stringify(err));
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_2200 end====");
+        console.info("====>ActsAccountCreateAccount_2200 end====");
         done();
       }
     });
@@ -518,18 +518,18 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Repeatedly add accounts with the same name and different additional information
     */
     it('ActsAccountCreateAccount_2300', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2300 start====");
+      console.info("====>ActsAccountCreateAccount_2300 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("account_name_callback_same", createAccountOptions, (err) => {
-        console.debug("====>add account first time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
+        console.info("====>add account first time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.createAccount("account_name_callback_same", createAccountOptionsDiff, (err) => {
-          console.debug("====>add account second time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
+          console.info("====>add account second time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
           expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
           appAccountManager.removeAccount("account_name_callback_same", (err) => {
-            console.debug("====>delete Account ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
+            console.info("====>delete Account ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
             expect(err).assertEqual(null);
-            console.debug("====>ActsAccountCreateAccount_2300 end====");
+            console.info("====>ActsAccountCreateAccount_2300 end====");
             done();
           });
         });
@@ -542,18 +542,18 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Repeatedly add accounts with the same name and different additional information
     */
     it('ActsAccountCreateAccount_2400', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2400 start====");
+      console.info("====>ActsAccountCreateAccount_2400 start====");
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>add account for the first time ActsAccountCreateAccount_2400====");
+      console.info("====>add account for the first time ActsAccountCreateAccount_2400====");
       await appAccountManager.createAccount("account_name_promise_same", createAccountOptions);
-      console.debug("====>add account for the second time ActsAccountCreateAccount_2400====");
+      console.info("====>add account for the second time ActsAccountCreateAccount_2400====");
       try {
         await appAccountManager.createAccount("account_name_promise_same", createAccountOptionsDiff);
       } catch (err) {
-        console.debug("====>add account for the second time err:" + JSON.stringify(err));
+        console.info("====>add account for the second time err:" + JSON.stringify(err));
         expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
         await appAccountManager.removeAccount("account_name_promise_same");
-        console.debug("====>ActsAccountCreateAccount_2400 end====");
+        console.info("====>ActsAccountCreateAccount_2400 end====");
         done();
       }
     });
@@ -564,19 +564,19 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name reaches the limit of 512 characters
     */
     it('ActsAccountCreateAccount_2500', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2500 start====");
+      console.info("====>ActsAccountCreateAccount_2500 start====");
       var limitName = '';
       for (var i = 0; i < NAMELIMIT; i++) {
         limitName += 't';
       }
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount(limitName, createAccountOptions, (err) => {
-        console.debug("====>add account ActsAccountCreateAccount_2500 err:" + JSON.stringify(err));
+        console.info("====>add account ActsAccountCreateAccount_2500 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         appAccountManager.removeAccount(limitName, (err) => {
-          console.debug("====>delete Account ActsAccountCreateAccount_2500 err:" + JSON.stringify(err));
+          console.info("====>delete Account ActsAccountCreateAccount_2500 err:" + JSON.stringify(err));
           expect(err).assertEqual(null);
-          console.debug("====>ActsAccountCreateAccount_2500 end====");
+          console.info("====>ActsAccountCreateAccount_2500 end====");
           done();
         });
       });
@@ -588,13 +588,13 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : The account name reaches the limit of 512 characters
     */
     it('ActsAccountCreateAccount_2600', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2600 start====");
+      console.info("====>ActsAccountCreateAccount_2600 start====");
       var nameLimit = '';
       for (var i = 0; i < NAMELIMIT; i++) {
         nameLimit += 't';
       }
       var appAccountManager = account.createAppAccountManager();
-      console.debug("====>add account ActsAccountCreateAccount_2600 start====");
+      console.info("====>add account ActsAccountCreateAccount_2600 start====");
       try {
         await appAccountManager.createAccount(nameLimit, createAccountOptions);
       } catch (err) {
@@ -602,12 +602,12 @@ export default function ActsAccountCreateAccount() {
         expect().assertFail();
       }
       try {
-        console.debug("====>delete account ActsAccountCreateAccount_2600 start====");
+        console.info("====>delete account ActsAccountCreateAccount_2600 start====");
         await appAccountManager.removeAccount(nameLimit);
       } catch (err) {
-        console.debug("====>delete account err:" + JSON.stringify(err));
+        console.info("====>delete account err:" + JSON.stringify(err));
       }
-      console.debug("====>ActsAccountCreateAccount_2600 end====");
+      console.info("====>ActsAccountCreateAccount_2600 end====");
       done();
     });
 
@@ -617,7 +617,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information reaches the limit of 1024 characters
     */
     it('ActsAccountCreateAccount_2700', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2700 start====");
+      console.info("====>ActsAccountCreateAccount_2700 start====");
       var limitExtra = '';
       for (var i = 0; i < LENGTHLIMIT; i++) {
         limitExtra += 't';
@@ -630,7 +630,7 @@ export default function ActsAccountCreateAccount() {
         });
       } catch (err) {
         expect(err.code).assertEqual(401);
-        console.debug("====>ActsAccountCreateAccount_2700 end====");
+        console.info("====>ActsAccountCreateAccount_2700 end====");
         done();
       }
     });
@@ -641,7 +641,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.desc      : Additional information reaches the limit of 1024 characters
     */
     it('ActsAccountCreateAccount_2800', 0, async function (done) {
-      console.debug("====>ActsAccountCreateAccount_2800 start====");
+      console.info("====>ActsAccountCreateAccount_2800 start====");
       var extraLimit = '';
       for (var i = 0; i < LENGTHLIMIT; i++) {
         extraLimit += 't';
@@ -651,7 +651,7 @@ export default function ActsAccountCreateAccount() {
         await appAccountManager.createAccount("account_extra_promise_limit", extraLimit);
       } catch (err) {
         console.error("====>add account ActsAccountCreateAccount_2800 err:" + JSON.stringify(err));
-        console.debug("====>ActsAccountCreateAccount_2800 end====");
+        console.info("====>ActsAccountCreateAccount_2800 end====");
         expect(err.code).assertEqual(401);
         done();
       }

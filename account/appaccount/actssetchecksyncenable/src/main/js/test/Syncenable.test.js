@@ -24,15 +24,15 @@ var tokenID = undefined;
 export default function ActsSetCheckSyncEnable() {
     describe('ActsSetCheckSyncEnable', function () {
         beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
+            console.info("====>beforeAll start====");
             var appInfo = await bundle.getApplicationInfo('com.example.actssetchecksyncenable', 0, 100);
             tokenID = appInfo.accessTokenId;
-            console.debug("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
+            console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
             var atManager = abilityAccessCtrl.createAtManager();
             var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
-            console.debug("tokenId" + tokenID + " result:" + result);
+            console.info("tokenId" + tokenID + " result:" + result);
             sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
+            console.info("====>beforeAll end====");
             done();
         })
 
@@ -49,21 +49,21 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Get the synchronization flag of the account that has not set the synchronization flag
         */
         it('ActsSetCheckSyncEnable_0100', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0100 start====");
+            console.info("====>ActsSetCheckSyncEnable_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_notset", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.checkAppAccountSyncEnable("syncenable_callback_notset", (err, data)=>{
-                    console.debug("====>checkAppAccountSyncEnable 0100 err:" + JSON.stringify(err));
-                    console.debug("====>checkAppAccountSyncEnable 0100 data:" + JSON.stringify(data));
+                    console.info("====>checkAppAccountSyncEnable 0100 err:" + JSON.stringify(err));
+                    console.info("====>checkAppAccountSyncEnable 0100 data:" + JSON.stringify(data));
                     expect(err).assertEqual(null);
                     expect(data).assertEqual(false);
                     appAccountManager.deleteAccount("syncenable_callback_notset", (err)=>{
-                        console.debug("====>delete Account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
+                        console.info("====>delete Account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        console.debug("====>ActsSetCheckSyncEnable_0100 end====");
+                        console.info("====>ActsSetCheckSyncEnable_0100 end====");
                         done();
                     });
                 })
@@ -76,10 +76,10 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Get the synchronization flag of the account that has not set the synchronization flag
         */
         it('ActsSetCheckSyncEnable_0200', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0200 start====");
+            console.info("====>ActsSetCheckSyncEnable_0200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_0200 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_0200 start====");
             try{
                 await appAccountManager.addAccount("syncenable_promise_notset");
             }
@@ -88,7 +88,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0200 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0200 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_notset");
             }
@@ -97,9 +97,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 0200 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 0200 data:" + JSON.stringify(data));
             expect(data).assertEqual(false);
-            console.debug("====>delete account ActsSetCheckSyncEnable_0200 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_0200 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_notset");
             }
@@ -108,7 +108,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_0200 end====");
+            console.info("====>ActsSetCheckSyncEnable_0200 end====");
             done();
         });
 
@@ -118,24 +118,24 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
         it('ActsSetCheckSyncEnable_0300', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0300 start====");
+            console.info("====>ActsSetCheckSyncEnable_0300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_settrue", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_settrue", true, (err)=>{
-                    console.debug("====>setAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
+                    console.info("====>setAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.checkAppAccountSyncEnable("syncenable_callback_settrue", (err, data)=>{
-                        console.debug("====>checkAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
-                        console.debug("====>checkAppAccountSyncEnable 0300 data:" + JSON.stringify(data));
+                        console.info("====>checkAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
+                        console.info("====>checkAppAccountSyncEnable 0300 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual(true);
                         appAccountManager.deleteAccount("syncenable_callback_settrue", (err)=>{
-                            console.debug("====>delete Account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
+                            console.info("====>delete Account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsSetCheckSyncEnable_0300 end====");
+                            console.info("====>ActsSetCheckSyncEnable_0300 end====");
                             done();
                         });
                     })
@@ -149,10 +149,10 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to true for the account
         */
         it('ActsSetCheckSyncEnable_0400', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0400 start====");
+            console.info("====>ActsSetCheckSyncEnable_0400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_0400 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_0400 start====");
             try{
                 await appAccountManager.addAccount("syncenable_promise_settrue");
             }
@@ -161,9 +161,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_0400 start====");
+            console.info("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_0400 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_settrue", true);
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0400 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0400 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_settrue");
             }
@@ -172,9 +172,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 0400 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 0400 data:" + JSON.stringify(data));
             expect(data).assertEqual(true);
-            console.debug("====>delete account ActsSetCheckSyncEnable_0400 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_0400 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_settrue");
             }
@@ -183,7 +183,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_0400 end====");
+            console.info("====>ActsSetCheckSyncEnable_0400 end====");
             done();
         });
 
@@ -193,24 +193,24 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to false for the account
         */
         it('ActsSetCheckSyncEnable_0500', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0500 start====");
+            console.info("====>ActsSetCheckSyncEnable_0500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_setfalse", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_setfalse", false, (err)=>{
-                    console.debug("====>setAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
+                    console.info("====>setAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.checkAppAccountSyncEnable("syncenable_callback_setfalse", (err, data)=>{
-                        console.debug("====>checkAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
-                        console.debug("====>checkAppAccountSyncEnable 0500 data:" + JSON.stringify(data));
+                        console.info("====>checkAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
+                        console.info("====>checkAppAccountSyncEnable 0500 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual(false);
                         appAccountManager.deleteAccount("syncenable_callback_setfalse", (err)=>{
-                            console.debug("====>delete Account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
+                            console.info("====>delete Account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
-                            console.debug("====>ActsSetCheckSyncEnable_0500 end====");
+                            console.info("====>ActsSetCheckSyncEnable_0500 end====");
                             done();
                         });
                     })
@@ -224,10 +224,10 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check the synchronization flag after setting the synchronization flag to false for the account
         */
         it('ActsSetCheckSyncEnable_0600', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0600 start====");
+            console.info("====>ActsSetCheckSyncEnable_0600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_0600 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_0600 start====");
             try{
                 await appAccountManager.addAccount("syncenable_promise_setfalse");
             }
@@ -236,9 +236,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_0600 start====");
+            console.info("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_0600 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_setfalse", false);
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0600 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0600 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_setfalse");
             }
@@ -247,9 +247,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 0600 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 0600 data:" + JSON.stringify(data));
             expect(data).assertEqual(false);
-            console.debug("====>delete account ActsSetCheckSyncEnable_0600 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_0600 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_setfalse");
             }
@@ -258,7 +258,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_0600 end====");
+            console.info("====>ActsSetCheckSyncEnable_0600 end====");
             done();
         });
 
@@ -269,27 +269,27 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the first time and true for the second time
         */
         it('ActsSetCheckSyncEnable_0700', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0700 start====");
+            console.info("====>ActsSetCheckSyncEnable_0700 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_falsetrue", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_0700 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_0700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", false, (err)=>{
-                    console.debug("====>setAppAccountSyncEnable first time 0700 err:" + JSON.stringify(err));
+                    console.info("====>setAppAccountSyncEnable first time 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", true, (err)=>{
-                        console.debug("====>setAppAccountSyncEnable second time 0700 err:" + JSON.stringify(err));
+                        console.info("====>setAppAccountSyncEnable second time 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_falsetrue", (err, data)=>{
-                            console.debug("====>checkAppAccountSyncEnable 0700 err:" + JSON.stringify(err));
-                            console.debug("====>checkAppAccountSyncEnable 0700 data:" + JSON.stringify(data));
+                            console.info("====>checkAppAccountSyncEnable 0700 err:" + JSON.stringify(err));
+                            console.info("====>checkAppAccountSyncEnable 0700 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual(true);
                             appAccountManager.deleteAccount("syncenable_callback_falsetrue", (err)=>{
-                                console.debug("====>delete Account 0700 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0700 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsSetCheckSyncEnable_0700 end====");
+                                console.info("====>ActsSetCheckSyncEnable_0700 end====");
                                 done();
                             });
                         })
@@ -305,16 +305,16 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the first time and true for the second time
         */
         it('ActsSetCheckSyncEnable_0800', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>ActsSetCheckSyncEnable_0800 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_0800 start====");
             await appAccountManager.addAccount("syncenable_promise_truefalse");
-            console.debug("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_0800 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truefalse", false);
-            console.debug("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_0800 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truefalse", true);
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_0800 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_truefalse");
             }
@@ -323,9 +323,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 0800 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 0800 data:" + JSON.stringify(data));
             expect(data).assertEqual(true);
-            console.debug("====>delete account ActsSetCheckSyncEnable_0800 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_0800 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_truefalse");
             }
@@ -334,7 +334,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_0800 end====");
+            console.info("====>ActsSetCheckSyncEnable_0800 end====");
             done();
         });
 
@@ -345,27 +345,27 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the first time and false for the second time
         */
         it('ActsSetCheckSyncEnable_0900', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_0900 start====");
+            console.info("====>ActsSetCheckSyncEnable_0900 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_falsetrue", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_0900 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_0900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", true, (err)=>{
-                    console.debug("====>setAppAccountSyncEnable first time 0900 err:" + JSON.stringify(err));
+                    console.info("====>setAppAccountSyncEnable first time 0900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", false, (err)=>{
-                        console.debug("====>setAppAccountSyncEnable second time 0900 err:" + JSON.stringify(err));
+                        console.info("====>setAppAccountSyncEnable second time 0900 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_falsetrue", (err, data)=>{
-                            console.debug("====>checkAppAccountSyncEnable 0900 err:" + JSON.stringify(err));
-                            console.debug("====>checkAppAccountSyncEnable 0900 data:" + JSON.stringify(data));
+                            console.info("====>checkAppAccountSyncEnable 0900 err:" + JSON.stringify(err));
+                            console.info("====>checkAppAccountSyncEnable 0900 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual(false);
                             appAccountManager.deleteAccount("syncenable_callback_falsetrue", (err)=>{
-                                console.debug("====>delete Account 0900 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 0900 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsSetCheckSyncEnable_0900 end====");
+                                console.info("====>ActsSetCheckSyncEnable_0900 end====");
                                 done();
                             });
                         })
@@ -381,16 +381,16 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the first time and false for the second time
         */
         it('ActsSetCheckSyncEnable_1000', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>ActsSetCheckSyncEnable_1000 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_1000 start====");
             await appAccountManager.addAccount("syncenable_promise_truefalse");
-            console.debug("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_1000 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truefalse", true);
-            console.debug("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_1000 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truefalse", false);
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1000 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_truefalse");
             }
@@ -399,9 +399,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 1000 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 1000 data:" + JSON.stringify(data));
             expect(data).assertEqual(false);
-            console.debug("====>delete account ActsSetCheckSyncEnable_1000 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_1000 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_truefalse");
             }
@@ -410,7 +410,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_1000 end====");
+            console.info("====>ActsSetCheckSyncEnable_1000 end====");
             done();
         });
 
@@ -421,27 +421,27 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the first time and true for the second time
         */
         it('ActsSetCheckSyncEnable_1100', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1100 start====");
+            console.info("====>ActsSetCheckSyncEnable_1100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
+            console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_truetrue", (err)=>{
-                console.debug("====>add account ActsSetCheckSyncEnable_1100 err:" + JSON.stringify(err));
+                console.info("====>add account ActsSetCheckSyncEnable_1100 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_truetrue", true, (err)=>{
-                    console.debug("====>setAppAccountSyncEnable first time 1100 err:" + JSON.stringify(err));
+                    console.info("====>setAppAccountSyncEnable first time 1100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_truetrue", true, (err)=>{
-                        console.debug("====>setAppAccountSyncEnable second time 1100 err:" + JSON.stringify(err));
+                        console.info("====>setAppAccountSyncEnable second time 1100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_truetrue", (err, data)=>{
-                            console.debug("====>checkAppAccountSyncEnable 1100 err:" + JSON.stringify(err));
-                            console.debug("====>checkAppAccountSyncEnable 1100 data:" + JSON.stringify(data));
+                            console.info("====>checkAppAccountSyncEnable 1100 err:" + JSON.stringify(err));
+                            console.info("====>checkAppAccountSyncEnable 1100 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual(true);
                             appAccountManager.deleteAccount("syncenable_callback_truetrue", (err)=>{
-                                console.debug("====>delete Account 1100 err:" + JSON.stringify(err));
+                                console.info("====>delete Account 1100 err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
-                                console.debug("====>ActsSetCheckSyncEnable_1100 end====");
+                                console.info("====>ActsSetCheckSyncEnable_1100 end====");
                                 done();
                             });
                         })
@@ -457,16 +457,16 @@ export default function ActsSetCheckSyncEnable() {
         *                 for the true time and true for the second time
         */
         it('ActsSetCheckSyncEnable_1200', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>ActsSetCheckSyncEnable_1200 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>add account ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>creat finish====");
+            console.info("====>add account ActsSetCheckSyncEnable_1200 start====");
             await appAccountManager.addAccount("syncenable_promise_truetrue");
-            console.debug("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>setAppAccountSyncEnable first time ActsSetCheckSyncEnable_1200 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truetrue", true);
-            console.debug("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>setAppAccountSyncEnable second time ActsSetCheckSyncEnable_1200 start====");
             await appAccountManager.setAppAccountSyncEnable("syncenable_promise_truetrue", true);
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1200 start====");
             try{
                 var data = await appAccountManager.checkAppAccountSyncEnable("syncenable_promise_truetrue");
             }
@@ -475,9 +475,9 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>checkAppAccountSyncEnable 1200 data:" + JSON.stringify(data));
+            console.info("====>checkAppAccountSyncEnable 1200 data:" + JSON.stringify(data));
             expect(data).assertEqual(true);
-            console.debug("====>delete account ActsSetCheckSyncEnable_1200 start====");
+            console.info("====>delete account ActsSetCheckSyncEnable_1200 start====");
             try{
                 await appAccountManager.deleteAccount("syncenable_promise_truetrue");
             }
@@ -486,7 +486,7 @@ export default function ActsSetCheckSyncEnable() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsSetCheckSyncEnable_1200 end====");
+            console.info("====>ActsSetCheckSyncEnable_1200 end====");
             done();
         });
 
@@ -496,15 +496,15 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Set synchronization flag for non-existent account
         */
         it('ActsSetCheckSyncEnable_1300', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1300 start====");
+            console.info("====>ActsSetCheckSyncEnable_1300 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_1300 start====")
+            console.info("====>creat finish====");
+            console.info("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_1300 start====")
             var accountNotExist = "syncenable_callback_notexist";
             appAccountManager.setAppAccountSyncEnable(accountNotExist, true, (err)=>{
-                console.debug("====>setAppAccountSyncEnable 1300 err:" + JSON.stringify(err));
+                console.info("====>setAppAccountSyncEnable 1300 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsSetCheckSyncEnable_1300 end====");
+                console.info("====>ActsSetCheckSyncEnable_1300 end====");
                 done();
             });
         });
@@ -515,18 +515,18 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Set synchronization flag for non-existent account
         */
         it('ActsSetCheckSyncEnable_1400', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1400 start====");
+            console.info("====>ActsSetCheckSyncEnable_1400 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_1400 start====")
+            console.info("====>creat finish====");
+            console.info("====>setAppAccountSyncEnable ActsSetCheckSyncEnable_1400 start====")
             var accountNotExist = "syncenable_promise_notexist";
             try{
                 await appAccountManager.setAppAccountSyncEnable(accountNotExist, true);
             }
             catch(err){
-                console.debug("====>setAppAccountSyncEnable 1400 err:" + JSON.stringify(err));
+                console.info("====>setAppAccountSyncEnable 1400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsSetCheckSyncEnable_1400 end====");
+                console.info("====>ActsSetCheckSyncEnable_1400 end====");
                 done();
             }
         });
@@ -537,15 +537,15 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check synchronization flag for non-existent account
         */
         it('ActsSetCheckSyncEnable_1500', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1500 start====");
+            console.info("====>ActsSetCheckSyncEnable_1500 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1500 start====")
+            console.info("====>creat finish====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1500 start====")
             var accountNotExist = "syncenable_callback_notexist";
             appAccountManager.checkAppAccountSyncEnable(accountNotExist, (err, data)=>{
-                console.debug("====>checkAppAccountSyncEnable 1500 err:" + JSON.stringify(err));
+                console.info("====>checkAppAccountSyncEnable 1500 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsSetCheckSyncEnable_1500 end====");
+                console.info("====>ActsSetCheckSyncEnable_1500 end====");
                 done();
             });
         });
@@ -556,18 +556,18 @@ export default function ActsSetCheckSyncEnable() {
         * @tc.desc      : Check synchronization flag for non-existent account
         */
         it('ActsSetCheckSyncEnable_1600', 0, async function (done) {
-            console.debug("====>ActsSetCheckSyncEnable_1600 start====");
+            console.info("====>ActsSetCheckSyncEnable_1600 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.debug("====>creat finish====");
-            console.debug("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1600 start====")
+            console.info("====>creat finish====");
+            console.info("====>checkAppAccountSyncEnable ActsSetCheckSyncEnable_1600 start====")
             var accountNotExist = "syncenable_promise_notexist";
             try{
                 await appAccountManager.checkAppAccountSyncEnable(accountNotExist);
             }
             catch(err){
-                console.debug("====>checkAppAccountSyncEnable 1600 err:" + JSON.stringify(err));
+                console.info("====>checkAppAccountSyncEnable 1600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsSetCheckSyncEnable_1600 end====");
+                console.info("====>ActsSetCheckSyncEnable_1600 end====");
                 done();
             }
         });

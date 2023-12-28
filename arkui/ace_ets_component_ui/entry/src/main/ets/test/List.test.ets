@@ -35,6 +35,7 @@ import RichTextJsunit from './RichTextJsunit.test.ets';
 import SearchJsunit from './SearchJsunit.test.ets';
 import GridJsunit from './GridJsunit.test.ets';
 import TextClockJsunit from './TextClockJsunit.test.ets';
+import TextClockLongJsunit from './TextClockLongJsunit.test.ets';
 import ListJsunit from './ListJsunit.test.ets';
 import NavRouterJsunit from './NavRouterJsunit.test.ets';
 import TextInputJsunit from './TextInputJsunit.test.ets';
@@ -199,6 +200,12 @@ import StateArray1 from './@stateTest/StateArray1.test.ets'
 import StateColor from './@stateTest/StateColor.test.ets'
 import StateHight from './@stateTest/StateHight.test.ets'
 import StateNumber from './@stateTest/StateNumber.test.ets'
+import HoverJsunit5 from './HoverTest/HoverJsunit5.test.ets'
+import HoverJsunit11 from './HoverTest/HoverJsunit11.test.ets'
+import HoverJsunit17 from './HoverTest/HoverJsunit17.test.ets'
+import HoverJsunit23 from './HoverTest/HoverJsunit23.test.ets'
+import HoverJsunit25 from './HoverTest/HoverJsunit25.test.ets'
+
 
 import comSizeAbilityTest_01 from './comSizeAbility/comSizeAbilityTest_01.test';
 import comSizeAbilityTest_02 from './comSizeAbility/comSizeAbilityTest_02.test';
@@ -229,8 +236,6 @@ import comSizeAbilityTest_27 from './comSizeAbility/comSizeAbilityTest_27.test';
 import comSizeAbilityTest_28 from './comSizeAbility/comSizeAbilityTest_28.test';
 import comSizeAbilityTest_29 from './comSizeAbility/comSizeAbilityTest_29.test';
 import NavigationStack01Jsunit from './Navigation/NavigationStack01Jsunit.test';
-import NavigationStack02Jsunit from './Navigation/NavigationStack02Jsunit.test';
-import NavigationStack03Jsunit from './Navigation/NavigationStack03Jsunit.test';
 import NavigationStack10Jsunit from './Navigation/NavigationStack10Jsunit.test';
 import NavigationStack11Jsunit from './Navigation/NavigationStack11Jsunit.test';
 import NavigationStack12Jsunit from './Navigation/NavigationStack12Jsunit.test';
@@ -264,7 +269,49 @@ import NavigationMode14Jsunit from './Navigation/NavigationMode14Jsunit.test';
 import NavigationMode15Jsunit from './Navigation/NavigationMode15Jsunit.test';
 import NavigationMode16Jsunit from './Navigation/NavigationMode16Jsunit.test';
 import NavigationMode17Jsunit from './Navigation/NavigationMode17Jsunit.test';
-
+import AnimationJsunit from './AnimationJsunit.test.ets';
+import getListItemRect1 from './getItemRect/list/getListItemRect1.test';
+import getListItemRect2 from './getItemRect/list/getListItemRect2.test';
+import getListItemRect3 from './getItemRect/list/getListItemRect3.test';
+import getListItemRect4 from './getItemRect/list/getListItemRect4.test';
+import getListItemRect5 from './getItemRect/list/getListItemRect5.test';
+import getListItemRect6 from './getItemRect/list/getListItemRect6.test';
+import getListItemGroupRect1 from './getItemRect/list/getListItemGroupRect1.test';
+import getListItemGroupRect2 from './getItemRect/list/getListItemGroupRect2.test';
+import getListItemGroupRect3 from './getItemRect/list/getListItemGroupRect3.test';
+import getListItemGroupRect4 from './getItemRect/list/getListItemGroupRect4.test';
+import getListItemGroupRect5 from './getItemRect/list/getListItemGroupRect5.test';
+import getListItemGroupRect6 from './getItemRect/list/getListItemGroupRect6.test';
+import getGridItemRect1 from './getItemRect/grid/getGridItemRect1.test';
+import getGridItemRect2 from './getItemRect/grid/getGridItemRect2.test';
+import getGridItemRect3 from './getItemRect/grid/getGridItemRect3.test';
+import getGridItemRect4 from './getItemRect/grid/getGridItemRect4.test';
+import getGridItemRect5 from './getItemRect/grid/getGridItemRect5.test';
+import getGridItemRect6 from './getItemRect/grid/getGridItemRect6.test';
+import getScrollItemRect1 from './getItemRect/scroll/getScrollItemRect1.test';
+import getScrollItemRect2 from './getItemRect/scroll/getScrollItemRect2.test';
+import getScrollItemRect3 from './getItemRect/scroll/getScrollItemRect3.test';
+import getScrollItemRect4 from './getItemRect/scroll/getScrollItemRect4.test';
+import getScrollItemRect5 from './getItemRect/scroll/getScrollItemRect5.test';
+import getWaterFlowItemRect1 from './getItemRect/waterFlow/getWaterFlowItemRect1.test';
+import getWaterFlowItemRect2 from './getItemRect/waterFlow/getWaterFlowItemRect2.test';
+import getWaterFlowItemRect3 from './getItemRect/waterFlow/getWaterFlowItemRect3.test';
+import getWaterFlowItemRect4 from './getItemRect/waterFlow/getWaterFlowItemRect4.test';
+import getWaterFlowItemRect5 from './getItemRect/waterFlow/getWaterFlowItemRect5.test';
+import search_maxLength from './TextNewInterFace/search_maxLength.test';
+import search_maxLength2 from './TextNewInterFace/search_maxLength2.test';
+import textInput_caret from './TextNewInterFace/textInput_caret.test';
+import search_caret from './TextNewInterFace/search_caret.test';
+import MeasureJsunit from './MeasureJsunit.test.ets';
+import ScrollToIndexForWaterFlowJsunit01 from './ScrollToIndex/ScrollToIndexForWaterFlowJsunit01.test';
+import ScrollToIndexForWaterFlowJsunit02 from './ScrollToIndex/ScrollToIndexForWaterFlowJsunit02.test';
+import ScrollToIndexForGridJsunit01 from './ScrollToIndex/ScrollToIndexForGridJsunit01.test';
+import ScrollToIndexForGridJsunit02 from './ScrollToIndex/ScrollToIndexForGridJsunit02.test';
+import ScrollToIndexForGridJsunit03 from './ScrollToIndex/ScrollToIndexForGridJsunit03.test';
+import ChipAction from './Chip/ChipAction.test';
+import ChipOnClose from './Chip/ChipOnClose.test';
+import ChipAction2 from './Chip/ChipAction2.test';
+import ChipOnClose2 from './Chip/ChipOnClose2.test';
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -317,6 +364,7 @@ export default function testsuite() {
   SearchJsunit();
   GridJsunit();
   TextClockJsunit();
+  TextClockLongJsunit();
   ListJsunit();
   NavRouterJsunit();
   TextInputJsunit();
@@ -479,9 +527,12 @@ export default function testsuite() {
   StateColor()
   StateHight()
   StateNumber()
+  HoverJsunit5()
+  HoverJsunit11()
+  HoverJsunit17()
+  HoverJsunit23()
+  HoverJsunit25()
   NavigationStack01Jsunit();
-  NavigationStack02Jsunit();
-  NavigationStack03Jsunit();
   NavigationStack10Jsunit();
   NavigationStack11Jsunit();
   NavigationStack12Jsunit();
@@ -515,4 +566,47 @@ export default function testsuite() {
   NavigationMode15Jsunit();
   NavigationMode16Jsunit();
   NavigationMode17Jsunit();
+  AnimationJsunit();
+  search_maxLength();
+  search_maxLength2();
+  textInput_caret();
+  search_caret();
+  ChipAction();
+  ChipOnClose();
+  ChipAction2();
+  ChipOnClose2();
+  getListItemRect1();
+  getListItemRect2();
+  getListItemRect3();
+  getListItemRect4();
+  getListItemRect5();
+  getListItemRect6();
+  getListItemGroupRect1();
+  getListItemGroupRect2();
+  getListItemGroupRect3();
+  getListItemGroupRect4();
+  getListItemGroupRect5();
+  getListItemGroupRect6();
+  getGridItemRect1();
+  getGridItemRect2();
+  getGridItemRect3();
+  getGridItemRect4();
+  getGridItemRect5();
+  getGridItemRect6();
+  getScrollItemRect1();
+  getScrollItemRect2();
+  getScrollItemRect3();
+  getScrollItemRect4();
+  getScrollItemRect5();
+  getWaterFlowItemRect1();
+  getWaterFlowItemRect2();
+  getWaterFlowItemRect3();
+  getWaterFlowItemRect4();
+  getWaterFlowItemRect5();
+  MeasureJsunit();
+  ScrollToIndexForWaterFlowJsunit01();
+  ScrollToIndexForWaterFlowJsunit02();
+  ScrollToIndexForGridJsunit01();
+  ScrollToIndexForGridJsunit02();
+  ScrollToIndexForGridJsunit03();
 }

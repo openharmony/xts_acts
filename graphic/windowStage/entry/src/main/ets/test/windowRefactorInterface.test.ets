@@ -64,14 +64,17 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     }
 
     /**
-	  * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
-	  * @tc.name       testSetWindowSystemBarProperties_Callback
-	  * @tc.desc       Verify the scene where the colors of the status bar and navigation bar are set in RGB
-	  */
+	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
+	   * @tc.name      : testSetWindowSystemBarProperties_Callback
+	   * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
+	   * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowSystemBarProperties_Callback', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let listenerFlag = listenerStatus.ready;
-      let caseName = 'setWindowSystemBarPropertiesTest1';
+      let caseName = 'testSetWindowSystemBarProperties_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
@@ -117,10 +120,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	  * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
-	  * @tc.name       testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
-	  * @tc.desc       Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-	  */
+	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
+	   * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
+	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+	   * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True', 0, async function (done) {
       let cloneColorArr = {
         SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
@@ -128,7 +134,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         NBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
         NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
       };
-      let caseName = 'setWindowSystemBarPropertiesTest2';
+      let caseName = 'testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
@@ -175,13 +181,16 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	   * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
-	   * @tc.name       testSetWindowSystemBarProperties_SetColor_By_Name
-	   * @tc.desc       Verify the scene where the status bar and navigation bar colors are set as keywords
-	   */
+	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
+	   * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
+	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
+	   * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowSystemBarProperties_SetColor_By_Name', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
-      let caseName = 'setWindowSystemBarPropertiesTest3';
+      let caseName = 'testSetWindowSystemBarProperties_SetColor_By_Name';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let tempWnd = windowStage.getMainWindowSync();
       expect(tempWnd != null).assertTrue();
@@ -227,10 +236,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1990
-    * @tc.name       testSetWindowSystemBarProperties_SetColor_By_RGB
-    * @tc.desc       Verify the scene where the status bar and navigation bar colors are set as keywords
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1990
+     * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_RGB
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowSystemBarProperties_SetColor_By_RGB', 0, async function (done) {
       let SystemBarProperties = {
         statusBarColor: '#ff00ff',
@@ -283,12 +295,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0710
-     * @tc.name        testIswindowShowingTest
-     * @tc.desc        To verify the widow isshowing
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0710
+     * @tc.name      : testIswindowShowingTest
+     * @tc.desc      : To verify the widow isshowing
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testIswindowShowingTest', 0, async function (done) {
-      console.info('windowTest isWindowShowing begin');
+      console.info('windowTest testIswindowShowingTest begin');
       let config = {
         name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
@@ -314,9 +329,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       })
     })
     /**
-     * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1410
-     * @tc.name       testSetUIContent_Existence_page
-     * @tc.desc       Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1410
+     * @tc.name      : testSetUIContent_Existence_page
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetUIContent_Existence_page', 0, async function (done) {
       let config = {
@@ -349,13 +367,16 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1400
-    * @tc.name       testSetUIContentTestCallback1
-    * @tc.desc       Verify the scenario of loading an existing page
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1400
+     * @tc.name      : testSetUIContentTestCallback1
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetUIContentTestCallback1', 0, async function (done) {
       let windowClass = null;
-      let msgStr='setUIContentTestCallBack1'
+      let msgStr='testSetUIContentTestCallback1'
       let config = {
         name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
@@ -410,9 +431,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1420
-     * @tc.name       testSetUIContent_Invalid_Parameter
-     * @tc.desc       Verify the scene of loading the page with illegal values
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1420
+     * @tc.name      : testSetUIContent_Invalid_Parameter
+     * @tc.desc      : Verify the scene of loading the page with illegal values
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetUIContent_Invalid_Parameter', 0, async function (done) {
       let windowClass = null;
@@ -454,9 +478,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1430
-     * @tc.name       testSetUIContent_Not_Existent_Parameter
-     * @tc.desc       Verify the scene of loading the page with illegal values
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1430
+     * @tc.name      : testSetUIContent_Not_Existent_Parameter
+     * @tc.desc      : Verify the scene of loading the page with illegal values
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetUIContent_Not_Existent_Parameter', 0, async function (done) {
       let config = {
@@ -491,12 +518,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1650
-    * @tc.name        testSetWindowColorSpace_Multiple_Wide_Gamut
-    * @tc.desc        To verify the setting of the wide color gamut color space
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1650
+     * @tc.name      : testSetWindowColorSpace_Multiple_Wide_Gamut
+     * @tc.desc      : To verify the setting of the wide color gamut color space
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowColorSpace_Multiple_Wide_Gamut', 0, async function (done) {
-      console.info('windowTest setWindowColorSpace1 begin');
+      console.info('windowTest testSetWindowColorSpace_Multiple_Wide_Gamut begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).catch((err) => {
@@ -518,12 +548,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1670
-     * @tc.name        testSetWindowColorSpace_Invalid_ParamsTwo
-     * @tc.desc        To verify that the color space of invaild values is set successfully
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1670
+     * @tc.name      : testSetWindowColorSpace_Invalid_ParamsTwo
+     * @tc.desc      : To verify that the color space of invaild values is set successfully
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowColorSpace_Invalid_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowColorSpaceTest2 begin');
+      console.info('windowTest testSetWindowColorSpace_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -547,12 +580,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
-     * @tc.name      testSetWindowColorSpaceTest
-     * @tc.desc      To verify the setting of the wide color gamut color space
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
+     * @tc.name      : testSetWindowColorSpaceTest
+     * @tc.desc      : To verify the setting of the wide color gamut color space
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowColorSpaceTest', 0, async function (done) {
-      console.info('windowTest SetWindowColorSpaceTest3 begin');
+      console.info('windowTest testSetWindowColorSpaceTest begin');
       let wnd = windowStage.getMainWindowSync();
       let msgStr = 'setColorSpace_Test_003'
       expect(wnd != null).assertTrue();
@@ -600,12 +636,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1460
-     * @tc.name			testSetWindowBackgroundColor_Base_ParamsOne
-     * @tc.desc			Set the window background color to red and Default opacity
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1460
+     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsOne
+     * @tc.desc      :	Set the window background color to red and Default opacity
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowBackgroundColor_Base_ParamsOne', 0, async function (done) {
-      console.info('windowTest01 setWindowBackgroundColorTest1 begin');
+      console.info('windowTest01 testSetWindowBackgroundColor_Base_ParamsOne begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#00ff33';
@@ -630,12 +669,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1480
-     * @tc.name			testSetWindowBackgroundColor_Base_ParamsTwo
-     * @tc.desc			Set the window background color to red opaque
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1480
+     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsTwo
+     * @tc.desc      :	Set the window background color to red opaque
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBackgroundColor_Base_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest2 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Base_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#ffffff00';
@@ -660,12 +702,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
-     * @tc.name			testSetWindowBackgroundColor_Base_ParamsThree
-     * @tc.desc			Set the window background color to red transparent
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
+     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsThree
+     * @tc.desc      :	Set the window background color to red transparent
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBackgroundColor_Base_ParamsThree', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest3 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Base_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#00ffff00';
@@ -691,12 +736,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1510
-     * @tc.name			testSetWindowBackgroundColor_Invalid_ParamsTwo
-     * @tc.desc			Set the background color input parameter as an outlier
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1510
+     * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsTwo
+     * @tc.desc      :	Set the background color input parameter as an outlier
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsTwo', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest4 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#ff00';
@@ -712,12 +760,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1520
-     * @tc.name			testSetWindowBackgroundColor_Invalid_ParamsThree
-     * @tc.desc			Setting window background color input exception ARGB
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1520
+     * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsThree
+     * @tc.desc      :	Setting window background color input exception ARGB
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBackgroundColor_Invalid_ParamsThree', 0, async function (done) {
-      console.info('windowTest setWindowBackgroundColorTest5 begin');
+      console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#hhgghhgg';
@@ -741,12 +792,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1530
-     * @tc.name			testSetWindowBackgroundColor_Base_ParamsFour
-     * @tc.desc			Setting window background color input exception RGB
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1530
+     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsFour
+     * @tc.desc      :	Setting window background color input exception RGB
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBackgroundColor_Base_ParamsFour', 0, async function (done) {
-      console.log('windowTest setWindwoBackgroundColorTest6 begin');
+      console.log('windowTest testSetWindowBackgroundColor_Base_ParamsFour begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let color = '#hhgghhgg';
@@ -761,12 +815,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1580
-     * @tc.name			testSetWindowBrightness_Multiple_Calls_Promise
-     * @tc.desc			Setting the brightness bar input parameter is normal
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1580
+     * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Promise
+     * @tc.desc      :	Setting the brightness bar input parameter is normal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Multiple_Calls_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest1 begin');
+      console.info('windowTest testSetWindowBrightness_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(0).catch((err) => {
@@ -796,12 +853,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsTwo_Promise
-     * @tc.desc			Set the brightness bar input parameter to decimal
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Promise
+     * @tc.desc      :	Set the brightness bar input parameter to decimal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsTwo_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest2 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(0.564789).then(() => {
@@ -817,12 +877,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1620
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsThree_Promise
-     * @tc.desc			Set the brightness bar input parameter to number max
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1620
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Promise
+     * @tc.desc      :	Set the brightness bar input parameter to number max
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsThree_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest3 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = Number.MAX_VALUE;
@@ -847,12 +910,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1630
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsFour_Promise
-     * @tc.desc			Set the brightness bar input parameter to number min
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1630
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFour_Promise
+     * @tc.desc      :	Set the brightness bar input parameter to number min
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsFour_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest4 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsFour_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(Number.MIN_VALUE).then(() => {
@@ -867,12 +933,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1640
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsFive_Promise
-     * @tc.desc			Setting brightness bar input parameter exception
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1640
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFive_Promise
+     * @tc.desc      :	Setting brightness bar input parameter exception
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsFive_Promise', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest5 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsFive_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = 1.1;
@@ -914,12 +983,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1540
-     * @tc.name			testSetWindowBrightness_Multiple_Calls_Callback
-     * @tc.desc			Set the brightness bar input parameter to decimal
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1540
+     * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Callback
+     * @tc.desc      :	et the brightness bar input parameter to decimal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Multiple_Calls_Callback', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTestCallBack2 begin');
+      console.info('windowTest testSetWindowBrightness_Multiple_Calls_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -967,12 +1039,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1550
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsOne_Callback
-     * @tc.desc			Set the brightness bar input parameter to number max
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1550
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsOne_Callback
+     * @tc.desc      :	Set the brightness bar input parameter to number max
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsOne_Callback', 0, async function (done) {
-      console.info('windowTest setBrightnessTestCallback3 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsOne_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = Number.MAX_VALUE;
@@ -1005,12 +1080,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1560
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsTwo_Callback
-     * @tc.desc			Set the brightness bar input parameter to number min
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1560
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Callback
+     * @tc.desc      :	Set the brightness bar input parameter to number min
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsTwo_Callback', 0, async function (done) {
-      console.info('windowTest setBrightnessTestCallBack4 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -1042,12 +1120,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1570
-     * @tc.name			testSetWindowBrightness_Invalid_ParamsThree_Callback
-     * @tc.desc			Setting brightness bar input parameter exception
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1570
+     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Callback
+     * @tc.desc      :	Setting brightness bar input parameter exception
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
      */
     it('testSetWindowBrightness_Invalid_ParamsThree_Callback', 0, async function (done) {
-      console.info('windowTest setWindowBrightnessTest5 begin');
+      console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
@@ -1079,14 +1160,17 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1690
-     * @tc.name			testSetWindowFocusable_Multiple_Calls_Callback
-     * @tc.desc			Setting window focus acquisition and defocus
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1690
+     * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Callback
+     * @tc.desc      :	Setting window focus acquisition and defocus
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowFocusable_Multiple_Calls_Callback', 0, async function (done) {
-      console.info('windowTest setFocusableTest1 begin');
+      console.info('windowTest testSetWindowFocusable_Multiple_Calls_Callback begin');
       let wnd = windowStage.getMainWindowSync();
-      let msgStr ='setWindowFocusableCallBack_Test_001'
+      let msgStr ='testSetWindowFocusable_Multiple_Calls_Callback'
       expect(wnd != null).assertTrue();
       function setWindowFocusableFun(){
         return new Promise((resolve, reject) => {
@@ -1136,12 +1220,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
-    * @tc.name			testSetWindowFocusable_Multiple_Calls_Promise
-    * @tc.desc			Setting window focus acquisition and defocus
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
+     * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Promise
+     * @tc.desc      :	Setting window focus acquisition and defocus
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowFocusable_Multiple_Calls_Promise', 0, async function (done) {
-      console.info('windowTest setWindowFocusableTest1 begin');
+      console.info('windowTest testSetWindowFocusable_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowFocusable(false).then(async () => {
@@ -1165,12 +1252,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2050
-    * @tc.name			testSetWindowTouchable_Invoked_Twice
-    * @tc.desc			Set whether the window can be touched or not
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2050
+     * @tc.name      :	testSetWindowTouchable_Invoked_Twice
+     * @tc.desc      :	Set whether the window can be touched or not
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowTouchable_Invoked_Twice', 0, async function (done) {
-      console.info('windowTest setTouchableTest1 begin');
+      console.info('windowTest testSetWindowTouchable_Invoked_Twice begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let data = wnd.getWindowProperties();
@@ -1197,12 +1287,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2030
-     * @tc.name			testSetWindowTouchable_Callback_Form
-     * @tc.desc			Set whether the window can be touched or not
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2030
+     * @tc.name      :	testSetWindowTouchable_Callback_Form
+     * @tc.desc      :	Set whether the window can be touched or not
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowTouchable_Callback_Form', 0, async function (done) {
-      let msgStr ='setWindowTouchableCallBack_Test_001'
+      let msgStr ='testSetWindowTouchable_Callback_Form'
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       function setWindowTouchableFun(){
@@ -1249,12 +1342,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1750
-    * @tc.name			testSetWindowKeepScreenOn_Base_True_Promise
-    * @tc.desc			Set whether the window screenOn
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1750
+     * @tc.name      :	testSetWindowKeepScreenOn_Base_True_Promise
+     * @tc.desc      :	Set whether the window screenOn
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowKeepScreenOn_Base_True_Promise', 0, async function (done) {
-      console.info('windowTest setWindowKeepScreenOnTest2 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1272,12 +1368,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1730
-     * @tc.name			testSetWindowKeepScreenOn_Base_False_Promise
-     * @tc.desc			Set whether the window screenOn
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1730
+     * @tc.name      :	testSetWindowKeepScreenOn_Base_False_Promise
+     * @tc.desc      :	Set whether the window screenOn
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowKeepScreenOn_Base_False_Promise', 0, async function (done) {
-      console.info('windowTest setWindowKeepScreenOnTest1 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowKeepScreenOn(false).then(() => {
@@ -1293,12 +1392,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1720
-     * @tc.name			testSetWindowKeepScreenOn_Base_Callback
-    * @tc.desc			Set whether setKeepScreenOn or not
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1720
+     * @tc.name      :	testSetWindowKeepScreenOn_Base_Callback
+     * @tc.desc      :	Set whether setKeepScreenOn or not
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowKeepScreenOn_Base_Callback', 0, async function (done) {
-      console.info('windowTest setCallBackKeepScreenOnTest1 begin');
+      console.info('windowTest testSetWindowKeepScreenOn_Base_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       wnd.setWindowKeepScreenOn(true, (err, data) => {
@@ -1324,12 +1426,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1870
-     * @tc.name       testSetWindowPrivacyMode_False_Promise
-     * @tc.desc       Verify the window privacy mode
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1870
+     * @tc.name      : testSetWindowPrivacyMode_False_Promise
+     * @tc.desc      : Verify the window privacy mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowPrivacyMode_False_Promise', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyMode begin');
+      console.info('windowTest testSetWindowPrivacyMode_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1347,12 +1452,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1890
-     * @tc.name       testSetWindowPrivacyMode_True_Promise
-     * @tc.desc       Verify the window privacy mode
-    */
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1890
+     * @tc.name      : testSetWindowPrivacyMode_True_Promise
+     * @tc.desc      : Verify the window privacy mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowPrivacyMode_True_Promise', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyMode2 begin');
+      console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
 //      let data = wnd.getWindowProperties();
@@ -1370,12 +1478,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1860
-     * @tc.name			testSetWindowPrivacyMode_True_Callback
-    * @tc.desc			Set whether setWindowPrivacyMode or not
-    */
+     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1860
+     * @tc.name      :	testSetWindowPrivacyMode_True_Callback
+     * @tc.desc      :	Set whether setWindowPrivacyMode or not
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
     it('testSetWindowPrivacyMode_True_Callback', 0, async function (done) {
-      console.info('windowTest setWindowPrivacyModecallback1 begin');
+      console.info('windowTest testSetWindowPrivacyMode_True_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {

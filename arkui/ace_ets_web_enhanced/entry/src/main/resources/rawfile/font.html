@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+	#pageHeight{
+	  height:1300px
+	}
+    </style>
+</head>
+<body>
+    <div id="container">首页32123123123131233 <a href="www.baidu.com" id="fileAccess">打开rawfile文件</a></div>
+    <div id="pageHeight"></div>
+</body>
+<script>
+    function getFontFamily(){
+        const bodyStyle = window.getComputedStyle(document.body, null);
+        const bodyFont = bodyStyle.getPropertyValue('font');
+        console.log(bodyFont);
+        return bodyFont
+    }
+</script>
+</html>

@@ -84,6 +84,155 @@ export default function ReminderAgentManagerTest() {
             }
         })
 
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0002
+         * @tc.desc      test ReminderRequest Attribute groupId
+         */
+        it("reminderRequestAttribute_0002", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0002---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 20,
+                groupId: ''
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0002 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0002 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0002 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0003
+         * @tc.desc      test ReminderRequest ActionButton titleResource
+         */
+        it("reminderRequestAttribute_0003", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0003---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: 2025,
+                    month: 1,
+                    day: 11,
+                    hour: 11,
+                    minute: 11,
+                    second: 11
+                },
+                actionButton:[
+                    {
+                        title: 'close',
+                        type: 0,
+                    }
+                ]
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0003 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0003 callback reminderId = ' + reminderId);
+                        try {
+                            reminderAgent.getValidReminders((err, reminder) => {
+                                if(reminder.length = 0){
+                                    reminder = [{titleResource: ''}]
+                                }
+                                console.info('reminderRequestAttribute_0003 callback reminder = ' + reminder.titleResource);
+                                expect(reminderId).assertLarger(0);
+                                done();
+                            })
+                        } catch (error) {
+                            console.log("reminderRequestAttribute_0003 getValidReminders error.code:" + error.code);
+                        }
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0003 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0005
+         * @tc.desc      test ReminderRequest snoozeSlotType
+         */
+        it("reminderRequestAttribute_0005", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0005---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 10,
+                slotType: 2,
+                snoozeSlotType: 2
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0005 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0005 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0005 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0006
+         * @tc.desc      test ReminderRequest customRingUri
+         */
+        it("reminderRequestAttribute_0006", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0006---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 10,
+                customRingUri: "#"
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0006 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0006 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0006 publishReminder error.code:" + error.code);
+            }
+        })
+
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0004
+         * @tc.desc      test timer normal parameter,return with promise.
+         */
+        it("reminderRequestAttribute_0004", 0, async function (done) {
+            console.info('----------------------testPublishReminderTimer_030---------------------------');
+            try {
+                reminderAgent.cancelAllReminders().then((err,data) => {
+                    console.info('reminderRequestAttribute_0004 cancelAllReminders success');
+                    expect(true).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.log("reminderRequestAttribute_0004 cancelAllReminders error.code:" + error.code);
+            }
+        })
+
     /*
      * @tc.name: testReminderHelper001
      * @tc.desc: test spent time by publishReminder with timer (callback)

@@ -550,5 +550,90 @@ export default function animateToTest() {
           console.info('animateTest_2000 END');
           done();
         });
+          /* *
+            * @tc.number: SUB_ACE_FUNCTION_SR000S6E08_001
+            * @tc.name  : animateTest_2100
+            * @tc.desc  : finishCallbackType Property not set
+            * @tc.level : Level 3
+          */ 
+        it('animateTest_2100', 0, async function (done) {
+          console.info('animateTest_2100 START');
+          await CommonFunc.sleep(2);
+
+          let indexEvent = {
+            eventId: 1011,
+            priority: events_emitter.EventPriority.LOW
+          }
+          let callback = (indexEvent) => {
+            console.info("animateTest_2100 get state result is: " + JSON.stringify(indexEvent))
+            try {
+              expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.REMOVED);
+            } catch (err) {
+              console.info("animateTest_2100 get state result err is: " + JSON.stringify(err));
+            }
+          }
+          try {
+            events_emitter.on(indexEvent, callback);
+          } catch (err) {
+            console.info("animateTest_2100 on events_emitter err : " + JSON.stringify(err));
+          }
+          console.info("animateTest_2100 click result is: " + JSON.stringify(sendEventByKey('button161', 10, "")));
+          console.info('animateTest_2100 END');
+          done();
+        });
+          /* *
+            * @tc.number: SUB_ACE_FUNCTION_SR000S6E08_002
+            * @tc.name  : animateTest_2200
+            * @tc.desc  : finishCallbackType Property set FinishCallbackType.REMOVED
+            * @tc.level : Level 3
+          */ 
+        it('animateTest_2200', 0, async function (done) {
+          console.info('animateTest_2200 START');
+          let indexEvent = {
+            eventId: 1012,
+            priority: events_emitter.EventPriority.LOW
+          }
+          let callback = (indexEvent) => {
+            console.info("animateTest_2200 get state result is: " + JSON.stringify(indexEvent))
+            expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.REMOVED)
+          }
+          try {
+            events_emitter.on(indexEvent, callback);
+          } catch (err) {
+            console.info("animateTest_2200 on events_emitter err : " + JSON.stringify(err));
+          }
+          console.info("animateTest_2200 click result is: " + JSON.stringify(sendEventByKey('button171', 10, "")));
+          console.info('animateTest_2200 END');
+          done();
+        });
+          /* *
+            * @tc.number: SUB_ACE_FUNCTION_SR000S6E08_003
+            * @tc.name  : animateTest_2300
+            * @tc.desc  : finishCallbackType Property set FinishCallbackType.LOGICALLY
+            * @tc.level : Level 3
+          */ 
+        it('animateTest_2300', 0, async function (done) {
+          console.info('animateTest_2300 START');
+          let indexEvent = {
+            eventId: 1013,
+            priority: events_emitter.EventPriority.LOW
+          }
+          let callback = (indexEvent) => {
+            console.info("animateTest_2300 get state result is: " + JSON.stringify(indexEvent))
+            try {
+              expect(indexEvent.data.finishCallbackType).assertEqual(FinishCallbackType.LOGICALLY);
+            } catch (err) {
+              console.info("animateTest_2300 get state result err is: " + JSON.stringify(err));
+            }
+          }
+          try {
+            events_emitter.on(indexEvent, callback);
+          } catch (err) {
+            console.info("animateTest_2300 on events_emitter err : " + JSON.stringify(err));
+          }
+          console.info("animateTest_2300 click result is: " + JSON.stringify(sendEventByKey('button181', 10, "")));
+          console.info('animateTest_2300 END');
+          done();
+        });
   })
 }

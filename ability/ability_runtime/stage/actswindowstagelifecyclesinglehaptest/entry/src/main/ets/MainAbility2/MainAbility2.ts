@@ -13,15 +13,26 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility2 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility2 onCreate")
         globalThis.abilityWant = want;
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility2.onCreate", ()=>{
+                console.log("[Demo] MainAbility2 onCreate")
+            });
+        }, 1500)
     }
 
     onDestroy() {
         console.log("[Demo] MainAbility2 onDestroy")
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility2.onDestroy", ()=>{
+                console.log("[Demo] MainAbility2 onDestroy")
+            });
+        }, 1500)
     }
 
     onWindowStageCreate(windowStage) {
@@ -46,7 +57,7 @@ export default class MainAbility2 extends Ability {
                 }).catch((error) => {
                 console.error('[Demo] MainAbility2 terminateself failed. Cause: ' + error);
             })
-        }, 500);
+        }, 1500);
     }
 
     onBackground() {

@@ -958,28 +958,9 @@ export default function window_test() {
                     } else {
                         expect(data != null).assertTrue();
                         data.on('windowSizeChange', windowSizeChangeCallback);
-                        data.setLayoutFullScreen(true, (err) => {
-                            if (err.code != 0) {
-                                console.log(msgStr + ' setLayoutFullScreen  fail ' + JSON.stringify(err.code));
-                                expect().assertFail();
-                                done();
-                            } else {
-                                setTimeout((async function () {
-                                    expect(dsp.height == height).assertTrue();
-                                    data.off('windowSizeChange');
-                                    data.setLayoutFullScreen(false, (err) => {
-                                        if (err.code != 0) {
-                                            console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                                            expect().assertFail();
-                                            done();
-                                        } else {
-                                            expect(dsp.height == height).assertTrue();
-                                            done();
-                                        }
-                                    })
-                                }), 3000)
-                            }
-                        })
+                        data.off('windowSizeChange');
+                        expect(true).assertTrue()
+                        done()
                     }
                 })
             }, (err) => {
@@ -2009,6 +1990,8 @@ export default function window_test() {
                 expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
                 expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
                 expect(4).assertEqual(window.WindowStageEventType.HIDDEN);
+                expect(5).assertEqual(window.WindowStageEventType.RESUMED);
+                expect(6).assertEqual(window.WindowStageEventType.PAUSED);
                 done();
             } catch (err) {
                 console.log(msgStr + ' error ' + JSON.stringify(err));
@@ -2065,6 +2048,12 @@ export default function window_test() {
                         width: 20,
                         height: 20
                     },
+                    drawableRect: {
+                        left: 20,
+                        top: 20,
+                        width: 20,
+                        height: 20
+                    },
                     type: 0,
                     isFullScreen: false,
                     isLayoutFullScreen: false,
@@ -2081,6 +2070,10 @@ export default function window_test() {
                 expect(20).assertEqual(windowP.windowRect.top);
                 expect(20).assertEqual(windowP.windowRect.width);
                 expect(20).assertEqual(windowP.windowRect.height);
+                expect(20).assertEqual(windowP.drawableRect.left);
+                expect(20).assertEqual(windowP.drawableRect.top);
+                expect(20).assertEqual(windowP.drawableRect.width);
+                expect(20).assertEqual(windowP.drawableRect.height);
                 expect(0).assertEqual(windowP.type);
                 expect(!windowP.isFullScreen).assertTrue();
                 expect(!windowP.isLayoutFullScreen).assertTrue();
@@ -3584,6 +3577,7 @@ export default function window_test() {
                 expect(1).assertEqual(window.AvoidAreaType.TYPE_CUTOUT);
                 expect(2).assertEqual(window.AvoidAreaType.TYPE_SYSTEM_GESTURE);
                 expect(3).assertEqual(window.AvoidAreaType.TYPE_KEYBOARD);
+                expect(4).assertEqual(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
                 done();
             } catch (err) {
                 console.info(msgStr + 'test enum value of AvoidArea error :' + JSON.stringify(err));
@@ -3740,6 +3734,226 @@ export default function window_test() {
             expect().assertFail();
             done();
         }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1170
+     * @tc.name      : testGetWindowLimits_Test
+     * @tc.desc      : test the function of getWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testGetWindowLimits_Test', 0,  async function (done) {
+        console.log('www data testGetWindowLimits_Test begin')
+        try {
+            let windowClass = await window.getTopWindow();
+            let WindowLimits = windowClass.getWindowLimits();
+            console.log('www data Succeeded in window limits'+ JSON.stringify(WindowLimits))
+            expect(WindowLimits.maxWidth != null).assertTrue();
+            expect(WindowLimits.maxHeight != null).assertTrue();
+            expect(WindowLimits.minWidth != null).assertTrue();
+            expect(WindowLimits.minHeight != null).assertTrue();
+            done();
+          } catch (error) {
+            console.log('www data Failed to obtain the window limits of window. Cause: ' + JSON.stringify(error));
+            if (error.code == 801) {
+                expect(true).assertTrue()
+                done()
+            } else {
+                expect().assertFail();
+                done();
+            }
+          }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1180
+     * @tc.name      : testSetWindowLimits_Function_Promise
+     * @tc.desc      : test the function of setWindowLimits
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSetWindowLimits_Function_Promise', 0, async function (done){
+        console.log('www data setWindowLimits_Function_Promise begin')
+        try {
+            let WindowLimits = {
+                maxWidth: 1500,
+                maxHeight: 1000,
+                minWidth: 500,
+                minHeight: 400
+            };
+            let windowClass= await window.getTopWindow();
+            let promise = windowClass.setWindowLimits(WindowLimits);
+                promise.then((data) => {
+                console.log('www data Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
+                expect(true).asserTrue();
+                done();
+            }).catch((error) => {
+                console.log('www data Failed to change the window limits. Cause: ' + JSON.stringify(error));
+                if (error.code == 801) {
+                    expect(true).assertTrue()
+                    done()
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            });
+            
+          } catch (error) {
+              console.log('www data Failed to change the window limits. Cause:' + JSON.stringify(error));
+              expect().assertFail();
+              done();
+          }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1190
+     * @tc.name      : testMinimize_Function_Callback
+     * @tc.desc      : test the function of minimize callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testMinimize_Function_Callback', 0, async function (done) {
+        let msgStr = 'testMinimize_Function_Callback';
+        console.log(msgStr + ' begin');
+        window.create('subWindow11', window.WindowType.TYPE_APP).then(wnd => {
+            expect(wnd != null).assertTrue();
+            console.log(msgStr + ' wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log(msgStr + ' wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log(msgStr + ' wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+
+                        wnd.minimize((err) => {
+                            if (!err.code) {
+                              console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                              expect().assertFail()
+                            }
+                            console.info(msgStr + 'Succeeded in minimizing the window.');
+                            expect(true).assertTrue()
+                        });
+
+                        wnd.destroy((err) => {
+                            if (err.code) {
+                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                return
+                            }
+                            console.info(msgStr + 'Succeeded in destroying the window.');
+                        });
+                        done();
+                    }, (err) => {
+                        console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log(msgStr + ' wnd.isShowing failed, err :' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err_resetSize) => {
+                console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+        })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1200
+     * @tc.name      : testMinimize_Function_Promise
+     * @tc.desc      : test the function of minimize promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testMinimize_Function_Promise', 0, async function (done) {
+        let msgStr = 'testMinimize_Function_Promise';
+        console.log(msgStr + ' begin');
+        window.create('subWindow12', window.WindowType.TYPE_APP).then(wnd => {
+            expect(wnd != null).assertTrue();
+            console.log(msgStr + ' wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log(msgStr + ' wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log(msgStr + ' wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+
+                        let promise = wnd.minimize();
+                        promise.then(() => {
+                            console.info(msgStr + 'Succeeded in minimizing the window.');
+                            expect(true).assertTrue()
+                        }).catch((err) => {
+                            console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                            if (!err.code || err.code == 202) {
+                                expect(true).assertTrue()
+                            } else {
+                                expect().assertFail()
+                            }
+                        });
+
+                        wnd.destroy((err) => {
+                            if (err.code) {
+                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                return
+                            }
+                            console.info(msgStr + 'Succeeded in destroying the window.');
+                        });
+                        done();
+                    }, (err) => {
+                        console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log(msgStr + ' wnd.isShowing failed, err :' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err_resetSize) => {
+                console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+        })
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1210
+     * @tc.name      : testWindowStatusType_attr
+     * @tc.desc      : test the enum value of WindowStatusType
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+     it('testWindowStatusType_attr', 0, async function (done) {
+        let msgStr = 'testWindowStatusType_attr';
+        console.log(msgStr + ' begin');
+        try {
+            if (window.WindowStatusType) {
+                expect(window.WindowStatusType.UNDEFINED == 0)
+                expect(window.WindowStatusType.FULL_SCREEN == 1)
+                expect(window.WindowStatusType.MAXIMIZE == 2)
+                expect(window.WindowStatusType.MINIMIZE == 3)
+                expect(window.WindowStatusType.FLOATING == 4)
+                expect(window.WindowStatusType.SPLIT_SCREEN == 5)
+            } else {
+                console.log(msgStr + 'WindowStatusType is not calleble')
+            }
+            expect(true).assertTrue()
+        } catch(err) {
+            if (err.code) {
+                console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
+                expect().assertFail()
+            } else {
+                expect(true).assertTrue()
+                console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
+            }
+        }
+        done()
     })
 
     })

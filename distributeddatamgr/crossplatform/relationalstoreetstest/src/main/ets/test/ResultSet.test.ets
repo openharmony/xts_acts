@@ -14,7 +14,10 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context;
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "data1 text," + "data2 long, " + "data3 double," + "data4 blob)";
 
@@ -29,10 +32,12 @@ export default function rdbResultSetTest() {
   describe("rdbResultSetTest", function () {
     beforeAll(async function () {
       console.info(TAG + "beforeAll");
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context;
+      console.info(TAG + 'Get context successful. context=' + context);
     });
 
     beforeEach(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
@@ -40,7 +45,6 @@ export default function rdbResultSetTest() {
     });
 
     afterEach(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "Resultset.db");

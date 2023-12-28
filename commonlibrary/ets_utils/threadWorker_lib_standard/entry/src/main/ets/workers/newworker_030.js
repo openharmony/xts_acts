@@ -30,5 +30,4 @@ workerPort.addEventListener("message", (event) => {
     workerPort.removeEventListener("addEventTest");
     workerPort.dispatchEvent({type:"addEventTest", timeStamp:0})
     workerPort.dispatchEvent({type:"onceTest", timeStamp:0})
-    workerPort.removeEventListener("onceTest")
 })

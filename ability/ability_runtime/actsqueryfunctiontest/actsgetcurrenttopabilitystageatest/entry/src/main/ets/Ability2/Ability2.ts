@@ -44,7 +44,9 @@ export default class Ability2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("Ability2 onForeground");
-        commonEvent.publish("GetCurrentTopAbilityB", PublishCallBackOne);
+        setTimeout(()=>{
+            commonEvent.publish("GetCurrentTopAbilityB", PublishCallBackOne);
+        }, 1500)
     }
 
     onBackground() {

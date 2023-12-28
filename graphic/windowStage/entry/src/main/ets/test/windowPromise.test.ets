@@ -97,13 +97,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       clearTimeout(timeoutId)
     }
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0760
-     * @tc.name testListener_Sys_AvoidAreaChange_Promise
-     * @tc.desc Verify whether the change monitoring of avoidance area can be started normally.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0760
+     * @tc.name      : testListener_Sys_AvoidAreaChange_Promise
+     * @tc.desc      : Verify whether the change monitoring of avoidance area can be started normally.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testListener_Sys_AvoidAreaChange_Promise', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest1';
+      let caseName = 'testListener_Sys_AvoidAreaChange_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
@@ -147,13 +150,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0770
-     * @tc.name testListener_windowSizeChange
-     * @tc.desc Verify that the window size avoidance area changes and monitor whether it can be opened normally.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0770
+     * @tc.name      : testListener_windowSizeChange
+     * @tc.desc      : Verify that the window size avoidance area changes and monitor whether it can be opened normally.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testListener_windowSizeChange', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest2';
+      let caseName = 'testListener_windowSizeChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
       let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
@@ -175,6 +181,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       } catch (err) {
         console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
       }
+      await sleep(1000);
       await tempWnd.on('windowSizeChange', async (sizeData) => {
         console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
         if(flag){
@@ -200,13 +207,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0740
-     * @tc.name testListener_SystemAvoidAreaChange_Off
-     * @tc.desc Verify whether the change monitoring of avoidance area can be started normally.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0740
+     * @tc.name      : testListener_SystemAvoidAreaChange_Off
+     * @tc.desc      : Verify whether the change monitoring of avoidance area can be started normally.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testListener_SystemAvoidAreaChange_Off', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest3';
+      let caseName = 'testListener_SystemAvoidAreaChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOffFlag = listenerStatus.ready;
       console.log(msgStr + 'begin 1');
@@ -248,13 +258,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0780
-     * @tc.name testListener_windowSizeChange_Off
-     * @tc.desc Verify whether the window size change monitoring can be closed normally.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0780
+     * @tc.name      : testListener_windowSizeChange_Off
+     * @tc.desc      : Verify whether the window size change monitoring can be closed normally.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testListener_windowSizeChange_Off', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listenerTest4';
+      let caseName = 'testListener_windowSizeChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest4';
       let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
@@ -304,12 +317,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await sleep(1500)
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1310
-     * @tc.name testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise
-     * @tc.desc Verify that the scene shows the status bar and hides the navigation bar
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1310
+     * @tc.name      : testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise
+     * @tc.desc      : Verify that the scene shows the status bar and hides the navigation bar
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest1';
+      let caseName = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -338,12 +354,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1240
-     * @tc.name testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise
-     * @tc.desc Verify that the scene hides the status bar and displays the navigation bar
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1240
+     * @tc.name      : testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise
+     * @tc.desc      : Verify that the scene hides the status bar and displays the navigation bar
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest2';
+      let caseName = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -372,12 +391,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1330
-     * @tc.name testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise
-     * @tc.desc Verify that the scene displays both the status bar and the navigation bar
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1330
+     * @tc.name      : testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise
+     * @tc.desc      : Verify that the scene displays both the status bar and the navigation bar
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest3';
+      let caseName = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -406,12 +428,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1260
-     * @tc.name testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise
-     * @tc.desc Verify that the scene hides both the status bar and the navigation bar
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1260
+     * @tc.name      : testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise
+     * @tc.desc      : Verify that the scene hides both the status bar and the navigation bar
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest4';
+      let caseName = 'testSetSystemBarEnable_Hide_StatusBarAndNavBar_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -440,12 +465,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
-     * @tc.name testSetSystemBarEnable_Invalid_Parameter_Promise
-     * @tc.desc Verify the scene where illegal values are entered when the status bar and navigation bar are displayed
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
+     * @tc.name      : testSetSystemBarEnable_Invalid_Parameter_Promise
+     * @tc.desc      : Verify the scene where illegal values are entered when the status bar and navigation bar are displayed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Invalid_Parameter_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarEnableTest5';
+      let caseName = 'testSetSystemBarEnable_Invalid_Parameter_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -475,12 +503,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1390
-     * @tc.name testSetSystemBarProperties_RGB_Promise
-     * @tc.desc Verify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1390
+     * @tc.name      : testSetSystemBarProperties_RGB_Promise
+     * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarProperties_RGB_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest1';
+      let caseName = 'testSetSystemBarProperties_RGB_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
@@ -526,12 +557,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1370
-     * @tc.name testSetSystemBarProperties_KeywordForm_Promise
-     * @tc.desc Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1370
+     * @tc.name      : testSetSystemBarProperties_KeywordForm_Promise
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarProperties_KeywordForm_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest2';
+      let caseName = 'testSetSystemBarProperties_KeywordForm_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
         SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
@@ -582,12 +616,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1350
-     * @tc.name testSetSystemBarProperties_Hexadecimal_Promise
-     * @tc.desc Verify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1350
+     * @tc.name      : testSetSystemBarProperties_Hexadecimal_Promise
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarProperties_Hexadecimal_Promise', 0, async function (done) {
-      let caseName = 'setSystemBarPropertiesTest3';
+      let caseName = 'testSetSystemBarProperties_Hexadecimal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
@@ -633,12 +670,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0180
-     * @tc.name testCreate_App_Type_Win_Promise
-     * @tc.desc Verify the scenario of creating the application type window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0180
+     * @tc.name      : testCreate_App_Type_Win_Promise
+     * @tc.desc      : Verify the scenario of creating the application type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_App_Type_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest1';
+      let caseName = 'testCreate_App_Type_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeDicArr.length;
@@ -664,12 +704,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0260
-     * @tc.name testCreate_Sys_Type_Win_Promise
-     * @tc.desc Verify the scenario of creating the system type window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0260
+     * @tc.name      : testCreate_Sys_Type_Win_Promise
+     * @tc.desc      : Verify the scenario of creating the system type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Sys_Type_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest2';
+      let caseName = 'testCreate_Sys_Type_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
@@ -718,12 +761,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0220
-     * @tc.name testCreate_Not_Exist_Win_Promise
-     * @tc.desc Verify the scenario of creating a window of a type that does not exist
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0220
+     * @tc.name      : testCreate_Not_Exist_Win_Promise
+     * @tc.desc      : Verify the scenario of creating a window of a type that does not exist
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Not_Exist_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest3';
+      let caseName = 'testCreate_Not_Exist_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempType = 5000;
@@ -736,12 +782,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0240
-     * @tc.name testCreate_Repeate_Id_Win_Promise
-     * @tc.desc Verify the scenario of creating a window with duplicate IDs
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0240
+     * @tc.name      : testCreate_Repeate_Id_Win_Promise
+     * @tc.desc      : Verify the scenario of creating a window with duplicate IDs
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Repeate_Id_Win_Promise', 0, async function (done) {
-      let caseName = 'createTest4';
+      let caseName = 'testCreate_Repeate_Id_Win_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'sameids'
@@ -763,12 +812,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'ohosWindow.create 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0800
-     * @tc.name testLoadContent_Exist_Create_SysWin_Promise
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0800
+     * @tc.name      : testLoadContent_Exist_Create_SysWin_Promise
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Create_SysWin_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest1';
+      let caseName = 'testLoadContent_Exist_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest1';
@@ -800,12 +852,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0880
-     * @tc.name testLoadContent_Para_Is_Null_Create_SysWin_Promise
-     * @tc.desc Verify the scene of loading the page with illegal values
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0880
+     * @tc.name      : testLoadContent_Para_Is_Null_Create_SysWin_Promise
+     * @tc.desc      : Verify the scene of loading the page with illegal values
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest2';
+      let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest2';
@@ -850,12 +905,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0840
-     * @tc.name testLoadContent_Exist_Input_Para_Path_Promise
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0840
+     * @tc.name      : testLoadContent_Exist_Input_Para_Path_Promise
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Input_Para_Path_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest3';
+      let caseName = 'testLoadContent_Exist_Input_Para_Path_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load3 = await windowStage.loadContent('MainAbility/pages/second/second').catch((err) => {
@@ -867,12 +925,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0860
-     * @tc.name testLoadContent_Input_Para_Is_Null_Promise
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0860
+     * @tc.name      : testLoadContent_Input_Para_Is_Null_Promise
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Input_Para_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest4';
+      let caseName = 'testLoadContent_Input_Para_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -889,12 +950,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0820
-     * @tc.name testLoadContent_Exist_Input_Para_PathAndStorage_Promise
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0820
+     * @tc.name      : testLoadContent_Exist_Input_Para_PathAndStorage_Promise
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Input_Para_PathAndStorage_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest5';
+      let caseName = 'testLoadContent_Exist_Input_Para_PathAndStorage_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -911,12 +975,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
-     * @tc.name testLoadContent_Para_PathAndStorage_Is_Null_Promise
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
+     * @tc.name      : testLoadContent_Para_PathAndStorage_Is_Null_Promise
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Para_PathAndStorage_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'loadContentTest6';
+      let caseName = 'testLoadContent_Para_PathAndStorage_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load6 = await windowStage.loadContent('MainAbility/pages/second/second', null).catch((err) => {
@@ -927,12 +994,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0050
-     * @tc.name testCreateSubWindow_WinName_IsNot_Empty_Promise
-     * @tc.desc Verify the scenario of creating an auxiliary window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0050
+     * @tc.name      : testCreateSubWindow_WinName_IsNot_Empty_Promise
+     * @tc.desc      : Verify the scenario of creating an auxiliary window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreateSubWindow_WinName_IsNot_Empty_Promise', 0, async function (done) {
-      let caseName = 'createSubWindowTest1';
+      let caseName = 'testCreateSubWindow_WinName_IsNot_Empty_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWindow = await windowStage.createSubWindow('createSubWindowTest1').catch((err) => {
@@ -946,12 +1016,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0070
-     * @tc.name testCreateSubWindow_WinName_Is_Null_Promise
-     * @tc.desc Verify the scene of entering illegal values to create an auxiliary window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0070
+     * @tc.name      : testCreateSubWindow_WinName_Is_Null_Promise
+     * @tc.desc      : Verify the scene of entering illegal values to create an auxiliary window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreateSubWindow_WinName_Is_Null_Promise', 0, async function (done) {
-      let caseName = 'createSubWindowTest2';
+      let caseName = 'testCreateSubWindow_WinName_Is_Null_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -968,12 +1041,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0590
-     * @tc.name testGetSubWindow_Promise
-     * @tc.desc Verify the scene of obtaining all auxiliary sub windows
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0590
+     * @tc.name      : testGetSubWindow_Promise
+     * @tc.desc      : Verify the scene of obtaining all auxiliary sub windows
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testGetSubWindow_Promise', 0, async function (done) {
-      let caseName = 'getSubWindowTest1';
+      let caseName = 'testGetSubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWindow = await windowStage.getSubWindow().catch((err) => {
@@ -985,12 +1061,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
-     * @tc.name testSetPrivacyMode_SppSubWin_Promise
-     * @tc.desc Verify the scene where the application sub window is set as a security layer
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
+     * @tc.name      : testSetPrivacyMode_SppSubWin_Promise
+     * @tc.desc      : Verify the scene where the application sub window is set as a security layer
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetPrivacyMode_SppSubWin_Promise', 0, async function (done) {
-      let caseName = 'setPrivacyModeTest1';
+      let caseName = 'testSetPrivacyMode_SppSubWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
       let mainWnd = null;
@@ -1035,12 +1114,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0310
-     * @tc.name testDestroy_Promise
-     * @tc.desc Verification window destruction scenario.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0310
+     * @tc.name      : testDestroy_Promise
+     * @tc.desc      : Verification window destruction scenario.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testDestroy_Promise', 0, async function (done) {
-      let caseName = 'destroyTest1';
+      let caseName = 'testDestroy_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'destroyTest1';
@@ -1074,12 +1156,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1180
-     * @tc.name testSetPreferredOrientation_Promise
-     * @tc.desc Sets the display direction property of the window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1180
+     * @tc.name      : testSetPreferredOrientation_Promise
+     * @tc.desc      : Sets the display direction property of the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetPreferredOrientation_Promise', 0, async function (done) {
-      let caseName = 'setPreferredOrientationTest1';
+      let caseName = 'testSetPreferredOrientation_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1106,12 +1191,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1120
-     * @tc.name testSetForbidSplitMove_Promise
-     * @tc.desc Sets whether Windows are forbidden to move in split screen mode
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1120
+     * @tc.name      : testSetForbidSplitMove_Promise
+     * @tc.desc      : Sets whether Windows are forbidden to move in split screen mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetForbidSplitMove_Promise', 0, async function (done) {
-      let caseName = 'setForbidSplitMoveTest1';
+      let caseName = 'testSetForbidSplitMove_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1133,12 +1221,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2160
-     * @tc.name testSnapshotTest_Promise_Form
-     * @tc.desc Scenario of screenshot of verification window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2160
+     * @tc.name      : testSnapshotTest_Promise_Form
+     * @tc.desc      : Scenario of screenshot of verification window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSnapshotTest_Promise_Form', 0, async function (done) {
-      let caseName = 'snapshotTest1';
+      let caseName = 'testSnapshotTest_Promise_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch((err) => {
@@ -1155,12 +1246,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0330
-     * @tc.name testDialogTargetTouch_Promise
-     * @tc.desc Verify the scenario of opening modal window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0330
+     * @tc.name      : testDialogTargetTouch_Promise
+     * @tc.desc      : Verify the scenario of opening modal window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testDialogTargetTouch_Promise', 0, async function (done) {
-      let caseName = 'dialogTargetTouchTest1';
+      let caseName = 'testDialogTargetTouch_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
@@ -1184,12 +1278,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0020
-     * @tc.name testAnimationForShown_Promise
-     * @tc.desc Verify window custom animation configuration of the scene
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0020
+     * @tc.name      : testAnimationForShown_Promise
+     * @tc.desc      : Verify window custom animation configuration of the scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testAnimationForShown_Promise', 0, async function (done) {
-      let caseName = 'animationForShownTest1';
+      let caseName = 'testAnimationForShown_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
@@ -1236,12 +1333,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
-     * @tc.name testGetCutoutInfo_Promise
-     * @tc.desc Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0500
+     * @tc.name      : testGetCutoutInfo_Promise
+     * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testGetCutoutInfo_Promise', 0, async function (done) {
-      let caseName = 'getCutoutInfoTest1';
+      let caseName = 'testGetCutoutInfo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let dpClass = display.getDefaultDisplaySync();
@@ -1254,12 +1354,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1080
-     * @tc.name testSetAspectRatio_Cancel_Upon_Success_Promise
-     * @tc.desc Validate the scenario cancelled after setting the proportion of the content layout of the main window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1080
+     * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Promise
+     * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetAspectRatio_Cancel_Upon_Success_Promise', 0, async function (done) {
-      let caseName = 'setAspectRatioTest2';
+      let caseName = 'testSetAspectRatio_Cancel_Upon_Success_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1292,12 +1395,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2340
-     * @tc.name testSetAspectRatio_Invalid_Params_Promise
-     * @tc.desc Validate the scenario where the content layout proportion of the main window is abnormal
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2340
+     * @tc.name      : testSetAspectRatio_Invalid_Params_Promise
+     * @tc.desc      : Validate the scenario where the content layout proportion of the main window is abnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetAspectRatio_Invalid_Params_Promise', 0, async function (done) {
-      let caseName = 'setAspectRatioTest4';
+      let caseName = 'testSetAspectRatio_Invalid_Params_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1321,12 +1427,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2320
-     * @tc.name testWindowEventType_Enum
-     * @tc.desc Test the enumeration value of WindowEventType
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2320
+     * @tc.name      : testWindowEventType_Enum
+     * @tc.desc      : Test the enumeration value of WindowEventType
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testWindowEventType_Enum', 0, async function (done) {
-      let caseName = 'windowEventType_Test_001';
+      let caseName = 'testWindowEventType_Enum';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       console.log(msgStr + 'ohosWindow.WindowEventType:' + JSON.stringify(ohosWindow.WindowEventType));
@@ -1343,12 +1452,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2310
-     * @tc.name testOrientation_Enum
-     * @tc.desc Test the enumeration value of Orientation
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2310
+     * @tc.name      : testOrientation_Enum
+     * @tc.desc      : Test the enumeration value of Orientation
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testOrientation_Enum', 0, async function (done) {
-      let caseName = 'orientation_Test_001';
+      let caseName = 'testOrientation_Enum';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       console.log(msgStr + 'display.orientation:' + JSON.stringify(display.Orientation));

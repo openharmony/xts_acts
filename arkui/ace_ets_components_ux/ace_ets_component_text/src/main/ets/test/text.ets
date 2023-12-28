@@ -625,6 +625,38 @@ export default function textTest() {
     })
 
     /**
+     * @tc.number ArkUX_Stage_Text_TextShadow_2500
+     * @tc.name   Test the textShadow property of the text component
+     * @tc.dec    Set the radius value to 10.0 and the color value to Color.Black and the offsetX value to -10.0 and the offsetY value to -10.0
+     *            in the textShadow as well as set the radius value to 10.0 and the color value to Color.Red and the offsetX value to 10.0 and
+     *            the offsetY value to 10.0 in the textShadow
+     */
+    it('ArkUX_Stage_Text_TextShadow_2500', 0, async function (done) {
+      console.info('[ArkUX_Stage_Text_TextShadow_2500] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Text_TextShadow_2500');
+          let obj = JSON.parse(strJson);
+          console.info("--->Text Shadow " + JSON.stringify(obj.$attrs.textShadow))
+          expect(obj.$attrs.textShadow[0].radius).assertEqual("10.000000")
+          expect(obj.$attrs.textShadow[0].color).assertEqual("#FF000000")
+          expect(obj.$attrs.textShadow[0].offsetX).assertEqual("-10.000000")
+          expect(obj.$attrs.textShadow[0].offsetY).assertEqual("-10.000000")
+          expect(obj.$attrs.textShadow[1].radius).assertEqual("10.000000")
+          expect(obj.$attrs.textShadow[1].color).assertEqual("#FFFF0000")
+          expect(obj.$attrs.textShadow[1].offsetX).assertEqual("10.000000")
+          expect(obj.$attrs.textShadow[1].offsetY).assertEqual("10.000000")
+          done();
+        } catch (err) {
+          expect().assertFail()
+          console.info('ArkUX_Stage_Text_TextShadow_2500 ERROR: ' + JSON.stringify(err))
+          done()
+        }
+      }, 500)
+    })
+
+
+    /**
      * @tc.number ArkUX_Stage_Text_TextOverflow_0100
      * @tc.name   Test the textOverflow property of the text component
      * @tc.dec    Do not set the textOverflow property value

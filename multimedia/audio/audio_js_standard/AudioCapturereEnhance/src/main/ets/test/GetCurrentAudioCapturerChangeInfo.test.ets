@@ -37,12 +37,13 @@ export default function audioCapturerEnhanceTest() {
       console.info(`${Tag} beforeEach: Prerequisites at the test case level`);
       await sleep(1000);
     })
-    afterEach(function () {
+    afterEach(async function () {
       if (audioCap != null) {
         releaseFun(audioCap);
         audioCap = null;
       }
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
+      await sleep(1000);
     })
     afterAll(function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
@@ -149,9 +150,9 @@ export default function audioCapturerEnhanceTest() {
       let str = ``;
       for (let i = 0; i < CapturerChangeInfo.length; i++) {
         let Info = CapturerChangeInfo[i];
-        str += `__deviceDescriptors_${i}:\nStreamId:${Info.streamId}, ClientUid:${Info.clientUid}, State:${Info.capturerState}\n Source:${Info.capturerInfo.source}, Flag:${Info.capturerInfo.capturerFlags}\n`;
+        str += `__deviceDescriptors_${i}:\nStreamId:${Info.streamId}, ClientUid:${Info.clientUid}, State:${Info.capturerState}, muted:${Info.muted}, \n Source:${Info.capturerInfo.source}, Flag:${Info.capturerInfo.capturerFlags}\n`;
         let descriptor = Info.deviceDescriptors[0];
-        str += ` Id:${descriptor.id}, Type:${descriptor.deviceType}, Role:${descriptor.deviceRole}\n Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]}\n ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}\n`;
+        str += ` Id:${descriptor.id}, Type:${descriptor.deviceType}, Role:${descriptor.deviceRole}\n Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]}\n ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}, encodingTypes:${descriptor.encodingTypes[0]}\n`;
       }
       return str;
     }
@@ -195,10 +196,11 @@ export default function audioCapturerEnhanceTest() {
         console.info(`getCurrentAudioCapturerChangeInfo :SUCCESS\n ${getCapturerChangeInfo(CapturerChangeInfo)}`)
         expect(CapturerChangeInfo.capturerInfo.source)
           .assertEqual(Number(AudioCapturerOptions.capturerInfo.source));
-        expect(CapturerChangeInfo.capturerState).assertEqual(audio.AudioState.STATE_PREPARED);
+        expect(CapturerChangeInfo.muted).assertEqual(false);
         expect(CapturerChangeInfo.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(CapturerChangeInfo.deviceDescriptors[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}getCurrentAudioCapturerChangeInfo : ERROR ${error.message},${error.code}`);
@@ -246,10 +248,11 @@ export default function audioCapturerEnhanceTest() {
       try {
         let CapturerChangeInfo = await audioCap.getCurrentAudioCapturerChangeInfo();
         console.info(`getCurrentAudioCapturerChangeInfo :SUCCESS, ${getCapturerChangeInfo(CapturerChangeInfo)}`)
-        expect(CapturerChangeInfo.capturerState).assertEqual(audio.AudioState.STATE_RUNNING);
+        expect(CapturerChangeInfo.muted).assertEqual(false);
         expect(CapturerChangeInfo.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(CapturerChangeInfo.deviceDescriptors[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag} getCurrentAudioCapturerChangeInfo : ERROR ${error.message},${error.code}`);
@@ -284,14 +287,22 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
-          audioCap = data;
-        }).catch((err)=>{
-          console.info(' AudioCapturer Created catch ERROR' + err.message);
-        });
-        await getFd("capture_js-44100-2C-16B.pcm");
-        await recordingFun(audioCap);
-        await audioCap.stop();
+        const isPlaybackCaptureAvailable = canIUse('SystemCapability.Multimedia.Audio.PlaybackCapture');
+        console.info(`isPlaybackCaptureAvailable: ${isPlaybackCaptureAvailable}`)
+        if (!isPlaybackCaptureAvailable) {
+          await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+            audioCap = data;
+          }).catch((err)=>{
+            console.info(' AudioCapturer Created catch ERROR' + err.message);
+          });
+          await getFd("capture_js-44100-2C-16B.pcm");
+          await recordingFun(audioCap);
+          await audioCap.stop();
+        } else {
+          console.log('Audio.PlaybackCapture not by this device.');
+          done();
+          return;
+        }
       } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message},${error.code}`);
         expect(false).assertTrue();
@@ -300,10 +311,11 @@ export default function audioCapturerEnhanceTest() {
       try {
         let CapturerChangeInfo = await audioCap.getCurrentAudioCapturerChangeInfo();
         console.info(`getCurrentAudioCapturerChangeInfo :SUCCESS, ${getCapturerChangeInfo(CapturerChangeInfo)}`)
-        expect(CapturerChangeInfo.capturerState).assertEqual(audio.AudioState.STATE_STOPPED);
+        expect(CapturerChangeInfo.muted).assertEqual(false);
         expect(CapturerChangeInfo.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(CapturerChangeInfo.deviceDescriptors[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}getCurrentAudioCapturerChangeInfo : ERROR ${error.message},${error.code}`);
@@ -351,10 +363,11 @@ export default function audioCapturerEnhanceTest() {
         console.info(`getCurrentAudioCapturerChangeInfo :SUCCESS\n ${getCapturerChangeInfo(CapturerChangeInfo)}`)
         expect(CapturerChangeInfo.capturerInfo.source)
           .assertEqual(Number(AudioCapturerOptions.capturerInfo.source));
-        expect(CapturerChangeInfo.capturerState).assertEqual(audio.AudioState.STATE_PREPARED);
+        expect(CapturerChangeInfo.muted).assertEqual(false);
         expect(CapturerChangeInfo.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
         expect(CapturerChangeInfo.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+        expect(CapturerChangeInfo.deviceDescriptors[0].encodingTypes[0]).assertEqual(env.OUTPUT_NUMBER_0);
         done();
       } catch (error) {
         console.log(`${Tag}getCurrentAudioCapturerChangeInfo : ERROR ${error.message},${error.code}`);

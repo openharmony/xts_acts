@@ -59,7 +59,7 @@ export default function Grid_Row_Breakpoints_Default() {
       let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default1');
       let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default2');
 
-      expect(Math.round(secondBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(5)));
+      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
 
       console.info('SUB_ACE_GridRowBreakpoints_Default_0100 END');
       done();

@@ -24,7 +24,7 @@ let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 @Component
 struct CustomContainerUser {
   @State name: string = 'ViewPhoto';
-  @State toSP_daemon: string = 'SP_daemon -editor responseTime com.ohos.photos ohtest';
+  @State toSP_daemon: string = 'SP_daemon -editor responseTime com.ohos.photos 图库 ohtest';
   @State StepTips: string = '操作步骤：根据操作提示点击图片等待加载'+'\n'+'预期结果：图片响应时延小于150ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;

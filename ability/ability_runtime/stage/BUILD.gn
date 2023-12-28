@@ -18,7 +18,9 @@ group("stage") {
   if (is_standard_system) {
     deps = [
       "actsbatchuripermission:ActsBatchUriPermission",
+      "actscontextdirareamodetest:ActsContextDirAreaModeTest",
       "actsdebuggabletest:actsdebuggabletest",
+      "actsflagstartwithouttipstest:ActsFlagStartWithoutTipsTest",
       "actsgetgroupdirtest:actsgetgroupdirtest",
       "actslifecyclemultihap2:ActsLifecycleMultiHap2",
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",

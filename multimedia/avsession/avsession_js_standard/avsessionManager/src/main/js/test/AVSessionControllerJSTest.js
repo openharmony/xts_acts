@@ -64,7 +64,8 @@ export default function AVSessionControllerJsTest() {
       mediaUri: "mediaUri",
       startPosition: 0,
       creditsPosition: 0,
-      appName: "appName"
+      appName: "appName",
+      displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID 
     };
     const QUEUE_ITEM_DESCRIPTION_ERROR = {
       mediaId: QUEUE_ITEM_KEY_WORD,
@@ -1673,7 +1674,7 @@ export default function AVSessionControllerJsTest() {
       sleep(200);
       let validCommands = controller.getValidCommandsSync();
       console.log(`Get valid commands: ${validCommands}`);
-      expect(validCommands[0]).assertEqual(0);
+      expect(validCommands[0]).assertEqual('play');
     } catch (err) {
       expect().assertFail();
     }

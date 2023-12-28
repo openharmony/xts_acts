@@ -73,6 +73,7 @@ common_depends_gles2 = [
   "//third_party/vk-gl-cts/framework/opengl/simplereference:libdeqp_glutil-sglr",
   "//third_party/vk-gl-cts/modules/egl:libdeqp-egl",
   "//third_party/vk-gl-cts/modules/gles2:libdeqp-gles2",
+  "//third_party/vk-gl-cts/modules/gles3:libdeqp-gles3",
   "//third_party/vk-gl-cts/modules/glshared:libdeqp-gl-shared",
   "//third_party/vk-gl-cts/external/openglcts/modules:libdeqp_glcts",
 

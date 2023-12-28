@@ -27,7 +27,13 @@ struct SearchExample {
           style: FontStyle.Normal
         }
   @State searchButton:string = "10"
+  @State maxLength: nubmer = 19
+  @State copyOption:CopyOptions = CopyOptions.Local
   controller: SearchController= new SearchController()
+  controller2: SearchController= new SearchController()
+  @State caretIndex : number = 9999
+  @State text: string = ''
+  @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
 
   private stateChangCallBack = (eventData) => {
     console.info("search page state change called:" + JSON.stringify(eventData));
@@ -37,6 +43,15 @@ struct SearchExample {
       }
       if (eventData.data.searchButton != null) {
         this.searchButton = eventData.data.searchButton;
+      }
+      if (eventData.data.text != null) {
+        this.text = eventData.data.text;
+      }
+      if (eventData.data.maxLength != null) {
+        this.maxLength = eventData.data.maxLength;
+      }
+      if (eventData.data.copyOption != null) {
+        this.copyOption = eventData.data.copyOption;
       }
     }
   }
@@ -58,6 +73,8 @@ struct SearchExample {
         .searchButton('search')
         .textFont(this.textFont)
         .searchButton(this.searchButton)
+        .maxLength(this.maxLength)
+        .copyOption(this.copyOption)
         .key('search')
         .placeholderColor(Color.Red)
         .placeholderFont({
@@ -72,6 +89,32 @@ struct SearchExample {
         .onChange((value: string) => {
           this.changevalue = value
         })
+
+      Search({ value: this.text, placeholder: 'input content', controller: this.controller2 })
+        .textFont(this.textFont)
+        .key('mySearch')
+        .placeholderColor(Color.Red)
+        .maxLength(10)
+        .placeholderFont({
+          size: 10,
+          weight: 10,
+          family: 'serif',
+          style: FontStyle.Normal
+        })
+
+      Button('caretoffset')
+        .backgroundColor('#00FF00')
+        .margin(15)
+        .onClick(() => {
+          console.info('text length:' + this.text.length)
+          this.controller2.caretPosition(this.text.length)
+          this.positionInfo = this.controller2.getCaretOffset()
+          console.info("index:" + this.positionInfo.index)
+          this.caretIndex = this.positionInfo.index
+        })
+        .key('caretOffsetBtn')
+
+      Text("Index" + this.caretIndex).key('caretOffsetText')
     }
   }
 }

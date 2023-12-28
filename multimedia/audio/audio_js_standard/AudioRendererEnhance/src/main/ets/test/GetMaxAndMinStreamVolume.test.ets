@@ -193,7 +193,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUMESYNC_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUMESYNC_0200', 0, async function (done) {
       try {
         let value = audioRen.getMinStreamVolumeSync()
         console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${value}`);
@@ -248,22 +248,12 @@ export default function audioRendererTest() {
         await audioRen.getMaxStreamVolume().then((data) => {
           console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_1);
+          done();
         }).catch ((error)=>{
           console.log("${TagFrmwkRender}:getMaxStreamVolume : error = " + error);
           expect(false).assertTrue();
           done();
         });
-        await audioRen.drain().then(() => {
-          console.info(`${TagFrmwkRender}: Renderer drained : SUCCESS`);
-        }).catch((err) => {
-          console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
-        });
-        await audioRen.stop().then(() => {
-          console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
-        }).catch((err) => {
-          console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
-        });
-        done();
       }catch(error){
         console.log("GETMAXSTREAMVOLUME catch error = " + error);
         expect(false).assertTrue();
@@ -404,22 +394,12 @@ export default function audioRendererTest() {
         await audioRen.getMinStreamVolume().then((data) => {
           console.info(`${TagFrmwkRender}:getMinStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_0);
+          done();
         }).catch ((error)=>{
           console.info(`${TagFrmwkRender}:getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
           expect(false).assertTrue();
           done();
         });
-        await audioRen.drain().then(() => {
-          console.info(`${TagFrmwkRender}: Renderer drained : SUCCESS`);
-        }).catch((err) => {
-          console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
-        });
-        await audioRen.stop().then(() => {
-          console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
-        }).catch((err) => {
-          console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
-        });
-        done();
       }catch(error){
         console.info(`GETMINSTREAMVOLUME catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();

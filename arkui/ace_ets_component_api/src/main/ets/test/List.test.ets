@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import ListDeleteTest from './ListDelete.test'
+import ListSwipeTest from './ListSwipe.test'
 import ListReboundTest from './ListRebound.test'
 import TextAreaCallbackTest from './TextAreaCallback.test'
 import BindMenuTest from './BindMenu.test'
@@ -27,6 +28,7 @@ import CanvasShaderTest from './CanvasShader.test'
 
 export default function testsuite() {
   ListDeleteTest()
+  ListSwipeTest()
   ListReboundTest()
   TextAreaCallbackTest()
   BindMenuTest()

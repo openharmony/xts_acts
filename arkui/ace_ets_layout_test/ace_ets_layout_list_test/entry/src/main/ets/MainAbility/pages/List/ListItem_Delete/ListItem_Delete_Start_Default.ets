@@ -29,7 +29,6 @@ struct ListItem_Delete_Start_Default{
     }
     let callback:Callback = (message:any) => {
       console.log('message = ' + message.name + "--" + message.value);
-
     }
     this.messageManager.registerCallback(callback);
   }
@@ -71,6 +70,13 @@ struct ListItem_Delete_Start_Default{
       Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_Default_text_01")
       Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_Default_text_02")
       Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_Start_Default_text_03")
+      Button('点击还原')
+        .onClick(() => {
+          this.arr = [0, 1, 2, 3, 4]
+          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
+          this.exitEndDeleteAreaString =  "not exitEndDeleteArea"
+        })
+        .id('ListItem_Delete_Start_Default_button1')
     }
     .backgroundColor(0xDCDCDC)
     .width('100%')

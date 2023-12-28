@@ -54,11 +54,11 @@ describe('hitscipher_test', function () {
   afterEach(function () {});
   
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2400
+   * @tc.number     SUB_Security_DataPro_cipher_2400
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2400', 4, function () {
+   it('SUB_Security_DataPro_cipher_2400', 4, function () {
 	   for (var j = 0; j < 1000; j++)
 	   {
 		  cipher.rsa({
@@ -95,11 +95,11 @@ describe('hitscipher_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2500
+   * @tc.number     SUB_Security_DataPro_cipher_2500
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2500', 4, function () {
+   it('SUB_Security_DataPro_cipher_2500', 4, function () {
 	   for (var i = 0; i < 1000; i++)
 	   {
 		  cipher.aes({
@@ -142,11 +142,11 @@ describe('hitscipher_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2600
+   * @tc.number     SUB_Security_DataPro_cipher_2600
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2600', 3, function () {
+   it('SUB_Security_DataPro_cipher_2600', 3, function () {
 	   var timestamp1 = new Date().getTime();
 	   for (var j = 0; j < 10; j++)
 	   {
@@ -188,11 +188,11 @@ describe('hitscipher_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2700
+   * @tc.number     SUB_Security_DataPro_cipher_2700
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2700', 3, function () {
+   it('SUB_Security_DataPro_cipher_2700', 3, function () {
 	   var timestamp1 = new Date().getTime();
 	   for (var i = 0; i < 10; i++)
 	   {

@@ -158,7 +158,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 mimeType: "audio/mpeg",
                 displayName: "01.mp3",
                 relativePath: "Audios/Static/",
-                size: 1958311,
+                size: 1958302,
                 mediaType: AUDIO_TYPE.toString(),
                 title: "test",
                 artist: "元数据测试",

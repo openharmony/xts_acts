@@ -142,6 +142,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0001
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_DELETE_0001
      * @tc.desc Delete the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -175,8 +176,8 @@ export default function requestDownloadJSUnit() {
                 await downloadTask.delete();
                 expect().assertFail();
               }
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Download task delete success.');
               expect(typeof data == "boolean").assertTrue();
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Download task delete success.');
             }catch(err){
               await downloadTask.delete();
               console.error('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 delete throw error' + err);
@@ -195,6 +196,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0002
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_DELETE_0002
      * @tc.desc Delete the download task.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -222,11 +224,11 @@ export default function requestDownloadJSUnit() {
         try {
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.delete().then(async data => {
-            console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Download task delete success.');
             expect(data).assertEqual(true);
-            console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 end-----------------------");
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Download task delete success.');
             fileio.unlinkSync(downloadFilePath);
             done();
+            console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 end-----------------------");
           }).catch(async (err) => {
             console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Failed to delete the download task.');
             await downloadTask.delete();
@@ -245,6 +247,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
      * @tc.desc Suspend the download task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -277,8 +280,8 @@ export default function requestDownloadJSUnit() {
                 console.error('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Failed to suspend the download task.');
                 expect().assertFail();
               }
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Download task suspend success.');
               expect(data == true).assertTrue();
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Download task suspend success.');
             }catch(err){
               console.error("====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 throw_error: " + JSON.stringify(err));
             }
@@ -343,6 +346,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
      * @tc.desc Restore the download task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -375,8 +379,8 @@ export default function requestDownloadJSUnit() {
                 console.error('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Failed to restore the download task.');
                 expect().assertFail();
               }
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Download  restore success.');
               expect(data == true).assertTrue();
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Download  restore success.');
             }catch(err){
               console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 throw_err:' + JSON.stringify(err));
             }
@@ -444,6 +448,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
      * @tc.desc Get the download task info
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -476,8 +481,8 @@ export default function requestDownloadJSUnit() {
                 console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Failed to getTaskInfo the download task.');
                 expect().assertFail();
               }
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Download getTaskInfo success.');
               expect(typeof data == "object").assertTrue();
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Download getTaskInfo success.');
             }catch(err){
               console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 throw_error' +JSON.stringify(err));
             }
@@ -496,6 +501,7 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
+     * @tc.name SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
      * @tc.desc Get the download task info
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -523,11 +529,12 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.getTaskInfo().then(async data => {
-            console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Download task getTaskInfo success.');
             expect(typeof data == "object").assertTrue();
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Download task getTaskInfo success.');
             await downloadTask.delete();
             fileio.unlinkSync(downloadFilePath);
             done();
+
           }).catch(async (err) => {
             console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Failed to getTaskInfo the download task.');
             await downloadTask.delete();

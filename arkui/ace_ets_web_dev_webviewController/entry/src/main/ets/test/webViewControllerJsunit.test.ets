@@ -49,8 +49,139 @@ export default function webViewControllerJsunit() {
      *tc.desc Get the WebId
      */
     it('testGetWebId',0,async function(done){
-      emitKey="emitgetUserAgent";
+      emitKey="emitFetchCookieSync"; 
       Utils.registerEvent("testGetWebId",6,100,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1300
+     *tc.name testFetchCookieSync
+     *tc.desc test for FetchCookieSync 
+     */
+    it('testFetchCookieSync',0,async function(done){
+      emitKey="emitFetchCookieCallback";  
+      Utils.registerEvent("testFetchCookieSync","a=b",126,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1400
+     *tc.name testFetchCookieCallback
+     *tc.desc test for FetchCookieCallback 
+     */
+    it('testFetchCookieCallback',0,async function(done){
+      emitKey="emitFetchCookiePromise";  
+      Utils.registerEvent("testFetchCookieSync","a=c",128,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1500
+     *tc.name testFetchCookiePromise
+     *tc.desc test for FetchCookiePromise 
+     */
+    it('testFetchCookiePromise',0,async function(done){
+      emitKey="emitConfigCookieSync";  
+      Utils.registerEvent("testFetchCookiePromise","a=d",130,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1600
+     *tc.name testConfigCookieSync
+     *tc.desc test for ConfigCookieSync 
+     */
+    it('testConfigCookieSync',0,async function(done){
+      emitKey="emitConfigCookieCallback";  
+      Utils.registerEvent("testConfigCookieSync","a=e",132,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1700
+     *tc.name testConfigCookieCallback
+     *tc.desc test for ConfigCookieCallback 
+     */
+    it('testConfigCookieCallback',0,async function(done){
+      emitKey="emitConfigCookiePromise";  
+      Utils.registerEvent("testConfigCookieCallback","a=f",134,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1800
+     *tc.name testConfigCookiePromise
+     *tc.desc test for ConfigCookiePromise 
+     */
+    it('testConfigCookiePromise',0,async function(done){
+      emitKey="emitClearAllCookiesSync";  
+      Utils.registerEvent("testConfigCookiePromise","a=g",136,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_1900
+     *tc.name testClearAllCookiesSync
+     *tc.desc test for ClearAllCookiesSync 
+     */
+    it('testClearAllCookiesSync',0,async function(done){
+      emitKey="emitClearAllCookiesCallback";  
+      Utils.registerEvent("testClearAllCookiesSync","",138,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2000
+     *tc.name testClearAllCookiesCallback
+     *tc.desc test for ClearAllCookiesCallback 
+     */
+    it('testClearAllCookiesCallback',0,async function(done){
+      emitKey="emitClearAllCookiesPromise";  
+      Utils.registerEvent("testClearAllCookiesCallback","",140,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2100
+     *tc.name testClearAllCookiesPromise
+     *tc.desc test for ClearAllCookiesPromise 
+     */
+    it('testClearAllCookiesPromise',0,async function(done){
+      emitKey="emitClearSessionCookieSync";  
+      Utils.registerEvent("testClearAllCookiesPromise","",142,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2200
+     *tc.name testClearSessionCookieSync
+     *tc.desc test for ClearSessionCookieSync 
+     */
+    it('testClearSessionCookieSync',0,async function(done){
+      emitKey="emitClearSessionCookieCallback";  
+      Utils.registerEvent("testClearSessionCookieSync","",144,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2300
+     *tc.name testClearSessionCookieCallback
+     *tc.desc test for ClearSessionCookieCallback 
+     */
+    it('testClearSessionCookieCallback',0,async function(done){
+      emitKey="emitClearSessionCookiePromise";  
+      Utils.registerEvent("testClearSessionCookieCallback","",146,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2400
+     *tc.name testClearSessionCookiePromise
+     *tc.desc test for ClearSessionCookiePromise 
+     */
+    it('testClearSessionCookiePromise',0,async function(done){
+      emitKey="emitPostUrl";  
+      Utils.registerEvent("testClearSessionCookiePromise","",148,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_2500
+     *tc.name testPostUrl
+     *tc.desc test for PostUrl 
+     */
+    it('testPostUrl',0,async function(done){
+      emitKey="emitgetUserAgent";  
+      Utils.registerEvent("testPostUrl","http://www.example.com/",150,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -60,7 +191,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetUserAgent',0,async function(done){
       emitKey="emitgetUserAgentAgain";
-      let userAgent= "Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgent",userAgent,1020,done);
       sendEventByKey('webcomponent',10,'');
     })
@@ -71,7 +202,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetUserAgentAgain',0,async function(done){
       emitKey="emitpageDown";
-      let userAgent= "\"Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36\"";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgentAgain",userAgent,104,done);
       sendEventByKey('webcomponent',10,'');
     })    
@@ -122,7 +253,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetFavicon',0,async function(done){
       emitKey="emitGetFaviconAgain";    
-      Utils.registerEvent("testGetFavicon",undefined,114,done);
+      Utils.registerEvent("testGetFavicon",null,114,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*

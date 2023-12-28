@@ -628,13 +628,11 @@ export default function AVSessionCallback() {
             let metadata14  = {
                 assetId: '121278',
             };
-            session.destroy((err) => {
-                if (err) {
-                    console.info('TestLog: session destroy failed');
-                    expect(false).assertTrue();
-                } else {
-                    console.info('TestLog: session destroy successfully');
-                }
+            await session.destroy().then(()=>{
+                console.info('TestLog: session destroy successfully');
+            }).catch((err) => {
+                console.info('TestLog: session destroy failed');
+                expect(false).assertTrue();
             });
             await sleep(500);
             session.setAVMetadata(metadata14, (err) => {
@@ -674,6 +672,80 @@ export default function AVSessionCallback() {
                     expect(false).assertTrue();
                 }
                done();
+            })
+            await sleep(500);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700
+         * @tc.name      : SETMETADATA_1700
+         * @tc.desc      : Testing set metadata - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700', 0, async function (done) {
+            let metadata16  = {
+                assetId: '121278',
+                filter: avSession.ProtocolType.TYPE_CAST_PLUS_MIRROR
+            };
+
+            session.setAVMetadata(metadata16, (err) => {
+                if (err) {
+                    console.info(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }
+            })
+            await sleep(500);
+            controller.getAVMetadata((err, value) => {
+                if (err) {
+                    console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (value.filter === metadata16.filter) {
+                    console.info('TestLog: Get filter Successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info(`TestLog: Get filter failed:${value}`);
+                    expect(false).assertTrue();
+                }
+                done();
+            })
+            await sleep(500);
+        })
+        
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800
+            * @tc.name      : SETMETADATA_1800
+            * @tc.desc      : Testing set metadata - callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800', 0, async function (done) {
+            let metadata17  = {
+                assetId: '121278',
+                skipIntervals: avSession.SkipIntervals.SECONDS_10
+            };
+
+            session.setAVMetadata(metadata17, (err) => {
+                if (err) {
+                    console.info(`TestLog: Set skipIntervals error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }
+            })
+            await sleep(500);
+            controller.getAVMetadata((err, value) => {
+                if (err) {
+                    console.info(`TestLog: Get skipIntervals error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (value.skipIntervals === metadata17.skipIntervals) {
+                    console.info('TestLog: Get skipIntervals Successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info(`TestLog: Get skipIntervals failed:${value}`);
+                    expect(false).assertTrue();
+                }
+                done();
             })
             await sleep(500);
         })
@@ -1036,13 +1108,10 @@ export default function AVSessionCallback() {
                 loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
                 isFavorite:true,
             };
-            session.destroy((err) => {
-                if (err) {
-                    console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                }
+            await session.destroy().catch((err) => {
+                console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
-            await sleep(500);
             session.setAVPlaybackState(PlaybackState10, (err) => {
                 if (err) {
                     console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);

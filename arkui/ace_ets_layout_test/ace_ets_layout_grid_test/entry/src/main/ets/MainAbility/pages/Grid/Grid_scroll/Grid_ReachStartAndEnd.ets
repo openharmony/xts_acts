@@ -88,6 +88,16 @@ struct Grid_ReachStartAndEnd {
       Text(`onReachStart${this.index}`).id('Grid_ReachStartAndEnd_tex1')
       Text(this.text2).id('Grid_ReachStartAndEnd_tex2')
 
+
+       Button('grid_Reset_bt')
+        .id('grid_Reset_bt')
+        .onClick(() => { // reset the init state
+           this.index = 0;
+           this.text2 = ""
+           
+           
+        })
+
     }.width('100%').margin({ top: 5 })
   }
 }

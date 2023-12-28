@@ -73,7 +73,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await driver.assertComponentExist(ON.text("apptest1"));
       await driver.assertComponentExist(ON.text("apptest2"));
       await driver.assertComponentExist(ON.text("apptest3"));
@@ -112,7 +112,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await driver.assertComponentExist(ON.text("apptest2"));
       await driver.assertComponentExist(ON.text("apptest3"));
       let app1 = await driver.findComponent(ON.text("apptest1"));
@@ -150,7 +150,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       let cancel = await driver.findComponent(ON.text("知道了"));
       await cancel.click();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 end');
@@ -182,7 +182,7 @@ export default function abilityTest() {
         console.info('startAbility succeed')
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await driver.assertComponentExist(ON.text("apptest1"));
       await driver.assertComponentExist(ON.text("apptest3"));
       let app2 = await driver.findComponent(ON.text("apptest2"));
@@ -222,7 +222,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500: apptest1,apptest2,apptest3,apptest4 notExist');
       let app1 = await driver.findComponent(ON.text("apptest1"));
       let app2 = await driver.findComponent(ON.text("apptest2"));
@@ -263,7 +263,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600: apptest1,apptest2,apptest3,apptest4 notExist');
       let app1 = await driver.findComponent(ON.text("apptest1"));
       let app2 = await driver.findComponent(ON.text("apptest2"));
@@ -306,7 +306,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await driver.assertComponentExist(ON.text("MulAbFirst"));
       await driver.assertComponentExist(ON.text("MulAbSecond"));
       let AblityThird = await driver.findComponent(ON.text("MulAbThird"));
@@ -344,7 +344,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await driver.assertComponentExist(ON.text("MulHapFirst"));
       console.info('startAbility MulHapFirst exist');
       await driver.assertComponentExist(ON.text("MulHapSecond"));
@@ -384,7 +384,7 @@ export default function abilityTest() {
         console.info('startAbility succeed');
       }
       );
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       let app1 = await driver.findComponent(ON.text("apptest1"));
       let app2 = await driver.findComponent(ON.text("apptest2"));
       let app3 = await driver.findComponent(ON.text("apptest3"));
@@ -394,7 +394,9 @@ export default function abilityTest() {
       expect(app3 === null).assertTrue();
       expect(app4 === null).assertTrue();
       let cancel = await driver.findComponents(ON.clickable(true));
-      await cancel[0].click();
+      if (cancel !== null) {
+        await cancel[0].click();
+      }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 end');
       done();
     })
@@ -439,7 +441,7 @@ export default function abilityTest() {
             console.info('====>ACTS_NFC_SelectTypes_1000 unSubscribeCallback kill');
             let cmdkill = 'pkill -f com.example.mytest4';
             await abilityDelegator.executeShellCommand(cmdkill);
-            await driver.delayMs(1000);
+            await driver.delayMs(2000);
             done();
           })
         }
@@ -487,7 +489,7 @@ export default function abilityTest() {
             console.info('====>ACTS_NFC_SelectTypes_1100 unSubscribeCallback kill');
             let cmdkill = 'pkill -f com.example.mytest4';
             await abilityDelegator.executeShellCommand(cmdkill);
-            await driver.delayMs(1000);
+            await driver.delayMs(2000);
             done();
           })
         }
@@ -567,7 +569,7 @@ export default function abilityTest() {
         expect(true).assertFalse();
         done();
       });
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await globalThis.abilitycontext.startAbility(wantStandard).then(() => {
         console.info('startAbility wantStandard succeed');
         expect(true).assertTrue();
@@ -576,7 +578,7 @@ export default function abilityTest() {
         expect(true).assertFalse();
         done();
       });
-      await driver.delayMs(1000);
+      await driver.delayMs(2000);
       await globalThis.abilitycontext.startAbility(wantSingle).then(() => {
         console.info('startAbility second succeed');
         expect(true).assertTrue();

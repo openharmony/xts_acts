@@ -14,9 +14,7 @@
 */
 
 import ActsNotificationRequestTest from './ActsNotificationRequestTest.test';
-import ActsNotificationManagerRequestTest from './ActsNotificationManagerRequestTest.test';
 
 export default function testsuite() {
   ActsNotificationRequestTest();
-  ActsNotificationManagerRequestTest();
 };

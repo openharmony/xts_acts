@@ -23,6 +23,11 @@ struct TextAreaExample2 {
   @State fontSize: number = 16;
   @State fontColor: Color = Color.Black;
   @State textAlign: TextAlign = TextAlign.Start;
+  @State caretIndex : number = 9999
+  @State text2: string = ''
+  @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
+  controller: TextInputController = new TextInputController()
+  controller2: TextInputController = new TextInputController()
 
   onPageShow() {
     var stateChangeEvent = {
@@ -49,6 +54,9 @@ struct TextAreaExample2 {
       }
       if (eventData.data.Text != null) {
         this.text = eventData.data.text;
+      }
+      if (eventData.data.text2 != null) {
+        this.text2 = eventData.data.text2;
       }
     }
   }
@@ -78,6 +86,35 @@ struct TextAreaExample2 {
         .onClick(() => {
           this.controller.caretPosition(4)
         })
+
+      TextInput({text: this.text2, placeholder: 'input your word', controller: this.controller2 })
+        .key('TextInput2')
+        .placeholderColor("rgb(0,0,225)")
+        .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
+        .textAlign(this.textAlign)
+        .caretColor(Color.Blue)
+        .height(50)
+        .fontSize(this.fontSize)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily("sans-serif")
+        .fontStyle(FontStyle.Normal)
+        .fontColor(this.fontColor)
+        .maxLength(10)
+
+      Button('caretoffset')
+        .backgroundColor('#00FF00')
+        .margin(15)
+        .onClick(() => {
+          console.info('text2 length:' + this.text2.length)
+          this.controller2.caretPosition(this.text2.length)
+          console.info('getCaretOffset')
+          this.positionInfo = this.controller2.getCaretOffset()
+          console.info("index:" + this.positionInfo.index)
+          this.caretIndex = this.positionInfo.index
+        })
+        .key('caretOffsetBtn2')
+
+      Text("Index" + this.caretIndex).key('caretOffsetText2')
     }
   }
 }

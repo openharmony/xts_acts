@@ -63,8 +63,26 @@
         "MainAbility/pages/List/List_divider/List_divider_number",
         "MainAbility/pages/List/List_divider/List_divider_string",
         "MainAbility/pages/List/List_divider/List_strokeWidth",
-        "MainAbility/pages/List/List_divider/List_divider_resource"
+        "MainAbility/pages/List/List_divider/List_divider_resource",
 
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTestNoOnAction",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest06",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listEndTest",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest12",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest13",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest15",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest19",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest20",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest23",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest27",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest28",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest29",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest34",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest36",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest41",
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest43",
+        "MainAbility/pages/List/List_attribute/ListOffSet01"
 
     ]
 }

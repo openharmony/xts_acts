@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility6 extends Ability {
     onCreate(want, launchParam) {
@@ -106,11 +107,16 @@ export default class MainAbility6 extends Ability {
         globalThis.applicationContext6 = globalThis.ability6.getApplicationContext();
         let lifecycleid = globalThis.applicationContext6.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback6 number: " + JSON.stringify(lifecycleid));
+        globalThis.callbackid6 = lifecycleid;
         setTimeout(function () {
             console.log("[Demo] registerAbilityLifecycleCallback6 listKey: " + JSON.stringify(listKey6));
             globalThis.list6 = listKey6;
-            globalThis.callbackid6 = lifecycleid;
         }, 1500);
+        setTimeout(()=>{
+            commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility6.onForeground", ()=>{
+                console.log("[Demo] MainAbility1 onDestroy")
+            });
+        }, 1500)
     }
 
     onBackground() {

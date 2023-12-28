@@ -38,9 +38,12 @@ export default function UDMFApiPromise() {
     console.info(TAG + "*************Unit Test Begin*************")
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0100', 0, function (done) {
       let Options = {}
@@ -66,9 +69,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0200', 0, function (done) {
       let Options = {
@@ -96,9 +102,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0300', 0, function (done) {
       let Options = {
@@ -126,9 +135,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0400', 0, function (done) {
       let Options = {
@@ -157,9 +169,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0500', 0, function (done) {
       let Options = {
@@ -187,9 +202,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0600', 0, function (done) {
       let options = {
@@ -215,9 +233,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000
-     * @tc.name unifiedDataChannel updateData promise interface test
-     * @tc.desc unifiedDataChannel updateData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000
+     * @tc.name      : unifiedDataChannel updateData promise interface test
+     * @tc.desc      : unifiedDataChannel updateData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1000', 0, function (done) {
       let options = {
@@ -252,9 +273,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0800', 0, function (done) {
       let options = {
@@ -294,9 +318,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0900', 0, function (done) {
       let options = {
@@ -337,9 +364,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700
-     * @tc.name unifiedDataChannel insertData promise interface test
-     * @tc.desc unifiedDataChannel insertData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700
+     * @tc.name      : unifiedDataChannel insertData promise interface test
+     * @tc.desc      : unifiedDataChannel insertData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
 
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_0700', 0, function (done) {
@@ -382,9 +412,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100
-     * @tc.name unifiedDataChannel queryData promise interface test
-     * @tc.desc unifiedDataChannel queryData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100
+     * @tc.name      : unifiedDataChannel queryData promise interface test
+     * @tc.desc      : unifiedDataChannel queryData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1100', 0, function (done) {
       let options = {
@@ -429,9 +462,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200
-     * @tc.name unifiedDataChannel queryData promise interface test
-     * @tc.desc unifiedDataChannel queryData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200
+     * @tc.name      : unifiedDataChannel queryData promise interface test
+     * @tc.desc      : unifiedDataChannel queryData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1200', 0, function (done) {
       let options = {
@@ -476,9 +512,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300
-     * @tc.name unifiedDataChannel queryData promise interface test
-     * @tc.desc unifiedDataChannel queryData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300
+     * @tc.name      : unifiedDataChannel queryData promise interface test
+     * @tc.desc      : unifiedDataChannel queryData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1300', 0, function (done) {
       let options1 = {
@@ -527,9 +566,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400
-     * @tc.name unifiedDataChannel queryData promise interface test
-     * @tc.desc unifiedDataChannel queryData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400
+     * @tc.name      : unifiedDataChannel queryData promise interface test
+     * @tc.desc      : unifiedDataChannel queryData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1400', 0, function (done) {
       let options1 = {
@@ -584,9 +626,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500
-     * @tc.name unifiedDataChannel queryData promise interface test
-     * @tc.desc unifiedDataChannel queryData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500
+     * @tc.name      : unifiedDataChannel queryData promise interface test
+     * @tc.desc      : unifiedDataChannel queryData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1500', 0, function (done) {
       let options1 = {
@@ -635,9 +680,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1600
-     * @tc.name unifiedDataChannel deleteData promise interface test
-     * @tc.desc unifiedDataChannel deleteData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1600
+     * @tc.name      : unifiedDataChannel deleteData promise interface test
+     * @tc.desc      : unifiedDataChannel deleteData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_SDK_UnifiedDataPromiseJsAPITest_1600', 0, function (done) {
       let options = {
@@ -689,9 +737,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700
-     * @tc.name unifiedDataChannel deleteData promise interface test
-     * @tc.desc unifiedDataChannel deleteData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700
+     * @tc.name      : unifiedDataChannel deleteData promise interface test
+     * @tc.desc      : unifiedDataChannel deleteData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1700', 0, function (done) {
       let options = {
@@ -743,9 +794,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800
-     * @tc.name unifiedDataChannel deleteData promise interface test
-     * @tc.desc unifiedDataChannel deleteData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800
+     * @tc.name      : unifiedDataChannel deleteData promise interface test
+     * @tc.desc      : unifiedDataChannel deleteData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1800', 0, function (done) {
       let options1 = {
@@ -801,9 +855,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900
-     * @tc.name unifiedDataChannel deleteData promise interface test
-     * @tc.desc unifiedDataChannel deleteData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900
+     * @tc.name      : unifiedDataChannel deleteData promise interface test
+     * @tc.desc      : unifiedDataChannel deleteData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_1900', 0, function (done) {
       let options1 = {
@@ -865,9 +922,12 @@ export default function UDMFApiPromise() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000
-     * @tc.name unifiedDataChannel deleteData promise interface test
-     * @tc.desc unifiedDataChannel deleteData promise interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000
+     * @tc.name      : unifiedDataChannel deleteData promise interface test
+     * @tc.desc      : unifiedDataChannel deleteData promise interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataPromiseJsAPITest_2000', 0, function (done) {
       let options1 = {

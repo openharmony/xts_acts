@@ -60,13 +60,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
             onAbilityCreate: onAbilityCreateCallback,
         };
         var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)        
-        abilityDelegator.executeShellCommand("echo 123456 > /data/app/el2/100/base/com.acts.requesttest/haps/entry/cache/test.txt",
-            (err: any, d: any) => {
-                console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                console.info('executeShellCommand : data : ' + d.stdResult);
-                console.info('executeShellCommand : data : ' + d.exitCode);
-            }) 
+        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
         var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)           
         console.info('cmd : '+cmd)

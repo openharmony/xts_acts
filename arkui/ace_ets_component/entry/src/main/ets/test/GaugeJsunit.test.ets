@@ -64,7 +64,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "gaugeValue": "10"
+            "gaugeValue": 10
           }
         }
         var innerEvent = {
@@ -116,7 +116,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "startAngleValue": "200"
+            "startAngleValue": 200
           }
         }
         var innerEvent = {
@@ -142,7 +142,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "endAngleValue": "200"
+            "endAngleValue": 200
           }
         }
         var innerEvent = {
@@ -189,7 +189,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "gaugeValue": "-10"
+            "gaugeValue": -10
           }
         }
         var innerEvent = {
@@ -215,7 +215,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "gaugeValue": 'nan'
+            "strokeWidthValue": "-30",
           }
         }
         var innerEvent = {
@@ -231,7 +231,7 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge008] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.value).assertEqual('nan');
+      expect(objNew.$attrs.strokeWidth).assertEqual('-30.00vp');
       done();
     });
 
@@ -241,11 +241,11 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "strokeWidthValue": "-30",
+            "startAngleValue": -10
           }
         }
         var innerEvent = {
-          eventId: 904,
+          eventId: 905,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge009] start to publish emit");
@@ -257,7 +257,7 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge009] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.strokeWidth).assertEqual('-30.00vp');
+      expect(objNew.$attrs.startAngle).assertEqual('-10.00');
       done();
     });
 
@@ -267,11 +267,11 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "startAngleValue": "-10"
+            "endAngleValue": -10
           }
         }
         var innerEvent = {
-          eventId: 905,
+          eventId: 906,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGauge010] start to publish emit");
@@ -283,7 +283,7 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge010] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.startAngle).assertEqual('-10.00');
+      expect(objNew.$attrs.endAngle).assertEqual('-10.00');
       done();
     });
 
@@ -293,7 +293,7 @@ export default function gaugeJsunit() {
       try {
         var eventData = {
           data: {
-            "startAngleValue": "nan"
+            "strokeWidthValue": "121111111"
           }
         }
         var innerEvent = {
@@ -309,84 +309,6 @@ export default function gaugeJsunit() {
       let strJsonNew = getInspectorByKey('gauge');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testGauge011] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.startAngle).assertEqual('nan');
-      done();
-    });
-
-    it('testGauge012', 0, async function (done) {
-      console.info('[testGauge012] START');
-      await Utils.sleep(1000);
-      try {
-        var eventData = {
-          data: {
-            "endAngleValue": "nan"
-          }
-        }
-        var innerEvent = {
-          eventId: 906,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testGauge012] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[testGauge012] change component data error: " + err.message);
-      }
-      await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('gauge');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testGauge012] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.endAngle).assertEqual('nan');
-      done();
-    });
-
-    it('testGauge013', 0, async function (done) {
-      console.info('[testGauge013] START');
-      await Utils.sleep(1000);
-      try {
-        var eventData = {
-          data: {
-            "endAngleValue": "-10"
-          }
-        }
-        var innerEvent = {
-          eventId: 906,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testGauge013] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[testGauge013] change component data error: " + err.message);
-      }
-      await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('gauge');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testGauge013] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.endAngle).assertEqual('-10.00');
-      done();
-    });
-
-    it('testGauge014', 0, async function (done) {
-      console.info('[testGauge014] START');
-      await Utils.sleep(1000);
-      try {
-        var eventData = {
-          data: {
-            "strokeWidthValue": "121111111"
-          }
-        }
-        var innerEvent = {
-          eventId: 905,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testGauge014] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[testGauge014] change component data error: " + err.message);
-      }
-      await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('gauge');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testGauge014] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.strokeWidth).assertEqual('121111111.00vp');
       done();
     });

@@ -24,7 +24,7 @@ struct TextAreaSelect {
   @State text1: string = "Show selected "
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
-    
+
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
@@ -34,7 +34,7 @@ struct TextAreaSelect {
           this.controller.setTextSelection(-2,-1)
       }
       if (message.name == 'requestFocus') {
-          focusControl.requestFocus("TextAreaSelect_TextArea_1")      
+          focusControl.requestFocus("TextAreaSelect_TextArea_1")
       }
       if (message.name == 'Show selected (-1,0)') {
           this.controller.setTextSelection(-1,0)
@@ -43,7 +43,7 @@ struct TextAreaSelect {
           this.controller.setTextSelection(0,3)
       }
       if (message.name == 'Show selected (1,3)') {
-         
+
           this.controller.setTextSelection(1,3)
       }
       if (message.name == 'Show selected (-1,6)') {
@@ -67,11 +67,11 @@ struct TextAreaSelect {
        if (message.name == 'Show selected (undefined,null)') {
           this.controller.setTextSelection(undefined,null)
       }
-       
+
       if (message.name == 'Show selected(undefined,undefined)') {
           this.controller.setTextSelection(undefined,undefined)
       }
-      
+
     }
     this.messageManager.registerCallback(callback)
 
@@ -90,14 +90,15 @@ struct TextAreaSelect {
         .fontColor(Color.Red)
         .tabIndex(1)
         .key('TextAreaSelect_TextArea_1')
+        .focusable(true).focusOnTouch(true).defaultFocus(true)
 
         Button("Show selected (-2,-1)")
         .margin(30)
         .onClick(() => {
           this.controller.setTextSelection(-2,-1)
         })
-        .key('TextAreaSelect_Button_1').focusable(true).focusOnTouch(true).defaultFocus(true)
-    
+        .key('TextAreaSelect_Button_1')
+
       TextArea({ text: '', placeholder: 'input your word', controller: this.controller2 })
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 20, weight: 100, family: 'cursive', style: FontStyle.Italic })

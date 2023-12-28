@@ -163,6 +163,9 @@ LITE_TEST_CASE(IUnknownTestSuite, testGetObject0010, Function | MediumTest | Lev
     IUnknownEntry *entry = GET_OBJECT(iUnknown, IUnknownEntry, iUnknown);
     TEST_ASSERT_EQUAL_INT(DEFAULT_VERSION, entry->ver);
     TEST_ASSERT_EQUAL_INT(1, entry->ref);
+    int resultAdd = iUnknown->AddRef(iUnknown);
+    int resultRelease = iUnknown->Release(iUnknown);
+    TEST_ASSERT_EQUAL_INT(1, resultAdd - resultRelease);
 }
 
 /**
@@ -179,11 +182,8 @@ LITE_TEST_CASE(IUnknownTestSuite, testQueryInterface0010, Function | MediumTest 
     int resultQuery = iUnknown->QueryInterface(iUnknown, DEFAULT_VERSION, (void **)&demoApi);
     TEST_ASSERT_EQUAL_INT(EC_SUCCESS, resultQuery);
     TEST_ASSERT_EQUAL_INT(TRUE, demoApi != NULL);
-
-    int resultAdd = iUnknown->AddRef(iUnknown);
     int resultRelease = iUnknown->Release(iUnknown);
-    TEST_ASSERT_EQUAL_INT(1, resultAdd - resultRelease);
-
+    TEST_ASSERT_EQUAL_INT(1, resultRelease);
     SAMGR_GetInstance()->UnregisterFeatureApi(SERVICE_NAME, FEATURE_NAME);
 }
 

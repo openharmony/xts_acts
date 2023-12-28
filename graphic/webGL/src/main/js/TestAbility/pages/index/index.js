@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,12 +21,14 @@ export default {
     data:{
         title:""
     },
-    onInit(){
+    onInit() {
         this.title = this.$t('strings.world');
     },
-    onShow(){
-        global.el = this.$refs.canvas1;
-        global.el2 = this.$refs.canvas2;
+    onShow() {
+        let canvas1 = this.$refs.canvas1;
+        let canvas2 = this.$refs.canvas2;
+        global.gl = canvas1.getContext('webgl', {antialias: true, alpha: true, depth: true});
+        global.gl2 = canvas2.getContext('webgl2', {antialias: true, alpha: true, depth: true});
         var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         console.info('start run testcase!!!')

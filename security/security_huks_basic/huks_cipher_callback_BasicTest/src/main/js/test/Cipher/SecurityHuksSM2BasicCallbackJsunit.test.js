@@ -349,9 +349,9 @@ let genHuksOptions = {
 export default function SecurityHuksRSABasicCallbackJsunit() {
     describe('SecurityHuksSM2BasicCallbackJsunit', function () {
 
-        it('testCipherSM2_001', 0, async function (done) {
-            const srcKeyAlies = 'testCipherSM2_001A';
-            const newSrcKeyAlies = 'testCipherSM2_001B';
+        it('Security_HUKS_Cipher_API8_SM2_001', 0, async function (done) {
+            const srcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_001A';
+            const newSrcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_001B';
 
             let HuksOptions = {
                 properties: new Array(
@@ -412,10 +412,10 @@ export default function SecurityHuksRSABasicCallbackJsunit() {
             done();
         });
 
-        it('testCipherSM2_002', 0, async function (done) {
+        it('Security_HUKS_Cipher_API8_SM2_002', 0, async function (done) {
             //init update finish
-            const srcKeyAlies = 'testCipherSM2_001A';
-            const newSrcKeyAlies = 'testCipherSM2_001B';
+            const srcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_001A';
+            const newSrcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_001B';
 
             let HuksOptions = {
                 properties: new Array(

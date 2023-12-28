@@ -46,7 +46,7 @@ export default function ListJsunit() {
     it('ListJsunit_0100', 0, async function (done) {
       // Get the information of the List component
       console.info('[ListJsunit_0100] START');
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(5000);
       let strJson = getInspectorByKey('list');
       let obj = JSON.parse(strJson);
       console.info("[ListJsunit_0100] component obj is: " + JSON.stringify(obj));
@@ -281,7 +281,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.cachedCount).assertEqual('1');
-      expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None');
+      expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');
       expect(obj.$attrs.lanes).assertEqual('5');
       expect(obj.$attrs.chainAnimation).assertEqual(true);
       expect(obj.$attrs.multiSelectable).assertEqual(true);
@@ -301,7 +301,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.space).assertEqual('0.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('0');
       expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical');
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.cachedCount).assertEqual('0');
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');

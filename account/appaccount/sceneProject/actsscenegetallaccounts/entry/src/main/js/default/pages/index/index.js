@@ -25,18 +25,18 @@ export default {
         this.title = "scene getAllAccounts";
     },
     onShow() {
-        console.debug('====>scene getAllAccounts start====');
+        console.info('====>scene getAllAccounts start====');
         var appAccountManager = account.createAppAccountManager();
-        console.debug("====>creat scene manager finish====");
+        console.info("====>creat scene manager finish====");
         var enableBundle = "com.example.actsgetallaccounts";
         var enableBundle2 = "com.example.actsgetaccountsbyowner";
-        console.debug("====>add account scene start====");
+        console.info("====>add account scene start====");
         appAccountManager.createAccount("account_name_scene_single", (err)=>{
-            console.debug("====>add account scene err:" + JSON.stringify(err));
+            console.info("====>add account scene err:" + JSON.stringify(err));
             appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
-                console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
                 appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
-                    console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                    console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
                     featureAbility.terminateSelf()
                 })                
             });

@@ -114,11 +114,11 @@ export default function gaugeJsunit() {
       console.info('gaugeJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // modify the values attribute illegal value of divider dynamically
-      globalThis.value.message.notify({name:'startAngle',value:'-30'})
+      globalThis.value.message.notify({name:'startAngle',value:-30})
       await CommonFunc.sleep(2000);
       globalThis.value.message.notify({name:'strokeWidth',value:'-30'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'endAngle',value:'450'})
+      globalThis.value.message.notify({name:'endAngle',value:450})
       await CommonFunc.sleep(2000);
       globalThis.value.message.notify({name:'colors',value:'[[0x317AF6, 2], [0x5BA, 0.3], [0xE08C3A, 0.4], [0x9A554B, 0.4]]'})
       await CommonFunc.sleep(2000);

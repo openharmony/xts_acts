@@ -215,11 +215,10 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
         notificationManager.isNotificationEnabled((err, data) => {
             if (err) {
                 console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-                expect(err.code).assertEqual(202);
+                expect(false).assertTrue()
                 done()
             } else {
                 console.info(`${TAG} isNotificationEnabled AsyncCallback success`)
-                expect(false).assertTrue()
                 done()
             }
         });

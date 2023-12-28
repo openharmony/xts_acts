@@ -60,6 +60,47 @@ let NONCE = '000000000000';
 let AEAD = '0000000000000000';
 let useSoftware = true;
 
+async function getGenKeyOption() {
+    let properties = [
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_RSA
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+            value: huks.HuksKeyStorageType.HUKS_STORAGE_PERSISTENT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_PSS
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+            value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_ECB
+        }
+    ];
+    let options = {
+        properties: properties
+    };
+    return options;
+}
+
 async function publicGenerateKeyFunc(srcKeyAlias, genHuksOptionsNONECBC) {
     console.error(`promise: generateKeyItem options, data = ${JSON.stringify(genHuksOptionsNONECBC)}`);
     try {
@@ -2741,5 +2782,274 @@ export default function SecurityHuksRSASignExtendJsunit() {
             await publicDeleteKeyFunc(srcKeyAlies, HuksOptionsGen);
             done();
         })
-    })
+
+        /**
+         * @tc.number Security_HUKS_Cipher_AnonAttestation_0010
+         * @tc.name Test AnonAttestation with RSA, process is success ...
+         * @tc.desc generateKeyItem with RSA ...
+         * @tc.level Level3
+         * @tc.type Func
+         * @tc.size Medium
+         */
+        it("Security_HUKS_Cipher_AnonAttestation_0010", 0, async function (done) {
+            let srcKeyAlies = "Security_HUKS_Cipher_AnonAttestation_0010";
+            let properties = [
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+                    value: stringToUint8Array('sec_level')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+                    value: stringToUint8Array('challenge_data')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+                    value: stringToUint8Array('version_info')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+                    value: stringToUint8Array(srcKeyAlies)
+                }
+            ];
+            let options = {
+                properties: properties
+            };
+            try {
+                let genKeyOption = await getGenKeyOption();
+                await huks.generateKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": generateKeyItem succeed, data: " + data);
+                });
+                await huks.anonAttestKeyItem(srcKeyAlies, options).then(data => {
+                    console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
+                });
+                await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": deleteKeyItem succeed, data: " + data);
+                });
+            } catch (err) {
+                console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+                expect(null).assertFail();
+            }
+            console.info(srcKeyAlies + ": success");
+            done();
+        })
+
+        /**
+         * @tc.number Security_HUKS_Cipher_AnonAttestation_0012
+         * @tc.name Test AnonAttestation with SM2, process is success ...
+         * @tc.desc generateKeyItem with SM2, Callback...
+         * @tc.level Level3
+         * @tc.type Func
+         * @tc.size Medium
+         */
+        it("Security_HUKS_Cipher_AnonAttestation_0012", 0, async function (done) {
+            let srcKeyAlies = "Security_HUKS_Cipher_AnonAttestation_0012";
+            let properties = [
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+                    value: stringToUint8Array('sec_level')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+                    value: stringToUint8Array('challenge_data')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+                    value: stringToUint8Array('version_info')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+                    value: stringToUint8Array(srcKeyAlies)
+                }
+            ];
+            let options = {
+                properties: properties
+            };
+            let genKeyOption = await getGenKeyOption();
+            genKeyOption.properties = [
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+                    value: huks.HuksKeyAlg.HUKS_ALG_SM2
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+                    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+                    value: huks.HuksKeySize.HUKS_SM2_KEY_SIZE_256
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+                    value: huks.HuksKeyDigest.HUKS_DIGEST_SM3
+                }
+            ];
+            await huks.generateKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                console.info(srcKeyAlies + ": generateKeyItem succeed, data: " + data);
+            });
+            huks.anonAttestKeyItem(srcKeyAlies, options, function (err, data) {
+                if (err) {
+                    console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+                    expect(null).assertFail();
+                } else {
+                    console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
+                    huks.deleteKeyItem(srcKeyAlies, genKeyOption, (err) => {
+                        if (err) {
+                            console.error("promise: " + srcKeyAlies + ": deleteKeyItem failed, err: " + err + ", errcode: " + err.code);
+                            expect(null).assertFail();
+                        } else {
+                            console.info(srcKeyAlies + ": deleteKeyItem succeed");
+                            console.info(srcKeyAlies + ": success");
+                            done();
+                        }
+                    });
+                }
+            });
+        })
+
+        /**
+         * @tc.number Security_HUKS_Cipher_AnonAttestation_0013
+         * @tc.name Test AnonAttestation with ECC, process is success ...
+         * @tc.desc generateKeyItem with ECC ...
+         * @tc.level Level3
+         * @tc.type Func
+         * @tc.size Medium
+         */
+        it("Security_HUKS_Cipher_AnonAttestation_0013", 0, async function (done) {
+            let srcKeyAlies = "Security_HUKS_Cipher_AnonAttestation_0013";
+            let properties = [
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+                    value: stringToUint8Array('sec_level')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+                    value: stringToUint8Array('challenge_data')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+                    value: stringToUint8Array('version_info')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+                    value: stringToUint8Array(srcKeyAlies)
+                }
+            ];
+            let options = {
+                properties: properties
+            };
+            try {
+                let genKeyOption = await getGenKeyOption();
+                genKeyOption.properties = [
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+                        value: huks.HuksKeyAlg.HUKS_ALG_ECC
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+                        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+                        value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_DIGEST,
+                        value: huks.HuksKeyDigest.HUKS_DIGEST_NONE
+                    }
+                ];
+                await huks.generateKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": generateKeyItem succeed, data: " + data);
+                });
+
+                await huks.anonAttestKeyItem(srcKeyAlies, options).then(data => {
+                    console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
+                });
+                await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": deleteKeyItem succeed, data: " + data);
+                });
+            } catch (err) {
+                console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+                expect(null).assertFail();
+            }
+            console.info(srcKeyAlies + ": success");
+            done();
+        })
+
+        /**
+         * @tc.number Security_HUKS_Cipher_AnonAttestation_0014
+         * @tc.name Test AnonAttestation with error AES, process is fail ...
+         * @tc.desc generateKeyItem with AES ...
+         * @tc.level Level3
+         * @tc.type Func
+         * @tc.size Medium
+         */
+        it("Security_HUKS_Cipher_AnonAttestation_0014", 0, async function (done) {
+            let srcKeyAlies = "Security_HUKS_Cipher_AnonAttestation_0014";
+            let properties = [
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+                    value: stringToUint8Array('sec_level')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+                    value: stringToUint8Array('challenge_data')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+                    value: stringToUint8Array('version_info')
+                },
+                {
+                    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+                    value: stringToUint8Array(srcKeyAlies)
+                }
+            ];
+            let options = {
+                properties: properties
+            };
+            let genKeyOption;
+            try {
+                genKeyOption = await getGenKeyOption();
+                genKeyOption.properties = [
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+                        value: huks.HuksKeyAlg.HUKS_ALG_AES
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+                        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+                    },
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+                        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+                    }
+                ];
+                await huks.generateKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": generateKeyItem succeed, data: " + data);
+                });
+            } catch (err) {
+                console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+                expect(null).assertFail();
+            }
+            try {
+                await huks.anonAttestKeyItem(srcKeyAlies, options).then(data => {
+                    console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
+                });
+                expect(null).assertFail();
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+                console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+            }
+            try {
+                await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
+                    console.info(srcKeyAlies + ": deleteKeyItem succeed, data: " + data);
+                });
+            } catch (err) {
+                console.error("promise: " + srcKeyAlies + ": anonAttestKeyItem failed, err: " + err + ", errcode: " + err.code);
+                expect(null).assertFail();
+            }
+            console.info(srcKeyAlies + ": success");
+            done();
+        })
+    }
+    )
 }

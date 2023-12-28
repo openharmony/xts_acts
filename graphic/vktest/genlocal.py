@@ -140,5 +140,6 @@ if __name__ == '__main__':
     if os.path.exists(latestpath+"/result") == False:
         os.mkdir(latestpath+"/result")
     # os.system(r"cp {} {}".format(tmpfile, putdir))
+    print("putdir :", putdir)
     shutil.copy2(tmpfile,putdir)
 

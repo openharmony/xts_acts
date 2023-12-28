@@ -15,12 +15,29 @@
 
 import { describe, expect, it } from '@ohos/hypium'
 import semaphore from 'libsemaphorendk.so'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import fs from '@ohos.file.fs'
+
 
 export default function semaphoreNdkTest() {
+
   describe('MuslSemaphoreTest', () => {
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_Semaphore_SEMGETVALUE_0100
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMOPEN_0200
+     * @tc.name       : testMuslSemaphoreSemOpen002
+     * @tc.desc       : test sem_open
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSemaphoreSemOpen002', 0, async (done: Function) => {
+      let a : number = semaphore.sem_open(1);
+      expect(a).assertEqual(200);
+      done()
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMGETVALUE_0100
      * @tc.name       : testMuslSemaphoreSemGetvalue001
      * @tc.desc       : test sem_getvalue
      * @tc.size       : MEDIUM
@@ -28,9 +45,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemGetvalue001', 0, async (done: Function) => {
-      let b = 1
-      let a = semaphore.sem_getvalue(b);
-      expect(a).assertEqual(0);
+      let testParam = 1
+      let result:number= semaphore.sem_getvalue(testParam);
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -43,8 +60,8 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemOpen001', 0, async (done: Function) => {
-      let a = semaphore.sem_open(1);
-      expect(a).assertEqual(-1000);
+      let result:number= semaphore.sem_open(1);
+      expect(result).assertEqual(-1000);
       done()
     });
 
@@ -57,9 +74,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemInit001', 0, async (done: Function) => {
-      let b = 0
-      let a = semaphore.sem_init(b);
-      expect(a).assertEqual(0);
+      let testParam = 0
+      let result:number= semaphore.sem_init(testParam);
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -72,9 +89,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemInit002', 0, async (done: Function) => {
-      let b = -1
-      let a = semaphore.sem_init(b);
-      expect(a).assertEqual(-1);
+      let testParam = -1
+      let result:number= semaphore.sem_init(testParam);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -88,8 +105,8 @@ export default function semaphoreNdkTest() {
      */
     it('testMuslSemaphoreSemDestroy001', 0, async (done: Function) => {
 
-      let a = semaphore.sem_destroy();
-      expect(a).assertEqual(0);
+      let result:number= semaphore.sem_destroy();
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -102,8 +119,8 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemPost001', 0, async (done: Function) => {
-      let a = semaphore.sem_post();
-      expect(a).assertEqual(0);
+      let result:number= semaphore.sem_post();
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -117,9 +134,9 @@ export default function semaphoreNdkTest() {
      */
 
     it('testMuslSemaphoreSemWait001', 0, async (done: Function) => {
-      let b = 1
-      let a = semaphore.sem_wait(b);
-      expect(a).assertEqual(0);
+      let testParam = 1
+      let result:number= semaphore.sem_wait(testParam);
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -132,9 +149,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemTrywait001', 0, async (done: Function) => {
-      let b = 0
-      let a = semaphore.sem_trywait(b);
-      expect(a).assertEqual(-1);
+      let testParam = 0
+      let result:number= semaphore.sem_trywait(testParam);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -147,9 +164,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemTrywait002', 0, async (done: Function) => {
-      let b = 1
-      let a = semaphore.sem_trywait(b);
-      expect(a).assertEqual(0);
+      let testParam = 1
+      let result:number= semaphore.sem_trywait(testParam);
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -162,9 +179,9 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemTimedwait001', 0, async (done: Function) => {
-      let b = 0
-      let a = semaphore.sem_timedwait(b);
-      expect(a).assertEqual(-1);
+      let testParam = 0
+      let result:number= semaphore.sem_timedwait(testParam);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -177,10 +194,32 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSemaphoreSemTimedwait002', 0, async (done: Function) => {
-      let b = 1
-      let a = semaphore.sem_timedwait(b);
+      let testParam = 1
+      let result:number= semaphore.sem_timedwait(testParam);
+      expect(result).assertEqual(0);
+      done()
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMCLOSE_0100
+     * @tc.name       : testMuslSemaphoreSemClose001
+     * @tc.desc       : test sem_close
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSemaphoreSemClose001', 0, async (done: Function) => {
+      let a : number = semaphore.sem_close();
       expect(a).assertEqual(0);
       done()
     });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMUNLINK_0100
+     * @tc.name       : testMuslSemaphoreSemUnlink001
+     * @tc.desc       : test sem_unlink
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    //block
   })
 }

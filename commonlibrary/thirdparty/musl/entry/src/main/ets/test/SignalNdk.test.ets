@@ -29,7 +29,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSighold001', 0, async (done: Function) => {
-      let a = signal.sighold(0,0);
+      let a: number = signal.sighold(0,0);
       expect(a).assertEqual(0);
       done()
     });
@@ -43,8 +43,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSighold002', 0, async (done: Function) => {
-      let a = signal.sighold(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sighold(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -57,8 +57,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSighold003', 0, async (done: Function) => {
-      let a = signal.sighold(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sighold(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -71,7 +71,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigrelse001', 0, async (done: Function) => {
-      let a = signal.sigrelse(0,0);
+      let a: number = signal.sigrelse(0,0);
       expect(a).assertEqual(0);
       done()
     });
@@ -85,8 +85,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigrelse002', 0, async (done: Function) => {
-      let a = signal.sigrelse(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigrelse(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -99,8 +99,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigrelse003', 0, async (done: Function) => {
-      let a = signal.sigrelse(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigrelse(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -113,7 +113,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigdelset001', 0, async (done: Function) => {
-      let a = signal.sigdelset(0,0);
+      let a: number = signal.sigdelset(0,0);
       expect(a).assertEqual(0);
       done()
     });
@@ -127,8 +127,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigdelset002', 0, async (done: Function) => {
-      let a = signal.sigdelset(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigdelset(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -141,8 +141,8 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigdelset003', 0, async (done: Function) => {
-      let a = signal.sigdelset(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigdelset(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -155,7 +155,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigemptyset001', 0, async (done: Function) => {
-      let a = signal.sigemptyset();
+      let a: number = signal.sigemptyset();
       expect(a).assertEqual(0);
       done()
     });
@@ -169,7 +169,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigfillset001', 0, async (done: Function) => {
-      let a = signal.sigfillset();
+      let a: number = signal.sigfillset();
       expect(a).assertEqual(0);
       done()
     });
@@ -183,7 +183,7 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigaddset001', 0, async (done: Function) => {
-      let a = signal.sigaddset(0,0);
+      let a: number = signal.sigaddset(0,0);
       expect(a).assertEqual(0);
       done()
     });
@@ -197,162 +197,480 @@ export default function signalNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSignalSigaddset002', 0, async (done: Function) => {
-      let a = signal.sigaddset(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigaddset(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGADDSET_0300
-     * @tc.name testMuslSignalSigaddset003
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGADDSET_0300
+     * @tc.name       : testMuslSignalSigaddset003
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaddset003', 0, async (done: Function) => {
-      let a = signal.sigaddset(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigaddset(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0100
-     * @tc.name testMuslSignalSigaction001
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0100
+     * @tc.name       : testMuslSignalSigaction001
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaction001', 0, async (done: Function) => {
-      let a = signal.sigaction(0,0);
+      let a: number = signal.sigaction(0,0);
       expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0200
-     * @tc.name testMuslSignalSigaction002
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0200
+     * @tc.name       : testMuslSignalSigaction002
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaction002', 0, async (done: Function) => {
-      let a = signal.sigaction(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigaction(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0300
-     * @tc.name testMuslSignalSigaction003
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGACTION_0300
+     * @tc.name       : testMuslSignalSigaction003
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaction003', 0, async (done: Function) => {
-      let a = signal.sigaction(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigaction(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGALTSTACK_0100
-     * @tc.name testMuslSignalSigaltstack001
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGALTSTACK_0100
+     * @tc.name       : testMuslSignalSigaltstack001
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaltstack001', 0, async (done: Function) => {
-      let a = signal.sigaltstack(0);
+      let a: number = signal.sigaltstack(0);
       expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGALTSTACK_0200
-     * @tc.name testMuslSignalSigaltstack002
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGALTSTACK_0200
+     * @tc.name       : testMuslSignalSigaltstack002
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigaltstack002', 0, async (done: Function) => {
-      let a = signal.sigaltstack(-1);
-      expect(a).assertEqual(-1);
-      done()
-    });
-
-    /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0100
-     * @tc.name testMuslSignalSigignore001
-     * @tc.desc MuslSignalTest
-     */
-    it("testMuslSignalSigignore001", 0, async (done: Function) => {
-      let a = signal.sigignore(0,0);
+      let a: number = signal.sigaltstack(-1);
       expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0200
-     * @tc.name testMuslSignalSigignore002
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0100
+     * @tc.name       : testMuslSignalSigignore001
+     * @tc.desc       : test SignalTest
+     */
+    it('testMuslSignalSigignore001', 0, async (done: Function) => {
+      let a: number = signal.sigignore(0,0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0200
+     * @tc.name       : testMuslSignalSigignore002
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigignore002', 0, async (done: Function) => {
-      let a = signal.sigignore(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigignore(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0300
-     * @tc.name testMuslSignalSigignore003
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGIGNORE_0300
+     * @tc.name       : testMuslSignalSigignore003
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigignore003', 0, async (done: Function) => {
-      let a = signal.sigignore(-1, 0);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigignore(-1, 0);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGPAUSE_0100
-     * @tc.name testMuslSignalSigpause001
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGPAUSE_0100
+     * @tc.name       : testMuslSignalSigpause001
+     * @tc.desc       : test SignalTest
      */
     it('testMuslSignalSigpause001', 0, async (done: Function) => {
-      let a = signal.sigpause();
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigpause();
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGPENDING_0100
-     * @tc.name testMuslSignalSigpending001
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGPENDING_0100
+     * @tc.name       : testMuslSignalSigpending001
+     * @tc.desc       : test sigpending
      */
     it('testMuslSignalSigpending001', 0, async (done: Function) => {
-      let a = signal.sigpending();
+      let a: number = signal.sigpending();
       expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0100
-     * @tc.name testMuslSignalSigprocmask001
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0100
+     * @tc.name       : testMuslSignalSigprocmask001
+     * @tc.desc       : test sigprocmask
      */
     it('testMuslSignalSigprocmask001', 0, async (done: Function) => {
-      let a = signal.sigprocmask(0,0);
+      let a: number = signal.sigprocmask(0,0);
       expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0200
-     * @tc.name testMuslSignalSigprocmask002
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0200
+     * @tc.name       : testMuslSignalSigprocmask002
+     * @tc.desc       : test sigprocmask
      */
     it('testMuslSignalSigprocmask002', 0, async (done: Function) => {
-      let a = signal.sigprocmask(-1, 99999);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigprocmask(-1, 99999);
+      expect(a).assertEqual(0);
       done()
     });
 
     /**
-     * @tc.number SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0300
-     * @tc.name testMuslSignalSigprocmask003
-     * @tc.desc MuslSignalTest
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGPROCMASK_0300
+     * @tc.name       : testMuslSignalSigprocmask003
+     * @tc.desc       : test sigprocmask
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
     it('testMuslSignalSigprocmask003', 0, async (done: Function) => {
-      let a = signal.sigprocmask(-1, -1);
-      expect(a).assertEqual(-1);
+      let a: number = signal.sigprocmask(-1, -1);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGQUEUE_0100
+     * @tc.name       : testMuslSignalSigpqueue001
+     * @tc.desc       : test sigqueue
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigpqueue001', 0, async (done: Function) => {
+      let a: number = signal.sigqueue(-1,99999);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGQUEUE_0200
+     * @tc.name       : testMuslSignalSigpqueue002
+     * @tc.desc       : test sigqueue
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigpqueue002', 0, async (done: Function) => {
+      let a: number = signal.sigqueue(0,0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGISMEMBER_0100
+     * @tc.name       : testMuslSignalSigismember001
+     * @tc.desc       : test sigismember
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigismember001', 0, async (done: Function) => {
+      let a: number = signal.sigismember(0,0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGISMEMBER_0200
+     * @tc.name       : testMuslSignalSigismember002
+     * @tc.desc       : test sigismember
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigismember002', 0, async (done: Function) => {
+      let a: number = signal.sigismember(-1, 99999);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGWAIT_0100
+     * @tc.name       : testMuslSignalSigwait001
+     * @tc.desc       : test sigwait
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigwait001', 0, async (done: Function) => {
+      let a: number = signal.sigwait();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGWAITINFO_0100
+     * @tc.name       : testMuslSignalSigwaitinfo001
+     * @tc.desc       : test sigwaitinfo
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigwaitinfo001', 0, async (done: Function) => {
+      let a: number = signal.sigwaitinfo();
+      expect(a).assertEqual(0);
+      done()
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGISMEMBER_0300
+     * @tc.name       : testMuslSignalSigismember003
+     * @tc.desc       : test sigismember
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigismember003', 0, async (done: Function) => {
+      let a: number = signal.sigismember(-1, 0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGISMEMBER_0400
+     * @tc.name       : testMuslSignalSigismember004
+     * @tc.desc       : test sigismember
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigismember004', 0, async (done: Function) => {
+      let a: number = signal.sigismember(1,0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGNAL_0100
+     * @tc.name       : testMuslSignalSignal001
+     * @tc.desc       : test signal
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalSignal001', 0, async (done: Function) => {
+      let a: number = signal.signal();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGNALFD_0100
+     * @tc.name       : testMuslSignalSignalfd001
+     * @tc.desc       : test signalfd
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalSignalfd001', 0, async (done: Function) => {
+      let a: number = signal.signalfd();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGINTERRUPT_0100
+     * @tc.name       : testMuslSignalSiginterrupt001
+     * @tc.desc       : test siginterrupt
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalSiginterrupt001', 0, async (done: Function) => {
+      let a: number = signal.siginterrupt();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGSET_0100
+     * @tc.name       : testMuslSignalSigset001
+     * @tc.desc       : test sigset
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigset001', 0, async (done: Function) => {
+      let a: number = signal.sigset(0);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGSET_0200
+     * @tc.name       : testMuslSignalSigset002
+     * @tc.desc       : test sigset
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSignalSigset002', 0, async (done: Function) => {
+      let a: number = signal.sigset(1);
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGTIMEDWAIT_0100
+     * @tc.name       : testMuslSignalSigtimedwait001
+     * @tc.desc       : test sigtimedwait
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalSigtimedwait001', 0, async (done: Function) => {
+      let a: number = signal.sigtimedwait();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number   : SUB_THIRDPARTY_MUSL_SIGNAL_KILL_0100
+     * @tc.name     : testMuslSignalKill001
+     * @tc.desc     : test kill
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('testMuslSignalKill001', 0, async (done: Function) => {
+      let a: number = signal.kill();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number   : SUB_THIRDPARTY_MUSL_SIGNAL_KILLPG_0100
+     * @tc.name     : testMuslSignalKillpg001
+     * @tc.desc     : test killpg
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('testMuslSignalKillpg001', 0, async (done: Function) => {
+      let a: number = signal.killpg();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_PSIGNAL_0100
+     * @tc.name       : testMuslSignalPsignal001
+     * @tc.desc       : test psignal
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalPsignal001', 0, async (done: Function) => {
+      let a = 10, b = "SIGUSR1";
+      let data: number = signal.psignal(a, b);
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_PSIGNAL_0200
+     * @tc.name       : testMuslSignalPsignal002
+     * @tc.desc       : test psignal
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalPsignal002', 0, async (done: Function) => {
+      let a = 10, b = " ";
+      let data: number = signal.psignal(a, b);
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_PSIGNAL_0300
+     * @tc.name       : testMuslSignalPsignal003
+     * @tc.desc       : test psignal
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalPsignal003', 0, async (done: Function) => {
+      let a = -1, b = " ";
+      let data: number = signal.psignal(a, b);
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_PSIGINFO_0100
+     * @tc.name       : testMuslSignalPsiginfo001
+     * @tc.desc       : test psigInfo
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalPsiginfo001', 0, async (done: Function) => {
+      let data: number = signal.pSigInfo();
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number   : SUB_THIRDPARTY_MUSL_SIGNAL_RAISE_0100
+     * @tc.name     : testMuslSignalRaise001
+     * @tc.desc     : test raise
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('testMuslSignalRaise001', 0, async (done: Function) => {
+      let a: number = signal.raise();
+      expect(a).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_BSD_SIGNAL_0100
+     * @tc.name       : testMuslSignalBsdSignal001
+     * @tc.desc       : test bsd_signal
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSignalBsdSignal001', 0, async (done: Function) => {
+      let a: number= signal.bsdSignal();
+      expect(a).assertEqual(0);
       done()
     });
   })

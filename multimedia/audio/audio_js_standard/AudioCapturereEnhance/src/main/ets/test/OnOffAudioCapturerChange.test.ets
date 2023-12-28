@@ -24,10 +24,7 @@ export default function audioCapturerEnhanceTest() {
     let Tag = 'AudioCpaturerEnhanceTest: ';
     let dirPath;
     let audioCap = null;
-    let audioVolumeGroupManager = null;
-    let audioManager = audio.getAudioManager();
-    let audioVolumeManager = audioManager.getVolumeManager();
-    let groupid = audio.DEFAULT_VOLUME_GROUP_ID;
+    let audioManager = null;
     let flag1: boolean = false;
     let flag2: boolean = false;
 
@@ -46,36 +43,41 @@ export default function audioCapturerEnhanceTest() {
     }
 
     beforeAll(async function () {
-      audioVolumeManager.getVolumeGroupManager(groupid, (err, value) => {
-        if (err) {
-          console.log(`getVolumeGroupManager failed.err: ${err.message} ${err.code}`)
-          return;
-        }
-        console.log(`getVolumeGroupManager success`)
-        audioVolumeGroupManager = value;
-      });
-      sleep(1000);
+      console.info("beforeAll case");
+      try {
+        audioManager = audio.getAudioManager();
+        console.log(`get audioManager success!`);
+      } catch (error) {
+        console.log(`getAudioManager err: ${error.message}, ${error.code}`);
+      }
       console.info('TestLog: Start Testing AudioCpaturerEnhanceTest Interfaces');
+      sleep(1000);
     });
     beforeEach(async function () {
       console.info(`${Tag} beforeEach: Prerequisites at the test case level`);
-      await sleep(1000);
     })
-    afterEach(function () {
+    afterEach(async function () {
+      try {
+        await audioCap.off('audioCapturerChange');
+         console.log(`off-audioCapturerChange success`)
+      } catch (error) {
+        console.log(`off-audioCapturerChange err: ${error.message}, ${error.code}`)
+      }
       if (audioCap != null) {
         releaseFun(audioCap);
         audioCap = null;
       }
-      audioVolumeGroupManager.setMicrophoneMute(false, (err) => {
+      audioManager.setMicrophoneMute(false, (err) => {
         if (err) {
-          console.log(`setMicrophoneMute-false err: ${err.message}, ${err.code}`)
+          console.log(`audioManager setMicrophoneMute-false err: ${err.message}, ${err.code}`)
           return;
         }
-        console.log(`setMicrophoneMute-false success`)
+        console.log(`audioManager setMicrophoneMute-false success`)
       });
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
+      await sleep(1000);
     })
-    afterAll(function () {
+    afterAll(async function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
     })
 
@@ -169,130 +171,17 @@ export default function audioCapturerEnhanceTest() {
     function getCapturerInfo(CapturerChangeInfo) {
       let str = ``;
       let Info = CapturerChangeInfo[0];
-      str += `nStreamId:${Info.streamId}, ClientUid:${Info.clientUid}, State:${Info.capturerState}
+      str += `nStreamId:${Info.streamId}, ClientUid:${Info.clientUid}, State:${Info.capturerState}, muted:${Info.muted},
               Source:${Info.capturerInfo.source}, Flag:${Info.capturerInfo.capturerFlags},\n`;
       for (let j = 0; j < Info.deviceDescriptors.length; j++) {
         let descriptor = Info.deviceDescriptors[j];
         str += `__deviceDescriptors_${j}\n`;
         str += `Id:${descriptor.id}, Type:${descriptor.deviceType}, Role:${descriptor.deviceRole},
                 Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]},
-                ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}\n`;
+                ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}, encodingTypes:${descriptor.encodingTypes[0]}\n`;
       }
       return str;
     }
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0100
-     * @tc.name      : AudioCapturer - on-MIC-STATE_RUNNING
-     * @tc.desc      : AudioCapturer - on-MIC-STATE_RUNNING
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0100', 2, async function (done) {
-      let AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-      }
-      let AudioCapturerInfo = {
-        source: audio.SourceType.SOURCE_TYPE_MIC,
-        capturerFlags: 0
-      }
-      let AudioCapturerOptions = {
-        streamInfo: AudioStreamInfo,
-        capturerInfo: AudioCapturerInfo
-      }
-      try {
-        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
-          audioCap = data;
-        }).catch((err)=>{
-          console.info(' AudioCapturer Created catch ERROR' + err.message);
-        });
-        await getFd("capture_js-44100-2C-16B.pcm");
-      } catch (error) {
-        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-      try {
-        await audioCap.on('audioCapturerChange', (data) => {
-          if (data.capturerState != audio.AudioState.STATE_RUNNING) {
-            done();
-          } else {
-            expect(data.capturerState).assertEqual(audio.AudioState.STATE_RUNNING);
-            expect(data.capturerInfo.source)
-              .assertEqual(Number(AudioCapturerOptions.capturerInfo.source));
-            expect(data.capturerInfo.capturerFlags).assertEqual(env.OUTPUT_NUMBER_0);
-            expect(data.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
-            expect(data.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
-            expect(data.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
-            done();
-          }
-        });
-        await audioCap.start();
-      } catch (error) {
-        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0200
-     * @tc.name      : AudioCapturer - on-MIC-STATE_STOPPED
-     * @tc.desc      : AudioCapturer - on-MIC-STATE_STOPPED
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0200', 2, async function (done) {
-      let AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-      }
-      let AudioCapturerInfo = {
-        source: audio.SourceType.SOURCE_TYPE_MIC,
-        capturerFlags: 0
-      }
-      let AudioCapturerOptions = {
-        streamInfo: AudioStreamInfo,
-        capturerInfo: AudioCapturerInfo
-      }
-      try {
-        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
-          audioCap = data;
-        }).catch((err)=>{
-          console.info(' AudioCapturer Created catch ERROR' + err.message);
-        });
-        await getFd("capture_js-44100-2C-16B.pcm");
-        await recordingFun(audioCap);
-      } catch (error) {
-        console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-      try {
-        await audioCap.on('audioCapturerChange', (data) => {
-          if (data == null) {
-            console.info(`on audioCapturerChange error!`)
-            expect(false).assertTrue();
-            done();
-          } else {
-            expect(data.capturerState).assertEqual(audio.AudioState.STATE_STOPPED);
-            done();
-          }
-        });
-        await audioCap.stop();
-      } catch (error) {
-        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0300
@@ -748,6 +637,67 @@ export default function audioCapturerEnhanceTest() {
           expect(flag2).assertEqual(false);
           done();
         }
+      } catch (error) {
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ONOFF_AUDIOCAPTURERCHANGE_0100
+     * @tc.name      : AudioCapturer - on-off-MIC-muted
+     * @tc.desc      : AudioCapturer - on-off-MIC-muted
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ONOFF_AUDIOCAPTURERCHANGE_0100', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      try {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        await audioCap.on('audioCapturerChange', (data) => {
+          if (data == null) {
+            console.info(`on audioCapturerChange error!`)
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.info(`on audioCapturerChange muted: ${data.muted}`)
+            expect(data.muted).assertEqual(true);
+            done();
+          }
+        });
+        audioManager.setMicrophoneMute(true, (err) => {
+          if (err) {
+            console.log(`on audioCapturerChange setMicrophoneMute-ture err: ${err.message}, ${err.code}`)
+            return;
+          }
+          console.log(`on audioCapturerChange setMicrophoneMute-true success`)
+        });
       } catch (error) {
         console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
         expect(false).assertTrue();

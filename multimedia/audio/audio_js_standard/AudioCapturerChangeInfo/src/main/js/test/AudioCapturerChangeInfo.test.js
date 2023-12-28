@@ -17,19 +17,16 @@ import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import { UiDriver, BY } from '@ohos.UiTest'
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function audioCapturerChange() {
     describe('audioCapturerChange', function () {
         let audioStreamManager;
         let audioStreamManagerCB;
         let Tag = "AFCapLog";
-
+        const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         const audioManager = audio.getAudioManager();
         console.info(`${Tag}: Create AudioManger Object JS Framework`);
-
-
-
-
         async function getPermission() {
             let permissions = ['ohos.permission.MICROPHONE'];
             featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
@@ -43,6 +40,10 @@ export default function audioCapturerChange() {
             await sleep(100);
             console.info(`UiDriver start`);
             let button = await driver.findComponent(BY.text('允许'));
+            if(button == null){
+                let cmd = "hidumper -s WindowManagerService -a'-a'"
+                await delegator.executeShellCommand(cmd);
+            }
             console.info(`button is ${JSON.stringify(button)}`);
             await sleep(100);
             await button.click();
@@ -625,6 +626,7 @@ export default function audioCapturerChange() {
                 streamInfo: AudioStreamInfo,
                 capturerInfo: AudioCapturerInfo
             }
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
             audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -645,7 +647,7 @@ export default function audioCapturerChange() {
                 }
             });
             try {
-                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+                await audioCap.start();
                 await audioCap.release();
             } catch (err) {
                 console.log('err :' + JSON.stringify(err));
@@ -907,7 +909,7 @@ export default function audioCapturerChange() {
                 capturerInfo: AudioCapturerInfo
             }
             let audioCap;
-
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
             audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -928,7 +930,7 @@ export default function audioCapturerChange() {
                 }
             });
             try {
-                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+                await audioCap.start();
                 await audioCap.release();
             } catch (err) {
                 console.log('err :' + JSON.stringify(err));
@@ -1314,7 +1316,12 @@ export default function audioCapturerChange() {
                 streamInfo: AudioStreamInfo,
                 capturerInfo: AudioCapturerInfo
             }
-
+            await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
+                audioCap = data;
+                console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
+            }).catch((err) => {
+                console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
+            });
             audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                     console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -1326,12 +1333,7 @@ export default function audioCapturerChange() {
             });
             await sleep(100);
 
-            await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
-                audioCap = data;
-                console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
-            }).catch((err) => {
-                console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
-            });
+            await audioCap.start();
 
             await sleep(100);
 

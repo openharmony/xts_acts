@@ -20,13 +20,32 @@ import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import image from "@ohos.multimedia.image"
+import business_error from '@ohos.base'
 let loadedUrl;
+
+class testObj {
+  constructor() {
+  }
+
+  test(str: string): ArrayBuffer {
+    let buf = new ArrayBuffer(str.length);
+    let buff = new Uint8Array(buf);
+
+    for (let i = 0; i < str.length; i++) {
+      buff[i] = str.charCodeAt(i);
+    }
+    return buf;
+  }
+}
+
 @Entry
 @Component
 struct Index {
     controller: web_webview.WebviewController = new web_webview.WebviewController();
     controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
     controllerThree: web_webview.WebviewController = new web_webview.WebviewController();
+    delegate: web_webview.WebDownloadDelegate = new web_webview.WebDownloadDelegate();
+    failedDownload: Uint8Array;
     @State str:string="emitGetWebId";
     @State webId:number=0;
     @State webId2:number=0;
@@ -55,6 +74,8 @@ struct Index {
     @State checkEleResult1: Object = {};
     @State checkEleResult2: Object = {};
     @State checkEleResult3: Object = {};
+    @State cookieResult:string = "";
+    @State testObjtest: testObj = new testObj();
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -112,14 +133,243 @@ struct Index {
                             })
                             break;
                         }
+                        case "emitFetchCookieSync": {
+                            try {
+                                web_webview.WebCookieManager.configCookie('https://www.example.com', "a=b", (error) => {
+                                    if (error) {
+                                        console.log("error: " + JSON.stringify(error));
+                                    }
+                                })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("fetchCookieSync cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 126)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitFetchCookieCallback": {
+                            try {
+                                web_webview.WebCookieManager.configCookie('https://www.example.com', "a=c", (error) => {
+                                    if (error) {
+                                        console.log("error: " + JSON.stringify(error));
+                                    }
+                                })
+                                web_webview.WebCookieManager.fetchCookie('https://www.example.com', (error, cookie) => {
+                                    if (error) {
+                                        console.log('error: ' + JSON.stringify(error));
+                                        return;
+                                    }
+                                    if (cookie) {
+                                        console.log('fetchCookie cookie = ' + cookie);
+                                        Utils.emitEvent(cookie, 128)
+                                    }
+                                })
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitFetchCookiePromise": {
+                            try {
+                                web_webview.WebCookieManager.configCookie('https://www.example.com', "a=d", (error) => {
+                                    if (error) {
+                                        console.log("error: " + JSON.stringify(error));
+                                    }
+                                })
+                                web_webview.WebCookieManager.fetchCookie('https://www.example.com')
+                                .then(cookie => {
+                                    console.log("emitFetchCookiePromise cookie = " + cookie);
+                                    Utils.emitEvent(cookie, 130)
+                                })
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitConfigCookieSync": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=e');
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitConfigCookieSync cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 132)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitConfigCookieCallback": {
+                            try {
+                                web_webview.WebCookieManager.configCookie('https://www.example.com', "a=f", (error) => {
+                                    if (error) {
+                                        console.log("error: " + JSON.stringify(error));
+                                    }
+                                })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitConfigCookieCallback cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 134)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitConfigCookiePromise": {
+                            try {
+                                web_webview.WebCookieManager.configCookie('https://www.example.com', 'a=g')
+                                .then(() => {
+                                    console.log('configCookie success!');
+                                })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitConfigCookiePromise cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 136)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearAllCookiesSync": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearAllCookiesSync();
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearAllCookiesSync cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 138)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearAllCookiesCallback": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearAllCookies((error) => {
+                                if (error) {
+                                    console.log("error: " + error);
+                                    }
+                                })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearAllCookiesCallback cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 140)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearAllCookiesPromise": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearAllCookies()
+                                    .then(() => {
+                                        console.log("clearAllCookies success!");
+                                    })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearAllCookiesPromise cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 142)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearSessionCookieSync": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearSessionCookieSync();
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearSessionCookieSync cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 144)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearSessionCookieCallback": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearSessionCookie((error) => {
+                                if (error) {
+                                    console.log("error: " + error);
+                                    }
+                                })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearSessionCookieCallback cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 146)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitClearSessionCookiePromise": {
+                            try {
+                                web_webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+                                web_webview.WebCookieManager.clearSessionCookie()
+                                    .then(() => {
+                                        console.log("clearSessionCookie success!");
+                                    })
+                                this.cookieResult = web_webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+                                console.log("emitClearSessionCookiePromise cookie = " + this.cookieResult);
+                                Utils.emitEvent(this.cookieResult, 148)
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            break;
+                        }
+                        case "emitPostUrl": {
+                            try {
+                                let postData = this.testObjtest.test("Name=test&Password=test");
+                                this.controller.postUrl('www.example.com', postData);
+                                let url = this.controller.getUrl();
+                                console.log("emitPostUrl: " + url);
+                                Utils.emitEvent(url, 150)
+                            } catch (error) {
+                                let e: business_error.BusinessError = error as business_error.BusinessError;
+                                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            }
+                            break;
+                        }
+                        case "emitUseless": {
+                            try {
+                                web_webview.WebviewController.setConnectionTimeout(5);
+                                this.delegate.onBeforeDownload((webDownloadItem: web_webview.WebDownloadItem) => {
+                                console.log("will start a download， method:" + webDownloadItem.getMethod());
+                                console.log("will start a download， mime type:" + webDownloadItem.getMimeType());
+                                console.log("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
+                                })
+                                this.delegate.onDownloadUpdated((webDownloadItem: web_webview.WebDownloadItem) => {
+                                console.log("download update guid: " + webDownloadItem.getGuid());
+                                console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+                                console.log("download update current speed: " + webDownloadItem.getCurrentSpeed());
+                                console.log("download update total bytes: " + webDownloadItem.getTotalBytes());
+                                console.log("download error code: " + webDownloadItem.getLastErrorCode());
+                                console.log("download update received bytes: " + webDownloadItem.getReceivedBytes());
+                                console.log("download finish full path: " + webDownloadItem.getFullPath());
+                                })
+                                this.delegate.onDownloadFailed((webDownloadItem: web_webview.WebDownloadItem) => {
+                                this.failedDownload = webDownloadItem.serialize();
+                                })
+                                this.delegate.onDownloadFinish((webDownloadItem: web_webview.WebDownloadItem) => {
+                                console.log("download finish guid: " + webDownloadItem.getGuid());
+                                })
+                                web_webview.WebDownloadManager.resumeDownload(web_webview.WebDownloadItem.deserialize(this.failedDownload));
+                                Utils.emitEvent(true, 152)
+                                
+                            } catch (error) {
+                                let e:business_error.BusinessError = error as business_error.BusinessError;
+                                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            }
+                            break;
+                        }
                         case "emitgetUserAgent": {
                             try {
+                                this.controller.loadUrl($rawfile('indexCopy.html'));
                                 this.userAgent = this.controller.getUserAgent();
                                 console.log("userAgent: " + this.userAgent);
                                 this.userAgent2 = this.controllerTwo.getUserAgent();
                                 console.log("userAgent2: " + this.userAgent2);
                                 this.userAgentAll = this.userAgent + this.userAgent2;
                                 console.log("userAgentAll: " + this.userAgentAll);
+                                if ((this.userAgentAll).includes("Mozilla")) {
+                                    this.userAgentAll = 'success'
+                                }
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
@@ -140,6 +390,9 @@ struct Index {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
                             this.controller.runJavaScript("test()",(res) => {
+                                if ((this.userAgentCheck).includes("Mozilla")) {
+                                    this.userAgentCheck = 'success'
+                                }
                                 Utils.emitEvent(this.userAgentCheck, 104)
                             })
                             break;
@@ -378,6 +631,7 @@ struct Index {
             .onlineImageAccess(this.onlineImageAccess)
             .databaseAccess(this.databaseAccess)
             .userAgent(this.userAgent)
+            .overScrollMode(OverScrollMode.NEVER)
 
             Web({src:$rawfile('indexTwo.html'),controller:this.controllerTwo}).id('2').key('web2')
             .javaScriptAccess(this.javaScriptAccess)

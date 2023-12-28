@@ -57,7 +57,7 @@ export default function blankJsunit() {
       expect(obj.$attrs.color).assertEqual('#FCAE5394');
       done();
     });
-    
+
     /**
      * @tc.number     SUB_ARKUI_BLANK_JSAPI_002
      * @tc.name       Test blankJsunit_0100
@@ -106,7 +106,7 @@ export default function blankJsunit() {
       expect(obj.$attrs.color).assertEqual('#AAEE5533');
       done();
     });
-    
+
     it('blankJsunit_0500', 0, async function (done) {
       console.info('blankJsunitUITest_0500 START');
       await CommonFunc.sleep(1000);
@@ -115,15 +115,15 @@ export default function blankJsunit() {
       let toggle1_rect = CommonFunc.getComponentRect('toggle1');
       let bl1_rect = CommonFunc.getComponentRect('bl1');
       console.info("[blankJsunit_0500'] text1_rect is " + JSON.stringify(text1_rect) + "toggle1_rect is " + JSON.stringify(toggle1_rect) + "bl1.rect is " + JSON.stringify(bl1_rect));
-      // 判断blank不显示 
+      // 判断blank不显示
       expect(bl1_rect.left - bl1_rect.right).assertEqual(0)
       let strJson = getInspectorByKey('blank');
       let obj = JSON.parse(strJson);
        console.info("[blankJsunit_0500'] component obj is: " + strJson);
-      expect(obj.$attrs.min).assertEqual('0.00px');
+      expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
-    
+
     it('blankJsunit_0600', 0, async function (done) {
       console.info('blankJsunitUITest_0600 START');
       await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function blankJsunit() {
       // 判断blank平分显示
       let gaps = toggle_rect.left - text_rect.right;
       expect(gaps > 0).assertTrue();
-      expect(obj.$attrs.min).assertEqual('0.00px');
+      expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
 
@@ -150,7 +150,7 @@ export default function blankJsunit() {
       console.info("[blankJsunit_0700'] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
       expect(obj.$attrs.color).assertEqual('#00000000');
-      expect(obj.$attrs.min).assertEqual('0.00px');
+      expect(obj.$attrs.min).assertEqual('0.00vp');
       done();
     });
 
@@ -167,6 +167,6 @@ export default function blankJsunit() {
 
     });
 
-    
+
   })
 }

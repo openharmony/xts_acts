@@ -19,6 +19,7 @@ group("request") {
     "RequestTest_ets:ActsRequestETSApiTest",
     "crossplatform/RequestTest_ets:ActsRequestETSApiCrossplatformTest",
     "newRequestAuthorityTest:ActsRequestAuthorityTest",
+    "newRequestNormalTest:ActsRequestNormalTest",
     "newRequestTest:ActsRequestNewTest",
   ]
 }

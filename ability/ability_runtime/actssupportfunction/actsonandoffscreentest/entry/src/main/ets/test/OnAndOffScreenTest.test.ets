@@ -57,7 +57,9 @@ export default function OnAndOffScreenTest() {
     async function slideScreen(TAG) {
       await sleep(1500)
       console.log(TAG + "slideScreen start");
-      let cmd = 'uinput -T -d 300 600 -m 300 600 300 100 -u 300 100';
+      let cmd = 'uinput -T -m 300 2700 280 200';
+      let cmdTemp = 'uinput -T -m 300 2000 280 1950';
+      await executeShellCommand(cmdTemp, TAG);
       await executeShellCommand(cmd, TAG);
       await sleep(500)
       console.log(TAG + "slideScreen end");

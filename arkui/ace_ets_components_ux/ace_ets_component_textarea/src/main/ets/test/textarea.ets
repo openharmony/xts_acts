@@ -275,7 +275,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0100 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0100 obj $attrs.showCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(true)
+       expect(obj.$attrs.showCounter.value).assertEqual(true)
        done()
      } catch (err) {
        expect().assertFail()
@@ -296,7 +296,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0200 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0200 obj $attrs.showCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -317,7 +317,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0300 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0300 obj $attrs.showCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -338,7 +338,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0400 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0400 obj $attrs.showCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -359,7 +359,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0500 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0500 obj $attrs.ShowCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -380,7 +380,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0600 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0600 obj $attrs.ShowCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -403,7 +403,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0700 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0700 obj $attrs.ShowCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -426,7 +426,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0800 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0800 obj $attrs.ShowCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(false)
+       expect(obj.$attrs.showCounter.value).assertEqual(false)
        done()
      } catch (err) {
        expect().assertFail()
@@ -449,7 +449,7 @@ export default function textAreaTest() {
        console.info('ArkUX_Stage_TextArea_ShowCounter_0900 START :' + JSON.stringify(strJson));
        let obj = JSON.parse(strJson);
        console.info('ArkUX_Stage_TextArea_ShowCounter_0900 obj $attrs.ShowCounter :'+ JSON.stringify(obj.$attrs.showCounter));
-       expect(obj.$attrs.showCounter).assertEqual(true)
+       expect(obj.$attrs.showCounter.value).assertEqual(true)
        done()
      } catch (err) {
        expect().assertFail()
@@ -469,7 +469,7 @@ export default function textAreaTest() {
       let strJson = getInspectorByKey('TextAreaNo');
       console.info('ArkUX_Stage_TextArea_0100 START :' + JSON.stringify(strJson));
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.showCounter).assertEqual(false)
+      expect(obj.$attrs.showCounter.value).assertEqual(false)
        expect(obj.$attrs.maxLength).assertEqual("INF")
       done()
     } catch (err) {

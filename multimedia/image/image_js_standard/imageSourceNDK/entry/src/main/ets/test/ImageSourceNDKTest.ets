@@ -17,6 +17,7 @@
 import image from "@ohos.multimedia.image";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
 import featureAbility from "@ohos.ability.featureAbility";
+import resourceManager from "@ohos.resourceManager";
 import fileio from "@ohos.fileio";
 import ndkTest from 'libImageSourceNDKTest.so';
 import { testJpg } from './testImg';
@@ -104,6 +105,84 @@ export default function ImageSourceNDKTest() {
                 checkNdkRes(res);
                 expect(res.result != undefined).assertTrue();
                 return res;
+            } catch (error) {
+                log.log("Test exception1 " + error);
+                expect().assertFail();
+                done();
+            }
+        }
+        async function imageSourceCreateFromFdTest(done, testNum, picName) {
+            try {
+                let log = logger(testNum);
+                let path, fd;
+                [path, fd] = await getFd(picName);
+                let imageSourceOps = {
+                    density: 240
+                };
+                let res = ndkTest.createFromFd(fd, imageSourceOps);
+                log.log("imageSourceCreateFromFd res " + JSON.stringify(res));
+                checkNdkRes(res);
+                expect(res.result != undefined).assertTrue();
+                return res;
+            } catch (error) {
+                log.log("Test exception1 " + error);
+                expect().assertFail();
+                done();
+            }
+        }
+        async function imageSourceCreateFromUriTest(done, testNum, picName) {
+            try {
+                let log = logger(testNum);
+                let path, fd;
+                [path, fd] = await getFd(picName);
+                let imageSourceOps = {
+                    density: 240
+                };
+                let res = ndkTest.createFromUri(path, imageSourceOps);
+                log.log("imageSourceCreateFromUri res " + JSON.stringify(res));
+                checkNdkRes(res);
+                expect(res.result != undefined).assertTrue();
+                return res;
+            } catch (error) {
+                log.log("Test exception1 " + error);
+                expect().assertFail();
+                done();
+            }
+        }
+        async function imageSourceCreateFromDataTest(done, testNum) {
+            try {
+                let log = logger(testNum);
+                let imageSourceOps = {
+                    density: 240
+                };
+                let res = ndkTest.createFromData(testJpg.buffer, imageSourceOps);
+                log.log("imageSourceCreateFromData res " + JSON.stringify(res));
+                checkNdkRes(res);
+                expect(res.result != undefined).assertTrue();
+                return res;
+            } catch (error) {
+                log.log("Test exception1 " + error);
+                expect().assertFail();
+                done();
+            }
+        }
+        async function imageSourceCreateFromRawFileTest(done, testNum) {
+            try {
+                let log = logger(testNum);
+                let imageSourceOps = {
+                    density: 240
+                };
+                resourceManager.getResourceManager().then(mgr => {
+                    if (mgr == undefined) {
+                        console.info("getResourceManager is failed");
+                    }
+                    mgr.getRawFd("test/rawfile.png").then(rawfile => {
+                        let res = ndkTest.createFromRawFile(rawfile, imageSourceOps);
+                        checkNdkRes(res);
+                        expect(res.result != undefined).assertTrue();
+                        done();
+                    })
+                })
             } catch (error) {
                 log.log("Test exception1 " + error);
                 expect().assertFail();
@@ -406,6 +485,20 @@ export default function ImageSourceNDKTest() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100
+         * @tc.name      : createImageSourceFromFd -jpg
+         * @tc.desc      : 1.get fd
+         *                 2.createImageSourceFromFd
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100', 0, async function (done) {
+            await imageSourceCreateFromFdTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100", "test.jpg");
+            done();
+        })
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_BUFFER
          * @tc.name      : createImageSource -buffer
          * @tc.desc      : 1.get image buffer
@@ -420,6 +513,20 @@ export default function ImageSourceNDKTest() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA
+         * @tc.name      : createImageSourceFromData
+         * @tc.desc      : 1.get image buffer
+         *                 2.createImageSourceFromData
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA', 0, async function (done) {
+            await imageSourceCreateFromDataTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA");
+            done();
+        })
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH
          * @tc.name      : createImageSource -path
          * @tc.desc      : 1.get image path
@@ -430,6 +537,34 @@ export default function ImageSourceNDKTest() {
          */
         it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH', 0, async function (done) {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH", "moving_test.gif", "path");
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI
+         * @tc.name      : createImageSourceFromUri
+         * @tc.desc      : 1.get image path
+         *                 2.createImageSourceFromUri
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI', 0, async function (done) {
+            await imageSourceCreateFromUriTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI", "moving_test.gif");
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE
+         * @tc.name      : createImageSourceFromRawFile
+         * @tc.desc      : 1.get image rawfiledescriptor
+         *                 2.createImageSourceFromRawFile
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE', 0, async function (done) {
+            await imageSourceCreateFromRawFileTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE");
             done();
         })
 
@@ -450,6 +585,34 @@ export default function ImageSourceNDKTest() {
                 };
 
                 let res = ndkTest.createIncremental(new ArrayBuffer(1), imageSourceOps);
+                log.log("res " + JSON.stringify(res));
+                checkNdkRes(res);
+                expect(res.result != undefined).assertTrue();
+                done();
+            } catch (error) {
+                console.error("Test exception " + JSON.stringify(error));
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA
+         * @tc.name      : createIncremental
+         * @tc.desc      : 1.set imageSourceOps
+         *                 2.createIncremental
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA', 0, async function (done) {
+            try {
+                let log = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA")
+                let imageSourceOps = {
+                    density: 240
+                };
+
+                let res = ndkTest.createIncrementalFromData(new ArrayBuffer(1), imageSourceOps);
                 log.log("res " + JSON.stringify(res));
                 checkNdkRes(res);
                 expect(res.result != undefined).assertTrue();

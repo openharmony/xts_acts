@@ -56,11 +56,11 @@ describe('cipher1_test', function () {
   afterEach(function () {});
   
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1300
+   * @tc.number     SUB_Security_DataPro_cipher_1300
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1300', 2, function () {
+   it('SUB_Security_DataPro_cipher_1300', 2, function () {
 	  cipher.aes({
 		action: 'encrypt123',
 		text: plainTextAes,
@@ -85,11 +85,11 @@ describe('cipher1_test', function () {
    });
    
    /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1400
+   * @tc.number     SUB_Security_DataPro_cipher_1400
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1400', 2, function () {
+   it('SUB_Security_DataPro_cipher_1400', 2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -114,11 +114,11 @@ describe('cipher1_test', function () {
    });
    
    /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1500
+   * @tc.number     SUB_Security_DataPro_cipher_1500
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1500', 2, function () {
+   it('SUB_Security_DataPro_cipher_1500', 2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -143,11 +143,11 @@ describe('cipher1_test', function () {
    });
    
    /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1600
+   * @tc.number     SUB_Security_DataPro_cipher_1600
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1600', 2, function () {
+   it('SUB_Security_DataPro_cipher_1600', 2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -193,11 +193,11 @@ describe('cipher1_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1700
+   * @tc.number     SUB_Security_DataPro_cipher_1700
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1700', 2, function () {
+   it('SUB_Security_DataPro_cipher_1700', 2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -222,11 +222,11 @@ describe('cipher1_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1800
+   * @tc.number     SUB_Security_DataPro_cipher_1800
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1800', 2, function () {
+   it('SUB_Security_DataPro_cipher_1800', 2, function () {
 	  cipher.aes({
 		action: 'decrypt123',
 		text: cipherTextAes,
@@ -251,11 +251,11 @@ describe('cipher1_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_1900
+   * @tc.number     SUB_Security_DataPro_cipher_1900
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_1900', 3, function () {
+   it('SUB_Security_DataPro_cipher_1900', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -280,11 +280,11 @@ describe('cipher1_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2000
+   * @tc.number     SUB_Security_DataPro_cipher_2000
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2000', 3, function () {
+   it('SUB_Security_DataPro_cipher_2000', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -309,11 +309,11 @@ describe('cipher1_test', function () {
     });
 	
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2100
+   * @tc.number     SUB_Security_DataPro_cipher_2100
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2100', 3, function () {
+   it('SUB_Security_DataPro_cipher_2100', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -358,11 +358,11 @@ describe('cipher1_test', function () {
    });
    
   /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2200
+   * @tc.number     SUB_Security_DataPro_cipher_2200
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_SEC_DataPro_cipher_2200', 3, function () {
+   it('SUB_Security_DataPro_cipher_2200', 3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,

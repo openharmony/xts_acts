@@ -28,15 +28,17 @@
 #define TRUE 1
 #define ERROR -1
 #define PORT 9000
+#define DEFAULT_VALUE 0
 
 static napi_value InetAddr(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
 
     in_addr_t ret = inet_addr(cp);
     napi_value result = nullptr;
@@ -48,9 +50,10 @@ static napi_value InetAton(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
     struct sockaddr_in adr_inet;
     memset(&adr_inet, FALSE, sizeof(adr_inet));
     adr_inet.sin_family = AF_INET;
@@ -111,9 +114,10 @@ static napi_value InetNetwork(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
+    size_t length = STRLENGTH;
+    size_t *strResult = FALSE;
     char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    napi_get_value_string_utf8(env, args[0], cp, length, strResult);
     in_addr_t addr = inet_network(cp);
     napi_value result = nullptr;
     napi_create_int32(env, addr, &result);
@@ -143,7 +147,7 @@ static napi_value InetNtop(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &valueZero);
     struct in_addr inp;
     inp.s_addr = valueZero;
-    char buf[20] = {0};
+    char buf[20] = {DEFAULT_VALUE};
     const char *ret = inet_ntop(AF_INET, &inp, buf, sizeof(buf));
     int flag = ERROR;
     if (ret != nullptr) {
@@ -163,12 +167,13 @@ static napi_value InetPton(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &valueZero);
     struct in_addr inp;
     inp.s_addr = valueZero;
-    char buf[20] = {0};
+    char buf[20] = {DEFAULT_VALUE};
     int ret = inet_pton(AF_INET, buf, &inp);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -182,6 +187,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"inetNtoa", nullptr, InetNtoa, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"inetNtop", nullptr, InetNtop, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"inetPton", nullptr, InetPton, nullptr, nullptr, nullptr, napi_default, nullptr},
+
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

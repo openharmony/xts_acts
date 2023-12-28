@@ -181,7 +181,7 @@ export default function fileIOWatcher() {
    * @tc.number SUB_DF_FILEIO_WATCHER_0300
    * @tc.name fileIO_test_watcher_003
    * @tc.desc Test watcher event '0x00000004': 'IN_ATTRIB'
-   *    chmod a file, verifying the event is 'IN_ATTRIB'.
+   * Modify time of the file, verifying the event is 'IN_ATTRIB'.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -195,13 +195,12 @@ export default function fileIOWatcher() {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       let resWatcher = startWatcher(testNum, watcherEvent.IN_ATTRIB, dpath);
-      fileio.fchmodSync(file.fd, 0o444);
+      let time = new Date().getTime();
+      fileIO.utimes(fpath,time);
       await sleep(WAIT_HALF_SECOND);
       expect(resWatcher.flag == true).assertTrue();
       resWatcher.watcher.stop();
-      fileIO.closeSync(file);
       fileIO.rmdirSync(dpath);
       done();
     } catch (e) {

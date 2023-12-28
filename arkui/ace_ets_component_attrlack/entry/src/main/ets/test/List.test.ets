@@ -47,6 +47,9 @@ import copyOptionJsunit from './copyOption.test.ets';
 import hitTestModeJsunit from './hitTestMode.test.ets';
 import colorEnumJsunit from './color.test.ets';
 import ohosrouterJsunit from './ohosrouter.test.ets';
+import ImageApi from './ImageApi.test.ets';
+import NavigationApi from './NavigationApi.test.ets';
+import AllName from './TextApi/AllName.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
@@ -77,4 +80,7 @@ export default function testsuite() {
   hitTestModeJsunit()
   colorEnumJsunit()
   ohosrouterJsunit()
+  ImageApi()
+  NavigationApi()
+  AllName()
 }

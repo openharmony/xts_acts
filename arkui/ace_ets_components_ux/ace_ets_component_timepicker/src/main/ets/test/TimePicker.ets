@@ -30,9 +30,9 @@ export default function timepicker() {
        try {
           var eventData = {
             data: {
-              "disappearTextStyle": {color:Color.Black,font:{size:8,weight:FontWeight.Lighter}},
-              "textStyle": {color:Color.Red,font:{size:'10px',weight:FontWeight.Normal}},
-              "selectedTextStyle": {color:Color.Blue,font:{size:'20px',weight:FontWeight.Bold}}
+              "disappearTextStyle": JSON.stringify({color:Color.Black,font:{size:8,weight:FontWeight.Lighter}}),
+              "textStyle": JSON.stringify({color:Color.Red,font:{size:'10px',weight:FontWeight.Normal}}),
+              "selectedTextStyle": JSON.stringify({color:Color.Blue,font:{size:'20px',weight:FontWeight.Bold}})
             }
           }
           var innerEvent = {

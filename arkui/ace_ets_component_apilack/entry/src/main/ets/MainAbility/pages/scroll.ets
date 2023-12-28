@@ -12,13 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import events_emitter from '@ohos.events.emitter'
 import Log from '../common/Log.ets';
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct ScrollOnScrollBegin {
+  @State edgeEffect: EdgeEffect = EdgeEffect.None;
+  @State alwaysEnabled: boolean = false
+
   scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -28,6 +31,24 @@ struct ScrollOnScrollBegin {
 
   aboutToDisappear(){
     Log.showInfo(TAG, `aboutToDisAppear ScrollOnScrollBegin end`)
+  }
+
+  private stateChangCallBack = (eventData) => {
+    console.info("scroll page state change called:" + JSON.stringify(eventData));
+    if (eventData != null) {
+      if (eventData.data.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      }
+    }
+  }
+
+  onPageShow() {
+    console.info('scroll page show called');
+    var stateChangeEvent = {
+      eventId: 323,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   build(){
@@ -68,6 +89,7 @@ struct ScrollOnScrollBegin {
       .scrollBar(BarState.On)
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(30)
+      .edgeEffect(this.edgeEffect, {alwaysEnabled: this.alwaysEnabled})
       .onScroll((xOffset: number, yOffset: number) => {
         console.info(xOffset + ' ' + yOffset)
       })

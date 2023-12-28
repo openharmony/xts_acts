@@ -18,6 +18,15 @@ import inputMethod from '@ohos.inputMethod';
 export default function inputMethodJSUnit() {
   describe('appInfoTest_input_2', function () {
     console.info("====>************* settings Test start*************");
+
+    /**
+     * @tc.number  inputmethoh_test_001
+     * @tc.name    inputmethoh_test_001
+     * @tc.desc    listInputMethod().interfaces.Callback.
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_001', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_001 result:" + JSON.stringify(inputMethodSetting));
@@ -28,6 +37,14 @@ export default function inputMethodJSUnit() {
       });
     });
 
+    /**
+     * @tc.number  inputmethoh_test_002
+     * @tc.name    inputmethoh_test_002
+     * @tc.desc    listInputMethod().interfaces.Promise.
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_002 result:" + JSON.stringify(inputMethodSetting));
@@ -48,6 +65,14 @@ export default function inputMethodJSUnit() {
       });
     });
 
+    /**
+     * @tc.number  inputmethoh_test_003
+     * @tc.name    inputmethoh_test_003
+     * @tc.desc    displayOptionalInputMethod().interfaces.Callback
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_003', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_003 result:" + JSON.stringify(inputMethodSetting));
@@ -70,6 +95,14 @@ export default function inputMethodJSUnit() {
       }, 500)
     });
 
+    /**
+     * @tc.number  inputmethoh_test_004
+     * @tc.name    inputmethoh_test_004
+     * @tc.desc    displayOptionalInputMethod().interfaces.Promise
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_004 result:" + JSON.stringify(inputMethodSetting));
@@ -86,15 +119,43 @@ export default function inputMethodJSUnit() {
       }, 500)
     });
 
+    /**
+     * @tc.number  inputmethoh_test_005
+     * @tc.name    inputmethoh_test_005
+     * @tc.desc    Stop input().interfaces.Callback
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_005', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController();
       console.info("====>inputmethoh_test_005 result:" + JSON.stringify(inputMethodCtrl));
-      inputMethodCtrl.stopInput((res) => {
-        console.info("====>inputmethoh_test_005 stopInput result----" + res);
-        done();
+      inputMethodCtrl.stopInput((err, res) => {
+        try{
+          if (err) {
+            console.error(`====>Failed to stopInput: ${JSON.stringify(err)}`);
+            expect(err.code === 1).assertTrue();
+            done();
+          }else{
+            console.info("====>inputmethoh_test_005 stopInput result----" + res);
+            expect().assertFail();
+            done();
+          }
+        }catch(err){
+          console.info("====>inputmethoh_test_005 stopInput throw err" + JSON.stringify(err));
+          done();
+        }        
       });
     });
 
+    /**
+     * @tc.number  inputmethoh_test_006
+     * @tc.name    inputmethoh_test_006
+     * @tc.desc    Stop input().interfaces.Promise
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
     it('inputmethoh_test_006', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController();
       console.info("====>inputmethoh_test_006 result:" + JSON.stringify(inputMethodCtrl));
@@ -108,10 +169,15 @@ export default function inputMethodJSUnit() {
       });
     });
 
+
+
     /*
-     * @tc.number: inputmethod_test_MAX_TYPE_NUM_001
-     * @tc.name: inputMethod::MAX_TYPE_NUM
-     * @tc.desc: Verify Max_ TYPE_ NUM
+     * @tc.number  inputmethod_test_MAX_TYPE_NUM_001
+     * @tc.name    inputmethod_test_MAX_TYPE_NUM_001
+     * @tc.desc    Keyboard max number
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethod_test_MAX_TYPE_NUM_001', 0, async function (done) {
       console.info("====>************* inputmethod_test_MAX_TYPE_NUM_001 Test start*************");
@@ -125,7 +191,9 @@ export default function inputMethodJSUnit() {
     /*
      * @tc.number  inputmethod_test_getCurrentInputMethod_001
      * @tc.name    return The InputMethodProperty object of the current input method.
-     * @tc.desc    Function test
+     * @tc.desc    Get current input method
+     * @tc.size    MediumTest
+     * @tc.type    Function
      * @tc.level   2
      */
     it('inputmethod_test_getCurrentInputMethod_001', 0, async function (done) {
@@ -139,12 +207,13 @@ export default function inputMethodJSUnit() {
       done();
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_001
-     * @tc.name    param enable :
-     *             if true, collect enabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_001
+     * @tc.desc    List input methods,getInputMethods().interfaces. Callback.
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethod_test_getInputMethods_001', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -168,12 +237,13 @@ export default function inputMethodJSUnit() {
       });
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_002
-     * @tc.name    param enable :
-     *             if false, collect disabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_002
+     * @tc.desc    List input methods,getInputMethods().interfaces. Callback.
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethod_test_getInputMethods_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -195,12 +265,13 @@ export default function inputMethodJSUnit() {
       });
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_003
-     * @tc.name    param enable :
-     *             if true, collect enabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_003
+     * @tc.desc    List input methods,getInputMethods().interfaces.Promise
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethod_test_getInputMethods_003', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -219,12 +290,13 @@ export default function inputMethodJSUnit() {
       }
     });
 
-    /*
+    /**
      * @tc.number  inputmethod_test_getInputMethods_004
-     * @tc.name    param enable :
-     *             if false, collect disabled input methods.
-     * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.name    inputmethod_test_getInputMethods_004
+     * @tc.desc    List input methods,().interfaces.Promise
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
      */
     it('inputmethod_test_getInputMethods_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
@@ -242,6 +314,197 @@ export default function inputMethodJSUnit() {
         done();
       }
     });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0100
+     * @tc.name     SUB_InputMethod_IMF_Enable_0100
+     * @tc.desc     List input methods sync.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0100', 0, function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0100 start-----------------------");
+      let inputMethodSetting = inputMethod.getSetting();
+      let enable:boolean = true;
+      let bool:boolean = false;
+      let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
+      console.info("====>SUB_InputMethod_IMF_Enable_0100 getInputMethodsSync success: " + JSON.stringify(Enable_List));
+      let arr = [];
+      for (let i = 0;i < Enable_List.length; i++) {
+        arr.push(Enable_List[i].name);
+      }
+      let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+      bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+      if (bool) {
+        expect(true).assertTrue();
+        console.info("====>SUB_InputMethod_IMF_Enable_0100 bool: " + JSON.stringify(bool));
+        done();
+      }else {
+        console.info("====>SUB_InputMethod_IMF_Enable_0100 bool: " + JSON.stringify(bool));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0200
+     * @tc.name     SUB_InputMethod_IMF_Enable_0200
+     * @tc.desc     List input methods sync.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0200', 0, function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0200 start-----------------------");
+      let inputMethodSetting = inputMethod.getSetting();
+      try {
+        let enable:boolean = false;
+        let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
+        console.info("====>SUB_InputMethod_IMF_Enable_0200 getInputMethodsSync success: " + JSON.stringify(Enable_List));
+        expect(Enable_List.length >= 0 ).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>SUB_InputMethod_IMF_Enable_0200 Failed to getInputMethodsSync" + JSON.stringify(err)  + err);
+        done();
+        console.info("-----------------------SUB_InputMethod_IMF_Enable_0200 Test end-----------------------");
+      }
+    });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0300
+     * @tc.name     SUB_InputMethod_IMF_Enable_0300
+     * @tc.desc     List input methods sync.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0300', 0, function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0300 start-----------------------");
+      let inputMethodSetting = inputMethod.getSetting();
+      try {
+        let enable:boolean = undefined;
+        let Enable_List = inputMethodSetting.getInputMethodsSync(enable);
+        console.info("====>SUB_InputMethod_IMF_Enable_0300 getInputMethodsSync success: " + JSON.stringify(Enable_List));
+        done();
+      } catch (err) {
+        console.error("====>SUB_InputMethod_IMF_Enable_0300 Failed to getInputMethods:" + JSON.stringify(err)  + err);
+        expect(err.code===401).assertTrue();
+        done();
+        console.info("-----------------------SUB_InputMethod_IMF_Enable_0300 Test end-----------------------");
+      }
+    });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0400
+     * @tc.name     SUB_InputMethod_IMF_Enable_0400
+     * @tc.desc     List all input methods.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0400', 0, async function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0400 start-----------------------");
+      let bool:boolean = false;
+      let inputMethodSetting = inputMethod.getSetting();
+      inputMethodSetting.getAllInputMethods((err, Enable_List) => {
+        try {
+          if (err) {
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 getAllInputMethods fail because: " + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+          console.info('====>SUB_InputMethod_IMF_Enable_0400 getAllInputMethods success: ' + JSON.stringify(Enable_List));
+          let arr = [];
+          for (let i = 0;i < Enable_List.length; i++) {
+            arr.push(Enable_List[i].name);
+          }
+          let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+          bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+          if (bool) {
+            expect(true).assertTrue();
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 bool: " + JSON.stringify(bool));
+            done();
+          }else {
+            console.info("====>SUB_InputMethod_IMF_Enable_0400 bool: " + JSON.stringify(bool));
+            expect().assertFail();
+            done();
+          }
+        }catch (err){
+          console.info("====>SUB_InputMethod_IMF_Enable_0400 err: " + JSON.stringify(err));
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0500
+     * @tc.name     SUB_InputMethod_IMF_Enable_0500
+     * @tc.desc     List all input methods.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0500', 0, async function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0500 is start-----------------------");
+      let bool:boolean = false;
+      let inputMethodSetting = inputMethod.getSetting();
+      try {
+        let Enable_List = await inputMethodSetting.getAllInputMethods();
+        console.info('====>SUB_InputMethod_IMF_Enable_0500 getAllInputMethods success: ' + JSON.stringify(Enable_List));
+        let arr = [];
+        for (let i = 0;i < Enable_List.length; i++) {
+          arr.push(Enable_List[i].name);
+        }
+        let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+        bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+        if (bool) {
+          expect(true).assertTrue();
+          console.info("====>SUB_InputMethod_IMF_Enable_0500 bool: " + JSON.stringify(bool));
+          done();
+        }else {
+          console.info("====>SUB_InputMethod_IMF_Enable_0500 bool: " + JSON.stringify(bool));
+          expect().assertFail();
+          done();
+        }
+      }catch (err){
+        console.info("====>SUB_InputMethod_IMF_Enable_0500 catch error: " + JSON.stringify(err));
+        done();
+        console.info("-----------------------SUB_InputMethod_IMF_Enable_0500 end-----------------------");
+      }
+    });
+
+    /**
+     * @tc.number   SUB_InputMethod_IMF_Enable_0600
+     * @tc.name     SUB_InputMethod_IMF_Enable_0600
+     * @tc.desc     List all input methods.
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 2
+     */
+    it('SUB_InputMethod_IMF_Enable_0600', 0, function (done) {
+      console.info("-----------------------SUB_InputMethod_IMF_Enable_0600 start-----------------------");
+      let bool:boolean = false;
+      let inputMethodSetting = inputMethod.getSetting();
+      let Enable_List = inputMethodSetting.getAllInputMethodsSync();
+      console.info("====>SUB_InputMethod_IMF_Enable_0600 getAllInputMethodsSync success: " + JSON.stringify(Enable_List));
+      let arr = [];
+      for (let i = 0;i < Enable_List.length; i++) {
+        arr.push(Enable_List[i].name);
+      }
+      let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
+      bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
+      if (bool) {
+        expect(true).assertTrue();
+        console.info("====>SUB_InputMethod_IMF_Enable_0600 bool: " + JSON.stringify(bool));
+        done();
+      }else {
+        console.info("====>SUB_InputMethod_IMF_Enable_0600 bool: " + JSON.stringify(bool));
+        expect().assertFail();
+        done();
+      }
+    });
+
 
   });
 };

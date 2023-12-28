@@ -51,7 +51,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_state_0010
      * @tc.name      T download task
      * @tc.desc      Test requestUploadTest API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -88,7 +88,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_faults_0010
      * @tc.name      T download task
      * @tc.desc      Test requestUploadTest API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
@@ -115,8 +115,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Callback_0010
+     * @tc.name    SUB_Misc_REQUEST_Create_Download_Callback_0010
      * @tc.desc      Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -153,8 +154,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Promise_0010
+     * @tc.name    SUB_Misc_REQUEST_Create_Download_Promise_0010
      * @tc.desc      Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -186,8 +188,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Remove_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Remove_Download_Callback_0010
      * @tc.desc Delete the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -226,8 +229,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Remove_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Remove_Download_Promise_0010
      * @tc.desc Delete the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -257,8 +261,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Start_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Start_Download_Callback_0010
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -296,8 +301,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Start_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Start_Download_Promise_0010
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -329,8 +335,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Pause_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Pause_Download_Callback_0010
      * @tc.desc Restore the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -370,8 +377,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Pause_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Pause_Download_Promise_0010
      * @tc.desc Restore the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -406,8 +414,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Resume_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Resume_Download_Callback_0010
      * @tc.desc Get the download task info
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -450,8 +459,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Resume_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Resume_Download_Promise_0010
      * @tc.desc Get the download task info
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -489,8 +499,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Stop_Download_Callback_0010
+     * @tc.name SUB_Misc_REQUEST_Stop_Download_Callback_0010
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -530,8 +541,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Stop_Download_Promise_0010
+     * @tc.name SUB_Misc_REQUEST_Stop_Download_Promise_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -564,8 +576,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_On_Download_Progress_0040
+     * @tc.name SUB_Misc_REQUEST_On_Download_Progress_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -589,7 +602,7 @@ export default function requestDownloadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.index: " + pro.index);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.processed: " + pro.processed);
-            console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.size: " + pro.size);
+            console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.size: " + pro.sizes);
             console.info("====>SUB_Misc_REQUEST_On_Download_Progress_0040 pro.extras: " + JSON.stringify(pro.extras));
             try {
               await request.agent.remove(task.tid);
@@ -619,8 +632,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Off_Download_Progress_0040
+     * @tc.name SUB_Misc_REQUEST_Off_Download_Progress_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -654,9 +668,9 @@ export default function requestDownloadJSUnit() {
             await task.start();
             let t = setTimeout(async () => {
               try {
-                console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 offProgress success flag: " + flag);
                 clearTimeout(t);
                 expect(flag).assertTrue();
+                console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 offProgress success flag: " + flag);
               } catch (err) {
                 console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 offProgress fail err: " + JSON.stringify(err));
                 await request.agent.remove(task.tid);
@@ -677,8 +691,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_On_Download_Completed_0040
+     * @tc.name SUB_Misc_REQUEST_On_Download_Completed_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -701,7 +716,7 @@ export default function requestDownloadJSUnit() {
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.state: " + pro.state);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.index: " + pro.index);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.processed: " + pro.processed);
-            console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.size: " + pro.size);
+            console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.sizes: " + pro.sizes);
             console.info("====>SUB_Misc_REQUEST_On_Download_Completed_0040 pro.extras: " + JSON.stringify(pro.extras));
             expect(true).assertTrue();
             done();
@@ -727,8 +742,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Off_Download_Completed_0040
+     * @tc.name SUB_Misc_REQUEST_Off_Download_Completed_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -762,9 +778,9 @@ export default function requestDownloadJSUnit() {
             await task.start();
             let t = setTimeout(async () => {
               try {
-                console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0040 offCompleted success flag: " + flag);
                 clearTimeout(t);
                 expect(flag).assertTrue();
+                console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0040 offCompleted success flag: " + flag);
               } catch (err) {
                 console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0040 offCompleted fail err: " + JSON.stringify(err));
                 await request.agent.remove(task.tid);
@@ -785,8 +801,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_On_Download_Failed_0040
+     * @tc.name SUB_Misc_REQUEST_On_Download_Failed_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -835,8 +852,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Off_Download_Failed_0040
+     * @tc.name SUB_Misc_REQUEST_Off_Download_Failed_0040
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -870,9 +888,9 @@ export default function requestDownloadJSUnit() {
             await task.start();
             let t = setTimeout(async () => {
               try {
-                console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0040 offFailed success flag: " + flag);
                 clearTimeout(t);
                 expect(flag).assertTrue();
+                console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0040 offFailed success flag: " + flag);
               } catch (err) {
                 console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0040 offFailed fail err: " + JSON.stringify(err));
                 await request.agent.remove(task.tid);
@@ -893,8 +911,9 @@ export default function requestDownloadJSUnit() {
 
     /**
      * @tc.number SUB_Misc_REQUEST_Create_Download_Callback_0060
+     * @tc.name SUB_Misc_REQUEST_Create_Download_Callback_0060
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -923,12 +942,16 @@ export default function requestDownloadJSUnit() {
                 console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 create err: " + JSON.stringify(err));
                 expect().assertFail();
               }
-              console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 task1 failed");
+              console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 task2 create success");
               await task1.start();
+              await request.agent.remove(task1.tid);
+              console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 task1 remove");
+              await request.agent.remove(task2.tid);
+              console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 task2 remove");
+              expect(true).assertTrue()
+              done();
             } catch (err) {
               console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 create success: " + JSON.stringify(err));
-              expect(err.code).assertEqual(21900007);
-              await request.agent.remove(task2.tid);
               done();
             }
           });
@@ -936,14 +959,15 @@ export default function requestDownloadJSUnit() {
           console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0060 create fail: " + JSON.stringify(error));
           done();
         }
-        console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0060 end-----------------------");
+        console.info("-----------------------SUB_Misc_REQUEST_Create_Download_Callback_0060 end-----------------------");
       });
     });
 
     /**
      * @tc.number SUB_Misc_REQUEST_Create_Download_Promise_0060
+     * @tc.name SUB_Misc_REQUEST_Create_Download_Promise_0060
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -959,21 +983,64 @@ export default function requestDownloadJSUnit() {
         network: request.agent.Network.WIFI,
         mode:request.agent.Mode.FOREGROUND
       };
+
       try {
         let task1 = await request.agent.create(globalThis.abilityContext, config);
-        var task2 = await request.agent.create(globalThis.abilityContext, config);
-        console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0060 task1 failed");
-        await task1.start();
-        expect().assertFail();
+        let task2 = await request.agent.create(globalThis.abilityContext, config);
+        console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0060 task1 and task2 create success");
+        await request.agent.remove(task1.tid);
+        console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0060 task1 remove");
+        await request.agent.remove(task2.tid);
+        console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0060 task2 remove");
+        expect(true).assertTrue()
         done();
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Download_Promise_0060 create catch err: " + JSON.stringify(err));
-        await request.agent.remove(task2.tid);
-        expect(err.code).assertEqual(21900007);
+        expect().assertFail();
         done();
       }
     });
 
+    /**
+     * @tc.number SUB_REQUEST_Agent_GetTask_Promise_0100
+     * @tc.name   SUB_REQUEST_Agent_GetTask_Promise_0100
+     * @tc.desc   request.agent.getTask(),Promise
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Agent_GetTask_Promise_0100', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_REQUEST_Agent_GetTask_Promise_0100.txt',
+        network: request.agent.Network.ANY,
+        priority:0,
+      };
+
+      try {
+        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task1 = await request.agent.getTask(globalThis.abilityContext, task.tid);
+        expect(typeof(task1.tid) === 'string').assertTrue();
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + task);
+        try {
+          await request.agent.remove(task1.tid);
+          console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 remove success: " + task);
+        } catch (err) {
+          console.info('====>SUB_REQUEST_Agent_GetTask_Promise_0100 task not remove: ' + JSON.stringify(task1.tid));
+        }
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed to query a upload task : " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      console.info("-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 end-----------------------");
+      done();
+    });
 
   });
 }

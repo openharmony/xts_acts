@@ -668,6 +668,150 @@ export default function AVSession() {
             done();
         })
 
+         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700
+         * @tc.name      : SETMETADATA_1700
+         * @tc.desc      : Testing set filter TYPE_CAST_PLUS_STREAM - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                filter: avSession.ProtocolType.TYPE_CAST_PLUS_STREAM
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set filter successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVMetadata().then((data) => {
+                if (data.filter === metadata.filter) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800
+         * @tc.name      : SETMETADATA_1800
+         * @tc.desc      : Testing set filter TYPE_LOCAL - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                filter: avSession.ProtocolType.TYPE_LOCAL
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set filter successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVMetadata().then((data) => {
+                if (data.filter === metadata.filter) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900
+         * @tc.name      : SETMETADATA_1900
+         * @tc.desc      : Testing set filter TYPE_CAST_PLUS_MIRROR - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                filter: avSession.ProtocolType.TYPE_CAST_PLUS_MIRROR
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set filter successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVMetadata().then((data) => {
+                if (data.filter === metadata.filter) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get filter failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000
+         * @tc.name      : SETMETADATA_2000
+         * @tc.desc      : Testing set skipIntervals - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                skipIntervals: avSession.SkipIntervals.SECONDS_10
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set skipIntervals successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set skipIntervals error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVMetadata().then((data) => {
+                if (data.skipIntervals === metadata.skipIntervals) {
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get skipIntervals failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get skipIntervals error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100
          * @tc.name      : SETAVPLAYBACKSTATE_0100
@@ -1644,6 +1788,90 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0200
+         * @tc.name      : ONFASTFORWARD_0200
+         * @tc.desc      : Testing onFastForward(time 10s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0200', 0, async function (done) {
+            session.on('fastForward', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_10) {
+                    console.info('TestLog: FastForward command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'fastForward', parameter: avSession.SkipIntervals.SECONDS_10 }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0300
+         * @tc.name      : ONFASTFORWARD_0300
+         * @tc.desc      : Testing onFastForward(time 15s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0300', 0, async function (done) {
+            session.on('fastForward', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_15) {
+                    console.info('TestLog: FastForward command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'fastForward', parameter: avSession.SkipIntervals.SECONDS_15 }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0400
+         * @tc.name      : ONFASTFORWARD_0400
+         * @tc.desc      : Testing onFastForward(time 30s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0400', 0, async function (done) {
+            session.on('fastForward', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_30) {
+                    console.info('TestLog: FastForward command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'fastForward', parameter: avSession.SkipIntervals.SECONDS_30 }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0100
          * @tc.name      : ONREWIND_0100
          * @tc.desc      : Testing onRewind callback
@@ -1658,6 +1886,90 @@ export default function AVSession() {
             });
 
             await controller.sendControlCommand({ command: 'rewind' }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0200
+         * @tc.name      : ONREWIND_0200
+         * @tc.desc      : Testing onRewind(time 10s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0200', 0, async function (done) {
+            session.on('rewind', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_10) {
+                    console.info('TestLog: Rewind command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'rewind', parameter: avSession.SkipIntervals.SECONDS_10 }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0300
+         * @tc.name      : ONREWIND_0300
+         * @tc.desc      : Testing onRewind(time 15s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0300', 0, async function (done) {
+            session.on('rewind', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_15) {
+                    console.info('TestLog: Rewind command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'rewind', parameter: avSession.SkipIntervals.SECONDS_15 }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0400
+         * @tc.name      : ONREWIND_0400
+         * @tc.desc      : Testing onRewind(time 30s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0400', 0, async function (done) {
+            session.on('rewind', (time) => {
+                if (time == avSession.SkipIntervals.SECONDS_30) {
+                    console.info('TestLog: Rewind command callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+            });
+
+            await controller.sendControlCommand({ command: 'rewind', parameter: avSession.SkipIntervals.SECONDS_30 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2947,9 +3259,11 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100', 0, async function (done) {
+            session.on('play', () => {});
+            await sleep(500);
             await controller.getValidCommands().then((data) => {
                 console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
-                expect(true).assertTrue();
+                expect(data[0]).assertEqual('play');
             }).catch((err) => {
                 console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -2967,20 +3281,23 @@ export default function AVSession() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100', 0, async function (done) {
             try {
+                session.on('play', () => {});
+                await sleep(500);
                 controller.getValidCommands((err, data) => {
                     if (err) {
                         console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                         expect(false).assertTrue();
                     } else {
                         console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
-                        expect(true).assertTrue();
+                        expect(data[0]).assertEqual('play');
                     }
-                })
+                    done();
+                });
             } catch (err) {
                 console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
+                done();
             }
-            done();
         })
     })
 }

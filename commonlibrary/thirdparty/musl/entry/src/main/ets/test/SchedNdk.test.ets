@@ -20,6 +20,19 @@ export default function schedNdkTest() {
   describe('MuslSchedTest', () => {
 
     /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDCPUALLOC_0100
+     * @tc.name       : testMuslSchedShedCpualloc001
+     * @tc.desc       : test __sched_cpualloc
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslSchedShedCpualloc001', 0, async (done: Function) => {
+      let result:number = sched.schedCpualloc();
+      expect(result).assertEqual(0);
+      done()
+    });
+    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDGETPRIORITYMAX_0100
      * @tc.name       : testMuslSchedSchedGetPriorityMax001
      * @tc.desc       : test sched_get_priority_max
@@ -28,9 +41,9 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedGetPriorityMax001', 0, async (done: Function) => {
-      let b = 1
-      let a = sched.schedGetPriorityMax(b);
-      expect(a).assertEqual(99);
+      let testParam = 1
+      let result:number = sched.schedGetPriorityMax(testParam);
+      expect(result).assertEqual(99);
       done()
     });
 
@@ -43,9 +56,9 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedGetPriorityMax002', 0, async (done: Function) => {
-      let b = 100
-      let a = sched.schedGetPriorityMax(b);
-      expect(a).assertEqual(-1);
+      let testParam = 100
+      let result:number = sched.schedGetPriorityMax(testParam);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -58,9 +71,9 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedGetPriorityMin001', 0, async (done: Function) => {
-      let b = 1
-      let a = sched.schedGetPriorityMin(b);
-      expect(a).assertEqual(1);
+      let testParam = 1
+      let result:number = sched.schedGetPriorityMin(testParam);
+      expect(result).assertEqual(1);
       done()
     });
 
@@ -73,9 +86,9 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedGetPriorityMin002', 0, async (done: Function) => {
-      let b = 100
-      let a = sched.schedGetPriorityMin(b);
-      expect(a).assertEqual(-1);
+      let testParam = 100
+      let result:number = sched.schedGetPriorityMin(testParam);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -88,8 +101,19 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedYield001', 0, async (done: Function) => {
-      let a = sched.sched_yield();
-      expect(a).assertEqual(0);
+      let result:number = sched.sched_yield();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDGETSCHEDULER_0100
+     * @tc.name       : testMuslSchedSchedGetscheduler001
+     * @tc.desc MuslSchedTest
+     */
+    it('testMuslSchedSchedGetscheduler001', 0, async (done: Function) => {
+      let result:number = sched.sched_getscheduler(-1);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -103,8 +127,8 @@ export default function schedNdkTest() {
      */
 
     it('testMuslSchedSchedSetparam001', 0, async (done: Function) => {
-      let a = sched.sched_setparam(-1);
-      expect(a).assertEqual(-1);
+      let result:number = sched.sched_setparam(-1);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -117,8 +141,8 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedSetparam002', 0, async (done: Function) => {
-      let a = sched.sched_setparam(0);
-      expect(a).assertEqual(-1);
+      let result:number = sched.sched_setparam(0);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -131,8 +155,8 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedSetscheduler001', 0, async (done: Function) => {
-      let a = sched.sched_setscheduler(-1);
-      expect(a).assertEqual(-1);
+      let result:number = sched.sched_setscheduler(-1);
+      expect(result).assertEqual(-1);
       done()
     });
 
@@ -145,8 +169,121 @@ export default function schedNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslSchedSchedSetscheduler002', 0, async (done: Function) => {
-      let a = sched.sched_setscheduler(0);
-      expect(a).assertEqual(-1);
+      let result:number = sched.sched_setscheduler(0);
+      expect(result).assertEqual(-1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDGETAFFINITY_0100
+     * @tc.name       : testMuslSchedSchedGetaffinity001
+     * @tc.desc       : test sched_getaffinity
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedGetaffinity001', 0, async (done: Function) => {
+      let result:number = sched.sched_getaffinity();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDGETCPU_0100
+     * @tc.name       : testMuslSchedSchedGetcpu001
+     * @tc.desc       : test sched_getcpu
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedGetcpu001', 0, async (done: Function) => {
+      let result:number = sched.sched_getcpu();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDSETAFFINITY_0100
+     * @tc.name       : testMuslSchedSchedSetaffinity001
+     * @tc.desc       : test sched_setaffinity
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedSetaffinity001', 0, async (done: Function) => {
+      let result:number = sched.sched_setaffinity();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDRRGETINTERVAL_0100
+     * @tc.name       : testMuslSchedSchedRrGetInterval001
+     * @tc.desc       : test sched_rr_get_interval
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedRrGetInterval001', 0, async (done: Function) => {
+      let result:number = sched.sched_rr_get_interval(0);
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDEEGETINTERVAL_0200
+     * @tc.name       : testMuslSchedSchedRrGetInterval002
+     * @tc.desc       : test sched_rr_get_interval
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedRrGetInterval002', 0, async (done: Function) => {
+      let result:number = sched.sched_rr_get_interval(-1);
+      expect(result).assertEqual(-1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SETNS_0100
+     * @tc.name       : testMuslSchedSetns001
+     * @tc.desc       : test setns
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSetns001', 0, async (done: Function) => {
+      let result:number = sched.setns();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDCPUCOUNT_0100
+     * @tc.name       : testMuslSchedSchedCpuCount001
+     * @tc.desc       : test schedCpuCount
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedSchedCpuCount001', 0, async (done: Function) => {
+      let result:number = sched.schedCpuCount();
+      expect(result).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_UNSHARE_0100
+     * @tc.name       : testMuslSchedUnshare001
+     * @tc.desc       : test unshare
+     * @tc.size       : MEDIUM
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslSchedUnshare001', 0, async (done: Function) => {
+      let testParam = 1;
+      let result:number = sched.unshare(testParam);
+      expect(result).assertEqual(1);
       done()
     });
   })

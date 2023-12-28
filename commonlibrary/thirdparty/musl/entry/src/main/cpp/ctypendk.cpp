@@ -13,17 +13,28 @@
  * limitations under the License.
  */
 
+#include <cctype>
 #include <js_native_api.h>
 #include <malloc.h>
 #include <node_api.h>
-#include <sys/select.h>
 
-#include <cctype>
 #define TRUE 1
 #define FALSE 0
 #define ERROR -1
 #define STRLENGTH 8
-#define ZERO 0
+#define INPUT_VALUE_ZERO 0
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_2 2
+#define PARAM_UNNORMAL -1
+#define RETURN_0 0
+#define FAILD -1
+#define ERRON_0 0
+#define SIZE_10 10
+#define SIZE_100 100
+#define SIZE_4096 4096
+#define SIZE_8192 8192
+
 static napi_value Isalnum(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -31,17 +42,16 @@ static napi_value Isalnum(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = FALSE;
-    char *ch = (char *)malloc(sizeof(char) * length);
+    char ch[STRLENGTH];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
     int retVal = isalnum((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsalnumL(napi_env env, napi_callback_info info)
@@ -53,15 +63,14 @@ static napi_value IsalnumL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isalnum_l((int)ch[0], ZERO);
+    int retVal = isalnum_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isalpha(napi_env env, napi_callback_info info)
@@ -76,12 +85,11 @@ static napi_value Isalpha(napi_env env, napi_callback_info info)
     int retVal = isalpha((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsalphaL(napi_env env, napi_callback_info info)
@@ -93,15 +101,14 @@ static napi_value IsalphaL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isalpha_l((int)ch[0], ZERO);
+    int retVal = isalpha_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isascii(napi_env env, napi_callback_info info)
@@ -114,12 +121,11 @@ static napi_value Isascii(napi_env env, napi_callback_info info)
     int retVal = isascii(first);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isblank(napi_env env, napi_callback_info info)
@@ -134,12 +140,11 @@ static napi_value Isblank(napi_env env, napi_callback_info info)
     int retVal = isblank((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsblankL(napi_env env, napi_callback_info info)
@@ -151,15 +156,14 @@ static napi_value IsblankL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isblank_l((int)ch[0], ZERO);
+    int retVal = isblank_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Iscntrl(napi_env env, napi_callback_info info)
@@ -172,12 +176,11 @@ static napi_value Iscntrl(napi_env env, napi_callback_info info)
     int retVal = iscntrl(first);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IscntrlL(napi_env env, napi_callback_info info)
@@ -187,15 +190,14 @@ static napi_value IscntrlL(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first;
     napi_get_value_int32(env, args[0], &first);
-    int retVal = iscntrl_l(first, ZERO);
+    int retVal = iscntrl_l(first, INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isdigit(napi_env env, napi_callback_info info)
@@ -210,12 +212,11 @@ static napi_value Isdigit(napi_env env, napi_callback_info info)
     int retVal = isdigit((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsdigitL(napi_env env, napi_callback_info info)
 {
@@ -226,15 +227,14 @@ static napi_value IsdigitL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isdigit_l((int)ch[0], ZERO);
+    int retVal = isdigit_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isgraph(napi_env env, napi_callback_info info)
@@ -249,12 +249,11 @@ static napi_value Isgraph(napi_env env, napi_callback_info info)
     int retVal = isgraph((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsgraphL(napi_env env, napi_callback_info info)
 {
@@ -265,15 +264,14 @@ static napi_value IsgraphL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isgraph_l((int)ch[0], ZERO);
+    int retVal = isgraph_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Islower(napi_env env, napi_callback_info info)
@@ -288,12 +286,11 @@ static napi_value Islower(napi_env env, napi_callback_info info)
     int retVal = islower((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IslowerL(napi_env env, napi_callback_info info)
@@ -305,15 +302,14 @@ static napi_value IslowerL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = islower_l((int)ch[0], ZERO);
+    int retVal = islower_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isprint(napi_env env, napi_callback_info info)
@@ -328,12 +324,11 @@ static napi_value Isprint(napi_env env, napi_callback_info info)
     int retVal = isprint((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsprintL(napi_env env, napi_callback_info info)
@@ -345,15 +340,14 @@ static napi_value IsprintL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isprint_l((int)ch[0], ZERO);
+    int retVal = isprint_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Ispunct(napi_env env, napi_callback_info info)
@@ -368,12 +362,11 @@ static napi_value Ispunct(napi_env env, napi_callback_info info)
     int retVal = ispunct((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IspunctL(napi_env env, napi_callback_info info)
@@ -385,15 +378,14 @@ static napi_value IspunctL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = ispunct_l((int)ch[0], ZERO);
+    int retVal = ispunct_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isspace(napi_env env, napi_callback_info info)
@@ -408,12 +400,11 @@ static napi_value Isspace(napi_env env, napi_callback_info info)
     int retVal = isspace((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 static napi_value IsspaceL(napi_env env, napi_callback_info info)
 {
@@ -424,15 +415,14 @@ static napi_value IsspaceL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isspace_l((int)ch[0], ZERO);
+    int retVal = isspace_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isupper(napi_env env, napi_callback_info info)
@@ -447,12 +437,11 @@ static napi_value Isupper(napi_env env, napi_callback_info info)
     int retVal = isupper((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsupperL(napi_env env, napi_callback_info info)
@@ -464,15 +453,14 @@ static napi_value IsupperL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isupper_l((int)ch[0], ZERO);
+    int retVal = isupper_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value Isxdigit(napi_env env, napi_callback_info info)
@@ -487,12 +475,11 @@ static napi_value Isxdigit(napi_env env, napi_callback_info info)
     int retVal = isxdigit((int)ch[0]);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
 }
 
 static napi_value IsxdigitL(napi_env env, napi_callback_info info)
@@ -504,15 +491,191 @@ static napi_value IsxdigitL(napi_env env, napi_callback_info info)
     size_t strResult = FALSE;
     char *ch = (char *)malloc(sizeof(char) * length);
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = isxdigit_l((int)ch[0], ZERO);
+    int retVal = isxdigit_l((int)ch[0], INPUT_VALUE_ZERO);
     napi_value result;
     if (retVal != FALSE) {
-        napi_create_double(env, TRUE, &result);
-        return result;
+        napi_create_int32(env, TRUE, &result);
     } else {
-        napi_create_double(env, FALSE, &result);
-        return result;
+        napi_create_int32(env, FALSE, &result);
     }
+    return result;
+}
+
+static napi_value Toascii(napi_env env, napi_callback_info info)
+{
+    int c1 = 'a' + 128;
+    char char_value = toascii(c1);
+    napi_value result;
+    napi_create_string_utf8(env, &char_value, NAPI_AUTO_LENGTH, &result);
+    return result;
+}
+
+static napi_value Tolower(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+    if (param == PARAM_0) {
+        char ch = 'A';
+        char result = tolower(ch);
+        if (result == 'a') {
+            result_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = 2;
+        char result = tolower(ch);
+        if (result == ch) {
+            result_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'a';
+        char result = tolower(ch);
+        if (result == 'a') {
+            result_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = tolower(ch);
+        if (result == '$') {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value TolowerL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    locale_t locale = nullptr;
+
+    int result_value = FAILD;
+    if (param == PARAM_0) {
+        char ch = 'A';
+        char result = tolower_l(ch, locale);
+        if (result == 'a') {
+            result_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = PARAM_2;
+        char result = tolower_l(ch, locale);
+        if (result == ch) {
+            result_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'a';
+        char result = tolower_l(ch, locale);
+        if (result == 'a') {
+            result_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = tolower_l(ch, locale);
+        if (result == '$') {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Toupper(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int result_value = FAILD;
+
+    if (param == PARAM_0) {
+        char ch = 'a';
+        char result = toupper(ch);
+        if (result == 'A') {
+            result_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = PARAM_2;
+        char result = toupper(ch);
+        if (result == ch) {
+            result_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'A';
+        char result = toupper(ch);
+        if (result == 'A') {
+            result_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = toupper(ch);
+        if (result == '$') {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value ToupperL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    locale_t locale = nullptr;
+    int result_value = FAILD;
+    if (param == PARAM_0) {
+        char ch = 'a';
+        char result = toupper_l(ch, locale);
+        if (result == 'A') {
+            result_value = RETURN_0;
+        }
+    } else if (param == PARAM_1) {
+        char ch = PARAM_2;
+        char result = toupper_l(ch, locale);
+        if (result == ch) {
+            result_value = RETURN_0;
+        }
+
+    } else if (param == PARAM_2) {
+        char ch = 'A';
+        char result = toupper_l(ch, locale);
+        if (result == 'A') {
+            result_value = RETURN_0;
+        }
+    } else {
+        char ch = '$';
+        char result = toupper_l(ch, locale);
+        if (result == '$') {
+            result_value = RETURN_0;
+        }
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
 }
 
 EXTERN_C_START
@@ -544,6 +707,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"isupperL", nullptr, IsupperL, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"isxdigit", nullptr, Isxdigit, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"isxdigitL", nullptr, IsxdigitL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"toascii", nullptr, Toascii, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"tolower", nullptr, Tolower, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"tolowerL", nullptr, TolowerL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"toupper", nullptr, Toupper, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"toupperL", nullptr, ToupperL, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -555,7 +723,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "dirent",
+    .nm_modname = "ctypendk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

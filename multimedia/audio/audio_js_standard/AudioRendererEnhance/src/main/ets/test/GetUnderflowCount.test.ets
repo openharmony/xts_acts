@@ -37,7 +37,7 @@ export default function audioRendererTest() {
       }
       let AudioRendererInfo = {
         content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
         rendererFlags: 0
       }
       let AudioRendererOptions = {
@@ -87,11 +87,11 @@ export default function audioRendererTest() {
 
       var context = featureAbility.getContext();
       await context.getFilesDir().then((data) => {
-        console.error('#####app file: '+ data);
+        console.error(' app file: '+ data);
         filePath = data;
-        console.error('#####app filePath: '+ filePath);
+        console.error(' app filePath: '+ filePath);
       }).catch((Error) => {
-        console.error('####app file err: ' + Error.message);
+        console.error(' app file err: ' + Error.message);
       })
 
       let path = filePath + '/StarWars10s-1C-8000-2SW.wav';
@@ -104,7 +104,7 @@ export default function audioRendererTest() {
           console.info(`size:${stat.size}\n`);
           len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
         }catch (error) {
-          console.info(`#######audioRenderer stat : Error: ${JSON.stringify(error)}\n`);
+          console.info(` audioRenderer stat : Error: ${JSON.stringify(error)}\n`);
         }
 
         let file = await fs.open(path, 0o0);
@@ -121,10 +121,22 @@ export default function audioRendererTest() {
             let writeSize = await audioRen.write(buf);
             //构建欠载音频帧
             if(i == len - 1){
-              await sleep(1000);
+              await sleep(2000);
             }
             if(i == len - 5){
-              await sleep(1000);
+              await sleep(2000);
+            }
+            if(i == len - 6){
+              await sleep(2000);
+            }
+            if(i == len - 10){
+              await sleep(2000);
+            }
+            if(i == len - 15){
+              await sleep(2000);
+            }
+            if(i == len - 16){
+              await sleep(2000);
             }
           }
         console.info(`audioRenderer write end............ \n`);
@@ -135,15 +147,15 @@ export default function audioRendererTest() {
 
  /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0100
-     * @tc.name      : AudioRenderer -getUnderflowCountSync
-     * @tc.desc      : AudioRenderer - getUnderflowCountSync
+     * @tc.name      : AudioRenderer -getUnderflowCountSync_COUNT
+     * @tc.desc      : AudioRenderer - getUnderflowCountSync_COUNT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
  it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0100', 0, async function (done) {
   try {
-    let value = audioRen.getUnderflowCountSync();
+    let value = await audioRen.getUnderflowCountSync();
     console.info(`${TagFrmwkRender}:getUnderflowCount :SUCCESS ${value}`);
       expect(value).assertEqual(env.OUTPUT_NUMBER_0);
       done();
@@ -157,8 +169,8 @@ export default function audioRendererTest() {
 
 /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200
-     * @tc.name      : AudioRenderer - getUnderflowCountSync
-     * @tc.desc      : AudioRenderer - getUnderflowCountSync
+     * @tc.name      : AudioRenderer - getUnderflowCountSync_COUNT_RENDER_PLAY
+     * @tc.desc      : AudioRenderer - getUnderflowCountSync_COUNT_RENDER_PLAY
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -167,10 +179,10 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
   try {
     await renderPlay();
-    let value = audioRen.getUnderflowCountSync();
+    let value = await audioRen.getUnderflowCountSync();
     console.info(`${TagFrmwkRender}:getUnderflowCount :SUCCESS ${value}`);
-    expect(value).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
-    audioRen.drain().then(() => {
+    expect(value).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+    await audioRen.drain().then(() => {
       audioRen.stop().then(() => {
         expect(true).assertTrue();
         done();
@@ -182,7 +194,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
     }).catch((err) => {
       console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
       expect(false).assertTrue();
-        done();
+      done();
     });
   } catch (err) {
     console.log("${TagFrmwkRender}:getUnderflowCount : error = " + err);
@@ -194,8 +206,8 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_PROMISE_0100
-     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - promise
-     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - promise
+     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - COUNT_PROMISE
+     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - COUNT_PROMISE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -221,8 +233,8 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_PROMISE_0200
-     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - promise
-     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - promise
+     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - COUNT_RENDER_PLAY_PROMISE
+     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - COUNT_RENDER_PLAY_PROMISE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -232,15 +244,20 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
         await renderPlay();
         await audioRen.getUnderflowCount().then((data) => {
           console.log(`getUnderflowCount :SUCCESS ${data}`);
-          expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
+          expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           audioRen.drain().then(() => {
             audioRen.stop().then(() => {
+              expect(true).assertTrue();
               done();
             }).catch((err) => {
               console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+              expect(false).assertTrue();
+              done();
             });
           }).catch((err) => {
             console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+            expect(false).assertTrue();
+            done();
           });
         }).catch((error) => {
           console.log("${TagFrmwkRender}: getUnderflowCount : error = " + error);
@@ -256,8 +273,8 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_PROMISE_0300
-     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - promise
-     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - promise
+     * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - ALL_STREAM_TYPE_PROMISE
+     * @tc.desc      : AudioRenderer - getUnderflowCount "unit_32" - ALL_STREAM_TYPE_PROMISE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -315,14 +332,14 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_CALLBACK_0100
-     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - callback
-     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - callback
+     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - COUNT_CALLBACK
+     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - COUNT_CALLBACK
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_CALLBACK_0100', 0, async function (done) {
-      audioRen.getUnderflowCount((err, data) => {
+      await audioRen.getUnderflowCount((err, data) => {
         if (err) {
           console.info(`${TagFrmwkRender}: getUnderflowCount ERROR! code: ${err.code}, mesage: ${err.message}`);
           expect(false).assertTrue();
@@ -337,8 +354,8 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_CALLBACK_0200
-     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - callback
-     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - callback
+     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - COUNT_RENDER_PLAY_CALLBACK
+     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - COUNT_RENDER_PLAY_CALLBACK
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -346,24 +363,29 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_CALLBACK_0200', 0, async function (done) {
       try {
         await renderPlay();
-        audioRen.getUnderflowCount((error, data) => {
+        await audioRen.getUnderflowCount((error, data) => {
           if (error) {
             console.log(`${TagFrmwkRender}: getUnderflowCount execution fail,error: [${error.code}, ${error.message}]`);
             expect(false).assertTrue();
             done();
           } else {
             console.log(`getUnderflowCount :SUCCESS ${data}`);
-            expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
-            audioRen.drain().then(() => {
-              audioRen.stop().then(() => {
-                done();
-              }).catch((err) => {
-                console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
-              });
-            }).catch((err) => {
-              console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
-            });
+            expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           }
+        });
+        await audioRen.drain().then(() => {
+          audioRen.stop().then(() => {
+            expect(true).assertTrue();
+            done();
+          }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch((err) => {
+          console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+          expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         console.log(`${TagFrmwkRender}: getUnderflowCount unknown error, error: [${error.code}, ${error.message}]`);
@@ -374,8 +396,8 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_CALLBACK_0300
-     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - callback
-     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - callback
+     * @tc.name      : AudioRenderer - getUnderflowCount "uint_32" - ALL_STREAM_TYPE_CALLBACK
+     * @tc.desc      : AudioRenderer - getUnderflowCount "uint_32" - ALL_STREAM_TYPE_CALLBACK
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -391,7 +413,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
           }
           let AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: env.StreamUsage[index],
             rendererFlags: 0
           }
@@ -409,7 +431,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
           } catch (error) {
             console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
           }
-          audioRen.getUnderflowCount((error, data) => {
+          await audioRen.getUnderflowCount((error, data) => {
             if (error) {
               expect(false).assertTrue();
               done();

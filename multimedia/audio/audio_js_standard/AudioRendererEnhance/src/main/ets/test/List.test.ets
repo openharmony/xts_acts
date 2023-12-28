@@ -17,6 +17,7 @@ import getUnderflowCount from './GetUnderflowCount.test.ets'
 import getCurrentOutputDevices from './GetCurrentOutputDevices.test.ets'
 import on_off_outputDeviceChange from './OnOffOutputDeviceChange.test.ets'
 import setChannelBlendMode from './SetChannelBlendMode.test.ets'
+import setVolumeWithRamp from './SetVolumeWithRamp.test.ets'
 
 export default function testsuite() {
   getMax_MinStreamVolume();
@@ -24,4 +25,5 @@ export default function testsuite() {
   getCurrentOutputDevices();
   on_off_outputDeviceChange();
   setChannelBlendMode();
+  setVolumeWithRamp();
 }

@@ -66,7 +66,7 @@ export default function ThermalCommonEvent() {
                     console.info("commonEventData data: " + commonEventData.data);
                     console.info("commonEventData parameter: " + commonEventData.parameters[0]);
                     let level = -1;
-                    expect(level >= thermal.ThermalLevel.COOL && warm <= level.ThermalLevel.EMERGENCY).assertTrue();
+                    expect(level >= thermal.ThermalLevel.COOL && warm <= level.ThermalLevel.ESCAPE).assertTrue();
                 });
                 commonEvent.unsubscribe(mySubscriber, (error) => {
                     if (error.code) {

@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
+import fileio from '@ohos.fileio'
 import request from "@ohos.request";
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import featureAbility from '@ohos.ability.featureAbility';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
 
 export default function requestUploadJSUnit() {
@@ -24,9 +25,25 @@ export default function requestUploadJSUnit() {
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
-      console.info('====>beforeAll: Prerequisites are executed.');
-    });
+    beforeAll(async function (done) {
+      try {
+        let context: featureAbility.Context = featureAbility.getContext();
+        console.info(`====>beforeAll: getCacheDir context success`);
+        let pathDir = await context.getCacheDir();
+        console.info(`====>beforeAll: getCacheDir data: ${pathDir}`);
+        let filePath = pathDir + `/test.txt`;
+        console.info(`====>beforeAll: filePath data: ${filePath}`);
+        let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
+        let content = ''.padEnd(1 * 1024 *1024, 'h');
+        fileio.writeSync(fd, content);
+        fileio.closeSync(fd);
+        console.info('====>beforeAll: text.txt file generate');
+        done();
+      } catch (err) {
+        console.info('====>beforeAll: text.txt file generate failed' + err);
+        done();
+      }
+    })
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.

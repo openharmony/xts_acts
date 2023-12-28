@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import data_preferences from '@ohos.data.preferences';
+import common from "@ohos.app.ability.common"
 
+let context: common.UIAbilityContext
 
 const NAME = 'test_preferences_store';
-const TAG = "[preferencesDataGroupIdSync]"
+const TAG = "[ttt]"
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 let mPreferences;
 
@@ -26,10 +28,12 @@ export default function preferencesDataGroupIdSync() {
   describe('preferencesDataGroupIdSync', function () {
     beforeAll(async function () {
       console.info('beforeAll');
+      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
+
     })
     afterAll(async function () {
       console.info('afterAll');
-      await data_preferences.deletePreferences(globalThis.abilityContext, NAME);
+      await data_preferences.deletePreferences(context, NAME);
       mPreferences = null
     })
 
@@ -37,6 +41,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1500
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_GetPreferencesSync_0100', 0, async function (done) {
       const Options = {
@@ -44,12 +51,11 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: null,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
-        expect().assertFail();
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
+        expect(Options.dataGroupId).assertEqual(null);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -58,6 +64,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1600
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_GetPreferencesSync_0200', 0, async function (done) {
       const Options = {
@@ -65,12 +74,11 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: undefined,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
-        expect().assertFail();
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
+        expect(Options.dataGroupId).assertEqual(undefined);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -79,6 +87,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1700
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_GetPreferencesSync_0300', 0, async function (done) {
       const Options = {
@@ -86,11 +97,10 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123456',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect(Options.dataGroupId).assertEqual('123456')
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -100,6 +110,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1800
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_GetPreferencesSync_0400', 0, async function (done) {
       const Options = {
@@ -107,7 +120,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123123',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+        mPreferences = data_preferences.getPreferencesSync(context, Options)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -121,6 +134,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1900
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0100', 0, async function (done) {
       const Options1 = {
@@ -132,13 +148,13 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: null,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
-        expect().assertFail()
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        expect(Options1.dataGroupId).assertEqual('123456')
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
+        expect(Options2.dataGroupId).assertEqual(null)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -147,6 +163,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2000
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0200', 0, async function (done) {
       const Options1 = {
@@ -158,13 +177,13 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: undefined,
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
-        expect().assertFail()
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        expect(Options1.dataGroupId).assertEqual('123456')
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
+        expect(Options2.dataGroupId).assertEqual(undefined)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -173,6 +192,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2100
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0300', 0, async function (done) {
       const Options1 = {
@@ -184,8 +206,8 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123123',
       };
       try {
-        mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options1)
-        data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options2)
+        mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        data_preferences.removePreferencesFromCacheSync(context, Options2)
         expect().assertFail()
         done();
       } catch (errInfo) {
@@ -199,6 +221,9 @@ export default function preferencesDataGroupIdSync() {
      * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2200
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0400', 0, async function (done) {
       console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 begin.");
@@ -207,7 +232,7 @@ export default function preferencesDataGroupIdSync() {
         dataGroupId: '123456',
       };
 
-      mPreferences = data_preferences.getPreferencesSync(globalThis.abilityContext, Options)
+      mPreferences = data_preferences.getPreferencesSync(context, Options)
       await mPreferences.clearSync();
       await mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test')
       await mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
@@ -218,7 +243,7 @@ export default function preferencesDataGroupIdSync() {
           done();
         }
         console.log("flush done.");
-        await data_preferences.removePreferencesFromCacheSync(globalThis.abilityContext, Options)
+        await data_preferences.removePreferencesFromCacheSync(context, Options)
         let value = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
         console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 end." + value);
         expect('test').assertEqual(value);

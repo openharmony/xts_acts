@@ -937,6 +937,30 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGetc, Function | MediumTest | Level2)
 }
 
 /**
+ * @tc.number    : ActsZlibTest_3400
+ * @tc.name      : Test gzungetc
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
+{
+#ifdef Z_SOLO
+    fprintf(stderr, "*********ActsZlibTestGzUnGetc Z_SOLO**********\n");
+#else
+    std::lock_guard<std::mutex> lock(file_mutex);
+    gzFile file;
+    file = gzopen(TESTFILE, "rb");
+    ASSERT_TRUE(file != NULL);
+    int err = gzgetc(file);
+    ASSERT_TRUE(err == 'h');
+    ASSERT_FALSE(gzungetc('h', file) != 'h');
+    char sz_read[5] = {0};
+    gzread(file, sz_read, 1);
+    ASSERT_TRUE(sz_read[0] == 'h');
+    gzclose(file);
+#endif
+}
+
+/**
  * @tc.number    : ActsZlibTest_2200
  * @tc.name      : Test gzgetc_
  * @tc.desc      : [C- SOFTWARE -0200]
@@ -1251,28 +1275,6 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzTell, Function | MediumTest | Level2)
     z_off_t pos;
     pos = gzseek(file, -8L, SEEK_CUR);
     ASSERT_FALSE(pos != SIX || gztell64(file) != pos);
-    gzclose(file);
-#endif
-}
-
-/**
- * @tc.number    : ActsZlibTest_3400
- * @tc.name      : Test gzungetc
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
-{
-#ifdef Z_SOLO
-    fprintf(stderr, "*********ActsZlibTestGzUnGetc Z_SOLO**********\n");
-#else
-    std::lock_guard<std::mutex> lock(file_mutex);
-    gzFile file;
-    file = gzopen(TESTFILE, "rb");
-    ASSERT_TRUE(file != NULL);
-    ASSERT_FALSE(gzungetc('a', file) != 'a');
-    char sz_read[5] = {0};
-    gzread(file, sz_read, 1);
-    ASSERT_TRUE(sz_read[0] == 'a');
     gzclose(file);
 #endif
 }

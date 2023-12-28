@@ -30,5 +30,4 @@ parentPort.addEventListener("message", (event) => {
     parentPort.removeEventListener("addEventTest");
     parentPort.dispatchEvent({type:"addEventTest", timeStamp:0})
     parentPort.dispatchEvent({type:"onceTest", timeStamp:0})
-    parentPort.removeEventListener("onceTest")
 })

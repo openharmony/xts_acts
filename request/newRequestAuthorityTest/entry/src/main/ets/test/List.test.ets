@@ -19,11 +19,10 @@ import requestDownloadJSUnit from './requestDownload.test';
 import requestDownloadOneJSUnit from './requestDownload001.test';
 import requestDownloadTwoJSUnit from './requestDownload002.test';
 
-export default function testsuite() {  
+export default function testsuite() {
+  requestUploadJSUnit();
+  requestUploadOneJSUnit();
   requestDownloadJSUnit();
   requestDownloadOneJSUnit();
   requestDownloadTwoJSUnit();
-  requestUploadJSUnit();
-  requestUploadOneJSUnit();
-
 }

@@ -12,16 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
 import commonEvent from '@ohos.commonEvent';
 import appManager from '@ohos.app.ability.appManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 let ACTS_ProcessState = {
   events: ["processState"]
 };
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default function abilityTest() {
   describe('GetRunningProcessInformationTest', function () {
@@ -100,7 +106,7 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[0]).assertEqual(1);
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);     
           }
           catch (error) {
             console.log("An error is generated");
@@ -110,6 +116,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0100');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0100 Create Subscribe");
           subscriber = data;
@@ -171,12 +178,12 @@ export default function abilityTest() {
           catch {
             console.log("An error is generated");
           }
-
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0200');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0200 Create Subscribe");
           subscriber = data;
@@ -192,7 +199,7 @@ export default function abilityTest() {
               console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000);
+          }, 3000);         
         })
       }, 700);
     })
@@ -243,6 +250,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0300');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0300 Create Subscribe");
           subscriber = data;
@@ -310,6 +318,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0400');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0400 Create Subscribe");
           subscriber = data;
@@ -377,6 +386,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0500');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0500 Create Subscribe");
           subscriber = data;
@@ -444,6 +454,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0600');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0600 Create Subscribe");
           subscriber = data;
@@ -507,6 +518,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0700');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0700 Create Subscribe");
           subscriber = data;
@@ -571,6 +583,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0800');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0800 Create Subscribe");
           subscriber = data;
@@ -597,73 +610,73 @@ export default function abilityTest() {
      *           calling the getRunningProcessInformation interface in AsyncCallback mode.
      */
     it('Acts_GetRunningProcessInformation_AsyncCallback_0100', 0, async function (done) {
-      let TAG = 'getRunningProcess'
-      console.info("=====>Acts_GetRunningProcessInformation_AsyncCallback_0100 start<=====")
+      let TAG = 'Acts_GetRunningProcessInformation_AsyncCallback_0100_TAG';
+      console.info(TAG, 'Start.');
+      let abilityDelegator;
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let appState = -1;
+      function setAppState(){
+        globalThis.applicationContext.getRunningProcessInformation((err, data) => {
+          if (err) {
+            console.info(TAG, 'getRunningProcessInformation err: ' + JSON.stringify(err));
+          }
+          else {
+            console.info(TAG, 'getRunningProcessInformation State: ', data[0].state);
+            appState = data[0].state;
+          }
+        });
+      }
       let want = {
-        "deviceId": "",
         "bundleName": "com.example.getrunningprocessinformationonereply",
         "abilityName": "EntryAbility",
-        "action": "Callback"
+      };
+      let options = {
+        windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
       }
-      let subscriber;
-
-      function unSubscribeCallback() {
-        console.debug("====>Acts_GetRunningProcessInformation_AsyncCallback_0100 unSubscribeCallback");
+      let testWant = {
+        "bundleName": "com.example.getrunningprocessinformationtest",
+        "abilityName": "TestAbility"
+      }
+      await sleep(500);
+      await globalThis.abilityContext.startAbility(testWant).then(async () => {
+        console.info(TAG, 'Start test ability sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(2);
+      }).catch((error) => {
+        console.info(TAG, 'Start test ability error: ' + JSON.stringify(error));
+        expect().assertFail();
         done();
-      }
-
-      function subscribeCallBack(err, data) {
-        console.debug("====>Acts_GetRunningProcessInformation_AsyncCallback_0100 data: " + JSON.stringify(data));
-        console.debug("====>Acts_GetRunningProcessInformation_AsyncCallback_0100 err: " + JSON.stringify(err));
-        if (data.event == "processState") {
-          console.info("entered assert zone!")
-          try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(2);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[1]).assertEqual(1);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[2]).assertEqual(3);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
-            console.info("this is array one");
-          }
-          catch (error) {
-            console.log("An error is generated");
-          }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }
-
-      setTimeout(() => {
-        commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
-          console.debug("====>Acts_GetRunningProcessInformation_AsyncCallback_0100 Create Subscribe");
-          subscriber = data;
-          commonEvent.subscribe(subscriber, subscribeCallBack);
-
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("start normal ability error.code = " + error.code);
-            expect(error.code).assertEqual(0);
-          })
-
-          setTimeout(async () => {
-            let driver = Driver.create();
-            await driver.delayMs(1500);
-            let button1 = await driver.findComponent(ON.text('get focusedInfo'));
-            await expect(button1 != null).assertTrue();
-            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'));
-            await expect(button2 != null).assertTrue();
-            let button3 = await driver.findComponent(ON.text('get BackInfo'));
-            await expect(button3 != null).assertTrue();
-            await button1.click();
-            await driver.delayMs(2000);
-            await button2.click();
-            await driver.delayMs(4000);
-            await driver.pressBack();
-            await driver.delayMs(2000);
-            await button3.click();
-          }, 3000);
-        })
-      }, 1000);
+      })
+      await sleep(1000);
+      await globalThis.abilityContext.startAbility(want, options).then(async () => {
+        console.info(TAG, 'Start rely app sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(1);
+        await abilityDelegator.executeShellCommand('aa force-stop com.example.getrunningprocessinformationonereply');
+      }).catch((error) => {
+        console.info(TAG, 'Start rely app error: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      await sleep(1000);
+      await globalThis.abilityContext.startAbility(want).then(async () => {
+        console.info(TAG, 'Start rely app sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(3);
+        console.info(TAG, 'End.');
+        done();
+      }).catch((error) => {
+        console.info(TAG, 'Start rely app error: ' + JSON.stringify(error));
+        expect().assertFail();
+        console.info(TAG, 'End.');
+        done();
+      })
     })
 
     /*
@@ -673,75 +686,70 @@ export default function abilityTest() {
      *           calling the getRunningProcessInformation interface in promise mode.
      */
     it('Acts_GetRunningProcessInformation_Promise_0100', 0, async function (done) {
-      let TAG = 'getRunningProcess'
-      console.info("=====>Acts_GetRunningProcessInformation_AsyncCallback_0100 start<=====")
+      let TAG = 'Acts_GetRunningProcessInformation_Promise_0100_TAG';
+      console.info(TAG, 'Start.');
+      let abilityDelegator;
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let appState = -1;
+      function setAppState(){
+        globalThis.applicationContext.getRunningProcessInformation().then((data) => {
+          console.info(TAG, 'getRunningProcessInformation State: ', data[0].state);
+          appState = data[0].state;
+        }).catch((err) => {
+          console.info(TAG, 'getRunningProcessInformation err: ' + JSON.stringify(err));
+        })
+      }
       let want = {
-        "deviceId": "",
         "bundleName": "com.example.getrunningprocessinformationonereply",
         "abilityName": "EntryAbility",
-        "action": "Promise"
+      };
+      let options = {
+        windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
       }
-      let subscriber;
-
-      function unSubscribeCallback() {
-        console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 unSubscribeCallback");
+      let testWant = {
+        "bundleName": "com.example.getrunningprocessinformationtest",
+        "abilityName": "TestAbility"
+      }
+      await sleep(500);
+      await globalThis.abilityContext.startAbility(testWant).then(async () => {
+        console.info(TAG, 'Start test ability sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(2);
+      }).catch((error) => {
+        console.info(TAG, 'Start test ability error: ' + JSON.stringify(error));
+        expect().assertFail();
         done();
-      }
-
-      function subscribeCallBack(err, data) {
-        console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 data: " + JSON.stringify(data));
-        console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 err: " + JSON.stringify(err));
-        if (data.event == "processState") {
-          console.info("entered assert zone!");
-          try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(2);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[1]).assertEqual(1);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[2]).assertEqual(3);
-            console.info("this is array one");
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
-            console.info("this is array one");
-          }
-          catch (error) {
-            console.log("An error is generated");
-          }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }
-
-      setTimeout(() => {
-        commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
-          console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 Create Subscribe");
-          subscriber = data;
-          commonEvent.subscribe(subscriber, subscribeCallBack);
-
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("start normal ability error.code = " + error.code)
-            expect(error.code).assertEqual(0);
-          })
-
-          setTimeout(async () => {
-            let driver = Driver.create();
-            await driver.delayMs(1500);
-            let button1 = await driver.findComponent(ON.text('get focusedInfo'));
-            await expect(button1 != null).assertTrue();
-            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'));
-            await expect(button2 != null).assertTrue();
-            let button3 = await driver.findComponent(ON.text('get BackInfo'));
-            await expect(button3 != null).assertTrue();
-            await button1.click();
-            await driver.delayMs(2000);
-            await button2.click();
-            await driver.delayMs(4000);
-            await driver.pressBack();
-            await driver.delayMs(2000);
-            await button3.click();
-          }, 3000);
-        })
-      }, 1000);
-
+      })
+      await sleep(1000);
+      await globalThis.abilityContext.startAbility(want, options).then(async () => {
+        console.info(TAG, 'Start rely app sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(1);
+        await abilityDelegator.executeShellCommand('aa force-stop com.example.getrunningprocessinformationonereply');
+      }).catch((error) => {
+        console.info(TAG, 'Start rely app error: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      await sleep(1000);
+      await globalThis.abilityContext.startAbility(want).then(async () => {
+        console.info(TAG, 'Start rely app sucessfully.');
+        await sleep(1500);
+        setAppState();
+        await sleep(500);
+        expect(appState).assertEqual(3);
+        console.info(TAG, 'End.');
+        done();
+      }).catch((error) => {
+        console.info(TAG, 'Start rely app error: ' + JSON.stringify(error));
+        expect().assertFail();
+        console.info(TAG, 'End.');
+        done();
+      })
     })
-
   })
 }

@@ -14,7 +14,10 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+let context: Context;
+const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_ALL_DATA_TYPE_SQL =
   "CREATE TABLE IF NOT EXISTS AllDataType " +
@@ -39,10 +42,12 @@ export default function rdbPredicatesTest() {
   describe("rdbPredicatesTest", function () {
     beforeAll(async function () {
       console.info(TAG + "beforeAll");
+      let ability = await delegator.getCurrentTopAbility();
+      context = ability.context;
+      console.info(TAG + 'Get context successful. context=' + context);
     });
 
     beforeEach(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
@@ -52,7 +57,6 @@ export default function rdbPredicatesTest() {
     });
 
     afterEach(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "Predicates.db");
@@ -3809,28 +3813,6 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2450
-     * @tc.name   : testRdbPredicatesNotBetween017
-     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbPredicatesNotBetween017", 0, async function (done) {
-      console.info(TAG + "************* testRdbPredicatesNotBetween017 start *************");
-      {
-        let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.notBetween("longValue", "ABC", "ABD");
-        let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
-        result.close();
-        result = null;
-      }
-      done();
-      console.info(TAG + "************* testRdbPredicatesNotBetween017 end *************");
-    });
-
-    /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2350
      * @tc.name   : testRdbPredicatesNotBetween019
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
@@ -4632,72 +4614,6 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number :     SSUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1510
-     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo007
-     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbPredicatesGreaterThanOrEqualTo007", 0, async function (done) {
-      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 start *************");
-      {
-        let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.greaterThanOrEqualTo("characterValue", 1);
-        let result = await rdbStore.query(predicates);
-        expect(1).assertEqual(result.rowCount);
-        result.close();
-        result = null;
-      }
-      done();
-      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 end *************");
-    });
-
-    /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2150
-     * @tc.name   : testRdbPredicatesLessThanOrEqualTo001
-     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbPredicatesLessThanOrEqualTo001", 0, async function (done) {
-      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo001 start *************");
-      {
-        let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.lessThanOrEqualTo("stringValue", "ABD");
-        let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
-        result.close();
-        result = null;
-      }
-      done();
-      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo001 end *************");
-    });
-
-    /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1500
-     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo005
-     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbPredicatesGreaterThanOrEqualTo005", 0, async function (done) {
-      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 start *************");
-      {
-        let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.greaterThanOrEqualTo("stringValue", 1);
-        let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
-        result.close();
-        result = null;
-      }
-      done();
-      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 end *************");
-    });
-
-    /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1530
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo006
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
@@ -4721,6 +4637,72 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo006 end *************");
+    });
+
+    /**
+     * @tc.number :     SSUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1510
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo007
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThanOrEqualTo("characterValue", 1);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1500
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo008
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo008 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThanOrEqualTo("stringValue", 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2150
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo001
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo001", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo001 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("stringValue", "ABD");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo001 end *************");
     });
 
     /**

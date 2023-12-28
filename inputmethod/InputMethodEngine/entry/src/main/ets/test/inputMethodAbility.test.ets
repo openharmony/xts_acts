@@ -19,6 +19,7 @@ import subtype from '@ohos.InputMethodSubtype';
 import commonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
+import {Driver} from '@ohos.UiTest'
 
 export default function inputMethodAbility() {
   describe('inputMethodAbility', function () {
@@ -38,18 +39,17 @@ export default function inputMethodAbility() {
       extra:{}
     }
 
-    let display_info;
-    let getFocusCmd = '';
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let inputMethodController = inputMethod.getController();
+    let dis = display.getDefaultDisplaySync();
+    let driver = Driver.create();
     let inputDemoService: subtype;
-    async function runCmd(cmd){
-      console.debug('====>runCmd info:' + cmd);
-      await abilityDelegator.executeShellCommand(cmd);
+    let inputMethodController = inputMethod.getController();
+    async function runCmd() {
+      let cursor_x = 30 + Math.floor(Math.random()*dis.width*0.8);
+      let cursor_y = 150 + Math.floor(Math.random() * Math.round(dis.height * 0.4));
+      console.info(`====>start click x:${cursor_x}  y:${cursor_y}`)
+      await driver.click(cursor_x, cursor_y)
     }
     beforeAll(async (done)=>{
-      display_info = display.getDefaultDisplaySync()
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
       inputServer.packageName = inputM.packageName;
@@ -71,11 +71,12 @@ export default function inputMethodAbility() {
       try{
         await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
         setTimeout(()=>{
-          console.debug("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype success");
+          runCmd()
+          console.info("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype success");
           done();
         },2000)
       }catch(err){
-        console.debug("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype failed");
+        console.info("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype failed");
       }
       let inputCurrent = inputMethod.getCurrentInputMethod();
       inputServerCopy.packageName = inputCurrent.packageName;
@@ -98,6 +99,14 @@ export default function inputMethodAbility() {
       }
     })
 
+    /*
+    * @tc.number  inputMethodEngine_test_001
+    * @tc.name   inputMethodEngine_test_001
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_001', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED;
       console.info("====>inputMethodEngine_test_001 result:" + keyType);
@@ -105,6 +114,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_002
+    * @tc.name   inputMethodEngine_test_002
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_002', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_GO;
       console.info("====>inputMethodEngine_test_002 result:" + keyType);
@@ -112,6 +129,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_003
+    * @tc.name   inputMethodEngine_test_003
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_003', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEARCH;
       console.info("====>inputMethodEngine_test_003 result:" + keyType);
@@ -119,6 +144,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_004
+    * @tc.name   inputMethodEngine_test_004
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_004', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEND;
       console.info("====>inputMethodEngine_test_004 result:" + keyType);
@@ -126,6 +159,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_005
+    * @tc.name   inputMethodEngine_test_005
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_005', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_NEXT;
       console.info("====>inputMethodEngine_test_005 result:" + keyType);
@@ -133,6 +174,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_006
+    * @tc.name   inputMethodEngine_test_006
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_006', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_DONE;
       console.info("====>inputMethodEngine_test_006 result:" + keyType);
@@ -140,6 +189,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_007
+    * @tc.name   inputMethodEngine_test_007
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_007', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS;
       console.info("====>inputMethodEngine_test_007 result:" + keyType);
@@ -147,6 +204,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_008
+    * @tc.name   inputMethodEngine_test_008
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_008', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_NULL;
       console.info("====>inputMethodEngine_test_008 result:" + keyType);
@@ -154,6 +219,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_009
+    * @tc.name   inputMethodEngine_test_009
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_009', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_TEXT;
       console.info("====>inputMethodEngine_test_009 result:" + keyType);
@@ -161,6 +234,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_010
+    * @tc.name   inputMethodEngine_test_010
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_010', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_NUMBER;
       console.info("====>inputMethodEngine_test_010 result:" + keyType);
@@ -168,6 +249,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_011
+    * @tc.name   inputMethodEngine_test_011
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_011', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_PHONE;
       console.info("====>inputMethodEngine_test_011 result:" + keyType);
@@ -175,6 +264,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_012
+    * @tc.name   inputMethodEngine_test_012
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_012', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_DATETIME;
       console.info("====>inputMethodEngine_test_012 result:" + keyType);
@@ -182,6 +279,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_013
+    * @tc.name   inputMethodEngine_test_013
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_013', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_EMAIL;
       console.info("====>inputMethodEngine_test_013 result:" + keyType);
@@ -189,6 +294,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_014
+    * @tc.name   inputMethodEngine_test_014
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_014', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_URI;
       console.info("====>inputMethodEngine_test_014 result:" + keyType);
@@ -196,6 +309,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_015
+    * @tc.name   inputMethodEngine_test_015
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_015', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_PASSWORD;
       console.info("====>inputMethodEngine_test_015 result:" + keyType);
@@ -203,6 +324,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_016
+    * @tc.name   inputMethodEngine_test_016
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_016', 0, async function (done) {
       let keyType = inputMethodEngine.FLAG_SELECTING;
       console.info("====>inputMethodEngine_test_016 result:" + keyType);
@@ -210,6 +339,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_017
+    * @tc.name   inputMethodEngine_test_017
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_017', 0, async function (done) {
       let keyType = inputMethodEngine.FLAG_SINGLE_LINE;
       console.info("====>inputMethodEngine_test_017 result:" + keyType);
@@ -217,6 +354,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_018
+    * @tc.name   inputMethodEngine_test_018
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_018', 0, async function (done) {
       let keyType = inputMethodEngine.DISPLAY_MODE_PART;
       console.info("====>inputMethodEngine_test_018 result:" + keyType);
@@ -224,6 +369,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_019
+    * @tc.name   inputMethodEngine_test_019
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_019', 0, async function (done) {
       let keyType = inputMethodEngine.DISPLAY_MODE_FULL;
       console.info("====>inputMethodEngine_test_019 result:" + keyType);
@@ -231,6 +384,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_020
+    * @tc.name   inputMethodEngine_test_020
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_020', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_ASCII;
       console.info("====>inputMethodEngine_test_020 result:" + keyType);
@@ -238,6 +399,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_021
+    * @tc.name   inputMethodEngine_test_021
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_021', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_NONE;
       console.info("====>inputMethodEngine_test_021 result:" + keyType);
@@ -245,6 +414,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_022
+    * @tc.name   inputMethodEngine_test_022
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_022', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_CHARACTERS;
       console.info("====>inputMethodEngine_test_022 result:" + keyType);
@@ -252,6 +429,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_023
+    * @tc.name   inputMethodEngine_test_023
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_023', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_SENTENCES;
       console.info("====>inputMethodEngine_test_023 result:" + keyType);
@@ -259,6 +444,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_024
+    * @tc.name   inputMethodEngine_test_024
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_024', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_WORDS;
       console.info("====>inputMethodEngine_test_024 result:" + keyType);
@@ -266,6 +459,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_025
+    * @tc.name   inputMethodEngine_test_025
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_025', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_MULTI_LINE;
       console.info("====>inputMethodEngine_test_025 result:" + keyType);
@@ -273,6 +474,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_026
+    * @tc.name   inputMethodEngine_test_026
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_026', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_NO_FULLSCREEN;
       console.info("====>inputMethodEngine_test_026 result:" + keyType);
@@ -280,6 +489,44 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodEngine_test_027
+    * @tc.name   inputMethodEngine_test_027
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('inputMethodEngine_test_027', 0, async function (done) {
+      let keyType = inputMethodEngine.PATTERN_PASSWORD_SCREEN_LOCK;
+      console.info("====>inputMethodEngine_test_027 result:" + keyType);
+      expect(keyType).assertEqual(9);
+      done();
+    });
+
+    /*
+    * @tc.number  inputMethodEngine_test_028
+    * @tc.name   inputMethodEngine_test_028
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('inputMethodEngine_test_028', 0, async function (done) {
+      let keyType = inputMethodEngine.PATTERN_PASSWORD_NUMBER;
+      console.info("====>inputMethodEngine_test_028 result:" + keyType);
+      expect(keyType).assertEqual(8);
+      done();
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_ExtendAction_0100
+    * @tc.name   Sub_Misc_inputMethodEngine_ExtendAction_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethodEngine_ExtendAction_0100', 0, async function (done) {
       let select_all = inputMethodEngine.ExtendAction.SELECT_ALL;
       console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 select_all:" + select_all);
@@ -296,6 +543,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_ExtendAction_0101
+    * @tc.name   Sub_Misc_inputMethodEngine_ExtendAction_0101
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_getInputMethodAbility_001', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_getInputMethodAbility_001 unSubscriberCallback start");
@@ -330,9 +585,7 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_getInputMethodAbility_001 publishCallback failed:" +
           JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        } 
       }
 
       var commonEventSubscribeInfo = {
@@ -352,6 +605,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_getKeyboardDelegate_001
+    * @tc.name   inputMethodAbility_test_getKeyboardDelegate_001
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_getKeyboardDelegate_001', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 unSubscriberCallback start");
@@ -386,9 +647,7 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 publishCallback failed:" +
           JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        } 
       }
 
       var commonEventSubscribeInfo = {
@@ -408,6 +667,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_028
+    * @tc.name   inputMethodAbility_test_028
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_028', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_028 unSubscriberCallback start");
@@ -441,9 +708,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_028 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_028 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -463,6 +728,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_029
+    * @tc.name   inputMethodAbility_test_029
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_029', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_029 unSubscriberCallback start");
@@ -496,9 +769,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_029 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_029 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -518,6 +789,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_030
+    * @tc.name   inputMethodAbility_test_030
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_030', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_030 unSubscriberCallback start");
@@ -551,9 +830,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_030 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_030 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -573,6 +850,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_031
+    * @tc.name   inputMethodAbility_test_031
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_031', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_031 unSubscriberCallback start");
@@ -606,9 +891,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_031 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_031 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -628,6 +911,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_032
+    * @tc.name   inputMethodAbility_test_032
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_032', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_032 unSubscriberCallback start");
@@ -661,9 +952,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_032 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_032 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -683,6 +972,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_033
+    * @tc.name   inputMethodAbility_test_033
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_033', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_033 unSubscriberCallback start");
@@ -716,9 +1013,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_033 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_033 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -738,6 +1033,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_034
+    * @tc.name   inputMethodAbility_test_034
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_034', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_034 unSubscriberCallback start");
@@ -771,9 +1074,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_034 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_034 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -793,6 +1094,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_035
+    * @tc.name   inputMethodAbility_test_035
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_035', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_035 unSubscriberCallback start");
@@ -826,9 +1135,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_035 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_035 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -848,6 +1155,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_036
+    * @tc.name   inputMethodAbility_test_036
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_036', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_036 unSubscriberCallback start");
@@ -881,9 +1196,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_036 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_036 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -903,6 +1216,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_037
+    * @tc.name   inputMethodAbility_test_037
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_037', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_037 unSubscriberCallback start");
@@ -936,9 +1257,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_037 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_037 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -958,6 +1277,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_038
+    * @tc.name   inputMethodAbility_test_038
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_038', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_038 unSubscriberCallback start");
@@ -991,9 +1318,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_038 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_038 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1013,6 +1338,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_039
+    * @tc.name   inputMethodAbility_test_039
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_039', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_039 unSubscriberCallback start");
@@ -1046,9 +1379,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_039 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_039 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1068,6 +1399,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_040
+    * @tc.name   inputMethodAbility_test_040
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_040', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_040 unSubscriberCallback start");
@@ -1101,9 +1440,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_040 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_040 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1123,6 +1460,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_041
+    * @tc.name   inputMethodAbility_test_041
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_041', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_041 unSubscriberCallback start");
@@ -1156,9 +1501,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_041 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_041 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1178,6 +1521,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_042
+    * @tc.name   inputMethodAbility_test_042
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_042', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_042 unSubscriberCallback start");
@@ -1211,9 +1562,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_042 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_042 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1233,6 +1582,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_043
+    * @tc.name   inputMethodAbility_test_043
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_043', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_043 unSubscriberCallback start");
@@ -1266,9 +1623,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_043 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_043 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1288,6 +1643,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_044
+    * @tc.name   inputMethodAbility_test_044
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodEngine_test_044', 0, async function (done) {
       let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
       console.info("====>inputMethodEngine_test_044 result:" + keyType);
@@ -1295,6 +1658,14 @@ export default function inputMethodAbility() {
       done();
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_045
+    * @tc.name   inputMethodAbility_test_045
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_045', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_045 unSubscriberCallback start");
@@ -1328,9 +1699,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_045 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_045 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1350,6 +1719,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_046
+    * @tc.name   inputMethodAbility_test_046
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_046', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_046 unSubscriberCallback start");
@@ -1383,9 +1760,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_046 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_046 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1405,6 +1780,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_047
+    * @tc.name   inputMethodAbility_test_047
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_047', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_047 unSubscriberCallback start");
@@ -1438,9 +1821,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_047 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_047 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1460,6 +1841,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_048
+    * @tc.name   inputMethodAbility_test_048
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_048', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_048 unSubscriberCallback start");
@@ -1493,9 +1882,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_048 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_048 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1515,6 +1902,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_049
+    * @tc.name   inputMethodAbility_test_049
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_049', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_049 unSubscriberCallback start");
@@ -1548,9 +1943,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_049 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_049 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1570,6 +1963,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_050
+    * @tc.name   inputMethodAbility_test_050
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_050', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_050 unSubscriberCallback start");
@@ -1603,9 +2004,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_050 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_050 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        } 
       }
 
       var commonEventSubscribeInfo = {
@@ -1625,6 +2024,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_070
+    * @tc.name   inputMethodAbility_test_070
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_070', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_070 unSubscriberCallback start");
@@ -1651,7 +2058,7 @@ export default function inputMethodAbility() {
             clearTimeout(t);
             done();
           }
-        }, 500)
+        }, 1000)
       }
 
       function publishCallback(err){
@@ -1659,8 +2066,11 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_070 publishCallback failed:" + JSON.stringify(err));
         } else {
-          runCmd(getFocusCmd);
-        }
+          let t = setTimeout(()=>{
+            runCmd();
+            clearTimeout(t)
+          }, 300)
+        } 
       }
 
       var commonEventSubscribeInfo = {
@@ -1680,6 +2090,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_071
+    * @tc.name   inputMethodAbility_test_071
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_071', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_071 unSubscriberCallback start");
@@ -1706,7 +2124,7 @@ export default function inputMethodAbility() {
             clearTimeout(t);
             done();
           }
-        }, 500)
+        }, 1000)
       }
 
       function publishCallback(err){
@@ -1714,7 +2132,10 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_071 publishCallback failed:" + JSON.stringify(err));
         } else {
-          runCmd(getFocusCmd);
+          let t = setTimeout(()=>{
+            runCmd();
+            clearTimeout(t)
+          }, 100)
         }
       }
 
@@ -1735,6 +2156,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_072
+    * @tc.name   inputMethodAbility_test_072
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_072', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_072 unSubscriberCallback start");
@@ -1761,7 +2190,7 @@ export default function inputMethodAbility() {
             clearTimeout(t);
             done();
           }
-        }, 500)
+        }, 1000)
       }
 
       function publishCallback(err){
@@ -1769,7 +2198,10 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_072 publishCallback failed:" + JSON.stringify(err));
         } else {
-          runCmd(getFocusCmd);
+          let t = setTimeout(()=>{
+            runCmd();
+            clearTimeout(t)
+          }, 300)
         }
       }
 
@@ -1790,6 +2222,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_073
+    * @tc.name   inputMethodAbility_test_073
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_073', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_073 unSubscriberCallback start");
@@ -1816,7 +2256,7 @@ export default function inputMethodAbility() {
             clearTimeout(t);
             done();
           }
-        }, 500)
+        }, 1000)
       }
 
       function publishCallback(err){
@@ -1824,11 +2264,10 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_073 publishCallback failed:" + JSON.stringify(err));
         } else {
-          runCmd(getFocusCmd);
-          let t = setTimeout(() => {
-            runCmd("uinput -K -d 2000 -u 2000");
-            clearTimeout(t);
-          },200);
+          let t1 = setTimeout(async () => {
+            await driver.triggerKey(2000);
+            clearTimeout(t1);
+          },300);
         }
       }
 
@@ -1849,6 +2288,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_074
+    * @tc.name   inputMethodAbility_test_074
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_074', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_074 unSubscriberCallback start");
@@ -1875,7 +2322,7 @@ export default function inputMethodAbility() {
             clearTimeout(t);
             done();
           }
-        }, 500);
+        }, 1000);
       }
 
       function publishCallback(err){
@@ -1883,14 +2330,12 @@ export default function inputMethodAbility() {
         if (err){
           console.info("====>inputMethodAbility_test_074 publishCallback failed:" + JSON.stringify(err));
         } else {
-          let count = 0;
-          let t = setInterval(() => {
-            count += 1;
-            runCmd(getFocusCmd);
-            if (count === 2){
-              clearInterval(t);
-            }
-          }, 500);
+          let t = setTimeout(async ()=>{
+            let inputMethodController = inputMethod.getInputMethodController();
+            let windowId: number = 2000;
+            await inputMethodController.setCallingWindow(windowId)
+            clearTimeout(t)
+          }, 100)
         }
       }
 
@@ -1911,6 +2356,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_101
+    * @tc.name   inputMethodAbility_test_101
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_101', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_101 unSubscriberCallback start");
@@ -1944,9 +2397,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_101 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_101 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -1966,6 +2417,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_102
+    * @tc.name   inputMethodAbility_test_102
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_102', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_102 unSubscriberCallback start");
@@ -1999,9 +2458,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_102 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_102 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2021,6 +2478,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_103
+    * @tc.name   inputMethodAbility_test_103
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_103', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_103 unSubscriberCallback start");
@@ -2054,9 +2519,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_103 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_103 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2076,6 +2539,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_104
+    * @tc.name   inputMethodAbility_test_104
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_104', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_104 unSubscriberCallback start");
@@ -2109,9 +2580,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_104 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_104 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2131,6 +2600,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_105
+    * @tc.name   inputMethodAbility_test_105
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_105', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_105 unSubscriberCallback start");
@@ -2164,9 +2641,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_105 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_105 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2186,6 +2661,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_106
+    * @tc.name   inputMethodAbility_test_106
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_106', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_106 unSubscriberCallback start");
@@ -2219,9 +2702,7 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_106 publishCallback start");
         if (err){
           console.info("====>inputMethodAbility_test_106 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2241,30 +2722,20 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_onSelectByRange_0110
+    * @tc.name   Sub_Misc_inputMethod_onSelectByRange_0110
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_onSelectByRange_0110', 0, async function (done) {
-      function unSubscriberCallback (err){
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback failed:" +
-          JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback finish");
-        }
-      }
-
-      function subscriberCallback (err, data){
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriberCallback data:"
-        + JSON.stringify(data));
-        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
-      }
-
       function publishCallback(err){
         console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       inputMethodController.on("selectByRange", async (range) => {
@@ -2281,47 +2752,26 @@ export default function inputMethodAbility() {
         }
       });
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_onSelectByRange_0110"]
+      var commonEventPublishData = {
+        code:110
       }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber finish");
-
-        var commonEventPublishData = {
-          code:110
-        }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
-      })
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_onSelectByMovement_0120
+    * @tc.name   Sub_Misc_inputMethod_onSelectByMovement_0120
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_onSelectByMovement_0120', 0, async function (done) {
-      function unSubscriberCallback (err){
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback failed:" +
-          JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback finish");
-        }
-      }
-
-      function subscriberCallback (err, data){
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriberCallback data:"
-        + JSON.stringify(data));
-        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
-      }
-
       function publishCallback(err){
         console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       inputMethodController.on("selectByMovement", async (movement) => {
@@ -2337,47 +2787,26 @@ export default function inputMethodAbility() {
         }
       });
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_onSelectByMovement_0120"]
+      var commonEventPublishData = {
+        code:120
       }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber finish");
-
-        var commonEventPublishData = {
-          code:120
-        }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
-      })
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_offSelectByRange_0130
+    * @tc.name   Sub_Misc_inputMethod_offSelectByRange_0130
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_offSelectByRange_0130', 0, async function (done) {
-      function unSubscriberCallback (err){
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback failed:" +
-          JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback finish");
-        }
-      }
-
-      function subscriberCallback (err, data){
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriberCallback data:"
-        + JSON.stringify(data));
-        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
-      }
-
       function publishCallback(err){
         console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       let count = 0;
@@ -2400,49 +2829,28 @@ export default function inputMethodAbility() {
           console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange err: ' + JSON.stringify(err));
           done();
         }
-      },500);
+      },1000);
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_offSelectByRange_0130"]
+      var commonEventPublishData = {
+        code:130
       }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber finish");
-
-        var commonEventPublishData = {
-          code:130
-        }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
-      })
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_offSelectByMovement_0140
+    * @tc.name   Sub_Misc_inputMethod_offSelectByMovement_0140
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_offSelectByMovement_0140', 0, async function (done) {
-      function unSubscriberCallback (err){
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback start");
-        if (err){
-          console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback failed:" +
-          JSON.stringify(err));
-        } else {
-          console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback finish");
-        }
-      }
-
-      function subscriberCallback (err, data){
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriberCallback data:"
-        + JSON.stringify(data));
-        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
-      }
-
       function publishCallback(err){
         console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       let count = 0;
@@ -2467,23 +2875,20 @@ export default function inputMethodAbility() {
         }
       },500);
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_offSelectByMovement_0140"]
+      var commonEventPublishData = {
+        code:140
       }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber finish");
-
-        var commonEventPublishData = {
-          code:140
-        }
-        commonEventManager.publish('test', commonEventPublishData, publishCallback);
-      })
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_onImeChange_0150
+    * @tc.name   Sub_Misc_inputMethod_onImeChange_0150
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
       let inputMethodSetting = inputMethod.getSetting();
       inputMethodSetting.on("imeChange", async (inputMethodProperty, inputMethodSubtype) => {
@@ -2503,6 +2908,14 @@ export default function inputMethodAbility() {
       }
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_offImeChange_0160
+    * @tc.name   Sub_Misc_inputMethod_offImeChange_0160
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_offImeChange_0160', 0, async function (done) {
       let count = 0;
       let inputMethodSetting = inputMethod.getSetting();
@@ -2535,65 +2948,81 @@ export default function inputMethodAbility() {
       },500);
     });
 
+    /*
+    * @tc.number  inputMethodAbility_test_091
+    * @tc.name   inputMethodAbility_test_091
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('inputMethodAbility_test_091', 0, async function (done) {
-          let flag = true;
-          function unSubscriberCallback (err){
-            console.info("====>inputMethodAbility_test_091 unSubscriberCallback start");
-            if (err){
-              console.info("====>inputMethodAbility_test_091 unSubscriberCallback failed:" +
-              JSON.stringify(err));
-            } else {
-              console.info("====>inputMethodAbility_test_091 unSubscriberCallback finish");
-            }
-          }
+      let flag = true;
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_091 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_091 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_091 unSubscriberCallback finish");
+        }
+      }
 
-          function subscriberCallback (err, data){
-            console.info("====>inputMethodAbility_test_091 subscriberCallback data:" + JSON.stringify(data));
-            commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
-            flag = false;
-          }
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_091 subscriberCallback data:" + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        flag = false;
+      }
 
-          function publishCallback(err){
-            console.info("====>inputMethodAbility_test_091 publishCallback start");
-            if (err){
-              console.info("====>inputMethodAbility_test_091 publishCallback failed:" + JSON.stringify(err));
-            } else {
-              let t = setTimeout(async () => {
-                await inputMethod.switchInputMethod(inputServer);
-                console.info("====>inputMethodAbility_test_091 setTimeout first: " + JSON.stringify(inputServer));
-                let t1 = setTimeout(async () => {
-                  console.info("====>inputMethodAbility_test_091 setTimeout second: " + flag);
-                  expect(flag).assertTrue();
-                  clearTimeout(t1);
-                  await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
-                  console.info("====>inputMethodAbility_test_091 switchInputMethod second" +  JSON.stringify(inputDemoService));
-                  let t2 = setTimeout(() => {
-                    clearTimeout(t2)
-                    done();
-                  }, 500)
-                },1000)
-                clearTimeout(t);
-              }, 1000)
-            }
-          }
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_091 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_091 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          let t = setTimeout(async () => {
+            await inputMethod.switchInputMethod(inputServer);
+            console.info("====>inputMethodAbility_test_091 setTimeout first: " + JSON.stringify(inputServer));
+            let t1 = setTimeout(async () => {
+              console.info("====>inputMethodAbility_test_091 setTimeout second: " + flag);
+              expect(flag).assertTrue();
+              clearTimeout(t1);
+              await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
+              console.info("====>inputMethodAbility_test_091 switchInputMethod second" +  JSON.stringify(inputDemoService));
+              let t2 = setTimeout(() => {
+                clearTimeout(t2)
+                done();
+              }, 500)
+            },1000)
+            clearTimeout(t);
+          }, 1000)
+        }
+      }
 
-          var commonEventSubscribeInfo = {
-            events: ["inputMethodAbility_test_091"]
-          }
-          var subscriber;
-          commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-            subscriber = data;
-            console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
-            commonEventManager.subscribe(subscriber, subscriberCallback);
-            console.info("====>inputMethodAbility_test_091 subscriber finish");
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_091"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_091 subscriber finish");
 
-            var commonEventPublishData = {
-              code: 91
-            }
-            commonEventManager.publish('test', commonEventPublishData, publishCallback);
-          })
-        });
+        var commonEventPublishData = {
+          code: 91
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_sendExtendAction_0170
+    * @tc.name   Sub_Misc_inputMethod_sendExtendAction_0170
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_sendExtendAction_0170', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 unSubscriberCallback start");
@@ -2627,9 +3056,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2649,6 +3076,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_sendExtendAction_0180
+    * @tc.name   Sub_Misc_inputMethod_sendExtendAction_0180
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_sendExtendAction_0180', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 unSubscriberCallback start");
@@ -2682,9 +3117,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2704,6 +3137,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getForward_sync_0200
+    * @tc.name   Sub_Misc_inputMethod_getForward_sync_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getForward_sync_0200', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 unSubscriberCallback start");
@@ -2737,9 +3178,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2759,6 +3198,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getForward_sync_0201
+    * @tc.name   Sub_Misc_inputMethod_getForward_sync_0201
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getForward_sync_0201', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 unSubscriberCallback start");
@@ -2792,9 +3239,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2814,6 +3259,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getBackward_sync_0210
+    * @tc.name   Sub_Misc_inputMethod_getBackward_sync_0210
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getBackward_sync_0210', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 unSubscriberCallback start");
@@ -2847,9 +3300,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2869,6 +3320,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getBackward_sync_0211
+    * @tc.name   Sub_Misc_inputMethod_getBackward_sync_0211
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getBackward_sync_0211', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 unSubscriberCallback start");
@@ -2902,9 +3361,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2924,6 +3381,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220
+    * @tc.name   Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 unSubscriberCallback start");
@@ -2957,9 +3422,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -2979,6 +3442,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221
+    * @tc.name   Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 unSubscriberCallback start");
@@ -3012,9 +3483,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3034,6 +3503,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getEditorAttribute_sync_0230
+    * @tc.name   Sub_Misc_inputMethod_getEditorAttribute_sync_0230
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getEditorAttribute_sync_0230', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 unSubscriberCallback start");
@@ -3067,9 +3544,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3089,6 +3564,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_getEditorAttribute_sync_0231
+    * @tc.name   Sub_Misc_inputMethod_getEditorAttribute_sync_0231
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_getEditorAttribute_sync_0231', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 unSubscriberCallback start");
@@ -3122,9 +3605,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3144,6 +3625,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_moveCursor_sync_0240
+    * @tc.name   Sub_Misc_inputMethod_moveCursor_sync_0240
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_moveCursor_sync_0240', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 unSubscriberCallback start");
@@ -3177,9 +3666,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3199,6 +3686,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_moveCursor_sync_0241
+    * @tc.name   Sub_Misc_inputMethod_moveCursor_sync_0241
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_moveCursor_sync_0241', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 unSubscriberCallback start");
@@ -3232,9 +3727,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3254,6 +3747,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_deleteForward_sync_0250
+    * @tc.name   Sub_Misc_inputMethod_deleteForward_sync_0250
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_deleteForward_sync_0250', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 unSubscriberCallback start");
@@ -3287,9 +3788,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3309,6 +3808,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_deleteForward_sync_0251
+    * @tc.name   Sub_Misc_inputMethod_deleteForward_sync_0251
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_deleteForward_sync_0251', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 unSubscriberCallback start");
@@ -3342,9 +3849,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3364,6 +3869,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_deleteBackward_sync_0260
+    * @tc.name   Sub_Misc_inputMethod_deleteBackward_sync_0260
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_deleteBackward_sync_0260', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 unSubscriberCallback start");
@@ -3397,9 +3910,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3419,6 +3930,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_deleteBackward_sync_0261
+    * @tc.name   Sub_Misc_inputMethod_deleteBackward_sync_0261
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_deleteBackward_sync_0261', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 unSubscriberCallback start");
@@ -3452,9 +3971,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3474,6 +3991,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_insertText_sync_0270
+    * @tc.name   Sub_Misc_inputMethod_insertText_sync_0270
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_insertText_sync_0270', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 unSubscriberCallback start");
@@ -3507,9 +4032,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3529,6 +4052,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_insertText_sync_0271
+    * @tc.name   Sub_Misc_inputMethod_insertText_sync_0271
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_insertText_sync_0271', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 unSubscriberCallback start");
@@ -3562,9 +4093,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3584,6 +4113,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_selectByRange_sync_0280
+    * @tc.name   Sub_Misc_inputMethod_selectByRange_sync_0280
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_selectByRange_sync_0280', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 unSubscriberCallback start");
@@ -3617,9 +4154,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3639,6 +4174,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_selectByRange_sync_0281
+    * @tc.name   Sub_Misc_inputMethod_selectByRange_sync_0281
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_selectByRange_sync_0281', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 unSubscriberCallback start");
@@ -3672,9 +4215,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3694,6 +4235,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_selectByMovement_sync_0290
+    * @tc.name   Sub_Misc_inputMethod_selectByMovement_sync_0290
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_selectByMovement_sync_0290', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 unSubscriberCallback start");
@@ -3727,9 +4276,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3749,6 +4296,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_inputMethod_selectByMovement_sync_0291
+    * @tc.name   Sub_Misc_inputMethod_selectByMovement_sync_0291
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_inputMethod_selectByMovement_sync_0291', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 unSubscriberCallback start");
@@ -3782,9 +4337,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3804,6 +4357,14 @@ export default function inputMethodAbility() {
       })
     });
 
+    /*
+    * @tc.number  Sub_Misc_Request_InputMethod_selectContext_0400
+    * @tc.name   Sub_Misc_Request_InputMethod_selectContext_0400
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_Request_InputMethod_selectContext_0400', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 unSubscriberCallback start");
@@ -3837,9 +4398,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0400 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3859,6 +4418,14 @@ export default function inputMethodAbility() {
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_Request_InputMethod_selectContext_0500
+    * @tc.name   Sub_Misc_Request_InputMethod_selectContext_0500
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_Request_InputMethod_selectContext_0500', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 unSubscriberCallback start");
@@ -3892,9 +4459,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0500 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {
@@ -3914,6 +4479,14 @@ export default function inputMethodAbility() {
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  Sub_Misc_Request_InputMethod_selectContext_0600
+    * @tc.name   Sub_Misc_Request_InputMethod_selectContext_0600
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('Sub_Misc_Request_InputMethod_selectContext_0600', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 unSubscriberCallback start");
@@ -3947,9 +4520,7 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 publishCallback start");
         if (err){
           console.info("====>Sub_Misc_Request_InputMethod_selectContext_0600 publishCallback failed:" + JSON.stringify(err));
-        } else {
-          runCmd(getFocusCmd);
-        }
+        }  
       }
 
       var commonEventSubscribeInfo = {

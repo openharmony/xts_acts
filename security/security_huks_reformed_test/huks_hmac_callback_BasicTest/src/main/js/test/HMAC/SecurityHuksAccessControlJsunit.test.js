@@ -121,8 +121,8 @@ export function SecurityHuksAccessControlJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0100", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0100";
+    it("Security_HUKS_AccessControll_API9_0100", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0100";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -158,8 +158,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0200", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0200";
+    it("Security_HUKS_AccessControll_API9_0200", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0200";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyECC.HuksKeyAlgECC,
@@ -207,8 +207,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0300", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0300";
+    it("Security_HUKS_AccessControll_API9_0300", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0300";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -259,8 +259,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0400", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0400";
+    it("Security_HUKS_AccessControll_API9_0400", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0400";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyRSA.HuksKeyAlgRSA,
@@ -326,8 +326,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0500", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0500";
+    it("Security_HUKS_AccessControll_API9_0500", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0500";
       let HuksOptions = {
         properties: new Array(
           HuksCipherAES.HuksKeyAlgAES,
@@ -358,8 +358,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0600", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0600";
+    it("Security_HUKS_AccessControll_API9_0600", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0600";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -394,8 +394,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0700", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0700";
+    it("Security_HUKS_AccessControll_API9_0700", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0700";
       let HuksOptions = {
         properties: new Array(
           HuksCipherAES.HuksKeyAlgAES,
@@ -444,8 +444,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0800", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0800";
+    it("Security_HUKS_AccessControll_API9_0800", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0800";
       let HuksOptions = {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
@@ -493,13 +493,11 @@ export function SecurityHuksAccessControlJsunit() {
         console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
         expect(null).assertFail();
       }
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_0900", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0900";
+    it("Security_HUKS_AccessControll_API9_0900", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_0900";
       let HuksOptions = {
         properties: new Array(
           HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -535,8 +533,8 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_1000", 0, async function (done) {
-      let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_1000";
+    it("Security_HUKS_AccessControll_API9_1000", 0, async function (done) {
+      let srcKeyAlias = "Security_HUKS_AccessControll_API9_1000";
       let HuksOptions = {
         properties: new Array(
           HuksCipherAES.HuksKeyAlgAES,
@@ -567,7 +565,7 @@ export function SecurityHuksAccessControlJsunit() {
       done();
     });
 
-    it("HUKS_Basic_Capability_AccessControl_Reformed_9000", 0, async function (done) {
+    it("Security_HUKS_AccessControll_API9_9000", 0, async function (done) {
       expect(1).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
       expect(2).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
       expect(4).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN);

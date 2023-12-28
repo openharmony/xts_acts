@@ -20,33 +20,47 @@ parse_target_subsystem()
     XTS_HOME=$(dirname $(cd $(dirname $0); pwd))
     BASE_HOME=${XTS_HOME}/../..
     target_subsystem_config=${XTS_HOME}/tools/config/precise_compilation.json
-    xts_targets=()
+    xts_enter_config=${BASE_HOME}/.repo/manifests/matrix_product.csv
+    xts_targets=""
     repositorys=$1
+    match_status=true
     repo_lst=($(echo $repositorys | tr "," "\n"))
+    row=dayu200_xts
+    row_number=$(awk -F',' -v target="$row" 'NR==1{for(i=1;i<=NF;i++){if($i==target){print i;exit}}}' "$xts_enter_config")
     for repo in "${repo_lst[@]}"
     do
+        echo $repo
+        # 是否配置xts门禁,若无,跳过
+        line_number=$(awk -F',' -v target="$repo" '$1 == target {print NR}' "$xts_enter_config")
+        content=$(awk -F',' -v c=$row_number  -v r=$line_number 'NR==r {print $c}' "$xts_enter_config")
+        echo $content
+        if [ ! "$content" = "Y" ]||[ -z "$content" ]; then
+            continue
+        fi
         # 仓名映射target名
         jq_cmd="cat $target_subsystem_config | jq -r '.[] | select( .name == \"${repo}\") | .buildTarget'"
         xts_target=`eval $jq_cmd`
+        if [[ -z "${xts_target}" ]];then
+            match_status=false
+        fi
         # precise_compilation.json匹配到的才添加，数组中不存在才添加（去重）
-        if [[ -n "${xts_target}" && !("${xts_targets[@]}" =~ "$xts_target") ]];then
-            xts_targets=(${xts_targets[@]} $xts_target)
+        if [[ -n "${xts_target}" && !("$xts_targets" =~ "$xts_target") ]];then
+            xts_targets+="$xts_target,"
         fi
     done
-
+        # 去掉末尾,
+        xts_targets=$(echo "$xts_targets" | sed 's/,$//')
+        echo "xts_targets: $xts_targets"
 }
 
 
 do_make()
 {
     cd $BASE_HOME
-    if [[ ${#xts_targets[@]} -eq 0 || "${xts_targets[@]}" =~ "xts_acts" ]];then
+    if [[ ${match_status} == false || "$xts_targets" =~ "xts_acts" ]];then
 	    ./test/xts/acts/build.sh product_name=rk3568 system_size=standard
     else
-        for target in "${xts_targets[@]}"
-            do
-                ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${target}
-            done
+      ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets}
     fi
 }
 parse_target_subsystem $1

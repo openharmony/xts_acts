@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import preferencesDataGroupIdCallback from './preferencesDataGroupIdCallback.test'
 import preferencesDataGroupIdPromise from './preferencesDataGroupIdPromise.test'
 import preferencesDataGroupIdSync from './preferencesDataGroupIdSync.test'
+import preferencesSpecialCharacterPromiseTest from './PreferencesSpecialCharacterPromiseJsunit.test'
 
 export default function testsuite() {
   preferencesDataGroupIdCallback()
   preferencesDataGroupIdPromise()
   preferencesDataGroupIdSync()
+  preferencesSpecialCharacterPromiseTest()
 }

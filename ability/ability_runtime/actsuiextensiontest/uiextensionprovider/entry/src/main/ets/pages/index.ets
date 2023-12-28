@@ -550,7 +550,7 @@ struct Index {
     }
   }
 
-  doDisConnectEvent(){
+  async doDisConnectEvent(){
     let successDisconnectEvent = 'ACTS_UIExtension_Disconnect_Success';
     let failDisconnectEvent = 'ACTS_UIExtension_Disconnect_Fail';
     let want = {
@@ -570,6 +570,7 @@ struct Index {
     }
 
     let connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
+    await this.sleep(500);
     globalThis.context2.disconnectServiceExtensionAbility(connectid).then(() => {
       console.info('disconnect success..');
     }).catch((err) => {
@@ -578,7 +579,9 @@ struct Index {
       return;
     });
 
+    await this.sleep(500);
     connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
+    await this.sleep(500);
     globalThis.context2.disconnectServiceExtensionAbility(connectid, (err) => {
       if (err.code) {
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
@@ -588,7 +591,9 @@ struct Index {
       console.info('disconnectServiceExtensionAbility succeed');
     });
 
+    await this.sleep(500);
     connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
+    await this.sleep(500);
     globalThis.context2.disconnectServiceExtensionAbility(connectid, (err) => {
       if (err.code) {
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
@@ -598,6 +603,7 @@ struct Index {
       console.info('disconnectServiceExtensionAbility succeed');
     },"extra param");
 
+    await this.sleep(500);
     try {
       globalThis.context2.disconnectServiceExtensionAbility();
       commonEventManager.publish(failDisconnectEvent, (err) => { });
@@ -913,6 +919,7 @@ struct Index {
       })
     await this.sleep(1000);
     globalThis.context2.connectServiceExtensionAbility(want, options);
+    await this.sleep(400);
     globalThis.context2.connectServiceExtensionAbility(wantUnvisible, optionsUnvisible);
     await this.sleep(400);
   }
@@ -1004,7 +1011,7 @@ struct Index {
         console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
       }
     }
-    this.session.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+    this.session.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
       if (err) {
         commonEventManager.publish(failStartAbilityByTypeEvent, (err) => { });
         console.error(TAG + "startAbilityByType001 fail, err:" + JSON.stringify(err));

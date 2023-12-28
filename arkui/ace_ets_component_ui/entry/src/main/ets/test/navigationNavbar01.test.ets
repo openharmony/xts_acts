@@ -57,6 +57,7 @@ export default function navigationNavbar01() {
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('NavRouter0'));
       await button.click();
+      await CommonFunc.sleep(1000);
       let navigationText01 = CommonFunc.getComponentRect('navigationText01');
       expect(Math.round(navigationText01.right - navigationText01.left)).assertEqual(Math.round(vp2px(300)));
 

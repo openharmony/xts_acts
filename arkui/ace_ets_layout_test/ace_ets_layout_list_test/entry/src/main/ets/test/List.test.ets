@@ -78,6 +78,26 @@ import List_strokeWidth from './List/List_divider/List_strokeWidth.test';
 import List_divider_resource from './List/List_divider/List_divider_resource.test';
 
 
+import listSwipeActionJsunit from './List/ListItem_SwipeActionITem/listSwipeAction.test';
+import listSwipeNoActionJsunit from './List/ListItem_SwipeActionITem/listSwipeNoAction.test'
+import listSwipe06Jsunit from './List/ListItem_SwipeActionITem/listSwipe06.test'
+import listSwipeActionEndJsunit from './List/ListItem_SwipeActionITem/listSwipeActionEnd.test'
+import listSwipeAction12EndJsunit from './List/ListItem_SwipeActionITem/listSwipeAction12End.test'
+import listSwipeAction13EndJsunit from './List/ListItem_SwipeActionITem/listSwipeAction13End.test'
+import listSwipeAction15Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction15.test'
+import listSwipeAction19Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction19.test'
+import listSwipeAction20Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction20.test'
+import listSwipeAction23Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction23.test'
+import listSwipeAction27Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction27.test'
+import listSwipeAction28Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction28.test'
+import listSwipeAction29Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction29.test'
+import listSwipeAction34Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction34.test'
+import listSwipeAction36Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction36.test'
+import listSwipeAction41Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction41.test'
+import listSwipeAction43Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction43.test'
+import ListOffSet01Jsunit from './List/List_attribute/ListOffSet01Jsunit.test';
+
+
 export default function testsuite() {
  listItem_SizeChange()
   listItem_Margin()
@@ -143,5 +163,23 @@ export default function testsuite() {
  List_divider_string();
  List_strokeWidth();
  List_divider_resource();
+ 
+  listSwipeActionJsunit()
+  listSwipeNoActionJsunit()
+  listSwipe06Jsunit()
+  listSwipeActionEndJsunit()
+  listSwipeAction12EndJsunit()
+  listSwipeAction13EndJsunit()
+  listSwipeAction15Jsunit()
+  listSwipeAction19Jsunit()
+  listSwipeAction20Jsunit()
+  listSwipeAction23Jsunit()
+  listSwipeAction27Jsunit()
+  listSwipeAction28Jsunit()
+  listSwipeAction29Jsunit()
+  listSwipeAction36Jsunit()
+  listSwipeAction41Jsunit()
+  listSwipeAction43Jsunit()
+ ListOffSet01Jsunit()
 
 }

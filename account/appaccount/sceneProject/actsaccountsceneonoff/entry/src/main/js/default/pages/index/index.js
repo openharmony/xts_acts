@@ -40,7 +40,7 @@ export default {
     },
     onInit() {
         this.title = "scene on off";
-        console.debug("====>change on off scene start====");
+        console.info("====>change on off scene start====");
         var appAccountManager = account.createAppAccountManager();
         var commonEventSubscribeInfo = {
             events: ["account_on_change"]
@@ -49,13 +49,13 @@ export default {
         // The callback of the event that publishes the verification result to the test application, and unsubscribe
         // the change of account information
         function publishCallback(err){
-            console.debug("====>publish call back scene err:" + JSON.stringify(err));
-            console.debug("====>scene off start====");
+            console.info("====>publish call back scene err:" + JSON.stringify(err));
+            console.info("====>scene off start====");
             appAccountManager.off('accountChange', function (){
-                console.debug("====>scene off accountChange finish====");
+                console.info("====>scene off accountChange finish====");
             });
             appAccountManager.off('change', function (){
-                console.debug("====>scene off change finish====");
+                console.info("====>scene off change finish====");
             });
             featureAbility.terminateSelf()
         }
@@ -63,7 +63,7 @@ export default {
         // Subscribe to the callback of account information changes, verify the received account information, and send
         // an event with the verification result to the test application
         function changeOnExtra(data){
-            console.debug("====>receive change 0100 data:" + JSON.stringify(data));
+            console.info("====>receive change 0100 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccounttest" && data[0].name == "changeonoff_extra"){
                     var commonEventPublishData = {
@@ -86,7 +86,7 @@ export default {
         }
 
         function changeOnAssociateData(data){
-            console.debug("====>receive change 0200 data:" + JSON.stringify(data));
+            console.info("====>receive change 0200 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccounttest" && data[0].name == "onoff_associatedata"){
                     var commonEventPublishData = {
@@ -109,7 +109,7 @@ export default {
         }
 
         function changeOnCustomData(data){
-            console.debug("====>receive change 0200 data:" + JSON.stringify(data));
+            console.info("====>receive change 0200 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_cunstomdata"){
                     var commonEventPublishData = {
@@ -132,7 +132,7 @@ export default {
         }
 
         function changeOnCredential(data){
-            console.debug("====>receive change 0300 data:" + JSON.stringify(data));
+            console.info("====>receive change 0300 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccounttest" && data[0].name == "onoff_credential"){
                     var commonEventPublishData = {
@@ -155,7 +155,7 @@ export default {
         }
 
         function changeOnSetCredential(data){
-            console.debug("====>receive change 0300 data:" + JSON.stringify(data));
+            console.info("====>receive change 0300 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_setcredential"){
                     var commonEventPublishData = {
@@ -178,7 +178,7 @@ export default {
         }
 
         function changeOnDeleteAnother(data){
-            console.debug("====>receive change 0400 data:" + JSON.stringify(data));
+            console.info("====>receive change 0400 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccounttest" && data[0].name == "onoff_deleteFir"){
                     var commonEventPublishData = {
@@ -201,7 +201,7 @@ export default {
         }
 
         function changeOnRemoverAnother(data){
-            console.debug("====>receive change 0400 data:" + JSON.stringify(data));
+            console.info("====>receive change 0400 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_removeFir"){
                     var commonEventPublishData = {
@@ -224,7 +224,7 @@ export default {
         }
 
         function changeOnDelete(data){
-            console.debug("====>receive change 0500 data:" + JSON.stringify(data));
+            console.info("====>receive change 0500 data:" + JSON.stringify(data));
             try{
                 if(data.length == 0){
                     var commonEventPublishData = {
@@ -247,7 +247,7 @@ export default {
         }
 
         function changeOnRemove(data){
-            console.debug("====>receive change 0500 data:" + JSON.stringify(data));
+            console.info("====>receive change 0500 data:" + JSON.stringify(data));
             try{
                 if(data.length == 0){
                     var commonEventPublishData = {
@@ -270,7 +270,7 @@ export default {
         }
 
         function changeOnDisableAnother(data){
-            console.debug("====>receive change 0600 data:" + JSON.stringify(data));
+            console.info("====>receive change 0600 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccounttest" && data[0].name == "onoff_enableFir"){
                     var commonEventPublishData = {
@@ -293,7 +293,7 @@ export default {
         }
 
         function changeOnSetAnotherDisable(data){
-            console.debug("====>receive change 1200 data:" + JSON.stringify(data));
+            console.info("====>receive change 1200 data:" + JSON.stringify(data));
             try{
                 if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_disableFir"){
                     var commonEventPublishData = {
@@ -316,7 +316,7 @@ export default {
         }
 
         function changeOnDisable(data){
-            console.debug("====>receive change 0700 data:" + JSON.stringify(data));
+            console.info("====>receive change 0700 data:" + JSON.stringify(data));
             try{
                 if(data.length == 0){
                     var commonEventPublishData = {
@@ -339,7 +339,7 @@ export default {
         }
 
         function changeOnSetDisable(data){
-            console.debug("====>receive change 1300 data:" + JSON.stringify(data));
+            console.info("====>receive change 1300 data:" + JSON.stringify(data));
             try{
                 if(data.length == 0){
                     var commonEventPublishData = {
@@ -363,63 +363,63 @@ export default {
 
         // Receive events sent by the test application to correspond to different test cases
         function subscriberCallback(err, data){
-            console.debug("====>receive event err:" + JSON.stringify(err));
-            console.debug("====>receive event data:" + JSON.stringify(data));
+            console.info("====>receive event err:" + JSON.stringify(err));
+            console.info("====>receive event data:" + JSON.stringify(data));
             switch(data.code){
                 case ACCOUNT_TEST_ONOFF_EXTRA:
-                    console.debug("====>receive event 0100 event:" + data.event);
+                    console.info("====>receive event 0100 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnExtra);
                     break;
                 case ACCOUNT_TEST_ONOFF_ASSOCIATEDDATA:
-                    console.debug("====>receive event 0200 event:" + data.event);
+                    console.info("====>receive event 0200 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnAssociateData);
                     break;
                 case ACCOUNT_TEST_ONOFF_CREDENTIAL:
-                    console.debug("====>receive event 0300 event:" + data.event);
+                    console.info("====>receive event 0300 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnCredential);
                     break;
                 case ACCOUNT_TEST_ONOFF_DELETE:
-                    console.debug("====>receive event 0400 event:" + data.event);
+                    console.info("====>receive event 0400 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDeleteAnother);
                     break;
                 case ACCOUNT_TEST_ONOFF_DELETEONLY:
-                    console.debug("====>receive event 0500 event:" + data.event);
+                    console.info("====>receive event 0500 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDelete);
                     break;
                 case ACCOUNT_TEST_ONOFF_DISABLE:
-                    console.debug("====>receive event 0600 event:" + data.event);
+                    console.info("====>receive event 0600 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDisableAnother);
                     break;
                 case ACCOUNT_TEST_ONOFF_DISABLEONLY:
-                    console.debug("====>receive event 0700 event:" + data.event);
+                    console.info("====>receive event 0700 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDisable);
                     break;
                 case ACCOUNT_TEST_ONOFF_CUSTOMDATA:
-                    console.debug("====>receive event 0800 event:" + data.event);
+                    console.info("====>receive event 0800 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnCustomData);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETCREDENTIAL:
-                    console.debug("====>receive event 0900 event:" + data.event);
+                    console.info("====>receive event 0900 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetCredential);
                     break;
                 case ACCOUNT_TEST_ONOFF_REMOVE:
-                    console.debug("====>receive event 1000 event:" + data.event);
+                    console.info("====>receive event 1000 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemoverAnother);
                     break;
                 case ACCOUNT_TEST_ONOFF_REMOVEONLY:
-                    console.debug("====>receive event 1100 event:" + data.event);
+                    console.info("====>receive event 1100 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemove);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETDISABLE:
-                    console.debug("====>receive event 1200 event:" + data.event);
+                    console.info("====>receive event 1200 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetAnotherDisable);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETDISABLEONLY:
-                    console.debug("====>receive event 1300 event:" + data.event);
+                    console.info("====>receive event 1300 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetDisable);
                     break;
                 default:
-                    console.debug("====>receive event enter default====");
+                    console.info("====>receive event enter default====");
                     break;
             }    
         }
@@ -427,7 +427,7 @@ export default {
         commonevent.createSubscriber(commonEventSubscribeInfo).then(function (data){
             subscriber = data;
             commonevent.subscribe(subscriber, subscriberCallback);
-            console.debug("====>scene subscribe finish====")
+            console.info("====>scene subscribe finish====")
         })
     },
     onReady() {

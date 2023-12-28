@@ -19,9 +19,13 @@
 #include <clocale>
 #include <cstdlib>
 #include <cstring>
+#include <malloc.h>
 #include <strings.h>
 #include <sys/procfs.h>
-#define ZERO 0
+#define PARAM_0 0
+#define TWOVALUE 2
+#define PARAM_6 6
+#define PARAM_UNNORMAL -1
 
 static napi_value Strcasecmp(napi_env env, napi_callback_info info)
 {
@@ -77,7 +81,7 @@ static napi_value Strncasecmp_l(napi_env env, napi_callback_info info)
     int value4;
     napi_get_value_int32(env, args[3], &value4);
     int sin_value;
-    if (value4 == ZERO) {
+    if (value4 == PARAM_0) {
         locale_t locale = newlocale(LC_ALL_MASK, "en_US", nullptr);
         sin_value = strncasecmp_l(valueFirst, valueSecond, valueThird, locale);
     } else {
@@ -127,6 +131,102 @@ static napi_value Strcspn(napi_env env, napi_callback_info info)
     napi_create_int32(env, int_value, &result);
     return result;
 }
+static napi_value Index(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    char *param_src = NapiHelper::GetString(env, args[0]);
+
+    char *ret = index(param_src, 'C');
+    int result_value = PARAM_UNNORMAL;
+    if (ret != nullptr) {
+        result_value = PARAM_0;
+    } else {
+        result_value = PARAM_UNNORMAL;
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, result_value, &result);
+
+    return result;
+}
+
+static napi_value Ffs(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int firstParam;
+    napi_get_value_int32(env, args[0], &firstParam);
+    int backParam = ffs(firstParam);
+    napi_value result;
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value FfsL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double firstParam;
+    napi_get_value_double(env, args[0], &firstParam);
+    double backParam = ffsl(firstParam);
+    napi_value result;
+    napi_create_double(env, backParam, &result);
+    return result;
+}
+
+static napi_value FfsLL(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double firstParam;
+    napi_get_value_double(env, args[0], &firstParam);
+    double backParam = ffsll(firstParam);
+    napi_value result;
+    napi_create_double(env, backParam, &result);
+    return result;
+}
+
+napi_value Bcmp(napi_env env, napi_callback_info info)
+{
+    const char *valueFirst = "Hello";
+    const char *valueSecond = "Hello";
+    size_t size = 10;
+    int resultValue = bcmp(valueFirst, valueSecond, size);
+    napi_value result;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value Bcopy(napi_env env, napi_callback_info info)
+{
+    void *dest = malloc(6);
+    bcopy("hello", dest, PARAM_6);
+    napi_value result = nullptr;
+    if (strcmp((char *)dest, "hello")) {
+        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    } else {
+        napi_create_int32(env, PARAM_0, &result);
+    }
+    return result;
+}
+
+static napi_value Bzero(napi_env env, napi_callback_info info)
+{
+    char dest[] = "hello";
+    bzero((void *)dest, PARAM_6);
+    napi_value result = nullptr;
+    if (0 != *(char *)dest) {
+        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    } else {
+        napi_create_int32(env, PARAM_0, &result);
+    }
+    return result;
+}
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -136,9 +236,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"strcasecmp_l", nullptr, Strcasecmp_l, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strncasecmp", nullptr, Strncasecmp, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strncasecmp_l", nullptr, Strncasecmp_l, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"index", nullptr, Index, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ffs", nullptr, Ffs, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ffsl", nullptr, FfsL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ffsll", nullptr, FfsLL, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"bcmp", nullptr, Bcmp, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"stpcpy", nullptr, Stpcpy, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strcpy", nullptr, Strcpy, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strcspn", nullptr, Strcspn, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"bcopy", nullptr, Bcopy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"bzero", nullptr, Bzero, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -156,4 +263,4 @@ static napi_module demoModule = {
     .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+extern "C" __attribute__((constructor)) void RegisterModule(void) { napi_module_register(&demoModule); }

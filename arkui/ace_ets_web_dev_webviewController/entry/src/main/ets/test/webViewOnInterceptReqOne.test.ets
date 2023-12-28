@@ -71,7 +71,7 @@ export default function webViewOnInterceptReqOne() {
      */
     it('testOnInterceptRequest',0,async function(done){
       emitKey="emitOnInterceptRequest";
-      Utils.registerEvent("testOnInterceptRequest","resource://rawfile/indexCopy.html",306,done);
+      Utils.registerEvent("testOnInterceptRequest","success",306,done);
       sendEventByKey('webViewOnInterceptReqOne',10,'');
     })
   })

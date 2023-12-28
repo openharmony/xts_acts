@@ -48,14 +48,14 @@ export default function AVSessionManagerCallback() {
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0100
          * @tc.name      : CREATEAVSESSION_0100
-         * @tc.desc      : Testing createAVSession with right parameter - callback
+         * @tc.desc      : Testing createAVSession with right parameter audio - callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0100', 0, async function (done) {
             let session;
-            avSession.createAVSession(context, tag, type, (err, value) => {
+            avSession.createAVSession(context, tag, "audio", (err, value) => {
                 if (err) {
                     console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue()
@@ -78,6 +78,7 @@ export default function AVSessionManagerCallback() {
             });
             done();
         })
+
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0200
          * @tc.name      : CREATEAVSESSION_0200
@@ -118,6 +119,40 @@ export default function AVSessionManagerCallback() {
                 }
                 done();
             });
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0400
+         * @tc.name      : CREATEAVSESSION_0400
+         * @tc.desc      : Testing createAVSession with right parameter video - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0400', 0, async function (done) {
+            let session;
+            avSession.createAVSession(context, tag, "video", (err, value) => {
+                if (err) {
+                    console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue()
+                } else if (value.sessionId.length === 64){
+                    session = value;
+                    console.info(`TestLog: AVSession :${session.sessionId}created successfully`);
+                    expect(true).assertTrue()
+                } else {
+                    console.info('TestLog: AVSession created failed');
+                    expect(false).assertTrue();
+                }
+            });
+            await sleep(500);
+            await session.destroy().then(() => {
+                console.info('TestLog: Session Destroy SUCCESS');
+                console.info(`TestLog: AVSession :${session.sessionId}destroyed successfully`);
+            }).catch((err) => {
+                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
         })
     })
 }

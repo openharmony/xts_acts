@@ -21,6 +21,7 @@ group("security") {
     deps = [
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "certificate_framework",
+      "certificate_manager",
       "cipher/datacipher:datacipher",
       "crossplatform:crossplatform",
       "cryptoFramework",

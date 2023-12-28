@@ -163,6 +163,12 @@ struct textTest {
             .textShadow({ radius: 1, color: Color.Red, offsetX: 1.0, offsetY: 1.0 })
             .textShadow({ radius: 1, color: null, offsetX: null, offsetY: null })
 
+          Text(this.message)
+            .key('ArkUX_Stage_Text_TextShadow_2500')
+            .height(20)
+            .textShadow([{ radius: 10, color: Color.Black, offsetX: -10, offsetY: -10 },
+              { radius: 10, color: Color.Red, offsetX: 10, offsetY: 10 }])
+
           Text(this.overMessage)
             .key('ArkUX_Stage_Text_TextOverflow_0100')
             .height(20)

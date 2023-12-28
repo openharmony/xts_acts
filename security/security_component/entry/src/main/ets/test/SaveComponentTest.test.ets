@@ -86,11 +86,35 @@ export default function saveComponentTest() {
             expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
             await Utils.sleep(500);
             let driver = Driver.create();
-            let textComponent = await driver.findComponent(ON.type('Button'));
-            await Utils.sleep(500);
-            console.debug("====>[Test_Security_Button_Save_0100] textComponent is:" + JSON.stringify(textComponent));
-            await textComponent.click();
-            await Utils.sleep(500);
+            console.info("====>[Test_Security_Button_Save_0100] driver is:" + JSON.stringify(driver));
+            let flag = false;
+            console.info("====>[Test_Security_Button_Save_0100] flag is:" + flag);
+            for (let i = 0; i < 5; i++) {
+              console.info("====>[Test_Security_Button_Save_0100] loop START====" + i);
+              if (flag) {
+                break;
+              }
+              let textComponent = await driver.findComponent(ON.type('Button'));
+              console.info("====>[Test_Security_Button_Save_0100] textComponent is:" + JSON.stringify(textComponent));
+              await Utils.sleep(200)
+              if (textComponent != undefined && textComponent != null) {
+                try{
+                  await textComponent.click();
+                  console.info("====>[Test_Security_Button_Save_0100] textComponentClick finish");
+                } catch (err) {
+                  console.debug("====>[Test_Security_Button_Save_0100] textComponentClick err : " + JSON.stringify(err));
+                };
+              }
+              let knowBtn = await driver.findComponent(ON.text('知道了'));
+              console.info("====>[Test_Security_Button_Save_0100] knowBtn is:" + JSON.stringify(knowBtn));
+              if(knowBtn !== null){
+                console.info("====>[Test_Security_Button_Save_0100] knowBtnClick START====");
+                await knowBtn.click();
+                console.info("====>[Test_Security_Button_Save_0100] reClick====" + i);
+              }else{
+                flag = true;
+              }
+            }
             console.debug("====>[Test_Security_Button_Save_0100] END====");
             done()
           } else {

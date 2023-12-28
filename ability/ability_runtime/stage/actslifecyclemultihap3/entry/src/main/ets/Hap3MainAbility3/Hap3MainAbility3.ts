@@ -40,6 +40,9 @@ export default class Hap3MainAbility3 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] Hap3MainAbility3 onForeground")
+        commonEvent.publish('Hap3MainAbility3onForeground', (err) => {
+            console.log('Hap3MainAbility3onForeground');
+        });
     }
 
     onBackground() {

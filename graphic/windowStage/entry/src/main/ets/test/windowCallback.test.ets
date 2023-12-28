@@ -106,9 +106,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       clearTimeout(timeoutId)
     }
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
-     * @tc.name  testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback
-     * @tc.desc Test ohosWindow.setSystemBarEnable API function test1.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
+     * @tc.name      : testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback
+     * @tc.desc      : Test ohosWindow.setSystemBarEnable API function test1.
+     * @tc.size      : MediumTestTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback', 0, async function (done) {
       let caseName = 'testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback';
@@ -219,9 +222,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     });
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1230
-     * @tc.name  testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback
-     * @tc.desc Verify that the scene hides the status bar and displays the navigation bar.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1230
+     * @tc.name      : testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback
+     * @tc.desc      : Verify that the scene hides the status bar and displays the navigation bar.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback', 0, async function (done) {
       let caseName = 'testSetSystemBarEnable_HideStatusBar_ShowNavBar_Callback';
@@ -325,9 +331,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     });
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1320
-     * @tc.name  testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback
-     * @tc.desc Verify that the scene displays both the status bar and the navigation bar.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1320
+     * @tc.name      : testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback
+     * @tc.desc      : Verify that the scene displays both the status bar and the navigation bar.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback', 0, async function (done) {
       let caseName = 'testSetSystemBarEnable_Show_StatusBarAndNavBar_Callback';
@@ -413,12 +422,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     });
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1250
-     * @tc.name testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback
-     * @tc.desc Verify that the scene hides both the status bar and the navigation bar.
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1250
+     * @tc.name      : testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback
+     * @tc.desc      : Verify that the scene hides both the status bar and the navigation bar.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback', 0, async function (done) {
-      let caseName = 'setSystemBarEnable_Hide_StatusBarAndNavBar_Callback';
+      let caseName = 'testSetSystemBarEnable_Hide_StatusBarAndNavBar_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       function getMainWindow() {
@@ -517,12 +529,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     });
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1270
-     * @tc.name  testSetSystemBarEnable_Invalid_Parameter_Callback
-     * @tc.desc Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1270
+     * @tc.name      :  testSetSystemBarEnable_Invalid_Parameter_Callback
+     * @tc.desc      : Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Invalid_Parameter_Callback', 0, async function (done) {
-      let caseName = 'setSystemBarEnable_Invalid_Parameter_Callback';
+      let caseName = 'testSetSystemBarEnable_Invalid_Parameter_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -620,12 +635,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     });
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1380
-     * @tc.name  testSetSystemBarEnable_RGB_Callback
-     * @tc.desc TVerify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1380
+     * @tc.name      :  testSetSystemBarEnable_RGB_Callback
+     * @tc.desc      : TVerify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_RGB_Callback', 0, async done => {
-      let caseName = 'setSystemBarEnable_RGB_Callback';
+      let caseName = 'testSetSystemBarEnable_RGB_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
@@ -672,12 +690,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1340
-     * @tc.name testSetSystemBarEnable_Hexadecimal_Callback
-     * @tc.desc Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1340
+     * @tc.name      : testSetSystemBarEnable_Hexadecimal_Callback
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_Hexadecimal_Callback', 0, async done => {
-      let caseName = 'setSystemBarEnable_Hexadecimal_Callback';
+      let caseName = 'testSetSystemBarEnable_Hexadecimal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
         SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
@@ -743,12 +764,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1360
-     * @tc.name testSetSystemBarEnable_KeywordForm_Callback
-     * @tc.desc TVerify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1360
+     * @tc.name      : testSetSystemBarEnable_KeywordForm_Callback
+     * @tc.desc      : TVerify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetSystemBarEnable_KeywordForm_Callback', 0, async done => {
-      let caseName = 'setSystemBarEnable_KeywordForm_Callback';
+      let caseName = 'testSetSystemBarEnable_KeywordForm_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
@@ -805,12 +829,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0170
-     * @tc.name testCreate_App_Type_Win_Callback
-     * @tc.desc Scheme of Failed to Create Application Type Window in Stage Mode
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0170
+     * @tc.name      : testCreate_App_Type_Win_Callback
+     * @tc.desc      : Scheme of Failed to Create Application Type Window in Stage Mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_App_Type_Win_Callback', 0, async done => {
-      let caseName = 'create_App_Type_Win_Callback';
+      let caseName = 'testCreate_App_Type_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
@@ -844,12 +871,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0250
-     * @tc.name testCreate_Sys_Type_Win_Callback
-     * @tc.desc Verify the scenario of creating the system type window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0250
+     * @tc.name      : testCreate_Sys_Type_Win_Callback
+     * @tc.desc      : Verify the scenario of creating the system type window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Sys_Type_Win_Callback', 0, async done => {
-      let caseName = 'create_Sys_Type_Win_Callback';
+      let caseName = 'testCreate_Sys_Type_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
@@ -909,12 +939,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0210
-     * @tc.name testCreate_Not_Exist_Win_Type_Callback
-     * @tc.desc Verify the scenario of creating a window of a type that does not exist
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0210
+     * @tc.name      : testCreate_Not_Exist_Win_Type_Callback
+     * @tc.desc      : Verify the scenario of creating a window of a type that does not exist
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Not_Exist_Win_Type_Callback', 0, async done => {
-      let caseName = 'create_Not_Exist_Win_Type_Callback';
+      let caseName = 'testCreate_Not_Exist_Win_Type_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempType = 5000;
@@ -936,12 +969,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     })
 
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0230
-     * @tc.name testCreate_Repeate_Id_Win_Callback
-     * @tc.desc Verify the scenario of creating a window with duplicate IDs
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0230
+     * @tc.name      : testCreate_Repeate_Id_Win_Callback
+     * @tc.desc      : Verify the scenario of creating a window with duplicate IDs
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreate_Repeate_Id_Win_Callback', 0, async done => {
-      let caseName = 'create_Repeate_Id_Win_Callback';
+      let caseName = 'testCreate_Repeate_Id_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'sameid'
@@ -985,13 +1021,16 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0750
-     * @tc.name testListener_Sys_AvoidAreaChange_Callback
-     * @tc.desc Verify whether the change of avoidance area and change monitoring can be turned on normally
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0750
+     * @tc.name      : testListener_Sys_AvoidAreaChange_Callback
+     * @tc.desc      : Verify whether the change of avoidance area and change monitoring can be turned on normally
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testListener_Sys_AvoidAreaChange_Callback', 0, async function (done) {
       await sleep(1000)
-      let caseName = 'listener_Sys_AvoidAreaChange_Callback';
+      let caseName = 'testListener_Sys_AvoidAreaChange_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
@@ -1056,12 +1095,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
-     * @tc.name testDestroy_Callbcak
-     * @tc.desc Verification window destruction scenario
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
+     * @tc.name      : testDestroy_Callbcak
+     * @tc.desc      : Verification window destruction scenario
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testDestroy_Callbcak', 0, async function (done) {
-      let caseName = 'destroy_Callbcak';
+      let caseName = 'testDestroy_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'destroy_Callbcak';
@@ -1106,12 +1148,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
-     * @tc.name testLoadContent_Exist_Create_SysWin_Callback
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
+     * @tc.name      : testLoadContent_Exist_Create_SysWin_Callback
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Create_SysWin_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Exist_Create_SysWin_Callback';
+      let caseName = 'testLoadContent_Exist_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContent_Exist_Create_SysWin_Callback';
@@ -1152,12 +1197,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0870
-     * @tc.name testLoadContent_Para_Is_Null_Create_SysWin_Callback
-     * @tc.desc Verify the scenario of loading a page that does not exist
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0870
+     * @tc.name      : testLoadContent_Para_Is_Null_Create_SysWin_Callback
+     * @tc.desc      : Verify the scenario of loading a page that does not exist
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
+      let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
@@ -1198,12 +1246,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0830
-     * @tc.name testLoadContent_Exist_Input_Para_Path_Callback
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0830
+     * @tc.name      : testLoadContent_Exist_Input_Para_Path_Callback
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Input_Para_Path_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Exist_Input_Para_Path_Callback';
+      let caseName = 'testLoadContent_Exist_Input_Para_Path_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       windowStage.loadContent('MainAbility/pages/second/second', (err, data) => {
@@ -1222,12 +1273,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0850
-     * @tc.name testLoadContent_Input_Para_Is_Null_Callback
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0850
+     * @tc.name      : testLoadContent_Input_Para_Is_Null_Callback
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Input_Para_Is_Null_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Input_Para_Is_Null_Callback';
+      let caseName = 'testLoadContent_Input_Para_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1253,12 +1307,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'end');
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0810
-     * @tc.name testLoadContent_Exist_Input_Para_PathAndStorage_Callback
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0810
+     * @tc.name      : testLoadContent_Exist_Input_Para_PathAndStorage_Callback
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Exist_Input_Para_PathAndStorage_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Exist_Input_Para_PathAndStorage_Callback';
+      let caseName = 'testLoadContent_Exist_Input_Para_PathAndStorage_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1278,12 +1335,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0890
-     * @tc.name testLoadContent_Para_PathAndStorage_Is_Null_Callback
-     * @tc.desc Verify the scenario of loading an existing page
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0890
+     * @tc.name      : testLoadContent_Para_PathAndStorage_Is_Null_Callback
+     * @tc.desc      : Verify the scenario of loading an existing page
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testLoadContent_Para_PathAndStorage_Is_Null_Callback', 0, async function (done) {
-      let caseName = 'loadContent_Para_PathAndStorage_Is_Null_Callback';
+      let caseName = 'testLoadContent_Para_PathAndStorage_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1308,12 +1368,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0040
-     * @tc.name testCreateSubWindow_WinName_IsNot_Empty_Callback
-     * @tc.desc Verify the scenario of creating an auxiliary window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0040
+     * @tc.name      : testCreateSubWindow_WinName_IsNot_Empty_Callback
+     * @tc.desc      : Verify the scenario of creating an auxiliary window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreateSubWindow_WinName_IsNot_Empty_Callback', 0, async function (done) {
-      let caseName = 'createSubWindow_WinName_IsNot_Empty_Callback';
+      let caseName = 'testCreateSubWindow_WinName_IsNot_Empty_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWnd = null
@@ -1383,12 +1446,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0060
-     * @tc.name testCreateSubWindow_WinName_Is_Null_Callback
-     * @tc.desc Verify the scene of entering illegal values to create an auxiliary window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0060
+     * @tc.name      : testCreateSubWindow_WinName_Is_Null_Callback
+     * @tc.desc      : Verify the scene of entering illegal values to create an auxiliary window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testCreateSubWindow_WinName_Is_Null_Callback', 0, async function (done) {
-      let caseName = 'createSubWindow_WinName_Is_Null_Callback';
+      let caseName = 'testCreateSubWindow_WinName_Is_Null_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
@@ -1412,12 +1478,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0570
-     * @tc.name testGetSubWindow_Callback
-     * @tc.desc Verify the scene of obtaining all auxiliary sub windows
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0570
+     * @tc.name      : testGetSubWindow_Callback
+     * @tc.desc      : Verify the scene of obtaining all auxiliary sub windows
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testGetSubWindow_Callback', 0, async function (done) {
-      let caseName = 'getSubWindow_Callback';
+      let caseName = 'testGetSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1437,12 +1506,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1190
-     * @tc.name testSetPrivacyMode_AppSubWin_Callback
-     * @tc.desc Verify the scene where the application sub window is set as a security layer
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1190
+     * @tc.name      : testSetPrivacyMode_AppSubWin_Callback
+     * @tc.desc      : Verify the scene where the application sub window is set as a security layer
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetPrivacyMode_AppSubWin_Callback', 0, async function (done) {
-      let caseName = 'setPrivacyMode_AppSubWin_Callback';
+      let caseName = 'testSetPrivacyMode_AppSubWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let tempWnd = null;
@@ -1522,12 +1594,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1210
-     * @tc.name testSetPrivacyMode_createSubWindow_Callback
-     * @tc.desc Verify that the auxiliary window is set as the security layer
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1210
+     * @tc.name      : testSetPrivacyMode_createSubWindow_Callback
+     * @tc.desc      : Verify that the auxiliary window is set as the security layer
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetPrivacyMode_createSubWindow_Callback', 0, async function (done) {
-      let caseName = 'setPrivacyMode_createSubWindow_Callback';
+      let caseName = 'testSetPrivacyMode_createSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let tempWnd = null;
@@ -1606,12 +1681,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1170
-     * @tc.name testSetPreferredOrientation_Callback
-     * @tc.desc Sets the display direction property of the window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1170
+     * @tc.name      : testSetPreferredOrientation_Callback
+     * @tc.desc      : Sets the display direction property of the window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetPreferredOrientation_Callback', 0, async function (done) {
-      let caseName = 'setPreferredOrientation_Callback';
+      let caseName = 'testSetPreferredOrientation_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = null;
@@ -1658,12 +1736,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done()
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1110
-     * @tc.name testSetForbidSplitMove_Callback
-     * @tc.desc Sets whether Windows are forbidden to move in split screen mode
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1110
+     * @tc.name      : testSetForbidSplitMove_Callback
+     * @tc.desc      : Sets whether Windows are forbidden to move in split screen mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetForbidSplitMove_Callback', 0, async function (done) {
-      let caseName = 'setForbidSplitMove_Callback';
+      let caseName = 'testSetForbidSplitMove_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
@@ -1703,12 +1784,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2150
-     * @tc.name testSnapshotTest_Callback_Form
-     * @tc.desc Scenario of screenshot of verification window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2150
+     * @tc.name      : testSnapshotTest_Callback_Form
+     * @tc.desc      : Scenario of screenshot of verification window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSnapshotTest_Callback_Form', 0, async function (done) {
-      let caseName = 'snapshotTest_Callback_Form';
+      let caseName = 'testSnapshotTest_Callback_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = null
@@ -1736,12 +1820,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0320
-     * @tc.name testDialogTargetTouch_Callback
-     * @tc.desc Verify the scenario of opening modal window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0320
+     * @tc.name      : testDialogTargetTouch_Callback
+     * @tc.desc      : Verify the scenario of opening modal window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testDialogTargetTouch_Callback', 0, async done => {
-      let caseName = 'dialogTargetTouch_Callback';
+      let caseName = 'testDialogTargetTouch_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
@@ -1763,12 +1850,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0010
-     * @tc.name testAnimationForShown_Callback
-     * @tc.desc Verify window custom animation configuration of the scene
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0010
+     * @tc.name      : testAnimationForShown_Callback
+     * @tc.desc      : Verify window custom animation configuration of the scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testAnimationForShown_Callback', 0, async function (done) {
-      let caseName = 'animationForShown_Callback';
+      let caseName = 'testAnimationForShown_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
@@ -1815,12 +1905,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
-     * @tc.name testGetCutoutInfo_Callbcak
-     * @tc.desc Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
+     * @tc.name      : testGetCutoutInfo_Callbcak
+     * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testGetCutoutInfo_Callbcak', 0, async function (done) {
-      let caseName = 'getCutoutInfo_Callbcak';
+      let caseName = 'testGetCutoutInfo_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let dpClass = display.getDefaultDisplaySync();
@@ -1835,12 +1928,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1070
-     * @tc.name testSetAspectRatio_Cancel_Upon_Success_Callback
-     * @tc.desc Validate the scenario cancelled after setting the proportion of the content layout of the main window
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1070
+     * @tc.name      : testSetAspectRatio_Cancel_Upon_Success_Callback
+     * @tc.desc      : Validate the scenario cancelled after setting the proportion of the content layout of the main window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetAspectRatio_Cancel_Upon_Success_Callback', 0, async function (done) {
-      let caseName = 'setAspectRatio_Cancel_Upon_Success_Callback';
+      let caseName = 'testSetAspectRatio_Cancel_Upon_Success_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1900,12 +1996,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       await resetAspectRatio()
     })
     /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2330
-     * @tc.name testSetAspectRatio_Invalid_Params_Callback
-     * @tc.desc Validate the scenario where the content layout proportion of the main window is abnormal
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2330
+     * @tc.name      : testSetAspectRatio_Invalid_Params_Callback
+     * @tc.desc      : Validate the scenario where the content layout proportion of the main window is abnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
      */
     it('testSetAspectRatio_Invalid_Params_Callback', 0, async function (done) {
-      let caseName = 'setAspectRatio_Invalid_Params_Callback';
+      let caseName = 'testSetAspectRatio_Invalid_Params_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
@@ -1941,5 +2040,107 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       await setAspectRatio()
     })
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2340
+     * @tc.name test_loadContentByName_callback_withstorage
+     * @tc.desc Test the function of loadContentByName withstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+        it('test_loadContentByName_callback_withstorage', 0, async function (done) {
+
+          let msg = "test_loadContentByName_callback_withstorage"
+
+          try {
+            windowStage.loadContentByName("Index1", abilityStorage, (err) => {
+              const errCode = err.code;
+              if (errCode) {
+                console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+                expect().assertFail()
+                done()
+              } else {
+                console.info(msg + 'Succeeded in loading the content.');
+                expect(true).assertTrue()
+                done()
+              }
+              
+            });
+          } catch (exception) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+            expect().assertFail()
+            done()
+          }
+          
+          
+        });
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2350
+     * @tc.name test_loadContentByName_callback_withoutstorage
+     * @tc.desc Test the function of loadContentByName withoutstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('test_loadContentByName_callback_withoutstorage', 0, async function (done) {
+
+      let msg = "test_loadContentByName_callback_withoutstorage"
+
+      try {
+        windowStage.loadContentByName("Index1", (err) => {
+          const errCode = err.code;
+          if (errCode) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          }else{
+              console.info(msg + 'Succeeded in loading the content.');
+              expect(true).assertTrue()
+              done()
+          }
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+      
+      
+    });
+
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_2360
+     * @tc.name test_loadContentByName_Promise
+     * @tc.desc Test the function of loadContentByName Promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('test_loadContentByName_Promise', 0, async function (done) {
+
+      let msg = "test_loadContentByName_Promise"
+
+      try {
+        let promise = windowStage.loadContentByName("Index1", abilityStorage);
+        promise.then(() => {
+          console.info(msg + 'Succeeded in loading the content.');
+          expect(true).assertTrue()
+          done()
+        }).catch((err) => {
+          console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+          expect().assertFail()
+          done()
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+      
+      
+    });
   })
 }

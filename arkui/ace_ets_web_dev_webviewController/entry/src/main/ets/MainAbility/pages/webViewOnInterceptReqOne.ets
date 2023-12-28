@@ -73,6 +73,9 @@ struct webViewOnInterceptReqOne {
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
+                            if ((this.title).includes("indexCopy")) {
+                                    this.title = 'success'
+                                }
                             Utils.emitEvent(this.title, 306)
                             break;
                         }

@@ -38,9 +38,12 @@ export default function UDMFApiCallback() {
     console.info(TAG + "*************Unit Test Begin*************")
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0100
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0100
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0100', 0, function (done) {
       let Options = {}
@@ -68,9 +71,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0200
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0200
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0200', 0, function (done) {
       let Options = {
@@ -100,9 +106,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0300
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0300
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0300', 0, function (done) {
       let Options = {
@@ -132,9 +141,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0400
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0400
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0400', 0, function (done) {
       let Options = {
@@ -165,9 +177,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0500
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0500
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0500', 0, function (done) {
       let Options = {
@@ -197,9 +212,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0600
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0600
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0600', 0, function (done) {
       let options = {
@@ -227,9 +245,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1000
-     * @tc.name unifiedDataChannel updateData callback interface test
-     * @tc.desc unifiedDataChannel updateData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1000
+     * @tc.name      : unifiedDataChannel updateData callback interface test
+     * @tc.desc      : unifiedDataChannel updateData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1000', 0, function (done) {
       let options = {
@@ -267,9 +288,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0800
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0800
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0800', 0, function (done) {
       let options = {
@@ -313,9 +337,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0900
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0900
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0900', 0, function (done) {
       let options = {
@@ -359,9 +386,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0700
-     * @tc.name unifiedDataChannel insertData callback interface test
-     * @tc.desc unifiedDataChannel insertData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0700
+     * @tc.name      : unifiedDataChannel insertData callback interface test
+     * @tc.desc      : unifiedDataChannel insertData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
 
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_0700', 0, function (done) {
@@ -406,9 +436,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100
-     * @tc.name unifiedDataChannel queryData callback interface test
-     * @tc.desc unifiedDataChannel queryData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100
+     * @tc.name      : unifiedDataChannel queryData callback interface test
+     * @tc.desc      : unifiedDataChannel queryData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100', 0, function (done) {
       let options = {
@@ -455,9 +488,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1200
-     * @tc.name unifiedDataChannel queryData callback interface test
-     * @tc.desc unifiedDataChannel queryData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1200
+     * @tc.name      : unifiedDataChannel queryData callback interface test
+     * @tc.desc      : unifiedDataChannel queryData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1200', 0, function (done) {
       let options = {
@@ -506,9 +542,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1300
-     * @tc.name unifiedDataChannel queryData callback interface test
-     * @tc.desc unifiedDataChannel queryData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1300
+     * @tc.name      : unifiedDataChannel queryData callback interface test
+     * @tc.desc      : unifiedDataChannel queryData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1300', 0, function (done) {
       let options1 = {
@@ -559,9 +598,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1400
-     * @tc.name unifiedDataChannel queryData callback interface test
-     * @tc.desc unifiedDataChannel queryData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1400
+     * @tc.name      : unifiedDataChannel queryData callback interface test
+     * @tc.desc      : unifiedDataChannel queryData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1400', 0, function (done) {
       let options1 = {
@@ -618,9 +660,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1500
-     * @tc.name unifiedDataChannel queryData callback interface test
-     * @tc.desc unifiedDataChannel queryData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1500
+     * @tc.name      : unifiedDataChannel queryData callback interface test
+     * @tc.desc      : unifiedDataChannel queryData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1500', 0, function (done) {
       let options1 = {
@@ -671,9 +716,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1600
-     * @tc.name unifiedDataChannel deleteData callback interface test
-     * @tc.desc unifiedDataChannel deleteData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1600
+     * @tc.name      : unifiedDataChannel deleteData callback interface test
+     * @tc.desc      : unifiedDataChannel deleteData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1600', 0, function (done) {
       let options = {
@@ -727,9 +775,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1700
-     * @tc.name unifiedDataChannel deleteData callback interface test
-     * @tc.desc unifiedDataChannel deleteData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1700
+     * @tc.name      : unifiedDataChannel deleteData callback interface test
+     * @tc.desc      : unifiedDataChannel deleteData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1700', 0, function (done) {
       let options = {
@@ -785,9 +836,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1800
-     * @tc.name unifiedDataChannel deleteData callback interface test
-     * @tc.desc unifiedDataChannel deleteData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1800
+     * @tc.name      : unifiedDataChannel deleteData callback interface test
+     * @tc.desc      : unifiedDataChannel deleteData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1800', 0, function (done) {
       let options1 = {
@@ -845,9 +899,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1900
-     * @tc.name unifiedDataChannel deleteData callback interface test
-     * @tc.desc unifiedDataChannel deleteData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1900
+     * @tc.name      : unifiedDataChannel deleteData callback interface test
+     * @tc.desc      : unifiedDataChannel deleteData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1900', 0, function (done) {
       let options1 = {
@@ -912,9 +969,12 @@ export default function UDMFApiCallback() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_2000
-     * @tc.name unifiedDataChannel deleteData callback interface test
-     * @tc.desc unifiedDataChannel deleteData callback interface test.
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_2000
+     * @tc.name      : unifiedDataChannel deleteData callback interface test
+     * @tc.desc      : unifiedDataChannel deleteData callback interface test.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
      */
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_2000', 0, function (done) {
       let options1 = {

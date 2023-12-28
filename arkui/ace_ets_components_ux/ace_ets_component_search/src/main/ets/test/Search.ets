@@ -2356,7 +2356,7 @@ export default function search() {
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + JSON.stringify(newJson));
 
-      let rightCancelIconSizeNumber = 0;
+      let rightCancelIconSizeNumber = 16;
       try {
         var eventData = {
           data: {

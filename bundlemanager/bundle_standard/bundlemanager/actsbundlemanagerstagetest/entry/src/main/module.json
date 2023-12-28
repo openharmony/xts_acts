@@ -11,6 +11,7 @@
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
+        "fileContextMenu" : "$profile:main_pages",
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
         "abilities": [
@@ -396,6 +397,17 @@
                 "name": "share",
                 "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "type": "share",
+                "visible": true
+            },
+            {
+                "description": "$string:form_description",
+                "descriptionId": 16777219,
+                "icon": "$media:icon",
+                "iconId": 16777225,
+                "label": "$string:entry_label",
+                "name": "adsService",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "type": "adsService",
                 "visible": true
             }
         ],

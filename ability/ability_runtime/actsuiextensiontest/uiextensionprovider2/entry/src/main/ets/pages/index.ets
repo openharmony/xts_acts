@@ -154,6 +154,7 @@ struct Index {
       })
     await this.sleep(1000);
     let connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
+    await this.sleep(400);
     connectid = globalThis.context2.connectServiceExtensionAbility(wantUnvisible, optionsUnvisible);
     await this.sleep(400);
   }
