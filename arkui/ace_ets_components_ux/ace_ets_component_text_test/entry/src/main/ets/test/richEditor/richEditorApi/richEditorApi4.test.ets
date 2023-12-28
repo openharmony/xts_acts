@@ -16,48 +16,53 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
-export default function richEditorApi() {
-  describe('richEditorApi', function () {
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix,MouseButton} from '@ohos.UiTest';
+
+export default function richEditorApi4() {
+  describe('richEditorApi4', function () {
     beforeEach(async function (done) {
-      console.info("richEditorApi beforeEach start");
+      console.info("richEditorApi4 beforeEach start");
       let options = {
-        url: 'MainAbility/pages/richEditor/richEditorApi/richEditorApi',
+        url: 'MainAbility/pages/richEditor/richEditorApi/richEditorApi4',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get richEditorApi state pages:" + JSON.stringify(pages));
-        if (!("richEditorApi" == pages.name)) {
-          console.info("get WaterFlow_WaterFlow pages.name:" + JSON.stringify(pages.name));
+        console.info("get richEditorApi4 state pages:" + JSON.stringify(pages));
+        if (!("richEditorApi4" == pages.name)) {
+          console.info("get richEditorApi4 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push richEditorApi page result:" + JSON.stringify(result));
+          console.info("push richEditorApi4 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push richEditorApi page error:" + err);
+        console.error("push richEditorApi4 page error:" + err);
       }
-      console.info("richEditorApi beforeEach end");
+      console.info("richEditorApi4 beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("richEditorApi after each called");
+      console.info("richEditorApi4 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_RICHEDITORAPI_0100
+     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi4_0100
      * @tc.name      testRichEditor
-     * @tc.desc       set api
-     * @tc.level        Level 2
-      * @tc.type 
-      * @tc.size 
+     * @tc.desc      set api
+     * @tc.level     Level 2
+     * @tc.type
+    * @tc.size
      */
-    it('testRichEditor_0100', 0, async function (done) {
-      console.info('[testRichEditor_0100] START');
+    it('richEditorApi4_0100', 0, async function (done) {
+      console.info('[richEditorApi4_0100] START');
       await CommonFunc.sleep(2000);
 
-      let text1 = getInspectorByKey('richEditorApi_text1');
+      let driver = Driver.create();
+      await CommonFunc.sleep(300);
+      await driver.mouseLongClick({x:300, y:300}, MouseButton.MOUSE_BUTTON_LEFT)
+      let text1 = getInspectorByKey('richEditorApi4_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$type).assertEqual('Text');
+      expect(Obj1.$attrs.content).assertEqual('333');
 
       console.info('[testRichEditor_0100] END');
       done();
