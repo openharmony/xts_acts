@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 
 export default function VibratorJsTest_misc_6() {
 describe("VibratorJsTest_misc_6", function () {
-	var g_execute = true;
+    var g_execute = true;
     let EFFECT_ID = "haptic.clock.timer";
     let INVALID_EFFECT_ID = "xxx";
     beforeAll(function () {
@@ -51,7 +51,7 @@ describe("VibratorJsTest_misc_6", function () {
          * @tc.teardown: teardown invoked after each testcases
          */
         console.info('afterEach caled')
-		vibrator.stop("preset");
+        vibrator.stop("preset");
         vibrator.stop("time");
         console.info('afterEach called')
     })
@@ -63,7 +63,7 @@ describe("VibratorJsTest_misc_6", function () {
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-	
+    
     /*
      * @tc.name:VibratorJsTest069
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -77,7 +77,7 @@ describe("VibratorJsTest_misc_6", function () {
             } else {
                 console.info('VibratorJsTest069 success');
                 expect(!state).assertTrue();
-				done();
+                done();
             }
         });
     })
@@ -151,7 +151,7 @@ describe("VibratorJsTest_misc_6", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
-		done();
+        done();
     })
 
     /*
@@ -187,20 +187,6 @@ describe("VibratorJsTest_misc_6", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-    })
-
-    /*
-     * @tc.name:VibratorJsTest073
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0830
-     */
-    it("VibratorJsTest073", 0, async function (done) {
-        await vibrator.isSupportEffect(INVALID_EFFECT_ID).then((state) => {
-            expect(!state).assertTrue();
-        }, (error) => {
-            expect(false).assertTrue();
-        });
-        done();
     })
 
     /*
@@ -305,12 +291,26 @@ describe("VibratorJsTest_misc_6", function () {
                 expect(false).assertTrue();
             }, (error) => {
                 expect(true).assertTrue();
-				done()
+                done()
             });
         } catch (error) {
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
-    })	
+    })
+
+    /*
+     * @tc.name:VibratorJsTest076
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0860
+     */
+    it("VibratorJsTest076", 0, async function (done) {
+        await vibrator.isSupportEffect(INVALID_EFFECT_ID).then((state) => {
+            expect(!state).assertTrue();
+        }, (error) => {
+            expect(false).assertTrue();
+        });
+        done();
+    })  
     })}

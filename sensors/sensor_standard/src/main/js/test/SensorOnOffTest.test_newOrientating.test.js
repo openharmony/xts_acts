@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -383,11 +383,11 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.name: newOrientating_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newOrientating_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newOrientating_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             sensor.off(sensor.SensorId.ORIENTATION, 5);
         } catch (error) {
-            console.info('newOrientating_SensorJsTest025 Device does not support! ');
+            console.info('newOrientating_SensorJsTest012 Device does not support! ');
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
@@ -404,7 +404,7 @@ describe("SensorJsTest_sensor_48", function () {
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
 				if (error) {
-					console.info('newOrientating_SensorJsTest011 error');
+					console.info('newOrientating_SensorJsTest013 error');
 				} else {  	
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
@@ -447,7 +447,7 @@ describe("SensorJsTest_sensor_48", function () {
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
 				if (error) {
-					console.info('newOrientating_SensorJsTest011 error');
+					console.info('newOrientating_SensorJsTest014 error');
 				} else { 
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
@@ -563,7 +563,7 @@ describe("SensorJsTest_sensor_48", function () {
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
 				if (error) {
-					console.info('newOrientating_SensorJsTest016 error');
+					console.info('newOrientating_SensorJsTest017 error');
 				} else { 
 					expect(typeof(data)).assertEqual("object");
 					sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
