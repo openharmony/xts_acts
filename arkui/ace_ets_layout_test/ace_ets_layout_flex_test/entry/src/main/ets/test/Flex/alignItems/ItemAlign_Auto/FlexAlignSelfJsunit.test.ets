@@ -62,7 +62,7 @@ export default function flexAlignSelf_AutoJsunit() {
       let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
       expect(Math.abs(textAlignSelf01.left - flexAlignSelf01.left) <= 1).assertTrue();
       expect(Math.abs(textAlignSelf01.right - textAlignSelf02.left) <= 1).assertTrue();
-      expect(Math.abs(textAlignSelf01.top - textAlignSelf02.top) <= 1).assertTrue();
+      expect(Math.abs(textAlignSelf01.top - textAlignSelf02.bottom) <= 1).assertTrue();
       expect(Math.abs(textAlignSelf02.top - textAlignSelf03.top) <= 1).assertTrue();
       expect(Math.abs(textAlignSelf01.bottom - flexAlignSelf01.bottom) <= 1).assertTrue();
 
