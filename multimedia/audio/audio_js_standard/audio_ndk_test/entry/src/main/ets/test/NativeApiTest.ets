@@ -19,7 +19,7 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 import myaudioNdk from "libaudioNdkTest.so"
 const Tag = 'audio_ndk_test:'
-export default function nativeApiImageJsunit() {
+export default function audioNDK() {
     describe('audioNDKTest', function () {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
