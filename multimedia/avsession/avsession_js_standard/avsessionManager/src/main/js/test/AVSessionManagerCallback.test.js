@@ -91,7 +91,7 @@ export default function AVSessionManagerCallback() {
             avSession.createAVSession(context, tag, 'aaa', (err, data) => {
                 if (err) {
                     console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
-                    expect(true).assertTrue();
+                    expect(err.code).assertEqual(401);
                 } else {
                     console.info(`TestLog: AVSession ${data.sessionId} created successfully`);
                     expect(false).assertTrue();
@@ -112,7 +112,7 @@ export default function AVSessionManagerCallback() {
             avSession.createAVSession(context, '', type, (err, data) => {
                 if (err) {
                     console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
-                    expect(true).assertTrue();
+                    expect(err.code).assertEqual(401);
                 } else {
                     console.info(`TestLog: AVSession ${data.sessionId} created successfully`);
                     expect(false).assertTrue();

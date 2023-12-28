@@ -31,6 +31,40 @@ export default function AVSessionCallback() {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
+        async function init() {
+            await avSession.createAVSession(context, tag, type).then((data) => {
+                session = data;
+                session.sessionType = 'audio';
+            }).catch((err) => {
+                console.info(`TestLog: Session create error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await session.activate().then(() => {
+                console.info('TestLog: Session activate');
+            }).catch((err) => {
+                console.info(`TestLog: Session activate error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            controller = await session.getController();
+        }
+
+        async function destroy() {
+            await session.destroy().then(() => {
+                console.info('TestLog: Session destroy success');
+            }).catch((err) => {
+                console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await controller.destroy().then(() => {
+                console.info('TestLog: Controller destroy success');
+            }).catch((err) => {
+                console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+        }
+
         async function getPixelMap() {
             let color = new ArrayBuffer(96);
             let bufferArr = new Uint8Array(color);
@@ -45,37 +79,12 @@ export default function AVSessionCallback() {
 
         beforeEach(async function () {
             console.info('TestLog: Init Session And Controller');
-            await avSession.createAVSession(context, tag, type).then((data) => {
-                session = data;
-            }).catch((err) => {
-                console.info(`TestLog: Session created error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
-
-            await session.activate().then(() => {
-                console.info('TestLog: Session activate');
-            }).catch((err) => {
-                console.info(`TestLog: Session activate error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
-
-            controller = await session.getController();
+            await init();
         })
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
-            await controller.destroy().then(() => {
-                console.info('TestLog: Controller Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Controller Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            await destroy();
             done();
         })
 
@@ -1215,6 +1224,67 @@ export default function AVSessionCallback() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0200
+         * @tc.name      : SETLAUNCHABILITY_0200
+         * @tc.desc      : Testing set LaunchAbility - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0200', 0, async function(done) {
+            let wantAgentInfo = {
+                wants : [
+                    {
+                        bundleName : 'com.example.myapplication',
+                        abilityName: 'com.example.myapplication.MainAbility'
+                    }
+                ],
+                operationType: WantAgent.OperationType.START_ABILITIES,
+                requestCode: 0,
+                wantAgentFlags: [WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+            };
+            let agent;
+            await WantAgent.getWantAgent(wantAgentInfo).then((callback) => {
+                agent = callback;
+            });
+            await destroy();
+            session.setLaunchAbility(agent, async (err) => {
+                if (err) {
+                    console.info(`TestLog: Set launchAbility error: code: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(6600102);
+                } else {
+                    console.info('TestLog: Set launchAbility successfully');
+                    expect(false).assertTrue();
+                }
+                await init();
+                done();
+            });
+            
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0300
+         * @tc.name      : SETLAUNCHABILITY_0300
+         * @tc.desc      : Testing set LaunchAbility - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_CALLBACK_0300', 0, async function(done) {
+            session.setLaunchAbility(async (err) => {
+                if (err) {
+                    console.info(`TestLog: Set launchAbility error: code: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(401);
+                } else {
+                    console.info('TestLog: Set launchAbility successfully');
+                    expect(false).assertTrue();
+                }
+                done();
+            });
+            
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0100
          * @tc.name      : SESSIONDESTROY_0100
          * @tc.desc      : Testing destroy session - callback
@@ -1249,6 +1319,29 @@ export default function AVSessionCallback() {
             }
             session = await avSession.createAVSession(context,tag,type);
             done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0200
+         * @tc.name      : SESSIONDESTROY_0200
+         * @tc.desc      : Testing destroy session - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0200', 0, async function (done) {
+            await destroy();
+            session.destroy(async (err) => {
+                if (err) {
+                    console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(6600102);
+                } else {
+                    console.info('TestLog: Session destroy');
+                    expect(false).assertTrue();
+                }
+                await init();
+                done();
+            });
         })
     })
 }

@@ -87,7 +87,7 @@ export default function AVSessionManager() {
                 console.info('TestLog: avSession create successfully');
             }).catch((err) => {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(err.code).assertEqual(401);
             });
             sleep(200);
             currentAVSession = await avSession.createAVSession(context,tag,"audio");
@@ -107,7 +107,7 @@ export default function AVSessionManager() {
                 console.info('TestLog: avSession create successfully');
             }).catch((err) => {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(err.code).assertEqual(401);
             });
             sleep(200);
             currentAVSession = await avSession.createAVSession(context,tag,"audio");
@@ -243,14 +243,15 @@ export default function AVSessionManager() {
             }
             done();
         })
+        
         /* *
-    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100
-    * @tc.name      : STOPCASTING_PROMISE_0100
-    * @tc.desc      : Testing getavcastcontroller
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
-    */
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100
+        * @tc.name      : STOPCASTING_PROMISE_0100
+        * @tc.desc      : Testing getavcastcontroller
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
         it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100', 0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {

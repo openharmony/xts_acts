@@ -43,20 +43,33 @@ export default function AVSession() {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        async function getPixelMap() {
-            let color = new ArrayBuffer(96);
-            let bufferArr = new Uint8Array(color);
-            bufferArr.fill('3', 0, 95);
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3 };
-            return image.createPixelMap(color, opts);
+        function callback1() {}
+
+        function callback2() {}
+
+        function offCallbackInvalidParam(eventName) {
+            try {
+                session.off(eventName, callback1, callback2);
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
         }
 
-        beforeAll(function () {
-            console.info('TestLog: Start Testing avSession Interfaces');
-        })
+        async function offCallbackInvalidSession(eventName) {
+            await destroy();
+            try {
+                session.off(eventName)
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+        }
 
-        beforeEach(async function () {
-            console.info('TestLog: Init Session And Controller');
+        
+
+        async function init() {
             await avSession.createAVSession(context, tag, type).then((data) => {
                 session = data;
                 session.sessionType = 'audio';
@@ -73,11 +86,9 @@ export default function AVSession() {
             });
 
             controller = await session.getController();
-        });
+        }
 
-
-        afterEach(async function (done) {
-            console.info('TestLog: Destroy Session And Controller');
+        async function destroy() {
             await session.destroy().then(() => {
                 console.info('TestLog: Session destroy success');
             }).catch((err) => {
@@ -90,6 +101,28 @@ export default function AVSession() {
                 console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+        }
+
+        async function getPixelMap() {
+            let color = new ArrayBuffer(96);
+            let bufferArr = new Uint8Array(color);
+            bufferArr.fill('3', 0, 95);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3 };
+            return image.createPixelMap(color, opts);
+        }
+
+        beforeAll(function () {
+            console.info('TestLog: Start Testing avSession Interfaces');
+        })
+
+        beforeEach(async function () {
+            console.info('TestLog: Init Session And Controller');
+            await init()
+        });
+
+        afterEach(async function (done) {
+            console.info('TestLog: Destroy Session And Controller');
+            await destroy();
             done();
         })
 
@@ -813,6 +846,51 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100
+         * @tc.name      : SETMETADATA_2100
+         * @tc.desc      : Testing The session does not exist. - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100', 0, async function (done) {
+            await destroy();
+            let metadata = {
+                assetId: '121278'
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set AVMetadata successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set AVMetadata error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200
+         * @tc.name      : SETMETADATA_2200
+         * @tc.desc      : Testing invalid param. - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', 0, async function (done) {
+            await destroy();
+            await session.setAVMetadata().then(() => {
+                console.info('TestLog: Set AVMetadata successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set AVMetadata error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(401);
+            });
+            await init();
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100
          * @tc.name      : SETAVPLAYBACKSTATE_0100
          * @tc.desc      : Testing set playbackstate - promise
@@ -1426,6 +1504,50 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800
+         * @tc.name      : SETAVPLAYBACKSTATE_1800
+         * @tc.desc      : Testing The session does not exist. - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800', 0, async function (done) {
+            await destroy();
+            let PlaybackState = {};
+            await session.setAVPlaybackState(PlaybackState).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900
+         * @tc.name      : SETAVPLAYBACKSTATE_1900
+         * @tc.desc      : Testing invalid param. - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900', 0, async function (done) {
+            await destroy();
+            await session.setAVPlaybackState().then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(401);
+            });
+            await init();
+            done();
+        })
+
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100
          * @tc.name      : SETLAUNCHABILITY_0100
          * @tc.desc      : Testing set LaunchAbility - promise
@@ -1480,6 +1602,61 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0200
+         * @tc.name      : SETLAUNCHABILITY_0200
+         * @tc.desc      : Testing set LaunchAbility - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level1
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0200', 0, async function (done) {
+            let wantAgentInfo = {
+                wants: [
+                    {
+                        bundleName: 'com.example.myapplication',
+                        abilityName: 'com.example.myapplication.MainAbility'
+                    }
+                ],
+                operationType: WantAgent.OperationType.START_ABILITIES,
+                requestCode: 0,
+                wantAgentFlags: [WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+            };
+            let agent;
+            await WantAgent.getWantAgent(wantAgentInfo).then((callback) => {
+                agent = callback;
+            });
+            await destroy();
+            await session.setLaunchAbility(agent).then(() => {
+                console.info('TestLog: AVSessionTest : Set LaunchAbility');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set LaunchAbility error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0300
+         * @tc.name      : SETLAUNCHABILITY_0300
+         * @tc.desc      : Testing set LaunchAbility - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level1
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0300', 0, async function (done) {
+            await session.setLaunchAbility().then(() => {
+                console.info('TestLog: AVSessionTest : Set LaunchAbility');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set LaunchAbility error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(401);
+            });
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0100
          * @tc.name      : SESSIONACTIVATE_PROMISE_0100
          * @tc.desc      : Testing set session active - promise
@@ -1507,6 +1684,27 @@ export default function AVSession() {
                 console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0200
+         * @tc.name      : SESSIONACTIVATE_PROMISE_0200
+         * @tc.desc      : Testing set session active - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level1
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0200', 0, async function (done) {
+            await destroy();
+            await session.activate().then(() => {
+                console.info('TestLog: Set session active successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
             done();
         })
 
@@ -1551,6 +1749,27 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0200
+         * @tc.name      : SESSIONDEACTIVATE_PROMISE_0200
+         * @tc.desc      : Testing deactivate session- promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level1
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0200', 0, async function (done) {
+            await destroy();
+            await session.deactivate().then(() => {
+                console.info('TestLog: Deactivate session');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100
          * @tc.name      : SESSIONACTIVATE_CALLBACK_0100
          * @tc.desc      : Testing set session active - callback
@@ -1588,6 +1807,36 @@ export default function AVSession() {
                     }
                 }
             })
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0200
+         * @tc.name      : SESSIONACTIVATE_CALLBACK_0200
+         * @tc.desc      : Testing set session active - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.activate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600102);
+                    } else {
+                        console.info('TestLog: Set session active successfully');
+                        expect(false).assertTrue();
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+
+            await sleep(500);
+            await init();
             done();
         })
 
@@ -1641,6 +1890,35 @@ export default function AVSession() {
             done();
         })
 
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0200
+        * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0200
+        * @tc.desc      : Testing deactivate session- callback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.deactivate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600102);
+                    } else {
+                        console.info('TestLog: Deactivate session');
+                        expect(false).assertTrue();
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+            await sleep(500);
+            await init();
+            done();
+        })
+
 
 
         /* *
@@ -1668,6 +1946,45 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0200
+         * @tc.name      : ONPLAY_0200
+         * @tc.desc      : Testing onPlay callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('play', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0300
+         * @tc.name      : ONPLAY_0300
+         * @tc.desc      : Testing onPlay callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_0300', 0, async function (done) {
+            try {
+                session.on('play');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+        
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0100
          * @tc.name      : ONPAUSE_0100
          * @tc.desc      : Testing onPause callback
@@ -1688,6 +2005,44 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0200
+         * @tc.name      : ONPAUSE_0200
+         * @tc.desc      : Testing onpause callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('pause', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0300
+            * @tc.name      : ONPAUSE_0300
+            * @tc.desc      : Testing ONPAUSE callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0300', 0, async function (done) {
+            try {
+                session.on('pause');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
             done();
         })
 
@@ -1716,6 +2071,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSTOP_0200
+         * @tc.name      : ONSTOP_0200
+         * @tc.desc      : Testing onStop callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('stop', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSTOP_0300
+         * @tc.name      : ONSTOP_0300
+         * @tc.desc      : Testing onStop callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_0300', 0, async function (done) {
+            try {
+                session.on('stop');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0100
          * @tc.name      : ONPLAYNEXT_0100
          * @tc.desc      : Testing onPlayNext callback
@@ -1740,6 +2133,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0200
+         * @tc.name      : ONPLAYNEXT_0200
+         * @tc.desc      : Testing onPlayNext callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('playNext', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0300
+         * @tc.name      : ONPLAYNEXT_0300
+         * @tc.desc      : Testing onPlayNext callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0300', 0, async function (done) {
+            try {
+                session.on('playNext');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0100
          * @tc.name      : ONPLAYPREVIOUS_0100
          * @tc.desc      : Testing onPlayPrevious callback
@@ -1760,6 +2191,44 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0200
+         * @tc.name      : ONPLAYPREVIOUS_0200
+         * @tc.desc      : Testing onPlayPrevious callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('playPrevious', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0300
+         * @tc.name      : ONPLAYPREVIOUS_0300
+         * @tc.desc      : Testing onPlayPrevious callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0300', 0, async function (done) {
+            try {
+                session.on('playPrevious');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
             done();
         })
 
@@ -1872,6 +2341,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0500
+         * @tc.name      : ONFASTFORWARD_0500
+         * @tc.desc      : Testing onFastForward callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0500', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('fastForward', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0600
+            * @tc.name      : ONFASTFORWARD_0600
+            * @tc.desc      : Testing onFastForward callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0600', 0, async function (done) {
+            try {
+                session.on('fastForward');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0100
          * @tc.name      : ONREWIND_0100
          * @tc.desc      : Testing onRewind callback
@@ -1980,6 +2487,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0500
+         * @tc.name      : ONREWIND_0500
+         * @tc.desc      : Testing onRewind(time 30s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0500', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('rewind', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0600
+         * @tc.name      : ONREWIND_0600
+         * @tc.desc      : Testing onRewind(time 30s) callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0600', 0, async function (done) {
+            try {
+                session.on('rewind');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSEEK_0100
          * @tc.name      : ONSEEK_0100
          * @tc.desc      : Testing onSeek callback
@@ -2009,6 +2554,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSEEK_0200
+         * @tc.name      : ONSEEK_0200
+         * @tc.desc      : Testing onSeek callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('seek', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSEEK_0300
+         * @tc.name      : ONSEEK_0300
+         * @tc.desc      : Testing onSeek callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_0300', 0, async function (done) {
+            try {
+                session.on('seek');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0100
          * @tc.name      : ONSETSPEED_0100
          * @tc.desc      : Testing Set Speed callback
@@ -2034,6 +2617,44 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0200
+         * @tc.name      : ONSETSPEED_0200
+         * @tc.desc      : Testing Set Speed callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('setSpeed', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0300
+         * @tc.name      : ONSETSPEED_0300
+         * @tc.desc      : Testing Set Speed callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0300', 0, async function (done) {
+            try {
+                session.on('setSpeed');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
             done();
         })
 
@@ -2070,6 +2691,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0200
+         * @tc.name      : ONSETLOOPMODE_0200
+         * @tc.desc      : Testing Set LoopMode callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('setLoopMode', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0300
+         * @tc.name      : ONSETLOOPMODE_0300
+         * @tc.desc      : Testing Set LoopMode callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0300', 0, async function (done) {
+            try {
+                session.on('setLoopMode');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0100
          * @tc.name      : ONTOGGLEFAVORITE_0100
          * @tc.desc      : Testing Set toggleFavorite callback
@@ -2096,6 +2755,44 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0200
+         * @tc.name      : ONTOGGLEFAVORITE_0200
+         * @tc.desc      : Testing Set toggleFavorite callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('toggleFavorite', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0300
+         * @tc.name      : ONTOGGLEFAVORITE_0300
+         * @tc.desc      : Testing Set toggleFavorite callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0300', 0, async function (done) {
+            try {
+                session.on('toggleFavorite');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
             done();
         })
 
@@ -2129,6 +2826,44 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0200
+         * @tc.name      : ONHANDLEKEYEVENT_0200
+         * @tc.desc      : Testing Handle KeyEvent callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0200', 0, async function (done) {
+            await destroy();
+            try {
+                session.on('handleKeyEvent', () => {});
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(6600102);
+            }
+            await init();
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0300
+         * @tc.name      : ONHANDLEKEYEVENT_0300
+         * @tc.desc      : Testing Handle KeyEvent callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0300', 0, async function (done) {
+            try {
+                session.on('handleKeyEvent');
+                expect(false).assertTrue();
+            } catch (error) {
+                expect(error.code).assertEqual(401);
+            }
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100
          * @tc.name      : ONWRONGCALLBACK_0100
          * @tc.desc      : Testing wrong callback
@@ -2150,13 +2885,13 @@ export default function AVSession() {
 
 
         /* *
- * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
- * @tc.name      : OFFPLAY_0100
- * @tc.desc      : Testing offPlay callback
- * @tc.size      : MediumTest
- * @tc.type      : Function
- * @tc.level     : Level2
- */
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
+        * @tc.name      : OFFPLAY_0100
+        * @tc.desc      : Testing offPlay callback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
         it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
@@ -2216,6 +2951,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0300
+         * @tc.name      : OFFPLAY_0300
+         * @tc.desc      : Testing offPlay callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0300', 0, async function (done) {
+            await offCallbackInvalidSession('play');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0400
+         * @tc.name      : OFFPLAY_0400
+         * @tc.desc      : Testing offPlay callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0400', 0, async function (done) {
+            offCallbackInvalidParam('play');
             done();
         })
 
@@ -2287,6 +3048,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0300
+            * @tc.name      : OFFPAUSE_0300
+            * @tc.desc      : Testing offPause callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0300', 0, async function (done) {
+            await offCallbackInvalidSession('pause');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0400
+         * @tc.name      : OFFPAUSE_0400
+         * @tc.desc      : Testing offPause callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0400', 0, async function (done) {
+            offCallbackInvalidParam('pause')
             done();
         })
 
@@ -2362,6 +3149,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0300
+         * @tc.name      : OFFSTOP_0300
+         * @tc.desc      : Testing offStop callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0300', 0, async function (done) {
+            await offCallbackInvalidSession('stop');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0400
+         * @tc.name      : OFFSTOP_0400
+         * @tc.desc      : Testing offStop callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0400', 0, async function (done) {
+            offCallbackInvalidParam('stop');
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0100
          * @tc.name      : OFFPLAYNEXT_0100
          * @tc.desc      : Testing offPlayNext callback
@@ -2428,6 +3241,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0300
+         * @tc.name      : OFFPLAYNEXT_0300
+         * @tc.desc      : Testing offPlayNext callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0300', 0, async function (done) {
+            await offCallbackInvalidSession('playNext');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0400
+         * @tc.name      : OFFPLAYNEXT_0400
+         * @tc.desc      : Testing offPlayNext callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0400', 0, async function (done) {
+            offCallbackInvalidParam('playNext');
             done();
         })
 
@@ -2502,6 +3341,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0300
+         * @tc.name      : OFFPLAYPREVIOUS_0300
+         * @tc.desc      : Testing offPlayPrevious callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0300', 0, async function (done) {
+            await offCallbackInvalidSession('playPrevious');
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0400
+            * @tc.name      : OFFPLAYPREVIOUS_0400
+            * @tc.desc      : Testing offPlayPrevious callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0400', 0, async function (done) {
+            offCallbackInvalidParam('playPrevious');
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0100
          * @tc.name      : OFFFASTFORWARD_0100
          * @tc.desc      : Testing offFastForward callback
@@ -2572,6 +3437,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0300
+         * @tc.name      : OFFFASTFORWARD_0300
+         * @tc.desc      : Testing offFastForward callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0300', 0, async function (done) {
+            await offCallbackInvalidSession('fastForward');
+            done();
+        })
+        
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0400
+            * @tc.name      : OFFFASTFORWARD_0400
+            * @tc.desc      : Testing offFastForward callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0400', 0, async function (done) {
+            offCallbackInvalidParam('fastForward');
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0100
          * @tc.name      : OFFREWIND_0100
          * @tc.desc      : Testing offRewind callback
@@ -2638,6 +3529,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0300
+         * @tc.name      : OFFREWIND_0300
+         * @tc.desc      : Testing offRewind callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0300', 0, async function (done) {
+            await offCallbackInvalidSession('rewind');
+            done();
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0400
+            * @tc.name      : OFFREWIND_0400
+            * @tc.desc      : Testing offRewind callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0400', 0, async function (done) {
+            offCallbackInvalidParam('rewind');
             done();
         })
 
@@ -2720,6 +3637,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0300
+         * @tc.name      : OFFSEEK_0300
+         * @tc.desc      : Testing offSeek callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0300', 0, async function (done) {
+            await offCallbackInvalidSession('seek');
+            done();
+        })
+        
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0400
+            * @tc.name      : OFFSEEK_0400
+            * @tc.desc      : Testing offSeek callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0400', 0, async function (done) {
+            offCallbackInvalidParam('seek');
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0100
          * @tc.name      : OFFSETSPEED_0100
          * @tc.desc      : Testing offSetSpeed callback
@@ -2794,6 +3737,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0300
+         * @tc.name      : OFFSETSPEED_0300
+         * @tc.desc      : Testing offSetSpeed callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0300', 0, async function (done) {
+            await offCallbackInvalidSession('setSpeed');
+            done();
+        })
+        
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0400
+            * @tc.name      : OFFSETSPEED_0400
+            * @tc.desc      : Testing offSetSpeed callback
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
+            */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0400', 0, async function (done) {
+            offCallbackInvalidParam('setSpeed');
             done();
         })
 
@@ -2882,6 +3851,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0300
+         * @tc.name      : OFFSETLOOPMODE_0300
+         * @tc.desc      : Testing offSetLoopMode callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0300', 0, async function (done) {
+            await offCallbackInvalidSession('setLoopMode');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0400
+         * @tc.name      : OFFSETLOOPMODE_0400
+         * @tc.desc      : Testing offSetLoopMode callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0400', 0, async function (done) {
+            offCallbackInvalidParam('setLoopMode');
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0100
          * @tc.name      : OFFTOGGLEFAVORITE_0100
          * @tc.desc      : Testing offToggleFavorite callback
@@ -2956,6 +3951,32 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0300
+         * @tc.name      : OFFTOGGLEFAVORITE_0300
+         * @tc.desc      : Testing offToggleFavorite callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0300', 0, async function (done) {
+            await offCallbackInvalidSession('toggleFavorite');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0400
+         * @tc.name      : OFFTOGGLEFAVORITE_0400
+         * @tc.desc      : Testing offToggleFavorite callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0400', 0, async function (done) {
+            offCallbackInvalidParam('toggleFavorite');
             done();
         })
 
@@ -3047,6 +4068,32 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0300
+         * @tc.name      : OFFHANDLEKEYEVENT_0300
+         * @tc.desc      : Testing offHandleKeyEvent callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0300', 0, async function (done) {
+            await offCallbackInvalidSession('handleKeyEvent');
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0400
+         * @tc.name      : OFFHANDLEKEYEVENT_0400
+         * @tc.desc      : Testing offHandleKeyEvent callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0400', 0, async function (done) {
+            offCallbackInvalidParam('handleKeyEvent');
+            done();
+        })
+
+        /* *
         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
         * @tc.name      : GETOUTPUTDEVICE_PROMISE_0100
         * @tc.desc      : Testing get output device
@@ -3112,25 +4159,46 @@ export default function AVSession() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
-        * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200
+         * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0200
+         * @tc.desc      : Testing get output device
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+            await destroy();
+            session.getOutputDevice(async (err, value) => {
+                if (err) {
+                    console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(6600102);
+                } else {
+                    console.info('Get device information success.');
+                    expect(false).assertTrue();
+                }
+                await init();
+                done();
+            });
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0200
+        * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0200
         * @tc.desc      : Testing get output device
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
-            await session.getOutputDevice().then((data) => {
-                if (data.devices.length > 0) {
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceid))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceName))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].castCategory))
-                    expect(true).assertTrue();
-                }
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0200', 0, async function (done) {
+            await destroy();
+            await session.getOutputDevice().then(() => {
+                console.info(`Get device success.`);
+                expect(false).assertTrue();
             }).catch((err) => {
                 console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
+                expect(err.code).assertEqual(6600102);
             })
+            await init();
             done();
         })
 
@@ -3151,6 +4219,27 @@ export default function AVSession() {
                 console.info(`Get controller BusinessError: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0200
+         * @tc.name      : GETCONTROLLER_PROMISE_0200
+         * @tc.desc      : Testing get controller
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0200', 0, async function (done) {
+            await destroy();
+            await session.getController().then((data) => {
+                console.info('Get controller successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`Get controller BusinessError: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
             done();
         })
 
@@ -3176,6 +4265,29 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0200
+         * @tc.name      : GETCONTROLLER_CALLBACK_0200
+         * @tc.desc      : Testing get controller
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0200', 0, async function (done) {
+            await destroy();
+            session.getController(async (err) => {
+                if (err) {
+                    console.info('Get controller failed');
+                    expect(err.code).assertEqual(6600102);
+                } else {
+                    console.info('Get controller successfully');
+                    expect(false).assertTrue();
+                }
+                await init();
+                done();
+            })
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100
          * @tc.name      : SENDAVKEYEVENT_CALLBACK_0100
          * @tc.desc      : Testing set key event
@@ -3184,8 +4296,6 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', 0, async function (done) {
-            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
-            let event = { action: 2, key: keyItem, keys: [keyItem] };
             try {
                 controller.sendAVKeyEvent(event, (err, data) => {
                     if (err) {
@@ -3204,6 +4314,130 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0200
+         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0200
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0200', 0, async function (done) {
+            try {
+                controller.sendAVKeyEvent((err, data) => {
+                    if (err) {
+                        console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(401);
+                    } else {
+                        console.info('sendAVKeyEvent Successfully');
+                        expect(false).assertTrue();
+                    }
+                    done();
+                })
+            } catch (err) {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0400
+         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0400
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0400', 0, async function (done) {
+            await controller.destroy();
+            try {
+                controller.sendAVKeyEvent(event, async (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600103);
+                    } else {
+                        console.info('sendAVKeyEvent Successfully');
+                        expect(false).assertTrue();
+                    }
+                    await session.getController().then((data) => {
+                        controller = data;
+                    }).catch(() => {
+                        console.info("get controller failed.")
+                        expect(false).assertTrue();
+                    })
+                    done();
+                })
+            } catch (err) {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                await session.getController().then((data) => {
+                    controller = data;
+                }).catch(() => {
+                    console.info("get controller failed.")
+                    expect(false).assertTrue();
+                })
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0500
+         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0500
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0500', 0, async function (done) {
+            try {
+                let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
+                let event = { action: 3, key: keyItem, keys: [keyItem] };
+                controller.sendAVKeyEvent(event, async (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600105);
+                    } else {
+                        console.info('sendAVKeyEvent Successfully');
+                        expect(false).assertTrue();
+                    }
+                    done();
+                })
+            } catch (err) {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0600
+         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0600
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0600', 0, async function (done) {
+            await session.deactivate();
+            try {
+                controller.sendAVKeyEvent(event, async (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600106);
+                    } else {
+                        console.info('sendAVKeyEvent Successfully');
+                        expect(false).assertTrue();
+                    }
+                    done();
+                })
+            } catch (err) {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100
          * @tc.name      : SENDAVKEYEVENT_PROMISE_0100
          * @tc.desc      : Testing set key event
@@ -3212,14 +4446,98 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', 0, async function (done) {
-            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
-            let event = { action: 2, key: keyItem, keys: [keyItem] };
             await controller.sendAVKeyEvent(event).then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0200
+         * @tc.name      : SENDAVKEYEVENT_PROMISE_0200
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0200', 0, async function (done) {
+            await controller.sendAVKeyEvent().then(() => {
+                console.info('sendAVKeyEvent Successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(401);
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0400
+         * @tc.name      : SENDAVKEYEVENT_PROMISE_0400
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0400', 0, async function (done) {
+            await controller.destroy();
+            await controller.sendAVKeyEvent(event).then(() => {
+                console.info('sendAVKeyEvent Successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600103);
+            });
+            await session.getController().then((data) => {
+                controller = data;
+            }).catch(() => {
+                console.info("get controller failed.")
+                expect(false).assertTrue();
+            })
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0500
+         * @tc.name      : SENDAVKEYEVENT_PROMISE_0500
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0500', 0, async function (done) {
+            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
+            let event = { action: 3, key: keyItem, keys: [keyItem] };
+            await controller.sendAVKeyEvent(event).then(() => {
+                console.info('sendAVKeyEvent Successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600105);
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0600
+         * @tc.name      : SENDAVKEYEVENT_PROMISE_0600
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0600', 0, async function (done) {
+            await session.deactivate();
+            await controller.sendAVKeyEvent(event).then(() => {
+                console.info('sendAVKeyEvent Successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600106);
             });
             done();
         })
@@ -3251,6 +4569,31 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0200
+         * @tc.name      : GETREALPLAYBACKPOSITIONSYNC_0200
+         * @tc.desc      : Testing get real playback position
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0200', 0, async function (done) {
+            await controller.destroy();
+            try {
+                controller.getRealPlaybackPositionSync();
+            } catch (err) {
+                console.info(`TestLog: getRealPlaybackPositionSync error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600103);
+            }
+            await session.getController().then((data) => {
+                controller = data;
+            }).catch(() => {
+                console.info("get controller failed.")
+                expect(false).assertTrue();
+            })
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100
          * @tc.name      : GETVALIDCOMMANDS_PROMISE_0100
          * @tc.desc      : Testing get valid commands - promise
@@ -3268,6 +4611,53 @@ export default function AVSession() {
                 console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0200
+         * @tc.name      : GETVALIDCOMMANDS_PROMISE_0200
+         * @tc.desc      : Testing get valid commands - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0200', 0, async function (done) {
+            await controller.destroy();
+            await controller.getValidCommands().then((data) => {
+                console.info(`TestLog: getValidCommands Successfully.`);
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600103);
+            });
+            await session.getController().then((data) => {
+                controller = data;
+            }).catch(() => {
+                console.info("get controller failed.")
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0300
+         * @tc.name      : GETVALIDCOMMANDS_PROMISE_0300
+         * @tc.desc      : Testing get valid commands - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0300', 0, async function (done) {
+            await session.destroy();
+            await controller.getValidCommands().then((data) => {
+                console.info(`TestLog: getValidCommands Successfully.`);
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(err.code).assertEqual(6600102);
+            });
+            await init();
             done();
         })
 
@@ -3291,6 +4681,69 @@ export default function AVSession() {
                         console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
                         expect(data[0]).assertEqual('play');
                     }
+                    done();
+                });
+            } catch (err) {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0200
+         * @tc.name      : GETVALIDCOMMANDS_CALLBACK_0200
+         * @tc.desc      : Testing get valid commands - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0200', 0, async function (done) {
+            try {
+                await controller.destroy();
+                controller.getValidCommands(async (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600103);
+                    } else {
+                        console.info(`TestLog: getValidCommands Successfully.`);
+                        expect(false).assertTrue();
+                    }
+                    await session.getController().then((data) => {
+                        controller = data;
+                    }).catch(() => {
+                        console.info("get controller failed.")
+                        expect(false).assertTrue();
+                    });
+                    done();
+                });
+            } catch (err) {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0300
+         * @tc.name      : GETVALIDCOMMANDS_CALLBACK_0300
+         * @tc.desc      : Testing get valid commands - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0300', 0, async function (done) {
+            try {
+                await session.destroy();
+                controller.getValidCommands(async (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code).assertEqual(6600102);
+                    } else {
+                        console.info(`TestLog: getValidCommands Successfully.`);
+                        expect(false).assertTrue();
+                    }
+                    await init();
                     done();
                 });
             } catch (err) {

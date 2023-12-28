@@ -165,6 +165,56 @@ export default function AVSessionJsTest() {
     })
 
     /*
+     * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0500
+     * @tc.desc:Set session event - invalid params
+     * @tc.type: FUNC
+     * @tc.require: I6C6IN
+     */
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0500", 0, async function (done) {
+      await session.destroy();
+      await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).then(()=>{
+        console.info(TAG + "dispatchSessionEvent success.");
+        expect().assertFail();
+      }).catch((err) => {
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0500 caught error" + err.code);
+        expect(err.code).assertEqual(6600102)
+      });
+      session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+        console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+        expect().assertFail();
+      });
+      session.activate();
+      controller = await session.getController();
+      done();
+    })
+
+    /*
+     * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0600
+     * @tc.desc:Set session event - invalid params
+     * @tc.type: FUNC
+     * @tc.require: I6C6IN
+     */
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0600", 0, async function (done) {
+      await session.destroy();
+      await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS, async err => {
+        if (err) {
+          console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0600 caught error" + err.code);
+          expect(err.code).assertEqual(6600102)
+        } else {
+          console.info(TAG + "dispatchSessionEvent success.");
+          expect().assertFail();
+        }
+        session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+          console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+          expect().assertFail();
+        });
+        session.activate();
+        controller = await session.getController();
+        done();
+      })
+    })
+
+    /*
    * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100
    * @tc.desc:Set extras - callback
    * @tc.type: FUNC
@@ -233,6 +283,56 @@ export default function AVSessionJsTest() {
       sleep(200).then(() => {
         expect(errCode == 401).assertTrue();
         console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0400 finished");
+        done();
+      })
+    })
+
+    /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500
+   * @tc.desc:Set extras - invalid params
+   * @tc.type: FUNC
+   * @tc.require: I6TD43
+   */
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500", 0, async function (done) {
+      await session.destroy();
+      await session.setExtras(CUSTOM_EXTRAS).then(() => {
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500 finished");
+        expect().assertFail();
+      }).catch((err) => {
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500 caught error" + err.code);
+        expect(err.code).assertEqual(6600102);
+      });
+      session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+        console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+        expect().assertFail();
+      });
+      session.activate();
+      controller = await session.getController();
+      done();
+    })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0600
+   * @tc.desc:Set extras - invalid params
+   * @tc.type: FUNC
+   * @tc.require: I6TD43
+   */
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0600", 0, async function (done) {
+      await session.destroy();
+      await session.setExtras(CUSTOM_EXTRAS,async err => {
+        if (err) {
+          console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500 caught error" + err.code);
+          expect(err.code).assertEqual(6600102);
+        } else {
+          console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0500 finished");
+          expect().assertFail();
+        }
+        session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+          console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+          expect().assertFail();
+        });
+        session.activate();
+        controller = await session.getController();
         done();
       })
     })
@@ -343,6 +443,29 @@ export default function AVSessionJsTest() {
       } catch (err) {
         expect(err.code == 401).assertTrue();
       }
+      done();
+    })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0600
+   * @tc.desc:One on functions - invalid type
+   * @tc.type: FUNC
+   * @tc.require: I6ETY6
+   */
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0600", 0, async function (done) {
+      await session.destroy();
+      try {
+        session.on('commonCommand', commonCommandCallback1);
+        expect().assertFail();
+      } catch (err) {
+        expect(err.code).assertEqual(6600102);
+      }
+      session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+        console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+        expect().assertFail();
+      });
+      session.activate();
+      controller = await session.getController();
       done();
     })
 
@@ -465,6 +588,29 @@ export default function AVSessionJsTest() {
       }
       done();
     })
+
+    /*
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0600
+   * @tc.desc:One on functions and off all function - invalid type
+   * @tc.type: FUNC
+   * @tc.require: I6ETY6
+   */
+        it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0600", 0, async function (done) {
+          session.on('commonCommand', commonCommandCallback1);
+          await session.destroy();
+          try {
+            session.off('commonCommand', commonCommandCallback1);
+          } catch (err) {
+            expect(err.code).assertEqual(6600102);
+          }
+          session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
+            console.error(TAG + "Create AVSession error " + JSON.stringify(err));
+            expect().assertFail();
+          });
+          session.activate();
+          controller = await session.getController();
+          done();
+        })
 
     /*
     * @tc.name: SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100
