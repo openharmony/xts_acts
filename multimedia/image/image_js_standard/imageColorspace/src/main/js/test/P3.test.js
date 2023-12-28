@@ -22,7 +22,7 @@ import { testP3 } from "./testImg2";
 import featureAbility from "@ohos.ability.featureAbility";
 export default function ImageP3() {
     describe("ImageP3", function () {
-        const COLORSPACENAME = 5;
+        const COLORSPACENAME = 4;
         let filePath;
         let fdNumber;
         let globalpixelmap;
