@@ -46,13 +46,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
             let eventType = 'accessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100  err : " + JSON.stringify(err));
@@ -78,13 +74,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200');
             let eventType = 'accessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200 result ${result}`);
@@ -109,13 +101,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300');
             let eventType = 'accessibilityFocusClear';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300 err : " + JSON.stringify(err));
@@ -141,13 +129,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400');
             let eventType = 'accessibilityFocusClear';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400 result ${result}`);
@@ -172,13 +156,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500');
             let eventType = 'click';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500 err : " + JSON.stringify(err));
@@ -204,13 +184,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600');
             let eventType = 'click';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600 result ${result}`);
@@ -235,13 +211,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700');
             let eventType = 'longClick';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700 err : " + JSON.stringify(err));
@@ -267,13 +239,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800');
             let eventType = 'longClick';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800 result ${result}`);
@@ -298,13 +266,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900');
             let eventType = 'focus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900 err : " + JSON.stringify(err));
@@ -330,13 +294,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000');
             let eventType = 'focus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000 result ${result}`);
@@ -361,13 +321,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100');
             let eventType = 'select';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100 err : " + JSON.stringify(err));
@@ -393,13 +349,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200');
             let eventType = 'select';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200 result ${result}`);
@@ -424,13 +376,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300');
             let eventType = 'hoverEnter';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300 err : " + JSON.stringify(err));
@@ -456,13 +404,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400');
             let eventType = 'hoverEnter';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400 result ${result}`);
@@ -487,13 +431,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500');
             let eventType = 'hoverExit';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500 err : " + JSON.stringify(err));
@@ -519,13 +459,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600');
             let eventType = 'hoverExit';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600 result ${result}`);
@@ -550,13 +486,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700');
             let eventType = 'textUpdate';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700 err : " + JSON.stringify(err));
@@ -582,13 +514,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800');
             let eventType = 'textUpdate';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800 result ${result}`);
@@ -613,13 +541,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900');
             let eventType = 'textSelectionUpdate';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900 err : " + JSON.stringify(err));
@@ -645,13 +569,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000');
             let eventType = 'textSelectionUpdate';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000 result ${result}`);
@@ -676,13 +596,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100');
             let eventType = 'scroll';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100 err : " + JSON.stringify(err));
@@ -708,13 +624,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200');
             let eventType = 'scroll';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200 result ${result}`);
@@ -739,14 +651,11 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300');
             let windowUpdateType = 'add';
 
-            let jsonObj = {
-                type : eventType,
-                windowUpdateType : windowUpdateType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.windowUpdateType = windowUpdateType;
+
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: endAccessibilityEvent_2300 err : " + JSON.stringify(err));
@@ -772,14 +681,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400');
             let windowUpdateType = 'add';
 
-            let jsonObj = {
-                type : eventType,
-                windowUpdateType : windowUpdateType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.windowUpdateType = windowUpdateType;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400 result ${result}`);
@@ -804,13 +708,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500');
             let localBundleName = 'com.ixaa.testfora11y';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : localBundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,localBundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500 err : " + JSON.stringify(err));
@@ -836,13 +736,7 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600');
             let localBundleName = 'com.ixaa.testfora11y';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : localBundleName,
-                triggerAction : triggerAction,
-            }
-
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,localBundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600 result ${result}`);
@@ -867,14 +761,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700');
             let componentType = 'button';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                componentType : componentType,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.componentType = componentType;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700 err : " + JSON.stringify(err));
@@ -900,14 +790,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800');
             let componentType = 'button';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                componentType : componentType,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.componentType = componentType;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800 result ${result}`);
@@ -932,14 +817,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900');
             let pageId = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                pageId : pageId,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.pageId = pageId;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900 err : " + JSON.stringify(err));
@@ -965,14 +845,8 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000');
             let pageId = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                pageId : pageId,
-                triggerAction : triggerAction,
-            }
-
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.pageId = pageId;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000 result ${result}`);
@@ -997,14 +871,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100');
             let description = 'test';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                description : description,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.description = description;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100 err : " + JSON.stringify(err));
@@ -1030,14 +899,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200');
             let description = 'test';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                description : description,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.description = description;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200 result ${result}`);
@@ -1062,13 +926,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300');
             let triggerAction = 'accessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300 err : " + JSON.stringify(err));
@@ -1094,13 +954,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400');
             let triggerAction = 'accessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400 result ${result}`);
@@ -1125,13 +981,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500');
             let triggerAction = 'clearAccessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500 err : " + JSON.stringify(err));
@@ -1157,13 +1009,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600');
             let triggerAction = 'clearAccessibilityFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600 result ${result}`);
@@ -1188,13 +1036,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700');
             let triggerAction = 'focus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700 err : " + JSON.stringify(err));
@@ -1220,13 +1064,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800');
             let triggerAction = 'focus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800 result ${result}`);
@@ -1251,13 +1091,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900');
             let triggerAction = 'clearFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900 err : " + JSON.stringify(err));
@@ -1283,13 +1119,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000');
             let triggerAction = 'clearFocus';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000 result ${result}`);
@@ -1314,13 +1146,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100');
             let triggerAction = 'clearSelection';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100 err : " + JSON.stringify(err));
@@ -1346,13 +1174,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200');
             let triggerAction = 'clearSelection';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200 result ${result}`);
@@ -1377,13 +1201,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300');
             let triggerAction = 'click';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300 err : " + JSON.stringify(err));
@@ -1409,13 +1229,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400');
             let triggerAction = 'click';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400 result ${result}`);
@@ -1440,13 +1256,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500');
             let triggerAction = 'longClick';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500 err : " + JSON.stringify(err));
@@ -1472,13 +1284,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600');
             let triggerAction = 'longClick';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600 result ${result}`);
@@ -1503,13 +1311,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700');
             let triggerAction = 'cut';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700 err : " + JSON.stringify(err));
@@ -1535,13 +1339,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800');
             let triggerAction = 'cut';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800 result ${result}`);
@@ -1566,13 +1366,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900');
             let triggerAction = 'copy';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900 err : " + JSON.stringify(err));
@@ -1598,13 +1394,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000');
             let triggerAction = 'copy';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000 result ${result}`);
@@ -1629,13 +1421,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100');
             let triggerAction = 'paste';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100 err : " + JSON.stringify(err));
@@ -1661,13 +1449,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200');
             let triggerAction = 'paste';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200 result ${result}`);
@@ -1692,13 +1476,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300');
             let triggerAction = 'select';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300 err : " + JSON.stringify(err));
@@ -1724,13 +1504,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400');
             let triggerAction = 'select';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400 result ${result}`);
@@ -1755,13 +1531,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500');
             let triggerAction = 'setText';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500 err : " + JSON.stringify(err));
@@ -1787,13 +1559,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600');
             let triggerAction = 'setText';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600 result ${result}`);
@@ -1818,13 +1586,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700');
             let triggerAction = 'delete';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700 err : " + JSON.stringify(err));
@@ -1850,13 +1614,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800');
             let triggerAction = 'delete';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800 result ${result}`);
@@ -1881,13 +1641,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900');
             let triggerAction = 'scrollForward';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900 err : " + JSON.stringify(err));
@@ -1913,13 +1669,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000');
             let triggerAction = 'scrollForward';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {           
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000 result ${result}`);
@@ -1944,13 +1696,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100');
             let triggerAction = 'scrollBackward';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100 err : " + JSON.stringify(err));
@@ -1976,13 +1724,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200');
             let triggerAction = 'scrollBackward';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200 result ${result}`);
@@ -2007,13 +1751,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300');
             let triggerAction = 'setSelection';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300 err : " + JSON.stringify(err));
@@ -2039,13 +1779,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400');
             let triggerAction = 'setSelection';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400 result ${result}`);
@@ -2070,14 +1806,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500');
             let textMoveUnit = 'char';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500 err : " + JSON.stringify(err));
@@ -2103,14 +1834,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600');
             let textMoveUnit = 'char';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600 result ${result}`);
@@ -2135,14 +1862,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700');
             let textMoveUnit = 'word';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700 err : " + JSON.stringify(err));
@@ -2168,14 +1891,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800');
             let textMoveUnit = 'word';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800 result ${result}`);
@@ -2200,14 +1919,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900');
             let textMoveUnit = 'line';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900 err : " + JSON.stringify(err));
@@ -2233,14 +1948,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000');
             let textMoveUnit = 'line';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000 result ${result}`);
@@ -2265,14 +1976,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100');
             let textMoveUnit = 'page';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100 err : " + JSON.stringify(err));
@@ -2298,14 +2004,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200');
             let textMoveUnit = 'page';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200 result ${result}`);
@@ -2330,14 +2031,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300');
             let textMoveUnit = 'paragraph';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300 err : " + JSON.stringify(err));
@@ -2363,14 +2060,8 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400');
             let textMoveUnit = 'paragraph';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                textMoveUnit : textMoveUnit,
-            }
-
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.textMoveUnit = textMoveUnit;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400 result ${result}`);
@@ -2395,14 +2086,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500');
             let contents = ['1'];
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                contents : contents,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.contents = contents;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500 err : " + JSON.stringify(err));
@@ -2428,14 +2115,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600');
             let contents = ['1'];
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                contents : contents,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.contents = contents;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600 result ${result}`);
@@ -2460,14 +2142,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700');
             let lastContent = '1';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                lastContent : lastContent,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.lastContent = lastContent;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700 err : " + JSON.stringify(err));
@@ -2493,14 +2170,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800');
             let lastContent = '1';
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                lastContent : lastContent,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.lastContent = lastContent;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800 result ${result}`);
@@ -2525,14 +2198,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900');
             let beginIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                beginIndex : beginIndex,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.beginIndex = beginIndex;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900 err : " + JSON.stringify(err));
@@ -2558,14 +2226,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000');
             let beginIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                beginIndex : beginIndex,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.beginIndex = beginIndex;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000 result ${result}`);
@@ -2590,14 +2253,8 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100');
             let currentIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                currentIndex : currentIndex,
-            }
-
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.currentIndex = currentIndex;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100 err : " + JSON.stringify(err));
@@ -2623,14 +2280,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200');
             let currentIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                currentIndex : currentIndex,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.currentIndex = currentIndex;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200 result ${result}`);
@@ -2655,14 +2307,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300');
             let endIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                endIndex : endIndex,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.endIndex = endIndex;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300 err : " + JSON.stringify(err));
@@ -2688,14 +2335,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400');
             let endIndex = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                endIndex : endIndex,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.endIndex = endIndex;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400 result ${result}`);
@@ -2720,14 +2363,10 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500');
             let itemCount = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                itemCount : itemCount,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.itemCount = itemCount;
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
                 console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500 err : " + JSON.stringify(err));
@@ -2753,14 +2392,9 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600');
             let itemCount = 1;
 
-            let jsonObj = {
-                type : eventType,
-                bundleName : bundleName,
-                triggerAction : triggerAction,
-                itemCount : itemCount,
-            }
 
-            let event = new accessibility.EventInfo(jsonObj);
+            let event = new accessibility.EventInfo(eventType,bundleName,triggerAction);
+            event.itemCount = itemCount;
 
             accessibility.sendAccessibilityEvent(event).then((result) => {
                 console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600 result ${result}`);
