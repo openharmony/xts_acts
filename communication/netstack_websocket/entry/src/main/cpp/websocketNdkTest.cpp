@@ -92,8 +92,8 @@ static napi_value OHWebSocketClientSend(napi_env env, napi_callback_info info)
     struct WebSocket *client = new WebSocket();
     client = OH_WebSocketClient_Constructor(OnOpen, OnMessage, OnError, OnClose);
     const char *data = "Hello, world!";
-    int SendLength = std::strlen(data);
-    int ret = OH_WebSocketClient_Send(client, const_cast<char *>(data), SendLength);
+    int sendLength = std::strlen(data);
+    int ret = OH_WebSocketClient_Send(client, const_cast<char *>(data), sendLength);
     napi_create_int32(env, ret, &result);
     return result;
 }
