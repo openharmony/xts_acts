@@ -15,6 +15,7 @@ group("arkui") {
   testonly = true
   deps = [
     "ace_ets_component:ActsAceEtsComponentTest",
+    "ace_ets_component_ArkUI_test:ActsAceAPITest",
     "ace_ets_component_api:ActsAceComponentApi03Test",
     "ace_ets_component_api_five:ActsAceComponentApi06Test",
     "ace_ets_component_api_four:ActsAceComponentApi05Test",
