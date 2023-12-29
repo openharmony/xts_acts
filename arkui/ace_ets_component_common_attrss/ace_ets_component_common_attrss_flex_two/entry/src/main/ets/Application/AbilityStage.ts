@@ -13,19 +13,12 @@
  * limitations under the License.
  */
 
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-
-
-import alignSelfStretchNoSizeTest from './flex/AlignSelfStretchNoSizeTest.test';
-import alignSelfStretchTest from './flex/AlignSelfStretchTest.test';
-import alignSelfGridRowTest from './flex/AlignSelfGridRowTest.test';
-import alignSelfTest from './flex/AlignSelfTest.test';
-import flexBasisTest from './flex/FlexBasisTest.test';
-
-export default function testsuite() {
-  alignSelfTest();
-  //  alignSelfGridRowTest();
-  //  alignSelfStretchTest();
-  //  alignSelfStretchNoSizeTest();
-  flexBasisTest();
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }

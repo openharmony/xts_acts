@@ -13,19 +13,6 @@
  * limitations under the License.
  */
 
-
-
-
-import alignSelfStretchNoSizeTest from './flex/AlignSelfStretchNoSizeTest.test';
-import alignSelfStretchTest from './flex/AlignSelfStretchTest.test';
-import alignSelfGridRowTest from './flex/AlignSelfGridRowTest.test';
-import alignSelfTest from './flex/AlignSelfTest.test';
-import flexBasisTest from './flex/FlexBasisTest.test';
-
-export default function testsuite() {
-  alignSelfTest();
-  //  alignSelfGridRowTest();
-  //  alignSelfStretchTest();
-  //  alignSelfStretchNoSizeTest();
-  flexBasisTest();
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }
