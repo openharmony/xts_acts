@@ -30,7 +30,6 @@ struct Stack_Text {
         .type(InputType.NEW_PASSWORD)
         .type(InputType.NUMBER_PASSWORD)
         .type(InputType.SCREEN_LOCK_PASSWORD)
-        .type(InputType.NUMBER_DECIMAL)
         .type(InputType.USER_NAME)
         .onSubmit(( enterKey: EnterKeyType,event: SubmitEvent ) => { // 用户名不正确会清空输入框和用户名并提示错误文本
           event.keepEditableState();
