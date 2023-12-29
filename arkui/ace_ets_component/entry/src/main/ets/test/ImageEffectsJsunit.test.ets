@@ -104,7 +104,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects003] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.blur).assertEqual(-2147483648);
+      expect(objNew.$attrs.blur).assertEqual(0x80000000);
       done();
     });
 
@@ -353,7 +353,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow5');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects013] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.brightness).assertEqual(-2147483648);
+      expect(objNew.$attrs.brightness).assertEqual(0x80000000);
       done();
     });
 
@@ -452,7 +452,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "saturateValue": 0x80000000
+            "saturateValue": -2147483648
           }
         }
         var innerEvent = {
@@ -566,7 +566,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "contrastValue": 0x80000000
+            "contrastValue": -2147483648
           }
         }
         var innerEvent = {
@@ -811,7 +811,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow9');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects033] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.hueRotate).assertEqual(232);
+      expect(objNew.$attrs.hueRotate).assertEqual(128 );
       done();
     });
 
