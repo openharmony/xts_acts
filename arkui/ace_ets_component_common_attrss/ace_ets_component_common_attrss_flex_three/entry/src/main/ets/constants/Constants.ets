@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import flexGrowTest from './flex/FlexGrowTest.test';
-
-export default function testsuite() {
-  flexGrowTest();
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }
