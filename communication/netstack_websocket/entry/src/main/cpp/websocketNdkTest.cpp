@@ -22,6 +22,8 @@
 #define WEBSOCKET_LOG_TAG "websocket XTS"
 #define WEBSOCKET_LOG_DOMAIN 0xD0015B0
 
+static const int CLOSE_RESULT_FROM_CLIENT_CODE = 1000;
+
 static constexpr OHOS::HiviewDFX::HiLogLabel LABEL = {LOG_CORE, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG};
 
 static void OnOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
@@ -104,7 +106,7 @@ static napi_value OHWebSocketClientClose(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
-    CloseOption.code = 1000;
+    CloseOption.code = CLOSE_RESULT_FROM_CLIENT_CODE;
     CloseOption.reason = " ";
     int ret = OH_WebSocketClient_Close(client, CloseOption);
     napi_create_int32(env, ret, &result);
@@ -117,7 +119,7 @@ static napi_value OHWebsocketClientDestroy(napi_env env, napi_callback_info info
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
-    CloseOption.code = 1000;
+    CloseOption.code = CLOSE_RESULT_FROM_CLIENT_CODE;
     CloseOption.reason = " ";
     int ret = OH_WebSocketClient_Destroy(client);
     napi_create_int32(env, ret, &result);
