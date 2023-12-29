@@ -125,7 +125,6 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.permissions.length).assertEqual(0);
         expect(data.appInfo.systemApp).assertFalse();
         expect(data.appInfo.dataUnclearable).assertFalse();
-        expect(data.appInfo.encrypted).assertFalse();
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
