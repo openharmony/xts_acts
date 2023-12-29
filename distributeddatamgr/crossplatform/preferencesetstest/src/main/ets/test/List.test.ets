@@ -21,7 +21,6 @@ import preferencespromisewitherror from './PreferencesPromiseWithError.test'
 import preferencesIgnoreTest from './PreferencesIgnore.test'
 
 
-
 export default function testsuite() {
   preferencescallback()
   preferenceshelper()
