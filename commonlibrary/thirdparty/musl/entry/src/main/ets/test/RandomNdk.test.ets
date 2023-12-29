@@ -24,7 +24,7 @@ export default function muslRandomNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_RANDOM_GETRANDOM_0100
      * @tc.name     : testMuslRandomGetrandom001
      * @tc.desc     : test getrandom
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

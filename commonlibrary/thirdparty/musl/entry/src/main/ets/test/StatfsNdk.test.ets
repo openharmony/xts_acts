@@ -23,7 +23,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATFS_STATFS_0100
      * @tc.name       : testMuslStatfsStatfs001
      * @tc.desc       : test statfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +38,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATFS_STATFS_0200
      * @tc.name       : testMuslStatfsStatfs002
      * @tc.desc       : test statfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -53,7 +53,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATFS_STATFS64_0100
      * @tc.name       : testMuslStatfsStatfs64001
      * @tc.desc       : test statfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -68,7 +68,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATFS_STATFS64_0200
      * @tc.name       : testMuslStatfsStatfs64002
      * @tc.desc       : test statfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -83,7 +83,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATS_FSTATFS_0100
      * @tc.name       : testMuslStatfsFstatfs001
      * @tc.desc       : test fstatfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -98,7 +98,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATS_FSTATFS64_0100
      * @tc.name       : testMuslStatfsFstatfs64001
      * @tc.desc       : test fstatfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -113,7 +113,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATS_FSTATVFS_0100
      * @tc.name       : testMuslStatfsFstatvfs001
      * @tc.desc       : test fstatvfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -128,7 +128,7 @@ export default function statfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATS_FSTATVFS64_0100
      * @tc.name       : testMuslStatfsFstatvfs64001
      * @tc.desc       : test fstatvfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

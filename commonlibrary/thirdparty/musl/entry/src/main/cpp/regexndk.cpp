@@ -25,9 +25,9 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_100 100
@@ -64,14 +64,14 @@ static napi_value Regerror(napi_env env, napi_callback_info info)
 {
     char buf[200];
     regex_t reg = {PARAM_0};
-    int result_value = FAILD;
+    int resultValue = FAILD;
     int error_value = regerror(PARAM_0, &reg, buf, sizeof buf);
     if (error_value != PARAM_0) {
-        result_value = RETURN_0;
+        resultValue = RETURN_0;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -81,15 +81,15 @@ static napi_value Regfree(napi_env env, napi_callback_info info)
     regex_t reg = {PARAM_0};
     const char *psttern = "1234567890";
     regcomp(&reg, psttern, REG_EXTENDED);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     errno = ERRON_0;
     regfree(&reg);
     if (errno == ERRON_0) {
-        result_value = RETURN_0;
+        resultValue = RETURN_0;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }

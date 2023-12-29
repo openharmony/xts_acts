@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-#include <cerrno>
+#include <csignal>
 #include <js_native_api.h>
 #include <node_api.h>
 #include <pthread.h>
-#include <signal.h>
 #include <sys/tgkill.h>
 #include <unistd.h>
 

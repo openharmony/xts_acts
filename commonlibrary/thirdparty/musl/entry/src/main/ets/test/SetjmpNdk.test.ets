@@ -15,51 +15,50 @@
 
 import { describe, expect, it } from '@ohos/hypium'
 import setjmp from 'libsetjmpndk.so'
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import fs from '@ohos.file.fs'
 
 export default function muslSetJmpNdkTest() {
   describe('MuslSetjmpTest', () => {
+
     /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_SETJMP_LONGJMP_0100
-     * @tc.name     : testMuslSetjmpLongjmp001
-     * @tc.desc     : test longjmp
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SETJMP_SETJMP_0100
+     * @tc.name       : testMuslSetJmpSetJmp001
+     * @tc.desc       : test setjmp
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
-    it('testMuslSetjmpLongjmp001', 0, async (done: Function) => {
-      let result:number = setjmp.longjmp();
-      expect(result).assertEqual(0)
-      done()
+    it('testMuslSetJmpSetJmp001', 0, async (done: Function) => {
+      let data: number = setjmp.setJmp();
+      expect(data).assertEqual(0);
+      done();
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SETJMP_SETJMP1_0100
-     * @tc.name       : testMuslSetjmpSetjmp1001
-     * @tc.desc       : test _setjmp
-     * @tc.size       : MEDIUM
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SETJMP_SIGLONGJMP_0100
+     * @tc.name       : testMuslSetJmpSigLongJmp001
+     * @tc.desc       : test siglongjmp
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testMuslSetjmpSetjmp1001', 0, async (done: Function) => {
-      let a:number = setjmp._setjmp();
-      expect(a).assertEqual(0);
-      done()
+    it('testMuslSetJmpSigLongJmp001', 0, async (done: Function) => {
+      let data: number = setjmp.sigLongJmp();
+      expect(data).assertEqual(0);
+      done();
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SETJMP_LONGJMP1_0100
-     * @tc.name       : testMuslSetjmpLongJmp1001
-     * @tc.desc       : test _longjmp
-     * @tc.size       : MEDIUM
+     * @tc.number     : SUB_THIRDPARTY_MUSL_SETJMP_SIGSETJMP_0100
+     * @tc.name       : testMuslSetJmpSigSetJmp001
+     * @tc.desc       : test sigsetjmp
+     * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testMuslSetjmpLongJmp1001', 0, async (done: Function) => {
-      let a:number = setjmp._longjmp();
-      expect(a).assertEqual(1);
-      done()
+    it('testMuslSetJmpSigSetJmp001', 0, async (done: Function) => {
+      let data: number = setjmp.sigSetJmp();
+      expect(data).assertEqual(0);
+      done();
     });
   })
 }

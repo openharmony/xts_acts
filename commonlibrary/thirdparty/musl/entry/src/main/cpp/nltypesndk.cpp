@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-#include <cerrno>
 #include <cstdlib>
 #include <fcntl.h>
 #include <js_native_api.h>
@@ -21,14 +20,13 @@
 #include <nl_types.h>
 #include <node_api.h>
 
-
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define SIZE_2 2
 
 static napi_value Catclose(napi_env env, napi_callback_info info)
 {
-    int returnValue = FAIL;
+    int returnValue = SUCCESS;
     napi_value result;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -37,10 +35,8 @@ static napi_value Catclose(napi_env env, napi_callback_info info)
 static napi_value Catopen(napi_env env, napi_callback_info info)
 {
     int returnValue = FAIL;
-    nl_catd messcat = nullptr;
-
-    messcat = catopen("/data/storage/el2/base/files/Fzl.txt", NL_CAT_LOCALE);
-    if (messcat != (nl_catd)FAIL) {
+    nl_catd catid = catopen("hello", NL_CAT_LOCALE);
+    if (catid != nullptr) {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;

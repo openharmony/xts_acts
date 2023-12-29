@@ -25,7 +25,7 @@ export default function muslGlobdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GLOB_GLOB_0100
      * @tc.name     : testMuslGlobGlob001
      * @tc.desc     : test glob
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -39,7 +39,7 @@ export default function muslGlobdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GLOB_GLOBFREE_0100
      * @tc.name     : testMuslGlobGlobfree001
      * @tc.desc     : test globfree
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

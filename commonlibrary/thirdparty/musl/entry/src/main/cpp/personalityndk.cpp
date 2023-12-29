@@ -24,14 +24,14 @@
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
+#define MPARAM_1 (-1)
 
 static napi_value Personality(napi_env env, napi_callback_info info)
 {
-
     int ret = FAIL;
-    ret = personality(-1);
+    ret = personality(MPARAM_1);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

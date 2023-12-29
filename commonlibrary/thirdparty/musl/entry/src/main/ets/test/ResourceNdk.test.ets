@@ -23,7 +23,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETPRIORITY_0100
      * @tc.name       : testMuslResourceSetpriority001
      * @tc.desc       : test setpriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +37,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETPRIORITY_0200
      * @tc.name       : testMuslResourceSetpriority002
      * @tc.desc       : test setpriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +51,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETRLIMIT_0100
      * @tc.name       : testMuslResourceSetrlimit001
      * @tc.desc       : test setrlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -65,7 +65,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETRLIMIT_0200
      * @tc.name       : testMuslResourceSetrlimit002
      * @tc.desc       : test setrlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -79,7 +79,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETRLIMIT64_0100
      * @tc.name       : testMuslResourceSetrlimit64001
      * @tc.desc       : test setrlimit64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -93,7 +93,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_SETRLIMIT64_0200
      * @tc.name       : testMuslResourceSetrlimit64002
      * @tc.desc       : test setrlimit64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -107,7 +107,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETPRIORITY_0100
      * @tc.name       : testMuslResourceGetPriority001
      * @tc.desc       : test getpriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -122,7 +122,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETPRIORITY_0200
      * @tc.name       : testMuslResourceGetPriority002
      * @tc.desc       : test getpriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -137,7 +137,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETPRIORITY_0300
      * @tc.name       : testMuslResourceGetPriority003
      * @tc.desc       : test getpriority
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -152,7 +152,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRLIMIT_0100
      * @tc.name       : testMuslResourceGetRLimit001
      * @tc.desc       : test getrlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -167,7 +167,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRLIMIT_0200
      * @tc.name       : testMuslResourceGetRLimit002
      * @tc.desc       : test getrlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -182,7 +182,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRLIMIT_0300
      * @tc.name       : testMuslResourceGetRLimit003
      * @tc.desc       : test getrlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -197,7 +197,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRUSAGE_0100
      * @tc.name       : testMuslResourceGetRUsage001
      * @tc.desc       : test getrusage
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -212,7 +212,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRUSAGE_0200
      * @tc.name       : testMuslResourceGetRUsage002
      * @tc.desc       : test getrusage
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -227,7 +227,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETRUSAGE_0300
      * @tc.name       : testMuslResourceGetRUsage003
      * @tc.desc       : test getrusage
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -242,7 +242,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT_0100
      * @tc.name       : testMuslResourceprLimit001
      * @tc.desc       : test prlimit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -257,7 +257,7 @@ export default function resourceNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_PRLIMIT64_0100
      * @tc.name       : testMuslResourceprLimit64001
      * @tc.desc       : test prlimit64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -272,7 +272,7 @@ export default function resourceNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_RESOURCE_GETRLIMIT64_0100
      * @tc.name     : testMuslResourceGetrlimit64001
      * @tc.desc     : test getrlimit64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

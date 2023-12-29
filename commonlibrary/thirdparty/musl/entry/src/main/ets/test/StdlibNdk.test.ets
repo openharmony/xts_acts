@@ -25,7 +25,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LDIV_0100
      * @tc.name       : testMuslStdlibLdiv001
      * @tc.desc       : test ldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -40,7 +40,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LDIV_0200
      * @tc.name       : testMuslStdlibLdiv002
      * @tc.desc       : test ldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -55,7 +55,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LDIV_0300
      * @tc.name       : testMuslStdlibLdiv003
      * @tc.desc       : test ldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -70,7 +70,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LDIV_0400
      * @tc.name       : testMuslStdlibLdiv004
      * @tc.desc       : test ldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -85,7 +85,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLDIV_0100
      * @tc.name       : testMuslStdlibLLdiv001
      * @tc.desc       : test lldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -100,7 +100,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLDIV_0200
      * @tc.name       : testMuslStdlibLLdiv002
      * @tc.desc       : test lldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -115,7 +115,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLDIV_0300
      * @tc.name       : testMuslStdlibLLdiv003
      * @tc.desc       : test lldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -130,7 +130,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLDIV_0400
      * @tc.name       : testMuslStdlibLLdiv004
      * @tc.desc       : test lldiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -145,7 +145,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LCONG48_0100
      * @tc.name       : testMuslStdlibLcong48001
      * @tc.desc       : test lcong48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -163,7 +163,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LCONG48_0200
      * @tc.name       : testMuslStdlibLcong48002
      * @tc.desc       : test lcong48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -179,7 +179,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LABS_0100
      * @tc.name       : testMuslStdlibLabs001
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -193,7 +193,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LABS_0200
      * @tc.name       : testMuslStdlibLabs002
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -207,7 +207,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LABS_0300
      * @tc.name       : testMuslStdlibLabs003
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -221,7 +221,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLABS_0100
      * @tc.name       : testMuslStdlibLLabs001
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -235,7 +235,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLABS_0200
      * @tc.name       : testMuslStdlibLLabs002
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -249,7 +249,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LLABS_0300
      * @tc.name       : testMuslStdlibLLabs003
      * @tc.desc       : test labs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -263,7 +263,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_JRAND48_0100
      * @tc.name       : testMuslStdlibJrand48001
      * @tc.desc       : test jrand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -281,7 +281,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_JRAND48_0200
      * @tc.name       : testMuslStdlibJrand48002
      * @tc.desc       : test jrand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -298,7 +298,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RAND_0100
      * @tc.name       : testMuslStdlibRand001
      * @tc.desc       : test rand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -314,7 +314,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RAND_0200
      * @tc.name       : testMuslStdlibRand002
      * @tc.desc       : test rand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -330,7 +330,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RAND_R_0100
      * @tc.name       : testMuslStdlibRandR001
      * @tc.desc       : test rand_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -346,7 +346,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RAND_R_0200
      * @tc.name       : testMuslStdlibRandR002
      * @tc.desc       : test rand_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -362,7 +362,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RANDOM_0100
      * @tc.name       : testMuslStdlibRandom001
      * @tc.desc       : test random
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -380,7 +380,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_RANDOM_0200
      * @tc.name       : testMuslStdlibRandom002
      * @tc.desc       : test random
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -396,7 +396,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SEED48_0100
      * @tc.name       : testMuslStdlibSeed48001
      * @tc.desc       : test seed48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -411,7 +411,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKTEMP_0100
      * @tc.name     : testMuslStdlibMkTemp001
      * @tc.desc     : test mktemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -425,7 +425,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKTEMP_0200
      * @tc.name     : testMuslStdlibMkTemp002
      * @tc.desc     : test mktemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -439,7 +439,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKTEMP_0300
      * @tc.name     : testMuslStdlibMkTemp003
      * @tc.desc     : test mktemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -453,7 +453,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP_0100
      * @tc.name     : testMuslStdlibMkSTemp001
      * @tc.desc     : test mkstemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -467,7 +467,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP_0200
      * @tc.name     : testMuslStdlibMkSTemp002
      * @tc.desc     : test mkstemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -481,7 +481,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP_0300
      * @tc.name     : testMuslStdlibMkSTemp003
      * @tc.desc     : test mkstemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -495,7 +495,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS_0100
      * @tc.name     : testMuslStdlibMkSTempS001
      * @tc.desc     : test mkstempS
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -509,7 +509,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS_0200
      * @tc.name     : testMuslStdlibMkSTempS002
      * @tc.desc     : test mkstempS
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -523,7 +523,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS_0300
      * @tc.name     : testMuslStdlibMkSTempS003
      * @tc.desc     : test mkstempS
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -537,7 +537,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0100
      * @tc.name     : testMuslStdlibMkOSTemp001
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -551,7 +551,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0200
      * @tc.name     : testMuslStdlibMkOSTemp002
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -565,7 +565,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0300
      * @tc.name     : testMuslStdlibMkOSTemp003
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -579,7 +579,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0400
      * @tc.name     : testMuslStdlibMkOSTemp004
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -593,7 +593,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0500
      * @tc.name     : testMuslStdlibMkOSTemp005
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -607,7 +607,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0600
      * @tc.name     : testMuslStdlibMkOSTemp006
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -621,7 +621,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0700
      * @tc.name     : testMuslStdlibMkOSTemp007
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -635,7 +635,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0800
      * @tc.name     : testMuslStdlibMkOSTemp008
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -649,7 +649,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP_0900
      * @tc.name     : testMuslStdlibMkOSTemp009
      * @tc.desc     : test mkostemp
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -663,7 +663,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0100
      * @tc.name     : testMuslStdlibMkOSTempS001
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -677,7 +677,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0200
      * @tc.name     : testMuslStdlibMkOSTempS002
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -691,7 +691,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0300
      * @tc.name     : testMuslStdlibMkOSTempS003
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -705,7 +705,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0400
      * @tc.name     : testMuslStdlibMkOSTempS004
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -719,7 +719,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0500
      * @tc.name     : testMuslStdlibMkOSTempS005
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -733,7 +733,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0600
      * @tc.name     : testMuslStdlibMkOSTempS006
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -747,7 +747,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0700
      * @tc.name     : testMuslStdlibMkOSTempS007
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -761,7 +761,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0800
      * @tc.name     : testMuslStdlibMkOSTempS008
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -775,7 +775,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS_0900
      * @tc.name     : testMuslStdlibMkOSTempS009
      * @tc.desc     : test mkostemps
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -790,7 +790,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP64_0100
      * @tc.name     : testMuslStdlibMkSTemp64001
      * @tc.desc     : test mkstemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -804,7 +804,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP64_0200
      * @tc.name     : testMuslStdlibMkSTemp64002
      * @tc.desc     : test mkstemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -818,7 +818,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMP64_0300
      * @tc.name     : testMuslStdlibMkSTemp64003
      * @tc.desc     : test mkstemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -832,7 +832,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS64_0100
      * @tc.name     : testMuslStdlibMkSTempS64001
      * @tc.desc     : test mkstempS64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -846,7 +846,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS64_0200
      * @tc.name     : testMuslStdlibMkSTempS64002
      * @tc.desc     : test mkstempS64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -860,7 +860,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKSTEMPS64_0300
      * @tc.name     : testMuslStdlibMkSTempS64003
      * @tc.desc     : test mkstempS64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -874,7 +874,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0100
      * @tc.name     : testMuslStdlibMkOSTemp64001
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -888,7 +888,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0200
      * @tc.name     : testMuslStdlibMkOSTemp64002
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -902,7 +902,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0300
      * @tc.name     : testMuslStdlibMkOSTemp64003
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -916,7 +916,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0400
      * @tc.name     : testMuslStdlibMkOSTemp64004
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -930,7 +930,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0500
      * @tc.name     : testMuslStdlibMkOSTemp64005
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -944,7 +944,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0600
      * @tc.name     : testMuslStdlibMkOSTemp64006
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -958,7 +958,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0700
      * @tc.name     : testMuslStdlibMkOSTemp64007
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -972,7 +972,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0800
      * @tc.name     : testMuslStdlibMkOSTemp64008
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -986,7 +986,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMP64_0900
      * @tc.name     : testMuslStdlibMkOSTemp64009
      * @tc.desc     : test mkostemp64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1000,7 +1000,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0100
      * @tc.name     : testMuslStdlibMkOSTempS64001
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -1014,7 +1014,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0200
      * @tc.name     : testMuslStdlibMkOSTempS64002
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1028,7 +1028,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0300
      * @tc.name     : testMuslStdlibMkOSTempS64003
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1042,7 +1042,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0400
      * @tc.name     : testMuslStdlibMkOSTempS64004
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -1056,7 +1056,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0500
      * @tc.name     : testMuslStdlibMkOSTempS64005
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1070,7 +1070,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0600
      * @tc.name     : testMuslStdlibMkOSTempS64006
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1084,7 +1084,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0700
      * @tc.name     : testMuslStdlibMkOSTempS64007
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -1098,7 +1098,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0800
      * @tc.name     : testMuslStdlibMkOSTempS64008
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1112,7 +1112,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_MKOSTEMPS64_0900
      * @tc.name     : testMuslStdlibMkOSTempS64009
      * @tc.desc     : test mkostemps64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -1126,7 +1126,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_GETLOADAVG_0100
      * @tc.name       : testMuslStdlibGetloadavg001
      * @tc.desc       : test getloadavg
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1140,7 +1140,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_GETSUBOPT_0100
      * @tc.name     : testMuslStdlibGetsubopt001
      * @tc.desc     : test getsubopt
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -1154,7 +1154,7 @@ export default function stdlibNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STDLIB_GRANTPT_0100
      * @tc.name     : testMuslStdlibGrantpt001
      * @tc.desc     : test grantpt
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -1167,7 +1167,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND_0100
      * @tc.name       : testMuslStdlibSrand001
      * @tc.desc       : test srand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1181,7 +1181,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND_0200
      * @tc.name       : testMuslStdlibSrand002
      * @tc.desc       : test srand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1195,7 +1195,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND_0300
      * @tc.name       : testMuslStdlibSrand003
      * @tc.desc       : test srand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1209,7 +1209,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND48_0100
      * @tc.name       : testMuslStdlibSrand48001
      * @tc.desc       : test srand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1223,7 +1223,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND48_0200
      * @tc.name       : testMuslStdlibSrand48002
      * @tc.desc       : test srand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1237,7 +1237,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRAND48_0300
      * @tc.name       : testMuslStdlibSrand48003
      * @tc.desc       : test srand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1251,7 +1251,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRANDOM_0100
      * @tc.name       : testMuslStdlibSrandom001
      * @tc.desc       : test srandom
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1265,7 +1265,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRANDOM_0200
      * @tc.name       : testMuslStdlibSrandom002
      * @tc.desc       : test srandom
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1279,7 +1279,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SRANDOM_0300
      * @tc.name       : testMuslStdlibSrandom003
      * @tc.desc       : test srandom
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1294,7 +1294,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOD_0100
      * @tc.name       : testMuslStdlibStrtod001
      * @tc.desc       : test strtod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1310,7 +1310,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOD_0200
      * @tc.name       : testMuslStdlibStrtod002
      * @tc.desc       : test strtod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1326,7 +1326,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOF_0100
      * @tc.name       : testMuslStdlibStrtof001
      * @tc.desc       : test strtof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1343,7 +1343,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOF_0200
      * @tc.name       : testMuslStdlibStrtof002
      * @tc.desc       : test strtof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1359,7 +1359,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOL_0100
      * @tc.name       : testMuslStdlibStrtol001
      * @tc.desc       : test strtol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1376,7 +1376,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOL_0200
      * @tc.name       : testMuslStdlibStrtol002
      * @tc.desc       : test strtol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1393,7 +1393,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOLD_0100
      * @tc.name       : testMuslStdlibStrtold001
      * @tc.desc       : test strtold
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1409,7 +1409,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOLD_0200
      * @tc.name       : testMuslStdlibStrtold002
      * @tc.desc       : test strtold
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1425,7 +1425,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOLL_0100
      * @tc.name       : testMuslStdlibStrtoll001
      * @tc.desc       : test strtoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1442,7 +1442,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOLL_0200
      * @tc.name       : testMuslStdlibStrtoll002
      * @tc.desc       : test strtoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1459,7 +1459,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOUL_0100
      * @tc.name       : testMuslStdlibStrtoul001
      * @tc.desc       : test strtoul
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1476,7 +1476,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOUL_0200
      * @tc.name       : testMuslStdlibStrtoul002
      * @tc.desc       : test strtoul
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1493,7 +1493,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOULL_0100
      * @tc.name       : testMuslStdlibStrtoull001
      * @tc.desc       : test strtoull
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1510,7 +1510,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOULL_0200
      * @tc.name       : testMuslStdlibStrtoull002
      * @tc.desc       : test strtoull
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1527,7 +1527,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SETENV_0100
      * @tc.name       : testMuslStdlibSetenv001
      * @tc.desc       : test setenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1544,7 +1544,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SETENV_0200
      * @tc.name       : testMuslStdlibSetenv002
      * @tc.desc       : test setenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1560,7 +1560,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SYSTEM_0100
      * @tc.name       : testMuslStdlibSystem001
      * @tc.desc       : test system
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1574,7 +1574,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_UNSETENV_0100
      * @tc.name       : testMuslStdlibUnsetenv001
      * @tc.desc       : test unsetenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1589,7 +1589,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_POSIX_OPEN_PT_0100
      * @tc.name       : testMuslStdlibPosixOpenPt001
      * @tc.desc       : test posixOpenpt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1603,13 +1603,13 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_POSIX_MEM_ALIGN_0100
      * @tc.name       : testMuslStdlibPosixMemAlign001
      * @tc.desc       : test posixMemAlign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibPosixMemAlign001', 0, async (done: Function) => {
       let a: number = stdlib.posixMemAlign();
-      expect(a).assertEqual(1);
+      expect(a).assertEqual(0);
       done()
     });
 
@@ -1617,7 +1617,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ERAND48_0100
      * @tc.name       : testMuslStdlibERand48001
      * @tc.desc       : test erand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1638,7 +1638,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_DRAND48_0100
      * @tc.name       : testMuslStdlibDRand48001
      * @tc.desc       : test drand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1656,7 +1656,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_DIV_0100
      * @tc.name       : testMuslStdlibDiv001
      * @tc.desc       : test div
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1672,7 +1672,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ABS_0100
      * @tc.name       : testMuslStdlibAbs001
      * @tc.desc       : test abs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1687,13 +1687,13 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_EXIT_0100
      * @tc.name       : testMuslStdlibExit001
      * @tc.desc       : test exit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibExit001', 0, async (done: Function) => {
       let data: number = stdlib.exit();
-      expect(data).assertEqual(0);
+      expect(data).assertEqual(1);
       done()
     });
 
@@ -1701,7 +1701,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0100
      * @tc.name       : testMuslStdlibAtof001
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1717,7 +1717,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0200
      * @tc.name       : testMuslStdlibAtof002
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1733,12 +1733,12 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0300
      * @tc.name       : testMuslStdlibAtof003
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibAtof003', 0, async (done: Function) => {
-      let param = "Atof";
+      let param = "atof";
       let resultTrue = 0;
       let result: number = stdlib.atof(param);
       expect(result).assertEqual(resultTrue);
@@ -1748,7 +1748,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0400
      * @tc.name       : testMuslStdlibAtof004
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1764,7 +1764,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0500
      * @tc.name       : testMuslStdlibAtof005
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1780,7 +1780,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0600
      * @tc.name       : testMuslStdlibAtof006
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1796,7 +1796,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0700
      * @tc.name       : testMuslStdlibAtof007
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1812,7 +1812,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0800
      * @tc.name       : testMuslStdlibAtof008
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1828,7 +1828,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOF_0900
      * @tc.name       : testMuslStdlibAtof009
      * @tc.desc       : test atof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1844,7 +1844,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0100
      * @tc.name       : testMuslStdlibAtoi001
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1860,7 +1860,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0200
      * @tc.name       : testMuslStdlibAtoi002
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1876,12 +1876,12 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0300
      * @tc.name       : testMuslStdlibAtoi003
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibAtoi003', 0, async (done: Function) => {
-      let param = "Atoi";
+      let param = "atoi";
       let resultTrue = 0;
       let result: number = stdlib.atoi(param);
       expect(result).assertEqual(resultTrue);
@@ -1891,7 +1891,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0400
      * @tc.name       : testMuslStdlibAtoi004
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1907,7 +1907,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0500
      * @tc.name       : testMuslStdlibAtoi005
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1923,7 +1923,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0600
      * @tc.name       : testMuslStdlibAtoi006
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1939,7 +1939,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0700
      * @tc.name       : testMuslStdlibAtoi007
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1955,7 +1955,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0800
      * @tc.name       : testMuslStdlibAtoi008
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1971,7 +1971,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOI_0900
      * @tc.name       : testMuslStdlibAtoi009
      * @tc.desc       : test atoi
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1986,7 +1986,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0100
      * @tc.name       : testMuslStdlibAtol001
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2002,7 +2002,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0200
      * @tc.name       : testMuslStdlibAtol002
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2018,12 +2018,12 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0300
      * @tc.name       : testMuslStdlibAtol003
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibAtol003', 0, async (done: Function) => {
-      let param = "Atol";
+      let param = "atol";
       let resultTrue = 0;
       let result: number = stdlib.atol(param);
       expect(result).assertEqual(resultTrue);
@@ -2033,7 +2033,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0400
      * @tc.name       : testMuslStdlibAtol004
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2049,7 +2049,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0500
      * @tc.name       : testMuslStdlibAtol005
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2065,7 +2065,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0600
      * @tc.name       : testMuslStdlibAtol006
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2081,7 +2081,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0700
      * @tc.name       : testMuslStdlibAtol007
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2097,7 +2097,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0800
      * @tc.name       : testMuslStdlibAtol008
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2113,7 +2113,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOL_0900
      * @tc.name       : testMuslStdlibAtol009
      * @tc.desc       : test atol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2129,7 +2129,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0100
      * @tc.name       : testMuslStdlibAtoll001
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2145,7 +2145,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0200
      * @tc.name       : testMuslStdlibAtoll002
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2161,12 +2161,12 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0300
      * @tc.name       : testMuslStdlibAtoll003
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibAtoll003', 0, async (done: Function) => {
-      let param = "Atoll";
+      let param = "atoll";
       let resultTrue = 0;
       let result: number = stdlib.atoll(param);
       expect(result).assertEqual(resultTrue);
@@ -2177,7 +2177,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0400
      * @tc.name       : testMuslStdlibAtoll004
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2193,7 +2193,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0500
      * @tc.name       : testMuslStdlibAtoll005
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2209,7 +2209,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0600
      * @tc.name       : testMuslStdlibAtoll006
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2225,7 +2225,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0700
      * @tc.name       : testMuslStdlibAtoll007
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2241,7 +2241,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0800
      * @tc.name       : testMuslStdlibAtoll008
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2257,7 +2257,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATOLL_0900
      * @tc.name       : testMuslStdlibAtoll009
      * @tc.desc       : test atoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2273,7 +2273,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ALIGNED_ALLOC_0100
      * @tc.name       : testMuslStdlibAlignedAlloc001
      * @tc.desc       : test aligned_alloc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -2290,7 +2290,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATQUICKEXIT_0100
      * @tc.name       : testMuslStdlibAtQuickExit001
      * @tc.desc       : test at_quick_exit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2306,7 +2306,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_CALLOC_0100
      * @tc.name       : testMuslStdlibCalloc001
      * @tc.desc       : test calloc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2322,7 +2322,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_GETENV_0100
      * @tc.name       : testMuslStdlibGetenv001
      * @tc.desc       : test getenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2338,7 +2338,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_FREE_0100
      * @tc.name       : testMuslStdlibFree001
      * @tc.desc       : test free
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2354,7 +2354,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_BSEARCH_0100
      * @tc.name       : testMuslStdlibBsearch001
      * @tc.desc       : test bsearch
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2370,7 +2370,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_CLEARENV_0100
      * @tc.name       : testMuslStdlibClearenv001
      * @tc.desc       : test clearenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -2385,7 +2385,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_MKDTEMP_0100
      * @tc.name       : testMuslStdlibMkDTemp001
      * @tc.desc       : test mkdtemp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2398,7 +2398,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_MBLEN_0100
      * @tc.name       : testMuslStdlibMblen001
      * @tc.desc       : test mblen
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2412,7 +2412,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_INITSTATE_0100
      * @tc.name       : testMuslStdlibInitState001
      * @tc.desc       : test initstate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2426,7 +2426,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LRAND48_0100
      * @tc.name       : testMuslStdlibLrand48001
      * @tc.desc       : test lrand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2442,7 +2442,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_QSORT_0100
      * @tc.name       : testMuslStdlibQsort001
      * @tc.desc       : test qsort
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2456,20 +2456,20 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_PTSNAME_0100
      * @tc.name       : testMuslStdlibPtsName001
      * @tc.desc       : test ptsname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStdlibPtsName001', 0, async (done: Function) => {
       let a: number = stdlib.ptsName();
-      expect(a).assertEqual(1);
+      expect(a).assertEqual(0);
       done()
     });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_PTSNAMER_0100
      * @tc.name       : testMuslStdlibPtsNameR001
      * @tc.desc       : test ptsName_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2484,7 +2484,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_REALPATH_0100
      * @tc.name       : testMuslStdlibRealPath001
      * @tc.desc       : test realPath
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2498,7 +2498,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_UNLOCKPT_0100
      * @tc.name       : testMuslStdlibUnlockpt001
      * @tc.desc       : test unlockpt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2512,7 +2512,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_ATEXIT_0100
      * @tc.name       : testMuslStdlibAtexit001
      * @tc.desc       : test atexit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -2526,7 +2526,7 @@ export default function stdlibNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_UNSETENV_0200
      * @tc.name       : testMuslStdlibUnsetenv002
      * @tc.desc       : test unsetenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2535,6 +2535,90 @@ export default function stdlibNdkTest() {
       let a: number = stdlib.unsetenv(b);
       expect(a).assertEqual(1);
       done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_SETSTATE_0100
+     * @tc.name       : testMuslStdlibSetState001
+     * @tc.desc       : test setstate
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibSetState001', 0, async (done: Function) => {
+      let data: number = stdlib.setState();
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOFL_0100
+     * @tc.name       : testMuslStdlibStrToFL001
+     * @tc.desc       : test strtof_l
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibStrToFL001', 0, async (done: Function) => {
+      let data: number = stdlib.strToFL();
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTODL_0100
+     * @tc.name       : testMuslStdlibStrToDL001
+     * @tc.desc       : test strtod_l
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibStrToDL001', 0, async (done: Function) => {
+      let data: number = stdlib.strToDL();
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_STRTOLDL_0100
+     * @tc.name       : testMuslStdlibStrToLdL001
+     * @tc.desc       : test strtold_l
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibStrToLdL001', 0, async (done: Function) => {
+      let data: number = stdlib.strToLdL();
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_VALLOC_0100
+     * @tc.name       : testMuslStdlibValloc001
+     * @tc.desc       : test valloc
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibValloc001', 0, async (done: Function) => {
+      let data: number = stdlib.valloc();
+      expect(data).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_REALLOC_0100
+     * @tc.name       : testMuslStdlibRealloc001
+     * @tc.desc       : test valloc
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslStdlibRealloc001', 0, async (done: Function) => {
+      let data: number = stdlib.realloc();
+      expect(data).assertEqual(0);
+      done();
     });
   })
 }

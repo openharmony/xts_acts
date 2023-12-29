@@ -25,31 +25,37 @@
 #include <search.h>
 #include <unistd.h>
 
-
 #define PARAM_0 0
 #define PARAM_5 5
 #define PARAM_27 27
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_10 10
+#define PARAM_3 3
+#define PARAM_24 24
+#define PARAM_30 30
+#define PARAM_22 22
+#define PARAM_26 26
+#define PARAM_0xff 0xff
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 #define TWICE 12
 #define ARRAY_SIZE (10)
-#define FAIL -1
+#define FAIL (-1)
 #define NOERR 0
 #define VALUE_ONE 1
 #define VALUE_TWO 1
 #define BUFFERSIZE 128
 #define LOOPNUM 12
-static void *root = nullptr;
+static void *g_root = nullptr;
 
-static int compare(const void *pa, const void *pb)
+static int Compare(const void *pa, const void *pb)
 {
-    if (*(int *)pa < *(int *)pb)
+    if (*static_cast<const int *>(pa) < *static_cast<const int *>(pb))
         return PARAM_UNNORMAL;
-    if (*(int *)pa > *(int *)pb)
-        return 1;
-    return 0;
+    if (*static_cast<const int *>(pa) > *static_cast<const int *>(pb))
+        return VALUE_ONE;
+    return NOERR;
 }
 
 static void action(const void *nodep, VISIT which, int depth)
@@ -74,7 +80,7 @@ static void action(const void *nodep, VISIT which, int depth)
 
 static napi_value Tdestroy(napi_env env, napi_callback_info info)
 {
-    void * rootParam= nullptr;
+    void *rootParam = nullptr;
     napi_value result = nullptr;
     errno = ERRON_0;
     tdestroy(rootParam, free);
@@ -85,7 +91,7 @@ static napi_value Tdestroy(napi_env env, napi_callback_info info)
 static napi_value Tdelete(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
-    tdelete(root, nullptr, nullptr);
+    tdelete(g_root, nullptr, nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
     return result;
@@ -94,7 +100,7 @@ static napi_value Tdelete(napi_env env, napi_callback_info info)
 static napi_value Tfind(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
-    tfind(root, nullptr, nullptr);
+    tfind(g_root, nullptr, nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
     return result;
@@ -164,12 +170,9 @@ static napi_value HdestroyR(napi_env env, napi_callback_info info)
     return result;
 }
 
-static char data[][30] = { "alpha", "bravo", "charlie", "delta",
-     "echo", "foxtrot", "golf", "hotel", "india", "juliet",
-     "kilo", "lima", "mike", "november", "oscar", "papa",
-     "quebec", "romeo", "sierra", "tango", "uniform",
-     "victor", "whisky", "x-ray", "yankee", "zulu"
-};
+static char data[][30] = {"alpha",  "bravo", "charlie", "delta",  "echo",     "foxtrot", "golf",   "hotel",  "india",
+                          "juliet", "kilo",  "lima",    "mike",   "november", "oscar",   "papa",   "quebec", "romeo",
+                          "sierra", "tango", "uniform", "victor", "whisky",   "x-ray",   "yankee", "zulu"};
 
 static napi_value Hsearch(napi_env env, napi_callback_info info)
 {
@@ -177,11 +180,11 @@ static napi_value Hsearch(napi_env env, napi_callback_info info)
     ENTRY e, *ep;
     int i;
 
-    hcreate(30);
+    hcreate(PARAM_30);
 
-    for (i = 0; i < 24; i++) {
+    for (i = PARAM_0; i < PARAM_24; i++) {
         e.key = data[i];
-        e.data = (void *) i;
+        e.data = (void *)i;
         ep = hsearch(e, ENTER);
         if (ep == nullptr) {
             napi_create_int32(env, FAIL, &result);
@@ -189,7 +192,7 @@ static napi_value Hsearch(napi_env env, napi_callback_info info)
         }
     }
 
-    for (i = 22; i < 26; i++) {
+    for (i = PARAM_22; i < PARAM_26; i++) {
         e.key = data[i];
         ep = hsearch(e, FIND);
     }
@@ -201,55 +204,51 @@ static napi_value Hsearch(napi_env env, napi_callback_info info)
 static napi_value HsearchR(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct hsearch_data *htab = (struct hsearch_data *)calloc(1, sizeof(struct hsearch_data));
+    struct hsearch_data *htab = (struct hsearch_data *)calloc(VALUE_ONE, sizeof(struct hsearch_data));
     if (!htab) {
         printf("calloc fail\n");
-        exit(0);
+        exit(NOERR);
     }
-
-    if (hcreate_r(10, htab) == PARAM_0){
+    if (hcreate_r(PARAM_10, htab) == PARAM_0) {
         printf("hcreat_r fail\n");
-        exit(0);
+        exit(NOERR);
     }
-    
     char keys[][8] = {"key1", "key2", "key3"};
-    char data[][8] = {"yasuo", "kitty", "ruiwen"};
-
+    char dataVal[][8] = {"yasuo", "kitty", "ruiwen"};
     int i;
-    for (i = 0; i < 3; i++){
+    for (i = PARAM_0; i < PARAM_3; i++) {
         ENTRY e, *ep;
         e.key = keys[i];
-        e.data = (void *) data[i];
+        e.data = (void *)dataVal[i];
         hsearch_r(e, ENTER, &ep, htab);
     }
-
-    for (i = 0; i < 3; i++){
+    for (i = PARAM_0; i < PARAM_3; i++) {
         ENTRY e2, *ep2;
         e2.key = keys[i];
         hsearch_r(e2, FIND, &ep2, htab);
-        if (ep2 != nullptr){
+        if (ep2 != nullptr) {
             napi_create_int32(env, NOERR, &result);
         } else {
             napi_create_int32(env, FAIL, &result);
         }
     }
-
     hdestroy_r(htab);
-    if (htab)free(htab);
-
+    if (htab) {
+        free(htab);
+    }
     napi_create_int32(env, FAIL, &result);
     return result;
 }
 
-struct q {
-    struct q *n;
-    struct q *p;
+struct Q {
+    struct Q *n;
+    struct Q *p;
     int i;
 };
 
 static napi_value Insque(napi_env env, napi_callback_info info)
 {
-    struct q elem = {PARAM_0};
+    struct Q elem = {PARAM_0};
     insque(&elem, nullptr);
     napi_value result = nullptr;
     if (elem.n == nullptr && elem.p == nullptr) {
@@ -260,15 +259,15 @@ static napi_value Insque(napi_env env, napi_callback_info info)
     return result;
 }
 
-typedef int (*fc)(const void*,const void*);
- 
+typedef int (*fc)(const void *, const void *);
+
 static napi_value LSearch(napi_env env, napi_callback_info info)
 {
     int arr[5] = {27, 14, 29, 68, 55};
     size_t n = PARAM_5;
     int key = PARAM_27;
-    fc f = compare;
-    int *ret = (int *)lsearch(&key, arr, &n, sizeof(int), f);
+    fc f = Compare;
+    int *ret = static_cast<int*>(lsearch(&key, arr, &n, sizeof(int), f));
     napi_value result = nullptr;
     if (ret) {
         napi_create_int32(env, NOERR, &result);
@@ -280,7 +279,7 @@ static napi_value LSearch(napi_env env, napi_callback_info info)
 
 static napi_value Lfind(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int array[3];
@@ -291,7 +290,7 @@ static napi_value Lfind(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], array + VALUE_ONE);
     napi_get_value_int32(env, args[0], array + VALUE_TWO);
     napi_get_value_int32(env, args[0], &key);
-    ret = lfind(&key, array, &nlength, sizeof(int), compare);
+    ret = lfind(&key, array, &nlength, sizeof(int), Compare);
     napi_value result = nullptr;
     if (ret == nullptr) {
         napi_create_int32(env, FAIL, &result);
@@ -304,7 +303,7 @@ static napi_value Lfind(napi_env env, napi_callback_info info)
 static napi_value Remque(napi_env env, napi_callback_info info)
 {
     errno = NOERR;
-    struct q *elem = (struct q *)malloc(sizeof(struct q));
+    struct Q *elem = (struct Q *)malloc(sizeof(struct Q));
     insque(elem, nullptr);
     remque(elem);
     napi_value result = nullptr;
@@ -322,14 +321,14 @@ struct stu {
 };
 
 typedef struct stu stu_t;
-int compareStu(const void *pa, const void *pb) { return ((stu_t *)pa)->stu_no - ((stu_t *)pb)->stu_no; }
+int CompareStu(const void *pa, const void *pb) { return ((stu_t *)pa)->stu_no - ((stu_t *)pb)->stu_no; }
 
 static napi_value Tsearch(napi_env env, napi_callback_info info)
 {
-    void *root = nullptr;
+    void *rootVal = nullptr;
     stu_t stuSturct;
     sprintf(stuSturct.name, "shanghai_%d", stuSturct.stu_no);
-    stu_t **rtp = (stu_t **)tsearch(&stuSturct, &root, compareStu);
+    stu_t **rtp = (stu_t **)tsearch(&stuSturct, &rootVal, CompareStu);
     napi_value result = nullptr;
     if (rtp != nullptr) {
         napi_create_int32(env, NOERR, &result);
@@ -344,21 +343,21 @@ static napi_value Twalk(napi_env env, napi_callback_info info)
 {
     int i = PARAM_0, *ptr = nullptr;
     void *val = nullptr;
-    void *root = nullptr;
+    void *rootVal = nullptr;
     srand(time(nullptr));
-    for (i = 0; i < LOOPNUM; i++) {
-        ptr = (int *)malloc(sizeof(int));
-        *ptr = rand() & 0xff;
-        val = tsearch((void *)ptr, &root, compare);
+    for (i = PARAM_0; i < LOOPNUM; i++) {
+        ptr = static_cast<int*>(malloc(sizeof(int)));
+        *ptr = rand() & PARAM_0xff;
+        val = tsearch((void *)ptr, &rootVal, Compare);
         if (val == nullptr)
             exit(EXIT_FAILURE);
         else if ((*(int **)val) != ptr)
             free(ptr);
     }
-    twalk(root, action);
-    tdestroy(root, free);
+    twalk(rootVal, action);
+    tdestroy(rootVal, free);
     napi_value result = nullptr;
-    if (nullptr != root) {
+    if (rootVal != nullptr) {
         napi_create_int32(env, NOERR, &result);
     } else {
         napi_create_int32(env, FAIL, &result);

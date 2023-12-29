@@ -13,29 +13,21 @@
  * limitations under the License.
  */
 
-#include "napi/native_api.h"
-#include <elf.h>
-#include <ifaddrs.h>
-#include <js_native_api_types.h>
-#include <net/if.h>
-#include <sys/auxv.h>
-#include <sys/inotify.h>
-#include <utmp.h>
-#include <uv.h>
+#include <fcntl.h>
+#include <js_native_api.h>
+#include <node_api.h>
+#include <sys/quota.h>
+#include <unistd.h>
 
-#define NO_ERR 0
-#define SUCCESS 1
-#define FAIL -1
-static napi_value Getauxval(napi_env env, napi_callback_info info)
+#define PARAM_0 0
+
+static napi_value Quotactl(napi_env env, napi_callback_info info)
 {
-    unsigned long int ret;
-    ret = getauxval(AT_SECURE);
-    napi_value result = nullptr;
-    int value = FAIL;
-    if (ret >= NO_ERR) {
-        value = SUCCESS;
-    }
-    napi_create_int32(env, value, &result);
+    int cmd = QCMD(Q_GETQUOTA, USRQUOTA);
+    struct dqblk strinfo;
+    int ret = quotactl(cmd, "/non-exist", getuid(), (char *)(&strinfo));
+    napi_value result;
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
@@ -43,7 +35,7 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"getauxval", nullptr, Getauxval, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"quotactl", nullptr, Quotactl, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -55,9 +47,9 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "auxvndk",
+    .nm_modname = "quotandk1",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterModule(void) { napi_module_register(&demoModule); }
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
