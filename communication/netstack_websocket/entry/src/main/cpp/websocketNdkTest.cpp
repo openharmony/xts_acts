@@ -16,8 +16,8 @@
 #include "napi/native_api.h"
 #include "net_websocket.h"
 #include <cstring>
-#include <signal.h>
-#include <string.h>
+#include <csignal>
+#include <cstring>
 
 #define WEBSOCKET_LOG_TAG "websocket XTS"
 #define WEBSOCKET_LOG_DOMAIN 0xD0015B0
