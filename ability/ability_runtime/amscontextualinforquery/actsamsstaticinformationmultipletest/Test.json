@@ -36,7 +36,11 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/test/*.hap"
+                "chmod 644 /data/test/*.hap",
+                "param set abilitymanagerservice.support.ecologicalrulemgrservice false"
+            ],
+            "teardown-command":[
+                "param set abilitymanagerservice.support.ecologicalrulemgrservice true"
             ]
         }
     ]

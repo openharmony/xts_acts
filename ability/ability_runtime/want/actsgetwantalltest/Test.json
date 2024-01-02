@@ -16,6 +16,15 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "param set abilitymanagerservice.support.ecologicalrulemgrservice false"
+            ],
+            "teardown-command": [
+                "param set abilitymanagerservice.support.ecologicalrulemgrservice true"
+            ]
         }
     ]
 }
