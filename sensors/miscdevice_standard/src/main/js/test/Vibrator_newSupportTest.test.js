@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 
 export default function VibratorJsTest_misc_6() {
 describe("VibratorJsTest_misc_6", function () {
-	var g_execute = true;
+    var g_execute = true;
     let EFFECT_ID = "haptic.clock.timer";
     let INVALID_EFFECT_ID = "xxx";
     beforeAll(function () {
@@ -53,18 +53,21 @@ describe("VibratorJsTest_misc_6", function () {
         console.info('afterEach caled')
     })
 
-    const OPERATION_FAIL_CODE = 14600101; 
+    const OPERATION_FAIL_CODE = 14600101;
     const PERMISSION_ERROR_CODE = 201;
     const PARAMETER_ERROR_CODE = 401;
-    
+
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-	
+
     /*
      * @tc.name:VibratorJsTest069
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0790
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest069", 0, async function (done) {
         vibrator.isSupportEffect(INVALID_EFFECT_ID, (error, state) => {
@@ -74,7 +77,7 @@ describe("VibratorJsTest_misc_6", function () {
             } else {
                 console.info('VibratorJsTest069 success');
                 expect(!state).assertTrue();
-				done();
+                done();
             }
         });
     })
@@ -83,6 +86,9 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest070
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0800
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest070", 0, async function (done) {
         let isSupport = false;
@@ -148,13 +154,16 @@ describe("VibratorJsTest_misc_6", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         })
-		done();
+        done();
     })
 
     /*
      * @tc.name:VibratorJsTest071
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0810
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest071", 0, async function (done) {
         try {
@@ -174,6 +183,9 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest072
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0820
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest072", 0, async function (done) {
         try {
@@ -190,20 +202,9 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest073
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0830
-     */
-    it("VibratorJsTest073", 0, async function (done) {
-        await vibrator.isSupportEffect(INVALID_EFFECT_ID).then((state) => {
-            expect(!state).assertTrue();
-        }, (error) => {
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /*
-     * @tc.name:VibratorJsTest073
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0830
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest073", 0, async function (done) {
         let isSupport = false;
@@ -274,6 +275,9 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest074
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0840
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest074", 0, async function (done) {
         try {
@@ -295,6 +299,9 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest075
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0850
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
     it("VibratorJsTest075", 0, async function (done) {
         try {
@@ -302,12 +309,29 @@ describe("VibratorJsTest_misc_6", function () {
                 expect(false).assertTrue();
             }, (error) => {
                 expect(true).assertTrue();
-				done()
+                done()
             });
         } catch (error) {
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
-    })	
+    })
+
+    /*
+     * @tc.name:VibratorJsTest076
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0830
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("VibratorJsTest076", 0, async function (done) {
+        await vibrator.isSupportEffect(INVALID_EFFECT_ID).then((state) => {
+            expect(!state).assertTrue();
+        }, (error) => {
+            expect(false).assertTrue();
+        });
+        done();
+    })
     })}
