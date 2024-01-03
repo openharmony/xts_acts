@@ -244,7 +244,7 @@ export default function dlpTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(function () {
+    afterEach(async (done) => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -252,6 +252,9 @@ export default function dlpTest() {
       if (files.length != 0) {
         console.error(TAG, "tmp file need delete", files);
       }
+      setTimeout(async () => {
+         await done();
+      }, 3000);
     })
     afterAll(async function () {
       // Presets a clear action, which is performed after all test cases of the test suite end.
