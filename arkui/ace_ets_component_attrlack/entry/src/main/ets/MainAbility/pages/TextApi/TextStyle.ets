@@ -35,19 +35,19 @@ struct buttonExample {
         .buttonStyle(ButtonStyleMode.EMPHASIZED)
 
 
-     Tabs({ barPosition: BarPosition.Start}) {
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Red)
-        }.tabBar(new SubTabBarStyle("red"))
+    // Tabs({ barPosition: BarPosition.Start}) {
+      //  TabContent() {
+      //    Column().width('100%').height('100%').backgroundColor(Color.Red)
+      //  }.tabBar(new SubTabBarStyle("red"))
 
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Blue)
-        }.tabBar(new SubTabBarStyle("blue"))
+      //  TabContent() {
+      //    Column().width('100%').height('100%').backgroundColor(Color.Blue)
+      //  }.tabBar(new SubTabBarStyle("blue"))
 
-      }
-      .width(300)
-      .height(200)
-      .backgroundColor('#F1F3F5')
+    //  }
+     // .width(300)
+     // .height(200)
+     // .backgroundColor('#F1F3F5')
 
 
 
