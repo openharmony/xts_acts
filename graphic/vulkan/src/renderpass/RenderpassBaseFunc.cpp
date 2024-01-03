@@ -19,7 +19,6 @@
 #include "tcuDefs.hpp"
 #include "tcuCommandLine.hpp"
 #include "tcuPlatform.hpp"
-// #include "ActsApp.h"
 #include "tcuApp.hpp"
 #include "tcuResource.hpp"
 #include "tcuTestLog.hpp"
