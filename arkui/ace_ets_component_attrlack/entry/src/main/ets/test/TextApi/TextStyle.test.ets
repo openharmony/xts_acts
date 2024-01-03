@@ -16,52 +16,57 @@ import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from '../Utils'
 
-export default function AllName() {
-  describe('AllName', function () {
+export default function TextStyle() {
+  describe('TextStyle', function () {
     beforeEach(async function (done) {
-      console.info("AllName beforeEach start");
+      console.info("TextStyle beforeEach start");
       let options = {
-        url: 'MainAbility/pages/TextApi/AllName',
+        url: 'MainAbility/pages/TextApi/TextStyle',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get AllName state pages:" + JSON.stringify(pages));
-        if (!("AllName" == pages.name)) {
-          console.info("get AllName pages.name:" + JSON.stringify(pages.name));
+        console.info("get TextStyle state pages:" + JSON.stringify(pages));
+        if (!("TextStyle" == pages.name)) {
+          console.info("get TextStyle pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push AllName page result:" + JSON.stringify(result));
+          console.info("push TextStyle page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push AllName page error:" + err);
+        console.error("push TextStyle page error:" + err);
       }
-      console.info("AllName beforeEach end");
+      console.info("TextStyle beforeEach end");
       done();
     });
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("AllName after each called");
+      console.info("TextStyle after each called");
     });
+
+
+
     /**
-     * @tc.number    AllName_0100
-     * @tc.name      AllName_0100
+     * @tc.number    TextStyle_0001
+     * @tc.name      TextStyle_0001
      * @tc.desc      set api
-     * @tc.level       Level 2
+     * @tc.level       Level 1
      * @tc.type
-     * @tc.size
+    * @tc.size
      */
-    it('AllName_0100', 0, async function (done) {
+    it('TextStyle_0001', 0, async function (done) {
 
-      console.info('[AllName_0100] START');
+      console.info('[TextStyle_0001] START');
       await Utils.sleep(2000);
-      let text1 = getInspectorByKey('TextKeyAllName');
+      let text1 = getInspectorByKey('buttonStyle');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$type).assertEqual('Text');
+      expect(Obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
 
-      console.info('[AllName_0100] END');
+      console.info('[TextStyle_0001] END');
       done();
     });
+
+
 
 
 
