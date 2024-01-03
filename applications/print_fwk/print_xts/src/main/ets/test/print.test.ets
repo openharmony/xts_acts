@@ -216,6 +216,7 @@ export default function printTest() {
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
+      printAttributes.pageSize = print.PrintPageType.PAGE_JIS_B5;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_C5;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_DL;
       printAttributes.pageSize = print.PrintPageType.PAGE_LETTER;
