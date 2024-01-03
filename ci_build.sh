@@ -55,7 +55,6 @@ parse_target_subsystem()
 
 parse_args()
 {   
-    # echo "------------------------"
     while [ -n "$1" ]
     do
         var="$1"
