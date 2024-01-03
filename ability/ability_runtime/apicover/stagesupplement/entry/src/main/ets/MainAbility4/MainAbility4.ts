@@ -38,7 +38,7 @@ export default class MainAbility4 extends Ability {
             }).catch((err) => {
                 console.info(printLog4 + "terminateSelf err = " + JSON.stringify(err));
             });
-        }, 3000)
+        }, 2000);
     }
 
     onDestroy() {

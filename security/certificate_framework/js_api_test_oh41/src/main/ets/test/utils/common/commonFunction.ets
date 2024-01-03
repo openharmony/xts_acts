@@ -153,7 +153,7 @@ function genKeyMaterialBlob(keyLen: number) {
 function convertToUint8Array(str: string) {
   const match = str.match(reg);
   let temp: number[] = [];
-  if(match) {
+  if (match) {
     temp = match.map((h) => {
       return Number("0x" + h);
     });

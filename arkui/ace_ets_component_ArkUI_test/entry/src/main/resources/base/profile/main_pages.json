@@ -1,0 +1,12 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/second/second",
+        "MainAbility/pages/Track/extendTrack",
+        "MainAbility/pages/Track/localTrack",
+        "MainAbility/pages/Track/nestTrack",
+        "MainAbility/pages/Track/provideTrack",
+        "MainAbility/pages/Track/StateTrack",
+        "MainAbility/pages/Track/storageTrack"
+    ]
+}

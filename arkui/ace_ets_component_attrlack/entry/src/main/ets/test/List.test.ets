@@ -49,7 +49,7 @@ import colorEnumJsunit from './color.test.ets';
 import ohosrouterJsunit from './ohosrouter.test.ets';
 import ImageApi from './ImageApi.test.ets';
 import NavigationApi from './NavigationApi.test.ets';
-import AllName from './TextApi/AllName.test.ets';
+import TextStyle from './TextApi/TextStyle.test';
 
 export default function testsuite() {
   animatorOnframeJsunit()
@@ -82,5 +82,5 @@ export default function testsuite() {
   ohosrouterJsunit()
   ImageApi()
   NavigationApi()
-  AllName()
+  TextStyle()
 }

@@ -14,14 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function ColumnSetLayoutWeightNone_SubChange() {
-  describe('ColumnSetLayoutWeightTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetLayoutWeightNone_SubChange',
+  describe('ColumnSetLayoutWeightTest',  () =>{
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetLayoutWeightNone_SubChange',
       }
       try {
         router.clear();
@@ -37,9 +38,8 @@ export default function ColumnSetLayoutWeightNone_SubChange() {
         console.error("push SetLayoutWeight page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(2000);
       console.info("SetLayoutWeight after each called");
     });
@@ -49,16 +49,16 @@ export default function ColumnSetLayoutWeightNone_SubChange() {
      * @tc.name      testColumnSetLayoutWeightWithRateThreeTwoZero
      * @tc.desc      Subcomponents set layout weight(3-2-0) attribute.
      */
-    it('testColumnSetLayoutWeightWithRateThreeTwoZero', 0, async function (done) {
+    it('testColumnSetLayoutWeightWithRateThreeTwoZero', 0, async () => {
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoZero START');
       await CommonFunc.sleep(1000);
       let layoutExpectHeight1 = (190/5)*3;
       let layoutExpectHeight2 = (190/5)*2;
       let layoutExpectHeight3 = 150;
-      let setLayoutWeightNone1 = CommonFunc.getComponentRect('setLayoutWeightNone1');
-      let setLayoutWeightNone2 = CommonFunc.getComponentRect('setLayoutWeightNone2');
-      let setLayoutWeightNone3 = CommonFunc.getComponentRect('setLayoutWeightNone3');
-      let setLayoutWeightNone = CommonFunc.getComponentRect('setLayoutWeightNone');
+      let setLayoutWeightNone1: RectValue = CommonFunc.getComponentRect('setLayoutWeightNone1');
+      let setLayoutWeightNone2: RectValue = CommonFunc.getComponentRect('setLayoutWeightNone2');
+      let setLayoutWeightNone3: RectValue = CommonFunc.getComponentRect('setLayoutWeightNone3');
+      let setLayoutWeightNone: RectValue = CommonFunc.getComponentRect('setLayoutWeightNone');
 
       expect(Math.abs(setLayoutWeightNone1.top - setLayoutWeightNone.top) <= 1).assertTrue()
       expect(Math.abs(setLayoutWeightNone2.top - setLayoutWeightNone1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
@@ -68,7 +68,6 @@ export default function ColumnSetLayoutWeightNone_SubChange() {
       expect(Math.abs(setLayoutWeightNone2.bottom - setLayoutWeightNone2.top - Math.round(vp2px(layoutExpectHeight2))) <= 1).assertTrue()
       expect(Math.abs(setLayoutWeightNone3.bottom - setLayoutWeightNone3.top - Math.round(vp2px(layoutExpectHeight3))) <= 1).assertTrue()
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoZero END');
-      done();
     });
   })
 }

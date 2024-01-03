@@ -20,6 +20,7 @@ import certFrameworkSelectCertsJsAPIFunctionTestUnit from './selectCerts.test';
 import certFrameworkSelectCRLsJsAPIFunctionTestUnit from './selectCRLs.test';
 import certFrameworkCertMatchJsAPIFunctionTestUnit from './certMatch.test';
 import certFrameworkCRLMatchJsAPIFunctionTestUnit from './crlMatch.test';
+import certFrameworkCertChainJsAPIFunctionTestUnit from './certChain.test';
 
 export default function testsuite() {
   certificateCRLJsunit();
@@ -29,4 +30,5 @@ export default function testsuite() {
   certFrameworkSelectCRLsJsAPIFunctionTestUnit();
   certFrameworkCertMatchJsAPIFunctionTestUnit();
   certFrameworkCRLMatchJsAPIFunctionTestUnit();
+  certFrameworkCertChainJsAPIFunctionTestUnit();
 }

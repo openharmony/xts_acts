@@ -48,32 +48,146 @@ export default function Stack_Text() {
       * @tc.name  : Stack_Text_001
       * @tc.desc  : set api
       * @tc.level : Level 2
-      * @tc.type : 
-      * @tc.size : 
+      * @tc.type
+      * @tc.size
       */
     it('Stack_Text_001', 0, async function (done) {
 
       console.info('[Stack_Text_001] START');
       await CommonFunc.sleep(1000);
 
-      let strJson1 = getInspectorByKey('Stack_Text');
+      let strJson1 = getInspectorByKey('Stack_TextInput');
       let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[Stack_Text_001] Stack_Text obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
 
-      let strJson = getInspectorByKey('Stack_TextInput');
-      let obj = JSON.parse(strJson);
-      await CommonFunc.sleep(1000);
-      console.info("[Stack_Text_001] Stack_TextInput obj is: " + JSON.stringify(obj));
-      await CommonFunc.sleep(1000);
-
-      expect(obj1.$type).assertEqual('Text');
-      expect(obj.$attrs.type).assertEqual('InputType.USER_NAME');
-
+      expect(obj1.$attrs.type).assertEqual('InputType.USER_NAME');
       console.info('[Stack_Text_001] END');
       done();
     });
+
+    /* *
+      * @tc.number: Stack_Text_002
+      * @tc.name  : Stack_Text_002
+      * @tc.desc  : set api
+      * @tc.level : Level 2
+      * @tc.type
+      * @tc.size
+      */
+    it('Stack_Text_002', 0, async function (done) {
+
+      console.info('[Stack_Text_002] START');
+      await CommonFunc.sleep(1000);
+
+      let strJson1 = getInspectorByKey('Stack_Text_Button1');
+      let obj1 = JSON.parse(strJson1);
+      await CommonFunc.sleep(1000);
+      console.info("[Stack_Text_002] Stack_Text obj is: " + JSON.stringify(obj1));
+      await CommonFunc.sleep(1000);
+
+      expect(obj1.$attrs.controlSize).assertEqual('ControlSize.SMALL');
+      expect(obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
+      console.info('[Stack_Text_002] END');
+      done();
+    });
+
+    /* *
+      * @tc.number: Stack_Text_003
+      * @tc.name  : Stack_Text_003
+      * @tc.desc  : set api
+      * @tc.level : Level 2
+      * @tc.type
+      * @tc.size
+      */
+    it('Stack_Text_003', 0, async function (done) {
+
+      console.info('[Stack_Text_003] START');
+      await CommonFunc.sleep(1000);
+
+      let strJson1 = getInspectorByKey('Stack_Text_Button2');
+      let obj1 = JSON.parse(strJson1);
+      await CommonFunc.sleep(1000);
+      console.info("[Stack_Text_003] Stack_Text obj is: " + JSON.stringify(obj1));
+      await CommonFunc.sleep(1000);
+
+      expect(obj1.$attrs.controlSize).assertEqual('ControlSize.NORMAL');
+      expect(obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.NORMAL');
+      console.info('[Stack_Text_003] END');
+      done();
+    });
+
+    /* *
+      * @tc.number: Stack_Text_004
+      * @tc.name  : Stack_Text_004
+      * @tc.desc  : set api
+      * @tc.level : Level 2
+      * @tc.type
+      * @tc.size
+      */
+    it('Stack_Text_004', 0, async function (done) {
+
+      console.info('[Stack_Text_004] START');
+      await CommonFunc.sleep(1000);
+
+      let strJson1 = getInspectorByKey('Stack_Text_Button3');
+      let obj1 = JSON.parse(strJson1);
+      await CommonFunc.sleep(1000);
+      console.info("[Stack_Text_004] Stack_Text obj is: " + JSON.stringify(obj1));
+      await CommonFunc.sleep(1000);
+
+      expect(obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.TEXTUAL');
+      console.info('[Stack_Text_004] END');
+      done();
+    });
+
+    /* *
+      * @tc.number: Stack_Text_005
+      * @tc.name  : Stack_Text_005
+      * @tc.desc  : set api
+      * @tc.level : Level 2
+      * @tc.type
+      * @tc.size
+      */
+    it('Stack_Text_005', 0, async function (done) {
+
+      console.info('[Stack_Text_005] START');
+      await CommonFunc.sleep(1000);
+
+      let strJson1 = getInspectorByKey('Stack_Text');
+      let obj1 = JSON.parse(strJson1);
+      await CommonFunc.sleep(1000);
+      console.info("[Stack_Text_005] Stack_Text obj is: " + JSON.stringify(obj1));
+      await CommonFunc.sleep(1000);
+
+      expect(obj1.$attrs.content).assertEqual('15544889999');
+      console.info('[Stack_Text_005] END');
+      done();
+    });
+
+    /* *
+      * @tc.number: Stack_Text_006
+      * @tc.name  : Stack_Text_006
+      * @tc.desc  : set api
+      * @tc.level : Level 2
+      * @tc.type
+      * @tc.size
+      */
+    // it('Stack_Text_006', 0, async function (done) {
+    //
+    //   console.info('[Stack_Text_006] START');
+    //   await CommonFunc.sleep(1000);
+    //
+    //   let strJson1 = getInspectorByKey('Stack_TextInput');
+    //   let obj1 = JSON.parse(strJson1);
+    //   await CommonFunc.sleep(1000);
+    //   console.info("[Stack_Text_006] Stack_Text obj is: " + JSON.stringify(obj1));
+    //   await CommonFunc.sleep(1000);
+    //
+    //   expect(obj1.$attrs.enableAutoFill).assertEqual('true');
+    //   console.info('[Stack_Text_006] END');
+    //   done();
+    // });
 
 
 
