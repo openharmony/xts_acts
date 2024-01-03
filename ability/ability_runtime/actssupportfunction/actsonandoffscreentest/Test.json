@@ -25,11 +25,7 @@
                 "power-shell setmode 602",
                 "bm disable -n com.huawei.hmos.hwstartupguide",
                 "reboot",
-                "uinput -T -m 300 2700 280 200",
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice false"
-            ],
-            "teardown-command":[
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice true"
+                "uinput -T -m 300 2700 280 200"
             ]
         }
     ]
