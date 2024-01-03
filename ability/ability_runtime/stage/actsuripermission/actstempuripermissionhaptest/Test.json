@@ -20,16 +20,12 @@
             "cleanup-apps": true
         },
         {
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602",
-                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice false"
-            ],
-            "teardown-command":[
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice true"
-            ]
+          "type": "ShellKit",
+          "run-command": [
+              "power-shell wakeup",
+              "power-shell setmode 602",
+              "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+          ]
       }
     ] 
 }

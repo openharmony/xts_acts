@@ -37,11 +37,7 @@
             "type": "ShellKit",
             "run-command": [
                 "bm install -p /data/test/AtomizationResultStageEntry.hap",
-                "bm install -p /data/test/MockService.hap",
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice false"
-            ],
-            "teardown-command":[
-                "param set abilitymanagerservice.support.ecologicalrulemgrservice true"
+                "bm install -p /data/test/MockService.hap"
             ]
         }
     ]
