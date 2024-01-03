@@ -41,7 +41,8 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
-        */
+        * @tc.level   Level 1
+             */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
             let eventType : accessibility.EventType = 'accessibilityFocus';
@@ -69,6 +70,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200');
@@ -96,6 +98,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300');
@@ -124,6 +127,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400');
@@ -151,6 +155,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500');
@@ -179,6 +184,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600');
@@ -206,6 +212,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700');
@@ -234,6 +241,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800');
@@ -261,6 +269,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900');
@@ -289,6 +298,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000');
@@ -316,6 +326,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100');
@@ -344,6 +355,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200');
@@ -371,6 +383,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300');
@@ -399,6 +412,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400');
@@ -426,6 +440,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500');
@@ -454,6 +469,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600');
@@ -481,6 +497,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700');
@@ -509,6 +526,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800');
@@ -536,6 +554,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900');
@@ -564,6 +583,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000');
@@ -591,6 +611,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100');
@@ -619,6 +640,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200');
@@ -646,6 +668,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300');
@@ -676,6 +699,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400');
@@ -703,6 +727,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500');
@@ -731,6 +756,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600');
@@ -756,6 +782,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700');
@@ -785,6 +812,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800');
@@ -812,6 +840,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900');
@@ -840,6 +869,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000');
@@ -866,6 +896,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100');
@@ -894,6 +925,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200');
@@ -921,6 +953,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300');
@@ -949,6 +982,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400');
@@ -976,6 +1010,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500');
@@ -1004,6 +1039,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600');
@@ -1031,6 +1067,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700');
@@ -1059,6 +1096,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800');
@@ -1086,6 +1124,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900');
@@ -1114,6 +1153,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000');
@@ -1141,6 +1181,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100');
@@ -1169,6 +1210,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200');
@@ -1196,6 +1238,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300');
@@ -1224,6 +1267,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400');
@@ -1251,6 +1295,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500');
@@ -1279,6 +1324,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600');
@@ -1306,6 +1352,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700');
@@ -1334,6 +1381,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800');
@@ -1361,6 +1409,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900');
@@ -1389,6 +1438,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000');
@@ -1416,6 +1466,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100');
@@ -1444,6 +1495,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200');
@@ -1471,6 +1523,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300');
@@ -1499,6 +1552,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400');
@@ -1526,6 +1580,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500');
@@ -1554,6 +1609,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600');
@@ -1581,6 +1637,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700');
@@ -1609,6 +1666,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800');
@@ -1636,6 +1694,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900');
@@ -1664,6 +1723,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000');
@@ -1691,6 +1751,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100');
@@ -1719,6 +1780,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200');
@@ -1746,6 +1808,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300');
@@ -1774,6 +1837,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400');
@@ -1801,6 +1865,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500');
@@ -1829,6 +1894,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600');
@@ -1857,6 +1923,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700');
@@ -1886,6 +1953,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800');
@@ -1914,6 +1982,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900');
@@ -1943,6 +2012,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000');
@@ -1971,6 +2041,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100');
@@ -1999,6 +2070,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200');
@@ -2026,6 +2098,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300');
@@ -2055,6 +2128,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400');
@@ -2081,6 +2155,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500');
@@ -2110,6 +2185,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600');
@@ -2137,6 +2213,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700');
@@ -2165,6 +2242,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800');
@@ -2193,6 +2271,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900');
@@ -2221,6 +2300,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000');
@@ -2248,6 +2328,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100');
@@ -2275,6 +2356,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200');
@@ -2302,6 +2384,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300');
@@ -2330,6 +2413,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400');
@@ -2358,6 +2442,7 @@ export default function abilityTest() {
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500');
@@ -2387,6 +2472,7 @@ export default function abilityTest() {
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
+        * @tc.level   Level 1
         */
         it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600', 0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600');
