@@ -25,7 +25,7 @@
 
 namespace OHOS {
 namespace NeuralNetworkRuntime {
-void PrintRetLog(int32_t ret, int32_t nnrtSuccess, std::string& makeName)
+void PrintRetLog(int32_t ret, int32_t nnrtSuccess, const std::string& makeName)
 {
     if (ret < nnrtSuccess) {
             LOGW("%s failed. An error occurred in HDI, errorcode is %{public}d.", makeName.c_str(), ret);
