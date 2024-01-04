@@ -502,5 +502,30 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100
+     * @tc.name Test signVerify algName with brainPool, process success
+     * @tc.desc create Sign/Verify with ECC_BrainPoolP224t1|SHA256
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100";
+      console.log(testNumber + ": started");
+      let signVerifyAlg: string = "ECC_BrainPoolP224t1|SHA256";
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        expect(sign.algName == signVerifyAlg).assertTrue();
+        expect(verify.algName == signVerifyAlg).assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
   })
 }
