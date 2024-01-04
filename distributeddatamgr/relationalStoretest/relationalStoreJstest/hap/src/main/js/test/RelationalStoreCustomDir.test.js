@@ -923,7 +923,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.name RelationalStore store Sandbox Path 128 bytes customDir:Single level directory    getRdbStore test promise
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsAPITest_3800
      * @tc.desc RelationalStore store Sandbox Path 128 bytes customDir:Single level directory  getRdbStore test promise
-	 * @tc.size MediumTest
+     * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */

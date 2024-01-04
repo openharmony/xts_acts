@@ -31,19 +31,31 @@ const TAG = '[TEST_PREFERENCES_FLUSH]'
 
 export default function preferencesFlushTest(){
     describe('preferencesFlushTest', function (){
-        beforeAll(async function(){
-            console.info('beforeAll');
-            context = featureAbility.getContext();
+        beforeAll(async function () {
+            console.info('beforeAll')
+            context = featureAbility.getContext()
+        })
+
+        afterAll(async function () {
+            console.info('afterAll')
+        })
+
+        beforeEach(async function () {
+            console.info('beforeEach')
             mPreferences = await dataPreferences.getPreferences(context, NAME);
         })
-        afterAll(async function(){
-            console.info('afterAll');
+        
+        afterEach(async function () {
+            console.info('afterEach')
             await dataPreferences.deletePreferences(context, NAME);
         })
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0100
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferences_put_flush_remove_get_0100', 0, async function (done) {
             console.log(TAG + "start_test_0100");
@@ -89,6 +101,9 @@ export default function preferencesFlushTest(){
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0200
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferences_put_flush_remove_get_0200', 0, async function (done){
             console.log(TAG + "start_test_0200");
@@ -133,6 +148,9 @@ export default function preferencesFlushTest(){
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0300
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferences_put_flush_remove_get_0300', 0, async function (done){
             console.log(TAG + "start_test_0300");
@@ -177,6 +195,9 @@ export default function preferencesFlushTest(){
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0400
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferences_put_flush_remove_get_0400', 0, async function (done){
             console.log(TAG + "start_test_0400");
@@ -221,6 +242,9 @@ export default function preferencesFlushTest(){
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0500
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferences_put_flush_remove_get_0500', 0, async function (done){
             console.log(TAG + "start_test_0500");
@@ -266,6 +290,9 @@ export default function preferencesFlushTest(){
          * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0600
          * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
 
         it('testPreferences_put_flush_remove_get_0600', 0, async function (done){
