@@ -69,7 +69,7 @@ struct CanvasAPIUnit {
   }
 
   context_font3() {
-    this.context.font ='italic 50vp '
+    this.context.font = 'italic 50vp '
     this.context.fillText("Hello World!", 20, 100)
   }
 
@@ -91,48 +91,48 @@ struct CanvasAPIUnit {
   off_context_font1() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   off_context_font2() {
     this.offContext.font = '50vp'
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   off_context_font3() {
-    this.offContext.font ='italic 50vp '
+    this.offContext.font = 'italic 50vp '
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   off_context_font4() {
     this.offContext.font = 'italic 50vp 500 '
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   off_context_font5() {
     this.offContext.font = 'italic 50vp 500 sans-serif '
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   off_context_font6() {
     this.offContext.font = "50"
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap();
+    let image: ImageBitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   context_putImageData1() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
@@ -142,8 +142,8 @@ struct CanvasAPIUnit {
   }
 
   context_putImageData2() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
@@ -153,8 +153,8 @@ struct CanvasAPIUnit {
   }
 
   context_putImageData3() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
@@ -164,114 +164,113 @@ struct CanvasAPIUnit {
   }
 
   context_putImageData4() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.context.putImageData(imageData, "50px", "50px", "50px","50px", "75px", "75px")
+    this.context.putImageData(imageData, "50px", "50px", "50px", "50px", "75px", "75px")
   }
 
   context_putImageData5() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.context.putImageData(imageData, "50vp", "50vp", "50vp","50vp", "50vp", "50vp")
+    this.context.putImageData(imageData, "50vp", "50vp", "50vp", "50vp", "50vp", "50vp")
   }
 
   context_putImageData6() {
-    var imageData = this.context.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.context.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.context.putImageData(imageData, 50, 50, 50,50, 50, 50)
+    this.context.putImageData(imageData, 50, 50, 50, 50, 50, 50)
   }
 
   off_context_putImageData1() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
     this.offContext.putImageData(imageData, "50px", "50px")
-    var image = this.offContext.transferToImageBitmap()
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_putImageData2() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
     this.offContext.putImageData(imageData, 50, 50)
-    var image = this.offContext.transferToImageBitmap()
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_putImageData3() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
     this.offContext.putImageData(imageData, "50vp", "50vp")
-    var image = this.offContext.transferToImageBitmap()
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_putImageData4() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.offContext.putImageData(imageData, "50px", "50px", "50px","50px", "75px", "75px")
-    var image = this.offContext.transferToImageBitmap()
+    this.offContext.putImageData(imageData, "50px", "50px", "50px", "50px", "75px", "75px")
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_putImageData5() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.offContext.putImageData(imageData, "50vp", "50vp", "50vp","50vp", "50vp", "50vp")
-    var image = this.offContext.transferToImageBitmap()
+    this.offContext.putImageData(imageData, "50vp", "50vp", "50vp", "50vp", "50vp", "50vp")
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_putImageData6() {
-    var imageData = this.offContext.createImageData(100, 100)
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    let imageData: ImageData = this.offContext.createImageData(100, 100)
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255
       imageData.data[i + 1] = 0
       imageData.data[i + 2] = 255
       imageData.data[i + 3] = 255
     }
-    this.offContext.putImageData(imageData, 50, 50, 50,50, 50, 50)
-    var image = this.offContext.transferToImageBitmap()
+    this.offContext.putImageData(imageData, 50, 50, 50, 50, 50, 50)
+    let image: ImageBitmap = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
-
 }

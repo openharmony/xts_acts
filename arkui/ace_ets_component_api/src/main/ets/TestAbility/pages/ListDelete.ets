@@ -19,12 +19,13 @@ import MyUtils from '../common/MyUtils';
 struct ListDelete {
   @State arr: number[] = [0, 1, 2]
   @State arr2: number[] = [0, 1, 2]
-  @State tSting:string = "no action trigger"
+  @State tSting: string = "no action trigger"
 
-  @Builder itemEnd(index: number, which: string) {
-    Row () {
+  @Builder
+  itemEnd(index: number, which: string) {
+    Row() {
       Button("Del").margin("4vp")
-        .onClick( ()=> {
+        .onClick(() => {
           this.arr.splice(index, 1)
         }
         )
@@ -34,10 +35,11 @@ struct ListDelete {
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
-  @Builder itemStart(index: number, which: string) {
-    Row () {
+  @Builder
+  itemStart(index: number, which: string) {
+    Row() {
       Button("Del").margin("4vp")
-        .onClick( ()=> {
+        .onClick(() => {
           this.arr.splice(index, 1)
         }
         )
@@ -51,67 +53,84 @@ struct ListDelete {
     Column() {
       Text(this.tSting).key('MyList5ListItemOnDeleteH')
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item, index) => {
+        ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(30).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          }.swipeAction({ end:this.itemEnd.bind(this, index, 'MyList1'), edgeEffect:SwipeEdgeEffect.None})
+              .width('100%')
+              .height(30)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }.swipeAction({ end: (): void => this.itemEnd( index, 'MyList1'), edgeEffect: SwipeEdgeEffect.None })
           .key('MyList1_ListItem' + index)
-        }, item => item)
+        }, (item: string) => item + "")
       }
-      .margin({top:5})
+      .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
       .key('MyList1')
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item, index) => {
+        ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(30).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          }.swipeAction({ start:this.itemStart.bind(this, index, 'MyList2'), edgeEffect:SwipeEdgeEffect.None})
+              .width('100%')
+              .height(30)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .swipeAction({ start: (): void => this.itemStart( index, 'MyList2'), edgeEffect: SwipeEdgeEffect.None })
           .key('MyList2_ListItem' + index)
-        }, item => item)
+        }, (item: string) => item + "")
       }
-      .margin({top:5})
+      .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
       .key('MyList2')
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item, index) => {
+        ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(30).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          }.swipeAction({ end:this.itemEnd.bind(this, index, 'MyList3'), edgeEffect:SwipeEdgeEffect.Spring})
+              .width('100%')
+              .height(30)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }.swipeAction({ end: (): void => this.itemEnd( index, 'MyList3'), edgeEffect: SwipeEdgeEffect.Spring })
           .key('MyList3_ListItem' + index)
-        }, item => item)
+        }, (item: string) => item + "")
       }
-      .margin({top:5})
+      .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
       .key('MyList3')
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item, index) => {
+        ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(30).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          }.swipeAction({ start:this.itemStart.bind(this, index, 'MyList4'), edgeEffect:SwipeEdgeEffect.Spring})
+              .width('100%')
+              .height(30)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }.swipeAction({ start: (): void => this.itemStart( index, 'MyList4'), edgeEffect: SwipeEdgeEffect.Spring })
           .key('MyList4_ListItem' + index)
-        }, item => item)
+        }, (item: string) => item + "")
       }
-      .margin({top:5})
+      .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
       .key('MyList4')
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr2, (item, index) => {
+        ForEach(this.arr2, (item: number, index) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -122,7 +141,7 @@ struct ListDelete {
               .backgroundColor(0xFFFFFF)
           }
           .swipeAction({ end: {
-            builder: this.itemEnd.bind(this, index, 'MyList5'),
+            builder: (): void => this.itemEnd( index, 'MyList5'),
             onAction: () => {
               console.info('MyList5_ListItem' + index + ' onAction')
               this.arr2.splice(index, 1)
@@ -137,14 +156,13 @@ struct ListDelete {
           }
           })
           .key('MyList5_ListItem' + index)
-        }, item => item)
+        }, (item: string) => item + "")
       }
       .height("60%")
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
       .key('MyList5')
-
 
     }
     .width('100%')
