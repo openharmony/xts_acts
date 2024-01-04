@@ -30,6 +30,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeDrawingColorTest.cpp",
     "NativeDrawingPathTest.cpp",
     "NativeDrawingPenTest.cpp",
+    "NativeDrawingMatrixTest.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
     "OH_Drawing_TypographyTest.cpp",
   ]
