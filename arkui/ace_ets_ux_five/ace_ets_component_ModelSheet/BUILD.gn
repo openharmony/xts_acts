@@ -22,7 +22,7 @@ ohos_js_hap_suite("ModelSheetTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ModelSheetTest"
+  hap_name = "ActsModelSheetTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
