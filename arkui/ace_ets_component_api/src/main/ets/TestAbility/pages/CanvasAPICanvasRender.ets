@@ -165,140 +165,140 @@ struct CanvasAPICanvasRender {
   off_context_fillText1() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 20)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText2() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText3() {
     this.offContext.font = '150px'
     this.offContext.fillText("Hello World!", 20, 100, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText4() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 0)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText5() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, -1)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText6() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText7() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, null)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText8() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, undefined)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText9() {
     this.offContext.font = '150px'
     this.offContext.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText10() {
     this.offContext.font = '150px'
     this.offContext.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText1() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 50)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText2() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText3() {
     this.offContext.font = '150px'
     this.offContext.strokeText("Hello World!", 20, 100, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText4() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 0)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText5() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, -1)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText6() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText7() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, null)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText8() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, undefined)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText9() {
     this.offContext.font = '150px'
     this.offContext.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText10() {
     this.offContext.font = '150px'
     this.offContext.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
-    let image: ImageBitmap = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 }

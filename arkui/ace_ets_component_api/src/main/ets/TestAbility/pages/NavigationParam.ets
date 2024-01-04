@@ -45,7 +45,7 @@ struct NavigationParam {
     Column() {
       Navigation() {
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -55,7 +55,7 @@ struct NavigationParam {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }
-          }, (item: string) => item + "")
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .height(90)
@@ -68,7 +68,7 @@ struct NavigationParam {
 
       Navigation() {
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -78,7 +78,7 @@ struct NavigationParam {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }
-          }, (item: string) => item + "")
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .height(90)

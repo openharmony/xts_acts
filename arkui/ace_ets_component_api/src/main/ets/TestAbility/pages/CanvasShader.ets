@@ -73,7 +73,7 @@ struct CanvasShader {
   }
 
   createConicGradient1() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -82,7 +82,7 @@ struct CanvasShader {
   }
 
   createConicGradient2() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, -10, 100)
+    let grad = this.context.createConicGradient(0, -10, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -91,20 +91,20 @@ struct CanvasShader {
   }
 
   createConicGradient3() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     this.context.fillStyle = grad
     this.context.fillRect(0, 0, 200, 200)
   }
 
   createConicGradient4() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     this.context.fillStyle = grad
     this.context.fillRect(0, 0, 200, 200)
   }
 
   createConicGradient5() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     this.context.fillStyle = grad
@@ -112,7 +112,7 @@ struct CanvasShader {
   }
 
   createConicGradient6() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -121,7 +121,7 @@ struct CanvasShader {
   }
 
   createConicGradient7() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, 100)
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -130,7 +130,7 @@ struct CanvasShader {
   }
 
   createConicGradient8() {
-    let grad: CanvasGradient = this.context.createConicGradient(45 * Math.PI / 180, 100, 100)
+    let grad = this.context.createConicGradient(45 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -139,7 +139,7 @@ struct CanvasShader {
   }
 
   createConicGradient9() {
-    let grad: CanvasGradient = this.context.createConicGradient(-45 * Math.PI / 180, 100, 100)
+    let grad = this.context.createConicGradient(-45 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -148,7 +148,7 @@ struct CanvasShader {
   }
 
   createConicGradient10() {
-    let grad: CanvasGradient = this.context.createConicGradient(450 * Math.PI / 180, 100, 100)
+    let grad = this.context.createConicGradient(450 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -157,7 +157,7 @@ struct CanvasShader {
   }
 
   createConicGradient11() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, null, 100)
+    let grad = this.context.createConicGradient(0, null, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -166,7 +166,7 @@ struct CanvasShader {
   }
 
   createConicGradient12() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, undefined, 100)
+    let grad = this.context.createConicGradient(0, undefined, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -175,7 +175,7 @@ struct CanvasShader {
   }
 
   createConicGradient13() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, null)
+    let grad = this.context.createConicGradient(0, 100, null)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -184,7 +184,7 @@ struct CanvasShader {
   }
 
   createConicGradient14() {
-    let grad: CanvasGradient = this.context.createConicGradient(0, 100, undefined)
+    let grad = this.context.createConicGradient(0, 100, undefined)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -193,7 +193,7 @@ struct CanvasShader {
   }
 
   createConicGradient15() {
-    let grad: CanvasGradient = this.context.createConicGradient(null, 100, 100)
+    let grad = this.context.createConicGradient(null, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -202,7 +202,7 @@ struct CanvasShader {
   }
 
   createConicGradient16() {
-    let grad: CanvasGradient = this.context.createConicGradient(undefined, 100, 100)
+    let grad = this.context.createConicGradient(undefined, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -211,7 +211,7 @@ struct CanvasShader {
   }
 
   createConicGradient17() {
-    let grad: CanvasGradient = this.context.createConicGradient(null, null, null)
+    let grad = this.context.createConicGradient(null, null, null)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')

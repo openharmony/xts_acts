@@ -24,7 +24,7 @@ export default function BindMenuTest() {
 
   describe('BindMenuTest', () => {
 
-    beforeEach(async () => {
+    beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
         url: "TestAbility/pages/BindMenu",
       }
@@ -39,6 +39,7 @@ export default function BindMenuTest() {
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));
       }
+      done()
     });
 
     /*
@@ -46,29 +47,20 @@ export default function BindMenuTest() {
      *tc.name   Call function bindMenu with MenuOptions
      *tc.desc   Call function bindMenu with MenuOptions
      */
-    it('ArkUI_Menu_0100', 0, async () => {
+    it('ArkUI_Menu_0100', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0100'
       console.info(`${SUITE} ${CASE} START`);
+
       let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
-        let callback2 = (event: events_emitter.EventData) => {
-          expect(event.data.action).assertEqual('onDisappear');
-        }
-        let event2: events_emitter.InnerEvent = {
-          eventId: 50001,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(event2, callback2);
-        let driver: Driver = Driver.create()
-        driver.delayMs(waitUiReadyMs)
-        sendEventByKey('BindMenu_placeholder', 10, "")
+        step2()
       }
       let event: events_emitter.InnerEvent = {
         eventId: 50000,
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-      let driver: Driver = Driver.create()
+      let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('BindMenu_bindMenu1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
@@ -79,12 +71,13 @@ export default function BindMenuTest() {
      *tc.name   Call function bindContextMenu with MenuOptions
      *tc.desc   Call function bindContextMenu with MenuOptions
      */
-    it('ArkUI_Menu_0200', 0, async () => {
+    it('ArkUI_Menu_0200', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0200'
       console.info(`${SUITE} ${CASE} START`);
 
       let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
+        step3()
       }
       let event: events_emitter.InnerEvent = {
         eventId: 60002,
@@ -97,4 +90,33 @@ export default function BindMenuTest() {
       console.info(`${SUITE} ${CASE} END`);
     });
   })
+}
+ async function step2() {
+  let callback = (event: events_emitter.EventData) => {
+    expect(event.data.action).assertEqual('onDisappear');
+
+  }
+  let event: events_emitter.InnerEvent = {
+    eventId: 50001,
+    priority: events_emitter.EventPriority.LOW
+  }
+  events_emitter.on(event, callback);
+  let driver = Driver.create()
+  await driver.delayMs(500)
+  sendEventByKey('BindMenu_placeholder', 10, "")
+}
+
+async function step3() {
+  let callback = (event: events_emitter.EventData) => {
+    expect(event.data.action).assertEqual('onDisappear');
+
+  }
+  let event: events_emitter.InnerEvent = {
+    eventId: 60003,
+    priority: events_emitter.EventPriority.LOW
+  }
+  events_emitter.on(event, callback);
+  let driver = Driver.create()
+  await driver.delayMs(500)
+  sendEventByKey('BindMenu_placeholder', 11, "")
 }
