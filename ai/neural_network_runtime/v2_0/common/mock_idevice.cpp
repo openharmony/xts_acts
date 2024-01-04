@@ -25,13 +25,13 @@
 
 namespace OHOS {
 namespace NeuralNetworkRuntime {
-void PrintRetLog(int32_t ret, int32_t nnrtSuccess, char* makeName)
+void PrintRetLog(int32_t ret, int32_t nnrtSuccess, std::string& makeName)
 {
     if (ret < nnrtSuccess) {
-            LOGW("%s failed. An error occurred in HDI, errorcode is %{public}d.", makeName, ret);
+            LOGW("%s failed. An error occurred in HDI, errorcode is %{public}d.", makeName.c_str(), ret);
         } else {
             OHOS::HDI::Nnrt::V2_0::NNRT_ReturnCode nnrtRet = static_cast<OHOS::HDI::Nnrt::V2_0::NNRT_ReturnCode>(ret);
-            LOGW("%s failed. Errorcode is %{public}s.", makeName, ConverterRetToString(nnrtRet).c_str());
+            LOGW("%s failed. Errorcode is %{public}s.", makeName.c_str(), ConverterRetToString(nnrtRet).c_str());
         }
 }
 
@@ -51,14 +51,14 @@ std::shared_ptr<Backend> HDIDeviceV2_0Creator()
     auto ret = iDevice->GetDeviceName(deviceName);
     int32_t nnrtSuccess = static_cast<int32_t>(V2_0::NNRT_ReturnCode::NNRT_SUCCESS);
     if (ret != nnrtSuccess) {
-        char* makeName = "Get device name";
+        std::string makeName = "Get device name";
         PrintRetLog(ret, nnrtSuccess, makeName);
         return nullptr;
     }
 
     ret = iDevice->GetVendorName(vendorName);
     if (ret != nnrtSuccess) {
-        char* makeName = "Get vendor name";
+        std::string makeName = "Get vendor name";
         PrintRetLog(ret, nnrtSuccess, makeName);
         return nullptr;
     }
@@ -66,7 +66,7 @@ std::shared_ptr<Backend> HDIDeviceV2_0Creator()
     std::pair<uint32_t, uint32_t> hdiVersion;
     ret = iDevice->GetVersion(hdiVersion.first, hdiVersion.second);
     if (ret != nnrtSuccess) {
-        char* makeName = "Get version";
+        std::string makeName = "Get version";
         PrintRetLog(ret, nnrtSuccess, makeName);
         return nullptr;
     }
