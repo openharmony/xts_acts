@@ -88,7 +88,7 @@ HWTEST_F(CompilationTest, SUB_AI_NNRt_Core_Func_North_Construct_Compilation_For_
 {
     OH_NNCompilation *compilation = OH_NNCompilation_ConstructForCache();
     ASSERT_NE(nullptr, compilation);
-    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     OH_NNCompilation_Destroy(&compilation);
 }
 

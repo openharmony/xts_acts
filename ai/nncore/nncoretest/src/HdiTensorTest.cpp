@@ -60,7 +60,7 @@ HWTEST_F(TensorTest, SUB_AI_NNRt_Func_North_Tensor_CreateTensor_0100, Function |
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Tensor_CreateTensor_0200
- * @tc.desc: 创建Tensor，deviceId不存在
+ * @tc.desc: 创建Tensor，deviceId=0，设备找到，创建成功
  * @tc.type: FUNC
  */
 HWTEST_F(TensorTest, SUB_AI_NNRt_Func_North_Tensor_CreateTensor_0200, Function | MediumTest | Level0)
@@ -69,7 +69,7 @@ HWTEST_F(TensorTest, SUB_AI_NNRt_Func_North_Tensor_CreateTensor_0200, Function |
     NN_TensorDesc* tensorDesc = createTensorDesc(inputDims, 4, OH_NN_FLOAT32, OH_NN_FORMAT_NCHW);
     size_t deviceId = 0;
     NN_Tensor* tensor = OH_NNTensor_Create(deviceId, tensorDesc);
-    ASSERT_EQ(nullptr, tensor);
+    ASSERT_NE(nullptr, tensor);
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNTensorDesc_Destroy(&tensorDesc));
 }
 
