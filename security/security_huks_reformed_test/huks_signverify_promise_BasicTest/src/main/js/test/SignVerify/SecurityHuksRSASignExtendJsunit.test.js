@@ -2820,10 +2820,10 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     console.info(srcKeyAlies + ": generateKeyItem succeed, data: " + data);
                 });
                 await huks.anonAttestKeyItem(srcKeyAlies, options).then(data => {
+                    expect(data.certChains != null).assertTrue();
                     console.info(srcKeyAlies + ": anonAttestKeyItem succeed, data: " + data);
                 });
                 await huks.deleteKeyItem(srcKeyAlies, genKeyOption).then(data => {
-                    expect(data.certChains != null).assertTrue();
                     console.info(srcKeyAlies + ": deleteKeyItem succeed, data: " + data);
                 });
             } catch (err) {
