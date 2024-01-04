@@ -52,7 +52,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0100
-         * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.desc put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -100,7 +100,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0200
-         * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.desc put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -147,7 +147,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0300
-         * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.desc put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -194,7 +194,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0400
-         * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.desc put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -241,7 +241,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0500
-         * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
+         * @tc.desc put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -289,7 +289,7 @@ export default function preferencesFlushTest(){
         /**
          * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0600
-         * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
+         * @tc.desc put，getAll，flush，removePreferencesFromCache，getAll promise interface test
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
