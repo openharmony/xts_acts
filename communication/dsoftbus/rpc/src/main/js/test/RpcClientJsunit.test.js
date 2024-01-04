@@ -1645,6 +1645,7 @@ export default function ActsRpcClientJsTest() {
          * @tc.number  SUB_DSoftbus_IPC_API_MessageSequence_0270
          * @tc.name    Writechararray interface, illegal value validation
          * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+         * @tc.level   3
          * @tc.type    Compatibility
          * @tc.size    MediumTest
          */
@@ -1678,6 +1679,7 @@ export default function ActsRpcClientJsTest() {
          * @tc.number  SUB_DSoftbus_IPC_API_MessageSequence_0280
          * @tc.name    Writechararray Indicates the length of an interface input parameter
          * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+         * @tc.level   3
          * @tc.type    Compatibility
          * @tc.size    MediumTest
          */
