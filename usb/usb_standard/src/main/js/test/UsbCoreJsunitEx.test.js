@@ -677,7 +677,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + '$#'
       var hasRight = usbManager.hasRight(deviceName)
       console.info('usb has_right ret :' + hasRight);
-      expect(hasRight).assertTrue();
+      expect(hasRight).assertFalse();
     }
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3400 :  PASS');
   })
@@ -705,7 +705,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + 'abcdg'
       var hasRight = usbManager.hasRight(deviceName)
       console.info('usb hasRight ret :' + hasRight);
-      expect(hasRight).assertTrue();
+      expect(hasRight).assertFalse();
     }
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3500 :  PASS');
   })
