@@ -26,6 +26,8 @@ group("netmanager_base") {
       "register:ActsRegisterTest",
       "socket:ActsSocketTest",
       "system_fetch:ActsSystemFetchTest",
+      "multicastconnection_dns:ActsNetworkManagerMulDNSTest",
+      "multicastconnection201_dns:ActsNetworkManagerMulDNS201Test"
     ]
   }
 }
