@@ -338,7 +338,7 @@ export default function preferencesCallBackTest(){
         })
 
         /**
-         * @tc.name clear、put、get、flush String callback interface test
+         * @tc.name clear put get flush String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiCallbackTest_2500
          * @tc.desc flush String callback interface test
          * @tc.size MediumTest
