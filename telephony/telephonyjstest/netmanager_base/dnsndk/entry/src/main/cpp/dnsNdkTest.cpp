@@ -14,6 +14,7 @@
  */
 #include "napi/native_api.h"
 #include "net_connection.h"
+#include "net_connection_type.h"
 #include <netdb.h>
 #include <cstring>
 #include "hilog/log.h"
@@ -66,11 +67,45 @@ static napi_value GetAddrInfo(napi_env env, napi_callback_info info)
     return ret;
 }
 
+int DnsResolver(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res)
+{
+    return 0;
+}
+
+static napi_value RegisterDnsResolver(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value ret;
+    int neterrno = 0;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int function = 0;
+    napi_get_value_int32(env, args[0], &function);
+
+    if (function == 0) {
+        neterrno = OHOS_NetConn_RegisterDnsResolver(DnsResolver);
+        napi_create_int32(env, neterrno, &ret);
+        return ret;
+    }
+
+    if (function == 1) {
+        neterrno = OHOS_NetConn_RegisterDnsResolver(nullptr);
+        napi_create_int32(env, neterrno, &ret);
+        return ret;
+    }
+
+    napi_create_int32(env, neterrno, &ret);
+    return ret;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"getaddrinfo", nullptr, GetAddrInfo, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"getaddrinfo", nullptr, GetAddrInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerdnsresolver", nullptr, RegisterDnsResolver, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
