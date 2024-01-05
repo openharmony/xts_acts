@@ -45,9 +45,9 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.number SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100
          * @tc.name connection::addCustomDnsRule
          * @tc.desc Test addCustomDNSRule property
-         * @tc.level 0
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.level Level1
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
             let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100";
@@ -65,9 +65,9 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.number NetworkManager_DNS_addCustomDNSRule_Promise_0300
          * @tc.name connection::addCustomDnsRule
          * @tc.desc Test addCustomDNSRule property
-         * @tc.level 0
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.level Level1
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0300", 0 , async (done:Function) => {
             let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0300";
@@ -86,9 +86,9 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.number SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100
          * @tc.name connection::removeCustomDnsRule
          * @tc.desc Test removeCustomDNSRule property
-         * @tc.level 0
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.level Level1
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
 
         it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
@@ -109,9 +109,9 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.number SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0300
          * @tc.name connection::removeCustomDnsRule
          * @tc.desc Test removeCustomDNSRule property
-         * @tc.level 0
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.level Level1
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0300", 0 , async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
@@ -128,9 +128,9 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.number SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100
          * @tc.name connection::clearCustomDnsRules
          * @tc.desc Test clearCustomDnsRules property
-         * @tc.level 0
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.level Level1
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
