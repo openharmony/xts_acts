@@ -23,7 +23,7 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "setenforce 0"
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
             ]
         }
     ]

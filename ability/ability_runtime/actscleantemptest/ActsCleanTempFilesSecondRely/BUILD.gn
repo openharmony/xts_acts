@@ -23,8 +23,8 @@ ohos_hap_assist_suite("ActsCleanTempFilesSecondRely") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsCleanTempFilesSecondRely"
-  subsystem_name = "bundlemanager"
-  part_name = "bundle_framework"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actscleancachefilessecondrely_app_profile") {
