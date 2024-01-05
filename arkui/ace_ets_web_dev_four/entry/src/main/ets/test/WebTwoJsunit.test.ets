@@ -70,29 +70,39 @@ export default function webTwoJsunit() {
      *tc.desic Sets allow the Web access overview mode
      */
     it('GetCertificate',0,async function(done){
-      emitKey="emitGetCertificate";
+      emitKey="emitonDownloadFailed";
       Utils.registerEvent("GetCertificate","getCertificate success: len = 0",4,done);
       sendEventByKey('webcomponenttwo',10,'');
     })
-    ///* 
-    // *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                     
-    // *tc.name PrefetchPage                                                                                                                                                                                                                 
-    // *tc.desic Sets allow the Web access overview mode
-    // */
-    //it('PrefetchPage',0,async function(done){
-    //  emitKey="emitPrepareForPageLoad";
-    //  Utils.registerEvent("PrefetchPage","success",6,done);
-    //  sendEventByKey('webcomponenttwo',10,'');
-    //})
-    ///* 
-    // *tc.number SUB_ACE_BASIC_ETS_API_003                                                                                                                                                                     
-    // *tc.name PrepareForPageLoad                                                                                                                                                                                                                 
-    // *tc.desic Sets allow the Web access overview mode
-    // */
-    //it('PrepareForPageLoad',0,async function(done){
-    //  emitKey="emitPrepareForPageLoad";
-    //  Utils.registerEvent("PrepareForPageLoad","success",8,done);
-    //  sendEventByKey('webcomponenttwo',10,'');
-    //})
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                     
+     *tc.name onDownloadFailed                                                                                                                                                                                                                 
+     *tc.desic Sets allow the Web access overview mode
+     */
+    it('onDownloadFailed',0,async function(done){
+      emitKey="emitsetDownloadDelegate";
+      Utils.registerEvent("onDownloadFailed",true,6,done);
+      sendEventByKey('webcomponenttwo',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_003                                                                                                                                                                   
+     *tc.name setDownloadDelegate                                                                                                                                                                                                                 
+     *tc.desic Sets allow the Web access overview mode
+     */
+    it('setDownloadDelegate',0,async function(done){
+      emitKey="emitresumeDownload";
+      Utils.registerEvent("setDownloadDelegate",true,8,done);
+      sendEventByKey('webcomponenttwo',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_004                                                                                                                                                                 
+     *tc.name resumeDownload                                                                                                                                                                                                                 
+     *tc.desic Sets allow the Web access overview mode
+     */
+    it('resumeDownload',0,async function(done){
+      emitKey="emitresumeDownload";
+      Utils.registerEvent("resumeDownload",true,12,done);
+      sendEventByKey('webcomponenttwo',10,'');
+    })
   })
 }

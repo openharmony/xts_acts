@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetPaddingMargin_SubChangeMar() {
-  describe('ColumnSetPaddingMarginTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetPaddingMargin_SubChangeMar',
+  describe('ColumnSetPaddingMarginTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetPaddingMargin_SubChangeMar',
       }
       try {
         router.clear();
@@ -37,25 +39,24 @@ export default function ColumnSetPaddingMargin_SubChangeMar() {
         console.error("push ColumnSetPaddingMargin_SubChangeMar page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("ColumnSetPaddingMargin_SubChangeMar after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1000
-     * @tc.name      testColumnParentMarPadSubMargin
-     * @tc.desc      Parent component set paddding and margin,subcomponent set margin.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1000
+     * @tc.name testColumnParentMarPadSubMargin
+     * @tc.desc Parent component set paddding and margin,subcomponent set margin.
      */
-    it('testColumnParentMarPadSubMargin', 0, async function (done) {
+    it('testColumnParentMarPadSubMargin', 0, async () => {
       console.info('new testColumnParentMarPadSubMargin START');
       await CommonFunc.sleep(2000);
-      let setPadMar01 = CommonFunc.getComponentRect('setPadMar01');
-      let setPadMar02 = CommonFunc.getComponentRect('setPadMar02');
-      let setPadMar03 = CommonFunc.getComponentRect('setPadMar03');
-      let setPadMar = CommonFunc.getComponentRect('setPadMar');
+      let setPadMar01: RectValue = CommonFunc.getComponentRect('setPadMar01');
+      let setPadMar02: RectValue = CommonFunc.getComponentRect('setPadMar02');
+      let setPadMar03: RectValue = CommonFunc.getComponentRect('setPadMar03');
+      let setPadMar: RectValue = CommonFunc.getComponentRect('setPadMar');
       expect(Math.abs(Math.round(setPadMar01.top - setPadMar.top) - Math.round(vp2px(40))) <= 1).assertTrue()
       expect(Math.abs(Math.round(setPadMar02.top - setPadMar01.bottom) - Math.round(vp2px(50))) <= 1).assertTrue()
       expect(Math.abs(Math.round(setPadMar03.top - setPadMar02.bottom) - Math.round(vp2px(30))) <= 1).assertTrue()
@@ -64,7 +65,6 @@ export default function ColumnSetPaddingMargin_SubChangeMar() {
       expect(Math.abs(Math.round(setPadMar02.right - setPadMar02.left) - Math.round(vp2px(300))) <= 1).assertTrue()
       expect(Math.abs(Math.round(setPadMar03.right - setPadMar03.left) - Math.round(vp2px(300))) <= 1).assertTrue()
       console.info('new testColumnParentMarPadSubMargin END');
-      done();
     });
   })
 }

@@ -45,9 +45,11 @@ export default class MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility2 onForeground")
+        globalThis.MainAbility2onForeground = true;
         setTimeout(function () {
             globalThis.ability2.terminateSelf()
                 .then((data) => {
+                    globalThis.MainAbility2terminateSelf = true;
                     console.info('[Demo] MainAbility2 terminateself succeeded: ' + data);
                 }).catch((error) => {
                 console.error('[Demo] MainAbility2 terminateself failed. Cause: ' + error);

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "TextfieldSingleTest.hap"
+            "ActsTextfieldSingleTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

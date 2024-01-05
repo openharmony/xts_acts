@@ -20,7 +20,7 @@ import common from "@ohos.app.ability.common"
 let context: common.UIAbilityContext
 
 const NAME = 'test_preferences_store';
-const TAG = "[preferencesDataGroupIdSync]"
+const TAG = "[ttt]"
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 let mPreferences;
 
@@ -52,11 +52,10 @@ export default function preferencesDataGroupIdSync() {
       };
       try {
         mPreferences = data_preferences.getPreferencesSync(context, Options)
-        expect().assertFail();
+        expect(Options.dataGroupId).assertEqual(null);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -76,11 +75,10 @@ export default function preferencesDataGroupIdSync() {
       };
       try {
         mPreferences = data_preferences.getPreferencesSync(context, Options)
-        expect().assertFail();
+        expect(Options.dataGroupId).assertEqual(undefined);
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -103,7 +101,6 @@ export default function preferencesDataGroupIdSync() {
         expect(Options.dataGroupId).assertEqual('123456')
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect().assertFail();
         done();
       }
@@ -152,12 +149,12 @@ export default function preferencesDataGroupIdSync() {
       };
       try {
         mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        expect(Options1.dataGroupId).assertEqual('123456')
         data_preferences.removePreferencesFromCacheSync(context, Options2)
-        expect().assertFail()
+        expect(Options2.dataGroupId).assertEqual(null)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })
@@ -181,12 +178,12 @@ export default function preferencesDataGroupIdSync() {
       };
       try {
         mPreferences = data_preferences.getPreferencesSync(context, Options1)
+        expect(Options1.dataGroupId).assertEqual('123456')
         data_preferences.removePreferencesFromCacheSync(context, Options2)
-        expect().assertFail()
+        expect(Options2.dataGroupId).assertEqual(undefined)
         done();
       } catch (errInfo) {
-        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-        expect(errInfo.code).assertEqual('401');
+        expect().assertFail();
         done();
       }
     })

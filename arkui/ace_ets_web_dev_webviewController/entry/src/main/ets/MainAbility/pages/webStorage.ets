@@ -98,11 +98,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7140);
+                  Utils.emitEventTwo(0, quota.toString(), 7140);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7140);
+                Utils.emitEventTwo(0, quota.toString(), 7140);
               }
               break;
             }
@@ -155,11 +155,11 @@ struct getOrigins {
                       console.log(`quota is: ${origins[0].quota}`);
                     }
                     console.log(`getOrigins  call end`);
-                    Utils.emitEvent(quota.toString(), 7146);
+                    Utils.emitEventTwo(0, quota.toString(), 7146);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7146);
+                Utils.emitEventTwo(0, quota.toString(), 7146);
               }
               break;
             }
@@ -212,11 +212,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7152);
+                  Utils.emitEventTwo(0, quota.toString(), 7152);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7152);
+                 Utils.emitEventTwo(0, quota.toString(), 7152);
               }
               break;
             }
@@ -272,11 +272,11 @@ struct getOrigins {
                       console.log(`quota is: ${origins[0].quota}`);
                     }
                     console.log(`getOrigins callback call end`);
-                    Utils.emitEvent(quota.toString(), 7158);
+                    Utils.emitEventTwo(0, quota.toString(), 7158);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7158);
+                Utils.emitEventTwo(0, quota.toString(), 7158);
               }
               break;
             }
@@ -329,11 +329,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7164);
+                  Utils.emitEventTwo(0, quota.toString(), 7164);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7164);
+                Utils.emitEventTwo(0, quota.toString(), 7164);
               }
               break;
             }
@@ -367,16 +367,16 @@ struct getOrigins {
                     if (origins) {
                       quota = origins[0].quota;
                       console.log(`quota is: ${origins[0].quota}`);
-                      Utils.emitEvent(quota.toString(), 7170);
+                      Utils.emitEventTwo(0, quota.toString(), 7170);
                     }
                     console.log(`getOrigins call end`);
                   }).catch(error => {
                     console.log('getOrigins error: ' + JSON.stringify(error));
-                    Utils.emitEvent(quota.toString(), 7170);
+                    Utils.emitEventTwo(0, quota.toString(), 7170);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7170);
+                Utils.emitEventTwo(0, quota.toString(), 7170);
               }
               break;
             }
@@ -432,11 +432,11 @@ struct getOrigins {
                     console.log('quota is: ' + quota);
                     getQuota = quota;
                   }
-                  Utils.emitEvent(getQuota.toString(), 7176);
+                  Utils.emitEventTwo(0, getQuota.toString(), 7176);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(getQuota.toString(), 7176);
+                Utils.emitEventTwo(0, getQuota.toString(), 7176);
               }
               break;
             }
@@ -448,15 +448,15 @@ struct getOrigins {
                   .then(quota => {
                     console.log('quota is: ' + quota);
                     getQuota = quota;
-                    Utils.emitEvent(getQuota.toString(), 7178);
+                    Utils.emitEventTwo(0, getQuota.toString(), 7178);
                   })
                   .catch(error => {
                     console.log('getOriginQuota error: ' + JSON.stringify(error));
-                    Utils.emitEvent(getQuota.toString(), 7178);
+                    Utils.emitEventTwo(0, getQuota.toString(), 7178);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(getQuota.toString(), 7178);
+                Utils.emitEventTwo(0, getQuota.toString(), 7178);
               }
               break;
             }
@@ -508,11 +508,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7184);
+                  Utils.emitEventTwo(0, quota.toString(), 7184);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7184);
+                Utils.emitEventTwo(0, quota.toString(), 7184);
               }
               break;
             }

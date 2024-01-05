@@ -90,8 +90,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsCallbackLoadWebkit03', 0, async function(done){
       emitKey = 'emitGetOriginsPromiseLoadWebkit01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadWebkit03", quota.toString(), 7140, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadWebkit03", 7140, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -126,8 +125,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsPromiseLoadWebkit03', 0, async function(done){
       emitKey = 'emitGetOriginsCallbackLoadBaidu01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadWebkit03", quota.toString(), 7146, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadWebkit03", 7146, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -162,8 +160,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsCallbackLoadBaidu03', 0, async function(done){
       emitKey = 'emitGetOriginsPromiseLoadBaidu01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadBaidu03", quota.toString(), 7152, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadBaidu03", 7152, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -198,8 +195,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsPromiseLoadBaidu03', 0, async function(done){
       emitKey = 'emitGetOriginsCallbackLoadLocalHtml01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadBaidu03", quota.toString(), 7158, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadBaidu03", 7158, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -231,8 +227,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsCallbackLoadLocalHtml03', 0, async function(done){
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml02';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadLocalHtml03", quota.toString(), 7164, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadLocalHtml03", 7164, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -256,8 +251,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginsPromiseLoadLocalHtml03', 0, async function(done){
       emitKey = 'emitDeleteOrigin';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadLocalHtml03", quota.toString(), 7170, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadLocalHtml03", 7170, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -289,8 +283,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginQuotaCallback', 0, async function(done){
       emitKey = 'emitGetOriginQuotaPromise';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginQuotaCallback", quota.toString(), 7176, done);
+      Utils.registerLargerEvent("testGetOriginQuotaCallback", 7176, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -300,8 +293,7 @@ export default function WebViewWebStorageJsunit() {
     */
     it('testGetOriginQuotaPromise', 0, async function(done){
       emitKey = 'emitGetOriginUsageCallback';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginQuotaPromise", quota.toString(), 7178, done);
+      Utils.registerLargerEvent("testGetOriginQuotaPromise", 7178, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -332,8 +324,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api blockNetWork set to false by load online website
     */
     it('testGetOriginsDomStorageAccessFalse',0,async function(done){
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsDomStorageAccessFalse", quota.toString(), 7184, done);
+      Utils.registerLargerEvent("testGetOriginsDomStorageAccessFalse", 7184, done);
       sendEventByKey('webStorage', 10, '');
     })
   })

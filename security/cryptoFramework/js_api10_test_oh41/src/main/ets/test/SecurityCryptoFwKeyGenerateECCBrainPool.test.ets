@@ -1152,6 +1152,32 @@ export default function SecurityCryptoFwKeyGenerateECCBrainPoolTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_BrainPool_Func_5200
+     * @tc.name Test algName,format with BrainPool. Promsie style. Process success
+     * @tc.desc AsyKeyGenerator with algName ECC_BrainPoolP160r1
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_BrainPool_Func_5200", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_BrainPool_Func_5200";
+      console.log(testNumber + ": started");
+      let keyAlg: string = "ECC_BrainPoolP160r1";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(keyAlg);
+        expect(keyPair.pubKey.format == "X.509").assertTrue();
+        expect(keyPair.pubKey.algName == "EC").assertTrue();
+        expect(keyPair.priKey.format == "PKCS#8").assertTrue();
+        expect(keyPair.priKey.algName == "EC").assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
 
   })
 }

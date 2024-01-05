@@ -18,9 +18,13 @@ group("graphic") {
     deps = [
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
+      "graphicGLES3:ActsGraphicGles3Test",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
+      "nativebuffer:ActsNativeBufferTest",
+      "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
+      "nativevsync:ActsNativeVsyncTest",
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",

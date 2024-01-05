@@ -18,6 +18,7 @@
 #include "image_pixel_map_napi.h"
 #include <cstdlib>
 #include "hilog/log.h"
+#include "raw_file.h"
 
 namespace {
     constexpr size_t SIZE_ZERO = 0;
@@ -51,7 +52,12 @@ napi_value ImageSourceNDKTest::Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor props[] = {
         STATIC_FUNCTION("create", Create),
+        STATIC_FUNCTION("createFromFd", CreateFromFd),
+        STATIC_FUNCTION("createFromUri", CreateFromUri),
+        STATIC_FUNCTION("createFromData", CreateFromData),
+        STATIC_FUNCTION("createFromRawFile", CreateFromRawFile),
         STATIC_FUNCTION("createIncremental", CreateIncremental),
+        STATIC_FUNCTION("createIncrementalFromData", CreateIncrementalFromData),
         STATIC_FUNCTION("initNative", InitNative),
         STATIC_FUNCTION("createPixelMap", CreatePixelMap),
         STATIC_FUNCTION("createPixelMapList", CreatePixelMapList),
@@ -298,6 +304,126 @@ napi_value ImageSourceNDKTest::Create(napi_env env, napi_callback_info info)
     return createResultValue(env, res, imageSource);
 }
 
+napi_value ImageSourceNDKTest::CreateFromFd(napi_env env, napi_callback_info info)
+{
+    napi_value thisVar = nullptr;
+    napi_value argValue[SIZE_TWO] = {0};
+    size_t argCount = SIZE_TWO;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        !checkArgs(argValue, argCount, SIZE_TWO)) {
+        return createUndefine(env);
+    }
+    if (!checkType(env, argValue[ARGS_FIRST], napi_number)) {
+        DEBUG_LOG("Fd type is not number");
+        return createUndefine(env);
+    }
+    int32_t fd;
+    if (napi_ok != napi_get_value_int32(env, argValue[ARGS_FIRST], &(fd))) {
+        DEBUG_LOG("Fd arg failed");
+        return createUndefine(env);
+    }
+    struct OhosImageSourceOps ops;
+    if (!parseImageSourceOpt(env, argValue[ARGS_SECOND], ops)) {
+        DEBUG_LOG("parseImageSourceOpt failed!!!");
+        return createUndefine(env);
+    }
+    napi_value imageSource = nullptr;
+    int32_t res = OH_ImageSource_CreateFromFd(env, fd, &ops, &imageSource);
+    return createResultValue(env, res, imageSource);
+}
+
+napi_value ImageSourceNDKTest::CreateFromData(napi_env env, napi_callback_info info)
+{
+    napi_value thisVar = nullptr;
+    napi_value argValue[SIZE_TWO] = {0};
+    size_t argCount = SIZE_TWO;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        !checkArgs(argValue, argCount, SIZE_TWO)) {
+        return createUndefine(env);
+    }
+    bool isArrayBuffer = false;
+    if (napi_is_arraybuffer(env, argValue[ARGS_FIRST], &isArrayBuffer) != napi_ok || !isArrayBuffer) {
+        DEBUG_LOG("Buffer type is not arraybuffer");
+        return createUndefine(env);
+    }
+    void* buf = nullptr;
+    size_t bufferSize = 0;
+    if (napi_ok != napi_get_arraybuffer_info(env, argValue[ARGS_FIRST], &buf, &(bufferSize)) ||
+        buf == nullptr || bufferSize == SIZE_ZERO) {
+        DEBUG_LOG("buf arg failed");
+        return createUndefine(env);
+    }
+    struct OhosImageSourceOps ops;
+    if (!parseImageSourceOpt(env, argValue[ARGS_SECOND], ops)) {
+        DEBUG_LOG("parseImageSourceOpt failed!!!");
+        return createUndefine(env);
+    }
+    napi_value imageSource = nullptr;
+    uint8_t* data = reinterpret_cast<uint8_t*>(buf);
+    int32_t res = OH_ImageSource_CreateFromData(env, data, bufferSize, &ops, &imageSource);
+    return createResultValue(env, res, imageSource);
+}
+
+napi_value ImageSourceNDKTest::CreateFromUri(napi_env env, napi_callback_info info)
+{
+    napi_value thisVar = nullptr;
+    napi_value argValue[SIZE_TWO] = {0};
+    size_t argCount = SIZE_TWO;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        !checkArgs(argValue, argCount, SIZE_TWO)) {
+        return createUndefine(env);
+    }
+    size_t uriSize;
+    char uri[2048];
+    napi_get_value_string_utf8(env, argValue[ARGS_FIRST], uri, sizeof(uri), &uriSize);
+
+    struct OhosImageSourceOps ops;
+    if (!parseImageSourceOpt(env, argValue[ARGS_SECOND], ops)) {
+        DEBUG_LOG("parseImageSourceOpt failed!!!");
+        return createUndefine(env);
+    }
+    napi_value imageSource = nullptr;
+    int32_t res = OH_ImageSource_CreateFromUri(env, uri, uriSize, &ops, &imageSource);
+    return createResultValue(env, res, imageSource);
+}
+
+napi_value ImageSourceNDKTest::CreateFromRawFile(napi_env env, napi_callback_info info)
+{
+    napi_value thisVar = nullptr;
+    napi_value argValue[SIZE_TWO] = {0};
+    size_t argCount = SIZE_TWO;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        !checkArgs(argValue, argCount, SIZE_TWO)) {
+        return createUndefine(env);
+    }
+    RawFileDescriptor rawFileDescriptor = {};
+    int32_t fd, offset, length;
+    if (!GetInt32Property(env, argValue[ARGS_FIRST], "fd", &fd)) {
+        DEBUG_LOG("get fd failed");
+        return createUndefine(env);
+    }
+    rawFileDescriptor.fd = fd;
+    if (!GetInt32Property(env, argValue[ARGS_FIRST], "offset", &offset)) {
+        DEBUG_LOG("get offset failed");
+        return createUndefine(env);
+    }
+    rawFileDescriptor.start = offset;
+    if (!GetInt32Property(env, argValue[ARGS_FIRST], "length", &length)) {
+        DEBUG_LOG("get length failed");
+        return createUndefine(env);
+    }
+    rawFileDescriptor.length = length;
+
+    struct OhosImageSourceOps ops;
+    if (!parseImageSourceOpt(env, argValue[ARGS_SECOND], ops)) {
+        DEBUG_LOG("parseImageSourceOpt failed!!!");
+        return createUndefine(env);
+    }
+    napi_value imageSource = nullptr;
+    int32_t res = OH_ImageSource_CreateFromRawFile(env, rawFileDescriptor, &ops, &imageSource);
+    return createResultValue(env, res, imageSource);
+}
+
 napi_value ImageSourceNDKTest::CreateIncremental(napi_env env, napi_callback_info info)
 {
     napi_value thisVar = nullptr;
@@ -323,6 +449,38 @@ napi_value ImageSourceNDKTest::CreateIncremental(napi_env env, napi_callback_inf
         return createUndefine(env);
     }
     OhosImageSourceRelease(src);
+    return createResultValue(env, res, imageSource);
+}
+
+napi_value ImageSourceNDKTest::CreateIncrementalFromData(napi_env env, napi_callback_info info)
+{
+    napi_value thisVar = nullptr;
+    napi_value argValue[SIZE_TWO] = {0};
+    size_t argCount = SIZE_TWO;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok ||
+        !checkArgs(argValue, argCount, SIZE_TWO)) {
+        return createUndefine(env);
+    }
+    bool isArrayBuffer = false;
+    if (napi_is_arraybuffer(env, argValue[ARGS_FIRST], &isArrayBuffer) != napi_ok || !isArrayBuffer) {
+        DEBUG_LOG("Buffer type is not arraybuffer");
+        return createUndefine(env);
+    }
+    void* buf = nullptr;
+    size_t bufferSize = 0;
+    if (napi_ok != napi_get_arraybuffer_info(env, argValue[ARGS_FIRST], &buf, &(bufferSize)) ||
+        buf == nullptr || bufferSize == SIZE_ZERO) {
+        DEBUG_LOG("buf arg failed");
+        return createUndefine(env);
+    }
+    struct OhosImageSourceOps ops;
+    if (!parseImageSourceOpt(env, argValue[ARGS_SECOND], ops)) {
+        DEBUG_LOG("parseImageSourceOpt failed!!!");
+        return createUndefine(env);
+    }
+    napi_value imageSource = nullptr;
+    uint8_t* data = reinterpret_cast<uint8_t*>(buf);
+    int32_t res = OH_ImageSource_CreateIncrementalFromData(env, data, bufferSize, &ops, &imageSource);
     return createResultValue(env, res, imageSource);
 }
 

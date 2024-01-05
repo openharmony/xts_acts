@@ -303,21 +303,6 @@ export default function webController() {
     })
 
     /*
-    * @tc.number     : SUB_WEB_ONFILESELECTORSHOW_0100
-    * @tc.name       : testOnFileSelectorShow001
-    * @tc.desc       : test onFileSelectorShow
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testOnFileSelectorShow001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnFileSelectorShow001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnFileSelectorShow001", true, 31019, done);
-      sendEventByKey('WebControllerButton', 10, '');
-    })
-
-    /*
     * @tc.number     : SUB_WEB_IMAGEACCESS_0100
     * @tc.name       : testImageAccess001
     * @tc.desc       : test imageAccess

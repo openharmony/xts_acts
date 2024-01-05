@@ -47,6 +47,9 @@
           "MainAbility/pages/hitTestMode",
           "MainAbility/pages/color",
           "MainAbility/pages/navigation_lack",
-          "MainAbility/pages/gestureSetting"
+          "MainAbility/pages/gestureSetting",
+          "MainAbility/pages/ImageApi",
+          "MainAbility/pages/NavigationApi",
+          "MainAbility/pages/TextApi/TextStyle"
     ]
 }

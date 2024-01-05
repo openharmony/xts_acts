@@ -255,6 +255,83 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
 })
 
     /*
+     * @tc.number  ACTS_AAbilityStartSettingNew_0600
+     * @tc.name    Test abilityStartSettings instead of abilityStartSetting.
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("ACTS_AAbilityStartSettingNew_0600",0, async function(done){
+        console.info("ACTS_AlogMessage 1 ACTS_AAbilityStartSettingNew_0600-------------------");
+        try{
+            let Want = {
+                bundleName: "com.example.abilityStartSettingApp",
+                abilityName: "com.example.abilityStartSettingApp.MainAbility",
+            }
+
+            let abilityStartSettings = {
+                [featureAbility.AbilityStartSetting.BOUNDS_KEY] : [100,200,300,400],
+                [featureAbility.AbilityStartSetting.WINDOW_MODE_KEY] :
+                        featureAbility.AbilityWindowConfiguration.WINDOW_MODE_FULLSCREEN,
+                [featureAbility.AbilityStartSetting.DISPLAY_ID_KEY] : 1,
+            }
+
+            var StartAbilityParameter = {
+                want:Want,
+                abilityStartSettings:abilityStartSettings
+            }
+
+            featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
+                console.log('ACTS_AAbilityStartSettingNew_0600 asyncCallback errCode : ' + JSON.stringify(err) 
+                + " data: " + JSON.stringify(data));
+                expect(errCode).assertEqual(err.code);
+                done();
+            });
+        }catch(error){
+            console.log("ACTS_AAbilityStartSettingNew_0600 : error = " + error);
+            done();
+        }
+    })
+
+    /*
+     * @tc.number  ACTS_AAbilityStartSettingNew_0700
+     * @tc.name    Set both abilityStartSetting and abilityStartSettings.
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("ACTS_AAbilityStartSettingNew_0700",0, async function(done){
+        console.info("ACTS_AlogMessage 1 ACTS_AAbilityStartSettingNew_0700-------------------");
+        try{
+            let Want = {
+                bundleName: "com.example.abilityStartSettingApp",
+                abilityName: "com.example.abilityStartSettingApp.MainAbility",
+            }
+
+            let abilityStartSettings = {
+                [featureAbility.AbilityStartSetting.BOUNDS_KEY] : [100,200,300,400],
+                [featureAbility.AbilityStartSetting.WINDOW_MODE_KEY] :
+                        featureAbility.AbilityWindowConfiguration.WINDOW_MODE_FULLSCREEN,
+                [featureAbility.AbilityStartSetting.DISPLAY_ID_KEY] : 1,
+            }
+
+            var StartAbilityParameter = {
+                want:Want,
+                abilityStartSetting:{},
+                abilityStartSettings:abilityStartSettings
+            }
+
+            featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
+                console.log('ACTS_AAbilityStartSettingNew_0700 asyncCallback errCode : ' + JSON.stringify(err) 
+                + " data: " + JSON.stringify(data));
+                expect(errCode).assertEqual(err.code);
+                done();
+            });
+        }catch(error){
+            console.log("ACTS_AAbilityStartSettingNew_0700 : error = " + error);
+            done();
+        }
+    })
+
+    /*
     * @tc.number: ACTS_AJsServiceAbility_0600
     * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)

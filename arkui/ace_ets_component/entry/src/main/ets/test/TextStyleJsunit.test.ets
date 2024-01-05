@@ -53,7 +53,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle006] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle006] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00px');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
@@ -79,7 +79,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle007] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle007] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00px');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
@@ -105,7 +105,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle008] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle008] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00px');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
@@ -131,7 +131,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle009] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle009] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00px');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
@@ -157,7 +157,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle010] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle010] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00px');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 

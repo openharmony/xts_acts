@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetLayoutWeight_SubChange() {
-  describe('ColumnSetLayoutWeightTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetLayoutWeight_SubChange',
+  describe('ColumnSetLayoutWeightTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetLayoutWeight_SubChange',
       }
       try {
         router.clear();
@@ -37,39 +39,37 @@ export default function ColumnSetLayoutWeight_SubChange() {
         console.error("push SetLayoutWeight page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("SetLayoutWeight after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1700
-     * @tc.name      testColumnSetLayoutWeightWithRateThreeTwoOne
-     * @tc.desc      Subcomponents set layout weight(3-2-1) attribute.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1700
+     * @tc.name testColumnSetLayoutWeightWithRateThreeTwoOne
+     * @tc.desc Subcomponents set layout weight(3-2-1) attribute.
      */
-    it('testColumnSetLayoutWeightWithRateThreeTwoOne', 0, async function (done) {
+    it('testColumnSetLayoutWeightWithRateThreeTwoOne', 0, async () => {
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoOne START');
       await CommonFunc.sleep(1000);
-      let layoutExpectHeight1 = 510/3;
-      let layoutExpectHeight2 = 340/3;
-      let layoutExpectHeight3 = 170/3;
-      let setLayoutWeight1 = CommonFunc.getComponentRect('setLayoutWeight1');
-      let setLayoutWeight2 = CommonFunc.getComponentRect('setLayoutWeight2');
-      let setLayoutWeight3 = CommonFunc.getComponentRect('setLayoutWeight3');
-      let setLayoutWeight = CommonFunc.getComponentRect('setLayoutWeight');
+      let layoutExpectHeight1 = 510 / 3;
+      let layoutExpectHeight2 = 340 / 3;
+      let layoutExpectHeight3 = 170 / 3;
+      let setLayoutWeight1: RectValue = CommonFunc.getComponentRect('setLayoutWeight1');
+      let setLayoutWeight2: RectValue = CommonFunc.getComponentRect('setLayoutWeight2');
+      let setLayoutWeight3: RectValue = CommonFunc.getComponentRect('setLayoutWeight3');
+      let setLayoutWeight: RectValue = CommonFunc.getComponentRect('setLayoutWeight');
 
       expect(Math.abs(setLayoutWeight1.top - setLayoutWeight.top) <= 1).assertTrue()
       expect(Math.abs(setLayoutWeight2.top - setLayoutWeight1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(setLayoutWeight3.top - setLayoutWeight2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(setLayoutWeight.bottom - setLayoutWeight3.bottom) <= 1).assertTrue()
 
-      expect(Math.abs(setLayoutWeight1.bottom - setLayoutWeight1.top - Math.round(vp2px(510/3))) <= 1).assertTrue()
-      expect(Math.abs(setLayoutWeight2.bottom - setLayoutWeight2.top - Math.round(vp2px(340/3))) <= 1).assertTrue()
-      expect(Math.abs(setLayoutWeight3.bottom - setLayoutWeight3.top - Math.round(vp2px(170/3))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeight1.bottom - setLayoutWeight1.top - Math.round(vp2px(510 / 3))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeight2.bottom - setLayoutWeight2.top - Math.round(vp2px(340 / 3))) <= 1).assertTrue()
+      expect(Math.abs(setLayoutWeight3.bottom - setLayoutWeight3.top - Math.round(vp2px(170 / 3))) <= 1).assertTrue()
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoOne END');
-      done();
     });
   })
 }

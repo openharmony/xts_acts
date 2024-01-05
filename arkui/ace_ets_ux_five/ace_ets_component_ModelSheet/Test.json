@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ModelSheetTest.hap"
+            "ActsModelSheetTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

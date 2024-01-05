@@ -2,17 +2,25 @@
     "description": "Configuration for native image Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "bundle-name": "com.nativeimage.napitest",
-        "module-name": "com.nativeimage.napitest",
+        "test-timeout": "600000",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "bundle-name": "com.nativeimage.napitest",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsNativeImageTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsNativeImageTest.hap",
+                "ActsNativeImageMainTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

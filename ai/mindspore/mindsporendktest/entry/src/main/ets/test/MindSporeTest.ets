@@ -15,6 +15,7 @@
 
 import { describe, expect, it } from '@ohos/hypium'
 import mindSpore from 'libmindsporendk.so'
+import deviceInfo from '@ohos.deviceInfo'
 
 enum OH_AI_DeviceType {
   OH_AI_DEVICETYPE_CPU = 0,
@@ -31,6 +32,7 @@ enum OH_AI_PerformanceMode {
   OH_AI_PERFORMANCE_HIGH = 3,
   OH_AI_PERFORMANCE_EXTREME = 4
 }
+let deviceTypeInfo: string = deviceInfo.deviceType;
 
 export default function mindSporeTest() {
   describe('MindSporeTest', () => {
@@ -1126,6 +1128,132 @@ export default function mindSporeTest() {
     });
 
     /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_GETALLNNRTDEVICEDESCS_0100
+     * @tc.name       : testMindSporeGetAllNNRTDeviceDescsOne
+     * @tc.desc       : test the normal condition of OH_AI_GetAllNNRTDeviceDescs
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeGetAllNNRTDeviceDescs001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIGetAllNNRTDeviceDescsOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DESTROYALLNNRTDEVICEDESCS_0100
+     * @tc.name       : testMindSporeDestroyAllNNRTDeviceDescsOne
+     * @tc.desc       : test the normal condition of OH_AI_DestroyAllNNRTDeviceDescs
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDestroyAllNNRTDeviceDescs001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIDestroyAllNNRTDeviceDescsOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_GETDEVICEIDFROMNNRTDEVICEDESC_0100
+     * @tc.name       : testMindSporeGetDeviceIdFromNNRTDeviceDescOne
+     * @tc.desc       : test the normal condition of OH_AI_GetDeviceIdFromNNRTDeviceDesc
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeGetDeviceIdFromNNRTDeviceDesc001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIGetDeviceIdFromNNRTDeviceDescOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_GETNAMEFROMNNRTDEVICEDESC_0100
+     * @tc.name       : testMindSporeGetNameFromNNRTDeviceDescOne
+     * @tc.desc       : test the normal condition of OH_AI_GetNameFromNNRTDeviceDesc
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeGetNameFromNNRTDeviceDesc001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIGetNameFromNNRTDeviceDescOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_GETTYPEFROMNNRTDEVICEDESC_0100
+     * @tc.name       : testMindSporeGetTypeFromNNRTDeviceDescOne
+     * @tc.desc       : test the normal condition of OH_AI_GetTypeFromNNRTDeviceDesc
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeGetTypeFromNNRTDeviceDesc001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIGetTypeFromNNRTDeviceDescOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CREATENNRTDEVICEINFOBYNAME_0100
+     * @tc.name       : testMindSporeCreateNNRTDeviceInfoByNameOne
+     * @tc.desc       : test the normal condition of OH_AI_CreateNNRTDeviceInfoByName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeCreateNNRTDeviceInfoByName001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAICreateNNRTDeviceInfoByNameOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CREATENNRTDEVICEINFOBYTYPE_0100
+     * @tc.name       : testMindSporeCreateNNRTDeviceInfoByTypeOne
+     * @tc.desc       : test the normal condition of OH_AI_CreateNNRTDeviceInfoByType
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeCreateNNRTDeviceInfoByType001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAICreateNNRTDeviceInfoByTypeOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
+    });
+
+    /**
      * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPRIORITY_0100
      * @tc.name       : testMindSporeDeviceInfoSetPriorityOne
      * @tc.desc       : test the normal condition of OH_AI_DeviceInfoSetPriority
@@ -1137,6 +1265,24 @@ export default function mindSporeTest() {
       let data = mindSpore.oHAIDeviceInfoSetPriorityOne();
       expect(data).assertEqual(1);
       done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_GETELEMENTOFNNRTDEVICEDESCS_0100
+     * @tc.name       : testMindSporeGetElementOfNNRTDeviceDescsOne
+     * @tc.desc       : test the normal condition of OH_AI_GetElementOfNNRTDeviceDescs
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeGetElementOfNNRTDeviceDescs001', 0, async (done: Function) => {
+      if (deviceTypeInfo=="Mate40"){
+        let data = mindSpore.oHAIGetElementOfNNRTDeviceDescsOne();
+        expect(data).assertEqual(1);
+        done()
+      } else {
+        done()
+      }
     });
 
     /**
@@ -1167,5 +1313,442 @@ export default function mindSporeTest() {
       done()
     });
 
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELBUILDFROMFILE_0100
+     * @tc.name       : testMindSporeModelBuildFromFileOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelBuildFromFile
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelBuildFromFile001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelBuildFromFileOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELRESIZE_0100
+     * @tc.name       : testMindSporeModelResizeOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelResize
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelResize001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelResizeOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELPREDICT_0100
+     * @tc.name       : testMindSporeModelPredictOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelPredict
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelPredict001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelPredictOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELGETINPUTS_0100
+     * @tc.name       : testMindSporeModelGetInputsOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelGetInputs
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelGetInputs001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelGetInputsOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELGETOUTPUTS_0100
+     * @tc.name       : testMindSporeModelGetOutputsOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelGetOutputs
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelGetOutputs001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelGetOutputsOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELGETINPUTBYTENSORNAME_0100
+     * @tc.name       : testMindSporeModelGetInputByTensorNameOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelGetInputByTensorName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelGetInputByTensorName001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelGetInputByTensorNameOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_MODELGETOUTPUTBYTENSORNAME_0100
+     * @tc.name       : testMindSporeModelGetOutputByTensorNameOne
+     * @tc.desc       : test the normal condition of OH_AI_ModelGetOutputByTensorName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeModelGetOutputByTensorName001', 0, async (done: Function) => {
+      let data = mindSpore.oHAIModelGetOutputByTensorNameOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETUSERDATA_0100
+     * @tc.name       : testMindSporeTensorSetUserDataOne
+     * @tc.desc       : test the normal condition of OH_AI_TensorSetUserData
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetUserData001', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetUserDataOne();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOCREATE_0200
+     * @tc.name       : testMindSporeDeviceInfoCreateTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoCreate
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMindSporeDeviceInfoCreate002', 0, async (done: Function) => {
+      let data = mindSpore.oHAIDeviceInfoCreateTwo();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTSETTHREADAFFINITYCORELIST_0200
+     * @tc.name       : testMindSporeContextSetThreadAffinityCoreListTwo
+     * @tc.desc       : test the normal condition of OH_AI_ContextSetThreadAffinityCoreList
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeContextSetThreadAffinityCoreList002', 0, async (done: Function) => {
+      let data = mindSpore.oHAIContextSetThreadAffinityCoreListTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_CONTEXTGETTHREADAFFINITYCORELIST_0200
+     * @tc.name       : testMindSporeContextGetThreadAffinityCoreListTwo
+     * @tc.desc       : test the normal condition of OH_AI_ContextGetThreadAffinityCoreList
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeContextGetThreadAffinityCoreList002', 0, async (done: Function) => {
+      let data = mindSpore.oHAIContextGetThreadAffinityCoreListTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETFREQUENCY_0200
+     * @tc.name       : testMindSporeDeviceInfoSetFrequencyTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoSetFrequency
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDeviceInfoSetFrequency002', 0, async (done: Function) => {
+      let result_value = -1;
+      let value_one = 1;
+      let data = mindSpore.oHAISetFrequencyTwo(value_one);
+      expect(data).assertEqual(result_value);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOGETFREQUENCY_0200
+     * @tc.name       : testMindSporeDeviceInfoGetFrequencyTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoGetFrequency
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDeviceInfoGetFrequency002', 0, async (done: Function) => {
+      let value_one = -1;
+      let data = mindSpore.oHAIGetFrequencyTwo();
+      expect(data).assertEqual(value_one);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORCREATE_0200
+     * @tc.name       : testMindSporeTensorCreateTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorCreate
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorCreate002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorCreateTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETNAME_0200
+     * @tc.name       : testMindSporeTensorSetNameTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorSetName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetName002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetNameTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETNAME_0200
+     * @tc.name       : testMindSporeTensorGetNameTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetName002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetNameTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETDATATYPE_0200
+     * @tc.name       : testMindSporeTensorSetDataTypeTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorSetDataType
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetDataType002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetDataTypeTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATATYPE_0200
+     * @tc.name       : testMindSporeTensorGetDataTypeTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetDataType
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetDataType002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetDataTypeTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETSHAPE_0200
+     * @tc.name       : testMindSporeTensorSetShapeTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorSetShape
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetShape002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetShapeTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETSHAPE_0200
+     * @tc.name       : testMindSporeTensorGetShapeTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetShape
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetShape002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetShapeTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETFORMAT_0200
+     * @tc.name       : testMindSporeTensorSetFormatTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorSetFormat
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetFormat002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetFormatTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETFORMAT_0200
+     * @tc.name       : testMindSporeTensorGetFormatTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetFormat
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetFormat002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetFormatTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORSETDATA_0200
+     * @tc.name       : testMindSporeTensorSetDataTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorSetData
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorSetData002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorSetDataTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATA_0200
+     * @tc.name       : testMindSporeTensorGetDataTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetData
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetData002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetDataTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETMUTABLEDATA_0200
+     * @tc.name       : testMindSporeTensorGetMutableDataTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetMutableData
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetMutableData002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetMutableDataTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETELEMENTNUM_0200
+     * @tc.name       : testMindSporeTensorGetElementNumTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetElementNum
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetElementNum002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetElementNumTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORGETDATASIZE_0200
+     * @tc.name       : testMindSporeTensorGetDataSizeTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_TensorGetDataSize
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorGetDataSize002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorGetDataSizeTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOSETPRIORITY_0200
+     * @tc.name       : testMindSporeDeviceInfoSetPriorityTwo
+     * @tc.desc       : test the abnormal condition of OH_AI_DeviceInfoSetPriority
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDeviceInfoSetPriority002', 0, async (done: Function) => {
+      let data = mindSpore.oHAIDeviceInfoSetPriorityTwo();
+      expect(data).assertEqual(0);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_TENSORCLONE_0200
+     * @tc.name       : testMindSporeTensorCloneTwo
+     * @tc.desc       : test the normal condition of OH_AI_TensorClone
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeTensorClone002', 0, async (done: Function) => {
+      let data = mindSpore.oHAITensorCloneTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOADDEXTENSION_0200
+     * @tc.name       : testMindSporeDeviceInfoAddExtensionTwo
+     * @tc.desc       : test the normal condition of OH_AI_DeviceInfoAddExtension
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDeviceInfoAddExtension002', 0, async (done: Function) => {
+      let data = mindSpore.oHAIDeviceInfoAddExtensionTwo();
+      expect(data).assertEqual(1);
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MINDSPORE_OH_AI_DEVICEINFOADDEXTENSION_0300
+     * @tc.name       : testMindSporeDeviceInfoAddExtensionThree
+     * @tc.desc       : test the normal condition of OH_AI_DeviceInfoAddExtension
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMindSporeDeviceInfoAddExtension003', 0, async (done: Function) => {
+      let data = mindSpore.oHAIDeviceInfoAddExtensionThree();
+      expect(data).assertEqual(1);
+      done()
+    });
   })
 }
