@@ -21,6 +21,7 @@ group("graphic") {
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
+      "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativevsync:ActsNativeVsyncTest",
       "webGL:webGL_hap_test",
