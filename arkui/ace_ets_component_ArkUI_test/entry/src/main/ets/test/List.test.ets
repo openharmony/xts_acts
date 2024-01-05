@@ -18,6 +18,18 @@ import provideTrackTest from './Track/provideTrackTest.test.ets';
 import StateTrackTest from './Track/StateTrackTest.test.ets';
 import nestTrackTest from './Track/nestTrackTest.test.ets';
 import storageTrackTest from './Track/storageTrackTest.test.ets';
+import GestureClick from './GestureRelatedTest/GestureClick.test.ets'
+import GestureContiune from './GestureRelatedTest/GestureContiune.test.ets'
+import GestureDrag from './GestureRelatedTest/GestureDrag.test.ets'
+import GestureIsSystemGesture from './GestureRelatedTest/GestureIsSystemGesture.test.ets'
+import GestureLongPressGesture from './GestureRelatedTest/GestureLongPressGesture.test.ets'
+import GesturePanGesture from './GestureRelatedTest/GesturePanGesture.test.ets'
+import GesturePinchGesture from './GestureRelatedTest/GesturePinchGesture.test.ets'
+import GestureReject from './GestureRelatedTest/GestureReject.test.ets'
+import GestureRotationGesture from './GestureRelatedTest/GestureRotationGesture.test.ets'
+import GestureSwipeGesture from './GestureRelatedTest/GestureSwipeGesture.test.ets'
+import GestureTap from './GestureRelatedTest/GestureTap.test.ets'
+import GestureTapGesture from './GestureRelatedTest/GestureTapGesture.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -25,4 +37,16 @@ export default function testsuite() {
   StateTrackTest()
   nestTrackTest()
   storageTrackTest()
+  GestureClick();
+  GestureContiune();
+  GestureDrag();
+  GestureIsSystemGesture();
+  GestureLongPressGesture();
+  GesturePanGesture();
+  GesturePinchGesture();
+  GestureReject();
+  GestureRotationGesture();
+  GestureSwipeGesture();
+  GestureTap();
+  GestureTapGesture();
 }
