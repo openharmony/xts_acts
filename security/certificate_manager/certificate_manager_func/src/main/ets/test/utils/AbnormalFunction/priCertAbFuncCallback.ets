@@ -15,7 +15,8 @@
 
 import certManager from '@ohos.security.certManager';
 
-async function installPrivateCertificateAbnormal(keystore, keystorePwd, certAlias) {
+async function installPrivateCertificateAbnormal(keystore: Uint8Array, keystorePwd: string,
+                                                 certAlias: string): Promise<certManager.CMResult> {
   return new Promise((resolve, reject) => {
     certManager.installPrivateCertificate(keystore, keystorePwd, certAlias, (err, cmResult) => {
       if (err) {
@@ -29,20 +30,20 @@ async function installPrivateCertificateAbnormal(keystore, keystorePwd, certAlia
 }
 
 
-async function uninstallPrivateCertificateAbnormal(keyUri) {
+async function uninstallPrivateCertificateAbnormal(keyUri: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    certManager.uninstallPrivateCertificate(keyUri, (err, status) => {
+    certManager.uninstallPrivateCertificate(keyUri, (err,) => {
       if (err) {
         console.error("[Callback]uninstallPrivateCertificate err: " + err.code);
         reject(err);
       } else {
-        resolve(status);
+        resolve();
       }
     })
   });
 }
 
-async function initAbnormal(authUri, spec) {
+async function initAbnormal(authUri: string, spec: certManager.CMSignatureSpec): Promise<certManager.CMHandle> {
   return new Promise((resolve, reject) => {
     certManager.init(authUri, spec, (err, CMHandle) => {
       if (err) {
@@ -55,20 +56,20 @@ async function initAbnormal(authUri, spec) {
   });
 }
 
-async function updateAbnormal(handle, data) {
+async function updateAbnormal(handle: Uint8Array, data: Uint8Array): Promise<void> {
   return new Promise((resolve, reject) => {
-    certManager.update(handle, data, (err, status) => {
+    certManager.update(handle, data, (err,) => {
       if (err) {
         console.error("[Callback]updateAbnormal err: " + err.code);
         reject(err);
       } else {
-        resolve(status);
+        resolve();
       }
     })
   });
 }
 
-async function finishAbnormal(handle, signature = null) {
+async function finishAbnormal(handle: Uint8Array, signature?: Uint8Array): Promise<certManager.CMResult> {
   return new Promise((resolve, reject) => {
     if (signature != null && signature != undefined) {
       certManager.finish(handle, signature, (err, CMResult) => {
@@ -92,7 +93,7 @@ async function finishAbnormal(handle, signature = null) {
   });
 }
 
-async function abortAbnormal(handle) {
+async function abortAbnormal(handle: Uint8Array): Promise<void> {
   return new Promise((resolve, reject) => {
     certManager.abort(handle, (err, status) => {
       if (err) {
