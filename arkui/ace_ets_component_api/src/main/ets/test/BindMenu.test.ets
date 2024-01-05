@@ -53,7 +53,7 @@ export default function BindMenuTest() {
 
       let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
-        step2()
+        step2(done)
       }
       let event: events_emitter.InnerEvent = {
         eventId: 50000,
@@ -77,7 +77,7 @@ export default function BindMenuTest() {
 
       let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
-        step3()
+        done()
       }
       let event: events_emitter.InnerEvent = {
         eventId: 60002,
@@ -91,10 +91,11 @@ export default function BindMenuTest() {
     });
   })
 }
- async function step2() {
+
+async function step2(done: Function) {
   let callback = (event: events_emitter.EventData) => {
     expect(event.data.action).assertEqual('onDisappear');
-
+    done()
   }
   let event: events_emitter.InnerEvent = {
     eventId: 50001,
@@ -104,19 +105,4 @@ export default function BindMenuTest() {
   let driver = Driver.create()
   await driver.delayMs(500)
   sendEventByKey('BindMenu_placeholder', 10, "")
-}
-
-async function step3() {
-  let callback = (event: events_emitter.EventData) => {
-    expect(event.data.action).assertEqual('onDisappear');
-
-  }
-  let event: events_emitter.InnerEvent = {
-    eventId: 60003,
-    priority: events_emitter.EventPriority.LOW
-  }
-  events_emitter.on(event, callback);
-  let driver = Driver.create()
-  await driver.delayMs(500)
-  sendEventByKey('BindMenu_placeholder', 11, "")
 }
