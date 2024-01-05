@@ -53,32 +53,16 @@ parse_target_subsystem()
         echo "xts_targets: $xts_targets"
 }
 
-parse_args()
-{   
-    while [ -n "$1" ]
-    do
-        var="$1"
-        OPTIONS=${var%%=*}
-        PARAM=${var#*=}
-        if [ "$OPTIONS" = "cache_type" ]; then
-            CACHE_TYPE="$PARAM"
-        fi
-        shift
-    done
-}
-
 
 do_make()
 {
     cd $BASE_HOME
     if [[ ${match_status} == false || "$xts_targets" =~ "xts_acts" ]];then
-	    ./test/xts/acts/build.sh product_name=rk3568 system_size=standard cache_type=$CACHE_TYPE
+	    ./test/xts/acts/build.sh product_name=rk3568 system_size=standard
     else
-      ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} cache_type=$CACHE_TYPE
+      ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets}
     fi
 }
 parse_target_subsystem $1
-shift
-parse_args $@
 do_make
 exit 0
