@@ -26,20 +26,30 @@ var mPref;
 
 export default function storageSyncTest() {
     describe('storageSyncTest', function () {
-        beforeAll(function() {
+        beforeAll(async function() {
             console.info('beforeAll')
+        })
+
+        afterAll(async function () {
+            console.info('afterAll')
+        })
+
+        beforeEach(async function() {
+            console.info('beforeEach')
             mPref = storage.getStorageSync(PATH);
         })
 
-        afterAll(function () {
-            console.info('afterAll')
+        afterEach(async function () {
+            console.info('afterEach')
             storage.deleteStorageSync(PATH);
         })
-
         /**
          * @tc.name Clear test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0100
          * @tc.desc Clear test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testClear001', 0, function () {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -54,6 +64,9 @@ export default function storageSyncTest() {
          * @tc.name Constructor test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0100
          * @tc.desc Constructor test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testConstructor002', 0, function () {
             expect(typeof mPref).assertEqual("object");
@@ -63,6 +76,9 @@ export default function storageSyncTest() {
          * @tc.name put string sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_2000
          * @tc.desc put string sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey003', 0, function () {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -73,6 +89,9 @@ export default function storageSyncTest() {
          * @tc.name put int sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1800
          * @tc.desc put int sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey004', 0, function () {
             mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
@@ -83,6 +102,9 @@ export default function storageSyncTest() {
          * @tc.name put boolean sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1600
          * @tc.desc put boolean sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey005', 0, function () {
             mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -93,6 +115,9 @@ export default function storageSyncTest() {
          * @tc.name put long sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1900
          * @tc.desc put long sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey006', 0, function () {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
@@ -103,6 +128,9 @@ export default function storageSyncTest() {
          * @tc.name put float sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1700
          * @tc.desc put float sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey007', 0, function () {
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
@@ -113,6 +141,9 @@ export default function storageSyncTest() {
          * @tc.name put boolean sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1500
          * @tc.desc put boolean sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetBoolean005', 0, function () {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, true);
@@ -123,6 +154,9 @@ export default function storageSyncTest() {
          * @tc.name get defaultValue sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0300
          * @tc.desc get defaultValue sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetDefValue006', 0, function () {
             mPref.clearSync();
@@ -137,6 +171,9 @@ export default function storageSyncTest() {
          * @tc.name put float sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0400
          * @tc.desc put float sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetFloat007', 0, function () {
             mPref.clearSync();
@@ -149,6 +186,9 @@ export default function storageSyncTest() {
          * @tc.name put int sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0600
          * @tc.desc put int sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetInt008', 0, function () {
             mPref.clearSync();
@@ -160,6 +200,9 @@ export default function storageSyncTest() {
          * @tc.name put long sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0800
          * @tc.desc put long sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetLong009', 0, function () {
             mPref.clearSync();
@@ -172,6 +215,9 @@ export default function storageSyncTest() {
          * @tc.name put String & int sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1000
          * @tc.desc put String & int sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetString10', 0, function () {
             mPref.clearSync();
@@ -186,6 +232,9 @@ export default function storageSyncTest() {
          * @tc.name put boolean sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0200
          * @tc.desc put boolean sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutBoolean012', 0, function () {
             mPref.clearSync();
@@ -199,6 +248,9 @@ export default function storageSyncTest() {
          * @tc.name put float sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0500
          * @tc.desc put float sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutFloat013', 0, function () {
             mPref.clearSync();
@@ -212,6 +264,9 @@ export default function storageSyncTest() {
          * @tc.name put int sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0700
          * @tc.desc put int sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutInt014', 0, function () {
             mPref.clearSync();
@@ -225,6 +280,9 @@ export default function storageSyncTest() {
          * @tc.name put long sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_0900
          * @tc.desc put long sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutLong015', 0, function () {
             mPref.clearSync();
@@ -238,6 +296,9 @@ export default function storageSyncTest() {
          * @tc.name put String sync interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1100
          * @tc.desc put String sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutString016', 0, function () {
             mPref.clearSync();
@@ -252,6 +313,9 @@ export default function storageSyncTest() {
          * @tc.name put interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1200
          * @tc.desc put interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRegisterObserver001', 0, function () {
             mPref.clearSync();
@@ -266,6 +330,9 @@ export default function storageSyncTest() {
          * @tc.name repeat on interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1300
          * @tc.desc repeat on interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testRegisterObserver002', 0, function () {
             mPref.clearSync();
@@ -282,6 +349,9 @@ export default function storageSyncTest() {
          * @tc.name off interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiAsyncTest_1400
          * @tc.desc off interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testUnRegisterObserver001', 0, function () {
             var observer = function (key) {
@@ -297,6 +367,9 @@ export default function storageSyncTest() {
          * @tc.name get defaultValue callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0600
          * @tc.desc get defaultValue callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetDefValue001', 0, async function (done) {
             await mPref.clear();
