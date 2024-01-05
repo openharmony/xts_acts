@@ -16,7 +16,6 @@
 import screenLock from '@ohos.screenLock';
 import { describe, expect, it, beforeEach} from "hypium/index";
 
-const SLEEP_TIME = 1000;
 
 export default function ScreenLockPromiseTest(){
   describe('ScreenLockServicePromiseTest', () => {
@@ -110,7 +109,6 @@ export default function ScreenLockPromiseTest(){
     it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
       try {
-        let data = await screenLock.unlockScreen();
         console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 success.");
         expect(true).assertTrue()
         console.info('====>-------------SUB_MISC_THEME_screenLock_API_Promise_004 end----------------------');
