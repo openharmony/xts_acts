@@ -23,19 +23,19 @@ ohos_js_hap_suite("ActsNetworkManagerMulDNSTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkManagerMulDNSTest"
-  
+
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }
-ohos_app_scope("dns_app_profile"){
-    app_profile = "AppScope/app.json"
-    sources = ["AppScope/resources"]
+ohos_app_scope("dns_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
 }
 ohos_js_assets("dns_demo_ets_resources") {
-     source_dir = "entry/src/main/ets"
+  source_dir = "entry/src/main/ets"
 }
 ohos_resources("dns_demo_ets_test_resources") {
-     sources = [ "entry/src/main/resources" ]
-     deps = [ ":dns_app_profile"]
-     hap_profile = "entry/src/main/module.json"
+  sources = [ "entry/src/main/resources" ]
+  deps = [ ":dns_app_profile" ]
+  hap_profile = "entry/src/main/module.json"
 }

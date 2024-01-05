@@ -20,14 +20,14 @@ group("netmanager_base") {
       "actshttpscertificatetest:ActsHttpsCertificateTest",
       "dns:ActsDNSTest",
       "jshttp:ActsJSHTTPTest",
+      "multicastconnection201_dns:ActsNetworkManagerMulDNS201Test",
+      "multicastconnection_dns:ActsNetworkManagerMulDNSTest",
       "network_nopermission:ActsNetworkNopermissionTest",
       "network_nowifi:ActsNetworkNowifiTest",
       "network_wifi:ActsNetworkWifiTest",
       "register:ActsRegisterTest",
       "socket:ActsSocketTest",
       "system_fetch:ActsSystemFetchTest",
-      "multicastconnection_dns:ActsNetworkManagerMulDNSTest",
-      "multicastconnection201_dns:ActsNetworkManagerMulDNS201Test"
     ]
   }
 }
