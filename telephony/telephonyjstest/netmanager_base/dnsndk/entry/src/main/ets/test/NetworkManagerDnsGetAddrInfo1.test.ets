@@ -34,6 +34,8 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     let netid_valid = 100
     let netid_invalid = 10
     let netid_unreachable = 110
+    let function_valid = 0
+    let function_null = 1
 
     /* *
     * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0100
@@ -123,5 +125,48 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
       }
     });
 
+    /* *
+    * @tc.number  NetworkManager_Dns_RegisterDnsResolver_0100
+    * @tc.name    registerdnsresolver
+    * @tc.desc    check register dns resolver
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level 2
+    */
+    it("NetworkManager_Dns_RegisterDnsResolver_0100", 0, async (done: Function) => {
+      let caseName = "NetworkManager_Dns_RegisterDnsResolver_0100"
+      let status = testNapi.registerdnsresolver(function_valid);
+      if (status != 0) {
+        console.log(`${caseName} failed, err: ${JSON.stringify(status)}`);
+        expectFalse();
+        done();
+      } else {
+        console.log(`${caseName} success, data: ${JSON.stringify(status)}`);
+        expect(status).assertEqual(0);
+        done();
+      }
+    });
+
+    /* *
+    * @tc.number  NetworkManager_Dns_RegisterDnsResolver_0200
+    * @tc.name    registerdnsresolver
+    * @tc.desc    check register dns resolver
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level 2
+    */
+    it("NetworkManager_Dns_RegisterDnsResolver_0200", 0, async (done: Function) => {
+      let caseName = "NetworkManager_Dns_RegisterDnsResolver_0200"
+      let status = testNapi.registerdnsresolver(function_null);
+      if (status != 401) {
+        console.log(`${caseName} failed, err: ${JSON.stringify(status)}`);
+        expectFalse();
+        done();
+      } else {
+        console.log(`${caseName} success, data: ${JSON.stringify(status)}`);
+        expect(status).assertEqual(401);
+        done();
+      }
+    });
   })
 }
