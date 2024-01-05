@@ -84,6 +84,9 @@ class MyClass extends MyClassBase {
     static getBar(arg1) {
         return MyClass.str;
     }
+    async myBeforeAsync(arg) {
+        return arg;
+    }
 }
 class AfterClass extends MyClassBase {
     msg = 'msg123';
@@ -126,6 +129,9 @@ class AfterClass extends MyClassBase {
     static getBar(arg1) {
         return AfterClass.str;
     }
+    async myAfterAsync(arg) {
+        return arg;
+    }
 }
 class ReplaceClass extends MyClassBase {
     msg = 'msg123';
@@ -155,7 +161,7 @@ class ReplaceClass extends MyClassBase {
     getData(arg) {
         return 0;
     }
-    async beforeAsync(arg) {
+    async replaceAsync(arg) {
         return arg;
     }
     static getBar(arg1) {
@@ -6365,7 +6371,7 @@ describe('AspectTest', function() {
      * new function, which will execute 'before' with the args 'this' and the args of the original method, and
      * then execute the original method. The return value of the new function is returned by the original method.
      */
-    it('testAddBefore0010', 0, function() {
+    it('testAddBefore010', 0, function() {
         util.Aspect.addBefore(MyClass, 'getBar', true,  (This, arg1) =>{
             expect(arg1).assertEqual(6);
         });
@@ -6431,6 +6437,24 @@ describe('AspectTest', function() {
         var asp = new MyClass();
         var result = asp.foo('123', 111);
         expect(result).assertEqual(0);
+    })
+
+    /**
+     * @tc.name: testAddBefore014
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     */
+    it('testAddBefore014', 0, function() {
+        var asp = new MyClass();
+        expect(asp.myBeforeAsync.constructor.name).assertEqual('AsyncFunction');
+        util.Aspect.addBefore(MyClass, 'myBeforeAsync', false, (This, arg1, arg2) =>{
+            expect(arg1).assertEqual('string');
+            expect(arg2).assertEqual(undefined);
+            expect(This.msg).assertEqual('msg123');
+        });
+        asp.myBeforeAsync('string')
+        expect(asp.myBeforeAsync.constructor.name).assertEqual('AsyncFunction');
     })
 
     /**
@@ -6700,6 +6724,24 @@ describe('AspectTest', function() {
         var asp = new MyClass();
         var result = asp.foo('123', 111);
         expect(result).assertEqual(100);
+    })
+
+    /**
+     * @tc.name: testAddAfter015
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     */
+    it('testAddAfter015', 0, function() {
+        var asp = new AfterClass();
+        expect(asp.myAfterAsync.constructor.name).assertEqual('AsyncFunction');
+        util.Aspect.addAfter(AfterClass, 'myAfterAsync', false, (This, ret, arg) =>{
+          expect(arg).assertEqual('str');
+          expect(This.msg).assertEqual('msg123');
+          expect(ret instanceof Promise).assertTrue();
+        });
+        asp.myAfterAsync('str')
+        expect(asp.myAfterAsync.constructor.name).assertEqual('AsyncFunction');
     })
 
     /**
@@ -6973,6 +7015,23 @@ describe('AspectTest', function() {
         var asp = new ReplaceClass();
         var result = asp.foo('123', 111);
         expect(result).assertEqual(100);
+    })
+
+    /**
+     * @tc.name: testReplace017
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     */
+    it('testReplace017', 0, function() {
+        var asp = new ReplaceClass();
+        expect(asp.replaceAsync.constructor.name).assertEqual('AsyncFunction');
+        util.Aspect.replace(ReplaceClass, 'replaceAsync', false, (This, arg1) =>{
+          Reflect.set(This, 'msg', 'intMsg');
+          expect(arg1).assertEqual('123')
+          expect(This.msg).assertEqual('intMsg');
+        });
+        asp.replaceAsync('123');
+        expect(asp.replaceAsync.constructor.name).assertEqual('AsyncFunction');
     })
 })
 }
