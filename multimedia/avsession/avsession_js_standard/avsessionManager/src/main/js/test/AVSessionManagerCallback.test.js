@@ -47,7 +47,7 @@ export default function AVSessionManagerCallback() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0100
-         * @tc.name      : CREATEAVSESSION_0100
+         * @tc.name      : create AVSession(audio) - callback
          * @tc.desc      : Testing createAVSession with right parameter audio - callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -81,8 +81,8 @@ export default function AVSessionManagerCallback() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0200
-         * @tc.name      : CREATEAVSESSION_0200
-         * @tc.desc      : Testing createAVSession with wrong type - callback
+         * @tc.name      : createAVSession(callback) with invalid param(errcode 401) - invalid value
+         * @tc.desc      : test createAVSession(callback) errcode 401
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -102,8 +102,8 @@ export default function AVSessionManagerCallback() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0300
-         * @tc.name      : CREATEAVSESSION_0300
-         * @tc.desc      : Testing createAVSession with wrong parameter - callback
+         * @tc.name      : createAVSession(callback) with invalid param(errcode 401) - empty string
+         * @tc.desc      : test createAVSession(callback) errcode 401
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -123,7 +123,7 @@ export default function AVSessionManagerCallback() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0400
-         * @tc.name      : CREATEAVSESSION_0400
+         * @tc.name      : create AVSession(video) - callback
          * @tc.desc      : Testing createAVSession with right parameter video - callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
