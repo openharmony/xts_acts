@@ -334,7 +334,7 @@ export default function storageCallBackTest() {
 
 
         /**
-         * @tc.name clear、put、get、flush String callback interface test
+         * @tc.name clear put get flush String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0300
          * @tc.desc flush String callback interface test
          * @tc.size MediumTest
