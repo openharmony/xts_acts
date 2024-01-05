@@ -51,7 +51,7 @@ export default function preferencesV9CallbackTest(){
         })
 
         /**
-         * @tc.name has、delete、get、flush String callback interface test
+         * @tc.name has delete get flush String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceV9JsApiCallbackTest_0200
          * @tc.desc flush String callback interface test
          * @tc.size MediumTest
