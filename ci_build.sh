@@ -53,6 +53,7 @@ parse_target_subsystem()
         echo "xts_targets: $xts_targets"
 }
 
+CACHE_TYPE=""
 parse_args()
 {   
     while [ -n "$1" ]
@@ -60,7 +61,7 @@ parse_args()
         var="$1"
         OPTIONS=${var%%=*}
         PARAM=${var#*=}
-        if [ "$OPTIONS" = "cache_type" ]; then
+        if [[ "$OPTIONS" == "cache_type" && "$PARAM" != "$OPTIONS" ]]; then
             CACHE_TYPE="$PARAM"
         fi
         shift
@@ -72,13 +73,25 @@ do_make()
 {
     cd $BASE_HOME
     if [[ ${match_status} == false || "$xts_targets" =~ "xts_acts" ]];then
-	    ./test/xts/acts/build.sh product_name=rk3568 system_size=standard cache_type=$CACHE_TYPE
+        if [ -z "$CACHE_TYPE" ]; then
+	        ./test/xts/acts/build.sh product_name=rk3568 system_size=standard
+        else
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard cache_type=$CACHE_TYPE
+        fi
     else
-      ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} cache_type=$CACHE_TYPE
+        if [ -z "$CACHE_TYPE" ]; then
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets}
+        else
+            ./test/xts/acts/build.sh product_name=rk3568 system_size=standard suite=${xts_targets} cache_type=$CACHE_TYPE
+        fi
     fi
 }
+echo $@
 parse_target_subsystem $1
-shift
-parse_args $@
+if [ $# -eq 0 ];then
+    echo "no args; pass cache deal"
+else    
+    parse_args $@
+fi
 do_make
 exit 0
