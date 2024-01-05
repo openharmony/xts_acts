@@ -277,14 +277,16 @@ export default function SecurityCryptoFwKeyGenerateDHTestUnit() {
         let keyPairBySpec: cryptoFramework.KeyPair = await asyKeyGenCallbackFunc.genKeyPair(spec);
         let keyPair: cryptoFramework.KeyPair = await asyKeyGenCallbackFunc.genKeyPair(param);
         console.log(testNumber + ": genKeyPair succeed");
-        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_P_BN)).assertEqual(spec.p);
-        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_G_BN)).assertEqual(spec.g);
-        expect(512).assertEqual(spec.l);
+        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_P_BN) == spec.p).assertTrue();
+        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_G_BN) == spec.g).assertTrue();
+        expect(keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 0).assertTrue();
+        expect(keyPairBySpec.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 512).assertTrue();
+        expect(spec.l == 512).assertTrue();
         let res: boolean = compareSpecFunc.DHKey(keyPair, keyPairBySpec);
         expect(res).assertTrue();
         console.log(testNumber + ": compareSpec succeed");
       } catch (err) {
-        console.error(testNumber + ` catch error: “${err}“, error code: ${err.code}`);
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
         expect(null).assertFail();
       }
       console.log(testNumber + ": succeed");
@@ -440,6 +442,32 @@ export default function SecurityCryptoFwKeyGenerateDHTestUnit() {
         console.log(testNumber + ": compareSpec succeed");
       } catch (err) {
         console.error(testNumber + ` catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_DH_Func_1700
+     * @tc.name Test key format/algName with dh. Promise style. Process success
+     * @tc.desc generateKeyPair by DH_modp1536
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_DH_Func_1700", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_DH_Func_1700";
+      console.log(testNumber + ": started");
+      let keyAlg: string = "DH_modp1536";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(keyAlg);
+        expect(keyPair.pubKey.format == "X.509").assertTrue();
+        expect(keyPair.pubKey.algName == "DH").assertTrue();
+        expect(keyPair.priKey.format == "PKCS#8").assertTrue();
+        expect(keyPair.priKey.algName == "DH").assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
         expect(null).assertFail();
       }
       console.log(testNumber + ": succeed");

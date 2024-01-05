@@ -21,7 +21,7 @@ export default function photoPickerTest() {
   describe("photoPickerTest", function () {
     afterEach(async function() {
       await sleep(500);
-      await startAbility('ohos.acts.multimedia.picker', 'com.example.myapplication.MainAbility');
+      await startAbility('ohos.acts.multimedia.photoaccess', 'com.example.myapplication.MainAbility');
       await sleep(500);
     })
 

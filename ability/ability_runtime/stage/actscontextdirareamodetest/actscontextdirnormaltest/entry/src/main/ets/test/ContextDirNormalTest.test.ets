@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import contextConstant from '@ohos.app.ability.contextConstant';
 import common from '@ohos.app.ability.common';
+import fs from '@ohos.file.fs';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let areaMode: string;
@@ -35,11 +36,18 @@ function checkContextDir(context: common.Context, moduleName: string): boolean {
   expect(context.cacheDir).assertEqual("/data/storage/" + areaMode + "/base/haps/" + moduleName + "/cache");
   expect(context.tempDir).assertEqual("/data/storage/" + areaMode + "/base/haps/" + moduleName + "/temp");
   expect(context.filesDir).assertEqual("/data/storage/" + areaMode + "/base/haps/" + moduleName + "/files");
-  expect(context.distributedFilesDir).assertEqual("/data/storage/" + areaMode + "/distributedfiles");
+  expect(context.distributedFilesDir).assertEqual("/data/storage/" + "el2" + "/distributedfiles");
   expect(context.databaseDir).assertEqual("/data/storage/" + areaMode + "/database/" + moduleName);
   expect(context.preferencesDir)
     .assertEqual("/data/storage/" + areaMode + "/base/haps/" + moduleName + "/preferences");
   expect(context.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
+  expect(fs.accessSync(context.cacheDir)).assertTrue();
+  expect(fs.accessSync(context.tempDir)).assertTrue();
+  expect(fs.accessSync(context.filesDir)).assertTrue();
+  expect(fs.accessSync(context.distributedFilesDir)).assertTrue();
+  expect(fs.accessSync(context.databaseDir)).assertTrue();
+  expect(fs.accessSync(context.preferencesDir)).assertTrue();
+  expect(fs.accessSync(context.bundleCodeDir)).assertTrue();
   return true;
 }
 
@@ -48,10 +56,17 @@ function checkApplicationContextDir(applicationContext: common.ApplicationContex
   expect(applicationContext.cacheDir).assertEqual("/data/storage/" + areaMode + "/base/cache");
   expect(applicationContext.tempDir).assertEqual("/data/storage/" + areaMode + "/base/temp");
   expect(applicationContext.filesDir).assertEqual("/data/storage/" + areaMode + "/base/files");
-  expect(applicationContext.distributedFilesDir).assertEqual("/data/storage/" + areaMode + "/distributedfiles");
+  expect(applicationContext.distributedFilesDir).assertEqual("/data/storage/" + "el2" + "/distributedfiles");
   expect(applicationContext.databaseDir).assertEqual("/data/storage/" + areaMode + "/database");
   expect(applicationContext.preferencesDir).assertEqual("/data/storage/" + areaMode + "/base/preferences");
   expect(applicationContext.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
+  expect(fs.accessSync(applicationContext.cacheDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.tempDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.filesDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.distributedFilesDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.databaseDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.preferencesDir)).assertTrue();
+  expect(fs.accessSync(applicationContext.bundleCodeDir)).assertTrue();
   return true;
 }
 
@@ -60,10 +75,17 @@ function checkModuleContextDir(moduleContext: common.Context): boolean {
   expect(moduleContext.cacheDir).assertEqual("/data/storage/" + areaMode + "/base/cache");
   expect(moduleContext.tempDir).assertEqual("/data/storage/" + areaMode + "/base/temp");
   expect(moduleContext.filesDir).assertEqual("/data/storage/" + areaMode + "/base/files");
-  expect(moduleContext.distributedFilesDir).assertEqual("/data/storage/" + areaMode + "/distributedfiles");
+  expect(moduleContext.distributedFilesDir).assertEqual("/data/storage/" + "el2" + "/distributedfiles");
   expect(moduleContext.databaseDir).assertEqual("/data/storage/" + areaMode + "/database");
   expect(moduleContext.preferencesDir).assertEqual("/data/storage/" + areaMode + "/base/preferences");
   expect(moduleContext.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
+  expect(fs.accessSync(moduleContext.cacheDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.tempDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.filesDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.distributedFilesDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.databaseDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.preferencesDir)).assertTrue();
+  expect(fs.accessSync(moduleContext.bundleCodeDir)).assertTrue();
   return true;
 }
 
@@ -97,6 +119,7 @@ export default function ContextDirNormalTest() {
         })
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -123,6 +146,7 @@ export default function ContextDirNormalTest() {
         })
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -157,6 +181,7 @@ export default function ContextDirNormalTest() {
         }, 300)
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -192,6 +217,7 @@ export default function ContextDirNormalTest() {
         }, 300)
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -208,23 +234,16 @@ export default function ContextDirNormalTest() {
       let TAG = 'SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0500';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
-        await abilityDelegator.startAbility({
-          bundleName: 'com.example.contextdirnormaltest',
-          moduleName: 'application',
-          abilityName: 'ApplicationAbility',
-        })
-        setTimeout(async () => {
-          await abilityDelegator.getCurrentTopAbility().then((ability) => {
-            let context = ability.context.createModuleContext('application');
-            context.area = contextConstant.AreaMode.EL3;
-            areaMode = "el3";
-            let result = checkModuleContextDir(context);
-            expect(result).assertTrue();
-            done();
-          })
-        }, 300)
+        let abilityUIAbilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
+        let context = abilityUIAbilityContext.createModuleContext('application');
+        context.area = contextConstant.AreaMode.EL3;
+        areaMode = "el3";
+        let result = checkModuleContextDir(context);
+        expect(result).assertTrue();
+        done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -241,23 +260,16 @@ export default function ContextDirNormalTest() {
       let TAG = 'SUB_Ability_AbilityRuntime_ModuleContext_Dir_Normal_0600';
       hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' --start');
       try {
-        await abilityDelegator.startAbility({
-          bundleName: 'com.example.contextdirnormaltest',
-          moduleName: 'application',
-          abilityName: 'ApplicationAbility',
-        })
-        setTimeout(async () => {
-          await abilityDelegator.getCurrentTopAbility().then((ability) => {
-            let context = ability.context.createModuleContext('application');
-            context.area = contextConstant.AreaMode.EL4;
-            areaMode = "el4";
-            let result = checkModuleContextDir(context);
-            expect(result).assertTrue();
-            done();
-          })
-        }, 300)
+        let abilityUIAbilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
+        let context = abilityUIAbilityContext.createModuleContext('application');
+        context.area = contextConstant.AreaMode.EL4;
+        areaMode = "el4";
+        let result = checkModuleContextDir(context);
+        expect(result).assertTrue();
+        done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -284,6 +296,7 @@ export default function ContextDirNormalTest() {
         })
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -310,6 +323,7 @@ export default function ContextDirNormalTest() {
         })
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -335,6 +349,7 @@ export default function ContextDirNormalTest() {
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })
@@ -360,6 +375,7 @@ export default function ContextDirNormalTest() {
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + " error: " + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })

@@ -21,6 +21,8 @@ export default function imageGif() {
     describe("imageGif", function () {
         const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
         const EXPECTFRAMECOUNT = 3;
+        const ERR_CODE1 = 62980096;
+        const ERR_CODE2 = 62980118;
         let filePath;
         let fdNumber;
         async function getFd(fileName) {
@@ -268,7 +270,7 @@ export default function imageGif() {
             }
         }
 
-        async function createPixelMapListErrPromise(done, testNum, picName, decodeOpts) {
+        async function createPixelMapListErrPromise(done, testNum, picName, decodeOpts, checkErrCode) {
             await getFd(picName);
             let imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -282,13 +284,13 @@ export default function imageGif() {
                     expect(false).assertTrue();
                     done();
                 } catch (error) {
-                    console.info(`${testNum} createPixelMapListPromise error: ${error}`);
-                    expect(true).assertTrue();
+                    console.info(`${testNum} createPixelMapListPromise error.code: ${error.code} err:${error}`);
+                    checkErrCode(error.code);
                     done();
                 }
             }
         }
-        async function createPixelMapListErrCallBack(done, testNum, picName, decodeOpts) {
+        async function createPixelMapListErrCallBack(done, testNum, picName, decodeOpts, checkErrCode) {
             await getFd(picName);
             let imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -299,8 +301,8 @@ export default function imageGif() {
                 console.info(`${testNum} createPixelMapListCallBack create imagesource success`);
                 imageSourceApi.createPixelMapList(decodeOpts, (err, pixelMapList) => {
                     if (err != undefined || pixelMapList == undefined) {
-                        expect(true).assertTrue();
-                        console.info(`${testNum} createPixelMapList err:${err}`);
+                        checkErrCode(err.code);
+                        console.info(`${testNum} createPixelMapList err.code: ${err.code} err:${err}`);
                         done();
                     } else {
                         console.info(`${testNum} failed`);
@@ -406,8 +408,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE2).assertTrue();
+            }
             createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -429,8 +434,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: -8,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -452,8 +460,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -475,8 +486,11 @@ export default function imageGif() {
                 desiredPixelFormat: 33,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -522,8 +536,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE2).assertTrue();
+            }
             createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -545,8 +562,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: -8,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -568,8 +588,11 @@ export default function imageGif() {
                 desiredPixelFormat: RGBA_8888,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
 
         /**
@@ -591,8 +614,11 @@ export default function imageGif() {
                 desiredPixelFormat: 33,
                 index: 0,
             };
+            function checkErrCode(code) {
+                expect(code == ERR_CODE1).assertTrue();
+            }
             createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400",
-                "moving_test.gif", decodeOpts);
+                "moving_test.gif", decodeOpts, checkErrCode);
         });
     });
 }

@@ -81,7 +81,8 @@
         "MainAbility/pages/List/ListItem_SwipeActionItem/listTest34",
         "MainAbility/pages/List/ListItem_SwipeActionItem/listTest36",
         "MainAbility/pages/List/ListItem_SwipeActionItem/listTest41",
-        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest43"
+        "MainAbility/pages/List/ListItem_SwipeActionItem/listTest43",
+        "MainAbility/pages/List/List_attribute/ListOffSet01"
 
     ]
 }

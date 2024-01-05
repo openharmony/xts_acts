@@ -66,11 +66,11 @@ export default function netSyncTest() {
     });
 
     /*
-     * @tc.number  Telephony_NetManagerSync_isDefaultNetMeteredSync_0100
+     * @tc.number  Telephony_NetManagerSync_hasDefaultNetSync_0100
      * @tc.name   Whether the hasDefaultNetSync method is called successfully with WIFI
      * @tc.desc    Function test
      */
-    it('Telephony_NetManagerSync_isDefaultNetMeteredSync_0100', 0, async function (done) {
+    it('Telephony_NetManagerSync_hasDefaultNetSync_0100', 0, async function (done) {
       let has = connection.hasDefaultNetSync();
       expect(has == true).assertTrue();
       done();

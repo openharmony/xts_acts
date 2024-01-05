@@ -85,6 +85,12 @@ struct getListItemRect1 {
       Button('点击滚动到底部').onClick((event: ClickEvent) => {
         this.listScroller.scrollEdge(Edge.End)
       }).id('getListItemRect1_button2')
+      Button('还原').onClick((event: ClickEvent) => {
+        this.index = 0
+        this.padding1 = 0
+        this.margin1 = 0
+        this.listScroller.scrollEdge(Edge.Start)
+      }).id('getListItemRect1_button3')
 
     }
     .width('100%')

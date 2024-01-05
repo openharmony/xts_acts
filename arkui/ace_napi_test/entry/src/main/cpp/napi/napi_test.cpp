@@ -2380,16 +2380,16 @@ static napi_value ThreadSafeTest(napi_env env, napi_callback_info info) {
     NAPI_CALL(env, napi_typeof(env, jsCb, &valueType));
     NAPI_ASSERT(env, valueType == napi_function, "valueType expect equal to napi_function");
     
-    const char context[] = "context";
-    NAPI_CALL(env, napi_create_threadsafe_function(
-        env, jsCb, nullptr, work_name, 0, 1, nullptr, nullptr, (void*)context, CallJs, &tsfn));
+    const char* context = "context";
+    NAPI_CALL(env, napi_create_threadsafe_function(env, jsCb, nullptr, work_name, 0, 1, nullptr, nullptr,
+        const_cast<void*>(reinterpret_cast<const void*>(context)), CallJs, &tsfn));
     void* retContext = nullptr;
     NAPI_CALL(env, napi_get_threadsafe_function_context(tsfn, &retContext));
     NAPI_ASSERT(env, retContext == context, "napi_get_threadsafe_function_context failed");
 
     napi_acquire_threadsafe_function(tsfn);
     napi_call_threadsafe_function(tsfn, nullptr, napi_tsfn_blocking);
-    
+
     NAPI_CALL(env, napi_ref_threadsafe_function(env, tsfn));
     NAPI_CALL(env, napi_unref_threadsafe_function(env, tsfn));
     NAPI_CALL(env, napi_release_threadsafe_function(tsfn, napi_tsfn_release));
@@ -2870,7 +2870,7 @@ static napi_value CreateAsyncResource(napi_env env, napi_callback_info info)
     }
     if (resourceType == napi_object && destroyOnFinalizer) {
         NAPI_CALL(env,
-            napi_add_finalizer(env, resource, (void *) context, AsyncDestroyCb, nullptr, nullptr));
+            napi_add_finalizer(env, resource, reinterpret_cast<void*>(context), AsyncDestroyCb, nullptr, nullptr));
     }
     NAPI_CALL(env,
         napi_wrap(env, asyncContextWrap, context, [](napi_env env, void *data, void *hint) {}, nullptr, nullptr));
@@ -3206,7 +3206,7 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info exports)
 static void Cleanup(void* arg)
 {
     g_cleanupHookCount++;
-    printf("Cleanup(%d)\n", *(int*)(arg));
+    printf("Cleanup(%d)\n", *reinterpret_cast<int*>(arg));
 }
 
 static void CustomObjectFinalizer(napi_env env, void* data, void* hint)

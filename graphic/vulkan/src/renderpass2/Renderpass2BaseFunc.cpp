@@ -60,7 +60,6 @@ FuncRunResult RunTestKHRGLES(int argc, const char** argv)
     FuncRunResult runResult;
     try {
         tcu::CommandLine cmdLine(argc, argv);
-        std::cout << "testmain end argc"<< argc << ";" << argv[0] << ";" << argv[1] << ";" << argv[2] << std::endl;
         tcu::DirArchive archive(cmdLine.getArchiveDir());
         
         de::UniquePtr<tcu::Platform> platform(createOhosPlatform());

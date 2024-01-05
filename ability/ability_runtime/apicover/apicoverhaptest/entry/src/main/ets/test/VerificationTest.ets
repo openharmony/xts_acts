@@ -28,16 +28,35 @@ function sleep(ms) {
 export default function verificationTest(){
 
   describe('VerificationTestTest', function() {
+  
+    beforeEach(async (done) => {
+      TAG = 'beforeEach ==>';
+      globalThis.abilityContext.startAbility({
+        bundleName: 'com.example.apicoverhaptest',
+        abilityName: 'com.example.apicoverhaptest.MainAbility'
+      }).then((data) => {
+        console.info(TAG + "startAbility com.example.apicoverhaptest.MainAbility = " + JSON.stringify(data));
+        setTimeout(function () {
+          done();
+        }, 1000);
+      })
+    })
+  
+    afterEach(async (done) => {
+      setTimeout(function () {
+        done();
+      }, 1000);
+    })
 
     /*
-         * @tc.number  SUB_AA_OpenHarmony_HasWindowFocus_0100
-         * @tc.name    Start ability to judge whether there is window focus.
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
+     * @tc.number  SUB_AA_OpenHarmony_HasWindowFocus_0100
+     * @tc.name    Start ability to judge whether there is window focus.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
     it('SUB_AA_OpenHarmony_HasWindowFocus_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_HasWindowFocus_0100 ==>';
-
+      console.info(TAG + " start")
       try {
         let flags = false
         let subscriber = null
@@ -92,7 +111,7 @@ export default function verificationTest(){
      */
     it('SUB_AA_OpenHarmony_AbilityConstant_0200', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_AbilityConstant_0200 ==>';
-
+      console.info(TAG + " start")
       try {
         let launchWant = undefined
         let lastRequestWant = undefined
@@ -157,6 +176,7 @@ export default function verificationTest(){
      */
     it('SUB_AA_OpenHarmony_AppManagerTest_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_AppManagerTest_0100 ==>';
+      console.info(TAG + " start")
       try {
         appManager.isRunningInStabilityTest((err, data) => {
           console.info(TAG + "isRunningInStabilityTest err = " + JSON.stringify(err));
@@ -236,7 +256,7 @@ export default function verificationTest(){
      */
     it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0100 ==>';
-
+      console.info(TAG + " start")
       try {
         let permissionRequestResult = null
         let subscriber = null
@@ -294,6 +314,7 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_SetMissionLabel_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0100 ==>';
+      console.info(TAG + " start")
       let label = undefined;
       let code1 = 0;
       let code2 = 0;
@@ -332,6 +353,7 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_SetMissionLabel_0200', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0200 ==>';
+      console.info(TAG + " start")
       let label = 0;
 
       try {
@@ -368,6 +390,7 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_SetMissionLabel_0300', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0300 ==>';
+      console.info(TAG + " start")
       let label = "testlabel";
       let missionLabelUpdatedFlag = false;
 
@@ -391,6 +414,7 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_SetMissionLabel_0400', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0400 ==>';
+      console.info(TAG + " start")
       let label1 = "testlabel1";
       let label2 = "testlabel2";
       let missionLabelUpdatedCount = 0;
@@ -439,6 +463,7 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_StartAbilityLife_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_StartAbilityLife_0100 ==>';
+      console.info(TAG + " start")
 
       try {
         let list = ["Stage_MainAbility9_onCreate","Stage_MainAbility9_onWindowStageCreate",

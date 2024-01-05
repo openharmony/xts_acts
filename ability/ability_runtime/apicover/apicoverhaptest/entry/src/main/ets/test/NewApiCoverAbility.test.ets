@@ -36,6 +36,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_ReisterErrorObserver_New_0100', 0, async function (done) {
+      console.info("SUB_AA_ReisterErrorObserver_New_0100 start");
       let errorObserver:errorManager.ErrorObserver;
       errorObserver = {
         onUnhandledException:(errMessage) => {
@@ -44,12 +45,15 @@ export default function ApiCoverTest() {
       }
       try {
         let errCodeId = errorManager.on("error", errorObserver)
+        console.info("SUB_AA_ReisterErrorObserver_New_0100 errCodeId=" + errCodeId);
         expect(errCodeId).assertEqual(0)
         errorManager.off("error", errCodeId).then((data)=>{
+          console.info("SUB_AA_ReisterErrorObserver_New_0100 data=" + data);
           expect(data).assertEqual(undefined)
           done();
         }).catch((err)=>{
           expect().assertFail()
+          console.info("SUB_AA_ReisterErrorObserver_New_0100 catch err, err=" + JSON.stringify(err));
           done();
         })
       } catch (error) {
@@ -66,15 +70,19 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_ReisterErrorObserver_New_0200', 0, async function (done) {
+      console.info("SUB_AA_ReisterErrorObserver_New_0200 start");
       try {
         errorManager.off("error", -1).then((data)=>{
+          console.info("SUB_AA_ReisterErrorObserver_New_0200 off error with -1 success, " + JSON.stringify(data));
           expect().assertFail()
           done();
         }).catch((err)=>{
+          console.info("SUB_AA_ReisterErrorObserver_New_0200 off error with -1 catch error, " + JSON.stringify(err));
           expect(err.code).assertEqual(401)
           done();
         })
       } catch (error) {
+        console.info("SUB_AA_ReisterErrorObserver_New_0200 off error with -1 catch error2, " + JSON.stringify(error));
         expect().assertFail()
         done();
       }
@@ -87,16 +95,20 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_GetExtensionRunningInfos_0100', 0, async function (done) {
+      console.info("SUB_AA_GetExtensionRunningInfos_0100 start");
       try {
         let upperLimit = 1;
         await abilityManager.getExtensionRunningInfos(upperLimit).then((data)=>{
+          console.info("SUB_AA_GetExtensionRunningInfos_0100 getExtensionRunningInfos success");
           expect(true).assertTrue();
           done();
         }).catch((err)=>{
+          console.info("SUB_AA_GetExtensionRunningInfos_0100 getExtensionRunningInfos fail " + JSON.stringify(err));
           expect().assertFail()
           done();
         })
       } catch (error) {
+        console.info("SUB_AA_GetExtensionRunningInfos_0100 getExtensionRunningInfos fail2 " + JSON.stringify(error));
         expect().assertFail()
         done();
       }
@@ -109,24 +121,30 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_UpdateConfiguration_0100', 0, async function (done) {
+      console.info("SUB_AA_UpdateConfiguration_0100 start");
       try {
         // init for repeat test
         var configInit = {
           language: 'english'
         }
-        await abilityManager.updateConfiguration(configInit, (err,data)=>{});
+        await abilityManager.updateConfiguration(configInit, (err,data)=>{
+          console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration en success " + JSON.stringify(data));
+        });
 
         var config = {
           language: 'chinese'
         }
         await abilityManager.updateConfiguration(config).then((data)=>{
+          console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration ch success " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
         }).catch((err)=>{
+          console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration ch fail " + JSON.stringify(err));
           expect().assertFail()
           done();
         })
       } catch (error) {
+        console.info("SUB_AA_UpdateConfiguration_0100 updateConfiguration fail " + JSON.stringify(error));
         expect().assertFail()
         done();
       }
@@ -139,6 +157,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_UpdateConfiguration_0200', 0, async function (done) {
+      console.info("SUB_AA_UpdateConfiguration_0200 start");
       let enLanguage = {
         language: 'English'
       }

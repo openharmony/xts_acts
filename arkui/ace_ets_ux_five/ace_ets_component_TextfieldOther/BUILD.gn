@@ -22,7 +22,7 @@ ohos_js_hap_suite("TextfieldOtherTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "TextfieldOtherTest"
+  hap_name = "ActsTextfieldOtherTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
