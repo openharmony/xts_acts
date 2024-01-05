@@ -225,15 +225,15 @@ export default function CameraImageProcessingTest() {
       console.info('afterAll case');
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -244,23 +244,23 @@ export default function CameraImageProcessingTest() {
         await cameraObj.previewOutputStart();
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
       ;
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO
      * @tc.name      : CameraInput api
      * @tc.desc      : CameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO', 0, async () => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO', 0, async () => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO--------------");
       await createInput();
       createCameraSessionInstance();
       cameraObj.sessionAddInput();
@@ -274,11 +274,11 @@ export default function CameraImageProcessingTest() {
         await cameraObj.videoOutputStart();
       }
       catch (err) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO FAILED");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO FAILED");
         console.info(TAG + "ERRORCODE: " + err.code);
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SECONDARY_IMAGE_PROCESSING_PREVIEW_AND_VIDEO ends here");
       cameraObj.videoOutputStop();
       cameraObj.previewOutputStop();
     });

@@ -17,18 +17,18 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import systemDateTime from "@ohos.systemDateTime";
 
 export default function systemDateTimeSyncJsunit() {
-  describe('systemDateSyncTimeTest', function () {
+  describe('systemDateSyncTimeTest', () => {
     console.info('====>---------------systemDateTimeTest start-----------------------');
 
     /**
      * @tc.number    SUB_systemDateTime_getTime_sync_0010
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0010", 0, async function (done) {
+    it("SUB_systemDateTime_getTime_sync_0010", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0010 start----------------");
       let currentTime = systemDateTime.getTime(true);
       console.info("====>SUB_systemDateTime_getTime_sync_0010 currentTime: " + JSON.stringify(currentTime));
@@ -41,11 +41,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getTime_sync_0020
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0020", 0, async function (done) {
+    it("SUB_systemDateTime_getTime_sync_0020", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0020 start----------------");
       let currentTime = systemDateTime.getTime(false);
       console.info("====>SUB_systemDateTime_getTime_sync_0020 currentTime: " + JSON.stringify(currentTime));
@@ -58,11 +58,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getTime_sync_0030
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0030", 0, async function (done) {
+    it("SUB_systemDateTime_getTime_sync_0030", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0030 start----------------");
       let currentTime = systemDateTime.getTime();
       console.info("====>SUB_systemDateTime_getTime_sync_0030 currentTime: " + JSON.stringify(currentTime));
@@ -75,11 +75,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getTime_sync_0040
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0040", 0, async function (done) {
+    it("SUB_systemDateTime_getTime_sync_0040", 0, async (done: Function) => {
       console.info("====>-----SUB_systemDateTime_getTime_sync_0040 start----------------");
       try {
         console.info("====>SUB_systemDateTime_getTime_sync_0040 into parameters");
@@ -98,11 +98,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0050
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0050", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0050", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0050 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, true);
       console.info("====>SUB_systemDateTime_getUptime_sync_0050 currentTime: " + JSON.stringify(realActiveTime));
@@ -115,11 +115,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0060
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0060", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0060", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0060 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
       console.info("====>SUB_systemDateTime_getUptime_sync_0060 currentTime: " + JSON.stringify(realActiveTime));
@@ -132,11 +132,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0070
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0070", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0070", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0070 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE);
       console.info("====>SUB_systemDateTime_getUptime_sync_0070 currentTime: " + JSON.stringify(realActiveTime));
@@ -149,11 +149,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0080
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0080", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0080", 0, async (done: Function) => {
       console.info("====>-----SUB_systemDateTime_getUptime_sync_0080 start----------------");
       try {
         console.info("====>SUB_systemDateTime_getUptime_sync_0080 into parameters");
@@ -172,11 +172,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0090
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0090", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0090", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0090 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP, true);
       console.info("====>SUB_systemDateTime_getUptime_sync_0090 currentTime: " + JSON.stringify(realTime));
@@ -189,11 +189,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0100
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0100", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0100", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0100 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP, false);
       console.info("====>SUB_systemDateTime_getUptime_sync_0100 currentTime: " + JSON.stringify(realTime));
@@ -206,11 +206,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0110
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0110", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0110", 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0110 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP);
       console.info("====>SUB_systemDateTime_getUptime_sync_0110 currentTime: " + JSON.stringify(realTime));
@@ -223,11 +223,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getUptime_sync_0120
      * @tc.name      Test systemTimeDate.getCurrentTime
      * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, including deep sleep time.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0120", 0, async function (done) {
+    it("SUB_systemDateTime_getUptime_sync_0120", 0, async (done: Function) => {
       console.info("====>-----SUB_systemDateTime_getUptime_sync_0120 start----------------");
       try {
         console.info("====>SUB_systemDateTime_getUptime_sync_0120 into parameters");
@@ -246,11 +246,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getTimezoneSync_sync_0130
      * @tc.name      Test systemTime.SUB_systemDateTime_getTimezone_sync_0130 true value
      * @tc.desc      Test systemTimeDate_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemDateTime_getTimezoneSync_sync_0130', 0, async function (done) {
+    it('SUB_systemDateTime_getTimezoneSync_sync_0130', 0, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTimezoneSync_sync_0130 start----------------");
       let timeZone = systemDateTime.getTimezoneSync();
       console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0130 currentTime: " + JSON.stringify(timeZone));
@@ -263,11 +263,11 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.number    SUB_systemDateTime_getTimezoneSync_sync_0140
      * @tc.name      Test systemTimeDate.setTimezone true value
      * @tc.desc      Test systemTimeDate_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemDateTime_getTimezoneSync_sync_0140', 0, async function (done) {
+    it('SUB_systemDateTime_getTimezoneSync_sync_0140', 0, async (done: Function) => {
       console.info("====>-----SUB_systemDateTime_getTimezoneSync_sync_0140 start----------------");
       try {
         console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0140 into parameters");

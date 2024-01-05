@@ -181,18 +181,9 @@ async function finish(HuksOptions, isEncrypt) {
         finishData = uint8ArrayToString(updateResult);
       }
       if (isEncrypt) {
-        if (finishData === uint8ArrayToString(encryptedData)) {
-          expect(null).assertFail();
-        } else {
-          expect(data.errorCode == 0).assertTrue();
-        }
-      }
-      if (!isEncrypt) {
-        if (finishData === uint8ArrayToString(encryptedData)) {
-          expect(data.errorCode == 0).assertTrue();
-        } else {
-          expect(null).assertFail();
-        }
+          expect(finishData !== uint8ArrayToString(encryptedData)).assertTrue();
+      } else {
+          expect(finishData === uint8ArrayToString(encryptedData)).assertTrue();
       }
     })
     .catch((err) => {

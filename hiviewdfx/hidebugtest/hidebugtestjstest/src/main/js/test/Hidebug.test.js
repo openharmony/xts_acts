@@ -592,7 +592,7 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_2200 Test start*************');
         try {
             let temp = hidebug.getVss();
-            except(temp)>=BigInt(0).assertTrue();
+            expect(temp>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }

@@ -1476,5 +1476,34 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       }
     })
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+    * @tc.name      : testSetSpecificSystemBarEnabled_Function_Promise
+    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async function(done){
+      let msgStr = 'testSetSpecificSystemBarEnabled';
+      console.log(msgStr + 'begin')
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        let promise = windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
+        promise.then(() => {
+          console.log(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }

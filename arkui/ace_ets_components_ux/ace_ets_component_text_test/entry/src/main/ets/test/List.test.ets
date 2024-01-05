@@ -13,9 +13,17 @@
  * limitations under the License.
  */
 import Stack_Text from './Stack/Stack_Text/Stack_Text.test';
-import richEditorApi from './richEditor/richEditorApi/richEditorApi.test';
+import richEditorApi1 from './richEditor/richEditorApi/richEditorApi1.test';
+import richEditorApi2 from './richEditor/richEditorApi/richEditorApi2.test';
+import richEditorApi3 from './richEditor/richEditorApi/richEditorApi3.test';
+import richEditorApi4 from './richEditor/richEditorApi/richEditorApi4.test';
+import richEditorApi5 from './richEditor/richEditorApi/richEditorApi5.test';
 
 export default function testsuite() {
-  richEditorApi();
+  richEditorApi1();
+  richEditorApi2();
+  richEditorApi3();
+  richEditorApi4();
+  richEditorApi5();
   Stack_Text();
 }

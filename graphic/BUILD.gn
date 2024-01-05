@@ -22,6 +22,8 @@ group("graphic") {
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "nativebuffer:ActsNativeBufferTest",
+      "nativedrawing:ActsNativeDrawingTest",
+      "nativevsync:ActsNativeVsyncTest",
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",

@@ -684,7 +684,7 @@ async function checkGetRevokedCertX509CRLCallback(certType: string) {
         expect(certIssuer != null).assertTrue();
         console.log(
           "[Callback] cert certIssuer is: " +
-            uInt8ArrayToString(certIssuer.data)
+          uInt8ArrayToString(certIssuer.data)
         );
         resolve();
       })

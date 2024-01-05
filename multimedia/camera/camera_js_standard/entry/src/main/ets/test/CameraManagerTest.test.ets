@@ -316,6 +316,126 @@ describe('CameraManagerTest', function () {
         done();
     })
 
+        /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100
+      * @tc.name      : Get camera from cameramanager to get array of camera promise api
+      * @tc.desc      : Get camera from cameramanager to get array of camera promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+        it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100--------------");
+            if (isEmpty(mCameraManager)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100 cameraManager == null || undefined")
+                expect().assertFail();
+            } else {
+                let mCameraDevicesArrayPromise = mCameraManager.getSupportedCameras();
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100: " + JSON.stringify(mCameraDevicesArrayPromise));
+                if (mCameraDevicesArrayPromise != null && mCameraDevicesArrayPromise.length > 0) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100 success");
+                    for (let i = 0; i < mCameraDevicesArrayPromise.length; i++) {
+                        let sceneModes = mCameraManager.getSupportedSceneModes(mCameraDevicesArrayPromise[i]);
+                        if (sceneModes != null && sceneModes.length > 0) {
+                            sceneModes.forEach(sceneMode => {
+                                expect(isEmpty(sceneMode)).assertFalse();
+                            });
+                        }
+                        expect(true).assertTrue();
+                    }
+                    expect(true).assertTrue();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100 PASSED");
+                } else {
+                    expect().assertFail();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100 FAILED");
+                }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_SCENE_MODE_0100 ends here");
+            await sleep(1000);
+            done();
+        })
+
+    /*GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_TC*/
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100
+      * @tc.name      : Get supported preview formats from camera-0 camerainput async api
+      * @tc.desc      : Get supported preview formats from camera-0 camerainput async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100', 2, async function (done) {
+        console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100--------------");
+        let camerasArray = mCameraDevicesArray;
+        for (let i = 0; i < camerasArray.length; i++) {
+            let sceneModes = mCameraManager.getSupportedSceneModes(camerasArray[i]);
+            if (sceneModes != null && sceneModes.length > 0) {
+                for (const sceneMode of sceneModes) {
+                    let cameraOutputCap = mCameraManager.getSupportedOutputCapability(camerasArray[i], sceneMode);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 camera:" + camerasArray[i].cameraId);
+                    if (!isEmpty(cameraOutputCap)) {
+                        let previewProfilesArray = cameraOutputCap.previewProfiles;
+                        if (isEmpty(previewProfilesArray)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 previewProfilesArray == null || undefined")
+                            expect().assertFail();
+                        } 
+                        let photoProfilesArray = cameraOutputCap.photoProfiles;
+                        if (isEmpty(photoProfilesArray)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 photoProfilesArray == null || undefined")
+                            expect().assertFail();
+                        } 
+                        let videoProfilesArray = cameraOutputCap.videoProfiles;
+                        // only videoMode has videoProfiles
+                        if (isEmpty(videoProfilesArray) && sceneMode == 2) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 videoProfilesArray == null || undefined")
+                            expect().assertFail();
+                        } else {
+                            expect(true).assertTrue();
+                        }
+                        let metadataObjectTypesArray = cameraOutputCap.supportedMetadataObjectTypes;
+                        if (isEmpty(metadataObjectTypesArray)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 metadataObjectTypesArray == null || undefined")
+                        } 
+                    } 
+                }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_BY_MODE_CALLBACK_0100 PASSED camera:" + camerasArray[i].cameraId);
+        }
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100 ends here");
+        done();
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100
+      * @tc.name      : Create CaptureSession instance promise api
+      * @tc.desc      : Create Capturesession instance promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+        it('SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100', 2, async function (done) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 to operate");
+            let camerasArray = mCameraDevicesArray;
+            for (let i = 0; i < camerasArray.length; i++) {
+                let sceneModes = mCameraManager.getSupportedSceneModes(camerasArray[i]);
+                if (sceneModes != null && sceneModes.length > 0) {
+                    for (const sceneMode of sceneModes) {
+                        let captureSessionPromise = mCameraManager.createSession(sceneMode);
+                        if (isEmpty(captureSessionPromise)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 captureSessionPromise == null || undefined")
+                            expect().assertFail();
+                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 PASSED");
+                        await captureSessionPromise.release();
+                    }
+                }
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 PASSED camera:" + camerasArray[i].cameraId);
+            }
+            expect(true).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_MODE_SESSION_PROMISE_BY_MODE_0100 ends here");
+            done();
+        })
+
     /*GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_TC*/
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100
@@ -738,7 +858,7 @@ describe('CameraManagerTest', function () {
         await captureSessionPromise.release();
         done();
     })
-    
+
     /**
           * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100
           * @tc.name      : Get camera mute 

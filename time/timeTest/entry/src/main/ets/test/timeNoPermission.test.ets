@@ -18,18 +18,18 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import systemTime from "@ohos.systemTime";
 
 export default function systemTimeNoPermissionJsunit() {
-  describe('systemTimeNoPermissionTest', function () {
+  describe('systemTimeNoPermissionTest', () => {
     console.info('====>---------------systemTimeNNoPermissionTest start-----------------------');
 
     /**
      * @tc.number    SUB_Misc_systemTime_NoPermission_setTime_0010
      * @tc.name      Test systemTime.setTime
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setTime_0010', 0, async function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setTime_0010', 0, async (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setTime_0010 start");
       let currentTime = new Date().getTime() + 2000
       systemTime.setTime(currentTime, (err, data) => {
@@ -55,11 +55,11 @@ export default function systemTimeNoPermissionJsunit() {
      * @tc.number    SUB_Misc_systemTime_NoPermission_setTime_0020
      * @tc.name      Test systemTime.setTime Invalid value
      * @tc.desc      Test systemTime_setTime API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setTime_0020', 0, async function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setTime_0020', 0, async (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setTime_0020 start");
       try{
         console.info('====>SUB_Misc_systemTime_NoPermission_setTime_0020 setTime permission fail')
@@ -80,11 +80,11 @@ export default function systemTimeNoPermissionJsunit() {
      * @tc.number    SUB_Misc_systemTime_NoPermission_setDate_0010
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setDate_0010', 0, async function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setDate_0010', 0, async (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setDate_0010 start");
       let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
       systemTime.setDate(date, (err, data) => {
@@ -110,11 +110,11 @@ export default function systemTimeNoPermissionJsunit() {
      * @tc.number    SUB_Misc_systemTime_NoPermission_setDate_0020
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setDate_0020', 0, async function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setDate_0020', 0, async (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setDate_0020 start");
       try{
         console.debug('====>SUB_Misc_systemTime_NoPermission_setDate_0020 setTime permission fail')
@@ -135,11 +135,11 @@ export default function systemTimeNoPermissionJsunit() {
      * @tc.number    SUB_Misc_systemTime_NoPermission_setTimezone_0010
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setTimezone_0010', 0, function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setTimezone_0010', 0, (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setTimezone_0010 start");
       systemTime.setTimezone('Asia/Jakarta', (err, data) => {
         try{
@@ -164,11 +164,11 @@ export default function systemTimeNoPermissionJsunit() {
      * @tc.number    SUB_Misc_systemTime_NoPermission_setTimezone_0020
      * @tc.name      Test systemTime.setTimezone true value
      * @tc.desc      Test systemTime_setTimezone API functionality.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_Misc_systemTime_NoPermission_setTimezone_0020', 0, async function (done) {
+    it('SUB_Misc_systemTime_NoPermission_setTimezone_0020', 0, async (done: Function) => {
       console.info("====>SUB_Misc_systemTime_NoPermission_setTimezone_0020 start");
       try{
         console.debug('====>SUB_Misc_systemTime_NoPermission_setTimezone_0020 setTime permission fail')

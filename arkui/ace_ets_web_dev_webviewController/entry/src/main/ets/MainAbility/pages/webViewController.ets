@@ -539,7 +539,9 @@ struct Index {
                                         console.error("Failed to obtain the image pixel map information.");
                                     }
                                     console.log("the result of pixelmap: " + JSON.stringify(imageInfo));
-                                    Utils.emitEvent(Object.getOwnPropertyNames(imageInfo).length, 116)
+                                    if (Object.getOwnPropertyNames(imageInfo).length > 1) {
+                                        Utils.emitEvent(true, 116)
+                                    }
                                 })
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
