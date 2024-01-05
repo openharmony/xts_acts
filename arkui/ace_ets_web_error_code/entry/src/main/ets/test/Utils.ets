@@ -15,6 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import { expect } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 export default class Utils {
   static sleep(time: number) {
@@ -25,6 +26,12 @@ export default class Utils {
     }).then(() => {
       console.info(`sleep ${time} over...`)
     })
+  }
+
+  static getSandboxFileDir() {
+    let sandboxFileDir = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().filesDir + "/"
+    console.log(`[getSandboxFileDir] return ${sandboxFileDir}`);
+    return sandboxFileDir;
   }
 
   static registerEvent(testCaseName: string, expectedValue: Object, eventId: number, done: Function) {
