@@ -1185,5 +1185,44 @@ export default function effectKitTest() {
         })
       })
     })
+    /**
+     * @tc.number    : EFFECT_KIT_GETEFFECTPIXELMAP_JSAPI_0100
+     * @tc.name      : testGetEffectPixelMap_Functin_Promise
+     * @tc.desc      : Gets the getEffectPixelMap where all filter effects have been added to the image.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testGetEffectPixelMap_Functin_Promise', 0, async function(done){
+      let msgStr = 'testGetEffectPixelMap';
+      console.log(msgStr + 'begin')
+      const color = new ArrayBuffer(96);
+      let opts = {
+        editable: true,
+        pixelFormat: 3,
+        size: {
+            height: 4,
+            width: 6
+        }
+      };
+      try {
+        let promise = image.createPixelMap(color, opts);
+        promise.then((pixelMap) => { 
+          effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap().then(data => {
+            console.log(msgStr + 'getPixelBytesNumber = ', data.getPixelBytesNumber());
+            expect(true).assertTrue();
+            done();
+          })
+        }).catch(error => {
+          console.log(msgStr + 'failed to the getEffectPixelMap ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        })
+      } catch (error) {
+        console.log(msgStr + 'failed to the testGetEffectPixelMap_Functin_Promise' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })    
   })
 }
