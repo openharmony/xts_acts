@@ -1444,6 +1444,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(2).assertEqual(ohosWindow.WindowEventType.WINDOW_ACTIVE);
         expect(3).assertEqual(ohosWindow.WindowEventType.WINDOW_INACTIVE);
         expect(4).assertEqual(ohosWindow.WindowEventType.WINDOW_HIDDEN);
+        expect(7).assertEqual(ohosWindow.WindowEventType.WINDOW_DESTROYED);
         done();
       } catch (err) {
         console.info(msgStr + 'windowEventType error :' + JSON.stringify(err));
