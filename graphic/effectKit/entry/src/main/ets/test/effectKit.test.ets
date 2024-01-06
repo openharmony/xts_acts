@@ -1186,10 +1186,10 @@ export default function effectKitTest() {
       })
     })
     /**
-	   * @tc.number    : EFFECT_KIT_GETEFFECTPIXELMAP_JSAPI_0100
-	   * @tc.name      : testGetEffectPixelMap_Functin_Promise
-	   * @tc.desc      : Gets the getEffectPixelMap where all filter effects have been added to the image.
-	   * @tc.size      : MediumTest
+     * @tc.number    : EFFECT_KIT_GETEFFECTPIXELMAP_JSAPI_0100
+     * @tc.name      : testGetEffectPixelMap_Functin_Promise
+     * @tc.desc      : Gets the getEffectPixelMap where all filter effects have been added to the image.
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
