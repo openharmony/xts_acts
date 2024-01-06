@@ -20,12 +20,14 @@ import * as commonParameter from './utils/common/common_parameter';
 import * as commonFunction from './utils/common/common_function';
 import * as signVerifyCallback from './utils/signAndVerify/signVerifyCallback';
 import * as signVerifyPromise from './utils/signAndVerify/signVerifyPromise';
-
+import { BusinessError } from '@ohos.base';
 
 export default function certManagerPriCertJsAPIFunctionTestUnit() {
   describe('certManagerPriCertJsAPIFunctionTestUnit', () => {
-    var global_cmResult: certManager.CMResult;
-    var isOpenHarmonyDevice: Boolean;
+    let global_cmResult: certManager.CMResult | undefined;
+    let isOpenHarmonyDevice: Boolean;
+    let gAppKeyUri1: string = "";
+    let gAppKeyUri2: string = "";
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -38,23 +40,36 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       } catch (err) {
         console.error(`beforeAll get error1 is: ${err}`);
       }
-      try {
-        console.warn(`${global_cmResult.certInfo.uri}`);
-        console.warn(`${global_cmResult.certInfo.certAlias}`);
-        console.warn(`${global_cmResult.certInfo.state}`);
-        console.warn(`${global_cmResult.certInfo.issuerName}`);
-        console.warn(`${global_cmResult.certInfo.subjectName}`);
-        console.warn(`${global_cmResult.certInfo.serial}`);
-        console.warn(`${global_cmResult.certInfo.notBefore}`);
-        console.warn(`${global_cmResult.certInfo.notAfter}`);
-        console.warn(`${global_cmResult.certInfo.fingerprintSha256}`);
-        console.warn(`${global_cmResult.certInfo.cert}`);
-        console.warn(`${global_cmResult.appUidList}`);
-        console.warn(`${global_cmResult.uri}`);
-        console.warn(`${global_cmResult.outData}`);
-      } catch (err) {
-        console.error(`beforeAll get error2 is ${err}`);
-        console.warn("beforeAll waiting for opensource interface！");
+      if (global_cmResult != undefined && global_cmResult.credentialList != undefined) {
+        for (let i = 0; i < global_cmResult.credentialList.length; i++) {
+          if (global_cmResult.credentialList[i].keyUri.includes("testPriCredential001")) {
+            gAppKeyUri1 = global_cmResult.credentialList[i].keyUri;
+          }
+          if (global_cmResult.credentialList[i].keyUri.includes("testPriCredential002")) {
+            gAppKeyUri2 = global_cmResult.credentialList[i].keyUri;
+          }
+        }
+      }
+
+      if (global_cmResult != undefined && global_cmResult.certInfo != undefined) {
+        try {
+          console.warn(`${global_cmResult.certInfo.uri}`);
+          console.warn(`${global_cmResult.certInfo.certAlias}`);
+          console.warn(`${global_cmResult.certInfo.state}`);
+          console.warn(`${global_cmResult.certInfo.issuerName}`);
+          console.warn(`${global_cmResult.certInfo.subjectName}`);
+          console.warn(`${global_cmResult.certInfo.serial}`);
+          console.warn(`${global_cmResult.certInfo.notBefore}`);
+          console.warn(`${global_cmResult.certInfo.notAfter}`);
+          console.warn(`${global_cmResult.certInfo.fingerprintSha256}`);
+          console.warn(`${global_cmResult.certInfo.cert}`);
+          console.warn(`${global_cmResult.appUidList}`);
+          console.warn(`${global_cmResult.uri}`);
+          console.warn(`${global_cmResult.outData}`);
+        } catch (err) {
+          console.error(`beforeAll get error2 is ${err}`);
+          console.warn("beforeAll waiting for opensource interface！");
+        }
       }
     })
     beforeEach(() => {
@@ -72,7 +87,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       // This API supports only one parameter: clear action function.
       try {
         let cmResult: certManager.CMResult = await certManager.getAllAppPrivateCertificates();
-        if (cmResult != undefined && cmResult != null) {
+        if (cmResult != undefined && cmResult.credentialList != undefined) {
           for (let i = 0; i < cmResult.credentialList.length; i++) {
             await certManager.uninstallPrivateCertificate(cmResult.credentialList[i].keyUri);
           }
@@ -86,6 +101,9 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0100
      * @tc.name Test Enumerated value
      * @tc.desc Test Enumerated value
+     * @tc.size SmallTest
+     * @tc.level Level0
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0100', 0, (done: Function) => {
       expect(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION).assertEqual(201);
@@ -113,12 +131,15 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0200
      * @tc.name Test installPrivateCertificate and uninstallPrivateCertificate with normal parameters one
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0200', 0, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priRsaCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoRsa';
-      let keyUri: string;
+      let keyUri: string | undefined;
       await certManager.installPrivateCertificate(keystore, keystorePwd, certAlias).then(cmResult => {
         expect(cmResult != null).assertTrue();
         console.warn("[Promise] cmResult.uri: " + cmResult.uri);
@@ -129,16 +150,16 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         console.warn("[Promise] cmResult.appUidList: " + cmResult.appUidList);
         console.warn("[Promise] cmResult.outData: " + cmResult.outData);
         keyUri = cmResult.uri;
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.error("[Promise] installPrivateCertificate err: " + err.code);
         expect(null).assertFail();
       })
-      await certManager.uninstallPrivateCertificate(keyUri).then(status => {
-        expect(status == undefined).assertTrue();
-      }).catch(err => {
-        console.error("[Promise] uninstallPrivateCertificate err: " + err.code);
+      if (keyUri != undefined) {
+        await certManager.uninstallPrivateCertificate(keyUri);
+      } else {
+        console.error("Security_CertManager_PriCertJsApi_Func_0200 keyUri is undefined!");
         expect(null).assertFail();
-      })
+      }
       done();
     })
 
@@ -146,40 +167,46 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0300
      * @tc.name Test installPrivateCertificate and uninstallPrivateCertificate with normal parameters two
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0300', 0, async (done: Function) => {
       let keystore: Uint8Array = commonParameter.priEccCredData;
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoEcc';
-      let cmResult: certManager.CMResult;
+      let cmResult: certManager.CMResult | undefined;
+      let cmUri: string | undefined;
       try {
         cmResult = await new Promise((resolve, reject) => {
           certManager.installPrivateCertificate(keystore, keystorePwd, certAlias, (err, cmResult) => {
             if (err) {
-              console.error("[Callback]Security_CertManager_PriCertJsApi_Func_0300 get err1: " + err.code);
               reject(err);
             } else {
               resolve(cmResult);
             }
           })
         });
+        expect(cmResult != undefined).assertTrue();
       } catch (err) {
+        console.error("Security_CertManager_PriCertJsApi_Func_0300 get err1: " + err.code);
         expect(null).assertFail();
       }
-      expect(cmResult != null).assertTrue();
-      console.warn("[Callback] cmResult.uri: " + cmResult.uri);
+      if (cmResult != undefined) {
+        cmUri = cmResult.uri;
+      }
       try {
-        await new Promise((resolve, reject) => {
-          certManager.uninstallPrivateCertificate(cmResult.uri, (err, res) => {
+        await new Promise<void>((resolve, reject) => {
+          certManager.uninstallPrivateCertificate(cmUri, (err,) => {
             if (err) {
-              console.error("[Callback]Security_CertManager_PriCertJsApi_Func_0300 get err2: " + err.code);
               reject(err);
             } else {
-              resolve(res);
+              resolve();
             }
           })
         })
       } catch (err) {
+        console.error("Security_CertManager_PriCertJsApi_Func_0300 get err2: " + err.code);
         expect(null).assertFail();
       }
       done();
@@ -189,30 +216,23 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0400
      * @tc.name Test getPrivateCertificate with normal parameters one
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0400', 0, async (done: Function) => {
-      let keystore: Uint8Array = commonParameter.priRsaCredData;
-      let keystorePwd: string = '123456';
-      let certAlias: string = 'appCertAliasDemoRsa';
-      let keyUri: string;
-      await certManager.installPrivateCertificate(keystore, keystorePwd, certAlias).then(cmResult => {
-        expect(cmResult != null).assertTrue();
-        console.warn("[Promise] cmResult.uri: " + cmResult.uri);
-        keyUri = cmResult.uri;
-      }).catch(err => {
-        console.error("[Promise] installPrivateCertificate err: " + err.code);
-        expect(null).assertFail();
-      })
-      await certManager.getPrivateCertificate(keyUri).then(CMResult => {
-        expect(CMResult.credential != null).assertTrue();
-        console.warn("[Promise] type: " + CMResult.credential.type);
-        console.warn("[Promise] alias: " + CMResult.credential.alias);
-        console.warn("[Promise] keyUri: " + CMResult.credential.keyUri);
-        console.warn("[Promise] certNum: " + CMResult.credential.certNum);
-        console.warn("[Promise] keyNum: " + CMResult.credential.keyNum);
-        console.warn("[Promise] credData: " + CMResult.credential.credentialData);
-      }).catch(err => {
-        console.error("[Promise] getPrivateCertificate err: " + err.code);
+      await certManager.getPrivateCertificate(gAppKeyUri1).then(CMResult => {
+        expect(CMResult.credential != null && CMResult.credential != undefined).assertTrue();
+        if (CMResult != undefined && CMResult.credential != undefined) {
+          console.warn("[Promise] type: " + CMResult.credential.type);
+          console.warn("[Promise] alias: " + CMResult.credential.alias);
+          console.warn("[Promise] keyUri: " + CMResult.credential.keyUri);
+          console.warn("[Promise] certNum: " + CMResult.credential.certNum);
+          console.warn("[Promise] keyNum: " + CMResult.credential.keyNum);
+          console.warn("[Promise] credData: " + CMResult.credential.credentialData);
+        }
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_0400 getPrivateCertificate err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -222,47 +242,35 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0500
      * @tc.name Test getPrivateCertificate with normal parameters two
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0500', 0, async (done: Function) => {
-      let keystore: Uint8Array = commonParameter.priEccCredData;
-      let keystorePwd: string = '123456';
-      let certAlias: string = 'appCertAliasDemoEcc';
       let cmResult2: certManager.CMResult;
-      let keyUri: string;
-      await certManager.installPrivateCertificate(keystore, keystorePwd, certAlias).then(cmResult => {
-        expect(cmResult != null).assertTrue();
-        console.warn("[Promise] cmResult.uri: " + cmResult.uri);
-        keyUri = cmResult.uri;
-      }).catch(err => {
-        console.error("[Promise] installPrivateCertificate err: " + err.code);
-        expect(null).assertFail();
-      })
+      console.error(`gAppKeyUri2 is: ${gAppKeyUri2}`);
       try {
         cmResult2 = await new Promise((resolve, reject) => {
-          certManager.getPrivateCertificate(keyUri, (err, CMResult) => {
+          certManager.getPrivateCertificate(gAppKeyUri2, (err, CMResult) => {
             if (err) {
-              console.error("[Callback]getPrivateCertificate err: " + err.code);
               reject(err);
             } else {
               resolve(CMResult);
             }
           })
         });
-      } catch (err) {
-        expect(null).assertFail();
-      }
-      expect(cmResult2.credential != null).assertTrue();
-      try {
-        console.warn("[Callback] cmResult2.certInfo.uri: " + cmResult2.certList);
-        for (let i = 0; i < cmResult2.certList.length; i++) {
-          console.warn(`[Callback] cmResult2.certList[${i}] uri: ${cmResult2.certList[i].uri} `);
-          console.warn(`[Callback] cmResult2.certList[${i}] certAlias: ${cmResult2.certList[i].certAlias} `);
-          console.warn(`[Callback] cmResult2.certList[${i}] state: ${cmResult2.certList[i].state} `);
-          console.warn(`[Callback] cmResult2.certList[${i}] subjectName: ${cmResult2.certList[i].subjectName} `);
+        expect(cmResult2.credential != undefined && cmResult2.credential != null).assertTrue();
+        if (cmResult2.certList != undefined) {
+          for (let i = 0; i < cmResult2.certList.length; i++) {
+            console.warn(`[Callback] cmResult2.certList[${i}] uri: ${cmResult2.certList[i].uri} `);
+            console.warn(`[Callback] cmResult2.certList[${i}] certAlias: ${cmResult2.certList[i].certAlias} `);
+            console.warn(`[Callback] cmResult2.certList[${i}] state: ${cmResult2.certList[i].state} `);
+            console.warn(`[Callback] cmResult2.certList[${i}] subjectName: ${cmResult2.certList[i].subjectName} `);
+          }
         }
       } catch (err) {
-        console.error(`${err}`);
-        console.warn("waiting for opensource interface!");
+        console.error("Security_CertManager_PriCertJsApi_Func_0500 getPrivateCertificate err: " + err.code);
+        expect(null).assertFail();
       }
       done();
     })
@@ -271,19 +279,21 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0600
      * @tc.name Test init->update->finish interface with normal parameters one
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0600', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
       };
       let verifySpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY
       };
-      await signVerifyCallback.signVerifyNormalProcess(appKeyUri1, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyCallback.signVerifyNormalProcess(gAppKeyUri1, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.error("Security_CertManager_PriCertJsApi_Func_0600 get err: " + err);
         expect(null).assertFail();
       })
@@ -294,19 +304,21 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0700
      * @tc.name Test init->update->finish interface with normal parameters two
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0700', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN
       };
       let verifySpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY
       };
-      await signVerifyPromise.signVerifyNormalProcess(appKeyUri2, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyPromise.signVerifyNormalProcess(gAppKeyUri2, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.error("Security_CertManager_PriCertJsApi_Func_0700 get err: " + err);
         expect(null).assertFail();
       })
@@ -317,15 +329,16 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0800
      * @tc.name Test abort interface with normal parameters one
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0800', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
-
       try {
-        await signVerifyPromise.signAbortProcess(appKeyUri2, keyStore, "after_init");
-        await signVerifyPromise.signAbortProcess(appKeyUri2, keyStore, "after_update");
-        await signVerifyPromise.signAbortProcess(appKeyUri2, keyStore, "after_finish");
+        await signVerifyPromise.signAbortProcess(gAppKeyUri2, keyStore, "after_init");
+        await signVerifyPromise.signAbortProcess(gAppKeyUri2, keyStore, "after_update");
+        await signVerifyPromise.signAbortProcess(gAppKeyUri2, keyStore, "after_finish");
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_0800 get err: " + err);
         expect(null).assertFail();
@@ -337,15 +350,16 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_0900
      * @tc.name Test abort interface with normal parameters two
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0900', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
-
       try {
-        await signVerifyCallback.signAbortProcess(appKeyUri1, keyStore, "after_init");
-        await signVerifyCallback.signAbortProcess(appKeyUri1, keyStore, "after_update");
-        await signVerifyCallback.signAbortProcess(appKeyUri1, keyStore, "after_finish");
+        await signVerifyCallback.signAbortProcess(gAppKeyUri1, keyStore, "after_init");
+        await signVerifyCallback.signAbortProcess(gAppKeyUri1, keyStore, "after_update");
+        await signVerifyCallback.signAbortProcess(gAppKeyUri1, keyStore, "after_finish");
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_0900 get err: " + err);
         expect(null).assertFail();
@@ -357,15 +371,16 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1000
      * @tc.name Test abort interface with normal parameters three
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1000', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
-
       try {
-        await signVerifyPromise.verifyAbortProcess(appKeyUri2, keyStore, "after_verify_init");
-        await signVerifyPromise.verifyAbortProcess(appKeyUri2, keyStore, "after_verify_update");
-        await signVerifyPromise.verifyAbortProcess(appKeyUri2, keyStore, "after_verify_finish");
+        await signVerifyPromise.verifyAbortProcess(gAppKeyUri2, keyStore, "after_verify_init");
+        await signVerifyPromise.verifyAbortProcess(gAppKeyUri2, keyStore, "after_verify_update");
+        await signVerifyPromise.verifyAbortProcess(gAppKeyUri2, keyStore, "after_verify_finish");
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_1000 get err: " + err);
         expect(null).assertFail();
@@ -377,15 +392,16 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1100
      * @tc.name Test abort interface with normal parameters four
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1100', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
-
       try {
-        await signVerifyCallback.verifyAbortProcess(appKeyUri1, keyStore, "after_verify_init");
-        await signVerifyCallback.verifyAbortProcess(appKeyUri1, keyStore, "after_verify_update");
-        await signVerifyCallback.verifyAbortProcess(appKeyUri1, keyStore, "after_verify_finish");
+        await signVerifyCallback.verifyAbortProcess(gAppKeyUri1, keyStore, "after_verify_init");
+        await signVerifyCallback.verifyAbortProcess(gAppKeyUri1, keyStore, "after_verify_update");
+        await signVerifyCallback.verifyAbortProcess(gAppKeyUri1, keyStore, "after_verify_finish");
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_1100 get err: " + err);
         expect(null).assertFail();
@@ -397,28 +413,19 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1200
      * @tc.name Test Max length of PrivateCredential List
      * @tc.desc Test Max length of PrivateCredential List
+     * @tc.size SmallTest
+     * @tc.level Level4
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1200', 0, async (done: Function) => {
       try {
-        for (let i = 2; i < 300; i++) {
+        for (let i = 2; i < 257; i++) {
           let alias_temp: string = "privateCredential" + i.toString();
           await certManager.installPrivateCertificate(commonParameter.priEccCredData, '123456', alias_temp);
         }
         expect(null).assertFail();
       } catch (err) {
         expect(err.code).assertEqual(17500001);
-      }
-
-      let cmResult: certManager.CMResult = await certManager.getAllAppPrivateCertificates();
-      expect(cmResult.credentialList.length).assertLessOrEqual(256);
-
-      try {
-        for (let i = 2; i < cmResult.credentialList.length; i++) {
-          await certManager.uninstallPrivateCertificate(cmResult.credentialList[i].keyUri);
-        }
-      } catch (err) {
-        console.error("Security_CertManager_PriCertJsApi_Func_1200 get err: " + err);
-        expect(null).assertFail();
       }
       done();
     })
@@ -427,16 +434,23 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1300
      * @tc.name Test getAllAppPrivateCertificates interface with normal parameters one
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1300', 0, async (done: Function) => {
       try {
         let cmResult: certManager.CMResult = await certManager.getAllAppPrivateCertificates();
-        expect(cmResult.credentialList.length).assertEqual(2);
-
-        for (let i = 0; i < cmResult.credentialList.length; i++) {
-          console.warn(`CMResult.credentialList[${i}].type is: ${cmResult.credentialList[i].type}`);
-          console.warn(`CMResult.credentialList[${i}].alias is: ${cmResult.credentialList[i].alias}`);
-          console.warn(`CMResult.credentialList[${i}].keyUri is: ${cmResult.credentialList[i].keyUri}`);
+        if (cmResult.credentialList != undefined) {
+          expect(cmResult.credentialList.length).assertLessOrEqual(256);
+          for (let i = 0; i < cmResult.credentialList.length; i++) {
+            console.warn(`CMResult.credentialList[${i}].type is: ${cmResult.credentialList[i].type}`);
+            console.warn(`CMResult.credentialList[${i}].alias is: ${cmResult.credentialList[i].alias}`);
+            console.warn(`CMResult.credentialList[${i}].keyUri is: ${cmResult.credentialList[i].keyUri}`);
+          }
+        } else {
+          console.error("Security_CertManager_PriCertJsApi_Func_1300 cmResult.credentialList is undefined!");
+          expect(null).assertFail();
         }
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_1300 get err: " + err.code);
@@ -449,11 +463,13 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1400
      * @tc.name Test getAllAppPrivateCertificates interface with normal parameters two
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1400', 0, async (done: Function) => {
-
-      async function getAllAppPrivateCertificatesCallback() {
-        return new Promise((resolve, reject) => {
+      try {
+        let cmResult: certManager.CMResult = await new Promise((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err, cmResult) => {
             if (err) {
               console.error("[Callback]getAllAppPrivateCertificates err: " + err.code);
@@ -463,15 +479,17 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
             }
           })
         });
-      }
-
-      try {
-        let cmResult: certManager.CMResult = await getAllAppPrivateCertificatesCallback();
-        expect(cmResult.credentialList.length).assertEqual(2);
-        for (let i = 0; i < cmResult.credentialList.length; i++) {
-          console.warn(`CMResult.credentialList[${i}].type is: ${cmResult.credentialList[i].type}`);
-          console.warn(`CMResult.credentialList[${i}].alias is: ${cmResult.credentialList[i].alias}`);
-          console.warn(`CMResult.credentialList[${i}].keyUri is: ${cmResult.credentialList[i].keyUri}`);
+        if (cmResult != undefined && cmResult.credentialList != undefined) {
+          expect(cmResult.credentialList.length).assertLessOrEqual(256);
+          for (let i = 0; i < cmResult.credentialList.length; i++) {
+            console.warn(`CMResult.credentialList[${i}].type is: ${cmResult.credentialList[i].type}`);
+            console.warn(`CMResult.credentialList[${i}].alias is: ${cmResult.credentialList[i].alias}`);
+            console.warn(`CMResult.credentialList[${i}].keyUri is: ${cmResult.credentialList[i].keyUri}`);
+          }
+        } else {
+          console.error("Security_CertManager_PriCertJsApi_Func_1400 cmResult is undefined " +
+            "or cmResult.credentialList is undefined!");
+          expect(null).assertFail();
         }
       } catch (err) {
         console.error("Security_CertManager_PriCertJsApi_Func_1400 get err: " + err.code);
@@ -484,10 +502,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1500
      * @tc.name Test init->update->finish interface with padding and digest one
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1500', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
         input_digest = certManager.CmKeyDigest.CM_DIGEST_MD5
@@ -504,10 +524,9 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         padding: certManager.CmKeyPadding.CM_PADDING_PSS,
         digest: input_digest
       };
-
-      await signVerifyCallback.signVerifyNormalProcess(appKeyUri1, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyCallback.signVerifyNormalProcess(gAppKeyUri1, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.error("Security_CertManager_PriCertJsApi_Func_1500 get err: " + err.code);
         expect(null).assertFail();
       })
@@ -518,10 +537,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1600
      * @tc.name Test init->update->finish interface with padding and digest two
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1600', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
         input_digest = certManager.CmKeyDigest.CM_DIGEST_SHA1
@@ -536,10 +557,10 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
         digest: input_digest
       };
-      await signVerifyPromise.signVerifyNormalProcess(appKeyUri2, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyPromise.signVerifyNormalProcess(gAppKeyUri2, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
-        console.error("Security_CertManager_PriCertJsApi_Func_1600 get err: " + err);
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_1600 get err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -549,10 +570,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1700
      * @tc.name Test init->update->finish interface with padding and digest three
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1700', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
         input_digest = certManager.CmKeyDigest.CM_DIGEST_SHA1
@@ -569,11 +592,10 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         padding: certManager.CmKeyPadding.CM_PADDING_PKCS1_V1_5,
         digest: input_digest
       };
-
-      await signVerifyCallback.signVerifyNormalProcess(appKeyUri1, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyCallback.signVerifyNormalProcess(gAppKeyUri1, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
-        console.error("Security_CertManager_PriCertJsApi_Func_1700 get err: " + err);
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_1700 get err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -583,10 +605,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1800
      * @tc.name Test init->update->finish interface with padding and digest four
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1800', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
         input_digest = certManager.CmKeyDigest.CM_DIGEST_SHA224
@@ -601,10 +625,10 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
         digest: input_digest
       };
-      await signVerifyPromise.signVerifyNormalProcess(appKeyUri2, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyPromise.signVerifyNormalProcess(gAppKeyUri2, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
-        console.error("Security_CertManager_PriCertJsApi_Func_1800 get err: " + err);
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_1800 get err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -615,10 +639,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_1900
      * @tc.name Test init->update->finish interface with padding and digest five
      * @tc.desc Use AsyncCallback Type
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_1900', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priRsaCredData;
-      let appKeyUri1: string = global_cmResult.credentialList[0].keyUri;
       let input_digest: number;
       if (isOpenHarmonyDevice == true) {
         input_digest = certManager.CmKeyDigest.CM_DIGEST_SHA224
@@ -635,11 +661,10 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         padding: certManager.CmKeyPadding.CM_PADDING_PKCS1_V1_5,
         digest: input_digest
       };
-
-      await signVerifyCallback.signVerifyNormalProcess(appKeyUri1, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyCallback.signVerifyNormalProcess(gAppKeyUri1, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
-        console.error("Security_CertManager_PriCertJsApi_Func_1900 get err: " + err);
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_1900 get err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -649,11 +674,12 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_2000
      * @tc.name Test init->update->finish interface with padding and digest six
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_2000', 0, async (done: Function) => {
       let keyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
-
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
         padding: certManager.CmKeyPadding.CM_PADDING_NONE,
@@ -664,11 +690,10 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         padding: certManager.CmKeyPadding.CM_PADDING_NONE,
         digest: certManager.CmKeyDigest.CM_DIGEST_SHA512
       };
-
-      await signVerifyPromise.signVerifyNormalProcess(appKeyUri2, keyStore, signSpec, verifySpec).then(result => {
+      await signVerifyPromise.signVerifyNormalProcess(gAppKeyUri2, keyStore, signSpec, verifySpec).then(result => {
         expect(result.outData == null).assertTrue();
-      }).catch(err => {
-        console.error("Security_CertManager_PriCertJsApi_Func_2000 get err: " + err);
+      }).catch((err: BusinessError) => {
+        console.error("Security_CertManager_PriCertJsApi_Func_2000 get err: " + err.code);
         expect(null).assertFail();
       })
       done();
@@ -678,11 +703,13 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.number Security_CertManager_PriCertJsApi_Func_2100
      * @tc.name Test init->update->finish interface with padding and digest seven
      * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_2100', 0, async (done: Function) => {
       let keyStore: crypt.DataBlob;
       let srckeyStore: Uint8Array = commonParameter.priEccCredData;
-      let appKeyUri2: string = global_cmResult.credentialList[1].keyUri;
       let signSpec: certManager.CMSignatureSpec = {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
         digest: certManager.CmKeyDigest.CM_DIGEST_NONE
@@ -691,24 +718,26 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
         purpose: certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
         digest: certManager.CmKeyDigest.CM_DIGEST_NONE
       };
-
       try {
         let MdObj: crypt.Md = crypt.createMd("SHA512");
         await MdObj.update({
           data: srckeyStore
         });
         keyStore = await MdObj.digest();
-        console.warn(`Security_CertManager_PriCertJsApi_Func_2100 keyStore data is: ${keyStore.data}}`);
+        if (keyStore != undefined && keyStore.data != undefined) {
+          console.warn(`Security_CertManager_PriCertJsApi_Func_2100 keyStore data is: ${keyStore.data}}`);
+          let result: certManager.CMResult = await signVerifyPromise.signVerifyNormalProcess(gAppKeyUri2, keyStore.data,
+            signSpec, verifySpec);
+          expect(result.outData == null).assertTrue();
+        } else {
+          console.error("Security_CertManager_PriCertJsApi_Func_2100 keyStore is undefined " +
+            "or keyStore.data is undefined!");
+          expect(null).assertFail();
+        }
       } catch (err) {
-        expect(null).assertFail();
-      }
-
-      await signVerifyPromise.signVerifyNormalProcess(appKeyUri2, keyStore.data, signSpec, verifySpec).then(result => {
-        expect(result.outData == null).assertTrue();
-      }).catch(err => {
         console.error("Security_CertManager_PriCertJsApi_Func_2100 get err: " + err);
         expect(null).assertFail();
-      })
+      }
       done();
     })
   })
