@@ -22,6 +22,9 @@ export default class MainAbility8 extends Ability {
 
     onDestroy() {
         console.log("[Demo] MainAbility8 onDestroy")
+        setTimeout(function () {
+            globalThis.testEvent.push('MainAbility8onDestroy');
+        }, 800);
     }
 
     onWindowStageCreate(windowStage) {
@@ -29,7 +32,7 @@ export default class MainAbility8 extends Ability {
         console.log("[Demo] MainAbility8 onWindowStageCreate")
         globalThis.ability8 = this.context;
 
-        windowStage.loadContent('testability/pages/index8', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index8', (err, data) => {
             if (err.code) {
                 console.log('MainAbility8 loadContent error');
                 return;
@@ -85,13 +88,16 @@ export default class MainAbility8 extends Ability {
         globalThis.applicationContext8 = this.context.getApplicationContext();
         globalThis.MainAbility8onForeground = true;
         let lifecycleid = globalThis.applicationContext8.on('abilityLifecycle', AbilityLifecycleCallback);
+        globalThis.callbackid8 = lifecycleid;
         console.log("[Demo] AbilityLifecycleCallback8 number: " + JSON.stringify(lifecycleid));
+        // setTimeout(function () {
+        //     console.log("[Demo] AbilityLifecycleCallback8 listKey: " + JSON.stringify(listKey8));
+        //     globalThis.list8 = listKey8;
+        //     globalThis.applicationContext8onAbilityLifecycle = true;
+        // }, 1500);
         setTimeout(function () {
-            console.log("[Demo] AbilityLifecycleCallback8 listKey: " + JSON.stringify(listKey8));
-            globalThis.list8 = listKey8;
-            globalThis.callbackid8 = lifecycleid;
-            globalThis.applicationContext8onAbilityLifecycle = true;
-        }, 1500);
+            globalThis.testEvent.push('MainAbility8onForeground');
+        }, 800);
     }
 
     onBackground() {
