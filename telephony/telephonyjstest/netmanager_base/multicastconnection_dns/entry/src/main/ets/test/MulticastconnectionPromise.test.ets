@@ -147,5 +147,5 @@ export default function MulticastconnectionPromiseTest() {
                 done();
             })
         });
-    }1)
+    })
 };
