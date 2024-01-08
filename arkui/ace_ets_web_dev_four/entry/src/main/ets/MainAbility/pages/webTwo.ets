@@ -77,6 +77,8 @@ struct Second {
     ports: web_webview.WebMessagePort[] = [];
     scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
     @State str:string="emitGetCertificate"
+	@State embedStatus: string = ''
+	@State eventType: string = ''
     @State downloadStateCodeA:number=web_webview.WebDownloadState.IN_PROGRESS
     @State downloadStateCodeB:number=web_webview.WebDownloadState.COMPLETED
     @State downloadStateCodeC:number=web_webview.WebDownloadState.CANCELED
@@ -112,9 +114,6 @@ struct Second {
     @State downloadErrorCodeZ:number=web_webview.WebDownloadErrorCode.USER_CANCELED
     @State downloadErrorCodeAA:number=web_webview.WebDownloadErrorCode.USER_SHUTDOWN
     @State downloadErrorCodeBB:number=web_webview.WebDownloadErrorCode.CRASH
-    //@State securityLevelA:number=web_webview.SecurityLevel.SECURE
-    //@State securityLevelB:number=web_webview.SecurityLevel.WARNING
-    //@State securityLevelC:number=web_webview.SecurityLevel.DANGEROUS
     @State webMediaOptionsPar: WebMediaOptions = {resumeInterval: 10, audioExclusive: true}
     @State sslErrorA:number=SslError.Invalid
     @State sslErrorB:number=SslError.HostMismatch
@@ -127,8 +126,6 @@ struct Second {
     @State protectedResourceTypeA:string=ProtectedResourceType.MidiSysex
     @State protectedResourceTypeB:string=ProtectedResourceType.VIDEO_CAPTURE
     @State protectedResourceTypeC:string=ProtectedResourceType.AUDIO_CAPTURE
-    //@State nativeEmbedStatusA:number=NativeEmbedStatus.UPDATE
-    //@State nativeEmbedStatusB:number=NativeEmbedStatus.DESTROY
     @State navigationTypeA:number=WebNavigationType.MAIN_FRAME_NEW_ENTRY
     @State navigationTypeB:number=WebNavigationType.MAIN_FRAME_EXISTING_ENTRY
     @State navigationTypeC:number=WebNavigationType.NAVIGATION_TYPE_NEW_SUBFRAME
