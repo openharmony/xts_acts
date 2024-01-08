@@ -23,7 +23,7 @@ let driver = Driver.create();
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let want = {
   abilityName: 'EntryAbility',
-  bundleName: 'com.huawei.hmos.passwordvault'
+  bundleName: 'com.ohos.passwordbox'
 };
 let SubscribeList = {
   events: [
@@ -41,7 +41,7 @@ function sleep(ms): Promise<any> {
 export default function abilityTest() {
   describe('ActsAutoFillExtensionTest', function () {
     afterEach(async function (done) {
-      await abilityDelegator.executeShellCommand('aa force-stop com.huawei.hmos.passwordvault');
+      await abilityDelegator.executeShellCommand('aa force-stop com.ohos.passwordbox');
       done();
     })
 
@@ -244,8 +244,8 @@ export default function abilityTest() {
           console.info('out verify begin');
           expect(context.currentHapModuleInfoName == 'entry').assertTrue();
           expect(context.configLanguage == 'zh-Hans').assertTrue();
-          expect(context.extensionAbilityInfoBundleName == 'com.huawei.hmos.passwordvault').assertTrue();
-          expect(context.applicationInfoName == 'com.huawei.hmos.passwordvault').assertTrue();
+          expect(context.extensionAbilityInfoBundleName == 'com.ohos.passwordbox').assertTrue();
+          expect(context.applicationInfoName == 'com.ohos.passwordbox').assertTrue();
           console.info('out verify middle1');
           expect(context.applicationContextCacheDir.indexOf('/cache') != -1).assertTrue();
           expect(context.applicationContextTempDir.indexOf('/temp') != -1).assertTrue();

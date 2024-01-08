@@ -171,7 +171,7 @@ async function VerifyContextProperties(context) {
     console.error(`getApplicationContext failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
   try {
-    let bundleContext = context.createBundleContext('com.huawei.hmos.passwordvault');
+    let bundleContext = context.createBundleContext('com.ohos.passwordbox');
     autoFillContextData.parameters.bundleContext_ApplicationInfo = JSON.stringify(bundleContext.applicationInfo).substring(0, 100);
   } catch (error) {
     console.error(`createBundleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -184,7 +184,7 @@ async function VerifyContextProperties(context) {
     console.error(`createModuleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
   try {
-    let moduleContextB = context.createModuleContext('com.huawei.hmos.passwordvault', 'entry');
+    let moduleContextB = context.createModuleContext('com.ohos.passwordbox', 'entry');
     autoFillContextData.parameters.moduleContextB_ApplicationInfo = JSON.stringify(moduleContextB.applicationInfo).substring(0, 100);
   } catch (error) {
     console.error(`createModuleContext failed, error.code: ${error.code}, error.message: ${error.message}`);

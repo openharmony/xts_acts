@@ -24,7 +24,7 @@ let driver = Driver.create();
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let want = {
   abilityName: 'EntryAbility',
-  bundleName: 'com.huawei.hmos.passwordvault'
+  bundleName: 'com.ohos.passwordbox'
 };
 
 function sleep(ms): Promise<any> {
@@ -34,7 +34,7 @@ function sleep(ms): Promise<any> {
 export default function abilityTest() {
   describe('ActsAutoFillTest', function () {
     afterEach(async function (done) {
-      await abilityDelegator.executeShellCommand('aa force-stop com.huawei.hmos.passwordvault');
+      await abilityDelegator.executeShellCommand('aa force-stop com.ohos.passwordbox');
       done();
     })
 

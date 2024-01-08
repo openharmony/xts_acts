@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.huawei.hmos.passwordvault",
+    "bundleName": "com.ohos.passwordbox",
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",
