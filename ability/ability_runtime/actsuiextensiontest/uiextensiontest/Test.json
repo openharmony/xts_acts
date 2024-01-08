@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "UIExtensionTest.hap",
+                "ActsUIExtensionTest.hap",
 				"UIExtensionProvider.hap",
                 "StartAbilityByUIContentSession.hap",
                 "UIExtensionProvider2.hap",
