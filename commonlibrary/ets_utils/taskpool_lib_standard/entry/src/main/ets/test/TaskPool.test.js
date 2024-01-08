@@ -1251,14 +1251,115 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass056
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0056
+     * @tc.name      : TaskPoolTestClass056
+     * @tc.desc      : executeDelayed for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass056', 0,  async function (done) {
+        function WaitforRunner(executeString) {
+            "use concurrent"
+            return executeString;
+        }
+
+        let finalString = "";
+        let isTerminate1 = false;
+        let isTerminate2 = false;
+        let isTerminate3 = false;
+        let task1 = new taskpool.Task(WaitforRunner, "a");
+        let task2 = new taskpool.Task(WaitforRunner, "b");
+        let task3 = new taskpool.Task(WaitforRunner, "c");
+
+        taskpool.executeDelayed(300, task1).then(() => {
+            finalString += 'a';
+            isTerminate1 = true;
+        });
+        taskpool.executeDelayed(200, task2).then(() => {
+            finalString += 'b';
+            isTerminate2 = true;
+        });
+        taskpool.executeDelayed(100, task3).then(() => {
+            finalString += 'c';
+            isTerminate3 = true;
+        });
+        while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+            await promiseCase()
+        }
+
+        expect(finalString).assertEqual("cba");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0057
+     * @tc.name      : TaskPoolTestClass057
+     * @tc.desc      : duration for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass057', 0,  async function (done) {
+        async function test(args) {
+            "use concurrent"
+            let p = await new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    const randomNumber = Math.floor(Math.random() * 100);
+                    resolve(randomNumber);
+                }, 200);
+            })
+            return p;
+        }
+
+        let totalDuration = 0;
+        let cpuDuration = 0;
+        let ioDuration = 0;
+
+        let task = new taskpool.Task(test, "hello");
+        let taskResult = await taskpool.execute(task);
+        totalDuration = task.totalDuration;
+        cpuDuration = task.cpuDuration;
+        ioDuration = task.ioDuration;
+        expect(totalDuration != 0).assertTrue();
+        expect(cpuDuration != 0).assertTrue();
+        expect(ioDuration != 0).assertTrue();
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0058
+     * @tc.name      : TaskPoolTestClass058
+     * @tc.desc      : concurrentFunc for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass081', 0,  async function (done) {
+        function Sum(num1, num2) {
+            "use concurrent"
+            let result = num1 + num2;
+            return result;
+            }
+        function printArgs(Sum, num1, num2) {
+            "use concurrent"
+            let result = Sum(num1, num2)
+            return result;
+        }
+        let result = await taskpool.execute(printArgs, Sum, 10, 20);
+        expect(result).assertEqual(30);
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass059
      * @tc.name      : Async Function about priority task
      * @tc.desc      : Execute priority tasks
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass056', 0,  async function (done) {
+    it('TaskPoolTestClass059', 0,  async function (done) {
         function testTime() {
             "use concurrent";
             return Date.now();
@@ -1305,14 +1406,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass057
+     * @tc.number    : TaskPoolTestClass060
      * @tc.name      : Async function execute task
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass057', 0,  async function (done) {
+    it('TaskPoolTestClass060', 0,  async function (done) {
         async function func(value1, value2) {
             "use concurrent"
             let result = await new Promise((resolve, reject) => {
@@ -1327,14 +1428,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass058
+     * @tc.number    : TaskPoolTestClass061
      * @tc.name      : Async function execute task
      * @tc.desc      : Execute async function task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass058', 0,  async function (done) {
+    it('TaskPoolTestClass061', 0,  async function (done) {
         async function func(value1, value2) {
             "use concurrent"
             let result = await new Promise((resolve, reject) => {
@@ -1350,14 +1451,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass059
+     * @tc.number    : TaskPoolTestClass062
      * @tc.name      : Async function execute taskGroup
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass059', 0,  async function (done) {
+    it('TaskPoolTestClass062', 0,  async function (done) {
         function printArgs(args) {
             "use concurrent"
             return args;
@@ -1377,14 +1478,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass060
+     * @tc.number    : TaskPoolTestClass063
      * @tc.name      : Async function execute taskGroup
      * @tc.desc      : Execute async function
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass060', 0,  async function (done) {
+    it('TaskPoolTestClass063', 0,  async function (done) {
         function printArgs(args) {
             "use concurrent"
             return args;
@@ -1406,14 +1507,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass061
+     * @tc.number    : TaskPoolTestClass064
      * @tc.name      : SetTransferList for task
      * @tc.desc      : Set transfer list for the task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass061', 0,  async function (done) {
+    it('TaskPoolTestClass064', 0,  async function (done) {
         let buffer = new ArrayBuffer(8);
         let view = new Uint8Array(buffer);
         let buffer1 = new ArrayBuffer(16);
@@ -1432,14 +1533,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass062
+     * @tc.number    : TaskPoolTestClass065
      * @tc.name      : Async Function GetTaskPoolInfo
      * @tc.desc      : Get the taskPoolInfo
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass062', 0, async function (done) {
+    it('TaskPoolTestClass065', 0, async function (done) {
         async function currentFun() {
             "use concurrent"
             await new Promise((resolve, reject) => {
@@ -1510,14 +1611,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass063
+     * @tc.number    : TaskPoolTestClass066
      * @tc.name      : sync Function GetTaskPoolInfo
      * @tc.desc      : Get the taskPoolInfo
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass063', 0, async function (done) {
+    it('TaskPoolTestClass066', 0, async function (done) {
         function delay() {
             "use concurrent"
             let start = new Date().getTime();
@@ -1586,14 +1687,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass064
+     * @tc.number    : TaskPoolTestClass067
      * @tc.name      : SharedArrayBuffer with taskpool
      * @tc.desc      : transfer SharedArrayBuffer with taskpool
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass064', 0,  async function (done) {
+    it('TaskPoolTestClass067', 0,  async function (done) {
         let sab = new SharedArrayBuffer(20);
         let int32 = new Uint32Array(sab);
         function testTransfer(arg1) {
@@ -1613,14 +1714,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass065
+     * @tc.number    : TaskPoolTestClass068
      * @tc.name      : SharedArrayBuffer and Atomics  with taskpool
      * @tc.desc      : transfer SharedArrayBuffer and Atomics with taskpool
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass065', 0,  async function (done) {
+    it('TaskPoolTestClass068', 0,  async function (done) {
         let sab = new SharedArrayBuffer(20);
         let int32 = new Int32Array(sab);
         function testTransfer(arg1) {
@@ -1641,14 +1742,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0066
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0069
      * @tc.name      : TaskPoolTestClass066
      * @tc.desc      : sendData and onReceiveData for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass066', 0,  async function (done) {
+    it('TaskPoolTestClass069', 0,  async function (done) {
         function HandleData(data) {
             "use concurrent"
             return data + 1;
@@ -1672,14 +1773,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0067
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0070
      * @tc.name      : TaskPoolTestClass067
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-      it('TaskPoolTestClass067', 0, async function (done) {
+      it('TaskPoolTestClass070', 0, async function (done) {
         function Sum(value1, value2) {
           "use concurrent"
           return value1 + value2;
@@ -1692,14 +1793,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0068
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0071
      * @tc.name      : TaskPoolTestClass068
      * @tc.desc      : add name of taskGroup for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass068', 0,  async function (done) {
+    it('TaskPoolTestClass071', 0,  async function (done) {
         function printArgs(args) {
           "use concurrent"
           return args;
@@ -1722,14 +1823,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass069
+     * @tc.number    : TaskPoolTestClass072
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Cancel tasks that have not been executed
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass069', 0, async function (done) {
+    it('TaskPoolTestClass072', 0, async function (done) {
         function inspectStatus(arg) {
             "use concurrent"
             let start = new Date().getTime();
@@ -1756,14 +1857,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass070
+     * @tc.number    : TaskPoolTestClass073
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Cancel the task in progress
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass070', 0, async function (done) {
+    it('TaskPoolTestClass073', 0, async function (done) {
         function inspectStatus(arg) {
             "use concurrent"
             return arg;
@@ -1793,14 +1894,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass071
+     * @tc.number    : TaskPoolTestClass074
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Cancel the executed task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass071', 0, async function (done) {
+    it('TaskPoolTestClass074', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             return arg + 1;
@@ -1828,14 +1929,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass072
+     * @tc.number    : TaskPoolTestClass075
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Cancel nonexistent task
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass072', 0, async function (done) {
+    it('TaskPoolTestClass075', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             return arg + 1;
@@ -1857,14 +1958,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass073
+     * @tc.number    : TaskPoolTestClass076
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Canceling unexecuted tasks multiple times
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass073', 0, async function (done) {
+    it('TaskPoolTestClass076', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             return arg + 1;
@@ -1893,14 +1994,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass074
+     * @tc.number    : TaskPoolTestClass077
      * @tc.name      : Async Function Cancel task
      * @tc.desc      : Cancel all tasks in sequence
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass074', 0, async function (done) {
+    it('TaskPoolTestClass077', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             return arg + 1;
@@ -1938,14 +2039,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass075
+     * @tc.number    : TaskPoolTestClass078
      * @tc.name      : Async Function Cancel taskGroup
      * @tc.desc      : Cancel the taskGroup in progress
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass075', 0, async function (done) {
+    it('TaskPoolTestClass078', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             let start = new Date().getTime();
@@ -1978,14 +2079,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass076
+     * @tc.number    : TaskPoolTestClass079
      * @tc.name      : Async Function Cancel taskGroup
      * @tc.desc      : Cancel the taskGroup that have not been executed
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass076', 0, async function (done) {
+    it('TaskPoolTestClass079', 0, async function (done) {
         function addition(arg) {
             "use concurrent"
             let start = new Date().getTime();
@@ -2018,14 +2119,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass077
+     * @tc.number    : TaskPoolTestClass080
      * @tc.name      : Async Function Cancel taskGroup
      * @tc.desc      : Cancel the non-existent taskGroup
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass077', 0, async function (done) {
+    it('TaskPoolTestClass080', 0, async function (done) {
         try {
             let taskGroup = new taskpool.TaskGroup();
 
@@ -2037,14 +2138,14 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass078
+     * @tc.number    : TaskPoolTestClass081
      * @tc.name      : Async Function Cancel taskGroup
      * @tc.desc      : Cancel the executed taskGroup
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass078', 0, async function (done) {
+    it('TaskPoolTestClass081', 0, async function (done) {
         function printArgs(args) {
             "use concurrent"
             return args;
