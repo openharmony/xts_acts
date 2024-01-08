@@ -2317,7 +2317,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.number SUB_DF_FILEIO_STAT_ASYNC_LOCATION_0000
    * @tc.name fileIO_stat_async_location_000
    * @tc.desc Test the location member of class Stat. Promise.
-   * Enter the path or fd parameter to get stat.location of the file.
+   * Enter the path or fd parameter to get stat.location is LOCAl.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -2347,7 +2347,7 @@ describe('fileIO_fs_stat', function () {
    * @tc.number SUB_DF_FILEIO_STAT_ASYNC_LOCATION_0100
    * @tc.name fileIO_stat_async_location_001
    * @tc.desc Test the location member of class Stat. Callback.
-   * Enter the path or fd parameter to get stat.location of the file.
+   * Enter the path or fd parameter to get stat.location is LOCAl.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
