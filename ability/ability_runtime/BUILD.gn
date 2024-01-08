@@ -40,6 +40,7 @@ group("ability_runtime") {
       "actsselfautostartup:actsselfautostartup",
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
+      "actsstartabilityforresulttest:actsstartabilityforresulttest",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",
