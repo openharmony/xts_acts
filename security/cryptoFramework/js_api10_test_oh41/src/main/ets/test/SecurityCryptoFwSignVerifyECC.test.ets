@@ -243,7 +243,7 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
         expect(null).assertFail();
       } catch (err) {
         console.log(testNumber + ": " + err.code);
-        expect(err.code == 801).assertTrue();
+        expect(err.code == 401).assertTrue();
         console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
       }
       try {
