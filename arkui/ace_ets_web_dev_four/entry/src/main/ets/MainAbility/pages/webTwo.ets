@@ -217,8 +217,8 @@ struct Second {
                                     let webPrintDocadapter = this.webviewCtl.createWebPrintDocumentAdapter('example.pdf');
                                     let securityLevel = this.webviewCtl.getSecurityLevel()
                                     this.webviewCtl.isIncognitoMode()
-                                    let result = web_webview.WebviewController.isSafeBrowsingEnabled();
-                                    web_webview.WebviewController.enableSafeBrowsing(true);
+                                    let result = this.webviewCtl.isSafeBrowsingEnabled();
+                                    this.webviewCtl.enableSafeBrowsing(true);
                                 }
                                 Utils.emitEvent(true,12)
                             } catch (error) {
