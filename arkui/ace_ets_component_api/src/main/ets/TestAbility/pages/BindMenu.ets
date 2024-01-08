@@ -17,7 +17,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct BindMenu {
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('Test menu item 1')
         .fontSize(20)
@@ -37,11 +38,15 @@ struct BindMenu {
     Column() {
       Row() {
         Text('placeholder')
-          .width("40%").height('100%')
+          .width("40%")
+          .height('100%')
           .key('BindMenu_placeholder')
         Text('click for Menu')
-          .width("60%").height('100%')
-          .borderWidth(1).borderColor(Color.Green).textAlign(TextAlign.Center)
+          .width("60%")
+          .height('100%')
+          .borderWidth(1)
+          .borderColor(Color.Green)
+          .textAlign(TextAlign.Center)
           .bindMenu([
             {
               value: 'Menu1',
@@ -55,27 +60,27 @@ struct BindMenu {
             },
           ], {
             title: "Title",
-            offset: {x: -5, y: 5},
+            offset: { x: -5, y: 5 },
             placement: Placement.Right,
             onAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50000,
                 priority: events_emitter.EventPriority.LOW
               }
               events_emitter.emit(event, eventData)
             },
-            onDisappear: ()=> {
-              var eventData = {
+            onDisappear: () => {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50001,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -84,36 +89,42 @@ struct BindMenu {
           })
           .key('BindMenu_bindMenu1')
       }
-      .width("90%").height(50).margin(10)
+      .width("90%")
+      .height(50)
+      .margin(10)
 
       Row() {
         Text('placeholder')
-          .width("40%").height('100%')
+          .width("40%")
+          .height('100%')
         Text('LongPress for contextMenu')
-          .width("60%").height('100%')
-          .borderWidth(1).borderColor(Color.Green).textAlign(TextAlign.Center)
+          .width("60%")
+          .height('100%')
+          .borderWidth(1)
+          .borderColor(Color.Green)
+          .textAlign(TextAlign.Center)
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress, {
-            offset: {x: 5, y: 5},
+            offset: { x: 5, y: 5 },
             placement: Placement.Right,
             onAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 60002,
                 priority: events_emitter.EventPriority.LOW
               }
               events_emitter.emit(event, eventData)
             },
-            onDisappear: ()=> {
-              var eventData = {
+            onDisappear: () => {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 60003,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -122,7 +133,9 @@ struct BindMenu {
           })
           .key('BindMenu_bindContextMenu1')
       }
-      .width("90%").height(50).margin(10)
+      .width("90%")
+      .height(50)
+      .margin(10)
     }
     .width('100%')
   }

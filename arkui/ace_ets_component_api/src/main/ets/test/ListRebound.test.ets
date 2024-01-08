@@ -14,31 +14,24 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {Driver, Component, ON} from '@ohos.UiTest'
+import { Driver, Component, ON } from '@ohos.UiTest'
+
 export default function ListReboundTest() {
 
-  const SUITE = 'ListRebound'
-  function getRectCenter(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
-    return [
-    px2vp(parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2),
-    px2vp(parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2),
-    ]
-  }
-  describe('ListReboundTest', function () {
+  const SUITE: string = 'ListRebound'
 
-    beforeEach(async function (done) {
-      let options = {
+  describe('ListReboundTest', () => {
+
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/ListRebound",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("ListRebound" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -52,16 +45,15 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.Spring
      *tc.desc   Grid with EdgeEffect.Spring
      */
-    it('ArkUI_Rebound_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Rebound_0100'
+    it('ArkUI_Rebound_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Rebound_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let baseKey = 'MyGrid1'
+      let baseKey: string = 'MyGrid1'
       setTimeout(async () => {
         try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.Spring')
+          let strJson: string = getInspectorByKey(baseKey);
+          expect(JSON.parse(strJson).$attrs.edgeEffect).assertEqual('EdgeEffect.Spring')
           console.info(`${SUITE} ${CASE} END`);
         } catch (err) {
           expect().assertFail();
@@ -76,16 +68,16 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.Fade
      *tc.desc   Grid with EdgeEffect.Fade
      */
-    it('ArkUI_Rebound_0200', 0, async function (done) {
-      let CASE = 'ArkUI_Rebound_0200'
+    it('ArkUI_Rebound_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Rebound_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let baseKey = 'MyGrid2'
+      let baseKey: string = 'MyGrid2'
       setTimeout(async () => {
         try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.Fade')
+          let strJson: string = getInspectorByKey(baseKey);
+
+          expect(JSON.parse(strJson).$attrs.edgeEffect).assertEqual('EdgeEffect.Fade')
           console.info(`${SUITE} ${CASE} END`);
         } catch (err) {
           expect().assertFail();
@@ -100,16 +92,14 @@ export default function ListReboundTest() {
      *tc.name   Grid with EdgeEffect.None
      *tc.desc   Grid with EdgeEffect.None
      */
-    it('ArkUI_Rebound_0300', 0, async function (done) {
-      let CASE = 'ArkUI_Rebound_0300'
+    it('ArkUI_Rebound_0300', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Rebound_0300'
       console.info(`${SUITE} ${CASE} START`);
-
-      let baseKey = 'MyGrid3'
+      let baseKey: string = 'MyGrid3'
       setTimeout(async () => {
         try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None')
+          let strJson: string = getInspectorByKey(baseKey);
+          expect(JSON.parse(strJson).$attrs.edgeEffect).assertEqual('EdgeEffect.None')
           console.info(`${SUITE} ${CASE} END`);
         } catch (err) {
           expect().assertFail();
@@ -118,6 +108,14 @@ export default function ListReboundTest() {
         done();
       }, 500)
     });
-
   })
+}
+
+function getRectCenter(rect: string) {
+  let regexp: RegExp = new RegExp('\\[', 'g');
+  let rtn: string[] = rect.replace(regexp, '').replace(regexp, ',').split(',')
+  return [
+    px2vp(Number.parseFloat(rtn[0].trim()) + (Number.parseFloat(rtn[2].trim()) - Number.parseFloat(rtn[0].trim())) / 2),
+    px2vp(Number.parseFloat(rtn[1].trim()) + (Number.parseFloat(rtn[3].trim()) - Number.parseFloat(rtn[1].trim())) / 2),
+  ]
 }
