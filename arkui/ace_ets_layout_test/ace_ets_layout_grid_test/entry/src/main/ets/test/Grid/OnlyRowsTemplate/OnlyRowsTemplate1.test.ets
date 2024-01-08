@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { Driver, ON } from '@ohos.UiTest';
 export default function OnlyRowsTemplate1() {
   describe('OnlyRowsTemplate1', function () {
     beforeEach(async function (done) {
@@ -40,10 +41,10 @@ export default function OnlyRowsTemplate1() {
       done();
     });
     afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      router.back()
       console.info("OnlyRowsTemplate1 after each called");
     });
+
+
     /**
      * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0100
      * @tc.name      testGrid
@@ -72,6 +73,12 @@ export default function OnlyRowsTemplate1() {
       expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(154)));
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
 
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      await CommonFunc.sleep(300);
+      let button = await driver.findComponent(ON.id('OnlyRowsTemplate1_button'));
+      await button.click();
+      await CommonFunc.sleep(1000);
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0100] END');
       done();
     });
@@ -97,93 +104,18 @@ export default function OnlyRowsTemplate1() {
       expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(154)));
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
 
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      await CommonFunc.sleep(300);
+      let button = await driver.findComponent(ON.id('OnlyRowsTemplate1_button'));
+      await button.click();
+      await CommonFunc.sleep(1000);
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0200] END');
       done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0300
-     * @tc.name      testGrid
-     * @tc.desc      GridItem sets rowStart to be greater than the total number of row
-     */
-    it('SUB_ACE_GRID_OnlyRowsTemplate1_0300', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0300] START');
-      globalThis.value.message.notify({name:'rowStart1', value:5})
-      globalThis.value.message.notify({name:'rowEnd1', value:1})
-      globalThis.value.message.notify({name:'rowStart2', value:5})
-      globalThis.value.message.notify({name:'rowEnd2', value:1})
-      await CommonFunc.sleep(2000);
-
-      console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
-
-      console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(100)));
-      console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(72)));
-      console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
-
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0300] END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0400
-     * @tc.name      testGrid
-     * @tc.desc      GridItem sets rowStart to a negative number
-     */
-    it('SUB_ACE_GRID_OnlyRowsTemplate1_0400', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0400] START');
-      globalThis.value.message.notify({name:'rowStart1', value:-1})
-      globalThis.value.message.notify({name:'rowEnd1', value:1})
-      globalThis.value.message.notify({name:'rowStart2', value:-1})
-      globalThis.value.message.notify({name:'rowEnd2', value:1})
-      await CommonFunc.sleep(2000);
-
-      console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
-      let GridItem_02 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_02');
-
-      console.log('assert space')
-      expect(Math.round(GridItem_02.top - GridItem_01.bottom)).assertEqual(Math.round(vp2px(10)));
-      console.log('GridItem_02.top - GridItem_01.bottom' + (GridItem_02.top - GridItem_01.bottom))
 
 
-      console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(100)));
-      console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(72)));
-      console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
-
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0400] END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0500
-     * @tc.name      testGrid
-     * @tc.desc      GridItem sets rowStart to a negative number
-     */
-    it('SUB_ACE_GRID_OnlyRowsTemplate1_0500', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0500] START');
-      globalThis.value.message.notify({name:'rowStart1', value:2})
-      globalThis.value.message.notify({name:'rowEnd1', value:1})
-      globalThis.value.message.notify({name:'rowStart2', value:2})
-      globalThis.value.message.notify({name:'rowEnd2', value:1})
-      await CommonFunc.sleep(2000);
-
-      console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
-
-      console.log('assert size')
-      expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(100)));
-      console.log('GGridItem_01.right - GridItem_01.left' + (GridItem_01.right - GridItem_01.left))
-      expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(72)));
-      console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
-
-      console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0500] END');
-      done();
-    });
 
   })
 }

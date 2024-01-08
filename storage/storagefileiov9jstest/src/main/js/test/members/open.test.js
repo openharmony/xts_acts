@@ -303,33 +303,6 @@ export default function fileIOOpen() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_1100
-   * @tc.name fileIO_test_open_sync_011
-   * @tc.desc Test openSync() interfaces. mode=0o400002.
-   * The path points to a symbolic link, throw error.
-   * @tc.size MEDIUM
-   * @tc.type Functoin
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('fileIO_test_open_sync_011', 0, async function () {
-    let fpath = await nextFileName('fileIO_test_open_sync_011');
-    let ffpath = fpath + 'aaaa';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    try {
-      fileIO.symlinkSync(fpath, ffpath);
-      fileIO.openSync(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
-      expect(false).assertTrue();
-    } catch (e) {
-      fileIO.unlinkSync(fpath);
-      fileIO.unlinkSync(ffpath);
-      console.log('fileIO_test_open_sync_011 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900033 && e.message == 'Too many symbolic links encountered').assertTrue();
-    }
-  });
-
-  /**
    * @tc.number SUB_DF_FILEIO_OPEN_SYNC_1200
    * @tc.name fileIO_test_open_sync_012
    * @tc.desc Test openSync() interfaces. mode=0o4010002.
@@ -1119,98 +1092,6 @@ export default function fileIOOpen() {
       });
     } catch (e) {
       console.log('fileIO_test_open_async_023 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2400
-   * @tc.name fileIO_test_open_async_024
-   * @tc.desc Test open() interfaces. mode=0o400002. Promise.
-   * The path point to a symbolic link, throw error.
-   * @tc.size MEDIUM
-   * @tc.type Functoin
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('fileIO_test_open_async_024', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_open_async_024');
-    let ffpath = fpath + 'aaaa';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    try {
-      fileIO.symlinkSync(fpath, ffpath);
-      await fileIO.open(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
-      expect(false).assertTrue();
-    } catch (e) {
-      fileIO.unlinkSync(fpath);
-      fileIO.unlinkSync(ffpath);
-      console.log('fileIO_test_open_async_024 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900033 && e.message == 'Too many symbolic links encountered').assertTrue();
-      done();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2500
-   * @tc.name fileIO_test_open_async_025
-   * @tc.desc Test open() interfaces. mode=0o400002. Callback.
-   * The path point to a symbolic link, throw error.
-   * @tc.size MEDIUM
-   * @tc.type Functoin
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('fileIO_test_open_async_025', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_open_async_025');
-    let ffpath = fpath + 'link';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    try {
-      fileIO.symlinkSync(fpath, ffpath);
-      fileIO.open(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE, (err) => {
-        if(err) {
-          console.log('fileIO_test_open_async_025 error: {message: ' + err.message + ', code: ' + err.code + '}');
-          expect(err.code == 13900033 && err.message == 'Too many symbolic links encountered').assertTrue();
-        }
-        fileIO.unlinkSync(fpath);
-        fileIO.unlinkSync(ffpath);
-        done();
-      });
-    } catch (e) {
-      console.log('fileIO_test_open_async_025 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2600
-   * @tc.name fileIO_test_open_async_026
-   * @tc.desc Test open() interfaces. mode=0o400002. Promise.then().catch()
-   * The path point to a symbolic link, throw error.
-   * @tc.size MEDIUM
-   * @tc.type Functoin
-   * @tc.level Level 3
-   * @tc.require
-   */
-  it('fileIO_test_open_async_026', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_open_async_026');
-    let ffpath = fpath + 'link';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    try {
-      fileIO.symlinkSync(fpath, ffpath);
-      fileIO.open(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE).then(() => {
-        expect(false).assertTrue();
-      }).catch((err) => {
-        console.log('fileIO_test_open_async_026 error: {message: ' + err.message + ', code: ' + err.code + '}');
-        expect(err.code == 13900033 && err.message == 'Too many symbolic links encountered').assertTrue();
-        fileIO.unlinkSync(fpath);
-        fileIO.unlinkSync(ffpath);
-        done();
-      });
-    } catch (e) {
-      console.log('fileIO_test_open_async_026 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

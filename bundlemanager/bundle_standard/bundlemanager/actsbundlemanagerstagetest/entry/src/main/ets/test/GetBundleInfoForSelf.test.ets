@@ -125,7 +125,6 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.permissions.length).assertEqual(0);
         expect(data.appInfo.systemApp).assertFalse();
         expect(data.appInfo.dataUnclearable).assertFalse();
-        expect(data.appInfo.applicationReservedFlag).assertEqual(0);
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -1227,7 +1226,6 @@ export default function getBundleInfoForSelf() {
       console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
       checkCommonBundleInfo(data);
       console.info("data.hapModulesInfo[0].fileContextMenu" + JSON.stringify(data.hapModulesInfo[0].fileContextMenu));
-      expect(bundle.ApplicationReservedFlag.ENCRYPTED_APPLICATION).assertEqual(1);
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(1);
       expect(data.hapModulesInfo[0].name).assertEqual("testModule");

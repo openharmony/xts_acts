@@ -77,6 +77,22 @@ export default function rdbTest() {
       expect(data).assertEqual(1);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5000
+     * @tc.name       : testCreatePredicates003
+     * @tc.desc       : OH_Rdb_CreatePredicates Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testCreatePredicates003', 0, async (done: Function) => {
+      let data = rdb.createPredicatesThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
     /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0500
      * @tc.name       : testGetOrOpen001
@@ -123,6 +139,21 @@ export default function rdbTest() {
     });
 
     /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5100
+     * @tc.name       : testGetOrOpen004
+     * @tc.desc       : OH_Rdb_GetOrOpen Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testGetOrOpen004', 0, async (done: Function) => {
+      let data = rdb.getOrOpenFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0800
      * @tc.name       : testCloseStore001
      * @tc.desc       : OH_Rdb_CloseStore Interface testing
@@ -151,6 +182,22 @@ export default function rdbTest() {
       expect(data).assertEqual(1);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5200
+     * @tc.name       : testCloseStore003
+     * @tc.desc       : OH_Rdb_CloseStore Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testCloseStore003', 0, async (done: Function) => {
+      let data = rdb.closeStoreThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
     /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1000
      * @tc.name       : testDeleteStore001
@@ -176,6 +223,21 @@ export default function rdbTest() {
      */
     it('testDeleteStore002', 0, async (done: Function) => {
       let data = rdb.deleteStoreTwo();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5300
+     * @tc.name       : testDeleteStore003
+     * @tc.desc       : OH_Rdb_DeleteStore Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDeleteStore003', 0, async (done: Function) => {
+      let data = rdb.deleteStoreThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done();
@@ -236,6 +298,21 @@ export default function rdbTest() {
      */
     it('testInsert004', 0, async (done: Function) => {
       let data = rdb.insertFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5400
+     * @tc.name       : testInsert005
+     * @tc.desc       : OH_Rdb_Insert Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testInsert005', 0, async (done: Function) => {
+      let data = rdb.insertFive();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done();
@@ -317,6 +394,36 @@ export default function rdbTest() {
     });
 
     /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5500
+     * @tc.name       : testUpdate006
+     * @tc.desc       : OH_Rdb_Update Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testUpdate006', 0, async (done: Function) => {
+      let data = rdb.updateSix();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5600
+     * @tc.name       : testUpdate007
+     * @tc.desc       : OH_Rdb_Update Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testUpdate007', 0, async (done: Function) => {
+      let data = rdb.updateSeven();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2100
      * @tc.name       : testDelete001
      * @tc.desc       : OH_Rdb_Delete Interface testing
@@ -377,6 +484,21 @@ export default function rdbTest() {
     });
 
     /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5700
+     * @tc.name       : testDelete005
+     * @tc.desc       : OH_Rdb_Delete Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDelete005', 0, async (done: Function) => {
+      let data = rdb.deleteFive();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2500
      * @tc.name       : testQuery001
      * @tc.desc       : OH_Rdb_Query Interface testing
@@ -416,6 +538,21 @@ export default function rdbTest() {
      */
     it('testQuery003', 0, async (done: Function) => {
       let data = rdb.queryThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5800
+     * @tc.name       : testQuery004
+     * @tc.desc       : OH_Rdb_Query Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testQuery004', 0, async (done: Function) => {
+      let data = rdb.queryFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done();
@@ -467,6 +604,21 @@ export default function rdbTest() {
     });
 
     /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_5900
+     * @tc.name       : testExecute004
+     * @tc.desc       : OH_Rdb_Execute Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testExecute004', 0, async (done: Function) => {
+      let data = rdb.executeFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3100
      * @tc.name       : testExecuteQuery001
      * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
@@ -506,6 +658,21 @@ export default function rdbTest() {
      */
     it('testExecuteQuery003', 0, async (done: Function) => {
       let data = rdb.executeQueryThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_6000
+     * @tc.name       : testExecuteQuery004
+     * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testExecuteQuery004', 0, async (done: Function) => {
+      let data = rdb.executeQueryFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done();
@@ -631,6 +798,20 @@ export default function rdbTest() {
       done();
     });
 
+    /**
+     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_6100
+     * @tc.name       : testBackup003
+     * @tc.desc       : OH_Rdb_Backup Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testBackup003', 0, async (done: Function) => {
+      let data = rdb.backupThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
     /**
      * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4200
      * @tc.name       : testRestore001

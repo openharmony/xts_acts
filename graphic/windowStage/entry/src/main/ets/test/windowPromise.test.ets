@@ -181,6 +181,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       } catch (err) {
         console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
       }
+      await sleep(1000);
       await tempWnd.on('windowSizeChange', async (sizeData) => {
         console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
         if(flag){
@@ -1443,6 +1444,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(2).assertEqual(ohosWindow.WindowEventType.WINDOW_ACTIVE);
         expect(3).assertEqual(ohosWindow.WindowEventType.WINDOW_INACTIVE);
         expect(4).assertEqual(ohosWindow.WindowEventType.WINDOW_HIDDEN);
+        expect(7).assertEqual(ohosWindow.WindowEventType.WINDOW_DESTROYED);
         done();
       } catch (err) {
         console.info(msgStr + 'windowEventType error :' + JSON.stringify(err));
@@ -1471,6 +1473,35 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       } catch (err) {
         console.info(msgStr + 'Orientation error :' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+    * @tc.name      : testSetSpecificSystemBarEnabled_Function_Promise
+    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async function(done){
+      let msgStr = 'testSetSpecificSystemBarEnabled';
+      console.log(msgStr + 'begin')
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        let promise = windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
+        promise.then(() => {
+          console.log(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
         expect().assertFail();
         done();
       }

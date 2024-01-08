@@ -104,7 +104,7 @@ export default function ListScrollToItemInGroup() {
         let center = Utils.getComponentRect('CenterLine');
         console.info("center.top: " + center.top);
         let ListItem = Utils.getComponentRect('ListItem_Group1_Index2');
-        let middle = (ListItem.top + ListItem.bottom) / 2 - 1 / 2; // 1/2 means Divider component strokeWidth plus 50%.
+        let middle = (ListItem.top + ListItem.bottom) / 2 - vp2px(0.5);
         console.info("ListItem.top: " + ListItem.top + " " + "ListItem.bottom: " + ListItem.bottom);
         expect(Math.abs(center.top - middle) <= 1).assertEqual(true); // 1 px error is alllowed
         console.info('[ArkUI_List_Scroll_To_Item_In_Group_0200] END');

@@ -1052,6 +1052,141 @@ function p512t1Pk() {
   return pk
 }
 
+function genDHKeySpec(keyType: cpFw.AsyKeySpecType): cpFw.AsyKeySpec {
+  let dhCommonSpec: cpFw.DHCommonParamsSpec = {
+    algName: "DH",
+    specType: cpFw.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt('14388323748509691152339626034387408995039547340824577979064239063608427704932448732076569161306635' +
+      '2917481944547405689677246280152410758013777025889764765692851384451416319617692425991236335855348677315061' +
+      '390272265742624033974422711563743651130853053024311390237925287317451474937241063690707505697001705975527'),
+    g: BigInt('2'),
+    l: 512,
+  }
+  switch (keyType) {
+    case cpFw.AsyKeySpecType.COMMON_PARAMS_SPEC:
+      return dhCommonSpec;
+    case cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC:
+      let dhPriKeySpec: cpFw.DHPriKeySpec = {
+        algName: "DH",
+        specType: cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC,
+        params: dhCommonSpec,
+        sk: dhSk()
+      };
+      return dhPriKeySpec;
+    case cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC:
+      let dhPubKeySpec: cpFw.DHPubKeySpec = {
+        algName: "Ed25519",
+        specType: cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC,
+        params: dhCommonSpec,
+        pk: dhPk()
+      };
+      return dhPubKeySpec;
+    case cpFw.AsyKeySpecType.KEY_PAIR_SPEC:
+      let dhKeyPairSpec: cpFw.DHKeyPairSpec = {
+        algName: "DH",
+        specType: cpFw.AsyKeySpecType.KEY_PAIR_SPEC,
+        params: dhCommonSpec,
+        sk: dhSk(),
+        pk: dhPk()
+      };
+      return dhKeyPairSpec;
+  }
+}
+
+function dhSk() {
+  return BigInt('26338314196010394003047705826246263763817858777633584257903027929486581399289')
+}
+
+function dhPk() {
+  return BigInt('88526073542684289740553502784855485761717378867878721325430646321401727693216')
+}
+
+function genEd25519KeySpec(keyType: cpFw.AsyKeySpecType): cpFw.AsyKeySpec {
+  switch (keyType) {
+    case cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC:
+      let ed25519PriKeySpec: cpFw.ED25519PriKeySpec = {
+        algName: "Ed25519",
+        specType: cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC,
+        sk: ed25519Sk(),
+      };
+      return ed25519PriKeySpec;
+    case cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC:
+      let ed25519PubKeySpec: cpFw.ED25519PubKeySpec = {
+        algName: "Ed25519",
+        specType: cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC,
+        pk: ed25519Pk(),
+      };
+      return ed25519PubKeySpec;
+    case cpFw.AsyKeySpecType.KEY_PAIR_SPEC:
+      let ed25519KeyPairSpec: cpFw.ED25519KeyPairSpec = {
+        algName: "Ed25519",
+        specType: cpFw.AsyKeySpecType.KEY_PAIR_SPEC,
+        sk: ed25519Sk(),
+        pk: ed25519Pk(),
+      };
+      return ed25519KeyPairSpec;
+    default:
+      let defaultSpec: cpFw.ED25519KeyPairSpec = {
+        algName: "Ed25519",
+        specType: cpFw.AsyKeySpecType.KEY_PAIR_SPEC,
+        sk: ed25519Sk(),
+        pk: ed25519Pk(),
+      };
+      return defaultSpec;
+  }
+}
+
+function ed25519Sk() {
+  return BigInt('26338314196010394003047705826246263763817858777633584257903027929486581399289')
+}
+
+function ed25519Pk() {
+  return BigInt('88526073542684289740553502784855485761717378867878721325430646321401727693216')
+}
+
+function genX25519KeySpec(keyType: cpFw.AsyKeySpecType): cpFw.AsyKeySpec {
+  switch (keyType) {
+    case cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC:
+      let x25519PriKeySpec: cpFw.X25519PriKeySpec = {
+        algName: "X25519",
+        specType: cpFw.AsyKeySpecType.PRIVATE_KEY_SPEC,
+        sk: x25519Sk(),
+      };
+      return x25519PriKeySpec;
+    case cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC:
+      let x25519PubKeySpec: cpFw.X25519PubKeySpec = {
+        algName: "X25519",
+        specType: cpFw.AsyKeySpecType.PUBLIC_KEY_SPEC,
+        pk: x25519Pk(),
+      };
+      return x25519PubKeySpec;
+    case cpFw.AsyKeySpecType.KEY_PAIR_SPEC:
+      let x25519KeyPairSpec: cpFw.X25519KeyPairSpec = {
+        algName: "X25519",
+        specType: cpFw.AsyKeySpecType.KEY_PAIR_SPEC,
+        sk: x25519Sk(),
+        pk: x25519Pk(),
+      };
+      return x25519KeyPairSpec;
+    default:
+      let defaultSpec: cpFw.X25519KeyPairSpec = {
+        algName: "X25519",
+        specType: cpFw.AsyKeySpecType.KEY_PAIR_SPEC,
+        sk: x25519Sk(),
+        pk: x25519Pk(),
+      };
+      return defaultSpec;
+  }
+}
+
+function x25519Sk() {
+  return BigInt('80492519743984536410287031417673280832731199941643693694014394451502905215291')
+}
+
+function x25519Pk() {
+  return BigInt('29236918585986399753398384668566812412856019336455282363269457131759906074454')
+}
+
 export {
   SM2CommonSpec,
   SM2Sk,
@@ -1113,4 +1248,7 @@ export {
   genP384t1KeySpec,
   genP512r1KeySpec,
   genP512t1KeySpec,
+  genDHKeySpec,
+  genEd25519KeySpec,
+  genX25519KeySpec,
 }

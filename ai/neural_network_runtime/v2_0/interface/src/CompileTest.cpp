@@ -730,7 +730,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0100, Function | 
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Compilation_Build_0200
- * @tc.name   : 编译模型，未设置device
+ * @tc.name   : 编译模型，未设置device，默认设备，返回成功
  * @tc.desc   : [C- SOFTWARE -0200]
  */
 HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0200, Function | MediumTest | Level2)
@@ -740,7 +740,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0200, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
-    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 

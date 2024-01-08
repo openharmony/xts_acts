@@ -16,6 +16,9 @@
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
+import PermissionsUtils from '../../test/PermissionsUtils';
+import { Driver, ON } from '@ohos.UiTest';
+import common from '@ohos.app.ability.common';
 
 @Entry
 @Component
@@ -23,6 +26,7 @@ struct WebOnPermissionRequest {
   controller: webView.WebviewController = new webView.WebviewController();
   @State str: string = ""
   @State deny: boolean = false
+  permissionRequest: PermissionRequest | null = null
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -35,7 +39,6 @@ struct WebOnPermissionRequest {
   onPageHide() {
     events_emitter.off(10)
   }
-
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
@@ -95,6 +98,22 @@ struct WebOnPermissionRequest {
                     }
                   })
                   await Utils.sleep(2000)
+                  PermissionsUtils.reqPermissionCamera(getContext(this) as common.UIAbilityContext,
+                    (success: boolean) => {
+                      if (success) {
+                        console.info('onPermissionRequest ====> grant')
+                        if (this.permissionRequest) {
+                          this.permissionRequest.grant(this.permissionRequest.getAccessibleResource())
+                        } else {
+                          console.info('permissionRequest is null')
+                        }
+                      }
+                    })
+                  await Utils.sleep(3000);
+                  let driver = Driver.create();
+                  let component = await driver.findComponent(ON.text('允许'));
+                  await component.click();
+                  await Utils.sleep(3000);
                   this.controller.runJavaScript("getResult()", (error, result) => {
                     if (error) {
                       console.info('getResult() return error: ' + error)
@@ -124,8 +143,7 @@ struct WebOnPermissionRequest {
                 event.request.deny()
                 console.info('onPermissionRequest ====> deny')
               } else {
-                event.request.grant(event.request.getAccessibleResource())
-                console.info('onPermissionRequest ====> grant')
+                this.permissionRequest = event.request
               }
             }
           })

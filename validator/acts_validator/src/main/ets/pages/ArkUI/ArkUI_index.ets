@@ -70,7 +70,12 @@ struct IndexPage {
     { title: 'Progress', uri: 'pages/ArkUI/Progress' },
     { title: 'Rating', uri: 'pages/ArkUI/Rating' },
     { title: 'Search', uri: 'pages/ArkUI/Search' },
-    { title: 'SharedTransition', uri: 'pages/ArkUI/SharedTransition' }
+    { title: 'SharedTransition', uri: 'pages/ArkUI/SharedTransition' },
+    { title: 'Swiper', uri: 'pages/ArkUI/Swiper' },
+    { title: 'Gauge', uri: 'pages/ArkUI/Gauge' },
+    { title: 'ImageAnimator', uri: 'pages/ArkUI/ImageAnimator' },
+    { title: 'TextPickerDialog', uri: 'pages/ArkUI/TextPickerDialog' },
+    { title: 'Refresh', uri: 'pages/ArkUI/Refresh' }
   ]
   @State ColorObject: Object[] = VarColor;
   @State ColorTrue: Object[] = [];

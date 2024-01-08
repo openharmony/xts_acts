@@ -90,7 +90,7 @@ export default function defaultFocusValueTest() {
       defaultFocus: false
     }
   }, {
-    describe: 'GroupDefaultFocus',
+    describe: 'GroupDefault',
     expectValue: {
       groupDefaultFocus: false
     }
@@ -112,7 +112,7 @@ export default function defaultFocusValueTest() {
         // Test defaultFocus defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.defaultFocus:' + data.viewObj.$attrs.defaultFocus);
         expect(data.viewObj.$attrs.defaultFocus).assertEqual(data.testValue.expectValue.defaultFocus);
-      } else if (data.testValue.describe == 'GroupDefaultFocus') {
+      } else if (data.testValue.describe == 'GroupDefault') {
         // Test groupDefaultFocus defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.groupDefaultFocus:' +
         data.viewObj.$attrs.groupDefaultFocus);

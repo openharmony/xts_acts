@@ -1,0 +1,24 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/second/second",
+        "MainAbility/pages/Track/extendTrack",
+        "MainAbility/pages/Track/localTrack",
+        "MainAbility/pages/Track/nestTrack",
+        "MainAbility/pages/Track/provideTrack",
+        "MainAbility/pages/Track/StateTrack",
+        "MainAbility/pages/Track/storageTrack",
+        "MainAbility/pages/GestureRelated/GestureClick",
+        "MainAbility/pages/GestureRelated/GestureContiune",
+        "MainAbility/pages/GestureRelated/GestureDrag",
+        "MainAbility/pages/GestureRelated/GestureIsSystemGesture",
+        "MainAbility/pages/GestureRelated/GestureLongPressGesture",
+        "MainAbility/pages/GestureRelated/GesturePanGesture",
+        "MainAbility/pages/GestureRelated/GesturePinchGesture",
+        "MainAbility/pages/GestureRelated/GestureReject",
+        "MainAbility/pages/GestureRelated/GestureRotationGesture",
+        "MainAbility/pages/GestureRelated/GestureSwipeGesture",
+        "MainAbility/pages/GestureRelated/GestureTap",
+        "MainAbility/pages/GestureRelated/GestureTapGesture"
+    ]
+}

@@ -253,7 +253,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetFavicon',0,async function(done){
       emitKey="emitGetFaviconAgain";    
-      Utils.registerEvent("testGetFavicon",undefined,114,done);
+      Utils.registerEvent("testGetFavicon",null,114,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -263,7 +263,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetFaviconAgain',0,async function(done){
       emitKey="emitGetOriginalUrl";    
-      Utils.registerEvent("testGetFaviconAgain",5,116,done);
+      Utils.registerEvent("testGetFaviconAgain",true,116,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*

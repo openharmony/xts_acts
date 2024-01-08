@@ -148,7 +148,7 @@ export default function webMessageExt() {
     it('testWebMessageExtSetType001', 0, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebMessageExtSetType001", 0, 36000, done);
+      Utils.registerEvent("testWebMessageExtSetType001", '17100014', 36000, done);
       sendEventByKey('WebMessageExtButton', 10, '');
     })
 

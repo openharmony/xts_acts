@@ -619,12 +619,12 @@ export default function NetTCPSocketServerTest() {
     });
 
     /**
-     * @tc.number NetworkManager_TCPSocketServer_getState_Promise_0100
+     * @tc.number NetworkManager_TCPSocketServer_getState_Promise_0200
      * @tc.name Test getState() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getState_Promise_0100', 0, async function (done) {
-      let caseName = "NetworkManager_TCPSocketServer_getState_Promise_0100";
+    it('NetworkManager_TCPSocketServer_getState_Promise_0200', 0, async function (done) {
+      let caseName = "NetworkManager_TCPSocketServer_getState_Promise_0200";
       let server = socket.constructTCPSocketServerInstance();
       server.listen(address, (err, data) => {
         if (err) {

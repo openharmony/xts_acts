@@ -65,6 +65,8 @@ struct Index {
   @State title8: Object = { title: "。。。", subtitle: "，，，" }
   @State preferType8: Object = SheetType.CENTER
   @State shouldDismiss: Object = true
+  @State enableOutsideInteractive: boolean = false
+  @State enableOutsideInteractive1: boolean = true;
 
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
@@ -116,6 +118,7 @@ struct Index {
                 "title": this.title1,
                 "preferType": this.preferType1,
                 "shouldDismiss": this.shouldDismiss,
+                "enableOutsideInteractive": this.enableOutsideInteractive,
               }
             }
             var backEvent = {
@@ -134,6 +137,7 @@ struct Index {
           showClose: true,
           title: { title: "title", subtitle: "subtitle" },
           preferType: SheetType.CENTER,
+          enableOutsideInteractive: false,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -155,6 +159,7 @@ struct Index {
                 "title": this.title2,
                 "preferType": this.preferType2,
                 "shouldDismiss": this.shouldDismiss,
+                "enableOutsideInteractive": this.enableOutsideInteractive1,
               }
             }
             var backEvent = {
@@ -173,6 +178,7 @@ struct Index {
           showClose: false,
           title: { title: "323", subtitle: "156" },
           preferType: SheetType.POPUP,
+          enableOutsideInteractive: true,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")
@@ -193,6 +199,7 @@ struct Index {
                 "title": this.title3,
                 "preferType": this.preferType3,
                 "shouldDismiss": this.shouldDismiss,
+                "enableOutsideInteractive": this.enableOutsideInteractive,
               }
             }
             var backEvent = {
@@ -212,6 +219,7 @@ struct Index {
           maskColor: Color.Green,
           title: { title: "asdasd", subtitle: "1232561" },
           preferType: SheetType.POPUP,
+          enableOutsideInteractive: null,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
             console.log("bind sheet shouldDismiss")

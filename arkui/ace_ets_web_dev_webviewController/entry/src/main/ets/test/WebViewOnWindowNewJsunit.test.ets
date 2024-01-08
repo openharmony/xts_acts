@@ -149,7 +149,7 @@ export default function webViewOnWindowNewJsunit() {
     */
    it('testBlockNetWorkFalse',0,async function(done){
      emitKey="emitGetOriginsPromiseLoadLocalHtml01";
-     let title = "www.weibo.com";
+     let title = "weibo.com";
       Utils.registerEvent("testBlockNetWorkFalse", title, 7114, done);
       sendEventByKey('onWindowNew', 10, '');
     })

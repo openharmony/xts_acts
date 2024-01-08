@@ -42,7 +42,7 @@ export default {
       }).catch((err) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
-    }, 3000)
+    }, 2000)
   },
   onDestroy() {
     console.info(printLog1 + 'onDestroy');

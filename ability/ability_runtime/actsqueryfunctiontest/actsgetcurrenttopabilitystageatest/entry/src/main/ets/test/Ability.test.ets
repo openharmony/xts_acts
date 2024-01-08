@@ -24,18 +24,11 @@ const START_ABILITY_TIMEOUT = 4000;
 
 export default function abilityTest() {
     describe('ActsParticleAbilityTest', function () {
-        function sleep(time) {
-            return new Promise(resolve => setTimeout(resolve, time));
-          }
 
-        beforeEach(async(done)=>{
-            await sleep(START_ABILITY_TIMEOUT);
-            done()
-        })
         /**
-         *@tc.number: ACTS_GetCurrentTopAbility_0100
-         *@tc.name: Verify the interface for obtaining the Ability of the foreground
-         *@tc.desc:Start PageAbility1,Ability2 to be tested in turn, and get the current foreground Ability (AsyncCallback)
+         * @tc.number: ACTS_GetCurrentTopAbility_0100
+         * @tc.name: Verify the interface for obtaining the Ability of the foreground
+         * @tc.desc:Start PageAbility1,Ability2 to be tested in turn, and get the current foreground Ability (AsyncCallback)
          */
         it('ACTS_GetCurrentTopAbility_0100', 0, async function (done) {
             console.log("ACTS_GetCurrentTopAbility_0100 --- start");
@@ -44,24 +37,22 @@ export default function abilityTest() {
             var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
             async function SubscribeCallBack(err, data) {
-                console.debug("ACTS_GetCurrentTopAbility_0100====>Subscribe CallBack data:====>" 
+                console.debug("ACTS_GetCurrentTopAbility_0100====>Subscribe CallBack data:====>"
                 + JSON.stringify(data));
                 expect(data.event == 'GetCurrentTopAbilityB').assertTrue();
                 if (data.event == 'GetCurrentTopAbilityB') {
-                  await sleep(1000);
+                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
                     AbilityDelegator.getCurrentTopAbility((err, data) => {
                         console.log("ACTS_GetCurrentTopAbility_0100 and");
                         console.debug("====>thisTopAbility_0100====>" + JSON.stringify(data));
-                        console.debug("====>thisTopAbility_0100====>want====>" 
-                        + JSON.stringify(data.lastRequestWant));
+                        console.debug("====>thisTopAbility_0100====>want====>" + JSON.stringify(data.lastRequestWant));
                         console.debug("====>thisTopAbility_0100====>abilityName====>"
                         + JSON.stringify(data.lastRequestWant.abilityName));
                         console.debug("====>start startAbility====>");
-                        if (data.lastRequestWant.abilityName == "Ability2") {
-                            flag = false
-                            console.debug("====>0100====>flag" + flag);
-                            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                        }
+                        expect(data.lastRequestWant.abilityName == "Ability2").assertTrue();
+                        globalThis.ability2Context.terminateSelf();
+                        globalThis.ability3Context.terminateSelf();
+                        done();
                     })
                 }
             }
@@ -84,20 +75,7 @@ export default function abilityTest() {
 
             async function UnSubscribeCallback() {
                 console.debug("ACTS_GetCurrentTopAbility_0100====>UnSubscribe CallBack====>");
-                await globalThis.ability2Context.terminateSelf();
-                await globalThis.ability3Context.terminateSelf();
-                done();
             }
-
-            setTimeout(() => {
-                if (flag == true) {
-                    console.debug("====>0100====>end====>flag" + flag);
-                    console.debug("in ACTS_GetCurrentTopAbility_0100 - timeout");
-                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                    expect().assertFail();
-                }
-                console.debug("ACTS_GetCurrentTopAbility_0100 - timeout");
-            }, START_ABILITY_TIMEOUT);
         })
     })
 }

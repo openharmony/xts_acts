@@ -45,6 +45,15 @@ export default function pasteComponentTest() {
       console.info("====>pasteComponentTest after each called");
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0100
+     * @tc.name Test_Security_Button_Paste_0100
+     * @tc.desc Test SecurityComponent Default parameters and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0100', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0100] START');
       let strJson = getInspectorByKey('keyPaste');
@@ -114,7 +123,15 @@ export default function pasteComponentTest() {
       }
     });
 
-
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0200
+     * @tc.name Test_Security_Button_Paste_0200
+     * @tc.desc Test SecurityComponent layoutDirection attribute is VERTICAL and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0200', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0200] START====');
       await Utils.sleep(1000);
@@ -200,6 +217,16 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0300
+     * @tc.name Test_Security_Button_Paste_0300
+     * @tc.desc Test SecurityComponent position.x is 150.00vp and position.y is 20.00vp
+     * markAnchor.x is 20.00vp and markAnchor.y is 20.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0300', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0300] START====');
       await Utils.sleep(1000);
@@ -288,7 +315,15 @@ export default function pasteComponentTest() {
       }
     });
 
-
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0400
+     * @tc.name Test_Security_Button_Paste_0400
+     * @tc.desc Test SecurityComponent offset and markAnchor attribute is normal and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0400', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0400] START====');
       await Utils.sleep(1000);
@@ -377,6 +412,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0500
+     * @tc.name Test_Security_Button_Paste_0500
+     * @tc.desc Test SecurityComponent FontStyle attribute is Italic and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0500', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0500] START====');
       await Utils.sleep(1000);
@@ -462,6 +506,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0600
+     * @tc.name Test_Security_Button_Paste_0600
+     * @tc.desc Test SecurityComponent FontWeight attribute is Lighter and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0600', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0600] START====');
       await Utils.sleep(1000);
@@ -547,6 +600,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0700
+     * @tc.name Test_Security_Button_Paste_0700
+     * @tc.desc Test SecurityComponent FontWeight attribute is Normal and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0700', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0700] START====');
       await Utils.sleep(1000);
@@ -632,6 +694,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0800
+     * @tc.name Test_Security_Button_Paste_0800
+     * @tc.desc Test SecurityComponent FontWeight attribute is Regular and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0800', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0800] START====');
       await Utils.sleep(1000);
@@ -717,6 +788,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_0900
+     * @tc.name Test_Security_Button_Paste_0900
+     * @tc.desc Test SecurityComponent FontWeight attribute is Bold and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_0900', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_0900] START====');
       await Utils.sleep(1000);
@@ -802,6 +882,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1000
+     * @tc.name Test_Security_Button_Paste_1000
+     * @tc.desc Test SecurityComponent FontWeight attribute is Bolder and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1000', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1000] START====');
       await Utils.sleep(1000);
@@ -887,6 +976,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1100
+     * @tc.name Test_Security_Button_Paste_1100
+     * @tc.desc Test SecurityComponent BorderStyle is Dotted , borderWidth , borderColor , borderRadius attribute is normal and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1100', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1100] START====');
       await Utils.sleep(1000);
@@ -975,6 +1073,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1200
+     * @tc.name Test_Security_Button_Paste_1200
+     * @tc.desc Test SecurityComponent BorderStyle attribute is Dashed and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1200', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1200] START====');
       await Utils.sleep(1000);
@@ -1063,6 +1170,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1300
+     * @tc.name Test_Security_Button_Paste_1300
+     * @tc.desc Test SecurityComponent BorderStyle attribute is Solid and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1300', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1300] START====');
       await Utils.sleep(1000);
@@ -1151,6 +1267,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1400
+     * @tc.name Test_Security_Button_Paste_1400
+     * @tc.desc Test SecurityComponent offset.x attribute is 200.00vp result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1400', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1400] START====');
       await Utils.sleep(1000);
@@ -1236,6 +1361,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1500
+     * @tc.name Test_Security_Button_Paste_1500
+     * @tc.desc Test SecurityComponent offset.x attribute is -200.00vp result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1500', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1500] START====');
       await Utils.sleep(1000);
@@ -1321,6 +1455,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1600
+     * @tc.name Test_Security_Button_Paste_1600
+     * @tc.desc Test SecurityComponent iconSize attribute is 160.00vp result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1600', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1600] START====');
       await Utils.sleep(1000);
@@ -1406,6 +1549,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1700
+     * @tc.name Test_Security_Button_Paste_1700
+     * @tc.desc Test SecurityComponent iconColor attribute is too light result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1700', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1700] START====');
       await Utils.sleep(1000);
@@ -1491,6 +1643,17 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1800
+     * @tc.name Test_Security_Button_Paste_1800
+     * @tc.desc Test SecurityComponent buttonType is 0 , iconSize is 20.00vp
+     * , iconColor is #FFFA0050  and backgroundColor is #FFFF0000,
+     * Due to the similarity of the icon and background color result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1800', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1800] START====');
       await Utils.sleep(1000);
@@ -1579,6 +1742,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_1900
+     * @tc.name Test_Security_Button_Paste_1900
+     * @tc.desc Test SecurityComponent iconSize attribute is too small result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_1900', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_1900] START====');
       await Utils.sleep(1000);
@@ -1665,6 +1837,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2000
+     * @tc.name Test_Security_Button_Paste_2000
+     * @tc.desc Test SecurityComponent iconColor attribute is transparent result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2000', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2000] START====');
       await Utils.sleep(1000);
@@ -1750,6 +1931,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2100
+     * @tc.name Test_Security_Button_Paste_2100
+     * @tc.desc Test SecurityComponent fontColor attribute is transparent result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2100', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2100] START====');
       await Utils.sleep(1000);
@@ -1835,6 +2025,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2200
+     * @tc.name Test_Security_Button_Paste_2200
+     * @tc.desc Test SecurityComponent backgroundColor attribute is transparent result in Authorization is failed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2200', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2200] START====');
       await Utils.sleep(1000);
@@ -1920,6 +2119,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2300
+     * @tc.name Test_Security_Button_Paste_2300
+     * @tc.desc Test SecurityComponent size.width attribute is 10.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2300', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2300] START====');
       await Utils.sleep(1000);
@@ -2015,6 +2223,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2400
+     * @tc.name Test_Security_Button_Paste_2400
+     * @tc.desc Test SecurityComponent size.height attribute is 15.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2400', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2400] START====');
       await Utils.sleep(1000);
@@ -2110,6 +2327,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2500
+     * @tc.name Test_Security_Button_Paste_2500
+     * @tc.desc Test SecurityComponent constraintSize.minWidth attribute is 20.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2500', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2500] START====');
       await Utils.sleep(1000);
@@ -2205,6 +2431,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2600
+     * @tc.name Test_Security_Button_Paste_2600
+     * @tc.desc Test SecurityComponent constraintSize.maxWidth attribute is 25.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2600', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2600] START====');
       await Utils.sleep(1000);
@@ -2300,6 +2535,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2700
+     * @tc.name Test_Security_Button_Paste_2700
+     * @tc.desc Test SecurityComponent constraintSize.minHeight attribute is 30.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2700', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2700] START====');
       await Utils.sleep(1000);
@@ -2395,6 +2639,15 @@ export default function pasteComponentTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Paste_2800
+     * @tc.name Test_Security_Button_Paste_2800
+     * @tc.desc Test SecurityComponent constraintSize.maxHeight attribute is 35.00vp and Authorization is successful
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
     it('Test_Security_Button_Paste_2800', 0, async function (done) {
       console.info('====>[Test_Security_Button_Paste_2800] START====');
       await Utils.sleep(1000);
