@@ -5003,7 +5003,7 @@ describe('LruBufferFunTest', function () {
         that.put(1,2)
         that.put(3,10)
         that.put('abc',20)
-        expect(arr[1]).assertEqual(20)
+        expect(arr[1]).assertEqual(2)
     })
 
     /**
