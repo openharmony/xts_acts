@@ -11,7 +11,7 @@
     "kits": [
 		{
             "test-file-name": [
-                "ActsCallFunction.hap",
+                "ActsCallFunctionTest.hap",
                 "ActsCallRely.hap",
                 "ActsAppMultipleRely.hap",
                 "ActsAppSingleRely.hap"
