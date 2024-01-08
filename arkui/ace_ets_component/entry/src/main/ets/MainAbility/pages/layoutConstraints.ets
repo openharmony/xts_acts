@@ -36,7 +36,7 @@ struct LayoutConstraints {
   private container: ContainerInfo[] = [
     { label: 'Big container', size: '97%' },
     { label: 'Small container', size: '30%' }];
-  @State priorityChildren: ChildInfo[] = [
+  @State priorityChildren: any[] = [
     { text: '1\n(priority:1)', priority: 1 },
     { text: '2\n(priority:2)', priority: 2 },
     { text: '3\n(priority:3)', priority: 3 },
@@ -93,7 +93,7 @@ struct LayoutConstraints {
         .fontColor(Color.Black)
         .width('100%')
       Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-        ForEach(this.priorityChildren, (item: ChildInfo) => {
+        ForEach(this.priorityChildren, (item) => {
           if (item.priority === 1 || item.priority === 5) {
             Text(`1\n(priority:${item.priority})`)
               .width(135)
@@ -112,7 +112,7 @@ struct LayoutConstraints {
               .backgroundColor(0xbbb2cb)
               .displayPriority(item.priority)
           }
-        }, (item: string) => item.text)
+        }, item => item.text)
       }
       .width(this.container[this.currentIndex].size)
       .backgroundColor(0xd2cab3)
@@ -145,9 +145,10 @@ struct LayoutConstraints {
       if (eventData.data.aspectRatio) {
         this.aspectRatio = eventData.data.aspectRatio;
       } else if (eventData.data.displayPriority) {
-        JSON.parse(JSON.stringify(this.priorityChildren))[0].priority = eventData.data.displayPriority;
+        let priority = JSON.parse(JSON.stringify(this.priorityChildren));
+        priority[0].priority = eventData.data.displayPriority;
         this.priorityChildren = [];
-        this.priorityChildren = JSON.stringify(this.priorityChildren);
+        this.priorityChildren = priority;
       }
     }
   }
