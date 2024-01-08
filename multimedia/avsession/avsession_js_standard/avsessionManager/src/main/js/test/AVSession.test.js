@@ -42,21 +42,8 @@ export default function AVSession() {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-
-        async function getPixelMap() {
-            let color = new ArrayBuffer(96);
-            let bufferArr = new Uint8Array(color);
-            bufferArr.fill('3', 0, 95);
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3 };
-            return image.createPixelMap(color, opts);
-        }
-
-        beforeAll(function () {
-            console.info('TestLog: Start Testing avSession Interfaces');
-        })
-
-        beforeEach(async function () {
-            console.info('TestLog: Init Session And Controller');
+        
+        async function init() {
             await avSession.createAVSession(context, tag, type).then((data) => {
                 session = data;
                 session.sessionType = 'audio';
@@ -73,11 +60,9 @@ export default function AVSession() {
             });
 
             controller = await session.getController();
-        });
+        }
 
-
-        afterEach(async function (done) {
-            console.info('TestLog: Destroy Session And Controller');
+        async function destroy() {
             await session.destroy().then(() => {
                 console.info('TestLog: Session destroy success');
             }).catch((err) => {
@@ -90,6 +75,28 @@ export default function AVSession() {
                 console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+        }
+
+        async function getPixelMap() {
+            let color = new ArrayBuffer(96);
+            let bufferArr = new Uint8Array(color);
+            bufferArr.fill('3', 0, 95);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3 };
+            return image.createPixelMap(color, opts);
+        }
+
+        beforeAll(function () {
+            console.info('TestLog: Start Testing avSession Interfaces');
+        })
+
+        beforeEach(async function () {
+            console.info('TestLog: Init Session And Controller');
+            await init()
+        });
+
+        afterEach(async function (done) {
+            console.info('TestLog: Destroy Session And Controller');
+            await destroy();
             done();
         })
 
@@ -99,8 +106,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_READ_SESSION_ID_0100
-         * @tc.name      : READ_SESSION_ID_0100
-         * @tc.desc      : Testing read sessionId
+         * @tc.name      : read property sessionId 
+         * @tc.desc      : Testing read property sessionId
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -118,8 +125,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100
-         * @tc.name      : SETMETADATA_0100
-         * @tc.desc      : Testing set assetId - promise
+         * @tc.name      : setAVMetadata - promise - set assetId
+         * @tc.desc      : Testing call setAVMetadata(promise) set assetId
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level0
@@ -153,8 +160,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0200
-         * @tc.name      : SETMETADATA_0200
-         * @tc.desc      : Testing set artist - promise
+         * @tc.name      : setAVMetadata - promise - set artist
+         * @tc.desc      : Testing call setAVMetadata(promise) set artist
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -187,8 +194,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0300
-         * @tc.name      : SETMETADATA_0300
-         * @tc.desc      : Testing set author - promise
+         * @tc.name      : setAVMetadata - promise - set author
+         * @tc.desc      : Testing call setAVMetadata(promise) set author
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -221,8 +228,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0400
-         * @tc.name      : SETMETADATA_0400
-         * @tc.desc      : Testing set album - promise
+         * @tc.name      : setAVMetadata - promise - set album
+         * @tc.desc      : Testing call setAVMetadata(promise) set album
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -255,8 +262,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0500
-         * @tc.name      : SETMETADATA_0500
-         * @tc.desc      : Testing set writer - promise
+         * @tc.name      : setAVMetadata - promise - set writer
+         * @tc.desc      : Testing call setAVMetadata(promise) set writer
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -289,8 +296,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0600
-         * @tc.name      : SETMETADATA_0600
-         * @tc.desc      : Testing set composer - promise
+         * @tc.name      : setAVMetadata - promise - set composer
+         * @tc.desc      : Testing call setAVMetadata(promise) set composer
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -323,8 +330,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0700
-         * @tc.name      : SETMETADATA_0700
-         * @tc.desc      : Testing set duration - promise
+         * @tc.name      : setAVMetadata - promise - set duration
+         * @tc.desc      : Testing call setAVMetadata(promise) set duration
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -358,8 +365,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0800
-         * @tc.name      : SETMETADATA_0800
-         * @tc.desc      : Testing set mediaImage - promise
+         * @tc.name      : setAVMetadata - promise - set mediaImage(url)
+         * @tc.desc      : Testing call setAVMetadata(promise) set mediaImage(url)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -392,8 +399,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0900
-         * @tc.name      : SETMETADATA_0900
-         * @tc.desc      : Testing set mediaImage - promise
+         * @tc.name      : setAVMetadata - promise - set mediaImage(pixelMap)
+         * @tc.desc      : Testing call setAVMetadata(promise) set mediaImage(pixelMap)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -443,8 +450,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1000
-         * @tc.name      : SETMETADATA_1000
-         * @tc.desc      : Testing set publishDate - promise
+         * @tc.name      : setAVMetadata - promise - set publishDate
+         * @tc.desc      : Testing call setAVMetadata(promise) set publishDate
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -477,8 +484,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1100
-         * @tc.name      : SETMETADATA_1100
-         * @tc.desc      : Testing set subtitle - promise
+         * @tc.name      : setAVMetadata - promise - set subtitle
+         * @tc.desc      : Testing call setAVMetadata(promise) set subtitle
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -513,8 +520,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1200
-         * @tc.name      : SETMETADATA_1200
-         * @tc.desc      : Testing set description - promise
+         * @tc.name      : setAVMetadata - promise - set description
+         * @tc.desc      : Testing call setAVMetadata(promise) set description
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -547,8 +554,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1300
-         * @tc.name      : SETMETADATA_1300
-         * @tc.desc      : Testing set lyric - promise
+         * @tc.name      : setAVMetadata - promise - set lyric
+         * @tc.desc      : Testing call setAVMetadata(promise) set lyric
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -583,8 +590,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1400
-         * @tc.name      : SETMETADATA_1400
-         * @tc.desc      : Testing set assetId - promise
+         * @tc.name      : setAVMetadata - promise - set previousAssetId & nextAssetId
+         * @tc.desc      : Testing call setAVMetadata(promise) set previousAssetId & nextAssetId
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -619,64 +626,15 @@ export default function AVSession() {
             done();
         })
 
-        /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500
-         * @tc.name      : SETMETADATA_1500
-         * @tc.desc      : Testing set metadata - promise
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500', 0, async function (done) {
-            let metadata14 = {
-                assetId: '121278',
-            };
-            await session.destroy();
-            await sleep(500);
-            await session.setAVMetadata(metadata14).then(() => {
-                console.info('TestLog: Set metadata successfully');
-                expect(false).assertTrue();
-            }).catch((err) => {
-                console.info(`TestLog: Set metadata error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
-            });
-            sleep(200);
-            session = await avSession.createAVSession(context,tag,type);
-            done();
-        })
-
-        /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600
-         * @tc.name      : SETMETADATA_1600
-         * @tc.desc      : Testing set error metadata - promise
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600', 0, async function (done) {
-            let metadata15 = {
-                assetId: '121278',
-                duration: -2,
-            };
-            await session.setAVMetadata(metadata15).then(() => {
-                console.info('TestLog: Set duration successfully');
-                expect(false).assertTrue();
-            }).catch((err) => {
-                console.info(`TestLog: Set duration error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
-            });
-            done();
-        })
-
          /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700
-         * @tc.name      : SETMETADATA_1700
-         * @tc.desc      : Testing set filter TYPE_CAST_PLUS_STREAM - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500
+         * @tc.name      : setAVMetadata - promise - set filter(TYPE_CAST_PLUS_STREAM)
+         * @tc.desc      : Testing call setAVMetadata(promise) set filter(TYPE_CAST_PLUS_STREAM)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700', 0, async function (done) {
+         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500', 0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_CAST_PLUS_STREAM
@@ -705,14 +663,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800
-         * @tc.name      : SETMETADATA_1800
-         * @tc.desc      : Testing set filter TYPE_LOCAL - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600
+         * @tc.name      : setAVMetadata - promise - set filter(TYPE_LOCAL)
+         * @tc.desc      : Testing call setAVMetadata(promise) set filter(TYPE_LOCAL)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600', 0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_LOCAL
@@ -741,14 +699,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900
-         * @tc.name      : SETMETADATA_1900
-         * @tc.desc      : Testing set filter TYPE_CAST_PLUS_MIRROR - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700
+         * @tc.name      : setAVMetadata - promise - set filter(TYPE_CAST_PLUS_MIRROR)
+         * @tc.desc      : Testing call setAVMetadata(promise) set filter(TYPE_CAST_PLUS_MIRROR)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700', 0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_CAST_PLUS_MIRROR
@@ -777,14 +735,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000
-         * @tc.name      : SETMETADATA_2000
-         * @tc.desc      : Testing set skipIntervals - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800
+         * @tc.name      : setAVMetadata - promise - set skipIntervals
+         * @tc.desc      : Testing call setAVMetadata(promise) set skipIntervals
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800', 0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 skipIntervals: avSession.SkipIntervals.SECONDS_10
@@ -814,8 +772,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100
-         * @tc.name      : SETAVPLAYBACKSTATE_0100
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.name      : setAVPlaybackState - promise - set state & activeItemId
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state & activeItemId
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level0
@@ -851,8 +809,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0200
-         * @tc.name      : SETAVPLAYBACKSTATE_0200
-         * @tc.desc      : Testing set speed - promise
+         * @tc.name      : setAVPlaybackState - promise - set speed
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set speed
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -888,8 +846,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0300
-         * @tc.name      : SETAVPLAYBACKSTATE_0300
-         * @tc.desc      : Testing set position - promise
+         * @tc.name      : setAVPlaybackState - promise - set position
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set position
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -925,8 +883,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0400
-         * @tc.name      : SETAVPLAYBACKSTATE_0400
-         * @tc.desc      : Testing set bufferedTime - promise
+         * @tc.name      : setAVPlaybackState - promise - set bufferedTime
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set bufferedTime
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -962,8 +920,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0500
-         * @tc.name      : SETAVPLAYBACKSTATE_0500
-         * @tc.desc      : Testing set loopMode - promise
+         * @tc.name      : setAVPlaybackState - promise - set loopMode(LOOP_MODE_SEQUENCE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set loopMode(LOOP_MODE_SEQUENCE)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -999,8 +957,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0600
-         * @tc.name      : SETAVPLAYBACKSTATE_0600
-         * @tc.desc      : Testing set loopMode - promise
+         * @tc.name      : setAVPlaybackState - promise - set loopMode(LOOP_MODE_SINGLE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set loopMode(LOOP_MODE_SINGLE)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -1036,8 +994,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0700
-         * @tc.name      : SETAVPLAYBACKSTATE_0700
-         * @tc.desc      : Testing set loopMode - promise
+         * @tc.name      : setAVPlaybackState - promise - set loopMode(LOOP_MODE_LIST)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set loopMode(LOOP_MODE_LIST)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -1073,8 +1031,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0800
-         * @tc.name      : SETAVPLAYBACKSTATE_0800
-         * @tc.desc      : Testing set loopMode - promise
+         * @tc.name      : setAVPlaybackState - promise - set loopMode(LOOP_MODE_SHUFFLE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set loopMode(LOOP_MODE_SHUFFLE)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -1110,8 +1068,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0900
-         * @tc.name      : SETAVPLAYBACKSTATE_0900
-         * @tc.desc      : Testing set isFavorite - promise
+         * @tc.name      : setAVPlaybackState - promise - set isFavorite
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set isFavorite
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -1147,71 +1105,13 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1000
-         * @tc.name      : SETAVPLAYBACKSTATE_1000
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_INITIAL)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_INITIAL)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1000', 0, async function (done) {
-            let PlaybackState10 = {
-                state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
-                speed: 1.0,
-                position: { elapsedTime: 10, updateTime: (new Date()).getTime() },
-                bufferedTime: 1000,
-                loopMode: avSession.LoopMode.LOOP_MODE_SINGLE,
-                isFavorite: true,
-            };
-            await session.destroy();
-            await sleep(500);
-            await session.setAVPlaybackState(PlaybackState10).then(() => {
-                console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
-            }).catch((err) => {
-                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
-            });
-            sleep(200);
-            session = await avSession.createAVSession(context,tag,type);
-            done();
-        })
-
-        /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100
-         * @tc.name      : SETAVPLAYBACKSTATE_1100
-         * @tc.desc      : Testing set playbackstate - promise
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100', 0, async function (done) {
-            let PlaybackState11 = {
-                state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
-                speed: -2,
-                position: { elapsedTime: -2, updateTime: (new Date()).getTime() },
-                bufferedTime: -4,
-                loopMode: avSession.LoopMode.LOOP_MODE_SINGLE,
-                isFavorite: true,
-            };
-            await session.setAVPlaybackState(PlaybackState11).then(() => {
-                console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
-            }).catch((err) => {
-                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
-            });
-            done();
-        })
-
-        /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200
-         * @tc.name      : SETAVPLAYBACKSTATE_1200
-         * @tc.desc      : Testing set playbackstate - promise
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200', 0, async function (done) {
             let PlaybackState12 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_INITIAL,
             };
@@ -1241,14 +1141,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300
-         * @tc.name      : SETAVPLAYBACKSTATE_1300
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_PREPARE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_PREPARE)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100', 0, async function (done) {
             let PlaybackState13 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PREPARE,
             };
@@ -1278,14 +1178,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400
-         * @tc.name      : SETAVPLAYBACKSTATE_1400
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_PAUSE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_PAUSE)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200', 0, async function (done) {
             let PlaybackState14 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PAUSE,
             };
@@ -1315,14 +1215,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500
-         * @tc.name      : SETAVPLAYBACKSTATE_1500
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_FAST_FORWARD)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_FAST_FORWARD)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300', 0, async function (done) {
             let PlaybackState15 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_FAST_FORWARD,
             };
@@ -1352,14 +1252,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600
-         * @tc.name      : SETAVPLAYBACKSTATE_1600
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_REWIND)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_REWIND)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400', 0, async function (done) {
             let PlaybackState16 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_REWIND,
             };
@@ -1389,14 +1289,14 @@ export default function AVSession() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700
-         * @tc.name      : SETAVPLAYBACKSTATE_1700
-         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_STOP)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_STOP)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500', 0, async function (done) {
             let PlaybackState17 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_STOP,
             };
@@ -1427,8 +1327,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100
-         * @tc.name      : SETLAUNCHABILITY_0100
-         * @tc.desc      : Testing set LaunchAbility - promise
+         * @tc.name      : set session launchAbility - promise
+         * @tc.desc      : Testing call setLaunchAbility(promise)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level1
@@ -1481,7 +1381,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0100
-         * @tc.name      : SESSIONACTIVATE_PROMISE_0100
+         * @tc.name      : set session active - promise
          * @tc.desc      : Testing set session active - promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1512,8 +1412,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0100
-         * @tc.name      : SESSIONDEACTIVATE_PROMISE_0100
-         * @tc.desc      : Testing deactivate session- promise
+         * @tc.name      : set session deactivate - promise
+         * @tc.desc      : Testing set session deactivate - promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level1
@@ -1552,7 +1452,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100
-         * @tc.name      : SESSIONACTIVATE_CALLBACK_0100
+         * @tc.name      : set session active - callback
          * @tc.desc      : Testing set session active - callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1592,13 +1492,13 @@ export default function AVSession() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
-        * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0100
-        * @tc.desc      : Testing deactivate session- callback
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level2
-        */
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
+         * @tc.name      : set session deactivate - callback
+         * @tc.desc      : Testing set session deactivate - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
         it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
             await session.activate().then(() => {
                 console.info('TestLog: Set session active');
@@ -1641,11 +1541,9 @@ export default function AVSession() {
             done();
         })
 
-
-
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100
-         * @tc.name      : ONPLAY_0100
+         * @tc.name      : bind callbacks on play events
          * @tc.desc      : Testing onPlay callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1669,7 +1567,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0100
-         * @tc.name      : ONPAUSE_0100
+         * @tc.name      : bind callbacks on pause events
          * @tc.desc      : Testing onPause callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1693,7 +1591,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSTOP_0100
-         * @tc.name      : ONSTOP_0100
+         * @tc.name      : bind callbacks on stop events
          * @tc.desc      : Testing onStop callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1717,7 +1615,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0100
-         * @tc.name      : ONPLAYNEXT_0100
+         * @tc.name      : bind callbacks on playNext events
          * @tc.desc      : Testing onPlayNext callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1741,7 +1639,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0100
-         * @tc.name      : ONPLAYPREVIOUS_0100
+         * @tc.name      : bind callbacks on playPrevious events
          * @tc.desc      : Testing onPlayPrevious callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1765,8 +1663,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0100
-         * @tc.name      : ONFASTFORWARD_0100
-         * @tc.desc      : Testing onFastForward callback
+         * @tc.name      : bind callbacks on fastForward events(no args)
+         * @tc.desc      : Testing onFastForward(no args) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -1789,7 +1687,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0200
-         * @tc.name      : ONFASTFORWARD_0200
+         * @tc.name      : bind callbacks on fastForward events(10s)
          * @tc.desc      : Testing onFastForward(time 10s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1817,7 +1715,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0300
-         * @tc.name      : ONFASTFORWARD_0300
+         * @tc.name      : bind callbacks on fastForward events(15s)
          * @tc.desc      : Testing onFastForward(time 15s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1845,7 +1743,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0400
-         * @tc.name      : ONFASTFORWARD_0400
+         * @tc.name      : bind callbacks on fastForward events(30s)
          * @tc.desc      : Testing onFastForward(time 30s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1873,7 +1771,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0100
-         * @tc.name      : ONREWIND_0100
+         * @tc.name      : bind callbacks on rewind events(no args)
          * @tc.desc      : Testing onRewind callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1897,7 +1795,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0200
-         * @tc.name      : ONREWIND_0200
+         * @tc.name      : bind callbacks on rewind events(10s)
          * @tc.desc      : Testing onRewind(time 10s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1925,7 +1823,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0300
-         * @tc.name      : ONREWIND_0300
+         * @tc.name      : bind callbacks on rewind events(15s)
          * @tc.desc      : Testing onRewind(time 15s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1953,7 +1851,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONREWIND_0400
-         * @tc.name      : ONREWIND_0400
+         * @tc.name      : bind callbacks on rewind events(30s)
          * @tc.desc      : Testing onRewind(time 30s) callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1981,7 +1879,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSEEK_0100
-         * @tc.name      : ONSEEK_0100
+         * @tc.name      : bind callbacks on seek events
          * @tc.desc      : Testing onSeek callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -2010,8 +1908,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0100
-         * @tc.name      : ONSETSPEED_0100
-         * @tc.desc      : Testing Set Speed callback
+         * @tc.name      : bind callbacks on setSpeed events
+         * @tc.desc      : Testing on setSpeed callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2039,8 +1937,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0100
-         * @tc.name      : ONSETLOOPMODE_0100
-         * @tc.desc      : Testing Set LoopMode callback
+         * @tc.name      : bind callbacks on setLoopMode events
+         * @tc.desc      : Testing on setLoopMode callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2071,8 +1969,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0100
-         * @tc.name      : ONTOGGLEFAVORITE_0100
-         * @tc.desc      : Testing Set toggleFavorite callback
+         * @tc.name      : bind callbacks on toggleFavorite events
+         * @tc.desc      : Testing on toggleFavorite callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2101,8 +1999,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0100
-         * @tc.name      : ONHANDLEKEYEVENT_0100
-         * @tc.desc      : Testing Handle KeyEvent callback
+         * @tc.name      : bind callbacks on handleKeyEvent events
+         * @tc.desc      : Testing on handleKeyEvent callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2130,8 +2028,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100
-         * @tc.name      : ONWRONGCALLBACK_0100
-         * @tc.desc      : Testing wrong callback
+         * @tc.name      : bind callbacks on wrongCall events
+         * @tc.desc      : Testing on wrongCall callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2150,13 +2048,13 @@ export default function AVSession() {
 
 
         /* *
- * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
- * @tc.name      : OFFPLAY_0100
- * @tc.desc      : Testing offPlay callback
- * @tc.size      : MediumTest
- * @tc.type      : Function
- * @tc.level     : Level2
- */
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
+         * @tc.name      : unbind all callbacks on play events
+         * @tc.desc      : Testing off Play all callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
         it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
@@ -2186,8 +2084,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200
-         * @tc.name      : OFFPLAY_0200
-         * @tc.desc      : Testing offPlay callback
+         * @tc.name      : Unbind the specified callback on play events
+         * @tc.desc      : Testing off Play specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2222,8 +2120,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0100
-         * @tc.name      : OFFPAUSE_0100
-         * @tc.desc      : Testing offPause callback
+         * @tc.name      : unbind all callbacks on pause events
+         * @tc.desc      : Testing off pause all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2257,8 +2155,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0200
-         * @tc.name      : OFFPAUSE_0200
-         * @tc.desc      : Testing offPause callback
+         * @tc.name      : Unbind the specified callback on pause events
+         * @tc.desc      : Testing off pause specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2290,11 +2188,10 @@ export default function AVSession() {
             done();
         })
 
-
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0100
-         * @tc.name      : OFFSTOP_0100
-         * @tc.desc      : Testing offStop callback
+         * @tc.name      : unbind all callbacks on stop events
+         * @tc.desc      : Testing off stop all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2328,8 +2225,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0200
-         * @tc.name      : OFFSTOP_0200
-         * @tc.desc      : Testing offStop callback
+         * @tc.name      : Unbind the specified callback on stop events
+         * @tc.desc      : Testing off stop specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2363,8 +2260,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0100
-         * @tc.name      : OFFPLAYNEXT_0100
-         * @tc.desc      : Testing offPlayNext callback
+         * @tc.name      : unbind all callbacks on playNext events
+         * @tc.desc      : Testing off playNext all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2398,8 +2295,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0200
-         * @tc.name      : OFFPLAYNEXT_0200
-         * @tc.desc      : Testing offPlayNext callback
+         * @tc.name      : Unbind the specified callback on playNext events
+         * @tc.desc      : Testing off playNext specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2433,8 +2330,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0100
-         * @tc.name      : OFFPLAYPREVIOUS_0100
-         * @tc.desc      : Testing offPlayPrevious callback
+         * @tc.name      : unbind all callbacks on playPrevious events
+         * @tc.desc      : Testing off playPrevious all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2468,8 +2365,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0200
-         * @tc.name      : OFFPLAYPREVIOUS_0200
-         * @tc.desc      : Testing offPlayPrevious callback
+         * @tc.name      : Unbind the specified callback on playPrevious events
+         * @tc.desc      : Testing off playPrevious specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2503,8 +2400,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0100
-         * @tc.name      : OFFFASTFORWARD_0100
-         * @tc.desc      : Testing offFastForward callback
+         * @tc.name      : unbind all callbacks on fastForward events
+         * @tc.desc      : Testing off fastForward all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2538,8 +2435,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0200
-         * @tc.name      : OFFFASTFORWARD_0200
-         * @tc.desc      : Testing offFastForward callback
+         * @tc.name      : Unbind the specified callback on fastForward events
+         * @tc.desc      : Testing off fastForward specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2573,8 +2470,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0100
-         * @tc.name      : OFFREWIND_0100
-         * @tc.desc      : Testing offRewind callback
+         * @tc.name      : unbind all callbacks on rewind events
+         * @tc.desc      : Testing off rewind all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2608,8 +2505,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0200
-         * @tc.name      : OFFREWIND_0200
-         * @tc.desc      : Testing offRewind callback
+         * @tc.name      : Unbind the specified callback on rewind events
+         * @tc.desc      : Testing off rewind specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2643,8 +2540,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0100
-         * @tc.name      : OFFSEEK_0100
-         * @tc.desc      : Testing offSeek callback
+         * @tc.name      : unbind all callbacks on seek events
+         * @tc.desc      : Testing off seek all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2682,8 +2579,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0200
-         * @tc.name      : OFFSEEK_0200
-         * @tc.desc      : Testing offSeek callback
+         * @tc.name      : Unbind the specified callback on seek events
+         * @tc.desc      : Testing off seek specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2721,8 +2618,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0100
-         * @tc.name      : OFFSETSPEED_0100
-         * @tc.desc      : Testing offSetSpeed callback
+         * @tc.name      : unbind all callbacks on setSpeed events
+         * @tc.desc      : Testing off setSpeed all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2760,8 +2657,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0200
-         * @tc.name      : OFFSETSPEED_0200
-         * @tc.desc      : Testing offSetSpeed callback
+         * @tc.name      : Unbind the specified callback on setSpeed events
+         * @tc.desc      : Testing off setSpeed specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2799,8 +2696,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0100
-         * @tc.name      : OFFSETLOOPMODE_0100
-         * @tc.desc      : Testing offSetLoopMode callback
+         * @tc.name      : unbind all callbacks on setLoopMode events
+         * @tc.desc      : Testing off setLoopMode all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2841,8 +2738,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0200
-         * @tc.name      : OFFSETLOOPMODE_0200
-         * @tc.desc      : Testing offSetLoopMode callback
+         * @tc.name      : Unbind the specified callback on setLoopMode events
+         * @tc.desc      : Testing off setLoopMode specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2883,8 +2780,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0100
-         * @tc.name      : OFFTOGGLEFAVORITE_0100
-         * @tc.desc      : Testing offToggleFavorite callback
+         * @tc.name      : unbind all callbacks on toggleFavorite events
+         * @tc.desc      : Testing off toggleFavorite all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2922,8 +2819,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200
-         * @tc.name      : OFFTOGGLEFAVORITE_0200
-         * @tc.desc      : Testing offToggleFavorite callback
+         * @tc.name      : Unbind the specified callback on toggleFavorite events
+         * @tc.desc      : Testing off toggleFavorite specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -2961,8 +2858,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0100
-         * @tc.name      : OFFHANDLEKEYEVENT_0100
-         * @tc.desc      : Testing offHandleKeyEvent callback
+         * @tc.name      : unbind all callbacks on handleKeyEvent events
+         * @tc.desc      : Testing off handleKeyEvent all callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3009,8 +2906,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0200
-         * @tc.name      : OFFHANDLEKEYEVENT_0200
-         * @tc.desc      : Testing offHandleKeyEvent callback
+         * @tc.name      : Unbind the specified callback on handleKeyEvent events
+         * @tc.desc      : Testing off handleKeyEvent specified callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3047,13 +2944,13 @@ export default function AVSession() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
-        * @tc.name      : GETOUTPUTDEVICE_PROMISE_0100
-        * @tc.desc      : Testing get output device
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level2
-        */
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
+         * @tc.name      : get session outputDevice - promise
+         * @tc.desc      : Testing call getOutputDevice(promise)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
         it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
             session.on('outputDeviceChange', (callback) => {
                 if (!callback.isRemote) {
@@ -3089,8 +2986,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100
-         * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
-         * @tc.desc      : Testing get output device
+         * @tc.name      : get session outputDevice - callback
+         * @tc.desc      : Testing call getOutputDevice(callback)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3112,32 +3009,9 @@ export default function AVSession() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
-        * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
-        * @tc.desc      : Testing get output device
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level2
-        */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
-            await session.getOutputDevice().then((data) => {
-                if (data.devices.length > 0) {
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceid))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceName))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].castCategory))
-                    expect(true).assertTrue();
-                }
-            }).catch((err) => {
-                console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            })
-            done();
-        })
-
-        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100
-         * @tc.name      : GETCONTROLLER_PROMISE_0100
-         * @tc.desc      : Testing get controller
+         * @tc.name      : get session controller - promise
+         * @tc.desc      : Testing call getController(promise)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3156,8 +3030,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100
-         * @tc.name      : GETCONTROLLER_CALLBACK_0100
-         * @tc.desc      : Testing get controller
+         * @tc.name      : get session controller - callback
+         * @tc.desc      : Testing call getController(callback)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3177,15 +3051,13 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100
-         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0100
-         * @tc.desc      : Testing set key event
+         * @tc.name      : controller send AVKeyEvent - callback
+         * @tc.desc      : Testing call sendAVKeyEvent(callback)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', 0, async function (done) {
-            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
-            let event = { action: 2, key: keyItem, keys: [keyItem] };
             try {
                 controller.sendAVKeyEvent(event, (err, data) => {
                     if (err) {
@@ -3205,15 +3077,13 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100
-         * @tc.name      : SENDAVKEYEVENT_PROMISE_0100
-         * @tc.desc      : Testing set key event
+         * @tc.name      : controller send AVKeyEvent - promise
+         * @tc.desc      : Testing call sendAVKeyEvent(promise)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', 0, async function (done) {
-            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
-            let event = { action: 2, key: keyItem, keys: [keyItem] };
             await controller.sendAVKeyEvent(event).then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect(true).assertTrue();
@@ -3226,8 +3096,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100
-         * @tc.name      : GETREALPLAYBACKPOSITIONSYNC_0100
-         * @tc.desc      : Testing get real playback position
+         * @tc.name      : get controller real playbackPosition - async
+         * @tc.desc      : Testing call getRealPlaybackPositionSync
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3252,8 +3122,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100
-         * @tc.name      : GETVALIDCOMMANDS_PROMISE_0100
-         * @tc.desc      : Testing get valid commands - promise
+         * @tc.name      : get session support commands - promise
+         * @tc.desc      : Testing call getValidCommands(promise)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3273,8 +3143,8 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100
-         * @tc.name      : GETVALIDCOMMANDS_CALLBACK_0100
-         * @tc.desc      : Testing get valid commands - callback
+         * @tc.name      : get session support commands - callback
+         * @tc.desc      : Testing call getValidCommands(callback)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
@@ -3299,5 +3169,6 @@ export default function AVSession() {
                 done();
             }
         })
+
     })
 }
