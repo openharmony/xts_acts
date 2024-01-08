@@ -1,5 +1,5 @@
 /**
-* Copyright (c) 2023 Huawei Device Co., Ltd.
+* Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
- import {describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
- import http from '@ohos.net.http';
- import connection from '@ohos.net.connection';
+import {describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
+import connection from '@ohos.net.connection';
 
 let host='syysystem';
 let host1='sytuingm';
@@ -25,20 +24,19 @@ let ip1:Array<string>=['1.2.3.4','2.4.2.5'];
 let ip2:Array<string>=['1.2.3.3','2.3.2.6'];
 let host_null='';
 
-
 export default function MulticastconnectionAsyncTest() {
-    describe("MulticastconnectionAsyncTest", () => {
-        afterEach(async ()=>{
-            console.log('MulticastconnectionAsyncTest afterAll start');
-            console.log('MulticastconnectionAsyncTest afterAll end');
-        });
-        let expectFalse = ()=>{
-            try {
-                expect().assertFail();
-            } catch (err) {
-                console.info('assertion failed');
-            }
-        };
+  describe("MulticastconnectionAsyncTest", () => {
+    afterEach(async ()=>{
+      console.log('MulticastconnectionAsyncTest afterAll start');
+      console.log('MulticastconnectionAsyncTest afterAll end');
+    });
+    let expectFalse = ()=>{
+      try {
+        expect().assertFail();
+      } catch (err) {
+        console.info('assertion failed');
+      }
+    };
 
     /**
      * @tc.number SUB_NetworkManager_DNS_addCustomDNSRule_Async_0100
@@ -62,6 +60,7 @@ export default function MulticastconnectionAsyncTest() {
              }
          });
      });
+
     /**
      * @tc.number SUB_NetworkManager_DNS_addCustomDNSRule_Async_0200
      * @tc.name connection::addCustomDnsRule
@@ -84,6 +83,7 @@ export default function MulticastconnectionAsyncTest() {
              }
          });
      });
+
     /**
      * @tc.number SUB_NetworkManager_DNS_removeCustomDNSRule_Async_0100
      * @tc.name connection::removeCustomDnsRule
@@ -134,7 +134,8 @@ export default function MulticastconnectionAsyncTest() {
              expect(error.code == 401).assertTrue();
              done();
          }
-     });     
+      });
+
     /**
      * @tc.number SUB_NetworkManager_DNS_clearCustomDNSRule_Async_0100
      * @tc.name connection::clearCustomDnsRules
@@ -159,5 +160,5 @@ export default function MulticastconnectionAsyncTest() {
              }
          })
      });
-    })
-  };
+  })
+};

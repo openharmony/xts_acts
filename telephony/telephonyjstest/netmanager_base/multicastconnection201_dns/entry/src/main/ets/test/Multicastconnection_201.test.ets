@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,8 @@
  * limitations under the License.
  */
 import { afterAll, afterEach, describe, expect, it } from '@ohos/hypium';
-import http from '@ohos.net.connection';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
-
 
 let host='syysystem';
 let host1='sytuingm';
@@ -130,7 +128,6 @@ export default function Multicastconnection201Test() {
            });
          });
 
-
     /**
      * @tc.number SUB_NetworkManager_DNS_cleraCustomDNSRule_Async_0300
      * @tc.name connection::clearCustomDnsRules
@@ -153,6 +150,7 @@ export default function Multicastconnection201Test() {
         }
       });
     });
+
     /**
      * @tc.number SUB_NetworkManager_DNS_clearCustomDNSRules_Promise_0200
      * @tc.name connection::clearCustomDnsRules
@@ -173,8 +171,5 @@ export default function Multicastconnection201Test() {
       done();
       });
     });
-
-
   })
-
 };
