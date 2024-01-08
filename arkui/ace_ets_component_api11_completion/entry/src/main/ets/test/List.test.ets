@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import tabsApi1 from './tabs/tabsApi1.test';
+import AttributeModifierDemoAPI01 from './AttributeModifier/AttributeModifierDemoAPI01Jsunit.test';
+import AttributeModifierDemoAPI02 from './AttributeModifier/AttributeModifierDemoAPI02Jsunit.test';
+import AttributeModifierDemoAPI03 from './AttributeModifier/AttributeModifierDemoAPI03Jsunit.test';
+import FolderStack3ApiJsunit from './AttributeModifier/FolderStack3ApiJsunit.test';
+import onChildTouchTest from './commonApi/onChildTouchTest.test.ets';
+import promptTest from './commonApi/promptTest.test.ets';
+import setCursorTest from './commonApi/setCursorTest.test.ets';
+import onGestureTest from './commonApi/onGestureTest.test.ets';
+import alphabetTest from './commonApi/alphabetTest.test.ets';
+import NavigationApi from './AttrApi/NavigationApi.test.ets';
+import NavigationApi2 from './AttrApi/NavigationApi2.test.ets';
+import NavigationApi3 from './AttrApi/NavigationApi3.test.ets';
+import RichEditorApi from './AttrApi/RichEditorApi.test.ets';
+import TabsApi from './AttrApi/TabsApi.test.ets';
+export default function testsuite() {
+  tabsApi1()
+  AttributeModifierDemoAPI01()
+  AttributeModifierDemoAPI02()
+  AttributeModifierDemoAPI03()
+  FolderStack3ApiJsunit()
+  onGestureTest()
+  setCursorTest()
+  onChildTouchTest()
+  promptTest()
+  alphabetTest()
+  NavigationApi()
+  NavigationApi2()
+  NavigationApi3()
+  RichEditorApi()
+  TabsApi()
+}
