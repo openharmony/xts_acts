@@ -40,6 +40,7 @@ export default function MulticastconnectionPromiseTest() {
             console.log('MulticastconnectionPromiseTest afterAll start');
             console.log('MulticastconnectionPromiseTest afterAll end');
         });
+
         /**
          * @tc.number SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100
          * @tc.name connection::addCustomDnsRule
@@ -60,6 +61,7 @@ export default function MulticastconnectionPromiseTest() {
                 done();
             });
         });
+
         /**
          * @tc.number NetworkManager_DNS_addCustomDNSRule_Promise_0300
          * @tc.name connection::addCustomDnsRule
@@ -89,7 +91,6 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-
         it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
             let caseName = "SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100";
@@ -123,6 +124,7 @@ export default function MulticastconnectionPromiseTest() {
                 done();
             });
         });
+
         /**
          * @tc.number SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100
          * @tc.name connection::clearCustomDnsRules
@@ -145,5 +147,5 @@ export default function MulticastconnectionPromiseTest() {
                 done();
             })
         });
-    })
+    }1)
 };
