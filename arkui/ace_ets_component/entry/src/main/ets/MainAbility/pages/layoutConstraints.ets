@@ -19,12 +19,14 @@ import events_emitter from '@ohos.events.emitter';
 class ContainerInfo {
   label: string = ''
   size: string = ''
-};
+}
+;
 
 class ChildInfo {
   text: string = ''
   priority: number = 0
-};
+}
+;
 
 @Entry
 @Component
@@ -34,7 +36,7 @@ struct LayoutConstraints {
   private container: ContainerInfo[] = [
     { label: 'Big container', size: '97%' },
     { label: 'Small container', size: '30%' }];
-  @State priorityChildren: any[] = [
+  @State priorityChildren: ChildInfo[] = [
     { text: '1\n(priority:1)', priority: 1 },
     { text: '2\n(priority:2)', priority: 2 },
     { text: '3\n(priority:3)', priority: 3 },
@@ -43,9 +45,12 @@ struct LayoutConstraints {
 
   build() {
     Column({ space: 20 }) {
-      Text('using container: row').fontSize(20).fontColor(Color.Black).width('100%')
+      Text('using container: row')
+        .fontSize(20)
+        .fontColor(Color.Black)
+        .width('100%')
       Row({ space: 10 }) {
-        ForEach(this.children, (item) => {
+        ForEach(this.children, (item: string) => {
           Text(item)
             .backgroundColor(0xbbb2cb)
             .fontSize(20)
@@ -57,22 +62,25 @@ struct LayoutConstraints {
             .aspectRatio(this.aspectRatio)
             .width(60)
             .key('aspectRatio')
-        }, item => item)
+        }, (item: string) => item)
       }
       .size({ width: "100%", height: 100 })
       .backgroundColor(0xd2cab3)
       .clip(true)
 
-      Text('using container: grid').fontSize(20).fontColor(Color.Black).width('100%')
+      Text('using container: grid')
+        .fontSize(20)
+        .fontColor(Color.Black)
+        .width('100%')
       Grid() {
-        ForEach(this.children, (item) => {
+        ForEach(this.children, (item: string) => {
           GridItem() {
             Text(item)
               .backgroundColor(0xbbb2cb)
               .fontSize(40)
               .aspectRatio(this.aspectRatio)
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .columnsGap(10)
@@ -80,9 +88,12 @@ struct LayoutConstraints {
       .size({ width: "100%", height: 165 })
       .backgroundColor(0xd2cab3)
 
-      Text('displayPriority 4').fontSize(20).fontColor(Color.Black).width('100%')
+      Text('displayPriority 4')
+        .fontSize(20)
+        .fontColor(Color.Black)
+        .width('100%')
       Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-        ForEach(this.priorityChildren, (item) => {
+        ForEach(this.priorityChildren, (item: ChildInfo) => {
           if (item.priority === 1 || item.priority === 5) {
             Text(`1\n(priority:${item.priority})`)
               .width(135)
@@ -101,7 +112,7 @@ struct LayoutConstraints {
               .backgroundColor(0xbbb2cb)
               .displayPriority(item.priority)
           }
-        }, item => item.text)
+        }, (item: string) => item.text)
       }
       .width(this.container[this.currentIndex].size)
       .backgroundColor(0xd2cab3)
@@ -109,35 +120,34 @@ struct LayoutConstraints {
   }
 
   onPageShow() {
-    let aspectRatioChangeEvent = {
+    let aspectRatioChangeEvent: events_emitter.InnerEvent = {
       eventId: 20,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(aspectRatioChangeEvent, this.stateChangCallBack);
 
-    let priorityChangeEvent = {
+    let priorityChangeEvent: events_emitter.InnerEvent = {
       eventId: 21,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(priorityChangeEvent, this.stateChangCallBack);
 
-    let priorityChangeEvent2 = {
+    let priorityChangeEvent2: events_emitter.InnerEvent = {
       eventId: 1112,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(priorityChangeEvent2, this.stateChangCallBack);
   }
 
-  stateChangCallBack = (eventData) => {
+  stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("LayoutConstraints page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
       if (eventData.data.aspectRatio) {
         this.aspectRatio = eventData.data.aspectRatio;
       } else if (eventData.data.displayPriority) {
-        let priority = JSON.parse(JSON.stringify(this.priorityChildren));
-        priority[0].priority = eventData.data.displayPriority;
+        JSON.parse(JSON.stringify(this.priorityChildren))[0].priority = eventData.data.displayPriority;
         this.priorityChildren = [];
-        this.priorityChildren = priority;
+        this.priorityChildren = JSON.stringify(this.priorityChildren);
       }
     }
   }

@@ -62,24 +62,24 @@ struct GridSetting {
   }
 
   onPageShow() {
-    let smChangeEvent = {
+    let smChangeEvent: events_emitter.InnerEvent = {
       eventId: 9,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(smChangeEvent, this.stateChangCallBack);
-    let offsetChangeEvent = {
+    let offsetChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(offsetChangeEvent, this.stateChangCallBack);
-    let spanChangeEvent = {
+    let spanChangeEvent: events_emitter.InnerEvent = {
       eventId: 11,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(spanChangeEvent, this.stateChangCallBack);
   }
 
-  stateChangCallBack = (eventData) => {
+  stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("GridSetting page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {
       if (eventData.data.span) {
