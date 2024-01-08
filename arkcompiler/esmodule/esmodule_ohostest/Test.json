@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsEsmoduleOhostestLib.hap",
+                "ActsEsmoduleOhostestLibTest.hap",
                 "ActsEsmoduleOhostestTest.hap"
             ],
             "type": "AppInstallKit",
