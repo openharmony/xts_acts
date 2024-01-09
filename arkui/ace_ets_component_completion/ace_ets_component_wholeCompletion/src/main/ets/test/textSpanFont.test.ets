@@ -745,7 +745,7 @@ export default function textSpanFontTest() {
           let font = JSON.parse(obj.$attrs.font)
           console.info("ArkUX_Stage_Text_Font_FontSize_0800 font is: " +
           JSON.stringify(font));
-          expect(font.size).assertEqual("0.00px");
+          expect(font.size).assertEqual("16.00fp");
           console.info('ArkUX_Stage_Text_Font_FontSize_0800 END ');
         } catch(err) {
           expect().assertFail()
@@ -767,7 +767,7 @@ export default function textSpanFontTest() {
           let font = JSON.parse(obj.$attrs.font)
           console.info("ArkUX_Stage_Text_Font_FontSize_0900 font is: " +
           JSON.stringify(font));
-          expect(font.size).assertEqual("0.00px");
+          expect(font.size).assertEqual("16.00fp");
           console.info('ArkUX_Stage_Text_Font_FontSize_0900 END ');
         } catch(err) {
           expect().assertFail()
@@ -965,7 +965,7 @@ export default function textSpanFontTest() {
           let font = JSON.parse(obj.$attrs.font)
           console.info("ArkUX_Stage_Span_Font_FontSize_0800 font is: " +
           JSON.stringify(font));
-          expect(font.size).assertEqual("0.00fp");
+          expect(font.size).assertEqual("16.00fp");
           console.info('ArkUX_Stage_Span_Font_FontSize_0800 END ');
         } catch(err) {
           expect().assertFail()
@@ -987,7 +987,7 @@ export default function textSpanFontTest() {
           let font = JSON.parse(obj.$attrs.font)
           console.info("ArkUX_Stage_Span_Font_FontSize_0900 font is: " +
           JSON.stringify(font));
-          expect(font.size).assertEqual("0.00fp");
+          expect(font.size).assertEqual("16.00fp");
           console.info('ArkUX_Stage_Span_Font_FontSize_0900 END ');
         } catch(err) {
           expect().assertFail()
