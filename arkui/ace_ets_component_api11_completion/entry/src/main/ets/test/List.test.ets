@@ -27,6 +27,7 @@ import NavigationApi2 from './AttrApi/NavigationApi2.test.ets';
 import NavigationApi3 from './AttrApi/NavigationApi3.test.ets';
 import RichEditorApi from './AttrApi/RichEditorApi.test.ets';
 import TabsApi from './AttrApi/TabsApi.test.ets';
+import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/QueryNavDestinationInfoNavDestinationJsunit.test';
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -43,4 +44,5 @@ export default function testsuite() {
   NavigationApi3()
   RichEditorApi()
   TabsApi()
+  QueryNavDestinationInfoNavDestinationJsunit()
 }
