@@ -35,6 +35,13 @@ import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
 import setForegroundColor from './DragController/setForegroundColor.test.ets';
+import backgroundEffectJsunit from './backgroundEffect/backgroundEffect.test.ets'
+import blendMode1Jsunit from './backgroundEffect/blendMode1.test.ets'
+import sheetSize1Jsunit from './backgroundEffect/sheetSize1.test.ets'
+import monopolizeTest from './commonApi/monopolizeTest.test.ets';
+import blendModeTest from './commonApi/blendModeTest.test.ets';
+import outlineTest from './commonApi/outlineTest.test.ets';
+
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -59,4 +66,10 @@ export default function testsuite() {
   setForegroundColor()
   touchPoint()
   previewOptions()
+  backgroundEffectJsunit()
+  blendMode1Jsunit()
+  sheetSize1Jsunit()
+  monopolizeTest()
+  blendModeTest()
+  outlineTest()
 }

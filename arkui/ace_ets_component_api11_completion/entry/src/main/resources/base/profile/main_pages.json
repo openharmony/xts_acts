@@ -24,6 +24,12 @@
         "MainAbility/pages/DragController/createDragAction",
         "MainAbility/pages/DragController/setForegroundColor",
         "MainAbility/pages/DragController/touchPoint_Auto",
-        "MainAbility/pages/DragController/touchPoint_Disable"
+        "MainAbility/pages/DragController/touchPoint_Disable",
+        "MainAbility/pages/backgroundEffect/backgroundEffect",
+        "MainAbility/pages/backgroundEffect/blendMode1",
+        "MainAbility/pages/backgroundEffect/sheetSize",
+        "MainAbility/pages/commonApi/outline",
+        "MainAbility/pages/commonApi/blendMode",
+        "MainAbility/pages/commonApi/monopolize"
     ]
 }
