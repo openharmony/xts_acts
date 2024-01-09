@@ -52,7 +52,23 @@ function checkWifiPowerOn(){
 function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
-
+async function checkSavedNet()
+{
+    let getCandidate = wifiMg.getCandidateConfigs();
+    if(getCandidate.length>0)
+    {
+        for(let i=0;getCandidate.length;i++)
+        {
+            await wifiMg.removeCandidateConfig(getCandidate[i].netId)
+                .then(ret => {
+                    console.info("[wifi_test]wifi remove CandidateConfigs result : " + JSON.stringify(ret));
+                }).catch((error) => {
+                    console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
+                    expect().assertFail();
+                });
+        }
+    }
+}
 export default function actsWifiManagerCandidateNetWorkTest() {
     describe('actsWifiManagerCandidateNetWorkTest', function () {
         beforeAll(async function (done) {
@@ -211,7 +227,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getCandidate.length));
                     expect(true).assertEqual(getCandidate.length == 0);
                 }).catch((error) => {
-                    console.error('[wifi_test]remove CandidateConfig promise failed ： ' + JSON.stringify(error));
+                    console.error('[wifi_test]remove CandidateConfig promise failed �?' + JSON.stringify(error));
                     expect().assertFail();
                 });
             done();
@@ -241,6 +257,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 });
             let getCandidateResult = wifiMg.getCandidateConfigs();
             console.info("[wifi_test]wifi get SAE CandidateConfigs result : " + JSON.stringify(getCandidateResult));
+            expect(true).assertEqual(getCandidateResult.length>0);
             var networkId = getCandidateResult[0].netId;
             console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
             await wifiMg.removeCandidateConfig(networkId)
@@ -281,7 +298,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                         console.info("[wifi_test]add 16th CandidateConfig promise : " + JSON.stringify(netWorkId));
                         expect(true).assertEqual(netWorkId != -1);
                     }).catch((error) => {
-                        console.error('[wifi_test]add 16th CandidateConfig promise failed ：' + JSON.stringify(error));
+                        console.error("[wifi_test]add 16th CandidateConfig promise failed "+ JSON.stringify(error));
                         expect().assertFail();
                     });
             }
@@ -301,7 +318,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
                 });
             let getCandidateResult = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test]wifi get 16 CandidateConfigs result : " + JSON.stringify(getCandidateResult));
+            console.info("[wifi_test]wifi get 16 CandidateConfigs result : " + JSON.stringify(getCandidateResult.length));
             for (let i = 0; i < 16; i++) {
                 var networkId = getCandidateResult[i].netId;
                 console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
@@ -314,6 +331,8 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                         console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
                     });
             }
+            getCandidateResult = wifiMg.getCandidateConfigs();
+            expect(true).assertEqual(getCandidateResult.length==0);
             done();
         })
 
@@ -376,6 +395,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
+            await checkSavedNet();
             let wifiDeviceConfig = {
                 "ssid": "HONOR 3000",
                 "bssid": "22:9b:e6:48:1f:5c",
@@ -419,5 +439,6 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 });
             done();
         })
+        
     })
 }
