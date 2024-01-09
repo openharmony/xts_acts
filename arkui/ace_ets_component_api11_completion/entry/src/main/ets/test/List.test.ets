@@ -30,6 +30,14 @@ import TabsApi from './AttrApi/TabsApi.test.ets';
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
+import dragPreviewOptionsJsSuit from './dragPreviewOptionsJsSuit.test';
+import backgroundEffectJsSuit from './backgroundEffectJsSuit.test';
+import DragActionJsunit from './DragActionJsSuit.test';
+import dragPreviewJsSuit from './dragPreviewJsSuit.test';
+import GestureTagJsSuit from './GestureTagJsSuit.test';
+import InvertOptionsJsSuit from './InvertOptionsJsSuit.test';
+import selectoptionwithJsSuit from './selectoptionwithJsSuit.test';
+import ForegroundColorJsSuit from './ForegroundColorJsSuit.test';
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -49,4 +57,12 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
+  dragPreviewOptionsJsSuit()
+  backgroundEffectJsSuit()
+  DragActionJsunit()
+  dragPreviewJsSuit()
+  GestureTagJsSuit()
+  InvertOptionsJsSuit()
+  selectoptionwithJsSuit()
+  ForegroundColorJsSuit()
 }
