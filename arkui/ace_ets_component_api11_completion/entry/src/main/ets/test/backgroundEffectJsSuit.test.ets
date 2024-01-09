@@ -52,6 +52,8 @@ export default function backgroundEffectJsSuit() {
      * @tc.name 	 backgroundEffectJsSuit_0100
      * @tc.desc 	 Confirm if there is a callback
 	 * @tc.level     Level 2
+     * @tc.type :
+     * @tc.size :
      */
 
     it('backgroundEffectJsSuit_0100', 0, async function (done) {
