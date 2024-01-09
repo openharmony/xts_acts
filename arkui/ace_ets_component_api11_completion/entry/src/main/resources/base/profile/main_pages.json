@@ -19,6 +19,10 @@
         "MainAbility/pages/AttrApi/TabsApi",
         "MainAbility/pages/Com_Attr/aboutToAppear",
         "MainAbility/pages/Com_Attr/parentX",
-        "MainAbility/pages/TextApi/TextStyle"
+        "MainAbility/pages/TextApi/TextStyle",
+        "MainAbility/pages/DragController/createDragAction",
+        "MainAbility/pages/DragController/setForegroundColor",
+        "MainAbility/pages/DragController/touchPoint_Auto",
+        "MainAbility/pages/DragController/touchPoint_Disable"
     ]
 }
