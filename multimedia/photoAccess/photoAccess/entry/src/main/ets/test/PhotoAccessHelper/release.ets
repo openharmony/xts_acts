@@ -70,7 +70,7 @@ export default function releaseTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_RELEASE_0100
      * @tc.name      : release_promise_001
-     * @tc.desc      : repete release photoAccessHelper instance
+     * @tc.desc      : repeat release photoAccessHelper instance
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -81,7 +81,7 @@ export default function releaseTest () {
         let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
         await helper.release();
         await helper.release();
-        console.error(`${testNum} failed; repete release instance`);
+        console.error(`${testNum} failed; repeat release instance`);
         expect(false).assertTrue()
         done();
       } catch (error) {
