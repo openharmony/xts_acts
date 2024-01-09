@@ -16,6 +16,9 @@
         "MainAbility/pages/AttrApi/NavigationApi2",
         "MainAbility/pages/AttrApi/NavigationApi3",
         "MainAbility/pages/AttrApi/RichEditorApi",
-        "MainAbility/pages/AttrApi/TabsApi"
+        "MainAbility/pages/AttrApi/TabsApi",
+        "MainAbility/pages/Com_Attr/aboutToAppear",
+        "MainAbility/pages/Com_Attr/parentX",
+        "MainAbility/pages/TextApi/TextStyle"
     ]
 }

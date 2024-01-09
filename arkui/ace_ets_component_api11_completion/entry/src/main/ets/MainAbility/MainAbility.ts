@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-
+import {UIContext, AtomicServiceBar} from '@ohos.arkui.UIContext';
 export default class MainAbility extends Ability {
     onCreate(want,launchParam){
         // Ability is creating, initialize resources for this ability
@@ -30,6 +30,8 @@ export default class MainAbility extends Ability {
         globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context
         windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
+        let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+        let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
     }
     onWindowStageDestroy() {
         //Main window is destroyed, release UI related resources
