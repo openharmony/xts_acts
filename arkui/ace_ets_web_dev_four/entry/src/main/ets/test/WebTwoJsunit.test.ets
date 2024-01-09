@@ -100,8 +100,18 @@ export default function webTwoJsunit() {
      *tc.desic Sets allow the Web access overview mode
      */
     it('resumeDownload',0,async function(done){
-      emitKey="emitresumeDownload";
+      emitKey="emitRegisterJavaScriptProxy";
       Utils.registerEvent("resumeDownload",true,12,done);
+      sendEventByKey('webcomponenttwo',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_005                                                                                                                                                             
+     *tc.name RegisterJavaScriptProxy                                                                                                                                                                                                                 
+     *tc.desic Sets allow the Web access overview mode
+     */
+    it('RegisterJavaScriptProxy',0,async function(done){
+      emitKey="emitRegisterJavaScriptProxy";
+      Utils.registerEvent("RegisterJavaScriptProxy",'\"okok\"',14,done);
       sendEventByKey('webcomponenttwo',10,'');
     })
   })
