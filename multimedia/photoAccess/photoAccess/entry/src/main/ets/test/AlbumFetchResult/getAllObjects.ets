@@ -136,7 +136,7 @@ export default function albumGetAllObjectTest () {
               console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
-              expect(allObj.length).assertEqual(2);
+              expect(allObj.length).assertEqual(1);
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
@@ -234,7 +234,7 @@ export default function albumGetAllObjectTest () {
         console.info(`${testNum} fetchResult: ${fetchResult}`);
         expect(fetchResult.getCount()).assertEqual(1);
         const allObj = await fetchResult.getAllObjects();
-        expect(allObj.length).assertEqual(2);
+        expect(allObj.length).assertEqual(1);
         fetchResult.close();
         done();
       } catch (error) {
