@@ -18,12 +18,12 @@ import { describe, it, expect } from 'deccjsunit/index'
 
 export default function releaseTest () {
   describe('releaseTest', function () {
-    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+    
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_RELEASE_0000
      * @tc.name      : release_callback_000
-     * @tc.desc      : Release photoAccessHelper instance
+     * @tc.desc      : release photoAccessHelper instance
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -31,6 +31,7 @@ export default function releaseTest () {
     it('release_callback_000', 0, async function (done) {
       const testNum = 'release_callback_000'
       try {
+        let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
         await helper.release((err) => {
           if (err !== undefined) {
             console.info(`${testNum} err: ${err}`);
@@ -39,7 +40,7 @@ export default function releaseTest () {
           done();
         })
       } catch (error) {
-        console.info(`${testNum} failed; error: ${error}`);
+        console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue()
         done();
       }
@@ -48,7 +49,7 @@ export default function releaseTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_RELEASE_0000
      * @tc.name      : release_promise_000
-     * @tc.desc      : Release photoAccessHelper instance
+     * @tc.desc      : release photoAccessHelper instance
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -56,13 +57,38 @@ export default function releaseTest () {
     it('release_promise_000', 0, async function (done) {
       const testNum = 'release_promise_000'
       try {
+        let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
         await helper.release()
         done();
       } catch (error) {
-        console.info(`${testNum} failed; error: ${error}`);
+        console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue()
         done();
       }
     })
+    
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_RELEASE_0100
+     * @tc.name      : release_promise_001
+     * @tc.desc      : repete release photoAccessHelper instance
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('release_promise_000', 2, async function (done) {
+      const testNum = 'release_promise_001'
+      try {
+        let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+        await helper.release();
+        await helper.release();
+        console.error(`${testNum} failed; repete release instance`);
+        expect(false).assertTrue()
+        done();
+      } catch (error) {
+        console.info(`${testNum} success; error: ${error}`);
+        done();
+      }
+    })
+    
   })
 }
