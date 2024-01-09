@@ -51,6 +51,8 @@ export default function dragPreviewJsSuit() {
      * @tc.name 	 DragPreviewJsSuit_0100
      * @tc.desc 	 Confirm if there is a callback
 	 * @tc.level     Level 2
+     * @tc.type :
+     * @tc.size :
      */
 
     it('dragPreviewJsSuit_0100', 0, async function (done) {
