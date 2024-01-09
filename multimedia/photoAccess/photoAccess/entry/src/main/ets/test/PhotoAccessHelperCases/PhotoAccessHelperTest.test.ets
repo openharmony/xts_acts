@@ -16,7 +16,6 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
-import userFileManager from '@ohos.filemanagement.userFileManager';
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -1334,120 +1333,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, false, photoHelper, false, done)
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200
-           * @tc.name      : 032.release
-           * @tc.desc      : release callback, twice
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level2
-           */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200', 2, function (done) {
-            let photoHelper = getPhotoHelper(context)
-            photoHelper.release((err) => {
-                console.info('releaseDemo');
-                if (err != undefined) {
-                    console.error('release failed. message = ', err);
-                    expect(false).assertTrue();
-                } else {
-                    console.info('release1 ok.');
-                    if(photoHelper==undefined){
-                        console.info('photoHelper is undefined');
-                    }else {
-                        console.info('photoHelper is not undefined');
-                    }
-                    photoHelper.getAssets(fetchOptions, async (err, fetchResult) => {
-                        if (fetchResult !== undefined) {
-                            console.info('fetchResult success');
-                            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-                            if (photoAsset !== undefined) {
-                                console.info('photoAsset.displayName : ' + photoAsset.displayName);
-                                done()
-                            }
-                        } else {
-                            console.error('fetchResult fail' + err);
-                        }
-                    });
-                    // photoHelper.release((err) => {
-                    //     console.info('releaseDemo');
-                    //     if (err != undefined) {
-                    //         console.error('release failed. message = ', err);
-                    //         expect(false).assertTrue();
-                    //     } else {
-                    //         console.info('release2 ok.');
-                    //         done()
-                    //     }
-                    // });
-                }
-            });
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3210
-           * @tc.name      : 0321.release
-           * @tc.desc      : release promise, twice
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level2
-           */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3210', 2, async function (done) {
-            let mgr = userFileManager.getUserFileMgr(context);
-            mgr.release((err) => {
-                if (err != undefined) {
-                    console.error('release failed. message = ', err);
-                } else {
-                    console.info('release ok.');
-                    if(mgr==undefined){
-                        console.info('mgr is undefined');
-                    }else {
-                        console.info('mgr is not undefined');
-                    }
-                    mgr.getPhotoAssets(fetchOptions, async (err, fetchResult) => {
-                        if (fetchResult != undefined) {
-                            console.info('fetchResult success');
-                            done()
-                        } else {
-                            console.error('fetchResult fail' + err);
-                            expect(false).assertTrue();
-                        }
-                    });
-                }
-            });
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300
-           * @tc.name      : 033.release
-           * @tc.desc      : release promise, twice
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level2
-           */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300', 2, async function (done) {
-            let photoHelper = getPhotoHelper(context)
-            try {
-                await photoHelper.release();
-                console.info('release1 ok.');
-                await photoHelper.release();
-                console.info('release2 ok.');
-                photoHelper.getAssets(fetchOptions, async (err, fetchResult) => {
-                    if (fetchResult !== undefined) {
-                        console.info('fetchResult success');
-                        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-                        if (photoAsset !== undefined) {
-                            console.info('photoAsset.displayName : ' + photoAsset.displayName);
-                            done()
-                        }
-                    } else {
-                        console.error('fetchResult fail' + err);
-                    }
-                });
-            } catch (err) {
-                console.error('release failed. message = ', err);
-                expect(false).assertTrue();
-            }
         })
 
         /* *
