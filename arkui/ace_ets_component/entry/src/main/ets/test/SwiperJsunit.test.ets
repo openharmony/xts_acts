@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils.ets';
 import events_emitter from '@ohos.events.emitter';
 
 export default function swiperJsunit() {
-  describe('swiperTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('swiperTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
         uri: 'MainAbility/pages/swiper',
       }
       try {
@@ -30,92 +30,116 @@ export default function swiperJsunit() {
         console.info("get swiper state success " + JSON.stringify(pages));
         if (!("swiper" == pages.name)) {
           console.info("get swiper state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push swiper page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push swiper page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("swiper after each called");
     });
 
-    it('swiperTest_0100', 0, async function (done) {
+    it('swiperTest_0100', 0, async () => {
       console.info('swiperTest_0100 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("swiperTest_0100 component obj is: " + JSON.stringify(obj));
-      console.info("swiperTest_0100 obj.$attrs.index: " + obj.$attrs.index);
-      console.info("swiperTest_0100 obj.$attrs.indicatorStyle: " + obj.$attrs.indicatorStyle);
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.index).assertEqual('1');
-      done();
+
+      console.info("swiperTest_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("swiperTest_0100 JSON.parse(strJson).$attrs.index: " + JSON.parse(strJson).$attrs.index);
+      console.info("swiperTest_0100 JSON.parse(strJson).$attrs.indicatorStyle: " + JSON.parse(strJson)
+        .$attrs
+        .indicatorStyle);
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      expect(JSON.parse(strJson).$attrs.index).assertEqual('1');
+
     });
 
-    it('swiperTest_0200', 0, async function (done) {
+    it('swiperTest_0200', 0, async () => {
       console.info('swiperTest_0200 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("swiperTest_0200 component obj is: " + JSON.stringify(obj));
-      let assertObjet = obj.$attrs.indicator;
-      expect(assertObjet).assertEqual('true')
+      console.info("swiperTest_0200 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.indicator).assertEqual('true')
       expect(obj.$attrs.loop).assertEqual('false');
       console.info('swiperTest_0200 END');
-      done();
     });
 
-    it('swiperTest_0300', 0, async function (done) {
-    console.info('swiperTest_0300 START');
+    it('swiperTest_0300', 0, async () => {
+      console.info('swiperTest_0300 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("swiperTest_0300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.duration).assertEqual('1000');
-      expect(obj.$attrs.vertical).assertEqual('false');
+
+      console.info("swiperTest_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.duration).assertEqual('1000');
+      expect(JSON.parse(strJson).$attrs.vertical).assertEqual('false');
       console.info('swiperTest_0300 END');
-      done();
+
     });
 
-    it('swiperTest_0400', 0, async function (done) {
+    it('swiperTest_0400', 0, async () => {
       console.info('swiperTest_0400 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0400 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("swiperTest_0400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.autoPlay).assertEqual('true');
-      expect(obj.$attrs.interval).assertEqual('4000');
+
+      console.info("swiperTest_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.autoPlay).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.interval).assertEqual('4000');
       console.info('swiperTest_0400 END');
-      done();
+
     });
 
-    it('swiperTest_0500', 0, async function (done) {
+    it('swiperTest_0500', 0, async () => {
       console.info('swiperTest_0500 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0500 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("swiperTest_0500 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
-      expect(obj.$attrs.disableSwipe).assertEqual('false');
+
+      console.info("swiperTest_0500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.itemSpace).assertEqual('0.00vp');
+      expect(JSON.parse(strJson).$attrs.disableSwipe).assertEqual('false');
       console.info('swiperTest_0500 END');
-      done();
+
     });
 
-    it('swiperTest_0700', 0, async function (done) {
+    it('swiperTest_0600', 0, async () => {
+      console.info('swiperTest_0600 START');
+      try {
+        let eventData: events_emitter.EventData = {
+          data: {
+            "index": 3
+          }
+        }
+        let indexEvent: events_emitter.IndexEvent = {
+          eventId: 207,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("swiperTest_0600 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("swiperTest_0600 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew: string = getInspectorByKey('swiper');
+
+      console.info("swiperTest_0600 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.index).assertEqual('3');
+      console.info('swiperTest_0600 END');
+
+    });
+
+    it('swiperTest_0700', 0, async () => {
       console.info('swiperTest_0700 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "autoPlay": "false"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 207,
           priority: events_emitter.EventPriority.LOW
         }
@@ -126,48 +150,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_0700 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.autoPlay).assertEqual('false');
+
+      console.info("swiperTest_0700 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.autoPlay).assertEqual('false');
       console.info('swiperTest_0700 END');
-      done();
+
     });
 
-   it('swiperTest_0600', 0, async function (done) {
-      console.info('swiperTest_0600 START');
-      try {
-        let eventData = {
-          data: {
-            "index": "3"
-          }
-        }
-        let indexEvent = {
-          eventId: 207,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("swiperTest_0600 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("swiperTest_0600 change component data error: " + err.message);
-      }
-      await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_0600 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.index).assertEqual('3');
-      console.info('swiperTest_0600 END');
-      done();
-    });
-
-    it('swiperTest_0800', 0, async function (done) {
+    it('swiperTest_0800', 0, async () => {
       console.info('swiperTest_0800 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("swiperTest_0800 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
-        done();
+
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.IndexEvent = {
         eventId: 205,
         priority: events_emitter.EventPriority.LOW
       }
@@ -181,15 +179,15 @@ export default function swiperJsunit() {
       console.info('swiperTest_0800 END');
     });
 
-    it('swiperTest_0900', 0, async function (done) {
+    it('swiperTest_0900', 0, async () => {
       console.info('swiperTest_0900 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("swiperTest_0900 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
-        done();
+
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.IndexEvent = {
         eventId: 206,
         priority: events_emitter.EventPriority.LOW
       }
@@ -203,15 +201,15 @@ export default function swiperJsunit() {
       console.info('swiperTest_0900 END');
     });
 
-    it('swiperTest_1000', 0, async function (done) {
+    it('swiperTest_1000', 0, async () => {
       console.info('swiperTest_1000 START');
       await Utils.sleep(1500);
-      let callbackOne = (indexEventOne) => {
+      let callbackOne = (indexEventOne: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.ACTION).assertEqual(true);
-        done();
+
       }
-      let indexEventOne = {
+      let indexEvent: events_emitter.IndexEventOne = {
         eventId: 206,
         priority: events_emitter.EventPriority.LOW
       }
@@ -222,12 +220,12 @@ export default function swiperJsunit() {
       }
       console.info("swiperTest_1000 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
-        done();
+
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.IndexEvent = {
         eventId: 204,
         priority: events_emitter.EventPriority.LOW
       }
@@ -239,15 +237,15 @@ export default function swiperJsunit() {
       console.info('swiperTest_1000 END');
     });
 
-    it('swiperTest_1100', 0, async function (done) {
+    it('swiperTest_1100', 0, async () => {
       console.info('swiperTest_1100 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "loop": true
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 208,
           priority: events_emitter.EventPriority.LOW
         }
@@ -258,22 +256,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1100 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.loop).assertEqual('true');
+
+      console.info("swiperTest_1100 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.loop).assertEqual('true');
       console.info('swiperTest_1100 END');
-      done();
+
     });
 
-    it('swiperTest_1200', 0, async function (done) {
+    it('swiperTest_1200', 0, async () => {
       console.info('swiperTest_1200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "vertical": true
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 208,
           priority: events_emitter.EventPriority.LOW
         }
@@ -284,22 +282,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1200 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.vertical).assertEqual('true');
+
+      console.info("swiperTest_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('true');
       console.info('swiperTest_1200 END');
-      done();
+
     });
 
-    it('swiperTest_1300', 0, async function (done) {
+    it('swiperTest_1300', 0, async () => {
       console.info('swiperTest_1300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "interval": "3000"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 209,
           priority: events_emitter.EventPriority.LOW
         }
@@ -310,22 +308,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.interval).assertEqual('3000');
+
+      console.info("swiperTest_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.interval).assertEqual('3000');
       console.info('swiperTest_1300 END');
-      done();
+
     });
 
-    it('swiperTest_1400', 0, async function (done) {
+    it('swiperTest_1400', 0, async () => {
       console.info('swiperTest_1400 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "indicator": false
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 209,
           priority: events_emitter.EventPriority.LOW
         }
@@ -336,23 +334,21 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1400 component objNew is: " + JSON.stringify(objNew));
-      let assertObjet = objNew.$attrs.indicator;
-      expect(assertObjet).assertEqual('false');
+      console.info("swiperTest_1400 component JSON.parse(strJson)New is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.indicator).assertEqual('false');
       console.info('swiperTest_1400 END');
-      done();
+
     });
 
-    it('swiperTest_1500', 0, async function (done) {
+    it('swiperTest_1500', 0, async () => {
       console.info('swiperTest_1500 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "duration": 500
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 210,
           priority: events_emitter.EventPriority.LOW
         }
@@ -363,22 +359,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1500 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('500');
+
+      console.info("swiperTest_1500 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.duration).assertEqual('500');
       console.info('swiperTest_1500 END');
-      done();
+
     });
 
-    it('swiperTest_1600', 0, async function (done) {
+    it('swiperTest_1600', 0, async () => {
       console.info('swiperTest_1600 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "itemSpace": "1"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 210,
           priority: events_emitter.EventPriority.LOW
         }
@@ -389,22 +385,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1600 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.itemSpace).assertEqual('1.00vp');
+
+      console.info("swiperTest_1600 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.itemSpace).assertEqual('1.00vp');
       console.info('swiperTest_1600 END');
-      done();
+
     });
 
-    it('swiperTest_1700', 0, async function (done) {
+    it('swiperTest_1700', 0, async () => {
       console.info('swiperTest_1700 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "loop": "true123"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 208,
           priority: events_emitter.EventPriority.LOW
         }
@@ -415,22 +411,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1700 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.loop).assertEqual('true');
+
+      console.info("swiperTest_1700 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.loop).assertEqual('true');
       console.info('swiperTest_1700 END');
-      done();
+
     });
 
-    it('swiperTest_1800', 0, async function (done) {
+    it('swiperTest_1800', 0, async () => {
       console.info('swiperTest_1800 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "autoPlay": "false123"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 207,
           priority: events_emitter.EventPriority.LOW
         }
@@ -441,22 +437,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1800 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.autoPlay).assertEqual('false');
+
+      console.info("swiperTest_1800 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.autoPlay).assertEqual('false');
       console.info('swiperTest_1800 END');
-      done();
+
     });
 
-    it('swiperTest_1900', 0, async function (done) {
+    it('swiperTest_1900', 0, async () => {
       console.info('swiperTest_1900 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "duration": 0
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 210,
           priority: events_emitter.EventPriority.LOW
         }
@@ -467,22 +463,22 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_1900 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('0');
+
+      console.info("swiperTest_1900 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.duration).assertEqual('0');
       console.info('swiperTest_1900 END');
-      done();
+
     });
 
-    it('swiperTest_2000', 0, async function (done) {
+    it('swiperTest_2000', 0, async () => {
       console.info('swiperTest_2000 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "duration": "abc"
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.IndexEvent = {
           eventId: 210,
           priority: events_emitter.EventPriority.LOW
         }
@@ -493,11 +489,11 @@ export default function swiperJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_2000 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('400');
+
+      console.info("swiperTest_2000 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.duration).assertEqual('400');
       console.info('swiperTest_2000 END');
-      done();
+
     });
   })
 }
