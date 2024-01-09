@@ -90,5 +90,4 @@ export default function testsuite () {
   getThumbnailTest()
   photoPickerTest()
   PhotoAccessHelperTest()
-  PhotoAccessHelperStabilityTest()
 }

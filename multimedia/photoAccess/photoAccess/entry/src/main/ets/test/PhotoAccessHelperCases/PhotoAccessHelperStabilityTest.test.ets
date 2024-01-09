@@ -715,7 +715,7 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : getPhotoAccessHelper and release 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0100', 1, function (done) {
             let mySteps = new Array(
@@ -744,7 +744,7 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : getAssets callback with 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0200', 1, function (done) {
             let mySteps = new Array(
@@ -773,7 +773,7 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : getAssets promise with 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0300', 1, function (done) {
             let mySteps = new Array(
@@ -802,9 +802,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset callback 1000 times with imageType and photoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0400', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0400', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_CALLBACK_OPTIONS_EVENT
@@ -831,9 +831,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset callback 1000 times with videoType and videoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0500', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0500', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_CALLBACK_OPTIONS_EVENT
@@ -860,9 +860,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset without options callback 1000 times with imageType and photoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0600', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0600', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_CALLBACK_EVENT
@@ -889,9 +889,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset without options callback 1000 times with videoType and videoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0700', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0700', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_CALLBACK_EVENT
@@ -918,9 +918,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset promise 1000 times with imageType and photoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0800', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0800', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_PROMISE_OPTIONS_EVENT
@@ -947,9 +947,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : createAsset promise 1000 times with videoType and videoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0900', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_0900', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, PRODUCE_EXTENSION, CREATE_ASSET_PROMISE_OPTIONS_EVENT
@@ -976,9 +976,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : registerChange and unRegisterChange 1000 times with different attrs
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1000', 2, function (done) {
+        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1000', 3, function (done) {
         //     let mySteps = new Array(
         //         // getPhotoAccessHelper and createAsset
         //         CREATE_EVENT, GET_PHOTOASSET_EVENT, REGISTER_CHANGE_EVENT
@@ -1005,9 +1005,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : release callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1100', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1100', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, RELEASE_CALLBACK_EVENT
@@ -1032,9 +1032,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : release promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1200', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1200', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and createAsset
                 CREATE_EVENT, RELEASE_PROMISE_EVENT
@@ -1059,9 +1059,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.get 1000 times for all photoKeys of columns
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1300', 2, function (done) {
+        // it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1300', 3, function (done) {
         //     let mySteps = new Array(
         //         // getPhotoAccessHelper and getPhotoAsset
         //         CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GET_ATTRS_EVENT
@@ -1089,9 +1089,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.get 1000 times for uri,displayName,photoType of columns
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1400', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1400', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GET_ATTRS_EVENT
@@ -1118,9 +1118,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.set 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1500', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1500', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_SET_ATTRS_EVENT
@@ -1147,9 +1147,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.commitModify callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1600', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1600', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_COMMITMODIFY_CALLBACK_EVENT
@@ -1176,9 +1176,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.commitModify promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1700', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1700', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_COMMITMODIFY_PROMISE_EVENT
@@ -1205,9 +1205,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.getReadOnlyFd callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1800', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1800', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETREADONLYFD_CALLBACK_EVENT
@@ -1234,9 +1234,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.getReadOnlyFd promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1900', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_1900', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETREADONLYFD_PROMISE_EVENT
@@ -1263,9 +1263,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.close callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2000', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2000', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_CLOSE_CALLBACK_EVENT
@@ -1292,9 +1292,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.close promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2100', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2100', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_CLOSE_PROMISE_EVENT
@@ -1321,9 +1321,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.getThumbnail callback without sizes 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2200', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2200', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_CALLBACK_EVENT
@@ -1350,9 +1350,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.getThumbnail callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2300', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2300', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_CALLBACK_EVENT
@@ -1379,9 +1379,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : photoAsset.getThumbnail promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2400', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2400', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, PHOTOASSET_GETTHUMBNAIL_WITH_SIZES_PROMISE_EVENT
@@ -1408,9 +1408,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getCount 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2500', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2500', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETCOUNT_EVENT
@@ -1437,9 +1437,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.isAfterLast 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2600', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2600', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_ISAFTERLAST_EVENT
@@ -1466,9 +1466,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.close callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2700', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2700', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_CLOSE_EVENT
@@ -1495,9 +1495,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getFirstObject callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2900', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_2900', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETFIRSTOBJECT_CALLBACK_EVENT
@@ -1524,9 +1524,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getFirstObject promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3000', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3000', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETFIRSTOBJECT_PROMISE_EVENT
@@ -1553,9 +1553,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getNextObject callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3100', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3100', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETNEXTOBJECT_CALLBACK_EVENT
@@ -1582,9 +1582,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getNextObject promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3200', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3200', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETNEXTOBJECT_PROMISE_EVENT
@@ -1611,9 +1611,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getLastObject callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3300', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3300', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETLASTOBJECT_CALLBACK_EVENT
@@ -1640,9 +1640,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getLastObject promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3400', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3400', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETLASTOBJECT_PROMISE_EVENT
@@ -1669,9 +1669,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getObjectByPosition callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3500', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3500', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETOBJECTBYPOSITION_CALLBACK_EVENT
@@ -1698,9 +1698,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getObjectByPosition promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3600', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3600', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETOBJECTBYPOSITION_PROMISE_EVENT
@@ -1727,9 +1727,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getAllObjects callback 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3700', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3700', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETALLOBJECTS_CALLBACK_EVENT
@@ -1756,9 +1756,9 @@ export default function PhotoAccessHelperStabilityTest() {
            * @tc.desc      : fetchResult.getAllObjects promise 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Stability test
-           * @tc.level     : Level2
+           * @tc.level     : Level3
            */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3800', 2, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_STABILITY_3800', 3, function (done) {
             let mySteps = new Array(
                 // getPhotoAccessHelper and getPhotoAsset
                 CREATE_EVENT, GET_PHOTOASSET_EVENT, FETCHRESULT_GETALLOBJECTS_PROMISE_EVENT

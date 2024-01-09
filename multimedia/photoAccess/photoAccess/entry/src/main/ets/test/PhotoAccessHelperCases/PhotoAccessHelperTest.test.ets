@@ -152,8 +152,7 @@ export default function PhotoAccessHelperTest() {
             phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                     releaseHelperCallback(phAccessHelper,done)
                 } else {
                     console.error('createAsset failed, message = ', err);
