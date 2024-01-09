@@ -152,8 +152,7 @@ export default function systemTimeAuthorityJsunit() {
      */
     it('SUB_systemTime_setDate_JS_API_0200', 0, async (done: Function) => {
       console.info("====>SUB_systemTime_setDate_JS_API_0200 start");
-      // @ts-ignore
-      systemTime.setDate(0).then( () => {
+      systemTime.setDate(new Date(0)).then( () => {
         console.info("====>SUB_systemTime_setDate_JS_API_0200 setDate fail ");
         expect().assertFail();
         done();
