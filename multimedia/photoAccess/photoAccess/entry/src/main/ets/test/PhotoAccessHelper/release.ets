@@ -75,7 +75,7 @@ export default function releaseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('release_promise_000', 2, async function (done) {
+    it('release_promise_001', 2, async function (done) {
       const testNum = 'release_promise_001'
       try {
         let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
