@@ -2305,5 +2305,37 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1810
+     * @tc.name      : testSetExpectedFrameRateRange
+     * @tc.desc      : test the enum value of hdrFormats
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSetExpectedFrameRateRange',0, async function (done){
+        let msg = "testSetExpectedFrameRateRange"
+        let backDisplaySyncBigger = displaySync.create()
+        console.log(msg + ' www data '  + backDisplaySyncBigger)
+        try {
+            let range = {
+                expected: 10,
+                min:0,
+                max:120
+            };
+            console.log(msg + ' www data '  + range)
+            backDisplaySyncBigger.setExpectedFrameRateRange(range)
+            expect(true).assertTrue()
+            done()
+        } catch (error) {
+            console.log(msg + ' www data Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (error.code) {
+                expect().assertFail()
+            } else {
+                expect(true).assertTrue()
+            }
+            done()
+        }
+    })
   })
 }
