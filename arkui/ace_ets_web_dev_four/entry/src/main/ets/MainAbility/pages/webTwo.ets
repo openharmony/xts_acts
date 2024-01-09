@@ -20,6 +20,26 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import business_error from '@ohos.base'
 import print from '@ohos.print'
 
+export enum ThreatType {
+  UNKNOWN = -1,
+  THREAT_ILLEGAL = 0,
+  THREAT_FRAUD = 1,
+  THREAT_RISK = 2,
+  THREAT_WARNING = 3,
+}
+
+export enum WebNavigationType {
+  MAIN_FRAME_NEW_ENTRY = 0,
+  MAIN_FRAME_EXISTING_ENTRY = 1,
+  NAVIGATION_TYPE_NEW_SUBFRAME = 2,
+  NAVIGATION_TYPE_AUTO_SUBFRAME = 3,
+}
+export enum SecurityLevel {
+  SECURE = 0,
+  WARNING = 1,
+  DANGEROUS = 2
+}
+
 function Uint8ArrayToString(dataArray) {
   var dataString = ''
   for (var i = 0; i < dataArray.length; i++) {
@@ -57,6 +77,8 @@ struct Second {
     ports: web_webview.WebMessagePort[] = [];
     scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
     @State str:string="emitGetCertificate"
+	@State embedStatus: string = ''
+	@State eventType: string = ''
     @State downloadStateCodeA:number=web_webview.WebDownloadState.IN_PROGRESS
     @State downloadStateCodeB:number=web_webview.WebDownloadState.COMPLETED
     @State downloadStateCodeC:number=web_webview.WebDownloadState.CANCELED
@@ -92,9 +114,6 @@ struct Second {
     @State downloadErrorCodeZ:number=web_webview.WebDownloadErrorCode.USER_CANCELED
     @State downloadErrorCodeAA:number=web_webview.WebDownloadErrorCode.USER_SHUTDOWN
     @State downloadErrorCodeBB:number=web_webview.WebDownloadErrorCode.CRASH
-    //@State securityLevelA:number=web_webview.SecurityLevel.SECURE
-    //@State securityLevelB:number=web_webview.SecurityLevel.WARNING
-    //@State securityLevelC:number=web_webview.SecurityLevel.DANGEROUS
     @State webMediaOptionsPar: WebMediaOptions = {resumeInterval: 10, audioExclusive: true}
     @State sslErrorA:number=SslError.Invalid
     @State sslErrorB:number=SslError.HostMismatch
@@ -107,12 +126,11 @@ struct Second {
     @State protectedResourceTypeA:string=ProtectedResourceType.MidiSysex
     @State protectedResourceTypeB:string=ProtectedResourceType.VIDEO_CAPTURE
     @State protectedResourceTypeC:string=ProtectedResourceType.AUDIO_CAPTURE
-    //@State nativeEmbedStatusA:number=NativeEmbedStatus.UPDATE
-    //@State nativeEmbedStatusB:number=NativeEmbedStatus.DESTROY
     @State navigationTypeA:number=WebNavigationType.MAIN_FRAME_NEW_ENTRY
     @State navigationTypeB:number=WebNavigationType.MAIN_FRAME_EXISTING_ENTRY
     @State navigationTypeC:number=WebNavigationType.NAVIGATION_TYPE_NEW_SUBFRAME
     @State navigationTypeD:number=WebNavigationType.NAVIGATION_TYPE_AUTO_SUBFRAME
+    
 
 
     @State modeA: OverScrollMode = OverScrollMode.ALWAYS
@@ -123,7 +141,7 @@ struct Second {
 
     @State scripts: Array<ScriptItem> = [
       { script: this.localStorage, scriptRules: ["*"] }
-  ];
+    ];
     
 
 
@@ -195,6 +213,9 @@ struct Second {
                                     this.webviewCtl.startDownload('www.example.com');
                                     let webPrintDocadapter = this.webviewCtl.createWebPrintDocumentAdapter('example.pdf');
                                     let securityLevel = this.webviewCtl.getSecurityLevel()
+                                    this.webviewCtl.isIncognitoMode()
+                                    let result = this.webviewCtl.isSafeBrowsingEnabled();
+                                    this.webviewCtl.enableSafeBrowsing(true);
                                 }
                                 Utils.emitEvent(true,12)
                             } catch (error) {
@@ -257,13 +278,18 @@ struct Second {
                     }
                 })
             }
-            Web({ src: 'www.baidu.com', controller: this.webviewCtl })
+            Web({ src: 'www.baidu.com', controller: this.webviewCtl, incognitoMode: true  })
             .fileAccess(true)
+            .javaScriptOnDocumentEnd(this.scripts)
+            .enableNativeEmbedMode(false)
             .javaScriptAccess(true)
             .domStorageAccess(true)
             .onlineImageAccess(true)
             .javaScriptOnDocumentStart(this.scripts)
             .overScrollMode(OverScrollMode.NEVER)
+            .onSafeBrowsingCheckResult(() => {
+                console.log("onSafeBrowsingCheckResult");
+            })
             .onPageEnd((e) => {
                 this.outputStr = 'onPageEnd : url = ' + e.url
             })
@@ -314,6 +340,55 @@ struct Second {
                 if (this.setDownloadDelegateKey) {
                     console.log("success")
                 }
+            })
+            .onNativeEmbedLifecycleChange((event) => {
+              if (this.setDownloadDelegateKey) {
+                if (event.status == NativeEmbedStatus.CREATE) {
+                  this.embedStatus = 'Create'
+                }
+                if (event.status == NativeEmbedStatus.UPDATE) {
+                  this.embedStatus = 'Update'
+                }
+                if (event.status == NativeEmbedStatus.DESTROY) {
+                  this.embedStatus = 'Destroy'
+                }
+                console.log("status = " + this.embedStatus);
+                console.log("surfaceId = " + event.surfaceId);
+                console.log("embedId = " + event.embedId);
+                if (event.info) {
+                  console.log("id = " + event.info.id);
+                  console.log("type = " + event.info.type);
+                  console.log("src = " + event.info.src);
+                  console.log("width = " + event.info.width);
+                  console.log("height = " + event.info.height);
+                  console.log("url = " + event.info.url);
+                }
+              }
+            })
+            .onNativeEmbedGestureEvent((event) => {
+              if (this.setDownloadDelegateKey) {
+                if (event && event.touchEvent) {
+                  if (event.touchEvent.type == TouchType.Down) {
+                    this.eventType = 'Down'
+                  }
+                  if (event.touchEvent.type == TouchType.Up) {
+                    this.eventType = 'Up'
+                  }
+                  if (event.touchEvent.type == TouchType.Move) {
+                    this.eventType = 'Move'
+                  }
+                  if (event.touchEvent.type == TouchType.Cancel) {
+                    this.eventType = 'Cancel'
+                  }
+                  console.log("embedId = " + event.embedId);
+                  console.log("touchType = " + this.eventType);
+                  console.log("x = " + event.touchEvent.touches[0].x);
+                  console.log("y = " + event.touchEvent.touches[0].y);
+                  console.log("Component globalPos:(" + event.touchEvent.target.area.globalPosition.x + "," + event.touchEvent.target.area.globalPosition.y + ")");
+                  console.log("width = " + event.touchEvent.target.area.width);
+                  console.log("height = " + event.touchEvent.target.area.height);
+                }
+              }
             })
         }
     }
