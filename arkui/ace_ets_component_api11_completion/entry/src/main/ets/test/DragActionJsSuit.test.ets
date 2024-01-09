@@ -51,8 +51,6 @@ export default function DragActionJsunit() {
      * @tc.name 	 DragActionJsunit_0100
      * @tc.desc 	 Confirm if there is a callback
 	 * @tc.level     Level 2
-     * @tc.type
-     * @tc.size
      */
 
     it('DragActionJsunit_0100', 0, async function (done) {
