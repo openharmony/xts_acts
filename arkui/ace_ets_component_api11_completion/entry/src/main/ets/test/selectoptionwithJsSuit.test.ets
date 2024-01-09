@@ -76,8 +76,8 @@ export default function selectoptionwithJsSuit() {
      * @tc.name      selectoptionwithJsSuit_0200
      * @tc.desc      Confirm if there is a callback02
      * @tc.level     Level 2
-     * @tc.type
-     * @tc.size
+     * @tc.type :
+     * @tc.size :
      */
 	 
     it('selectoptionwithJsSuit_0200', 0, async function (done) {
