@@ -51,15 +51,15 @@ export default function provideParent4() {
      * @tc.type : 
      * @tc.size :
      */
-    it('provideParent4_0100', 0, async function (done) {
-      console.info('provideParent4_0100 START');
+    it('provideParentFourTest_0100', 0, async function (done) {
+      console.info('provideParentFourTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('provideParent4');
       let obj = JSON.parse(strJson);
-      console.info("[provideParent4_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[provideParent4_0100] title: " + JSON.stringify(obj.$attrs.label));
+      console.info("[provideParentFourTest_0100] component obj is: " + JSON.stringify(obj));
+      console.info("[provideParentFourTest_0100] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('reviewVotes(10), give +1');
-      console.info('[provideParent4_0100] END');
+      console.info('[provideParentFourTest_0100] END');
       done();
     });
     

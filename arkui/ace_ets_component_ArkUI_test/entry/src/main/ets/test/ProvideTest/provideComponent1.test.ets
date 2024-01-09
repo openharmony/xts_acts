@@ -51,15 +51,15 @@ export default function provideComponent1() {
      * @tc.type : 
      * @tc.size :
      */
-    it('provideComponent1_0100', 0, async function (done) {
-      console.info('provideComponent1_0100 START');
+    it('provideComponentOneTest_0100', 0, async function (done) {
+      console.info('provideComponentOneTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('provideComponent1');
       let obj = JSON.parse(strJson);
-      console.info("[provideComponent1_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[provideComponent1_0100] title: " + JSON.stringify(obj.$attrs.label));
+      console.info("[provideComponentOneTest_0100] component obj is: " + JSON.stringify(obj));
+      console.info("[provideComponentOneTest_0100] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('reviewVotes(5), give +1');
-      console.info('[provideComponent1_0100] END');
+      console.info('[provideComponentOneTest_0100] END');
       done();
     });
     

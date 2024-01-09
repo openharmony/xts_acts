@@ -51,15 +51,15 @@ export default function provideBrother1() {
      * @tc.type : 
      * @tc.size :
      */
-    it('provideBrother1_0100', 0, async function (done) {
-      console.info('provideBrother1_0100 START');
+    it('provideBrotherOneTest_0100', 0, async function (done) {
+      console.info('provideBrotherOneTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('provideBrother1');
       let obj = JSON.parse(strJson);
-      console.info("[provideBrother1_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[provideBrother1_0100] title: " + JSON.stringify(obj.$attrs.label));
+      console.info("[provideBrotherOneTest_0100] component obj is: " + JSON.stringify(obj));
+      console.info("[provideBrotherOneTest_0100] title: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('reviewVotes(20), give +1');
-      console.info('[provideBrother1_0100] END');
+      console.info('[provideBrotherOneTest_0100] END');
       done();
     });
     
