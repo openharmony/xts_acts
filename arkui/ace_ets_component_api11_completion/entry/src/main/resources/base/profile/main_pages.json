@@ -17,6 +17,9 @@
         "MainAbility/pages/AttrApi/NavigationApi3",
         "MainAbility/pages/AttrApi/RichEditorApi",
         "MainAbility/pages/AttrApi/TabsApi",
-        "MainAbility/pages/AttributeModifier/QueryNavDestinationInfoNavDestination"
+        "MainAbility/pages/AttributeModifier/QueryNavDestinationInfoNavDestination",
+        "MainAbility/pages/Com_Attr/aboutToAppear",
+        "MainAbility/pages/Com_Attr/parentX",
+        "MainAbility/pages/TextApi/TextStyle"
     ]
 }

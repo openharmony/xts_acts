@@ -209,6 +209,35 @@ describe('fileIO_fs_readLines', function () {
     });
 
     /**
+     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_READLINES_0800
+     * @tc.name fileIO_test_readLines_sync_008
+     * @tc.desc Test readLinesSync() interfaces.
+     * Read file content by line through path, verify normal function.
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_readLines_sync_008', 0, async function () {
+        let fpath = await nextFileName('fileIO_test_readLines_sync_008');
+        expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
+        let arr = FILE_CONTENTS.split("\n");
+    
+        try {
+            let readerIterator = fileIO.readLinesSync(fpath);
+            for (let i = 0; i < arr.length; i++) {
+                let it = readerIterator.next();
+                expect(it.value.trim() == arr[i]).assertTrue();
+                expect(it.done == false).assertTrue();
+            }
+            fileIO.unlinkSync(fpath);
+        } catch (e) {
+            console.log('fileIO_test_readLines_sync_008 has failed for ' + e.message + ', code: ' + e.code);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
      * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_READLINES_ASYNC_0100
      * @tc.name fileIO_test_readLines_async_001
      * @tc.desc Test readLines() interfaces. Promise.
@@ -650,6 +679,71 @@ describe('fileIO_fs_readLines', function () {
             console.log('fileIO_test_readLines_sync_015 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_READLINES_ASYNC_1600
+     * @tc.name fileIO_test_readLines_async_016
+     * @tc.desc Test readLines() interfaces. Promise.
+     * Read file content by line through path, verify normal function.
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_readLines_async_016', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_readLines_async_016');
+        expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
+        let arr = FILE_CONTENTS.split("\n");
+        
+        try {
+            let readerIterator = await fileIO.readLines(fpath);
+            for (let i = 0; i < arr.length; i++) {
+                let it = readerIterator.next();
+                expect(it.value.trim() == arr[i]).assertTrue();
+                expect(it.done == false).assertTrue();
+            }
+            fileIO.unlinkSync(fpath);
+            done();
+        } catch (e) {
+            console.log('fileIO_test_readLines_async_016 has failed for ' + e.message + ', code: ' + e.code);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_READLINES_ASYNC_1700
+     * @tc.name fileIO_test_readLines_async_017
+     * @tc.desc Test readLines() interfaces. Callback.
+     * Read file content by line through path, verify normal function.
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_test_readLines_async_017', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_readLines_async_017');
+        expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
+        let arr = FILE_CONTENTS.split("\n");
+        
+        try {
+            fileIO.readLines(fpath, (err, readerIterator) => {
+                if (err) {
+                    console.log('fileIO_test_readLines_async_017 error package: ' + JSON.stringify(err));
+                    expect(false).assertTrue();
+                }
+                for (let i = 0; i < arr.length; i++) {
+                    let it = readerIterator.next();
+                    expect(it.value.trim() == arr[i]).assertTrue();
+                    expect(it.done == false).assertTrue();
+                }
+                fileIO.unlinkSync(fpath);
+                done();
+            });
+        } catch (e) {
+            console.log('fileIO_test_readLines_async_017 has failed for ' + e.message + ', code: ' + e.code);
+            expect(false).assertTrue();
         }
     });
 })

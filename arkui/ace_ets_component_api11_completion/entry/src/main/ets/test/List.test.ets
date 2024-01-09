@@ -28,6 +28,9 @@ import NavigationApi3 from './AttrApi/NavigationApi3.test.ets';
 import RichEditorApi from './AttrApi/RichEditorApi.test.ets';
 import TabsApi from './AttrApi/TabsApi.test.ets';
 import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/QueryNavDestinationInfoNavDestinationJsunit.test';
+import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
+import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
+import TextStyle from './TextApi/TextStyle.test.ets';
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -45,4 +48,7 @@ export default function testsuite() {
   RichEditorApi()
   TabsApi()
   QueryNavDestinationInfoNavDestinationJsunit()
+  aboutToAppearTest()
+  parentX_parentY_strategy_Test()
+  TextStyle()
 }
