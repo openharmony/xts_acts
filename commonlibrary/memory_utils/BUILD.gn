@@ -12,14 +12,9 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-group("commonlibrary") {
+group("memory_utils") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "ets_utils:ets_utils",
-      "memory_utils:memory_utils",
-      "thirdparty:thirdparty",
-      "toolchain:toolchain",
-    ]
+    deps = [ "libpurgeablemem:ActsMemoryUitlsLibPurgeablememNdkTest" ]
   }
 }
