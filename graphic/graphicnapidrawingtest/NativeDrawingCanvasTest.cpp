@@ -109,10 +109,10 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR, TestSiz
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind, TestSize.Level1)
 {
-     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
-     EXPECT_NE(bitmap, nullptr);
-     OH_Drawing_CanvasBind(canvas_, bitmap);
-     OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_CanvasBind(canvas_, bitmap);
+    OH_Drawing_BitmapDestroy(bitmap);
 }
 
 /*
