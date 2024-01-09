@@ -19,6 +19,11 @@
         "MainAbility/pages/AttrApi/TabsApi",
         "MainAbility/pages/Com_Attr/aboutToAppear",
         "MainAbility/pages/Com_Attr/parentX",
-        "MainAbility/pages/TextApi/TextStyle"
+        "MainAbility/pages/TextApi/TextStyle",
+        "MainAbility/pages/freezeInactive",
+        "MainAbility/pages/allowOverride",
+        "MainAbility/pages/ToastShowMode",
+        "MainAbility/pages/ModalBlurStyle",
+        "MainAbility/pages/TouchTestStrategy"
     ]
 }

@@ -30,6 +30,12 @@ import TabsApi from './AttrApi/TabsApi.test.ets';
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
+import freezeInactive from './freezeInactive.test.ets';
+import allowOverride from './allowOverride.test.ets';
+import ToastShowMode from './ToastShowMode.test.ets';
+import ModalBlurStyle from './ModalBlurStyle.test.ets';
+import TouchTestStrategy from './TouchTestStrategy.test.ets';
+
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -49,4 +55,9 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
+  freezeInactive()
+  allowOverride()
+  ToastShowMode()
+  ModalBlurStyle()
+  TouchTestStrategy()
 }
