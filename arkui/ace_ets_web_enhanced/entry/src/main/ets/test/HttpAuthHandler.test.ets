@@ -51,7 +51,7 @@ export default function httpAuthHandler() {
     * @tc.number     : SUB_WEB_HTTPAUTHHANDLER_CANCEL_0100
     * @tc.name       : testHttpAuthHandlerCancel001
     * @tc.desc       : test HttpAuthHandler cancel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function httpAuthHandler() {
     * @tc.number     : SUB_WEB_HTTPAUTHHANDLER_CONFIRM_0100
     * @tc.name       : testHttpAuthHandlerConfirm001
     * @tc.desc       : test HttpAuthHandler confirm
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +81,7 @@ export default function httpAuthHandler() {
     * @tc.number     : SUB_WEB_HTTPAUTHHANDLER_ISHTTPAUTHINFOSAVED_0100
     * @tc.name       : testHttpAuthHandlerIsHttpAuthInfoSaved001
     * @tc.desc       : test HttpAuthHandler isHttpAuthInfoSaved
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

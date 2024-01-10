@@ -28,8 +28,6 @@ struct WebOnFirstContentfulPaint {
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-  " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State vis: Visibility = Visibility.None
   @State onFirstContentfulPaintCalled: boolean = false;
 
@@ -59,10 +57,6 @@ struct WebOnFirstContentfulPaint {
   build() {
     Column() {
       Row() {
-        Button("web click").onClick(async () => {
-          this.controller.backward();
-        });
-
         Button("web click").key('WebOnFirstContentfulPaintButton').onClick(async () => {
           console.info("key==>" + this.str)
           switch (this.str) {
@@ -98,7 +92,6 @@ struct WebOnFirstContentfulPaint {
         .domStorageAccess(this.domStorageAccess)
         .onlineImageAccess(this.onlineImageAccess)
         .databaseAccess(this.databaseAccess)
-        .userAgent(this.userAgent)
         .onFirstContentfulPaint(event => {
           if (event) {
             console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -47,11 +47,18 @@ export default function WebViewEnumAndFontLibrary() {
       done();
     })
 
+    afterEach(async (done: Function) => {
+      console.info("WebViewControllerDownloadTest afterEach start");
+      await Utils.sleep(2000);
+      console.info("WebViewControllerDownloadTest afterEach end");
+      done();
+    })
+
     /*
     * @tc.number     : SUB_WEB_FILESELECTORMODE_0100
     * @tc.name       : testFileSelectorMode001
     * @tc.desc       : test FileSelectorModeFileOpenMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +73,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPT_0100
     * @tc.name       : testRunJavaScript001
     * @tc.desc       : test runJavaScript
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +88,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MIXEDMODENONE_0100
     * @tc.name       : testMixedModeNone001
     * @tc.desc       : test MixedModeNone
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +103,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MIXEDMODEALL_0100
     * @tc.name       : testMixedModeAll001
     * @tc.desc       : test MixedModeAll
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -111,7 +118,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MESSAGELEVEL_0100
     * @tc.name       : testMessageLevel001
     * @tc.desc       : test MessageLevel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -126,7 +133,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MESSAGELEVEL_0200
     * @tc.name       : testMessageLevel002
     * @tc.desc       : test MessageLevel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -141,7 +148,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MESSAGELEVEL_0300
     * @tc.name       : testMessageLevel003
     * @tc.desc       : test MessageLevel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -156,7 +163,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MESSAGELEVEL_0400
     * @tc.name       : testMessageLevel004
     * @tc.desc       : test MessageLevel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -171,7 +178,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MESSAGELEVEL_0500
     * @tc.name       : testMessageLevel005
     * @tc.desc       : test MessageLevel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -186,7 +193,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMX_0100
     * @tc.name       : testWebContextMenuParamX001
     * @tc.desc       : test WebContextMenuParamX
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -201,7 +208,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMY_0100
     * @tc.name       : testWebContextMenuParamY001
     * @tc.desc       : test WebContextMenuParamY
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -216,7 +223,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETLINKURL_0100
     * @tc.name       : testWebContextMenuParamGetLinkUrl001
     * @tc.desc       : test WebContextMenuParamGetLinkUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -231,7 +238,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETUNFILTEREDLINKURL_0100
     * @tc.name       : testWebContextMenuParamGetUnfilteredLinkUrl001
     * @tc.desc       : test WebContextMenuParamGetUnfilteredLinkUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -246,7 +253,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSOURCEURL_0100
     * @tc.name       : testWebContextMenuParamGetSourceUrl001
     * @tc.desc       : test WebContextMenuParamGetSourceUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -261,7 +268,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMEXISTSIMAGECONTENTS_0100
     * @tc.name       : testWebContextMenuParamExistsImageContents001
     * @tc.desc       : test WebContextMenuParamExistsImageContents
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -276,7 +283,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETMEDIATYPE_0100
     * @tc.name       : testWebContextMenuParamGetMediaType001
     * @tc.desc       : test WebContextMenuParamGetMediaType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -291,7 +298,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSELECTIONTEXT_0100
     * @tc.name       : testWebContextMenuParamGetSelectionText001
     * @tc.desc       : test WebContextMenuParamGetSelectionText
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -306,7 +313,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSOURCETYPE_0100
     * @tc.name       : testWebContextMenuParamGetSourceType001
     * @tc.desc       : test WebContextMenuParamGetSourceType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -321,7 +328,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETINPUTFIELDTYPE_0100
     * @tc.name       : testWebContextMenuParamGetInputFieldType001
     * @tc.desc       : test WebContextMenuParamGetInputFieldType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -336,7 +343,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMISEDITABLE_0100
     * @tc.name       : testWebContextMenuParamIsEditable001
     * @tc.desc       : test WebContextMenuParamIsEditable
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -351,7 +358,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETEDITSTATEFLAGS_0100
     * @tc.name       : testWebContextMenuParamGetEditStateFlags001
     * @tc.desc       : test WebContextMenuParamGetEditStateFlags
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -366,7 +373,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_CONTEXTMENUINPUTFIELDTYPENONE_0100
     * @tc.name       : testContextMenuInputFieldTypeNone001
     * @tc.desc       : test ContextMenuInputFieldTypeNone
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -381,7 +388,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_CONTEXTMENUSOURCETYPELONGPRESS_0100
     * @tc.name       : testContextMenuSourceTypeLongPress001
     * @tc.desc       : test ContextMenuSourceTypeLongPress
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -396,7 +403,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_CONTEXTMENUEDITSTATEFLAGS_0100
     * @tc.name       : testContextMenuEditStateFlags001
     * @tc.desc       : test ContextMenuEditStateFlags
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -411,7 +418,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_CONTEXTMENUMEDIATYPE_0100
     * @tc.name       : testContextMenuMediaType001
     * @tc.desc       : test ContextMenuMediaType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -426,7 +433,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_PROTECTEDRESOURCETYPE_0100
     * @tc.name       : testProtectedResourceType001
     * @tc.desc       : test ProtectedResourceType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -441,7 +448,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_PERMISSIONREQUESTGETORIGIN_0100
     * @tc.name       : testPermissionRequestGetOrigin001
     * @tc.desc       : test PermissionRequestGetOrigin
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -456,7 +463,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_PERMISSIONREQUEST_0100
     * @tc.name       : testPermissionRequest001
     * @tc.desc       : test PermissionRequest
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -471,7 +478,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_RENDEREXITREASONPROCESSCRASHED_0100
     * @tc.name       : testRenderExitReasonProcessCrashed001
     * @tc.desc       : test RenderExitReasonProcessCrashed
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -486,7 +493,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_DEFAULTFONTSIZE_0100
     * @tc.name       : testDefaultFontSize001
     * @tc.desc       : test defaultFontSize
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -501,7 +508,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_DEFAULTFONTSIZE_0200
     * @tc.name       : testDefaultFontSize002
     * @tc.desc       : test defaultFontSize
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -516,7 +523,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_DEFAULTFONTSIZE_0300
     * @tc.name       : testDefaultFontSize003
     * @tc.desc       : test defaultFontSize
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -531,7 +538,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_MINFONTSIZE_0100
     * @tc.name       : testMinFontSize001
     * @tc.desc       : test minFontSize
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -546,7 +553,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_ONCONTROLLERATTACHED_0100
     * @tc.name       : testOnControllerAttached001
     * @tc.desc       : test onControllerAttached
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -561,7 +568,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_HASIMAGE_0100
     * @tc.name       : testHasImage001
     * @tc.desc       : test hasImage
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -576,7 +583,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_ONCONTEXTMENUSHOW_0100
     * @tc.name       : testOnContextMenuShow001
     * @tc.desc       : test onContextMenuShow
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -591,7 +598,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.number     : SUB_WEB_DATABASEACCESSTRUE_0100
     * @tc.name       : testDatabaseAccessTrue001
     * @tc.desc       : test DatabaseAccessTrue
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -606,7 +613,7 @@ export default function WebViewEnumAndFontLibrary() {
      * @tc.number     : SUB_WEB_TEXTZOOMRATIO_0100
      * @tc.name       : testTextZoomRatio001
      * @tc.desc       : test textZoomRatio
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -616,5 +623,111 @@ export default function WebViewEnumAndFontLibrary() {
       Utils.registerEvent("testTextZoomRatio001", true, 1231, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPT_0200
+    * @tc.name       : testRunJavaScript002
+    * @tc.desc       : test runJavaScript
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScript002', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScript002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScript002", 'null', 10001, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPT_0300
+    * @tc.name       : testRunJavaScript003
+    * @tc.desc       : test runJavaScript
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScript003', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScript003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScript003", '"This value is from indexJru.html"', 10002, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPT_0400
+    * @tc.name       : testRunJavaScript004
+    * @tc.desc       : test runJavaScript
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScript004', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScript004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScript004", 'null', 10003, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPTEXT_0100
+    * @tc.name       : testRunJavaScriptExt001
+    * @tc.desc       : test runJavaScriptExt
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScriptExt001', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScriptExt001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScriptExt001", '"This value is from indexJru.html"', 10004, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPTEXT_0200
+    * @tc.name       : testRunJavaScriptExt002
+    * @tc.desc       : test runJavaScriptExt
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScriptExt002', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScriptExt002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScriptExt002", true, 10005, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPTEXT_0300
+    * @tc.name       : testRunJavaScriptExt003
+    * @tc.desc       : test runJavaScriptExt
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScriptExt003', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScriptExt003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScriptExt003", '"This value is from indexJru.html"', 10006, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_RUNJAVASCRIPTEXT_0400
+    * @tc.name       : testRunJavaScriptExt004
+    * @tc.desc       : test runJavaScriptExt
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRunJavaScriptExt004', 0, async (done: Function) => {
+      Utils.emitEvent("testRunJavaScriptExt004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testRunJavaScriptExt004", true, 10007, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
   })
 }

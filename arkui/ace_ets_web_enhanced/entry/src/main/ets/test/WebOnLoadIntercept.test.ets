@@ -55,7 +55,7 @@ export default function webOnLoadIntercept() {
     * @tc.number      : SUB_WEB_ONLOADINTERCEPT_0100
     * @tc.name        : testOnLoadIntercept001
     * @tc.desc        : test onLoadIntercept when return false
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -71,7 +71,7 @@ export default function webOnLoadIntercept() {
     * @tc.number      : SUB_WEB_ONLOADINTERCEPT_0200
     * @tc.name        : testOnLoadIntercept002
     * @tc.desc        : test onLoadIntercept when return true
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

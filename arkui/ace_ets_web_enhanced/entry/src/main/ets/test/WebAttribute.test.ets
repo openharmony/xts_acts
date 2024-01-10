@@ -51,7 +51,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_ONWINDOWNEW_0100
     * @tc.name       : testOnWindowNew001
     * @tc.desc       : test onWindowNew
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_ONWINDOWNEW_0200
     * @tc.name       : testOnWindowNew002
     * @tc.desc       : test onWindowNew
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +81,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_ONWINDOWNEW_0300
     * @tc.name       : testOnWindowNew003
     * @tc.desc       : test onWindowNew
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +96,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_MULTIWINDOWACCESS_0100
     * @tc.name       : testMultiWindowAccess001
     * @tc.desc       : test multiWindowAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -112,7 +112,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_ONWINDOWEXIT_0100
     * @tc.name       : testOnWindowExit001
     * @tc.desc       : test onWindowExit
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -127,7 +127,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_JAVASCRIPTACCESS_0100
     * @tc.name       : testJavaScriptAccess001
     * @tc.desc       : test javaScriptAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -142,7 +142,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_GEOLOCATIONACCESS_0100
     * @tc.name       : testGeolocationAccess001
     * @tc.desc       : test geolocationAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -157,7 +157,7 @@ export default function webAttribute() {
     * @tc.number     : SUB_WEB_ONRESOURCELOAD_0100
     * @tc.name       : testOnResourceLoad001
     * @tc.desc       : test onResourceLoad
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

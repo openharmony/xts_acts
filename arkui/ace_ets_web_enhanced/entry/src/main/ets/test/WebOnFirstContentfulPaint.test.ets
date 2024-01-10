@@ -55,7 +55,7 @@ export default function webOnFirstContentfulPaint() {
     * @tc.number      : SUB_WEB_ONFIRSTCONTENTFULPAINT_0100
     * @tc.name        : testOnFirstContentfulPaint001
     * @tc.desc        : test onFirstContentfulPaint with Visibility.None
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -70,7 +70,7 @@ export default function webOnFirstContentfulPaint() {
     * @tc.number      : SUB_WEB_ONFIRSTCONTENTFULPAINT_0200
     * @tc.name        : testOnFirstContentfulPaint002
     * @tc.desc        : test onFirstContentfulPaint with Visibility.Visible
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

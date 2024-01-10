@@ -57,7 +57,7 @@ export default function webOnInterceptRequestTest() {
     * @tc.number      : SUB_WEB_ONINTERCEPTREQUEST_0100
     * @tc.name        : testOnInterceptRequest001
     * @tc.desc        : test onInterceptRequest normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -72,7 +72,7 @@ export default function webOnInterceptRequestTest() {
     * @tc.number      : SUB_WEB_ONINTERCEPTREQUEST_0200
     * @tc.name        : testOnInterceptRequest002
     * @tc.desc        : test onInterceptRequest with return code 404
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */

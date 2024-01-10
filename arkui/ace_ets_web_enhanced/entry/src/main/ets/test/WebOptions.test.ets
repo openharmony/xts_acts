@@ -55,7 +55,7 @@ export default function webOptions() {
     * @tc.number      : SUB_WEB_WEBOPTIONS_SRC_0100
     * @tc.name        : testWebOptionsSrc001
     * @tc.desc        : test WebOptions.src with rawfile
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -70,7 +70,7 @@ export default function webOptions() {
     * @tc.number      : SUB_WEB_WEBOPTIONS_SRC_0200
     * @tc.name        : testWebOptionsSrc002
     * @tc.desc        : test WebOptions.src with resource
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -85,7 +85,7 @@ export default function webOptions() {
     * @tc.number      : SUB_WEB_WEBOPTIONS_SRC_0300
     * @tc.name        : testWebOptionsSrc003
     * @tc.desc        : test WebOptions.src with url
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
