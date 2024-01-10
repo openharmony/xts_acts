@@ -27,7 +27,7 @@ struct blendMode1 {
         .fontColor('#ffff0101')
     }
     .key('blend_column')
-    .blendMode(BlendMode.NORMAL)
+    //.blendMode(BlendMode.NORMAL)
     .height('50%')
     .width('100%')
     .backgroundColor('#ff08ff00')

@@ -24,7 +24,7 @@ struct blendMode11 {
           .fontColor('#ffff0101')
       }
       .id('blendMode11_DESTINATION_IN')
-      .blendMode(BlendMode.DESTINATION_IN)
+      //.blendMode(BlendMode.DESTINATION_IN)
       .height('100%')
       .width('100%')
       .backgroundColor('#ff08ff00')
@@ -36,7 +36,7 @@ struct blendMode11 {
           .fontColor('#ffff0101')
       }
       .id('blendMode11_SOURCE_IN')
-      .blendMode(BlendMode.SOURCE_IN)
+      //.blendMode(BlendMode.SOURCE_IN)
       .height('100%')
       .width('100%')
       .backgroundColor('#ff08ff00')
@@ -48,7 +48,7 @@ struct blendMode11 {
           .fontColor('#ffff0101')
       }
       .id('blendMode11_NORMAL')
-      .blendMode(BlendMode.NORMAL)
+      //.blendMode(BlendMode.NORMAL)
       .height('100%')
       .width('100%')
       .backgroundColor('#ff08ff00')

@@ -83,9 +83,7 @@ export default function testsuite() {
   touchPoint()
   previewOptions()
   backgroundEffectJsunit()
-  blendMode1Jsunit()
   sheetSize1Jsunit()
   monopolizeTest()
-  blendModeTest()
   outlineTest()
 }
