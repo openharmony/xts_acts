@@ -20,6 +20,42 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import business_error from '@ohos.base'
 import print from '@ohos.print'
 
+class TestObj {
+  constructor() {
+  }
+
+  test(testStr:string): string {
+    console.log('Web Component str' + testStr);
+    return testStr;
+  }
+
+  toString():string {
+    console.log('Web Component toString');
+    if (this){
+      return "ok"
+    }
+    return "no"
+  }
+
+  testNumber(testNum:number): number {
+    console.log('Web Component number' + testNum);
+    return testNum;
+  }
+
+  testBool(testBol:boolean): boolean {
+    console.log('Web Component boolean' + testBol);
+    return testBol;
+  }
+  webString = ()=> {
+    console.log('Web test toString');
+    if (this){
+      return "ok"
+    }
+    return "no"
+  }
+}
+
+
 export enum ThreatType {
   UNKNOWN = -1,
   THREAT_ILLEGAL = 0,
@@ -69,6 +105,7 @@ struct Second {
       "   localStorage.setItem('color', 'Red');" +
       "}";
     @State outputStr: string = '' 
+    @State testObjtest: TestObj = new TestObj();
     @State firsttime:number = 0
     @State arr: Array<number> = [0, 0]
     webviewCtl: web_webview.WebviewController = new web_webview.WebviewController();
@@ -223,6 +260,28 @@ struct Second {
                                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                                 }
                         break;
+                        }
+
+                        case "emitRegisterJavaScriptProxy":{
+                            this.webviewCtl.loadUrl("resource://rawfile/index.html")
+                            await Utils.sleep(2000);
+                            this.webviewCtl.registerJavaScriptProxy(this.testObjtest, "objName", ["test", "toString", "testNumber", "testBool","webString"]);
+                            await Utils.sleep(2000);
+                            this.webviewCtl.refresh()
+                            await Utils.sleep(2000);
+                            setTimeout(()=>{
+                                        this.webviewCtl.runJavaScript('htmlTest()',(error,result)=>{
+                                            if (error) {
+                                                console.info(`run JavaScript error: ` + JSON.stringify(error))
+                                                return;
+                                            }
+                                            if (result) {
+                                                console.info("emitRegisterJavaScriptProxy==>"+result)
+                                                Utils.emitEvent(result,14)
+                                            }
+                                        })
+                                    },3000)
+                            break;
                         }
 
                         case "emitPrefetchPage": {

@@ -27,6 +27,7 @@ import NavigationApi2 from './AttrApi/NavigationApi2.test.ets';
 import NavigationApi3 from './AttrApi/NavigationApi3.test.ets';
 import RichEditorApi from './AttrApi/RichEditorApi.test.ets';
 import TabsApi from './AttrApi/TabsApi.test.ets';
+import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/QueryNavDestinationInfoNavDestinationJsunit.test';
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
@@ -36,6 +37,10 @@ import ToastShowMode from './ToastShowMode.test.ets';
 import ModalBlurStyle from './ModalBlurStyle.test.ets';
 import TouchTestStrategy from './TouchTestStrategy.test.ets';
 
+import touchPoint from './DragController/touchPoint_Auto.test.ets';
+import previewOptions from './DragController/touchPoint_Disable.test.ets';
+import createDragAction from './DragController/createDragAction.test.ets';
+import setForegroundColor from './DragController/setForegroundColor.test.ets';
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -52,6 +57,7 @@ export default function testsuite() {
   NavigationApi3()
   RichEditorApi()
   TabsApi()
+  QueryNavDestinationInfoNavDestinationJsunit()
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
@@ -60,4 +66,8 @@ export default function testsuite() {
   ToastShowMode()
   ModalBlurStyle()
   TouchTestStrategy()
+  createDragAction()
+  setForegroundColor()
+  touchPoint()
+  previewOptions()
 }
