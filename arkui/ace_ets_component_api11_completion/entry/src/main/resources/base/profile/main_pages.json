@@ -25,7 +25,7 @@
         "MainAbility/pages/allowOverride",
         "MainAbility/pages/ToastShowMode",
         "MainAbility/pages/ModalBlurStyle",
-        "MainAbility/pages/TouchTestStrategy"
+        "MainAbility/pages/TouchTestStrategy",
         "MainAbility/pages/DragController/createDragAction",
         "MainAbility/pages/DragController/setForegroundColor",
         "MainAbility/pages/DragController/touchPoint_Auto",
