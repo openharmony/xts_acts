@@ -32,6 +32,14 @@ import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/Que
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
+import dragPreviewOptionsJsSuit from './dragPreviewOptionsJsSuit.test';
+import backgroundEffectJsSuit from './backgroundEffectJsSuit.test';
+import DragActionJsunit from './DragActionJsSuit.test';
+import dragPreviewJsSuit from './dragPreviewJsSuit.test';
+import GestureTagJsSuit from './GestureTagJsSuit.test';
+import InvertOptionsJsSuit from './InvertOptionsJsSuit.test';
+import selectoptionwithJsSuit from './selectoptionwithJsSuit.test';
+import ForegroundColorJsSuit from './ForegroundColorJsSuit.test';
 import freezeInactive from './freezeInactive.test.ets';
 import allowOverride from './allowOverride.test.ets';
 import ToastShowMode from './ToastShowMode.test.ets';
@@ -88,6 +96,14 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
+  dragPreviewOptionsJsSuit()
+  backgroundEffectJsSuit()
+  DragActionJsunit()
+  dragPreviewJsSuit()
+  GestureTagJsSuit()
+  InvertOptionsJsSuit()
+  selectoptionwithJsSuit()
+  ForegroundColorJsSuit()
   freezeInactive()
   allowOverride()
   ToastShowMode()
