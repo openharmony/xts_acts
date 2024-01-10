@@ -28,7 +28,7 @@
 		"MainAbility/pages/GestureTag",
 		"MainAbility/pages/ForegroundColor",
 		"MainAbility/pages/InvertOptions",
-		"MainAbility/pages/selectoptionwith"
+		"MainAbility/pages/selectoptionwith",
         "MainAbility/pages/DragController/createDragAction",
         "MainAbility/pages/DragController/setForegroundColor",
         "MainAbility/pages/DragController/touchPoint_Auto",
