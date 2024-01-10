@@ -40,6 +40,12 @@ import GestureTagJsSuit from './GestureTagJsSuit.test';
 import InvertOptionsJsSuit from './InvertOptionsJsSuit.test';
 import selectoptionwithJsSuit from './selectoptionwithJsSuit.test';
 import ForegroundColorJsSuit from './ForegroundColorJsSuit.test';
+import freezeInactive from './freezeInactive.test.ets';
+import allowOverride from './allowOverride.test.ets';
+import ToastShowMode from './ToastShowMode.test.ets';
+import ModalBlurStyle from './ModalBlurStyle.test.ets';
+import TouchTestStrategy from './TouchTestStrategy.test.ets';
+
 import tabsDemo from './TextApi/tabsDemo.test.ets';
 import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
@@ -91,6 +97,11 @@ export default function testsuite() {
   InvertOptionsJsSuit()
   selectoptionwithJsSuit()
   ForegroundColorJsSuit()
+  freezeInactive()
+  allowOverride()
+  ToastShowMode()
+  ModalBlurStyle()
+  TouchTestStrategy()
   tabsDemo()
   TextSelectionMenu()
   createDragAction()

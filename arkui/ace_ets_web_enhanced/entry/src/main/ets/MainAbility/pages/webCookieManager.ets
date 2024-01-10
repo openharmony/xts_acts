@@ -194,6 +194,14 @@ struct webCookieManager {
               Utils.emitEvent(value, 30034)
               break;
             }
+
+            case "testGetCookie001": {
+              webView.WebCookieManager.deleteSessionCookie();
+              webView.WebCookieManager.setCookie('https://www.example.com', 'a=b');
+              let value = webView.WebCookieManager.getCookie('https://www.example.com');
+              Utils.emitEvent(value, 100019)
+              break;
+            }
           }
         })
       }

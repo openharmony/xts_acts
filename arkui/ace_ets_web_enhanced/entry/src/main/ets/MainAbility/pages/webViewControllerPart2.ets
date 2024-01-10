@@ -39,6 +39,7 @@ struct webViewControllerPart2 {
   @State FileSelectorResultHandleFileList: Array<String> = []
   @State enterPageEnd: boolean = false
   @State numberOfMatches: number = 0
+  @State searchNext: boolean = false
   no_error: string = "no error happened"
 
   onPageShow() {
@@ -126,7 +127,7 @@ struct webViewControllerPart2 {
             case "testLoadUrl001": {
               try {
                 this.controller.loadUrl("www.OpenHarmony.cn")
-                await Utils.sleep(3000);
+                await Utils.sleep(6000);
                 let title = this.controller.getTitle();
                 Utils.emitEvent(title, 37003)
               } catch (error) {
@@ -141,6 +142,31 @@ struct webViewControllerPart2 {
                 await Utils.sleep(3000);
                 let title = this.controller.getTitle();
                 Utils.emitEvent(title, 37004)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testLoadUrl003": {
+              try {
+                this.controller.loadUrl($rawfile('second.html'));
+                await Utils.sleep(3000);
+                let title = this.controller.getTitle();
+                Utils.emitEvent(title, 77000)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testLoadUrl004": {
+              try {
+                let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                this.controller.loadUrl(`file://${sandboxPath}`);
+                await Utils.sleep(3000);
+                let title = this.controller.getTitle();
+                Utils.emitEvent(title, 77002)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -254,6 +280,40 @@ struct webViewControllerPart2 {
                 this.controller.searchAllAsync('Hello World');
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.numberOfMatches, 37012)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testSearchNext001": {
+              try {
+                this.numberOfMatches = 0
+                this.controller.loadUrl("resource://rawfile/searchAllAsync.html");
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('Hello World');
+                await Utils.sleep(2000);
+                this.searchNext = false
+                this.controller.searchNext(true)
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.searchNext, 100080)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testSearchNext002": {
+              try {
+                this.numberOfMatches = 0
+                this.controller.loadUrl("resource://rawfile/searchAllAsync.html");
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('Hello World');
+                await Utils.sleep(2000);
+                this.searchNext = false
+                this.controller.searchNext(false)
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.searchNext, 100081)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -425,6 +485,7 @@ struct webViewControllerPart2 {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
             "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
             this.numberOfMatches = ret.numberOfMatches
+            this.searchNext = true
           }
         })
     }

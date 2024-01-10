@@ -52,7 +52,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETREQUESTHEADER_0100
     * @tc.name       : testGetRequestHeader001
     * @tc.desc       : test getRequestHeader
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -67,7 +67,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETREQUESTURL_0100
     * @tc.name       : testGetRequestUrl001
     * @tc.desc       : test getRequestUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -82,7 +82,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_ISREQUESTGESTURE_0100
     * @tc.name       : testIsRequestGesture001
     * @tc.desc       : test isRequestGesture
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -97,7 +97,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_ISMAINFRAME_0100
     * @tc.name       : testIsMainFrame001
     * @tc.desc       : test isMainFrame
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -112,7 +112,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_ISREDIRECT_0100
     * @tc.name       : testIsRedirect001
     * @tc.desc       : test isRedirect
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -127,7 +127,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETREQUESTMETHOD_0100
     * @tc.name       : testGetRequestMethod001
     * @tc.desc       : test getRequestMethod
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -142,7 +142,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETRESPONSEDATA_0100
     * @tc.name       : testGetResponseData001
     * @tc.desc       : test getRequestMethod
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -157,7 +157,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETRESPONSEENCODING_0100
     * @tc.name       : testGetResponseEncoding001
     * @tc.desc       : test getResponseEncoding
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -172,7 +172,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETRESPONSEMIMETYPE_0100
     * @tc.name       : testGetResponseMimeType001
     * @tc.desc       : test getResponseMimeType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -187,7 +187,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETREASONMESSAGE_0100
     * @tc.name       : testGetReasonMessage001
     * @tc.desc       : test getReasonMessage
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -202,7 +202,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETRESPONSEHEADER_0100
     * @tc.name       : testGetResponseHeader001
     * @tc.desc       : test getResponseHeader
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -217,7 +217,7 @@ export default function webResourceResponseGet() {
     * @tc.number     : SUB_WEB_GETRESPONSECODE_0100
     * @tc.name       : testGetResponseCode001
     * @tc.desc       : test getResponseCode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

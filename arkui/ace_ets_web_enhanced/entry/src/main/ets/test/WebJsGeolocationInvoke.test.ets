@@ -55,7 +55,7 @@ export default function webJsGeolocationInvoke() {
     * @tc.number      : SUB_WEB_JSGEOLOCATIONINVOKE_0100
     * @tc.name        : testJsGeolocationInvoke001
     * @tc.desc        : test JsGeolocation.invoke(event.origin, true, true)
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -70,7 +70,7 @@ export default function webJsGeolocationInvoke() {
     * @tc.number      : SUB_WEB_JSGEOLOCATIONINVOKE_0200
     * @tc.name        : testJsGeolocationInvoke002
     * @tc.desc        : test JsGeolocation.invoke(event.origin, true, false)
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -85,7 +85,7 @@ export default function webJsGeolocationInvoke() {
     * @tc.number      : SUB_WEB_JSGEOLOCATIONINVOKE_0300
     * @tc.name        : testJsGeolocationInvoke003
     * @tc.desc        : test JsGeolocation.invoke(event.origin, false, true)
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -100,7 +100,7 @@ export default function webJsGeolocationInvoke() {
     * @tc.number      : SUB_WEB_JSGEOLOCATIONINVOKE_0400
     * @tc.name        : testJsGeolocationInvoke004
     * @tc.desc        : test JsGeolocation.invoke(event.origin, false, false)
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

@@ -55,7 +55,7 @@ export default function webOnBeforeUnload() {
     * @tc.number      : SUB_WEB_ONBEFOREUNLOAD_0100
     * @tc.name        : testOnBeforeUnload001
     * @tc.desc        : test OnBeforeUnload when refresh
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -71,7 +71,7 @@ export default function webOnBeforeUnload() {
     * @tc.number      : SUB_WEB_ONBEFOREUNLOAD_0200
     * @tc.name        : testOnBeforeUnload002
     * @tc.desc        : test OnBeforeUnload when loadUrl
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

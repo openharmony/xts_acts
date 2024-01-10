@@ -52,7 +52,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEDATA_0100
     * @tc.name       : testSetResponseData001
     * @tc.desc       : test setResponseData
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -67,7 +67,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEENCODING_0100
     * @tc.name       : testSetResponseEncoding001
     * @tc.desc       : test setResponseEncoding
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -82,7 +82,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEMIMETYPE_0100
     * @tc.name       : testSetResponseMimeType001
     * @tc.desc       : test setResponseMimeType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -97,7 +97,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETREASONMESSAGE_0100
     * @tc.name       : testSetReasonMessage001
     * @tc.desc       : test setReasonMessage
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -112,7 +112,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEHEADER_0100
     * @tc.name       : testSetResponseHeader001
     * @tc.desc       : test setResponseHeader
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -127,7 +127,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSECODE_0100
     * @tc.name       : testSetResponseCode001
     * @tc.desc       : test setResponseCode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -142,7 +142,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEISREADY_0100
     * @tc.name       : testSetResponseIsReady001
     * @tc.desc       : test setResponseIsReady
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -157,7 +157,7 @@ export default function webResourceResponseSet() {
     * @tc.number     : SUB_WEB_SETRESPONSEISREADY_0200
     * @tc.name       : testSetResponseIsReady002
     * @tc.desc       : test setResponseIsReady
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

@@ -51,7 +51,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_ONSCROLL_0100
     * @tc.name       : testOnScroll001
     * @tc.desc       : test onScroll
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -63,10 +63,40 @@ export default function webViewController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_ONSCROLL_0200
+    * @tc.name       : testOnScroll002
+    * @tc.desc       : test onScroll
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnScroll002', 0, async (done: Function) => {
+      Utils.emitEvent("testOnScroll002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnScroll002", true, 100068, done);
+      sendEventByKey('WebViewControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONSCROLL_0300
+    * @tc.name       : testOnScroll003
+    * @tc.desc       : test onScroll
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnScroll003', 0, async (done: Function) => {
+      Utils.emitEvent("testOnScroll003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnScroll002", true, 100069, done);
+      sendEventByKey('WebViewControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_HISTORYITEM_ICON_0100
     * @tc.name       : testHistoryItemIcon001
     * @tc.desc       : test HistoryItem icon
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +111,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_HISTORYITEM_HISTORYURL_0100
     * @tc.name       : testHistoryItemHistoryUrl001
     * @tc.desc       : test HistoryItem historyUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +126,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_HISTORYITEM_HISTORYRAWURL_0100
     * @tc.name       : testHistoryRawUrl001
     * @tc.desc       : test HistoryItem historyRawUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -111,7 +141,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_HISTORYITEM_TITLE_0100
     * @tc.name       : testHistoryItemTitle001
     * @tc.desc       : test HistoryItem title
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -126,7 +156,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_BACKFORWARDLIST_CURRENTINDEX_TITLE_0100
     * @tc.name       : testBackForwardListCurrentIndex001
     * @tc.desc       : test BackForwardList CurrentIndex
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -141,7 +171,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_BACKFORWARDLIST_SIZE_TITLE_0100
     * @tc.name       : testBackForwardListCurrentSize001
     * @tc.desc       : test BackForwardList Size
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -156,7 +186,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_ONSHOWFILESELECTOR_0100
     * @tc.name       : testOnShowFileSelector001
     * @tc.desc       : test onShowFileSelector
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -171,7 +201,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_FILESELECTORPARAM_GETTITLE_0100
     * @tc.name       : testFileSelectorParamGetTitle001
     * @tc.desc       : test FileSelectorParam getTitle
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -186,7 +216,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_FILESELECTORPARAM_GETMODE_0100
     * @tc.name       : testFileSelectorParamGetMode001
     * @tc.desc       : test FileSelectorParam getMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -201,7 +231,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_FILESELECTORPARAM_GETACCEPTTYPE_0100
     * @tc.name       : testFileSelectorParamGetAcceptType001
     * @tc.desc       : test FileSelectorParam getAcceptType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -216,7 +246,7 @@ export default function webViewController() {
    * @tc.number     : SUB_WEB_FILESELECTORPARAM_ISCAPTURE_0100
    * @tc.name       : testFileSelectorParamIsCapture001
    * @tc.desc       : test FileSelectorParam isCapture
-   * @tc.size       : MEDIUM
+   * @tc.size       : MediumTest
    * @tc.type       : Function
    * @tc.level      : Level 1
    */
@@ -231,7 +261,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_FILESELECTORRESULT_HANDLEFILELIST_0100
     * @tc.name       : testFileSelectorResultHandleFileList001
     * @tc.desc       : test FileSelectorResult handleFileList
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -246,7 +276,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_SECUREDNSMODE_OFF_0100
     * @tc.name       : testSecureDnsModeOFF001
     * @tc.desc       : test SecureDnsMode OFF
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -261,7 +291,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_SECUREDNSMODE_AUTO_0100
     * @tc.name       : testSecureDnsModeAUTO001
     * @tc.desc       : test SecureDnsMode AUTO
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -276,7 +306,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_SECUREDNSMODE_SECURE_ONLY_0100
     * @tc.name       : testSecureDnsModeSECURE_ONLY001
     * @tc.desc       : test SecureDnsMode SECURE_ONLY
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -291,7 +321,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_ONOVERSCROLL_0100
     * @tc.name       : testOnOverScroll001
     * @tc.desc       : test onOverScroll
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -303,10 +333,56 @@ export default function webViewController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_ONOVERSCROLL_0200
+    * @tc.name       : testOnOverScroll002
+    * @tc.desc       : test onOverScroll
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnOverScroll002', 0, async (done: Function) => {
+      Utils.emitEvent("testOnOverScroll002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnOverScroll002", true, 100034, done);
+      sendEventByKey('WebViewControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONOVERSCROLL_0300
+    * @tc.name       : testOnOverScroll003
+    * @tc.desc       : test onOverScroll
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnOverScroll003', 0, async (done: Function) => {
+      Utils.emitEvent("testOnOverScroll003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnOverScroll003", true, 100035, done);
+      sendEventByKey('WebViewControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONOVERSCROLL_0400
+    * @tc.name       : testOnOverScroll004
+    * @tc.desc       : test onOverScroll
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnOverScroll004', 0, async (done: Function) => {
+      Utils.emitEvent("testOnOverScroll004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnOverScroll004", true, 100036, done);
+      sendEventByKey('WebViewControllerButton', 10, '');
+    })
+
+
+    /*
     * @tc.number     : SUB_WEB_DARKMODE_0100
     * @tc.name       : testDarkMode001
     * @tc.desc       : test darkMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -321,7 +397,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_DARKMODE_0200
     * @tc.name       : testDarkMode002
     * @tc.desc       : test darkMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -336,7 +412,7 @@ export default function webViewController() {
     * @tc.number     : SUB_WEB_FORCEDARKACCESS_0100
     * @tc.name       : testForceDarkAccess001
     * @tc.desc       : test forceDarkAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

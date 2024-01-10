@@ -55,7 +55,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.number      : SUB_WEB_MEDIAPLAYGESTUREACCESS_0100
     * @tc.name        : testMediaPlayGestureAccess001
     * @tc.desc        : test mediaPlayGestureAccess true
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -70,7 +70,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.number      : SUB_WEB_MEDIAPLAYGESTUREACCESS_0200
     * @tc.name        : testMediaPlayGestureAccess002
     * @tc.desc        : test mediaPlayGestureAccess false
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -85,7 +85,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.number      : SUB_WEB_MEDIAPLAYGESTUREACCESS_0300
     * @tc.name        : testMediaPlayGestureAccess003
     * @tc.desc        : test mediaPlayGestureAccess false
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
