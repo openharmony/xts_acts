@@ -6,16 +6,23 @@
         "bundle-name": "com.acts.inputmethodwidmanage.test",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 15000
+        "testcase-timeout": "25000"
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.sys.suspend_manager_enabled 0",
+                "reboot",
+                "wait 5",
                 "power-shell wakeup",
                 "power-shell setmode 602",
                 "uinput -T -m 300 720 300 360 200",
                 "uinput -T -m 650 2760 650 1380 200"
+            ],
+            "teardown-command": [
+                "param set persist.sys.suspend_manager_enabled 1",
+                "reboot"
             ]
         },
         {

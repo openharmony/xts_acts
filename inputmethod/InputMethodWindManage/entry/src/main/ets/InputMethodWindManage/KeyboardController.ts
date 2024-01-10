@@ -1028,7 +1028,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0600(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0600 success');
         try {
@@ -1058,7 +1058,7 @@ export class KeyboardController {
 
         private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0700 success');
         try {
@@ -1088,7 +1088,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0800(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success');
         try {
@@ -1118,7 +1118,9 @@ export class KeyboardController {
     }
 
     private Sub_InputMethod_IMF_getSecurityMode_0100(): void {
-        let commonEventPublishData;
+        let commonEventPublishData = {
+            data: 'FAILED'
+        };
         console.info(TAG + '====>receive Sub_InputMethod_IMF_getSecurityMode_0100 success');
         try {
             let mode1: inputmethodengine.SecurityMode = inputMethodAbility.getSecurityMode();

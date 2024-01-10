@@ -18,50 +18,138 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver} from '@ohos.UiTest'
-
+import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodEngineJSUnit() {
   describe('inputMethodEngine', function () {
-    var inputSever = {
-      packageName: '',
-      methodId: '',
-      name: '',
-      id: '',
-      extra: {}
-    }
+    beforeAll(async (done)=>{
+      console.info('====> inputMethodSwitch deviceinfo.deviceType:' + JSON.stringify(deviceinfo.deviceType));
+      if (deviceinfo.deviceType != 'default') {
+        console.info('====>beforeAll inputMethodSwitch into inputMethod_enable');
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let cmd = 'aa start -a com.acts.inputmethodengine.test.MainAbility -b com.acts.inputmethodengine.test'
+        let driver: Driver = Driver.create();
+        await driver.pressHome();
+        let setting_hap: Component = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
+        console.info('====>beforeAll inputMethodSwitch setting_hap: ' + JSON.stringify(setting_hap));
+        await setting_hap.click();
+        await driver.delayMs(200);
+        let setting_text: Component = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
+        console.info('====>beforeAll inputMethodSwitch first setting_text: ' + JSON.stringify(setting_text));
+        if(JSON.stringify(setting_text) === 'null'){
+          await driver.delayMs(200);
+          await driver.pressBack();
+          setting_text = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
+        }
+        if(JSON.stringify(setting_text) === 'null'){
+          await driver.delayMs(200);
+          await driver.pressBack();
+          setting_text = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
+        }
+        if(JSON.stringify(setting_text) === 'null'){
+          await driver.delayMs(200);
+          await driver.pressBack();
+          setting_text = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
+        }
 
-    /**
-     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
-     */
-    beforeAll(async (done) => {
-      let inputM = inputMethod.getCurrentInputMethod();
-      console.info("====>beforeAll: getCurrentInputMethod inputMethodEngineJSUnit to: " + JSON.stringify(inputM));
-      inputSever.packageName = inputM.packageName;
-      inputSever.methodId = inputM.methodId;
-      inputSever.name = inputM.packageName;
-      inputSever.id = inputM.methodId;
+        try{
+          await driver.swipe(600, 2500, 600, 1000, 15000);
+          let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 500);
+          console.info('====>beforeAll inputMethodSwitch common_text: ' + JSON.stringify(common_text));
+          await common_text.click();
+          let inputMehtod_text: Component = await driver.waitForComponent(ON.text('键盘和输入法', MatchPattern.CONTAINS), 500);
+          console.info('====>beforeAll inputMethodSwitch inputMehtod_text: ' + JSON.stringify(inputMehtod_text));
+          await inputMehtod_text.click();
+          console.info('====>beforeAll inputMethodSwitch before windowManage_text');
+          let windowManage_text: Component = await driver.waitForComponent(ON.text('ActsInputMethodEngineTest'), 1000);
+          console.info('====>beforeAll inputMethodSwitch windowManage_text： ' + JSON.stringify(windowManage_text));
+          await windowManage_text.click();
+          let toggle_test: Component = await driver.waitForComponent(ON.type('Toggle'), 500);
+          console.info('====>beforeAll inputMethodSwitch toggle_test: ' + JSON.stringify(toggle_test));
+          let isCheck: boolean = await toggle_test.isChecked();
+          console.info('====>beforeAll inputMethodSwitch isCheck： ' + JSON.stringify(isCheck));
+          if (JSON.stringify(isCheck) === 'false') {
+            await toggle_test.click();
+            console.info('====>beforeAll inputMethodSwitch checked' );
+          }
+          await driver.delayMs(200);
+          await driver.pressBack();
+          console.info('====>beforeAll inputMethodSwitch pressBack 1' );
+          await driver.delayMs(200);
+          await driver.pressBack();
+          console.info('====>beforeAll inputMethodSwitch pressBack 2' );
+          await driver.delayMs(200)
+          console.info('====>beforeAll inputMethodSwitch swipe pressBack' );
+          abilityDelegator.executeShellCommand(cmd);
+          console.info('====>beforeAll inputMethodSwitch executeShellCommand success: ');
+          await driver.delayMs(1000);
 
-      let inputDemoService: subtype = {
-        id: "InputDemoService",
-        label: "",
-        name: "com.acts.inputmethodengine.test",
-        mode: "lower",
-        locale: "",
-        language: "",
-        icon: "",
-        iconId: 0,
-        extra: {}
-      }
-      try {
-        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
-        setTimeout(() => {
-          runCmd()
-          console.info("====>beforeAll: inputMethodEngineJSUnit switchCurrentInputMethodSubtype success");
+          console.info('====>beforeAll inputMethodSwitch inputMethod_switch' );
+          let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+          let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+          console.info('====>beforeAll inputMethodSwitch result: ' + JSON.stringify(result));
+          await driver.delayMs(500);
+          let list = await driver.findComponent(ON.type('List'));
+          console.info('====>beforeAll inputMethodSwitch list: ' + JSON.stringify(list));
+          let inputMethod_name: Component = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch inputMethod_name: ' + JSON.stringify(inputMethod_name));
+          if (JSON.stringify(inputMethod_name) == 'null') {
+            await driver.delayMs(200);
+            inputMethod_name = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+          }
+          await inputMethod_name.click();
+          await driver.delayMs(1500);
+          let data = await inputMethod.getController().detach();
+          console.info(`====>runCmd detach`);
+          let textConfig: inputMethod.TextConfig = {
+            inputAttribute: {
+              textInputType: 0,
+              enterKeyType: 1
+            }
+          };
+          await inputMethod.getController().attach(true, textConfig);
+          console.info(`====>runCmd attach`);
+          console.info('====>beforeAll inputMethodSwitch done' );
           done();
-        }, 3000)
-      } catch (err) {
-        console.info("====>beforeAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
+        }catch(err){
+          console.info('====>beforeAll inputMethodSwitch driver err:' + JSON.stringify(err))
+          done();
+        }
+
+      } else {
+        console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
+        let driver: Driver = Driver.create();
+        await driver.delayMs(500);
+        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+        inputMethodSetting.showOptionalInputMethods(async (err: BusinessError, data: boolean) => {
+          try{
+            console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
+            let list = await driver.waitForComponent(ON.type('List'), 1000);
+            console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
+            await driver.delayMs(500);
+            let inputMethod_name: Component = await driver.waitForComponent(ON.text('engine', MatchPattern.CONTAINS), 1000);
+            console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
+            await inputMethod_name.click();
+            console.info('====>beforeAll inputMethodSwitch else done' )
+            await driver.delayMs(1000);
+            let data = await inputMethod.getController().detach();
+            console.info(`====>runCmd detach`);
+            let textConfig: inputMethod.TextConfig = {
+              inputAttribute: {
+                textInputType: 0,
+                enterKeyType: 1
+              }
+            };
+            await inputMethod.getController().attach(true, textConfig);
+            console.info(`====>runCmd attach`);
+            done();
+          }catch(err){
+            console.info('====>beforeAll inputMethodSwitch err:' + JSON.stringify(err));
+            done();
+          }
+        })
       }
     })
 
@@ -69,15 +157,8 @@ export default function inputMethodEngineJSUnit() {
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputSever);
-        setTimeout(() => {
-          console.info("====>afterAll: inputMethodEngineJSUnit switchInputMethod success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>afterAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
-      }
+
+      done();
     })
 
     let dis = display.getDefaultDisplaySync();
