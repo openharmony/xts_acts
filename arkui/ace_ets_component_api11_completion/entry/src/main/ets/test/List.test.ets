@@ -41,6 +41,14 @@ import sheetSize1Jsunit from './backgroundEffect/sheetSize1.test.ets'
 import monopolizeTest from './commonApi/monopolizeTest.test.ets';
 import blendModeTest from './commonApi/blendModeTest.test.ets';
 import outlineTest from './commonApi/outlineTest.test.ets';
+import arkuiNodeTest from "./arkuinode/arkuinode.test.ets"
+import atomicServiceBarTest from "./autoservice/atomicServiceBar.test.ets"
+import buttonControlTest from "./buttonControlSize/buttonControl.test.ets"
+import dymaticTest from "./dymaticattribute/dymatic.test.ets"
+import listSContentTest from "./list/list.test.ets"
+import  relativeCTest from "./relative/relative.test.ets"
+import  gridIndexTest from "./grid/grid.test.ets"
+import enumFolderTest from "./folder/enumflodstack.test.ets"
 
 export default function testsuite() {
   tabsApi1()
@@ -58,6 +66,14 @@ export default function testsuite() {
   NavigationApi3()
   RichEditorApi()
   TabsApi()
+  relativeCTest()
+  listSContentTest()
+  gridIndexTest()
+  buttonControlTest()
+  dymaticTest()
+  enumFolderTest();
+  arkuiNodeTest()
+  atomicServiceBarTest()
   QueryNavDestinationInfoNavDestinationJsunit()
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
