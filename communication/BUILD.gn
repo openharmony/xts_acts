@@ -28,6 +28,7 @@ group("communication") {
       "btmanager_errorcode202:ActsBtManagerErrorCode202JsTest",
       "btmanager_errorcode401:ActsBtManagerErrorCode401JsTest",
       "btmanager_switchoff:ActsBtManagerSwitchOff003JsTest",
+      "netstack_websocket:ActsWebSocketNdkTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
       "nfc_Controller:ActsNFCJSTest",
