@@ -57,13 +57,14 @@ export default function webAttributeOnFullScreenExitTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONFULLSCREENEXIT_0100
     * @tc.name        : testWebAttributeOnFullScreenExit001
-    * @tc.desc        : stress testing onFullScreenExit when using the raw file
+    * @tc.desc        : stress testing onFullScreenExit
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
     it('testWebAttributeOnFullScreenExit001', 0, async (done: Function) => {
-      Utils.doIt("testWebAttributeOnFullScreenExit001", 110020, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebAttributeOnFullScreenExit001", 110020,
+        Constants.USE_LOW_STRESS_TIMES ? Constants.LOW_STRESS_TIMES : Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_ATTRIBUTE_ONFULLSCREENEXIT_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);

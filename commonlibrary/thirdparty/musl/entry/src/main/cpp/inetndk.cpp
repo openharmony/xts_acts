@@ -23,21 +23,23 @@
 #include <netdb.h>
 #include <sys/inotify.h>
 #include <utmp.h>
+
 #define STRLENGTH 64
 #define FALSE 0
 #define TRUE 1
-#define ERROR -1
+#define ERROR (-1)
 #define PORT 9000
 #define DEFAULT_VALUE 0
+#define ONE 1
 
 static napi_value InetAddr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t *strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
+    char *cp = static_cast<char *>(malloc(sizeof(char) * length));
     napi_get_value_string_utf8(env, args[0], cp, length, strResult);
 
     in_addr_t ret = inet_addr(cp);
@@ -47,26 +49,26 @@ static napi_value InetAddr(napi_env env, napi_callback_info info)
 }
 static napi_value InetAton(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t *strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
+    char *cp = static_cast<char *>(malloc(sizeof(char) * length));
     napi_get_value_string_utf8(env, args[0], cp, length, strResult);
-    struct sockaddr_in adr_inet;
-    memset(&adr_inet, FALSE, sizeof(adr_inet));
-    adr_inet.sin_family = AF_INET;
+    struct sockaddr_in adrInet;
+    memset(&adrInet, FALSE, sizeof(adrInet));
+    adrInet.sin_family = AF_INET;
     uint16_t port = PORT;
-    adr_inet.sin_port = htons(port);
-    int ret = inet_aton(cp, &adr_inet.sin_addr);
+    adrInet.sin_port = htons(port);
+    int ret = inet_aton(cp, &adrInet.sin_addr);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value InetLnaof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -82,7 +84,7 @@ static napi_value InetLnaof(napi_env env, napi_callback_info info)
 }
 static napi_value InetMakeaddr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -97,7 +99,7 @@ static napi_value InetMakeaddr(napi_env env, napi_callback_info info)
 
 static napi_value InetNetof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -111,12 +113,12 @@ static napi_value InetNetof(napi_env env, napi_callback_info info)
 }
 static napi_value InetNetwork(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t *strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
+    char *cp = static_cast<char *>(malloc(sizeof(char) * length));
     napi_get_value_string_utf8(env, args[0], cp, length, strResult);
     in_addr_t addr = inet_network(cp);
     napi_value result = nullptr;
@@ -125,7 +127,7 @@ static napi_value InetNetwork(napi_env env, napi_callback_info info)
 }
 static napi_value InetNtoa(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -140,7 +142,7 @@ static napi_value InetNtoa(napi_env env, napi_callback_info info)
 
 static napi_value InetNtop(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -160,7 +162,7 @@ static napi_value InetNtop(napi_env env, napi_callback_info info)
 
 static napi_value InetPton(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;

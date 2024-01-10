@@ -23,7 +23,7 @@ export default function fsuidNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FSUID_SETFSGID_0100
      * @tc.name       : testMuslFsuidSetfsgid001
      * @tc.desc       : test setfsgid
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -37,7 +37,7 @@ export default function fsuidNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FSUID_SETFSUID_0100
      * @tc.name       : testMuslFsuidSetfsuid001
      * @tc.desc       : test setfsuid
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

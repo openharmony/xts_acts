@@ -22,7 +22,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_0100
      * @tc.name       : testMuslSpawnPosixSpawn001
      * @tc.desc       : test posixspawn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -35,7 +35,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWNP_0100
      * @tc.name       : testMuslSpawnPosixSpawnP001
      * @tc.desc       : test spawnp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -48,7 +48,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_GET_FLAGS_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetFlags001
      * @tc.desc       : test posixspawnattrgetflags
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -61,7 +61,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_ADD_CLOSE_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrAddClose001
      * @tc.desc       : test posixSpawnFileActionsAddClose
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -74,7 +74,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_FILE_ACTIONS_ADDUP2_0100
      * @tc.name       : testMuslSpawnPosixSpawnFileActionsAdddup2001
      * @tc.desc       : test posixSpawnFileActionsAdddup2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -87,7 +87,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_FILE_ACTIONS_ADD_OPEN_0100
      * @tc.name       : testMuslSpawnPosixSpawnFileActionsAddOpen001
      * @tc.desc       : test posixSpawnFileActionsAddopen
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -100,7 +100,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_FILE_ACTIONS_DESTORY_0100
      * @tc.name       : testMuslSpawnPosixSpawnFileActionsDestroy001
      * @tc.desc       : test posixSpawnFileActionsDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -113,7 +113,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_FILE_ACTIONS_INIT_0100
      * @tc.name       : testMuslSpawnPosixSpawnFileActionsInit001
      * @tc.desc       : test posixSpawnFileActionsInit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -126,7 +126,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTRS_DESTORY_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrDestroy001
      * @tc.desc       : test posixSpawnAttrDestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -139,7 +139,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTRS_Get_Sched_Policy_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetSchedPolicy001
      * @tc.desc       : test posixSpawnAttrGetSchedPolicy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -152,7 +152,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTRS_Get_Sig_Default_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetSigDefault001
      * @tc.desc       : test posixSpawnAttrGetSigDefault
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -165,7 +165,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_INIT_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrInit001
      * @tc.desc       : test posixSpawnAttrInit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -178,7 +178,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_GET_SIG_MASK_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetSigMask001
      * @tc.desc       : test posixSpawnAttrGetSigMask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -191,7 +191,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_FLAGS_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetFlags001
      * @tc.desc       : test posixSpawnAttrSetFlags
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -204,7 +204,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_GET_SCHED_PARAM_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetSchedParam001
      * @tc.desc       : test posixSpawnAttrGetSchedParam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -217,7 +217,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_GET_GROUP_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrGetGroup001
      * @tc.desc       : test posixSpawnAttrGetpGroup
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -230,7 +230,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_SIG_DEFAULT_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetSigDefault001
      * @tc.desc       : test posixSpawnAttrSetSigDefault
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -243,7 +243,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_SIG_MASK_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetSigMask001
      * @tc.desc       : test posixSpawnAttrSetSigMask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -256,7 +256,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_SCHED_POLICY_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetSchedPolicy001
      * @tc.desc       : test posixSpawnAttrSetSchedPolicy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -269,7 +269,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_SCHED_PARAM_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetSchedParam001
      * @tc.desc       : test posixSpawnAttrSetSchedParam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -282,7 +282,7 @@ export default function muslSpawnTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SPAWN_POSIX_SPAWN_ATTR_SET_PGROUP_0100
      * @tc.name       : testMuslSpawnPosixSpawnAttrSetPGroup001
      * @tc.desc       : test posixSpawnAttrSetPGroup
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

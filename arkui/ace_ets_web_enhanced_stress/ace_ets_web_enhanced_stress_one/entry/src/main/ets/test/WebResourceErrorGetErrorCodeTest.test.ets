@@ -57,7 +57,7 @@ export default function webResourceErrorGetErrorCodeTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBRESOURCEERROR_GETERRORCODE_0100
     * @tc.name        : testWebResourceErrorGetErrorCode001
-    * @tc.desc        : stress testing getErrorCode when using the raw file
+    * @tc.desc        : stress testing getErrorCode
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

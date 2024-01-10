@@ -62,11 +62,60 @@ export default function webRefreshTest() {
     * @tc.level       : Level 2
     */
     it('testWebRefresh001', 0, async (done: Function) => {
-      Utils.doIt("testWebRefresh001", 80700, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebRefresh001", 80900, Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_REFRESH_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);
         })
     });
+
+    /*
+   * @tc.number      : SUB_WEB_STRESS_REFRESH_0200
+   * @tc.name        : testWebRefresh002
+   * @tc.desc        : stress testing Refresh
+   * @tc.size        : MediumTest
+   * @tc.type        : Function
+   * @tc.level       : Level 2
+   */
+    it('testWebRefresh002', 0, async (done: Function) => {
+      Utils.doIt("testWebRefresh002", 80901, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+   * @tc.number      : SUB_WEB_STRESS_REFRESH_0300
+   * @tc.name        : testWebRefresh003
+   * @tc.desc        : stress testing Refresh
+   * @tc.size        : MediumTest
+   * @tc.type        : Function
+   * @tc.level       : Level 2
+   */
+    it('testWebRefresh003', 0, async (done: Function) => {
+      Utils.doIt("testWebRefresh003", 80902, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+   * @tc.number      : SUB_WEB_STRESS_REFRESH_0400
+   * @tc.name        : testWebRefresh004
+   * @tc.desc        : stress testing Refresh
+   * @tc.size        : MediumTest
+   * @tc.type        : Function
+   * @tc.level       : Level 2
+   */
+    it('testWebRefresh004', 0, async (done: Function) => {
+      Utils.doIt("testWebRefresh004", 80903, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
   })
 }

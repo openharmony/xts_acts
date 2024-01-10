@@ -14,13 +14,12 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
 #include <sys/fsuid.h>
 #include <unistd.h>
 
 #define PARAM_0 0
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 
 static napi_value Setfsgid(napi_env env, napi_callback_info info)
 {

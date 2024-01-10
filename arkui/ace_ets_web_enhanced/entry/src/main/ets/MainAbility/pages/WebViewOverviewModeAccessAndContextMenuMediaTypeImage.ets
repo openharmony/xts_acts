@@ -94,7 +94,6 @@ struct WebViewOverviewModeAccessAndContextMenuMediaTypeImage {
         .textZoomRatio(100)
         .onShowFileSelector((event) => {
           if (event) {
-            console.log("3333333333333", event.fileSelector.getMode())
             let fileSelectorObj: FileSelectorParam = event.fileSelector
             this.FileSelectorMode = fileSelectorObj.getMode()
           }

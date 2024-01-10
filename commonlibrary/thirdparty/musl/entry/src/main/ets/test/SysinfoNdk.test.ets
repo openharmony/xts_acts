@@ -22,7 +22,7 @@ export default function SysInfoNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSINFO_GET_PHYS_PAGES_0100
      * @tc.name       : testMuslSysInfoGetPhysPages001
      * @tc.desc       : test get_phys_pages
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function SysInfoNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSINFO_GET_NPROCS_CONF_0100
      * @tc.name       : testMuslSysInfoGetNprocsConf001
      * @tc.desc       : test get_nprocs_conf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function SysInfoNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSINFO_GET_NPROCS_0100
      * @tc.name       : testMuslSysInfoGetNprocs001
      * @tc.desc       : test get_nprocs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -67,7 +67,7 @@ export default function SysInfoNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSINFO_GET_AVPHYS_PAGES_0100
      * @tc.name       : testMuslSysInfoGetAvphysPages001
      * @tc.desc       : test get_avphys_pages
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

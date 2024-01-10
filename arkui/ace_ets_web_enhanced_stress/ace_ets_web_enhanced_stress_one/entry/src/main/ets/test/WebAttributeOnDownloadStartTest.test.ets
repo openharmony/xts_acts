@@ -57,7 +57,7 @@ export default function webAttributeOnDownloadStartTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONDOWNLOADSTART_0100
     * @tc.name        : testWebAttributeOnDownloadStart001
-    * @tc.desc        : stress testing onDownLoadStart when using the raw file
+    * @tc.desc        : stress testing onDownLoadStart
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

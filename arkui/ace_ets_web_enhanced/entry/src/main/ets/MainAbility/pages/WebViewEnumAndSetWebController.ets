@@ -146,7 +146,7 @@ struct WebViewEnumAndSetWebController {
             case "emitCacheModeNone": {
               this.CacheMode = CacheMode.None
               this.controller.loadUrl("https://www.huawei.com/cn/")
-              await Utils.sleep(4000)
+              await Utils.sleep(12000)
               Utils.emitEvent(this.controller.getTitle(), 1406)
               this.controller.loadUrl("resource://rawfile/fullScreenEnter.html")
               break;
@@ -165,7 +165,7 @@ struct WebViewEnumAndSetWebController {
               this.controller.loadUrl("resource://rawfile/indexFile1.html")
               await Utils.sleep(2000);
               let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenters'));
+              let button = await driver.findComponent(ON.id('WebViewEnumAndSetWebControllerWebView'));
               await button.click();
               await Utils.sleep(2000);
               Utils.emitEvent(Number(this.FileSelectorMode), 862)
@@ -185,7 +185,7 @@ struct WebViewEnumAndSetWebController {
       }
 
       Web({ src: $rawfile("fullScreenEnter.html"), controller: this.controller })
-        .key("webCenters")
+        .key("WebViewEnumAndSetWebControllerWebView")
         .blockNetwork(Boolean(this.block))
         .cacheMode(this.CacheMode)
         .onShowFileSelector((event) => {

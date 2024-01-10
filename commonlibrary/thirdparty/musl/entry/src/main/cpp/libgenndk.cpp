@@ -20,7 +20,7 @@
 #include <node_api.h>
 
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 
 static napi_value Basename(napi_env env, napi_callback_info info)
 {

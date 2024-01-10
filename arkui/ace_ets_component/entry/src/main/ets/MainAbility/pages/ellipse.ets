@@ -24,26 +24,26 @@ struct EllipseExample {
 
   onPageShow() {
     console.info('[ellipse] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 92,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 907,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 908,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[ellipse] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ellipse] page state change called:" + JSON.stringify(eventData));
@@ -58,7 +58,12 @@ struct EllipseExample {
 
   build() {
     Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Ellipse().width(`${this.width}`).height(`${this.height}`).key('ellipse')
-    }.width('100%').height('100%')
+      Ellipse()
+        .width(`${this.width}`)
+        .height(`${this.height}`)
+        .key('ellipse')
+    }
+    .width('100%')
+    .height('100%')
   }
 }

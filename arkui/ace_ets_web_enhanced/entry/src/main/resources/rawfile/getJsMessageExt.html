@@ -14,11 +14,15 @@ function getNumber() {
 function getBoolean() {
     return true;
 }
+function getBooleanFalse() {
+    return false;
+}
 function getArrayBuffer() {
     const buffer = new ArrayBuffer(8);
     const view = new Int32Array(buffer);
     return view;
 }
+
 function getArray() {
     const fruits = [];
     fruits.push("banana", "apple", "peach");

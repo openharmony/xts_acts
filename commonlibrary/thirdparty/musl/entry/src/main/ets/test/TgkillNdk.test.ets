@@ -23,7 +23,7 @@ export default function muslTgKillNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TGKILL_TGKILL_0100
      * @tc.name       : testMuslTgKillTgKill001
      * @tc.desc       : test tgkill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

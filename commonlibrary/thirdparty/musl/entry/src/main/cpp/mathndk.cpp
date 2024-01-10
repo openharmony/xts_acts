@@ -13,96 +13,98 @@
  * limitations under the License.
  */
 
-#include "napi/native_api.h"
 #include "cstdlib"
+#include "napi/native_api.h"
 #include <cmath>
 #include <cstdlib>
 #include <js_native_api.h>
-#include <cmath>
 #include <node_api.h>
 
 #define PI 3.14159265358979
 #define HALFCIRCLE 180.0
 #define TRUE 1
 #define FALSE 0
-#define ERROR -1
+#define ERROR (-1)
 #define ONE 1
 #define TWO 2
 #define STRLENGTH 64
-#define FAIL -1
+#define FAIL (-1)
 #define SUCCESS 1
-#define MAGICNUM  -0.5385416161050316
-#define MAGICYNFNUM  -0.5385416746139526
-#define PARAM_FAIL -1
+#define MAGICNUM (-0.5385416161050316)
+#define MAGICYNFNUM (-0.5385416746139526)
+#define PARAM_FAIL (-1)
 #define PARAM_0 0
 #define PARAM_1 1
-#define PARAM_UNNORMAL -1
+#define PARAM_2 2
+#define PARAM_3 3
+#define PARAM_30 3.0
+#define PARAM_UNNORMAL (-1)
 
 static napi_value LLround(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llround(value);
+    int roundValue = llround(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 static napi_value LLroundf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llroundf(value);
+    int roundValue = llroundf(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 
 static napi_value LLroundl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llroundl(value);
+    int roundValue = llroundl(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 
 static napi_value LLrint(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llrint(value);
+    int roundValue = llrint(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 static napi_value LLrintf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llrintf(value);
+    int roundValue = llrintf(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 static napi_value LRintf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -115,20 +117,20 @@ static napi_value LRintf(napi_env env, napi_callback_info info)
 }
 static napi_value LLrintl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int round_value = llrintl(value);
+    int roundValue = llrintl(value);
     napi_value result = nullptr;
-    napi_create_int32(env, round_value, &result);
+    napi_create_int32(env, roundValue, &result);
     return result;
 }
 
 static napi_value Lgamma(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -136,7 +138,7 @@ static napi_value Lgamma(napi_env env, napi_callback_info info)
     ret = lgamma(param);
     napi_value result;
     if (HUGE_VAL == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -144,7 +146,7 @@ static napi_value Lgamma(napi_env env, napi_callback_info info)
 }
 static napi_value Lgammaf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -152,7 +154,7 @@ static napi_value Lgammaf(napi_env env, napi_callback_info info)
     ret = lgammaf(param);
     napi_value result;
     if (HUGE_VALF == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -160,7 +162,7 @@ static napi_value Lgammaf(napi_env env, napi_callback_info info)
 }
 static napi_value Lgammal(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -168,7 +170,7 @@ static napi_value Lgammal(napi_env env, napi_callback_info info)
     ret = lgammal(param);
     napi_value result;
     if (HUGE_VALL == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -179,7 +181,7 @@ static napi_value Lgammal(napi_env env, napi_callback_info info)
 
 static napi_value Lgamma_r(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -188,7 +190,7 @@ static napi_value Lgamma_r(napi_env env, napi_callback_info info)
     ret = lgamma_r(param, &a);
     napi_value result;
     if (HUGE_VAL == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -196,7 +198,7 @@ static napi_value Lgamma_r(napi_env env, napi_callback_info info)
 }
 static napi_value Lgammaf_r(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -205,7 +207,7 @@ static napi_value Lgammaf_r(napi_env env, napi_callback_info info)
     ret = lgammaf_r(param, &a);
     napi_value result;
     if (HUGE_VALF == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -213,7 +215,7 @@ static napi_value Lgammaf_r(napi_env env, napi_callback_info info)
 }
 static napi_value Lgammal_r(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param, ret;
@@ -222,7 +224,7 @@ static napi_value Lgammal_r(napi_env env, napi_callback_info info)
     ret = lgammal_r(param, &a);
     napi_value result;
     if (HUGE_VALL == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_double(env, ret, &result);
     }
@@ -231,7 +233,7 @@ static napi_value Lgammal_r(napi_env env, napi_callback_info info)
 
 static napi_value Ldexp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int secondParam;
@@ -246,7 +248,7 @@ static napi_value Ldexp(napi_env env, napi_callback_info info)
 
 static napi_value Ldexpl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int secondParam;
@@ -261,7 +263,7 @@ static napi_value Ldexpl(napi_env env, napi_callback_info info)
 
 static napi_value Ldexpf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int secondParam;
@@ -276,7 +278,7 @@ static napi_value Ldexpf(napi_env env, napi_callback_info info)
 
 static napi_value J0(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -289,7 +291,7 @@ static napi_value J0(napi_env env, napi_callback_info info)
 
 static napi_value J0f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -302,7 +304,7 @@ static napi_value J0f(napi_env env, napi_callback_info info)
 
 static napi_value J1(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -315,7 +317,7 @@ static napi_value J1(napi_env env, napi_callback_info info)
 
 static napi_value J1f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -328,7 +330,7 @@ static napi_value J1f(napi_env env, napi_callback_info info)
 
 static napi_value Jn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -343,7 +345,7 @@ static napi_value Jn(napi_env env, napi_callback_info info)
 
 static napi_value Jnf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -358,7 +360,7 @@ static napi_value Jnf(napi_env env, napi_callback_info info)
 
 static napi_value ASin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -378,7 +380,7 @@ static napi_value ASin(napi_env env, napi_callback_info info)
 
 static napi_value ASinF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -398,7 +400,7 @@ static napi_value ASinF(napi_env env, napi_callback_info info)
 
 static napi_value ASinL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -418,7 +420,7 @@ static napi_value ASinL(napi_env env, napi_callback_info info)
 
 static napi_value ASinH(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -433,7 +435,7 @@ static napi_value ASinH(napi_env env, napi_callback_info info)
 
 static napi_value ASinHF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -448,7 +450,7 @@ static napi_value ASinHF(napi_env env, napi_callback_info info)
 
 static napi_value ASinHL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -463,7 +465,7 @@ static napi_value ASinHL(napi_env env, napi_callback_info info)
 
 static napi_value ACos(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -478,7 +480,7 @@ static napi_value ACos(napi_env env, napi_callback_info info)
 
 static napi_value ACosF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -493,7 +495,7 @@ static napi_value ACosF(napi_env env, napi_callback_info info)
 
 static napi_value ACosL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -508,7 +510,7 @@ static napi_value ACosL(napi_env env, napi_callback_info info)
 
 static napi_value ACosH(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -523,7 +525,7 @@ static napi_value ACosH(napi_env env, napi_callback_info info)
 
 static napi_value ACosHL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -538,7 +540,7 @@ static napi_value ACosHL(napi_env env, napi_callback_info info)
 
 static napi_value ACosHF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -553,7 +555,7 @@ static napi_value ACosHF(napi_env env, napi_callback_info info)
 
 static napi_value ATan(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -574,7 +576,7 @@ static napi_value ATan(napi_env env, napi_callback_info info)
 
 static napi_value ATanF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -595,7 +597,7 @@ static napi_value ATanF(napi_env env, napi_callback_info info)
 
 static napi_value ATanL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -616,7 +618,7 @@ static napi_value ATanL(napi_env env, napi_callback_info info)
 
 static napi_value ATan2(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -633,7 +635,7 @@ static napi_value ATan2(napi_env env, napi_callback_info info)
 
 static napi_value ATan2F(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -650,7 +652,7 @@ static napi_value ATan2F(napi_env env, napi_callback_info info)
 
 static napi_value ATan2L(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -667,7 +669,7 @@ static napi_value ATan2L(napi_env env, napi_callback_info info)
 
 static napi_value Fmod(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -682,7 +684,7 @@ static napi_value Fmod(napi_env env, napi_callback_info info)
 
 static napi_value FMin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -697,7 +699,7 @@ static napi_value FMin(napi_env env, napi_callback_info info)
 
 static napi_value FMax(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -712,7 +714,7 @@ static napi_value FMax(napi_env env, napi_callback_info info)
 
 static napi_value Fma(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr, nullptr, nullptr};
     int indexSecond = TWO, indexFirst = ONE, indexZero = PARAM_0;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -730,8 +732,7 @@ static napi_value Fma(napi_env env, napi_callback_info info)
 
 static napi_value Floor(napi_env env, napi_callback_info info)
 {
-
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -744,7 +745,7 @@ static napi_value Floor(napi_env env, napi_callback_info info)
 
 static napi_value FDim(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -759,7 +760,7 @@ static napi_value FDim(napi_env env, napi_callback_info info)
 
 static napi_value FAbs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -772,7 +773,7 @@ static napi_value FAbs(napi_env env, napi_callback_info info)
 
 static napi_value Exp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -785,7 +786,7 @@ static napi_value Exp(napi_env env, napi_callback_info info)
 
 static napi_value CopySignL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -800,7 +801,7 @@ static napi_value CopySignL(napi_env env, napi_callback_info info)
 
 static napi_value CopySignF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -815,7 +816,7 @@ static napi_value CopySignF(napi_env env, napi_callback_info info)
 
 static napi_value CopySign(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -830,7 +831,7 @@ static napi_value CopySign(napi_env env, napi_callback_info info)
 
 static napi_value Erf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -843,7 +844,7 @@ static napi_value Erf(napi_env env, napi_callback_info info)
 
 static napi_value Cos(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -856,7 +857,7 @@ static napi_value Cos(napi_env env, napi_callback_info info)
 
 static napi_value Cosh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -869,7 +870,7 @@ static napi_value Cosh(napi_env env, napi_callback_info info)
 
 static napi_value Exp2(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -882,7 +883,7 @@ static napi_value Exp2(napi_env env, napi_callback_info info)
 
 static napi_value ExpM1(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -895,7 +896,7 @@ static napi_value ExpM1(napi_env env, napi_callback_info info)
 
 static napi_value FmodF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -910,7 +911,7 @@ static napi_value FmodF(napi_env env, napi_callback_info info)
 
 static napi_value FmodL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -925,7 +926,7 @@ static napi_value FmodL(napi_env env, napi_callback_info info)
 
 static napi_value FMinF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -940,7 +941,7 @@ static napi_value FMinF(napi_env env, napi_callback_info info)
 
 static napi_value FMinL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -955,7 +956,7 @@ static napi_value FMinL(napi_env env, napi_callback_info info)
 
 static napi_value FMaxF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -970,7 +971,7 @@ static napi_value FMaxF(napi_env env, napi_callback_info info)
 
 static napi_value FMaxL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -985,7 +986,7 @@ static napi_value FMaxL(napi_env env, napi_callback_info info)
 
 static napi_value FmaF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr, nullptr, nullptr};
     int indexSecond = TWO, indexFirst = ONE, indexZero = PARAM_0;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -1003,7 +1004,7 @@ static napi_value FmaF(napi_env env, napi_callback_info info)
 
 static napi_value FmaL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr, nullptr, nullptr};
     int indexSecond = TWO, indexFirst = ONE, indexZero = PARAM_0;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -1021,7 +1022,7 @@ static napi_value FmaL(napi_env env, napi_callback_info info)
 
 static napi_value FloorF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1034,7 +1035,7 @@ static napi_value FloorF(napi_env env, napi_callback_info info)
 
 static napi_value FloorL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1047,7 +1048,7 @@ static napi_value FloorL(napi_env env, napi_callback_info info)
 
 static napi_value FDimF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1062,7 +1063,7 @@ static napi_value FDimF(napi_env env, napi_callback_info info)
 
 static napi_value FDimL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1077,7 +1078,7 @@ static napi_value FDimL(napi_env env, napi_callback_info info)
 
 static napi_value FAbsL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1090,7 +1091,7 @@ static napi_value FAbsL(napi_env env, napi_callback_info info)
 
 static napi_value FAbsF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1105,7 +1106,7 @@ static napi_value FAbsF(napi_env env, napi_callback_info info)
 
 static napi_value Ceil(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1118,7 +1119,7 @@ static napi_value Ceil(napi_env env, napi_callback_info info)
 
 static napi_value CeilF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1131,7 +1132,7 @@ static napi_value CeilF(napi_env env, napi_callback_info info)
 
 static napi_value CeilL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1144,7 +1145,7 @@ static napi_value CeilL(napi_env env, napi_callback_info info)
 
 static napi_value ExpM1f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1157,7 +1158,7 @@ static napi_value ExpM1f(napi_env env, napi_callback_info info)
 
 static napi_value ExpM1l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1170,7 +1171,7 @@ static napi_value ExpM1l(napi_env env, napi_callback_info info)
 
 static napi_value ExpF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1183,7 +1184,7 @@ static napi_value ExpF(napi_env env, napi_callback_info info)
 
 static napi_value ExpL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1196,7 +1197,7 @@ static napi_value ExpL(napi_env env, napi_callback_info info)
 
 static napi_value Exp2f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1209,7 +1210,7 @@ static napi_value Exp2f(napi_env env, napi_callback_info info)
 
 static napi_value Exp2l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1222,7 +1223,7 @@ static napi_value Exp2l(napi_env env, napi_callback_info info)
 
 static napi_value ErfC(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1235,7 +1236,7 @@ static napi_value ErfC(napi_env env, napi_callback_info info)
 
 static napi_value ErfCf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1248,7 +1249,7 @@ static napi_value ErfCf(napi_env env, napi_callback_info info)
 
 static napi_value ErfCl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1261,7 +1262,7 @@ static napi_value ErfCl(napi_env env, napi_callback_info info)
 
 static napi_value ErfF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1274,7 +1275,7 @@ static napi_value ErfF(napi_env env, napi_callback_info info)
 
 static napi_value ErfL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1287,7 +1288,7 @@ static napi_value ErfL(napi_env env, napi_callback_info info)
 
 static napi_value CosF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1300,7 +1301,7 @@ static napi_value CosF(napi_env env, napi_callback_info info)
 
 static napi_value CosL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1313,7 +1314,7 @@ static napi_value CosL(napi_env env, napi_callback_info info)
 
 static napi_value CosHf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1326,7 +1327,7 @@ static napi_value CosHf(napi_env env, napi_callback_info info)
 
 static napi_value CosHl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -1339,7 +1340,7 @@ static napi_value CosHl(napi_env env, napi_callback_info info)
 
 static double doubleInput(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double expect;
@@ -1455,124 +1456,124 @@ static napi_value LogL(napi_env env, napi_callback_info info)
 
 static napi_value Sin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sin(valueZero);
+    double sinValue = sin(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sinf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sinf(valueZero);
+    double sinValue = sinf(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sinh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sinh(valueZero);
+    double sinValue = sinh(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sinhf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sinhf(valueZero);
+    double sinValue = sinhf(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sinhl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sinhl(valueZero);
+    double sinValue = sinhl(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sinl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sinl(valueZero);
+    double sinValue = sinl(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sqrt(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sqrt(valueZero);
+    double sinValue = sqrt(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sqrtf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sqrtf(valueZero);
+    double sinValue = sqrtf(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Sqrtl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double sin_value = sqrtl(valueZero);
+    double sinValue = sqrtl(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, sin_value, &result);
+    napi_create_double(env, sinValue, &result);
     return result;
 }
 
 static napi_value Remainder(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1580,16 +1581,16 @@ static napi_value Remainder(napi_env env, napi_callback_info info)
     double firstParam;
     napi_get_value_double(env, args[1], &firstParam);
 
-    double remainder_value = remainder(valueZero, firstParam);
+    double remainderValue = remainder(valueZero, firstParam);
     napi_value result = nullptr;
-    napi_create_double(env, remainder_value, &result);
+    napi_create_double(env, remainderValue, &result);
 
     return result;
 }
 
 static napi_value Remainderf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1597,16 +1598,16 @@ static napi_value Remainderf(napi_env env, napi_callback_info info)
     double firstParam;
     napi_get_value_double(env, args[1], &firstParam);
 
-    double remainder_value = remainderf(valueZero, firstParam);
+    double remainderValue = remainderf(valueZero, firstParam);
     napi_value result = nullptr;
-    napi_create_double(env, remainder_value, &result);
+    napi_create_double(env, remainderValue, &result);
 
     return result;
 }
 
 static napi_value Remainderl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1614,15 +1615,15 @@ static napi_value Remainderl(napi_env env, napi_callback_info info)
     double firstParam;
     napi_get_value_double(env, args[1], &firstParam);
 
-    double remainder_value = remainderl(valueZero, firstParam);
+    double remainderValue = remainderl(valueZero, firstParam);
     napi_value result = nullptr;
-    napi_create_double(env, remainder_value, &result);
+    napi_create_double(env, remainderValue, &result);
     return result;
 }
 
 static napi_value Remquo(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1641,7 +1642,7 @@ static napi_value Remquo(napi_env env, napi_callback_info info)
 
 static napi_value Remquof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1660,7 +1661,7 @@ static napi_value Remquof(napi_env env, napi_callback_info info)
 
 static napi_value Remquol(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1679,7 +1680,7 @@ static napi_value Remquol(napi_env env, napi_callback_info info)
 
 static napi_value Rint(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1693,7 +1694,7 @@ static napi_value Rint(napi_env env, napi_callback_info info)
 
 static napi_value Rintf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1707,7 +1708,7 @@ static napi_value Rintf(napi_env env, napi_callback_info info)
 
 static napi_value Rintl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1721,21 +1722,21 @@ static napi_value Rintl(napi_env env, napi_callback_info info)
 
 static napi_value Round(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double round_value = round(valueZero);
+    double roundValue = round(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, round_value, &result);
+    napi_create_double(env, roundValue, &result);
 
     return result;
 }
 
 static napi_value Roundf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1749,7 +1750,7 @@ static napi_value Roundf(napi_env env, napi_callback_info info)
 
 static napi_value Roundl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1763,7 +1764,7 @@ static napi_value Roundl(napi_env env, napi_callback_info info)
 
 static napi_value Scalbln(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1779,7 +1780,7 @@ static napi_value Scalbln(napi_env env, napi_callback_info info)
 
 static napi_value Tan(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1792,7 +1793,7 @@ static napi_value Tan(napi_env env, napi_callback_info info)
 
 static napi_value Tanf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1805,7 +1806,7 @@ static napi_value Tanf(napi_env env, napi_callback_info info)
 
 static napi_value Tanh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1818,7 +1819,7 @@ static napi_value Tanh(napi_env env, napi_callback_info info)
 
 static napi_value Tanhf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1831,7 +1832,7 @@ static napi_value Tanhf(napi_env env, napi_callback_info info)
 
 static napi_value Tanhl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1844,7 +1845,7 @@ static napi_value Tanhl(napi_env env, napi_callback_info info)
 
 static napi_value Tanl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
@@ -1857,7 +1858,7 @@ static napi_value Tanl(napi_env env, napi_callback_info info)
 
 static napi_value Tgamma(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1870,7 +1871,7 @@ static napi_value Tgamma(napi_env env, napi_callback_info info)
 
 static napi_value Tgammaf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1883,7 +1884,7 @@ static napi_value Tgammaf(napi_env env, napi_callback_info info)
 
 static napi_value Tgammal(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -1896,7 +1897,7 @@ static napi_value Tgammal(napi_env env, napi_callback_info info)
 
 static napi_value Scalblnl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double first;
@@ -1911,7 +1912,7 @@ static napi_value Scalblnl(napi_env env, napi_callback_info info)
 
 static napi_value Scalbn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double first;
@@ -1926,7 +1927,7 @@ static napi_value Scalbn(napi_env env, napi_callback_info info)
 
 static napi_value Scalblnf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double first;
@@ -1941,7 +1942,7 @@ static napi_value Scalblnf(napi_env env, napi_callback_info info)
 
 static napi_value Scalbnf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double first;
@@ -1956,7 +1957,7 @@ static napi_value Scalbnf(napi_env env, napi_callback_info info)
 
 static napi_value Scalbnl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double first;
@@ -1971,7 +1972,7 @@ static napi_value Scalbnl(napi_env env, napi_callback_info info)
 
 static napi_value Significand(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueFirst;
@@ -1984,7 +1985,7 @@ static napi_value Significand(napi_env env, napi_callback_info info)
 
 static napi_value Significandf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueFirst;
@@ -1996,7 +1997,7 @@ static napi_value Significandf(napi_env env, napi_callback_info info)
 }
 static napi_value ATanH(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2011,7 +2012,7 @@ static napi_value ATanH(napi_env env, napi_callback_info info)
 
 static napi_value ATanHF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2026,7 +2027,7 @@ static napi_value ATanHF(napi_env env, napi_callback_info info)
 
 static napi_value ATanHL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2039,7 +2040,7 @@ static napi_value ATanHL(napi_env env, napi_callback_info info)
 }
 static napi_value ModF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2052,7 +2053,7 @@ static napi_value ModF(napi_env env, napi_callback_info info)
 }
 static napi_value ModFf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2065,7 +2066,7 @@ static napi_value ModFf(napi_env env, napi_callback_info info)
 }
 static napi_value ModFl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2079,7 +2080,7 @@ static napi_value ModFl(napi_env env, napi_callback_info info)
 }
 static napi_value MRand48(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -2098,7 +2099,7 @@ static napi_value MRand48(napi_env env, napi_callback_info info)
 
 static napi_value Pow(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2114,7 +2115,7 @@ static napi_value Pow(napi_env env, napi_callback_info info)
 
 static napi_value Powf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2130,7 +2131,7 @@ static napi_value Powf(napi_env env, napi_callback_info info)
 
 static napi_value Sincos(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double dLon;
@@ -2138,11 +2139,11 @@ static napi_value Sincos(napi_env env, napi_callback_info info)
 
     double sindLon;
     double cosdLon;
-    int int_value;
-    napi_get_value_int32(env, args[1], &int_value);
+    int intValue;
+    napi_get_value_int32(env, args[1], &intValue);
     sincos(dLon, &sindLon, &cosdLon);
     double napi_double_value;
-    if (int_value == 1) {
+    if (intValue == 1) {
         napi_double_value = sindLon;
     } else {
         napi_double_value = cosdLon;
@@ -2154,19 +2155,19 @@ static napi_value Sincos(napi_env env, napi_callback_info info)
 
 static napi_value Sincosl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double dou;
     napi_get_value_double(env, args[0], &dou);
-    int int_value;
-    napi_get_value_int32(env, args[1], &int_value);
+    int intValue;
+    napi_get_value_int32(env, args[1], &intValue);
     long double dLon = dou;
     long double sindou;
     long double cosdou;
     sincosl(dLon, &sindou, &cosdou);
     double napi_double_value;
-    if (int_value == 1) {
+    if (intValue == 1) {
         napi_double_value = sindou;
     } else {
         napi_double_value = cosdou;
@@ -2177,19 +2178,19 @@ static napi_value Sincosl(napi_env env, napi_callback_info info)
 }
 static napi_value Sincosf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double dou;
     napi_get_value_double(env, args[0], &dou);
-    int int_value;
-    napi_get_value_int32(env, args[1], &int_value);
+    int intValue;
+    napi_get_value_int32(env, args[1], &intValue);
     float dLon = dou;
     float sindou;
     float cosdou;
     sincosf(dLon, &sindou, &cosdou);
     float napi_double_value;
-    if (int_value == 1) {
+    if (intValue == 1) {
         napi_double_value = sindou;
     } else {
         napi_double_value = cosdou;
@@ -2201,7 +2202,7 @@ static napi_value Sincosf(napi_env env, napi_callback_info info)
 
 static napi_value Scalb(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2217,7 +2218,7 @@ static napi_value Scalb(napi_env env, napi_callback_info info)
 
 static napi_value Scalbf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2233,106 +2234,106 @@ static napi_value Scalbf(napi_env env, napi_callback_info info)
 
 static napi_value Trunc(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = trunc(param);
+    double resultValue = trunc(param);
 
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Truncf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = truncf(param);
+    double resultValue = truncf(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Truncl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = truncl(param);
+    double resultValue = truncl(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Y0(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = y0(param);
+    double resultValue = y0(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Y0f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = y0f(param);
+    double resultValue = y0f(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Y1(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = y1(param);
+    double resultValue = y1(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Y1f(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
     napi_get_value_double(env, args[0], &param);
-    double result_value = y1f(param);
+    double resultValue = y1f(param);
     napi_value result = nullptr;
-    napi_create_double(env, result_value, &result);
+    napi_create_double(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Fpclassify(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2346,7 +2347,7 @@ static napi_value Fpclassify(napi_env env, napi_callback_info info)
 
 static napi_value Fpclassifyf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2360,7 +2361,7 @@ static napi_value Fpclassifyf(napi_env env, napi_callback_info info)
 
 static napi_value Fpclassifyl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2374,7 +2375,7 @@ static napi_value Fpclassifyl(napi_env env, napi_callback_info info)
 
 static napi_value Signbit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2388,7 +2389,7 @@ static napi_value Signbit(napi_env env, napi_callback_info info)
 
 static napi_value Signbitf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2402,7 +2403,7 @@ static napi_value Signbitf(napi_env env, napi_callback_info info)
 
 static napi_value Signbitl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2416,7 +2417,7 @@ static napi_value Signbitl(napi_env env, napi_callback_info info)
 
 static napi_value CBrt(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2431,7 +2432,7 @@ static napi_value CBrt(napi_env env, napi_callback_info info)
 
 static napi_value CBrtL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2446,7 +2447,7 @@ static napi_value CBrtL(napi_env env, napi_callback_info info)
 
 static napi_value CBrtF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2461,7 +2462,7 @@ static napi_value CBrtF(napi_env env, napi_callback_info info)
 
 static napi_value Frexp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2477,7 +2478,7 @@ static napi_value Frexp(napi_env env, napi_callback_info info)
 
 static napi_value Frexpf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2493,7 +2494,7 @@ static napi_value Frexpf(napi_env env, napi_callback_info info)
 
 static napi_value Frexpl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value0;
@@ -2509,7 +2510,7 @@ static napi_value Frexpl(napi_env env, napi_callback_info info)
 
 static napi_value Powl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2525,7 +2526,7 @@ static napi_value Powl(napi_env env, napi_callback_info info)
 
 static napi_value NextToward(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2541,7 +2542,7 @@ static napi_value NextToward(napi_env env, napi_callback_info info)
 
 static napi_value NextTowardF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2557,7 +2558,7 @@ static napi_value NextTowardF(napi_env env, napi_callback_info info)
 
 static napi_value NextTowardL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2573,7 +2574,7 @@ static napi_value NextTowardL(napi_env env, napi_callback_info info)
 
 static napi_value Nextafter(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2589,7 +2590,7 @@ static napi_value Nextafter(napi_env env, napi_callback_info info)
 
 static napi_value Nextafterf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2605,7 +2606,7 @@ static napi_value Nextafterf(napi_env env, napi_callback_info info)
 
 static napi_value Nextafterl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     double valueFirst;
     double valueSecond;
@@ -2621,7 +2622,7 @@ static napi_value Nextafterl(napi_env env, napi_callback_info info)
 
 static napi_value Nearbyint(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     double valueFirst;
     napi_value result = nullptr;
@@ -2634,7 +2635,7 @@ static napi_value Nearbyint(napi_env env, napi_callback_info info)
 }
 static napi_value Nearbyintf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     double valueFirst;
     napi_value result = nullptr;
@@ -2647,7 +2648,7 @@ static napi_value Nearbyintf(napi_env env, napi_callback_info info)
 }
 static napi_value Nearbyintl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     double valueFirst;
     napi_value result = nullptr;
@@ -2660,10 +2661,10 @@ static napi_value Nearbyintl(napi_env env, napi_callback_info info)
 }
 static napi_value Nan(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     size_t size = STRLENGTH;
-    char *value = (char *)malloc(sizeof(char) * size);
+    char *value = static_cast<char *>(malloc(sizeof(char) * size));
     size_t actualVal;
     napi_value result = nullptr;
 
@@ -2676,10 +2677,10 @@ static napi_value Nan(napi_env env, napi_callback_info info)
 
 static napi_value Nanf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     size_t size = STRLENGTH;
-    char *value = (char *)malloc(sizeof(char) * size);
+    char *value = static_cast<char *>(malloc(sizeof(char) * size));
     size_t actualVal;
     napi_value result = nullptr;
 
@@ -2692,10 +2693,10 @@ static napi_value Nanf(napi_env env, napi_callback_info info)
 
 static napi_value Nanl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     size_t size = STRLENGTH;
-    char *value = (char *)malloc(sizeof(char) * size);
+    char *value = static_cast<char *>(malloc(sizeof(char) * size));
     size_t actualVal;
     napi_value result = nullptr;
 
@@ -2707,20 +2708,20 @@ static napi_value Nanl(napi_env env, napi_callback_info info)
 }
 static napi_value LRint(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    int lrint_value = lrint(valueZero);
+    int lrintValue = lrint(valueZero);
     napi_value result = nullptr;
-    napi_create_int32(env, lrint_value, &result);
+    napi_create_int32(env, lrintValue, &result);
 
     return result;
 }
 static napi_value LRintl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2734,21 +2735,21 @@ static napi_value LRintl(napi_env env, napi_callback_info info)
 
 static napi_value LRound(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
     napi_get_value_double(env, args[0], &valueZero);
-    double lround_value = lround(valueZero);
+    double lroundValue = lround(valueZero);
     napi_value result = nullptr;
-    napi_create_double(env, lround_value, &result);
+    napi_create_double(env, lroundValue, &result);
 
     return result;
 }
 
 static napi_value LRoundf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2762,7 +2763,7 @@ static napi_value LRoundf(napi_env env, napi_callback_info info)
 
 static napi_value LRoundl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2776,7 +2777,7 @@ static napi_value LRoundl(napi_env env, napi_callback_info info)
 
 static napi_value HYpot(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double x;
@@ -2793,7 +2794,7 @@ static napi_value HYpot(napi_env env, napi_callback_info info)
 
 static napi_value HYpotf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double x;
@@ -2810,7 +2811,7 @@ static napi_value HYpotf(napi_env env, napi_callback_info info)
 
 static napi_value HYpotl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double x;
@@ -2825,7 +2826,7 @@ static napi_value HYpotl(napi_env env, napi_callback_info info)
 }
 static napi_value ILogb(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2837,7 +2838,7 @@ static napi_value ILogb(napi_env env, napi_callback_info info)
 }
 static napi_value ILogbf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2850,7 +2851,7 @@ static napi_value ILogbf(napi_env env, napi_callback_info info)
 }
 static napi_value ILogbl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double valueZero;
@@ -2865,7 +2866,7 @@ static napi_value ILogbl(napi_env env, napi_callback_info info)
 extern int signgam;
 static napi_value SignGam(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double param;
@@ -2883,23 +2884,23 @@ static napi_value SignGam(napi_env env, napi_callback_info info)
 }
 static napi_value Yn(napi_env env, napi_callback_info info)
 {
-    double ret = yn(3, 3.0);
+    double ret = yn(PARAM_3, PARAM_30);
     napi_value result = nullptr;
-    if (MAGICNUM == ret) {
+    if (ret == MAGICNUM) {
         napi_create_double(env, PARAM_0, &result);
     } else {
-        napi_create_double(env, -1, &result);
+        napi_create_double(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
 static napi_value Ynf(napi_env env, napi_callback_info info)
 {
-    double ret = ynf(3, 3.0);
+    double ret = ynf(PARAM_3, PARAM_30);
     napi_value result = nullptr;
-    if (MAGICYNFNUM == ret) {
+    if (ret == MAGICYNFNUM) {
         napi_create_double(env, PARAM_0, &result);
     } else {
-        napi_create_double(env, -1, &result);
+        napi_create_double(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }

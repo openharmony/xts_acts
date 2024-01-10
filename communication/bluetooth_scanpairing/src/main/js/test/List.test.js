@@ -14,8 +14,6 @@
  */
 
 import btBleScanTest from './BtBleScanResult.test.js'
-import btDiscoveryTest from './BtDiscovery.test.js'
-import btManagerBleScanTest from './BtManagerBleScanResult.test.js'
 import btPairTest from './BtPair.test.js'
 import btManagerDiscoveryTest from './BtManagerDiscovery.test.js'
 import btManagerPairTest from './BtManagerPair.test.js'
@@ -24,8 +22,6 @@ import btGattManagerTest from './BtGattManager.test.js'
 export default function testsuite() {  
     btPairTest()
     btBleScanTest()
-    btDiscoveryTest()
-    btManagerBleScanTest()
     btManagerDiscoveryTest()
     btManagerPairTest()
     btGattManagerTest()

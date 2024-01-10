@@ -57,7 +57,7 @@ export default function webAttributeOnTitleReceiveTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONTITLERECEIVE_0100
     * @tc.name        : testWebAttributeOnTitleReceive001
-    * @tc.desc        : stress testing onTitleReceive when using the raw file
+    * @tc.desc        : stress testing onTitleReceive
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
@@ -73,7 +73,7 @@ export default function webAttributeOnTitleReceiveTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONTITLERECEIVE_0200
     * @tc.name        : testWebAttributeOnTitleReceive002
-    * @tc.desc        : stress testing onTitleReceive when using the raw file
+    * @tc.desc        : stress testing onTitleReceive
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

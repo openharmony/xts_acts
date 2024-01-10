@@ -125,6 +125,22 @@ struct sslErrorHandler {
               break;
             }
 
+            case "testClearSslCache001": {
+              try {
+                this.onSslErrorEventReceiveCallBack = false
+                this.controller.clearClientAuthenticationCache()
+                this.controller.clearSslCache();
+                await Utils.sleep(2000)
+                this.controller.loadUrl("https://expired.badssl.com");
+                await Utils.sleep(6000)
+                Utils.emitEvent(this.onSslErrorEventReceiveCallBack, 100073)
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                Utils.emitEvent(String(error.code), 100073)
+              }
+              break;
+            }
+
           }
         })
       }

@@ -14,7 +14,6 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
 #include <dirent.h>
 #include <fcntl.h>
 #include <ftw.h>
@@ -22,10 +21,11 @@
 #include <node_api.h>
 #include <unistd.h>
 
-
 #define TEST_FLAG_SIZE 4
 #define TEST_FD_LIMIT 128
+#define PARAM_0666 0666
 #define R_OK 4
+
 int copytoU_device(const char *file, const struct stat *sb, int flag) { return 0; }
 
 static napi_value Ftw(napi_env env, napi_callback_info info)
@@ -51,7 +51,7 @@ static napi_value Nftw(napi_env env, napi_callback_info info)
 {
     int flag[TEST_FLAG_SIZE] = {FTW_PHYS, FTW_MOUNT, FTW_CHDIR, FTW_DEPTH};
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
-    int fp = open(path, O_CREAT, 0666);
+    int fp = open(path, O_CREAT, PARAM_0666);
     write(fp, "666", sizeof("666"));
     close(fp);
     int ret = nftw(path, nftw_callback, TEST_FD_LIMIT, flag[0]);
@@ -63,7 +63,7 @@ static napi_value Nftw64(napi_env env, napi_callback_info info)
 {
     int flag[TEST_FLAG_SIZE] = {FTW_PHYS, FTW_MOUNT, FTW_CHDIR, FTW_DEPTH};
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
-    int fp = open(path, O_CREAT, 0666);
+    int fp = open(path, O_CREAT, PARAM_0666);
     write(fp, "666", sizeof("666"));
     close(fp);
     int ret = nftw64(path, nftw_callback, TEST_FD_LIMIT, flag[0]);

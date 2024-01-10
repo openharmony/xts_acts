@@ -63,7 +63,8 @@ export default function webAttributeOnErrorReceiveTest() {
     * @tc.level       : Level 1
     */
     it('testWebAttributeOnErrorReceive001', 0, async (done: Function) => {
-      Utils.doIt("testWebAttributeOnErrorReceive001", 110006, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebAttributeOnErrorReceive001", 110006,
+        Constants.USE_LOW_STRESS_TIMES ? Constants.LOW_STRESS_TIMES : Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_ATTRIBUTE_ONERRORRECEIVE_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);
@@ -79,7 +80,8 @@ export default function webAttributeOnErrorReceiveTest() {
     * @tc.level       : Level 1
     */
     it('testWebAttributeOnErrorReceive002', 0, async (done: Function) => {
-      Utils.doIt("testWebAttributeOnErrorReceive002", 100010, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebAttributeOnErrorReceive002", 100010,
+        Constants.USE_LOW_STRESS_TIMES ? Constants.LOW_STRESS_TIMES : Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_ATTRIBUTE_ONERRORRECEIVE_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);

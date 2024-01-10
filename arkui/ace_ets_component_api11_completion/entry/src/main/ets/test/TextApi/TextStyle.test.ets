@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from '../Utils'
+import { Driver, ON } from '@ohos.UiTest';
 
 export default function TextStyle() {
   describe('TextStyle', function () {
@@ -189,5 +191,34 @@ export default function TextStyle() {
       console.info('[TextStyle_0007] END');
       done();
     });
+
+
+    /**
+     * @tc.number    TextStyle_0008
+     * @tc.name      TextStyle_0008
+     * @tc.desc      set api
+     * @tc.level       Level 1
+     * @tc.type
+    * @tc.size
+     */
+    it('TextStyle_0008', 0, async function (done) {
+      console.info('[TextStyle_0008] START');
+      let driver= Driver.create();
+      await Utils.sleep(1000);
+      let btn = await driver.findComponent(ON.id('buttonSelect'));
+      await btn.click()
+      await Utils.sleep(4000);
+      let text1 = getInspectorByKey('selectionStart');
+      let Obj1 = JSON.parse(text1);
+      expect(Obj1.$attrs.content).assertEqual('10');
+
+      let text2 = getInspectorByKey('selectionEnd');
+      let Obj2 = JSON.parse(text2);
+      expect(Obj2.$attrs.content).assertEqual('30');
+
+      console.info('[TextStyle_0008] END');
+      done();
+    });
+
   })
 }

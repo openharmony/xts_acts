@@ -21,7 +21,7 @@ export default function selectNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SELECT_SELECT_0100
      * @tc.name       : testMuslSelectSelect001
      * @tc.desc       : test select
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -36,7 +36,7 @@ export default function selectNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SELECT_SELECT_0200
      * @tc.name       : testMuslSelectSelect002
      * @tc.desc       : test select
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -49,7 +49,7 @@ export default function selectNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SELECT_PSELECT_0100
      * @tc.name       : testMuslSelectPSelect001
      * @tc.desc       : test pselect
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

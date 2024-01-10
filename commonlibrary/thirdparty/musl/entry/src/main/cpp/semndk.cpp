@@ -16,13 +16,14 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <sys/sem.h>
 
 #define PARAM_0 0
+#define PARAM_1 1
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define TEST_MODE 0666
+#define PARAM_EACCES 13
 
 static napi_value Semop(napi_env env, napi_callback_info info)
 {
@@ -57,7 +58,7 @@ static napi_value Semtimedop(napi_env env, napi_callback_info info)
 
 static napi_value Semctl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -68,7 +69,7 @@ static napi_value Semctl(napi_env env, napi_callback_info info)
     int semid = semget(k, ONEVAL, IPC_CREAT | TEST_MODE);
     if (valueFirst == PARAM_0) {
         int semval = semctl(semid, PARAM_0, GETVAL);
-        if (semval == EACCES) {
+        if (semval == PARAM_EACCES) {
             napi_value result;
             napi_create_int32(env, semval, &result);
             return result;

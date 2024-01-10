@@ -16,7 +16,6 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
 #include <cstring>
 #include <sys/select.h>
@@ -25,21 +24,21 @@
 #include <unistd.h>
 
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define PARAM_1 1
 #define PARAM_5 5
 #define TEST_AT_FDCWD (-100)
 #define TEST_ERROR_AT_FDCWD 100
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TEN 10
 #define TEST_MODE 0666
 
 static napi_value Select(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     fd_set rfds;
@@ -72,7 +71,7 @@ static napi_value PSelect(napi_env env, napi_callback_info info)
     int ret = FAIL;
     napi_value result = nullptr;
     ret = pselect(STDOUT_FILENO + PARAM_1, nullptr, &set, nullptr, &timeout, nullptr);
-    if(ret != PARAM_1) {
+    if (ret != PARAM_1) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERR, &result);

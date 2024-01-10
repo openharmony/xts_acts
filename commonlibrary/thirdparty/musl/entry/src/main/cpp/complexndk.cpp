@@ -16,19 +16,20 @@
 #include <cstdio>
 #include <cstring>
 
-#include <math.h>
-#include "napi/native_api.h"
 #include "complex.h"
+#include "napi/native_api.h"
+#include <math.h>
 
 #define INDEX0 0
 #define INDEX1 1
 #define INDEX2 2
 #define INDEX3 3
-#define FAIL -1
+#define INDEX4 4
+#define FAIL (-1)
 
 static napi_value CReal(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, backParam;
@@ -43,7 +44,7 @@ static napi_value CReal(napi_env env, napi_callback_info info)
 
 static napi_value CRealF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, backParam;
@@ -61,7 +62,7 @@ static napi_value CRealF(napi_env env, napi_callback_info info)
 
 static napi_value CRealL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, backParam;
@@ -76,7 +77,7 @@ static napi_value CRealL(napi_env env, napi_callback_info info)
 
 static napi_value Conj(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -101,7 +102,7 @@ static napi_value Conj(napi_env env, napi_callback_info info)
 
 static napi_value ConjF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam;
@@ -129,7 +130,7 @@ static napi_value ConjF(napi_env env, napi_callback_info info)
 
 static napi_value ConjL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -154,7 +155,7 @@ static napi_value ConjL(napi_env env, napi_callback_info info)
 
 static napi_value CPow(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
+    size_t argc = INDEX4;
     napi_value args[4] = {nullptr, nullptr, nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, mid3, mid4, getRealAndImage;
@@ -181,7 +182,7 @@ static napi_value CPow(napi_env env, napi_callback_info info)
 
 static napi_value CPowF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
+    size_t argc = INDEX4;
     napi_value args[4] = {nullptr, nullptr, nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, mid3, mid4;
@@ -210,7 +211,7 @@ static napi_value CPowF(napi_env env, napi_callback_info info)
 
 static napi_value CPowL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
+    size_t argc = INDEX4;
     napi_value args[4] = {nullptr, nullptr, nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, mid3, mid4, getRealAndImage;
@@ -237,7 +238,7 @@ static napi_value CPowL(napi_env env, napi_callback_info info)
 
 static napi_value CProj(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -262,7 +263,7 @@ static napi_value CProj(napi_env env, napi_callback_info info)
 
 static napi_value CProjF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam;
@@ -290,7 +291,7 @@ static napi_value CProjF(napi_env env, napi_callback_info info)
 
 static napi_value CProjL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -315,7 +316,7 @@ static napi_value CProjL(napi_env env, napi_callback_info info)
 
 static napi_value CSin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -340,7 +341,7 @@ static napi_value CSin(napi_env env, napi_callback_info info)
 
 static napi_value CSinF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -365,7 +366,7 @@ static napi_value CSinF(napi_env env, napi_callback_info info)
 
 static napi_value CSinL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -390,7 +391,7 @@ static napi_value CSinL(napi_env env, napi_callback_info info)
 
 static napi_value CSinH(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -415,7 +416,7 @@ static napi_value CSinH(napi_env env, napi_callback_info info)
 
 static napi_value CSinHf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -440,7 +441,7 @@ static napi_value CSinHf(napi_env env, napi_callback_info info)
 
 static napi_value CSinHl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -465,7 +466,7 @@ static napi_value CSinHl(napi_env env, napi_callback_info info)
 
 static napi_value CSqrt(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -490,7 +491,7 @@ static napi_value CSqrt(napi_env env, napi_callback_info info)
 
 static napi_value CSqrtF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -515,7 +516,7 @@ static napi_value CSqrtF(napi_env env, napi_callback_info info)
 
 static napi_value CSqrtL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -540,7 +541,7 @@ static napi_value CSqrtL(napi_env env, napi_callback_info info)
 
 static napi_value CTan(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -565,7 +566,7 @@ static napi_value CTan(napi_env env, napi_callback_info info)
 
 static napi_value CTanF(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -590,7 +591,7 @@ static napi_value CTanF(napi_env env, napi_callback_info info)
 
 static napi_value CTanL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -615,7 +616,7 @@ static napi_value CTanL(napi_env env, napi_callback_info info)
 
 static napi_value CTanH(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -640,7 +641,7 @@ static napi_value CTanH(napi_env env, napi_callback_info info)
 
 static napi_value CTanHf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -665,7 +666,7 @@ static napi_value CTanHf(napi_env env, napi_callback_info info)
 
 static napi_value CTanHl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam, secondParam, getRealAndImage;
@@ -690,7 +691,7 @@ static napi_value CTanHl(napi_env env, napi_callback_info info)
 
 static napi_value Cabs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -705,15 +706,14 @@ static napi_value Cabs(napi_env env, napi_callback_info info)
 
 static napi_value Cabsf(napi_env env, napi_callback_info info)
 {
-
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
     napi_get_value_double(env, args[0], &real);
     napi_get_value_double(env, args[1], &image);
-    float complex param = {real, image};
-    double resultValue = cabsf(param);
+    float complex param = {(float)real, (float)image};
+    float resultValue = cabsf(param);
     napi_value result = nullptr;
     napi_create_double(env, resultValue, &result);
     return result;
@@ -721,14 +721,13 @@ static napi_value Cabsf(napi_env env, napi_callback_info info)
 
 static napi_value Cabsl(napi_env env, napi_callback_info info)
 {
-
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr, nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
     napi_get_value_double(env, args[0], &real);
     napi_get_value_double(env, args[1], &image);
-    float complex param = {real, image};
+    double complex param = {real, image};
     double resultValue = cabsl(param);
     napi_value result = nullptr;
     napi_create_double(env, resultValue, &result);
@@ -737,7 +736,7 @@ static napi_value Cabsl(napi_env env, napi_callback_info info)
 
 static napi_value Cacos(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -763,7 +762,7 @@ static napi_value Cacos(napi_env env, napi_callback_info info)
 
 static napi_value Cacosl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -789,7 +788,7 @@ static napi_value Cacosl(napi_env env, napi_callback_info info)
 
 static napi_value Cacosf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -815,7 +814,7 @@ static napi_value Cacosf(napi_env env, napi_callback_info info)
 
 static napi_value Cacosh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -841,7 +840,7 @@ static napi_value Cacosh(napi_env env, napi_callback_info info)
 
 static napi_value Cacoshf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -867,7 +866,7 @@ static napi_value Cacoshf(napi_env env, napi_callback_info info)
 
 static napi_value Cacoshl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -893,7 +892,7 @@ static napi_value Cacoshl(napi_env env, napi_callback_info info)
 
 static napi_value Carg(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -912,7 +911,7 @@ static napi_value Carg(napi_env env, napi_callback_info info)
 
 static napi_value Cargl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -931,7 +930,7 @@ static napi_value Cargl(napi_env env, napi_callback_info info)
 
 static napi_value Cargf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -950,7 +949,7 @@ static napi_value Cargf(napi_env env, napi_callback_info info)
 
 static napi_value Casin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -976,7 +975,7 @@ static napi_value Casin(napi_env env, napi_callback_info info)
 
 static napi_value Casinl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1002,7 +1001,7 @@ static napi_value Casinl(napi_env env, napi_callback_info info)
 
 static napi_value Casinf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1028,7 +1027,7 @@ static napi_value Casinf(napi_env env, napi_callback_info info)
 
 static napi_value Casinh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1054,7 +1053,7 @@ static napi_value Casinh(napi_env env, napi_callback_info info)
 
 static napi_value Casinhf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1080,7 +1079,7 @@ static napi_value Casinhf(napi_env env, napi_callback_info info)
 
 static napi_value Casinhl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1106,7 +1105,7 @@ static napi_value Casinhl(napi_env env, napi_callback_info info)
 
 static napi_value Catan(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1132,7 +1131,7 @@ static napi_value Catan(napi_env env, napi_callback_info info)
 
 static napi_value Catanl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1158,7 +1157,7 @@ static napi_value Catanl(napi_env env, napi_callback_info info)
 
 static napi_value Catanf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1184,7 +1183,7 @@ static napi_value Catanf(napi_env env, napi_callback_info info)
 
 static napi_value Catanh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1210,7 +1209,7 @@ static napi_value Catanh(napi_env env, napi_callback_info info)
 
 static napi_value Catanhf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1236,7 +1235,7 @@ static napi_value Catanhf(napi_env env, napi_callback_info info)
 
 static napi_value Catanhl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1262,7 +1261,7 @@ static napi_value Catanhl(napi_env env, napi_callback_info info)
 
 static napi_value Ccos(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1288,7 +1287,7 @@ static napi_value Ccos(napi_env env, napi_callback_info info)
 
 static napi_value Ccosl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1314,7 +1313,7 @@ static napi_value Ccosl(napi_env env, napi_callback_info info)
 
 static napi_value Ccosf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1340,7 +1339,7 @@ static napi_value Ccosf(napi_env env, napi_callback_info info)
 
 static napi_value Ccosh(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1366,7 +1365,7 @@ static napi_value Ccosh(napi_env env, napi_callback_info info)
 
 static napi_value Ccoshf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1392,7 +1391,7 @@ static napi_value Ccoshf(napi_env env, napi_callback_info info)
 
 static napi_value Ccoshl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1418,7 +1417,7 @@ static napi_value Ccoshl(napi_env env, napi_callback_info info)
 
 static napi_value Cexp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1444,7 +1443,7 @@ static napi_value Cexp(napi_env env, napi_callback_info info)
 
 static napi_value Cexpl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1470,7 +1469,7 @@ static napi_value Cexpl(napi_env env, napi_callback_info info)
 
 static napi_value Cexpf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1496,7 +1495,7 @@ static napi_value Cexpf(napi_env env, napi_callback_info info)
 
 static napi_value Clog(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1522,7 +1521,7 @@ static napi_value Clog(napi_env env, napi_callback_info info)
 
 static napi_value Clogf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1548,7 +1547,7 @@ static napi_value Clogf(napi_env env, napi_callback_info info)
 
 static napi_value Clogl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1574,7 +1573,7 @@ static napi_value Clogl(napi_env env, napi_callback_info info)
 
 static napi_value Cimag(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1589,7 +1588,7 @@ static napi_value Cimag(napi_env env, napi_callback_info info)
 
 static napi_value Cimagf(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;
@@ -1604,7 +1603,7 @@ static napi_value Cimagf(napi_env env, napi_callback_info info)
 
 static napi_value Cimagl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = INDEX2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double real, image;

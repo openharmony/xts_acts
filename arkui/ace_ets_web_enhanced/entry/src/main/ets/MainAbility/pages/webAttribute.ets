@@ -91,8 +91,8 @@ struct webAttribute {
       console.info("ets toString:" + String(str));
     },
     register: (res: object) => {
-      if (this.RegisterJavaScriptProxyFlag == true) {
-        Utils.emitEvent(String(res), 31008);
+      if (res) {
+        console.info('register:' + res)
       }
       return "web222"
     }

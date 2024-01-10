@@ -16,9 +16,6 @@
 import webView from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
 import cert from '@ohos.security.cert';
 
 function Uint8ArrayToString(dataArray: Uint8Array) {
@@ -100,27 +97,8 @@ struct WebAttributeTest {
         } catch (error) {
           console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
         }
+        this.errorReceive = ''
       }
-    }
-  }
-
-  aboutToAppear() {
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-
-    try {
-      webView.once("webInited", () => {
-        console.error('webInited =====>')
-        this.webInit = true
-      })
-      webView.once("webCreated", () => {
-        console.error('webCreated =====>')
-        this.webCreated = true
-      })
-    } catch (error) {
-      console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
     }
   }
 
@@ -514,22 +492,6 @@ struct WebAttributeTest {
                 }
                 break;
               }
-              case "emitOnce001": {
-                try {
-                  Utils.emitEvent(this.webInit, 409);
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                }
-                break;
-              }
-              case "emitOnce002": {
-                try {
-                  Utils.emitEvent(this.webCreated, 410);
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                }
-                break;
-              }
               case "emitHeader001": {
                 try {
                   this.controller.loadUrl('http://testonerrorexample.com/', [{
@@ -597,6 +559,52 @@ struct WebAttributeTest {
                 }
                 break;
               }
+              case "emitBlockNetWork003": {
+                try {
+                  this.blockNetwork = true
+                  await Utils.sleep(1000)
+                  this.controller.loadUrl($rawfile('second.html'))
+                  await Utils.sleep(2000)
+                  this.blockNetwork = false
+                  await Utils.sleep(1000)
+                  Utils.emitEvent(this.errorReceive, 60800)
+                  break;
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              }
+              case "emitBlockNetWork004": {
+                try {
+                  this.blockNetwork = true
+                  await Utils.sleep(1000)
+                  this.controller.loadUrl('resource://rawfile/index.html')
+                  await Utils.sleep(2000)
+                  this.blockNetwork = false
+                  await Utils.sleep(1000)
+                  Utils.emitEvent(this.errorReceive, 60802)
+                  break;
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              }
+              case "emitBlockNetWork005": {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  this.blockNetwork = true
+                  await Utils.sleep(1000)
+                  this.controller.loadUrl(`file://${sandboxPath}`)
+                  await Utils.sleep(2000)
+                  this.blockNetwork = false
+                  await Utils.sleep(1000)
+                  Utils.emitEvent(this.errorReceive, 60805)
+                  break;
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              }
               case "emitOnFaviconReceived": {
                 try {
                   this.controller.loadUrl('resource://rawfile/icon.html');
@@ -622,7 +630,7 @@ struct WebAttributeTest {
               case "emitGetCertificate001": {
                 try {
                   this.controller.loadUrl('https://expired.badssl.com')
-                  await Utils.sleep(3000)
+                  await Utils.sleep(6000)
                   this.controller.getCertificate().then(x509CertArray => {
                     this.outputStr = ParseX509CertInfo(x509CertArray);
                     console.log("getCertificate result of this page: " + this.outputStr);
@@ -636,7 +644,7 @@ struct WebAttributeTest {
               case "emitGetCertificate002": {
                 try {
                   this.controller.loadUrl('https://expired.badssl.com')
-                  await Utils.sleep(3000)
+                  await Utils.sleep(6000)
                   this.controller.getCertificate((error, x509CertArray) => {
                     if (error) {
                       this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;

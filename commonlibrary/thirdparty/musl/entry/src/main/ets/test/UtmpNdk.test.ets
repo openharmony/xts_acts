@@ -23,7 +23,7 @@ export default function utmpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTMP_SETUTENT_0100
      * @tc.name       : testMuslUtmpSetutent001
      * @tc.desc       : test setutent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -36,7 +36,7 @@ export default function utmpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTMP_PUTUTLINE_0100
      * @tc.name       : testMuslUtmpPututline001
      * @tc.desc       : test pututline
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -49,7 +49,7 @@ export default function utmpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTMP_GETUTENT_0100
      * @tc.name       : testMuslUtmpGetutent001
      * @tc.desc       : test getutent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -62,7 +62,7 @@ export default function utmpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTMP_LOGIN_TTY_0100
      * @tc.name       : testMuslUtmpLoginTty001
      * @tc.desc       : test login_tty
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -76,7 +76,7 @@ export default function utmpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTMP_UTMPNAME_0100
      * @tc.name       : testMuslUtmpUtmpname001
      * @tc.desc       : test utmpname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

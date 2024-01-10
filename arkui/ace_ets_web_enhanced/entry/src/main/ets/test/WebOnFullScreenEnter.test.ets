@@ -55,7 +55,7 @@ export default function webOnFullScreenEnter() {
     * @tc.number      : SUB_WEB_ONFULLSCREENENTER_0100
     * @tc.name        : testOnFullScreenEnter001
     * @tc.desc        : test onFullScreenEnter
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */

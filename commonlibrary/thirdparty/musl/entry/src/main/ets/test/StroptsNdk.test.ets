@@ -24,7 +24,7 @@ export default function muslStroptsNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STROPTS_IOCTL_0100
      * @tc.name     : testMuslStroptsIoctl001
      * @tc.desc     : test ioctl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

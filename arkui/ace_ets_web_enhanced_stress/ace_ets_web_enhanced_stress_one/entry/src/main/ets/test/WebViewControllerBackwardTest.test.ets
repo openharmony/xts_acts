@@ -57,7 +57,7 @@ export default function webViewControllerBackwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_BACKWARD_0100
     * @tc.name        : testWebViewControllerBackward001
-    * @tc.desc        : stress testing backward when using the raw file
+    * @tc.desc        : stress testing backward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

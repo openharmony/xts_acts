@@ -57,7 +57,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0100
     * @tc.name        : testGetHitTest001
     * @tc.desc        : test getHitTest return webView.WebHitTestType.EditText
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -72,7 +72,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0200
     * @tc.name        : testGetHitTest002
     * @tc.desc        : test getHitTest return webView.WebHitTestType.Email
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -87,7 +87,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0300
     * @tc.name        : testGetHitTest003
     * @tc.desc        : test getHitTest return webView.WebHitTestType.HttpAnchor
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -102,7 +102,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0400
     * @tc.name        : testGetHitTest004
     * @tc.desc        : test getHitTest return webView.WebHitTestType.HttpAnchorImg
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -117,7 +117,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0500
     * @tc.name        : testGetHitTest005
     * @tc.desc        : test getHitTest return webView.WebHitTestType.Img
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -132,7 +132,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0700
     * @tc.name        : testGetHitTest007
     * @tc.desc        : test getHitTest return webView.WebHitTestType.Phone
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -147,7 +147,7 @@ export default function webControllerHitTest() {
     * @tc.number      : SUB_WEB_WEBCONTROLLER_GETHITTEST_0800
     * @tc.name        : testGetHitTest008
     * @tc.desc        : test getHitTest return webView.WebHitTestType.Unknown
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

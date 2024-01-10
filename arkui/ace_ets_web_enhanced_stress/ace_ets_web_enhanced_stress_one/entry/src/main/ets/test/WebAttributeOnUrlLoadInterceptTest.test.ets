@@ -57,7 +57,7 @@ export default function webAttributeonOnUrlLoadInterceptTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONURLLOADINTERCEPT_0100
     * @tc.name        : testWebAttributeOnUrlLoadIntercept001
-    * @tc.desc        : stress testing onUrlLoadIntercept when using the raw file
+    * @tc.desc        : stress testing onUrlLoadIntercept
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

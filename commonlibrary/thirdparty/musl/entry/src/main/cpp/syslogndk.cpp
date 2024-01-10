@@ -18,10 +18,10 @@
 #include <cstdarg>
 #include <syslog.h>
 #define PARAM_0 0
-#define ONEVAL -1
+#define ONEVAL (-1)
 #define ONEVALS 1
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define ERRON_0 0
 

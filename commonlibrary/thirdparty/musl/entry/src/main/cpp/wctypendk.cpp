@@ -13,25 +13,25 @@
  * limitations under the License.
  */
 
+#include <cwchar>
 #include <cwctype>
 #include <js_native_api.h>
 #include <malloc.h>
 #include <node_api.h>
 #include <sys/select.h>
-#include <cwchar>
 
 #define STRLENGTH 16
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define SUCCESS 1
 #define FALSE 0
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
 #define RETURN_ONE 1
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_3 3
 #define SIZE_5 5
@@ -51,7 +51,7 @@
 
 static napi_value Iswalnum(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -71,14 +71,14 @@ static napi_value Iswalnum(napi_env env, napi_callback_info info)
 
 static napi_value IswalnumL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
     char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswalnum_l((wint_t) * (char16_t *)ch,PARAM_0);
+    int retVal = iswalnum_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
     if (retVal != PARAM_0) {
         napi_create_int32(env, SUCCESS, &result);
@@ -91,7 +91,7 @@ static napi_value IswalnumL(napi_env env, napi_callback_info info)
 
 static napi_value Iswalpha(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -111,14 +111,14 @@ static napi_value Iswalpha(napi_env env, napi_callback_info info)
 
 static napi_value IswalphaL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
     size_t strResult = NO_ERR;
     char ch[length];
     napi_get_value_string_utf8(env, args[0], ch, length, &strResult);
-    int retVal = iswalpha_l((wint_t) * (char16_t *)ch, 0);
+    int retVal = iswalpha_l((wint_t) * (char16_t *)ch, PARAM_0);
     napi_value result;
     if (retVal != PARAM_0) {
         napi_create_int32(env, SUCCESS, &result);
@@ -131,7 +131,7 @@ static napi_value IswalphaL(napi_env env, napi_callback_info info)
 
 static napi_value Iswblank(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -151,7 +151,7 @@ static napi_value Iswblank(napi_env env, napi_callback_info info)
 
 static napi_value IswblankL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -171,7 +171,7 @@ static napi_value IswblankL(napi_env env, napi_callback_info info)
 
 static napi_value Iswcntrl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first;
@@ -189,7 +189,7 @@ static napi_value Iswcntrl(napi_env env, napi_callback_info info)
 
 static napi_value IswcntrlL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first;
@@ -207,7 +207,7 @@ static napi_value IswcntrlL(napi_env env, napi_callback_info info)
 
 static napi_value Iswdigit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -226,7 +226,7 @@ static napi_value Iswdigit(napi_env env, napi_callback_info info)
 }
 static napi_value IswdigitL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -246,7 +246,7 @@ static napi_value IswdigitL(napi_env env, napi_callback_info info)
 
 static napi_value Iswgraph(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -265,7 +265,7 @@ static napi_value Iswgraph(napi_env env, napi_callback_info info)
 }
 static napi_value IswgraphL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -285,7 +285,7 @@ static napi_value IswgraphL(napi_env env, napi_callback_info info)
 
 static napi_value Iswlower(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -305,7 +305,7 @@ static napi_value Iswlower(napi_env env, napi_callback_info info)
 
 static napi_value IswlowerL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -325,7 +325,7 @@ static napi_value IswlowerL(napi_env env, napi_callback_info info)
 
 static napi_value Iswprint(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -345,7 +345,7 @@ static napi_value Iswprint(napi_env env, napi_callback_info info)
 
 static napi_value IswprintL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -365,7 +365,7 @@ static napi_value IswprintL(napi_env env, napi_callback_info info)
 
 static napi_value Iswpunct(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -385,7 +385,7 @@ static napi_value Iswpunct(napi_env env, napi_callback_info info)
 
 static napi_value IswpunctL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -405,7 +405,7 @@ static napi_value IswpunctL(napi_env env, napi_callback_info info)
 
 static napi_value Iswspace(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -424,7 +424,7 @@ static napi_value Iswspace(napi_env env, napi_callback_info info)
 }
 static napi_value IswspaceL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -444,7 +444,7 @@ static napi_value IswspaceL(napi_env env, napi_callback_info info)
 
 static napi_value Iswupper(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -464,7 +464,7 @@ static napi_value Iswupper(napi_env env, napi_callback_info info)
 
 static napi_value IswupperL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -484,7 +484,7 @@ static napi_value IswupperL(napi_env env, napi_callback_info info)
 
 static napi_value Iswctype(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -506,7 +506,7 @@ static napi_value Iswctype(napi_env env, napi_callback_info info)
 
 static napi_value IswctypeL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -515,7 +515,7 @@ static napi_value IswctypeL(napi_env env, napi_callback_info info)
     char chSecond[length];
     napi_get_value_string_utf8(env, args[0], chFirst, length, &strResult);
     napi_get_value_string_utf8(env, args[1], chSecond, length, &strResult);
-    int retVal = iswctype_l((wint_t) * (char16_t *)chFirst, wctype(chSecond), 0);
+    int retVal = iswctype_l((wint_t) * (char16_t *)chFirst, wctype(chSecond), PARAM_0);
     napi_value result;
     if (retVal != PARAM_0) {
         napi_create_int32(env, SUCCESS, &result);
@@ -528,7 +528,7 @@ static napi_value IswctypeL(napi_env env, napi_callback_info info)
 
 static napi_value Iswxdigit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -548,7 +548,7 @@ static napi_value Iswxdigit(napi_env env, napi_callback_info info)
 
 static napi_value IswxdigitL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = STRLENGTH;
@@ -568,7 +568,7 @@ static napi_value IswxdigitL(napi_env env, napi_callback_info info)
 
 static napi_value Towctrans(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -611,7 +611,7 @@ static napi_value Towctrans(napi_env env, napi_callback_info info)
 
 static napi_value TowctransL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -654,49 +654,49 @@ static napi_value TowctransL(napi_env env, napi_callback_info info)
 
 static napi_value TowlowerL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int towlower_l_value = FAILD;
+    int towlowerLValue = FAILD;
     locale_t locale = nullptr;
     if (param == PARAM_0) {
         char ch = 'A';
         char result = towlower_l(ch, locale);
         if (result == 'a') {
-            towlower_l_value = RETURN_0;
+            towlowerLValue = RETURN_0;
         }
     } else if (param == PARAM_1) {
         char ch = PARAM_2;
         char result = towlower_l(ch, locale);
         if (result == ch) {
-            towlower_l_value = RETURN_0;
+            towlowerLValue = RETURN_0;
         }
 
     } else if (param == PARAM_2) {
         char ch = 'a';
         char result = towlower_l(ch, locale);
         if (result == 'a') {
-            towlower_l_value = RETURN_0;
+            towlowerLValue = RETURN_0;
         }
     } else {
         char ch = '$';
         char result = towlower_l(ch, locale);
         if (result == '$') {
-            towlower_l_value = RETURN_0;
+            towlowerLValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, towlower_l_value, &result);
+    napi_create_int32(env, towlowerLValue, &result);
 
     return result;
 }
 
 static napi_value TowupperL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -738,94 +738,94 @@ static napi_value TowupperL(napi_env env, napi_callback_info info)
 
 static napi_value Wctrans(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         if (wctrans("tolower")) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         if (wctrans("toupper")) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value WctransL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     locale_t locale = nullptr;
     if (param == PARAM_0) {
         if (wctrans_l("tolower", locale)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         if (wctrans_l("toupper", locale)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wctype(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wctype_t wt = wctype("alnum");
         int result = iswctype(L'1', wt);
         if (result == PARAM_1) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value WctypeL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     locale_t locale = nullptr;
     if (param == PARAM_0) {
         wctype_t wt = wctype_l("alnum", locale);
         int result = iswctype_l(L'1', wt, locale);
         if (result == PARAM_1) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }

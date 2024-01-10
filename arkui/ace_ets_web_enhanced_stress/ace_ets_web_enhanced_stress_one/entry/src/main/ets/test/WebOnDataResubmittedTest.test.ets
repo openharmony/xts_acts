@@ -63,7 +63,8 @@ export default function webOnDataResubmittedTest() {
     * @tc.level       : Level 2
     */
     it('testWebOnDataResubmitted001', 0, async (done: Function) => {
-      Utils.doIt("testWebOnDataResubmitted001", 100400, Constants.DEFAULT_STRESS_TIMES,
+      Utils.doIt("testWebOnDataResubmitted001", 100400,
+        Constants.USE_LOW_STRESS_TIMES ? Constants.LOW_STRESS_TIMES : Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_ON_DATA_RESUBMITTED_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);
