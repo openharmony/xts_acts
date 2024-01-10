@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
+import displaySync from '@ohos.graphics.displaySync'
 
 export default function displayAndWindowRefactorInterfaceTest(context, windowStage, abilityStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
