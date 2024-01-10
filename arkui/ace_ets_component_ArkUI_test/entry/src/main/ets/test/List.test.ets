@@ -45,6 +45,9 @@ import ResourceInteger from './ResourceTest/ResourceInteger.test.ets'
 import ResourcePlural from './ResourceTest/ResourcePlural.test.ets'
 import ResourceStrarray from './ResourceTest/ResourceStrarray.test.ets'
 import ResourceString from './ResourceTest/ResourceString.test.ets'
+import rotationTest from './RenderNodeTest/rotation.test.ets'
+import transformTest from './RenderNodeTest/transform.test.ets'
+import translationTest from './RenderNodeTest/translation.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -79,4 +82,7 @@ export default function testsuite() {
   ResourcePlural();
   ResourceStrarray();
   ResourceString();
+  rotationTest()
+  transformTest()
+  translationTest()
 }

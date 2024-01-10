@@ -34,6 +34,9 @@
         "MainAbility/pages/Resource/ResourceInteger",
         "MainAbility/pages/Resource/ResourcePlural",
         "MainAbility/pages/Resource/ResourceStrarray",
-        "MainAbility/pages/Resource/ResourceString"
+        "MainAbility/pages/Resource/ResourceString",
+        "MainAbility/pages/RenderNode/rotation",
+        "MainAbility/pages/RenderNode/transform",
+        "MainAbility/pages/RenderNode/translation"
     ]
 }
