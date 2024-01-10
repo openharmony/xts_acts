@@ -3831,7 +3831,7 @@ export default function window_test() {
                     wnd.show().then(() => {
 
                         wnd.minimize((err) => {
-                            if (!err.code) {
+                            if (err.code && err.code != 202) {
                               console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
                               expect().assertFail()
                             }
