@@ -44,6 +44,12 @@ import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
 import setForegroundColor from './DragController/setForegroundColor.test.ets';
+import backgroundEffectJsunit from './backgroundEffect/backgroundEffect.test.ets'
+import blendMode1Jsunit from './backgroundEffect/blendMode1.test.ets'
+import sheetSize1Jsunit from './backgroundEffect/sheetSize1.test.ets'
+import monopolizeTest from './commonApi/monopolizeTest.test.ets';
+import blendModeTest from './commonApi/blendModeTest.test.ets';
+import outlineTest from './commonApi/outlineTest.test.ets';
 import arkuiNodeTest from "./arkuinode/arkuinode.test.ets"
 import atomicServiceBarTest from "./autoservice/atomicServiceBar.test.ets"
 import buttonControlTest from "./buttonControlSize/buttonControl.test.ets"
@@ -52,6 +58,7 @@ import listSContentTest from "./list/list.test.ets"
 import  relativeCTest from "./relative/relative.test.ets"
 import  gridIndexTest from "./grid/grid.test.ets"
 import enumFolderTest from "./folder/enumflodstack.test.ets"
+
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -92,4 +99,8 @@ export default function testsuite() {
   setForegroundColor()
   touchPoint()
   previewOptions()
+  backgroundEffectJsunit()
+  sheetSize1Jsunit()
+  monopolizeTest()
+  outlineTest()
 }
