@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, it, expect } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
 import { BusinessError } from '@ohos.base';
 
@@ -65,7 +64,7 @@ export default function systemTimeJsunit() {
         expect(data != null).assertEqual(true);
         done();
       }).catch((error: BusinessError) => {
-        console.error('====>SUB_systemTime_getCurrentTime_JS_API_0002 fail: ' + JSON.stringify(err));
+        console.error('====>SUB_systemTime_getCurrentTime_JS_API_0002 fail: ' + JSON.stringify(error));
         expect().assertFail()
         done();
       });
@@ -115,7 +114,7 @@ export default function systemTimeJsunit() {
         expect(data != null).assertEqual(true);
         done();
       }).catch((error: BusinessError) => {
-        console.error('====>SUB_systemTime_getCurrentTime_JS_API_0004 fail: ' + JSON.stringify(err));
+        console.error('====>SUB_systemTime_getCurrentTime_JS_API_0004 fail: ' + JSON.stringify(error));
         expect().assertFail()
         done();
       });
@@ -165,7 +164,7 @@ export default function systemTimeJsunit() {
         expect(data != null).assertEqual(true);
         done();
       }).catch((error: BusinessError) => {
-        console.error('====>SUB_systemTime_getRealActiveTime_JS_API_0002 err: ' + JSON.stringify(err));
+        console.error('====>SUB_systemTime_getRealActiveTime_JS_API_0002 err: ' + JSON.stringify(error));
         expect().assertFail()
         done();
       });
@@ -215,7 +214,7 @@ export default function systemTimeJsunit() {
         expect(data != null).assertEqual(true);
         done();
       }).catch((error: BusinessError) => {
-        console.error('====>SUB_systemTime_getRealActiveTime_JS_API_0004 err: ' + JSON.stringify(err));
+        console.error('====>SUB_systemTime_getRealActiveTime_JS_API_0004 err: ' + JSON.stringify(error));
         expect().assertFail()
         done();
       });
