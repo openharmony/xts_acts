@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,8 @@
  */
 
 import events_emitter from '@ohos.events.emitter'
-import {MessageManager,Callback} from '../utils/MessageManager';
+import { MessageManager, Callback } from '../utils/MessageManager';
+
 @Entry
 @Component
 struct StepperExample {
@@ -23,8 +23,7 @@ struct StepperExample {
   @State firstState: ItemState = ItemState.Normal
   @State secondState: ItemState = ItemState.Normal
   @State disabled: ItemState = ItemState.Normal
-
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager = new MessageManager()
 
   build() {
     Stepper({
@@ -102,46 +101,44 @@ struct StepperExample {
   }
 
   onPageShow() {
-
-     globalThis.value = {
+    globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback = (message) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'index') {
-          this.currentIndex = message.value
-      } 
+        this.currentIndex = message.value
+      }
     }
     this.messageManager.registerCallback(callback)
 
     console.info('stepper page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 202,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 909,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 910,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
 
-    var stateChangeEventFour = {
+    let stateChangeEventFour: events_emitter.InnerEvent = {
       eventId: 940,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventFour, this.stateChangCallBack);
   }
- 
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("stepper page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("stepper page state change called:" + JSON.stringify(eventData));

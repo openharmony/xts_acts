@@ -26,14 +26,14 @@ struct TouchExample {
 
   onPageShow() {
     console.info('[touch] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 42,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[touch] page stateChangCallBack");
     if (eventData != null) {
       console.info("[touch] page state change called:" + JSON.stringify(eventData));
@@ -77,31 +77,33 @@ struct TouchExample {
           }
           console.info('onTouch successful, touchFlag is : ' + this.eventType + ', ' + this.touchFlag)
           console.info(this.text = 'TouchType:' + this.eventType
-          + '\nDistance between touch point and touch element:\nx: '
-          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPosition：（'
-          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + '）\nwidth:'
-          + event.target.area.width + '\nheight：' + event.target.area.height);
+            + '\nDistance between touch point and touch element:\nx: '
+            + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPosition：（'
+            + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + '）\nwidth:'
+            + event.target.area.width + '\nheight：' + event.target.area.height);
           console.log('fang--->A')
           try {
             console.log('fang--->B')
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.touchFlag,
               }
             }
             console.log('fang--->C')
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 43,
               priority: events_emitter.EventPriority.LOW
             }
             console.log('fang--->D')
             console.info("touchFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch(err) {
+          } catch (err) {
             console.info("touchFlag emit action state err: " + JSON.stringify(err.message))
           }
         })
       Text(this.text)
-    }.height(200).width(350)
+    }
+    .height(200)
+    .width(350)
   }
 }

@@ -20,7 +20,11 @@ import events_emitter from '@ohos.events.emitter'
 @Component
 struct FlexExample {
   @State direction: FlexDirection = FlexDirection.Row
-  private stateChangCallBack = (eventData) => {
+  private flexBasis: ESObject = null
+  private flexGrow: ESObject = null
+  private flexShrink: ESObject = null
+  private alignSelf: ItemAlign = null
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Flex page state change called:" + JSON.stringify(eventData));
       if (eventData.data.flexBasis != null) {
@@ -37,7 +41,7 @@ struct FlexExample {
       }
     }
   }
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Flex page state change called:" + JSON.stringify(eventData));
       switch (eventData.data.alignSelf) {
@@ -67,7 +71,7 @@ struct FlexExample {
 
   onPageShow() {
     console.info('flex page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 8,
       priority: events_emitter.EventPriority.LOW
     }
@@ -76,7 +80,10 @@ struct FlexExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('flexBasis').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('flexBasis')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Flex() {
         Text('flexBasis("auto")')
           .flexBasis('auto')
@@ -92,9 +99,17 @@ struct FlexExample {
           .lineHeight(70)
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
-      }.width('90%').height(120).padding(10).backgroundColor(0xAFEEEE)
+      }
+      .width('90%')
+      .height(120)
+      .padding(10)
+      .backgroundColor(0xAFEEEE)
 
-      Text('flexGrow').key("flexGrow").fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('flexGrow')
+        .key("flexGrow")
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Flex() {
         Text('flexGrow(2)')
           .flexGrow(2)
@@ -108,9 +123,17 @@ struct FlexExample {
           .lineHeight(70)
           .backgroundColor(0xD2B48C)
           .textAlign(TextAlign.Center)
-      }.width('90%').height(120).padding(10).backgroundColor(0xAFEEEE)
+      }
+      .width('90%')
+      .height(120)
+      .padding(10)
+      .backgroundColor(0xAFEEEE)
 
-      Text('flexShrink').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('flexShrink')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
       Flex({ direction: FlexDirection.Row }) {
         Text('flexShrink(0)')
           .flexShrink(0)
@@ -133,12 +156,23 @@ struct FlexExample {
           .lineHeight(70)
           .backgroundColor(0xF5DEB3)
           .textAlign(TextAlign.Center)
-      }.width('90%').height(120).padding(10).backgroundColor(0xAFEEEE)
+      }
+      .width('90%')
+      .height(120)
+      .padding(10)
+      .backgroundColor(0xAFEEEE)
 
-      Text('alignSelf').key("alignSelf").fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('alignSelf')
+        .key("alignSelf")
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
-        Text('no alignSelf,height:80').width('33%').height(80)
-          .backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('no alignSelf,height:80')
+          .width('33%')
+          .height(80)
+          .backgroundColor(0xF5DEB3)
+          .textAlign(TextAlign.Center)
         Text('alignSelf stretch')
           .alignSelf(ItemAlign.Stretch)
           .width('33%')
@@ -146,14 +180,19 @@ struct FlexExample {
           .lineHeight(70)
           .backgroundColor(0xD2B48C)
           .textAlign(TextAlign.Center)
-        Text('no alignSelf,height:100').width('34%').height(100)
-          .backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('no alignSelf,height:100')
+          .width('34%')
+          .height(100)
+          .backgroundColor(0xF5DEB3)
+          .textAlign(TextAlign.Center)
       }
       .key('flex')
       .width('90%')
       .height(120)
       .padding(10)
       .backgroundColor(0xAFEEEE)
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }
