@@ -50,6 +50,16 @@ import ohosrouterJsunit from './ohosrouter.test.ets';
 import ImageApi from './ImageApi.test.ets';
 import NavigationApi from './NavigationApi.test.ets';
 import TextStyle from './TextApi/TextStyle.test';
+import StateMap from './StateMap.test.ets';
+import StateSet from './StateSet.test.ets';
+import PropMap from './PropMap.test.ets';
+import PropSet from './PropSet.test.ets';
+import ProvideMap from './ProvideMap.test.ets';
+import ProvideSet from './ProvideSet.test.ets';
+import LinkMap from './LinkMap.test.ets';
+import LinkSet from './LinkSet.test.ets';
+import ObjectLinkMap from './ObjectLinkMap.test.ets';
+import ObjectLinkSet from './ObjectLinkSet.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
@@ -83,4 +93,14 @@ export default function testsuite() {
   ImageApi()
   NavigationApi()
   TextStyle()
+  StateMap();
+  StateSet();
+  PropMap();
+  PropSet();
+  ProvideMap();
+  ProvideSet();
+  LinkMap();
+  LinkSet();
+  ObjectLinkMap();
+  ObjectLinkSet();
 }
