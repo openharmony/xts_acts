@@ -395,7 +395,7 @@ export default function photoPickerTest() {
       recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.QR_OR_BAR_CODE;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
-      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
 
     /**
@@ -415,7 +415,7 @@ export default function photoPickerTest() {
       recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.BAR_CODE;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
-      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
  
     /**
@@ -435,7 +435,7 @@ export default function photoPickerTest() {
       recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.ID_CARD;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
-      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
  
      /**
@@ -455,7 +455,7 @@ export default function photoPickerTest() {
       recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.PROFILE_PICTURE;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
-      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
     
     //callback
