@@ -19,6 +19,10 @@
 struct buttonExample {
   @State message: string = 'Hello World'
   @State text: string = '3145897936@QQ.COM'
+  @State onCopy: string = ''
+  @State text1: string = 'This is set selection to Selection text content This is set selection to Selection text content.111111'
+  @State start: number = 0
+  @State end: number = 20
 
   @Builder
   build() {
@@ -104,7 +108,32 @@ struct buttonExample {
         .type(TextAreaType.PHONE_NUMBER)
 
 
-    }.width('100%')
+
+
+
+
+      Text(this.text1)
+        .fontSize(12)
+        .border({ width: 1 })
+        .lineHeight(20)
+        .margin(30)
+        .copyOption(CopyOptions.InApp)
+        .selection(this.start, this.end)
+
+      Button('Set text selection')
+        .margin({left:20})
+        .onClick(() => {
+          // 变更文本选中起始点、终点
+          this.start = 10
+          this.end = 30
+        }).id('buttonSelect')
+
+      Text(''+this.start).fontSize(12).margin(10).key('selectionStart')
+      Text(''+this.end).fontSize(12).margin(10).key('selectionEnd')
+
+
+
   }
+}
 
 }
