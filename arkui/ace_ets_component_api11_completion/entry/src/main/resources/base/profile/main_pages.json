@@ -24,6 +24,13 @@
         "MainAbility/pages/DragController/createDragAction",
         "MainAbility/pages/DragController/setForegroundColor",
         "MainAbility/pages/DragController/touchPoint_Auto",
-        "MainAbility/pages/DragController/touchPoint_Disable"
+        "MainAbility/pages/DragController/touchPoint_Disable",
+	    "MainAbility/pages/arkuinode/arkui_node",
+        "MainAbility/pages/button/buttonControlSize",
+        "MainAbility/pages/dymaticattribute/attribute",
+        "MainAbility/pages/list/listTest",
+        "MainAbility/pages/relativecommon/relative",
+        "MainAbility/pages/grid/gridte",
+        "MainAbility/pages/folderStack/folder_stack"
     ]
 }
