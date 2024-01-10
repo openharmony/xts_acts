@@ -113,7 +113,7 @@ export default function photoPickerTest() {
 
     //promise
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0000
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0000
      * @tc.name      : photopicker_select_promise_000
      * @tc.desc      : select with option.MIMEType = IMAGE_TYPE
      * @tc.size      : MEDIUM
@@ -130,7 +130,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0100
      * @tc.name      : photopicker_select_promise_001
      * @tc.desc      : select with option.MIMEType = VIDEO_TYPE
      * @tc.size      : MEDIUM
@@ -147,7 +147,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0200
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0200
      * @tc.name      : photopicker_select_promise_002
      * @tc.desc      : select with option.MIMEType = IMAGE_VIDEO_TYPE
      * @tc.size      : MEDIUM
@@ -164,7 +164,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0300
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0300
      * @tc.name      : photopicker_select_promise_003
      * @tc.desc      : select without option
      * @tc.size      : MEDIUM
@@ -179,7 +179,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0400
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0400
      * @tc.name      : photopicker_select_promise_004
      * @tc.desc      : select with option isSearchSupported = true
      * @tc.size      : MEDIUM
@@ -197,7 +197,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_PROMISE_0500
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0500
      * @tc.name      : photopicker_select_promise_005
      * @tc.desc      : select with option isPhotoTakingSupported = true
      * @tc.size      : MEDIUM
@@ -216,7 +216,7 @@ export default function photoPickerTest() {
 
     //callback
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0000
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0000
      * @tc.name      : photopicker_select_callback_000
      * @tc.desc      : select with option.MIMEType = IMAGE_TYPE
      * @tc.size      : MEDIUM
@@ -233,7 +233,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0100
      * @tc.name      : photopicker_select_callback_001
      * @tc.desc      : select with option.MIMEType = VIDEO_TYPE
      * @tc.size      : MEDIUM
@@ -250,7 +250,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0200
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0200
      * @tc.name      : photopicker_select_callback_002
      * @tc.desc      : select with option.MIMEType = IMAGE_VIDEO_TYPE
      * @tc.size      : MEDIUM
@@ -267,7 +267,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0300
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0300
      * @tc.name      : photopicker_select_callback_003
      * @tc.desc      : select without option
      * @tc.size      : MEDIUM
@@ -282,7 +282,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0400
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0400
      * @tc.name      : photopicker_select_callback_004
      * @tc.desc      : select with option isSearchSupported = true
      * @tc.size      : MEDIUM
@@ -300,7 +300,7 @@ export default function photoPickerTest() {
     });
 
     /**
-     * @tc.number    : SUB_STORAGE_PHOTOPICKER_SELECT_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0500
      * @tc.name      : photopicker_select_callback_005
      * @tc.desc      : select with option isPhotoTakingSupported = true
      * @tc.size      : MEDIUM
