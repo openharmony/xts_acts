@@ -22,7 +22,7 @@ ohos_js_hap_suite("DlpTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "DlpTest"
+  hap_name = "ActsDlpTest"
   subsystem_name = "security"
   part_name = "access_token"
 }

@@ -15,7 +15,6 @@
 
 #include "napi/native_api.h"
 #include <arpa/inet.h>
-#include <cerrno>
 #include <cstdlib>
 #include <cstring>
 #include <js_native_api_types.h>
@@ -27,8 +26,8 @@
 
 #define PARAM_5 5
 #define ONEVAL 1
-#define MINUSONE -1
-#define MINUSTWO -2
+#define MINUSONE (-1)
+#define MINUSTWO (-2)
 #define TWOVAL 2
 #define FIVEVAL 5
 #define VALUE9898 9898
@@ -39,9 +38,9 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_100 100
@@ -177,95 +176,95 @@ static napi_value Shutdown(napi_env env, napi_callback_info info)
 
 static napi_value Recv(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
     napi_get_value_int32(env, args[0], &param);
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
         size_t data_len = atoi("11");
         char buf[SIZE_10];
-        result_value = recv(PARAM_0, buf, data_len, PARAM_0);
+        resultValue = recv(PARAM_0, buf, data_len, PARAM_0);
     } else {
         char buf[SIZE_100];
         int sockets[PARAM_2];
         socketpair(AF_UNIX, SOCK_STREAM, PARAM_0, sockets);
         send(sockets[PARAM_1], "x", PARAM_1, PARAM_0);
-        result_value = recv(sockets[PARAM_0], buf, sizeof buf, PARAM_0);
+        resultValue = recv(sockets[PARAM_0], buf, sizeof buf, PARAM_0);
     }
 
     napi_value result = nullptr;
 
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
 static napi_value Recvfrom(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
     napi_get_value_int32(env, args[0], &param);
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
         size_t data_len = atoi("11");
         char buf[SIZE_10];
-        result_value = recvfrom(PARAM_0, buf, data_len, PARAM_0, nullptr, nullptr);
+        resultValue = recvfrom(PARAM_0, buf, data_len, PARAM_0, nullptr, nullptr);
     }
 
     napi_value result = nullptr;
 
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
 static napi_value Recvmsg(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
     napi_get_value_int32(env, args[0], &param);
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
         struct msghdr msgRev = {PARAM_0};
-        result_value = recvmsg(PARAM_0, &msgRev, PARAM_0);
+        resultValue = recvmsg(PARAM_0, &msgRev, PARAM_0);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Recvmmsg(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
     napi_get_value_int32(env, args[0], &param);
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
         struct mmsghdr msg[SIZE_10];
-        result_value = recvmmsg(PARAM_0, msg, SIZE_10, PARAM_0, PARAM_0);
+        resultValue = recvmmsg(PARAM_0, msg, SIZE_10, PARAM_0, PARAM_0);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Connect(napi_env env, napi_callback_info info)
 {
-    int sockfd = socket(1, 1, 1);
+    int sockfd = socket(PARAM_1, PARAM_1, PARAM_1);
     struct sockaddr_in serv_addr = {PARAM_0};
     socklen_t addrlen = sizeof(serv_addr);
     int backResult = connect(sockfd, (struct sockaddr *)(&serv_addr), addrlen);
@@ -277,12 +276,12 @@ static napi_value Connect(napi_env env, napi_callback_info info)
 static napi_value Bind(napi_env env, napi_callback_info info)
 {
     int sfd = PARAM_0;
-    struct sockaddr_un my_addr = {PARAM_0};
+    struct sockaddr_un myAddr = {PARAM_0};
     sfd = socket(AF_UNIX, SOCK_STREAM, PARAM_0);
-    memset(&my_addr, PARAM_0, sizeof(struct sockaddr_un));
-    my_addr.sun_family = AF_UNIX;
-    strncpy(my_addr.sun_path, MY_SOCK_PATH, sizeof(my_addr.sun_path) - PARAM_1);
-    int ret = bind(sfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr_un));
+    memset(&myAddr, PARAM_0, sizeof(struct sockaddr_un));
+    myAddr.sun_family = AF_UNIX;
+    strncpy(myAddr.sun_path, MY_SOCK_PATH, sizeof(myAddr.sun_path) - PARAM_1);
+    int ret = bind(sfd, (struct sockaddr *)&myAddr, sizeof(struct sockaddr_un));
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -301,15 +300,15 @@ static napi_value Listen(napi_env env, napi_callback_info info)
             ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
         }
         close(sock);
-        _exit(0);
+        _exit(PARAM_0);
     } else {
-        int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
         struct sockaddr_in local = {PARAM_0};
         local.sin_family = AF_INET;
         local.sin_port = htons(PARAM_6000);
         local.sin_addr.s_addr = inet_addr("192.168.59.65");
         bind(sockfd, (struct sockaddr *)&local, sizeof(local));
-        int ret = listen(sockfd, 5);
+        int ret = listen(sockfd, PARAM_5);
         close(sockfd);
         napi_create_int32(env, ret, &result);
         return result;
@@ -329,10 +328,10 @@ static napi_value Getpeername(napi_env env, napi_callback_info info)
             ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
         }
         close(sock);
-        _exit(0);
+        _exit(PARAM_0);
 
     } else {
-        int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
         struct sockaddr_in local = {PARAM_0};
         local.sin_family = AF_INET;
         local.sin_port = htons(PARAM_8000);
@@ -353,7 +352,7 @@ static napi_value Getpeername(napi_env env, napi_callback_info info)
 
 static napi_value Getsockname(napi_env env, napi_callback_info info)
 {
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
     struct sockaddr_in local = {PARAM_0};
     struct sockaddr sa = {PARAM_0};
     int len = sizeof(struct sockaddr_in);
@@ -371,7 +370,7 @@ static napi_value Getsockopt(napi_env env, napi_callback_info info)
 {
     int optval = PARAM_0;
     int optlen = PARAM_0;
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
     int ret = getsockopt(sockfd, SOL_SOCKET, SO_DEBUG, &optval, (socklen_t *)(&optlen));
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);

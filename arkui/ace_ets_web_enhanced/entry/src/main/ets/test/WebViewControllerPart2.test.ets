@@ -51,7 +51,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_CLEARHISTORY_0100
     * @tc.name       : testClearHistory001
     * @tc.desc       : test clearHistory
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -63,13 +63,13 @@ export default function webViewControllerPart2() {
     })
 
     /*
-   * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_REFRESH_0100
-   * @tc.name       : testRefresh001
-   * @tc.desc       : test refresh
-   * @tc.size       : MEDIUM
-   * @tc.type       : Function
-   * @tc.level      : Level 1
-   */
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_REFRESH_0100
+    * @tc.name       : testRefresh001
+    * @tc.desc       : test refresh
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
     it('testRefresh001', 0, async (done: Function) => {
       Utils.emitEvent("testRefresh001", 10)
       await Utils.sleep(2000);
@@ -81,7 +81,7 @@ export default function webViewControllerPart2() {
    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_LOADDATA_0100
    * @tc.name       : testLoadData001
    * @tc.desc       : test loadData
-   * @tc.size       : MEDIUM
+   * @tc.size       : MediumTest
    * @tc.type       : Function
    * @tc.level      : Level 1
    */
@@ -96,7 +96,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_LOADURL_0100
     * @tc.name       : testLoadUrl001
     * @tc.desc       : test loadUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -111,7 +111,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_LOADURL_0200
     * @tc.name       : testLoadUrl002
     * @tc.desc       : test loadUrl
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -123,10 +123,40 @@ export default function webViewControllerPart2() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_LOADURL_0300
+    * @tc.name       : testLoadUrl003
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testLoadUrl003', 0, async (done: Function) => {
+      Utils.emitEvent("testLoadUrl003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testLoadUrl003", "second", 77000, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_LOADURL_0400
+    * @tc.name       : testLoadUrl004
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testLoadUrl004', 0, async (done: Function) => {
+      Utils.emitEvent("testLoadUrl004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testLoadUrl004", "second", 77002, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_BACKORFORWARD_0100
     * @tc.name       : testBackOrForward001
     * @tc.desc       : test backOrForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -141,7 +171,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_BACKORFORWARD_0200
     * @tc.name       : testBackOrForward002
     * @tc.desc       : test backOrForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -156,7 +186,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_BACKORFORWARD_0300
     * @tc.name       : testBackOrForward003
     * @tc.desc       : test backOrForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -171,7 +201,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_BACKORFORWARD_0400
     * @tc.name       : testBackOrForward004
     * @tc.desc       : test backOrForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -186,7 +216,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_GETUSERAGENT_0100
     * @tc.name       : testGetUserAgent001
     * @tc.desc       : test getUserAgent
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -201,7 +231,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_GETWEBID_0100
     * @tc.name       : testGetWebId001
     * @tc.desc       : test getWebId
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -216,7 +246,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_GETTITLE_0100
     * @tc.name       : testGetTitle001
     * @tc.desc       : test getTitle
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -231,7 +261,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SEARCHALLASYNC_0100
     * @tc.name       : testSearchAllAsync001
     * @tc.desc       : test searchAllAsync
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -243,10 +273,40 @@ export default function webViewControllerPart2() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SEARCHNEXT_0100
+    * @tc.name       : testSearchNext001
+    * @tc.desc       : test searchNext
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testSearchNext001', 0, async (done: Function) => {
+      Utils.emitEvent("testSearchNext001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testSearchNext001", true, 100080, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SEARCHNEXT_0200
+    * @tc.name       : testSearchNext002
+    * @tc.desc       : test searchNext
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testSearchNext002', 0, async (done: Function) => {
+      Utils.emitEvent("testSearchNext002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testSearchNext002", true, 100081, done);
+      sendEventByKey('WebViewControllerPart2Button', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_STOREWEBARCHIVE_0100
     * @tc.name       : testStoreWebArchive001
     * @tc.desc       : test storeWebArchive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -261,7 +321,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_STOREWEBARCHIVE_0200
     * @tc.name       : testStoreWebArchive002
     * @tc.desc       : test storeWebArchive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -276,7 +336,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_STOREWEBARCHIVE_0300
     * @tc.name       : testStoreWebArchive003
     * @tc.desc       : test storeWebArchive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -291,7 +351,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_STOREWEBARCHIVE_0400
     * @tc.name       : testStoreWebArchive004
     * @tc.desc       : test storeWebArchive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -306,7 +366,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_STOP_0100
     * @tc.name       : testStop001
     * @tc.desc       : test Stop
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -321,7 +381,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_GETCUSTOMUSERAGENT_0100
     * @tc.name       : testGetCustomUserAgent001
     * @tc.desc       : test getCustomUserAgent
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -336,7 +396,7 @@ export default function webViewControllerPart2() {
     * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_SETCUSTOMUSERAGENT_0100
     * @tc.name       : testSetCustomUserAgent001
     * @tc.desc       : test setCustomUserAgent
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

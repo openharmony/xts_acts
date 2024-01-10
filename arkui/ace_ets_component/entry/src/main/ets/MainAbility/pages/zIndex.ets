@@ -24,13 +24,13 @@ struct zIndexExample {
 
   onPageShow() {
     console.info('[zIndex] page show called ');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 236,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 1113,
       priority: events_emitter.EventPriority.LOW
     }
@@ -38,7 +38,7 @@ struct zIndexExample {
 
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
@@ -52,10 +52,13 @@ struct zIndexExample {
     Column() {
       Stack() {
         Text('first child, zIndex(2)')
-          .size({ width: '40%', height: '60%' }).backgroundColor(0xbbb2cb)
+          .size({ width: '40%', height: '60%' })
+          .backgroundColor(0xbbb2cb)
           .zIndex(2)
         Text('second child, default zIndex(0)')
-          .size({ width: '90%', height: '80%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
+          .size({ width: '90%', height: '80%' })
+          .backgroundColor(0xd2cab3)
+          .align(Alignment.TopStart)
         Text('third child, zIndex(1)')
           .size({ width: '70%', height: '50%' })
           .backgroundColor(0xc1cbac)
@@ -63,6 +66,8 @@ struct zIndexExample {
           .zIndex(this.zIndex)
           .key('zIndex')
       }
-    }.width('100%').height(200)
+    }
+    .width('100%')
+    .height(200)
   }
 }

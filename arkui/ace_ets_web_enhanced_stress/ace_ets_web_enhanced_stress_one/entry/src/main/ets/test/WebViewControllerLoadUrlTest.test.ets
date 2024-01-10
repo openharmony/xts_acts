@@ -35,7 +35,7 @@ export default function webViewControllerLoadUrlTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0100
     * @tc.name        : testWebViewControllerLoadUrl001
-    * @tc.desc        : stress testing loadUrl when using the raw file
+    * @tc.desc        : stress testing loadUrl
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
@@ -74,6 +74,86 @@ export default function webViewControllerLoadUrlTest() {
     */
     it('testWebViewControllerLoadUrl003', 0, async (done: Function) => {
       Utils.doIt("testWebViewControllerLoadUrl003", 100040, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0400
+    * @tc.name        : testWebViewControllerLoadUrl004
+    * @tc.desc        : stress testing loadUrl when using the sandbox file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerLoadUrl004', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerLoadUrl004", 100041, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0500
+    * @tc.name        : testWebViewControllerLoadUrl005
+    * @tc.desc        : stress testing loadUrl when using the raw file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerLoadUrl005', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerLoadUrl005", 100043, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0600
+    * @tc.name        : testWebViewControllerLoadUrl006
+    * @tc.desc        : stress testing loadUrl when using the resource
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerLoadUrl006', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerLoadUrl006", 100045, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0700
+    * @tc.name        : testWebViewControllerLoadUrl007
+    * @tc.desc        : stress testing loadUrl when using the url
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerLoadUrl007', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerLoadUrl007", 100046, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_LOADURL_0800
+    * @tc.name        : testWebViewControllerLoadUrl008
+    * @tc.desc        : stress testing loadUrl when using the sandbox file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerLoadUrl008', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerLoadUrl008", 100049, Constants.DEFAULT_STRESS_TIMES,
         Constants.WEB_VIEW_CONTROLLER_LOAD_URL_BUTTON_KEY,
         (testCaseName: string, callBackId: number) => {
           Utils.registerEvent(testCaseName, true, callBackId, done);

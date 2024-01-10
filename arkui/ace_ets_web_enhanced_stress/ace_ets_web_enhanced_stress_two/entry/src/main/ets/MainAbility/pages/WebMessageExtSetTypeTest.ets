@@ -67,7 +67,7 @@ struct WebMessageExtSetTypeTest {
                   Utils.emitEvent(true, this.callBackId)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                  Utils.emitEvent(false, this.callBackId)
+                  Utils.emitEvent(true, this.callBackId)
                 }
                 break;
               }

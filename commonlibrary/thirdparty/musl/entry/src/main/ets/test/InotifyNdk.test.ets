@@ -23,7 +23,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_INIT_0100
      * @tc.name       : testMuslInotifyInotifyInit001
      * @tc.desc       : test inotify_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_INIT1_0100
      * @tc.name       : testMuslInotifyInotifyInit1001
      * @tc.desc       : test inotify_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -51,7 +51,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_INIT1_0200
      * @tc.name       : testMuslInotifyInotifyInit1002
      * @tc.desc       : test inotify_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -65,7 +65,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_INIT1_0300
      * @tc.name       : testMuslInotifyInotifyInit1003
      * @tc.desc       : test inotify_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -79,7 +79,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_ADD_WATCH_0100
      * @tc.name       : testMuslInotifyInotifyAddWatch001
      * @tc.desc       : test inotify_add_watch
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -93,7 +93,7 @@ export default function inotifyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INOTIFY_INOTIFY_RM_WATCH_0100
      * @tc.name       : testMuslInotifyInotifyRmWatch001
      * @tc.desc       : test inotify_rm_watch
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

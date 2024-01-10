@@ -24,21 +24,21 @@
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TIME 0
 
 static napi_value Times(napi_env env, napi_callback_info info)
 {
     clock_t clock_value = times(nullptr);
-    int reslut_value = PARAM_0;
+    int resultValue = PARAM_0;
     if (clock_value > PARAM_0) {
-        reslut_value = PARAM_0;
+        resultValue = PARAM_0;
     } else {
-        reslut_value = FAIL;
+        resultValue = FAIL;
     }
     napi_value result = nullptr;
-    napi_create_int32(env, reslut_value, &result);
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 EXTERN_C_START

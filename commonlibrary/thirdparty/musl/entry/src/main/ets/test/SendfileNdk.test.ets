@@ -25,7 +25,7 @@ export default function sendfileNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE_0100
      * @tc.name       : testMuslSendfileSendfile001
      * @tc.desc       : test sendfile
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -53,7 +53,7 @@ export default function sendfileNdkTest() {
        * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE_0200
        * @tc.name       : testMuslSendfileSendfile002
        * @tc.desc       : test sendfile
-       * @tc.size       : MEDIUM
+       * @tc.size       : MediumTest
        * @tc.type       : Function
        * @tc.level      : Level 2
        */
@@ -67,7 +67,7 @@ export default function sendfileNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE64_0100
      * @tc.name       : testMuslSendfileSendfile64001
      * @tc.desc       : test sendfile64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -81,7 +81,7 @@ export default function sendfileNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE64_0200
      * @tc.name       : testMuslSendfileSendfile64002
      * @tc.desc       : test sendfile64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

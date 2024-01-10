@@ -68,5 +68,57 @@ export default function webViewControllerRefreshTest() {
           Utils.registerEvent(testCaseName, true, callBackId, done);
         })
     });
+
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_REFRESH_0200
+    * @tc.name        : testWebViewControllerRefresh002
+    * @tc.desc        : stress testing Refresh
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerRefresh002', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerRefresh002", 80701, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_REFRESH_0300
+    * @tc.name        : testWebViewControllerRefresh003
+    * @tc.desc        : stress testing Refresh
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerRefresh003', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerRefresh003", 80702, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_REFRESH_0400
+    * @tc.name        : testWebViewControllerRefresh004
+    * @tc.desc        : stress testing Refresh
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebViewControllerRefresh004', 0, async (done: Function) => {
+      Utils.doIt("testWebViewControllerRefresh004", 80703, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_VIEW_CONTROLLER_REFRESH_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
   })
 }

@@ -16,20 +16,27 @@
 
 import events_emitter from '@ohos.events.emitter'
 
+export default class shadowValue {
+  radius: number = 0
+  color: Color = Color.Gray
+  offsetX: number = 0
+  offsetY: number = 0
+}
+
 @Entry
 @Component
 struct ImageEffectsExample {
   @State blurValue: string = 100;
-  @State backdropBlueValue: string= 30;
-  @State shadowValue: object= { radius: 10, color: Color.Gray, offsetX: 5, offsetY: 5 }
+  @State backdropBlueValue: string = 30;
+  @State shadowValue: shadowValue = { radius: 10, color: Color.Gray, offsetX: 5, offsetY: 5 }
   @State shadowStyleValue: ShadowStyle = ShadowStyle.OuterDefaultXS;
-  @State grayscaleValue: string= 10;
-  @State brightnessValue: string= 20;
-  @State saturateValue: string= 50;
-  @State contrastValue: string= 20;
-  @State invertValue: string= 10;
-  @State hueRotateValue: string= 10
-  private stateChangCallBack = (eventData) => {
+  @State grayscaleValue: string = 10;
+  @State brightnessValue: string = 20;
+  @State saturateValue: string = 50;
+  @State contrastValue: string = 20;
+  @State invertValue: string = 10;
+  @State hueRotateValue: string = 10
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("imageEffects page state change called:" + JSON.stringify(eventData));
       if (eventData.data.blurValue != null) {
@@ -64,61 +71,61 @@ struct ImageEffectsExample {
 
   onPageShow() {
     console.info('imageEffects page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 12,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 13,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 14,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
 
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 15,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
 
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 16,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
 
-    var stateChangeEvent6 = {
+    let stateChangeEvent6: events_emitter.InnerEvent = {
       eventId: 17,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
 
-    var stateChangeEvent7 = {
+    let stateChangeEvent7: events_emitter.InnerEvent = {
       eventId: 18,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent7, this.stateChangCallBack);
 
-    var stateChangeEvent8 = {
+    let stateChangeEvent8: events_emitter.InnerEvent = {
       eventId: 19,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent8, this.stateChangCallBack);
 
-    var stateChangeEvent9 = {
+    let stateChangeEvent9: events_emitter.InnerEvent = {
       eventId: 20,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent9, this.stateChangCallBack);
 
-    var stateChangeEvent10 = {
+    let stateChangeEvent10: events_emitter.InnerEvent = {
       eventId: 21,
       priority: events_emitter.EventPriority.LOW
     }
@@ -127,7 +134,10 @@ struct ImageEffectsExample {
 
   build() {
     Column({ space: 10 }) {
-      Text('font blur').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('font blur')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Text('text')
         .blur(this.blurValue)
         .width('90%')
@@ -137,7 +147,11 @@ struct ImageEffectsExample {
         .padding({ left: 5 })
         .key('centerRow')
 
-      Text('backdropBlur').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('backdropBlur')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
       Text()
         .width('90%')
         .height(40)
@@ -147,41 +161,93 @@ struct ImageEffectsExample {
         .backgroundImageSize({ width: 1200, height: 160 })
         .key('centerRow2')
 
-      Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('shadow')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
       Image('/images/download.png')
         .width('90%')
         .height(40)
         .shadow(this.shadowValue)
         .key('centerRow3')
 
-      Text('shadow--枚举类型').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('shadow--枚举类型')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
       Image('/images/download.png')
         .width('90%')
         .height(40)
         .shadow(this.shadowStyleValue)
         .key('shadowDefaultShadow')
 
-      Text('grayscale').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text('grayscale')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
       Image('/images/download.png')
         .width('90%')
         .height(40)
         .grayscale(`${this.grayscaleValue}`)
         .key('centerRow4')
 
-      Text('brightness').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).brightness(this.brightnessValue).key('centerRow5')
+      Text('brightness')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
 
-      Text('saturate').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).saturate(this.saturateValue).key('centerRow6')
+      Image('/images/download.png')
+        .width('90%')
+        .height(40)
+        .brightness(this.brightnessValue)
+        .key('centerRow5')
 
-      Text('contrast').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).contrast(this.contrastValue).key('centerRow7')
+      Text('saturate')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Image('/images/download.png')
+        .width('90%')
+        .height(40)
+        .saturate(this.saturateValue)
+        .key('centerRow6')
 
-      Text('invert').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).invert(this.invertValue).key('centerRow8')
+      Text('contrast')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
 
-      Text('hueRotate').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Image('/images/download.png').width('90%').height(40).hueRotate(`${this.hueRotateValue}`).key('centerRow9')
-    }.width('100%').margin({ top: 5 })
+      Image('/images/download.png')
+        .width('90%')
+        .height(40)
+        .contrast(this.contrastValue)
+        .key('centerRow7')
+
+      Text('invert')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+
+      Image('/images/download.png')
+        .width('90%')
+        .height(40)
+        .invert(this.invertValue)
+        .key('centerRow8')
+
+      Text('hueRotate')
+        .fontSize(15)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Image('/images/download.png')
+        .width('90%')
+        .height(40)
+        .hueRotate(`${this.hueRotateValue}`)
+        .key('centerRow9')
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

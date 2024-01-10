@@ -21,21 +21,25 @@
 #include <syslog.h>
 
 #define SUCCESS 1
-#define FAIL -1
-#define FALSE -1
-
+#define FAIL (-1)
+#define FALSE (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_0x1234 0x1234
+#define PARAM_0x3412 0x3412
+#define PARAM_0X7F000001 0x7f000001
+#define PARAM_0X12345678 0x12345678
 
 static napi_value Ntohl(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int value0;
     napi_get_value_int32(env, args[0], &value0);
-    uint32_t hl = 0x12345678;
+    uint32_t hl = PARAM_0X12345678;
     napi_value result = nullptr;
     uint32_t ret = ntohl(hl);
     napi_create_uint32(env, ret, &result);
@@ -44,12 +48,12 @@ static napi_value Ntohl(napi_env env, napi_callback_info info)
 
 static napi_value Ntohs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int value0;
     napi_get_value_int32(env, args[0], &value0);
-    uint16_t hs = 0x1234;
+    uint16_t hs = PARAM_0x1234;
     napi_value result = nullptr;
     uint16_t ret = ntohs(hs);
     napi_create_uint32(env, ret, &result);
@@ -57,7 +61,7 @@ static napi_value Ntohs(napi_env env, napi_callback_info info)
 }
 static napi_value Htonl(napi_env env, napi_callback_info info)
 {
-    const uint32_t IP = 0x7f000001;
+    const uint32_t IP = PARAM_0X7F000001;
     uint32_t ret = htonl(IP);
     int addr2 = inet_addr("127.0.0.1");
     napi_value result;
@@ -68,13 +72,13 @@ static napi_value Htonl(napi_env env, napi_callback_info info)
     }
     return result;
 }
-static const uint16_t LE = 0x1234;
-static const uint16_t BE = 0x3412;
+static const uint16_t LE = PARAM_0x1234;
+static const uint16_t BE = PARAM_0x3412;
 static napi_value Htons(napi_env env, napi_callback_info info)
 {
     uint32_t ret = htons(LE);
     napi_value result;
-    if (BE == ret) {
+    if (ret == BE) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FALSE, &result);
@@ -84,26 +88,26 @@ static napi_value Htons(napi_env env, napi_callback_info info)
 
 static napi_value In6addrAny(napi_env env, napi_callback_info info)
 {
-    int result_value = FAILD;
+    int resultValue = FAILD;
     const struct in6_addr in6addr_any = IN6ADDR_ANY_INIT;
     if (sizeof(in6addr_any) >= PARAM_0) {
-        result_value = RETURN_0;
+        resultValue = RETURN_0;
     }
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value In6addrLoopback(napi_env env, napi_callback_info info)
 {
-    int result_value = FAILD;
+    int resultValue = FAILD;
     const struct in6_addr in6addr_loopback = IN6ADDR_LOOPBACK_INIT;
     if (sizeof(in6addr_loopback) >= PARAM_0) {
-        result_value = RETURN_0;
+        resultValue = RETURN_0;
     }
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }

@@ -98,6 +98,93 @@ struct WebViewControllerLoadUrlTest {
                 }
                 break;
               }
+              case 'testWebViewControllerLoadUrl004': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl(`file://${sandboxPath}`)
+                    Utils.stressingLog('WebViewController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerLoadUrl005': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl($rawfile('index.html'),
+                      [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    )
+                    Utils.stressingLog('WebViewController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerLoadUrl006': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl('resource://rawfile/second.html',
+                      [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    )
+                    Utils.stressingLog('WebViewController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerLoadUrl007': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl('https://openharmony.cn/',
+                      [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    )
+                    Utils.stressingLog('WebViewController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerLoadUrl008': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl(`file://${sandboxPath}`,
+                      [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    )
+                    Utils.stressingLog('WebViewController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
             }
           })
 

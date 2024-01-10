@@ -16,10 +16,10 @@
 import events_emitter from '@ohos.events.emitter'
 
 class MyDataSource implements IDataSource {
-  private list: number[] = []
+  private list: string[] = []
   private listener: DataChangeListener
 
-  constructor(list: number[]) {
+  constructor(list: string[]) {
     this.list = list
   }
 
@@ -27,7 +27,7 @@ class MyDataSource implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): string {
     return this.list[index]
   }
 
@@ -59,9 +59,9 @@ struct SwiperExample {
   @State onActionCalledTwo: boolean = false;
   @State onActionCalledThree: boolean = false;
 
- aboutToAppear(): void {
-    let list = []
-    for (var i = 1; i <= 10; i++) {
+  aboutToAppear(): void {
+    let list: string[] = []
+    for (let i: number = 1; i <= 10; i++) {
       list.push(i.toString());
     }
     this.data = new MyDataSource(list)
@@ -77,7 +77,7 @@ struct SwiperExample {
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(20)
-        }, item => item)
+        })
       }
       .cachedCount(2)
       .index(this.index)
@@ -98,12 +98,12 @@ struct SwiperExample {
         this.onActionCalledThree = true;
         console.info('onChange current action state is: ' + this.onActionCalledThree);
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
               "ACTION": this.onActionCalledThree,
             }
           }
-          var backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 204,
             priority: events_emitter.EventPriority.LOW
           }
@@ -122,12 +122,12 @@ struct SwiperExample {
             this.onActionCalledOne = true;
             console.info('button1 current action state is: ' + this.onActionCalledOne);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.onActionCalledOne,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 205,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -144,12 +144,12 @@ struct SwiperExample {
             this.onActionCalledTwo = true;
             console.info('button2 current action state is: ' + this.onActionCalledTwo);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.onActionCalledTwo,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 206,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -165,42 +165,42 @@ struct SwiperExample {
 
   onPageShow() {
     console.info('swiper page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 207,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 208,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 209,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 210,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
       if (eventData.data.index != null) {
-        this.index = parseInt(eventData.data.index);
+        this.index = eventData.data.index;
       }
       if (eventData.data.autoPlay != null) {
         this.autoPlay = eventData.data.autoPlay;
       }
       if (eventData.data.interval != null) {
-        this.interval = parseInt(eventData.data.interval);
+        this.interval = eventData.data.interval;
       }
       if (eventData.data.indicator != null) {
         this.indicator = eventData.data.indicator;
@@ -215,7 +215,7 @@ struct SwiperExample {
         this.vertical = eventData.data.vertical;
       }
       if (eventData.data.itemSpace != null) {
-        this.itemSpace = parseInt(eventData.data.itemSpace);
+        this.itemSpace = eventData.data.itemSpace;
       }
     }
   }

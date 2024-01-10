@@ -25,7 +25,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_READV_0100
      * @tc.name       : testMuslUioReadv001
      * @tc.desc       : test readv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -41,20 +41,11 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_READV_0200
      * @tc.name       : testMuslUioReadv002
      * @tc.desc       : test readv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslUioReadv002', 0, async (done: Function) => {
-
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/testReadv.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let writeLen = fs.writeSync(file.fd, "Try to write str.");
-      console.info("The length of str is: " + writeLen);
-      fs.closeSync(file);
-
       let param = 0;
       let result: number = uio.readv(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -66,7 +57,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_WRITEV_0100
      * @tc.name       : testMuslUioWritev001
      * @tc.desc       : test writev
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -82,7 +73,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_WRITEV_0200
      * @tc.name       : testMuslUioWritev002
      * @tc.desc       : test writev
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -97,7 +88,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PREADV_0100
      * @tc.name       : testMuslUioPReadV001
      * @tc.desc       : test preadv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -111,7 +102,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PREADV64_0100
      * @tc.name       : testMuslUioPReadV64001
      * @tc.desc       : test preadv64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -125,7 +116,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PWRITEV_0100
      * @tc.name       : testMuslUioPWriteV001
      * @tc.desc       : test pwritev
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -139,7 +130,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PWRITEV64_0100
      * @tc.name       : testMuslUioPWriteV64001
      * @tc.desc       : test pwritev64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -153,7 +144,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PROCESSVMREADV_0100
      * @tc.name       : testMuslUioProcessVmReadV001
      * @tc.desc       : test process_vm_readv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -167,7 +158,7 @@ export default function uioNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UIO_PROCESSVMWRITEV_0100
      * @tc.name       : testMuslUioProcessVmWriteV001
      * @tc.desc       : test process_vm_writev
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

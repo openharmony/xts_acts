@@ -23,18 +23,18 @@ struct ColumnExample {
 
   onPageShow() {
     console.info('[column] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 192,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[column] page stateChangCallBack");
     if (eventData != null) {
       console.info("[column] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.alignItems != null) {
+      if (eventData.data.alignItems != null) {
         this.alignItems = eventData.data.alignItems;
       }
     }
@@ -42,15 +42,26 @@ struct ColumnExample {
 
   build() {
     Column() {
-      Text('alignItems').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('alignItems')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        Column()
+          .width('50%')
+          .height(30)
+          .backgroundColor(0xAFEEEE)
+        Column()
+          .width('50%')
+          .height(30)
+          .backgroundColor(0x00FFFF)
       }
       .key("alignItemsColumn")
       .width('90%')
       .border({ width: 1 })
       .alignItems(this.alignItems)
-    }.width('100%').padding({ top: 5 })
+    }
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

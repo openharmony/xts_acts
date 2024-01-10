@@ -22,7 +22,7 @@
 #include <sys/random.h>
 #define BUFFSIZE 32
 #define DEFAULT_VALUE 0
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERRS 0
 
 #define BUFSIZE 32

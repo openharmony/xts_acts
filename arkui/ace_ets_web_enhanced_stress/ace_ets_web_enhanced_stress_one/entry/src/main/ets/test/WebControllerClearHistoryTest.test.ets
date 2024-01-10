@@ -57,7 +57,7 @@ export default function webControllerClearHistoryTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_CLEARHISTORY_0100
     * @tc.name        : testWebControllerClearHistory001
-    * @tc.desc        : stress testing clearHistory when using the raw file
+    * @tc.desc        : stress testing clearHistory
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

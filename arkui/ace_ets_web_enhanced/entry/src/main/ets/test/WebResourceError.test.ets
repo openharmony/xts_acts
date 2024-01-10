@@ -52,7 +52,7 @@ export default function webResourceError() {
     * @tc.number     : SUB_WEB_GETERRORINFO_0100
     * @tc.name       : testGetErrorInfo001
     * @tc.desc       : test getErrorInfo
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -67,7 +67,7 @@ export default function webResourceError() {
     * @tc.number     : SUB_WEB_GETERRORCODE_0100
     * @tc.name       : testGetErrorCode001
     * @tc.desc       : test getErrorCode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

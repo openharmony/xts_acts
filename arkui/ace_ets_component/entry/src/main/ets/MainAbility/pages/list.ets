@@ -31,38 +31,38 @@ struct ListExample {
 
   onPageShow() {
     console.info('[list] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 124,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 125,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
 
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 901,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBackTwo);
 
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 902,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBackTwo);
 
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 903,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent5, this.stateChangCallBackTwo);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
@@ -80,7 +80,7 @@ struct ListExample {
       }
     }
   }
-  private stateChangCallBackTwo = (eventData) => {
+  private stateChangCallBackTwo = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBackTwo] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBackTwo] state change called:" + JSON.stringify(eventData));
@@ -103,7 +103,7 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('100%')
@@ -113,7 +113,7 @@ struct ListExample {
                 .borderRadius(10)
                 .backgroundColor(0xFFFFFF)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .key('list')
         .listDirection(this.listDirection)
@@ -149,6 +149,10 @@ struct ListExample {
         .onClick(() => {
           this.editMode = !this.editMode
         }).margin({ top: 5, left: 20 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
   }
 }

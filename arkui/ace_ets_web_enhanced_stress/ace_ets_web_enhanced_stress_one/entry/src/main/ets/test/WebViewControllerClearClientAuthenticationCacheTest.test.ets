@@ -57,7 +57,7 @@ export default function webViewControllerClearClientAuthenticationCacheTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_CLEARCLIENTAUTHENTICATIONCAHCE_0100
     * @tc.name        : testWebViewControllerClearClientAuthenticationCache001
-    * @tc.desc        : stress testing clearClientAuthenticationCache when using the raw file
+    * @tc.desc        : stress testing clearClientAuthenticationCache
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

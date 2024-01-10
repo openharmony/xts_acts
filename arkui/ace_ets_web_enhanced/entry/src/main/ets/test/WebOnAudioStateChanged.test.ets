@@ -55,7 +55,7 @@ export default function webOnAudioStateChanged() {
     * @tc.number      : SUB_WEB_ONAUDIOSTATECHANGED_0100
     * @tc.name        : testOnAudioStateChanged001
     * @tc.desc        : test onAudioStateChanged when start play audio
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -70,7 +70,7 @@ export default function webOnAudioStateChanged() {
     * @tc.number      : SUB_WEB_ONAUDIOSTATECHANGED_0200
     * @tc.name        : testOnAudioStateChanged002
     * @tc.desc        : test onAudioStateChanged when pause play audio
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */

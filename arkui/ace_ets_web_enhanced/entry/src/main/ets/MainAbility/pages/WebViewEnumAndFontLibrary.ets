@@ -13,14 +13,11 @@
  * limitations under the License.
  */
 
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, ON } from '@ohos.UiTest';
-import { BusinessError } from '@ohos.base';
+import business_error, { BusinessError } from '@ohos.base';
 
 class TestObj {
   constructor() {
@@ -68,6 +65,7 @@ struct WebViewEnumAndFontLibrary {
   testObj: TestObj = new TestObj()
   @State Permission: Boolean = false
   @State str: string = ""
+  @State webResult: string = ''
   @State count: string = ""
   @State javaScriptAccess: boolean = true
   @State mode: MixedMode = MixedMode.Compatible
@@ -139,7 +137,7 @@ struct WebViewEnumAndFontLibrary {
                 let changeResult = result.substring(1, result.length - 1)
                 console.log("changeFontSize >>>", changeFontSize, "result >>>", changeResult)
                 console.log("font-size :" + changeFontSize + "result :" + changeResult + error)
-                if (changeResult === changeFontSize) {
+                if (changeResult == changeFontSize) {
                   Utils.emitEvent(true, 1231)
                 }
               })
@@ -409,6 +407,8 @@ struct WebViewEnumAndFontLibrary {
               break;
             }
             case "emitMixedModeNone": {
+              this.javaScriptAccess = true
+              await Utils.sleep(2000)
               this.mixedSwitch = true
               this.mode = MixedMode.None
               await Utils.sleep(2000)
@@ -431,7 +431,166 @@ struct WebViewEnumAndFontLibrary {
               }
               break;
             }
+
+            case "testRunJavaScript002": {
+              try {
+                let title = 'null'
+                this.javaScriptAccess = false
+                await Utils.sleep(2000);
+                this.controller.runJavaScript(
+                  'webTest()',
+                  (error, result) => {
+                    if (error) {
+                      console.info(`run JavaScript error: ` + JSON.stringify(error))
+                      Utils.emitEvent(error.code, 10001)
+                      return;
+                    }
+                    if (result) {
+                      this.webResult = result
+                      console.info(`The test() return value is: ${this.webResult}`)
+                      Utils.emitEvent(this.webResult, 10001)
+                      return;
+                    }
+                  });
+                Utils.emitEvent(title, 10001)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 10001)
+              }
+              break;
+            }
+
+            case "testRunJavaScript003": {
+              try {
+                this.javaScriptAccess = true
+                await Utils.sleep(2000);
+                this.controller.loadUrl($rawfile("indexJru.html"))
+                await Utils.sleep(2000);
+                this.controller.runJavaScript('webTest()')
+                  .then((result) => {
+                    console.log('result: ' + result);
+                    Utils.emitEvent(result, 10002)
+                    return;
+                  })
+                  .catch((e: business_error.BusinessError) => {
+                    console.error("error: " + e);
+                    Utils.emitEvent(e.code, 10002)
+                    return;
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 10002)
+              }
+              break;
+            }
+
+            case "testRunJavaScript004": {
+              try {
+                this.javaScriptAccess = false
+                await Utils.sleep(2000);
+                this.controller.runJavaScript('webTest()')
+                  .then((result) => {
+                    console.log('result: ' + result);
+                    Utils.emitEvent(String(result), 10003)
+                    return;
+                  })
+                  .catch((e: business_error.BusinessError) => {
+                    console.error("error: " + e);
+                    Utils.emitEvent(e.code, 10003)
+                    return;
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 10003)
+              }
+              break;
+            }
+
+            case "testRunJavaScriptExt001": {
+              try {
+                this.javaScriptAccess = true
+                await Utils.sleep(4000);
+                this.controller.runJavaScriptExt(
+                  'webTest()',
+                  (error, result) => {
+                    if (error) {
+                      console.info(`run runJavaScriptExt error: ` + JSON.stringify(error))
+                      return;
+                    }
+                    if (result) {
+                      console.info(`run runJavaScriptExt : ` + result.getString())
+                      Utils.emitEvent(result.getString(), 10004)
+                      return;
+                    }
+                  });
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              break;
+            }
+
+            case "testRunJavaScriptExt002": {
+              try {
+                this.javaScriptAccess = false
+                await Utils.sleep(4000);
+                this.controller.runJavaScriptExt(
+                  'webTest()',
+                  (error, result) => {
+                    if (error) {
+                      console.info(`run runJavaScriptExt error: ` + JSON.stringify(error))
+                      return;
+                    }
+                    Utils.emitEvent(result.getString() != "This value is from indexJru.html", 10005)
+                  });
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              break;
+            }
+
+            case "testRunJavaScriptExt003": {
+              try {
+                this.javaScriptAccess = true
+                await Utils.sleep(4000);
+                this.controller.runJavaScriptExt('webTest()')
+                  .then((result) => {
+                    console.info(`run runJavaScriptExt : ` + result.getString())
+                    Utils.emitEvent(result.getString(), 10006)
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              break;
+            }
+
+            case "testRunJavaScriptExt004": {
+              try {
+                this.javaScriptAccess = false
+                await Utils.sleep(4000);
+                this.controller.runJavaScriptExt('webTest()')
+                  .then((result) => {
+                    console.info(`run runJavaScriptExt : ` + result)
+                    Utils.emitEvent(result.getString() != "This value is from indexJru.html", 10007)
+                  })
+                  .catch((e: business_error.BusinessError) => {
+                    console.error("error: " + e);
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              break;
+            }
+
             case "emitHasImage": {
+              this.javaScriptAccess = true
+              await Utils.sleep(4000);
               this.controller.loadUrl($rawfile('hasImageOne.html'))
               try {
                 this.controller.hasImage((error, data) => {

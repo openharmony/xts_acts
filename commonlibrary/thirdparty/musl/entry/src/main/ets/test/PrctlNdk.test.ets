@@ -22,7 +22,7 @@ export default function prctlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PRCTL_PRCTL_0100
      * @tc.name       : testMuslPrctlPrctl001
      * @tc.desc       : test prctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

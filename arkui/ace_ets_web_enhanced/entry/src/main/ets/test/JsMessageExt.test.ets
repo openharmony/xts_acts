@@ -51,7 +51,7 @@ export default function jsMessageExt() {
     * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETTYPE_0100
     * @tc.name       : testJsMessageExtGetType001
     * @tc.desc       : test JsMessageExtGetType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function jsMessageExt() {
     * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETTYPE_0200
     * @tc.name       : testJsMessageExtGetType002
     * @tc.desc       : test JsMessageExtGetType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +81,7 @@ export default function jsMessageExt() {
     * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETTYPE_0300
     * @tc.name       : testJsMessageExtGetType003
     * @tc.desc       : test JsMessageExtGetType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +96,7 @@ export default function jsMessageExt() {
     * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETTYPE_0400
     * @tc.name       : testJsMessageExtGetType004
     * @tc.desc       : test JsMessageExtGetType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -111,7 +111,7 @@ export default function jsMessageExt() {
     * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETTYPE_0500
     * @tc.name       : testJsMessageExtGetType005
     * @tc.desc       : test JsMessageExtGetType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -122,6 +122,184 @@ export default function jsMessageExt() {
       sendEventByKey('JsMessageExtButton', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0100
+    * @tc.name       : testJsMessageExtJsMessageType001
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType001", 0, 30205, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
 
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0200
+    * @tc.name       : testJsMessageExtJsMessageType002
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType002', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType002", 1, 30206, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0300
+    * @tc.name       : testJsMessageExtJsMessageType003
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType003', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType003", 2, 30207, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0400
+    * @tc.name       : testJsMessageExtJsMessageType004
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType004', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType004", 3, 30208, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0500
+    * @tc.name       : testJsMessageExtJsMessageType005
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType005', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType005", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType005", 4, 30209, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_JSMESSAGETYPE_0600
+    * @tc.name       : testJsMessageExtJsMessageType006
+    * @tc.desc       : test JsMessageType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtJsMessageType006', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtJsMessageType006", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtJsMessageType006", 5, 30210, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETSTRING_0100
+    * @tc.name       : testJsMessageExtGetString001
+    * @tc.desc       : test JsMessageExtGetString
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetString001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetString001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetString001", '"hello, world"', 100013, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETNUMBER_0100
+    * @tc.name       : testJsMessageExtGetNumber001
+    * @tc.desc       : test JsMessageExtGetNumber
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetNumber001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetNumber001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetNumber001", 1, 100014, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETBOOLEAN_0100
+    * @tc.name       : testJsMessageExtGetBoolean001
+    * @tc.desc       : test JsMessageExtGetBoolean
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetBoolean001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetBoolean001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetBoolean001", true, 100015, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETBOOLEAN_0200
+    * @tc.name       : testJsMessageExtGetBoolean002
+    * @tc.desc       : test JsMessageExtGetBoolean
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetBoolean002', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetBoolean002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetBoolean002", false, 100016, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETARRAYBUFFER_0100
+    * @tc.name       : testJsMessageExtGetArrayBuffer001
+    * @tc.desc       : test JsMessageExtGetArrayBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetArrayBuffer001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetArrayBuffer001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetArrayBuffer001", 'result type:object', 100017, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_JSMESSAGEEXT_GETARRAY_0100
+    * @tc.name       : testJsMessageExtGetArray001
+    * @tc.desc       : test JsMessageExtGetArray
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testJsMessageExtGetArray001', 0, async (done: Function) => {
+      Utils.emitEvent("testJsMessageExtGetArray001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testJsMessageExtGetArray001", true, 100018, done);
+      sendEventByKey('JsMessageExtButton', 10, '');
+    })
   })
 }

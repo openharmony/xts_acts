@@ -57,7 +57,7 @@ export default function webAttributeOnScrollTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONSCROLL_0100
     * @tc.name        : testWebAttributeOnScroll001
-    * @tc.desc        : stress testing onScroll when using the raw file
+    * @tc.desc        : stress testing onScroll
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

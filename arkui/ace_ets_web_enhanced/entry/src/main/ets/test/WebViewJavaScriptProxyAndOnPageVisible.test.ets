@@ -49,7 +49,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     * @tc.number     : SUB_WEB_ZOOMCOUNT_0100
     * @tc.name       : testZoomCount001
     * @tc.desc       : test ZoomCount
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -64,7 +64,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     * @tc.number     : SUB_WEB_FILESELECTORMODE_0300
     * @tc.name       : testFileSelectorMode003
     * @tc.desc       : test FileSelectorMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -79,7 +79,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     * @tc.number     : SUB_WEB_JAVASCRIPTPROXY_0100
     * @tc.name       : testJavaScriptProxy001
     * @tc.desc       : test javaScriptProxy
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -94,7 +94,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     * @tc.number     : SUB_WEB_ONPAGEVISIBLE_0100
     * @tc.name       : testOnPageVisible001
     * @tc.desc       : test onPageVisible
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -108,15 +108,15 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     /*
     * @tc.number     : SUB_WEB_SSLERRORHOSTMISMATCH_0100
     * @tc.name       : testSslErrorHostMismatch001
-    * @tc.desc       : test SslErrorInvalid
-    * @tc.size       : MEDIUM
+    * @tc.desc       : test SslError HostMismatch
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
     it('testSslErrorHostMismatch001', 0, async (done: Function) => {
       Utils.emitEvent("emitSslErrorHostMismatch", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testSslErrorHostMismatch001", 1, 891, done);
+      Utils.registerEvent("testSslErrorHostMismatch001", SslError.HostMismatch, 891, done);
       sendEventByKey('buttonJavaScriptProxyAndPageVisible', 10, '');
     })
   })

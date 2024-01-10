@@ -24,7 +24,7 @@ export default function muslIfNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_FREENAMEINDEX_0100
      * @tc.name     : testMuslIf_If_Freenameindex001
      * @tc.desc     : test if_freenameindex
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -38,7 +38,7 @@ export default function muslIfNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_NAMEINDEX_0100
      * @tc.name     : testMuslIf_If_Nameindex001
      * @tc.desc     : test if_nameindex
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -52,7 +52,7 @@ export default function muslIfNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_INDEXTONAME_0100
      * @tc.name     : testMuslIf_If_indextoname001
      * @tc.desc     : test if_indextoname
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -66,7 +66,7 @@ export default function muslIfNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_NAMETOINDEX_0100
      * @tc.name     : testMuslIf_If_nametoindex001
      * @tc.desc     : test if_nametoindex
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
