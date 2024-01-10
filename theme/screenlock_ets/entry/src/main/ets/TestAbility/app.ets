@@ -17,7 +17,7 @@ import { Hypium } from 'hypium/index';
 import testsuite from '../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-export default {
+export default class App{
   onCreate() {
     console.info('Application onCreate');
     let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
@@ -26,8 +26,8 @@ export default {
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  },
+  }
   onDestroy() {
     console.info('Application onDestroy');
-  },
+  }
 }
