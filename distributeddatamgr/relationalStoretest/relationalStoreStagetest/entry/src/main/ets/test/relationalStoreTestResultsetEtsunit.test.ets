@@ -87,6 +87,9 @@ describe('relationalStoreResultSetTest', function () {
      * @tc.name resultSet getBlob normal test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_0100
      * @tc.desc resultSet getBlob normal test
+	 * @tc.size MediumTest
+	 * @tc.type Function
+     * @tc.level Level 2
      */
     it('SUB_DDM_RELATIONALETS_RESULTSET_0010', 0, async function (done) {
         console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0010 start *************');
@@ -110,6 +113,36 @@ describe('relationalStoreResultSetTest', function () {
         resultSet = null
         done();
         console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0010 end *************');
+    })
+	/**
+   * @tc.name resultSet getBlob normal test
+   * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_8300
+   * @tc.desc resultSet getBlob normal test
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level Level 2
+   */
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0020', 0, async function (done) {
+      console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0020 start *************');
+      let predicates = new dataRdb.RdbPredicates('test');
+      let resultSet = await rdbStore.query(predicates);
+      try {
+        {
+          expect(true).assertEqual(resultSet.goToFirstRow());
+          let row = (resultSet as dataRdb.ResultSet).getRow();
+          console.log(TAG + JSON.stringify(row))
+          expect('hello').assertEqual(row.data1)
+          expect(10).assertEqual(row.data2)
+          expect(1.0).assertEqual(row.data3)
+        }
+        resultSet.close();
+        expect(true).assertEqual(resultSet.isClosed);
+      } catch (e) {
+        expect(null).assertFail();
+      }
+      resultSet = null
+      done();
+      console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0020 end *************');
     })
     console.info(TAG + '*************Unit Test End*************');
 })
