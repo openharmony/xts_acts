@@ -1682,5 +1682,60 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0115
+     * @tc.name      aceNapiTest0115
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0115', 0, async function (done) {
+      console.info('aceNapiTest0115 START');
+      value = napitest.asyncWorkWithQos(1000, (input) => {
+        console.info('asyncWorkWithQos ' + (input * 2));
+        return input * 2;
+      });
+      console.info('aceNapiTest0115 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value === 0).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0116
+     * @tc.name      aceNapiTest0116
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0116', 0, async function (done) {
+      console.info('aceNapiTest0116 START');
+      value = napitest.coerceToNativeBindingObject();
+      console.info('aceNapiTest0116 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(2000);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0117
+     * @tc.name      aceNapiTest0117
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0117', 0, async function (done) {
+      console.info('aceNapiTest0117 START');
+      value = napitest.createObjectWithProperties();
+      console.info('aceNapiTest0117 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0118
+     * @tc.name      aceNapiTest0118
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0118', 0, async function (done) {
+      console.info('aceNapiTest0118 START');
+      value = napitest.createObjectWithNamedProperties();
+      console.info('aceNapiTest0118 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }
