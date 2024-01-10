@@ -32,6 +32,12 @@ import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/Que
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
+import freezeInactive from './freezeInactive.test.ets';
+import allowOverride from './allowOverride.test.ets';
+import ToastShowMode from './ToastShowMode.test.ets';
+import ModalBlurStyle from './ModalBlurStyle.test.ets';
+import TouchTestStrategy from './TouchTestStrategy.test.ets';
+
 import tabsDemo from './TextApi/tabsDemo.test.ets';
 import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
@@ -75,6 +81,11 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
+  freezeInactive()
+  allowOverride()
+  ToastShowMode()
+  ModalBlurStyle()
+  TouchTestStrategy()
   tabsDemo()
   TextSelectionMenu()
   createDragAction()
