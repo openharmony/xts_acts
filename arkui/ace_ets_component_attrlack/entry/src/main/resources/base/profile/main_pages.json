@@ -50,6 +50,16 @@
           "MainAbility/pages/gestureSetting",
           "MainAbility/pages/ImageApi",
           "MainAbility/pages/NavigationApi",
-          "MainAbility/pages/TextApi/TextStyle"
+          "MainAbility/pages/TextApi/TextStyle",
+		  "MainAbility/pages/StateMap",
+          "MainAbility/pages/StateSet",
+          "MainAbility/pages/PropMap",
+          "MainAbility/pages/PropSet",
+          "MainAbility/pages/ProvideMap",
+          "MainAbility/pages/ProvideSet",
+          "MainAbility/pages/LinkMap",
+          "MainAbility/pages/LinkSet",
+          "MainAbility/pages/ObjectLinkMap",
+          "MainAbility/pages/ObjectLinkSet"
     ]
 }
