@@ -25,58 +25,26 @@ export default function mntentNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MNTENT_SETMNTENT_0100
      * @tc.name       : testMuslMntentSetmntent001
      * @tc.desc       : test setmntent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslMntentSetmntent001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let writeLen = fs.writeSync(file.fd, "Try to write str.");
-      console.info("The length of str is: " + writeLen);
-      let buf = new ArrayBuffer(1024);
-      let readLen = fs.readSync(file.fd, buf, {
-        offset: 0
-      });
-      fs.closeSync(file);
-
-      let a: number = mntent.setmntent();
+      let a = mntent.setmntent();
       expect(a).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_MNTENT_GETMNTENT_0100
-     * @tc.name     : testMuslMntentGetMnTent001
-     * @tc.desc     : test getmntent
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    //Block comment
-
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_MNTENT_GETMNTENT_R_0100
-     * @tc.name     : testMuslMntentGetMnTentR001
-     * @tc.desc     : test getmntent_r
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    //Block comment
 
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_MNTENT_HASMNTOPT_0100
      * @tc.name     : testMuslMntentHasmntopt001
      * @tc.desc     : test hasmntopt
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
     it('testMuslMntentHasmntopt001', 0, async (done: Function) => {
-      let result: number = mntent.hasmntopt();
+      let result = mntent.hasmntopt();
       expect(result).assertEqual(0)
       done()
     });

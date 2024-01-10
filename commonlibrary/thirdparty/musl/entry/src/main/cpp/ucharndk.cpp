@@ -15,20 +15,19 @@
 
 #include "common/napi_helper.cpp"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
 #include <cstdlib>
+#include <cwchar>
 #include <js_native_api.h>
 #include <node_api.h>
 #include <pthread.h>
-#include <uchar.h>
+#include <cuchar>
 #include <utmp.h>
-#include <cwchar>
 
 #define PARAM_1 1
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 
 static napi_value Mbrtoc16(napi_env env, napi_callback_info info)
 {

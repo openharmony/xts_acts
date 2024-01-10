@@ -25,7 +25,7 @@ export default function muslGetoptNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPT_GETOPT_LONG_0100
      * @tc.name     : testMuslGetoptGetoptLong001
      * @tc.desc     : test getopt_long
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -39,7 +39,7 @@ export default function muslGetoptNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPY_GETOPTLONG_ONLY_0100
      * @tc.name     : testMuslGetoptGetoptLongOnly001
      * @tc.desc     : test getopt_long_only
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

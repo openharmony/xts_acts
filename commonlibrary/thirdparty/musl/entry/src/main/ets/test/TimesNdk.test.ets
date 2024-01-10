@@ -23,7 +23,7 @@ export default function timesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMES_TIMES_0100
      * @tc.name       : testMuslTimesTimes001
      * @tc.desc       : test timess
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

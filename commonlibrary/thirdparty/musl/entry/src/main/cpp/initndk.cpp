@@ -21,21 +21,24 @@
 #include <malloc.h>
 #include <node_api.h>
 #include <sys/xattr.h>
+
 #define DEFAULT_VALUE 0
 #define BUFSIZ 128
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_5 5
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 extern "C" int init_module(void *module_image, unsigned long len, const char *param_values);
+
 static napi_value InitModule(napi_env env, napi_callback_info info)
 {
     void *param;
-    int ret = init_module(param, 5, "0");
+    int ret = init_module(param, PARAM_5, "0");
     napi_value result = nullptr;
-    if (ret == -1) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (ret == PARAM_UNNORMAL) {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, DEFAULT_VALUE, &result);
     }

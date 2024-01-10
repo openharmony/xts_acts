@@ -17,24 +17,24 @@
 #include "common/native_common.h"
 #include "napi/native_api.h"
 #include <cerrno>
+#include <clocale>
+#include <csignal>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
+#include <ctime>
 #include <ifaddrs.h>
 #include <js_native_api.h>
 #include <js_native_api_types.h>
 #include <linux/quota.h>
-#include <clocale>
 #include <malloc.h>
 #include <net/if.h>
 #include <node_api.h>
 #include <sched.h>
-#include <signal.h>
-#include <cstdlib>
 #include <string>
 #include <sys/inotify.h>
 #include <sys/time.h>
 #include <sys/timex.h>
-#include <time.h>
 #include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
@@ -44,14 +44,15 @@
 #define THREE 3
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TEST_SIZE 2
 #define ONE 1
+#define PARAM_4 4
 #define MAX_NUMBER 256
-#define FAILNUMBER -1
+#define FAILNUMBER (-1)
 #define TIME_L 1659177614
 #define MAX_UTIME (3)
-static int count = 0;
+static int g_count = 0;
 #define SIGNUM 40
 #define TVSEC 1000000000
 #define TVNSEC 200000000
@@ -60,9 +61,21 @@ static int count = 0;
 #define PARAM_1 1
 #define PARAM_2 2
 #define PARAM_5 5
-#define PARAM_UNNORMAL -1
+#define PARAM_1999 1999
+#define PARAM_12 12
+#define PARAM_17 17
+#define PARAM_06 06
+#define PARAM_30 30
+#define PARAM_23 23
+#define PARAM_1900 1900
+#define PARAM_02 02
+#define PARAM_07 07
+#define PARAM_16 16
+#define PARAM_15 15
+#define PARAM_20 20
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_30 30
@@ -71,10 +84,11 @@ static int count = 0;
 #define SIZE_1024 1024
 #define SIZE_4096 4096
 #define SIZE_8192 8192
+#define SIZE_0666 0666
 static napi_value GetITimer(napi_env env, napi_callback_info info)
 {
-    struct itimerval curr_value;
-    int getInfo = getitimer(ITIMER_VIRTUAL, &curr_value);
+    struct itimerval currValue;
+    int getInfo = getitimer(ITIMER_VIRTUAL, &currValue);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
@@ -95,12 +109,15 @@ void signalHandler(int signo)
     case SIGALRM:
         printf("Caught the SIGALRM signal!\n");
         break;
+    default :
+        printf("Can not catch the SIGALRM signal!\n");
+        break;
     }
 }
 
 static napi_value Setitimer(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
+    size_t argc = PARAM_4;
     napi_value args[4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -126,7 +143,7 @@ static napi_value Setitimer(napi_env env, napi_callback_info info)
 
 static napi_value Strftime(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -134,7 +151,7 @@ static napi_value Strftime(napi_env env, napi_callback_info info)
     static time_t gTime = TIME_L;
     struct tm *timeptr = localtime(&gTime);
     char buffer[MAX_NUMBER];
-    strftime(buffer, sizeof(buffer) - 1, valueFirst, timeptr);
+    strftime(buffer, sizeof(buffer) - PARAM_1, valueFirst, timeptr);
     napi_value result = nullptr;
     napi_create_string_utf8(env, buffer, NAPI_AUTO_LENGTH, &result);
     return result;
@@ -142,7 +159,7 @@ static napi_value Strftime(napi_env env, napi_callback_info info)
 
 static napi_value Strftime_l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -150,7 +167,7 @@ static napi_value Strftime_l(napi_env env, napi_callback_info info)
     struct tm *timeptr = localtime(&gTime);
     char buffer[MAX_NUMBER];
     locale_t m_locale = newlocale(LC_ALL_MASK, "en_US", nullptr);
-    strftime_l(buffer, sizeof(buffer) - 1, valueFirst, timeptr, m_locale);
+    strftime_l(buffer, sizeof(buffer) - PARAM_1, valueFirst, timeptr, m_locale);
     napi_value result = nullptr;
     napi_create_string_utf8(env, buffer, NAPI_AUTO_LENGTH, &result);
     return result;
@@ -164,46 +181,45 @@ static napi_value Timegm(napi_env env, napi_callback_info info)
     struct tm *timeptr = localtime(&gTime);
     timeThis = timegm(timeptr);
 
-    int time_value;
-    time_value = timeThis;
+    int timeValue = timeThis;
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
 static napi_value TimespecGet(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
 
     struct timespec ts;
-    int time_value = timespec_get(&ts, TIME_UTC);
+    int timeValue = timespec_get(&ts, TIME_UTC);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
 static napi_value Timer_create(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
 
-    int time_value = timer_create(FAILNUMBER, nullptr, nullptr);
+    int timeValue = timer_create(FAILNUMBER, nullptr, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
-void timerHandler(int sig)
+void TimerHandler(int sig)
 {
-    if (count < MAX_UTIME) {
-        count++;
+    if (g_count < MAX_UTIME) {
+        g_count++;
     }
     printf("timer handler return\n");
     return;
@@ -223,7 +239,7 @@ static napi_value Timer_delete(napi_env env, napi_callback_info info)
     sev.sigev_notify = SIGEV_SIGNAL;
     sev.sigev_signo = SIGUSR1;
     sev.sigev_value.sival_ptr = &timerid;
-    signal(SIGUSR1, timerHandler);
+    signal(SIGUSR1, TimerHandler);
     timer_create(CLOCK_MONOTONIC, &sev, &timerid);
 
     its.it_value.tv_sec = ONE;
@@ -232,13 +248,13 @@ static napi_value Timer_delete(napi_env env, napi_callback_info info)
     its.it_interval.tv_nsec = its.it_value.tv_nsec;
     timer_settime(timerid, PARAM_0, &its, nullptr);
 
-    while (count != MAX_UTIME) {
-        sleep(1);
+    while (g_count != MAX_UTIME) {
+        sleep(PARAM_1);
     }
-    int time_value = timer_delete(timerid);
+    int timeValue = timer_delete(timerid);
 
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
@@ -250,15 +266,15 @@ static napi_value Timer_gettime(napi_env env, napi_callback_info info)
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
 
-    int time_value = timer_gettime(nullptr, nullptr);
+    int timeValue = timer_gettime(nullptr, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 volatile int t_status = PARAM_0;
 void handler(int sig)
 {
-    count++;
+    g_count++;
 
     return;
 }
@@ -286,7 +302,7 @@ static napi_value Timer_settime(napi_env env, napi_callback_info info)
     its.it_interval.tv_sec = PARAM_0;
     its.it_interval.tv_nsec = PARAM_0;
     result = timer_settime(timerid, PARAM_0, &its, nullptr);
-    while (count <= PARAM_0) {
+    while (g_count <= PARAM_0) {
         sleep(PARAM_1);
     }
     result = timer_delete(timerid);
@@ -303,9 +319,9 @@ static napi_value Timer_getoverrun(napi_env env, napi_callback_info info)
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
 
-    int time_value = timer_getoverrun(nullptr);
+    int timeValue = timer_getoverrun(nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
@@ -325,11 +341,11 @@ static napi_value Strptime(napi_env env, napi_callback_info info)
 
 static napi_value Time(napi_env env, napi_callback_info info)
 {
-    time_t time_value = time(nullptr);
+    time_t timeValue = time(nullptr);
 
     napi_value result = nullptr;
 
-    napi_create_double(env, time_value, &result);
+    napi_create_double(env, timeValue, &result);
 
     return result;
 }
@@ -337,9 +353,9 @@ static napi_value Time(napi_env env, napi_callback_info info)
 static napi_value GetdateErr(napi_env env, napi_callback_info info)
 {
     getdate_err = PARAM_1;
-    int result_value = abs(getdate_err);
+    int resultValue = abs(getdate_err);
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -347,9 +363,9 @@ static napi_value GetdateErr(napi_env env, napi_callback_info info)
 static napi_value Daylight(napi_env env, napi_callback_info info)
 {
     daylight = PARAM_1;
-    int result_value = abs(daylight);
+    int resultValue = abs(daylight);
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -386,43 +402,6 @@ static napi_value Tzset(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Utimes(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int toJsResult = FAIL;
-
-    size_t length = SIZE_64, stresult = PARAM_0;
-    char strTemp[length];
-    napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
-
-    int fd = open(strTemp, O_RDWR | O_RSYNC | O_CREAT);
-
-    close(fd);
-
-    struct stat buf1;
-    struct stat buf2;
-    time_t t_now, t_new;
-    stat(strTemp, &buf1);
-    t_now = time(nullptr);
-
-    int utimesesult = utimes(strTemp, nullptr);
-    if (utimesesult == PARAM_0) {
-        stat(strTemp, &buf2);
-        t_new = buf2.st_mtime;
-        if (t_new == t_now) {
-            toJsResult = SUCCESS;
-        }
-    }
-    remove(strTemp);
-
-    napi_value result = nullptr;
-    napi_create_int32(env, toJsResult, &result);
-    return result;
-}
-
 static napi_value DiffTime(napi_env env, napi_callback_info info)
 {
     time_t now;
@@ -435,8 +414,8 @@ static napi_value DiffTime(napi_env env, napi_callback_info info)
     newyear.tm_sec = PARAM_0;
     newyear.tm_mon = PARAM_0;
     newyear.tm_mday = PARAM_1;
-    time_t firstTime = 1999 - 12 - 17 - 06 - 30 - 23;
-    time_t secondTime = 1900 - 02 - 07 - 16 - 15 - 20;
+    time_t firstTime = PARAM_1999 - PARAM_12 - PARAM_17 - PARAM_06 - PARAM_30 - PARAM_23;
+    time_t secondTime = PARAM_1900 - PARAM_02 - PARAM_07 - PARAM_16 - PARAM_15 - PARAM_20;
     seconds = difftime(firstTime, secondTime);
     napi_value result = nullptr;
     napi_create_double(env, seconds, &result);
@@ -474,7 +453,6 @@ static napi_value CTime(napi_env env, napi_callback_info info)
 
 napi_value Asctime(napi_env env, napi_callback_info info)
 {
-
     time_t curr_time;
     time(&curr_time);
     char *time_str = asctime(localtime(&curr_time));
@@ -489,7 +467,6 @@ napi_value Asctime(napi_env env, napi_callback_info info)
 
 napi_value AsctimeR(napi_env env, napi_callback_info info)
 {
-
     time_t rawtime;
     struct tm *timeinfo;
     char buffer[80];
@@ -508,7 +485,6 @@ napi_value AsctimeR(napi_env env, napi_callback_info info)
 
 static napi_value Clock(napi_env env, napi_callback_info info)
 {
-
     clock_t returnValue = clock();
     int param = FAIL;
     if (returnValue >= PARAM_0) {
@@ -563,7 +539,6 @@ static napi_value ClockGetres(napi_env env, napi_callback_info info)
 
 static napi_value ClockGettime(napi_env env, napi_callback_info info)
 {
-
     struct timespec ts;
     int value = clock_gettime(CLOCK_REALTIME, &ts);
     napi_value result;
@@ -588,44 +563,6 @@ static napi_value ClockSettime(napi_env env, napi_callback_info info)
 {
     napi_value result;
     napi_create_int32(env, NO_ERR, &result);
-    return result;
-}
-
-static napi_value Futimes(napi_env env, napi_callback_info info)
-{
-
-    int ret = FAIL;
-    struct stat s;
-    static struct timeval tv[2] = {{0L, 0L}, {0L, 0L}};
-    tv[0].tv_sec = s.st_atime;
-    tv[0].tv_usec = PARAM_0;
-    tv[1].tv_sec = s.st_mtime;
-    tv[1].tv_usec = PARAM_0;
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR | O_CREAT, 777);
-    ret = futimes(fd, tv);
-    napi_value result;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
-static napi_value Futimesat(napi_env env, napi_callback_info info)
-{
-
-    int dir_fd = open("/data/storage/el2/base/files", O_RDONLY | O_DIRECTORY);
-    int fd = openat(dir_fd, "Fzl.txt", O_CREAT | O_RDWR | O_EXCL, 0666);
-    write(fd, "helloworld", PARAM_5);
-    struct timeval tv[2];
-    struct stat st;
-    fstat(fd, &st);
-    close(fd);
-    tv[0].tv_sec = st.st_atime + PARAM_1;
-    tv[0].tv_usec = PARAM_0;
-    tv[1].tv_sec = st.st_mtime + PARAM_1;
-    tv[1].tv_usec = PARAM_0;
-    int ret = futimesat(dir_fd, "Fzl.txt", tv);
-    close(dir_fd);
-    napi_value result;
-    napi_create_int32(env, ret, &result);
     return result;
 }
 
@@ -669,7 +606,7 @@ static napi_value MkTime(napi_env env, napi_callback_info info)
     ttv = mktime(ptm);
 
     napi_value result;
-    if (ttv == -1) {
+    if (ttv == FAILD) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERR, &result);
@@ -679,7 +616,6 @@ static napi_value MkTime(napi_env env, napi_callback_info info)
 
 static napi_value Gmtime(napi_env env, napi_callback_info info)
 {
-
     time_t rawtime;
     struct tm *infoat;
 
@@ -702,18 +638,16 @@ static napi_value GmtimeR(napi_env env, napi_callback_info info)
     struct tm gmt_parsed_time;
     napi_value result;
 
-    if (localtime_r(&time, &parsed_time) == nullptr)
-    {
+    if (localtime_r(&time, &parsed_time) == nullptr) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
 
-    if (gmtime_r(&time, &gmt_parsed_time) == nullptr)
-    {
+    if (gmtime_r(&time, &gmt_parsed_time) == nullptr) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
- 
+
     napi_create_int32(env, NO_ERR, &result);
     return result;
 }
@@ -727,11 +661,11 @@ static napi_value Lutimes(napi_env env, napi_callback_info info)
     tv[0].tv_usec = PARAM_0;
     tv[1].tv_sec = s.st_mtime;
     tv[1].tv_usec = PARAM_0;
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR | O_CREAT, 0666);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR | O_CREAT, SIZE_0666);
     close(fd);
     ret = lutimes("/data/storage/el2/base/files/Fzl.txt", tv);
     napi_value result;
-    if (ret == -1) {
+    if (ret == FAILD) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERR, &result);
@@ -741,7 +675,6 @@ static napi_value Lutimes(napi_env env, napi_callback_info info)
 
 static napi_value Nanosleep(napi_env env, napi_callback_info info)
 {
-
     struct timespec n_sleep;
     struct timespec p_sleep;
     n_sleep.tv_sec = PARAM_0;
@@ -761,14 +694,6 @@ static napi_value TimeZone(napi_env env, napi_callback_info info)
 
     napi_value result = nullptr;
     napi_create_int32(env, gitInfo, &result);
-    return result;
-}
-static napi_value TzName(napi_env env, napi_callback_info info)
-{
-    tzset();
-    printf("Current time zone is %sn", tzname[0]);
-    napi_value result = nullptr;
-    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -794,7 +719,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"lutimes", nullptr, Lutimes, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"nanosleep", nullptr, Nanosleep, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"timeZone", nullptr, TimeZone, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"tzName", nullptr, TzName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strftime", nullptr, Strftime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strftime_l", nullptr, Strftime_l, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"timegm", nullptr, Timegm, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -806,7 +730,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"timer_getoverrun", nullptr, Timer_getoverrun, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strptime", nullptr, Strptime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"tzset", nullptr, Tzset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"utimes", nullptr, Utimes, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"difftime", nullptr, DiffTime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ctime", nullptr, CTime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"ctime_r", nullptr, CTime_r, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -819,10 +742,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"clockGettime", nullptr, ClockGettime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"clockNanosleep", nullptr, ClockNanosleep, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"clockSettime", nullptr, ClockSettime, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"futimes", nullptr, Futimes, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"futimesat", nullptr, Futimesat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"settimeofday", nullptr, Settimeofday, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"futimesat", nullptr, Futimesat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"time", nullptr, Time, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getdateErr", nullptr, GetdateErr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"daylight", nullptr, Daylight, nullptr, nullptr, nullptr, napi_default, nullptr},

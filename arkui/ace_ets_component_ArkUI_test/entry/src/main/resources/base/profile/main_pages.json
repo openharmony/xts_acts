@@ -28,6 +28,12 @@
         "MainAbility/pages/Provide/provideParent3",
         "MainAbility/pages/Provide/provideParent4",
         "MainAbility/pages/Provide/provideParent5",
-        "MainAbility/pages/Provide/provideParent6"
+        "MainAbility/pages/Provide/provideParent6",
+        "MainAbility/pages/Resource/ResourceColor",
+        "MainAbility/pages/Resource/ResourceFloat",
+        "MainAbility/pages/Resource/ResourceInteger",
+        "MainAbility/pages/Resource/ResourcePlural",
+        "MainAbility/pages/Resource/ResourceStrarray",
+        "MainAbility/pages/Resource/ResourceString"
     ]
 }

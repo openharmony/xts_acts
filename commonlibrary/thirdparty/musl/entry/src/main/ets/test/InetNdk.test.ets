@@ -24,7 +24,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ADDR_0100
      * @tc.name       : testMuslInetInetAddr001
      * @tc.desc       : test inet_addr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +38,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ADDR_0200
      * @tc.name       : testMuslInetInetAddr002
      * @tc.desc       : test inet_addr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ADDR_0300
      * @tc.name       : testMuslInetInetAddr003
      * @tc.desc       : test inet_addr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -66,7 +66,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ATON_0100
      * @tc.name       : testMuslInetInetAton001
      * @tc.desc       : test inet_aton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -80,7 +80,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ATON_0200
      * @tc.name       : testMuslInetInetAton002
      * @tc.desc       : test inet_aton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -94,7 +94,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_ATON_0300
      * @tc.name       : testMuslInetInetAton003
      * @tc.desc       : test inet_aton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -108,7 +108,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_LNAOF_0100
      * @tc.name       : testMuslInetInetLnaof001
      * @tc.desc       : test inet_lnaof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -122,7 +122,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_LNAOF_0200
      * @tc.name       : testMuslInetInetLnaof002
      * @tc.desc       : test inet_lnaof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -136,7 +136,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_LNAOF_0300
      * @tc.name       : testMuslInetInetLnaof003
      * @tc.desc       : test inet_lnaof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -150,7 +150,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_MAKEADDR_0100
      * @tc.name       : testMuslInetInetMakeaddr001
      * @tc.desc       : test inet_makeaddr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -164,7 +164,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_MAKEADDR_0200
      * @tc.name       : testMuslInetInetMakeaddr002
      * @tc.desc       : test inet_makeaddr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -178,7 +178,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_MAKEADDR_0300
      * @tc.name       : testMuslInetInetMakeaddr003
      * @tc.desc       : test inet_makeaddr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -192,7 +192,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETOF_0100
      * @tc.name       : testMuslInetInetNetof001
      * @tc.desc       : test inet_netof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -206,7 +206,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETOF_0200
      * @tc.name       : testMuslInetInetNetof002
      * @tc.desc       : test inet_netof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -220,7 +220,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETOF_0300
      * @tc.name       : testMuslInetInetNetof003
      * @tc.desc       : test inet_netof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -234,7 +234,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETWORK_0100
      * @tc.name       : testMuslInetInetNetwork001
      * @tc.desc       : test inet_network
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -248,7 +248,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETWORK_0200
      * @tc.name       : testMuslInetInetNetwork002
      * @tc.desc       : test inet_network
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -262,7 +262,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NETWORK_0300
      * @tc.name       : testMuslInetInetNetwork003
      * @tc.desc       : test inet_network
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -276,7 +276,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOA_0100
      * @tc.name       : testMuslInetInetNtoa001
      * @tc.desc       : test inet_ntoa
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -290,7 +290,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOA_0200
      * @tc.name       : testMuslInetInetNtoa002
      * @tc.desc       : test inet_ntoa
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -304,7 +304,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOA_0300
      * @tc.name       : testMuslInetInetNtoa003
      * @tc.desc       : test inet_ntoa
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -318,7 +318,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_PTON_0100
      * @tc.name       : testMuslInetInetPton001
      * @tc.desc       : test inet_pton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -332,7 +332,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_PTON_0200
      * @tc.name       : testMuslInetInetPton002
      * @tc.desc       : test inet_pton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -346,7 +346,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_PTON_0300
      * @tc.name       : testMuslInetInetPton003
      * @tc.desc       : test inet_pton
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -360,7 +360,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOP_0100
      * @tc.name       : testMuslInetInetNtop001
      * @tc.desc       : test inet_ntop
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -374,7 +374,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOP_0200
      * @tc.name       : testMuslInetInetNtop002
      * @tc.desc       : test inet_ntop
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -388,7 +388,7 @@ export default function muslInetNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INET_INET_NTOP_0300
      * @tc.name       : testMuslInetInetNtop003
      * @tc.desc       : test inet_ntop
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

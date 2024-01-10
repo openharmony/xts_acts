@@ -62,6 +62,49 @@ struct WebViewControllerRefreshTest {
                 }
                 break;
               }
+              case 'testWebViewControllerRefresh002': {
+                try {
+                  this.controller.loadUrl('resource://rawfile/second.html');
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('WebViewController.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerRefresh003': {
+                try {
+                  this.controller.loadUrl('https://www.huawei.com/');
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('WebViewController.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebViewControllerRefresh004': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  this.controller.loadUrl(`file://${sandboxPath}`);
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('WebViewController.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
             }
           })
 

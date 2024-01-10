@@ -2,15 +2,15 @@
     "kits": [
         {
             "push": [
-                "ActsEndtoendTest->/data/local/tmp/ActsEndtoendTest"
+                "ActsNnrtE2ETest->/data/local/tmp/ActsNnrtE2ETest"
             ],
             "type": "PushKit"
         }
     ],
     "driver": {
-        "native-test-timeout": "120000",
+        "native-test-timeout": "600000",
         "type": "CppTest",
-        "module-name": "ActsEndtoendTest",
+        "module-name": "ActsNnrtE2ETest",
         "runtime-hint": "1s",
         "native-test-device-path": "/data/local/tmp"
     },

@@ -55,6 +55,30 @@
         {
             "name": "gutter_10",
             "value": "10"
+        },
+        {
+            "name": "string_1",
+            "value": "1"
+        },
+        {
+            "name": "string_2",
+            "value": "2"
+        },
+        {
+            "name": "string_3",
+            "value": "3"
+        },
+        {
+            "name": "string_4",
+            "value": "4"
+        },
+        {
+            "name": "string_",
+            "value": "default"
+        },
+        {
+            "name": "string_0",
+            "value": "default"
         }
     ]
 }

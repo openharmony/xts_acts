@@ -16,17 +16,17 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <cerrno>
+#include <clocale>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
-#include <clocale>
 #include <net/if.h>
-#include <cerrno>
 
 #define MAX_NAMBER 80
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define PARAM_1 1
-#define INIT -1
+#define INIT (-1)
 #define SUCCESS 0
 #define ERRON_0 0
 
@@ -68,7 +68,7 @@ static napi_value Newlocale(napi_env env, napi_callback_info info)
 
 static napi_value Setlocale(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -80,7 +80,7 @@ static napi_value Setlocale(napi_env env, napi_callback_info info)
 
 static napi_value Uselocale(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -130,8 +130,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"duplocale", nullptr, DupLocale, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"localeconv", nullptr, Localeconv, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"newlocale", nullptr, Newlocale, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"freelocale", nullptr, Freelocale, nullptr, nullptr, nullptr, napi_default, nullptr}
-    };
+        {"freelocale", nullptr, Freelocale, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

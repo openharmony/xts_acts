@@ -23,7 +23,7 @@ export default function muslIconvNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_0100
      * @tc.name     : testMuslIconvIconv001
      * @tc.desc     : test iconv
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -37,7 +37,7 @@ export default function muslIconvNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_OPEN_0100
      * @tc.name     : testMuslIconvIconvOpen001
      * @tc.desc     : test iconv_open
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -51,7 +51,7 @@ export default function muslIconvNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_CLOSE_0100
      * @tc.name     : testMuslIconvIconvClose001
      * @tc.desc     : test iconv_close
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

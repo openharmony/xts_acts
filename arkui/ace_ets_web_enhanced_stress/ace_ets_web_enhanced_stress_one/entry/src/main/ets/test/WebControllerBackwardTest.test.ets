@@ -57,7 +57,7 @@ export default function webControllerBackwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_BACKWARD_0100
     * @tc.name        : testWebControllerBackward001
-    * @tc.desc        : stress testing backward when using the raw file
+    * @tc.desc        : stress testing backward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

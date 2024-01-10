@@ -22,19 +22,18 @@
 #include <malloc.h>
 #include <node_api.h>
 
-
 #define BUFF_SIZE 1024
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 
 static napi_value Iconv(napi_env env, napi_callback_info info)
 {
     int ret;
     size_t inLen = sizeof("hello,world!");
     size_t outLen = sizeof("hello,world!");
-    char *outbuf = (char *)malloc(sizeof("hello,world!"));
-    char *inbuf = (char *)malloc(sizeof("hello,world!"));
+    char *outbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
+    char *inbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
     iconv_t there = iconv_open("GBK", "UTF-8");
     errno = NO_ERR;
@@ -55,8 +54,8 @@ static napi_value IconvOpen(napi_env env, napi_callback_info info)
 {
     size_t inLen = BUFF_SIZE;
     size_t outLen = BUFF_SIZE;
-    char *outbuf = (char *)malloc(BUFF_SIZE);
-    char *inbuf = (char *)malloc(BUFF_SIZE);
+    char *outbuf = static_cast<char *>(malloc(BUFF_SIZE));
+    char *inbuf = static_cast<char *>(malloc(BUFF_SIZE));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
     iconv_t there = iconv_open("GBK", "UTF-8");
     iconv(there, &inbuf, &inLen, &outbuf, &outLen);
@@ -77,8 +76,8 @@ static napi_value IconvClose(napi_env env, napi_callback_info info)
     int ret;
     size_t inLen = BUFF_SIZE;
     size_t outLen = BUFF_SIZE;
-    char *outbuf = (char *)malloc(BUFF_SIZE);
-    char *inbuf = (char *)malloc(BUFF_SIZE);
+    char *outbuf = static_cast<char *>(malloc(BUFF_SIZE));
+    char *inbuf = static_cast<char *>(malloc(BUFF_SIZE));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
     iconv_t there = iconv_open("GBK", "UTF-8");
     ret = iconv(there, &inbuf, &inLen, &outbuf, &outLen);

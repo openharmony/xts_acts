@@ -14,12 +14,12 @@
  */
 
 #include "napi/native_api.h"
-#include <limits.h>
-#include <sys/ipc.h>
 #include <fcntl.h>
+#include <climits>
+#include <sys/ipc.h>
 
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define NOERROR 0
 
 static napi_value Ftok(napi_env env, napi_callback_info info)

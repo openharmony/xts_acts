@@ -24,7 +24,7 @@ struct GaugeExample {
   @State startAngleValue: number = 210;
   @State endAngleValue: number = 150;
   @State colorValues: Array = [[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1], [0xD94838, 1]];
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
       if (eventData.data.gaugeValue != null) {
@@ -47,31 +47,31 @@ struct GaugeExample {
 
   onPageShow() {
     console.info('gauge page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 102,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 103,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
 
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 904,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
 
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 905,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
 
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 906,
       priority: events_emitter.EventPriority.LOW
     }
@@ -88,7 +88,9 @@ struct GaugeExample {
         .strokeWidth(`${this.strokeWidthValue}`)
         .width(200)
         .height(200)
-    }.width('100%').margin({ top: 300 })
+    }
+    .width('100%')
+    .margin({ top: 300 })
   }
 }
 

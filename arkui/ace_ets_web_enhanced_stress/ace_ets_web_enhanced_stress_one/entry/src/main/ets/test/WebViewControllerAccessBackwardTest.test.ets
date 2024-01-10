@@ -57,7 +57,7 @@ export default function webViewControllerAccessBackwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_ACCESSBACKWARD_0100
     * @tc.name        : testWebViewControllerAccessBackward001
-    * @tc.desc        : stress testing accessBackward when using the raw file
+    * @tc.desc        : stress testing accessBackward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
@@ -73,7 +73,7 @@ export default function webViewControllerAccessBackwardTest() {
     /*
    * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_ACCESSBACKWARD_0200
    * @tc.name        : testWebViewControllerAccessBackward002
-   * @tc.desc        : stress testing accessBackward when using the raw file
+   * @tc.desc        : stress testing accessBackward
    * @tc.size        : MediumTest
    * @tc.type        : Function
    * @tc.level       : Level 1

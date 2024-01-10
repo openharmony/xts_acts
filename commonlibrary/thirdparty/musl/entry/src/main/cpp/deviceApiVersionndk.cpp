@@ -15,8 +15,10 @@
 
 #include <js_native_api.h>
 #include <node_api.h>
+
 #define NO_ERRS 0
-#define FAIL -1
+#define FAIL (-1)
+
 extern "C" {
 int get_device_api_version(void);
 }
@@ -25,7 +27,7 @@ static napi_value GetDeviceApiVersion(napi_env env, napi_callback_info info)
 {
     int ret = get_device_api_version();
     napi_value result;
-    if (ret == -1) {
+    if (ret == FAIL) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERRS, &result);

@@ -59,6 +59,8 @@ struct WebAttributeonFullScreenExitTest {
             switch (this.str) {
               case "testWebAttributeOnFullScreenExit001": {
                 try {
+                  this.controller.loadUrl($rawfile('fullScreenTest.html'))
+                  await Utils.sleep(3000)
                   let driver = Driver.create();
                   let component = await driver.findComponent(ON.id('OnFullScreenExitTestWeb'));
                   for (let i = 0; i < this.stressTimes; i++) {

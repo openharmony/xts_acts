@@ -17,6 +17,8 @@ import { expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import { ComponentInfo, RectInfo } from './Interfaces';
 import { Constants } from './Constants';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import fs from '@ohos.file.fs';
 
 export default class Utils {
   static sleep(time: number) {
@@ -27,6 +29,24 @@ export default class Utils {
     }).then(() => {
       console.info(`sleep ${time} over...`)
     })
+  }
+
+  static copyRawFileToSandbox(rawFileName: string): string {
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let context = abilityDelegator.getAppContext();
+    let dir = context.filesDir + "/";
+    let rawFilePath = dir + rawFileName;
+    try {
+      let arrayBuffer = context.resourceManager.getRawFileContentSync(rawFileName);
+      let file = fs.openSync(rawFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.writeSync(file.fd, arrayBuffer.buffer);
+      fs.closeSync(file);
+      console.log(`[copyRawFileToSandbox] ${rawFileName} is copy success`);
+    } catch (error) {
+      console.info("[copyRawFileToSandbox] getRawFileDescriptor api run failed" + error);
+    }
+    console.info("[copyRawFileToSandbox] sandbox path:" + dir);
+    return rawFilePath
   }
 
   static stressingLog(functionName: string, current: number, total: number) {

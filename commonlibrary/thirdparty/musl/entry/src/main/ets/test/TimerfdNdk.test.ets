@@ -22,7 +22,7 @@ export default function timerfdNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMERFD_TIMERFDCREATE_0100
      * @tc.name       : testMuslTimerfdTimerfdCreate001
      * @tc.desc       : test timerfd_create
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +37,7 @@ export default function timerfdNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMERFD_TIMERFDGETTIME_0100
      * @tc.name       : testMuslTimerfdTimerfdGettime001
      * @tc.desc       : test timerfd_gettime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +51,7 @@ export default function timerfdNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMERFD_TIMERFDSETTIME_0100
      * @tc.name       : testMuslTimerfdTimerfdSettime001
      * @tc.desc       : test timerfd_settime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

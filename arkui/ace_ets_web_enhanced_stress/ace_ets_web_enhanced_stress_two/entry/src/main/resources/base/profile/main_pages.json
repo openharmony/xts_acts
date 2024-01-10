@@ -71,7 +71,17 @@
     "MainAbility/pages/WebAttributeOnWindowExitTest",
     "MainAbility/pages/WebAttributeOnWindowNewTest",
     "MainAbility/pages/WebControllerHandlerSetWebControllerTest",
-    "MainAbility/pages/WebAttributeOnOverScrollTest"
+    "MainAbility/pages/WebAttributeOnOverScrollTest",
+    "MainAbility/pages/WebCookieManagerFetchCookieSyncTest",
+    "MainAbility/pages/WebCookieManagerFetchCookieTest",
+    "MainAbility/pages/WebCookieManagerConfigCookieSyncTest",
+    "MainAbility/pages/WebCookieManagerConfigCookieTest",
+    "MainAbility/pages/WebCookieManagerClearSessionCookieSyncTest",
+    "MainAbility/pages/WebCookieManagerClearSessionCookieTest",
+    "MainAbility/pages/WebCookieManagerClearAllCookiesSyncTest",
+    "MainAbility/pages/WebCookieManagerClearAllCookiesTest",
+    "MainAbility/pages/WebViewControllerPostUrlTest",
+    "MainAbility/pages/WebViewControllerSetConnectionTimeoutTest"
   ]
 }
 

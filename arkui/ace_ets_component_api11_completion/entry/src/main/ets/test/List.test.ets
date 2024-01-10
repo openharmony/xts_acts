@@ -27,6 +27,7 @@ import NavigationApi2 from './AttrApi/NavigationApi2.test.ets';
 import NavigationApi3 from './AttrApi/NavigationApi3.test.ets';
 import RichEditorApi from './AttrApi/RichEditorApi.test.ets';
 import TabsApi from './AttrApi/TabsApi.test.ets';
+import Image_QRCode_Api from './AttrApi/Image_QRCode_Api.test';
 import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/QueryNavDestinationInfoNavDestinationJsunit.test';
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
@@ -39,10 +40,20 @@ import GestureTagJsSuit from './GestureTagJsSuit.test';
 import InvertOptionsJsSuit from './InvertOptionsJsSuit.test';
 import selectoptionwithJsSuit from './selectoptionwithJsSuit.test';
 import ForegroundColorJsSuit from './ForegroundColorJsSuit.test';
+import tabsDemo from './TextApi/tabsDemo.test.ets';
+import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
 import setForegroundColor from './DragController/setForegroundColor.test.ets';
+import arkuiNodeTest from "./arkuinode/arkuinode.test.ets"
+import atomicServiceBarTest from "./autoservice/atomicServiceBar.test.ets"
+import buttonControlTest from "./buttonControlSize/buttonControl.test.ets"
+import dymaticTest from "./dymaticattribute/dymatic.test.ets"
+import listSContentTest from "./list/list.test.ets"
+import  relativeCTest from "./relative/relative.test.ets"
+import  gridIndexTest from "./grid/grid.test.ets"
+import enumFolderTest from "./folder/enumflodstack.test.ets"
 export default function testsuite() {
   tabsApi1()
   AttributeModifierDemoAPI01()
@@ -59,6 +70,15 @@ export default function testsuite() {
   NavigationApi3()
   RichEditorApi()
   TabsApi()
+  Image_QRCode_Api()
+  relativeCTest()
+  listSContentTest()
+  gridIndexTest()
+  buttonControlTest()
+  dymaticTest()
+  enumFolderTest();
+  arkuiNodeTest()
+  atomicServiceBarTest()
   QueryNavDestinationInfoNavDestinationJsunit()
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
@@ -71,6 +91,8 @@ export default function testsuite() {
   InvertOptionsJsSuit()
   selectoptionwithJsSuit()
   ForegroundColorJsSuit()
+  tabsDemo()
+  TextSelectionMenu()
   createDragAction()
   setForegroundColor()
   touchPoint()

@@ -22,7 +22,7 @@ export default function pollNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_POLL_POLL_0100
      * @tc.name       : testMuslPollPoll001
      * @tc.desc       : test poll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -36,7 +36,7 @@ export default function pollNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_POLL_PPOLL_0100
      * @tc.name       : testMuslPollPpoll001
      * @tc.desc       : test ppoll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -50,7 +50,7 @@ export default function pollNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_POLL_POLLCHK_0100
      * @tc.name       : testMuslPollPollchk001
      * @tc.desc       : test pollchk
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -63,7 +63,7 @@ export default function pollNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_POLL_PPOLLCHK_0100
      * @tc.name       : testMuslPollPpollchk001
      * @tc.desc       : test ppollchk
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

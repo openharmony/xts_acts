@@ -17,9 +17,9 @@
 #include <netdb.h>
 #include <sys/sysinfo.h>
 #define SUCCESS 1
-#define FAIL -1
-#define NOERROR -1
-#define EAI_BADFLAGS -1
+#define FAIL (-1)
+#define NOERROR (-1)
+
 napi_value GetPhysPages(napi_env env, napi_callback_info info)
 {
 
