@@ -24,10 +24,12 @@
 #define TWO 2
 #define PATH "/data/storage/el2/base/files"
 #define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_0777 0777
 
 static napi_value Statfs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -48,7 +50,7 @@ static napi_value Statfs(napi_env env, napi_callback_info info)
 
 static napi_value Statfs64(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -69,11 +71,11 @@ static napi_value Statfs64(napi_env env, napi_callback_info info)
 
 static napi_value Fstatfs(napi_env env, napi_callback_info info)
 {
-
     struct statfs st = {PARAM_0};
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    lseek(fd, 0, SEEK_SET);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
+    lseek(fd, PARAM_0, SEEK_SET);
     int ret = fstatfs(fd, &st);
+    close(fd);
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
@@ -81,11 +83,11 @@ static napi_value Fstatfs(napi_env env, napi_callback_info info)
 
 static napi_value Fstatfs64(napi_env env, napi_callback_info info)
 {
-
     struct statfs st = {PARAM_0};
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    lseek(fd, 0, SEEK_SET);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
+    lseek(fd, PARAM_0, SEEK_SET);
     int ret = fstatfs64(fd, &st);
+    close(fd);
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
@@ -93,11 +95,11 @@ static napi_value Fstatfs64(napi_env env, napi_callback_info info)
 
 static napi_value Fstatvfs(napi_env env, napi_callback_info info)
 {
-
     struct statvfs sts = {PARAM_0};
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    lseek(fd, 0, SEEK_SET);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
+    lseek(fd, PARAM_0, SEEK_SET);
     int ret = fstatvfs(fd, &sts);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -105,11 +107,11 @@ static napi_value Fstatvfs(napi_env env, napi_callback_info info)
 
 static napi_value Fstatvfs64(napi_env env, napi_callback_info info)
 {
-
     struct statvfs sts = {PARAM_0};
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    lseek(fd, 0, SEEK_SET);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
+    lseek(fd, PARAM_0, SEEK_SET);
     int ret = fstatvfs64(fd, &sts);
+    close(fd);
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;

@@ -23,7 +23,7 @@ export default function membarrierNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MEMBARRIER_MEMBARRIER_0100
      * @tc.name       : testMuslMembarrierMembarrier001
      * @tc.desc       : test membarrier
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

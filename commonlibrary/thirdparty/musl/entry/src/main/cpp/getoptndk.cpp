@@ -14,7 +14,6 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstring>
 #include <fcntl.h>
 #include <getopt.h>
@@ -23,34 +22,35 @@
 #include <sys/random.h>
 
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERRS 0
 #define LENGTH 64
 #define DEFAULT_VALUE 0
 #define TEST_ID_VALUE 100
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define PARAM_0 0
+#define PARAM_1 1
 #define PARAM_2 2
 
 static napi_value GetoptLong(napi_env env, napi_callback_info info)
 {
-    int argcc = 2;
+    int argcc = PARAM_2;
     char argvl[] = "-l";
 
     char argvn[] = "-n";
     char *argv[2] = {argvn, argvl};
-    char short_options[] = "nbl:";
+    char shortOptions[] = "nbl:";
     struct option long_options[] = {
         {"name", DEFAULT_VALUE, nullptr, 'n'},
         {"bf_name", DEFAULT_VALUE, nullptr, 'b'},
-        {"love", 1, nullptr, 'l'},
+        {"love", PARAM_1, nullptr, 'l'},
         {DEFAULT_VALUE, DEFAULT_VALUE, DEFAULT_VALUE, DEFAULT_VALUE},
     };
     int ret;
-    ret = getopt_long(argcc, argv, short_options, long_options, nullptr);
+    ret = getopt_long(argcc, argv, shortOptions, long_options, nullptr);
 
     napi_value result = nullptr;
-    if (ret == -1) {
+    if (ret == PARAM_UNNORMAL) {
         napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, NO_ERRS, &result);
@@ -69,10 +69,10 @@ static napi_value GetoptLongOnly(napi_env env, napi_callback_info info)
     char optString[50] = "ab:c:d";
     int ret = PARAM_0;
     struct option long_options[] = {
-        {"name", 0, nullptr, 'a'},
-        {"bf_name", 0, nullptr, 'b'},
-        {"love", 1, nullptr, 'c'},
-        {0, 0, 0, 0},
+        {"name", PARAM_0, nullptr, 'a'},
+        {"bf_name", PARAM_0, nullptr, 'b'},
+        {"love", PARAM_1, nullptr, 'c'},
+        {PARAM_0, PARAM_0, PARAM_0, PARAM_0},
     };
     getopt_long_only(optArgc, optArgv, optString, long_options, nullptr);
     napi_value result = nullptr;

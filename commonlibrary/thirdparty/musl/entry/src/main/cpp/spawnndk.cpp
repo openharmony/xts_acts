@@ -52,16 +52,16 @@ static napi_value PosixSpawn(napi_env env, napi_callback_info info)
 {
     pid_t Pid = PARAM_0;
     Pid = getpid();
-    posix_spawnattr_t SpawnAttributes;
-    posix_spawnattr_init(&SpawnAttributes);
+    posix_spawnattr_t spawnAttributes;
+    posix_spawnattr_init(&spawnAttributes);
     errno = FAIL;
     int backInfo = FAIL;
     char **Environ = environ;
     const char *CommandCStr = "posix delete -i 1024";
-    const char *Argv[] = {"sh", "-c", CommandCStr, nullptr};
+    const char *argv[] = {"sh", "-c", CommandCStr, nullptr};
     char filepath[] = "/data/storage/el2/base/files/fzl.txt";
     int fileDescribe = open(filepath, O_CREAT);
-    posix_spawn(&Pid, filepath, nullptr, &SpawnAttributes, (char *const *)Argv, Environ);
+    posix_spawn(&Pid, filepath, nullptr, &spawnAttributes, (char *const *)argv, Environ);
     close(fileDescribe);
     napi_value result = nullptr;
     if (errno == FAIL) {
@@ -75,16 +75,16 @@ static napi_value PosixSpawnP(napi_env env, napi_callback_info info)
 {
     pid_t Pid = PARAM_0;
     Pid = getpid();
-    posix_spawnattr_t SpawnAttributes = {PARAM_0};
-    posix_spawnattr_init(&SpawnAttributes);
+    posix_spawnattr_t spawnAttributes = {PARAM_0};
+    posix_spawnattr_init(&spawnAttributes);
     errno = FAIL;
     int backInfo = FAIL;
     char **Environ = environ;
     const char *CommandCStr = nullptr;
-    const char *Argv[] = {"sh", "-c", CommandCStr, nullptr};
+    const char *argv[] = {"sh", "-c", CommandCStr, nullptr};
     char filepath[] = "/data/storage/el2/base/files/fzl.txt";
     int fileDescribe = open(filepath, O_CREAT);
-    posix_spawnp(&Pid, filepath, nullptr, &SpawnAttributes, (char *const *)Argv, Environ);
+    posix_spawnp(&Pid, filepath, nullptr, &spawnAttributes, (char *const *)argv, Environ);
     napi_value result = nullptr;
     close(fileDescribe);
     if (errno == FAIL) {

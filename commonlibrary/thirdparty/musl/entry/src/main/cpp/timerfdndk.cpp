@@ -14,18 +14,18 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
+#include <ctime>
 #include <sys/timerfd.h>
-#include <time.h>
 #include <unistd.h>
 
 #define NANOSECOND (1000000000)
 #define MICROSECONDS (1000000)
 #define DATA_TWO (2)
-#define NUMBER -1
+#define NUMBER (-1)
 #define ONE 1
 #define TWO 2
 #define PARAM_0 0
+#define PARAM_1 1
 #define TIME_L 1659177614
 
 static napi_value Timerfd_create(napi_env env, napi_callback_info info)
@@ -36,10 +36,9 @@ static napi_value Timerfd_create(napi_env env, napi_callback_info info)
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
     int timerfd = timerfd_create(NUMBER, NUMBER);
-
-    close(timerfd);
     napi_value result = nullptr;
     napi_create_int32(env, timerfd, &result);
+    close(timerfd);
     return result;
 }
 
@@ -50,9 +49,9 @@ static napi_value Timerfd_gettime(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
-    int time_value = timerfd_gettime(NUMBER, nullptr);
+    int timeValue = timerfd_gettime(NUMBER, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 
@@ -65,13 +64,14 @@ static napi_value Timerfd_settime(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &valueFirst);
     struct itimerspec its = {{PARAM_0, PARAM_0}, {DATA_TWO, PARAM_0}};
     struct itimerspec val;
-    int fd, time_value;
+    int fd = PARAM_0;
+    int timeValue = PARAM_0;
     fd = timerfd_create(CLOCK_REALTIME, PARAM_0);
-    time_value = timerfd_settime(fd, PARAM_0, &its, nullptr);
-    time_value = usleep(MICROSECONDS);
-    time_value = timerfd_gettime(fd, &val);
+    timeValue = timerfd_settime(fd, PARAM_0, &its, nullptr);
+    timeValue = usleep(MICROSECONDS);
+    timeValue = timerfd_gettime(fd, &val);
     napi_value result = nullptr;
-    napi_create_int32(env, time_value, &result);
+    napi_create_int32(env, timeValue, &result);
     return result;
 }
 

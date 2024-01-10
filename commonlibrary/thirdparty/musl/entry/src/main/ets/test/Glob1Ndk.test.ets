@@ -12,26 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { describe, expect, it } from '@ohos/hypium'
-import auxv from 'libauxvndk.so'
+import glob from 'libglob1ndk.so'
+import fs from '@ohos.file.fs';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-export default function auxvNdkTest() {
-  describe('MuslAuxvTest', () => {
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_AUXV_GETAUXVAL_0100
-     * @tc.name       : testMuslAuxvGetauxval001
-     * @tc.desc       : test getauxval
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+export default function muslGlobd1NdkTest() {
+  describe('MuslGlobd1Test', () => {
+
+    /**getopt
+     * @tc.number   : SUB_THIRDPARTY_MUSL_GLOB_GLOB_0200
+     * @tc.name     : testMuslGlobGlob002
+     * @tc.desc     : test glob
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 1
      */
-    it('testMuslAuxvGetauxval001', 0, async (done: Function) => {
-      let resultTrue = 1;
-      let result: number = auxv.getauxval();
-      expect(result).assertEqual(resultTrue);
+    it('testMuslGloGlob002', 0, async (done: Function) => {
+      let result: number = glob.glob();
+      expect(result).assertEqual(-1)
       done()
     });
-
   })
 }

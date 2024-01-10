@@ -22,7 +22,7 @@ export default function muslQuotaNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_QUOTA_QUOTACTL_0100
      * @tc.name       : testMuslQuotaQuotactl001
      * @tc.desc       : quotactl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

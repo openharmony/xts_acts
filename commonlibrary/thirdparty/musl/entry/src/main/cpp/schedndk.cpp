@@ -23,25 +23,25 @@
 
 #define NO_ERR 0
 #define TWENTYTHREE 23
-#define DEFAULTVALUE -100
+#define DEFAULTVALUE (-100)
 #define SYS_pidfd_open 4
 #define ONEVAL 1
-#define MINUSONE -1
-#define MINUSTEN -10
+#define MINUSONE (-1)
+#define MINUSTEN (-10)
 #define TWOTHREE 23
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 #define TWENTYTHREE 23
-#define DEFAULTVALUE -100
+#define DEFAULTVALUE (-100)
 
 static napi_value SchedGetPriorityMax(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -54,7 +54,7 @@ static napi_value SchedGetPriorityMax(napi_env env, napi_callback_info info)
 
 static napi_value SchedGetPriorityMin(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -66,11 +66,11 @@ static napi_value SchedGetPriorityMin(napi_env env, napi_callback_info info)
 }
 static napi_value SchedCpualloc(napi_env env, napi_callback_info info)
 {
-    size_t __count = PARAM_0;
-    cpu_set_t *ret = __sched_cpualloc(__count);
+    size_t count = PARAM_0;
+    cpu_set_t *ret = __sched_cpualloc(count);
     napi_value result = nullptr;
     if (ret == nullptr) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
@@ -78,15 +78,15 @@ static napi_value SchedCpualloc(napi_env env, napi_callback_info info)
 }
 static napi_value SchedYield(napi_env env, napi_callback_info info)
 {
-    int sch_value = sched_yield();
+    int schValue = sched_yield();
     napi_value result = nullptr;
-    napi_create_int32(env, sch_value, &result);
+    napi_create_int32(env, schValue, &result);
     return result;
 }
 
 static napi_value SchedGetscheduler(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -104,9 +104,10 @@ static napi_value SchedGetscheduler(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value SchedSetparam(napi_env env, napi_callback_info info) {
+static napi_value SchedSetparam(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     struct sched_param param = {PARAM_0};
@@ -132,9 +133,10 @@ static napi_value SchedSetparam(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value SchedSetscheduler(napi_env env, napi_callback_info info) {
+static napi_value SchedSetscheduler(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -147,7 +149,7 @@ static napi_value SchedSetscheduler(napi_env env, napi_callback_info info) {
         param.sched_priority = TWENTYTHREE;
         int schval = sched_setscheduler(pid, sched, &param);
         napi_create_int32(env, schval, &result);
-    }else if (first == FAIL) {
+    } else if (first == FAIL) {
         int schval = sched_setscheduler(pid, sched, nullptr);
         napi_create_int32(env, schval, &result);
     } else {
@@ -196,7 +198,7 @@ static napi_value SchedSetaffinity(napi_env env, napi_callback_info info)
 
 static napi_value SchedRrGetInterval(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -232,16 +234,16 @@ static napi_value Schedcpucount(napi_env env, napi_callback_info info)
     num_cpus = sysconf(_SC_NPROCESSORS_CONF);
     size_t size;
     size = CPU_ALLOC_SIZE(num_cpus);
-    cpu_set_t *CPU;
-    CPU = CPU_ALLOC(num_cpus);
-    int returnValue = __sched_cpucount(size, CPU);
+    cpu_set_t *cpu;
+    cpu = CPU_ALLOC(num_cpus);
+    int returnValue = __sched_cpucount(size, cpu);
     napi_create_int32(env, returnValue, &result);
     return result;
 }
 
 static napi_value Unshare(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int isOpenFile = PARAM_0, toJsResult = FAIL;
@@ -254,6 +256,15 @@ static napi_value Unshare(napi_env env, napi_callback_info info)
     }
     napi_value result = nullptr;
     napi_create_int32(env, toJsResult, &result);
+    return result;
+}
+
+static napi_value SchedGetparam(napi_env env, napi_callback_info info)
+{
+    struct sched_param param1;
+    int ret = sched_getparam(PARAM_0, &param1);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
@@ -275,6 +286,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"schedCpuCount", nullptr, Schedcpucount, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"schedCpualloc", nullptr, SchedCpualloc, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"unshare", nullptr, Unshare, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"schedGetparam", nullptr, SchedGetparam, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

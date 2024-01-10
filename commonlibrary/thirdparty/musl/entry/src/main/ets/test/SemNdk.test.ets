@@ -23,7 +23,7 @@ export default function semNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEM_SEMCTL_0100
      * @tc.name       : testMuslSemSemctl001
      * @tc.desc       : test semctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +37,7 @@ export default function semNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEM_SEMGET_0100
      * @tc.name       : testMuslSemSemget001
      * @tc.desc       : test semget
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +51,7 @@ export default function semNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEM_SEMOP_0100
      * @tc.name       : testMuslSemSemop001
      * @tc.desc       : test semop
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -64,7 +64,7 @@ export default function semNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEM_SEMTIMEDOP_0100
      * @tc.name       : testMuslSemSemtimedop001
      * @tc.desc       : test semtimedop
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
