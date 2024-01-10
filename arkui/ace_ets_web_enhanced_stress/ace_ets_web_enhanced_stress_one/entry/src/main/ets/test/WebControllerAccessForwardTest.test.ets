@@ -57,7 +57,7 @@ export default function webControllerAccessForwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSFORWARD_0100
     * @tc.name        : testWebControllerAccessForward001
-    * @tc.desc        : stress testing accessForward when using the raw file
+    * @tc.desc        : stress testing accessForward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
@@ -73,7 +73,7 @@ export default function webControllerAccessForwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSFORWARD_0200
     * @tc.name        : testWebControllerAccessForward002
-    * @tc.desc        : stress testing accessForward when using the raw file
+    * @tc.desc        : stress testing accessForward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

@@ -12,10 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import webDataResubmissionHandlerCancelTest from './WebDataResubmissionHandlerCancelTest.test'
+import webDataResubmissionHandlerResendTest from './WebDataResubmissionHandlerResendTest.test'
+import webFullScreenExitHandlerExitFullScreenTest from './WebFullScreenExitHandlerExitFullScreenTest.test'
+import webJsGeolocationInvokeTest from './WebJsGeolocationInvokeTest.test'
 import webOnAudioStateChangedTest from './WebOnAudioStateChangedTest.test'
+import webOnBeforeUnloadTest from './WebOnBeforeUnloadTest.test'
 import webOnDataResubmittedTest from './WebOnDataResubmittedTest.test'
 import webOnFaviconReceivedTest from './WebOnFaviconReceivedTest.test'
 import webOnFirstContentfulPaintTest from './WebOnFirstContentfulPaintTest.test'
+import webOnGeolocationShowTest from './WebOnGeolocationShowTest.test'
 import webOnInterceptKeyEventTest from './WebOnInterceptKeyEventTest.test'
 import webOnPageBeginTest from './WebOnPageBeginTest.test'
 import webAttributeOnDownloadStartTest from './WebAttributeOnDownloadStartTest.test'
@@ -43,6 +49,7 @@ import webOnRequestSelectedTest from './WebOnRequestSelectedTest.test'
 import webOnScaleChangeTest from './WebOnScaleChangeTest.test'
 import webOnSearchResultReceiveTest from './WebOnSearchResultReceiveTest.test'
 import webViewControllerCustomizeSchemesTest from './WebViewControllerCustomizeSchemesTest.test'
+import webViewControllerDownloadTest from './WebViewControllerDownloadTest.test'
 import webResourceErrorGetErrorCodeTest from './WebResourceErrorGetErrorCodeTest.test'
 import webResourceErrorGetErrorInfoTest from './WebResourceErrorGetErrorInfoTest.test'
 import webViewControllerAccessBackwardTest from './WebViewControllerAccessBackwardTest.test'
@@ -50,9 +57,23 @@ import webViewControllerAccessForwardTest from './WebViewControllerAccessForward
 import webViewControllerAccessStepTest from './WebViewControllerAccessStepTest.test'
 import webViewControllerBackOrForwardTest from './WebViewControllerBackOrForwardTest.test'
 import webViewControllerBackwardTest from './WebViewControllerBackwardTest.test'
-import webViewControllerClearClientAuthenticationCacheTest from './WebViewControllerClearClientAuthenticationCacheTest.test'
+import webViewControllerClearClientAuthenticationCacheTest
+  from './WebViewControllerClearClientAuthenticationCacheTest.test'
+import webViewControllerClearHistoryTest from './WebViewControllerClearHistoryTest.test'
+import webViewControllerClearMatchesTest from './WebViewControllerClearMatchesTest.test'
 import webViewControllerForwardTest from './WebViewControllerForwardTest.test'
+import webViewControllerGetOriginalUrlTest from './WebViewControllerGetOriginalUrlTest.test'
+import webViewControllerGetUrlTest from './WebViewControllerGetUrlTest.test'
+import webViewControllerHasImageTest from './WebViewControllerHasImageTest.test'
 import webViewControllerLoadUrlTest from './WebViewControllerLoadUrlTest.test'
+import webViewControllerPrefetchPageTest from './WebViewControllerPrefetchPageTest.test'
+import webViewControllerRequestFocusTest from './WebViewControllerRequestFocusTest.test'
+import webViewControllerRestoreWebStateTest from './WebViewControllerRestoreWebStateTest.test'
+import webViewControllerScrollByTest from './WebViewControllerScrollByTest.test'
+import webViewControllerScrollToTest from './WebViewControllerScrollToTest.test'
+import webViewControllerSerializeWebStateTest from './WebViewControllerSerializeWebStateTest.test'
+import webViewControllerSetAudioMutedTest from './WebViewControllerSetAudioMutedTest.test'
+import webViewControllerSlideScrollTest from './WebViewControllerSlideScrollTest.test'
 import webViewOnceTest from './WebViewOnceTest.test'
 import webLoadDataTest from './WebLoadDataTest.test'
 import webLoadUrlTest from './WebLoadUrlTest.test'
@@ -74,6 +95,8 @@ import webViewControllerZoomOutTest from './WebViewControllerZoomOutTest.test'
 
 export default function testsuite() {
   webViewControllerLoadUrlTest()
+  webViewControllerRestoreWebStateTest()
+  webOnBeforeUnloadTest()
   webOnPageEndTest()
   webViewOnceTest()
   webViewControllerCustomizeSchemesTest()
@@ -89,32 +112,44 @@ export default function testsuite() {
   webOnInterceptKeyEventTest()
   webOnRefreshAccessedHistoryTest()
   webOnDataResubmittedTest()
-  webAttributeOnDownloadStartTest();
-  webAttributeOnErrorReceiveTest();
-  webAttributeOnFullScreenEnterTest();
-  webAttributeOnFullScreenExitTest();
-  webAttributeOnHttpErrorReceiveTest();
-  webAttributeOnInterceptRequestTest();
-  webAttributeOnLoadInterceptTest();
-  webAttributeOnScrollTest();
-  webAttributeOnTitleReceiveTest();
-  webAttributeOnUrlLoadInterceptTest();
-  webControllerAccessBackwardTest();
-  webControllerAccessForwardTest();
-  webControllerAccessStepTest();
-  webControllerBackwardTest();
-  webControllerClearHistoryTest();
-  webControllerForwardTest();
-  webControllerRequestFocusTest();
-  webResourceErrorGetErrorCodeTest();
-  webResourceErrorGetErrorInfoTest();
-  webViewControllerAccessBackwardTest();
-  webViewControllerAccessForwardTest();
-  webViewControllerAccessStepTest();
-  webViewControllerBackOrForwardTest();
-  webViewControllerBackwardTest();
-  webViewControllerClearClientAuthenticationCacheTest();
-  webViewControllerForwardTest();
+  webAttributeOnDownloadStartTest()
+  webAttributeOnErrorReceiveTest()
+  webAttributeOnFullScreenEnterTest()
+  webAttributeOnFullScreenExitTest()
+  webAttributeOnHttpErrorReceiveTest()
+  webAttributeOnInterceptRequestTest()
+  webAttributeOnLoadInterceptTest()
+  webAttributeOnScrollTest()
+  webAttributeOnTitleReceiveTest()
+  webAttributeOnUrlLoadInterceptTest()
+  webControllerAccessBackwardTest()
+  webControllerAccessForwardTest()
+  webControllerAccessStepTest()
+  webControllerBackwardTest()
+  webControllerClearHistoryTest()
+  webControllerForwardTest()
+  webControllerRequestFocusTest()
+  webResourceErrorGetErrorCodeTest()
+  webResourceErrorGetErrorInfoTest()
+  webViewControllerAccessBackwardTest()
+  webViewControllerAccessForwardTest()
+  webViewControllerAccessStepTest()
+  webViewControllerBackOrForwardTest()
+  webViewControllerBackwardTest()
+  webViewControllerClearClientAuthenticationCacheTest()
+  webViewControllerClearHistoryTest()
+  webViewControllerClearMatchesTest()
+  webViewControllerForwardTest()
+  webViewControllerGetOriginalUrlTest()
+  webViewControllerGetUrlTest()
+  webViewControllerHasImageTest()
+  webViewControllerPrefetchPageTest()
+  webViewControllerRequestFocusTest()
+  webViewControllerScrollByTest()
+  webViewControllerScrollToTest()
+  webViewControllerSerializeWebStateTest()
+  webViewControllerSetAudioMutedTest()
+  webViewControllerSlideScrollTest()
   webLoadDataTest()
   webRefreshTest()
   webLoadUrlTest()
@@ -131,4 +166,10 @@ export default function testsuite() {
   webViewControllerZoomTest()
   webViewControllerZoomInTest()
   webViewControllerZoomOutTest()
+  webOnGeolocationShowTest()
+  webJsGeolocationInvokeTest()
+  webFullScreenExitHandlerExitFullScreenTest()
+  webDataResubmissionHandlerResendTest()
+  webDataResubmissionHandlerCancelTest()
+  webViewControllerDownloadTest()
 }

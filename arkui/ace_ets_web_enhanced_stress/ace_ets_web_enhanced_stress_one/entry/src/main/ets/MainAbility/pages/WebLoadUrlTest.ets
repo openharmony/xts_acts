@@ -88,6 +88,93 @@ struct WebLoadUrlTest {
                 }
                 break;
               }
+              case 'testWebLoadUrl004': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl({ url:`file://${sandboxPath}`})
+                    Utils.stressingLog('WebController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebLoadUrl005': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl({ url: $rawfile('index.html'),
+                      headers: [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    })
+                    Utils.stressingLog('WebController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebLoadUrl006': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl({ url: 'resource://rawfile/second.html',
+                      headers: [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    })
+                    Utils.stressingLog('WebController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebLoadUrl007': {
+                try {
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl({ url: 'https://openharmony.cn/',
+                      headers: [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    })
+                    Utils.stressingLog('WebController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebLoadUrl008': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.loadUrl({ url: `file://${sandboxPath}`,
+                      headers: [{
+                        headerKey: "customHeaderKey",
+                        headerValue: "customHeaderValue"
+                      }]
+                    })
+                    Utils.stressingLog('WebController.loadUrl()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
             }
           })
 

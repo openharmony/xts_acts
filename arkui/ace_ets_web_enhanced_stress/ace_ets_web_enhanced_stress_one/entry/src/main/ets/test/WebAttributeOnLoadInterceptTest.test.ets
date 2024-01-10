@@ -57,7 +57,7 @@ export default function webAttributeOnLoadInterceptTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONLOADINTERCEPT_0100
     * @tc.name        : testWebAttributeOnLoadIntercept001
-    * @tc.desc        : stress testing onInterceptRequest when using the raw file
+    * @tc.desc        : stress testing onInterceptRequest
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
@@ -73,7 +73,7 @@ export default function webAttributeOnLoadInterceptTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBATTRIBUTE_ONLOADINTERCEPT_0200
     * @tc.name        : testWebAttributeOnLoadIntercept002
-    * @tc.desc        : stress testing onLoadIntercept when using the raw file
+    * @tc.desc        : stress testing onLoadIntercept
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

@@ -61,6 +61,49 @@ struct WebRefreshTest {
                 }
                 break;
               }
+              case 'testWebRefresh002': {
+                try {
+                  this.controller.loadUrl({ url: 'resource://rawfile/second.html' });
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('Web.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebRefresh003': {
+                try {
+                  this.controller.loadUrl({ url: 'https://www.huawei.com/' });
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('Web.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
+              case 'testWebRefresh004': {
+                try {
+                  let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                  this.controller.loadUrl({ url: `file://${sandboxPath}` });
+                  for (let i = 0; i < this.stressTimes; i++) {
+                    this.controller.refresh()
+                    Utils.stressingLog('Web.refresh()', i + 1, this.stressTimes)
+                  }
+                  Utils.emitEvent(true, this.callBackId)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  Utils.emitEvent(false, this.callBackId)
+                }
+                break;
+              }
             }
           })
 

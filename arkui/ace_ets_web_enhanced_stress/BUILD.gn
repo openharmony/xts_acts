@@ -16,6 +16,7 @@ group("webStressTest") {
   if (is_standard_system) {
     deps = [
       "ace_ets_web_enhanced_stress_one:ActsAceWebStressTest",
+      "ace_ets_web_enhanced_stress_three:ActsAceWebStressTestThree",
       "ace_ets_web_enhanced_stress_two:ActsAceWebStressTestTwo",
     ]
   }

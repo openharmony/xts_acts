@@ -57,7 +57,7 @@ export default function webViewControllerForwardTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBVIEWCONTROLLER_FORWARD_0100
     * @tc.name        : testWebViewControllerForward001
-    * @tc.desc        : stress testing forward when using the raw file
+    * @tc.desc        : stress testing forward
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1

@@ -68,6 +68,7 @@ export default function webLoadUrlTest() {
           Utils.registerEvent(testCaseName, true, callBackId, done);
         })
     });
+
     /*
     * @tc.number      : SUB_WEB_STRESS_LOADURL_0200
     * @tc.name        : testWebLoadUrl002
@@ -83,6 +84,7 @@ export default function webLoadUrlTest() {
           Utils.registerEvent(testCaseName, true, callBackId, done);
         })
     });
+
     /*
     * @tc.number      : SUB_WEB_STRESS_LOADURL_0300
     * @tc.name        : testWebLoadUrl003
@@ -98,5 +100,86 @@ export default function webLoadUrlTest() {
           Utils.registerEvent(testCaseName, true, callBackId, done);
         })
     });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_LOADURL_0400
+    * @tc.name        : testWebLoadUrl004
+    * @tc.desc        : stress testing LoadUrl when using the sandbox file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebLoadUrl004', 0, async (done: Function) => {
+      Utils.doIt("testWebLoadUrl004", 81121, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_LOADURL_0500
+    * @tc.name        : testWebLoadUrl005
+    * @tc.desc        : stress testing LoadUrl when using the raw file and customHeaders
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebLoadUrl005', 0, async (done: Function) => {
+      Utils.doIt("testWebLoadUrl005", 81122, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_LOADURL_0600
+    * @tc.name        : testWebLoadUrl006
+    * @tc.desc        : stress testing LoadUrl when using the resource and customHeaders
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebLoadUrl006', 0, async (done: Function) => {
+      Utils.doIt("testWebLoadUrl006", 81123, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_LOADURL_0700
+    * @tc.name        : testWebLoadUrl007
+    * @tc.desc        : stress testing LoadUrl when using the url and customHeaders
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebLoadUrl007', 0, async (done: Function) => {
+      Utils.doIt("testWebLoadUrl007", 81124, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
+    /*
+    * @tc.number      : SUB_WEB_STRESS_LOADURL_0800
+    * @tc.name        : testWebLoadUrl008
+    * @tc.desc        : stress testing LoadUrl when using the sandbox file and customHeaders
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 2
+    */
+    it('testWebLoadUrl008', 0, async (done: Function) => {
+      Utils.doIt("testWebLoadUrl008", 81125, Constants.DEFAULT_STRESS_TIMES,
+        Constants.WEB_LOAD_URL_BUTTON_KEY,
+        (testCaseName: string, callBackId: number) => {
+          Utils.registerEvent(testCaseName, true, callBackId, done);
+        })
+    });
+
   })
 }

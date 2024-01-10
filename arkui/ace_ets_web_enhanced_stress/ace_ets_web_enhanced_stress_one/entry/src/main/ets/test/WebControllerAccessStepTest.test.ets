@@ -57,7 +57,7 @@ export default function webControllerAccessStepTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSSTEP_0100
     * @tc.name        : testWebControllerAccessStep001
-    * @tc.desc        : stress testing accessStep when using the raw file
+    * @tc.desc        : stress testing accessStep
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
@@ -73,7 +73,7 @@ export default function webControllerAccessStepTest() {
     /*
    * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSSTEP_0200
    * @tc.name        : testWebControllerAccessStep002
-   * @tc.desc        : stress testing accessStep when using the raw file
+   * @tc.desc        : stress testing accessStep
    * @tc.size        : MediumTest
    * @tc.type        : Function
    * @tc.level       : Level 1
@@ -89,7 +89,7 @@ export default function webControllerAccessStepTest() {
     /*
    * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSSTEP_0300
    * @tc.name        : testWebControllerAccessStep003
-   * @tc.desc        : stress testing accessStep when using the raw file
+   * @tc.desc        : stress testing accessStep
    * @tc.size        : MediumTest
    * @tc.type        : Function
    * @tc.level       : Level 1
@@ -105,7 +105,7 @@ export default function webControllerAccessStepTest() {
     /*
    * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_ACCESSSTEP_0400
    * @tc.name        : testWebControllerAccessStep004
-   * @tc.desc        : stress testing accessStep when using the raw file
+   * @tc.desc        : stress testing accessStep
    * @tc.size        : MediumTest
    * @tc.type        : Function
    * @tc.level       : Level 1

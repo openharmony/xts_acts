@@ -86,6 +86,16 @@ import webAttributeOnWindowExitTest from './WebAttributeOnWindowExitTest.test'
 import webAttributeOnWindowNewTest from './WebAttributeOnWindowNewTest.test'
 import webControllerHandlerSetWebControllerTest from './WebControllerHandlerSetWebControllerTest.test'
 import webAttributeOnOverScrollTest from './WebAttributeOnOverScrollTest.test'
+import webCookieManagerFetchCookieSyncTest from './WebCookieManagerFetchCookieSyncTest.test'
+import webCookieManagerFetchCookieTest from './WebCookieManagerFetchCookieTest.test'
+import webCookieManagerConfigCookieSyncTest from './WebCookieManagerConfigCookieSyncTest.test'
+import webCookieManagerClearSessionCookieSyncTest from './WebCookieManagerClearSessionCookieSyncTest.test'
+import webCookieManagerClearSessionCookieTest from './WebCookieManagerClearSessionCookieTest.test'
+import webCookieManagerClearAllCookiesSyncTest from './WebCookieManagerClearAllCookiesSyncTest.test'
+import webCookieManagerClearAllCookiesTest from './WebCookieManagerClearAllCookiesTest.test'
+import webCookieManagerConfigCookieTest from './WebCookieManagerConfigCookieTest.test'
+import webViewControllerPostUrlTest from './WebViewControllerPostUrlTest.test'
+import webViewControllerSetConnectionTimeoutTest from './WebViewControllerSetConnectionTimeoutTest.test'
 
 export default function testsuite() {
   webMessageExtGetArrayTest()
@@ -160,4 +170,14 @@ export default function testsuite() {
   webAttributeOnWindowNewTest()
   webControllerHandlerSetWebControllerTest()
   webAttributeOnOverScrollTest()
+  webCookieManagerFetchCookieSyncTest()
+  webCookieManagerFetchCookieTest()
+  webCookieManagerConfigCookieSyncTest()
+  webCookieManagerConfigCookieTest()
+  webCookieManagerClearSessionCookieSyncTest()
+  webCookieManagerClearSessionCookieTest()
+  webCookieManagerClearAllCookiesSyncTest()
+  webCookieManagerClearAllCookiesTest()
+  webViewControllerPostUrlTest()
+  webViewControllerSetConnectionTimeoutTest()
 }

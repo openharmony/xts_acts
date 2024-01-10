@@ -57,7 +57,7 @@ export default function webControllerRequestFocusTest() {
     /*
     * @tc.number      : SUB_WEB_STRESS_WEBCONTROLLER_REQUESTFOCUS_0100
     * @tc.name        : testWebControllerRequestFocus001
-    * @tc.desc        : stress testing request when using the raw file
+    * @tc.desc        : stress testing request
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
