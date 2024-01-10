@@ -9,6 +9,20 @@
     },
     "kits": [
         {
+            "type": "ShellKit",
+            "pre-push":[],
+            "run-command":[
+                "setenforce 1",
+                "power-shel1 setmode602",
+                "hilog -Q pidoff",
+                "hilog -p off",
+                "hilog -b I",
+                "hilog -b D -D 0xD002B70",
+                "sleep 2"
+            ],
+            "teardown-command":[]
+        },
+        {
             "test-file-name": ["ActsStorageFileIoV9JSTest.hap"],
             "type": "AppInstallKit",
             "cleanup-apps": true
