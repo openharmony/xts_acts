@@ -1219,13 +1219,13 @@ export default function getBundleInfoForSelf() {
     /*
      * @tc.number: Sub_Bms_Framework_Query_AppInfo_7061
      * @tc.name: getBundleInfoForSelfSyncFileContextMenu
-     * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenu flag.
+     * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenuConfig flag.
      */
     it('getBundleInfoForSelfSyncFileContextMenu', 0, async function (done) {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE|bundle.BundleFlag.GET_BUNDLE_INFO_WITH_MENU);
       console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
       checkCommonBundleInfo(data);
-      console.info("data.hapModulesInfo[0].fileContextMenu" + JSON.stringify(data.hapModulesInfo[0].fileContextMenu));
+      console.info("data.hapModulesInfo[0].fileContextMenuConfig" + JSON.stringify(data.hapModulesInfo[0].fileContextMenuConfig));
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(1);
       expect(data.hapModulesInfo[0].name).assertEqual("testModule");
@@ -1244,7 +1244,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
       expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-      expect(data.hapModulesInfo[0].fileContextMenu).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
+      expect(data.hapModulesInfo[0].fileContextMenuConfig).assertEqual("{\"src\": [\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}");
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
