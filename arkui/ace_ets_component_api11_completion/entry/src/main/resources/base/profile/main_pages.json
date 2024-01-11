@@ -59,6 +59,19 @@
         "MainAbility/pages/list/listTest",
         "MainAbility/pages/relativecommon/relative",
         "MainAbility/pages/grid/gridte",
-        "MainAbility/pages/folderStack/folder_stack"
+        "MainAbility/pages/folderStack/folder_stack",
+        "MainAbility/pages/renderNode001/getClipToFrame",
+        "MainAbility/pages/renderNode001/getOpacity",
+        "MainAbility/pages/renderNode001/getSize",
+        "MainAbility/pages/renderNode001/SetClipToFrame",
+        "MainAbility/pages/renderNode001/SetOpacity",
+        "MainAbility/pages/renderNode001/SetPosition",
+        "MainAbility/pages/renderNode001/SetSize",
+        "MainAbility/pages/renderNode001/getColor",
+        "MainAbility/pages/renderNode001/getChild",
+        "MainAbility/pages/renderNode001/frame",
+        "MainAbility/pages/renderNode001/getPosition",
+        "MainAbility/pages/renderNode001/pivot",
+        "MainAbility/pages/renderNode001/scale"
     ]
 }
