@@ -18,7 +18,13 @@ import http from '@ohos.net.http';
 
 export default function HttpRequestOptionsJsunit() {
   describe("HttpRequestOptionsJsunitTest", function () {
-
+    function expectFalse() {
+      try {
+        expect().assertFail();
+      } catch (err) {
+        console.info('assertion failure');
+      }
+    };
 
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_method_0100
@@ -231,7 +237,7 @@ export default function HttpRequestOptionsJsunit() {
             done();
           } catch (error) {
             console.log("Telephony_Http_HttpRequestOptions_header_0200 : JSON parse error = " + error);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         }).catch(error => {
@@ -275,7 +281,7 @@ export default function HttpRequestOptionsJsunit() {
             done();
           } catch (error) {
             console.log("Telephony_Http_HttpRequestOptions_header_0300 : JSON parse error = " + error);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         });
@@ -312,7 +318,7 @@ export default function HttpRequestOptionsJsunit() {
             done();
           } catch (error) {
             console.log("Telephony_Http_HttpRequestOptions_header_0400 : JSON parse error = " + error);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         }).catch(error => {

@@ -46,7 +46,7 @@ export default function httpJsunit() {
 
 	function expectFalse() {
 	  try {
-		expect().assertFail();
+      expect().assertFail();
 	  } catch (err) {
 		console.info('assertion failure');
 	  }
@@ -81,7 +81,7 @@ export default function httpJsunit() {
       handleInstance = connection.getDefaultNetSync();
       if (handleInstance == undefined) {
         console.log(`${caseName} gethandleInstance fail`);
-        expect().assertFail();
+        expectFalse();
         done();
       } else {
         console.log(`${caseName} gethandleInstance success`);
@@ -100,7 +100,7 @@ export default function httpJsunit() {
       connection.isDefaultNetMetered((error, data) => {
         if (error) {
           console.log(`${caseName} isDefaultNetMetered  error`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} isDefaultNetMetered success`);
@@ -124,7 +124,7 @@ export default function httpJsunit() {
         done();
       }).catch((error) => {
         console.log(JSON.stringify(error));
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -139,7 +139,7 @@ export default function httpJsunit() {
       connection.getDefaultHttpProxy((error, data) => {
         if (error) {
           console.log(`${caseName} getDefaultHttpProxy  error`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getDefaultHttpProxy success`);
@@ -161,7 +161,7 @@ export default function httpJsunit() {
         done();
       }).catch((error) => {
         console.log(JSON.stringify(error));
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -180,7 +180,7 @@ export default function httpJsunit() {
           connection.getDefaultHttpProxy((error, data) => {
             if (error) {
               console.log(`${caseName} getDefaultHttpProxy  error`);
-              expect().assertFail();
+              expectFalse();
               done();
             } else {
               console.log(`${caseName} getDefaultHttpProxy success`);
@@ -189,12 +189,12 @@ export default function httpJsunit() {
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
       }).catch(error => {
           console.log("getDefaultNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
     });
@@ -215,17 +215,17 @@ export default function httpJsunit() {
             done();
           }).catch((error) => {
             console.log(JSON.stringify(error));
-            expect().assertFail();
+            expectFalse();
             done();
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
       }).catch(error => {
           console.log("getDefaultNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
     });

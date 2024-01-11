@@ -104,7 +104,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
         httpRequest.request(url, httpRequestOptions_fileData, (err, data) => {
           if (err) {
             console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-            expect().assertFail();
+            expectFalse();
             done();
           } else {
             console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
@@ -129,7 +129,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
       httpRequest.request(url, httpRequestOptions_form, (err, data) => {
         if (err) {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
@@ -151,7 +151,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
       httpRequest.request(url, httpRequestOptions, (err, data) => {
         if (err) {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);

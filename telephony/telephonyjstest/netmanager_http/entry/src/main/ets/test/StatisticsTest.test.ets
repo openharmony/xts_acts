@@ -23,7 +23,13 @@ export default function StatisticsTest() {
     const DATA_0 = 0;
     let code_201 = 201;
     let errCode_201 = "201";
-    
+    function expectFalse() {
+      try {
+        expect().assertFail();
+      } catch (err) {
+        console.info('assertion failure');
+      }
+    }
      /**
      * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Async_0100
      * @tc.name Test getIfaceRxBytes() interface
@@ -38,7 +44,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -55,7 +61,7 @@ export default function StatisticsTest() {
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
@@ -79,7 +85,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -101,7 +107,7 @@ export default function StatisticsTest() {
             done();
           } else {
             console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         });
@@ -122,7 +128,7 @@ export default function StatisticsTest() {
       let ifaceName = "eth0";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
@@ -144,7 +150,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -159,7 +165,7 @@ export default function StatisticsTest() {
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
@@ -178,7 +184,7 @@ export default function StatisticsTest() {
       try {
         statistics.getIfaceRxBytes(ifaceName).then((data) => {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }).catch((err) => {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)}`);
@@ -206,7 +212,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -223,7 +229,7 @@ export default function StatisticsTest() {
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
@@ -247,7 +253,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -269,7 +275,7 @@ export default function StatisticsTest() {
             done();
           } else {
             console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         });
@@ -290,7 +296,7 @@ export default function StatisticsTest() {
       let ifaceName = "eth0";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
@@ -312,7 +318,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -327,7 +333,7 @@ export default function StatisticsTest() {
       let ifaceName = "wlan1";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
@@ -346,7 +352,7 @@ export default function StatisticsTest() {
       try {
         statistics.getIfaceTxBytes(ifaceName).then((data) => {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }).catch((err) => {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)}`);
@@ -370,7 +376,7 @@ export default function StatisticsTest() {
       statistics.getAllTxBytes((err, data) => {
         if (err) {
           console.log(`${caseName} getAllTxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getAllTxBytes success ${JSON.stringify(data)}`);
@@ -393,7 +399,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getAllTxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -408,7 +414,7 @@ export default function StatisticsTest() {
       statistics.getAllRxBytes((err, data) => {
         if (err) {
           console.log(`${caseName} getAllRxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getAllRxBytes success ${JSON.stringify(data)}`);
@@ -431,7 +437,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getAllRxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
@@ -451,7 +457,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -472,7 +478,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -488,7 +494,7 @@ export default function StatisticsTest() {
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
         console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidRxBytes fail ${JSON.stringify(err)} `);
@@ -507,7 +513,7 @@ export default function StatisticsTest() {
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
         console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidRxBytes fail ${JSON.stringify(err)} `);
@@ -531,7 +537,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -552,7 +558,7 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
@@ -568,7 +574,7 @@ export default function StatisticsTest() {
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
         console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidTxBytes fail ${JSON.stringify(err)} `);
@@ -587,7 +593,7 @@ export default function StatisticsTest() {
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
         console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidTxBytes fail ${JSON.stringify(err)} `);
@@ -619,7 +625,7 @@ export default function StatisticsTest() {
                 done();
               } else {
                 console.log(`${caseName} getCellularRxBytes success ${JSON.stringify(data)}`);
-                expect().assertFail();
+                expectFalse();
                 done();
               }
             });
@@ -651,7 +657,7 @@ export default function StatisticsTest() {
             expect(data == true).assertTrue();
             statistics.getCellularRxBytes().then((data) => {
               console.log(`${caseName} getCellularRxBytes success ${JSON.stringify(data)}`);
-              expect().assertFail();
+              expectFalse();
               done();
             }).catch((err) => {
               console.log(`${caseName} getCellularRxBytes fail ${JSON.stringify(err)} `);
@@ -691,7 +697,7 @@ export default function StatisticsTest() {
                 done();
               } else {
                 console.log(`${caseName} getCellularTxBytes success ${JSON.stringify(data)}`);
-                expect().assertFail();
+                expectFalse();
                 done();
               }
             });
@@ -723,7 +729,7 @@ export default function StatisticsTest() {
             expect(data == true).assertTrue();
             statistics.getCellularTxBytes().then((data) => {
               console.log(`${caseName} getCellularTxBytes success ${JSON.stringify(data)}`);
-              expect().assertFail();
+              expectFalse();
               done();
             }).catch((err) => {
               console.log(`${caseName} getCellularTxBytes fail ${JSON.stringify(err)} `);

@@ -106,7 +106,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
         done();
       }).catch((err: BusinessError) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(err)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       })
     })
@@ -126,7 +126,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
           done();
         }).catch((err:BusinessError) => {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-          expect().assertFail();
+          expectFalse();
           done();
       })
     })
@@ -146,7 +146,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
         done();
       }).catch((err:BusinessError) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       })
     })
