@@ -639,12 +639,7 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400 rootElement:' + JSON.stringify(rootElement));
             rootElement.attributeNames().then((data) => {
               console.log('get attribute names success');
-              if (data != null) {
-                expect(data.rect.left != -1).assertTrue();
-                expect(data.rect.top != -1).assertTrue();
-                expect(data.rect.width != -1).assertTrue();
-                expect(data.rect.height != -1).assertTrue();
-              }
+
             }).catch((err) => {
               console.log('failed to get attribute names, because ' + JSON.stringify(err));
             });
@@ -694,11 +689,55 @@ export default function abilityTest() {
               done();
               return;
             }
-            rootElement.attributeNames((err, data) => {
-              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
-            });
-            rootElement.attributeValue('name', (err, data) => {
-              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
+            rootElement.attributeNames((err, ElementAttributeValue: ElementAttributeKeys[]) => {
+              if (err) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 failed to get element attributeNames, because ' + JSON.stringify(err));
+                done();
+                return;
+              }
+              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 data:' + JSON.stringify(data));
+              expect(data.indexOf("accessibilityFocused") != -1).assertTrue();
+              expect(data.indexOf("bundleName") != -1).assertTrue();
+              expect(data.indexOf("checkable") != -1).assertTrue();
+              expect(data.indexOf("checked") != -1).assertTrue();
+              expect(data.indexOf("children") != -1).assertTrue();
+              expect(data.indexOf("clickable") != -1).assertTrue();
+              expect(data.indexOf("componentId") != -1).assertTrue();
+              expect(data.indexOf("componentType") != -1).assertTrue();
+              expect(data.indexOf("contents") != -1).assertTrue();
+              expect(data.indexOf("currentIndex") != -1).assertTrue();
+              expect(data.indexOf("description") != -1).assertTrue();
+              expect(data.indexOf("editable") != -1).assertTrue();
+              expect(data.indexOf("endIndex") != -1).assertTrue();
+              expect(data.indexOf("error") != -1).assertTrue();
+              expect(data.indexOf("focusable") != -1).assertTrue();
+              expect(data.indexOf("hintText") != -1).assertTrue();
+              expect(data.indexOf("inputType") != -1).assertTrue();
+              expect(data.indexOf("inspectorKey") != -1).assertTrue();
+              expect(data.indexOf("isEnable") != -1).assertTrue();
+              expect(data.indexOf("isHint") != -1).assertTrue();
+              expect(data.indexOf("isFocused") != -1).assertTrue();
+              expect(data.indexOf("isPassword") != -1).assertTrue();
+              expect(data.indexOf("isVisible") != -1).assertTrue();
+              expect(data.indexOf("itemCount") != -1).assertTrue();
+              expect(data.indexOf("lastContent") != -1).assertTrue();
+              expect(data.indexOf("longClickable") != -1).assertTrue();
+              expect(data.indexOf("pageId") != -1).assertTrue();
+              expect(data.indexOf("parent") != -1).assertTrue();
+              expect(data.indexOf("pluralLineSupported") != -1).assertTrue();
+              expect(data.indexOf("rect") != -1).assertTrue();
+              expect(data.indexOf("resourceName") != -1).assertTrue();
+              expect(data.indexOf("scrollable") != -1).assertTrue();
+              expect(data.indexOf("selected") != -1).assertTrue();
+              expect(data.indexOf("startIndex") != -1).assertTrue();
+              expect(data.indexOf("text") != -1).assertTrue();
+              expect(data.indexOf("textLengthLimit") != -1).assertTrue();
+              expect(data.indexOf("textMoveUnit") != -1).assertTrue();
+              expect(data.indexOf("triggerAction") != -1).assertTrue();
+              expect(data.indexOf("valueMax") != -1).assertTrue();
+              expect(data.indexOf("valueMin") != -1).assertTrue();
+              expect(data.indexOf("valueNow") != -1).assertTrue();
+              expect(data.indexOf("windowId") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
@@ -873,6 +912,19 @@ export default function abilityTest() {
         try {
           axContext.getWindows().then((data) => {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600  data:' + JSON.stringify(data));
+            rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
+              console.log('get attribute names success');
+              if (data != null) {
+                expect(data.indexOf("isActive") != -1).assertTrue();
+                expect(data.indexOf("screenRect") != -1).assertTrue();
+                expect(data.indexOf("layer") != -1).assertTrue();
+                expect(data.indexOf("type") != -1).assertTrue();
+                expect(data.indexOf("rootElement") != -1).assertTrue();
+                expect(data.indexOf("windowId") != -1).assertTrue();
+              }
+            }).catch((err) => {
+              console.log('failed to get attribute names, because ' + JSON.stringify(err));
+            });
             done();
           }).catch((err) => {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600 err' + JSON.stringify(err));
@@ -901,7 +953,23 @@ export default function abilityTest() {
       if (axContext != null) {
         try {
           axContext.getWindows((err, data) => {
-            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
+            if (err) {
+              console.error('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 failed to getWindows, because ' + JSON.stringify(err));
+              done();
+              return;
+            }
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601  data:' + JSON.stringify(data));
+            if (data != null) {
+              rootElement.attributeValue('screenRect').then((data) => {
+                console.log('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 get attribute value by name success');
+                expect(data.left != -1).assertTrue();
+                expect(data.top != -1).assertTrue();
+                expect(data.width != -1).assertTrue();
+                expect(data.height != -1).assertTrue();
+              }).catch((err) => {
+                console.log('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 failed to get attribute value, because ' + JSON.stringify(err));
+              });
+            }
             done();
           });
         } catch (exception) {
