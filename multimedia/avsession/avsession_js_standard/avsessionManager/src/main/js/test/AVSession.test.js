@@ -771,6 +771,105 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900
+         * @tc.name      : setAVMetadata - promise - set avQueueName、avQueueId、avQueueImage(pixelmap)
+         * @tc.desc      : Testing call setAVMetadata(promise) set avQueueName、avQueueId、avQueueImage(pixelmap)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900', 0, async function (done) {
+            console.info('TestLog: Creat pixelmap');
+            let pixelMap = await getPixelMap();
+            let readBuffer0 = new ArrayBuffer(96);
+            await pixelMap.readPixelsToBuffer(readBuffer0);
+            let bufferArr0 = new Uint8Array(readBuffer0);
+            let metadata = {
+                assetId: '121278',
+                avQueueName: '121278',
+                avQueueId: '121278',
+                avQueueImage: pixelMap
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set avQueueName、avQueueId、avQueueImage successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set avQueueName、avQueueId、avQueueImage error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            let pixMap;
+            await controller.getAVMetadata().then((data) => {
+                if (data.assetId === '121278' && data.avQueueName === '121278' && data.avQueueId === '121278') {
+                    pixMap = data.avQueueImage;
+                } else {
+                    console.info('TestLog: getAVMetadata value error.');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: getAVMetadata error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            if (pixMap) {
+                let pixelSize = pixMap.getPixelBytesNumber();
+                console.info(`TestLog: pixelSize is: ${pixelSize}`);
+                let readBuffer = new ArrayBuffer(pixelSize);
+                await pixMap.readPixelsToBuffer(readBuffer);
+                let bufferArr2 = new Uint8Array(readBuffer);
+                for (let i = 0; i < bufferArr2.length; i++) {
+                    if (bufferArr0[i] !== bufferArr2[i]) {
+                        expect(false).assertTrue();
+                    } else {
+                        expect(true).assertTrue();
+                    }
+                }
+            }
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000
+         * @tc.name      : setAVMetadata - promise - set avQueueName、avQueueId、avQueueImage(string)
+         * @tc.desc      : Testing call setAVMetadata(promise) set avQueueName、avQueueId、avQueueImage(string)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                avQueueName: '121278',
+                avQueueId: '121278',
+                avQueueImage: 'https://img2.baidu.com/it/u=3583435814,2833583486&fm=253&fmt=auto&app=138&f=JPEG?w=526&h=500'
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set avQueueName、avQueueId、avQueueImage successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set avQueueName、avQueueId、avQueueImage error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVMetadata().then((data) => {
+                if (data) {
+                    expect(data.assetId).assertEqual(metadata.assetId);
+                    expect(data.avQueueName).assertEqual(metadata.avQueueName);
+                    expect(data.avQueueId).assertEqual(metadata.avQueueId);
+                    expect(data.avQueueImage).assertEqual(metadata.avQueueImage);
+                } else {
+                    console.info('TestLog: getAVMetadata failed.');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: getAVMetadata error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100
          * @tc.name      : setAVPlaybackState - promise - set state & activeItemId
          * @tc.desc      : Testing call setAVPlaybackState(promise) set state & activeItemId
@@ -1312,6 +1411,80 @@ export default function AVSession() {
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 6) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_IDLE)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_IDLE)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600', 0, async function (done) {
+            let PlaybackState18 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_IDLE,
+            };
+            await session.setAVPlaybackState(PlaybackState18).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(true).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 10) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700
+         * @tc.name      : setAVPlaybackState - promise - set state(PLAYBACK_STATE_BUFFERING)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set state(PLAYBACK_STATE_BUFFERING)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', 0, async function (done) {
+            let PlaybackState19 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
+            };
+            await session.setAVPlaybackState(PlaybackState19).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(true).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 11) {
                     console.info('TestLog: Get State successfully');
                     expect(true).assertTrue();
                 } else {
@@ -2968,7 +3141,15 @@ export default function AVSession() {
 
             await session.getOutputDevice().then((data) => {
                 if (!data.isRemote) {
-                    expect(true).assertTrue();
+                    let deviceInfo = data.devices[0]
+                    if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                        deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                        deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined && deviceInfo.authenticationStatus !== undefined) {
+                        expect(true).assertTrue();
+                    } else {
+                        console.info('getOutputDevice value error.')
+                        expect(false).assertTrue();
+                    }
                 } else {
                     console.info(avSession.OutputDeviceInfo.isRemote);
                     console.info(avSession.OutputDeviceInfo.audioDeviceId.size);
@@ -2999,7 +3180,15 @@ export default function AVSession() {
                     expect(false).assertTrue();
                 } else if (!value.isRemote) {
                     console.info('Get device information successfully');
-                    expect(true).assertTrue();
+                    let deviceInfo = value.devices[0]
+                    if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                        deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                        deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined && deviceInfo.authenticationStatus !== undefined) {
+                        expect(true).assertTrue();
+                    } else {
+                        console.info('getOutputDevice value error.')
+                        expect(false).assertTrue();
+                    }
                 } else {
                     console.info('Get device information failed');
                     expect(false).assertTrue();
