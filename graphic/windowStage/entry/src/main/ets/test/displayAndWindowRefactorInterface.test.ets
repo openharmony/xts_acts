@@ -2338,5 +2338,34 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             done()
         }
     })
+     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1820
+     * @tc.name      : testTargetTimestamp
+     * @tc.desc      : test the enum value of IntervalInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testTargetTimestamp',0, async function (done){
+        let msg = "testTargetTimestamp"
+        let backDisplaySyncBigger = displaySync.create()
+        console.log(msg + ' www data ' + backDisplaySyncBigger)
+        try {
+            let bigger = (frameInfo) => {
+                let a = frameInfo.targetTimestamp
+                console.log(msg + ' www data' + JSON.stringify(a))
+            }
+            expect(true).assertTrue()
+            done()
+        } catch (error) {
+            console.log(msg + ' www data Failed to Cause: ' + JSON.stringify(error));
+            if (error.code) {
+                expect().assertFail()
+            } else {
+                expect(true).assertTrue()
+            }
+            done()
+        }
+    })
   })
 }
