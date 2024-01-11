@@ -34,7 +34,7 @@ struct FontExample {
           let fontConfig = font.getUIFontConfig();
           this.adjust = fontConfig.generic[0].adjust[0].weight;
           this.fontSetName = fontConfig.fallbackGroups[0].fontSetName;
-          this.fallback = fontConfig.fallbackGroups[0].fallback[0].family;
+          this.fallback = fontConfig.fallbackGroups[0].fallback[0].language;
 
           console.log('adjust' + fontConfig.generic[0].adjust[0].weight);
           console.log("fontSetName:" + fontConfig.fallbackGroups[0].fontSetName);
