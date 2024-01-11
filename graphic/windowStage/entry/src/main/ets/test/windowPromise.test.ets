@@ -790,7 +790,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'sameids'
       let ohosData = null;
-      await ohosWindow.create(context, windowId, 1).then(
+      await ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT).then(
         (data) => {
           ohosData = data;
         }).catch((err) => {
@@ -1472,13 +1472,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
-     * @tc.name      : testSetSpecificSystemBarEnabled_Function_Promise
-     * @tc.desc      : Test the function of setSpecificSystemBarEnabled
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+    * @tc.name      : testSetSpecificSystemBarEnabled_Function_Promise
+    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
     it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async function(done){
       let msgStr = 'testSetSpecificSystemBarEnabled';
       console.log(msgStr + 'begin')
@@ -1543,26 +1543,26 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.level     : Level4
      */
     it('testSetWindowDecorHeight', 0, async function (done) {
-      let msgStr = 'testSetWindowDecorHeight';
-      console.log(msgStr + ' begin');
-      let height = 50
-      ohosWindow.getLastWindow(context).then(wnd => {
-        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-        expect(wnd != null).assertTrue();
-        try {
-          wnd.setWindowDecorHeight(height);
-          expect(true).assertTrue()
-          done()
-        } catch (exception) {
-          console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 801) {
+        let msgStr = 'testSetWindowDecorHeight';
+        console.log(msgStr + ' begin');
+        let height = 50
+        ohosWindow.getLastWindow(context).then(wnd => {
+          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+          expect(wnd != null).assertTrue();
+          try {
+            wnd.setWindowDecorHeight(height);
             expect(true).assertTrue()
             done()
-          } else {
-            expect().assertFail();
-            done();
+          } catch (exception) {
+            console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
+            if (exception.code == 801) {
+              expect(true).assertTrue()
+              done()
+            } else {
+              expect().assertFail();
+              done();
+            }
           }
-        }
       })
     })
   })

@@ -979,7 +979,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       function createFirstWin() {
         return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, windowId, 1, (err, data) => {
+          ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT, (err, data) => {
             console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
             if (err && err.code) {
               reject(null)
@@ -997,7 +997,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         done();
       });
       expect(!!dataOne).assertTrue();
-      ohosWindow.create(context, windowId, 1, async (err, data) => {
+      ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT, async (err, data) => {
         console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
         if (err && err.code) {
           console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
