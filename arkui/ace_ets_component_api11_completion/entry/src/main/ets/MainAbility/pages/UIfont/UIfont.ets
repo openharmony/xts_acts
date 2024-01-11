@@ -69,7 +69,7 @@ struct UIfont {
           for (let i = 0; i < fontConfig.generic.length; i ++){
             console.log("family:" + fontConfig.generic[i].family);
             this.text = fontConfig.generic[0].alias.length + ''
-            //HarmonyOS-Sans
+    
           }
         })
 
