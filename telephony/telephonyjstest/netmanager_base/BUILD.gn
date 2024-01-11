@@ -21,6 +21,7 @@ group("netmanager_base") {
       "dns:ActsDNSTest",
       "dnsndk:ActsDnsNdkTest",
       "jshttp:ActsJSHTTPTest",
+      "network_netmanager:ActsNetConnTest",
       "multicastconnection201_dns:ActsNetworkManagerMulDNS201Test",
       "multicastconnection_dns:ActsNetworkManagerMulDNSTest",
       "network_nopermission:ActsNetworkNopermissionTest",
