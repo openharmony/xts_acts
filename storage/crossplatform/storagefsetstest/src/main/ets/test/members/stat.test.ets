@@ -17,7 +17,7 @@ import { FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBigInt, describe, 
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOStat() {
-  describe("fileIO_fs_stat", function () {
+  describe("fileIO_fs_stat", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_STAT_ASYNC_0000
      * @tc.name   : fileIO_test_stat_async_000
@@ -27,16 +27,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_async_000");
+    it("fileIO_test_stat_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.size == FILE_CONTENT.length).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.size == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -56,8 +56,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_async_001", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_async_001");
+    it("fileIO_test_stat_async_001", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_async_001");
 
       try {
         await fileIO.stat(fpath);
@@ -78,7 +78,7 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_async_002", 3, async function (done) {
+    it("fileIO_test_stat_async_002", 3, async (done: Function) => {
       try {
         await fileIO.stat(-1);
         expect(false).assertTrue();
@@ -98,8 +98,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_async_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_async_003");
+    it("fileIO_test_stat_async_003", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_async_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -111,7 +111,7 @@ export default function fileIOStat() {
           expect(stat.size == FILE_CONTENT.length).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_async_003 error package2: " + JSON.stringify(err));
@@ -137,8 +137,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_async_004", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_async_004");
+    it("fileIO_test_stat_async_004", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_async_004");
 
       try {
         fileIO.stat(fpath, (err) => {
@@ -163,7 +163,7 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_async_005", 3, async function (done) {
+    it("fileIO_test_stat_async_005", 3, async (done: Function) => {
       try {
         fileIO.stat(-1, (err) => {
           expect(false).assertTrue();
@@ -184,16 +184,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_sync_000");
+    it("fileIO_test_stat_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.size == FILE_CONTENT.length).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.size == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -212,8 +212,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_sync_001", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_sync_001");
+    it("fileIO_test_stat_sync_001", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_sync_001");
 
       try {
         fileIO.statSync(fpath);
@@ -233,7 +233,7 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_stat_sync_002", 3, async function () {
+    it("fileIO_test_stat_sync_002", 3, async () => {
       try {
         fileIO.statSync(-1);
         expect(false).assertTrue();
@@ -252,15 +252,15 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_sync_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_sync_003");
+    it("fileIO_test_stat_sync_003", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_sync_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.size)).assertTrue();
 
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         expect(fileIO.writeSync(file.fd, FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
@@ -284,19 +284,19 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_sync_004", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_sync_004");
+    it("fileIO_test_stat_sync_004", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_sync_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
-        let stat = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
+        let stat: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat.size)).assertTrue();
         expect(isIntNum(file.fd)).assertTrue();
         expect(fileIO.writeSync(file.fd, FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
 
-        let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file2: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         stat = fileIO.statSync(file2.fd);
         expect(stat.size == FILE_CONTENT.length * 2).assertTrue();
         fileIO.closeSync(file2);
@@ -317,16 +317,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ino_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_ino_000");
+    it("fileIO_test_stat_ino_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ino_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isBigInt(stat.ino)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isBigInt(stat2.ino)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -346,8 +346,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ino_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_ino_001");
+    it("fileIO_test_stat_ino_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ino_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -359,7 +359,7 @@ export default function fileIOStat() {
           expect(isBigInt(stat.ino)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_ino_001 error package2: " + JSON.stringify(err));
@@ -385,16 +385,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ino_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_ino_002");
+    it("fileIO_test_stat_ino_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ino_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isBigInt(stat.ino)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isBigInt(stat2.ino)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -413,16 +413,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mode_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_mode_000");
+    it("fileIO_test_stat_mode_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mode_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.mode)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.mode)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -442,8 +442,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mode_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_mode_001");
+    it("fileIO_test_stat_mode_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mode_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -455,7 +455,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.mode)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_mode_001 error package2: " + JSON.stringify(err));
@@ -481,16 +481,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mode_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_mode_002");
+    it("fileIO_test_stat_mode_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mode_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.mode)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.mode)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -509,16 +509,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_uid_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_uid_000");
+    it("fileIO_test_stat_uid_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_uid_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.uid)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.uid)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -538,8 +538,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_uid_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_uid_001");
+    it("fileIO_test_stat_uid_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_uid_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -551,7 +551,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.uid)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_uid_001 error package2: " + JSON.stringify(err));
@@ -577,16 +577,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_uid_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_uid_002");
+    it("fileIO_test_stat_uid_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_uid_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.uid)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.uid)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -605,16 +605,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_gid_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_gid_000");
+    it("fileIO_test_stat_gid_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_gid_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.gid)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.gid)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -634,8 +634,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_gid_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_gid_001");
+    it("fileIO_test_stat_gid_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_gid_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -647,7 +647,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.gid)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_gid_001 error package2: " + JSON.stringify(err));
@@ -673,16 +673,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_gid_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_gid_002");
+    it("fileIO_test_stat_gid_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_gid_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.gid)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.gid)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -701,16 +701,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_size_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_size_000");
+    it("fileIO_test_stat_size_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_size_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.size) && stat.size == FILE_CONTENT.length).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.size) && stat2.size == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -730,8 +730,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_size_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_size_001");
+    it("fileIO_test_stat_size_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_size_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -743,7 +743,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.size) && stat.size == FILE_CONTENT.length).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_size_001 error package2: " + JSON.stringify(err));
@@ -769,16 +769,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_size_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_size_002");
+    it("fileIO_test_stat_size_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_size_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.size) && stat.size == FILE_CONTENT.length).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.size) && stat2.size == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -797,16 +797,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_atime_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_atime_000");
+    it("fileIO_test_stat_atime_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_atime_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.atime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.atime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -826,8 +826,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_atime_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_atime_001");
+    it("fileIO_test_stat_atime_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_atime_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -839,7 +839,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.atime)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_atime_001 error package2: " + JSON.stringify(err));
@@ -865,16 +865,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_atime_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_atime_002");
+    it("fileIO_test_stat_atime_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_atime_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.atime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.atime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -893,16 +893,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mtime_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_mtime_000");
+    it("fileIO_test_stat_mtime_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mtime_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.mtime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.mtime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -922,8 +922,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mtime_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_mtime_001");
+    it("fileIO_test_stat_mtime_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mtime_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -935,7 +935,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.mtime)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_mtime_001 error package2: " + JSON.stringify(err));
@@ -961,16 +961,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_mtime_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_mtime_002");
+    it("fileIO_test_stat_mtime_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_mtime_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.mtime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.mtime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -989,16 +989,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ctime_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_ctime_000");
+    it("fileIO_test_stat_ctime_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ctime_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(isIntNum(stat.ctime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(isIntNum(stat2.ctime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1018,8 +1018,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ctime_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_ctime_001");
+    it("fileIO_test_stat_ctime_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ctime_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1031,7 +1031,7 @@ export default function fileIOStat() {
           expect(isIntNum(stat.ctime)).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_ctime_001 error package2: " + JSON.stringify(err));
@@ -1057,16 +1057,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_ctime_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_ctime_002");
+    it("fileIO_test_stat_ctime_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_ctime_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(isIntNum(stat.ctime)).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(isIntNum(stat2.ctime)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1085,16 +1085,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_block_device_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_block_device_000");
+    it("fileIO_test_stat_is_block_device_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_block_device_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isBlockDevice() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isBlockDevice() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1114,8 +1114,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_block_device_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_block_device_001");
+    it("fileIO_test_stat_is_block_device_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_block_device_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1127,7 +1127,7 @@ export default function fileIOStat() {
           expect(stat.isBlockDevice() === false).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_block_device_001 error package2: " + JSON.stringify(err));
@@ -1153,16 +1153,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_block_device_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_block_device_002");
+    it("fileIO_test_stat_is_block_device_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_block_device_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isBlockDevice() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isBlockDevice() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1181,16 +1181,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_character_device_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_character_device_000");
+    it("fileIO_test_stat_is_character_device_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_character_device_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isCharacterDevice() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isCharacterDevice() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1210,8 +1210,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_character_device_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_character_device_001");
+    it("fileIO_test_stat_is_character_device_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_character_device_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1223,7 +1223,7 @@ export default function fileIOStat() {
           expect(stat.isCharacterDevice() === false).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_character_device_001 error package2: " + JSON.stringify(err));
@@ -1249,16 +1249,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_character_device_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_character_device_002");
+    it("fileIO_test_stat_is_character_device_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_character_device_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isCharacterDevice() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isCharacterDevice() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1277,16 +1277,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_directory_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_directory_000");
+    it("fileIO_test_stat_is_directory_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_directory_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isDirectory() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isDirectory() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1306,16 +1306,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_directory_001", 2, async function (done) {
-      let dpath = (await nextFileName("fileIO_test_stat_is_directory_001")) + "d";
+    it("fileIO_test_stat_is_directory_001", 2, async (done: Function) => {
+      let dpath: string = (await nextFileName("fileIO_test_stat_is_directory_001")) + "d";
 
       try {
         fileIO.mkdirSync(dpath);
-        let stat = await fileIO.stat(dpath);
+        let stat: fileIO.Stat = await fileIO.stat(dpath);
         expect(stat.isDirectory() === true).assertTrue();
 
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isDirectory() === true).assertTrue();
         fileIO.closeSync(file);
         fileIO.rmdirSync(dpath);
@@ -1335,8 +1335,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_directory_002", 2, async function (done) {
-      let dpath = (await nextFileName("fileIO_test_stat_is_directory_002")) + "d";
+    it("fileIO_test_stat_is_directory_002", 2, async (done: Function) => {
+      let dpath: string = (await nextFileName("fileIO_test_stat_is_directory_002")) + "d";
 
       try {
         fileIO.mkdirSync(dpath);
@@ -1348,7 +1348,7 @@ export default function fileIOStat() {
           expect(stat.isDirectory() === true).assertTrue();
         });
 
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_directory_002 error package2: " + JSON.stringify(err));
@@ -1374,16 +1374,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_directory_003", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_directory_003");
+    it("fileIO_test_stat_is_directory_003", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_directory_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isDirectory() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isDirectory() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1402,16 +1402,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_directory_004", 2, async function () {
+    it("fileIO_test_stat_is_directory_004", 2, async () => {
       let dpath = await nextFileName("fileIO_test_stat_is_directory_004");
 
       try {
         fileIO.mkdirSync(dpath);
-        let stat = fileIO.statSync(dpath);
+        let stat: fileIO.Stat = fileIO.statSync(dpath);
         expect(stat.isDirectory() === true).assertTrue();
 
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isDirectory() === true).assertTrue();
         fileIO.closeSync(file);
         fileIO.rmdirSync(dpath);
@@ -1430,16 +1430,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_fifo_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_fifo_000");
+    it("fileIO_test_stat_is_fifo_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_fifo_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isFIFO() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isFIFO() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1459,8 +1459,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_fifo_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_fifo_001");
+    it("fileIO_test_stat_is_fifo_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_fifo_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1472,7 +1472,7 @@ export default function fileIOStat() {
           expect(stat.isFIFO() === false).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_fifo_001 error package2: " + JSON.stringify(err));
@@ -1498,16 +1498,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_fifo_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_fifo_002");
+    it("fileIO_test_stat_is_fifo_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_fifo_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isFIFO() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isFIFO() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1526,16 +1526,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_file_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_file_000");
+    it("fileIO_test_stat_is_file_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_file_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isFile() === true).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isFile() === true).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1555,16 +1555,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_file_001", 2, async function (done) {
+    it("fileIO_test_stat_is_file_001", 2, async (done: Function) => {
       let dpath = await nextFileName("fileIO_test_stat_is_file_001");
 
       try {
         fileIO.mkdirSync(dpath);
-        let stat = await fileIO.stat(dpath);
+        let stat: fileIO.Stat = await fileIO.stat(dpath);
         expect(stat.isFile() === false).assertTrue();
 
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isFile() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.rmdirSync(dpath);
@@ -1584,8 +1584,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_file_002", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_file_002");
+    it("fileIO_test_stat_is_file_002", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_file_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1597,7 +1597,7 @@ export default function fileIOStat() {
           expect(stat.isFile() === true).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_file_002 error package2: " + JSON.stringify(err));
@@ -1623,16 +1623,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_file_003", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_file_003");
+    it("fileIO_test_stat_is_file_003", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_file_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isFile() === true).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isFile() === true).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1651,16 +1651,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_file_004", 2, async function () {
+    it("fileIO_test_stat_is_file_004", 2, async () => {
       let dpath = await nextFileName("fileIO_test_stat_is_file_004");
 
       try {
         fileIO.mkdirSync(dpath);
-        let stat = fileIO.statSync(dpath);
+        let stat: fileIO.Stat = fileIO.statSync(dpath);
         expect(stat.isFile() === false).assertTrue();
 
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isFile() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.rmdirSync(dpath);
@@ -1679,16 +1679,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_socket_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_socket_000");
+    it("fileIO_test_stat_is_socket_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_socket_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isSocket() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isSocket() === false).assertTrue();
         fileIO.closeSync(file);
         done();
@@ -1707,8 +1707,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_socket_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_socket_001");
+    it("fileIO_test_stat_is_socket_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_socket_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1720,7 +1720,7 @@ export default function fileIOStat() {
           expect(stat.isSocket() === false).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_socket_001 error package2: " + JSON.stringify(err));
@@ -1746,16 +1746,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_socket_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_socket_002");
+    it("fileIO_test_stat_is_socket_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_socket_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isSocket() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isSocket() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1774,16 +1774,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_symbolic_link_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_symbolic_link_000");
+    it("fileIO_test_stat_is_symbolic_link_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_symbolic_link_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = await fileIO.stat(fpath);
+        let stat: fileIO.Stat = await fileIO.stat(fpath);
         expect(stat.isSymbolicLink() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = await fileIO.stat(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = await fileIO.stat(file.fd);
         expect(stat2.isSymbolicLink() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1803,8 +1803,8 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_symbolic_link_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_stat_is_symbolic_link_001");
+    it("fileIO_test_stat_is_symbolic_link_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_symbolic_link_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -1816,7 +1816,7 @@ export default function fileIOStat() {
           expect(stat.isSymbolicLink() === false).assertTrue();
         });
 
-        let file = fileIO.openSync(fpath);
+        let file: fileIO.File = fileIO.openSync(fpath);
         fileIO.stat(file.fd, (err, stat2) => {
           if (err) {
             console.log("fileIO_test_stat_is_symbolic_link_001 error package2: " + JSON.stringify(err));
@@ -1842,16 +1842,16 @@ export default function fileIOStat() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_stat_is_symbolic_link_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_stat_is_symbolic_link_002");
+    it("fileIO_test_stat_is_symbolic_link_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_stat_is_symbolic_link_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let stat = fileIO.statSync(fpath);
+        let stat: fileIO.Stat = fileIO.statSync(fpath);
         expect(stat.isSymbolicLink() === false).assertTrue();
 
-        let file = fileIO.openSync(fpath);
-        let stat2 = fileIO.statSync(file.fd);
+        let file: fileIO.File = fileIO.openSync(fpath);
+        let stat2: fileIO.Stat = fileIO.statSync(file.fd);
         expect(stat2.isSymbolicLink() === false).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
