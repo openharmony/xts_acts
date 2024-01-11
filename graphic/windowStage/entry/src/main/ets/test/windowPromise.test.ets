@@ -1479,7 +1479,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async function (done) {
+    it('testSetSpecificSystemBarEnabled_Function_Promise', 0, async function(done){
       let msgStr = 'testSetSpecificSystemBarEnabled';
       console.log(msgStr + 'begin')
       try {
@@ -1509,29 +1509,29 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.level     : Level4
      */
     it('testSetWindowDecorVisible', 0, async function (done) {
-        let msgStr = 'testSetWindowDecorVisible';
-        console.log(msgStr + ' begin');
-        ohosWindow.getLastWindow(context).then(wnd => {
-          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-          expect(wnd != null).assertTrue();
-          let isVisible = true;
-          // 调用setWindowDecorVisible接口
-          try {
-            wnd.setWindowDecorVisible(isVisible);
+      let msgStr = 'testSetWindowDecorVisible';
+      console.log(msgStr + ' begin');
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        let isVisible = true;
+        // 调用setWindowDecorVisible接口
+        try {
+          wnd.setWindowDecorVisible(isVisible);
+          expect(true).assertTrue()
+          done()
+
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
+          if (exception.code == 801) {
             expect(true).assertTrue()
             done()
-
-          } catch (exception) {
-            console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-            if (exception.code == 801) {
-              expect(true).assertTrue()
-              done()
-            } else {
-              expect().assertFail();
-              done();
-            }
+          } else {
+            expect().assertFail();
+            done();
           }
-        })
+        }
+      })
     })
 
     /**
@@ -1543,27 +1543,27 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.level     : Level4
      */
     it('testSetWindowDecorHeight', 0, async function (done) {
-        let msgStr = 'testSetWindowDecorHeight';
-        console.log(msgStr + ' begin');
-        let height = 50
-        ohosWindow.getLastWindow(context).then(wnd => {
-          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-          expect(wnd != null).assertTrue();
-          try {
-            wnd.setWindowDecorHeight(height);
+      let msgStr = 'testSetWindowDecorHeight';
+      console.log(msgStr + ' begin');
+      let height = 50
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          wnd.setWindowDecorHeight(height);
+          expect(true).assertTrue()
+          done()
+        } catch (exception) {
+          console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
+          if (exception.code == 801) {
             expect(true).assertTrue()
             done()
-          } catch (exception) {
-            console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-            if (exception.code == 801) {
-              expect(true).assertTrue()
-              done()
-            } else {
-              expect().assertFail();
-              done();
-            }
+          } else {
+            expect().assertFail();
+            done();
           }
-        })
+        }
+      })
     })
   })
 }
