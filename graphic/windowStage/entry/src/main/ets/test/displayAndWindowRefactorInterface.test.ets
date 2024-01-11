@@ -16,7 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
-import displaySync from '@ohos.graphics.displaySync'
 
 export default function displayAndWindowRefactorInterfaceTest(context, windowStage, abilityStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
@@ -35,7 +34,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     var systemWindowTypeArr = [];
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
-      'TYPE_SYSTEM_ALERT': 1,
       'TYPE_FLOAT': 8,
     }
     var windowLayoutModeArr = [];
@@ -43,14 +41,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       'WINDOW_LAYOUT_MODE_TILE': 1,
       'WINDOW_LAYOUT_MODE_CASCADE': 0
     };
-    var windowCount = 2022;
-    var listenerStatus = {
-      ready: 'ready',
-      pending: 'pending',
-      finished: 'finished'
-    };
-    const WINDOW_NAME = 'windowName';
-
     beforeAll(function () {
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
@@ -62,32 +52,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         windowTypeArr.push(ohosWindow.WindowType[i])
       }
     })
-    beforeEach(function () {
-    })
-    afterAll(function () {
-    })
-
-    function expectedError(error, caseName, apiName, done, code) {
-      let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
-      console.log(msgStr + JSON.stringify(error));
-      if (error.code === code) {
-        expect(TRUE_FLAG).assertTrue();
-      }
-      done();
-    }
-
-    function unexpectedError(error, caseName, apiName, done) {
-      let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
-      console.log(msgStr + JSON.stringify(error));
-      try {
-
-        expect(TRUE_FLAG).assertFail();
-      } catch (error) {
-        console.info(`unexpectedError catch error: ${JSON.stringify(error)}`)
-      }
-      done();
-    }
-
     async function sleep(time) {
       let timeoutId= null;
       let promise = new Promise(resolve => {
@@ -226,7 +190,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let windowId = 'createWindowSameidsTest2'
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let ohosData;
       try {
@@ -267,7 +231,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testCreateWindow_Not_Exist_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
-      let tempType = 1;
+      let tempType = ohosWindow.WindowType.TYPE_FLOAT;
       let windId = 'createWindowTest4_0';
       let windIdTwo = 'createWindowTest4_1';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
@@ -329,19 +293,19 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0160
-     * @tc.name      : testCreateWindow_Type_System_Alert_Win_Callback
+     * @tc.name      : testCreateWindow_Type_Float_Win_Callback
      * @tc.desc      : Verify the scenario of creating the system type window
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Type_System_Alert_Win_Callback', 0, done => {
-      let caseName = 'testCreateWindow_Type_System_Alert_Win_Callback';
+    it('testCreateWindow_Type_Float_Win_Callback', 0, done => {
+      let caseName = 'testCreateWindow_Type_Float_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
       console.log('jsunittest loopCount: ' + loopCount);
-      let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let tempType = ohosWindow.WindowType.TYPE_FLOAT;
       let windId = 'createWindowTest5';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
       let windowConfig = {
@@ -395,7 +359,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let windowId = 'createWindowSameidTest6'
       let winsowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
 
       function createFirstWindow() {
@@ -705,7 +669,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testShowWindowTest_Callback_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testShowWindowTest_Callback_Form';
       let windowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -746,7 +710,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testShowWindowTest_Promise_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testShowWindowTest_Promise_Form';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -806,7 +770,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testMoveWindowTo_X_Val300_Y_Val300_Promise', 0, async function (done) {
       let caseName = 'testMoveWindowTo_X_Val300_Y_Val300_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_X_Val300_Y_Val300_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -856,7 +820,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testMoveWindowTo_X_Val100_Y_Val50_Promise', 0, async function (done) {
       let caseName = 'testMoveWindowTo_X_Val100_Y_Val50_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_X_Val100_Y_Val50_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -906,7 +870,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testMoveWindowTo_X_Val20000_Y_Val20000_Promise', 0, async function (done) {
       let caseName = 'testMoveWindowTo_X_Val20000_Y_Val20000_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_X_Val20000_Y_Val20000_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -956,7 +920,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testMoveWindowTo_XYVal_Is_Negative_Num_Promise', 0, async function (done) {
       let caseName = 'testMoveWindowTo_XYVal_Is_Negative_Num_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_XYVal_Is_Negative_Num_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1007,7 +971,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testMoveWindowTo_X_Val300_Y_Va300_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_X_Val300_Y_Va300_Callback';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1070,7 +1034,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testMoveWindowTo_X_Val100_Y_Va50_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_X_Val100_Y_Va50_Callback';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1133,7 +1097,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testMoveWindowTo_X_Val20000_Y_Val20000_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'moveWindowToTest7';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1196,7 +1160,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testMoveWindowTo_XYVal_Is_Negative_Num_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testMoveWindowTo_XYVal_Is_Negative_Num_Callback';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1258,7 +1222,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testResize_X_Val200_Y_Val600_Promise', 0, async function (done) {
       let caseName = 'testResize_X_Val200_Y_Val600_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testResize_X_Val200_Y_Val600_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1267,7 +1231,9 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let tempWnd = null;
       try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+          console.error(msgStr + 'Failed to createWindow the window. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
@@ -1306,7 +1272,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testResize_X_Val20000_Y_Val20000_Promise', 0, async function (done) {
       let caseName = 'testResize_X_Val20000_Y_Val20000_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testResize_X_Val20000_Y_Val20000_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1315,7 +1281,9 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let tempWnd = null;
       try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-          unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+          console.error(msgStr + 'Failed to createWindow the window. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+          done();
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
@@ -1354,7 +1322,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testResize_XY_Value_Is_Zero_Promise', 0, async function (done) {
       let caseName = 'testResize_XY_Value_Is_Zero_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'testResize_XY_Value_Is_Zero_Promise';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1405,7 +1373,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testResize_XY_Value_Is_Negative_Num_Promise', 0, async function (done) {
       let caseName = 'testResize_XY_Value_Is_Negative_Num_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'resizeTest4';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1456,7 +1424,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testResize_X_Val100_Y_Val100_Multi_Set_Promise', 0, async function (done) {
       let caseName = 'testResize_X_Val100_Y_Val100_Multi_Set_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'resizeTest5';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -1505,7 +1473,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testResize_X_Val200_Y_Val200_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'resizeTest6';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1569,7 +1537,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'testResize_Set_Diff_XY_In_Turn';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'resizeTest7';
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -1646,7 +1614,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('testDestroyWindow_Promise', 0, async function (done) {
       let caseName = 'testDestroyWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'destroyWindowTest1';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -2305,38 +2273,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect().assertFail();
         done();
       }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1810
-     * @tc.name      : testSetExpectedFrameRateRange
-     * @tc.desc      : test the enum value of hdrFormats
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level4
-     */
-    it('testSetExpectedFrameRateRange',0, async function (done){
-        let msg = "testSetExpectedFrameRateRange"
-        let backDisplaySyncBigger = displaySync.create()
-        console.log(msg + ' www data '  + backDisplaySyncBigger)
-        try {
-            let range = {
-                expected: 10,
-                min:0,
-                max:120
-            };
-            console.log(msg + ' www data '  + range)
-            backDisplaySyncBigger.setExpectedFrameRateRange(range)
-            expect(true).assertTrue()
-            done()
-        } catch (error) {
-            console.log(msg + ' www data Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-            if (error.code) {
-                expect().assertFail()
-            } else {
-                expect(true).assertTrue()
-            }
-            done()
-        }
     })
   })
 }

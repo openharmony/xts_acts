@@ -40,7 +40,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     };
     var systemWindowTypeArr = [];
     var systemWindowTypeDic = {
-      'TYPE_SYSTEM_ALERT': 1,
       'TYPE_FLOAT': 8,
     }
     var windowLayoutModeArr = [];
@@ -67,11 +66,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log('jsunittest beforeall');
       console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
-    beforeEach(function () {
-    })
-    afterAll(function () {
-    })
-
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
@@ -885,7 +879,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let loopCount = systemWindowTypeArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
       let tempWnd = null
-      let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let tempType = ohosWindow.WindowType.TYPE_FLOAT;
 
       function createWin(windId) {
         return new Promise(function (resolve, reject) {
@@ -1105,7 +1099,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testDestroy_Callbcak', 0, async function (done) {
       let caseName = 'testDestroy_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'destroy_Callbcak';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1158,7 +1152,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testLoadContent_Exist_Create_SysWin_Callback', 0, async function (done) {
       let caseName = 'testLoadContent_Exist_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContent_Exist_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1207,7 +1201,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', 0, async function (done) {
       let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1521,7 +1515,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       function createWin() {
         return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
+          ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_FLOAT, (err, data) => {
             if (err && err.code) {
               console.log(msgStr + 'ohosWindow.create fail err:' + JSON.stringify(err));
               reject(null)
@@ -1863,7 +1857,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
       let wndId = 'animationForShownTest2';
-      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let tempWnd = null;
       ohosWindow.create(context, wndId, baseType, async (err, data) => {
         if (err && err.code) {
