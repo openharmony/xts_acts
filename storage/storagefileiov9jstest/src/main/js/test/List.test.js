@@ -57,6 +57,7 @@ import fileIOReadLines from './members/readLines.test.js'
 import fileIOFileGetParent from './class_file/filegetParent.test.js'
 import fileIOUtimes from './members/utimes.test.js'
 import fileIOMkdir11 from './members/mkdir11.test.js'
+import fileIOCopy from './members/copy.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -102,4 +103,5 @@ export default function testsuite() {
     fileIOFileGetParent()
     fileIOUtimes()
     fileIOMkdir11()
+    fileIOCopy()
 }
