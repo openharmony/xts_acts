@@ -2012,5 +2012,38 @@ export default function dlpTest() {
       return;
     })
 
+    /**
+     * @tc.number SUB_SECURITY_DLP_startDLPManagerForResult_0100
+     * @tc.name Test dlpPermission.startDLPManagerForResult
+     * @tc.desc test startDLPManagerForResult cannot be called by DLP sandbox application
+     * @tc.size LargeTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_SECURITY_DLP_startDLPManagerForResult_0100', 0, async function (done) {
+      var curTag = TAG + "SUB_SECURITY_DLP_startDLPManagerForResult_0100";
+      console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 start");
+      try {
+        let context = globalThis.context; // 获取当前UIAbilityContext
+        let want: Want = {
+          "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+          "parameters": {
+            "displayName": ""
+          }
+        }; // 请求参数
+        // await dlpPermission.startDLPManagerForResult(context, want); // 打开DLP权限管理应用
+        dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+          console.info('SUB_SECURITY_DLP_startDLPManagerForResult_0100 res.resultCode', res.resultCode);
+          console.info('SUB_SECURITY_DLP_startDLPManagerForResult_0100 res.want', JSON.stringify(res.want));
+        })
+      } catch (err) {
+        console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 startDLPManagerForResult failed", err.code, err.message);
+        expect(err.code == 19100017 && err.message == "displayName not exist in want parameters").assertTrue();
+        done();
+      }
+      console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 end");
+      return;
+    })
+
   })
 }
