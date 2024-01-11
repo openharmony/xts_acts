@@ -865,6 +865,66 @@ export default function globalStageTest() {
         done();
         })
 
+        /**
+         * @tc.number    : SUB_GLOBAL_GetLocales_0010
+         * @tc.name      : getLocales without parameter
+         * @tc.desc      : getLocales
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_GLOBAL_GetLocales_0010', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getLocales();
+            console.log('SUB_GLOBAL_GetLocales_0010' + value);
+            expect(value == 'en-US,zh-CN').assertTrue();
+        }catch(e){
+            console.log('SUB_GLOBAL_GetLocales_0010_errorCode' + e.code);
+            console.log('SUB_GLOBAL_GetLocales_0010_errorMessage' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_getSymbol_0010
+         * @tc.name      : getSymbol resource not found by resid
+         * @tc.desc      : getSymbol
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_GLOBAL_GetSymbol_0010', 0, async (done) => {
+        try{
+            let value = globalThis.yq.resourceManager.getSymbol(0x02000006);
+            console.log('SUB_GLOBAL_Getsymbol_0010_value' + value);
+            expect(value == '983043').assertTrue();
+        }catch(e){
+            console.log('SUB_GLOBAL_GetSymbol_0010_errorCode' + e.code);
+            console.log('SUB_GLOBAL_GetSymbol_0010_errorMessage' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_getSymbol_0130
+         * @tc.name      : getSymbolByName normal name
+         * @tc.desc      : getSymbolByName
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_GLOBAL_GetSymbol_0130', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getSymbolByName('symbolTest1');
+            console.log('SUB_GLOBAL_Getsymbol_0130' + value);
+            expect(value==983043).assertTrue();
+        }catch(e){
+            console.log('SUB_GLOBAL_GetSymbol_0130_errorCode' + e.code);
+            console.log('SUB_GLOBAL_GetSymbol_0130_errorMessage' + e.message);
+        }
+        done();
+        })
+
         console.log('*************end globalStageTest*************');
     })
 }
