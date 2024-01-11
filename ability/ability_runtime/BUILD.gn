@@ -18,6 +18,7 @@ group("ability_runtime") {
   if (is_standard_system) {
     deps = [
       "aacommand:aacommand",
+      "abilitygetstartparameterstest:abilitygetstartparameterstest",
       "abilitymanager:actsabilitymanagertest",
       "abilitymontior:ActsAbilityMonitorTest",
       "abilitymultiinstance:abilitymultiinstance",
