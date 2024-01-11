@@ -13,46 +13,48 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import BackupExtensionAbility, {BundleVersion} from '@ohos.application.BackupExtensionAbility';
+import { describe, it, expect } from "deccjsunit/index";
+import BackupExtensionAbility, { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 
 export class BackupExt extends BackupExtensionAbility {
-    onRestore(ver : BundleVersion) {
-        console.log('do restore ' + JSON.stringify(ver))
-    }
-    onBackup() {
-        console.log('do backup.')
-    }
+  onRestore(ver: BundleVersion) {
+    console.log('do restore ' + JSON.stringify(ver))
+  }
+
+  onBackup() {
+    console.log('do backup.')
+  }
 };
 
 export default function abilityTest() {
-    describe("backupExtension", function () {
-        /**
-         * @tc.number    : SUB_BACKUPEXTENSION_CALL_0000
-         * @tc.name      : backupextension_test_call_000
-         * @tc.desc      : select with option
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("backupextension_test_call_000", 0, function(done) {
-            try {
-                let backupExt = new BackupExt()
-                backupExt.onBackup()
-                let ver = {
-                    code : 1,
-                    name : '1.0.0.0',
-                }
-                backupExt.onRestore(ver)
-                console.info('backupextension run ok')
-                expect(true).assertTrue()
-                done()
-            } catch (error) {
-                 console.info(`backupextension error: ${JSON.stringify(error)}`)
-                 expect(false).assertTrue()
-                 done()
-             }
-        });
+  describe("backupExtension", () => {
+    /**
+     * @tc.number    : SUB_BACKUP_EXTENSION_CALL_0000
+     * @tc.name      : backup_extension_test_call_000
+     * @tc.desc      : select with option
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("backup_extension_test_call_000", 0, () => {
+      try {
+        let backupExt = new BackupExt()
+        backupExt.onBackup()
+        let ver: BundleVersion = {
+          code: 1,
+          name: '1.0.0.0',
+        }
+
+        backupExt.onRestore(ver)
+        console.info('backup-extension run ok')
+        expect(true).assertTrue()
+
+      } catch (error) {
+        console.info(`backupextension error: ${JSON.stringify(error)}`)
+        expect(false).assertTrue()
+
+      }
     });
+  });
 }
 
