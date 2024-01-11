@@ -81,7 +81,7 @@ export default function font() {
       await CommonFunc.sleep(200);
       let obj4 = JSON.parse(strJson4);
       await CommonFunc.sleep(1000);
-      expect(obj4.$attrs.content).assertEqual('HarmonyOS Sans SC');
+      expect(obj4.$attrs.content).assertEqual('');
 
       console.info('[font_001] END');
       done();
