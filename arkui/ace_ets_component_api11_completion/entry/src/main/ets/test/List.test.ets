@@ -66,8 +66,18 @@ import listSContentTest from "./list/list.test.ets"
 import  relativeCTest from "./relative/relative.test.ets"
 import  gridIndexTest from "./grid/grid.test.ets"
 import enumFolderTest from "./folder/enumflodstack.test.ets"
+import richEditorApi1 from './richEditorApi/richEditorApi1.test.ets'
+import textInputApi1 from './textInputApi/textInputApi1.test.ets'
+import ScrollTest from './Scroll/Scroll.test.ets'
+import RichEditorTest from './RichEditor/RichEditor.test';
+import UIfont from './UIfont/UIfont.test';
 
 export default function testsuite() {
+  richEditorApi1()
+  textInputApi1()
+  ScrollTest()
+  RichEditorTest()
+  UIfont()
   tabsApi1()
   AttributeModifierDemoAPI01()
   AttributeModifierDemoAPI02()
