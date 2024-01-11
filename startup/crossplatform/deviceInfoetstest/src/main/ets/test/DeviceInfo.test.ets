@@ -71,7 +71,7 @@ export default function DeviceInfoTest() {
       console.info("the value of the manufactureInfo is :" + manufactureInfo);
       expect(manufactureInfo).assertInstanceOf("String");
       if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-        let str: RegExp = new RegExp('\\[\w-\.\(\)]', 'g');
+        let str: RegExp = new RegExp('[\\w-\\.\\(\\)]', 'g');
         let bufferStr: string = manufactureInfo.match(str).join("");
         console.info("the value of the bufferStr is :" + bufferStr);
         expect(manufactureInfo).assertEqual(bufferStr);
@@ -542,7 +542,7 @@ export default function DeviceInfoTest() {
 
       expect(buildVersionInfo).assertInstanceOf("Number");
       if (buildVersionInfo == 0 || (buildVersionInfo >= 1 && buildVersionInfo <= 999)) {
-        let str: RegExp = new RegExp('[\w-\.\(\)]', 'g')
+        let str: RegExp = new RegExp('[\\w-\\.\\(\\)]', 'g')
         let arr = buildVersionInfo.toString().match(str);
         let subStr: string = arr.join("");
         let numStr = Number.parseInt(subStr);
