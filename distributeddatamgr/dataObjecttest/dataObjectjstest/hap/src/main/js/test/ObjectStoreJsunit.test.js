@@ -107,6 +107,8 @@ export default function objectStoreTest() {
          * @tc.name: testOn001
          * @tc.desc: object join session and on,object can receive callback when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0600
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn001', 0, function (done) {
             console.info(TAG + "************* testOn001 start *************");
@@ -140,6 +142,8 @@ export default function objectStoreTest() {
          * @tc.name: testOn002
          * @tc.desc object join session and no on,obejct can not receive callback when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0400
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn002', 0, function (done) {
             console.info(TAG + "************* testOn002 start *************");
@@ -171,6 +175,8 @@ export default function objectStoreTest() {
          * @tc.desc: object join session and on,then object change data twice,
          *           object can receive two callbacks when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0900
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn003', 0, function (done) {
             console.info(TAG + "************* testOn003 start *************");
@@ -209,6 +215,8 @@ export default function objectStoreTest() {
          * @tc.name: testOn004
          * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4000
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn004', 0, function (done) {
             console.info(TAG + "************* testOn004 start *************");
@@ -233,6 +241,8 @@ export default function objectStoreTest() {
          * @tc.name testOff001
          * @tc.desc object join session and on&off,object can not receive callback after off
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0300
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOff001', 0, function (done) {
             console.info(TAG + "************* testOff001 start *************");
@@ -277,6 +287,8 @@ export default function objectStoreTest() {
          * @tc.name:testOff002
         * @tc.desc object join session and off,object can not receive callback
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0500
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOff002', 0, function (done) {
             console.info(TAG + "************* testOff002 start *************");
@@ -310,6 +322,8 @@ export default function objectStoreTest() {
          * @tc.name: testMultiObjectOn001
          * @tc.desc: two objects join session and on,then object change data,user can receive two callbacks from two objects
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0800
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMultiObjectOn001', 0, function (done) {
             console.info(TAG + "************* testMultiObjectOn001 start *************");
@@ -364,6 +378,8 @@ export default function objectStoreTest() {
          * @tc.name: testMultiObjectOff001
          * @tc.desc: two objects join session and on&off,then two objects can not receive callbacks
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0700
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMultiObjectOff001', 0, function (done) {
             console.info(TAG + "************* testMultiObjectOff001 start *************");
@@ -440,6 +456,8 @@ export default function objectStoreTest() {
          * @tc.name: testChangeSession001
          * @tc.desc: objects join session,then change sessionId
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3900
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testChangeSession001', 0, function (done) {
             console.info(TAG + "************* testChangeSession001 start *************");
@@ -492,6 +510,8 @@ export default function objectStoreTest() {
          * @tc.name: testUndefinedType001
          * @tc.desc: object use undefined type,can not join session
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0200
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testUndefinedType001', 0, function (done) {
             console.info(TAG + "************* testUndefinedType001 start *************");
@@ -512,6 +532,8 @@ export default function objectStoreTest() {
          * @tc.name: testGenSessionId001
          * @tc.desc: object generate random sessionId
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4100
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testGenSessionId001', 0, function (done) {
             console.info(TAG + "************* testGenSessionId001 start *************");
@@ -525,6 +547,8 @@ export default function objectStoreTest() {
          * @tc.name: testGenSessionId002
          * @tc.desc: object generate 2 random sessionId and not equal
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0100
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testGenSessionId002', 0, function (done) {
             console.info(TAG + "************* testGenSessionId002 start *************");
@@ -540,6 +564,8 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus001
          * @tc.desc: object set a listener to watch another object online/offline
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3700
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus001', 0, function (done) {
             console.info(TAG + "************* testOnStatus001 start *************");
@@ -557,6 +583,8 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus002
          * @tc.desc: object set several listener and can unset specified listener
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3600
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus002', 0, function (done) {
             console.info(TAG + "************* testOnStatus002 start *************");
@@ -582,6 +610,8 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus003
          * @tc.desc: object set several listener and can unWatch all watcher
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3500
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus003', 0, function (done) {
             console.info(TAG + "************* testOnStatus003 start *************");
@@ -605,6 +635,8 @@ export default function objectStoreTest() {
          * @tc.name: testComplex001
          * @tc.desc: object can get/set complex data
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3800
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testComplex001', 0, function (done) {
             console.info(TAG + "************* testComplex001 start *************");
@@ -641,6 +673,8 @@ export default function objectStoreTest() {
          * @tc.name: testMaxSize001
          * @tc.desc: object can get/set data under 4MB size
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3400
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMaxSize001', 0, function (done) {
             console.info(TAG + "************* testMaxSize001 start *************");
@@ -672,6 +706,8 @@ export default function objectStoreTest() {
          * @tc.name: testPerformance001
          * @tc.desc: performanceTest for set/get data
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4200
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testPerformance001', 0, function (done) {
             console.info(TAG + "************* testPerformance001 start *************");
@@ -719,6 +755,8 @@ export default function objectStoreTest() {
          * @tc.name: testSave001
          * @tc.desc: Save object <Promise>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1300
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testSave001', 0, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
@@ -755,6 +793,8 @@ export default function objectStoreTest() {
          * @tc.name: testSave002
          * @tc.desc: Save object
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1400
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testSave002', 0, async function (done) {
             console.info(TAG + "************* testSave002 start *************");
@@ -792,6 +832,8 @@ export default function objectStoreTest() {
          * @tc.name: testRevokeSave001
          * @tc.desc: Revoke save object <Promise>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1100
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testRevokeSave001', 0, async function (done) {
             console.info(TAG + "************* testRevokeSave001 start *************");
@@ -838,6 +880,8 @@ export default function objectStoreTest() {
          * @tc.name: testRevokeSave002
          * @tc.desc: Revoke save object <Callback>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1200
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testRevokeSave002', 0, async function () {
             console.info(TAG + "************* testRevokeSave002 start *************");
