@@ -27,6 +27,11 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
+    "reqPermissions": [
+      {
+          "name": "ohos.permission.READ_DFX_SYSEVENT"
+      }
+    ],
     "abilities": [
       {
         "skills": [

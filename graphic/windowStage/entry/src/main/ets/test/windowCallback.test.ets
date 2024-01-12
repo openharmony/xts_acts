@@ -2136,5 +2136,100 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       
       
     });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+     * @tc.name      : testGetTitleButtonRect
+     * @tc.desc      : Test the function of getTitleButtonRect
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('testGetTitleButtonRect', 0, async function(done){
+      let msgStr = 'testGetTitleButtonRect';
+      console.log(msgStr + 'begin');
+      let windowClass = await ohosWindow.getLastWindow(context);
+      try {
+        let TitleButtonRect = windowClass.getTitleButtonRect();
+        console.log(msgStr + 'Succeeded in obtaining the area of title buttons. Data: ' + JSON.stringify(TitleButtonRect));
+        expect(TitleButtonRect.right !== null).assertTrue();
+        expect(TitleButtonRect.top !== null).assertTrue();
+        expect(TitleButtonRect.height !== null).assertTrue();
+        expect(TitleButtonRect.width !== null).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to get the area of title buttons. Cause: ' + JSON.stringify(error));
+        if (error.code == 1300002) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }          
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+     * @tc.name      : testWindowTitleButtonRectChange_Function_Callback
+     * @tc.desc      : Test the function of windowTitleButtonRectChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
+      let  msgStr = 'testWindowTitleButtonRectChange_on';
+      console.log(msgStr + "begin on")
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        windowClass.on('windowTitleButtonRectChange', (titleButtonRect) => {
+          console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+          expect(true).assertTrue();
+          done();
+        });
+      } catch (err) {
+        console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
+        if (err.code == 801) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }
+      }
+   });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
+     * @tc.name      : testWindowTitleButtonRectChange_Function_Callback
+     * @tc.desc      : Test the function of windowTitleButtonRectChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
+      let msgStr = 'testWindowTitleButtonRectChange_off';
+      console.log(msgStr + 'begin off');
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        windowClass.off('windowTitleButtonRectChange');
+        console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to disable the listener for window title buttons area changes. Cause: ' + JSON.stringify(error));
+        if (error.code == 1300002) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }  
+      }
+   });   
+
   })
 }
