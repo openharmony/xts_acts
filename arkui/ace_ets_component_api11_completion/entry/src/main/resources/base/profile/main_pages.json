@@ -59,6 +59,11 @@
         "MainAbility/pages/list/listTest",
         "MainAbility/pages/relativecommon/relative",
         "MainAbility/pages/grid/gridte",
-        "MainAbility/pages/folderStack/folder_stack"
+        "MainAbility/pages/folderStack/folder_stack",
+
+        "MainAbility/pages/AttributeModifier/SXrenderingStrategy",
+        "MainAbility/pages/AttributeModifier/SXsymbolSpanStyle",
+        "MainAbility/pages/AttributeModifier/SXsymbolStyle",
+        "MainAbility/pages/AttributeModifier/APIgetUIFontConfig"
     ]
 }

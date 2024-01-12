@@ -71,6 +71,10 @@ import textInputApi1 from './textInputApi/textInputApi1.test.ets'
 import ScrollTest from './Scroll/Scroll.test.ets'
 import RichEditorTest from './RichEditor/RichEditor.test';
 import UIfont from './UIfont/UIfont.test';
+import SXrenderingStrategyJsunit from './AttributeModifier/SXrenderingStrategyJsunit.test';
+import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit.test';
+import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
+import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
 export default function testsuite() {
   richEditorApi1()
@@ -129,4 +133,8 @@ export default function testsuite() {
   sheetSize1Jsunit()
   monopolizeTest()
   outlineTest()
+  SXrenderingStrategyJsunit()
+  SXsymbolSpanStyleJsunit()
+  SXsymbolStyleJsunit()
+  APIgetUIFontConfigJsunit()
 }
