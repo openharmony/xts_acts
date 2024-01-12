@@ -305,6 +305,49 @@ static napi_value AudioCaptureGetCapturerInfo(napi_env env, napi_callback_info i
     return res;
 }
 
+static napi_value AudioCaptureGetTimestamp(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioCapturer *audioCapturer;
+    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+
+    int64_t  framePosition;
+    int64_t  timestamp;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetTimestamp(audioCapturer, CLOCK_MONOTONIC, &framePosition, &timestamp);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioCaptureGetFramesRead(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioCapturer *audioCapturer;
+    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+
+    int64_t  frames;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetFramesRead(audioCapturer, &frames);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioCaptureGetFrameSizeInCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioCapturer *audioCapturer;
+    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+
+    int32_t  frameSize;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetFrameSizeInCallback(audioCapturer, &frameSize);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 
 OH_AudioStreamBuilder *CreateRenderBuilder()
 {
@@ -312,6 +355,52 @@ OH_AudioStreamBuilder *CreateRenderBuilder()
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
     return builder;
+}
+
+static napi_value AudioRenderGetFramesWritten(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    int64_t frames;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFramesWritten(audioRenderer, &frames);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRenderGetTimestamp(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    int64_t framePosition;
+    int64_t  timestamp;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetTimestamp(audioRenderer, CLOCK_MONOTONIC, &framePosition, &timestamp);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioRenderGetFrameSizeInCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    int32_t  frameSize;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFrameSizeInCallback(audioRenderer, &frameSize);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
 }
 
 static napi_value AudioRenderGenerate(napi_env env, napi_callback_info info)
@@ -803,6 +892,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioCaptureGetSampleFormat", nullptr, AudioCaptureGetSampleFormat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioCaptureGetEncodingType", nullptr, AudioCaptureGetEncodingType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioCaptureGetCapturerInfo", nullptr, AudioCaptureGetCapturerInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCaptureGetTimestamp", nullptr, AudioCaptureGetTimestamp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCaptureGetFramesRead", nullptr, AudioCaptureGetFramesRead, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCaptureGetFrameSizeInCallback", nullptr, AudioCaptureGetFrameSizeInCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRenderGetFramesWritten", nullptr, AudioRenderGetFramesWritten, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRenderGetTimestamp", nullptr, AudioRenderGetTimestamp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRenderGetFrameSizeInCallback", nullptr, AudioRenderGetFrameSizeInCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderGenerate", nullptr, AudioRenderGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderGenerateErr", nullptr, AudioRenderGenerateErr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderStart", nullptr, AudioRenderStart, nullptr, nullptr, nullptr, napi_default, nullptr},
