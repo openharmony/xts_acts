@@ -95,8 +95,8 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0100", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0100";
@@ -121,8 +121,8 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0200", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0200";
@@ -143,8 +143,8 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0300", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0300";

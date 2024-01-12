@@ -230,8 +230,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::on
      * @tc.desc Test on property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_on_dataSendProgress_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_on_dataSendProgress_0100";
@@ -254,8 +254,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::on
      * @tc.desc Test on property
      * @tc.level 3
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_on_dataSendProgress_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_on_dataSendProgress_0200";
@@ -275,8 +275,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::on
      * @tc.desc Test on property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_on_dataSendProgress_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_on_dataSendProgress_0300";
@@ -296,8 +296,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::off
      * @tc.desc Test off property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_off_dataSendProgress_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_off_dataSendProgress_0100";
@@ -307,6 +307,7 @@ export default function NetworkManagerHttpEnhanceTest() {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
           httpRequest.off("dataSendProgress");
           console.log(`${caseName} off dataSendProgress finish`);
+          expect(data.responseCode == 200).assertTrue();
           done();
         })
       } catch (error) {
@@ -321,8 +322,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::off
      * @tc.desc Test off property
      * @tc.level 3
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_off_dataSendProgress_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_off_dataSendProgress_0200";
@@ -342,8 +343,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::off
      * @tc.desc Test off property
      * @tc.level 3
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_off_dataSendProgress_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_off_dataSendProgress_0300";
@@ -363,8 +364,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_resumeFrom_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_resumeFrom_0100";
@@ -386,8 +387,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_resumeFrom_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_resumeFrom_0300";
@@ -409,8 +410,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 3
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_resumeFrom_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_resumeFrom_0200";
@@ -432,8 +433,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 0
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_resumeFrom_0400", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_resumeFrom_0400";
@@ -455,8 +456,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 0
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_resumeFrom_0500", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_resumeFrom_0500";
@@ -479,8 +480,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_clientCert_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_clientCert_0100";
@@ -502,8 +503,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_clientCert_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_clientCert_0200";
@@ -525,8 +526,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_clientCert_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_clientCert_0300";
@@ -548,8 +549,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_clientCert_0400", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_clientCert_0400";
@@ -571,8 +572,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_clientCert_0500", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_clientCert_0500";
@@ -594,8 +595,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsOverHttps_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsOverHttps_0100";
@@ -617,8 +618,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsOverHttps_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsOverHttps_0200";
@@ -640,8 +641,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsOverHttps_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsOverHttps_0300";
@@ -663,8 +664,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsOverHttps_0400", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsOverHttps_0400";
@@ -686,8 +687,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsServers_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsServers_0100";
@@ -709,8 +710,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 2
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsServers_0200", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsServers_0200";
@@ -732,8 +733,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsServers_0300", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsServers_0300";
@@ -755,8 +756,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::request
      * @tc.desc Test request property
      * @tc.level 1
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_dnsServers_0400", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_dnsServers_0400";
@@ -778,8 +779,8 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.name http::PerformanceTiming
      * @tc.desc Test PerformanceTiming property
      * @tc.level 0
-     * @tc.type:FUNC
-     * @tc.size:SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_NetworkManager_HTTP_request_performanceTiming_0100", 0, async (done:Function)=> {
       let caseName = "SUB_NetworkManager_HTTP_request_performanceTiming_0100";

@@ -69,8 +69,8 @@ export default function NetworkManagerMulticast1HTTP2Test() {
          * @tc.name: HTTP::request
          * @tc.desc: Test request property.
          * @tc.level 1
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_Telephone_netstack_Http3_QUIC_Xts_Async_0100", 0, async (done: Function)=>{
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Async_0100";
@@ -95,8 +95,8 @@ export default function NetworkManagerMulticast1HTTP2Test() {
          * @tc.name: HTTP::request
          * @tc.desc: Test request property.
          * @tc.level 1
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_Telephone_netstack_Http3_QUIC_Xts_Async_0200", 0, async (done: Function)=>{
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Async_0200";
@@ -117,8 +117,8 @@ export default function NetworkManagerMulticast1HTTP2Test() {
          * @tc.name: HTTP::request
          * @tc.desc: Test request property.
          * @tc.level 1
-         * @tc.type: FUNC
-         * @tc.size: SMALL
+         * @tc.type: Function
+         * @tc.size: SmallTest
          */
         it("SUB_Telephone_netstack_Http3_QUIC_Xts_Async_0300", 0, async (done: Function)=>{
             let caseName = "SUB_NetworkManager_HTTP_Request_Async_0300";
