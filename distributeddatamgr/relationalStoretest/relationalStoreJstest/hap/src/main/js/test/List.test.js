@@ -52,4 +52,5 @@ export default function testsuite() {
     relationalStoreAssetResultSetTest()
     relationalStoreCustomDirTest()
     relationalStoreCloudCursor()
+	CloudSyncConfigCallback()
 }
