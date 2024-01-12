@@ -1565,5 +1565,121 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           }
       })
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1240
+     * @tc.name      : testGetWindowDecorHeight
+     * @tc.desc      : test the function of GetWindowDecorHeight
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testGetWindowDecorHeight', 0, async function (done) {
+      let caseName = 'www data';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let load3 = await windowStage.loadContent('MainAbility/pages/second/second').catch((err) => {
+        unexpectedError(err, caseName, 'windowStage loadContent', done);
+        console.log(msgStr + 'windowStage loadContent MainAbility/pages/second/second' + JSON.stringify(err));
+      });
+      expect(!load3).assertTrue();
+      try {
+        let tempWnd = await windowStage.getMainWindow().catch((err) => {
+          unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+        });
+        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+
+        let height = tempWnd.getWindowDecorHeight();
+        expect(true).assertTrue()
+        done()
+      } catch (exception) {
+        console.error(msgStr + ' Failed to get the height of window decor. Cause: ' + JSON.stringify(exception));
+        if (exception.code == 801 || exception.code == 1300002) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1250
+     * @tc.name      : testSubWindowOptions
+     * @tc.desc      : test the function of SubWindowOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testSubWindowOptions', 0, async function (done) {
+        let msgStr = 'testSubWindowOptions';
+        console.log(msgStr + ' begin');
+        let windowClass = undefined;
+        try {
+            console.log(msgStr + ' www data try' )
+            let options = {
+                title: 'title',
+                decorEnabled: true
+            };
+
+            let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
+            console.log(msgStr + ' www data ' + promise)
+
+            promise.then((data) => {
+                windowClass = data;
+                console.log(msgStr + ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+                expect(true).assertTrue()
+                done()
+            }).catch((err) => {
+                console.error(msgStr + ' www data111 Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+                if (err.code == 801 || err.code == 1300002) {
+                expect(true).assertTrue()
+                done()
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            });
+            } catch (exception) {
+            console.error(msgStr + ' www data222 Failed to create the subwindow. Cause: ' + JSON.stringify(exception));
+            if (exception.code == 801 || exception.code == 1300002) {
+                expect(true).assertTrue()
+                done()
+            } else {
+                expect().assertFail();
+                done();
+            }
+            }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1260
+     * @tc.name      : testKeepKeyboardOnFocus
+     * @tc.desc      : test the function of KeepKeyboardOnFocus
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testKeepKeyboardOnFocus', 0, async function (done) {
+        let msgStr = 'testKeepKeyboardOnFocus';
+        console.log(msgStr + ' begin');
+        ohosWindow.getLastWindow(context).then(wnd => {
+            console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+            expect(wnd != null).assertTrue();
+            try {
+                wnd.keepKeyboardOnFocus(true);
+                expect(true).assertTrue()
+                done()
+            } catch (exception) {
+                console.error(msgStr + ' Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
+                if (exception.code == 801 || exception.code == 1300004) {
+                    expect(true).assertTrue()
+                    done()
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            }
+        })
+    })
+
   })
 }
