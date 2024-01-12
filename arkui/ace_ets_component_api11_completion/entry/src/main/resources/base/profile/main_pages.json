@@ -97,6 +97,8 @@
         "MainAbility/pages/symbolGlyphApi/symbolGlyphApi5",
         "MainAbility/pages/symbolSpanApi/symbolSpanApi1",
         "MainAbility/pages/AttrApi/RichEditorApi2",
-        "MainAbility/pages/AttrApi/SelectAttr"
+        "MainAbility/pages/AttrApi/SelectAttr",
+        "MainAbility/pages/UIContext/getUIObserver",
+        "MainAbility/pages/UIContext/getDragController"
     ]
 }

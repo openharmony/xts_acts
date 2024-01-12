@@ -106,7 +106,8 @@ import symbolGlyphApi5 from './symbolGlyphApi/symbolGlyphApi5.test'
 import symbolSpanApi1 from './symbolSpanApi/symbolSpanApi1.test'
 import RichEditorApi2 from './AttrApi/RichEditorApi2.test'
 import SelectAttr from './AttrApi/SelectAttr.test'
-
+import getUIObserver from './UIContext/getUIObserver.test';
+import getDragController from './UIContext/getDragController.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -203,4 +204,6 @@ export default function testsuite() {
   symbolGlyphApi4()
   symbolGlyphApi5()
   symbolSpanApi1()
+  getUIObserver()
+  getDragController()
 }
