@@ -17,6 +17,8 @@ import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 import ohosrouter from '@ohos.router';
+import resourceManager from '@ohos.resourceManager';
+import { BusinessError } from '@ohos.base';
 
 export default function circleNewJsunit() {
   describe('circleNewTest', function () {
@@ -224,6 +226,39 @@ export default function circleNewJsunit() {
         expect(true).assertTrue();
       } catch(error) {
         console.error(`ACE_showAlertBeforeBackPage_0200, code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0010
+     * @tc.name         testGlobal_attribute_0100
+    * @tc.desc          test global attribute
+   */
+    it('testGlobal_attribute_0100', 0, async function (done) {
+      console.info('testGlobal_attribute_0100 START');
+      await Utils.sleep(1000);
+      let resource: resourceManager.Resource = {
+        bundleName: "com.open.harmony.aceEtsApiLack",
+        moduleName: "phone",
+        id: $r('app.string.app_name').id,
+        params: null,
+        type: 0
+      };
+      try {
+        globalThis.abilityContext.resourceManager.getStringValue(resource, (error, value) => {
+          if (error != null) {
+            console.log("error is " + error);
+            expect().assertFail();
+          } else {
+            expect(value).assertEqual('ohosProject');
+          }
+        });
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error(`callback getStringValue failed, error code: ${code}, message: ${message}.`);
         expect().assertFail();
       }
       done();
