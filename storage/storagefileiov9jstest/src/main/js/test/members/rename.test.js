@@ -604,7 +604,7 @@ describe('fileIO_fs_rename', function () {
       fileIO.rename(fpath, dstDir + '/data_new', (err) => {
         if (err) {
           fileIO.unlinkSync(fpath);
-          console.log('fileIO_test_symlink_async_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_rename_async_013 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900016 && err.message == 'Cross-device link').assertTrue();
           done();
         }

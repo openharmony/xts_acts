@@ -31,13 +31,21 @@ let context;
 export default function PreferencesSyncTest() {
     describe('PreferencesSyncTest', function () {
         beforeAll(async function () {
-            console.info('beforeAll');
-            context = featureAbility.getContext();
-            mPreferences = await data_preferences.getPreferences(context, NAME);
+            console.info('beforeAll')
+            context = featureAbility.getContext()
         })
 
         afterAll(async function () {
-            console.info('afterAll');
+            console.info('afterAll')
+        })
+
+        beforeEach(async function () {
+            console.info('beforeEach')
+            mPreferences = await data_preferences.getPreferences(context, NAME);
+        })
+        
+        afterEach(async function () {
+            console.info('afterEach')
             await data_preferences.deletePreferences(context, NAME);
         })
 
@@ -45,6 +53,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1900
          * @tc.name putSync StringArray interface test
          * @tc.desc putSync StringArray interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0100', 0, function (done) {
             mPreferences.clearSync();
@@ -62,6 +73,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1700
          * @tc.name putSync numberArr interface test
          * @tc.desc putSync numberArr interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0200', 0, async function (done) {
             mPreferences.clearSync();
@@ -79,6 +93,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1300
          * @tc.name putSync boolArr interface test
          * @tc.desc putSync boolArr interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0300', 0, async function (done) {
             mPreferences.clearSync();
@@ -96,6 +113,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0300
          * @tc.name getAllSync interface test
          * @tc.desc getAllSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetAllSync_0100', 0, async function (done) {
             mPreferences.clearSync();
@@ -132,6 +152,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0100
          * @tc.name clearSync interface test
          * @tc.desc clearSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_ClearSync_0100', 0, async function (done) {
             mPreferences.clearSync();
@@ -147,6 +170,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2900
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0100', 0, async function (done) {
             mPreferences.clearSync();
@@ -160,6 +186,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2700
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0200', 0, async function (done) {
             mPreferences.clearSync();
@@ -173,6 +202,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2600
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0300', 0, async function (done) {
             mPreferences.clearSync();
@@ -186,6 +218,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2500
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0400', 0, async function (done) {
             mPreferences.clearSync();
@@ -199,6 +234,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2800
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0500', 0, async function (done) {
             mPreferences.clearSync();
@@ -212,6 +250,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2400
          * @tc.name hasSync interface test
          * @tc.desc hasSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_HasSync_0600', 0, async function (done) {
             mPreferences.clearSync();
@@ -225,6 +266,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0800
          * @tc.name getSync interface test
          * @tc.desc getSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetSync_0100', 0, async function (done) {
             mPreferences.clearSync();
@@ -237,6 +281,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0400
          * @tc.name getSync interface test
          * @tc.desc getSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetSync_0200', 0, async function (done) {
             mPreferences.clearSync();
@@ -250,6 +297,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0500
          * @tc.name getSync interface test
          * @tc.desc getSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetSync_0300', 0, async function (done) {
             mPreferences.clearSync();
@@ -263,6 +313,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0600
          * @tc.name getSync interface test
          * @tc.desc getSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetSync_0400', 0, async function (done) {
             mPreferences.clearSync();
@@ -276,6 +329,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0700
          * @tc.name getSync interface test
          * @tc.desc getSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_GetSync_0500', 0, async function (done) {
             mPreferences.clearSync();
@@ -290,6 +346,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1200
          * @tc.name putSync interface test
          * @tc.desc putSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0400', 0, async function (done) {
             mPreferences.clearSync();
@@ -306,6 +365,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1400
          * @tc.name putSync interface test
          * @tc.desc putSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0500', 0, async function (done) {
             mPreferences.clearSync();
@@ -322,6 +384,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1500
          * @tc.name putSync interface test
          * @tc.desc putSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0600', 0, async function (done) {
             mPreferences.clearSync();
@@ -338,6 +403,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1600
          * @tc.name putSync interface test
          * @tc.desc putSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0700', 0, async function (done) {
             mPreferences.clearSync();
@@ -354,6 +422,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1800
          * @tc.name putSync interface test
          * @tc.desc putSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_PutSync_0800', 0, async function (done) {
             mPreferences.clearSync();
@@ -370,6 +441,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0200
          * @tc.name deleteSync interface test
          * @tc.desc deleteSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_deleteSync_0100', 0, async function (done) {
             mPreferences.putSync(KEY_TEST_STRING_ELEMENT, "abc");
@@ -383,6 +457,9 @@ export default function PreferencesSyncTest() {
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2000
          * @tc.name removePreferencesFromCacheSync interface test
          * @tc.desc removePreferencesFromCacheSync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0100', 0, async function (done) {
             console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 begin.");

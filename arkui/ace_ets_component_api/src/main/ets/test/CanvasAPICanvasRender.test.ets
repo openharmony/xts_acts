@@ -14,25 +14,24 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+
 export default function CanvasAPICanvasRenderTest() {
 
-  const SUITE = 'CanvasAPICanvasRender'
-  describe('CanvasAPICanvasRenderTest', function () {
+  const SUITE: string = 'CanvasAPICanvasRender'
+  describe('CanvasAPICanvasRenderTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CanvasAPICanvasRender",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("CanvasAPICanvasRender" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -46,15 +45,13 @@ export default function CanvasAPICanvasRenderTest() {
      *tc.name   CanvasRenderer fillText and strokeText add parameter 'maxWidth'
      *tc.desc   CanvasRenderer fillText and strokeText add parameter 'maxWidth'
      */
-    it('ArkUI_Canvas_API_CanvasRender_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Canvas_API_CanvasRender_0100'
+    it('ArkUI_Canvas_API_CanvasRender_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Canvas_API_CanvasRender_0100'
       console.info(`${SUITE} ${CASE} START`)
-      let strJson = getInspectorByKey('CanvasAPICanvasRender_Canvas1')
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas')
+      let strJson: string = getInspectorByKey('CanvasAPICanvasRender_Canvas1')
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });
-
   })
 }

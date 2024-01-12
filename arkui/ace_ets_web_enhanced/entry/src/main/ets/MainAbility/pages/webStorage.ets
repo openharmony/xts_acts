@@ -29,6 +29,7 @@ struct webStorage {
   @State searchNumber: number = 2;
   @State ports: webView.WebMessagePort[] = [];
   @State message: string = "123";
+  @State origin: string = "resource://rawfile/";
   no_error: string = "no error happened"
 
   onPageShow() {
@@ -169,6 +170,105 @@ struct webStorage {
               break;
             }
 
+            case "testWebStorageOriginGetOrigins001": {
+              try {
+                webView.WebStorage.getOrigins((error, origins) => {
+                  if (error) {
+                    console.log('error: ' + JSON.stringify(error));
+                    Utils.emitEvent(error.code + '', 100037)
+                    return;
+                  }
+                  for (let i = 0; i < origins.length; i++) {
+                    console.log('origin: ' + origins[i].origin);
+                    console.log('usage: ' + origins[i].usage);
+                    console.log('quota: ' + origins[i].quota);
+                  }
+                  let result = origins[0].origin + '_' + origins[0].quota + '_' + origins[0].usage
+                  Utils.emitEvent(result, 100037)
+                })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code + '', 100037)
+              }
+              break;
+            }
+
+            case "testWebStorageOriginGetOriginQuota001": {
+              try {
+                webView.WebStorage.getOriginQuota(this.origin, (error, quota) => {
+                  if (error) {
+                    console.log('error: ' + JSON.stringify(error));
+                    return;
+                  }
+                  console.log('quota: ' + quota);
+                  Utils.emitEvent(quota > 0, 100038)
+                })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code + '', 100038)
+              }
+              break;
+            }
+
+            case "testWebStorageOriginGetOriginQuota002": {
+              try {
+                webView.WebStorage.getOriginQuota(this.origin)
+                  .then(quota => {
+                    console.log('quota: ' + quota);
+                    Utils.emitEvent(quota > 0, 100039)
+                  })
+                  .catch((e: business_error.BusinessError) => {
+                    console.log('error: ' + JSON.stringify(e));
+                    Utils.emitEvent(e.code + '', 100039)
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code + '', 100039)
+              }
+              break;
+            }
+
+            case "testWebStorageOriginGetOriginUsage001": {
+              try {
+                webView.WebStorage.getOriginUsage(this.origin, (error, usage) => {
+                  if (error) {
+                    console.log('error: ' + JSON.stringify(error));
+                    Utils.emitEvent(error.code + '', 100040)
+                    return;
+                  }
+                  console.log('usage: ' + usage);
+                  Utils.emitEvent(usage > 0, 100040)
+                })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code + '', 100040)
+              }
+              break;
+            }
+
+            case "testWebStorageOriginGetOriginUsage002": {
+              try {
+                webView.WebStorage.getOriginUsage(this.origin)
+                  .then(usage => {
+                    console.log('usage: ' + usage);
+                    Utils.emitEvent(usage > 0, 100041)
+                  })
+                  .catch((e: business_error.BusinessError) => {
+                    console.log('error: ' + JSON.stringify(e));
+                    Utils.emitEvent(e.code + '', 100041)
+                  })
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code + '', 100041)
+              }
+              break;
+            }
+
             case "testDeleteAllData001": {
               try {
                 webView.WebStorage.deleteAllData()
@@ -194,6 +294,23 @@ struct webStorage {
               break;
             }
 
+            case "testDeleteOrigin001": {
+              try {
+                let getUsage = -1
+                webView.WebStorage.deleteOrigin(this.origin);
+                await Utils.sleep(2000);
+                webView.WebStorage.getOriginUsage(this.origin)
+                  .then(usage => {
+                    console.log('usage is: ' + usage);
+                    getUsage = usage;
+                    Utils.emitEvent(getUsage, 100067);
+                  })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100067);
+              }
+              break;
+            }
 
           }
         })

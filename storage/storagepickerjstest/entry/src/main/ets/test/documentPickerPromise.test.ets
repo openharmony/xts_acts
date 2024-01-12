@@ -231,6 +231,51 @@ export default function documentPickerPromise(abilityContext) {
         });
 
         /**
+         * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0800
+         * @tc.name 	 : documentpicker_select_promise_008
+         * @tc.desc 	 : select with option file parameter
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 1
+         */
+        it("documentpicker_select_promise_008", 1, async function (done) {
+            let testNum = "documentpicker_select_promise_008";
+            let option = new picker.DocumentSelectOptions();
+            option.selectMode = picker.DocumentSelectMode.FILE;
+            await selectWithOption(testNum, done, option);
+        });
+
+        /**
+         * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0900
+         * @tc.name 	 : documentpicker_select_promise_009
+         * @tc.desc 	 : select with option folder parameter
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 1
+         */
+        it("documentpicker_select_promise_009", 1, async function (done) {
+            let testNum = "documentpicker_select_promise_009";
+            let option = new picker.DocumentSelectOptions();
+            option.selectMode = picker.DocumentSelectMode.FOLDER;
+            await selectWithOption(testNum, done, option);
+        });
+
+        /**
+         * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1000
+         * @tc.name 	 : documentpicker_select_promise_010
+         * @tc.desc 	 : select with option mixed parameter
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 1
+         */
+        it("documentpicker_select_promise_010", 1, async function (done) {
+            let testNum = "documentpicker_select_promise_010";
+            let option = new picker.DocumentSelectOptions();
+            option.selectMode = picker.DocumentSelectMode.MIXED;
+            await selectWithOption(testNum, done, option);
+        });
+
+        /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SAVE_PROMISE_0000
          * @tc.name 	 : documentpicker_save_promise_000
          * @tc.desc 	 : save image in Pictures

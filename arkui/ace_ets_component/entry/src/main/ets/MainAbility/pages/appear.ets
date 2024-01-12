@@ -29,14 +29,14 @@ struct AppearExample {
 
   onPageShow() {
     console.info('[appear] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 58,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[appear] page stateChangCallBack");
     if (eventData != null) {
       console.info("[appear] page state change called:" + JSON.stringify(eventData));
@@ -53,12 +53,12 @@ struct AppearExample {
         .onClick(() => {
           this.isShow = !this.isShow
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.isShow,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 58,
               priority: events_emitter.EventPriority.LOW
             }
@@ -67,7 +67,9 @@ struct AppearExample {
           } catch {
             console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
           }
-        }).margin(3).backgroundColor(0x2788D9)
+        })
+        .margin(3)
+        .backgroundColor(0x2788D9)
       if (this.isShow) {
         Text(this.myText)
           .onAppear(() => {
@@ -76,12 +78,12 @@ struct AppearExample {
             console.info('appearFlag current action state is: ' + this.appearFlag);
             prompt.showToast({ message: 'The text is shown', duration: 2000 })
             try {
-              var backData2 = {
+              let backData2: events_emitter.EventData = {
                 data: {
                   "APPEAR": this.appearFlag,
                 }
               }
-              var backEvent2 = {
+              let backEvent2: events_emitter.InnerEvent = {
                 eventId: 59,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -97,12 +99,12 @@ struct AppearExample {
             console.info('disAppearFlag current action state is: ' + this.disAppearFlag);
             prompt.showToast({ message: 'The text is hidden', duration: 2000 })
             try {
-              var backData1 = {
+              let backData1: events_emitter.EventData = {
                 data: {
                   "ACTION": this.disAppearFlag,
                 }
               }
-              var backEvent1 = {
+              let backEvent1: events_emitter.InnerEvent = {
                 eventId: 60,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -113,6 +115,8 @@ struct AppearExample {
             }
           })
       }
-    }.padding(30).width('100%')
+    }
+    .padding(30)
+    .width('100%')
   }
 }

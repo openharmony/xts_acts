@@ -18,7 +18,9 @@ import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { UiDriver, BY} from '@ohos.UiTest'
+import { UiDriver, BY} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+
 
 export default function audioVoip() {
 describe('audioVoip', function () {
@@ -31,6 +33,7 @@ describe('audioVoip', function () {
     let TagRec = "AudioFrameworkRecLog";
     const AUDIOMANAGER = audio.getAudioManager();
     console.info(`${TagRender}: Create AudioManger Object JS Framework`);
+    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     async function getPermission() {
         let permissions = ['ohos.permission.MICROPHONE',
         'ohos.permission.GRANT_SENSITIVE_PERMISSIONS',
@@ -46,6 +49,10 @@ describe('audioVoip', function () {
         await sleep(100);
         console.info(`UiDriver start`);
         let button = await driver.findComponent(BY.text('允许'));
+        if(button == null){
+            let cmd = "hidumper -s WindowManagerService -a'-a'"
+            await delegator.executeShellCommand(cmd);
+        }
         console.info(`button is ${JSON.stringify(button)}`);
         await sleep(100);
         await button.click();

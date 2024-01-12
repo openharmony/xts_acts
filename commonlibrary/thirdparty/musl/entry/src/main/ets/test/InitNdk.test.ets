@@ -22,7 +22,7 @@ export default function initNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INIT_INIT_MODULE_0100
      * @tc.name       : testMuslInitInitmodule001
      * @tc.desc       : test init_module
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

@@ -154,7 +154,7 @@ export default function audioManagerApi9() {
             done();
         })
 
-        
+
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100
@@ -166,24 +166,24 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100', 3, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
-           try {
-            let groupManager =  audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID)
-            if ((typeof groupManager) == 'object') {
-                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
-                expect(true).assertTrue();
-                done();
-            }
-            else {
-                console.info('audioManagerApi9Test: Promise: getGroupManager  :  FAIL');
+            try {
+                let groupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID)
+                if ((typeof groupManager) == 'object') {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                    expect(true).assertTrue();
+                    done();
+                }
+                else {
+                    console.info('audioManagerApi9Test: Promise: getGroupManager  :  FAIL');
+                    expect(false).assertTrue();
+                    done();
+                }
+            } catch (error) {
+                console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message}`);
                 expect(false).assertTrue();
                 done();
             }
-           } catch (error) {
-            console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message}`);
-                    expect(false).assertTrue();
-                    done();
-           }
-            
+
         })
 
         /**
@@ -498,7 +498,7 @@ export default function audioManagerApi9() {
             }
         })
 
-       
+
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGERMODE_0100
@@ -787,13 +787,15 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100', 1, async function (done) {
             try {
-                let flag = true;
+                let flag = null;
                 let AudioRoutingManager = audioManager.getRoutingManager();
                 let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
                 console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
                 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
-                if (outputDeviceDescription.length == 1 &&
-                    outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                    flag = true;
+                }
+                if(outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER){
                     flag = false;
                 }
                 await AudioRoutingManager.setCommunicationDevice(2, false).then(() => {
@@ -801,7 +803,9 @@ export default function audioManagerApi9() {
                     Promise returned to indicate that the device is set to the active status.`);
                 });
                 let value = AudioRoutingManager.isCommunicationDeviceActiveSync(audio.ActiveDeviceType.SPEAKER)
-                if (flag == true && value == false) {
+                console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                        isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
+                if (flag == true && value == true) {
                     console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
                         isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                     expect(true).assertTrue();
@@ -834,13 +838,15 @@ export default function audioManagerApi9() {
          */
         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100', 1, async function (done) {
             try {
-                let flag = true;
+                let flag = null;
                 let AudioRoutingManager = audioManager.getRoutingManager();
                 let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
                 console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
                 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
-                if (outputDeviceDescription.length == 1 &&
-                    outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                    flag = true;
+                }
+                if(outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER){
                     flag = false;
                 }
                 await AudioRoutingManager.setCommunicationDevice(2, false).then(() => {
@@ -848,7 +854,7 @@ export default function audioManagerApi9() {
                     Promise returned to indicate that the device is set to the active status.`);
                 });
                 await AudioRoutingManager.isCommunicationDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
-                    if (flag == true && value == false) {
+                    if (flag == true && value == true) {
                         console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
                         isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                         expect(true).assertTrue();
@@ -864,11 +870,11 @@ export default function audioManagerApi9() {
                         expect(false).assertTrue();
                     }
                 }).catch((err) => {
-                    console.log('err :' + JSON.stringify(err));
+                    console.log('err :' + JSON.stringify(err.message));
                     expect(false).assertTrue();
                 });
             } catch (err) {
-                console.log('err :' + JSON.stringify(err));
+                console.log('err :' + JSON.stringify(err.message));
                 expect(false).assertTrue();
             }
             done();
@@ -883,12 +889,15 @@ export default function audioManagerApi9() {
          *@tc.level     : Level 2
          */
         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200', 2, async function (done) {
-            let flag = true
+            let flag = null;
             let AudioRoutingManager = audioManager.getRoutingManager();
             let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
             console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200
             outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
             if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                flag = true;
+            }
+            if(outputDeviceDescription.length == 2 && outputDeviceDescription[0].deviceType == audio.DeviceType.EARPIECE && outputDeviceDescription[1].deviceType == audio.DeviceType.SPEAKER){
                 flag = false;
             }
             AudioRoutingManager.setCommunicationDevice(audio.ActiveDeviceType.SPEAKER, false, (err) => {
@@ -902,7 +911,7 @@ export default function audioManagerApi9() {
                         if (err) {
                             console.error(`${TagFrmwk}: Device Test: Callback : isCommunicationDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                             expect(false).assertTrue();
-                        } else if (value == false && flag == true) {
+                        } else if (value == true && flag == true) {
                             console.info(`${TagFrmwk}: Device Test: Callback : isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                             expect(true).assertTrue();
                         } else if (value == true && flag == false) {
@@ -1196,7 +1205,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1243,7 +1252,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1382,7 +1391,7 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
@@ -1429,20 +1438,20 @@ export default function audioManagerApi9() {
             } catch (err) {
                 console.info('err :' + JSON.stringify(err.message));
                 console.info('err code :' + JSON.stringify(err.code));
-                expect(err.code).assertEqual("6800104");
+                expect(err.code).assertEqual(6800104);
                 done();
             }
         })
 
-         /**
-         *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100
-         *@tc.name      : OnVolumeChange - setVolume - MEDIA
-         *@tc.desc      : OnVolumeChange - setVolume - MEDIA
-         *@tc.size      : MEDIUM
-         *@tc.type      : Function
-         *@tc.level     : Level 3
-         */
-         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', 3, async function (done) {
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100
+        *@tc.name      : OnVolumeChange - setVolume - MEDIA
+        *@tc.desc      : OnVolumeChange - setVolume - MEDIA
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 3
+        */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', 3, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
             let maxVolume = await audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
             let minVolume = await audioManager.getMinVolume(audio.AudioVolumeType.MEDIA)

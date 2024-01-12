@@ -41,7 +41,6 @@ struct jsMessageExt {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -239,6 +238,284 @@ struct jsMessageExt {
               break;
             }
 
+            case "testJsMessageExtJsMessageType001": {
+              try {
+                console.info(`webView.JsMessageType.NOT_SUPPORT :` + webView.JsMessageType.NOT_SUPPORT)
+                Utils.emitEvent(webView.JsMessageType.NOT_SUPPORT, 30205)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30205)
+              }
+              break;
+            }
+
+            case "testJsMessageExtJsMessageType002": {
+              try {
+                console.info(`webView.JsMessageType.STRING :` + webView.JsMessageType.STRING)
+                Utils.emitEvent(webView.JsMessageType.STRING, 30206)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30206)
+              }
+              break;
+            }
+
+            case "testJsMessageExtJsMessageType003": {
+              try {
+                console.info(`webView.JsMessageType.NUMBER :` + webView.JsMessageType.NUMBER)
+                Utils.emitEvent(webView.JsMessageType.NUMBER, 30207)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30207)
+              }
+              break;
+            }
+
+            case "testJsMessageExtJsMessageType004": {
+              try {
+                console.info(`webView.JsMessageType.BOOLEAN :` + webView.JsMessageType.BOOLEAN)
+                Utils.emitEvent(webView.JsMessageType.BOOLEAN, 30208)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30208)
+              }
+              break;
+            }
+
+            case "testJsMessageExtJsMessageType005": {
+              try {
+                console.info(`webView.JsMessageType.ARRAY_BUFFER :` + webView.JsMessageType.ARRAY_BUFFER)
+                Utils.emitEvent(webView.JsMessageType.ARRAY_BUFFER, 30209)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30209)
+              }
+              break;
+            }
+
+            case "testJsMessageExtJsMessageType006": {
+              try {
+                console.info(`webView.JsMessageType.ARRAY :` + webView.JsMessageType.ARRAY)
+                Utils.emitEvent(webView.JsMessageType.ARRAY, 30210)
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 30210)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetString001": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getString()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100013)
+                    }
+                    if (result) {
+                      try {
+                        let value = result.getString();
+                        console.info(`get result :` + value)
+                        Utils.emitEvent(value, 100013)
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100013)
+                      }
+                    }
+                  });
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100013)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetNumber001": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getNumber()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100014)
+                    }
+                    if (result) {
+                      try {
+                        let value = result.getNumber();
+                        console.info(`get result :` + value)
+                        Utils.emitEvent(value, 100014)
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100014)
+                      }
+                    }
+                  });
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100014)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetBoolean001": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getBoolean()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100015)
+                    }
+                    if (result) {
+                      try {
+                        let value = result.getBoolean();
+                        console.info(`get result :` + value)
+                        Utils.emitEvent(value, 100015)
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100015)
+                      }
+                    }
+                  });
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100015)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetBoolean002": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getBooleanFalse()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100016)
+                    }
+                    if (result) {
+                      try {
+                        let value = result.getBoolean();
+                        console.info(`get result :` + value)
+                        Utils.emitEvent(value, 100016)
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100016)
+                      }
+                    }
+                  });
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100016)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetArrayBuffer001": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getArrayBuffer()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100017)
+                    }
+                    if (result) {
+                      try {
+                        let value = "result type:" + typeof (result.getArrayBuffer());
+                        console.info(`get result :` + value)
+                        Utils.emitEvent(value, 100017)
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100017)
+                      }
+                    }
+                  });
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100017)
+              }
+              break;
+            }
+
+            case "testJsMessageExtGetArray001": {
+              try {
+                this.controller.loadUrl("resource://rawfile/getJsMessageExt.html");
+                await Utils.sleep(2000);
+                this.controller.runJavaScriptExt(
+                  'getArray()',
+                  (error, result) => {
+                    if (error) {
+                      let e: business_error.BusinessError = error as business_error.BusinessError;
+                      console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      Utils.emitEvent(e.code, 100018)
+                    }
+                    if (result) {
+                      try {
+                        let value = result.getArray();
+                        console.info(`get result :` + value)
+                        if(value[0] == 'banana' && value[1] == 'apple' && value[2] == 'peach') {
+                          Utils.emitEvent(true, 100018)
+                        }else {
+                          Utils.emitEvent(false, 100018)
+                        }
+                      }
+                      catch (resError) {
+                        let e: business_error.BusinessError = resError as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        Utils.emitEvent(e.code, 100018)
+                      }
+                    }
+                  });
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent(e.code, 100018)
+              }
+              break;
+            }
           }
         })
       }

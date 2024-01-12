@@ -27,6 +27,7 @@ import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
 import formBindingData from '@ohos.app.form.formBindingData';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
+import fs from '@ohos.file.fs';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -368,6 +369,15 @@ export default function ApiCoverTest() {
       expect("/data/storage/el1/bundle").assertEqual(globalThis.abilityContext.bundleCodeDir)
       expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.abilityContext.distributedFilesDir)
       expect(1).assertEqual(globalThis.abilityContext.area)
+      if (globalThis.abilityContext.resourceDir != "") {
+        fs.access(globalThis.abilityContext.resourceDir, (err,res) => {
+          if (err == undefined) {
+            expect(true).assertTrue;
+          } else {
+            expect(false).assertTrue;
+          }
+        })
+      }
       createModuleContext = null;
       try{
 	    let createModuleContext = globalThis.abilityContext.createModuleContext("module1")
@@ -700,6 +710,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_AbilityAppManager_0100', 0, async function (done) {
+      await sleep(1000)
       TAG = 'SUB_AA_AbilityAppManager_0100';
       await appManagerNew.getRunningProcessInformation().then((data)=>{
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
@@ -729,7 +740,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_AbilityAppManager_0200', 0, async function (done) {
-      TAG = 'SUB_AA_AbilityAppManager_0100';
+      TAG = 'SUB_AA_AbilityAppManager_0200';
       appManagerNew.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
         err: ${JSON.stringify(err)}`);
@@ -884,6 +895,37 @@ export default function ApiCoverTest() {
         done();
       } catch (err) {
         console.error(`${tag} startChildProcess error, errorCode: ${err}`);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_AppSpawn_0100
+     * @tc.name   : Call startChildProcess to create a child process by APP_SPAWN_FORK mode
+     * @tc.desc   : startChildProcess api cover
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100', 0, async (done: Function) => {
+      let tag = `SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100`;
+      console.log(`${tag}, it begin`);
+
+      let mode: number;
+      try {
+        mode = childProcessManager.StartMode.APP_SPAWN_FORK;
+      } catch (err) {
+        console.log(`${tag} convert mode error, manual set 1`);
+        mode = 1;
+      }
+
+      try {
+        let pid = await childProcessManager.startChildProcess('./ets/process/AProcess.ts', mode);
+        console.log(`${tag} startChildProcess success, pid: ${pid}`);
+        done();
+      } catch (err) {
+        console.error(`${tag} startChildProcess error, err: ${err}`);
+        expect(err.code == 16000061).assertTrue();
         done();
       }
     });

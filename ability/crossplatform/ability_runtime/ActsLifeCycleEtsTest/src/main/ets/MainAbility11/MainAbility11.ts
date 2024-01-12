@@ -97,7 +97,7 @@ export default class MainAbility11 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility11 onWindowStageCreate")
 
-        windowStage.loadContent('testability/pages/index11', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index11', (err, data) => {
             if (err.code) {
                 console.log('MainAbility11 loadContent error');
                 return;

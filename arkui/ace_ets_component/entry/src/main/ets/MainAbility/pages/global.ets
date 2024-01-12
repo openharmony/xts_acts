@@ -55,13 +55,13 @@ struct GlobalExample {
 
   testOffscreenCanvas() {
     this.offContext.drawImage(this.img, 0, 0, 100, 100);
-    var bitmap = this.offContext.transferToImageBitmap();
+    let bitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(bitmap);
   }
 
   testImageData() {
-    var imageData = this.offContext.createImageData(100, 100);
-    var imgData = imageData.data;
+    let imageData = this.offContext.createImageData(100, 100);
+    let imgData = imageData.data;
     console.log("imageData_width=" + imageData.width);
     console.log("imageData_height=" + imageData.height);
   }

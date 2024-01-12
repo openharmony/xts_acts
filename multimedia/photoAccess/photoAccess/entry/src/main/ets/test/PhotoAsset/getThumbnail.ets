@@ -496,8 +496,8 @@ export default function getThumbnailTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_callback_010', 2, async function (done) {
-      const testNum = 'getThumbnail_callback_010';
+    it('getThumbnail_callback_022', 2, async function (done) {
+      const testNum = 'getThumbnail_callback_022';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const size = { width: -1, height: -1 };
       await getThumbnailCallbackAbnormal(done, testNum, fetchOps, size);
@@ -873,8 +873,8 @@ export default function getThumbnailTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getThumbnail_promise_010', 2, async function (done) {
-      const testNum = 'getThumbnail_promise_010';
+    it('getThumbnail_promise_022', 2, async function (done) {
+      const testNum = 'getThumbnail_promise_022';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const size = { width: -1, height: -1 };
       await getThumbnailPromiseAbnormal(done, testNum, fetchOps, size);

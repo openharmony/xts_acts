@@ -41,6 +41,10 @@ struct ObjectLinkFarClassAAA {
 
   build() {
     Column() {
+      Button("Reset").id("ObjectLinkFarClassAAA_reset")
+        .onClick(() => {
+          this.classA = new ClassAAA(new ClassBBB(5))
+        })
       Text('父组件').fontSize(24).margin({ top: 20 })
       Text('父组件会刷新').fontSize(16).margin({ top: 20 }).fontColor('#FF0000')
       Text(`ClassAAA的numA值: ${this.classA.numA}`).key("farClassAAA")

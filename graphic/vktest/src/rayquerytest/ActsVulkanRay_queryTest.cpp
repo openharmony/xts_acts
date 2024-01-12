@@ -22,27 +22,27 @@ namespace OHOS {
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanRay_queryTest::SetUpTestCase(void)
+    void ActsVulkanRayqueryTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanRay_queryTest::TearDownTestCase(void)
+    void ActsVulkanRayqueryTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanRay_queryTest::SetUp()
+    void ActsVulkanRayqueryTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanRay_queryTest::TearDown()
+    void ActsVulkanRayqueryTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanRay_queryTest, TestVulkanRay_queryTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanRayqueryTest, TestVulkanRay_queryTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanRay_queryTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ray-query.txt --deqp-log-filename=ActsVulkanRay_queryTest.qpa");
+        printf("------start ActsVulkanRayqueryTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ray-query.txt --deqp-log-filename=ActsVulkanRayqueryTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanRay_queryTest------\n");
+        printf("------end ActsVulkanRayqueryTest------\n");
     }
 }

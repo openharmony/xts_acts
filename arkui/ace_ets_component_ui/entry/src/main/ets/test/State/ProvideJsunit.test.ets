@@ -41,8 +41,12 @@ export default function ProvideJsunit() {
     });
 
     afterEach(async function () {
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);      
+      let button = await driver.findComponent(ON.id('ProvideA_reset'));
+      await button.click();
+      console.log('reset button click succ')
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('ProvideJsunit_0001', 0, async function (done) {

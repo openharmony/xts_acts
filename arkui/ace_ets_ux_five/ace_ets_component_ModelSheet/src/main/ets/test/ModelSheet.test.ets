@@ -61,6 +61,7 @@ export default function ModelSheetTest() {
           });
           expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
+          expect(indexEvent.data.enableOutsideInteractive).assertEqual(false)
           done();
         }
         try {
@@ -100,6 +101,7 @@ export default function ModelSheetTest() {
           });
           expect(indexEvent.data.preferType).assertEqual(SheetType.CENTER);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
+          expect(indexEvent.data.enableOutsideInteractive).assertEqual(true)
           done();
         }
         try {
@@ -139,6 +141,7 @@ export default function ModelSheetTest() {
           });
           expect(indexEvent.data.preferType).assertEqual(SheetType.POPUP);
           expect(indexEvent.data.shouldDismiss).assertEqual(true);
+          expect(indexEvent.data.enableOutsideInteractive).assertEqual(false)
           done();
         }
         try {

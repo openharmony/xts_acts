@@ -19,27 +19,15 @@ export default class MainAbility1 extends Ability {
         console.log("[Demo] MainAbility1 onCreate")
         globalThis.abilityWant1 = want;
         console.log("[Demo] MainAbility1 context: " + JSON.stringify(this.context));
-        var listKey1 = [];
+        globalThis.list1 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityCreate ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityCreate abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityCreate");
-                listKey1.push(abilityname + " onAbilityCreate");
-                console.log("[Demo] 1listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onAbilityCreate");
             },
             onWindowStageCreate(ability, windowStage) {
-                console.log("[Demo] AbilityLifecycleCallback1 onWindowStageCreate ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onWindowStageCreate abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onWindowStageCreate");
-                listKey1.push(abilityname + " onWindowStageCreate");
-                console.log("[Demo] 2listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageCreate");
             },
             onWindowStageActive(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
@@ -50,61 +38,31 @@ export default class MainAbility1 extends Ability {
                 console.log(abilityname + " onWindowStageInactive")
             },
             onWindowStageDestroy(ability, windowStage) {
-                console.log("[Demo] AbilityLifecycleCallback1 onWindowStageDestroy ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onWindowStageDestroy");
-                console.log("[Demo] 3listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityDestroy ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityDestroy abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityDestroy");
-                listKey1.push(abilityname + " onAbilityDestroy");
-                console.log("[Demo] 4listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onAbilityDestroy");
             },
             onAbilityForeground(ability) {
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityForeground ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityForeground abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityForeground");
-                listKey1.push(abilityname + " onAbilityForeground");
-                console.log("[Demo] 5listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onAbilityForeground");
             },
             onAbilityBackground(ability) {
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityBackground ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityBackground abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityBackground");
-                listKey1.push(abilityname + " onAbilityBackground");
-                console.log("[Demo] 6listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onAbilityBackground");
             },
             onAbilityContinue(ability) {
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityContinue ability:"
-                + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onAbilityContinue abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityContinue");
-                listKey1.push(abilityname + " onAbilityContinue");
-                console.log("[Demo] 7listKey1:" + JSON.stringify(listKey1));
+                globalThis.list1.push(abilityname + " onAbilityContinue");
             }
         }
         globalThis.applicationContext1 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext1.on('abilityLifecycle', AbilityLifecycleCallback);
+        globalThis.callbackid1 = lifecycleid;
         console.log("[Demo] registerAbilityLifecycleCallback1 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback1 listKey: " + JSON.stringify(listKey1));
-            globalThis.list1 = listKey1;
-            globalThis.callbackid1 = lifecycleid;
-        }, 2500);
+        globalThis.applicationContext1onAbilityLifecycle = true;
     }
 
     onDestroy() {
@@ -116,7 +74,7 @@ export default class MainAbility1 extends Ability {
         console.log("[Demo] MainAbility1 onWindowStageCreate")
         globalThis.ability1context = this.context;
 
-        windowStage.loadContent('testability/pages/index1', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index1', (err, data) => {
             if (err.code) {
                 console.log('MainAbility1 loadContent error');
                 return;
@@ -133,6 +91,10 @@ export default class MainAbility1 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility1 onForeground")
+        globalThis.MainAbility1onForeground = true;
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility1onForeground');
+        }, 800);
     }
 
     onBackground() {

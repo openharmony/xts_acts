@@ -36,11 +36,10 @@ describe('fileio_symlink', function () {
 
     try {
       fileio.symlinkSync(fpath, fpath + 'aaaa');
-      fileio.accessSync(fpath + 'aaaa');
-      expect(null).assertFail();
+      expect(false).assertTrue();
     } catch (e) {
       console.info('fileio_test_symlink_sync_000 has failed for ' + e);
-      fileio.unlinkSync(fpath + 'aaaa');
+      expect(e.message == 'Permission denied').assertTrue();
     }
   });
 
@@ -59,15 +58,13 @@ describe('fileio_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio.symlink(fpath, fpath + '1067').then(function (err) {
-        fileio.accessSync(fpath + '1067');
-        fileio.unlinkSync(fpath);
-        fileio.unlinkSync(fpath + '1067');
-      })
-      done();
+      await fileio.symlink(fpath, fpath + '1067');
+      expect(false).assertTrue();
     } catch (e) {
       console.info('fileio_test_symlink_async_000 has failed for ' + e);
-      expect(null).assertFail();
+      expect(e.message == 'Permission denied').assertTrue();
+      fileio.unlinkSync(fpath);
+      done();
     }
   });
   
@@ -86,15 +83,17 @@ describe('fileio_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio.symlink(fpath, fpath + 'pass2', function (err) {
-        fileio.accessSync(fpath + 'pass2');
-        fileio.unlinkSync(fpath);
-        fileio.unlinkSync(fpath + 'pass2');
-        done();
+      fileio.symlink(fpath, fpath + 'pass2', (err) => {
+        if (err) {
+          console.log('fileio_test_symlink_async_001 error: message: ' + err.message );
+          expect(err.message == 'Permission denied').assertTrue();
+          fileio.unlinkSync(fpath);
+          done();
+        }
       });
     } catch (e) {
       console.info('fileio_test_symlink_async_001 has failed for ' + e);
-      expect(null).assertFail();
+      expect(false).assertTrue();
     }
   });
 });

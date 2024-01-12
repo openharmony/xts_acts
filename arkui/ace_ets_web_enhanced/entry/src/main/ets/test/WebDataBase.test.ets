@@ -51,7 +51,7 @@ export default function webDataBase() {
     * @tc.number     : SUB_WEB_SAVEHTTPAUTHCREDENTIALS_0100
     * @tc.name       : testSaveHttpAuthCredentials001
     * @tc.desc       : test saveHttpAuthCredentials
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function webDataBase() {
     * @tc.number     : SUB_WEB_GETHTTPAUTHCREDENTIALS_0100
     * @tc.name       : testGetHttpAuthCredentials001
     * @tc.desc       : test getHttpAuthCredentials
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +81,7 @@ export default function webDataBase() {
     * @tc.number     : SUB_WEB_EXISTHTTPAUTHCREDENTIALS_0100
     * @tc.name       : testExistHttpAuthCredentials001
     * @tc.desc       : test existHttpAuthCredentials
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +96,7 @@ export default function webDataBase() {
     * @tc.number     : SUB_WEB_DELETEHTTPAUTHCREDENTIALS_0100
     * @tc.name       : testDeleteHttpAuthCredentials001
     * @tc.desc       : test deleteHttpAuthCredentials
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

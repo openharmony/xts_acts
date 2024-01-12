@@ -38,11 +38,13 @@ export default class Ability1 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("Ability1 onForeground");
-        globalThis.ability2Context.startAbility(
-            {
-                bundleName: 'com.example.actsgetcurrenttopabilitystageatest',
-                abilityName: 'Ability2'
-            })
+        setTimeout(()=>{
+            this.context.startAbility(
+                {
+                    bundleName: 'com.example.actsgetcurrenttopabilitystageatest',
+                    abilityName: 'Ability2'
+                })
+        }, 1500);
     }
 
     onBackground() {

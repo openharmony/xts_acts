@@ -924,7 +924,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0700, Fun
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
     
     uint32_t count = 1;
-    EXPECT_LE(devicesCount, count);
+    EXPECT_LE(count, devicesCount);
     const char *name = nullptr;
     std::string m_deviceName{"Device-CPU_TestVendor_v2_0"};
     OH_NN_ReturnCode ret = OH_NN_FAILED;

@@ -19,7 +19,19 @@
                 "power-shell setmode 602"
             ],
             "teardown-command": [
-                "power-shell setmode 600"
+                "power-shell setmode 600",
+                "rm -rf /storage/media/100/local/files/Audios",
+                "rm -rf /storage/media/100/local/files/Camera",
+                "rm -rf /storage/media/100/local/files/Pictures",
+                "rm -rf /storage/media/100/local/files/Videos",
+                "rm -rf /storage/media/100/local/files/Documents/*",
+                "rm -rf /storage/media/100/local/files/Documents/.*",
+                "rm -rf /storage/media/100/local/files/Download/*",
+                "rm -rf /storage/media/100/local/files/Download/.*",
+                "sleep 5",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner"
             ]
         },
         {

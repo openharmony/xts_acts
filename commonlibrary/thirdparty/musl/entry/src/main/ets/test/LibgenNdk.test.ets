@@ -22,7 +22,7 @@ export default function libgenNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LIBGEN_BASENAME_0100
      * @tc.name       : testMuslLibgenBasename001
      * @tc.desc       : test basename
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

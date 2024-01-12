@@ -96,6 +96,36 @@ struct webViewController {
               break;
             }
 
+            case "testOnScroll002": {
+              try {
+                this.onScrollCallBack = false
+                this.controller.scrollBy(100, 100)
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.onScrollCallBack, 100068)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100068)
+              }
+              this.onScrollCallBack = false
+              break;
+            }
+
+            case "testOnScroll003": {
+              try {
+                this.controller.scrollBy(100, 100)
+                await Utils.sleep(2000)
+                this.onScrollCallBack = false
+                this.controller.scrollBy(-50, -50)
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.onScrollCallBack, 100069)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100069)
+              }
+              this.onScrollCallBack = false
+              break;
+            }
+
             case "testHistoryItemIcon001": {
               try {
                 this.controller.loadUrl("resource://rawfile/HistoryItem.html");
@@ -361,6 +391,48 @@ struct webViewController {
               break;
             }
 
+            case "testOnOverScroll002": {
+              try {
+                this.onScrollCallBack = false
+                let driver = Driver.create();
+                await driver.swipe(0, 800, 0, 100, 600);
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.onScrollCallBack, 100034)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100034)
+              }
+              break;
+            }
+
+            case "testOnOverScroll003": {
+              try {
+                this.onScrollCallBack = false
+                let driver = Driver.create();
+                await driver.swipe(400, 300, 100, 300, 600);
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.onScrollCallBack, 100035)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100035)
+              }
+              break;
+            }
+
+            case "testOnOverScroll004": {
+              try {
+                this.onScrollCallBack = false
+                let driver = Driver.create();
+                await driver.swipe(100, 300, 400, 300, 600);
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.onScrollCallBack, 100036)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(error.code, 100036)
+              }
+              break;
+            }
+
             case "testDarkMode001": {
               try {
                 this.darkMode = WebDarkMode.On
@@ -435,7 +507,6 @@ struct webViewController {
               }
               break;
             }
-
           }
         })
       }

@@ -508,5 +508,24 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             console.info("====>ActsOsAccountCheckTest_0200 end====");
             done();
         })
+
+        /*
+        * @tc.number  : ActsOsAccountIsOsAccountUnlocked_0100
+        * @tc.name    : IsOsAccountUnlocked promise
+        * @tc.desc    : Verify that the initial state query is unlocked to false
+        * @tc.level   : Level2
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
+        */
+        it('ActsOsAccountIsOsAccountUnlocked_0100', 0, async function (done) {
+            console.info("====>ActsOsAccountIsOsAccountUnlocked_0100 start====");
+            var AccountManager = osAccount.getAccountManager();
+            console.info("====>get os AccountManager finish====");
+            var IsOsAccountUnlocked = await AccountManager.isOsAccountUnlocked();
+            console.info("====>IsOsAccountUnlocked data:" + JSON.stringify(IsOsAccountUnlocked));
+            expect(IsOsAccountUnlocked).assertEqual(true);
+            console.info("====>ActsOsAccountIsOsAccountUnlocked_0100 end====");
+            done();
+        })
     })
 }

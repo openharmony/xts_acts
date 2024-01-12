@@ -10,7 +10,7 @@
     "kits": [
 		{
             "test-file-name": [
-                "ActsRevokeQuickFixApp.hap"
+                "ActsRevokeQuickFixAppTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

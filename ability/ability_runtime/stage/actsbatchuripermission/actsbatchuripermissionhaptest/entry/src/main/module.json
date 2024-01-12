@@ -44,17 +44,6 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.PROXY_AUTHORIZATION_URI",
-        "reason": "$string:app_name",
-        "usedScene": {
-          "abilities": [
-            "TestAbility",
-            "EntryAbility"
-          ],
-          "when": "inuse"
-        }
-      },
-      {
         "name": "ohos.permission.FILE_ACCESS_MANAGER",
         "reason": "$string:app_name",
         "usedScene": {

@@ -22,7 +22,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN_NTOHL_0100
      * @tc.name       : testMuslInNtohl001
      * @tc.desc       : test ntohl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN_NTOHS_0100
      * @tc.name       : testMuslInNtohs001
      * @tc.desc       : test ntohs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN_HTONL_0100
      * @tc.name       : testMuslInHtonl001
      * @tc.desc       : test htonl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -66,7 +66,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN_HTONS_0100
      * @tc.name       : testMuslInHtons001
      * @tc.desc       : test htons
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -81,7 +81,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN6ADDR_ANY_0100
      * @tc.name       : testMuslIn6addrAny001
      * @tc.desc       : test __in6addr_any
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -96,7 +96,7 @@ export default function inNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IN6ADDR_LOOPBACK_0100
      * @tc.name       : testMuslIn6addrLoopback001
      * @tc.desc       : test __in6addr_loopback
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

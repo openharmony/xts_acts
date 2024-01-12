@@ -52,7 +52,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_SAVECOOKIEASYNC_0100
     * @tc.name       : testSaveCookieAsync001
     * @tc.desc       : test saveCookieAsync
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -67,7 +67,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_SAVECOOKIEASYNC_0200
     * @tc.name       : testSaveCookieAsync002
     * @tc.desc       : test saveCookieAsync
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -82,7 +82,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_ISCOOKIEALLOWED_0100
     * @tc.name       : testIsCookieAllowed001
     * @tc.desc       : test isCookieAllowed
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -97,7 +97,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_ISCOOKIEALLOWED_0200
     * @tc.name       : testIsCookieAllowed002
     * @tc.desc       : test isCookieAllowed
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -112,7 +112,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_ISTHIRDPARTYCOOKIEALLOWED_0100
     * @tc.name       : testIsThirdPartyCookieAllowed001
     * @tc.desc       : test isThirdPartyCookieAllowed
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -127,7 +127,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_ISTHIRDPARTYCOOKIEALLOWED_0200
     * @tc.name       : testIsThirdPartyCookieAllowed002
     * @tc.desc       : test isThirdPartyCookieAllowed
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -142,7 +142,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_EXISTCOOKIE_0100
     * @tc.name       : testExistCookie001
     * @tc.desc       : test existCookie
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -157,7 +157,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_DELETEENTIRECOOKIE_0100
     * @tc.name       : testDeleteEntireCookie001
     * @tc.desc       : test deleteEntireCookie
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -172,7 +172,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_PUTACCEPTCOOKIEENABLED_0100
     * @tc.name       : testPutAcceptCookieEnabled001
     * @tc.desc       : test putAcceptCookieEnabled
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -187,7 +187,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_PUTACCEPTTHIRDPARTYCOOKIEENABLED_0100
     * @tc.name       : testPutAcceptThirdPartyCookieEnabled001
     * @tc.desc       : test putAcceptThirdPartyCookieEnabled
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -202,7 +202,7 @@ export default function webCookieManager() {
     * @tc.number     : SUB_WEB_DELETESESSIONCOOKIE_0100
     * @tc.name       : testDeleteSessionCookie001
     * @tc.desc       : test deleteSessionCookie
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -210,6 +210,21 @@ export default function webCookieManager() {
       Utils.emitEvent("testDeleteSessionCookie001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteSessionCookie001", '', 30034, done);
+      sendEventByKey('WebCookieManagerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_GETCOOKIE_0100
+    * @tc.name       : testGetCookie001
+    * @tc.desc       : test getCookie
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testGetCookie001', 0, async (done: Function) => {
+      Utils.emitEvent("testGetCookie001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testGetCookie001", 'a=b', 100019, done);
       sendEventByKey('WebCookieManagerButton', 10, '');
     })
 

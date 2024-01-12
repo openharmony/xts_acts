@@ -23,8 +23,4 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleColor, "dEQP-VK.renderpass2.dedicated_allocation.simple.color*");
-static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleDepth, "dEQP-VK.renderpass2.dedicated_allocation.simple.depth*");
-static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleStencil, "dEQP-VK.renderpass2.dedicated_allocation.simple.stencil*");
-static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleDepthstencil, "dEQP-VK.renderpass2.dedicated_allocation.simple.depth_stencil*");
-static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleColordepth, "dEQP-VK.renderpass2.dedicated_allocation.simple.color_depth*");
+static SHRINK_HWTEST_F(ActsRenderpass20023TS, TCSimpleColor, "dEQP-VK.renderpass2.dedicated_allocation.*");

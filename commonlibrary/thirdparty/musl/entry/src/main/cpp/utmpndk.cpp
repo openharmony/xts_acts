@@ -24,13 +24,13 @@
 #include <utmp.h>
 
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define PARAM_3 3
 #define PARAM_8 8
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 
 static napi_value Setutent(napi_env env, napi_callback_info info)
@@ -58,11 +58,11 @@ static napi_value Pututline(napi_env env, napi_callback_info info)
     utmp.ut_type = RUN_LVL;
     utmp.ut_pid = ('#' << PARAM_8) + PARAM_3 + '0';
     time(&t);
-    utmp.ut_time = (int)t;
+    utmp.ut_time = static_cast<int>(t);
     struct utmp *ret = pututline(&utmp);
     napi_value result;
-    if (nullptr == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (ret == nullptr) {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
@@ -71,11 +71,10 @@ static napi_value Pututline(napi_env env, napi_callback_info info)
 
 static napi_value Getutent(napi_env env, napi_callback_info info)
 {
-
     struct utmp *p = getutent();
     napi_value result;
-    if (nullptr == p) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (p == nullptr) {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
@@ -84,7 +83,6 @@ static napi_value Getutent(napi_env env, napi_callback_info info)
 
 static napi_value Utmpname(napi_env env, napi_callback_info info)
 {
-
     int fp = open("/data/storage/el2/base/files/Fzl.txt", O_RDONLY);
     write(fp, "/data/storage/el2/base/files/Fzl.txt", sizeof("/data/storage/el2/base/files/Fzl.txt"));
     close(fp);

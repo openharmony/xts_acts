@@ -24,7 +24,7 @@
 #define SUCCESS 1
 #define STRLENGTH 64
 #define DEFAULT_VALUE 0
-#define FAIL -1
+#define FAIL (-1)
 #define ONE 1
 #define TWO 2
 #define THREE 3
@@ -33,9 +33,9 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_6 6
 #define SIZE_8 8
@@ -47,11 +47,16 @@
 #define SIZE_4096 4096
 #define SIZE_8192 8192
 #define SIZE_32768 32768
+#define PARAM_0777 0777
 extern "C" size_t __fwrite_chk(const void *buf, size_t size, size_t count, FILE *stream, size_t buf_size);
+extern "C" int __open_chk(const char *, int);
+extern "C" int __openat_chk(int, const char *, int);
+extern "C" int __open64_chk(const char *, int);
+extern "C" int __openat64_chk(int, const char *, int);
 
 static napi_value Splice(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int value = napi_get_value_int32(env, args[0], &value);
@@ -94,17 +99,17 @@ static napi_value Tee(napi_env env, napi_callback_info info)
 }
 static napi_value Vmsplice(napi_env env, napi_callback_info info)
 {
-    int pipe_size = PARAM_2;
-    int iov_length = SIZE_6;
-    int pipe_fds[pipe_size];
+    int pipeSize = PARAM_2;
+    int iovLength = SIZE_6;
+    int pipe_fds[pipeSize];
     pipe(pipe_fds);
-    struct iovec v[pipe_size];
-    char str_hello[] = "hello ";
+    struct iovec v[pipeSize];
+    char strHello[] = "hello ";
     char str_world[] = "world\n";
-    v[0].iov_base = str_hello;
-    v[0].iov_len = iov_length;
+    v[0].iov_base = strHello;
+    v[0].iov_len = iovLength;
     v[1].iov_base = str_world;
-    v[1].iov_len = iov_length;
+    v[1].iov_len = iovLength;
     size_t result = vmsplice(pipe_fds[PARAM_1], v, sizeof(v) / sizeof(struct iovec), PARAM_0);
     close(pipe_fds[1]);
     char buf[BUFSIZ];
@@ -118,25 +123,27 @@ static napi_value Vmsplice(napi_env env, napi_callback_info info)
 
 static napi_value Readahead(napi_env env, napi_callback_info info)
 {
-    int result_value = readahead(PARAM_UNNORMAL, PARAM_0, SIZE_123);
+    int resultValue = readahead(PARAM_UNNORMAL, PARAM_0, SIZE_123);
     napi_value result = nullptr;
 
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
-static napi_value PosixFallocate(napi_env env, napi_callback_info info) {
+static napi_value PosixFallocate(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    int fd = open("/data/storage/el2/base/files/fff.txt", O_CREAT | O_RDWR);
+    int fd = open("/data/storage/el2/base/files/fff.txt", O_CREAT | O_RDWR, PARAM_0777);
     int ret = posix_fallocate(fd, SIZE_8, SIZE_1024);
     napi_create_int32(env, ret, &result);
     close(fd);
     return result;
 }
 
-static napi_value PosixFallocate64(napi_env env, napi_callback_info info) {
+static napi_value PosixFallocate64(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    int fd = open("/data/storage/el2/base/files/fff.txt", O_CREAT | O_RDWR);
+    int fd = open("/data/storage/el2/base/files/fff.txt", O_CREAT | O_RDWR, PARAM_0777);
     int ret = posix_fallocate64(fd, SIZE_8, SIZE_1024);
     napi_create_int32(env, ret, &result);
     close(fd);
@@ -152,11 +159,12 @@ static napi_value NameToHandleAt(napi_env env, napi_callback_info info)
 
 static napi_value Open(napi_env env, napi_callback_info info)
 {
-    int fd = open("/data/storage/el2/base/files/test.txt", O_CREAT);
+    int fd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
     int ret = FAIL;
     if (fd != FAIL) {
         ret = SUCCESS;
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -169,6 +177,7 @@ static napi_value Open64(napi_env env, napi_callback_info info)
     if (fd != FAIL) {
         ret = SUCCESS;
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -184,13 +193,15 @@ static napi_value OpenByHandleAt(napi_env env, napi_callback_info info)
 static napi_value Openat(napi_env env, napi_callback_info info)
 {
     int fd;
-    char *relative_path = nullptr;
-    int dir_fd = open("/data/storage/el2/base/files/test.txt", O_CREAT);
-    fd = openat(dir_fd, relative_path, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
+    char *relativePath = nullptr;
+    int dirFd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    fd = openat(dirFd, relativePath, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
     int ret = FAIL;
     if (fd != FAIL) {
         ret = SUCCESS;
     }
+    close(fd);
+    close(dirFd);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -199,41 +210,45 @@ static napi_value Openat(napi_env env, napi_callback_info info)
 static napi_value Openat64(napi_env env, napi_callback_info info)
 {
     int fd;
-    char *relative_path = nullptr;
-    int dir_fd = open("/data/storage/el2/base/files/test.txt", O_CREAT);
-    fd = openat64(dir_fd, relative_path, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
+    char *relativePath = nullptr;
+    int dirFd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    fd = openat64(dirFd, relativePath, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
     int ret = FAIL;
     if (fd != FAIL) {
         ret = SUCCESS;
     }
+    close(fd);
+    close(dirFd);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value PosixFadvise(napi_env env, napi_callback_info info) {
+static napi_value PosixFadvise(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT | O_RDWR);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT | O_RDWR, PARAM_0777);
     int returnValue = posix_fadvise(fileDescribe, SIZE_8, SIZE_1024, POSIX_FADV_NORMAL);
     napi_create_int32(env, returnValue, &result);
     close(fileDescribe);
     return result;
 }
 
-static napi_value PosixFadvise64(napi_env env, napi_callback_info info) {
+static napi_value PosixFadvise64(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT | O_RDWR);
-    fopen("/data/storage/el2/base/files/fzl.txt", "r");
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT | O_RDWR, PARAM_0777);
     int returnValue = posix_fadvise64(fileDescribe, SIZE_8, SIZE_1024, POSIX_FADV_NORMAL);
     napi_create_int32(env, returnValue, &result);
     close(fileDescribe);
     return result;
 }
 
-static napi_value FalLocate(napi_env env, napi_callback_info info) {
+static napi_value FalLocate(napi_env env, napi_callback_info info)
+{
     int backParam, mode = PARAM_0;
     off_t offset = PARAM_0, len = PARAM_1;
-    int fileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT | O_RDWR);
+    int fileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT | O_RDWR, PARAM_0777);
     backParam = fallocate(fileDescribe, mode, offset, len);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
@@ -241,10 +256,11 @@ static napi_value FalLocate(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value FalLocate64(napi_env env, napi_callback_info info) {
+static napi_value FalLocate64(napi_env env, napi_callback_info info)
+{
     int backParam, mode = PARAM_0;
     off_t offset = PARAM_0, len = PARAM_1;
-    int fileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT | O_RDWR);
+    int fileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT | O_RDWR, PARAM_0777);
     backParam = fallocate64(fileDescribe, mode, offset, len);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
@@ -252,15 +268,16 @@ static napi_value FalLocate64(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value FcnTl(napi_env env, napi_callback_info info) {
+static napi_value FcnTl(napi_env env, napi_callback_info info)
+{
     int backParam;
-    int fileDescribe = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
     backParam = fcntl(fileDescribe, STDIN_FILENO, F_GETFL, PARAM_0);
     napi_value result = nullptr;
-    if(backParam != fileDescribe && backParam != -1){
+    if (backParam != fileDescribe && backParam != -1) {
         napi_create_int32(env, PARAM_0, &result);
-    }else{
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    } else {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     close(fileDescribe);
     return result;
@@ -272,9 +289,67 @@ static napi_value FwriteChk(napi_env env, napi_callback_info info)
     int len = SIZE_10;
     FILE *files = fopen("/data/storage/el2/base/files/test.txt", "w");
     int result = __fwrite_chk(msg, len, PARAM_0, files, strlen(msg));
+    fclose(files);
     napi_value resultS = nullptr;
     napi_create_int32(env, result, &resultS);
     return resultS;
+}
+static napi_value OpenChk(napi_env env, napi_callback_info info)
+{
+    int dirFileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    int fileDescribe = __open_chk("/data/storage/el2/base/files/test.txt", O_RDWR);
+    int ret = FAIL;
+    if (fileDescribe != FAIL) {
+        ret = RETURN_0;
+    }
+    close(dirFileDescribe);
+    close(fileDescribe);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value Open64Chk(napi_env env, napi_callback_info info)
+{
+    int dirFileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    int fileDescribe = __open64_chk("/data/storage/el2/base/files/test.txt", O_RDWR);
+    int ret = FAIL;
+    if (fileDescribe != FAIL) {
+        ret = RETURN_0;
+    }
+    close(dirFileDescribe);
+    close(fileDescribe);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+static napi_value OpenatChk(napi_env env, napi_callback_info info)
+{
+    int dirFileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    int fileDescribe = __openat_chk(dirFileDescribe, "/data/storage/el2/base/files/test.txt", O_RDWR | O_TRUNC);
+    int ret = FAIL;
+    if (fileDescribe != FAIL) {
+        ret = RETURN_0;
+    }
+    close(dirFileDescribe);
+    close(fileDescribe);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+static napi_value Openat64Chk(napi_env env, napi_callback_info info)
+{
+    int dirFileDescribe = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
+    int fileDescribe = __openat64_chk(dirFileDescribe, "/data/storage/el2/base/files/test.txt", O_RDWR);
+    int ret = FAIL;
+    if (fileDescribe != FAIL) {
+        ret = RETURN_0;
+    }
+    close(dirFileDescribe);
+    close(fileDescribe);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
 }
 
 EXTERN_C_START
@@ -299,6 +374,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"fallocate64", nullptr, FalLocate64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"fallocate", nullptr, FalLocate, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"fwritechk", nullptr, FwriteChk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"openChk", nullptr, OpenChk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"open64Chk", nullptr, Open64Chk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"openatChk", nullptr, OpenatChk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"openat64Chk", nullptr, Openat64Chk, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

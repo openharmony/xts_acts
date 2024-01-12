@@ -15,22 +15,24 @@
 
 #include "napi/native_api.h"
 #include <cerrno>
+#include <cstdlib>
 #include <cstring>
 #include <fcntl.h>
 #include <termios.h>
-#include <cstdlib>
 #include <unistd.h>
 
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
-#define SUCCESS 0
+#define PARAM_1 1
+#define SUCCESS 1
 #define ERRON_0 0
+#define PARAM_0xff 0xff
 
 #define PATH "/data/storage/el2/base/files"
 
 static napi_value Tcdrain(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -51,7 +53,7 @@ static napi_value Tcdrain(napi_env env, napi_callback_info info)
 }
 static napi_value Tcflow(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -79,7 +81,7 @@ static napi_value Tcflow(napi_env env, napi_callback_info info)
 
 static napi_value Tcflush(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -103,7 +105,7 @@ static napi_value Tcflush(napi_env env, napi_callback_info info)
 }
 static napi_value Tcgetattr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -123,7 +125,7 @@ static napi_value Tcgetattr(napi_env env, napi_callback_info info)
 
 static napi_value Tcgetsid(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -148,7 +150,7 @@ static napi_value Tcgetsid(napi_env env, napi_callback_info info)
 
 static napi_value Tcsendbreak(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -166,7 +168,7 @@ static napi_value Tcsendbreak(napi_env env, napi_callback_info info)
 }
 static napi_value Tcsetattr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -189,7 +191,6 @@ static napi_value Tcsetattr(napi_env env, napi_callback_info info)
 
 static napi_value Cfsetispeed(napi_env env, napi_callback_info info)
 {
-
     struct termios term;
     speed_t returnValue = cfsetispeed(&term, 1);
     napi_value result;
@@ -199,7 +200,6 @@ static napi_value Cfsetispeed(napi_env env, napi_callback_info info)
 
 static napi_value Cfsetospeed(napi_env env, napi_callback_info info)
 {
-
     struct termios term;
     speed_t value = cfsetospeed(&term, 1);
     napi_value result;
@@ -209,10 +209,9 @@ static napi_value Cfsetospeed(napi_env env, napi_callback_info info)
 
 static napi_value Cfmakeraw(napi_env env, napi_callback_info info)
 {
-
     struct termios t;
     errno = ERRON_0;
-    memset(&t, 0xff, sizeof(t));
+    memset(&t, PARAM_0xff, sizeof(t));
     int ret = FAIL;
     cfmakeraw(&t);
     if (errno == PARAM_0) {
@@ -225,7 +224,6 @@ static napi_value Cfmakeraw(napi_env env, napi_callback_info info)
 
 static napi_value Cfgetispeed(napi_env env, napi_callback_info info)
 {
-
     struct termios t = {};
     int value = FAIL;
     cfsetispeed(&t, B1200);
@@ -240,7 +238,6 @@ static napi_value Cfgetispeed(napi_env env, napi_callback_info info)
 
 static napi_value Cfgetospeed(napi_env env, napi_callback_info info)
 {
-
     struct termios t = {};
     int value = FAIL;
     cfsetospeed(&t, B1200);
@@ -255,7 +252,6 @@ static napi_value Cfgetospeed(napi_env env, napi_callback_info info)
 
 static napi_value Cfsetspeed(napi_env env, napi_callback_info info)
 {
-
     struct termios t = {};
     int value = cfsetspeed(&t, B1200);
     napi_value result;

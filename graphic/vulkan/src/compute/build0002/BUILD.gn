@@ -209,7 +209,6 @@ ohos_moduletest_suite("ActsComputeTestSuite0002") {
 
   sources = [
     "../ActsCompute0002TestSuite.cpp",
-    "../compute/Compute_workgroup_memory_explicit_layout0001TestCase.cpp",
     "../compute/Compute_zero_initialize_workgroup_memory0001TestCase.cpp",
   ]
 

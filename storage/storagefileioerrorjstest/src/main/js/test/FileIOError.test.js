@@ -105,33 +105,6 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0300
-   * @tc.name fileio_test_error_003
-   * @tc.desc Function of API, flags=0o400000. Symbolic link loop.
-   * @tc.size MEDIUM
-   * @tc.type Functoin
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_error_003', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_error_003');
-    let ffpath = fpath + 'aaaa';
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      fileio.symlinkSync(fpath, ffpath);
-      fileio.openSync(ffpath, 0o400000);
-    } 
-    catch (err) {
-      console.info('fileio_test_error_003 has failed for ' + err);
-      expect(isInclude(err.message, 'Symbolic link loop') || 
-        isInclude(err.message, 'Too many symbolic links encountered')).assertTrue();
-      fileio.unlinkSync(fpath);
-      fileio.unlinkSync(ffpath);
-      done();
-    }
-  });
-
-  /**
    * @tc.number SUB_STORAGE_FileIO_OpenSync_0400
    * @tc.name fileio_test_error_004
    * @tc.desc Function of API, flags=0o200000. Not a directory.

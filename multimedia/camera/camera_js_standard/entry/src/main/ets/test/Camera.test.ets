@@ -25,6 +25,7 @@ import cameraInputTest from './CameraInputTest.test.ets'
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
 import cameraEnumTest from './CameraEnumTest.test.ets'
+import cameraVideoSuperStabilizationTest from './CameraVideoSuperStabilizationTest.test.ets'
 
 
 let TAG = 'CameraModuleTest: '
@@ -32,6 +33,7 @@ let TAG = 'CameraModuleTest: '
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
   cameraInputTest()
+  cameraVideoSuperStabilizationTest()
   cameraJSUnitOutput()
   cameraSessionFlashTest()
   cameraSessionExposureTest()

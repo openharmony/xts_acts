@@ -21,7 +21,7 @@
         },
 		{
             "test-file-name": [  
-                "GetRunningProcessInformationTest.hap",
+                "ActsGetRunningProcessInformationTest.hap",
                 "GetRunningProcessInformationOneReply.hap",
                 "GetRunningProcessInformationTwoReply.hap",
                 "ApplicationStateChangeThreeReply.hap",

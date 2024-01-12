@@ -22,11 +22,12 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_16 16
+#define SIZE_7 7
 
 extern "C" int __aeabi_atexit(void *obj, void (*func)(void *), void *d);
 extern "C" int __aeabi_memclr(void *dest, size_t n);
@@ -177,7 +178,7 @@ static napi_value AeabiMemmove8(napi_env env, napi_callback_info info)
 static napi_value AeabiMemset(napi_env env, napi_callback_info info)
 {
     int dest[] = {1, 2, 3, 4, 5, 6, 7};
-    int src = 7;
+    int src = SIZE_7;
     void *ret = __aeabi_memset(dest, src, SIZE_16);
     napi_value result = nullptr;
     if (ret != nullptr) {
@@ -192,7 +193,7 @@ static napi_value AeabiMemset(napi_env env, napi_callback_info info)
 static napi_value AeabiMemset4(napi_env env, napi_callback_info info)
 {
     int dest[] = {1, 2, 3, 4, 5, 6, 7};
-    int src = 7;
+    int src = SIZE_7;
     void *ret = __aeabi_memset4(dest, src, SIZE_16);
     napi_value result = nullptr;
     if (ret != nullptr) {
@@ -207,7 +208,7 @@ static napi_value AeabiMemset4(napi_env env, napi_callback_info info)
 static napi_value AeabiMemset8(napi_env env, napi_callback_info info)
 {
     int dest[] = {1, 2, 3, 4, 5, 6, 7};
-    int src = 7;
+    int src = SIZE_7;
     void *ret = __aeabi_memset4(dest, src, SIZE_16);
     napi_value result = nullptr;
     if (ret != nullptr) {

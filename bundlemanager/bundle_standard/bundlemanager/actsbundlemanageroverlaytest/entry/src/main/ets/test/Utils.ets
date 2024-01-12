@@ -17,18 +17,8 @@ import hiLog from '@ohos.hilog';
 
 export default class Utils {
 
-  static info(str) {
+  static info(str:string) {
     hiLog.info(0 , "BMSTEST" , str);
-  }
-
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout((data) => {
-        resolve(data)
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
   }
 }
 

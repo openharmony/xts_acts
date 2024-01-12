@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,14 +36,13 @@ async function updateProcess(handle: Uint8Array, data: Uint8Array): Promise<void
         console.error("[Callback] updateProcess get err: " + err);
         reject(err);
       } else {
-        console.log("[Callback] updateProcess get status: " + status);
         resolve(status);
       }
     })
   })
 }
 
-async function finishProcess(handle: Uint8Array, signature: Uint8Array = null): Promise<certManager.CMResult> {
+async function finishProcess(handle: Uint8Array, signature?: Uint8Array): Promise<certManager.CMResult> {
   return new Promise((resolve, reject) => {
     if (signature) {
       certManager.finish(handle, signature, (err, CMResult) => {
@@ -96,7 +94,7 @@ async function signVerifyNormalProcess(authUri: string, srcData: Uint8Array, sig
     return verifyResult;
   } catch (err) {
     console.error("[Callback]signVerifyNormalProcess catch err: " + err);
-    throw err;
+    throw err as Error;
   }
 }
 
@@ -126,12 +124,11 @@ async function verifyAbortProcess(authUri: string, srcData: Uint8Array, flag: st
         await abortProcess(verifyHandle.handle);
         break;
       default:
-        throw "wrong parameter";
-        break;
+        throw new Error("wrong parameter");
     }
   } catch (err) {
     console.error("[Callback]verifyAbortProcess catch err: " + err);
-    throw err;
+    throw err as Error;
   }
 }
 
@@ -155,12 +152,11 @@ async function signAbortProcess(authUri: string, srcData: Uint8Array, flag: stri
         await abortProcess(signHandle.handle);
         break;
       default:
-        throw "wrong parameter";
-        break;
+        throw new Error("wrong parameter");
     }
   } catch (err) {
     console.error("[Callback]signAbortProcess catch err: " + err);
-    throw err;
+    throw err as Error;
   }
 }
 

@@ -28,25 +28,27 @@
 #include <utmp.h>
 #include <uv.h>
 
-
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TRUE 1
 #define LENGTH 1
 #define ONE 1
 #define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_4 4
+#define PARAM_42 42
 #define ONEVAL 1
-#define MINUSONE -1
-#define MINUSTWO -2
-#define MINUSTHR -3
+#define MINUSONE (-1)
+#define MINUSTWO (-2)
+#define MINUSTHR (-3)
 #define FOURTWO 42
 #define SIZE_1024 1024
 
 static napi_value GetPriority(napi_env env, napi_callback_info info)
 {
     errno = NO_ERR;
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero = PARAM_0;
@@ -63,7 +65,7 @@ static napi_value GetPriority(napi_env env, napi_callback_info info)
 }
 static napi_value GetRLimit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -78,7 +80,7 @@ static napi_value GetRLimit(napi_env env, napi_callback_info info)
 }
 static napi_value GetRUsage(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -93,26 +95,25 @@ static napi_value GetRUsage(napi_env env, napi_callback_info info)
 }
 static napi_value PrLimit(napi_env env, napi_callback_info info)
 {
-    static const unsigned long long lim = 4;
-    struct rlimit new_limit = {.rlim_cur = lim, .rlim_max = lim};
-    int ret = prlimit(getpid(), RLIMIT_STACK, &new_limit, nullptr);
+    static const unsigned long long lim = PARAM_4;
+    struct rlimit newLimit = {.rlim_cur = lim, .rlim_max = lim};
+    int ret = prlimit(getpid(), RLIMIT_STACK, &newLimit, nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value PrLimit64(napi_env env, napi_callback_info info)
 {
-    static const unsigned long long lim = 4;
-    struct rlimit new_limit = {.rlim_cur = lim, .rlim_max = lim};
-    int ret = prlimit64(getpid(), RLIMIT_STACK, &new_limit, nullptr);
+    static const unsigned long long lim = PARAM_4;
+    struct rlimit newLimit = {.rlim_cur = lim, .rlim_max = lim};
+    int ret = prlimit64(getpid(), RLIMIT_STACK, &newLimit, nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value Getrlimit64(napi_env env, napi_callback_info info)
 {
-
-    static const long lim = 42;
+    static const long lim = PARAM_42;
     static const int r = RLIMIT_NOFILE;
     struct rlimit rl = {PARAM_0};
     rl.rlim_max = lim;
@@ -126,7 +127,7 @@ static napi_value Getrlimit64(napi_env env, napi_callback_info info)
 }
 static napi_value Setpriority(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst = PARAM_0;
@@ -140,7 +141,7 @@ static napi_value Setpriority(napi_env env, napi_callback_info info)
 
 static napi_value Setrlimit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst = PARAM_0;
@@ -169,7 +170,7 @@ static napi_value Setrlimit(napi_env env, napi_callback_info info)
 
 static napi_value Setrlimit64(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst = PARAM_0;

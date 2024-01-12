@@ -51,7 +51,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ACCESSBACKWARD_0100
     * @tc.name       : testAccessBackward001
     * @tc.desc       : test accessBackward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ACCESSSTEP_0100
     * @tc.name       : testAccessStep001
     * @tc.desc       : test accessStep
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -78,10 +78,116 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0200
+    * @tc.name       : testAccessStep002
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep002', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep002", true, 100089, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0300
+    * @tc.name       : testAccessStep003
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep003', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep003", false, 100090, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0400
+    * @tc.name       : testAccessStep004
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep004', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep004", true, 100091, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0500
+    * @tc.name       : testAccessStep005
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep005', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep005", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep005", false, 100092, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0600
+    * @tc.name       : testAccessStep006
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep006', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep006", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep006", true, 100093, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0700
+    * @tc.name       : testAccessStep007
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep007', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep007", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep007", false, 100094, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSSTEP_0800
+    * @tc.name       : testAccessStep008
+    * @tc.desc       : test accessStep
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessStep008', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessStep008", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessStep008", true, 100095, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_REFRESH_0100
     * @tc.name       : testRefresh001
     * @tc.desc       : test refresh
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -96,7 +202,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_REGISTERJAVASCRIPTPROXY_0100
     * @tc.name       : testRegisterJavaScriptProxy001
     * @tc.desc       : test registerJavaScriptProxy
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -111,7 +217,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ACCESSBACKWARD_0200
     * @tc.name       : testAccessBackward002
     * @tc.desc       : test accessBackward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -123,10 +229,40 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_ACCESSBACKWARD_0300
+    * @tc.name       : testAccessBackward003
+    * @tc.desc       : test accessBackward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessBackward003', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessBackward003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessBackward003", false, 200006, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSBACKWARD_0400
+    * @tc.name       : testAccessBackward004
+    * @tc.desc       : test accessBackward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessBackward004', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessBackward004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessBackward004", true, 200007, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_DELETEJAVASCRIPTREGISTER_0100
     * @tc.name       : testDeleteJavaScriptRegister001
     * @tc.desc       : test deleteJavaScriptRegister
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -141,7 +277,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ONINACTIVE_0100
     * @tc.name       : testOnInactive001
     * @tc.desc       : test onInactive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -156,7 +292,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ONACTIVE_0100
     * @tc.name       : testOnActive001
     * @tc.desc       : test onActive
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -171,7 +307,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_CLEARHISTORY_0100
     * @tc.name       : testClearHistory001
     * @tc.desc       : test clearHistory
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -186,7 +322,7 @@ export default function webController() {
      * @tc.number     : SUB_WEB_RUNJAVASCRIPT_0100
      * @tc.name       : testRunJavaScript001
      * @tc.desc       : test runJavaScript
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -201,7 +337,7 @@ export default function webController() {
      * @tc.number     : SUB_WEB_LOADDATA_0100
      * @tc.name       : testLoadData001
      * @tc.desc       : test loadData
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -213,13 +349,13 @@ export default function webController() {
     })
 
     /*
-   * @tc.number     : SUB_WEB_LOADURL_0100
-   * @tc.name       : testLoadUrl001
-   * @tc.desc       : test loadUrl
-   * @tc.size       : MEDIUM
-   * @tc.type       : Function
-   * @tc.level      : Level 1
-   */
+    * @tc.number     : SUB_WEB_LOADURL_0100
+    * @tc.name       : testLoadUrl001
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
     it('testLoadUrl001', 0, async (done: Function) => {
       Utils.emitEvent("testLoadUrl001", 10)
       await Utils.sleep(2000);
@@ -228,10 +364,55 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_LOADURL_0200
+    * @tc.name       : testLoadUrl002
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testLoadUrl002', 0, async (done: Function) => {
+      Utils.emitEvent("testLoadUrl002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testLoadUrl002", 'OpenAtom OpenHarmony', 76000, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_LOADURL_0300
+    * @tc.name       : testLoadUrl003
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testLoadUrl003', 0, async (done: Function) => {
+      Utils.emitEvent("testLoadUrl003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testLoadUrl003", 'second', 76002, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_LOADURL_0400
+    * @tc.name       : testLoadUrl004
+    * @tc.desc       : test loadUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testLoadUrl004', 0, async (done: Function) => {
+      Utils.emitEvent("testLoadUrl004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testLoadUrl004", 'second', 76004, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_STOP_0100
     * @tc.name       : testStop001
     * @tc.desc       : test stop
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -246,7 +427,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ACCESSFORWARD_0100
     * @tc.name       : testAccessForward001
     * @tc.desc       : test accessForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -261,7 +442,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ACCESSFORWARD_0200
     * @tc.name       : testAccessForward002
     * @tc.desc       : test accessForward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -273,10 +454,40 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_ACCESSFORWARD_0300
+    * @tc.name       : testAccessForward003
+    * @tc.desc       : test accessForward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessForward003', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessForward003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessForward003", false, 200008, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ACCESSFORWARD_0400
+    * @tc.name       : testAccessForward004
+    * @tc.desc       : test accessForward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testAccessForward004', 0, async (done: Function) => {
+      Utils.emitEvent("testAccessForward004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testAccessForward004", true, 200009, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_BACKWARD_0100
     * @tc.name       : testBackward001
     * @tc.desc       : test backward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -288,10 +499,40 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_BACKWARD_0200
+    * @tc.name       : testBackward002
+    * @tc.desc       : test backward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testBackward002', 0, async (done: Function) => {
+      Utils.emitEvent("testBackward002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testBackward001", "\"index\"", 200010, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_BACKWARD_0300
+    * @tc.name       : testBackward003
+    * @tc.desc       : test backward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testBackward003', 0, async (done: Function) => {
+      Utils.emitEvent("testBackward003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testBackward003", "\"second\"", 200011, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_FORWARD_0100
     * @tc.name       : testForward001
     * @tc.desc       : test forward
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -303,17 +544,32 @@ export default function webController() {
     })
 
     /*
-    * @tc.number     : SUB_WEB_ONFILESELECTORSHOW_0100
-    * @tc.name       : testOnFileSelectorShow001
-    * @tc.desc       : test onFileSelectorShow
-    * @tc.size       : MEDIUM
+    * @tc.number     : SUB_WEB_FORWARD_0200
+    * @tc.name       : testForward002
+    * @tc.desc       : test forward
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnFileSelectorShow001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnFileSelectorShow001", 10)
+    it('testForward002', 0, async (done: Function) => {
+      Utils.emitEvent("testForward002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnFileSelectorShow001", true, 31019, done);
+      Utils.registerEvent("testForward002", '"LoadData"', 100087, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_FORWARD_0300
+    * @tc.name       : testForward003
+    * @tc.desc       : test forward
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testForward003', 0, async (done: Function) => {
+      Utils.emitEvent("testForward003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testForward003", '"index"', 100088, done);
       sendEventByKey('WebControllerButton', 10, '');
     })
 
@@ -321,7 +577,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_IMAGEACCESS_0100
     * @tc.name       : testImageAccess001
     * @tc.desc       : test imageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -336,7 +592,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_IMAGEACCESS_0200
     * @tc.name       : testImageAccess002
     * @tc.desc       : test imageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -351,7 +607,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_DOMSTORAGEACCESS_0100
     * @tc.name       : testDomStorageAccess001
     * @tc.desc       : test domStorageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -366,7 +622,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_DOMSTORAGEACCESS_0200
     * @tc.name       : testDomStorageAccess002
     * @tc.desc       : test domStorageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -381,7 +637,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ONLINEIMAGEACCESS_0100
     * @tc.name       : testOnlineImageAccess001
     * @tc.desc       : test onlineImageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -396,7 +652,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_ONLINEIMAGEACCESS_0200
     * @tc.name       : testOnlineImageAccess002
     * @tc.desc       : test onlineImageAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -411,7 +667,7 @@ export default function webController() {
     * @tc.number     : SUB_WEB_FILEACCESS_0100
     * @tc.name       : testFileAccess001
     * @tc.desc       : test fileAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -423,10 +679,25 @@ export default function webController() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_FILEACCESS_0200
+    * @tc.name       : testFileAccess002
+    * @tc.desc       : test fileAccess
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testFileAccess002', 0, async (done: Function) => {
+      Utils.emitEvent("testFileAccess002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testFileAccess002", "\"second\"", 100070, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_REQUESTFOCUS_0100
     * @tc.name       : testRequestFocus001
     * @tc.desc       : test requestFocus
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

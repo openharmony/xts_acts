@@ -17,10 +17,10 @@ set -e
 root_vulkan_path=$1
 mkdir -p  "suites/acts/testcases/vulkandata"
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/data" "suites/acts/testcases/vulkandata"
-cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/vk-default" "suites/acts/testcases/vulkandata"
-cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/fraction-mandatory-tests.txt" "suites/acts/testcases/vulkandata/vk-default"
-cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/master.txt" "suites/acts/testcases/vulkandata/vk-default"
-cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/test-issues.txt" "suites/acts/testcases/vulkandata/vk-default"
+cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/vk-default" "suites/acts/testcases/vulkandata"
+cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/fraction-mandatory-tests.txt" "suites/acts/testcases/vulkandata/vk-default"
+cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/master.txt" "suites/acts/testcases/vulkandata/vk-default"
+cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/main/src/test-issues.txt" "suites/acts/testcases/vulkandata/vk-default"
 cp -rf "xts/acts/deqp_vk_execute" "suites/acts/testcases/vulkandata"
 cp -rf "xts/acts/deqp_vk_execute" "suites/acts/testcases/vulkandata/vk-default"
 

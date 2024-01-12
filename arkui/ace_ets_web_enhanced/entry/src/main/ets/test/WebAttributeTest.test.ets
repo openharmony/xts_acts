@@ -13,12 +13,34 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function webAttributeTest() {
 
   describe('WebAttributeTest', () => {
+
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/WebAttributeTest',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get WebAttributeTest state success " + JSON.stringify(pages));
+        if (!("WebAttributeTest" == pages.name)) {
+          console.info("get WebAttributeTest state success " + JSON.stringify(pages.name));
+          let result = await router.pushUrl(options);
+          await Utils.sleep(2000);
+          console.info("push WebAttributeTest page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push WebAttributeTest page error: " + err);
+      }
+      done()
+    });
+
     beforeEach(async (done: Function) => {
       console.info("web beforeEach start");
       done();
@@ -35,7 +57,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_INITIALSCALE_0100
     * @tc.name        : testInitialScale001
     * @tc.desc        : test initialScale from 100 to 120
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -50,7 +72,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_INITIALSCALE_0200
     * @tc.name        : testInitialScale002
     * @tc.desc        : test initialScale from 100 to 80
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -65,7 +87,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONSCALECHANGE_0100
     * @tc.name        : testOnScaleChange001
     * @tc.desc        : test onScaleChange
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -80,7 +102,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPAGEEND_0100
     * @tc.name        : testOnPageEnd001
     * @tc.desc        : test onPageEnd normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -95,7 +117,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPAGEEND_0200
     * @tc.name        : testOnPageEnd002
     * @tc.desc        : test onPageEnd with iframe
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -110,7 +132,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPAGEBEGIN_0100
     * @tc.name        : testOnPageBegin001
     * @tc.desc        : test onPageBegin normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -125,7 +147,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPAGEBEGIN_0200
     * @tc.name        : testOnPageBegin002
     * @tc.desc        : test onPageBegin with iframe
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -140,7 +162,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPROGRESSCHANGE_0100
     * @tc.name        : testOnProgressChange001
     * @tc.desc        : test onProgressChange normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -155,7 +177,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONTITLERECEIVE_0100
     * @tc.name        : testOnTitleReceive001
     * @tc.desc        : test onTitleReceive normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -170,7 +192,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONTITLERECEIVE_0200
     * @tc.name        : testOnTitleReceive002
     * @tc.desc        : test onTitleReceive when js changed
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -185,7 +207,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONGEOLOCATIONSHOW_0100
     * @tc.name        : testOnGeolocationShow001
     * @tc.desc        : test onGeolocationShow normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -197,25 +219,10 @@ export default function webAttributeTest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_ONGEOLOCATIONHIDE_0100
-    * @tc.name        : testOnGeolocationHide001
-    * @tc.desc        : test onGeolocationHide after called JsGeolocation.invoke
-    * @tc.size        : MEDIUM
-    * @tc.type        : Function
-    * @tc.level       : Level 1
-    */
-    it('testOnGeolocationHide001', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnGeolocationHide", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnGeolocationHide001", true, 70013, done);
-      sendEventByKey('WebAttributeTestButton', 10, '');
-    })
-
-    /*
     * @tc.number      : SUB_WEB_ONREQUESTSELECTED_0100
     * @tc.name        : testOnRequestSelected001
     * @tc.desc        : test onRequestSelected after requestFocus
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -231,7 +238,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONALERT_0100
     * @tc.name        : testOnAlert001
     * @tc.desc        : test onAlert callback
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -246,7 +253,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONCONFIRM_0100
     * @tc.name        : testOnConfirm001
     * @tc.desc        : test onConfirm normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -261,7 +268,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONPROMPT_0100
     * @tc.name        : testOnPrompt001
     * @tc.desc        : test onPrompt normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -276,7 +283,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_JSRESULT_HANDLECANCEL_0100
     * @tc.name        : testJsResultHandleCancel001
     * @tc.desc        : test JsResultHandle.cancel()
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -291,7 +298,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_JSRESULT_HANDLECONFIRM_0100
     * @tc.name        : testJsResultHandleConfirm001
     * @tc.desc        : test JsResultHandle.confirm()
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -306,7 +313,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_JSRESULT_HANDLEPROMPTCONFIRM_0100
     * @tc.name        : testJsResultHandlePromptConfirm001
     * @tc.desc        : test JsResultHandle.promptConfirm()
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -321,7 +328,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_USERAGENT_0100
     * @tc.name        : testUserAgent001
     * @tc.desc        : test userAgent normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -336,7 +343,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONCONSOLE_0100
     * @tc.name        : testOnConsole001
     * @tc.desc        : test onConsole message
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -351,7 +358,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_CONSOLEMESSAGE_0100
     * @tc.name        : testConsoleMessage001
     * @tc.desc        : test onConsole info
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -368,7 +375,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONERRORRECEIVE_0100
     * @tc.name        : testOnErrorReceive001
     * @tc.desc        : test onErrorReceive whit error url
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -383,7 +390,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONERRORRECEIVE_0200
     * @tc.name        : testOnErrorReceive002
     * @tc.desc        : test onErrorReceive with out network
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -398,7 +405,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONHTTPERRORRECEIVE_0100
     * @tc.name        : testOnHttpErrorReceive001
     * @tc.desc        : test onHttpErrorReceive normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -413,7 +420,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONDOWNLOADSTART_0100
     * @tc.name        : testOnDownloadStart001
     * @tc.desc        : test onDownloadStart normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -430,7 +437,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONREFRESHACCESSEDHISTORY_0100
     * @tc.name        : testOnRefreshAccessedHistory001
     * @tc.desc        : test onRefreshAccessedHistory when loadUrl
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -446,7 +453,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONREFRESHACCESSEDHISTORY_0200
     * @tc.name        : testOnRefreshAccessedHistory002
     * @tc.desc        : test onRefreshAccessedHistory when refresh
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -462,7 +469,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONURLLOADINTERCEPT_0100
     * @tc.name        : testOnUrlLoadIntercept001
     * @tc.desc        : test onUrlLoadIntercept normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -477,7 +484,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONRENDEREXITED_0100
     * @tc.name        : testOnRenderExited001
     * @tc.desc        : test onRenderExited RenderExitReason.ProcessCrashed
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -489,40 +496,10 @@ export default function webAttributeTest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_ONCE_0100
-    * @tc.name        : testOnce001
-    * @tc.desc        : test once webInit should be called
-    * @tc.size        : MEDIUM
-    * @tc.type        : Function
-    * @tc.level       : Level 1
-    */
-    it('testOnce001', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnce001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnce001", true, 409, done);
-      sendEventByKey('WebAttributeTestButton', 10, '');
-    })
-
-    /*
-    * @tc.number      : SUB_WEB_ONCE_0200
-    * @tc.name        : testOnce002
-    * @tc.desc        : test once webCreated should not be called
-    * @tc.size        : MEDIUM
-    * @tc.type        : Function
-    * @tc.level       : Level 1
-    */
-    it('testOnce002', 0, async (done: Function) => {
-      Utils.emitEvent("emitOnce002", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnce002", false, 410, done);
-      sendEventByKey('WebAttributeTestButton', 10, '');
-    })
-
-    /*
     * @tc.number      : SUB_WEB_HEADER_0100
     * @tc.name        : testHeader001
     * @tc.desc        : test custom header
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -537,7 +514,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONSEARCHRESULTRECEIVE_0100
     * @tc.name        : testOnSearchResultReceive001
     * @tc.desc        : test onSearchResultReceive when have results
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -552,7 +529,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONSEARCHRESULTRECEIVE_0200
     * @tc.name        : testOnSearchResultReceive002
     * @tc.desc        : test onSearchResultReceive when have no results
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -567,7 +544,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_BLOCKNETWORK_0100
     * @tc.name        : testBlockNetWork001
     * @tc.desc        : test blockNetWork true
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -582,7 +559,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_BLOCKNETWORK_0200
     * @tc.name        : testBlockNetWork002
     * @tc.desc        : test blockNetWork false
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -594,10 +571,55 @@ export default function webAttributeTest() {
     })
 
     /*
+    * @tc.number      : SUB_WEB_BLOCKNETWORK_0300
+    * @tc.name        : testBlockNetWork003
+    * @tc.desc        : test blockNetWork true when load raw file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testBlockNetWork003', 0, async (done: Function) => {
+      Utils.emitEvent("emitBlockNetWork003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testBlockNetWork003", '', 60800, done);
+      sendEventByKey('WebAttributeTestButton', 10, '');
+    })
+
+    /*
+    * @tc.number      : SUB_WEB_BLOCKNETWORK_0400
+    * @tc.name        : testBlockNetWork004
+    * @tc.desc        : test blockNetWork true when load resources
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testBlockNetWork004', 0, async (done: Function) => {
+      Utils.emitEvent("emitBlockNetWork004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testBlockNetWork004", '', 60802, done);
+      sendEventByKey('WebAttributeTestButton', 10, '');
+    })
+
+    /*
+    * @tc.number      : SUB_WEB_BLOCKNETWORK_0500
+    * @tc.name        : testBlockNetWork005
+    * @tc.desc        : test blockNetWork true when local file
+    * @tc.size        : MediumTest
+    * @tc.type        : Function
+    * @tc.level       : Level 1
+    */
+    it('testBlockNetWork005', 0, async (done: Function) => {
+      Utils.emitEvent("emitBlockNetWork005", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testBlockNetWork005", '', 60805, done);
+      sendEventByKey('WebAttributeTestButton', 10, '');
+    })
+
+    /*
     * @tc.number      : SUB_WEB_ONFAVICONRECEIVED_0100
     * @tc.name        : testOnFaviconReceived001
     * @tc.desc        : test onFaviconReceived normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -612,7 +634,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_ONINTERCEPTKEYEVENT_0100
     * @tc.name        : testOnInterceptKeyEvent001
     * @tc.desc        : test onInterceptKeyEvent normal
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -627,7 +649,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_GETCERTIFICATE_0100
     * @tc.name        : testGetCertificate001
     * @tc.desc        : test getCertificate with return promise
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -642,7 +664,7 @@ export default function webAttributeTest() {
     * @tc.number      : SUB_WEB_GETCERTIFICATE_0200
     * @tc.name        : testGetCertificate002
     * @tc.desc        : test getCertificate with callback function
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

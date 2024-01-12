@@ -20,6 +20,10 @@ struct StateDatePicker1 {
 
   build() {
     Column() {
+      Button("Reset").id("StateDatePicker1_reset")
+        .onClick(() => {
+          this.selectedDate = new Date('2021-08-08')
+        })
       Text(''+ JSON.stringify(this.selectedDate)).id("date1")
       Button('selectedDate to 2023-09-09').margin(5)
         .id("change_date")

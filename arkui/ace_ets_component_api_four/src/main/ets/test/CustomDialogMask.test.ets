@@ -14,34 +14,27 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base'
+
 export default function CustomDialogMaskTest() {
 
-  const SUITE = 'CustomDialogMask'
-  const waitUiReadyMs = 500;
-  function sleep(time) {
-    let date = new Date()
-    let start = date.getSeconds()
-    let end = start
-    while ( (end - start) < time ) {
-      let endDate = new Date()
-      end = endDate.getSeconds()
-    }
-  }
+  const SUITE: string = 'CustomDialogMask'
+  const waitUiReadyMs: number = 500;
 
-  describe('CustomDialogMaskTest', function () {
+  describe('CustomDialogMaskTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CustomDialogMask",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("CustomDialogMask" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -56,20 +49,18 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor not set
      *tc.desc   CustomDialogController#maskColor not set
      */
-    it('ArkUI_CustomDialog_Mask_0100', 0, async function (done) {
-      let CASE = 'ArkUI_CustomDialog_Mask_0100'
+    it('ArkUI_CustomDialog_Mask_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_CustomDialog_Mask_0100'
       console.info(`${SUITE} ${CASE} START`);
 
       sleep(2)
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_1', 10, "")
       await driver.delayMs(waitUiReadyMs)
-      let strObj = getInspectorByKey('CustomDialogMask_Button_Close_1');
-      let obj = JSON.parse(strObj);
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strObj: string = getInspectorByKey('CustomDialogMask_Button_Close_1');
+      expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
-
       console.info(`${SUITE} ${CASE} END`);
       sleep(1)
       done()
@@ -80,24 +71,20 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by Color
      *tc.desc   CustomDialogController#maskColor set by Color
      */
-    it('ArkUI_CustomDialog_Mask0200', 0, async function (done) {
-      let CASE = 'ArkUI_CustomDialog_Mask0200'
+    it('ArkUI_CustomDialog_Mask0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_CustomDialog_Mask0200'
       console.info(`${SUITE} ${CASE} START`);
-
       sleep(1)
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_2', 10, "")
       await driver.delayMs(waitUiReadyMs)
-
-      let strObj = getInspectorByKey('CustomDialogMask_Button_Close_1');
-      let obj = JSON.parse(strObj);
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strObj: string = getInspectorByKey('CustomDialogMask_Button_Close_1');
+      expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
-
       console.info(`${SUITE} ${CASE} END`);
       sleep(1)
-     done()
+      done()
     });
 
     /*
@@ -105,20 +92,16 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by string
      *tc.desc   CustomDialogController#maskColor set by string
      */
-    it('ArkUI_CustomDialog_Mask0300', 0, async function (done) {
-      let CASE = 'ArkUI_CustomDialog_Mask0300'
+    it('ArkUI_CustomDialog_Mask0300', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_CustomDialog_Mask0300'
       console.info(`${SUITE} ${CASE} START`);
-
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_3', 10, "")
       await driver.delayMs(waitUiReadyMs)
-
-      let strObj = getInspectorByKey('CustomDialogMask_Button_Close_1');
-      let obj = JSON.parse(strObj);
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strObj: string = getInspectorByKey('CustomDialogMask_Button_Close_1');
+      expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
-
       console.info(`${SUITE} ${CASE} END`);
       sleep(1)
       done()
@@ -129,20 +112,16 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by Resource
      *tc.desc   CustomDialogController#maskColor set by Resource
      */
-    it('ArkUI_CustomDialog_Mask0400', 0, async function (done) {
-      let CASE = 'ArkUI_CustomDialog_Mask0400'
+    it('ArkUI_CustomDialog_Mask0400', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_CustomDialog_Mask0400'
       console.info(`${SUITE} ${CASE} START`);
-
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_4', 10, "")
       await driver.delayMs(waitUiReadyMs)
-
-      let strObj = getInspectorByKey('CustomDialogMask_Button_Close_1');
-      let obj = JSON.parse(strObj);
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strObj: string = getInspectorByKey('CustomDialogMask_Button_Close_1');
+      expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
-
       console.info(`${SUITE} ${CASE} END`);
       sleep(1)
       done()
@@ -153,25 +132,29 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by number
      *tc.desc   CustomDialogController#maskColor set by number
      */
-    it('ArkUI_CustomDialog_Mask0500', 0, async function (done) {
-      let CASE = 'ArkUI_CustomDialog_Mask0500'
+    it('ArkUI_CustomDialog_Mask0500', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_CustomDialog_Mask0500'
       console.info(`${SUITE} ${CASE} START`);
-
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('CustomDialogMask_Button_Open_5', 10, "")
       await driver.delayMs(waitUiReadyMs)
-
-      let strObj = getInspectorByKey('CustomDialogMask_Button_Close_1');
-      let obj = JSON.parse(strObj);
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strObj: string = getInspectorByKey('CustomDialogMask_Button_Close_1');
+      expect(JSON.parse(strObj).$attrs.visibility).assertEqual("Visibility.Visible");
       sendEventByKey('CustomDialogMask_Button_Close_1', 10, "")
-
       console.info(`${SUITE} ${CASE} END`);
       sleep(1)
       done()
     });
-
-
   })
+}
+
+function sleep(time: number) {
+  let date = new Date()
+  let start: number = date.getSeconds()
+  let end: number = start
+  while ((end - start) < time) {
+    let endDate = new Date()
+    end = endDate.getSeconds()
+  }
 }

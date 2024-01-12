@@ -16,18 +16,20 @@ import AVSession from './AVSession.test.js';
 import AVSessionManager from './AVSessionManager.test.js';
 import AVSessionCallback from './AVSessionCallback.test.js';
 import AVSessionManagerCallback from './AVSessionManagerCallback.test.js';
-import AVSessionErrorCode from './AVSessionErrorCode.test';
+import AVSessionErrorCode from './AVSessionErrorCode.test.js';
 import AVSessionControllerJSTest from './AVSessionControllerJSTest.js';
 import AVSessionJSTest from './AVSessionJSTest.js';
-import AVSessionEnum from './AVSessionEnum.test.js'
+import AVSessionEnum from './AVSessionEnum.test.js';
+import AVSessionControllerErrorCode from './AVSessionControllerErrorCode.test.js';
 
 export default function testsuite() {
-    AVSession()
-    AVSessionManager()
-    AVSessionCallback()
-    AVSessionManagerCallback()
-    AVSessionErrorCode()
-    AVSessionJSTest ()
-    AVSessionControllerJSTest ()
-    AVSessionEnum()
+    AVSession();
+    AVSessionManager();
+    AVSessionCallback();
+    AVSessionManagerCallback();
+    AVSessionErrorCode();
+    AVSessionJSTest();
+    AVSessionControllerJSTest();
+    AVSessionEnum();
+    AVSessionControllerErrorCode();
 }

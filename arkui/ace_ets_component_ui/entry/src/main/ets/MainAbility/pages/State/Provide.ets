@@ -89,6 +89,13 @@ struct ProvideA {
 
   build() {
     Column() {
+      Button("Reset").id("ProvideA_reset")
+        .onClick(() => {
+          this.reviewVotes = 0
+          this.b = 0
+          this.sad = 0
+          this.i = 0
+        })
       Text(`parent descent same nickname ${this.b}`).id("ProvideA1")
       Text(`parent none nickname same name dif type ${this.sad}`).id("ProvideA2")
       Text(`multi son single parent ${this.i}`).id("ProvideA3")

@@ -26,9 +26,10 @@ struct TextClockLongPage {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   // 导入对象
   controller: TextClockController = new TextClockController()
+  scroller: Scroller = new Scroller()
   build() {
     Column(){
-      List(){
+      List({scroller:this.scroller}){
         ListItem(){
           Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             // 以12小时制显示东八区的系统时间，精确到秒。
@@ -91,6 +92,15 @@ struct TextClockLongPage {
           .width('100%')
         }
         ListItem(){
+          Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }){
+            Button('滚动到底部').onClick(()=>{
+                this.scroller.scrollEdge(Edge.Bottom)
+              }).height(28).fontSize(10).id('TextClockLongBottom')
+          }.padding({
+            top:10
+          })
+        }
+        ListItem(){
           Text('监控onDateChange事件：'+this.accumulateTime)
             .width("100%").textAlign(TextAlign.Center).id('accumulateTime1')
         }.height(100)
@@ -106,7 +116,7 @@ struct TextClockLongPage {
           Text('监控onDateChange事件：'+this.accumulateTime)
             .width("100%").textAlign(TextAlign.Center).id('accumulateTime2')
         }.height(100)
-      }.id('TextClockLongPageList')
+      }
     }
   }
 }

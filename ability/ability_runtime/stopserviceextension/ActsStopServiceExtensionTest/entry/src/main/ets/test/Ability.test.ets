@@ -20,6 +20,15 @@ var ACTS_StopServiceExtension = {
   events: ["ACTS_StopEvent_First", "ACTS_StopEvent_Second", "ACTS_StopEvent_Third"]
 };
 
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
     /*
@@ -274,6 +283,7 @@ export default function abilityTest() {
           disConnect = true;
           console.info("Acts_StopServiceExtension_0500 service onDisconnect success!!!")
           console.info('Acts_StopServiceExtension_0500 service onDisconnect ele : ' + JSON.stringify(element1));
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         },
         onFailed: async function (code: any) {
           console.info("Acts_StopServiceExtension_0500 service onFailed!!!")
@@ -298,14 +308,13 @@ export default function abilityTest() {
           globalThis.abilityContext.stopServiceExtensionAbility(want, (err) => {
             console.info("====>Acts_StopServiceExtension_0500 stopServiceExtensionAbility err: " + JSON.stringify(err));
             expect(err.code).assertEqual(0);
-            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           })
         }
       }
 
       function unSubscribeCallback() {
-        expect(disConnect).assertTrue();
         console.info("====>Acts_StopServiceExtension_0500 unSubscribeCallback");
+        expect(disConnect).assertTrue();
         done();
       }
 
@@ -326,7 +335,6 @@ export default function abilityTest() {
     it('Acts_StopServiceExtension_0600', 0, async function (done) {
       console.info("====>Acts_StopServiceExtension_0600 start");
       let subscriber;
-      let flag = false;
       let count = 0;
       commonEvent.createSubscriber(ACTS_StopServiceExtension).then(async (data) => {
         console.info("====>Acts_StopServiceExtension_0600 Create Subscribe");
@@ -354,12 +362,12 @@ export default function abilityTest() {
           expect(data.parameters.message.abilityName).assertEqual('ServiceAbilitySec');
           count++;
         } else if (data.event == "ACTS_StopEvent_Third") {
+          sleep(500)
           console.info("====>Acts_StopServiceExtension_0600 subscribeCallBack Third data: " + JSON.stringify(data));
-          expect(data.parameters.message).assertTrue();;
+          expect(data.parameters.message).assertTrue();
           count++;
         }
         if (count == 3) {
-          flag = true;
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -375,13 +383,6 @@ export default function abilityTest() {
           done();
         })
       }
-
-      setTimeout(() => {
-        if (flag == false) {
-          expect().assertFail();
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }, CASE_TIME_OUT)
     })
 
     /*

@@ -20,43 +20,44 @@
 #define TWO 2
 #define PATH "/data/storage/el2/base/files"
 #define PARAM_0 0
+#define PARAM_1 1
 
 static napi_value Statvfs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int value;
     napi_get_value_int32(env, args[0], &value);
-    int int_value = PARAM_0;
+    int intValue = PARAM_0;
     struct statvfs sb;
     if (value == ONE) {
-        int_value = statvfs(PATH, &sb);
+        intValue = statvfs(PATH, &sb);
     } else if (value == TWO) {
-        int_value = statvfs(nullptr, &sb);
+        intValue = statvfs(nullptr, &sb);
     }
     napi_value result = nullptr;
-    napi_create_int32(env, int_value, &result);
+    napi_create_int32(env, intValue, &result);
     return result;
 }
 static napi_value Statvfs64(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int value;
     napi_get_value_int32(env, args[0], &value);
-    int int_value = PARAM_0;
+    int intValue = PARAM_0;
     struct statvfs64 sb;
     if (value == ONE) {
-        int_value = statvfs(PATH, &sb);
+        intValue = statvfs(PATH, &sb);
     } else if (value == TWO) {
-        int_value = statvfs(nullptr, &sb);
+        intValue = statvfs(nullptr, &sb);
     }
     napi_value result = nullptr;
-    napi_create_int32(env, int_value, &result);
+    napi_create_int32(env, intValue, &result);
     return result;
 }
 EXTERN_C_START

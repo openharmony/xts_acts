@@ -25,13 +25,20 @@ var mPref;
 
 export default function storageCallBackTest() {
     describe('storageCallBackTest', function () {
-        beforeAll(function () {
+        beforeAll(async function () {
             console.info('beforeAll')
+        })
+
+        afterAll(async function () {
+            console.info('afterAll')
+        })
+        beforeEach(async function () {
+            console.info('beforeEach')
             mPref = storage.getStorageSync(PATH);
         })
 
-        afterAll(function () {
-            console.info('afterAll')
+        afterEach(async function () {
+            console.info('afterEach')
             storage.deleteStorageSync(PATH);
         })
 
@@ -39,6 +46,9 @@ export default function storageCallBackTest() {
          * @tc.name clear callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0400
          * @tc.desc clear callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testClear0012', 0, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -53,6 +63,9 @@ export default function storageCallBackTest() {
          * @tc.name has string callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1600
          * @tc.desc has string callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey0032', 0, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -66,6 +79,9 @@ export default function storageCallBackTest() {
          * @tc.name has int callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1400
          * @tc.desc has int callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey0033', 0, async function (done) {
             mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
@@ -79,6 +95,9 @@ export default function storageCallBackTest() {
          * @tc.name has float callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1300
          * @tc.desc has float callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey0034', 0, async function (done) {
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
@@ -92,6 +111,9 @@ export default function storageCallBackTest() {
          * @tc.name has long callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1500
          * @tc.desc has long callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey0035', 0, async function (done) {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
@@ -105,6 +127,9 @@ export default function storageCallBackTest() {
          * @tc.name has boolean callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1200
          * @tc.desc has boolean callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testHasKey0036', 0, async function (done) {
             mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -118,6 +143,9 @@ export default function storageCallBackTest() {
          * @tc.name get defaultValue callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0700
          * @tc.desc get defaultValue callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetDefValue0062', 0, async function (done) {
             mPref.clearSync();
@@ -131,6 +159,9 @@ export default function storageCallBackTest() {
          * @tc.name get float callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0800
          * @tc.desc get float callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetFloat0072', 0, async function (done) {
             mPref.clearSync();
@@ -145,6 +176,9 @@ export default function storageCallBackTest() {
          * @tc.name get int callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0900
          * @tc.desc get int callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetInt0082', 0, async function (done) {
             mPref.clearSync();
@@ -159,6 +193,9 @@ export default function storageCallBackTest() {
          * @tc.name get long callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1000
          * @tc.desc get long callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetLong0092', 0, async function (done) {
             mPref.clearSync();
@@ -174,6 +211,9 @@ export default function storageCallBackTest() {
          * @tc.name get String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1100
          * @tc.desc get String callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetString102', 0, async function (done) {
             mPref.clearSync();
@@ -189,6 +229,9 @@ export default function storageCallBackTest() {
          * @tc.name put boolean callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1800
          * @tc.desc put boolean callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutBoolean0122', 0, async function (done) {
             mPref.clearSync();
@@ -204,6 +247,9 @@ export default function storageCallBackTest() {
          * @tc.name put float callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1900
          * @tc.desc put float callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutFloat0132', 0, async function (done) {
             mPref.clearSync();
@@ -219,6 +265,9 @@ export default function storageCallBackTest() {
          * @tc.name put int callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_2000
          * @tc.desc put int callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutInt0142', 0, async function (done) {
             mPref.clearSync();
@@ -234,6 +283,9 @@ export default function storageCallBackTest() {
          * @tc.name put long callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_2100
          * @tc.desc put long callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutLong0152', 0, async function (done) {
             mPref.clearSync();
@@ -250,6 +302,9 @@ export default function storageCallBackTest() {
          * @tc.name put String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_2200
          * @tc.desc put String callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPutString0162', 0, async function (done) {
             mPref.clearSync();
@@ -265,6 +320,9 @@ export default function storageCallBackTest() {
          * @tc.name flush callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0200
          * @tc.desc flush callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testFluesh00172', 0, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
@@ -276,9 +334,12 @@ export default function storageCallBackTest() {
 
 
         /**
-         * @tc.name clear、put、get、flush String callback interface test
+         * @tc.name clear put get flush String callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0300
          * @tc.desc flush String callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testCallback0172', 0, function (done) {
             console.info("*******************testCallback0172 begin.");
@@ -323,6 +384,9 @@ export default function storageCallBackTest() {
          * @tc.name delete callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_0500
          * @tc.desc delete callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
 
         it('testDelete0182', 0, async function (done) {
@@ -338,6 +402,9 @@ export default function storageCallBackTest() {
          * @tc.name get defaultValue callback interface test
          * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiCallbackTest_1700
          * @tc.desc get defaultValue callback interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGetDefValue0192', 0, async function (done) {
             await mPref.clear();

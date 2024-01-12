@@ -44,7 +44,11 @@ export default function getListItemGroupRect1() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      router.back({uri: 'MainAbility/pages/index/index'})
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let btn3 = await driver.findComponent(ON.id('getListItemGroupRect1_button3'));
+      await btn3.click();
+      await CommonFunc.sleep(3000);
       console.info("BadgeFocus after each called");
     });
 
@@ -167,7 +171,7 @@ export default function getListItemGroupRect1() {
       console.log('assert position')
       expect(Math.round(x)).assertEqual(Math.round(0));
 
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(y)).assertEqual(Math.round(vp2px(150)));
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))

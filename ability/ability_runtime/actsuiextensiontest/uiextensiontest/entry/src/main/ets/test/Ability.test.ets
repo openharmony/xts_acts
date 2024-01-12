@@ -1139,7 +1139,7 @@ export default function abilityTest() {
             done();
           }
         }
-        context.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback, (err) => {
           if (err) {
             console.error(TAG + "startAbilityByType002 fail, err:" + JSON.stringify(err));
           } else {
@@ -1169,10 +1169,70 @@ export default function abilityTest() {
             done();
           }
         }
-        context.startAbilityByType("share", wantParam, abilityStartCallback).then(() => {
+        context.startAbilityByType("shareerror", wantParam, abilityStartCallback).then(() => {
             console.log(TAG + "startAbilityByType003 success");
           }).catch((err)=> {
             console.error(TAG + "startAbilityByType003 fail, err:" + JSON.stringify(err));
+          })
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_RequestModalUIExtension001
+     * @tc.name    : test request Modal UIExtension
+     * @tc.desc    : request Modal UIExtension by want
+     */  
+    it('ACTS_UIExtension_RequestModalUIExtension001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
+      console.log(TAG + "begin");
+      try {
+        let want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'requestModalUIExtension',
+          moduleName: 'requestModalUIExtension',
+          parameters: {
+            bundleName: 'com.example.myapplication'
+          }
+        };
+        context.requestModalUIExtension(want, (err) => {
+          if (err) {
+            console.error(TAG + "requestModalUIExtension001 fail, err:" + JSON.stringify(err));
+            done();
+          } else {
+            console.log(TAG + "requestModalUIExtension001 success");
+          }
+        });
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })    
+
+    /*
+     * @tc.number  : ACTS_UIExtension_RequestModalUIExtension002
+     * @tc.name    : test request Modal UIExtension 
+     * @tc.desc    : request Modal UIExtension by want
+     */      
+    it('ACTS_UIExtension_RequestModalUIExtension002',0, async function (done) {
+      TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
+      console.log(TAG + "begin");
+      try {
+        let want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'requestModalUIExtension',
+          moduleName: 'requestModalUIExtension',
+          parameters: {
+            bundleName: 'com.example.myapplication'
+          }
+        };
+        context.requestModalUIExtension(want).then(() => {
+            console.log(TAG + "requestModalUIExtension002 success");
+          }).catch((err)=> {
+            console.error(TAG + "requestModalUIExtension002 fail, err:" + JSON.stringify(err));
+            done();
           })
       } catch (error) {
         expect().assertFail();

@@ -15,31 +15,28 @@
 
 #include "malloc.h"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <fcntl.h>
 #include <js_native_api_types.h>
-#include <cstdlib>
 #include <sys/select.h>
 #include <sys/stat.h>
 #include <sys/uio.h>
 #include <unistd.h>
-
 
 #define TEST_AT_FDCWD (-100)
 #define TEST_ERROR_AT_FDCWD 100
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TEN 10
 #define TEST_MODE 0666
 #define MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED 16
 
 extern "C" int membarrier(int, int);
-
 
 static napi_value Membarrier(napi_env env, napi_callback_info info)
 {

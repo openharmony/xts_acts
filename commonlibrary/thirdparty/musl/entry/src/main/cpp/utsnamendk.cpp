@@ -19,7 +19,6 @@
 
 static napi_value Uname(napi_env env, napi_callback_info info)
 {
-
     struct utsname buf;
     int ret = uname(&buf);
     napi_value result = nullptr;

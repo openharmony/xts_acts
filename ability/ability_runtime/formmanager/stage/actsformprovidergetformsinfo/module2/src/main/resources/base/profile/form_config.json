@@ -2,6 +2,7 @@
   "forms": [
     {
       "name": "module2_widget",
+      "displayName": "GetFormsInfo Demo2",
       "description": "This is a service widget.",
       "src": "./js/module2widget/pages/index/index",
       "window": {

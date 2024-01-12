@@ -113,7 +113,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'findWindow_Test_001'
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let win;
       win = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -169,7 +169,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testCreate_Invalid_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      ohosWindow.create(context, 'create_Test_001', 20).catch((err) => {
+      ohosWindow.create(context, 'create_Test_001', 888).catch((err) => {
         console.error(msgStr + 'Failed to create the subWindow. Cause: ' + JSON.stringify(err));
         expect(err.code).assertEqual(1003);
         done();
@@ -188,7 +188,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testCreate_Invalid_WinType_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      ohosWindow.create(context, 'create_Test_002', 20, (err, data) => {
+      ohosWindow.create(context, 'create_Test_002', 888, (err, data) => {
         if (err.code) {
           console.error(msgStr + 'Failed to create the subWindow. Cause: ' + JSON.stringify(err));
           try {
@@ -222,7 +222,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'find_Test_001'
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let win;
       win = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -383,7 +383,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "showWindow_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -417,7 +417,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "destroyWindow_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -457,7 +457,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getWindowProperties_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -499,7 +499,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getWindowAvoidArea_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -543,7 +543,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getWindowAvoidArea_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -575,7 +575,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowLayoutFullScreen_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -634,7 +634,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowLayoutFullScreen_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1010,7 +1010,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowKeepScreenOn_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1048,7 +1048,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowKeepScreenOn_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1106,7 +1106,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowPrivacyMode_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1144,7 +1144,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowPrivacyMode_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1200,7 +1200,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowTouchable_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1258,7 +1258,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowTouchable_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1296,7 +1296,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setAspectRatio_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1335,7 +1335,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "resetAspectRatio_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1373,7 +1373,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getProperties_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1419,7 +1419,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getProperties_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1451,7 +1451,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1499,7 +1499,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1533,7 +1533,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "getAvoidArea_Test_003"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1567,7 +1567,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setFullScreen_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1611,7 +1611,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setFullScreen_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1644,7 +1644,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setLayoutFullScreen_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1688,7 +1688,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setLayoutFullScreen_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1721,7 +1721,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setSystemBarEnable_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1765,7 +1765,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setSystemBarEnable_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -2000,7 +2000,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "isWindowShowing_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -2044,7 +2044,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setUIContent_Test_001"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -2086,7 +2086,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setUIContent_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -2159,7 +2159,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = "setWindowSystemBarEnable_Test_002"
       let windowConfig = {
-        name: windowId, windowType: 1, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowClass = null;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {

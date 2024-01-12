@@ -13,6 +13,16 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+group("ActsBatchUriPermissionHapTestGroup") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      ":ActsBatchUriPermissionHapTest",
+      ":proxy_authorization_uri",
+    ]
+  }
+}
+
 ohos_js_hap_suite("ActsBatchUriPermissionHapTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
@@ -40,4 +50,10 @@ ohos_resources("actsbatchuripermissionhaptest_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":actsbatchuripermissionhaptest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
+}
+
+copy("proxy_authorization_uri") {
+  sources = [ "config/proxy_authorization_uri.json" ]
+  outputs =
+      [ "${root_out_dir}/suites/acts/testcases/proxy_authorization_uri.json" ]
 }

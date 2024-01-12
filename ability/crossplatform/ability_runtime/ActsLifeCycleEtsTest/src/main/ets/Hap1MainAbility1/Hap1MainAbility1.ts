@@ -35,7 +35,7 @@ export default class Hap1MainAbility1 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] Hap1MainAbility1 onWindowStageCreate")
 
-        windowStage.loadContent('testability/pages/indexh1a1', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/indexh1a1', (err, data) => {
             if (err.code) {
                 console.log('Hap1MainAbility1 loadContent error');
                 return;

@@ -145,24 +145,64 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_10006
+         * @tc.number: uiTest_11006
          * @tc.name: testMouseScroll
          * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
          */
         it('testMouseScroll', 0, async function () {
+	        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+		    let driver = Driver.create()
+		    await driver.delayMs(waitUiReadyMs)
+		    let btn = await driver.findComponent(ON.text('jump'))
+		    await btn.click()
+		    await driver.delayMs(waitUiReadyMs)
+		    let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds1 = await img1.getBounds()
+		    let center1 = await img1.getBoundsCenter()
+		    await driver.mouseScroll(center1,false,5,2072,0,20)
+		    await driver.delayMs(waitUiReadyMs)
+		    let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds2 = await img2.getBounds()
+		    expect(bounds1 != bounds2).assertTrue()
+
+		    await driver.pressBack()
+		    await driver.delayMs(waitUiReadyMs)
+		    let Scroll = await driver.findComponent(ON.type('Scroll'))
+		    let center = await Scroll.getBoundsCenter()
+		    await driver.mouseScroll(center,true,30)
+		    await driver.delayMs(waitUiReadyMs)
+		    let button1 = await driver.findComponent(ON.text('next page'))
+		    expect(button1 == null).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_11007
+         * @tc.name: testWindowAttr
+         * @tc.desc: find window by WindowFilter and get it's active status.
+         */
+        it('testWindowAttr', 0, async function () {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let Scroll = await driver.findComponent(ON.type('Scroll'))
-            let center = await Scroll.getBoundsCenter()
-            await driver.mouseScroll(center,true,30)
+            let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,active:true,title:''})
+            await window.focus()
+            let isActive = await window.isActive()
+            expect(isActive == true).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_11008
+         * @tc.name: testDescription
+         * @tc.desc: find UiComponent by description attribute and get it's description attribute.
+         */
+        it('testDescription', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let button1 = await driver.findComponent(ON.text('next page'))
-            expect(button1 == null).assertTrue()
-            await driver.mouseScroll(center,false,30,2072,2048,20)
-            await driver.delayMs(waitUiReadyMs)
-            let button2 = await driver.findComponent(ON.text('next page'))
-            expect(button2 != null).assertTrue()
+            let text = await driver.findComponent(ON.type('Text').description(''))
+            let description = await text.getDescription()
+            expect(description == '').assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
     })
@@ -292,19 +332,30 @@ export default function UiTest() {
          */
         it('testMouseScroll', 0, async function () {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let Scroll = await driver.findComponent(ON.type('Scroll'))
-            let center = await Scroll.getBoundsCenter()
-            await driver.mouseScroll(center,true,30)
-            await driver.delayMs(waitUiReadyMs)
-            let button1 = await driver.findComponent(ON.text('next page'))
-            expect(button1 == null).assertTrue()
-            await driver.mouseScroll(center,false,30,2072,2048)
-            await driver.delayMs(waitUiReadyMs)
-            let button2 = await driver.findComponent(ON.text('next page'))
-            expect(button2 != null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
+		    let driver = Driver.create()
+		    await driver.delayMs(waitUiReadyMs)
+		    let btn = await driver.findComponent(ON.text('jump'))
+		    await btn.click()
+		    await driver.delayMs(waitUiReadyMs)
+		    let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds1 = await img1.getBounds()
+		    let center1 = await img1.getBoundsCenter()
+		    await driver.click(center1.x, center1.y)
+		    await driver.delayMs(waitUiReadyMs)
+		    await driver.mouseScroll(center1,false,5,2072,0)
+		    await driver.delayMs(waitUiReadyMs)
+		    let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds2 = await img2.getBounds()
+		    expect(bounds1 != bounds2).assertTrue()
+
+		    await driver.pressBack()
+		    await driver.delayMs(waitUiReadyMs)
+		    let Scroll = await driver.findComponent(ON.type('Scroll'))
+		    let center = await Scroll.getBoundsCenter()
+		    await driver.mouseScroll(center,true,30)
+		    await driver.delayMs(waitUiReadyMs)
+		    let button1 = await driver.findComponent(ON.text('next page'))
+		    expect(button1 == null).assertTrue()
         })
 
         /*

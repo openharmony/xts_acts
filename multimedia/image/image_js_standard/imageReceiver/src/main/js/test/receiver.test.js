@@ -74,7 +74,7 @@ export default function ImageReceiver() {
                 done();
                 return;
             } catch (error) {
-                expect(error.code == 1).assertTrue();
+                expect(error.code == 401).assertTrue();
                 console.info(`${testNum} err message` + error);
                 done();
                 return;
@@ -334,6 +334,27 @@ export default function ImageReceiver() {
         function isString(value) {
             return typeof value === "string";
         }
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_WITH_SIZE_0100
+         * @tc.name      : createImageReceiver
+         * @tc.desc      : 1.set size,format,capacity
+         *                 2.create ImageReceiver
+         *                 3.return ImageReceiver not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_WITH_SIZE_0100", 0, async function (done) {
+            let size = {
+                height: HEIGHT,
+                width: WIDTH
+            }
+            var receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
+            expect(receiver != undefined).assertTrue();
+            done();
+            return;
+        });
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100
