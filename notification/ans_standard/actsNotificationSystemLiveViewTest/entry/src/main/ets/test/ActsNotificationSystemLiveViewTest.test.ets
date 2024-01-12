@@ -17,6 +17,10 @@ import notificationManager from '@ohos.notificationManager'
 import image from '@ohos.multimedia.image';
 import {BusinessError} from '@ohos.base';
 import hilog from '@ohos.hilog';
+import WantAgent, { WantAgent as _WantAgent} from '@ohos.app.ability.wantAgent';
+import Notification from '@ohos.notification';
+import Want from '@ohos.app.ability.Want';
+import base from '@ohos.base';
 const TAG = 'NotificationActs'
 const TEST_SUITE_NAME = 'testNotificationLiveNotification'
 export default function ActsNotificationSystemLiveViewTest() {
