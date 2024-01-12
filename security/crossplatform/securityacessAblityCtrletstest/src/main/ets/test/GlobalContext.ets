@@ -20,7 +20,7 @@ export default class GlobalContext {
   }
 
   private static instance: GlobalContext;
-  private _abilityContext: common.UIAbilityContext = undefined;
+  private _abilityContext: common.Context = getContext(this);
 
   public static getContext(): GlobalContext {
     if (!GlobalContext.instance) {
@@ -29,7 +29,7 @@ export default class GlobalContext {
     return GlobalContext.instance;
   }
 
-  getAbility(): common.UIAbilityContext {
+  getAbility(): common.Context {
     return this._abilityContext;
   }
 
