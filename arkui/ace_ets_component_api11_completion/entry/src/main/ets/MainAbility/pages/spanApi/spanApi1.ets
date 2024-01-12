@@ -12,19 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-@Entry
 @Component
-struct Image_QRCode_Api {
-
+@Entry
+struct spanApi1 {
+  @State text1 : string = ''
+  @State text2 : string = ''
   build() {
-    Column({ space: 5 }){
-      Image($r('app.media.icon')).width(100).enableAnalyzer(true)
-        .id('Image_QRCode_Api_Image')
-
-      QRCode('hello').width(100).height(100).contentOpacity(0.5).id('Image_QRCode_Api_QRCode1')
-
-
-    }.width('100%')
+    Column() {
+      Text() {
+        Span(' Hello World ! ')
+          .fontSize('20fp')
+          .textBackgroundStyle({color: "#7F007DFF", radius: "5vp"})
+          .fontColor(Color.White)
+          .key('spanApi1')
+      }
+    }.width('100%').margin({bottom: '5vp'}).alignItems(HorizontalAlign.Center)
   }
 }

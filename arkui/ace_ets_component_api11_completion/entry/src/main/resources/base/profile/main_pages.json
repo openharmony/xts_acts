@@ -69,6 +69,16 @@
         "MainAbility/pages/AttributeModifier/SXrenderingStrategy",
         "MainAbility/pages/AttributeModifier/SXsymbolSpanStyle",
         "MainAbility/pages/AttributeModifier/SXsymbolStyle",
-        "MainAbility/pages/AttributeModifier/APIgetUIFontConfig"
+        "MainAbility/pages/AttributeModifier/APIgetUIFontConfig",
+        
+        "MainAbility/pages/spanApi/spanApi1",
+        "MainAbility/pages/symbolGlyphApi/symbolGlyphApi1",
+        "MainAbility/pages/symbolGlyphApi/symbolGlyphApi2",
+        "MainAbility/pages/symbolGlyphApi/symbolGlyphApi3",
+        "MainAbility/pages/symbolGlyphApi/symbolGlyphApi4",
+        "MainAbility/pages/symbolGlyphApi/symbolGlyphApi5",
+        "MainAbility/pages/symbolSpanApi/symbolSpanApi1",
+        "MainAbility/pages/AttrApi/RichEditorApi2",
+        "MainAbility/pages/AttrApi/SelectAttr"
     ]
 }

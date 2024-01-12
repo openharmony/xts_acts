@@ -14,59 +14,54 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from "../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function tabsApi1() {
-  describe('tabsApi1', function () {
+export default function symbolGlyphApi5() {
+  describe('symbolGlyphApi5', function () {
     beforeEach(async function (done) {
-      console.info("tabsApi1 beforeEach start");
+      console.info("symbolGlyphApi5 beforeEach start");
       let options = {
-        url: 'MainAbility/pages/tabs/tabsApi1',
+        url: 'MainAbility/pages/symbolGlyphApi/symbolGlyphApi5',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get tabsApi1 state pages:" + JSON.stringify(pages));
-        if (!("tabsApi1" == pages.name)) {
-          console.info("get tabsApi1 pages.name:" + JSON.stringify(pages.name));
+        console.info("get symbolGlyphApi5 state pages:" + JSON.stringify(pages));
+        if (!("symbolGlyphApi5" == pages.name)) {
+          console.info("get symbolGlyphApi5 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push tabsApi1 page result:" + JSON.stringify(result));
+          console.info("push symbolGlyphApi5 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push tabsApi1 page error:" + err);
+        console.error("push symbolGlyphApi5 page error:" + err);
       }
-      console.info("tabsApi1 beforeEach end");
+      console.info("symbolGlyphApi5 beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("tabsApi1 after each called");
+      console.info("symbolGlyphApi5 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_tabsApi1_0100
-     * @tc.name      testRichEditor
+     * @tc.number    SUB_ACE_RICHEDITOR_symbolGlyphApi5_0100
+     * @tc.name      testSymbolGlyph
      * @tc.desc      set api
      * @tc.level     Level 2
      * @tc.type
     * @tc.size
      */
-    it('tabsApi1_0100', 0, async function (done) {
-      console.info('[tabsApi1_0100] START');
+    it('symbolGlyphApi5_0100', 0, async function (done) {
+      console.info('[symbolGlyphApi5_0100] START');
       await CommonFunc.sleep(2000);
 
-      let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      // let driver = Driver.create();
+      // await CommonFunc.sleep(300);
 
-      let btn1 = await driver.findComponent(ON.id('tabsApi1_btn1'));
-      await btn1.click();
-      await CommonFunc.sleep(1000);
-
-      let text1 = getInspectorByKey('tabsApi1_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('222');
-
+      let symbolGlyphApi5 = getInspectorByKey('symbolGlyphApi5');
+      let Obj1 = JSON.parse(symbolGlyphApi5);
+      expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.HIERARCHICAL');
       console.info('[testRichEditor_0100] END');
       done();
     });

@@ -12,19 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Entry
 @Component
-struct Image_QRCode_Api {
-
+struct symbolSpanApi1 {
+  @State text1: string = ''
   build() {
-    Column({ space: 5 }){
-      Image($r('app.media.icon')).width(100).enableAnalyzer(true)
-        .id('Image_QRCode_Api_Image')
+    Column() {
+      Column(){
+        Text("渲染模式：多色")
+        Text(){
+          SymbolSpan($r('sys.symbol.ohos_lungs'))
+            .fontWeight(FontWeight.Lighter)
+            .fontSize(100)
+            .effectStrategy(SymbolEffectStrategy.NONE)
+            .key('symbolSpanApi1')
+        }
+      }
 
-      QRCode('hello').width(100).height(100).contentOpacity(0.5).id('Image_QRCode_Api_QRCode1')
-
-
-    }.width('100%')
+    }
   }
 }

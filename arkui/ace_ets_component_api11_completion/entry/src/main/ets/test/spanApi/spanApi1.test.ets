@@ -14,58 +14,51 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from "../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function tabsApi1() {
-  describe('tabsApi1', function () {
+export default function spanApi1() {
+  describe('spanApi1', function () {
     beforeEach(async function (done) {
-      console.info("tabsApi1 beforeEach start");
+      console.info("spanApi1 beforeEach start");
       let options = {
-        url: 'MainAbility/pages/tabs/tabsApi1',
+        url: 'MainAbility/pages/spanApi/spanApi1',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get tabsApi1 state pages:" + JSON.stringify(pages));
-        if (!("tabsApi1" == pages.name)) {
-          console.info("get tabsApi1 pages.name:" + JSON.stringify(pages.name));
+        console.info("get spanApi1 state pages:" + JSON.stringify(pages));
+        if (!("spanApi1" == pages.name)) {
+          console.info("get spanApi1 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push tabsApi1 page result:" + JSON.stringify(result));
+          console.info("push spanApi1 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push tabsApi1 page error:" + err);
+        console.error("push spanApi1 page error:" + err);
       }
-      console.info("tabsApi1 beforeEach end");
+      console.info("spanApi1 beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("tabsApi1 after each called");
+      console.info("spanApi1 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_tabsApi1_0100
-     * @tc.name      testRichEditor
+     * @tc.number    SUB_ACE_RICHEDITOR_spanApi1_0100
+     * @tc.name      testSpan
      * @tc.desc      set api
      * @tc.level     Level 2
      * @tc.type
     * @tc.size
      */
-    it('tabsApi1_0100', 0, async function (done) {
-      console.info('[tabsApi1_0100] START');
+    it('spanApi1_0100', 0, async function (done) {
+      console.info('[spanApi1_0100] START');
       await CommonFunc.sleep(2000);
 
-      let driver = Driver.create();
-      await CommonFunc.sleep(300);
-
-      let btn1 = await driver.findComponent(ON.id('tabsApi1_btn1'));
-      await btn1.click();
-      await CommonFunc.sleep(1000);
-
-      let text1 = getInspectorByKey('tabsApi1_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('222');
+      let spanApi1 = getInspectorByKey('spanApi1');
+      let Obj1 = JSON.parse(spanApi1);
+      expect(Obj1.$attrs.textBackgroundStyle).assertEqual('[{color: "#7F007DFF", radius: "5vp"}]');
 
       console.info('[testRichEditor_0100] END');
       done();

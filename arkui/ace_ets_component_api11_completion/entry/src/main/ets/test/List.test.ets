@@ -82,6 +82,15 @@ import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
+import spanApi1 from './spanApi/spanApi1.test';
+import symbolGlyphApi1 from './symbolGlyphApi/symbolGlyphApi1.test'
+import symbolGlyphApi2 from './symbolGlyphApi/symbolGlyphApi2.test'
+import symbolGlyphApi3 from './symbolGlyphApi/symbolGlyphApi3.test'
+import symbolGlyphApi4 from './symbolGlyphApi/symbolGlyphApi4.test'
+import symbolGlyphApi5 from './symbolGlyphApi/symbolGlyphApi5.test'
+import symbolSpanApi1 from './symbolSpanApi/symbolSpanApi1.test'
+import RichEditorApi2 from './AttrApi/RichEditorApi2.test'
+import SelectAttr from './AttrApi/SelectAttr.test'
 
 
 export default function testsuite() {
@@ -152,4 +161,14 @@ export default function testsuite() {
   SXsymbolSpanStyleJsunit()
   SXsymbolStyleJsunit()
   APIgetUIFontConfigJsunit()
+
+  RichEditorApi2()
+  SelectAttr()
+  spanApi1()
+  symbolGlyphApi1()
+  symbolGlyphApi2()
+  symbolGlyphApi3()
+  symbolGlyphApi4()
+  symbolGlyphApi5()
+  symbolSpanApi1()
 }
