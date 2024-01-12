@@ -19,11 +19,13 @@ import documentPickerCallback from './documentPickerCallback.test.ets'
 import documentPickerPromise from './documentPickerPromise.test.ets'
 import audioPickerCallback from './audioPickerCallback.test.ets'
 import audioPickerPromise from './audioPickerPromise.test.ets'
+import globalContext from '../test/GlobalContext';
+
 export default function testsuite() {
-  photoPickerCallback(globalThis.abilityContext)
-  photoPickerPromise(globalThis.abilityContext)
-  documentPickerCallback(globalThis.abilityContext)
-  documentPickerPromise(globalThis.abilityContext)
-  audioPickerCallback(globalThis.abilityContext)
-  audioPickerPromise(globalThis.abilityContext)
+  photoPickerCallback(globalContext.getContext().getAbility())
+  photoPickerPromise(globalContext.getContext().getAbility())
+  documentPickerCallback(globalContext.getContext().getAbility())
+  documentPickerPromise(globalContext.getContext().getAbility())
+  audioPickerCallback(globalContext.getContext().getAbility())
+  audioPickerPromise(globalContext.getContext().getAbility())
 }
