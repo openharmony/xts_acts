@@ -18,7 +18,7 @@ import Window from '@ohos.window';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
 import Ability from '@ohos.app.ability.UIAbility';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
@@ -27,9 +27,9 @@ export default class MainAbility extends Ability {
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
 
-        var abilityDelegator: any;
+        let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        var abilityDelegatorArguments: any;
+        let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         if (abilityDelegator != undefined && abilityDelegatorArguments != undefined) {
