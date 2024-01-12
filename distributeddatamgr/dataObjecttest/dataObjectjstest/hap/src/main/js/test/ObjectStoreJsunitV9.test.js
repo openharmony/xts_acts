@@ -44,14 +44,14 @@ function statusCallback2(sessionId, networkId, status) {
 
 const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
-var tokenID = undefined;
+let tokenID = undefined;
 async function grantPerm() {
     console.info("====grant Permission start====");
-    var appInfo = await bundle.getApplicationInfo('ohos.acts.dataObject', 0, 100);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.dataObject', 0, 100);
     tokenID = appInfo.accessTokenId;
     console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
-    var atManager = abilityAccessCtrl.createAtManager();
-    var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
+    let atManager = abilityAccessCtrl.createAtManager();
+    let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
     console.info("tokenId" + tokenID + " result:" + result);
     console.info("====grant Permission end====");
 }
@@ -83,13 +83,13 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testsetSessionId001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2900
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001 start *************");
-        var g_object;
+        let g_object;
         try {
             g_object = distributedObject.create(123, {name: "Amy", age: 18, isVis: false});
         } catch (error) {
@@ -123,14 +123,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testsetSessionId002
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3000
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         try {
             await g_object.setSessionId(123).then((data) => {
@@ -153,12 +153,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testsetSessionId003
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3100
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         g_object.setSessionId("session1");
         expect("session1" == g_object.__sessionId).assertEqual(true);
@@ -178,14 +180,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testsetSessionId004
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3200
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         await g_object.setSessionId("123456").then((data) => {
             console.info(TAG + "setSessionId test");
@@ -203,14 +205,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testsetSessionId005
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3300
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', 0, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         g_object.setSessionId("123456", (error, data) => {
             console.info(TAG + error + "," + data);
@@ -240,14 +242,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testOn001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2100
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         await g_object.setSessionId("session1").then(() => {
             console.info("join session");
@@ -288,14 +290,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testOn002
      * @tc.desc: object join session and on,then object change data twice,object can receive two callbacks when data has been changed
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2200
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_002', 0, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         g_object.setSessionId("session1");
         expect("session1" == g_object.__sessionId).assertEqual(true);
@@ -326,14 +328,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: testOn003
      * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1500
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_003', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         await g_object.setSessionId("session1").then(() => {
             console.info("join session");
@@ -366,14 +368,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name V9testOff001
      * @tc.desc object join session and on&off,object can not receive callback after off
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2000
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         await g_object.setSessionId("session5").then(() => {
             console.info("join session");
@@ -416,14 +418,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name:V9testOff002
      * @tc.desc object join session and off,object can not receive callback
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1000
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         await g_object.setSessionId("session6").then(() => {
             console.info("join session");
@@ -451,7 +453,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testOnStatus001
      * @tc.desc: object set a listener to watch another object online/offline
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2300
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -459,7 +461,7 @@ describe('objectStoreTestV9', function () {
     it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001 start *************");
         console.info(TAG + "start watch status");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         try {
             g_object.on("status", null);
@@ -481,7 +483,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testOnStatus002
      * @tc.desc: object set several listener and can unWatch all watcher
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2400
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -489,7 +491,7 @@ describe('objectStoreTestV9', function () {
     it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002 start *************");
         console.info(TAG + "start watch status");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
         expect(g_object.name == "Amy").assertEqual(true);
         g_object.on("status", statusCallback1);
@@ -509,7 +511,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testSave001
      * @tc.desc: test save local
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2700
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -517,7 +519,7 @@ describe('objectStoreTestV9', function () {
     it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
         console.info(TAG + "************* V9testSave001 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
 
         await g_object.setSessionId("mySession1").then(() => {
@@ -553,14 +555,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testSave002
      * @tc.desc: test save local
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2800
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
 
         g_object.setSessionId("mySession2");
@@ -595,14 +597,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testRevokeSave001
      * @tc.desc: test RevokeSave
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2500
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
 
         g_object.setSessionId("mySession4");
@@ -645,14 +647,14 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testRevokeSave002
      * @tc.desc: test RevokeSave
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2600
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function () {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 start *************");
-        var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
+        let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object != undefined).assertEqual(true);
 
         g_object.setSessionId("mySession5");
@@ -695,7 +697,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: testNumberMax
      * @tc.desc: test NumberMax
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1800
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -717,7 +719,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: testNumberMin
      * @tc.desc: test NumberMin
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1900
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -739,7 +741,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: testNumberAbnormal
      * @tc.desc: test NumberAbnormal
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1600
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -761,7 +763,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: testNumberAbnormal
      * @tc.desc: test NumberAbnormal
-     * @tc.type: FUNC
+     * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1700
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -784,7 +786,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore010
      * @tc.desc: Test bindAssetStore
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0010
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -877,7 +879,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStorePromise010
      * @tc.desc: Test bindAssetStore
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStorePromise_0010
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -969,7 +971,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore020
      * @tc.desc: Test bindAssetStore
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0020
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1063,7 +1065,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore030
      * @tc.desc: Test bindAssetStore
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0030
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1156,7 +1158,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore002
      * @tc.desc: Test bindAssetStore with invalid args,storeName is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0200
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1215,7 +1217,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore003
      * @tc.desc: Test bindAssetStore with invalid args,tableName is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0300
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1274,7 +1276,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore004
      * @tc.desc: Test bindAssetStore with invalid args,primaryKey is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0400
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1333,7 +1335,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore005
      * @tc.desc: Test bindAssetStore with invalid args,field is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0500
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1392,7 +1394,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore006
      * @tc.desc: Test bindAssetStore with invalid args,assetName is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0600
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1451,7 +1453,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore007
      * @tc.desc: Test bindAssetStore with invalid args,assetKey is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0700
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1511,7 +1513,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testbindAssetStore008
      * @tc.desc: Test bindAssetStore with invalid args,assetKey is null
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0800
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -1570,7 +1572,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testModifyAsset001
      * @tc.desc: object with asset create distributed data object
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_ModifyAsset_0100
      * @tc.size: MediumTest
      * @tc.level: Level 2

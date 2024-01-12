@@ -47,7 +47,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
     /**
      * @tc.name: V9testbindAssetCommunType0100
      * @tc.desc: Test CommType Enum Value
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetCommunType_0100
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -66,7 +66,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
     /**
      * @tc.name: V9testbindAssetCommunType0200
      * @tc.desc: Test commonType.Asset,Assets
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetCommunType_0200
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -105,7 +105,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
     /**
      * @tc.name: V9testbindAssetCommunType0300
      * @tc.desc: Test commonType.ValueType
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetCommunType_0200
      * @tc.size: MediumTest
      * @tc.level: Level 2
@@ -151,7 +151,7 @@ describe('ObjectStoreJsunitV9Ets', function () {
     /**
      * @tc.name: V9testbindAssetCommunType0400
      * @tc.desc: Test BindInfo
-     * @tc.type: Function
+     * @tc.type: Functiontion
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetCommunType_0400
      * @tc.size: MediumTest
      * @tc.level: Level 2

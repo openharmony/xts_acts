@@ -22,12 +22,6 @@ export default class MainAbility extends Ability {
         // Ability is creating, initialize resources for this ability
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
-        // var abilityDelegator: any
-        // abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        // var abilityDelegatorArguments: any
-        // abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        // console.info('start run testcase!!!')
-      //  Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
 
     onDestroy() {
