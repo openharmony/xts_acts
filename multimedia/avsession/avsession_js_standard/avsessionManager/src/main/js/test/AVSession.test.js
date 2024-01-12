@@ -502,8 +502,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVMetadata().then((data) => {
                 if (data.subtitle === metadata10.subtitle) {
                     expect(true).assertTrue();
@@ -572,8 +570,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVMetadata().then((data) => {
                 if (data.lyric === metadata12.lyric) {
                     expect(true).assertTrue();
@@ -608,8 +604,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set assetId error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVMetadata().then((data) => {
                 if (data.previousAssetId === metadata13.previousAssetId
@@ -646,8 +640,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVMetadata().then((data) => {
                 if (data.filter === metadata.filter) {
                     expect(true).assertTrue();
@@ -681,8 +673,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVMetadata().then((data) => {
                 if (data.filter === metadata.filter) {
@@ -718,8 +708,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVMetadata().then((data) => {
                 if (data.filter === metadata.filter) {
                     expect(true).assertTrue();
@@ -753,8 +741,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set skipIntervals error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVMetadata().then((data) => {
                 if (data.skipIntervals === metadata.skipIntervals) {
@@ -796,9 +782,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set avQueueName、avQueueId、avQueueImage error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
-
             let pixMap;
             await controller.getAVMetadata().then((data) => {
                 if (data.assetId === '121278' && data.avQueueName === '121278' && data.avQueueId === '121278') {
@@ -849,9 +832,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set avQueueName、avQueueId、avQueueImage error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
-
             await controller.getAVMetadata().then((data) => {
                 if (data) {
                     expect(data.assetId).assertEqual(metadata.assetId);
@@ -889,8 +869,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 2) {
                     console.info('TestLog: Get State successfully');
@@ -925,8 +903,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set speed error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.speed === 2.6) {
@@ -963,8 +939,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.position.elapsedTime === 10) {
                     console.info('TestLog: Get position successfully');
@@ -999,8 +973,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set bufferedTime error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.bufferedTime === 1000) {
@@ -1037,8 +1009,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.loopMode === 0) {
                     console.info('TestLog: Get loopMode successfully');
@@ -1073,8 +1043,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set loopMode error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.loopMode === 1) {
@@ -1111,8 +1079,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.loopMode === 2) {
                     console.info('TestLog: Get loopMode successfully');
@@ -1147,8 +1113,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set loopMode error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.loopMode === 3) {
@@ -1185,8 +1149,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.isFavorite === true) {
                     console.info('TestLog: Get isFavorite successfully');
@@ -1221,8 +1183,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 0) {
@@ -1259,8 +1219,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 1) {
                     console.info('TestLog: Get State successfully');
@@ -1295,8 +1253,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 3) {
@@ -1333,8 +1289,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 4) {
                     console.info('TestLog: Get State successfully');
@@ -1369,8 +1323,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
 
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 5) {
@@ -1407,8 +1359,6 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
 
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 6) {
                     console.info('TestLog: Get State successfully');
@@ -1443,9 +1393,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 10) {
                     console.info('TestLog: Get State successfully');
@@ -1470,19 +1417,16 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', 0, async function (done) {
-            let PlaybackState19 = {
+            let playbackState = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
             };
-            await session.setAVPlaybackState(PlaybackState19).then(() => {
+            await session.setAVPlaybackState(playbackState).then(() => {
                 console.info('TestLog: Set playbackState successfully');
                 expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(500);
-
             await controller.getAVPlaybackState().then((data) => {
                 if (data.state === 11) {
                     console.info('TestLog: Get State successfully');
@@ -1567,7 +1511,7 @@ export default function AVSession() {
                 console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-            await sleep(500);
+            
             await controller.isActive().then((data) => {
                 if (data) {
                     console.info('TestLog: session is active');
@@ -1598,7 +1542,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-            await sleep(500);
 
             await session.deactivate().then(() => {
                 console.info('TestLog: Deactivate session');
@@ -1606,7 +1549,6 @@ export default function AVSession() {
                 console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-            await sleep(500);
 
             await controller.isActive().then((data) => {
                 if (data) {
@@ -1679,7 +1621,6 @@ export default function AVSession() {
                 console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-            await sleep(500);
 
             try {
                 session.deactivate((err) => {

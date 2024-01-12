@@ -760,8 +760,8 @@ export default function AVSessionCallback() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800
-         * @tc.name      : setAVMetadata - callback - set skipIntervals
-         * @tc.desc      : Testing call setAVMetadata(callback) set skipIntervals
+         * @tc.name      : setAVMetadata - callback - set avQueueName、avQueueId、avQueueImage(string)
+         * @tc.desc      : Testing call setAVMetadata(callback) set avQueueName、avQueueId、avQueueImage(string)
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
