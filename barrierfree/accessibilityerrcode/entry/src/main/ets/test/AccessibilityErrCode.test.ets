@@ -45,6 +45,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200');
@@ -67,6 +68,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201');
@@ -88,6 +90,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202');
@@ -110,6 +113,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203');
@@ -131,6 +135,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204');
@@ -153,6 +158,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205');
@@ -174,6 +180,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206');
@@ -196,6 +203,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207');
@@ -217,6 +225,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208');
@@ -239,6 +248,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209');
@@ -260,6 +270,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210');
@@ -282,6 +293,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211');
@@ -303,6 +315,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212');
@@ -325,6 +338,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213');
@@ -346,6 +360,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214');
@@ -368,6 +383,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215');
@@ -389,6 +405,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216');
@@ -411,6 +428,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217');
@@ -431,6 +449,7 @@ export default function abilityTest() {
     * @tc.desc    test Accessibility EventInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0300', 0, async function (done) {
       let eventInfo = new accessibility.EventInfo({
@@ -449,6 +468,7 @@ export default function abilityTest() {
     * @tc.desc    test Accessibility SendEvent CallBack
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0800', 0, async function (done) {
       let event = null;
@@ -469,6 +489,7 @@ export default function abilityTest() {
     * @tc.desc    test Ability Capability
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0100', 0, async function (done) {
       accessibility.getAbilityLists('audible', 'enable', (err, data) => {
@@ -507,6 +528,7 @@ export default function abilityTest() {
     * @tc.desc    test Ability Captions Manager
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101', 0, async function (done) {
       let captionsManager = accessibility.getCaptionsManager();
@@ -527,6 +549,7 @@ export default function abilityTest() {
     * @tc.desc    test GesturePath And GesturePoint
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000', 0, async function (done) {
       let gesturePath = new GesturePath.GesturePath(20);
@@ -577,6 +600,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0900', 0, async function (done) {
       init();
@@ -606,6 +630,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0901', 0, async function (done) {
       if (axContext != null) {
@@ -632,6 +657,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400', 0, async function (done) {
       if (axContext != null) {
@@ -680,6 +706,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401', 0, async function (done) {
       if (axContext != null) {
@@ -771,6 +798,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0402', 0, async function (done) {
       if (axContext != null) {
@@ -825,6 +853,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500', 0, async function (done) {
       if (axContext != null) {
@@ -854,6 +883,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501', 0, async function (done) {
       if (axContext != null) {
@@ -880,6 +910,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0502', 0, async function (done) {
       if (axContext != null) {
@@ -907,6 +938,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600', 0, async function (done) {
       if (axContext != null) {
@@ -949,6 +981,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601', 0, async function (done) {
       if (axContext != null) {
@@ -991,6 +1024,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0602', 0, async function (done) {
       if (axContext != null) {
@@ -1018,6 +1052,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0700', 0, async function (done) {
       if (axContext != null) {
@@ -1051,6 +1086,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0701', 0, async function (done) {
       if (axContext != null) {
@@ -1080,6 +1116,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0702', 0, async function (done) {
       if (axContext != null) {
