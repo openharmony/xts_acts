@@ -1236,8 +1236,8 @@ export default function settingUiJsunit() {
 
       it('settings_get_value_117',0,async function (done) {
       let name = 'settings.screen.brightness117';//关键字
-      let value = 'brightness117'//值
-      let domainName = 'secure'
+      let value = 'brightness117';//值
+      let domainName = 'secure';
       try{
         settings.setValue(globalThis.abilityContext, name, value, domainName)
         .then((data)=>{
@@ -1259,8 +1259,8 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_118',0,async function (done) {
       let name = 'settings.screen.brightness118';//关键字
-      let value = 'brightness118'//值
-      let domainName = 'secure'
+      let value = 'brightness118';//值
+      let domainName = 'secure';
       try{
         settings.setValue(globalThis.abilityContext, name, value, domainName)
         .then((data)=>{
@@ -1281,8 +1281,8 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_119',0,async function (done) {
       let name = 'settings.screen.brightness119';//关键字
-      let obj = '323445.00'//值
-      let domainName = 'secure'
+      let obj = '323445.00';//值
+      let domainName = 'secure';
       try{
         let value = settings.getValueSync(globalThis.abilityContext, name, obj, domainName);
         console.info("[settings_set_value_119] value is: " + value);
@@ -1297,8 +1297,8 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_120',0,async function (done){
       let name = 'settings.screen.brightness120';//关键字
-      let obj = '343434.00'//值
-      let domainName = 'secure'
+      let obj = '343434.00';//值
+      let domainName = 'secure';
       try{
         let value = settings.setValueSync(globalThis.abilityContext, name, obj, domainName);
         expect(value).assertEqual(true);
@@ -1312,7 +1312,7 @@ export default function settingUiJsunit() {
 
     it('settings_register_Key_Observer_121',0,async function (done){
       let name = 'settings.screen.brightness119';//关键字
-      let domainName = 'secure'
+      let domainName = 'secure';
       try{
         let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
           let ret = settings.getUriSync(globalThis.abilityContext, name, domainName);
@@ -1331,7 +1331,7 @@ export default function settingUiJsunit() {
 
     it('settings_unregister_Key_Observer_122',0,async function (done){
       let name = 'settings.screen.brightness122';//关键字
-      let domainName = 'secure'
+      let domainName = 'secure';
       var context = null;
       try{
         let value = settings.unregisterKeyObserver(globalThis.abilityContext, name, domainName);
