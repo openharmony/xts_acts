@@ -93,6 +93,10 @@ import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
+import APIScrollflingSpeedLimitJsunit from './AttributeModifier/APIScrollflingSpeedLimitJsunit.test'
+import APITextBackgroundStyleJsunit from './AttributeModifier/APITextBackgroundStyleJsunit.test'
+import SXvalueResourceJsunit from './AttributeModifier/SXvalueResourceJsunit.test'
+import SXSymbolGlyphSINGLE01Jsunit from './AttributeModifier/SXSymbolGlyphSINGLE01Jsunit.test'
 import spanApi1 from './spanApi/spanApi1.test';
 import symbolGlyphApi1 from './symbolGlyphApi/symbolGlyphApi1.test'
 import symbolGlyphApi2 from './symbolGlyphApi/symbolGlyphApi2.test'
@@ -186,6 +190,10 @@ export default function testsuite() {
   SXsymbolStyleJsunit()
   APIgetUIFontConfigJsunit()
 
+  APIScrollflingSpeedLimitJsunit()
+  APITextBackgroundStyleJsunit()
+  SXvalueResourceJsunit()
+  SXSymbolGlyphSINGLE01Jsunit()
   RichEditorApi2()
   SelectAttr()
   spanApi1()
