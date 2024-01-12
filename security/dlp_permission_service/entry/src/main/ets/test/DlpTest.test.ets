@@ -72,6 +72,7 @@ const accountAbility = account.getDistributedAccountAbility()
 const bundleName = "com.ohos.dlp_xts"
 const rootDir = "/data/storage/el1/base/"
 
+export default function dlpTest() {
 // 获取帐号信息
 async function getOsAccountInfo(): Promise<account_osAccount.OsAccountInfo> {
   try {
@@ -138,6 +139,7 @@ async function AccountLogin(accountName:string) {
   expect(user.name).assertEqual(accountName)
 }
 
+
 // 生成文件
 function genFile(path:string, content?) {
   try {
@@ -153,7 +155,7 @@ function genFile(path:string, content?) {
   }
 }
 
-// 生成可选参数的DLP策略
+  // 生成可选参数的DLP策略
 async function genTestOptionalDlpProperty(): Promise<dlpPermission.DLPProperty> {
   let accountInfo:account_osAccount.OsAccountInfo = await getOsAccountInfo();
   let property: dlpPermission.DLPProperty = {
@@ -166,64 +168,70 @@ async function genTestOptionalDlpProperty(): Promise<dlpPermission.DLPProperty> 
   return property;
 }
 
-// 生成DLP策略
-async function genTestDlpProperty(): Promise<dlpPermission.DLPProperty> {
-  let accountInfo:account_osAccount.OsAccountInfo = await getOsAccountInfo();
-  let property: dlpPermission.DLPProperty = {
-    ownerAccount: accountInfo.distributedInfo.name,
-    ownerAccountID: accountInfo.distributedInfo.id,
-    ownerAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
-    authUserList: userList,
-    contactAccount: accountInfo.distributedInfo.name,
-    offlineAccess: true,
-    everyoneAccessList: [],
-  };
-  return property;
-}
+  // 生成DLP策略
+    async function genTestDlpProperty(): Promise<dlpPermission.DLPProperty> {
+      var accountInfo = await getOsAccountInfo();
+      var property: dlpPermission.DLPProperty = {
+        "ownerAccount": accountInfo.distributedInfo.name,
+        "ownerAccountID": accountInfo.distributedInfo.id,
+        "ownerAccountType": dlpPermission.AccountType.CLOUD_ACCOUNT,
+        "authUserList": userList,
+        "contactAccount": accountInfo.distributedInfo.name,
+        "offlineAccess": true,
+        "everyoneAccessList": [],
+      };
+      return property;
+    }
 
-// 生成测试DLP文件
-async function genTestDlpFile(): Promise<TestDlpFileInfo> {
-  let dlpInfo: TestDlpFileInfo = new TestDlpFileInfo();
-  dlpInfo.plaintextPath = rootDir + "test_dlp.txt";
-  dlpInfo.ciphertextPath = rootDir + "test_dlp.txt.dlp";
-  let writeContent = "123456";
-  dlpInfo.plaintextFd = genFile(dlpInfo.plaintextPath, writeContent);
-  expect(dlpInfo.plaintextFd >= 0).assertTrue();
-  dlpInfo.ciphertextFd = genFile(dlpInfo.ciphertextPath);
-  expect(dlpInfo.ciphertextFd >= 0).assertTrue();
+   // 生成测试DLP文件
+    async function genTestDlpFile(): Promise<TestDlpFileInfo> {
+      let dlpInfo: TestDlpFileInfo = new TestDlpFileInfo();
+      dlpInfo.plaintextPath = rootDir + "test_dlp.txt";
+      dlpInfo.ciphertextPath = rootDir + "test_dlp.txt.dlp";
+      var writeContent = "123456";
+      dlpInfo.plaintextFd = genFile(dlpInfo.plaintextPath, writeContent);
+      expect(dlpInfo.plaintextFd >= 0).assertTrue();
+      dlpInfo.ciphertextFd = genFile(dlpInfo.ciphertextPath);
+      expect(dlpInfo.ciphertextFd >= 0).assertTrue();
 
-  let property:dlpPermission.DLPProperty = await genTestDlpProperty();
+      var property = await genTestDlpProperty();
 
-  try {
-    let dlpFile:dlpPermission.DLPFile = await dlpPermission.generateDLPFile(dlpInfo.plaintextFd, dlpInfo.ciphertextFd, property);
-    expect(true).assertTrue()
-    dlpInfo.dlpFile = dlpFile;
-    return dlpInfo;
-  } catch (err) {
-    console.error(TAG, "generateDLPFile failed", err.code, err.message);
-    fs.closeSync(dlpInfo.plaintextFd);
-    fs.closeSync(dlpInfo.ciphertextFd);
-    fs.unlinkSync(dlpInfo.ciphertextPath);
-    fs.unlinkSync(dlpInfo.plaintextPath);
-    expect(false).assertTrue()
-    return null;
-  }
-}
+      try {
+        var dlpFile = await dlpPermission.generateDLPFile(dlpInfo.plaintextFd, dlpInfo.ciphertextFd, property);
+        expect(true).assertTrue()
+        dlpInfo.dlpFile = dlpFile;
+        return dlpInfo;
+      } catch (err) {
+        console.error(TAG, "generateDLPFile failed", err.code, err.message);
+        fs.closeSync(dlpInfo.plaintextFd);
+        fs.closeSync(dlpInfo.ciphertextFd);
+        fs.unlinkSync(dlpInfo.ciphertextPath);
+        fs.unlinkSync(dlpInfo.plaintextPath);
+        expect(false).assertTrue()
+        return null;
+      }
+    }
 
 // 关闭测试DLP文件
-async function closeTestDlpFile(dlpInfo: TestDlpFileInfo) {
-  try {
-    await dlpInfo.dlpFile.closeDLPFile();
-  } catch (err) {
-    console.error(TAG, "closeDLPFile failed", err.code, err.message);
-  }
-  fs.closeSync(dlpInfo.plaintextFd);
-  fs.closeSync(dlpInfo.ciphertextFd);
-  fs.unlinkSync(dlpInfo.ciphertextPath);
-  fs.unlinkSync(dlpInfo.plaintextPath);
-}
+    async function closeTestDlpFile(dlpInfo: TestDlpFileInfo) {
+      try {
+        await dlpInfo.dlpFile.closeDLPFile();
+      } catch (err) {
+        console.error(TAG, "closeDLPFile failed", err.code, err.message);
+      }
+      fs.closeSync(dlpInfo.plaintextFd);
+      fs.closeSync(dlpInfo.ciphertextFd);
+      fs.unlinkSync(dlpInfo.ciphertextPath);
+      fs.unlinkSync(dlpInfo.plaintextPath);
+    }
 
-export default function dlpTest() {
+function timeOut() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('')
+        }, 200)
+      })
+    }
 
   describe('dlpTest', () => {
 
