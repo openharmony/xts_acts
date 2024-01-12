@@ -83,6 +83,10 @@ import frame from './RenderNodeTest_001/frame.test';
 import getPosition from './RenderNodeTest_001/getPosition.test';
 import pivot from './RenderNodeTest_001/pivot.test';
 import scale from './RenderNodeTest_001/scale.test';
+import SXrenderingStrategyJsunit from './AttributeModifier/SXrenderingStrategyJsunit.test';
+import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit.test';
+import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
+import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -154,4 +158,8 @@ export default function testsuite() {
   sheetSize1Jsunit()
   monopolizeTest()
   outlineTest()
+  SXrenderingStrategyJsunit()
+  SXsymbolSpanStyleJsunit()
+  SXsymbolStyleJsunit()
+  APIgetUIFontConfigJsunit()
 }

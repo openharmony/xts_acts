@@ -72,6 +72,11 @@
         "MainAbility/pages/renderNode001/frame",
         "MainAbility/pages/renderNode001/getPosition",
         "MainAbility/pages/renderNode001/pivot",
-        "MainAbility/pages/renderNode001/scale"
+        "MainAbility/pages/renderNode001/scale",
+
+        "MainAbility/pages/AttributeModifier/SXrenderingStrategy",
+        "MainAbility/pages/AttributeModifier/SXsymbolSpanStyle",
+        "MainAbility/pages/AttributeModifier/SXsymbolStyle",
+        "MainAbility/pages/AttributeModifier/APIgetUIFontConfig"
     ]
 }

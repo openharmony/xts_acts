@@ -18,8 +18,9 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver} from '@ohos.UiTest'
-
+import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodEngineKeyJSUnit() {
   describe('inputMethodEngineKeyEvent', function () {
@@ -30,11 +31,7 @@ export default function inputMethodEngineKeyJSUnit() {
       id: '',
       extra: {}
     }
-
-    /**
-     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
-     */
-    beforeAll(async (done) => {
+    beforeAll(async (done)=>{
       let inputM = inputMethod.getCurrentInputMethod();
       console.info("====>beforeAll: getCurrentInputMethod inputMethodEngineJSUnit to: " + JSON.stringify(inputM));
       inputSever.packageName = inputM.packageName;
@@ -68,15 +65,7 @@ export default function inputMethodEngineKeyJSUnit() {
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputSever);
-        setTimeout(() => {
-          console.info("====>afterAll: inputMethodEngineJSUnit switchInputMethod success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>afterAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
-      }
+      done();
     })
 
     let dis = display.getDefaultDisplaySync();

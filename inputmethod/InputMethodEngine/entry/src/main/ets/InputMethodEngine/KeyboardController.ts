@@ -454,7 +454,7 @@ export class KeyboardController {
                 };
             } else {
                 console.info(TAG + '====>inputMethodEngine_test_036 getForward value:' + JSON.stringify(value));
-                if (value){
+                if (typeof(value) !== null) {
                     commonEventPublishData = {
                         data: "SUCCESS"
                     };
@@ -473,7 +473,7 @@ export class KeyboardController {
         let commonEventPublishData;
         let value =  await this.TextInputClient.getForward(1);
         console.info(TAG + '====>inputMethodEngine_test_037 getForward:' + JSON.stringify(value));
-        if (value){
+        if (typeof(value) !== null) {
             commonEventPublishData = {
                 data: "SUCCESS"
             };

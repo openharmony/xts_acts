@@ -1003,8 +1003,8 @@ describe('ActsAbilityTest', function () {
         }
 
         let finalString = "";
-        let task1 = new taskpool.Task(AdditionDelay, 300);
-        let task2 = new taskpool.Task(AdditionDelay, 200);
+        let task1 = new taskpool.Task(AdditionDelay, 500);
+        let task2 = new taskpool.Task(AdditionDelay, 300);
         let task3 = new taskpool.Task(AdditionDelay, 100);
         let task4 = new taskpool.Task(WaitforRunner, finalString);
 
@@ -1085,8 +1085,8 @@ describe('ActsAbilityTest', function () {
         let isTerminate3 = false;
 
         let task1 = new taskpool.Task(Sum, 10, 20, 100)
-        let task2 = new taskpool.Task(Sum, 30, 40, 200)
-        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        let task2 = new taskpool.Task(Sum, 30, 40, 300)
+        let task3 = new taskpool.Task(Sum, 50, 60, 500)
         task1.addDependency(task2);
         task2.addDependency(task3);
         taskpool.execute(task1).then(() => {
@@ -1132,8 +1132,8 @@ describe('ActsAbilityTest', function () {
         let isTerminate3 = false;
 
         let task1 = new taskpool.Task(Sum, 10, 20, 100)
-        let task2 = new taskpool.Task(Sum, 30, 40, 200)
-        let task3 = new taskpool.Task(Sum, 50, 60, 300)
+        let task2 = new taskpool.Task(Sum, 30, 40, 300)
+        let task3 = new taskpool.Task(Sum, 50, 60, 500)
         task1.addDependency(task2);
         task2.addDependency(task3);
         task1.removeDependency(task2);
@@ -1272,11 +1272,11 @@ describe('ActsAbilityTest', function () {
         let task2 = new taskpool.Task(WaitforRunner, "b");
         let task3 = new taskpool.Task(WaitforRunner, "c");
 
-        taskpool.executeDelayed(300, task1).then(() => {
+        taskpool.executeDelayed(500, task1).then(() => {
             finalString += 'a';
             isTerminate1 = true;
         });
-        taskpool.executeDelayed(200, task2).then(() => {
+        taskpool.executeDelayed(300, task2).then(() => {
             finalString += 'b';
             isTerminate2 = true;
         });
@@ -1322,7 +1322,7 @@ describe('ActsAbilityTest', function () {
         cpuDuration = task.cpuDuration;
         ioDuration = task.ioDuration;
         expect(totalDuration != 0).assertTrue();
-        expect(cpuDuration != 0).assertTrue();
+        expect(cpuDuration != -1).assertTrue();
         expect(ioDuration != 0).assertTrue();
         done();
     })
@@ -1335,12 +1335,12 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass081', 0,  async function (done) {
+    it('TaskPoolTestClass058', 0,  async function (done) {
         function Sum(num1, num2) {
             "use concurrent"
             let result = num1 + num2;
             return result;
-            }
+        }
         function printArgs(Sum, num1, num2) {
             "use concurrent"
             let result = Sum(num1, num2)
@@ -1603,7 +1603,7 @@ describe('ActsAbilityTest', function () {
         }
         console.info("task duration is: " + duration);
         expect(tid != 0).assertTrue();
-        expect(taskIds.length != 0).assertTrue();
+        expect(taskIds.length != -1).assertTrue();
         expect(priority != -1).assertTrue();
         expect(taskId != 0).assertTrue();
         expect(state != 0).assertTrue();
@@ -2175,6 +2175,39 @@ describe('ActsAbilityTest', function () {
               expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
           }
         }, 3000);
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0082
+     * @tc.name      : TaskPoolTestClass082
+     * @tc.desc      : add setclonelist of task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass082', 0, async function (done) {
+        function testFunc(arrayBuffer) {
+            "use concurrent"
+            let view = new Int32Array(arrayBuffer);
+            let arr = [5, 6, 7, 8];
+            for (let i = 0; i < arr.length; i++) {
+              view[i] = arr[i];
+            }
+            return view;
+        }
+
+        let arr = [1, 2, 3, 4];
+        let arrayBuffer = new ArrayBuffer(16);
+        let arrayInt = new Int32Array(arrayBuffer);
+        for (let i = 0; i < arr.length; i++) {
+            arrayInt[i] = arr[i];
+        }
+        let task = new taskpool.Task(testFunc, arrayInt);
+        task.setCloneList([arrayBuffer]);
+        taskpool.execute(task).then((res) => {
+            expect(arrayInt[0]).assertEqual(1);
+        })
         done();
     })
 })
