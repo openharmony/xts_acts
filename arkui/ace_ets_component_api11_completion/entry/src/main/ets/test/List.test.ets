@@ -52,10 +52,6 @@ import allowOverride from './allowOverride.test.ets';
 import ToastShowMode from './ToastShowMode.test.ets';
 import ModalBlurStyle from './ModalBlurStyle.test.ets';
 import TouchTestStrategy from './TouchTestStrategy.test.ets';
-import tabsDemo from './TextApi/tabsDemo.test.ets';
-import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
-
-
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
