@@ -3115,27 +3115,33 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100', 0, async function (done) {
-            session.getOutputDevice((err, value) => {
-                if (err) {
-                    console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                } else if (!value.isRemote) {
-                    console.info('Get device information successfully');
-                    let deviceInfo = value.devices[0]
-                    if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
-                        deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
-                        deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined && deviceInfo.authenticationStatus !== undefined) {
-                        expect(true).assertTrue();
+            try {
+                session.getOutputDevice((err, value) => {
+                    if (err) {
+                        console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else if (!value.isRemote) {
+                        console.info('Get device information successfully');
+                        let deviceInfo = value.devices[0]
+                        if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                            deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                            deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined && deviceInfo.authenticationStatus !== undefined) {
+                            expect(true).assertTrue();
+                        } else {
+                            console.info('getOutputDevice value error.')
+                            expect(false).assertTrue();
+                        }
                     } else {
-                        console.info('getOutputDevice value error.')
+                        console.info('Get device information failed');
                         expect(false).assertTrue();
                     }
-                } else {
-                    console.info('Get device information failed');
-                    expect(false).assertTrue();
-                }
-            });
-            done();
+                    done();
+                });
+            } catch (err) {
+                console.info(`Get device information unknownError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            } 
         })
 
         /* *
@@ -3167,16 +3173,22 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100', 0, async function (done) {
-            session.getController((err, data) => {
-                if (err) {
-                    console.info('Get controller failed');
-                    expect(false).assertTrue();
-                } else {
-                    console.info('Get controller successfully');
-                    expect(true).assertTrue();
-                }
-            })
-            done();
+            try {
+                session.getController((err, data) => {
+                    if (err) {
+                        console.info('Get controller failed');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('Get controller successfully');
+                        expect(true).assertTrue();
+                    }
+                    done();
+                })
+            } catch (err) {
+                console.info(`Get controller failed, unknown error: code: ${err.code} message: ${err.message}.`);
+                expect(false).assertTrue();
+                done();
+            }
         })
 
         /* *
@@ -3197,12 +3209,13 @@ export default function AVSession() {
                         console.info('sendAVKeyEvent Successfully');
                         expect(true).assertTrue();
                     }
+                    done();
                 })
             } catch (err) {
-                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                console.info(`TestLog: sendAVKeyEvent unknownError: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
+                done();
             }
-            done();
         })
 
         /* *
