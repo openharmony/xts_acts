@@ -11,21 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("telephonyjstest") {
+import("//build/ohos_var.gni")
+
+group("netmanager_websocket") {
   testonly = true
-  deps = [
-    "actscontactstageapitest:ActsContactStageAPITest",
-    "call_manager:call_manager",
-    "cellular_data:cellular_data",
-    "netmanager_base:netmanager_base",
-    "netmanager_http:ActsNetManagerHttpEtsTest",
-    "netmanager_socket:ActsNetManagerSocketEtsTest",
-    "netmanager_websocket:netmanager_websocket",
-    "network_search:network_search",
-    "observer:ActsObserverEtsTest",
-    "radiostatistic:ActsRadiostatisticEtsTest",
-    "sim:sim",
-    "sms_mms:sms_mms",
-    "telephony_base:telephony_base",
-  ]
+  if (is_standard_system) {
+    deps = [ "sslcertverify:ActsNetworkManagerSSLCertVerifyTest" ]
+  }
 }
