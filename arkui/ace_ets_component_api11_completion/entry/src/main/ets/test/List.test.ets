@@ -52,8 +52,6 @@ import allowOverride from './allowOverride.test.ets';
 import ToastShowMode from './ToastShowMode.test.ets';
 import ModalBlurStyle from './ModalBlurStyle.test.ets';
 import TouchTestStrategy from './TouchTestStrategy.test.ets';
-
-
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
@@ -77,6 +75,19 @@ import textInputApi1 from './textInputApi/textInputApi1.test.ets'
 import ScrollTest from './Scroll/Scroll.test.ets'
 import RichEditorTest from './RichEditor/RichEditor.test';
 import UIfont from './UIfont/UIfont.test';
+import getClipToFrameJsunit from './RenderNodeTest_001/getClipToFrameJsunit.test.ets'
+import getOpacityJsunit from './RenderNodeTest_001/getOpacityJsunit.test.ets'
+import getSizeJsunit from './RenderNodeTest_001/getSizeJsunit.test.ets'
+import SetClipToFrameJsunit from './RenderNodeTest_001/SetClipToFrameJsunit.test.ets'
+import SetOpacityJsunit from './RenderNodeTest_001/SetOpacityJsunit.test.ets'
+import SetPositionJsunit from './RenderNodeTest_001/SetPositionJsunit.test.ets'
+import SetSizeJsunit from './RenderNodeTest_001/SetSizeJsunit.test.ets'
+import getChildTest from './RenderNodeTest_001/getChildTest.test';
+import getColorTest from './RenderNodeTest_001/getColorTest.test';
+import frame from './RenderNodeTest_001/frame.test';
+import getPosition from './RenderNodeTest_001/getPosition.test';
+import pivot from './RenderNodeTest_001/pivot.test';
+import scale from './RenderNodeTest_001/scale.test';
 import SXrenderingStrategyJsunit from './AttributeModifier/SXrenderingStrategyJsunit.test';
 import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit.test';
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
@@ -85,6 +96,19 @@ import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsun
 
 
 export default function testsuite() {
+  getClipToFrameJsunit()
+  getOpacityJsunit()
+  getSizeJsunit()
+  SetClipToFrameJsunit()
+  SetOpacityJsunit()
+  SetPositionJsunit()
+  getColorTest()
+  getChildTest()
+  frame()
+  getPosition()
+  pivot()
+  scale()
+  SetSizeJsunit()
 
   richEditorApi1()
   textInputApi1()
