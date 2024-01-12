@@ -22,6 +22,9 @@ export default function responseCodeJsunit() {
      * @tc.number SUB_Telephony_Http_ResponseCode_OK_0100
      * @tc.name ResponseCode::OK
      * @tc.desc Test ResponseCode property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
     it("SUB_Telephony_Http_ResponseCode_OK_0100", 0, async function (done) {
@@ -611,6 +614,9 @@ export default function responseCodeJsunit() {
     * @tc.number SUB_Telephony_Http_ResponseCode_RESET_0100
     * @tc.name ResponseCode::RESET
     * @tc.desc Test Test ResponseCode property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
     */
     it("SUB_Telephony_Http_ResponseCode_RESET_0100", 0, async function (done) {
       console.log("-----------------------ResponseCode RESET Test is starting-----------------------");
