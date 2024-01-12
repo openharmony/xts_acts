@@ -358,7 +358,7 @@ export default function AccessTokenTest() {
       console.info("Test_requestPermissionsFromUser_002 start");
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       console.info("Test_requestPermissionsFromUser_002 start");
-      let result: Promise<void>;
+      let result: Promise<void> = new Promise((): void => {});
       try {
         result = atManager
           //@ts-ignore
@@ -418,7 +418,7 @@ export default function AccessTokenTest() {
     it("testRequestPermissionFromUser004", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_004 start ");
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      let result: Promise<PermissionRequestResult>;
+      let result: Promise<PermissionRequestResult> = new Promise(() => {});
       try {
         result =
           //@ts-ignore
