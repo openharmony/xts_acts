@@ -15,8 +15,6 @@
 
 import common from '@ohos.app.ability.common';
 
-import common from '@ohos.app.ability.common';
-
 export default class GlobalContext {
   private constructor() {
   }
