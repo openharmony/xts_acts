@@ -37,7 +37,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     var systemWindowTypeArr = [];
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
-      'TYPE_SYSTEM_ALERT': 1,
       'TYPE_FLOAT': 8,
     }
     var windowLayoutModeArr = [];
@@ -64,10 +63,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
       systemWindowValueArr = Object.keys(systemWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-    })
-    beforeEach(function () {
-    })
-    afterAll(function () {
     })
 
     function expectedError(error, caseName, apiName, done, code) {
@@ -162,7 +157,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testListener_windowSizeChange';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
-      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let changedModel = 102;
       let baseValue = 100;
       let resizeValue = 200;
@@ -184,7 +179,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await sleep(1000);
       await tempWnd.on('windowSizeChange', async (sizeData) => {
         console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
-        if(flag){
+        if (flag) {
           expect(!!sizeData).assertTrue();
           tempWnd.off('windowSizeChange');
           await tempWnd.destroy();
@@ -270,7 +265,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'testListener_windowSizeChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest4';
-      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let changedModel = 102;
       let listenerOffFlag = false;
       console.log(msgStr + 'begin');
@@ -719,7 +714,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + ' loopCount: ' + loopCount);
       let n = 0
       for (let i = 0; i < loopCount; i++) {
-        let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+        let tempType = ohosWindow.WindowType.TYPE_FLOAT;
         let windId = 'createTest2' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
         let createData = null;
@@ -795,7 +790,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'sameids'
       let ohosData = null;
-      await ohosWindow.create(context, windowId, 1).then(
+      await ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT).then(
         (data) => {
           ohosData = data;
         }).catch((err) => {
@@ -822,7 +817,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('testLoadContent_Exist_Create_SysWin_Promise', 0, async function (done) {
       let caseName = 'testLoadContent_Exist_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContentTest1';
       console.log(msgStr + 'begin');
       let createWindowObj = {
@@ -862,7 +857,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('testLoadContent_Para_Is_Null_Create_SysWin_Promise', 0, async function (done) {
       let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContentTest2';
       console.log(msgStr + 'begin');
       let createWindowObj = {
@@ -1074,7 +1069,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin ');
       let mainWnd = null;
       let windowData = null
-      await ohosWindow.create(context, 'setPrivacyModeTest1', ohosWindow.WindowType.TYPE_SYSTEM_ALERT)
+      await ohosWindow.create(context, 'setPrivacyModeTest1', ohosWindow.WindowType.TYPE_FLOAT)
         .then((data) => {
           windowData = data;
         }).catch((err) => {
@@ -1124,7 +1119,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('testDestroy_Promise', 0, async function (done) {
       let caseName = 'testDestroy_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'destroyTest1';
       console.log(msgStr + 'begin');
       let createWindowObj = {
@@ -1291,7 +1286,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
       let wndId = 'animationForShownTest1';
-      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let tempWnd = null;
       let createWindowObj = {
         name: wndId, windowType: baseType, ctx: context
@@ -1444,7 +1439,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(2).assertEqual(ohosWindow.WindowEventType.WINDOW_ACTIVE);
         expect(3).assertEqual(ohosWindow.WindowEventType.WINDOW_INACTIVE);
         expect(4).assertEqual(ohosWindow.WindowEventType.WINDOW_HIDDEN);
-        expect(7).assertEqual(ohosWindow.WindowEventType.WINDOW_DESTROYED);
         done();
       } catch (err) {
         console.info(msgStr + 'windowEventType error :' + JSON.stringify(err));
@@ -1515,31 +1509,31 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
      * @tc.level     : Level4
      */
     it('testSetWindowDecorVisible', 0, async function (done) {
-        let msgStr = 'testSetWindowDecorVisible';
-        console.log(msgStr + ' begin');
-        ohosWindow.getLastWindow(context).then(wnd => {
-            console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-            expect(wnd != null).assertTrue();
-            let isVisible = true;
-                // 调用setWindowDecorVisible接口
-            try {
-                wnd.setWindowDecorVisible(isVisible);
-                expect(true).assertTrue()
-                done()
+      let msgStr = 'testSetWindowDecorVisible';
+      console.log(msgStr + ' begin');
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        let isVisible = true;
+        // 调用setWindowDecorVisible接口
+        try {
+          wnd.setWindowDecorVisible(isVisible);
+          expect(true).assertTrue()
+          done()
 
-            } catch (exception) {
-                console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-                if (exception.code == 801) {
-                    expect(true).assertTrue()
-                    done()
-                } else {
-                    expect().assertFail();
-                    done();
-                }
-            }
-        })
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
+          if (exception.code == 801) {
+            expect(true).assertTrue()
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      })
     })
-    
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1230
      * @tc.name      : testSetWindowDecorHeight
@@ -1553,23 +1547,23 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.log(msgStr + ' begin');
         let height = 50
         ohosWindow.getLastWindow(context).then(wnd => {
-            console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
-            expect(wnd != null).assertTrue();
-            try {
-                wnd.setWindowDecorHeight(height);
-                expect(true).assertTrue()
-                done()
-            } catch (exception) {
-                console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-                if (exception.code == 801) {
-                    expect(true).assertTrue()
-                    done()
-                } else {
-                    expect().assertFail();
-                    done();
-                }
+          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+          expect(wnd != null).assertTrue();
+          try {
+            wnd.setWindowDecorHeight(height);
+            expect(true).assertTrue()
+            done()
+          } catch (exception) {
+            console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
+            if (exception.code == 801) {
+              expect(true).assertTrue()
+              done()
+            } else {
+              expect().assertFail();
+              done();
             }
-        })
+          }
+      })
     })
   })
 }

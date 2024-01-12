@@ -214,6 +214,24 @@ export default function photoPickerTest() {
       await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0600
+     * @tc.name      : photopicker_select_promise_006
+     * @tc.desc      : select with option isEditSupported = true
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+    */
+    it("photopicker_select_promise_006", 0, async function (done) {
+      let testNum = "photopicker_select_promise_006";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      option.isEditSupported = true;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
     //callback
     /**
      * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0000
@@ -313,6 +331,24 @@ export default function photoPickerTest() {
       option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
       option.maxSelectNumber = 1;
       option.isPhotoTakingSupported = true;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_CALLBACK_0600
+     * @tc.name      : photopicker_select_callback_006
+     * @tc.desc      : select with option isEditSupported = true
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+    */
+    it("photopicker_select_callback_006", 0, async function (done) {
+      let testNum = "photopicker_select_callback_006";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      option.isEditSupported = true;
       let expectSelectNum = 1;
       await selectWithOptionCallback(testNum, done, option, expectSelectNum);
     });

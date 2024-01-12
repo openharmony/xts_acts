@@ -17,7 +17,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
-import fs from '@ohos.file.fs';
+import fs, { type Filter } from '@ohos.file.fs';
 
 const BUFSIZE = 1024;
 let DELAY_TIME = 100;
@@ -25,13 +25,30 @@ let OFFSETNUMBER = 0;
 
 let message;
 let result;
+let files;
 let commonEventData = {
   parameters: {
     message: message,
     result: result,
+    files: files
   }
 };
 let actionStr;
+
+function getListFile(dir): number {
+  class ListFileOption {
+    public recursion: boolean = false;
+    public listNum: number = 0;
+    public filter: Filter = {};
+  }
+  let option = new ListFileOption();
+  option.filter.displayName = ['temp_useless*'];
+  let files = fs.listFileSync(dir, option);
+  for (let i = 0; i < files.length; i++) {
+    console.info(`The name of file: ${files[i]}`);
+  }
+  return files.length;
+}
 
 function onForegroundInner(actionStr, tempDir, context): void {
   if (actionStr === 'Acts_CleanTempFiles_0203') {
@@ -102,20 +119,17 @@ export default class SecondAbility extends UIAbility {
   }
 
   onForeground(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     let tempDir = this.context.tempDir;
     console.log('create virable end');
     if (actionStr === 'Acts_CleanTempFiles_0103') {
-      AppStorage.setOrCreate('message', actionStr);
       let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let writeLen = fs.writeSync(file.fd, 'Try to write feature str.');
-      console.log('Acts_CleanTempFiles_0103 The length of str is: ' + JSON.stringify(writeLen));
       let buf = new ArrayBuffer(BUFSIZE);
       let readLen = fs.readSync(file.fd, buf, {
         offset: OFFSETNUMBER
       });
       let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
-      console.log('Acts_CleanTempFiles_0103 the content of file: ' + JSON.stringify(readBuf));
+      console.log('Acts_CleanTempFiles_0103 write: ' + JSON.stringify(writeLen) + 'readBuf:' + JSON.stringify(readBuf));
       fs.closeSync(file);
       commonEventData.parameters.message = readBuf;
       commonEvent.publish('Acts_CleanTempFiles_0103', commonEventData, (err) => {
@@ -137,6 +151,8 @@ export default class SecondAbility extends UIAbility {
       });
       fs.closeSync(file);
       commonEventData.parameters.result = readLen;
+      let dir = tempDir.split('temp');
+      commonEventData.parameters.files = getListFile(dir[0]);
       console.log('Acts_CleanTempFiles_0104 Message: ' + JSON.stringify(readLen));
       commonEvent.publish('Acts_CleanTempFiles_0104', commonEventData, (err) => {
         console.log('Acts_CleanTempFiles_0104 publish err: ' + JSON.stringify(err));

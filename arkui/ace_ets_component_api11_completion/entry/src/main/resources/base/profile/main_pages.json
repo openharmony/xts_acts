@@ -64,6 +64,11 @@
         "MainAbility/pages/MethodStyle/menu",
         "MainAbility/pages/MethodStyle/NavigationAttr",
         "MainAbility/pages/MethodStyle/ImageAttr",
-        "MainAbility/pages/folderStack/folder_stack"
+        "MainAbility/pages/folderStack/folder_stack",
+
+        "MainAbility/pages/AttributeModifier/SXrenderingStrategy",
+        "MainAbility/pages/AttributeModifier/SXsymbolSpanStyle",
+        "MainAbility/pages/AttributeModifier/SXsymbolStyle",
+        "MainAbility/pages/AttributeModifier/APIgetUIFontConfig"
     ]
 }

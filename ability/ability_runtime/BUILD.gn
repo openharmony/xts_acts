@@ -18,6 +18,7 @@ group("ability_runtime") {
   if (is_standard_system) {
     deps = [
       "aacommand:aacommand",
+      "abilitygetstartparameterstest:abilitygetstartparameterstest",
       "abilitymanager:actsabilitymanagertest",
       "abilitymontior:ActsAbilityMonitorTest",
       "abilitymultiinstance:abilitymultiinstance",
@@ -42,6 +43,7 @@ group("ability_runtime") {
       "actsselfautostartup:actsselfautostartup",
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
+      "actsstartabilityforresulttest:actsstartabilityforresulttest",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",

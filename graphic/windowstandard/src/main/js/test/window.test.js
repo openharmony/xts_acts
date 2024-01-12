@@ -2025,7 +2025,6 @@ export default function window_test() {
             console.log(msgStr + ' begin');
             try {
                 expect(0).assertEqual(window.WindowType.TYPE_APP);
-                expect(1).assertEqual(window.WindowType.TYPE_SYSTEM_ALERT);
                 done();
             } catch (err) {
                 console.log(msgStr + ' WindowType error ' + JSON.stringify(err));
