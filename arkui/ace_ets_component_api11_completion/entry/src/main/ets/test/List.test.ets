@@ -82,7 +82,10 @@ import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
-
+import APIScrollflingSpeedLimitJsunit from './AttributeModifier/APIScrollflingSpeedLimitJsunit.test'
+import APITextBackgroundStyleJsunit from './AttributeModifier/APITextBackgroundStyleJsunit.test'
+import SXvalueResourceJsunit from './AttributeModifier/SXvalueResourceJsunit.test'
+import SXSymbolGlyphSINGLE01Jsunit from './AttributeModifier/SXSymbolGlyphSINGLE01Jsunit.test'
 
 export default function testsuite() {
 
@@ -152,4 +155,9 @@ export default function testsuite() {
   SXsymbolSpanStyleJsunit()
   SXsymbolStyleJsunit()
   APIgetUIFontConfigJsunit()
+
+  APIScrollflingSpeedLimitJsunit()
+  APITextBackgroundStyleJsunit()
+  SXvalueResourceJsunit()
+  SXSymbolGlyphSINGLE01Jsunit()
 }
