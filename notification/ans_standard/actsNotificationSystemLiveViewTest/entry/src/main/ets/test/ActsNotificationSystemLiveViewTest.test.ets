@@ -65,6 +65,10 @@ export default function ActsNotificationSystemLiveViewTest() {
                 isPercentage : true
               }
             }
+          },
+          notificationFlags : {
+            soundEnabled : 0,
+            vibrationEnabled : 1
           }
         }
         try {
@@ -116,6 +120,10 @@ export default function ActsNotificationSystemLiveViewTest() {
               icon : undefined
             }
           }
+        },
+        notificationFlags : {
+          soundEnabled : 2,
+          vibrationEnabled : 2
         }
       }
       try {
@@ -632,5 +640,367 @@ export default function ActsNotificationSystemLiveViewTest() {
         done();
       }
     })
+
+    /*
+  * @tc.number: Sub_Notification_Ans_Live_Publish_7500
+  * @tc.name: testLiveNotificationPublishsuccess
+  * @tc.desc: test publish interface fail
+  * @tc.size: LargeTest
+  * @tc.type: Function
+  * @tc.level Level 3
+  */
+    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+      const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
+      const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      image.createPixelMap(color, opts).then((pixelMap : image.PixelMap) => {
+        console.log('Succeeded in creating pixelmap.');
+        //wantAgent对象
+        let wantAgent: _WantAgent;
+        //WantAgentInfo对象
+        let wantAgentInfo: WantAgent.WantAgentInfo = {
+          wants: [
+            {
+              deviceId: 'deviceId',
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EntryAbility',
+              action: 'action1',
+              entities: ['entity1'],
+              type: 'MIMETYPE',
+              uri: 'key={true,true,false}',
+              parameters:
+              {
+                mykey0: 2222,
+                mykey1: [1, 2, 3],
+                mykey2: '[1, 2, 3]',
+                mykey3: 'ssssssssssssssssssssssssss',
+                mykey4: [false, true, false],
+                mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+                mykey6: true,
+              }
+            } as Want
+          ],
+          operationType: WantAgent.OperationType.START_ABILITIES,
+          requestCode: 0,
+          wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+          actionType : WantAgent.OperationType.START_ABILITY,
+          actionFlags : [WantAgent.WantAgentFlags.ONE_TIME_FLAG]
+        };
+        try {
+          WantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            wantAgent = data;
+          }).catch((err: BusinessError) => {
+            console.error('getWantAgent failed! ${err.code} ${err.message}');
+          });
+        } catch (err) {
+          console.error('getWantAgent failed! ${err.code} ${err.message}');
+        }
+        let capsule : notificationManager.NotificationCapsule = {
+          title : 'title',
+          backgroundColor : 'back'
+        }
+        let button : notificationManager.NotificationButton = {
+          names : ['name1','name2']
+        }
+        let time : notificationManager.NotificationTime = {
+          initialTime : 100,
+          isCountDown : undefined
+        }
+        let progresss : notificationManager.NotificationProgress = {
+          isPercentage : true,
+          currentValue : 100
+        }
+        let content : notificationManager.NotificationSystemLiveViewContent = {
+          title: 'title',
+          text : 'text',
+          typeCode : 1,
+          capsule : capsule,
+          button : button,
+          time : time,
+          progress : progresss
+        }
+        let notificationRequest : notificationManager.NotificationRequest = {
+          id : 1,
+          notificationSlotType : notificationManager.SlotType.CUSTOMER_SERVICE,
+          content  : {
+            notificationContentType : notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
+            systemLiveView : content
+          },
+          wantAgent : wantAgent
+        }
+        try {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case start`);
+          notificationManager.publish(notificationRequest,(err,data) => {
+            if (err) {
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(err));
+              expect(true).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }else{
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(data));
+              expect(false).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }
+          })
+        } catch (error) {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+          done();
+        }
+      }).catch((error : BusinessError) => {
+        console.error('Failed to create pixelmap.');
+      })
+    })
+
+    /*
+  * @tc.number: Sub_Notification_Ans_Live_Publish_7600
+  * @tc.name: testLiveNotificationPublishsuccess
+  * @tc.desc: test publish interface fail
+  * @tc.size: LargeTest
+  * @tc.type: Function
+  * @tc.level Level 3
+  */
+    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+      const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
+      const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      image.createPixelMap(color, opts).then((pixelMap : image.PixelMap) => {
+        console.log('Succeeded in creating pixelmap.');
+        //wantAgent对象
+        let wantAgent: _WantAgent;
+        //WantAgentInfo对象
+        let wantAgentInfo: WantAgent.WantAgentInfo = {
+          wants: [
+            {
+              deviceId: 'deviceId',
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EntryAbility',
+              action: 'action1',
+              entities: ['entity1'],
+              type: 'MIMETYPE',
+              uri: 'key={true,true,false}',
+              parameters:
+              {
+                mykey0: 2222,
+                mykey1: [1, 2, 3],
+                mykey2: '[1, 2, 3]',
+                mykey3: 'ssssssssssssssssssssssssss',
+                mykey4: [false, true, false],
+                mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+                mykey6: true,
+              }
+            } as Want
+          ],
+          operationType: WantAgent.OperationType.START_ABILITIES,
+          requestCode: 0,
+          wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+          actionType : WantAgent.OperationType.START_ABILITY,
+          actionFlags : [WantAgent.WantAgentFlags.ONE_TIME_FLAG]
+        };
+        try {
+          WantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            wantAgent = data;
+          }).catch((err: BusinessError) => {
+            console.error('getWantAgent failed! ${err.code} ${err.message}');
+          });
+        } catch (err) {
+          console.error('getWantAgent failed! ${err.code} ${err.message}');
+        }
+        let capsule : notificationManager.NotificationCapsule = {
+          title : 'title',
+          backgroundColor : 'back'
+        }
+        let button : notificationManager.NotificationButton = {
+          names : ['name1','name2']
+        }
+        let time : notificationManager.NotificationTime = {
+          initialTime : 100,
+          isCountDown : undefined
+        }
+        let progresss : notificationManager.NotificationProgress = {
+          isPercentage : true,
+          currentValue : 100
+        }
+        let content : notificationManager.NotificationSystemLiveViewContent = {
+          title: 'title',
+          text : 'text',
+          typeCode : 1,
+          capsule : capsule,
+          button : button,
+          time : time,
+          progress : progresss
+        }
+        let notificationRequest : notificationManager.NotificationRequest = {
+          id : 1,
+          notificationSlotType : notificationManager.SlotType.CUSTOMER_SERVICE,
+          content  : {
+            notificationContentType : notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
+            systemLiveView : content
+          },
+          wantAgent : wantAgent,
+        }
+
+        // 通知slot对象
+        let notificationSlot: notificationManager.NotificationSlot = {
+          notificationType : notificationManager.SlotType.CUSTOMER_SERVICE
+        };
+        notificationManager.isNotificationEnabled().then((data: boolean) => {
+          console.info("isNotificationEnabled success, data: " + JSON.stringify(data));
+        }).catch((err: base.BusinessError) => {
+          console.error(`isNotificationEnabled fail: ${JSON.stringify(err)}`);
+        });
+        try {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case start`);
+          notificationManager.publish(notificationRequest,(err,data) => {
+            if (err) {
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(err));
+              expect(true).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }else{
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(data));
+              expect(false).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }
+          })
+        } catch (error) {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+          done();
+        }
+      }).catch((error : BusinessError) => {
+        console.error('Failed to create pixelmap.');
+      })
+    })
+
+    /*
+ * @tc.number: Sub_Notification_Ans_Live_Publish_7700
+ * @tc.name: testLiveNotificationPublishsuccess
+ * @tc.desc: test publish interface success
+ * @tc.size: LargeTest
+ * @tc.type: Function
+ * @tc.level Level 3
+ */
+    it('testLiveNotificationPublishsuccess', 0, async  (done : Function) => {
+      const TEST_CASE_NAME = 'testLiveNotificationCapsuleTitleForUndefined'
+      const color : ArrayBuffer = new ArrayBuffer(96);  //96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      image.createPixelMap(color, opts).then((pixelMap : image.PixelMap) => {
+        console.log('Succeeded in creating pixelmap.');
+        //wantAgent对象
+        let wantAgent: _WantAgent;
+        //WantAgentInfo对象
+        let wantAgentInfo: WantAgent.WantAgentInfo = {
+          wants: [
+            {
+              deviceId: 'deviceId',
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EntryAbility',
+              action: 'action1',
+              entities: ['entity1'],
+              type: 'MIMETYPE',
+              uri: 'key={true,true,false}',
+              parameters:
+              {
+                mykey0: 2222,
+                mykey1: [1, 2, 3],
+                mykey2: '[1, 2, 3]',
+                mykey3: 'ssssssssssssssssssssssssss',
+                mykey4: [false, true, false],
+                mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+                mykey6: true,
+              }
+            } as Want
+          ],
+          operationType: WantAgent.OperationType.START_ABILITIES,
+          requestCode: 0,
+          wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+          actionType : WantAgent.OperationType.START_ABILITY,
+          actionFlags : [WantAgent.WantAgentFlags.ONE_TIME_FLAG]
+        };
+        try {
+          WantAgent.getWantAgent(wantAgentInfo).then((data) => {
+            wantAgent = data;
+          }).catch((err: BusinessError) => {
+            console.error('getWantAgent failed! ${err.code} ${err.message}');
+          });
+        } catch (err) {
+          console.error('getWantAgent failed! ${err.code} ${err.message}');
+        }
+        let capsule : notificationManager.NotificationCapsule = {
+          title : 'title',
+          backgroundColor : 'back'
+        }
+        let button : notificationManager.NotificationButton = {
+          names : ['name1','name2']
+        }
+        let time : notificationManager.NotificationTime = {
+          initialTime : 100,
+          isCountDown : undefined
+        }
+        let progresss : notificationManager.NotificationProgress = {
+          isPercentage : true,
+          currentValue : 100
+        }
+        let content : notificationManager.NotificationSystemLiveViewContent = {
+          title: 'title',
+          text : 'text',
+          typeCode : 1,
+          capsule : capsule,
+          button : button,
+          time : time,
+          progress : progresss
+        }
+        let notificationRequest : notificationManager.NotificationRequest = {
+          id : 1,
+          notificationSlotType : notificationManager.SlotType.CUSTOMER_SERVICE,
+          content  : {
+            notificationContentType : notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
+            systemLiveView : content
+          },
+          wantAgent : wantAgent,
+        }
+        // addslot回调
+        let addSlotCallBack = (err: base.BusinessError) => {
+          if (err) {
+            console.info("addSlot failed " + JSON.stringify(err));
+          } else {
+            console.info("addSlot success");
+          }
+        }
+        // 通知slot对象
+        let notificationSlot: notificationManager.NotificationSlot = {
+          notificationType : notificationManager.SlotType.CUSTOMER_SERVICE
+        };
+        try {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case start`);
+          notificationManager.publish(notificationRequest,(err,data) => {
+            if (err) {
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(err));
+              expect(true).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }else{
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(data));
+              expect(false).assertTrue();
+              hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+              done();
+            }
+          })
+        } catch (error) {
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `publish failed,data is %{public}s`,JSON.stringify(error));
+          expect(error.code).assertEqual(401);
+          hilog.info(0x000,`${TAG}`,`${TEST_SUITE_NAME}`,`${TEST_CASE_NAME}` + `test case end`);
+          done();
+        }
+      }).catch((error : BusinessError) => {
+        console.error('Failed to create pixelmap.');
+      })
+    })
+
   })
 }
