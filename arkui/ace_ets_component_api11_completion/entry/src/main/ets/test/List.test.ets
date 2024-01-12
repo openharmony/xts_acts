@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,6 +32,13 @@ import QueryNavDestinationInfoNavDestinationJsunit from './AttributeModifier/Que
 import aboutToAppearTest from './ComAttr/ComAttr_aboutToAppear.test.ets';
 import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_strategy.test.ets';
 import TextStyle from './TextApi/TextStyle.test.ets';
+import tabsDemo from './TextApi/tabsDemo.test.ets';
+import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
+import font from './MethodStyle/font.test'
+import ImageAttr from './MethodStyle/ImageAttr.test'
+import menu from './MethodStyle/menu.test'
+import NavigationAttr from './MethodStyle/NavigationAttr.test'
+import textDataDataDetectorConfig from './MethodStyle/textDataDataDetectorConfig.test'
 import dragPreviewOptionsJsSuit from './dragPreviewOptionsJsSuit.test';
 import backgroundEffectJsSuit from './backgroundEffectJsSuit.test';
 import DragActionJsunit from './DragActionJsSuit.test';
@@ -46,8 +53,7 @@ import ToastShowMode from './ToastShowMode.test.ets';
 import ModalBlurStyle from './ModalBlurStyle.test.ets';
 import TouchTestStrategy from './TouchTestStrategy.test.ets';
 
-import tabsDemo from './TextApi/tabsDemo.test.ets';
-import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
+
 import touchPoint from './DragController/touchPoint_Auto.test.ets';
 import previewOptions from './DragController/touchPoint_Disable.test.ets';
 import createDragAction from './DragController/createDragAction.test.ets';
@@ -76,7 +82,10 @@ import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
 
+
+
 export default function testsuite() {
+
   richEditorApi1()
   textInputApi1()
   ScrollTest()
@@ -110,6 +119,13 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
+  font()
+  ImageAttr()
+  menu()
+  NavigationAttr()
+  tabsDemo()
+  TextSelectionMenu()
+  textDataDataDetectorConfig()
   dragPreviewOptionsJsSuit()
   backgroundEffectJsSuit()
   DragActionJsunit()
@@ -123,8 +139,7 @@ export default function testsuite() {
   ToastShowMode()
   ModalBlurStyle()
   TouchTestStrategy()
-  tabsDemo()
-  TextSelectionMenu()
+
   createDragAction()
   setForegroundColor()
   touchPoint()

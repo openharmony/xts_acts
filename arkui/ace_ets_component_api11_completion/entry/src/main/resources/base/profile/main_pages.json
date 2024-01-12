@@ -59,6 +59,11 @@
         "MainAbility/pages/list/listTest",
         "MainAbility/pages/relativecommon/relative",
         "MainAbility/pages/grid/gridte",
+        "MainAbility/pages/MethodStyle/textDataDataDetectorConfig",
+        "MainAbility/pages/MethodStyle/font",
+        "MainAbility/pages/MethodStyle/menu",
+        "MainAbility/pages/MethodStyle/NavigationAttr",
+        "MainAbility/pages/MethodStyle/ImageAttr",
         "MainAbility/pages/folderStack/folder_stack",
 
         "MainAbility/pages/AttributeModifier/SXrenderingStrategy",
