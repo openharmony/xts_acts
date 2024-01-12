@@ -14,35 +14,29 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
+
 export default function CounterEnableTest() {
 
-  const SUITE = 'CounterEnable'
-  const waitUiReadyMs = 500;
-  function sleep(time) {
-    let date = new Date()
-    let start = date.getSeconds()
-    let end = start
-    while ( (end - start) < time ) {
-      let endDate = new Date()
-      end = endDate.getSeconds()
-    }
-  }
+  const SUITE: string = 'CounterEnable'
+  const waitUiReadyMs: number = 500;
 
-  describe('CounterEnableTest', function () {
 
-    beforeEach(async function (done) {
-      let options = {
+  describe('CounterEnableTest', () => {
+
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CounterEnable",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("CounterEnable" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -57,14 +51,13 @@ export default function CounterEnableTest() {
      *tc.name   Counter support maximum and minimum
      *tc.desc   Counter support maximum and minimum
      */
-    it('ArkUI_Counter_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Counter_0100'
+    it('ArkUI_Counter_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Counter_0100'
       console.info(`${SUITE} ${CASE} START`);
 
       sendEventByKey('CounterEnable_Button_1', 10, "")
-      let strJson = getInspectorByKey('CounterEnable_Counter_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual("Counter");
+      let strJson: string = getInspectorByKey('CounterEnable_Counter_1');
+      expect(JSON.parse(strJson).$type).assertEqual("Counter");
 
       console.info(`${SUITE} ${CASE} END`);
       done()
@@ -75,13 +68,12 @@ export default function CounterEnableTest() {
      *tc.name   Counter support maximum and minimum
      *tc.desc   Counter support maximum and minimum
      */
-    it('ArkUI_Counter_0200', 0, async function (done) {
-      let CASE = 'ArkUI_Counter_0200'
+    it('ArkUI_Counter_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Counter_0200'
       console.info(`${SUITE} ${CASE} START`);
       sendEventByKey('CounterEnable_Button_2', 10, "")
       let strJson = getInspectorByKey('CounterEnable_Counter_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual("Counter");
+      expect(JSON.parse(strJson).$type).assertEqual("Counter");
 
       console.info(`${SUITE} ${CASE} END`);
       done()
