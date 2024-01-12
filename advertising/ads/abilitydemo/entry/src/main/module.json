@@ -31,7 +31,7 @@
     "extensionAbilities": [
       {
         "name": "AdsCoreService",
-        "type": "service",
+        "type": "adsService",
         "srcEntry": "./ets/ability/AdsCoreService.ts",
         "description": "AdsCoreService",
         "exported": true,
