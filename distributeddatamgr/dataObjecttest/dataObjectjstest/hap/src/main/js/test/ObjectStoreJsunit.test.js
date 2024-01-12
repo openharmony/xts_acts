@@ -17,7 +17,7 @@ import distributedObject from '@ohos.data.distributedDataObject';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
-var baseLine = 3000; //3 second
+let baseLine = 3000; //3 second
 const CATCH_ERR = -1;
 const TAG = "OBJECTSTORE_TEST";
 
@@ -61,22 +61,22 @@ function statusCallback4(sessionId, networkId, status) {
     expect("restored" == status).assertEqual(true);
 }
 function sleep(delay) {
-    var start = (new Date()).getTime();
+    let start = (new Date()).getTime();
     while((new Date()).getTime() - start >= delay) {
         break;
     }
 }
 
-var tokenID = undefined;
+let tokenID = undefined;
 const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
 async function grantPerm() {
     console.info("====grant Permission start====");
-    var appInfo = await bundle.getApplicationInfo('ohos.acts.dataObject', 0, 100);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.dataObject', 0, 100);
     tokenID = appInfo.accessTokenId;
     console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
-    var atManager = abilityAccessCtrl.createAtManager();
-    var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
+    let atManager = abilityAccessCtrl.createAtManager();
+    let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
     console.info("tokenId" + tokenID + " result:" + result);
     console.info("====grant Permission end====");
 }
@@ -107,10 +107,13 @@ export default function objectStoreTest() {
          * @tc.name: testOn001
          * @tc.desc: object join session and on,object can receive callback when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0600
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn001', 0, function (done) {
             console.info(TAG + "************* testOn001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session1");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + " testOn001 joinSession success: " + objectTest.__sessionId);
@@ -140,10 +143,13 @@ export default function objectStoreTest() {
          * @tc.name: testOn002
          * @tc.desc object join session and no on,obejct can not receive callback when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0400
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn002', 0, function (done) {
             console.info(TAG + "************* testOn002 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session2");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + " testOn002 joinSession success:" + objectTest.__sessionId);
@@ -171,10 +177,13 @@ export default function objectStoreTest() {
          * @tc.desc: object join session and on,then object change data twice,
          *           object can receive two callbacks when data has been changed
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0900
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn003', 0, function (done) {
             console.info(TAG + "************* testOn003 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session3");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + " testOn003 joinSession success:" + objectTest.__sessionId);
@@ -209,10 +218,13 @@ export default function objectStoreTest() {
          * @tc.name: testOn004
          * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4000
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOn004', 0, function (done) {
             console.info(TAG + "************* testOn004 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session4");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testOn004 joinSession success:" + objectTest.__sessionId);
@@ -233,10 +245,13 @@ export default function objectStoreTest() {
          * @tc.name testOff001
          * @tc.desc object join session and on&off,object can not receive callback after off
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0300
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOff001', 0, function (done) {
             console.info(TAG + "************* testOff001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session5");
             if (objectTest != undefined && objectTest != null){
                 console.info(TAG + "testOff001 joinSession success:" + objectTest.__sessionId)
@@ -277,10 +292,13 @@ export default function objectStoreTest() {
          * @tc.name:testOff002
         * @tc.desc object join session and off,object can not receive callback
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0500
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOff002', 0, function (done) {
             console.info(TAG + "************* testOff002 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session6");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testOff002 joinSession success:" + objectTest.__sessionId);
@@ -310,10 +328,13 @@ export default function objectStoreTest() {
          * @tc.name: testMultiObjectOn001
          * @tc.desc: two objects join session and on,then object change data,user can receive two callbacks from two objects
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0800
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMultiObjectOn001', 0, function (done) {
             console.info(TAG + "************* testMultiObjectOn001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session7");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testMultiObjectOn001 joinSession1 success:" + objectTest.__sessionId);
@@ -321,7 +342,7 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + "testMultiObjectOn001 joinSession1 failed");
             }
-            var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
+            let testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
             testObject.setSessionId("testSession1");
             if (testObject != undefined && testObject != null) {
                 console.info(TAG + "testMultiObjectOn001 joinSession2 success:" + testObject.__sessionId);
@@ -364,10 +385,13 @@ export default function objectStoreTest() {
          * @tc.name: testMultiObjectOff001
          * @tc.desc: two objects join session and on&off,then two objects can not receive callbacks
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0700
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMultiObjectOff001', 0, function (done) {
             console.info(TAG + "************* testMultiObjectOff001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session8");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testMultiObjectOn002 joinSession success:" + objectTest.__sessionId);
@@ -376,7 +400,7 @@ export default function objectStoreTest() {
                 console.info(TAG + "testMultiObjectOn002 joinSession failed");
             }
 
-            var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
+            let testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
             testObject.setSessionId("testSession2");
             if (testObject != undefined && testObject != null) {
                 console.info(TAG + "testMultiObjectOn002 joinSession success:" + testObject.__sessionId);
@@ -440,10 +464,13 @@ export default function objectStoreTest() {
          * @tc.name: testChangeSession001
          * @tc.desc: objects join session,then change sessionId
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3900
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testChangeSession001', 0, function (done) {
             console.info(TAG + "************* testChangeSession001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session9");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testChangeSession001 joinSession success:"+ objectTest.__sessionId);
@@ -492,10 +519,13 @@ export default function objectStoreTest() {
          * @tc.name: testUndefinedType001
          * @tc.desc: object use undefined type,can not join session
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0200
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testUndefinedType001', 0, function (done) {
             console.info(TAG + "************* testUndefinedType001 start *************");
-            var undefined_object = distributedObject.createDistributedObject({ name: undefined, age: undefined, isVis: undefined });
+            let undefined_object = distributedObject.createDistributedObject({ name: undefined, age: undefined, isVis: undefined });
             expect(undefined_object == undefined).assertEqual(false);
             try {
                 undefined_object.setSessionId("session11");
@@ -512,10 +542,13 @@ export default function objectStoreTest() {
          * @tc.name: testGenSessionId001
          * @tc.desc: object generate random sessionId
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4100
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testGenSessionId001', 0, function (done) {
             console.info(TAG + "************* testGenSessionId001 start *************");
-            var sessionId = distributedObject.genSessionId();
+            let sessionId = distributedObject.genSessionId();
             expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
             done();
             console.info(TAG + "************* testGenSessionId001 end *************");
@@ -525,11 +558,14 @@ export default function objectStoreTest() {
          * @tc.name: testGenSessionId002
          * @tc.desc: object generate 2 random sessionId and not equal
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0100
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testGenSessionId002', 0, function (done) {
             console.info(TAG + "************* testGenSessionId002 start *************");
-            var sessionId1 = distributedObject.genSessionId();
-            var sessionId2 = distributedObject.genSessionId();
+            let sessionId1 = distributedObject.genSessionId();
+            let sessionId2 = distributedObject.genSessionId();
             expect(sessionId1 != sessionId2).assertEqual(true);
 
             done();
@@ -540,11 +576,15 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus001
          * @tc.desc: object set a listener to watch another object online/offline
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3700
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus001', 0, function (done) {
             console.info(TAG + "************* testOnStatus001 start *************");
             console.info(TAG + "start watch status");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            expect(objectTest == undefined).assertEqual(false);
             objectTest.on("status", statusCallback1);
             console.info(TAG + "watch success");
             objectTest.off("status");
@@ -557,11 +597,14 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus002
          * @tc.desc: object set several listener and can unset specified listener
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3600
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus002', 0, function (done) {
             console.info(TAG + "************* testOnStatus002 start *************");
             console.info(TAG + "start watch status");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(objectTest == undefined).assertEqual(false);
 
             objectTest.on("status", statusCallback1);
@@ -582,11 +625,14 @@ export default function objectStoreTest() {
          * @tc.name: testOnStatus003
          * @tc.desc: object set several listener and can unWatch all watcher
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3500
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testOnStatus003', 0, function (done) {
             console.info(TAG + "************* testOnStatus003 start *************");
             console.info(TAG + "start watch status");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(objectTest == undefined).assertEqual(false);
 
             objectTest.on("status", statusCallback1);
@@ -605,10 +651,13 @@ export default function objectStoreTest() {
          * @tc.name: testComplex001
          * @tc.desc: object can get/set complex data
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3800
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testComplex001', 0, function (done) {
             console.info(TAG + "************* testComplex001 start *************");
-            var complexObject = distributedObject.createDistributedObject({
+            let complexObject = distributedObject.createDistributedObject({
                 name: undefined,
                 age: undefined,
                 parent: undefined,
@@ -641,10 +690,13 @@ export default function objectStoreTest() {
          * @tc.name: testMaxSize001
          * @tc.desc: object can get/set data under 4MB size
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3400
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testMaxSize001', 0, function (done) {
             console.info(TAG + "************* testMaxSize001 start *************");
-            var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session13");
             if (objectTest != undefined && objectTest != null) {
                 console.info(TAG + "testMaxSize001 joinSession session13 success:" + objectTest.__sessionId);
@@ -653,7 +705,7 @@ export default function objectStoreTest() {
                 console.info(TAG + "testMaxSize001 joinSession session13 failed");
             }
             //maxString = 32byte
-            var maxString = "12345678123456781234567812345678".repeat(131072);
+            let maxString = "12345678123456781234567812345678".repeat(131072);
             if (objectTest != undefined && objectTest != null) {
                 objectTest.name = maxString;
                 objectTest.age = 42;
@@ -672,10 +724,13 @@ export default function objectStoreTest() {
          * @tc.name: testPerformance001
          * @tc.desc: performanceTest for set/get data
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_4200
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testPerformance001', 0, function (done) {
             console.info(TAG + "************* testPerformance001 start *************");
-            var complexObject = distributedObject.createDistributedObject({
+            let complexObject = distributedObject.createDistributedObject({
                 name: undefined,
                 age: undefined,
                 parent: undefined,
@@ -683,8 +738,8 @@ export default function objectStoreTest() {
             });
             expect(complexObject == undefined).assertEqual(false);
 
-            var startTime = new Date().getTime();
-            for (var i = 0;i < 100; i++) {
+            let startTime = new Date().getTime();
+            for (let i = 0;i < 100; i++) {
                 complexObject.setSessionId("session14");
                 expect("session14" == complexObject.__sessionId).assertEqual(true);
 
@@ -705,8 +760,8 @@ export default function objectStoreTest() {
                 complexObject.off("change");
                 console.info(TAG + "end unWatch success");
             }
-            var endTime = new Date().getTime();
-            var totalTime = endTime - startTime;
+            let endTime = new Date().getTime();
+            let totalTime = endTime - startTime;
             console.info("testPerformance001 totalTime = " + totalTime);
             console.info("testPerformance001 baseLine = " + baseLine);
             expect(totalTime < baseLine).assertEqual(true);
@@ -719,10 +774,13 @@ export default function objectStoreTest() {
          * @tc.name: testSave001
          * @tc.desc: Save object <Promise>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1300
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
         it('testSave001', 0, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
-            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
     
             g_object.setSessionId("testSession001");
@@ -755,10 +813,13 @@ export default function objectStoreTest() {
          * @tc.name: testSave002
          * @tc.desc: Save object
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1400
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testSave002', 0, async function (done) {
             console.info(TAG + "************* testSave002 start *************");
-            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
     
             g_object.setSessionId("testSession002");
@@ -792,10 +853,13 @@ export default function objectStoreTest() {
          * @tc.name: testRevokeSave001
          * @tc.desc: Revoke save object <Promise>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1100
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testRevokeSave001', 0, async function (done) {
             console.info(TAG + "************* testRevokeSave001 start *************");
-            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
     
             g_object.setSessionId("testSession003");
@@ -838,10 +902,13 @@ export default function objectStoreTest() {
          * @tc.name: testRevokeSave002
          * @tc.desc: Revoke save object <Callback>
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1200
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         * @tc.level: Level 2
          */
          it('testRevokeSave002', 0, async function () {
             console.info(TAG + "************* testRevokeSave002 start *************");
-            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
     
             g_object.setSessionId("testSession004");
