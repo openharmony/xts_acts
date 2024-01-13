@@ -1681,6 +1681,50 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
             }
         })
     })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1280
+     * @tc.name      : testRecover
+     * @tc.desc      : test the function of Recover
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testRecover', 0, async function (done) {
+        let msgStr = 'testRecover';
+        console.log(msgStr + ' begin');
+        ohosWindow.getLastWindow(context).then(wnd => {
+          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+          expect(wnd != null).assertTrue();
+          try {
+            let promise = wnd.recover();
+            console.log(msgStr + "after recover")
+            promise.then(() => {
+              console.info(msgStr + 'Succeeded in recovering the window.');
+              expect(true).assertTrue()
+              done()
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
+              if (err.code == 1300001) {
+                expect(true).assertTrue()
+                done()
+              } else {
+                expect().assertFail()
+                done()
+              }
+            });
+          } catch (exception) {
+            console.error(msgStr + ' Failed to recover the window. Cause: ' + JSON.stringify(exception));
+            if (exception.code == 1300001) {
+              expect(true).assertTrue()
+              done()
+            } else {
+              expect().assertFail();
+              done();
+            }
+          }
+      })
+    })
 
   })
 }
