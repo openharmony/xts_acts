@@ -182,6 +182,12 @@ export default function alignSelfTest() {
       if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow') {
         //When alignSelf : ItemAlign.Auto or ItemAlign.Start
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
+          if (data.viewObj.$attrs.id == 'Navigation') {
+            let areaHeight = await CommonTest.getAvoidArea();
+            //Confirm that the height attribute values have been successfully set.
+            let top = rect.top;
+            rect.top =  top + areaHeight;
+          }
           expect(rect.top).assertEqual(parentRect.top);
           expect(rect.left).assertEqual(parentRect.left);
         } else if (data.testValue.describe == 'SetCenter') {
@@ -202,6 +208,14 @@ export default function alignSelfTest() {
         }
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn') {
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
+
+          if (data.viewObj.$attrs.id == 'Navigation') {
+            let areaHeight = await CommonTest.getAvoidArea();
+            //Confirm that the height attribute values have been successfully set.
+            let top = rect.top;
+            rect.top =  top + areaHeight;
+          }
+
           //When alignSelf : ItemAlign.Auto or ItemAlign.Start
           expect(rect.top).assertEqual(parentRect.top);
           expect(rect.left).assertEqual(parentRect.left);
@@ -209,11 +223,27 @@ export default function alignSelfTest() {
           //When alignSelf : ItemAlign.Center
           let rectX = Utils.getRectHorizontalCenterX(data.pageConfig.componentKey);
           let parentRectX = Utils.getRectHorizontalCenterX(data.pageConfig.parentComponentKey);
+
+          if (data.viewObj.$attrs.id == 'Navigation') {
+            let areaHeight = await CommonTest.getAvoidArea();
+            //Confirm that the height attribute values have been successfully set.
+            let top = rect.top;
+            rect.top =  top + areaHeight;
+          }
+
           console.info('[' + data.caseTag + '] rectX : ' + rectX);
           console.info('[' + data.caseTag + '] parentRectX : ' + parentRectX);
           expect(rectX).assertEqual(parentRectX);
           expect(rect.top).assertEqual(parentRect.top);
         } else if (data.testValue.describe == 'SetEnd') {
+
+          if (data.viewObj.$attrs.id == 'Navigation') {
+            let areaHeight = await CommonTest.getAvoidArea();
+            //Confirm that the height attribute values have been successfully set.
+            let top = rect.top;
+            rect.top =  top + areaHeight;
+          }
+
           //When alignSelf : ItemAlign.End
           expect(rect.top).assertEqual(parentRect.top);
           expect(rect.right).assertEqual(parentRect.right);
@@ -224,6 +254,14 @@ export default function alignSelfTest() {
       } else if (data.pageConfig.containerView == 'FlexRowReverse') {
         //Special parent component
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
+          
+          if (data.viewObj.$attrs.id == 'Navigation') {
+            let areaHeight = await CommonTest.getAvoidArea();
+            //Confirm that the height attribute values have been successfully set.
+            let top = rect.top;
+            rect.top =  top + areaHeight;
+          }
+
           //When alignSelf : ItemAlign.Auto or ItemAlign.Start
           expect(rect.top).assertEqual(parentRect.top);
           expect(rect.right).assertEqual(parentRect.right);
