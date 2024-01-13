@@ -15,8 +15,7 @@
                 "ActsCrossplatformFeatureATest.hap",
                 "ActsCrossplatformFeatureBTest.hap",
                 "ActsCrossplatformFeatureCTest.hap",
-                "ActsCrossplatformFeatureDTest.hap",
-                "ActsCrossplatformAbilityTest.hap"
+                "ActsCrossplatformFeatureDTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true,

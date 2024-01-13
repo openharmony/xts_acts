@@ -20,10 +20,12 @@ export default class Main3Ability extends UIAbility {
     onCreate(want, launchParam) {
         console.log('testTag', '%{public}s', 'Ability onCreate');
         globalThis.want = want;
+        globalThis.main3Context = this.context;
     }
 
     onDestroy() {
         console.log('testTag', '%{public}s', 'Ability onDestroy');
+        globalThis.main3Context = undefined;
     }
 
     onWindowStageCreate(windowStage: window.WindowStage) {
