@@ -106,6 +106,7 @@
         "MainAbility/pages/arkuinode/arkuinodeEvent",
         "MainAbility/pages/arkuinode/arkuirendernode",
         "MainAbility/pages/symbolSpanApi/symbolspan",
-        "MainAbility/pages/AttributeModifier/NavDestinationInfoState"
+        "MainAbility/pages/AttributeModifier/NavDestinationInfoState",
+        "MainAbility/pages/XComponentNodeChage"
     ]
 }

@@ -116,6 +116,7 @@ import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
 import arkuiNodeRenderTest from './arkuinode/arkuinodeRender.test.ets'
 import symbolSpanApi2Test from './symbolSpanApi/symbolSpanApi2.test'
 import NavDestinationInfoStateJsunit  from './AttributeModifier/NavDestinationInfoStateJsunit.test'
+import XComponentNodeChageJsSuit from './XComponentNodeChageJsSuit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -221,4 +222,5 @@ export default function testsuite() {
   arkuiNodeRenderTest()
   symbolSpanApi2Test()
   NavDestinationInfoStateJsunit()
+  XComponentNodeChageJsSuit()
 }
