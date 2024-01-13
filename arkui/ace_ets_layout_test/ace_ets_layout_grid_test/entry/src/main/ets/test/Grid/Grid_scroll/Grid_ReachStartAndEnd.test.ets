@@ -104,7 +104,7 @@ export default function Grid_ReachStartAndEnd() {
 	    let gridRect = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
       await driver.fling({x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.5+gridRect.top)},
-	    {x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.3+gridRect.top)},5,2000);
+	    {x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.3+gridRect.top)},5,4000);
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('Grid_ReachStartAndEnd_tex2')
