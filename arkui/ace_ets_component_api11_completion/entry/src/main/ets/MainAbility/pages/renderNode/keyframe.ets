@@ -20,6 +20,7 @@ import { UIContext } from '@ohos.arkui.UIContext';
 struct KeyframeDemo {
   @State myScale: number = 1.0;
   @State message: string = 'hello';
+  @State DragPreviewMode1: DragPreviewMode = DragPreviewMode.DISABLE_SCALE
   uiContext: UIContext | undefined = undefined;
   aboutToAppear() {
     this.uiContext = this.getUIContext?.();
