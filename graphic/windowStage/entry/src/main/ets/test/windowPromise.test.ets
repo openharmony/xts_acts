@@ -1484,7 +1484,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin')
       try {
         let windowClass = await ohosWindow.getLastWindow(context);
-        let promise = windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
+        let specificSystemBar: ohosWindow.SpecificSystemBar = 'navigationIndicator'
+        let promise = windowClass.setSpecificSystemBarEnabled(specificSystemBar, false);
         promise.then(() => {
           console.log(msgStr + 'Succeeded in setting the system bar to be invisible.');
           expect(true).assertTrue();
