@@ -28,6 +28,9 @@ import wantConstant from "@ohos.app.ability.wantConstant"
 import formBindingData from '@ohos.app.form.formBindingData';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
 import fs from '@ohos.file.fs';
+import insightIntent from '@ohos.app.ability.insightIntent'
+import startOptions from '@ohos.app.ability.StartOptions'
+import ability from '@ohos.ability.ability'
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -327,8 +330,14 @@ export default function ApiCoverTest() {
         let eventHub: common.EventHub = context.eventHub;
         let abilityResult: common.AbilityResult;
         let connectOptions: common.ConnectOptions;
-
+        let abilityStartCllback: common.AbilityStartCallback;
+        let pacMap: common.PacMap;
+        let FApacMap: ability.PacMap;
+        let vpnExtensionContext: common.VpnExtensionContext;
         console.log("killAllProcesses:" + JSON.stringify(appContext.killAllProcesses));
+        console.log("vpnExtensionContext:" + JSON.stringify(vpnExtensionContext));
+        console.log("abilityStartCllback:" + JSON.stringify(abilityStartCllback));
+        console.log("pacMap:" + JSON.stringify(pacMap));
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         let abilityDelegatorArgs: abilityDelegatorRegistry.AbilityDelegatorArgs;
@@ -502,6 +511,7 @@ export default function ApiCoverTest() {
       expect("ohos.extra.param.key.ability_name").assertEqual(formInfoNew.FormParam.ABILITY_NAME_KEY)
       expect('ohos.extra.param.key.form_customize').assertEqual(formInfoNew.FormParam.PARAM_FORM_CUSTOMIZE_KEY)
       expect('ohos.extra.param.key.form_launch_reason').assertEqual(formInfoNew.FormParam.LAUNCH_REASON_KEY)
+      expect('ohos.extra.param.key.form_rendering_mode').assertEqual(formInfoNew.FormParam.FORM_RENDERING_MODE_KEY)
       expect(1).assertEqual(formInfoNew.LaunchReason.FORM_DEFAULT);
       expect(2).assertEqual(formInfoNew.LaunchReason.FORM_SHARE);
       expect(0).assertEqual(formInfoNew.FormState.DEFAULT)
@@ -515,6 +525,7 @@ export default function ApiCoverTest() {
       expect(3).assertEqual(formInfoNew.FormDimension.Dimension_2_4)
       expect(4).assertEqual(formInfoNew.FormDimension.Dimension_4_4)
       expect(5).assertEqual(formInfoNew.FormDimension.Dimension_2_1)
+      expect(6).assertEqual(formInfoNew.FormDimension.DIMENSION_1_1)
       expect(1).assertEqual(formInfoNew.FormType.JS);
       expect(2).assertEqual(formInfoNew.FormType.eTS);
       expect(1).assertEqual(formInfoNew.VisibilityType.FORM_VISIBLE);
@@ -537,6 +548,7 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_Test_AbilityConstant_0100', 0, async function (done) {
       expect(1).assertEqual(abilityConstant.LaunchReason.START_ABILITY)
+      expect(9).assertEqual(abilityConstant.LaunchReason.INSIGHT_INTENT)
       expect(1).assertEqual(abilityConstant.LastExitReason.ABILITY_NOT_RESPONDING)
       expect(2).assertEqual(abilityConstant.LastExitReason.NORMAL)
       expect(3).assertEqual(abilityConstant.LastExitReason.CPP_CRASH)
@@ -551,11 +563,48 @@ export default function ApiCoverTest() {
       expect(5).assertEqual(abilityConstant.LaunchReason.SHARE)
       expect(0).assertEqual(abilityConstant.ContinueState.ACTIVE)
       expect(1).assertEqual(abilityConstant.ContinueState.INACTIVE)
+      
       expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY)
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
       expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART)
       done()
+    });
+
+    /*
+     * @tc.number  SUB_AA_Test_AbilityConstant_0100
+     * @tc.name    Test abilityConstant.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_InsightIntent_0100', 0, async function (done) {
+      let startOp:startOptions = {
+        displayId:0,
+        withAnimation:false,
+        windowLeft:100,
+        windowTop:100,
+        windowWidth:100,
+        windowHeight:100,
+      }
+      let startWant ={
+        deviceId:"",
+        bundleName:"ohos.acts.aafwk.test.stagesupplement",
+        abilityName:"MainAbility3",
+      }
+      expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND)
+      expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND)
+      expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
+      expect(3).assertEqual(insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY)
+      globalThis.abilityContext.startAbility(startWant, startOp, (err, data)=>{
+        if(err.code == 0){
+           console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
+           expect().assertFail()
+        }else{
+          console.info("SUB_AA_FMS_AbilityStage_0100===failed===")
+          expect().assertEqual(16000050)
+          done()
+        }
+      })
     });
 
     /*
