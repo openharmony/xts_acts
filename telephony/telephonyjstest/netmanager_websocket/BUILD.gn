@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("netmanager_websocket") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "sslcertverify:ActsNetworkManagerSSLCertVerifyTest" ]
+    deps = [
+      "sslcertverify:ActsNetworkManagerSSLCertVerifyTest",
+      "websocketcertverify:ActsNetworkManagerWebSocketCertVerifyTest",
+    ]
   }
 }
