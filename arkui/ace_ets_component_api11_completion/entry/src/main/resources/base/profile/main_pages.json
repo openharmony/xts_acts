@@ -101,6 +101,11 @@
         "MainAbility/pages/UIContext/getUIObserver",
         "MainAbility/pages/UIContext/getDragController",
         "MainAbility/pages/bindPopup/customPopup",
-        "MainAbility/pages/bindPopup/popup"
+        "MainAbility/pages/bindPopup/popup",
+	"MainAbility/pages/textInputApi/input_keytype",
+        "MainAbility/pages/arkuinode/arkuinodeEvent",
+        "MainAbility/pages/arkuinode/arkuirendernode",
+        "MainAbility/pages/symbolSpanApi/symbolspan",
+        "MainAbility/pages/AttributeModifier/NavDestinationInfoState"
     ]
 }
