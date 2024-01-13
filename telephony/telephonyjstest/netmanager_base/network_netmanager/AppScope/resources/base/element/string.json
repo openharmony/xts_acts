@@ -2,11 +2,11 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsNetmanagerNdkTest"
+      "value": "ActsNetConnTest"
     },
 	{
       "name": "description_application",
-      "value": "ActsNetmanagerNdkTest"
+      "value": "ActsNetConnTest"
     }
   ]
 }

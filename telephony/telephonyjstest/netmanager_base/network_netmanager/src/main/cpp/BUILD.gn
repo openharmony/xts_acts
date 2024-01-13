@@ -16,14 +16,14 @@ import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
 
 config("config") {
-  visibility = [ ":*" ]
+    visibility = [ ":*" ]
 
-  cflags = [
-    "-Wall",
-    "-Werror",
-    "-g3",
-    "-Wunused-variable",
-  ]
+    cflags = [
+        "-Wall",
+        "-Werror",
+        "-g3",
+        "-Wunused-variable",
+    ]
 }
 
 NETMANAGER_ROOT_DIR = "//foundation/communication/netmanager_base/"
@@ -31,25 +31,25 @@ NETMANAGER_ROOT_DIR = "//foundation/communication/netmanager_base/"
 config("public_config") {
 }
 
-ohos_shared_library("entry") {
-  testonly = true
-  subsystem_name = "communication"
-  part_name = "netmanager_base"
-  sources = [ "./netConnectionNdkTest.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
+ohos_shared_library("connection_ndk_test") {
+    testonly = true
+    subsystem_name = "communication"
+    part_name = "netmanager_base"
+    sources = [ "./net_connection_ndk_test.cpp" ]
+    libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
-  include_dirs = [
-    "../cpp",
-    "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient/include/"
-  ]
-  configs = [ ":config" ]
+    include_dirs = [
+        "../cpp",
+        "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient/include/"
+    ]
+    configs = [ ":config" ]
 
-  deps = [ "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient:net_connection" ]
-  
-  external_deps = [
-    "hilog:libhilog",
-    "napi:ace_napi",
-  ]
+    deps = [ "$NETMANAGER_ROOT_DIR/interfaces/kits/c/netconnclient:net_connection" ]
 
-  output_extension = "so"
+    external_deps = [
+        "hilog:libhilog",
+        "napi:ace_napi",
+    ]
+
+    output_extension = "so"
 }

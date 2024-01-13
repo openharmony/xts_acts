@@ -17,8 +17,7 @@
 #include "net_connection.h"
 #include "net_connection_type.h"
 
-static napi_value getNetCapabilities(napi_env env, napi_callback_info info)
-{
+static napi_value getNetCapabilities(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -32,17 +31,16 @@ static napi_value getNetCapabilities(napi_env env, napi_callback_info info)
         napi_create_int32(env, ret, &result);
         return result;
     } else {
-      NetConn_NetHandle netHandle;
-      OH_NetConn_GetDefaultNet(&netHandle);
-      NetConn_NetCapabilities netCapacities;
-      ret = OH_NetConn_GetNetCapabilities(&netHandle, &netCapacities);
-      napi_create_int32(env, ret, &result);
-      return result;
+        NetConn_NetHandle netHandle;
+        OH_NetConn_GetDefaultNet(&netHandle);
+        NetConn_NetCapabilities netCapacities;
+        ret = OH_NetConn_GetNetCapabilities(&netHandle, &netCapacities);
+        napi_create_int32(env, ret, &result);
+        return result;
     }
 }
 
-static napi_value getAllNets(napi_env env, napi_callback_info info)
-{
+static napi_value getAllNets(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -74,9 +72,9 @@ static napi_value getConnectionProperties(napi_env env, napi_callback_info info)
     napi_value result;
     
     if (netId == -1) {
-      ret = OH_NetConn_GetConnectionProperties(NULL,NULL);
-      napi_create_int32(env, ret, &result);
-      return result;
+        ret = OH_NetConn_GetConnectionProperties(NULL,NULL);
+        napi_create_int32(env, ret, &result);
+        return result;
     } else {
         NetConn_ConnectionProperties netProp;
         NetConn_NetHandle netHandle;
@@ -129,8 +127,7 @@ static napi_value hasDefaultNet(napi_env env, napi_callback_info info) {
     }
 }
 
-static napi_value isDefaultNetMetered(napi_env env, napi_callback_info info)
-{
+static napi_value isDefaultNetMetered(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -151,14 +148,17 @@ static napi_value isDefaultNetMetered(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value getDefaultHttpProxy(napi_env env, napi_callback_info info)
-{
+static napi_value getDefaultHttpProxy(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
+
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
     int32_t ret = 0;
+
     int32_t netId;
     napi_get_value_int32(env, args[0], &netId);
+
     napi_value result;
 
     if (netId == -1) {
@@ -194,7 +194,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "entry",
+    .nm_modname = "connectionNdkTest",
     .nm_priv = ((void*)0),
     .reserved = { 0 },
 };

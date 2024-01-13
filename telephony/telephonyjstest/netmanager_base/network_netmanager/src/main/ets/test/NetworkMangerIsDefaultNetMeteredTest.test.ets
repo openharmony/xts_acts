@@ -13,9 +13,16 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-import testNapi from 'libentry.so'
+import testNapi from 'libconnection_ndk_test.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+
+function expectFalse() {
+  try {
+    expect().assertFail();
+  } catch (err) {
+    console.info('assertion failure');
+  }
+};
 
 export default function abilityTest() {
   describe('NetworkMangerIsDefaultNetMeteredTest', () => {
@@ -38,33 +45,52 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     });
+
+    let error_number = -1;
+    let success_number = 11111111;
+
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0100
-     * @tc.name    test_isDefaultNetMetered401
+     * @tc.name    Test_isDefaultNetMetered_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_isDefaultNetMetered401', 0, () => {
-      let testNumber = -1;
-      let codeNumber = testNapi.isDefaultNetMetered(testNumber);
-      expect(codeNumber).assertEqual(401)
-      console.log("Test testNumber 401(param error)" + codeNumber);
+    it('Test_isDefaultNetMetered_0100', 0, async (done: Function) => {
+      let caseName = "Test_isDefaultNetMetered_0100";
+      let codeNumber = testNapi.isDefaultNetMetered(error_number);
+      if (codeNumber != 401) {
+        console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
+        expectFalse();
+        done();
+      } else {
+        console.log(`${caseName} success, data: ${JSON.stringify(codeNumber)}`)
+        expect(codeNumber).assertEqual(401)
+        done();
+      }
     })
+
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0200
-     * @tc.name    test_isDefaultNetMetered0
+     * @tc.name    Test_isDefaultNetMetered_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_isDefaultNetMetered0', 0, () => {
-      let testNumber = 1111111;
-      let codeNumber = testNapi.isDefaultNetMetered(testNumber);
-      expect(codeNumber).assertEqual(0)
-      console.log("Test testNumber 0(SUCCESS)" + codeNumber);
+    it('Test_isDefaultNetMetered_0200', 0, async (done: Function) => {
+      let caseName = "Test_isDefaultNetMetered_0200";
+      let codeNumber = testNapi.isDefaultNetMetered(success_number);
+      if (codeNumber != 0) {
+        console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
+        expectFalse();
+        done();
+      } else {
+        console.log(`${caseName} success, data: ${JSON.stringify(codeNumber)}`)
+        expect(codeNumber).assertEqual(0)
+        done();
+      }
     })
   })
 }

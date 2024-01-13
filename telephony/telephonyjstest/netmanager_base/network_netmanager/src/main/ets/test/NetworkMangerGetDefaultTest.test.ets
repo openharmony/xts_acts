@@ -25,7 +25,7 @@ function expectFalse() {
 };
 
 export default function abilityTest() {
-  describe('NetworkMangerGetAllNetTest', () => {
+  describe('NetworkMangerNetConnectionTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -47,19 +47,19 @@ export default function abilityTest() {
     });
 
     let error_number = -1;
-    let success_number = 1111;
+    let success_number = 11111111;
 
     /**
-     * @tc.number   NETWORKMANAGER_CONNECTION_GETALLNETS_0100
-     * @tc.name    test_getAllNets401
+     * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0100
+     * @tc.name    Test_getDefaultNet_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getAllNets_0100', 0, async (done: Function) => {
-      let caseName = "Test_getAllNets_0100";
-      let codeNumber = testNapi.getAllNets(error_number);
+    it('Test_getDefaultNet_0100', 0, async (done: Function) => {
+      let caseName = "Test_getDefaultNet_0100";
+      let codeNumber = testNapi.getDefaultNet(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -72,16 +72,16 @@ export default function abilityTest() {
     })
 
     /**
-     * @tc.number   NETWORKMANAGER_CONNECTION_GETALLNETS_0200
-     * @tc.name    test_getAllNets0
+     * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0200
+     * @tc.name    Test_getDefaultNet_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getAllNets_0200', 0, async (done: Function) => {
-      let caseName = "Test_getAllNets_0200";
-      let codeNumber = testNapi.getAllNets(success_number);
+    it('Test_getDefaultNet_0200', 0, async (done: Function) => {
+      let caseName = "Test_getDefaultNet_0200";
+      let codeNumber = testNapi.getDefaultNet(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();

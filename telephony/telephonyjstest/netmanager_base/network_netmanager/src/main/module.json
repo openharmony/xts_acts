@@ -1,7 +1,7 @@
 {
   "module": {
-    "name": "entry",
-    "type": "entry",
+    "name": "ActsNetConnTest_test",
+    "type": "feature",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [

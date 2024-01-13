@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -40,7 +39,7 @@ export default function abilityTest() {
     });
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0100
-     * @tc.name    TestNetConnection
+     * @tc.name    test_getDefaultNet401
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
@@ -54,8 +53,8 @@ export default function abilityTest() {
     })
 
     /**
-     * NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0200
-     * @tc.name    TestNetConnection
+     * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0200
+     * @tc.name    test_getDefaultNet0
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
