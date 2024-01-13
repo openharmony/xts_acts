@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnection_ndk_test.so'
+import testNapi from 'libconnectionndktest.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 function expectFalse() {

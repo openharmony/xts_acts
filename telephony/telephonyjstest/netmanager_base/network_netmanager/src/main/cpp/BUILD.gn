@@ -31,7 +31,7 @@ NETMANAGER_ROOT_DIR = "//foundation/communication/netmanager_base/"
 config("public_config") {
 }
 
-ohos_shared_library("connection_ndk_test") {
+ohos_shared_library("connectionndktest") {
   testonly = true
   subsystem_name = "communication"
   part_name = "netmanager_base"

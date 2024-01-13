@@ -27,7 +27,7 @@ ohos_js_hap_suite("ActsNetConnTest") {
   subsystem_name = "communication"
   part_name = "netmanager_base"
   shared_libraries = [
-    "./src/main/cpp:connection_ndk_test",
+    "./src/main/cpp:connectionndktest",
     ":libcppsharedso",
   ]
 }
