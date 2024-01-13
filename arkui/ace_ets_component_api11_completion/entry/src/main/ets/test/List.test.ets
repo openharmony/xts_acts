@@ -108,6 +108,8 @@ import RichEditorApi2 from './AttrApi/RichEditorApi2.test'
 import SelectAttr from './AttrApi/SelectAttr.test'
 import getUIObserver from './UIContext/getUIObserver.test';
 import getDragController from './UIContext/getDragController.test';
+import customPopup from './bindPopup/customPopup.test';
+import popup from './bindPopup/popup.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -206,4 +208,6 @@ export default function testsuite() {
   symbolSpanApi1()
   getUIObserver()
   getDragController()
+  customPopup()
+  popup()
 }

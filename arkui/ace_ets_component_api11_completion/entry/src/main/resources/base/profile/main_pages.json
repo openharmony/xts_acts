@@ -99,6 +99,8 @@
         "MainAbility/pages/AttrApi/RichEditorApi2",
         "MainAbility/pages/AttrApi/SelectAttr",
         "MainAbility/pages/UIContext/getUIObserver",
-        "MainAbility/pages/UIContext/getDragController"
+        "MainAbility/pages/UIContext/getDragController",
+        "MainAbility/pages/bindPopup/customPopup",
+        "MainAbility/pages/bindPopup/popup"
     ]
 }
