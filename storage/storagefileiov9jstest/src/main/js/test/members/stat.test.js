@@ -18,6 +18,11 @@ import {
     describe, it, expect,
   } from '../Common';
 
+const LocationType = {
+  'LOCAl': 1,
+  'CLOUD': 2,
+}
+
 export default function fileIOStat() {
 describe('fileIO_fs_stat', function () {
 
@@ -2379,6 +2384,34 @@ describe('fileIO_fs_stat', function () {
       });
     } catch (e) {
       console.log('fileIO_stat_async_location_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_LOCATION_0200
+   * @tc.name fileIO_stat_async_location_002
+   * @tc.desc Test the location member of class Stat. Promise.
+   * Enter the path or fd parameter to get stat.location is CLOUD.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_location_002', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_location_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath);
+      let stat = await fileIO.stat(file.fd);
+      let filelocation = LocationType.CLOUD;
+      expect(filelocation == 2).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_stat_async_location_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
