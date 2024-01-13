@@ -81,7 +81,7 @@ static napi_value getConnectionProperties(napi_env env, napi_callback_info info)
         NetConn_ConnectionProperties netProp;
         NetConn_NetHandle netHandle;
         OH_NetConn_GetDefaultNet(&netHandle);
-        ret = OH_NetConn_GetConnectionProperties(&netHandle,&netProp);
+        ret = OH_NetConn_GetConnectionProperties(&netHandle, &netProp);
         napi_create_int32(env, ret, &result);
         return result;
     }
