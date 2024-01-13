@@ -484,7 +484,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest016, TestSize.Level
     double fontSize = 30;
     OH_Drawing_SetTextStyleFontSize(txtStyle, fontSize);
     OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
-    // OH_Drawing_SetTextStyleBaseLine(txtStyle, TEXT_BASELINE_ALPHABETIC);
     bool halfLeading = true;
     OH_Drawing_SetTextStyleHalfLeading(txtStyle, halfLeading);
     OH_Drawing_SetTextStyleBaseLine(txtStyle, TEXT_BASELINE_ALPHABETIC);
@@ -494,7 +493,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest016, TestSize.Level
 
     const char* text = "OpenHarmony\n";
     OH_Drawing_TypographyHandlerAddText(handler, text);
-    // OH_Drawing_TypographyHandlerPopTextStyle(handler);
     OH_Drawing_PlaceholderSpan placeholderSpan = {20, 40,
         ALIGNMENT_OFFSET_AT_BASELINE, TEXT_BASELINE_ALPHABETIC, 10};
     OH_Drawing_TypographyHandlerAddPlaceholder(handler, &placeholderSpan);
@@ -545,9 +543,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest016, TestSize.Level
 HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest017, TestSize.Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
-    // OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_GREEDY);
-    // OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_HIGH_QUALITY);
-
     OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
 #ifndef USE_GRAPHIC_TEXT_GINE
     EXPECT_EQ(ConvertToOriginalText(typoStyle)->breakStrategy_, BreakStrategy::BreakStrategyBalanced);
@@ -564,9 +559,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest017, TestSize.Level
 HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest018, TestSize.Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
-    // OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_NORMAL);
-    // OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_BREAK_ALL);
-
     OH_Drawing_SetTypographyTextWordBreakType(typoStyle, WORD_BREAK_TYPE_BREAK_WORD);
 #ifndef USE_GRAPHIC_TEXT_GINE
     EXPECT_EQ(ConvertToOriginalText(typoStyle)->wordBreakType_, WordBreakType::WordBreakTypeBreakWord);
@@ -595,9 +587,6 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest019, TestSize.Level
 #else
     EXPECT_EQ(ConvertToOriginalText(typoStyle)->ellipsisModal, EllipsisModal::HEAD);
 #endif
-    // OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, ELLIPSIS_MODAL_MIDDLE);
-    // OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, ELLIPSIS_MODAL_TAIL);
-    // OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, -1);
 
 }
 
