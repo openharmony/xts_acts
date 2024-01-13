@@ -113,6 +113,12 @@ import appendChildTest from './renderNode/appendChild.test.ets';
 import drawContextGetSizeTest from './renderNode/drawContextGetSize.test.ets';
 import keyframeTest from './renderNode/keyframe.test.ets';
 
+import textInputApiTest from './textInputApi/textinputkeyNewLine.test.ets'
+import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
+import arkuiNodeRenderTest from './arkuinode/arkuinodeRender.test.ets'
+import symbolSpanApi2Test from './symbolSpanApi/symbolSpanApi2.test'
+import NavDestinationInfoStateJsunit  from './AttributeModifier/NavDestinationInfoStateJsunit.test'
+
 export default function testsuite() {
   getClipToFrameJsunit()
   getOpacityJsunit()
@@ -212,4 +218,9 @@ export default function testsuite() {
   appendChildTest()
   drawContextGetSizeTest()
   keyframeTest()
+  textInputApiTest()
+  arkuiNodeEventTest()
+  arkuiNodeRenderTest()
+  symbolSpanApi2Test()
+  NavDestinationInfoStateJsunit()
 }

@@ -101,6 +101,11 @@
         "MainAbility/pages/bindPopup/popup",
         "MainAbility/pages/renderNode/appendChild",
         "MainAbility/pages/renderNode/drawContextGetSize",
-        "MainAbility/pages/renderNode/keyframe"
+        "MainAbility/pages/renderNode/keyframe",
+	    "MainAbility/pages/textInputApi/input_keytype",
+        "MainAbility/pages/arkuinode/arkuinodeEvent",
+        "MainAbility/pages/arkuinode/arkuirendernode",
+        "MainAbility/pages/symbolSpanApi/symbolspan",
+        "MainAbility/pages/AttributeModifier/NavDestinationInfoState"
     ]
 }
