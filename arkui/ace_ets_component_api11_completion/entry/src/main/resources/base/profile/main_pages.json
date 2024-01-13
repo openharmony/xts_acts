@@ -102,10 +102,19 @@
         "MainAbility/pages/UIContext/getDragController",
         "MainAbility/pages/bindPopup/customPopup",
         "MainAbility/pages/bindPopup/popup",
-	"MainAbility/pages/textInputApi/input_keytype",
+	    "MainAbility/pages/textInputApi/input_keytype",
         "MainAbility/pages/arkuinode/arkuinodeEvent",
         "MainAbility/pages/arkuinode/arkuirendernode",
         "MainAbility/pages/symbolSpanApi/symbolspan",
-        "MainAbility/pages/AttributeModifier/NavDestinationInfoState"
+        "MainAbility/pages/AttributeModifier/NavDestinationInfoState",
+		"MainAbility/pages/RenderNodeShadowElevation",
+        "MainAbility/pages/RenderNodeShadowRadius",
+        "MainAbility/pages/shadowColor",
+        "MainAbility/pages/shadowOffset",
+        "MainAbility/pages/shadowAlpha",
+        "MainAbility/pages/popupArrow",
+        "MainAbility/pages/geometryTransition",
+        "MainAbility/pages/RenderNodeInvalidate",
+        "MainAbility/pages/RenderNodeDraw"
     ]
 }

@@ -116,6 +116,15 @@ import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
 import arkuiNodeRenderTest from './arkuinode/arkuinodeRender.test.ets'
 import symbolSpanApi2Test from './symbolSpanApi/symbolSpanApi2.test'
 import NavDestinationInfoStateJsunit  from './AttributeModifier/NavDestinationInfoStateJsunit.test'
+import RenderNodeShadowElevationJsSuit from './RenderNodeShadowElevation.test';
+import RenderNodeShadowRadiusJsSuit from './RenderNodeShadowRadius.test';
+import shadowAlphaJsunit from './shadowAlphaJsunit.test';
+import shadowColorJsunit from './shadowColorJsunit.test';
+import shadowOffsetJsunit from './shadowOffsetJsunit.test';
+import popupArrowJsunit from './popupArrowJsunit.test';
+import geometryTransition from './geometryTransition.test';
+import RenderNodeInvalidateJsSuit from './RenderNodeInvalidateJsSuit.test';
+import RenderNodeDrawJsSuit from './RenderNodeDrawJsSuit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -221,4 +230,13 @@ export default function testsuite() {
   arkuiNodeRenderTest()
   symbolSpanApi2Test()
   NavDestinationInfoStateJsunit()
+  RenderNodeShadowElevationJsSuit()
+  RenderNodeShadowRadiusJsSuit()
+  shadowAlphaJsunit()
+  shadowColorJsunit()
+  shadowOffsetJsunit()
+  popupArrowJsunit()
+  geometryTransition()
+  RenderNodeInvalidateJsSuit()
+  RenderNodeDrawJsSuit()
 }
