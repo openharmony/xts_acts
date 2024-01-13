@@ -183,15 +183,15 @@ export default function NetworkManagerWebsocketTest() {
     })
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0400
+     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
      * @tc.name: websocket::connect
      * @tc.desc: Test connect property
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("NetworkManager_Websocket_connect_0600", 0, async function (done) {
-      let caseName = "NetworkManager_Websocket_connect_0600";
+    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600", 0, async function (done) {
+      let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600";
       webSocket.connect(url1, WebSocketRequestOptions_clientCert2, (err, data) => {
         if (err) {
           console.log(`${caseName} connect failed, err: ${JSON.stringify(err)}`);
