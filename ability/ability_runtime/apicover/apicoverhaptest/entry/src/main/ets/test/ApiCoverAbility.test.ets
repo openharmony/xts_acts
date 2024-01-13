@@ -599,7 +599,6 @@ export default function ApiCoverTest() {
       expect(5).assertEqual(abilityConstant.LaunchReason.SHARE)
       expect(0).assertEqual(abilityConstant.ContinueState.ACTIVE)
       expect(1).assertEqual(abilityConstant.ContinueState.INACTIVE)
-      
       expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY)
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
@@ -631,7 +630,7 @@ export default function ApiCoverTest() {
       }
       expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND)
       expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND)
-      // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
+      expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
       expect(3).assertEqual(insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY)
       globalThis.abilityContext.startAbility(startWant, startOp, (err, data)=>{
         if(err.code == 0){
