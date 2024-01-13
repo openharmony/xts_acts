@@ -18,6 +18,7 @@
 #include "native_audiorenderer.h"
 #include "native_audiostream_base.h"
 #include "native_audiostreambuilder.h"
+#include "unistd.h"
 
 static napi_value CreateAudioStreamBuilder(napi_env env, napi_callback_info info)
 {
@@ -312,6 +313,7 @@ static napi_value AudioCaptureGetTimestamp(napi_env env, napi_callback_info info
     OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
     OH_AudioCapturer_Start(audioCapturer);
 
+    usleep(30000);
     int64_t  framePosition;
     int64_t  timestamp;
     OH_AudioStream_Result result = OH_AudioCapturer_GetTimestamp(audioCapturer, CLOCK_MONOTONIC, &framePosition, &timestamp);
@@ -403,6 +405,7 @@ static napi_value AudioRenderGetTimestamp(napi_env env, napi_callback_info info)
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
     OH_AudioRenderer_Start(audioRenderer);
 
+    usleep(30000);
     int64_t framePosition;
     int64_t  timestamp;
     OH_AudioStream_Result result = OH_AudioRenderer_GetTimestamp(audioRenderer, CLOCK_MONOTONIC, &framePosition, &timestamp);
