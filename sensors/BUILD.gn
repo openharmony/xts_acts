@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (C) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,7 +17,9 @@ group("sensors") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "miscdevice/miscdevice_cpp_standard:ActsSensorMiscdeviceTest",
       "miscdevice_standard:miscdevice_js_test",
+      "sensor/sensor_cpp_standard:ActsSensorNdkTest",
       "sensor_standard:sensor_js_test",
     ]
   }
