@@ -71,7 +71,9 @@ let httpRequestOptions:http.HttpRequestOptions = {
     {
       name: "Part1",
       contentType: 'string',
-      data:'textyyyy'
+      data:'textyyyy',
+      filePath:'./test.txt'
+
     }
   ]}
 
