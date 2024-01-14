@@ -607,7 +607,7 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_Test_AbilityConstant_0100
+     * @tc.number  SUB_AA_Test_InsightIntent_0100
      * @tc.name    Test abilityConstant.
      * @tc.desc    Function test
      * @tc.size:   MediumTest
@@ -630,7 +630,9 @@ export default function ApiCoverTest() {
       }
       expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND)
       expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND)
+      console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
       expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
+      console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY);
       expect(3).assertEqual(insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY)
       globalThis.abilityContext.startAbility(startWant, startOp, (err, data)=>{
         if(err.code == 0){
