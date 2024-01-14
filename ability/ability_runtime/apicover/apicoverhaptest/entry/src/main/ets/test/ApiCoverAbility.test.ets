@@ -553,7 +553,7 @@ export default function ApiCoverTest() {
       expect(-1).assertEqual(formInfoNew.FormState.UNKNOWN)
       expect(0).assertEqual(formInfoNew.ColorMode.MODE_DARK)
       expect(1).assertEqual(formInfoNew.ColorMode.MODE_LIGHT)
-      console.info("SUB_AA_Form_provider_TestFormInfo_0200:" + formInfoNew.FormDimension.Dimension_2_1);
+      console.info("SUB_AA_Form_provider_TestFormInfo_0200:" + formInfoNew.FormDimension.DIMENSION_1_1);
       expect(1).assertEqual(formInfoNew.FormDimension.Dimension_1_2)
       expect(2).assertEqual(formInfoNew.FormDimension.Dimension_2_2)
       expect(3).assertEqual(formInfoNew.FormDimension.Dimension_2_4)
