@@ -28,6 +28,7 @@ group("ability_runtime") {
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityusertest:ActsAbilityuserTest",
       "actsactionextensionability:actsactionextensionability",
+      "actsautofilltest:actsautofilltest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
       "actscalltest:actscalltest",
       "actscleantemptest:cleantempfiles",
