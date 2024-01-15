@@ -1193,7 +1193,7 @@ describe('ActsAbilityTest', function () {
             task1.addDependency(task5);
             task3.addDependency(task6);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: there is a circular dependency");
+            expect(e.toString()).assertEqual("BusinessError: There is a circular dependency");
         }
         done();
     })
@@ -1245,7 +1245,7 @@ describe('ActsAbilityTest', function () {
         try {
             task2.removeDependency(task3);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: the dependency does not exist");
+            expect(e.toString()).assertEqual("BusinessError: The dependency does not exist");
         }
         done();
     })
