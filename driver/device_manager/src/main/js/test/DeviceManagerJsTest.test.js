@@ -60,7 +60,8 @@ describe("DeviceManagerJsTest", function () {
             expect(devices[0].vendorId != null).assertEqual(true);
             expect(devices[0].productId != null).assertEqual(true);
         } catch (err) {
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            console.info('Test case queryDevices_001 err code :' + err.code);
+            expect(err != null).assertFalse();
         }
     })
 
@@ -275,7 +276,8 @@ describe("DeviceManagerJsTest", function () {
             expect(false).assertTrue();
             done();
         } catch (error) {
-            expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            console.info('Test case bindDeviceDriver_011 err code :' + err.code);
+            expect(error != null).assertFalse();
             done();
         }
     })
