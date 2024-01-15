@@ -418,7 +418,7 @@ export default function AccessTokenTest() {
     it("testRequestPermissionFromUser004", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_004 start ");
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      let result: Promise<PermissionRequestResult> = new Promise(():PermissionRequestResult => null);
+      let result: Promise<PermissionRequestResult> = undefined;
       try {
         result =
           //@ts-ignore
