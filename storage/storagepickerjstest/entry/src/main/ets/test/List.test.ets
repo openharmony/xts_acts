@@ -22,10 +22,10 @@ import audioPickerPromise from './audioPickerPromise.test.ets'
 import globalContext from '../test/GlobalContext';
 
 export default function testsuite() {
-  photoPickerCallback(globalContext.getContext().getAbility())
-  photoPickerPromise(globalContext.getContext().getAbility())
-  documentPickerCallback(globalContext.getContext().getAbility())
-  documentPickerPromise(globalContext.getContext().getAbility())
-  audioPickerCallback(globalContext.getContext().getAbility())
-  audioPickerPromise(globalContext.getContext().getAbility())
+  photoPickerCallback(undefined)
+  photoPickerPromise(undefined)
+  documentPickerCallback(undefined)
+  documentPickerPromise(undefined)
+  audioPickerCallback(undefined)
+  audioPickerPromise(undefined)
 }
