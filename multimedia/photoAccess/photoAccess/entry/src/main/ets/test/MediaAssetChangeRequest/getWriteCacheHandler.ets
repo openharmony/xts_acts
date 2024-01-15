@@ -66,7 +66,7 @@ export default function getWriteCacheHandlerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_write_cache_handler_001', 0, async function (done) {
+    it('get_write_cache_handler_001', 2, async function (done) {
       let testNum = 'get_write_cache_handler_001';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);

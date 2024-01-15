@@ -62,7 +62,7 @@ export default function addResourceChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('add_resource_change_request_001', 0, async function (done) {
+    it('add_resource_change_request_001', 2, async function (done) {
       let testNum = 'add_resource_change_request_001';
       try {
         let photoType = photoAccessHelper.PhotoType.VIDEO;
