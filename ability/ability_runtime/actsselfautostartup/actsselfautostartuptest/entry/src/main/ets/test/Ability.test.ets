@@ -29,17 +29,21 @@ export default function abilityTest() {
       console.info('====> Acts_SelfAutoStartup_1200 start');
       let AutoStartupInfo: common.AutoStartupInfo = {
         bundleName: 'com.acts.selfautostartup',
-        abilityName: 'EntryAbility'
+        abilityName: 'EntryAbility',
+        moduleName: 'Entry',
+        abilityTypeName: 'ui'
       };
       expect(AutoStartupInfo.bundleName).assertEqual('com.acts.selfautostartup');
       expect(AutoStartupInfo.abilityName).assertEqual('EntryAbility');
+      expect(AutoStartupInfo.moduleName).assertEqual('Entry');
+      expect(AutoStartupInfo.abilityTypeName).assertEqual('ui')
 
       let AutoStartUpCallback: common.AutoStartupCallback = {
-        onAutoStartupOn(data) {
-          console.info('===> Acts_SelfAutoStartup_0900 onAutoStartupOn data: ' + JSON.stringify(data));
+        onAutoStartupOn(data: common.AutoStartupInfo) {
+          console.info('===> Acts_SelfAutoStartup_1200 onAutoStartupOn data: ' + JSON.stringify(data));
         },
-        onAutoStartupOff(data) {
-          console.info('===> Acts_SelfAutoStartup_0900 onAutoStartOff data: ' + JSON.stringify(data));
+        onAutoStartupOff(data: common.AutoStartupInfo) {
+          console.info('===> Acts_SelfAutoStartup_1200 onAutoStartOff data: ' + JSON.stringify(data));
         }
       };
       expect(AutoStartUpCallback == null).assertFalse();
