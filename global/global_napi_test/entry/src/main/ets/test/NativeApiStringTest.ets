@@ -92,7 +92,7 @@ export default function abilityTest() {
                 console.log("getResourceManager_ndktest_0400 2");
                 expect(mgr !== null).assertTrue();
                 console.log("getResourceManager_ndktest_0400 22");
-                let value = ndk.GetRawFileDescriptor64(mgr,"test/aa.xml");
+                let value = ndk.GetRawFileDescriptor64(mgr, "test/aa.xml");
                 console.log("getResourceManager_ndktest_0400 3");
                 console.log("getResourceManager_ndktest_0400" + value);
                 expect(value !== null).assertTrue();
@@ -111,7 +111,7 @@ export default function abilityTest() {
                 console.log("getResourceManager_ndktest_0500 2");
                 expect(mgr !== null).assertTrue();
                 console.log("getResourceManager_ndktest_0500 22");
-                let value = ndk.GetRawFileDescriptor64(mgr,"test/aa.xml");
+                let value = ndk.GetRawFileDescriptor64(mgr, "test/aa.xml");
                 console.log("getResourceManager_ndktest_0500 3");
                 console.log("getResourceManager_ndktest_0500" + value.fd);
                 console.log("getResourceManager_ndktest_0500" + value.offset);
