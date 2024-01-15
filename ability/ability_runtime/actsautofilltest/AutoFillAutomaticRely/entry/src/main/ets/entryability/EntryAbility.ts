@@ -19,11 +19,11 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
-import { UIContext } from '@ohos.arkui.UIContext';
+import type { UIContext } from '@ohos.arkui.UIContext';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    AppStorage.link('uiContext')
+    AppStorage.link('uiContext');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
@@ -44,7 +44,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
 
-      // 获取应用主窗口。
+      // 获取应用主窗口
       windowStage.getMainWindow((err: BusinessError, data: window.Window) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -52,26 +52,22 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        // get UIContext instance
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         PersistentStorage.persistProp('uiContext', uiContext);
-      })
+      });
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }

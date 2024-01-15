@@ -41,7 +41,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0700
      * @tc.name: AutoSaveRequest Interface : onSaveRequestSuccess
-     * @tc.desc: Implicitly call the AutoSaveRequest interface and trigger success callback
+     * @tc.desc: Implicitly call the AutoSaveRequest interface and trigger success callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0700', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0700_TAG';
@@ -84,7 +86,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0800
      * @tc.name: AutoSaveRequest Interface : onSaveRequestFailure
-     * @tc.desc: Implicitly call the RequestAutoSave interface and trigger failure callback
+     * @tc.desc: Implicitly call the RequestAutoSave interface and trigger failure callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0800', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0800_TAG';
@@ -126,7 +130,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0100
      * @tc.name: RequestAutoFill Interface : onFillRequestSuccess
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger success callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger success callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0100', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0100_TAG';
@@ -161,7 +167,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0200
      * @tc.name: RequestAutoFill Interface : onFillRequestFailed
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger failure callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger failure callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0200', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0200_TAG';
@@ -196,7 +204,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0300
      * @tc.name: RequestAutoFill Interface : onFillRequestCanceled
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger cancel callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger cancel callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0300', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0300_TAG';
@@ -230,7 +240,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0400
      * @tc.name: RequestAutoFill Interface : onFillRequestSuccess(USER_NAME textInput)
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger success callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger success callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0400', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0400_TAG';
@@ -265,7 +277,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0500
      * @tc.name: RequestAutoFill Interface : onFillRequestFailed
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger failure callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger failure callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0500', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0500_TAG';
@@ -301,7 +315,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFill_0600
      * @tc.name: RequestAutoFill Interface : onFillRequestCanceled
-     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger cancel callback
+     * @tc.desc: Implicitly call the AutoFillRequest interface and trigger cancel callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFill_0600', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFill_0600_TAG';

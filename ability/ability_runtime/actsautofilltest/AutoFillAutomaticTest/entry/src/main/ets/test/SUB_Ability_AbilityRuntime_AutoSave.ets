@@ -17,6 +17,7 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON } from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import autoFillManager from '@ohos.app.ability.autoFillManager';
 import commonEventManager from '@ohos.commonEventManager';
 
 let driver = Driver.create();
@@ -41,7 +42,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoSave_0100
      * @tc.name: RequestAutoSave Interface : onSaveRequestSuccess
-     * @tc.desc: Manually call the RequestAutoSave interface and trigger success callback
+     * @tc.desc: Manually call the RequestAutoSave interface and trigger success callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoSave_0100', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoSave_0100_TAG';
@@ -65,6 +68,24 @@ export default function abilityTest() {
       expect(pwd_input != null).assertTrue();
       await pwd_input.inputText('n');
       await sleep(1000);
+      
+      let uiContext: UIContext;
+      console.info("uiContext: ", uiContext);
+      let callback: autoFillManager.AutoSaveCallback = {
+        onSuccess: () => {
+          console.log("save request on success");
+        },
+        onFailure: () => {
+          console.log("save request on failure");
+        }
+      }
+      console.log("callback: ", JSON.stringify(callback));
+      try {
+        autoFillManager.requestAutoSave(uiContext, callback);
+      } catch (error) {
+        console.log("requestAutoSave catch error: ", JSON.stringify(error));
+      }
+
       let save_btn = await driver.waitForComponent(ON.id('save_btn'), 2000);
       await sleep(100);
       expect(save_btn != null).assertTrue();
@@ -86,7 +107,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoSave_0200
      * @tc.name: RequestAutoSave Interface : onSaveRequestFailed
-     * @tc.desc: Manually call the RequestAutoSave interface and trigger failure callback
+     * @tc.desc: Manually call the RequestAutoSave interface and trigger failure callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoSave_0200', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoSave_0100_TAG';
@@ -132,7 +155,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoSave_0300
      * @tc.name: RequestAutoSave Interface : onSaveRequest error
-     * @tc.desc: verify incorrect use of RequestAutoSave interface which triggers error
+     * @tc.desc: verify incorrect use of RequestAutoSave interface which triggers error.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoSave_0300', 0, async function (done) {
       await sleep(2000);

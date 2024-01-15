@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import autoFillManager from '@ohos.app.ability.autoFillManager'
 import hilog from '@ohos.hilog';
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import type autoFillManager from '@ohos.app.ability.autoFillManager';
 import AutoFillExtensionAbility from '@ohos.app.ability.AutoFillExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
+import type UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import emitter from '@ohos.events.emitter';
 
 let onCreate = 0;
@@ -54,12 +54,13 @@ let autoFillContextData = {
     applicationContextDistributedFilesDir: '',
     eventHubEventMessage: '',
     applicationContextArea: '',
-    bundleContext_ApplicationInfo: '',
-    moduleContextA_ApplicationInfo: '',
-    moduleContextB_ApplicationInfo: '',
+    bundleContextApplicationInfo: '',
+    moduleContextApplicationInfoFirst: '',
+    moduleContextApplicationInfoSecond: '',
     stageMode: false
   }
-}
+};
+let MAX_STR_LENGTH = 100;
 
 export default class AutoFillAbility extends AutoFillExtensionAbility {
   storage: LocalStorage;
@@ -70,14 +71,15 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     commonEventData.parameters.onCreate = 1;
   }
 
-  onFillRequest(session: UIExtensionContentSession, request: autoFillManager.FillRequest, callback: autoFillManager.FillRequestCallback) {
+  onFillRequest(session: UIExtensionContentSession, request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback): void {
     hilog.info(0x0000, 'testTag', '%{public}s', '====ActsAutoFillExtension onFillRequest====');
     hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
     console.log('get request viewData: ', JSON.stringify(request.viewData));
-    VerifyContextProperties(this.context);
+    verifyContextProperties(this.context);
     commonEventData.parameters.onFillRequest = 1;
     try {
-      let storage_fill = new LocalStorage(
+      let fillStorage = new LocalStorage(
         {
           'session': session,
           'message': 'AutoFill Page',
@@ -85,23 +87,24 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
           'viewData': request.viewData,
           'pageNodeInfos': request.viewData.pageNodeInfos
         });
-      session.loadContent('pages/SelectorList', storage_fill);
+      session.loadContent('pages/SelectorList', fillStorage);
     } catch (err) {
       hilog.error(0x0000, 'testTag', '%{public}s', '====ActsAutoFillExtension failed to load content====');
     }
   }
 
-  onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest, callback: autoFillManager.SaveRequestCallback) {
+  onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback): void {
     hilog.info(0x0000, 'testTag', '%{public}s', '====ActsAutoFillExtension onSaveRequest====');
     commonEventData.parameters.onSaveRequest = 1;
-    let storage_save = new LocalStorage(
+    let saveStorage = new LocalStorage(
       {
         'session': session,
         'message': 'AutoFill Page',
         'saveCallback': callback,
         'viewData': request.viewData
       });
-    session.loadContent('pages/SavePage', storage_save);
+    session.loadContent('pages/SavePage', saveStorage);
   }
 
   onForeground(): void {
@@ -120,7 +123,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     });
   }
 
-  onSessionDestroy(session: UIExtensionContentSession) {
+  onSessionDestroy(session: UIExtensionContentSession): void {
     hilog.info(0x0000, 'testTag', '%{public}s', '====ActsAutoFillExtension onSessionDestroy====');
     commonEventData.parameters.onSessionDestroy = 1;
   }
@@ -138,21 +141,17 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
   }
 }
 
-async function VerifyContextProperties(context) {
-  console.log('inner verify begin');
+async function verifyContextProperties(context): Promise<void> {
   autoFillContextData.parameters.currentHapModuleInfoName = context.currentHapModuleInfo.name;
   autoFillContextData.parameters.configLanguage = context.config.language;
   autoFillContextData.parameters.extensionAbilityInfoBundleName = context.extensionAbilityInfo.bundleName;
   context.resourceManager.getStringByName('EntryAbility_label', (error, string) => {
     autoFillContextData.parameters.resourceManagerStringByName = string;
-    console.log('resourceManager getStringByName get error: ', JSON.stringify(error));
     console.log('resourceManager getStringByName: ', JSON.stringify(string));
   });
   autoFillContextData.parameters.applicationInfoName = context.applicationInfo.name;
-  console.log('inner verify middle1');
   try {
     let applicationContext = context.getApplicationContext();
-    console.log('inner verify middle2');
     autoFillContextData.parameters.applicationContextCacheDir = applicationContext.cacheDir;
     autoFillContextData.parameters.applicationContextTempDir = applicationContext.tempDir;
     autoFillContextData.parameters.applicationContextFilesDir = applicationContext.filesDir;
@@ -160,7 +159,6 @@ async function VerifyContextProperties(context) {
     autoFillContextData.parameters.applicationContextPreferencesDir = applicationContext.preferencesDir;
     autoFillContextData.parameters.applicationContextBundleCodeDir = applicationContext.bundleCodeDir;
     autoFillContextData.parameters.applicationContextDistributedFilesDir = applicationContext.distributedFilesDir;
-    console.log('inner verify middle3');
     applicationContext.eventHub.on('myEvent', () => {
       autoFillContextData.parameters.eventHubEventMessage = '====eventHub Success=== call anonymous eventFunc';
     });
@@ -172,24 +170,22 @@ async function VerifyContextProperties(context) {
   }
   try {
     let bundleContext = context.createBundleContext('com.ohos.passwordbox');
-    autoFillContextData.parameters.bundleContext_ApplicationInfo = JSON.stringify(bundleContext.applicationInfo).substring(0, 100);
+    autoFillContextData.parameters.bundleContextApplicationInfo =
+      JSON.stringify(bundleContext.applicationInfo).substring(0, MAX_STR_LENGTH);
   } catch (error) {
     console.error(`createBundleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
   console.log('inner verify middle4');
   try {
     let moduleContextA = context.createModuleContext('entry');
-    autoFillContextData.parameters.moduleContextA_ApplicationInfo = JSON.stringify(moduleContextA.applicationInfo).substring(0, 100);
-  } catch (error) {
-    console.error(`createModuleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
-  }
-  try {
+    autoFillContextData.parameters.moduleContextApplicationInfoFirst =
+      JSON.stringify(moduleContextA.applicationInfo).substring(0, MAX_STR_LENGTH);
+
     let moduleContextB = context.createModuleContext('com.ohos.passwordbox', 'entry');
-    autoFillContextData.parameters.moduleContextB_ApplicationInfo = JSON.stringify(moduleContextB.applicationInfo).substring(0, 100);
+    autoFillContextData.parameters.moduleContextApplicationInfoSecond =
+      JSON.stringify(moduleContextB.applicationInfo).substring(0, MAX_STR_LENGTH);
   } catch (error) {
     console.error(`createModuleContext failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
-  console.log('inner verify middle5');
   autoFillContextData.parameters.stageMode = context.stageMode;
-  console.log('inner verify end');
 }

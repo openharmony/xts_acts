@@ -17,7 +17,7 @@ import autoFillManager from '@ohos.app.ability.autoFillManager';
 import router from '@ohos.router';
 import hilog from '@ohos.hilog';
 import AccountInfo from '../application/AccountInfo';
-import { UIContext } from '@ohos.arkui.UIContext';
+import type { UIContext } from '@ohos.arkui.UIContext';
 
 let options: router.RouterOptions = {
   url: 'pages/LoggedInPage'

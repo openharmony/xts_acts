@@ -42,6 +42,8 @@ export default function abilityTest() {
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillPassword_0100
      * @tc.name: AutoFillRequest Interface: new password request
      * @tc.desc: Implicitly call AutoFillRequest( AutoFillType: NEW_PASSWORD) and trigger success callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillPassword_0100', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillPassword_0100_TAG';
@@ -78,6 +80,8 @@ export default function abilityTest() {
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillPassword_0200
      * @tc.name: AutoFillRequest Interface: new password request
      * @tc.desc: Implicitly call AutoFillRequest( AutoFillType: NEW_PASSWORD) and trigger failure callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillPassword_0200', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillPassword_0200_TAG';
@@ -114,6 +118,8 @@ export default function abilityTest() {
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillPassword_0300
      * @tc.name: AutoFillRequest Interface: new password request
      * @tc.desc: Implicitly call AutoFillRequest( AutoFillType: NEW_PASSWORD) and trigger cancel callback.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillPassword_0300', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillPassword_0300_TAG';

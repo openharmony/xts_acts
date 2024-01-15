@@ -14,10 +14,10 @@
  */
 
 export default class AccountInfo {
-  id: number
-  username: string
-  password: string
-  newPassword: string
+  id: number;
+  username: string;
+  password: string;
+  newPassword: string;
 
   constructor(id: number, username: string, password: string) {
     this.id = id;

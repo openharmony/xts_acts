@@ -48,7 +48,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillExtension_0100
      * @tc.name: AutoFillExtensionAbility: onCreate, onFillRequest, onForeground
-     * @tc.desc: verify onCreate, onFillRequest and onForeground lifecycle of AutoFillExtensionAbility
+     * @tc.desc: verify onCreate, onFillRequest and onForeground lifecycle of AutoFillExtensionAbility.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillExtension_0100', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillExtension_0100_TAG';
@@ -94,7 +96,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillExtension_0200
      * @tc.name: AutoFillExtensionAbility: onSaveRequest, onSessionDestroy, onDestroy
-     * @tc.desc: verify onSaveRequest, onSessionDestroy and onDestroy lifecycle of AutoFillExtensionAbility
+     * @tc.desc: verify onSaveRequest, onSessionDestroy and onDestroy lifecycle of AutoFillExtensionAbility.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillExtension_0200', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillExtension_0200_TAG';
@@ -154,7 +158,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillExtension_0300
      * @tc.name: AutoFillExtensionAbility: onBackground
-     * @tc.desc: verify onBackground lifecycle of AutoFillExtensionAbility
+     * @tc.desc: verify onBackground lifecycle of AutoFillExtensionAbility.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillExtension_0300', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillExtension_0300_TAG';
@@ -198,7 +204,9 @@ export default function abilityTest() {
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_AutoFillExtension_0400
      * @tc.name: AutoFillContext properties verification
-     * @tc.desc: verify properties and methods of AutoFillExtensionContext can be normally accessed and called
+     * @tc.desc: verify properties and functions of AutoFillExtensionContext can be normally accessed and called.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
      */
     it('SUB_Ability_AbilityRuntime_AutoFillExtension_0400', 0, async function (done) {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoFillExtension_0400_TAG';
@@ -233,7 +241,7 @@ export default function abilityTest() {
         expect(success_btn != null).assertTrue();
         await success_btn.click();
         await sleep(2000);
-        console.log("waitForEnd.")
+        console.log("waitForEnd.");
         await sleep(2000);
         console.info(TAG, 'end.');
       })
@@ -257,9 +265,9 @@ export default function abilityTest() {
           expect(context.applicationContextArea == 1).assertTrue();
           expect(context.eventHubEventMessage == '').assertFalse();
           console.info('out verify middle2');
-          expect(context.bundleContext_ApplicationInfo == '').assertFalse();
-          expect(context.moduleContextA_ApplicationInfo == '').assertFalse();
-          expect(context.moduleContextB_ApplicationInfo == '').assertFalse();
+          expect(context.bundleContextApplicationInfo == '').assertFalse();
+          expect(context.moduleContextApplicationInfoSecond == '').assertFalse();
+          expect(context.moduleContextApplicationInfoFirst == '').assertFalse();
           console.info('out verify middle3');
           expect(context.stageMode == true).assertTrue();
           console.info('out verify end');
