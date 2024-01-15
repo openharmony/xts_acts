@@ -24,7 +24,7 @@ struct Index {
 
   aboutToAppear(){
     console.info("start run testcase!!!!")
-    let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator
+    let abilityDelegator:AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
