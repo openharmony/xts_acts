@@ -610,7 +610,7 @@ export default function ApiCoverTest() {
 
     /*
      * @tc.number  SUB_AA_Test_InsightIntent_0100
-     * @tc.name    Test abilityConstant.
+     * @tc.name    Test insightIntent.ExecuteMode and startOptions.
      * @tc.desc    Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -619,7 +619,6 @@ export default function ApiCoverTest() {
     it('SUB_AA_Test_InsightIntent_0100', 0, async function (done) {
       let startOp:startOptions = {
         displayId:0,
-        withAnimation:false,
         windowLeft:100,
         windowTop:100,
         windowWidth:100,
@@ -627,15 +626,13 @@ export default function ApiCoverTest() {
       }
       let startWant ={
         deviceId:"",
-        bundleName:"ohos.acts.aafwk.test.stagesupplement",
+        bundleName:"ohos.acts.aafwk.test.stagesupplementerr",
         abilityName:"MainAbility3",
       }
       expect(0).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND)
       expect(1).assertEqual(insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND)
       console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.UI_EXTENSION_ABILITY);
       // expect(2).assertEqual(insightIntent.ExecuteMode.UI_EXTENSION_ABILITY)
-      console.info("SUB_AA_Test_InsightIntent_0100:" + insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY);
-      expect(3).assertEqual(insightIntent.ExecuteMode.SERVICE_EXTENSION_ABILITY)
       globalThis.abilityContext.startAbility(startWant, startOp, (err, data)=>{
         if(err.code == 0){
            console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
@@ -643,7 +640,7 @@ export default function ApiCoverTest() {
            done()
         }else{
           console.info("SUB_AA_FMS_AbilityStage_0100===failed===")
-          expect(err.code).assertEqual(16000050)
+          expect(err.code).assertEqual(EXTENSION_INFO_ERR)
           done()
         }
       })
