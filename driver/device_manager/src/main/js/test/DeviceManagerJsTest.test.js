@@ -276,8 +276,7 @@ describe("DeviceManagerJsTest", function () {
             expect(false).assertTrue();
             done();
         } catch (error) {
-            console.info('Test case bindDeviceDriver_011 err code :' + error.code);
-            expect(error != null).assertFalse();
+            expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
             done();
         }
     })
