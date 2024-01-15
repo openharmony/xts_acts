@@ -92,7 +92,6 @@ import SXrenderingStrategyJsunit from './AttributeModifier/SXrenderingStrategyJs
 import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit.test';
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
-
 import APIScrollflingSpeedLimitJsunit from './AttributeModifier/APIScrollflingSpeedLimitJsunit.test'
 import APITextBackgroundStyleJsunit from './AttributeModifier/APITextBackgroundStyleJsunit.test'
 import SXvalueResourceJsunit from './AttributeModifier/SXvalueResourceJsunit.test'
@@ -110,6 +109,9 @@ import getUIObserver from './UIContext/getUIObserver.test';
 import getDragController from './UIContext/getDragController.test';
 import customPopup from './bindPopup/customPopup.test';
 import popup from './bindPopup/popup.test';
+import appendChildTest from './renderNode/appendChild.test.ets';
+import drawContextGetSizeTest from './renderNode/drawContextGetSize.test.ets';
+import keyframeTest from './renderNode/keyframe.test.ets';
 
 import textInputApiTest from './textInputApi/textinputkeyNewLine.test.ets'
 import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
@@ -140,7 +142,6 @@ export default function testsuite() {
   pivot()
   scale()
   SetSizeJsunit()
-
   richEditorApi1()
   textInputApi1()
   ScrollTest()
@@ -194,7 +195,6 @@ export default function testsuite() {
   ToastShowMode()
   ModalBlurStyle()
   TouchTestStrategy()
-
   createDragAction()
   setForegroundColor()
   touchPoint()
@@ -207,7 +207,6 @@ export default function testsuite() {
   SXsymbolSpanStyleJsunit()
   SXsymbolStyleJsunit()
   APIgetUIFontConfigJsunit()
-
   APIScrollflingSpeedLimitJsunit()
   APITextBackgroundStyleJsunit()
   SXvalueResourceJsunit()
@@ -225,6 +224,9 @@ export default function testsuite() {
   getDragController()
   customPopup()
   popup()
+  appendChildTest()
+  drawContextGetSizeTest()
+  keyframeTest()
   textInputApiTest()
   arkuiNodeEventTest()
   arkuiNodeRenderTest()
