@@ -92,7 +92,6 @@ import SXrenderingStrategyJsunit from './AttributeModifier/SXrenderingStrategyJs
 import SXsymbolSpanStyleJsunit from './AttributeModifier/SXsymbolSpanStyleJsunit.test';
 import SXsymbolStyleJsunit from './AttributeModifier/SXsymbolStyleJsunit.test';
 import APIgetUIFontConfigJsunit from './AttributeModifier/APIgetUIFontConfigJsunit.test';
-
 import APIScrollflingSpeedLimitJsunit from './AttributeModifier/APIScrollflingSpeedLimitJsunit.test'
 import APITextBackgroundStyleJsunit from './AttributeModifier/APITextBackgroundStyleJsunit.test'
 import SXvalueResourceJsunit from './AttributeModifier/SXvalueResourceJsunit.test'
@@ -106,7 +105,28 @@ import symbolGlyphApi5 from './symbolGlyphApi/symbolGlyphApi5.test'
 import symbolSpanApi1 from './symbolSpanApi/symbolSpanApi1.test'
 import RichEditorApi2 from './AttrApi/RichEditorApi2.test'
 import SelectAttr from './AttrApi/SelectAttr.test'
+import getUIObserver from './UIContext/getUIObserver.test';
+import getDragController from './UIContext/getDragController.test';
+import customPopup from './bindPopup/customPopup.test';
+import popup from './bindPopup/popup.test';
+import appendChildTest from './renderNode/appendChild.test.ets';
+import drawContextGetSizeTest from './renderNode/drawContextGetSize.test.ets';
+import keyframeTest from './renderNode/keyframe.test.ets';
 
+import textInputApiTest from './textInputApi/textinputkeyNewLine.test.ets'
+import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
+import arkuiNodeRenderTest from './arkuinode/arkuinodeRender.test.ets'
+import symbolSpanApi2Test from './symbolSpanApi/symbolSpanApi2.test'
+import NavDestinationInfoStateJsunit  from './AttributeModifier/NavDestinationInfoStateJsunit.test'
+import RenderNodeShadowElevationJsSuit from './RenderNodeShadowElevation.test';
+import RenderNodeShadowRadiusJsSuit from './RenderNodeShadowRadius.test';
+import shadowAlphaJsunit from './shadowAlphaJsunit.test';
+import shadowColorJsunit from './shadowColorJsunit.test';
+import shadowOffsetJsunit from './shadowOffsetJsunit.test';
+import popupArrowJsunit from './popupArrowJsunit.test';
+import geometryTransition from './geometryTransition.test';
+import RenderNodeInvalidateJsSuit from './RenderNodeInvalidateJsSuit.test';
+import RenderNodeDrawJsSuit from './RenderNodeDrawJsSuit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -122,7 +142,6 @@ export default function testsuite() {
   pivot()
   scale()
   SetSizeJsunit()
-
   richEditorApi1()
   textInputApi1()
   ScrollTest()
@@ -176,7 +195,6 @@ export default function testsuite() {
   ToastShowMode()
   ModalBlurStyle()
   TouchTestStrategy()
-
   createDragAction()
   setForegroundColor()
   touchPoint()
@@ -189,7 +207,6 @@ export default function testsuite() {
   SXsymbolSpanStyleJsunit()
   SXsymbolStyleJsunit()
   APIgetUIFontConfigJsunit()
-
   APIScrollflingSpeedLimitJsunit()
   APITextBackgroundStyleJsunit()
   SXvalueResourceJsunit()
@@ -203,4 +220,25 @@ export default function testsuite() {
   symbolGlyphApi4()
   symbolGlyphApi5()
   symbolSpanApi1()
+  getUIObserver()
+  getDragController()
+  customPopup()
+  popup()
+  appendChildTest()
+  drawContextGetSizeTest()
+  keyframeTest()
+  textInputApiTest()
+  arkuiNodeEventTest()
+  arkuiNodeRenderTest()
+  symbolSpanApi2Test()
+  NavDestinationInfoStateJsunit()
+  RenderNodeShadowElevationJsSuit()
+  RenderNodeShadowRadiusJsSuit()
+  shadowAlphaJsunit()
+  shadowColorJsunit()
+  shadowOffsetJsunit()
+  popupArrowJsunit()
+  geometryTransition()
+  RenderNodeInvalidateJsSuit()
+  RenderNodeDrawJsSuit()
 }

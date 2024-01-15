@@ -90,11 +90,6 @@ export default class MainAbility8 extends Ability {
         let lifecycleid = globalThis.applicationContext8.on('abilityLifecycle', AbilityLifecycleCallback);
         globalThis.callbackid8 = lifecycleid;
         console.log("[Demo] AbilityLifecycleCallback8 number: " + JSON.stringify(lifecycleid));
-        // setTimeout(function () {
-        //     console.log("[Demo] AbilityLifecycleCallback8 listKey: " + JSON.stringify(listKey8));
-        //     globalThis.list8 = listKey8;
-        //     globalThis.applicationContext8onAbilityLifecycle = true;
-        // }, 1500);
         setTimeout(function () {
             globalThis.testEvent.push('MainAbility8onForeground');
         }, 800);

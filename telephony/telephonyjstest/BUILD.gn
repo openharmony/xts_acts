@@ -20,6 +20,7 @@ group("telephonyjstest") {
     "netmanager_base:netmanager_base",
     "netmanager_http:ActsNetManagerHttpEtsTest",
     "netmanager_socket:ActsNetManagerSocketEtsTest",
+    "netmanager_websocket:netmanager_websocket",
     "netmanagerhttp:netmanagerhttp_test",
     "network_search:network_search",
     "observer:ActsObserverEtsTest",

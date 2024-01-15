@@ -54,10 +54,16 @@ export default function inputMethodDrawnControlJSUnit() {
           setting_text = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
         }
 
-        try{
+        try {
           await driver.swipe(600, 2500, 600, 1000, 15000);
           let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 500);
           console.info('====>beforeAll inputMethodSwitch common_text: ' + JSON.stringify(common_text));
+          if(JSON.stringify(common_text) === 'null'){
+            await driver.delayMs(200);
+            await driver.swipe(600, 2500, 600, 1000, 15000);
+            common_text = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 500);
+            console.info('====>beforeAll inputMethodSwitch second swipe: ' + JSON.stringify(common_text));
+          }
           await common_text.click();
           let inputMehtod_text: Component = await driver.waitForComponent(ON.text('键盘和输入法', MatchPattern.CONTAINS), 500);
           console.info('====>beforeAll inputMethodSwitch inputMehtod_text: ' + JSON.stringify(inputMehtod_text));
@@ -109,26 +115,33 @@ export default function inputMethodDrawnControlJSUnit() {
         }
       } else {
         console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
-        let driver: Driver = Driver.create();
-        await driver.delayMs(500);
-        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
-        inputMethodSetting.showOptionalInputMethods(async (err: BusinessError, data: boolean) => {
-          try{
-            console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
-            let list = await driver.waitForComponent(ON.type('List'), 1000);
-            console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
-            await driver.delayMs(500);
-            let inputMethod_name: Component = await driver.waitForComponent(ON.text('drawn', MatchPattern.CONTAINS), 1000);
-            console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
-            await inputMethod_name.click();
-            console.info('====>beforeAll inputMethodSwitch else done' )
-            await driver.delayMs(1000);
-            done();
-          }catch(err){
-            console.info('====>beforeAll inputMethodSwitch err:' + JSON.stringify(err));
-            done();
+        try {
+          let driver: Driver = Driver.create();
+          await driver.delayMs(500);
+          let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+          let transmission_text: Component = await driver.findComponent(ON.text('取消', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch else transmission_text: ' + JSON.stringify(transmission_text));
+          if(JSON.stringify(transmission_text) !== 'null'){
+            await transmission_text.click();
+            await driver.delayMs(200);
+            console.info('====>beforeAll inputMethodSwitch else transmission_text click');
           }
-        })
+          let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+          console.info('====>beforeAll inputMethodSwitch else result: ' + JSON.stringify(result));
+          let list = await driver.waitForComponent(ON.type('List'), 1000);
+          console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
+          await driver.delayMs(500);
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('drawn', MatchPattern.CONTAINS), 1000);
+          console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
+          await inputMethod_name.click();
+          console.info('====>beforeAll inputMethodSwitch else done' )
+          await driver.delayMs(2000);
+          console.info(`====>runCmd else attach`);
+          done();
+        } catch(err) {
+          console.info('====>beforeAll inputMethodSwitch else err:' + JSON.stringify(err));
+          done();
+        }
       }
 
     })
@@ -177,6 +190,8 @@ export default function inputMethodDrawnControlJSUnit() {
           console.info("====>SUB_Misc_inputMethod_onHandleExtendAction_0010 publishCallback failed:" + JSON.stringify(err));
         } else {
             try {
+              let data = await inputMethod.getController().detach();
+              console.info(`====>SUB_Misc_inputMethod_onHandleExtendAction_0010 data: ${JSON.stringify(data)}`);
               await inputMethod.getController().attach(true, ATTRIBUTE);
               console.info("====>SUB_Misc_inputMethod_onHandleExtendAction_0010 onHandleExtendAction start");
               inputMethod.getController().on("handleExtendAction",async (action) => {

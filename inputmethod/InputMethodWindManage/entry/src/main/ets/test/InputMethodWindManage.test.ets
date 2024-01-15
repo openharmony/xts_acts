@@ -56,10 +56,16 @@ export default function inputMethodWindManageAbility() {
           setting_text = await driver.findComponent(ON.text('设置', MatchPattern.CONTAINS));
         }
 
-        try{
+        try {
           await driver.swipe(600, 2500, 600, 1000, 15000);
           let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 500);
           console.info('====>beforeAll inputMethodSwitch common_text: ' + JSON.stringify(common_text));
+          if(JSON.stringify(common_text) === 'null'){
+            await driver.delayMs(200);
+            await driver.swipe(600, 2500, 600, 1000, 15000);
+            common_text = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 500);
+            console.info('====>beforeAll inputMethodSwitch second swipe: ' + JSON.stringify(common_text));
+          }
           await common_text.click();
           let inputMehtod_text: Component = await driver.waitForComponent(ON.text('键盘和输入法', MatchPattern.CONTAINS), 500);
           console.info('====>beforeAll inputMethodSwitch inputMehtod_text: ' + JSON.stringify(inputMehtod_text));
@@ -112,26 +118,33 @@ export default function inputMethodWindManageAbility() {
 
       } else {
         console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
-        let driver: Driver = Driver.create();
-        await driver.delayMs(500);
-        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
-        inputMethodSetting.showOptionalInputMethods(async (err: BusinessError, data: boolean) => {
-          try{
-            console.info('====>beforeAll inputMethodSwitch into inputMethod_switch' )
-            let list = await driver.waitForComponent(ON.type('List'), 1000);
-            console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
-            await driver.delayMs(500);
-            let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmanage', MatchPattern.CONTAINS), 1000);
-            console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
-            await inputMethod_name.click();
-            console.info('====>beforeAll inputMethodSwitch else done' )
-            await driver.delayMs(1000);
-            done();
-          }catch(err){
-            console.info('====>beforeAll inputMethodSwitch err:' + JSON.stringify(err));
-            done();
+        try {
+          let driver: Driver = Driver.create();
+          await driver.delayMs(500);
+          let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+          let transmission_text: Component = await driver.findComponent(ON.text('取消', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch else transmission_text: ' + JSON.stringify(transmission_text));
+          if(JSON.stringify(transmission_text) !== 'null'){
+            await transmission_text.click();
+            await driver.delayMs(200);
+            console.info('====>beforeAll inputMethodSwitch else transmission_text click');
           }
-        })
+          let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+          console.info('====>beforeAll inputMethodSwitch else result: ' + JSON.stringify(result));
+          let list = await driver.waitForComponent(ON.type('List'), 1000);
+          console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
+          await driver.delayMs(500);
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmanage', MatchPattern.CONTAINS), 1000);
+          console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
+          await inputMethod_name.click();
+          console.info('====>beforeAll inputMethodSwitch else done' )
+          await driver.delayMs(2000);
+          console.info(`====>runCmd else attach`);
+          done();
+        } catch(err) {
+          console.info('====>beforeAll inputMethodSwitch else err:' + JSON.stringify(err));
+          done();
+        }
       }
     })
 
@@ -1530,7 +1543,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0600
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0600
      * @tc.desc     setPrivacyMode(),parameter is true
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1590,7 +1603,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0700
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0700
      * @tc.desc     setPrivacyMode(),parameter is false
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1650,7 +1663,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0800
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0800
      * @tc.desc     setPrivacyMode(),parameter is undefined
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1710,7 +1723,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_getSecurityMode_0100
      * @tc.name     Sub_InputMethod_IMF_getSecurityMode_0100
      * @tc.desc     getSecurityMode()
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
