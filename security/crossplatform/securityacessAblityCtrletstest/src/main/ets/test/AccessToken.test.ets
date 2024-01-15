@@ -185,7 +185,7 @@ export default function AccessTokenTest() {
       console.info("Test_checkAccessToken_005 start");
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        // @ts-ignore
+        //@ts-ignore
         atManager.checkAccessToken(tokenID, "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
           + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
           + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest")
@@ -360,9 +360,9 @@ export default function AccessTokenTest() {
       console.info("Test_requestPermissionsFromUser_002 start");
       let result: Promise<void> = new Promise((): void => {});
       try {
-        result = atManager
-          //@ts-ignore
-          .requestPermissionsFromUser(globalContext.getContext().getAbility(), ["abc"])
+
+        //@ts-ignore
+        result = atManager.requestPermissionsFromUser(globalContext.getContext().getAbility(), ["abc"])
           .then((data) => {
             console.info("Test_requestPermissionsFromUser_002 data:" + JSON.stringify(data));
             console.info("Test_requestPermissionsFromUser_002 data permissions:" + data.permissions);
@@ -420,9 +420,9 @@ export default function AccessTokenTest() {
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       let result: Promise<PermissionRequestResult> = undefined;
       try {
-        result =
-          //@ts-ignore
-        atManager.requestPermissionsFromUser(globalContext.getContext().getAbility(), ["a"], (err, data) => {
+
+        //@ts-ignore
+        result =atManager.requestPermissionsFromUser(globalContext.getContext().getAbility(), ["a"], (err, data) => {
           console.info("Test_requestPermissionsFromUser_004 data:" + JSON.stringify(data));
           console.info("Test_requestPermissionsFromUser_004 data permissions:" + data.permissions);
           console.info("Test_requestPermissionsFromUser_004 data authResults:" + data.authResults);
