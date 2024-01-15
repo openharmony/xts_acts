@@ -271,7 +271,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPSupportedFileTypes_001', 0, async  ()=> {
-      var curTag = TAG + "Test_getDLPSupportedFileTypes_001";
+      let curTag = TAG + "Test_getDLPSupportedFileTypes_001";
       console.info(curTag, "start");
 
       try {
@@ -298,7 +298,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPSupportedFileTypes_002', 0, async  () =>{
-      var curTag = TAG + "Test_generateDLPFile_002";
+      let curTag = TAG + "Test_generateDLPFile_002";
       console.info(curTag, "start");
 
       dlpPermission.getDLPSupportedFileTypes(async (err, fileTypes) => {
@@ -306,7 +306,6 @@ export default function dlpTest() {
         expect(typeof (fileTypes)).assertEqual("object");
 
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -319,11 +318,11 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_001', 0, async  ()=> {
-      var curTag = TAG + "Test_setRetentionState_001";
+      let curTag = TAG + "Test_setRetentionState_001";
       console.info(curTag, "start");
 
       try {
-        var uriArray = ['uri'];
+        let uriArray = ['uri'];
         await dlpPermission.setRetentionState(uriArray);
         expect(false).assertTrue();
       } catch (err) {
@@ -343,14 +342,13 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_002', 0, async  () => {
-      var curTag = TAG + "Test_setRetentionState_002";
+      let curTag = TAG + "Test_setRetentionState_002";
       console.info(curTag, "start");
 
-      var uriArray = ['uri'];
+      let uriArray = ['uri'];
       dlpPermission.setRetentionState(uriArray, async (err) => {
         expect(err.code).assertEqual(DLPErrCode.ERR_JS_API_FOR_SANDBOX_ERROR);
         console.info(curTag, "end");
-        done();
       });
     });
 
@@ -363,7 +361,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_003', 0, async  () =>{
-      var curTag = TAG + "Test_setRetentionState_003";
+      let curTag = TAG + "Test_setRetentionState_003";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -393,7 +391,6 @@ export default function dlpTest() {
       }
       expect(result.resultCode).assertEqual(0);
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -405,7 +402,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_004', 0, async  () =>{
-      var curTag = TAG + "Test_setRetentionState_004";
+      let curTag = TAG + "Test_setRetentionState_004";
       console.info(curTag, "start", bundleName);
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -426,7 +423,7 @@ export default function dlpTest() {
         console.info(curTag, "end");
         return;
       }
-      var uriArray = ['uri'];
+      let uriArray = ['uri'];
       await dlpPermission.cancelRetentionState(uriArray);
       try {
         await dlpPermission.uninstallDLPSandbox(bundleName, userId, sandboxInfo.appIndex);
@@ -435,7 +432,6 @@ export default function dlpTest() {
       }
       expect(result.resultCode).assertEqual(0);
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -447,7 +443,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_005', 0, async () => {
-      var curTag = TAG + "Test_setRetentionState_005";
+      let curTag = TAG + "Test_setRetentionState_005";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -475,7 +471,6 @@ export default function dlpTest() {
         console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
       }
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -487,7 +482,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_setRetentionState_006', 0, async () => {
-      var curTag = TAG + "Test_setRetentionState_006";
+      let curTag = TAG + "Test_setRetentionState_006";
       console.info(curTag, "start", bundleName);
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -515,7 +510,6 @@ export default function dlpTest() {
         console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
       }
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -527,7 +521,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_cancelRetentionState_001', 0, async () => {
-      var curTag = TAG + "Test_cancelRetentionState_001";
+      let curTag = TAG + "Test_cancelRetentionState_001";
       console.info(curTag, "start");
 
       try {
@@ -552,14 +546,13 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_cancelRetentionState_002', 0, async () => {
-      var curTag = TAG + "Test_cancelRetentionState_002";
+      let curTag = TAG + "Test_cancelRetentionState_002";
       console.info(curTag, "start");
 
-      var uriArray = ['uri'];
+      let uriArray = ['uri'];
       dlpPermission.cancelRetentionState(uriArray, async (err) => {
         expect(err).assertEqual(null);
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -572,7 +565,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_cancelRetentionState_003', 0, async () => {
-      var curTag = TAG + "Test_cancelRetentionState_003";
+      let curTag = TAG + "Test_cancelRetentionState_003";
       console.info(curTag, "start");
 
       try {
@@ -596,7 +589,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_cancelRetentionState_004', 0, async () => {
-      var curTag = TAG + "Test_cancelRetentionState_004";
+      let curTag = TAG + "Test_cancelRetentionState_004";
       console.info(curTag, "start");
 
       var docUris = [];
@@ -604,7 +597,6 @@ export default function dlpTest() {
         expect(err.code === DLPErrCode.ERR_JS_INVALID_PARAMETER).assertTrue();
 
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -617,7 +609,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_001', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_001";
+      let curTag = TAG + "Test_getRetentionSandboxList_001";
       console.info(curTag, "start");
       let uri = 'uri';
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, uri);
@@ -677,7 +669,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_002', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_002";
+      let curTag = TAG + "Test_getRetentionSandboxList_002";
       console.info(curTag, "start");
 
       let uri = 'uri';
@@ -718,7 +710,6 @@ export default function dlpTest() {
           console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
         }
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -731,7 +722,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_003', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_003";
+      let curTag = TAG + "Test_getRetentionSandboxList_003";
       console.info(curTag, "start");
       let uri = 'uri';
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, uri);
@@ -788,7 +779,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_004', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_004";
+      let curTag = TAG + "Test_getRetentionSandboxList_004";
       console.info(curTag, "start");
       let uri = 'uri';
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, uri);
@@ -815,7 +806,6 @@ export default function dlpTest() {
         expect(err).assertEqual(null);
 
         console.info(curTag, "end");
-        done();
       });
       try {
         await dlpPermission.cancelRetentionState([uri]);
@@ -844,7 +834,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_005', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_005";
+      let curTag = TAG + "Test_getRetentionSandboxList_005";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -871,7 +861,6 @@ export default function dlpTest() {
         console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
       }
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -883,7 +872,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_006', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_006";
+      let curTag = TAG + "Test_getRetentionSandboxList_006";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -910,7 +899,6 @@ export default function dlpTest() {
       }
       expect(result.resultCode).assertEqual(DLPErrCode.ERR_JS_API_NOT_FOR_SANDBOX_ERROR);
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -922,7 +910,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_007', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_007";
+      let curTag = TAG + "Test_getRetentionSandboxList_007";
       console.info(curTag, "start");
       try {
         // @ts-ignore
@@ -944,19 +932,19 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getRetentionSandboxList_008', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_008";
+      let curTag = TAG + "Test_getRetentionSandboxList_008";
       console.info(curTag, "start");
       try {
         // @ts-ignore
         dlpPermission.getRetentionSandboxList(-1, async (err, data) => {
           expect(false).assertTrue();
           console.info(curTag, "end");
-          done();
+
         });
       } catch (err) {
         expect(err.code).assertEqual(DLPErrCode.ERR_JS_PARAMETER_ERROR);
         console.info(curTag, "end");
-        done();
+
         return;
       }
       expect(false).assertTrue();
@@ -973,7 +961,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPFileAccessRecords_001', 0, async () => {
-      var curTag = TAG + "Test_getDLPFileAccessRecords_001";
+      let curTag = TAG + "Test_getDLPFileAccessRecords_001";
       console.info(curTag, "start");
       try {
         await dlpPermission.getDLPFileAccessRecords();
@@ -1010,7 +998,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPFileAccessRecords_002', 0, async () => {
-      var curTag = TAG + "Test_getRetentionSandboxList_002";
+      let curTag = TAG + "Test_getRetentionSandboxList_002";
       console.info(curTag, "start");
       try {
         await dlpPermission.getDLPFileAccessRecords();
@@ -1030,7 +1018,6 @@ export default function dlpTest() {
           console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
         }
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -1043,7 +1030,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPFileAccessRecords_003', 0, async () => {
-      var curTag = TAG + "Test_getDLPFileAccessRecords_003";
+      let curTag = TAG + "Test_getDLPFileAccessRecords_003";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -1070,7 +1057,6 @@ export default function dlpTest() {
       }
       expect(result.resultCode).assertEqual(DLPErrCode.ERR_JS_API_NOT_FOR_SANDBOX_ERROR);
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -1082,7 +1068,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPFileAccessRecords_004', 0, async () => {
-      var curTag = TAG + "Test_getDLPFileAccessRecords_004";
+      let curTag = TAG + "Test_getDLPFileAccessRecords_004";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -1109,7 +1095,6 @@ export default function dlpTest() {
       }
       expect(result.resultCode).assertEqual(DLPErrCode.ERR_JS_API_NOT_FOR_SANDBOX_ERROR);
       console.info(curTag, "end");
-      done();
     })
 
     /**
@@ -1120,8 +1105,8 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_isDLPFile_001', 0, async function () {
-      var curTag = TAG + "Test_isDLPFile_001";
+    it('Test_isDLPFile_001', 0, async  () => {
+      let curTag = TAG + "Test_isDLPFile_001";
       console.info(curTag, "start");
 
       let dlpInfo = await genTestDlpFile();
@@ -1149,7 +1134,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_isDLPFile_002', 0, async () => {
-      var curTag = TAG + "Test_isDLPFile_002";
+      let curTag = TAG + "Test_isDLPFile_002";
       console.info(curTag, "start");
       let dlpInfo = await genTestDlpFile();
 
@@ -1157,7 +1142,6 @@ export default function dlpTest() {
         expect(err).assertEqual(null);
         await closeTestDlpFile(dlpInfo);
         console.info(curTag, "end");
-        done();
       });
     })
 
@@ -1194,7 +1178,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_isDLPFile_004', 0, async () => {
-      var curTag = TAG + "Test_isDLPFile_004";
+      let curTag = TAG + "Test_isDLPFile_004";
       console.info(curTag, "start");
       try {
         dlpPermission.isDLPFile(-1, (err, data) => {
@@ -1202,7 +1186,6 @@ export default function dlpTest() {
       } catch (err) {
         expect(err.code).assertEqual(DLPErrCode.ERR_JS_INVALID_PARAMETER);
         console.info(curTag, "end");
-        done();
       }
     })
 
@@ -1215,7 +1198,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_001', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_001";
+      let curTag = TAG + "Test_getDLPPermissionInfo_001";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1255,7 +1238,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_002', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_002";
+      let curTag = TAG + "Test_getDLPPermissionInfo_002";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1295,7 +1278,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_003', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_003";
+      let curTag = TAG + "Test_getDLPPermissionInfo_003";
       console.info(curTag, "start");
 
       try {
@@ -1317,7 +1300,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_004', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_004";
+      let curTag = TAG + "Test_getDLPPermissionInfo_004";
       console.info(curTag, "start");
 
       dlpPermission.getDLPPermissionInfo(async (err, dlpPermInfo) => {
@@ -1336,7 +1319,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_005', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_005";
+      let curTag = TAG + "Test_getDLPPermissionInfo_005";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1389,7 +1372,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_006', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_006";
+      let curTag = TAG + "Test_getDLPPermissionInfo_006";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.CONTENT_EDIT, userId, 'uri');
@@ -1449,7 +1432,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_007', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_007";
+      let curTag = TAG + "Test_getDLPPermissionInfo_007";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1490,7 +1473,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPPermissionInfo_008', 0, async () => {
-      var curTag = TAG + "Test_getDLPPermissionInfo_008";
+      let curTag = TAG + "Test_getDLPPermissionInfo_008";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.FULL_CONTROL, userId, 'uri');
@@ -1553,7 +1536,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getOriginalFileName_001', 0, async () => {
-      var curTag = TAG + "Test_getOriginalFileName_001";
+      let curTag = TAG + "Test_getOriginalFileName_001";
       console.info(curTag, "start");
 
       try {
@@ -1576,7 +1559,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getOriginalFileName_002', 0, async () => {
-      var curTag = TAG + "Test_getOriginalFileName_002";
+      let curTag = TAG + "Test_getOriginalFileName_002";
       console.info(curTag, "start");
 
       try {
@@ -1599,11 +1582,11 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_getDLPSuffix_001', 0, async () => {
-      var curTag = TAG + "Test_getDLPSuffix_001";
+      let curTag = TAG + "Test_getDLPSuffix_001";
       console.info(curTag, "start");
 
       try {
-        var name = dlpPermission.getDLPSuffix();
+        let name:string = dlpPermission.getDLPSuffix();
         expect(name).assertEqual('.dlp');
       } catch (err) {
         console.error(curTag, "getDLPSuffix failed", err.code, err.message);
@@ -1622,11 +1605,11 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_on_openDLPFile_001', 0, async () => {
-      var curTag = TAG + "Test_on_openDLPFile_001";
+      let curTag = TAG + "Test_on_openDLPFile_001";
       console.info(curTag, "start");
 
-      var called = false;
-      var srcUri = '123456'
+      let called = false;
+      let srcUri = '123456'
       try {
         dlpPermission.on('openDLPFile', (dlpFileInfo) => {
           expect(dlpFileInfo.uri).assertEqual(srcUri);
@@ -1660,7 +1643,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_on_openDLPFile_002', 0, async () => {
-      var curTag = TAG + "Test_on_openDLPFile_002";
+      let curTag = TAG + "Test_on_openDLPFile_002";
       console.info(curTag, "start");
 
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1700,7 +1683,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_on_openDLPFile_003', 0, async () => {
-      var curTag = TAG + "Test_on_openDLPFile_003";
+      let curTag = TAG + "Test_on_openDLPFile_003";
       console.info(curTag, "start");
 
       try {
@@ -1724,21 +1707,21 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_off_openDLPFile_001', 0, async () => {
-      var curTag = TAG + "Test_off_openDLPFile_001";
+      let curTag = TAG + "Test_off_openDLPFile_001";
       console.info(curTag, "start");
 
-      var called1 = 0;
+      let called1 = 0;
       let func1 = (dlpFileInfo) => {
         expect(dlpFileInfo.uri).assertEqual(srcUri);
         called1++;
       }
-      var called2 = 0;
+      let called2 = 0;
       let func2 = (dlpFileInfo) => {
         expect(dlpFileInfo.uri).assertEqual(srcUri);
         called2++;
       }
 
-      var srcUri = '123456'
+      let srcUri = '123456'
       try {
         dlpPermission.on('openDLPFile', func1);
       } catch (err) {
@@ -1793,21 +1776,21 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_off_openDLPFile_002', 0, async () => {
-      var curTag = TAG + "Test_off_openDLPFile_002";
+      let curTag = TAG + "Test_off_openDLPFile_002";
       console.info(curTag, "start");
 
-      var called1 = 0;
+      let called1 = 0;
       let func1 = (dlpFileInfo) => {
         expect(dlpFileInfo.uri).assertEqual(srcUri);
         called1++;
       }
-      var called2 = 0;
+      let called2 = 0;
       let func2 = (dlpFileInfo) => {
         expect(dlpFileInfo.uri).assertEqual(srcUri);
         called2++;
       }
 
-      var srcUri = '123456'
+      let srcUri = '123456'
       try {
         dlpPermission.on('openDLPFile', func1);
       } catch (err) {
@@ -1861,7 +1844,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('Test_off_openDLPFile_003', 0, async () => {
-      var curTag = TAG + "Test_off_openDLPFile_003";
+      let curTag = TAG + "Test_off_openDLPFile_003";
       console.info(curTag, "start");
 
       try {
@@ -1905,7 +1888,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_setSandboxAppConfig_0200', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0200";
+      let curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0200";
       console.info(curTag, "start");
 
       try {
@@ -1926,7 +1909,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_setSandboxAppConfig_0300', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0300";
+      let curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0300";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -1962,7 +1945,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_getSandboxAppConfig_0100', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_getSandboxAppConfig_0100";
+      let curTag = TAG + "SUB_SECURITY_DLP_getSandboxAppConfig_0100";
       console.info(curTag, "start");
 
       try {
@@ -1983,7 +1966,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_cleanSandboxAppConfig_0100', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0100";
+      let curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0100";
       console.info(curTag, "start");
 
       try {
@@ -2005,7 +1988,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_cleanSandboxAppConfig_0200', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0200";
+      let curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0200";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
       let want: Want = {
@@ -2041,7 +2024,7 @@ export default function dlpTest() {
      * @tc.level Level 2
      */
     it('SUB_SECURITY_DLP_startDLPManagerForResult_0100', 0, async () => {
-      var curTag = TAG + "SUB_SECURITY_DLP_startDLPManagerForResult_0100";
+      let curTag = TAG + "SUB_SECURITY_DLP_startDLPManagerForResult_0100";
       console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 start");
       try {
         let context = globalThis.context; // 获取当前UIAbilityContext
@@ -2059,7 +2042,6 @@ export default function dlpTest() {
       } catch (err) {
         console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 startDLPManagerForResult failed", err.code, err.message);
         expect(err.code == 19100017 && err.message == "displayName not exist in want parameters").assertTrue();
-        done();
       }
       console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 end");
       return;
