@@ -66,180 +66,167 @@ userList[1] = user2;
 
 var userId;
 
+
 const accountAbility = account.getDistributedAccountAbility()
 const bundleName = "com.ohos.dlp_xts"
 const rootDir = "/data/storage/el1/base/"
 
+// 获取帐号信息
+async function getOsAccountInfo(): Promise<account_osAccount.OsAccountInfo> {
+  try {
+    let accountMgr = account_osAccount.getAccountManager();
+    return await accountMgr.getCurrentOsAccount();
+  } catch (err) {
+    console.error(TAG, 'getCurrentOsAccount failed', err.code, err.message);
+    expect(false).assertTrue();
+  }
+}
+
+// 帐号登录
+async function AccountLogin(accountName: string) {
+  await AccountLogout()
+  let info: account.DistributedInfo = {
+    name: "",
+    id: "1234",
+    event: "Ohos.account.event.LOGIN",
+    nickname: "nickname",
+    avatar: "avatar"
+  }
+  info.name = accountName
+  info.event = "Ohos.account.event.LOGIN"
+  try {
+    await accountAbility.setOsAccountDistributedInfo(info)
+  } catch (err) {
+    console.error(TAG, "setOsAccountDistributedInfo LOGIN failed", err.code, err.message);
+    expect(null).assertFail()
+    return
+  }
+  let user = await accountAbility.getOsAccountDistributedInfo()
+  expect(user.name).assertEqual(accountName)
+}
+
+// 帐号登出
+async function AccountLogout() {
+  let accountInfo = await accountAbility.getOsAccountDistributedInfo();
+  let info: account.DistributedInfo = {
+    name: "",
+    id: "1234",
+    event: "Ohos.account.event.LOGIN",
+    nickname: "nickname",
+    avatar: "avatar"
+  }
+  if (accountInfo.name === "ohosAnonymousName") {
+    return
+  }
+  info.name = accountInfo.name
+  info.event = "Ohos.account.event.LOGOUT"
+  try {
+    await accountAbility.setOsAccountDistributedInfo(info)
+  } catch (err) {
+    console.error(TAG, "setOsAccountDistributedInfo LOGOUT failed", err.code, err.message);
+    expect(null).assertFail()
+    return
+  }
+  let user: account.DistributedInfo = await accountAbility.getOsAccountDistributedInfo()
+  expect(user.name).assertEqual("ohosAnonymousName")
+}
+
+// 生成文件
+function genFile(path: string, content?) {
+  try {
+    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let fd = file.fd;
+    if (content !== undefined) {
+      fs.writeSync(fd, content);
+    }
+    return fd;
+  } catch (err) {
+    console.error(TAG, 'openSync', path, 'failed', err.code, err.message);
+    return -1;
+  }
+}
+
+// 生成可选参数的DLP策略
+async function genTestOptionalDlpProperty(): Promise<dlpPermission.DLPProperty> {
+  let accountInfo = await getOsAccountInfo();
+  let property: dlpPermission.DLPProperty = {
+    ownerAccount: accountInfo.distributedInfo.name,
+    ownerAccountID: accountInfo.distributedInfo.id,
+    ownerAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
+    contactAccount: accountInfo.distributedInfo.name,
+    offlineAccess: true,
+  };
+  return property;
+}
+
+// 生成DLP策略
+async function genTestDlpProperty(): Promise<dlpPermission.DLPProperty> {
+  let accountInfo = await getOsAccountInfo();
+  let property: dlpPermission.DLPProperty = {
+    ownerAccount: accountInfo.distributedInfo.name,
+    ownerAccountID: accountInfo.distributedInfo.id,
+    ownerAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
+    authUserList: userList,
+    contactAccount: accountInfo.distributedInfo.name,
+    offlineAccess: true,
+    everyoneAccessList: [],
+  };
+  return property;
+}
+
+// 生成测试DLP文件
+async function genTestDlpFile(): Promise<TestDlpFileInfo> {
+  let dlpInfo: TestDlpFileInfo = new TestDlpFileInfo();
+  dlpInfo.plaintextPath = rootDir + "test_dlp.txt";
+  dlpInfo.ciphertextPath = rootDir + "test_dlp.txt.dlp";
+  let writeContent = "123456";
+  dlpInfo.plaintextFd = genFile(dlpInfo.plaintextPath, writeContent);
+  expect(dlpInfo.plaintextFd >= 0).assertTrue();
+  dlpInfo.ciphertextFd = genFile(dlpInfo.ciphertextPath);
+  expect(dlpInfo.ciphertextFd >= 0).assertTrue();
+
+  let property = await genTestDlpProperty();
+
+  try {
+    let dlpFile: dlpPermission.DLPFile = await dlpPermission.generateDLPFile(dlpInfo.plaintextFd, dlpInfo.ciphertextFd, property);
+    expect(true).assertTrue()
+    dlpInfo.dlpFile = dlpFile;
+    return dlpInfo;
+  } catch (err) {
+    console.error(TAG, "generateDLPFile failed", err.code, err.message);
+    fs.closeSync(dlpInfo.plaintextFd);
+    fs.closeSync(dlpInfo.ciphertextFd);
+    fs.unlinkSync(dlpInfo.ciphertextPath);
+    fs.unlinkSync(dlpInfo.plaintextPath);
+    expect(false).assertTrue()
+    return null;
+  }
+}
+
+// 关闭测试DLP文件
+async function closeTestDlpFile(dlpInfo: TestDlpFileInfo) {
+  try {
+    await dlpInfo.dlpFile.closeDLPFile();
+  } catch (err) {
+    console.error(TAG, "closeDLPFile failed", err.code, err.message);
+  }
+  fs.closeSync(dlpInfo.plaintextFd);
+  fs.closeSync(dlpInfo.ciphertextFd);
+  fs.unlinkSync(dlpInfo.ciphertextPath);
+  fs.unlinkSync(dlpInfo.plaintextPath);
+}
+
 export default function dlpTest() {
-  describe('dlpTest',  () => {
+  describe('dlpTest', () => {
 
-    // 获取帐号信息
-    async function getOsAccountInfo(): Promise<account_osAccount.OsAccountInfo> {
-      try {
-        let accountMgr = account_osAccount.getAccountManager();
-        return await accountMgr.getCurrentOsAccount();
-      } catch (err) {
-        console.error(TAG, 'getCurrentOsAccount failed', err.code, err.message);
-        expect(false).assertTrue();
-      }
-    }
-
-    // 帐号登录
-    async function AccountLogin(accountName) {
-      await AccountLogout()
-      var info = {
-        name: "",
-        id: "1234",
-        event: "Ohos.account.event.LOGIN",
-        nickname: "nickname",
-        avatar: "avatar"
-      }
-      info.name = accountName
-      info.event = "Ohos.account.event.LOGIN"
-      try {
-        await accountAbility.setOsAccountDistributedInfo(info)
-      } catch (err) {
-        console.error(TAG, "setOsAccountDistributedInfo LOGIN failed", err.code, err.message);
-        expect(null).assertFail()
-        return
-      }
-      var user = await accountAbility.getOsAccountDistributedInfo()
-      expect(user.name).assertEqual(accountName)
-    }
-
-    // 帐号登出
-    async function AccountLogout() {
-      try {
-        var accountInfo = await accountAbility.getOsAccountDistributedInfo();
-      } catch (err) {
-        console.error(TAG, "getOsAccountDistributedInfo failed", err.code, err.message);
-        expect(null).assertFail();
-        return
-      }
-      var info = {
-        name: "",
-        id: "1234",
-        event: "Ohos.account.event.LOGIN",
-        nickname: "nickname",
-        avatar: "avatar"
-      }
-      if (accountInfo.name === "ohosAnonymousName") {
-        return
-      }
-      info.name = accountInfo.name
-      info.event = "Ohos.account.event.LOGOUT"
-      try {
-        await accountAbility.setOsAccountDistributedInfo(info)
-      } catch (err) {
-        console.error(TAG, "setOsAccountDistributedInfo LOGOUT failed", err.code, err.message);
-        expect(null).assertFail()
-        return
-      }
-      var user = await accountAbility.getOsAccountDistributedInfo()
-      expect(user.name).assertEqual("ohosAnonymousName")
-    }
-
-    // 生成文件
-    function genFile(path, content?) {
-      try {
-        var file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        let fd = file.fd;
-        if (content !== undefined) {
-          fs.writeSync(fd, content);
-        }
-        return fd;
-      } catch (err) {
-        console.error(TAG, 'openSync', path, 'failed', err.code, err.message);
-        return -1;
-      }
-    }
-
-    // 生成可选参数的DLP策略
-    async function genTestOptionalDlpProperty(): Promise<dlpPermission.DLPProperty> {
-      var accountInfo = await getOsAccountInfo();
-      var property: dlpPermission.DLPProperty = {
-        "ownerAccount": accountInfo.distributedInfo.name,
-        "ownerAccountID": accountInfo.distributedInfo.id,
-        "ownerAccountType": dlpPermission.AccountType.CLOUD_ACCOUNT,
-        "contactAccount": accountInfo.distributedInfo.name,
-        "offlineAccess": true,
-      };
-      return property;
-    }
-
-    // 生成DLP策略
-    async function genTestDlpProperty(): Promise<dlpPermission.DLPProperty> {
-      var accountInfo = await getOsAccountInfo();
-      var property: dlpPermission.DLPProperty = {
-        "ownerAccount": accountInfo.distributedInfo.name,
-        "ownerAccountID": accountInfo.distributedInfo.id,
-        "ownerAccountType": dlpPermission.AccountType.CLOUD_ACCOUNT,
-        "authUserList": userList,
-        "contactAccount": accountInfo.distributedInfo.name,
-        "offlineAccess": true,
-        "everyoneAccessList": [],
-      };
-      return property;
-    }
-
-    // 生成测试DLP文件
-    async function genTestDlpFile(): Promise<TestDlpFileInfo> {
-      let dlpInfo: TestDlpFileInfo = new TestDlpFileInfo();
-      dlpInfo.plaintextPath = rootDir + "test_dlp.txt";
-      dlpInfo.ciphertextPath = rootDir + "test_dlp.txt.dlp";
-      var writeContent = "123456";
-      dlpInfo.plaintextFd = genFile(dlpInfo.plaintextPath, writeContent);
-      expect(dlpInfo.plaintextFd >= 0).assertTrue();
-      dlpInfo.ciphertextFd = genFile(dlpInfo.ciphertextPath);
-      expect(dlpInfo.ciphertextFd >= 0).assertTrue();
-
-      var property = await genTestDlpProperty();
-
-      try {
-        var dlpFile = await dlpPermission.generateDLPFile(dlpInfo.plaintextFd, dlpInfo.ciphertextFd, property);
-        expect(true).assertTrue()
-        dlpInfo.dlpFile = dlpFile;
-        return dlpInfo;
-      } catch (err) {
-        console.error(TAG, "generateDLPFile failed", err.code, err.message);
-        fs.closeSync(dlpInfo.plaintextFd);
-        fs.closeSync(dlpInfo.ciphertextFd);
-        fs.unlinkSync(dlpInfo.ciphertextPath);
-        fs.unlinkSync(dlpInfo.plaintextPath);
-        expect(false).assertTrue()
-        return null;
-      }
-    }
-
-    // 关闭测试DLP文件
-    async function closeTestDlpFile(dlpInfo: TestDlpFileInfo) {
-      try {
-        await dlpInfo.dlpFile.closeDLPFile();
-      } catch (err) {
-        console.error(TAG, "closeDLPFile failed", err.code, err.message);
-      }
-      fs.closeSync(dlpInfo.plaintextFd);
-      fs.closeSync(dlpInfo.ciphertextFd);
-      fs.unlinkSync(dlpInfo.ciphertextPath);
-      fs.unlinkSync(dlpInfo.plaintextPath);
-    }
-
-    function timeOut() {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve('')
-        }, 200)
-      })
-    }
-
-    beforeAll(async  () =>{
+    beforeAll(async () => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
       await AccountLogin("owner@ohos.com");
       const accountMgr = account_osAccount.getAccountManager();
-      userId = await accountMgr.getOsAccountLocalIdFromProcess();
+      userId = await accountMgr.getOsAccountLocalId();
     })
-    beforeEach( () =>{
+    beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
@@ -256,7 +243,7 @@ export default function dlpTest() {
         await done();
       }, 3000);
     })
-    afterAll(async  () =>{
+    afterAll(async () => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
       await AccountLogout();
@@ -270,7 +257,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_getDLPSupportedFileTypes_001', 0, async  ()=> {
+    it('Test_getDLPSupportedFileTypes_001', 0, async () => {
       let curTag = TAG + "Test_getDLPSupportedFileTypes_001";
       console.info(curTag, "start");
 
@@ -297,7 +284,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_getDLPSupportedFileTypes_002', 0, async  () =>{
+    it('Test_getDLPSupportedFileTypes_002', 0, async () => {
       let curTag = TAG + "Test_generateDLPFile_002";
       console.info(curTag, "start");
 
@@ -317,7 +304,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_setRetentionState_001', 0, async  ()=> {
+    it('Test_setRetentionState_001', 0, async () => {
       let curTag = TAG + "Test_setRetentionState_001";
       console.info(curTag, "start");
 
@@ -341,7 +328,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_setRetentionState_002', 0, async  () => {
+    it('Test_setRetentionState_002', 0, async () => {
       let curTag = TAG + "Test_setRetentionState_002";
       console.info(curTag, "start");
 
@@ -360,7 +347,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_setRetentionState_003', 0, async  () =>{
+    it('Test_setRetentionState_003', 0, async () => {
       let curTag = TAG + "Test_setRetentionState_003";
       console.info(curTag, "start");
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -401,7 +388,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_setRetentionState_004', 0, async  () =>{
+    it('Test_setRetentionState_004', 0, async () => {
       let curTag = TAG + "Test_setRetentionState_004";
       console.info(curTag, "start", bundleName);
       var sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1105,7 +1092,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('Test_isDLPFile_001', 0, async  () => {
+    it('Test_isDLPFile_001', 0, async () => {
       let curTag = TAG + "Test_isDLPFile_001";
       console.info(curTag, "start");
 
@@ -1586,7 +1573,7 @@ export default function dlpTest() {
       console.info(curTag, "start");
 
       try {
-        let name:string = dlpPermission.getDLPSuffix();
+        let name: string = dlpPermission.getDLPSuffix();
         expect(name).assertEqual('.dlp');
       } catch (err) {
         console.error(curTag, "getDLPSuffix failed", err.code, err.message);
