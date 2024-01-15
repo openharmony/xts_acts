@@ -140,7 +140,7 @@ export default function webStorage() {
     it('testWebStorageOriginGetOrigins001', 0, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOrigins001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebStorageOriginGetOrigins001", "resource://rawfile/_4039514521_24576", 100037, done);
+      Utils.registerEvent("testWebStorageOriginGetOrigins001", "resource://rawfile/_true_24576", 100037, done);
       sendEventByKey('WebStorageButton', 10, '');
     })
 

@@ -53,7 +53,6 @@ struct webViewController {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -379,11 +378,13 @@ struct webViewController {
 
             case "testOnOverScroll001": {
               try {
-                this.onScrollCallBack = false
-                let driver = Driver.create();
-                await driver.swipe(0, 300, 0, 600, 600);
+                this.controller.loadUrl("https://www.example.com/");
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.onScrollCallBack, 31038)
+                this.onOverScrollCallBack = false
+                let driver = Driver.create();
+                await driver.swipe(100, 300, 100, 500, 600);
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.onOverScrollCallBack, 31038)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(error.code, 31038)
@@ -393,11 +394,13 @@ struct webViewController {
 
             case "testOnOverScroll002": {
               try {
-                this.onScrollCallBack = false
-                let driver = Driver.create();
-                await driver.swipe(0, 800, 0, 100, 600);
+                this.controller.loadUrl("https://www.example.com/");
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.onScrollCallBack, 100034)
+                this.onOverScrollCallBack = false
+                let driver = Driver.create();
+                await driver.swipe(100, 900, 100, 200, 600);
+                await Utils.sleep(2000);
+                Utils.emitEvent(this.onOverScrollCallBack, 100034)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(error.code, 100034)
@@ -407,11 +410,13 @@ struct webViewController {
 
             case "testOnOverScroll003": {
               try {
-                this.onScrollCallBack = false
+                this.controller.loadUrl("https://www.example.com/");
+                await Utils.sleep(2000);
+                this.onOverScrollCallBack = false
                 let driver = Driver.create();
                 await driver.swipe(400, 300, 100, 300, 600);
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.onScrollCallBack, 100035)
+                Utils.emitEvent(this.onOverScrollCallBack, 100035)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(error.code, 100035)
@@ -421,11 +426,13 @@ struct webViewController {
 
             case "testOnOverScroll004": {
               try {
-                this.onScrollCallBack = false
+                this.controller.loadUrl("https://www.example.com/");
+                await Utils.sleep(2000);
+                this.onOverScrollCallBack = false
                 let driver = Driver.create();
                 await driver.swipe(100, 300, 400, 300, 600);
                 await Utils.sleep(2000);
-                Utils.emitEvent(this.onScrollCallBack, 100036)
+                Utils.emitEvent(this.onOverScrollCallBack, 100036)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(error.code, 100036)
@@ -522,16 +529,16 @@ struct webViewController {
         })
         .onScroll((event) => {
           if (event) {
-            console.info("x = " + event.xOffset)
-            console.info("y = " + event.yOffset)
+            console.info("onScroll x = " + event.xOffset)
+            console.info("onScroll y = " + event.yOffset)
             this.onScrollCallBack = true
           }
         })
         .onOverScroll((event) => {
           if (event) {
-            console.info("x = " + event.xOffset)
-            console.info("y = " + event.yOffset)
-            this.onScrollCallBack = true
+            console.info("onOverScroll x = " + event.xOffset)
+            console.info("onOverScroll y = " + event.yOffset)
+            this.onOverScrollCallBack = true
           }
         })
         .onPageEnd((event) => {
