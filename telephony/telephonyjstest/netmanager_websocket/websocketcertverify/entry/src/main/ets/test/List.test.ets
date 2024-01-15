@@ -15,8 +15,10 @@
 
 import NetworkManagerWebsocketTest from './NetworkManagerWebsocketTest.test'
 import NetworkManagerSocketTest from './NetworkManagerSocketTest.test'
+import NetworkManagerVpnTest from './NetworkManagerVpnTest.test'
 
 export default function testsuite() {
     NetworkManagerWebsocketTest();
 	NetworkManagerSocketTest();
+	NetworkManagerVpnTest();
 }
