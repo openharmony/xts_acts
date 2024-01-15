@@ -33,7 +33,7 @@ export default class GlobalContext {
     return this._abilityContext;
   }
 
-  setAbility(ability: common.UIAbilityContext): void {
+  setAbility(ability: common.Context): void {
     this._abilityContext = ability;
   }
 }
