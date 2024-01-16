@@ -3492,6 +3492,72 @@ static napi_value CreateObjectWithNamedProperties(napi_env env, napi_callback_in
     return _value;
 }
 
+static napi_value MakeCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 10; // 10 : max arguments.
+    size_t n;
+    napi_value args[10]; // 10 : max arguments.
+    // NOLINTNEXTLINE (readability/null_usage)
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+    napi_value async_context_wrap = args[0];
+    napi_value recv = args[1];
+    napi_value func = args[2]; // 2 : create async resouce arguments count.
+    napi_value argv[7]; // 7 : remain arguments.
+    for (n = 3; n < argc; n += 1) { // 3 : reserved arguments.
+        argv[n - 3] = args[n]; // 3 : reserved arguments.
+    }
+    napi_valuetype func_type;
+    NAPI_CALL(env, napi_typeof(env, func, &func_type));
+    napi_async_context context;
+    NAPI_CALL(env, napi_unwrap(env, async_context_wrap, (void **)&context));
+    napi_value result;
+    if (func_type == napi_function) {
+        NAPI_CALL(env,
+                  napi_make_callback(env, context, recv, func, argc - 3, argv, &result)); // 3 : reserved arguments.
+    } else {
+        NAPI_ASSERT(env, false, "Unexpected argument type");
+    }
+    return result;
+}
+
+static napi_value MakeCallbackOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = 10; // 10 : max arguments.
+    size_t n;
+    napi_value args[10]; // 10 : max arguments.
+    // NOLINTNEXTLINE (readability/null_usage)
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+    napi_value resource = args[0];
+    napi_value recv = args[1];
+    napi_value func = args[2];
+    napi_value argv[7]; // 7 : remain arguments.
+    for (n = 3; n < argc; n += 1) { // 3 : reserved arguments.
+        argv[n - 3] = args[n]; // 3 : reserved arguments.
+    }
+
+    napi_valuetype func_type;
+    NAPI_CALL(env, napi_typeof(env, func, &func_type));
+
+    napi_value resource_name;
+    NAPI_CALL(env, napi_create_string_utf8(env, "test", NAPI_AUTO_LENGTH, &resource_name));
+
+    napi_async_context context;
+    NAPI_CALL(env, napi_async_init(env, resource, resource_name, &context));
+
+    napi_value result;
+    if (func_type == napi_function) {
+        NAPI_CALL(env,
+                  napi_make_callback(env, context, recv, func, argc - 3, argv, &result)); // 3 : reserved arguments.
+    } else {
+        NAPI_ASSERT(env, false, "Unexpected argument type");
+    }
+
+    NAPI_CALL(env, napi_async_destroy(env, context));
+    return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -3634,6 +3700,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("coerceToNativeBindingObject", CoerceToNativeBindingObject),
         DECLARE_NAPI_FUNCTION("createObjectWithProperties", CreateObjectWithProperties),
         DECLARE_NAPI_FUNCTION("createObjectWithNamedProperties", CreateObjectWithNamedProperties),
+        DECLARE_NAPI_FUNCTION("makeCallback", MakeCallback),
+        DECLARE_NAPI_FUNCTION("makeCallbackOne", MakeCallbackOne),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
