@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import common from '@ohos.app.ability.common';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
@@ -26,6 +27,26 @@ export default function abilityTest() {
      */
     it('Acts_SelfAutoStartup_1200', 0, function (done) {
       console.info('====> Acts_SelfAutoStartup_1200 start');
+      let AutoStartupInfo: common.AutoStartupInfo = {
+        bundleName: 'com.acts.selfautostartup',
+        abilityName: 'EntryAbility',
+        moduleName: 'Entry',
+        abilityTypeName: 'ui'
+      };
+      expect(AutoStartupInfo.bundleName).assertEqual('com.acts.selfautostartup');
+      expect(AutoStartupInfo.abilityName).assertEqual('EntryAbility');
+      expect(AutoStartupInfo.moduleName).assertEqual('Entry');
+      expect(AutoStartupInfo.abilityTypeName).assertEqual('ui')
+
+      let AutoStartUpCallback: common.AutoStartupCallback = {
+        onAutoStartupOn(data: common.AutoStartupInfo) {
+          console.info('===> Acts_SelfAutoStartup_1200 onAutoStartupOn data: ' + JSON.stringify(data));
+        },
+        onAutoStartupOff(data: common.AutoStartupInfo) {
+          console.info('===> Acts_SelfAutoStartup_1200 onAutoStartOff data: ' + JSON.stringify(data));
+        }
+      };
+      expect(AutoStartUpCallback == null).assertFalse();
 
       try {
         applicationContext.setAutoStartup(null, (err, data) => {

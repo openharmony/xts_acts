@@ -50,6 +50,17 @@ import getReadOnlyFdTest from './PhotoAsset/getReadOnlyFd'
 import getThumbnailTest from './PhotoAsset/getThumbnail'
 import photoPickerTest from './PhotoAccessHelper/photoPicker'
 import PhotoAccessHelperTest from  './PhotoAccessHelperCases/PhotoAccessHelperTest.test.ets'
+import setAlbumNameChangeRequestTest from './MediaAlbumChangeRequest/setAlbumName'
+import getAlbumChangeRequestTest from './MediaAlbumChangeRequest/getAlbum'
+import addRemoveAssetsChangeRequestTest from './MediaAlbumChangeRequest/addRemoveAssets'
+import createAssetRequestTest from './MediaAssetChangeRequest/createAssetRequest'
+import createImageAssetRequestTest from './MediaAssetChangeRequest/createImageAssetRequest'
+import createVideoAssetRequestTest from './MediaAssetChangeRequest/createVideoAssetRequest'
+import deleteAssetsChangeRequestTest from './MediaAssetChangeRequest/deleteAssets'
+import getAssetChangeRequestTest from './MediaAssetChangeRequest/getAsset'
+import setTitleChangeRequestTest from './MediaAssetChangeRequest/setTitle'
+import addResourceChangeRequestTest from './MediaAssetChangeRequest/addResource'
+import getWriteCacheHandlerTest from './MediaAssetChangeRequest/getWriteCacheHandler'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -89,4 +100,15 @@ export default function testsuite () {
   getThumbnailTest()
   photoPickerTest()
   PhotoAccessHelperTest()
+  setAlbumNameChangeRequestTest()
+  getAlbumChangeRequestTest()
+  addRemoveAssetsChangeRequestTest()
+  createAssetRequestTest()
+  createImageAssetRequestTest()
+  createVideoAssetRequestTest()
+  deleteAssetsChangeRequestTest()
+  getAssetChangeRequestTest()
+  setTitleChangeRequestTest()
+  addResourceChangeRequestTest()
+  getWriteCacheHandlerTest()
 }

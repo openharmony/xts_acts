@@ -46,12 +46,6 @@ struct pasteButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
-  @State widthT: number = 10
-  @State heightT: number = 15
-  @State minWidth: number = 20
-  @State maxWidth: number = 25
-  @State minHeight: number = 30
-  @State maxHeight: number = 35
   private stateChangeCallBack = (eventData) => {
     if (eventData != null) {
       console.debug("====>page_pasteButton page state change called:" + JSON.stringify(eventData));
@@ -139,24 +133,6 @@ struct pasteButton {
       if (eventData.data.columnHeight != null) {
         this.columnHeight = eventData.data.columnHeight;
       }
-      if (eventData.data.width != null) {
-        this.widthT = eventData.data.width;
-      }
-      if (eventData.data.height != null) {
-        this.heightT = eventData.data.height;
-      }
-      if (eventData.data.minWidth != null) {
-        this.minWidth = eventData.data.minWidth;
-      }
-      if (eventData.data.maxWidth != null) {
-        this.maxWidth = eventData.data.maxWidth;
-      }
-      if (eventData.data.minHeight != null) {
-        this.minHeight = eventData.data.minHeight;
-      }
-      if (eventData.data.maxHeight != null) {
-        this.maxHeight = eventData.data.maxHeight;
-      }
     }
   }
 
@@ -214,8 +190,6 @@ struct pasteButton {
           .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
           .textIconSpace(this.middle)
           .key("keyPaste")
-          .size({ width: this.widthT, height: this.heightT })
-          .constraintSize({ minWidth: this.minWidth, maxWidth: this.maxWidth, minHeight: this.minHeight, maxHeight: this.maxHeight })
         Button() {
           Text('--------------------')
             .fontSize(25)

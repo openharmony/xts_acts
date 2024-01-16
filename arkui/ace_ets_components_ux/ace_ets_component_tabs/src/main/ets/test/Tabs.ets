@@ -287,7 +287,7 @@ export default function tabs() {
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0800] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject = obj.$attrs.divider;
-      expect(dividerObject.strokeWidth).assertEqual('0.00vp');
+      expect(dividerObject.strokeWidth).assertEqual('0.00px');
       done();
     });
 
@@ -322,7 +322,7 @@ export default function tabs() {
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0900] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject = obj.$attrs.divider;
-      expect(dividerObject.startMargin).assertEqual('0.00vp');
+      expect(dividerObject.startMargin).assertEqual('0.00px');
       done();
     });
 
@@ -357,7 +357,7 @@ export default function tabs() {
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_1000] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject = obj.$attrs.divider;
-      expect(dividerObject.endMargin).assertEqual('0.00vp');
+      expect(dividerObject.endMargin).assertEqual('0.00px');
       done();
     });
     

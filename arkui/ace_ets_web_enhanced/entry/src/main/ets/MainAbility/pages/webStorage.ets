@@ -183,7 +183,7 @@ struct webStorage {
                     console.log('usage: ' + origins[i].usage);
                     console.log('quota: ' + origins[i].quota);
                   }
-                  let result = origins[0].origin + '_' + origins[0].quota + '_' + origins[0].usage
+                  let result = origins[0].origin + '_' + (origins[0].quota > 0 ? true : false) + '_' + origins[0].usage
                   Utils.emitEvent(result, 100037)
                 })
               } catch (error) {

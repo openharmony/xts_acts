@@ -1138,8 +1138,8 @@ struct WebViewControllerPart3 {
         })
         .onScroll((event) => {
           if (event) {
-            console.info("x = " + event.xOffset)
-            console.info("y = " + event.yOffset)
+            console.info("onScroll x = " + event.xOffset)
+            console.info("onScroll y = " + event.yOffset)
             this.onScrollCallBack = true
           }
         })

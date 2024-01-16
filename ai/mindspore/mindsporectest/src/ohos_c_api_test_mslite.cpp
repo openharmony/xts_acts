@@ -1120,6 +1120,71 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0012, Function | MediumTes
     auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/", OH_AI_NO_QUANT, true, nullptr, 0);
     ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
 }
+// 正常场景：OH_AI_ModelGetTrainMode
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0013, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    auto status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelSetTrainMode==========\n");
+    status = OH_AI_ModelSetTrainMode(model, false);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    auto train_mode = OH_AI_ModelGetTrainMode(model);
+    ASSERT_EQ(train_mode, false);
+    printf("=========OH_AI_ModelDestroy===========\n");
+    OH_AI_ModelDestroy(&model);
+    printf("=========OH_AI_ModelDestroy End===========\n");
+}
+// 正常场景：OH_AI_ExportModelBuffer
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0014, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_RunStep==========\n");
+    ModelTrain(model, context, "lenet_train", {}, false, false, false);
+    printf("==========OH_AI_ExportModel==========\n");
+    char *modelData;
+    size_t data_size;
+    auto status = OH_AI_ExportModelBuffer(model, OH_AI_MODELTYPE_MINDIR, &modelData,
+	 &data_size, OH_AI_NO_QUANT, true, nullptr, 0);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    ASSERT_NE(modelData, nullptr);
+    ASSERT_NE(data_size, 0);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    printf("==========ModelPredict==========\n");
+    auto ret = OH_AI_ModelBuild(model2, modelData, data_size, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model2);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "lenet_train_infer", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model2, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("=========CompareResult===========\n");
+    CompareResult(outputs, "lenet_train_infer");
+    printf("=========model01 OH_AI_ModelDestroy===========\n");
+    OH_AI_ModelDestroy(&model);
+    printf("=========model01 OH_AI_ModelDestroy End===========\n");
+    printf("=========model02 OH_AI_ModelDestroy===========\n");
+    OH_AI_ModelDestroy(&model2);
+    printf("=========model02 OH_AI_ModelDestroy End===========\n");
+}
 // 正常场景：训练model导出micro权重
 HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0001, Function | MediumTest | Level1) {
     printf("==========OH_AI_ContextCreate==========\n");
