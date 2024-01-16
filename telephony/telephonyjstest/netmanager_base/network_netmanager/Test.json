@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "360000",
         "bundle-name": "com.netconn.netconnndktest",
-        "module-name": "entry_test",
+        "module-name": "com.netconn.napitest",
         "shell-timeout": "360000",
         "testcase-timeout": 70000
     },
@@ -14,5 +14,11 @@
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
+    }, {
+        "type": "ShellKit",
+        "run-command": [
+            "power-shell wakeup",
+            "power-shell setmode 602"
+        ]
     }]
 }
