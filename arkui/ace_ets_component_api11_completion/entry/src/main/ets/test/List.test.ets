@@ -249,4 +249,5 @@ export default function testsuite() {
   RenderNodeDrawJsSuit()
   accessVNTest()
 
+  blendModeTest()
 }
