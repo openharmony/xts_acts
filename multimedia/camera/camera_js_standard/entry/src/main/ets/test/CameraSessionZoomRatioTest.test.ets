@@ -684,7 +684,6 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] + 0.1));
-
                         await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0300 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0300 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] + 0.1));
