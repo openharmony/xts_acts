@@ -118,6 +118,7 @@ import arkuiNodeEventTest from './arkuinode/arkuinodeEnvent.test.ets'
 import arkuiNodeRenderTest from './arkuinode/arkuinodeRender.test.ets'
 import symbolSpanApi2Test from './symbolSpanApi/symbolSpanApi2.test'
 import NavDestinationInfoStateJsunit  from './AttributeModifier/NavDestinationInfoStateJsunit.test'
+import XComponentNodeChageJsSuit from './XComponentNodeChageJsSuit.test';
 import RenderNodeShadowElevationJsSuit from './RenderNodeShadowElevation.test';
 import RenderNodeShadowRadiusJsSuit from './RenderNodeShadowRadius.test';
 import shadowAlphaJsunit from './shadowAlphaJsunit.test';
@@ -232,6 +233,7 @@ export default function testsuite() {
   arkuiNodeRenderTest()
   symbolSpanApi2Test()
   NavDestinationInfoStateJsunit()
+  XComponentNodeChageJsSuit()
   RenderNodeShadowElevationJsSuit()
   RenderNodeShadowRadiusJsSuit()
   shadowAlphaJsunit()
