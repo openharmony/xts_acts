@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "ActsNetConnTest_test",
+    "name": "com.netconn.napitest",
     "type": "feature",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
