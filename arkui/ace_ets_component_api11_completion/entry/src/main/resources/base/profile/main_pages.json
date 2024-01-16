@@ -107,7 +107,7 @@
         "MainAbility/pages/arkuinode/arkuirendernode",
         "MainAbility/pages/symbolSpanApi/symbolspan",
         "MainAbility/pages/AttributeModifier/NavDestinationInfoState",
-        "MainAbility/pages/XComponentNodeChage"
+        "MainAbility/pages/XComponentNodeChage",
 		"MainAbility/pages/RenderNodeShadowElevation",
         "MainAbility/pages/RenderNodeShadowRadius",
         "MainAbility/pages/shadowColor",
