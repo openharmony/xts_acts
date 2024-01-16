@@ -15,8 +15,7 @@
 
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 import Utils from '../../MainAbility/common/Utils';
-import { expect, it, Level, Size, TestType } from '@ohos/hypium';
-import window from '@ohos.window'
+import { expect, it, Level, Size, TestType } from '@ohos/hypium'
 
 export default class CommonTest {
 
@@ -148,11 +147,5 @@ export default class CommonTest {
       pageConfig['containerView'] = container;
       CommonTest.initTest(pageConfig, supportView, testValues, functions);
     });
-  }
-
-  static async getAvoidArea() {
-    let curWindow = await window.getLastWindow(getContext(this));
-    let area = curWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM)
-    return area.topRect.height;
   }
 }

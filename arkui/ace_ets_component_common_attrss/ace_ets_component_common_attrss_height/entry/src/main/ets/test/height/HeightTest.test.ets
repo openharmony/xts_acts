@@ -178,16 +178,6 @@ export default function heightTest() {
           .assertEqual(data.testValue.expectValue.ExceedParent);
       }
 
-      if (data.testValue.describe == 'StringPercent' && data.viewObj.$attrs.id == 'Navigation') {
-        let areaHeight = await CommonTest.getAvoidArea();
-        //Confirm that the height attribute values have been successfully set.
-        expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
-
-        //Confirm that the calculated value is consistent with the expected value.
-        expect((strJsonRectHeight - data.testValue.expectValue.height - areaHeight) <= 1).assertTrue();
-        return;
-      }
-
       //Confirm that the height attribute values have been successfully set.
       expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
 
