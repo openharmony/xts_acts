@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { sleep, startAbility } from "./Common"
-import picker from '@ohos.file.picker'
-import common from '@ohos.app.ability.common';
+import { afterEach, describe, expect, it } from 'deccjsunit/index';
+import { sleep, startAbility } from './Common';
+import picker from '@ohos.file.picker';
 
 
-export default function photoPickerCallback(abilityContexts: common.UIAbilityContext) {
+export default function photoPickerCallback(abilityContexts: Context) {
   describe("photoPickerCallback", () => {
     afterEach(async () => {
       await sleep(500);

@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 import { AsyncCallback } from '@ohos.base'
-import { sleep, startAbility } from "./Common"
+import { sleep, startAbility } from './Common'
 import picker from '@ohos.file.picker'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-
+import { afterEach, describe, expect, it } from 'deccjsunit/index'
 
 async function select(testNum: string, done: Function, dirName: string, fileName: string) {
   try {

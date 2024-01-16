@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { sleep, startAbility } from "./Common"
-import picker from '@ohos.file.picker'
+import { afterEach, describe, expect, it } from 'deccjsunit/index';
+import { sleep, startAbility } from './Common';
+import picker from '@ohos.file.picker';
 
 export default function photoPickerPromise(abilityContext: Context) {
   describe("photoPickerPromise", () => {
