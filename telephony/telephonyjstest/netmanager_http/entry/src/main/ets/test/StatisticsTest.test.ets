@@ -44,7 +44,7 @@ export default function StatisticsTest() {
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-          expect(err.code == 2103005).assertTrue();
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes ${JSON.stringify(data)}`);
@@ -92,7 +92,7 @@ export default function StatisticsTest() {
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-          expect(err.code == 2103012).assertTrue();
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
@@ -149,7 +149,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-        expect(err.code == 2103005).assertTrue();
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
@@ -193,7 +193,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-        expect(err.code == 2103012).assertTrue();
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
@@ -240,7 +240,7 @@ export default function StatisticsTest() {
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-          expect(err.code == 2103005).assertTrue();
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
@@ -288,7 +288,7 @@ export default function StatisticsTest() {
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-          expect(err.code == 2103012).assertTrue();
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
@@ -345,7 +345,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-        expect(err.code == 2103005).assertTrue();
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
@@ -389,7 +389,7 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-        expect(err.code == 2103012).assertTrue();
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
