@@ -1254,7 +1254,8 @@ export default function settingUiJsunit() {
           done();
           return;
         })
-      }catch(err)=>{
+      }
+      catch(err){
           console.info("[settings_get_value_117] 1258 error is:" + toString(error));
           expect(true).assertTrue();
           done();
@@ -1275,13 +1276,19 @@ export default function settingUiJsunit() {
             expect(ret).assertEqual(value);
             done();
           })
-        })catch((err)=>{
-          console.info("[settings_get_value_118] error is:" + toString(error));
+        })
+        .catch((err)=>{
+          console.info("[settings_get_value_118] 1252 error is:" + toString(error));
           expect(true).assertTrue();
           done();
           return;
         })
+      }catch (err:BusinessError) {
+        console.error("[settings_set_value_118] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
       }
+      done();
     }); 
 
     it('settings_get_value_119', 0, (done:function) =>  {
@@ -1315,13 +1322,13 @@ export default function settingUiJsunit() {
       done();
     });
 
-    it('settings_register_Key_Observer_121', 0, (done:function) => {
-      let name = 'settings.screen.brightness119';//关键字
+    it('settings_register_Key_Observer_121', 0, 0, (done:function) => {
+      let name = 'settings.screen.brightness121';//关键字
       let domainName = 'secure';
       try{
         let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
-          let ret1 = settings.getUriSync(globalThis.abilityContext, name, domainName);
-        expect(true).assertTrue();
+        let ret1 = settings.getUriSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
         done();
         })
     }catch(err:BusinessError){
@@ -1334,7 +1341,7 @@ export default function settingUiJsunit() {
       settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
     });
 
-    it('settings_unregister_Key_Observer_122', 0, (done:function) => {
+    it('settings_unregister_Key_Observer_122', 0, 0 ,(done:function) => {
       let name = 'settings.screen.brightness122';//关键字
       let domainName = 'secure';
       let context = null;
