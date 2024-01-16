@@ -26,6 +26,9 @@
         "MainAbility/pages/UIfont/UIfont",
         "MainAbility/pages/Scroll/Scroll",
         "MainAbility/pages/richEditorApi/richEditorApi1",
+        "MainAbility/pages/richEditorApi/richEditorApi2",
+        "MainAbility/pages/richEditorApi/richEditorApi3",
+        "MainAbility/pages/navigationApi/navigationApi1",
         "MainAbility/pages/textInputApi/textInputApi1",
 		"MainAbility/pages/dragPreviewOptions",
 		"MainAbility/pages/backgroundEffect",
@@ -116,6 +119,7 @@
         "MainAbility/pages/popupArrow",
         "MainAbility/pages/geometryTransition",
         "MainAbility/pages/RenderNodeInvalidate",
-        "MainAbility/pages/RenderNodeDraw"
+        "MainAbility/pages/RenderNodeDraw",
+        "MainAbility/pages/commonApi/accessVN"
     ]
 }
