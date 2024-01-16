@@ -139,7 +139,7 @@ export default function overLayJsunit() {
       let strJson: string = getInspectorByKey('overlay');
 
       console.info("[testOverlay04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.overlay));
-      expect(JSON.parse(strJson).$attrs.overla.options.align).assertEqual("Alignment.TopStart");
+      expect(JSON.parse(strJson).$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('testOverlay04 END');
       done()
     });

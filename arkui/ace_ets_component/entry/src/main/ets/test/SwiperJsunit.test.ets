@@ -258,12 +258,12 @@ export default function swiperJsunit() {
         console.log("swiperTest_1100 change component data error: " + err.message);
       }
       await Utils.sleep(3000);
-      let strJsonNew = getInspectorByKey('swiper');
+      let strJsonNew: string = getInspectorByKey('swiper');
 
       console.info("swiperTest_1100 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.loop).assertEqual('true');
       console.info('swiperTest_1100 END');
-
+      done()
     });
 
     it('swiperTest_1200', 0, async (done: Function) => {
@@ -284,12 +284,12 @@ export default function swiperJsunit() {
         console.log("swiperTest_1200 change component data error: " + err.message);
       }
       await Utils.sleep(3000);
-      let strJsonNew = getInspectorByKey('swiper');
+      let strJsonNew: string = getInspectorByKey('swiper');
 
       console.info("swiperTest_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('true');
       console.info('swiperTest_1200 END');
-
+      done()
     });
 
     it('swiperTest_1300', 0, async (done: Function) => {
