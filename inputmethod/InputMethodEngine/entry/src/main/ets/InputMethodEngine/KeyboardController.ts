@@ -671,7 +671,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_071", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },500);
+        },1000);
     }
 
     async inputMethodEngine_test_072() {
@@ -694,7 +694,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_072", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },500);
+        },1500);
     }
 
     async inputMethodEngine_test_073() {
@@ -727,7 +727,7 @@ export class KeyboardController {
             };
             commoneventmanager.publish("inputMethodEngine_test_073", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },300);
+        },1000);
     }
 
     async inputMethodEngine_test_074() {
