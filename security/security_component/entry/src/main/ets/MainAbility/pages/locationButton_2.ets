@@ -17,7 +17,7 @@ import events_emitter from '@ohos.events.emitter'
 
 @Entry
 @Component
-struct pasteButton {
+struct locationButton_2 {
   @State bgType: ButtonType = ButtonType.Normal
   @State iconSize: number = 16
   @State direct: SecurityComponentLayoutDirection = 0
@@ -46,9 +46,15 @@ struct pasteButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
+  @State widthT: number = 10
+  @State heightT: number = 15
+  @State minWidth: number = 20
+  @State maxWidth: number = 25
+  @State minHeight: number = 30
+  @State maxHeight: number = 35
   private stateChangeCallBack = (eventData) => {
     if (eventData != null) {
-      console.debug("====>page_pasteButton page state change called:" + JSON.stringify(eventData));
+      console.debug("====>page_locationButton_2 page state change called:" + JSON.stringify(eventData));
       if (eventData.data.bgType != null) {
         this.bgType = eventData.data.bgType;
       }
@@ -132,12 +138,30 @@ struct pasteButton {
       }
       if (eventData.data.columnHeight != null) {
         this.columnHeight = eventData.data.columnHeight;
+        if (eventData.data.width != null) {
+          this.widthT = eventData.data.width;
+        }
+        if (eventData.data.height != null) {
+          this.heightT = eventData.data.height;
+        }
+        if (eventData.data.minWidth != null) {
+          this.minWidth = eventData.data.minWidth;
+        }
+        if (eventData.data.maxWidth != null) {
+          this.maxWidth = eventData.data.maxWidth;
+        }
+        if (eventData.data.minHeight != null) {
+          this.minHeight = eventData.data.minHeight;
+        }
+        if (eventData.data.maxHeight != null) {
+          this.maxHeight = eventData.data.maxHeight;
+        }
       }
     }
   }
 
   onPageShow() {
-    console.debug('====>page_pasteButton page show called');
+    console.debug('====>page_locationButton_2 page show called');
     var stateChangeEvent = {
       eventId: 1,
       priority: events_emitter.EventPriority.LOW
@@ -146,15 +170,19 @@ struct pasteButton {
   }
 
   onPageHide() {
-    console.debug('====>page_pasteButton page hide called');
+    console.debug('====>page_locationButton_2 page hide called');
     events_emitter.off(1);
   }
 
   build() {
     Row() {
       Column() {
-        PasteButton({ icon: PasteIconStyle.LINES, text: PasteDescription.PASTE, buttonType: this.bgType })
-          .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
+        LocationButton({
+          icon: LocationIconStyle.FULL_FILLED,
+          text: LocationDescription.CURRENT_LOCATION,
+          buttonType: this.bgType
+        })
+          .onClick((event: ClickEvent, result: LocationButtonOnClickResult) => {
             try {
               var clickData = {
                 data: {
@@ -165,10 +193,10 @@ struct pasteButton {
                 eventId: 2,
                 priority: events_emitter.EventPriority.LOW
               }
-              console.debug("====>page_pasteButton onclick result:" + JSON.stringify(result))
+              console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
               events_emitter.emit(clickEvent, clickData)
             } catch (err) {
-              console.debug("====>page_pasteButton emit action state err: " + JSON.stringify(err.message))
+              console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
             }
           })
           .iconSize(this.iconSize)
@@ -189,53 +217,17 @@ struct pasteButton {
           .borderRadius(this.borderRad)
           .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
           .textIconSpace(this.middle)
-          .key("keyPaste")
-        Button() {
-          Text('--------------------')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
-        .margin({
-          top: 200,
-          bottom:60
-        }).backgroundColor('#00000000')
-        PasteButton({ icon: PasteIconStyle.LINES, text: PasteDescription.PASTE, buttonType: this.bgType })
-          .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
-            try {
-              var clickData = {
-                data: {
-                  "clickResult": result
-                }
-              }
-              var clickEvent = {
-                eventId: 2,
-                priority: events_emitter.EventPriority.LOW
-              }
-              console.debug("====>page_pasteButton onclick result:" + JSON.stringify(result))
-              events_emitter.emit(clickEvent, clickData)
-            } catch (err) {
-              console.debug("====>page_pasteButton emit action state err: " + JSON.stringify(err.message))
-            }
+          .key("keyLocation12")
+          .width(this.widthT)
+          .height(this.heightT)
+          .size({ width: this.widthT, height: this.heightT })
+          .constraintSize({
+            minWidth: this.minWidth,
+            maxWidth: this.maxWidth,
+            minHeight: this.minHeight,
+            maxHeight: this.maxHeight
           })
-          .iconSize(this.iconSize)
-          .layoutDirection(this.direct)
-          .markAnchor({ x: this.anchorX, y: this.anchorY })
-          .offset({ x: this.offsetX, y: this.offsetY })
-          .fontSize(this.fontSize)
-          .fontStyle(this.fontStyle)
-          .fontWeight(this.fontWeight)
-          .fontFamily(this.fontFamily)
-          .fontColor(this.fontColor)
-          .iconColor(this.iconColor)
-          .backgroundColor(this.bgColor)
-          .borderStyle(this.borderSty)
-          .borderWidth(this.borderWid)
-          .borderColor(this.borderCol)
-          .borderRadius(this.borderRad)
-          .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-          .textIconSpace(this.middle)
-          .key("keyPaste1")
-      }.width(this.columnWidth).height(this.columnHeight).clip(this.clipSet)
-    }.height('100%')
+      }
+    }
   }
 }
