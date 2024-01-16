@@ -241,4 +241,5 @@ export default function testsuite() {
   geometryTransition()
   RenderNodeInvalidateJsSuit()
   RenderNodeDrawJsSuit()
+  blendModeTest()
 }
