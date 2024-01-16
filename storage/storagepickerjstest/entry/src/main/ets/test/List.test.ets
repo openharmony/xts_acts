@@ -22,9 +22,7 @@ import audioPickerPromise from './audioPickerPromise.test.ets'
 import globalContext from '../test/GlobalContext'
 import common from '@ohos.app.ability.common'
 
-type a = common.UIAbilityContext;
-
-export default function testsuite()
+export default function testsuite() {
   photoPickerCallback(globalContext.getContext().getAbility())
   photoPickerPromise(globalContext.getContext().getAbility())
   documentPickerCallback(globalContext.getContext().getAbility())
