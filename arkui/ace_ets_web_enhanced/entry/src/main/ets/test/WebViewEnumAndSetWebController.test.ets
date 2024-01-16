@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -45,11 +45,18 @@ export default function WebViewEnumAndSetWebController() {
       done();
     })
 
+    afterEach(async (done: Function) => {
+      console.info("WebViewControllerDownloadTest afterEach start");
+      await Utils.sleep(2000);
+      console.info("WebViewControllerDownloadTest afterEach end");
+      done();
+    })
+
     /*
     * @tc.number     : SUB_WEB_OVERVIEWMODEACCESS_0100
     * @tc.name       : testOverviewModeAccess001
     * @tc.desc       : test OverviewModeAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -64,7 +71,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_ONTOUCHICONURLRECEIVED_0100
     * @tc.name       : testOnTouchIconUrlReceived001
     * @tc.desc       : test onTouchIconUrlReceived
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -79,7 +86,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_CACHEMODE_0200
     * @tc.name       : testCacheMode002
     * @tc.desc       : test cacheMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -94,7 +101,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_CACHEMODE_0100
     * @tc.name       : testCacheMode001
     * @tc.desc       : test CacheMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -109,7 +116,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_GETITEMATINDEX_0100
     * @tc.name       : testGetItemAtIndex001
     * @tc.desc       : test GetItemAtIndex
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -124,7 +131,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_CACHEMODE_0300
     * @tc.name       : testCacheMode003
     * @tc.desc       : test CacheMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -139,7 +146,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_CACHEMODE_0400
     * @tc.name       : testCacheMode004
     * @tc.desc       : test CacheMode
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -154,7 +161,7 @@ export default function WebViewEnumAndSetWebController() {
      * @tc.number     : SUB_WEB_FILESELECTORMODE_0200
      * @tc.name       : testFileSelectorMode002
      * @tc.desc       : test FileSelectorMode
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -169,7 +176,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.number     : SUB_WEB_SETWEBCONTROLLER_0100
     * @tc.name       : testSetWebController001
     * @tc.desc       : test setWebController
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

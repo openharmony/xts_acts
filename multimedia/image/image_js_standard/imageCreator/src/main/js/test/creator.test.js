@@ -63,7 +63,7 @@ describe('ImageCreator', function () {
             expect(false).assertTrue();
             done();
         } catch (error) {
-            expect(error.code == 1).assertTrue();
+            expect(error.code == 401).assertTrue();
             console.info(`${testNum} err message` + error);
             done();
         }
@@ -191,6 +191,48 @@ describe('ImageCreator', function () {
             done();
         }
     }
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_WITH_SIZE_0100
+     * @tc.name      : createImageCreator
+     * @tc.desc      : 1.set size,format,capacity
+     *                 2.create ImageCreator
+     *                 3.return ImageCreator not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_WITH_SIZE_0100', 0, async function (done) {
+        let size = {
+            height: HEIGHT,
+            width: WIDTH
+        };
+        let format = image.ImageFormat.JPEG
+        var creator = image.createImageCreator(size, format, CAPACITY);
+        expect(creator != undefined).assertTrue();
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_WITH_SIZE_0200
+     * @tc.name      : createImageCreator
+     * @tc.desc      : 1.set size,format,capacity
+     *                 2.create ImageCreator
+     *                 3.return ImageCreator not empty
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_WITH_SIZE_0200', 0, async function (done) {
+        let size = {
+            height: HEIGHT,
+            width: WIDTH
+        };
+        let format = image.ImageFormat.YCBCR_422_SP;
+        var creator = image.createImageCreator(size, format, CAPACITY);
+        expect(creator != undefined).assertTrue();
+        done();
+    })
 
     /**
     * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_0100
@@ -343,7 +385,6 @@ describe('ImageCreator', function () {
     it('SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', 0, async function (done) {
         createCreator(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', WIDTH, HEIGHT, 'form.', CAPACITY);
     })
-
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_RELEASE_PROMISE_0100

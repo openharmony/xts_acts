@@ -14,25 +14,27 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base';
+
 export default function SwiperMarginTest() {
 
-  const SUITE = 'SwiperMargin'
-  const waitUiReadyMs = 500;
-  describe('SwiperMarginTest', function () {
+  const SUITE: string = 'SwiperMargin'
+  const waitUiReadyMs: number = 500;
+  describe('SwiperMarginTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/SwiperMargin",
       }
       try {
         router.clear();
         let pages = router.getState();
         if (pages == null || !("SwiperMargin" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          }).catch((error: BusinessError) => {
+            console.error(`${SUITE} router.pushUrl failed, code is ${error.code}, message is ${error.message}`);
           })
         }
       } catch (err) {
@@ -46,7 +48,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with negative
      *tc.desc   Set Swiper's nextMargin and prevMargin with negative
      */
-    it('ArkUI_Swiper_0100', 0, async function (done) {
+    it('ArkUI_Swiper_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -54,12 +56,9 @@ export default function SwiperMarginTest() {
       await driver.delayMs(waitUiReadyMs)
       let baseKey = 'SwiperMargin_Swiper1'
       let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-
-      expect(obj.$attrs.prevMargin).assertEqual('0.00vp')
-      expect(obj.$attrs.nextMargin).assertEqual('0.00vp')
+      expect(JSON.parse(strJson).$attrs.prevMargin).assertEqual('0.00vp')
+      expect(JSON.parse(strJson).$attrs.nextMargin).assertEqual('0.00vp')
       console.info(`${SUITE} ${CASE} END`);
-
       done();
     });
 
@@ -68,20 +67,16 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with positive
      *tc.desc   Set Swiper's nextMargin and prevMargin with positive
      */
-    it('ArkUI_Swiper_0200', 0, async function (done) {
+    it('ArkUI_Swiper_0200', 0, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0200'
       console.info(`${SUITE} ${CASE} START`);
-
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       let baseKey = 'SwiperMargin_Swiper2'
       let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-
-      expect(obj.$attrs.prevMargin).assertEqual('10.00vp')
-      expect(obj.$attrs.nextMargin).assertEqual('10.00vp')
+      expect(JSON.parse(strJson).$attrs.prevMargin).assertEqual('10.00vp')
+      expect(JSON.parse(strJson).$attrs.nextMargin).assertEqual('10.00vp')
       console.info(`${SUITE} ${CASE} END`);
-
       done();
     });
 
@@ -90,7 +85,7 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with string
      *tc.desc   Set Swiper's nextMargin and prevMargin with string
      */
-    it('ArkUI_Swiper_0300', 0, async function (done) {
+    it('ArkUI_Swiper_0300', 0, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -98,10 +93,8 @@ export default function SwiperMarginTest() {
       await driver.delayMs(waitUiReadyMs)
       let baseKey = 'SwiperMargin_Swiper3'
       let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-
-      expect(obj.$attrs.prevMargin).assertEqual('11.00vp')
-      expect(obj.$attrs.nextMargin).assertEqual('11.00vp')
+      expect(JSON.parse(strJson).$attrs.prevMargin).assertEqual('11.00vp')
+      expect(JSON.parse(strJson).$attrs.nextMargin).assertEqual('11.00vp')
       console.info(`${SUITE} ${CASE} END`);
       done();
     });
@@ -111,22 +104,17 @@ export default function SwiperMarginTest() {
      *tc.name   Set Swiper's nextMargin and prevMargin with Resource
      *tc.desc   Set Swiper's nextMargin and prevMargin with Resource
      */
-    it('ArkUI_Swiper_0400', 0, async function (done) {
+    it('ArkUI_Swiper_0400', 0, async (done: Function) => {
       let CASE = 'ArkUI_Swiper_0400'
       console.info(`${SUITE} ${CASE} START`);
-
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       let baseKey = 'SwiperMargin_Swiper4'
       let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-
-      expect(obj.$attrs.prevMargin).assertEqual('12.00vp')
-      expect(obj.$attrs.nextMargin).assertEqual('12.00vp')
+      expect(JSON.parse(strJson).$attrs.prevMargin).assertEqual('12.00vp')
+      expect(JSON.parse(strJson).$attrs.nextMargin).assertEqual('12.00vp')
       console.info(`${SUITE} ${CASE} END`);
       done();
     });
-
-
   })
 }

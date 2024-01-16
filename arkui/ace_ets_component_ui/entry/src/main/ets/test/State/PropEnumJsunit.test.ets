@@ -43,8 +43,12 @@ export default function PropEnumJsunit() {
     });
 
     afterEach(async function () {
-      let driver = await UiDriver.create()
-      router.back({uri:"MainAbility/pages/index/index"});
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);      
+      let button = await driver.findComponent(ON.id('PropEnum_reset'));
+      await button.click();
+      console.log('reset button click succ')
+      await CommonFunc.sleep(1000);
     });
 
     it('PropEnumJsunit_0200', 0, async function (done) {

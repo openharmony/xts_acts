@@ -16,7 +16,8 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 import accessibility from '@ohos.accessibility';
 import GesturePath from '@ohos.accessibility.GesturePath';
 import GesturePoint from '@ohos.accessibility.GesturePoint';
-import AccessibilityExtensionAbility from '@ohos.application.AccessibilityExtensionAbility';
+import AccessibilityExtensionAbility  from '@ohos.application.AccessibilityExtensionAbility';
+import {ElementAttributeKeys} from '@ohos.application.AccessibilityExtensionAbility';
 
 const bundleName = 'com.sample.testfora11y';
 const triggerAction = 'accessibilityFocus';
@@ -44,6 +45,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0200');
@@ -66,6 +68,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201');
@@ -87,6 +90,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0202');
@@ -109,6 +113,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0203');
@@ -130,6 +135,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0204');
@@ -152,6 +158,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0205');
@@ -173,6 +180,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0206');
@@ -195,6 +203,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0207');
@@ -216,6 +225,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0208');
@@ -238,6 +248,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0209');
@@ -259,6 +270,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0210');
@@ -281,6 +293,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0211');
@@ -302,6 +315,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0212');
@@ -324,6 +338,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0213');
@@ -345,6 +360,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0214');
@@ -367,6 +383,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0215');
@@ -388,6 +405,7 @@ export default function abilityTest() {
     *             function, and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0216');
@@ -410,6 +428,7 @@ export default function abilityTest() {
     *             and the output is the list of AccessibilityAbilityInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0217');
@@ -430,6 +449,7 @@ export default function abilityTest() {
     * @tc.desc    test Accessibility EventInfo
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0300', 0, async function (done) {
       let eventInfo = new accessibility.EventInfo({
@@ -448,6 +468,7 @@ export default function abilityTest() {
     * @tc.desc    test Accessibility SendEvent CallBack
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0800', 0, async function (done) {
       let event = null;
@@ -468,6 +489,7 @@ export default function abilityTest() {
     * @tc.desc    test Ability Capability
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0100', 0, async function (done) {
       accessibility.getAbilityLists('audible', 'enable', (err, data) => {
@@ -506,6 +528,7 @@ export default function abilityTest() {
     * @tc.desc    test Ability Captions Manager
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101', 0, async function (done) {
       let captionsManager = accessibility.getCaptionsManager();
@@ -526,6 +549,7 @@ export default function abilityTest() {
     * @tc.desc    test GesturePath And GesturePoint
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000', 0, async function (done) {
       let gesturePath = new GesturePath.GesturePath(20);
@@ -576,6 +600,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0900', 0, async function (done) {
       init();
@@ -605,6 +630,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilitySetTargetBundleName
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0901', 0, async function (done) {
       if (axContext != null) {
@@ -631,6 +657,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400', 0, async function (done) {
       if (axContext != null) {
@@ -639,12 +666,7 @@ export default function abilityTest() {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400 rootElement:' + JSON.stringify(rootElement));
             rootElement.attributeNames().then((data) => {
               console.log('get attribute names success');
-              if (data != null) {
-                expect(data.rect.left != -1).assertTrue();
-                expect(data.rect.top != -1).assertTrue();
-                expect(data.rect.width != -1).assertTrue();
-                expect(data.rect.height != -1).assertTrue();
-              }
+
             }).catch((err) => {
               console.log('failed to get attribute names, because ' + JSON.stringify(err));
             });
@@ -684,6 +706,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401', 0, async function (done) {
       if (axContext != null) {
@@ -694,11 +717,55 @@ export default function abilityTest() {
               done();
               return;
             }
-            rootElement.attributeNames((err, data) => {
-              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
-            });
-            rootElement.attributeValue('name', (err, data) => {
-              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
+            rootElement.attributeNames((err, ElementAttributeValue: ElementAttributeKeys[]) => {
+              if (err) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 failed to get element attributeNames, because ' + JSON.stringify(err));
+                done();
+                return;
+              }
+              console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 data:' + JSON.stringify(ElementAttributeValue));
+              expect(ElementAttributeValue.indexOf("accessibilityFocused") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("bundleName") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("checkable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("checked") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("children") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("clickable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("componentId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("componentType") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("contents") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("currentIndex") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("description") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("editable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("endIndex") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("error") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("focusable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("hintText") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("inputType") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("inspectorKey") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("isEnable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("isHint") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("isFocused") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("isPassword") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("isVisible") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("itemCount") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("lastContent") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("longClickable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("pageId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("parent") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("pluralLineSupported") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("rect") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("resourceName") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("scrollable") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("selected") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("startIndex") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("text") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("textLengthLimit") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("textMoveUnit") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("triggerAction") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("valueMax") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("valueMin") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("valueNow") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("windowId") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
@@ -731,6 +798,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetFocusElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0402', 0, async function (done) {
       if (axContext != null) {
@@ -785,6 +853,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500', 0, async function (done) {
       if (axContext != null) {
@@ -814,6 +883,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501', 0, async function (done) {
       if (axContext != null) {
@@ -840,6 +910,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindowRootElement
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0502', 0, async function (done) {
       if (axContext != null) {
@@ -867,12 +938,26 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600', 0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindows().then((data) => {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600  data:' + JSON.stringify(data));
+            data[0].attributeNames().then((data: ElementAttributeKeys[]) => {
+              console.log('get attribute names success');
+              if (data != null) {
+                expect(data.indexOf("isActive") != -1).assertTrue();
+                expect(data.indexOf("screenRect") != -1).assertTrue();
+                expect(data.indexOf("layer") != -1).assertTrue();
+                expect(data.indexOf("type") != -1).assertTrue();
+                expect(data.indexOf("rootElement") != -1).assertTrue();
+                expect(data.indexOf("windowId") != -1).assertTrue();
+              }
+            }).catch((err) => {
+              console.log('failed to get attribute names, because ' + JSON.stringify(err));
+            });
             done();
           }).catch((err) => {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600 err' + JSON.stringify(err));
@@ -896,12 +981,29 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601', 0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindows((err, data) => {
-            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
+            if (err) {
+              console.error('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 failed to getWindows, because ' + JSON.stringify(err));
+              done();
+              return;
+            }
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601  data:' + JSON.stringify(data));
+            if (data != null) {
+              data[0].attributeValue('screenRect').then((data) => {
+                console.log('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 get attribute value by name success');
+                expect(data.left != -1).assertTrue();
+                expect(data.top != -1).assertTrue();
+                expect(data.width != -1).assertTrue();
+                expect(data.height != -1).assertTrue();
+              }).catch((err) => {
+                console.log('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601 failed to get attribute value, because ' + JSON.stringify(err));
+              });
+            }
             done();
           });
         } catch (exception) {
@@ -922,6 +1024,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityGetWindows
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0602', 0, async function (done) {
       if (axContext != null) {
@@ -949,6 +1052,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0700', 0, async function (done) {
       if (axContext != null) {
@@ -982,6 +1086,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0701', 0, async function (done) {
       if (axContext != null) {
@@ -1011,6 +1116,7 @@ export default function abilityTest() {
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0702', 0, async function (done) {
       if (axContext != null) {

@@ -52,7 +52,7 @@ export default function sslErrorHandler() {
     * @tc.number     : SUB_WEB_ONSSLERROREVENTRECEIVE_0100
     * @tc.name       : testOnSslErrorEventReceive001
     * @tc.desc       : test onSslErrorEventReceive handleConfirm
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -67,7 +67,7 @@ export default function sslErrorHandler() {
     * @tc.number     : SUB_WEB_SSLERRORHANDLERHANDLECANCEL_0100
     * @tc.name       : testSslErrorHandlerHandleCancel001
     * @tc.desc       : test sslErrorHandler handleCancel
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -82,7 +82,7 @@ export default function sslErrorHandler() {
     * @tc.number     : SUB_WEB_SSLERRORHANDLERHANDLECONFIRM_0100
     * @tc.name       : testSslErrorHandlerHandleConfirm001
     * @tc.desc       : test sslErrorHandler handleConfirm
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -90,6 +90,21 @@ export default function sslErrorHandler() {
       Utils.emitEvent("testSslErrorHandlerHandleConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSslErrorHandlerHandleConfirm001", true, 30270, done);
+      sendEventByKey('SslErrorHandlerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_CLEARSSLCACHE_0100
+    * @tc.name       : testClearSslCache001
+    * @tc.desc       : test clearSslCache
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testClearSslCache001', 0, async (done: Function) => {
+      Utils.emitEvent("testClearSslCache001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testClearSslCache001", true, 100073, done);
       sendEventByKey('SslErrorHandlerButton', 10, '');
     })
 

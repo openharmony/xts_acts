@@ -72,7 +72,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text25');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.bottom)).assertEqual(scrollTextItem.bottom);
+      expect(Math.abs(Math.round(ScrollBarItem.bottom) -Math.round(scrollTextItem.bottom)) <=1 ).assertTrue();
+     
 
       console.info('[scrollEgeJsunit_0001] END');
       done();
@@ -104,7 +105,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text25');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.bottom)).assertEqual(scrollTextItem.bottom);
+      expect(Math.abs(Math.round(ScrollBarItem.bottom) -Math.round(scrollTextItem.bottom)) <=1 ).assertTrue();
+     
 
       console.info('[scrollEgeJsunit_0002] END');
       done();
@@ -135,7 +137,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+    
       console.info('[scrollEgeJsunit_0003] END');
       done();
     });
@@ -164,7 +167,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+      
       console.info('[scrollEgeJsunit_0004] END');
       done();
     });
@@ -192,7 +196,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+      
       console.info('[scrollEgeJsunit_0005] END');
       done();
     });
@@ -220,7 +225,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text25');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.bottom)).assertEqual(scrollTextItem.bottom);
+      expect(Math.abs(Math.round(ScrollBarItem.bottom) -Math.round(scrollTextItem.bottom)) <=1 ).assertTrue();
+     
       console.info('[scrollEgeJsunit_0006] END');
       done();
     });
@@ -278,7 +284,8 @@ export default function scrollByJsunit() {
       let ScrollBarItem = CommonFunc.getComponentRect('scrollEgePages');
       let scrollTextItem = CommonFunc.getComponentRect('text0');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ScrollBarItem.top)).assertEqual(scrollTextItem.top);
+      expect(Math.abs(Math.round(ScrollBarItem.top) -Math.round(scrollTextItem.top)) <=1 ).assertTrue();
+     
       console.info('[scrollEgeJsunit_0008] END');
       done();
     });

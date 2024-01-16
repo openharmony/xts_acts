@@ -14,8 +14,11 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import { expect } from '@ohos/hypium';
-import { Driver, ON } from '@ohos.UiTest';
+import { Driver, ON, PointerMatrix } from '@ohos.UiTest';
 import { ComponentInfo, RectInfo } from './Interfaces';
+import systemDateTime from '@ohos.systemDateTime';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import fs from '@ohos.file.fs';
 
 export default class Utils {
   static sleep(time: number) {
@@ -28,6 +31,97 @@ export default class Utils {
     })
   }
 
+  static copyRawFileToSandbox(rawFileName: string): string {
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let context = abilityDelegator.getAppContext();
+    let dir = context.filesDir + "/";
+    let rawFilePath = dir + rawFileName;
+    try {
+      let arrayBuffer = context.resourceManager.getRawFileContentSync(rawFileName);
+      let file = fs.openSync(rawFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.writeSync(file.fd, arrayBuffer.buffer);
+      fs.closeSync(file);
+      console.log(`[copyRawFileToSandbox] ${rawFileName} is copy success`);
+    } catch (error) {
+      console.info("[copyRawFileToSandbox] getRawFileDescriptor api run failed" + error);
+    }
+    console.info("[copyRawFileToSandbox] sandbox path:" + dir);
+    return rawFilePath
+  }
+
+  static getSystemTime() {
+    return systemDateTime.getTime(true) / 1000
+  }
+
+  static getSandboxFileDir() {
+    let sandboxFileDir = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().filesDir + "/"
+    console.log(`[getSandboxFileDir] return ${sandboxFileDir}`);
+    return sandboxFileDir;
+  }
+
+  static getSandboxCacheDir() {
+    let sandboxCacheDir = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().cacheDir + "/"
+    console.log(`[getSandboxCacheDir] return ${sandboxCacheDir}`);
+    return sandboxCacheDir;
+  }
+
+  static createFileToSandboxSync(filePath: string, fileName: string, mode?: number) {
+    try {
+      if (!Utils.isFileExist(filePath)) {
+        fs.mkdirSync(filePath);
+      }
+      fs.openSync(filePath + fileName, mode);
+      console.log("[createFileToSandboxSync] success, sandbox path:" + filePath + fileName);
+    } catch (error) {
+      console.info("[createFileToSandboxSync] api run failed " + error);
+      console.info("[createFileToSandboxSync] api run failed path:" + filePath + fileName);
+    }
+  }
+
+  static deleteFile(filePath: string) {
+    console.info("[deleteFile] filePath:" + filePath);
+    try {
+      fs.unlinkSync(filePath)
+    } catch (error) {
+      console.info("[deleteFile] error:" + error);
+    }
+  }
+
+  static deleteDir(dirPath: string) {
+    console.info("[deleteDir] dirPath:" + dirPath);
+    try {
+      fs.rmdirSync(dirPath)
+    } catch (error) {
+      console.info("[deleteDir] error:" + error);
+    }
+  }
+
+  static listFile(dirPath: string): string[] {
+    console.info("[listFile] dirPath:" + dirPath);
+    try {
+      let files = fs.listFileSync(dirPath)
+      for (let i = 0; i < files.length; i++) {
+        console.info(`The name of file: ${files[i]}`);
+      }
+      return files;
+    } catch (error) {
+      console.info("[listFile] error:" + error);
+      return [];
+    }
+  }
+
+  static isFileExist(filePath: string): boolean {
+    console.info("[isFileExist] filePath:" + filePath);
+    try {
+      let fileExist = fs.accessSync(filePath)
+      console.info("[isFileExist] return:" + fileExist);
+      return fileExist
+    } catch (error) {
+      console.info("[isFileExist] error:" + error);
+      return false
+    }
+  }
+
   static async clickComponent(id: string) {
     let driver = Driver.create();
     let component = await driver.findComponent(ON.id(id));
@@ -37,6 +131,35 @@ export default class Utils {
   static async triggerKey(id: number) {
     let driver = Driver.create();
     await driver.triggerKey(id);
+  }
+
+  static async fingerZoom(key: string, isOut: boolean) {
+    let rect = Utils.getComponentRect(key);
+    let centerX = Utils.getRectHorizontalCenterX(rect)
+    let centerY = Utils.getRectVerticalCenterY(rect)
+    let fingerUpCenterY = centerY - 50;
+    let fingerDownCenterY = centerY + 50;
+    let driver: Driver = Driver.create();
+    let pointers: PointerMatrix = PointerMatrix.create(2, 3);
+    pointers.setPoint(0, 0, {
+      x: centerX, y: fingerUpCenterY - (isOut ? 20 : 60)
+    });
+    pointers.setPoint(0, 1, {
+      x: centerX, y: fingerUpCenterY - 40
+    });
+    pointers.setPoint(0, 2, {
+      x: centerX, y: fingerUpCenterY - (isOut ? 60 : 20)
+    });
+    pointers.setPoint(1, 0, {
+      x: centerX, y: fingerDownCenterY + (isOut ? 20 : 60)
+    });
+    pointers.setPoint(1, 1, {
+      x: centerX, y: fingerDownCenterY + 40
+    });
+    pointers.setPoint(1, 2, {
+      x: centerX, y: fingerDownCenterY + (isOut ? 60 : 20)
+    });
+    await driver.injectMultiPointerAction(pointers);
   }
 
   static registerBaseEvent(testCaseName: string, expected: Object, eventId: number,

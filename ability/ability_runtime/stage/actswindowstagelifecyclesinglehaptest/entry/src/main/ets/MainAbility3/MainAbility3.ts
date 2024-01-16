@@ -93,7 +93,7 @@ export default class MainAbility3 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility3.onCreate", ()=>{
                 console.log("[Demo] MainAbility3 onCreate")
             });
-        }, 500)
+        }, 1500)
     }
 
     onDestroy() {
@@ -102,7 +102,7 @@ export default class MainAbility3 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility3.onDestroy", ()=>{
                 console.log("[Demo] MainAbility3 onCreate")
             });
-        }, 500)
+        }, 1500)
     }
 
     onWindowStageCreate(windowStage) {

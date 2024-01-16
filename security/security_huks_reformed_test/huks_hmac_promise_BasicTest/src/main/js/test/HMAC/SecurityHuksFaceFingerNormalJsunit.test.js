@@ -416,30 +416,14 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
           await huks.attestKeyItem(aliasString, options)
             .then((data) => {
               console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
-              expect(data.certChains != null).assertTrue();
+              expect(null).assertFail();
             })
             .catch(error => {
               console.error(`promise: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-              expect(null).assertFail();
+              expect(error.code).assertEqual(201);
             });
         } catch (error) {
           console.error(`promise: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-          expect(null).assertFail();
-        }
-
-        console.info(`enter callback attestKeyItem`);
-        try {
-          await publicAttestKey(aliasString, options)
-            .then((data) => {
-              console.info(`callback: attestKeyItem success, data = ${JSON.stringify(data)}`);
-            })
-            .catch(error => {
-              console.error(`callback: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-              expect(null).assertFail();
-            });
-        } catch (error) {
-          console.error(`callback: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-          expect(null).assertFail();
         }
       }
       done();

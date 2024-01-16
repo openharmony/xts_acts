@@ -43,8 +43,12 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
     afterEach(async function () {
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);      
+      let button = await driver.findComponent(ON.id('arrViewB_reset'));
+      await button.click();
+      console.log('reset button click succ')
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('ObjectLinkArrayJsunit_0100', 0, async function (done) {
@@ -62,8 +66,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0200', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0200 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('change_ArrObl'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('change_ArrObl'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
@@ -78,8 +83,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0300', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0300 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('add_ArrObl'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('add_ArrObl'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
@@ -94,8 +100,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0400', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0400 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('delete_Arr1'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('delete_Arr1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
@@ -110,8 +117,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0500', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0500 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('delete_Arr2'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('delete_Arr2'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
@@ -126,8 +134,9 @@ export default function ObjectLinkArrayJsunit() {
     it('ObjectLinkArrayJsunit_0600', 0, async function (done) {
 
       console.info('ObjectLinkArrayJsunit_0600 START');
-      let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('reset_ArrObl'));
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('reset_ArrObl'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');

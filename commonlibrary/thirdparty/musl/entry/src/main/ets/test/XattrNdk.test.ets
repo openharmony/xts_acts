@@ -23,7 +23,7 @@ export default function xattrNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_XATTR_SETXATTR_0100
      * @tc.name       : testMuslXattrSetxattr001
      * @tc.desc       : test setxattr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -37,7 +37,7 @@ export default function xattrNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_XATTR_FSETXATTR_0100
      * @tc.name       : testMuslXattrFsetxattr001
      * @tc.desc       : test fsetxattr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function xattrNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_XATTR_FREMOVEXATTR_0100
      * @tc.name       : testMuslXattrFremovexattr001
      * @tc.desc       : test fremovexattr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -66,7 +66,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_LGETXATTR_0100
      * @tc.name     : testMuslXattrLgetxattr001
      * @tc.desc     : test getxattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -79,7 +79,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_LSETXATTR_0100
      * @tc.name     : testMuslXattrLsetxattr001
      * @tc.desc     : test lsetxattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -92,7 +92,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_GETXATTR_0100
      * @tc.name     : testMuslXattrGetxattr001
      * @tc.desc     : test getxattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -106,7 +106,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_LLISTXATTR_0100
      * @tc.name     : testMuslXattrllistxattr001
      * @tc.desc     : test getxattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -120,7 +120,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_LISTXATTR_0100
      * @tc.name     : testMuslXattrlistxattr001
      * @tc.desc     : test listxattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -134,7 +134,7 @@ export default function xattrNdkTest() {
     * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_LREMOVXATTR_0100
     * @tc.name     : testMuslXattrLremovexattr001
     * @tc.desc     : test lremovexattr
-    * @tc.size     : MEDIUM
+    * @tc.size     : MediumTest
     * @tc.type     : Function
     * @tc.level    : Level 1
     */
@@ -148,7 +148,7 @@ export default function xattrNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_XATTR_REMOVXATTR_0100
      * @tc.name     : testMuslXattrRemovexattr001
      * @tc.desc     : test removexattr
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -162,7 +162,7 @@ export default function xattrNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_XATTR_FLISTXATTR_0100
      * @tc.name       : testMuslXAttrFListXAttr001
      * @tc.desc       : test flistxattr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

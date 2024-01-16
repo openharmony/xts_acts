@@ -22,7 +22,7 @@ export default function nltypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NLTYPES_CATOPEN_0100
      * @tc.name       : testMuslNltypesCatopen001
      * @tc.desc       : test catopen
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function nltypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NLTYPES_CATGETS_0100
      * @tc.name       : testMuslNltypesCatgets001
      * @tc.desc       : test catgets
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function nltypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NLTYPES_CATCLOSE_0100
      * @tc.name       : testMuslNltypesCatclose001
      * @tc.desc       : test catclose
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

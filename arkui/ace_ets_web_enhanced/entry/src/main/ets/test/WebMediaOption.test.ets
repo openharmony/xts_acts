@@ -55,7 +55,7 @@ export default function webMediaOption() {
     * @tc.number      : SUB_WEB_MEDIAOPTIONS_0100
     * @tc.name        : testMediaOptions001
     * @tc.desc        : test mediaOptions single instance
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

@@ -55,7 +55,7 @@ export default function webOnFullScreenExit() {
     * @tc.number      : SUB_WEB_ONFULLSCREENEXIT_0100
     * @tc.name        : testOnFullScreenExit001
     * @tc.desc        : test onFullScreenExit
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
@@ -70,7 +70,7 @@ export default function webOnFullScreenExit() {
     * @tc.number      : SUB_WEB_EXITFULLSCREEN_0100
     * @tc.name        : testExitFullScreen001
     * @tc.desc        : test FullScreenExitHandler.exitFullScreen
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 2
     */

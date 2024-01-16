@@ -22,23 +22,7 @@
 
 #define PARAM_0 0
 #define PARAM_1 1
-#define FAIL -1
-
-static napi_value CapGet(napi_env env, napi_callback_info info)
-{
-    struct __user_cap_header_struct cap_header_data;
-    cap_user_header_t cap_header = &cap_header_data;
-
-    struct __user_cap_data_struct cap_data_data;
-    cap_user_data_t cap_data = &cap_data_data;
-
-    cap_header->pid = getpid();
-    cap_header->version = _LINUX_CAPABILITY_VERSION_1;
-    int returnValue = capget(cap_header, cap_data);
-    napi_value result;
-    napi_create_int32(env, returnValue, &result);
-    return result;
-}
+#define FAIL (-1)
 
 static napi_value Capset(napi_env env, napi_callback_info info)
 {
@@ -65,10 +49,7 @@ static napi_value Capset(napi_env env, napi_callback_info info)
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] = {
-        {"capset", nullptr, Capset, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"capget", nullptr, CapGet, nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
+    napi_property_descriptor desc[] = {{"capset", nullptr, Capset, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

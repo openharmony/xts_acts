@@ -33,12 +33,15 @@
 #include "oh_value_object.h"
 #include "oh_values_bucket.h"
 
+napi_env g_env = 0;
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
-static Rdb_ProgressDetails *g_progressDetails = NULL;
 OH_Rdb_Store *storeTestRdbStore_ = NULL;
+OH_Rdb_Store *storeTestRdbStore1_ = NULL;
+OH_Rdb_Store *storeTestRdbStore2_ = NULL;
+
 static OH_Rdb_Config config_;
 static void InitRdbConfig()
 {
@@ -83,7 +86,7 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_GetOrOpen is fail.");
     NAPI_ASSERT(env, storeTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen config is fail.");
 
-    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(storeTestRdbStore_, createTableSql);
     NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
@@ -96,21 +99,23 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
 static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) {
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
-    errCode = OH_Rdb_Execute(storeTestRdbStore_, dropTableSql);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
-    errCode = OH_Rdb_CloseStore(storeTestRdbStore_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    OH_Rdb_Execute(storeTestRdbStore_, dropTableSql);
+    OH_Rdb_CloseStore(storeTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail.");   
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
 
-static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
-{
-    g_progressDetails = progressDetails;    
+static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails) {   
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails != nullptr, "progressDetails is fail.");   
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version fail"); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->tableLength == 0, "tableLength is fail."); 
+    Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
+    NAPI_ASSERT_RETURN_VOID(g_env, tableDetails != nullptr, "tableDetails is fail.");
 }
 
 /**
@@ -1720,9 +1725,12 @@ static napi_value SUB_DDM_RDB_3200(napi_env env, napi_callback_info info) {
     mkdir(config2_.dataBaseDir, 0770);
 
     int errCode = 0;
-    OH_Rdb_GetOrOpen(&config2_, &errCode);
+    storeTestRdbStore1_ = OH_Rdb_GetOrOpen(&config2_, &errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL  , "OH_Rdb_GetOrOpen is fail.");
     errCode = 0;
+
+    OH_Rdb_CloseStore(storeTestRdbStore1_);
+    OH_Rdb_DeleteStore(&config2_);
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
@@ -1751,9 +1759,12 @@ static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
     mkdir(config3_.dataBaseDir, 0770);
 
     int errCode = 0;
-    OH_Rdb_GetOrOpen(&config3_, &errCode);
+    storeTestRdbStore2_ = OH_Rdb_GetOrOpen(&config3_, &errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL , "OH_Rdb_GetOrOpen is fail.");
     errCode = 0;
+    
+    OH_Rdb_CloseStore(storeTestRdbStore2_);
+    OH_Rdb_DeleteStore(&config3_);
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
@@ -1767,6 +1778,7 @@ static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
  */
 static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr , "OH_Rdb_GetOrOpen is fail.");
+    g_env = env;
     constexpr int TABLE_COUNT = 1;
     const char *table[TABLE_COUNT];
     table[0] = "store_test";
@@ -1774,13 +1786,6 @@ static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
     Rdb_SyncCallback callback = CloudSyncCallback;
     auto errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_TIME_FIRST, table, TABLE_COUNT, &callback);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync TIME_FIRST is fail.");
-    NAPI_ASSERT(env, g_progressDetails != nullptr, "g_progressDetails is fail.");   
-    NAPI_ASSERT(env, g_progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
-    NAPI_ASSERT(env, g_progressDetails->tableLength == 0, "tableLength is fail."); 
-    Rdb_TableDetails *tableDetails = OH_Rdb_GetTableDetails(g_progressDetails, DISTRIBUTED_PROGRESS_DETAIL_VERSION);
-    NAPI_ASSERT(env, tableDetails != nullptr, "tableDetails is fail.");
     errCode = 0;
 
     napi_value returnCode;

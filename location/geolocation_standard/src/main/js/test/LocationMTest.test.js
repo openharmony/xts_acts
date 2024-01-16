@@ -1589,8 +1589,7 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn2 try error:"+ JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            expect(error.code).assertEqual("401");
         }
         try {
             geolocationm.off('gnssFenceStatusChange',geofenceRequest,
@@ -1603,8 +1602,7 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff2 try error:"+ JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            expect(error.code).assertEqual("401");
         }
         await sleep(1000);
         done();
@@ -1635,8 +1633,7 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn3 try error:"+ JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            expect(error.code).assertEqual("401");
         }
         try {
             geolocationm.off('gnssFenceStatusChange',geofenceRequest,
@@ -1649,8 +1646,7 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff3 try error:"+ JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            expect(error.code).assertEqual("401");
         }
         await sleep(1000);
         done();

@@ -207,5 +207,30 @@ export default function SecurityCryptoFwSignVerifySM2TestUnit() {
       console.log(`Security_CryptoFramework_SignVerify_SM2_Func_0600: success`);
       done();
     });
+
+    /**
+     * @tc.number Security_CryptoFramework_SignVerify_SM2_Func_0800
+     * @tc.name Test signVerify algName with SM2_256. Promise style. Process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_SM2_Func_0800", 0, async (done: Function) => {
+      let testNumber: string = "Security_CryptoFramework_SignVerify_SM2_Func_0800";
+      console.log(testNumber + ": started");
+      let signVerifyAlg: string = "SM2_256|SM3";
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        expect(sign.algName == signVerifyAlg).assertTrue();
+        expect(verify.algName == signVerifyAlg).assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
   })
 }

@@ -23,7 +23,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_STRTOIMAX_0100
      * @tc.name       : testMuslInttypesStrtoimax001
      * @tc.desc       : test strtoimax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -41,7 +41,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_STRTOIMAX_0200
      * @tc.name       : testMuslInttypesStrtoimax002
      * @tc.desc       : test strtoimax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -59,7 +59,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_STRTOUMAX_0100
      * @tc.name       : testMuslInttypesStrtoumax001
      * @tc.desc       : test strtoumax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -77,7 +77,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_STRTOUMAX_0200
      * @tc.name       : testMuslInttypesStrtoumax002
      * @tc.desc       : test strtoimax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -94,7 +94,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_IMAXDIV_0100
      * @tc.name       : testMuslInttypesImaxdiv001
      * @tc.desc       : test imaxdiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -108,7 +108,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_IMAXDIV_0200
      * @tc.name       : testMuslInttypesImaxdiv002
      * @tc.desc       : test imaxdiv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -123,7 +123,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_IMAXABS_0100
      * @tc.name       : testMuslInttypesImaxabs001
      * @tc.desc       : test imaxabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -136,7 +136,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_IMAXABS_0200
      * @tc.name       : testMuslInttypesImaxabs002
      * @tc.desc       : test imaxabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -149,7 +149,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_WCSTOIMAX_0100
      * @tc.name       : testMuslInttypesWcstoimax001
      * @tc.desc       : test wcstoimax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -165,7 +165,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_WCSTOIMAX_0200
      * @tc.name       : testMuslInttypesWcstoimax002
      * @tc.desc       : test wcstoimax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -181,7 +181,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_WCSTOUMAX_0100
      * @tc.name       : testMuslInttypesWcstoumax001
      * @tc.desc       : test wcstoumax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -197,7 +197,7 @@ export default function inttypesNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_WCSTOUMAX_0200
      * @tc.name       : testMuslInttypesWcstoumax002
      * @tc.desc       : test wcstoumax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

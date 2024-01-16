@@ -20,6 +20,8 @@ import webMessagePortErrorCode from './WebMessagePortErrorCode.test'
 import webStorageErrorCode from './WebStorageErrorCode.test'
 import webViewControllerErrorCode from './WebViewControllerErrorCode.test'
 import webErrorCode from './WebErrorCode.test'
+import webViewControllerPostUrlErrorCode from './WebViewControllerPostUrlErrorCode.test'
+import webDownloadErrorCode from './WebDownloadErrorCode.test'
 
 export default function testsuite() {
   webErrorCode()
@@ -30,4 +32,6 @@ export default function testsuite() {
   webStorageErrorCode()
   webMessageExtErrorCode()
   webViewControllerErrorCode()
+  webViewControllerPostUrlErrorCode()
+  webDownloadErrorCode()
 }

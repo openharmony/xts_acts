@@ -41,15 +41,15 @@ struct TextAreaCallback {
           })
           .onEditChange((isEditing) => {
             let event_id = 60201
-            if ( isEditing ) {
+            if (isEditing) {
               event_id = 60202
             }
-            var eventData = {
+            let eventData: events_emitter.EventData = {
               data: {
                 "isEditing": isEditing
               }
             }
-            let event = {
+            let event: events_emitter.InnerEvent = {
               eventId: event_id,
               priority: events_emitter.EventPriority.LOW
             }

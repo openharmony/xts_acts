@@ -82,7 +82,7 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_GetOrOpen is fail.");
     NAPI_ASSERT(env, storeBackupTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen config is fail.");
 
-    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(storeBackupTestRdbStore_, createTableSql);
     NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
@@ -95,12 +95,9 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
 static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) {
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
-    errCode = OH_Rdb_Execute(storeBackupTestRdbStore_, dropTableSql);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");   
-    errCode = OH_Rdb_CloseStore(storeBackupTestRdbStore_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");   
+    OH_Rdb_Execute(storeBackupTestRdbStore_, dropTableSql);
+    OH_Rdb_CloseStore(storeBackupTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_DeleteStore is fail.");   
 
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);

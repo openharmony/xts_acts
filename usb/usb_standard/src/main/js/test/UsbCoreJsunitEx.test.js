@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -677,7 +677,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + '$#'
       var hasRight = usbManager.hasRight(deviceName)
       console.info('usb has_right ret :' + hasRight);
-      expect(hasRight).assertTrue();
+      expect(hasRight).assertFalse();
     }
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3400 :  PASS');
   })
@@ -705,7 +705,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + 'abcdg'
       var hasRight = usbManager.hasRight(deviceName)
       console.info('usb hasRight ret :' + hasRight);
-      expect(hasRight).assertTrue();
+      expect(hasRight).assertFalse();
     }
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3500 :  PASS');
   })

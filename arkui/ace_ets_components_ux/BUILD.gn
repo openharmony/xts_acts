@@ -42,6 +42,7 @@ group("componentUxTest") {
       "ace_ets_component_swiper:ActsAceSwiperTest",
       "ace_ets_component_tabs:ActsAceTabsTest",
       "ace_ets_component_text:ActsAceTextTest",
+      "ace_ets_component_text_test:ActsAceArkUIUXTextTest",
       "ace_ets_component_textarea:ActsAceTextAreaTest",
       "ace_ets_component_textinput:ActsAceTextInputTest",
       "ace_ets_component_textpicker:ActsAceTextPickerTest",

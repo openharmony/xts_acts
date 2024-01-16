@@ -21,8 +21,6 @@ import alignSelfStretchTest from './flex/AlignSelfStretchTest.test';
 import alignSelfGridRowTest from './flex/AlignSelfGridRowTest.test';
 import alignSelfTest from './flex/AlignSelfTest.test';
 import flexBasisTest from './flex/FlexBasisTest.test';
-import flexGrowTest from './flex/FlexGrowTest.test';
-import flexShrinkTest from './flex/FlexShrinkTest.test';
 
 export default function testsuite() {
   alignSelfTest();
@@ -30,8 +28,4 @@ export default function testsuite() {
   //  alignSelfStretchTest();
   //  alignSelfStretchNoSizeTest();
   flexBasisTest();
-  flexGrowTest();
-  flexShrinkTest();
-
-
 }

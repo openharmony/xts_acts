@@ -29,6 +29,10 @@ struct ViewAS{
 
   build() {
     Column({space:20}) {
+      Button("Reset").id("ViewAS_reset")
+        .onClick(() => {
+          this.class_A = new ClassAB(5)
+        })
       Text('@State: ' + this.class_A.num).key("num_state")
         .fontSize(20)
       Button('State + 1').key("adds_state")

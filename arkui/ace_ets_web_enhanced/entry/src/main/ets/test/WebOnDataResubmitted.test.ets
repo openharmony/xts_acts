@@ -55,7 +55,7 @@ export default function webOnDataResubmitted() {
     * @tc.number      : SUB_WEB_ONDATARESUBMITTED_0100
     * @tc.name        : testOnDataResubmitted001
     * @tc.desc        : test onDataResubmitted callback
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -70,7 +70,7 @@ export default function webOnDataResubmitted() {
     * @tc.number      : SUB_WEB_DATARESUBMISSIONHANDLER_RESEND_0100
     * @tc.name        : testDataResubmissionHandlerResend001
     * @tc.desc        : test dataResubmissionHandler.resend
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
@@ -85,7 +85,7 @@ export default function webOnDataResubmitted() {
     * @tc.number      : SUB_WEB_DATARESUBMISSIONHANDLER_CANCEL_0100
     * @tc.name        : testDataResubmissionHandlerCancel001
     * @tc.desc        : test dataResubmissionHandler.cancel
-    * @tc.size        : MEDIUM
+    * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 1
     */

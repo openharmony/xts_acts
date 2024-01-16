@@ -14,7 +14,6 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
@@ -28,9 +27,10 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_256 256
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_100 100
@@ -41,7 +41,7 @@
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TEN 10
 #define TEST_MODE 0666
 static napi_value Readv(napi_env env, napi_callback_info info)
@@ -53,28 +53,30 @@ static napi_value Readv(napi_env env, napi_callback_info info)
     int param;
     napi_get_value_int32(env, args[0], &param);
 
-    int result_value = FAILD;
+    int ret;
     if (param == PARAM_UNNORMAL) {
-        result_value = readv(PARAM_UNNORMAL, nullptr, PARAM_UNNORMAL);
+        ret = readv(PARAM_UNNORMAL, nullptr, PARAM_UNNORMAL);
     } else {
-        int fd = open("/data/storage/el2/base/files/testReadv.txt", O_CREAT);
+        int fd = open("/data/storage/el2/base/files/testReadv.txt", O_RDWR | O_CREAT);
 
-        char buf1[] = "hello";
-        char buf2[] = "world";
+        char buf1[] = "testreadv1";
+        char buf2[] = "testreadv2";
         struct iovec ios[] = {{buf1, strlen(buf1)}, {buf2, strlen(buf2)}};
-
-        ssize_t result = writev(fd, ios, sizeof(ios) / sizeof(struct iovec));
+        ssize_t value = writev(fd, ios, sizeof(ios) / sizeof(struct iovec));
+        lseek(fd, PARAM_0, SEEK_SET);
         memset(buf1, PARAM_0, sizeof(buf1));
         memset(buf2, PARAM_0, sizeof(buf2));
-        result = readv(fd, ios, sizeof(ios) / sizeof(struct iovec));
-        if (result == strlen(buf1) + strlen(buf2)) {
-            result_value = RETURN_0;
+        value = readv(fd, ios, sizeof(ios) / sizeof(struct iovec));
+        if (value == strlen(buf1) + strlen(buf2)) {
+            ret = RETURN_0;
+        } else {
+            ret = FAIL;
         }
+        close(fd);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
-
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
@@ -85,12 +87,12 @@ static napi_value Writev(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    ssize_t result_value = FAILD;
+    ssize_t resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
-        result_value = writev(PARAM_UNNORMAL, nullptr, PARAM_UNNORMAL);
+        resultValue = writev(PARAM_UNNORMAL, nullptr, PARAM_UNNORMAL);
     } else {
         char str0[] = "test ";
-        char str1 []= "writev\n";
+        char str1[] = "writev\n";
         struct iovec iov[PARAM_2];
 
         iov[PARAM_0].iov_base = str0;
@@ -100,12 +102,12 @@ static napi_value Writev(napi_env env, napi_callback_info info)
 
         ssize_t result = writev(PARAM_1, iov, PARAM_2);
         if (result == (iov[PARAM_0].iov_len + iov[PARAM_1].iov_len)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -124,8 +126,8 @@ static napi_value PWriteV(napi_env env, napi_callback_info info)
 
     int fd = open(tmpfile, O_RDWR | O_CREAT, TEST_MODE);
     int count = sizeof(iov) / sizeof(struct iovec);
-    int ret = pwritev(fd, iov, count, 0);
-    if (ret != -1) {
+    int ret = pwritev(fd, iov, count, PARAM_0);
+    if (ret != PARAM_UNNORMAL) {
         ret = SUCCESS;
     } else {
         ret = FAIL;
@@ -153,8 +155,8 @@ static napi_value PWriteV64(napi_env env, napi_callback_info info)
 
     int fd = open(tmpfile, O_RDWR | O_CREAT, TEST_MODE);
     int count = sizeof(iov) / sizeof(struct iovec);
-    int ret = pwritev64(fd, iov, count, 0);
-    if (ret != -1) {
+    int ret = pwritev64(fd, iov, count, PARAM_0);
+    if (ret != PARAM_UNNORMAL) {
         ret = SUCCESS;
     } else {
         ret = FAIL;
@@ -171,7 +173,7 @@ static napi_value PWriteV64(napi_env env, napi_callback_info info)
 static napi_value ProcessVmReadV(napi_env env, napi_callback_info info)
 {
     int ret = PARAM_UNNORMAL;
-    int bufferSize = 256;
+    int bufferSize = PARAM_256;
     char src[256] = "This is process_vm_readv_0100.";
     char dst[256] = "";
     struct iovec remote, local;

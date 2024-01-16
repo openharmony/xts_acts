@@ -23,10 +23,9 @@
 #include <sys/select.h>
 #include <utmp.h>
 
-
 #define STRLENGTH 64
 #define FALSE 0
-#define ERROR -1
+#define ERROR (-1)
 #define FIVE 5
 #define PARAM_0 0
 #define ONE 1
@@ -45,7 +44,7 @@ static napi_value NlLanginfoL(napi_env env, napi_callback_info info)
     std::locale ioc("");
     napi_value result = nullptr;
     size_t size = STRLENGTH;
-    char *getInfo = (char *)malloc(sizeof(char) * size);
+    char *getInfo = static_cast<char *>(malloc(sizeof(char) * size));
     getInfo = nl_langinfo_l(CODESET, (locale_t)&ioc);
     napi_create_string_utf8(env, getInfo, NAPI_AUTO_LENGTH, &result);
     return result;

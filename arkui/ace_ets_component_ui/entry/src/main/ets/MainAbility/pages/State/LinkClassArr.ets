@@ -28,7 +28,7 @@ struct SonLinkAC {
   @Link classArrSon: Array<LinkAC>
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 10 }) {      
       Text(`arrSon: ${this.arrSon}`).key("arr_SonAC")
       Text(`classSon: ${this.classSon.value}`).key("class_SonAC")
       Text(`classArrSon: ${this.classArrSon[0].value}`).key("classArr_SonAC")
@@ -62,6 +62,12 @@ struct ParentLinkAC {
 
   build() {
     Column({ space: 10 }) {
+      Button("Reset").id("ParentLinkAC_reset")
+        .onClick(() => {
+          this.arr = [1,2,3]
+          this.class = {value:1}
+          this.classArr = [{value:1},{value:2}]
+        })
       Text(`arrPar: ${this.arr}`).key("arr_ParentAC")
       Text(`classPar: ${this.class.value}`).key("class_ParentAC")
       Text(`classArrPar: ${this.classArr[0].value}`).key("classArr_ParentAC")

@@ -21,15 +21,15 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define SYSLOG_ACTION_SIZE_BUFFER (10)
 static napi_value Klogctl(napi_env env, napi_callback_info info)
 {
     int len = PARAM_0;
     char *bufp = nullptr;
     int ret = klogctl(SYSLOG_ACTION_SIZE_BUFFER, bufp, len);
-    if(ret >= PARAM_0){
-       ret = PARAM_0;
+    if (ret >= PARAM_0) {
+        ret = PARAM_0;
     }
     napi_value result;
     napi_create_int32(env, ret, &result);

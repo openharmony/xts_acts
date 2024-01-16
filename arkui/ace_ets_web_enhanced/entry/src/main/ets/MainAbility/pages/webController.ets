@@ -16,7 +16,6 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { JsProxyObject } from '../../test/Interfaces';
 import business_error, { BusinessError } from '@ohos.base';
-import picker from '@ohos.file.picker';
 
 @Entry
 @Component
@@ -57,7 +56,6 @@ struct webController {
   @State isHttpErrorReceive: boolean = false
   @State isLargeThan: boolean = false
   @State registerJavaScriptProxyFlag: boolean = false
-  @State onFileSelectorShowCallBack: boolean = false
   @State zoomAccess: boolean = false
   @State requestFocus: boolean = false
 
@@ -73,13 +71,13 @@ struct webController {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
+        this.titleReceive = '';
       }
     }
   }
@@ -115,9 +113,133 @@ struct webController {
               }
               break;
             }
+            case "testAccessStep002": {
+              try {
+                this.controller.loadUrl({ url: $rawfile("second.html") });
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(1), 100089)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testAccessStep003": {
+              try {
+                this.controller.clearHistory()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(-1), 100090)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testAccessStep004": {
+              try {
+                this.controller.loadUrl({ url: $rawfile("second.html") });
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(-1), 100091)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testAccessStep005": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(1), 100092)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testAccessStep006": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(1), 100093)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testAccessStep007": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                this.controller.clearHistory()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(-1), 100094)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testAccessStep008": {
+              try {
+                this.controller.loadUrl({ url: $rawfile('second.html') })
+                await Utils.sleep(2000)
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessStep(-1), 100095)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
 
             case "testRefresh001": {
               try {
+                this.controller.loadUrl({ url: $rawfile('index.html') })
+                await Utils.sleep(4000);
                 this.controller.refresh();
                 await Utils.sleep(2000);
                 this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
@@ -142,8 +264,11 @@ struct webController {
               break;
             }
 
+
             case "testRegisterJavaScriptProxy001": {
               try {
+                this.controller.loadUrl({ url: $rawfile('webPart1index.html') })
+                await Utils.sleep(2000);
                 this.registerJavaScriptProxyFlag = true
                 this.controller.registerJavaScriptProxy({
                   object: this.jsObj,
@@ -169,6 +294,39 @@ struct webController {
               } catch (error) {
                 console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
                 Utils.emitEvent(String(error.code), 31012)
+              }
+              break;
+            }
+
+            case "testAccessBackward003": {
+              try {
+                this.controller.loadUrl({ url: "resource://rawfile/second.html" });
+                await Utils.sleep(2000)
+                this.controller.clearHistory()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessBackward(), 200006)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testAccessBackward004": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessBackward(), 200007)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
               break;
             }
@@ -249,7 +407,14 @@ struct webController {
             case "testLoadData001": {
               try {
                 this.controller.loadData({
-                  data: "<html><head><title>LoadData</title></head><body bgcolor=\"white\">Source:<pre>source</pre</body><script>function getTitle(){return document.title}</script></html>",
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}" +
+                  "</script>" +
+                  "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -330,6 +495,43 @@ struct webController {
               break;
             }
 
+            case "testAccessForward003": {
+              try {
+                this.controller.loadUrl({ url: "resource://rawfile/second.html" })
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                this.controller.clearHistory()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessForward(), 200008)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testAccessForward004": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                Utils.emitEvent(this.controller.accessForward(), 200009)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+
             case "testBackward001": {
               try {
                 this.controller.clearHistory()
@@ -348,7 +550,50 @@ struct webController {
               }
               break;
             }
-
+            case "testBackward002": {
+              try {
+                this.controller.loadUrl({ url: $rawfile("index.html") });
+                await Utils.sleep(2000)
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>" +
+                  "function getTitle(){return document.title}" +
+                  "</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
+                  Utils.emitEvent(res, 200010)
+                } })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testBackward003": {
+              try {
+                this.controller.loadUrl({ url: $rawfile("second.html") });
+                await Utils.sleep(2000)
+                this.controller.clearHistory()
+                await Utils.sleep(2000)
+                this.controller.backward()
+                await Utils.sleep(2000)
+                this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
+                  Utils.emitEvent(res, 200011)
+                } })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
             case "testForward001": {
               try {
                 this.controller.loadUrl({ url: "resource://rawfile/webMessageExt.html" });
@@ -368,7 +613,52 @@ struct webController {
               }
               break;
             }
-
+            case "testForward002": {
+              try {
+                this.controller.loadData({
+                  data: "<html>" +
+                  "<head>" +
+                  "<title>LoadData</title>" +
+                  "</head>" +
+                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                  "<script>function getTitle(){return document.title}</script>" +
+                  "</html>",
+                  mimeType: "text/html",
+                  encoding: "UTF-8"
+                })
+                await Utils.sleep(2000);
+                this.controller.backward()
+                await Utils.sleep(2000);
+                this.controller.forward()
+                await Utils.sleep(2000);
+                this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
+                  Utils.emitEvent(res, 100087)
+                } })
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+            case "testForward003": {
+              try {
+                this.controller.loadUrl({ url: $rawfile('index.html') });
+                await Utils.sleep(2000);
+                this.controller.loadUrl({ url: $rawfile('second.html') });
+                await Utils.sleep(2000);
+                this.controller.backward()
+                await Utils.sleep(2000);
+                this.controller.clearHistory()
+                await Utils.sleep(2000);
+                this.controller.forward()
+                await Utils.sleep(2000);
+                this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
+                  Utils.emitEvent(res, 100088)
+                } })
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
             case "testLoadUrl001": {
               try {
                 this.controller.loadUrl({ url: "resource://rawfile/webMessageExt.html" });
@@ -385,18 +675,36 @@ struct webController {
               break;
             }
 
-            case "testOnFileSelectorShow001": {
+            case "testLoadUrl002": {
               try {
-                this.onFileSelectorShowCallBack = false
-                this.controller.loadUrl({ url: "resource://rawfile/showFileSelector.html" });
-                await Utils.sleep(2000);
-                await Utils.clickComponent('onFileSelectorShowKey')
-                await Utils.sleep(2000);
-                Utils.emitEvent(this.onFileSelectorShowCallBack, 31019)
-              }
-              catch (error) {
+                this.controller.loadUrl({ url: 'www.OpenHarmony.cn' });
+                await Utils.sleep(3000);
+                Utils.emitEvent(this.titleReceive, 76000)
+              } catch (error) {
                 console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(String(error.code), 31019)
+              }
+              break;
+            }
+
+            case "testLoadUrl003": {
+              try {
+                this.controller.loadUrl({ url: $rawfile('second.html') });
+                await Utils.sleep(3000);
+                Utils.emitEvent(this.titleReceive, 76002)
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+              }
+              break;
+            }
+
+            case "testLoadUrl004": {
+              try {
+                let sandboxPath = Utils.copyRawFileToSandbox('second.html')
+                this.controller.loadUrl({ url: `file://${sandboxPath}` });
+                await Utils.sleep(3000);
+                Utils.emitEvent(this.titleReceive, 76004)
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
               }
               break;
             }
@@ -522,6 +830,24 @@ struct webController {
               break;
             }
 
+            case "testFileAccess002": {
+              try {
+                this.fileAccess = false
+                await Utils.sleep(3000)
+                this.controller.loadUrl({ url: "resource://rawfile/index.html" });
+                await Utils.sleep(3000)
+                this.controller.runJavaScript({ script: "openRawFile()" })
+                await Utils.sleep(3000)
+                this.controller.runJavaScript({ script: "getTitle()", callback: (res) => {
+                  Utils.emitEvent(res, 100070)
+                } })
+              } catch (error) {
+                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                Utils.emitEvent(String(error.code), 100070)
+              }
+              break;
+            }
+
             case "testRequestFocus001": {
               try {
                 this.controller.loadUrl({ url: "resource://rawfile/second.html" });
@@ -561,7 +887,6 @@ struct webController {
         })
 
       Web({ src: $rawfile('webPart1index.html'), controller: this.controller })
-        .key("onFileSelectorShowKey")
         .visibility(this.webVisibility)
         .javaScriptAccess(this.javaScriptAccess)
         .fileAccess(this.fileAccess)
@@ -591,6 +916,12 @@ struct webController {
             this.pageBegin = event.url
           }
         })
+        .onTitleReceive((event) => {
+          if (event) {
+            console.log('onTitleReceive title:' + event.title)
+            this.titleReceive = event.title
+          }
+        })
         .onPageEnd((event) => {
           if (event) {
             this.pageEnd = event.url
@@ -607,21 +938,6 @@ struct webController {
         .onResourceLoad((event) => {
           console.info("onResourceLoad==>" + event.url)
           this.loadedResource = event.url
-        })
-        .onFileSelectorShow((event) => {
-          if (event) {
-            console.log('MyFileUploader onShowFileSelector invoked')
-            const documentSelectOptions = new picker.DocumentSelectOptions();
-            let uri: string | null = null;
-            const documentViewPicker = new picker.DocumentViewPicker();
-            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-              uri = documentSelectResult[0];
-              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-            }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-            })
-            this.onFileSelectorShowCallBack = true
-          }
         })
         .zoomAccess(this.zoomAccess)
         .onBlur(() => {

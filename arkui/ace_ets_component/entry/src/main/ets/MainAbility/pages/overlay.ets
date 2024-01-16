@@ -26,20 +26,20 @@ struct OverlayExample {
 
   onPageShow() {
     console.info('[overlay] page show called ');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 143,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 1110,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
@@ -63,7 +63,9 @@ struct OverlayExample {
     Column() {
       Column() {
         Text('floating layer')
-          .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
+          .fontSize(12)
+          .fontColor(0xCCCCCC)
+          .maxLines(1)
         Column() {
           Image('/images/img.jpeg')
             .width(340).height(240)

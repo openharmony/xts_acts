@@ -23,7 +23,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESINIT_0100
      * @tc.name       : testMuslResolvResInit001
      * @tc.desc       : test res_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +38,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESMKQUERY_0100
      * @tc.name       : testMuslResolvResMkquery001
      * @tc.desc       : test res_mkquery
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -54,7 +54,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESMKQUERY_0200
      * @tc.name       : testMuslResolvResMkquery002
      * @tc.desc       : test res_mkquery
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -70,7 +70,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESQUERY_0100
      * @tc.name       : testMuslResolvResQuery001
      * @tc.desc       : test res_query
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -86,7 +86,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RESQUERYDOMAIN_0100
      * @tc.name       : testMuslResolvResQuerydomain001
      * @tc.desc       : test res_querydomain
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -101,7 +101,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RES_SEARCH_0100
      * @tc.name       : testMuslResolvResSearch001
      * @tc.desc       : test res_search
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -116,7 +116,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_RES_SEND_0100
      * @tc.name       : testMuslResolvResSend001
      * @tc.desc       : test res_send
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -131,7 +131,7 @@ export default function resolvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOLV_DN_EXPAND_0100
      * @tc.name       : testMuslReSoLvDnExpand001
      * @tc.desc       : test dn_expand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

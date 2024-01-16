@@ -24,8 +24,9 @@
 #define TEST_FD_LIMIT 128
 #define R_OK 4
 #define PARAM_0 0
+#define MPARAM_1 (-1)
 #define ERRON_0 0
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 
 static napi_value Ptrace(napi_env env, napi_callback_info info)
 {
@@ -34,8 +35,8 @@ static napi_value Ptrace(napi_env env, napi_callback_info info)
     fork();
     ret = ptrace(PTRACE_TRACEME);
     napi_value result;
-    if (-1 == ret) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (MPARAM_1 == ret) {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }

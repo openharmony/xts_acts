@@ -26,15 +26,17 @@ struct ListSwipe {
   @State stateContent: string = ''
   @State offsetContent: string = ''
 
-  @Builder itemStart() {
-    Row () {
+  @Builder
+  itemStart() {
+    Row() {
       Button("Del").margin("4vp")
       Button("Set").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
-  @Builder itemEnd() {
-    Row () {
+  @Builder
+  itemEnd() {
+    Row() {
       Button("Del").margin("4vp")
       Button("Set").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
@@ -56,9 +58,9 @@ struct ListSwipe {
         .transition({ type: TransitionType.Delete, opacity: 0 })
         .swipeAction({
           end: {
-            builder: this.itemEnd.bind(this),
+            builder: (): void => this.itemEnd(),
             // without onAction, no deleteArea
-            onStateChange:(state : SwipeActionState)=> {
+            onStateChange: (state: SwipeActionState) => {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList1_ListItem0 swipe action state COLLAPSED')
                 this.list1Item0State = 'end COLLAPSED'
@@ -74,7 +76,7 @@ struct ListSwipe {
               }
             }
           },
-          edgeEffect : SwipeEdgeEffect.Spring,
+          edgeEffect: SwipeEdgeEffect.Spring,
           onOffsetChange: (offset: number) => {
             if (offset > 0) {
               console.info('MyList1_Item0 swipe start')
@@ -99,10 +101,10 @@ struct ListSwipe {
         .transition({ type: TransitionType.Delete, opacity: 0 })
         .swipeAction({
           end: {
-            builder: this.itemEnd.bind(this),
+            builder: (): void => this.itemEnd(),
             // without onAction, no deleteArea
           },
-          edgeEffect : SwipeEdgeEffect.Spring,
+          edgeEffect: SwipeEdgeEffect.Spring,
           onOffsetChange: (offset: number) => {
             if (offset > 0) {
               console.info('MyList1_Item0 swipe start')
@@ -122,18 +124,20 @@ struct ListSwipe {
       List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
         ListItem() {
           Text('ListItem0')
-          .width('100%')
-          .height(30)
-          .fontSize(16)
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+            .width('100%')
+            .height(30)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
         }
         .key('MyList2_ListItem0')
         .transition({ type: TransitionType.Delete, opacity: 0 })
         .swipeAction({
           start: {
-            builder: this.itemStart.bind(this),
+            builder: (): void => this.itemStart(),
             actionAreaDistance: 5,
-            onStateChange:(state : SwipeActionState)=> {
+            onStateChange: (state: SwipeActionState) => {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList2_ListItem0 swipe action state COLLAPSED')
                 this.list2Item0State = 'COLLAPSED'
@@ -156,23 +160,28 @@ struct ListSwipe {
               MyUtils.sendEvent('swipe end', 70000)
             }
           },
-          edgeEffect:SwipeEdgeEffect.Spring
+          edgeEffect: SwipeEdgeEffect.Spring
         })
 
         ListItem() {
           Text('ListItem1')
-          .width('100%').height(30).fontSize(16)
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+            .width('100%')
+            .height(30)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
         }
         .key('MyList2_ListItem1')
         .transition({ type: TransitionType.Delete, opacity: 0 })
         .swipeAction({
           start: {
-            builder: this.itemEnd.bind(this),
+            builder: (): void => this.itemEnd(),
             actionAreaDistance: 5,
             // with onAction
-            onAction: () => {},
-            onStateChange:(state : SwipeActionState)=> {
+            onAction: () => {
+            },
+            onStateChange: (state: SwipeActionState) => {
               if (state == SwipeActionState.COLLAPSED) {
                 console.info('MyList2_ListItem1 swipe action state COLLAPSED')
                 this.stateContent = 'COLLAPSED'
@@ -195,7 +204,7 @@ struct ListSwipe {
               this.offsetContent = 'swipe left'
             }
           },
-          edgeEffect:SwipeEdgeEffect.Spring
+          edgeEffect: SwipeEdgeEffect.Spring
         })
       }
       .divider({ strokeWidth: 2, color: 0xFF, startMargin: 20, endMargin: 20 })
@@ -204,20 +213,38 @@ struct ListSwipe {
       .key('MyList2')
       .width('90%')
 
-      Button("Collapse All").width("60%").height(80)
-      .key("MyList2CloseButton")
-      .onClick(() => {
-        console.info("onClick closeAllSwipeActions")
-        this.listScroller.closeAllSwipeActions({
-          onFinish:()=>{
-            this.closeButtonContent = 'onFinish'
-          }
-        });
-      })
-      Text(this.list1Item0State).key('swipe0100').width("60%").height(80).backgroundColor(0x0000ff)
-      Text(this.list2Item0State).key('swipe0300').width("60%").height(80).backgroundColor(0x0000ff)
-      Text(this.closeButtonContent).key('swipe0400').width("60%").height(80).backgroundColor(0x0000ff)
-      Text(this.list1Item1Offset).key('swipe0500').width("60%").height(80).backgroundColor(0x0000ff)
+      Button("Collapse All")
+        .width("60%")
+        .height(80)
+        .key("MyList2CloseButton")
+        .onClick(() => {
+          console.info("onClick closeAllSwipeActions")
+          this.listScroller.closeAllSwipeActions({
+            onFinish: () => {
+              this.closeButtonContent = 'onFinish'
+            }
+          });
+        })
+      Text(this.list1Item0State)
+        .key('swipe0100')
+        .width("60%")
+        .height(80)
+        .backgroundColor(0x0000ff)
+      Text(this.list2Item0State)
+        .key('swipe0300')
+        .width("60%")
+        .height(80)
+        .backgroundColor(0x0000ff)
+      Text(this.closeButtonContent)
+        .key('swipe0400')
+        .width("60%")
+        .height(80)
+        .backgroundColor(0x0000ff)
+      Text(this.list1Item1Offset)
+        .key('swipe0500')
+        .width("60%")
+        .height(80)
+        .backgroundColor(0x0000ff)
     }
     .padding(10)
     .backgroundColor(0xDCDCDC)

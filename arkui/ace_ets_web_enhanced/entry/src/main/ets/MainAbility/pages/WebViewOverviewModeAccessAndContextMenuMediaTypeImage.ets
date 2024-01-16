@@ -40,7 +40,6 @@ struct WebViewOverviewModeAccessAndContextMenuMediaTypeImage {
     events_emitter.off(10)
   }
 
-
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
     if (eventData != null) {
@@ -95,15 +94,14 @@ struct WebViewOverviewModeAccessAndContextMenuMediaTypeImage {
         .textZoomRatio(100)
         .onShowFileSelector((event) => {
           if (event) {
-            console.log("3333333333333", event.fileSelector.getMode())
             let fileSelectorObj: FileSelectorParam = event.fileSelector
             this.FileSelectorMode = fileSelectorObj.getMode()
           }
           return true
         })
         .onContextMenuShow((event) => {
-          console.log("mouse in >>")
           if (event) {
+            event.result.closeContextMenu()
             if (this.mouse) {
               console.info("onContextMenuShow getSourceType = " + event.param.getSourceType())
               Utils.emitEvent(event.param.getSourceType(), 1981)

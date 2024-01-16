@@ -51,7 +51,7 @@ export default function WebViewOverviewModeAccessAndContextMenuMediaTypeImage() 
     * @tc.number     : SUB_WEB_OVERVIEWMODEACCESS_0200
     * @tc.name       : testOverviewModeAccess002
     * @tc.desc       : test OverviewModeAccess
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -66,7 +66,7 @@ export default function WebViewOverviewModeAccessAndContextMenuMediaTypeImage() 
     * @tc.number     : SUB_WEB_CONTEXTMENUMEDIATYPE_0200
     * @tc.name       : testContextMenuMediaType002
     * @tc.desc       : test ContextMenuMediaType
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -81,7 +81,7 @@ export default function WebViewOverviewModeAccessAndContextMenuMediaTypeImage() 
     * @tc.number     : SUB_WEB_CONTEXTMENUSOURCETYPEMOUSE_0100
     * @tc.name       : testContextMenuSourceTypeMouse001
     * @tc.desc       : test ContextMenuSourceTypeMouse
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

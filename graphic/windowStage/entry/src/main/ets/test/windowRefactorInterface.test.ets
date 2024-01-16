@@ -27,7 +27,6 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     var commonKEYColorArr = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
-      'TYPE_SYSTEM_ALERT': 1,
       'TYPE_INPUT_METHOD': 2,
       'TYPE_STATUS_BAR': 3,
       'TYPE_PANEL': 4,
@@ -305,7 +304,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('testIswindowShowingTest', 0, async function (done) {
       console.info('windowTest testIswindowShowingTest begin');
       let config = {
-        name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let wnd;
       wnd = await ohosWindow.createWindow(config).catch(err => {
@@ -338,7 +337,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      */
     it('testSetUIContent_Existence_page', 0, async function (done) {
       let config = {
-        name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let win;
       try {
@@ -378,7 +377,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let windowClass = null;
       let msgStr='testSetUIContentTestCallback1'
       let config = {
-        name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
@@ -441,7 +440,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('testSetUIContent_Invalid_Parameter', 0, async function (done) {
       let windowClass = null;
       let config = {
-        name: "alertWindow2", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: "alertWindow2", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let win;
       try {
@@ -487,7 +486,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      */
     it('testSetUIContent_Not_Existent_Parameter', 0, async function (done) {
       let config = {
-        name: "alertWindow3", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: "alertWindow3", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let win;
       try {

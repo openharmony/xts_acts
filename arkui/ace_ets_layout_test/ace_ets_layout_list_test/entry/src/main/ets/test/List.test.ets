@@ -95,6 +95,7 @@ import listSwipeAction34Jsunit  from './List/ListItem_SwipeActionITem/listSwipeA
 import listSwipeAction36Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction36.test'
 import listSwipeAction41Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction41.test'
 import listSwipeAction43Jsunit  from './List/ListItem_SwipeActionITem/listSwipeAction43.test'
+import ListOffSet01Jsunit from './List/List_attribute/ListOffSet01Jsunit.test';
 
 
 export default function testsuite() {
@@ -179,5 +180,6 @@ export default function testsuite() {
   listSwipeAction36Jsunit()
   listSwipeAction41Jsunit()
   listSwipeAction43Jsunit()
+ ListOffSet01Jsunit()
 
 }

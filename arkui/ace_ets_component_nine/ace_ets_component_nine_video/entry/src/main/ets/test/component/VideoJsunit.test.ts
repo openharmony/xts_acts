@@ -64,30 +64,6 @@ export default function VideoJsunit() {
       console.info('[' + tagName + '] component obj is: ' + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Video');
-      // expect(obj.$attrs.muted).assertEqual("false");
-
-      // try {
-      //   var eventData = {
-      //     data: {
-      //       "isMuted": true,
-      //     }
-      //   }
-      //   var innerEvent = {
-      //     eventId: 301,
-      //     priority: events_emitter.EventPriority.LOW
-      //   }
-      //   console.info('[' + tagName + '] start to publish emit');
-      //   events_emitter.emit(innerEvent, eventData);
-      // } catch (err) {
-      //   console.log('[' + tagName + '] change component data error: ' + err.message);
-      // }
-      // await Utils.sleep(2000);
-      // let strJsonNew = getInspectorByKey('keykeyvideo');
-      // let objNew = JSON.parse(strJsonNew);
-      // console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
-      
-      // expect(objNew.$attrs.muted).assertEqual("true");
-
       
       console.info('[' + tagName + '] video muted: ' + obj.$attrs.muted);
       console.info('[' + tagName + '] video autoPlay: ' + obj.$attrs.autoPlay);

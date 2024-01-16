@@ -20,7 +20,7 @@ import events_emitter from '@ohos.events.emitter'
 @Component
 struct GridContainerExample {
   @State sizeType: SizeType = SizeType.XS;
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gridContainer page state change called:" + JSON.stringify(eventData));
       switch (eventData.data.sizeType) {
@@ -47,7 +47,7 @@ struct GridContainerExample {
 
   onPageShow() {
     console.info('gridContainer page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 109,
       priority: events_emitter.EventPriority.LOW
     }
@@ -104,7 +104,10 @@ struct GridContainerExample {
             .backgroundColor(0x00BFFF)
             .textAlign(TextAlign.Center)
         }
-      }.width('90%').key('gridContainer').margin({ top: 300 })
+      }
+      .width('90%')
+      .key('gridContainer')
+      .margin({ top: 300 })
     }
   }
 }

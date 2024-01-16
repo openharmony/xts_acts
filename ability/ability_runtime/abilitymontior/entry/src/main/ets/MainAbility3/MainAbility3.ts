@@ -15,7 +15,7 @@
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 
-let TERMINATE_SELF_TIME = 2500;
+let TERMINATE_SELF_TIME = 2000;
 let EVENT_TIME = 500;
 
 function PublishCallBack() {
@@ -30,6 +30,7 @@ export default class MainAbility3 extends Ability {
 
   onDestroy() {
     console.log("[Demo] MainAbility3 onDestroy")
+    globalThis.abilityContext = undefined;
   }
 
   onWindowStageCreate(windowStage) {

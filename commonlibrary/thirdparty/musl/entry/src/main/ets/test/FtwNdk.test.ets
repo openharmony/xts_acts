@@ -22,7 +22,7 @@ export default function ftwNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FTW_FTW_0100
      * @tc.name       : testMuslFtwFtw001
      * @tc.desc       : test ftw
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function ftwNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FTW_FTW64_0100
      * @tc.name       : testMuslFtwFtw64001
      * @tc.desc       : test ftw64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -51,7 +51,7 @@ export default function ftwNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FTW_NFTW_0100
      * @tc.name       : testMuslFtwNftw001
      * @tc.desc       : nftw
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -64,7 +64,7 @@ export default function ftwNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FTW_NFTW64_0100
      * @tc.name       : testMuslFtwNftw64001
      * @tc.desc       : nftw64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

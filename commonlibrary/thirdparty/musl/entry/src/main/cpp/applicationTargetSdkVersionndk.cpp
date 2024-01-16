@@ -16,7 +16,7 @@
 #include <js_native_api.h>
 #include <node_api.h>
 #define NO_ERROS 0
-#define FAIL -1
+#define FAIL (-1)
 extern "C" {
 int get_application_target_sdk_version(void);
 }

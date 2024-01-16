@@ -13,17 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import { UiDriver } from '@ohos.UiTest'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import prompt from '@ohos.prompt'
+import { BusinessError } from '@ohos.base'
 
-var abilityDelegator = undefined;
-var abilityDelegator1 = undefined;
-var driver;
-var cmd;
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator | undefined = undefined
+let abilityDelegator1: AbilityDelegatorRegistry.AbilityDelegator | undefined = undefined
+let cmd:string;
 
-function sleep(time) {
-  return new Promise < void> ((resolve, reject) => {
+function sleep(time:number) {
+  return new Promise <void>((resolve, reject) => {
     setTimeout(() => {
       resolve();
     }, time)
@@ -31,20 +30,17 @@ function sleep(time) {
 }
 
 export default function abilityTest() {
-  describe('ActsWukongTest', function () {
-    beforeAll(async (done) => {
+  describe('ActsWukongTest',  () =>{
+    beforeAll(async () => {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator1 = AbilityDelegatorRegistry.getAbilityDelegator();
-      driver = await UiDriver.create()
       await sleep(2000);
-      done();
     })
 
-    afterAll(async function (done) {
+    afterAll(async  () =>{
       prompt.showToast({
         message: 'CASE All End'
       })
-      done()
     })
 
     /**
@@ -52,27 +48,26 @@ export default function abilityTest() {
      * @tc.name: getAbilityLists callback API.
      * @tc.desc: getAbilityLists callback API abilityType is spoken, stateType is install.
      */
-    it('wukongtest_0010', 1, async function (done) {
+    it('wukongtest_0010', 1, async  ()=>{
       cmd = "wukong exec -T 0.5 &";
       await abilityDelegator.executeShellCommand("pkill accessibility");
       abilityDelegator.executeShellCommand(cmd,
-        async (err: any, d: any) => {
+        async (err: BusinessError, d) => {
           console.log('ACTS_wukongTest executeShellCommand : err : ' + JSON.stringify(err));
           console.log('ACTS_wukongTest executeShellCommand : stdResult : ' + d.stdResult);
           console.log('ACTS_wukongTest executeShellCommand : exitCode : ' + d.exitCode);
-      });
+        });
       await sleep(5000);
-      abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ",async (error: any, date: any) => {
+      abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ", async (error: BusinessError, date) => {
         console.log('ACTS_wukongTest cmdPs executeShellCommand : err : ' + JSON.stringify(error));
         console.log('ACTS_wukongTest cmdPs executeShellCommand : stdResult : ' + date.stdResult);
         console.log('ACTS_wukongTest cmdPs executeShellCommand : exitCode : ' + date.exitCode);
-        let i = date.stdResult.indexOf('1');
-        if(i == -1){
+        let i:number = date.stdResult.indexOf('1');
+        if (i == -1) {
           expect().assertFail();
-          done();
         }
       });
-      done();
+
     })
   })
 }

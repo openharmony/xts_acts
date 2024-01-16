@@ -418,6 +418,29 @@ export default function SecurityCryptoFwAgreementECCBrainPoolTestUnit() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900
+     * @tc.name Test Agreement algName with brainPool, process is successful
+     * @tc.desc create Agreement with ECC_BrainPoolP512t1
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Agreement_BrainPool_Func_1900";
+      console.log(testNumber + ": started");
+      let agreementAlg: string = "ECC_BrainPoolP512t1";
+      try {
+        let agreement: cryptoFramework.KeyAgreement = cryptoFramework.createKeyAgreement(agreementAlg);
+        expect(agreement.algName == agreementAlg).assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
   }
   )
 }

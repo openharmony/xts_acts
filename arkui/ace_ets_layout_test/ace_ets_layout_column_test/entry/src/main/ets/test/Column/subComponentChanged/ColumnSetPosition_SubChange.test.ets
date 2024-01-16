@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetPosition_SubChange() {
-  describe('ColumnSetPositionTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetPosition_SubChange',
+  describe('ColumnSetPositionTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetPosition_SubChange',
       }
       try {
         router.clear();
@@ -37,35 +39,37 @@ export default function ColumnSetPosition_SubChange() {
         console.error("push SetPosition page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("SetPosition after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1200
-     * @tc.name      testColumnSubcomponentSetPosition
-     * @tc.desc      The first subcomponent set position attribute.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1200
+     * @tc.name testColumnSubcomponentSetPosition
+     * @tc.desc The first subcomponent set position attribute.
      */
-    it('testColumnSubcomponentSetPosition', 0, async function (done) {
+    it('testColumnSubcomponentSetPosition', 0, async () => {
       console.info('new testColumnSubcomponentSetPosition START');
-      globalThis.value.message.notify({name:'position_x', value:10});
-      globalThis.value.message.notify({name:'position_y', value:10});
+      globalThis.value.message.notify({
+        name: 'position_x', value: 10
+      });
+      globalThis.value.message.notify({
+        name: 'position_y', value: 10
+      });
       await CommonFunc.sleep(2000);
-      let columnPosition_1 = CommonFunc.getComponentRect('columnPosition_1');
-      let columnPosition_2 = CommonFunc.getComponentRect('columnPosition_2');
-      let columnPosition_3 = CommonFunc.getComponentRect('columnPosition_3');
-      let columnPosition = CommonFunc.getComponentRect('columnPosition');
+      let columnPosition_1: RectValue = CommonFunc.getComponentRect('columnPosition_1');
+      let columnPosition_2: RectValue = CommonFunc.getComponentRect('columnPosition_2');
+      let columnPosition_3: RectValue = CommonFunc.getComponentRect('columnPosition_3');
+      let columnPosition: RectValue = CommonFunc.getComponentRect('columnPosition');
 
       expect(Math.abs(columnPosition_1.top - columnPosition.top - Math.round(vp2px(10))) <= 1).assertTrue()
       expect(Math.abs(columnPosition_1.left - columnPosition.left - Math.round(vp2px(10))) <= 1).assertTrue()
       expect(Math.abs(columnPosition_2.top - columnPosition.top) <= 1).assertTrue()
       expect(Math.abs(columnPosition_3.top - columnPosition_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-      expect(columnPosition_3.bottom).assertLess( columnPosition.bottom)
+      expect(columnPosition_3.bottom).assertLess(columnPosition.bottom)
       console.info('new testColumnSubcomponentSetPosition END');
-      done();
     });
   })
 }

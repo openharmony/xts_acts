@@ -22,7 +22,7 @@ export default function msgNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MSG_MSGGET_0100
      * @tc.name     : testMuslMsgMsgget001
      * @tc.desc     : test msgget
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -35,7 +35,7 @@ export default function msgNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MSG_MSGSND_0100
      * @tc.name     : testMuslMsgMsgsnd001
      * @tc.desc     : test msgsnd
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -48,7 +48,7 @@ export default function msgNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MSG_MSGRCV_0100
      * @tc.name     : testMuslMsgMsgrcv001
      * @tc.desc     : test msgrcv
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -61,7 +61,7 @@ export default function msgNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MSG_MSGCTL_0100
      * @tc.name     : testMuslMsgMsgctl001
      * @tc.desc     : test msgctl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

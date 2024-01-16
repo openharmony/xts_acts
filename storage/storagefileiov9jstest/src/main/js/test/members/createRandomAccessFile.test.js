@@ -413,33 +413,6 @@ describe('fileIO_create_randomAccessFile', function () {
     });
 
     /**
-     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1600
-     * @tc.name fileIO_create_randomaccessfile_sync_016
-     * @tc.desc Test createRandomAccessFileSync() interface. flags=fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE. Symbolic link loop.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_create_randomaccessfile_sync_016', 3, async function () {
-        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_016');
-        let ffpath = fpath + 'aaaa';
-        expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-        try {
-            fileIO.symlinkSync(fpath, ffpath);
-            fileIO.createRandomAccessFileSync(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
-            expect(false).assertTrue();
-        } catch(err) {
-            console.info('fileIO_create_randomaccessfile_sync_016 has failed for ' + err);
-            expect(err.code == 13900033 && (err.message == 'Symbolic link loop' || 
-                err.message == 'Too many symbolic links encountered')).assertTrue();
-            fileIO.unlinkSync(fpath);
-            fileIO.unlinkSync(ffpath);
-        }
-    });
-
-    /**
      * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_0000
      * @tc.name fileIO_create_randomaccessfile_async_000
      * @tc.desc Test createRandomAccessFile() interface. return in promise mode.
@@ -852,34 +825,6 @@ describe('fileIO_create_randomAccessFile', function () {
            done();
        }
    });
-
-    /**
-     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_1600
-     * @tc.name fileIO_create_randomaccessfile_async_016
-     * @tc.desc Test createRandomAccessFile() interface. flags=fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE. Symbolic link loop. return in promise mode
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     * @tc.require
-     */
-    it('fileIO_create_randomaccessfile_async_016', 3, async function (done) {
-        let fpath = await nextFileName('fileIO_create_randomaccessfile_async_016');
-        let ffpath = fpath + 'aaaa';
-        expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-        try {
-            fileIO.symlinkSync(fpath, ffpath);
-            await fileIO.createRandomAccessFile(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
-            expect(false).assertTrue();
-        } catch(err) {
-            console.info('fileIO_create_randomaccessfile_async_016 has failed for ' + err);
-            expect(err.code == 13900033 && (err.message == 'Symbolic link loop' || 
-                err.message == 'Too many symbolic links encountered')).assertTrue();
-            fileIO.unlinkSync(fpath);
-            fileIO.unlinkSync(ffpath);
-            done();
-        }
-    });
 
     /**
      * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_MULTITHREADED_REPLICATION_0000

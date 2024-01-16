@@ -25,17 +25,16 @@
 #include <sys/inotify.h>
 #include <unistd.h>
 
-#include "napi/native_api.h"
 #define ONEVAL 1
-#define MINUSONE -1
-#define MINUSTWO -2
-#define MINUSTHR -3
+#define MINUSONE (-1)
+#define MINUSTWO (-2)
+#define MINUSTHR (-3)
 #define MAX_NAMBER 1024
 #define TEST_BUFFER_SIZE 256
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 
 static napi_value Getpwent(napi_env env, napi_callback_info info)
@@ -45,7 +44,7 @@ static napi_value Getpwent(napi_env env, napi_callback_info info)
     if (p != nullptr) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -87,7 +86,7 @@ static napi_value Getpwnam(napi_env env, napi_callback_info info)
     if (pw != nullptr) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -107,13 +106,13 @@ static napi_value GetpwnamR(napi_env env, napi_callback_info info)
     struct passwd pwd = {PARAM_0};
     struct passwd *p = nullptr;
     char buf[TEST_BUFFER_SIZE] = {PARAM_0};
-    memset(&buf, 0, sizeof buf);
+    memset(&buf, PARAM_0, sizeof buf);
     getpwnam_r("root", &pwd, buf, TEST_BUFFER_SIZE, &p);
     napi_value result;
     if (p != nullptr) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -126,10 +125,10 @@ static napi_value GetpwuidR(napi_env env, napi_callback_info info)
 
     int ret = getpwuid_r(getuid(), &pw, buf, sizeof(buf), &res);
     napi_value result;
-    if (ret != -1) {
+    if (ret != MINUSONE) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -146,7 +145,7 @@ static napi_value Getpwuid(napi_env env, napi_callback_info info)
         if (errno == ERRON_0) {
             napi_create_int32(env, PARAM_0, &result);
         } else {
-            napi_create_int32(env,PARAM_UNNORMAL , &result);
+            napi_create_int32(env, PARAM_UNNORMAL, &result);
         }
     }
     return result;

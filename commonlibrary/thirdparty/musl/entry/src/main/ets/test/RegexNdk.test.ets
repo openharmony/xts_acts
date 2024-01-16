@@ -23,7 +23,7 @@ export default function regexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGCOMP_0100
      * @tc.name       : testMuslRegexRegcomp001
      * @tc.desc       : test regcomp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +38,7 @@ export default function regexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGEXEC_0100
      * @tc.name       : testMuslRegexRegexec001
      * @tc.desc       : test regexec
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -53,7 +53,7 @@ export default function regexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGERROR_0100
      * @tc.name       : testMuslRegexRegerror001
      * @tc.desc       : test regexec
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -68,7 +68,7 @@ export default function regexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_REGEX_REGFREE_0100
      * @tc.name       : testMuslRegexRegfree001
      * @tc.desc       : test regfree
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

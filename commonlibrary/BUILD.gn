@@ -17,6 +17,7 @@ group("commonlibrary") {
   if (is_standard_system) {
     deps = [
       "ets_utils:ets_utils",
+      "memory_utils:memory_utils",
       "thirdparty:thirdparty",
       "toolchain:toolchain",
     ]

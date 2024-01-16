@@ -23,7 +23,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_0100
      * @tc.name       : testMuslCtypeIsalnum001
      * @tc.desc       : test isalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +38,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_0200
      * @tc.name       : testMuslCtypeIsalnum002
      * @tc.desc       : test isalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_0300
      * @tc.name       : testMuslCtypeIsalnum003
      * @tc.desc       : test isalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -67,7 +67,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_L_0100
      * @tc.name       : testMuslCtypeIsalnumL001
      * @tc.desc       : test isalnum_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -82,7 +82,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_L_0200
      * @tc.name       : testMuslCtypeIsalnumL002
      * @tc.desc       : test isalnum_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -96,7 +96,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALNUM_L_0300
      * @tc.name       : testMuslCtypeIsalnumL003
      * @tc.desc       : test isalnum_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -111,7 +111,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_0100
      * @tc.name       : testMuslCtypeIsalpha001
      * @tc.desc       : test isalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -125,7 +125,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_0200
      * @tc.name       : testMuslCtypeIsalpha002
      * @tc.desc       : test isalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -139,7 +139,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_0300
      * @tc.name       : testMuslCtypeIsalpha003
      * @tc.desc       : test isalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -154,7 +154,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_L_0100
      * @tc.name       : testMuslCtypeIsalphaL001
      * @tc.desc       : test isalpha_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -168,7 +168,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_L_0200
      * @tc.name       : testMuslCtypeIsalphaL002
      * @tc.desc       : test isalpha_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -182,7 +182,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISALPHA_L_0300
      * @tc.name       : testMuslCtypeIsalphaL003
      * @tc.desc       : test isalpha_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -197,7 +197,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISASCII_0100
      * @tc.name       : testMuslCtypeIsascii001
      * @tc.desc       : test isascii
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -211,7 +211,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISASCII_0200
      * @tc.name       : testMuslCtypeIsascii002
      * @tc.desc       : test isascii
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -225,7 +225,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISASCII_0300
      * @tc.name       : testMuslCtypeIsascii003
      * @tc.desc       : test isascii
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -240,7 +240,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISBLANK_0100
      * @tc.name       : testMuslCtypeIsblank001
      * @tc.desc       : test isblank
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -254,7 +254,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISBLANK_0200
      * @tc.name       : testMuslCtypeIsblank002
      * @tc.desc       : test isblank
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -269,7 +269,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISBLANK_L_0100
      * @tc.name       : testMuslCtypeIsblankL001
      * @tc.desc       : test isblank_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -283,7 +283,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISBLANK_L_0200
      * @tc.name       : testMuslCtypeIsblankL002
      * @tc.desc       : test isblank_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -298,7 +298,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_0100
      * @tc.name       : testMuslCtypeIscntrl001
      * @tc.desc       : test iscntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -312,7 +312,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_0200
      * @tc.name       : testMuslCtypeIscntrl002
      * @tc.desc       : test iscntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -326,7 +326,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_0300
      * @tc.name       : testMuslCtypeIscntrl003
      * @tc.desc       : test iscntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -340,7 +340,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_0400
      * @tc.name       : testMuslCtypeIscntrl004
      * @tc.desc       : test iscntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -355,7 +355,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_L_0100
      * @tc.name       : testMuslCtypeIscntrlL001
      * @tc.desc       : test iscntrl_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -369,7 +369,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_L_0200
      * @tc.name       : testMuslCtypeIscntrlL002
      * @tc.desc       : test iscntrl_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -383,7 +383,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_L_0300
      * @tc.name       : testMuslCtypeIscntrlL003
      * @tc.desc       : test iscntrl_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -397,7 +397,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISCNTRL_L_0400
      * @tc.name       : testMuslCtypeIscntrlL004
      * @tc.desc       : test iscntrl_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -412,7 +412,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISDIGIT_0100
      * @tc.name       : testMuslCtypeIsdigit001
      * @tc.desc       : test isdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -426,7 +426,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISDIGIT_0200
      * @tc.name       : testMuslCtypeIsdigit002
      * @tc.desc       : test isdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -441,7 +441,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISDIGIT_L_0100
      * @tc.name       : testMuslCtypeIsdigitL001
      * @tc.desc       : test isdigit_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -455,7 +455,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISDIGIT_L_0200
      * @tc.name       : testMuslCtypeIsdigitL002
      * @tc.desc       : test isdigit_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -470,7 +470,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_L_0100
      * @tc.name       : testMuslCtypeIsgraphL001
      * @tc.desc       : test isgraph_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -484,7 +484,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_L_0200
      * @tc.name       : testMuslCtypeIsgraphL002
      * @tc.desc       : test isgraph_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -498,7 +498,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_L_0300
      * @tc.name       : testMuslCtypeIsgraphL003
      * @tc.desc       : test isgraph_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -512,7 +512,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_0100
      * @tc.name       : testMuslCtypeIsgraph001
      * @tc.desc       : test isgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -526,7 +526,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_0200
      * @tc.name       : testMuslCtypeIsgraph002
      * @tc.desc       : test isgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -540,7 +540,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISGRAPH_0300
      * @tc.name       : testMuslCtypeIsgraph003
      * @tc.desc       : test isgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -555,7 +555,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISLOWER_0100
      * @tc.name       : testMuslCtypeIslower001
      * @tc.desc       : test islower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -569,7 +569,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISLOWER_0200
      * @tc.name       : testMuslCtypeIslower002
      * @tc.desc       : test islower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -584,7 +584,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISLOWER_L_0100
      * @tc.name       : testMuslCtypeIslowerL001
      * @tc.desc       : test islower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -598,7 +598,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISLOWER_L_0200
      * @tc.name       : testMuslCtypeIslowerL002
      * @tc.desc       : test islower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -613,7 +613,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_0100
      * @tc.name       : testMuslCtypeIsprint001
      * @tc.desc       : test isprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -627,7 +627,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_0200
      * @tc.name       : testMuslCtypeIsprint002
      * @tc.desc       : test isprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -641,7 +641,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_0300
      * @tc.name       : testMuslCtypeIsprint003
      * @tc.desc       : test isprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -655,7 +655,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_0400
      * @tc.name       : testMuslCtypeIsprint004
      * @tc.desc       : test isprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -670,7 +670,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_L_0100
      * @tc.name       : testMuslCtypeIsprintL001
      * @tc.desc       : test isprint_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -684,7 +684,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_L_0200
      * @tc.name       : testMuslCtypeIsprintL002
      * @tc.desc       : test isprint_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -698,7 +698,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_L_0300
      * @tc.name       : testMuslCtypeIsprintL003
      * @tc.desc       : test isprint_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -712,7 +712,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPRINT_L_0400
      * @tc.name       : testMuslCtypeIsprintL004
      * @tc.desc       : test isprint_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -728,7 +728,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPUNCT_0100
      * @tc.name       : testMuslCtypeIspunct001
      * @tc.desc       : test ispunct
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -742,7 +742,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPUNCT_0200
      * @tc.name       : testMuslCtypeIspunct002
      * @tc.desc       : test ispunct
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -756,7 +756,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPUNCT_L_0100
      * @tc.name       : testMuslCtypeIspunctL001
      * @tc.desc       : test ispunct_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -770,7 +770,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISPUNCT_L_0200
      * @tc.name       : testMuslCtypeIspunctL002
      * @tc.desc       : test ispunct_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -784,7 +784,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_0100
      * @tc.name       : testMuslCtypeIsspace001
      * @tc.desc       : test isspace
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -798,7 +798,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_0200
      * @tc.name       : testMuslCtypeIsspace002
      * @tc.desc       : test isspace
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -812,7 +812,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_L_0100
      * @tc.name       : testMuslCtypeIsspaceL001
      * @tc.desc       : isspace_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -826,7 +826,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISSPACE_L_0200
      * @tc.name       : testMuslCtypeIsspaceL002
      * @tc.desc       : test isspace_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -841,7 +841,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISUPPER_L_0100
      * @tc.name       : testMuslCtypeIsupperL001
      * @tc.desc       : test isupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -855,7 +855,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISUPPER_L_0200
      * @tc.name       : testMuslCtypeIsupperL002
      * @tc.desc       : test isupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -870,7 +870,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISUPPER_0100
      * @tc.name       : testMuslCtypeIsupper001
      * @tc.desc       : test isupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -884,7 +884,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISUPPER_0200
      * @tc.name       : testMuslCtypeIsupper002
      * @tc.desc       : test isupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -899,7 +899,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISXDIGIT_0100
      * @tc.name       : testMuslCtypeIsxdigit001
      * @tc.desc       : test isxdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      *
@@ -914,7 +914,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISXDIGIT_0200
      * @tc.name       : testMuslCtypeIsxdigit002
      * @tc.desc       : test isxdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -929,7 +929,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISXDIGIT_L_0100
      * @tc.name       : testMuslCtypeIsxdigitL001
      * @tc.desc       : test isxdigit_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -943,7 +943,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_ISXDIGIT_L_0200
      * @tc.name       : testMuslCtypeIsxdigitL002
      * @tc.desc       : test isxdigit_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -958,7 +958,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOASCII_0100
      * @tc.name       : testMuslCtypeToascii001
      * @tc.desc       : test toascii
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -972,7 +972,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0100
      * @tc.name       : testMuslCtypeTolower001
      * @tc.desc       : test tolower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -988,7 +988,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0200
      * @tc.name       : testMuslCtypeTolower002
      * @tc.desc       : test tolower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1004,7 +1004,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0300
      * @tc.name       : testMuslCtypeTolower003
      * @tc.desc       : test tolower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1020,7 +1020,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWER_0400
      * @tc.name       : testMuslCtypeTolower004
      * @tc.desc       : test tolower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1036,7 +1036,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0100
      * @tc.name       : testMuslCtypeTolowerL001
      * @tc.desc       : test tolower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1052,7 +1052,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0200
      * @tc.name       : testMuslCtypeTolowerL002
      * @tc.desc       : test tolower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1068,7 +1068,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0300
      * @tc.name       : testMuslCtypeTolowerL003
      * @tc.desc       : test tolower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1084,7 +1084,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOLOWERL_0400
      * @tc.name       : testMuslCtypeTolowerL004
      * @tc.desc       : test tolower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1100,7 +1100,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0100
      * @tc.name       : testMuslCtypeToupper001
      * @tc.desc       : test toupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1116,7 +1116,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0200
      * @tc.name       : testMuslCtypeToupper002
      * @tc.desc       : test toupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1132,7 +1132,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0300
      * @tc.name       : testMuslCtypeToupper003
      * @tc.desc       : test toupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1148,7 +1148,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPER_0400
      * @tc.name       : testMuslCtypeToupper004
      * @tc.desc       : test toupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1164,7 +1164,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0100
      * @tc.name       : testMuslCtypeToupperL001
      * @tc.desc       : test toupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1180,7 +1180,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0200
      * @tc.name       : testMuslCtypeToupperL002
      * @tc.desc       : test tolower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1196,7 +1196,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0300
      * @tc.name       : testMuslCtypeToupperL003
      * @tc.desc       : test toupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1212,7 +1212,7 @@ export default function ctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_CTYPE_TOUPPERL_0400
      * @tc.name       : testMuslCtypeToupperL004
      * @tc.desc       : test toupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

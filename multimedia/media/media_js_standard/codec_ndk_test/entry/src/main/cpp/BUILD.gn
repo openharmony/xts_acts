@@ -44,9 +44,9 @@ ohos_shared_library("entry") {
     "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_avmuxer",
     "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_avsource",
     "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
-    "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_core",
     "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_vdec",
     "$AVCODEC_ROOT_DIR/interfaces/kits/c:native_media_venc",
+    "../../../../../../foundation/multimedia/media_foundation/src/capi:native_media_core",
   ]
   output_extension = "so"
   part_name = "av_codec"

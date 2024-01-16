@@ -79,7 +79,7 @@ export default class MainAbility6 extends Ability {
         console.log("[Demo] MainAbility6 onDestroy")
         setTimeout(() => {
             globalThis.testEvent.push('MainAbility6onDestroy');
-        }, 500);
+        }, 1500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -99,7 +99,7 @@ export default class MainAbility6 extends Ability {
         console.log("[Demo] MainAbility6 onForeground")
         setTimeout(() => {
             globalThis.testEvent.push('MainAbility6onForeground');
-        }, 500);
+        }, 1500);
     }
 
     onBackground() {

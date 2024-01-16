@@ -37,20 +37,20 @@ export default class SandboxConfigPromise extends UIAbility {
       try{
         await dlpPermission.setSandboxAppConfig('configInfo');
         console.info(TAG, "setSandboxAppConfig promise pass");
+        terminateSelfWithResult(0);
       }catch(error){
         console.info(TAG, "setSandboxAppConfig promise notPass ", error.code);
         terminateSelfWithResult(error.code);
       }
-      terminateSelfWithResult(0);
     } else {
        try{
         await dlpPermission.cleanSandboxAppConfig();
         console.info(TAG, "cleanSandboxAppConfig promise pass");
+        terminateSelfWithResult(0);
       }catch(error){
         console.info(TAG, "cleanSandboxAppConfig promise notPass", error.code);
         terminateSelfWithResult(error.code);
       }
-      terminateSelfWithResult(0);
     }
   }
 

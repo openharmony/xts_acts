@@ -14,36 +14,41 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
-import {MessageManager,Callback} from '../test/MessageManager';
+import { MessageManager, Callback } from '../test/MessageManager';
+import { BusinessError } from '@ohos.base';
+
+async function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("sleep")
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
+
 export default function TextAreaSelectTest() {
 
-  const SUITE = 'TextAreaSelect'
-  const waitUiReadyMs = 500;
-   
-  async function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve("sleep")
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-  describe('TextAreaSelectTest', function () {
-   
-    beforeEach(async function (done) {
-      let options = {
+  const SUITE: string = 'TextAreaSelect'
+  const waitUiReadyMs: number = 500;
+
+
+  describe('TextAreaSelectTest', () => {
+
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/TextAreaSelect",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("TextAreaSelect" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -58,16 +63,15 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0100', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0100'
+    it('ArkUI_TextArea_Select_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0100'
       console.info(`${SUITE} ${CASE} START`);
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-     sendEventByKey('TextAreaSelect_Button_1', 10, "")
-     await sleep(5000)
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+      sendEventByKey('TextAreaSelect_Button_1', 10, "")
+      await sleep(5000)
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
 
       console.info(`${SUITE} ${CASE} END`);
       done()
@@ -78,22 +82,27 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0200', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0200'
+    it('ArkUI_TextArea_Select_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-     let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-    
-      globalThis.value.message.notify({name:'requestFocus', value:''});
+
+      globalThis.value.message.notify({
+        name: 'requestFocus', value: ''
+      });
       await sleep(1000);
-      globalThis.value.message.notify({name:'Show selected (-1,0)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (-1,0)', value: ''
+      });
       await sleep(1000);
-      globalThis.value.message.notify({name:'Show selected (-1,0)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (-1,0)', value: ''
+      });
       await sleep(1000);
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -101,24 +110,24 @@ export default function TextAreaSelectTest() {
     });
 
 
-
     /*
      *tc.number ArkUI_TextArea_Select_0300
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0300', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0300'
+    it('ArkUI_TextArea_Select_0300', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0300'
       console.info(`${SUITE} ${CASE} START`);
 
-     let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-   
-       globalThis.value.message.notify({name:'Show selected (0,3)', value:''});
+
+      globalThis.value.message.notify({
+        name: 'Show selected (0,3)', value: ''
+      });
       await sleep(1000);
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("3");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("3");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -130,19 +139,20 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0400', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0400'
+    it('ArkUI_TextArea_Select_0400', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0400'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
 
 
-      globalThis.value.message.notify({name:'Show selected (1,3)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (1,3)', value: ''
+      });
       await sleep(1000);
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("3");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("3");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -154,18 +164,19 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0500', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0500'
+    it('ArkUI_TextArea_Select_0500', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0500'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-     
-       globalThis.value.message.notify({name:'Show selected (-1,6)', value:''});
+
+      globalThis.value.message.notify({
+        name: 'Show selected (-1,6)', value: ''
+      });
       await sleep(1000);
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("6");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -177,20 +188,21 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0600', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0600'
+    it('ArkUI_TextArea_Select_0600', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0600'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-     
 
-      globalThis.value.message.notify({name:'Show selected (0,6)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (0,6)', value: ''
+      });
       await sleep(1000);
 
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("6");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -202,18 +214,20 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0700', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0700'
+    it('ArkUI_TextArea_Select_0700', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0700'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      
-      globalThis.value.message.notify({name:'Show selected (-1,8)', value:''});
+
+      globalThis.value.message.notify({
+        name: 'Show selected (-1,8)', value: ''
+      });
       await sleep(1000);
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("6");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -225,19 +239,21 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0800', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0800'
+    it('ArkUI_TextArea_Select_0800', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0800'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      
-      globalThis.value.message.notify({name:'Show selected (0,8)', value:''});
+
+      globalThis.value.message.notify({
+        name: 'Show selected (0,8)', value: ''
+      });
       await sleep(1000);
 
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("6");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("6");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -249,18 +265,20 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_0900', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_0900'
+    it('ArkUI_TextArea_Select_0900', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_0900'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      globalThis.value.message.notify({name:'Show selected (null,null)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (null,null)', value: ''
+      });
       await sleep(1000);
-      
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -272,18 +290,20 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1000', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_1000'
+    it('ArkUI_TextArea_Select_1000', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_1000'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
-      globalThis.value.message.notify({name:'Show selected (null,undefined)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (null,undefined)', value: ''
+      });
       await sleep(1000);
-      
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -295,19 +315,21 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1100', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_1100'
+    it('ArkUI_TextArea_Select_1100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_1100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
 
-      globalThis.value.message.notify({name:'Show selected (undefined,null)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (undefined,null)', value: ''
+      });
       await sleep(1000);
-     
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -319,19 +341,21 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1200', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_1200'
+    it('ArkUI_TextArea_Select_1200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_1200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
 
-      globalThis.value.message.notify({name:'Show selected (undefined,undefined)', value:''});
+      globalThis.value.message.notify({
+        name: 'Show selected (undefined,undefined)', value: ''
+      });
       await sleep(1000);
-      
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_1');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -343,17 +367,17 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1300', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_1300'
+    it('ArkUI_TextArea_Select_1300', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_1300'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('TextAreaSelect_Button_13', 10, "")
       await driver.delayMs(waitUiReadyMs)
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_2');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("0");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_2');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("0");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);
@@ -365,19 +389,19 @@ export default function TextAreaSelectTest() {
      *tc.name   Textarea support selecting text by setting start and end of cursor
      *tc.desc   Textarea support selecting text by setting start and end of cursor
      */
-    it('ArkUI_TextArea_Select_1400', 0, async function (done) {
-      let CASE = 'ArkUI_TextArea_Select_1400'
+    it('ArkUI_TextArea_Select_1400', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_TextArea_Select_1400'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('TextAreaSelect_TextArea_3', 10, "")
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('TextAreaSelect_Button_14', 10, "")
       await driver.delayMs(waitUiReadyMs)
-      let strJson = getInspectorByKey('TextAreaSelect_TextArea_3');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.caretPosition).assertEqual("10");
+      let strJson: string = getInspectorByKey('TextAreaSelect_TextArea_3');
+
+      expect(JSON.parse(strJson).$attrs.caretPosition).assertEqual("10");
       await driver.delayMs(waitUiReadyMs)
 
       console.info(`${SUITE} ${CASE} END`);

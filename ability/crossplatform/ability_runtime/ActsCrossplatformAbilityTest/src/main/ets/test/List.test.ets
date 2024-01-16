@@ -31,6 +31,7 @@ import AbilityStageMonitorTest2 from "./AbilityStageMonitor2.test";
 export default function testsuite() {
   AbilityMonitorTest();
   AbilityMonitorTest2();
+  StartAbilityTest();
   AbilityStageMonitorTest2();
   abilityTest();
   AbilityDelegatorTest();
@@ -43,5 +44,4 @@ export default function testsuite() {
   ForegroundCallbackTest();
   ForegroundPromiseTest();
   PrintTest();
-  StartAbilityTest();
 }

@@ -83,8 +83,8 @@ export default function webViewONHttpErrorReceive() {
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","Forbidden",380,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","User-Agent",382,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36",384,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","User-Agent",386,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36",388,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","X-Frame-Options",386,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","SAMEORIGIN",388,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","Direct IP access not allowed | Cloudflare",390,done);
       sendEventByKey('webViewONHttpErrorReceive',10,'');
     })

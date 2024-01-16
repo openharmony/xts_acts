@@ -14,27 +14,26 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+
 export default function BindMenuTest() {
 
-  const SUITE = 'BindMenu'
-  const waitUiReadyMs = 500;
+  const SUITE: string = 'BindMenu'
+  const waitUiReadyMs: number = 500;
 
-  describe('BindMenuTest', function () {
+  describe('BindMenuTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/BindMenu",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("BindMenu" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -48,31 +47,15 @@ export default function BindMenuTest() {
      *tc.name   Call function bindMenu with MenuOptions
      *tc.desc   Call function bindMenu with MenuOptions
      */
-    it('ArkUI_Menu_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Menu_0100'
+    it('ArkUI_Menu_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Menu_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-
-      async function step2() {
-        let callback = (event) => {
-          expect(event.data.action).assertEqual('onDisappear');
-          done();
-        }
-        let event = {
-          eventId: 50001,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(event, callback);
-        let driver = Driver.create()
-        await driver.delayMs(waitUiReadyMs)
-        sendEventByKey('BindMenu_placeholder', 10, "")
-      }
-
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
-        step2()
+        step2(done)
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 50000,
         priority: events_emitter.EventPriority.LOW
       }
@@ -81,7 +64,6 @@ export default function BindMenuTest() {
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('BindMenu_bindMenu1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
-
     });
 
     /*
@@ -89,25 +71,38 @@ export default function BindMenuTest() {
      *tc.name   Call function bindContextMenu with MenuOptions
      *tc.desc   Call function bindContextMenu with MenuOptions
      */
-    it('ArkUI_Menu_0200', 0, async function (done) {
-      let CASE = 'ArkUI_Menu_0200'
+    it('ArkUI_Menu_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Menu_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
         done()
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60002,
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('BindMenu_bindContextMenu1', 11, "")
       console.info(`${SUITE} ${CASE} END`);
-
     });
-
   })
+}
+
+async function step2(done: Function) {
+  let callback = (event: events_emitter.EventData) => {
+    expect(event.data.action).assertEqual('onDisappear');
+    done()
+  }
+  let event: events_emitter.InnerEvent = {
+    eventId: 50001,
+    priority: events_emitter.EventPriority.LOW
+  }
+  events_emitter.on(event, callback);
+  let driver = Driver.create()
+  await driver.delayMs(500)
+  sendEventByKey('BindMenu_placeholder', 10, "")
 }

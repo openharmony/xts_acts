@@ -41,26 +41,26 @@ struct OffScreenCanvas {
   }
 
   getContext_2d() {
-    var offCanvasContext = this.offscreenCanvas.getContext("2d")
+    let offCanvasContext = this.offscreenCanvas.getContext("2d")
     offCanvasContext.fillStyle = '#0000ff'
     offCanvasContext.fillRect(0, 0, 150, 100)
-    var image = offCanvasContext.transferToImageBitmap();
+    let image = offCanvasContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   getContext_2d_settings_false() {
-    var offCanvasContext = this.offscreenCanvas.getContext("2d", this.settings_false)
+    let offCanvasContext = this.offscreenCanvas.getContext("2d", this.settings_false)
     offCanvasContext.fillStyle = '#00ff00'
     offCanvasContext.fillRect(0, 0, 150, 100)
-    var image = offCanvasContext.transferToImageBitmap();
+    let image = offCanvasContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
   getContext_2d_settings_true() {
-    var offCanvasContext = this.offscreenCanvas.getContext("2d", this.settings)
+    let offCanvasContext = this.offscreenCanvas.getContext("2d", this.settings)
     offCanvasContext.fillStyle = '#00ff00'
     offCanvasContext.fillRect(0, 0, 150, 100)
-    var image = offCanvasContext.transferToImageBitmap();
+    let image = offCanvasContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
 
