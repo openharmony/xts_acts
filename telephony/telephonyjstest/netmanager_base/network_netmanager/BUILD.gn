@@ -18,8 +18,8 @@ ohos_js_hap_suite("ActsNetConnTest") {
   hap_profile = "./src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":acts_netconn_ndk_resources",
     ":acts_netconn_ndk_assets",
+    ":acts_netconn_ndk_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -49,6 +49,6 @@ ohos_js_assets("acts_netconn_ndk_assets") {
 
 ohos_resources("acts_netconn_ndk_resources") {
   sources = [ "./src/main/resources" ]
-  deps = [ ":hts_demo_ets_app_profile" ]
+  deps = [ ":acts_netconn_ndk_app_profile" ]
   hap_profile = "./src/main/module.json"
 }
