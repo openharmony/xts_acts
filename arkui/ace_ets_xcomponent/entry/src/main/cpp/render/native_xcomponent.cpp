@@ -76,7 +76,7 @@ void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
     auto render = NativeXComponent::GetInstance(id);
     if (render != nullptr) {
         render->OnSurfaceChanged(component, window);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "xcomponent surface changed");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "OnSurfaceChangedCB: surface changed");
     }
 }
 
@@ -265,7 +265,7 @@ void NativeXcomponent::Export(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr}};
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
-        "Export: napi_define_properties failed");
+            "Export: napi_define_properties failed");
     }
 }
 
@@ -275,14 +275,14 @@ napi_value NativeXcomponent::NapiDrawPattern(napi_env env, napi_callback_info in
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", "NapiDrawPattern");
     if ((env == nullptr) || (info == nullptr)) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
-        "NapiDrawPattern: env or info is null");
+            "NapiDrawPattern: env or info is null");
         return nullptr;
     }
 
     napi_value thisArg;
     if (napi_get_cb_info(env, info, nullptr, nullptr, &thisArg, nullptr) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
-        "NapiDrawPattern: napi_get_cb_info fail");
+            "NapiDrawPattern: napi_get_cb_info fail");
         return nullptr;
     }
 
@@ -416,7 +416,7 @@ void NativeXcomponent::OnMouseEvent(OH_NativeXComponent* component, void* window
 void NativeXcomponent::OnHoverEvent(OH_NativeXComponent* component, bool isHover)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", 
-    "OnHoverEvent isHover_ = %{public}d", isHover);
+        "OnHoverEvent isHover_ = %{public}d", isHover);
 }
 
 void NativeXcomponent::OnFocusEvent(OH_NativeXComponent* component, void* window)
