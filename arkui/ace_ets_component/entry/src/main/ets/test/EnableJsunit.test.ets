@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,24 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from './Utils.ets';
+import Utils from './Utils';
+
 export default function enableJsunit() {
-  describe('enableTest', function () {
-    beforeEach(async function (done) {
+  describe('enableTest', async () => {
+    beforeEach(async (done: Function) => {
       console.info("enable beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/enable',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enable',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get enable state pages: " + JSON.stringify(pages));
         if (!("enable" == pages.name)) {
           console.info("get enable state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push enable page result:" + JSON.stringify(result));
         }
@@ -40,30 +41,29 @@ export default function enableJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("enable after each called");
     });
 
-    it('testEnable01', 0, async function (done) {
+    it('testEnable01', 0, async (done: Function) => {
       console.info('[testEnable01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('enabled');
-      let obj = JSON.parse(strJson);
-      console.info("[testEnable01] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.enabled).assertEqual(true);
+      let strJson: string = getInspectorByKey('enabled');
+      console.info("[testEnable01] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.enabled).assertEqual(true);
       console.info('[testEnable01] END');
-      done();
+      done()
     });
-    it('testEnable03', 0, async function (done) {
+    it('testEnable03', 0, async (done: Function) => {
       console.info('[testEnable03] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enabled": -3
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1111,
           priority: events_emitter.EventPriority.LOW
         }
@@ -73,23 +73,22 @@ export default function enableJsunit() {
         console.log("[testEnable03] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('enabled');
-      let obj = JSON.parse(strJson);
-      console.info("[testEnable03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.enabled).assertEqual(true);
+      let strJson: string = getInspectorByKey('enabled');
+      console.info("[testEnable03] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.enabled).assertEqual(true);
       console.info('testEnable03 END');
-      done();
+      done()
     });
 
-    it('testEnable04', 0, async function (done) {
+    it('testEnable04', 0, async (done: Function) => {
       console.info('testEnable04 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enabled": 33567444
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1111,
           priority: events_emitter.EventPriority.LOW
         }
@@ -99,23 +98,22 @@ export default function enableJsunit() {
         console.log("testEnable04 change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('enabled');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testEnable04 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.enabled).assertEqual(true);
-      done();
+      let objNew: string = getInspectorByKey('enabled');
+      console.info("testEnable04 component objNew is: " + JSON.stringify(JSON.parse(objNew)));
+      expect(JSON.parse(objNew).$attrs.enabled).assertEqual(true);
+      done()
     });
 
-    it('testEnable02', 0, async function (done) {
+    it('testEnable02', 0, async (done: Function) => {
       console.info('[testEnable02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "enabled": false,
             "text": "disable"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 93,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,13 +123,11 @@ export default function enableJsunit() {
         console.log("[testEnable02] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('enabled');
-      let obj = JSON.parse(strJson);
-      console.info("[testEnable02] obj is: " + JSON.stringify(obj.$attrs.enabled));
-      expect(obj.$attrs.enabled).assertEqual(false);
+      let strJson: string = getInspectorByKey('enabled');
+      console.info("[testEnable02] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.enabled));
+      expect(JSON.parse(strJson).$attrs.enabled).assertEqual(false);
       console.info('testEnable02 END');
-      done();
+      done()
     });
-
   })
 }
