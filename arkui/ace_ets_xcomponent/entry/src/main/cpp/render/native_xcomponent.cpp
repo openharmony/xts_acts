@@ -451,8 +451,8 @@ void NativeXcomponent::OnKeyEvent(OH_NativeXComponent* component, void* window)
         OH_NativeXComponent_SetExpectedFrameRateRange(&frameRateRange);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent",
             "KeyEvent Info: action=%{public}d, code=%{public}d, sourceType=%{public}d, deviceId=%{public}ld, "
-            "timeStamp=%{public}ld",
-            action, code, sourceType, deviceId, timeStamp);
+            "timeStamp=%{public}ld", "points=%{public}ld", "frameRateRange=%{public}ld",
+            action, code, sourceType, deviceId, timeStamp, points, frameRateRange);
     } else {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", "GetKeyEvent error");
     }
