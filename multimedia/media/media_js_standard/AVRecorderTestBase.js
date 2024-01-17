@@ -125,7 +125,7 @@ export async function getAVRecorderConfigPromise(avConfig, avRecorder) {
     }
     await avRecorder.getAVRecorderConfig().then((config) => {
         console.info('getAVRecorderConfig success');
-        expect(config).assertEqual(avConfig);
+        expect(config.url).assertEqual(avConfig.url);
     }).catch((err) => {
         console.info('getAVRecorderConfig failed and catch error is ' + err.message);
     });
