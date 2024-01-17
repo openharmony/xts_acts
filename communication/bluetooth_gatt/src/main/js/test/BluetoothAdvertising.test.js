@@ -163,6 +163,7 @@ describe('bluetoothAdvertisingTest', function() {
             console.info("06errCode:" + err.code + ",06errMessage:" + err.message);
             expect(err.code).assertEqual('401');
         }
+        await sleep(2000);
         done();
     })
 
@@ -195,6 +196,7 @@ describe('bluetoothAdvertisingTest', function() {
             console.info("08errCode:" + err.code + ",08errMessage:" + err.message);
             expect(err.code).assertEqual('401');
         }
+        await sleep(2000);
         done();
     })
 })
