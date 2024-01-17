@@ -11,10 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/multimedia/media_foundation/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsAvcodecNdkTest"
 MEDIA_ROOT_DIR = "//foundation/multimedia/av_codec/"
+MEDIA_FOUNDATION_ROOT_DIR = histreamer_root_dir
 
 ohos_moduletest_suite("ActsAvcodecNdkTest") {
   module_out_path = module_output_path
@@ -59,6 +61,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
   ]
 
   deps = [
+    "$MEDIA_FOUNDATION_ROOT_DIR/src:media_foundation",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_adec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_aenc",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
