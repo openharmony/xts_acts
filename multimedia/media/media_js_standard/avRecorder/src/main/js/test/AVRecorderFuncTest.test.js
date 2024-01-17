@@ -1818,7 +1818,7 @@ export default function avRecorderTest() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
-            avRecorderTestBase.getAVRecorderConfigTest42(avConfig, avRecorder, RECORDER_TIME, done);
+            avRecorderTestBase.avRecorderReliabilitTest42(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004 end')
         })
 
