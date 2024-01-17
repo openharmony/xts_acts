@@ -53,6 +53,7 @@ describe('display_test', function () {
             expect(dsp.scaledDensity !=null).assertTrue();
             expect(dsp.xDPI != null).assertTrue();
             expect(dsp.yDPI != null).assertTrue();
+            expect(dsp.hdrFormats != null).assertTrue();
             console.log('www data hdrFormats : ' + JSON.stringify(dsp.hdrFormats))
             console.log('www data colorSpaces : ' + JSON.stringify(dsp.colorSpaces))
             done();
