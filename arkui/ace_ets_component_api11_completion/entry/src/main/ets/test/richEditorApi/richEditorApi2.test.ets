@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,58 +17,58 @@ import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function richEditorApi3() {
-  describe('richEditorApi3', function () {
+export default function richEditorApi2() {
+  describe('richEditorApi2', function () {
     beforeEach(async function (done) {
-      console.info("richEditorApi3 beforeEach start");
+      console.info("richEditorApi2 beforeEach start");
       let options = {
-        url: 'MainAbility/pages/richEditorApi/richEditorApi3',
+        url: 'MainAbility/pages/richEditorApi/richEditorApi2',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get richEditorApi3 state pages:" + JSON.stringify(pages));
-        if (!("richEditorApi3" == pages.name)) {
-          console.info("get richEditorApi3 pages.name:" + JSON.stringify(pages.name));
+        console.info("get richEditorApi2 state pages:" + JSON.stringify(pages));
+        if (!("richEditorApi2" == pages.name)) {
+          console.info("get richEditorApi2 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push richEditorApi3 page result:" + JSON.stringify(result));
+          console.info("push richEditorApi2 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push richEditorApi3 page error:" + err);
+        console.error("push richEditorApi2 page error:" + err);
       }
-      console.info("richEditorApi3 beforeEach end");
+      console.info("richEditorApi2 beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("richEditorApi3 after each called");
+      console.info("richEditorApi2 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi3_0100
+     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi2_0100
      * @tc.name      testSpan
      * @tc.desc      set api
      * @tc.level     Level 2
      * @tc.type
     * @tc.size
      */
-    it('richEditorApi3_0100', 0, async function (done) {
-      console.info('[richEditorApi3_0100] START');
+    it('richEditorApi2_0100', 0, async function (done) {
+      console.info('[richEditorApi2_0100] START');
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
-      let btn1 = await driver.findComponent(ON.id('richEditorApi3_btn1'));
+      let btn1 = await driver.findComponent(ON.id('richEditorApi2_btn1'));
       await btn1.click();
       await CommonFunc.sleep(1000);
 
-      let btn2 = await driver.findComponent(ON.id('richEditorApi3_btn2'));
+      let btn2 = await driver.findComponent(ON.id('richEditorApi2_btn2'));
       await btn2.click();
       await CommonFunc.sleep(1000);
 
-      let text1 = getInspectorByKey('richEditorApi3_text1');
+      let text1 = getInspectorByKey('richEditorApi2_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":[16,0]}}');
+      expect(Obj1.$attrs.content).assertEqual(`{"size":[80,80],"verticalAlign":2,"objectFit":3,"borderRadius":"{\\"borderRadius\\":\\"50.00px\\"}","margin":"{\\"top\\":\\"0.000000\\",\\"right\\":\\"0.000000\\",\\"bottom\\":\\"0.000000\\",\\"left\\":\\"0.000000\\"}"}`);
 
       console.info('[testRichEditor_0100] END');
       done();

@@ -43,7 +43,7 @@ struct richEditorApi3 {
       }).height(100).id('richEditorApi3_btn1')
       Button('get').onClick(() => {
         this.controller.getParagraphs({ start: -1, end: -1 }).forEach((item) => {
-          this.text1  +=  JSON.stringify((item as RichEditorParagraphResult).style.textAlign)
+          this.text1  +=  JSON.stringify((item as RichEditorParagraphResult).style)
         })
       }).height(100).id('richEditorApi3_btn2')
 

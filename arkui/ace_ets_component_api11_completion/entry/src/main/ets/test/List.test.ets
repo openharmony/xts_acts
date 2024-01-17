@@ -72,6 +72,7 @@ import  relativeCTest from "./relative/relative.test.ets"
 import  gridIndexTest from "./grid/grid.test.ets"
 import enumFolderTest from "./folder/enumflodstack.test.ets"
 import richEditorApi1 from './richEditorApi/richEditorApi1.test.ets'
+import richEditorApi2 from './richEditorApi/richEditorApi2.test.ets'
 import richEditorApi3 from './richEditorApi/richEditorApi3.test.ets'
 import navigationApi1 from './navigationApi/navigationApi1.test.ets'
 import textInputApi1 from './textInputApi/textInputApi1.test.ets'
@@ -148,6 +149,7 @@ export default function testsuite() {
   scale()
   SetSizeJsunit()
   richEditorApi1()
+  richEditorApi2()
   richEditorApi3()
   navigationApi1()
   textInputApi1()
