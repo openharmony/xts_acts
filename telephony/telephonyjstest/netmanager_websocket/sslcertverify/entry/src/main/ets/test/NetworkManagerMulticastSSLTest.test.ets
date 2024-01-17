@@ -31,7 +31,7 @@ interface contentType1{
 
 interface contentType2{
   data: ArrayBuffer,
-  type: 1
+  type: number
 }
 
 const ExpectTrue = (n: boolean) => {
@@ -98,7 +98,7 @@ let cert:contentType1 = {
 
 let caCert: contentType2 = {
   data: new ArrayBuffer(10),
-  type: 1
+  type: networkSecurity.CertType.CERT_TYPE_DER
 }
 
 let certError:contentType1 = {
