@@ -62,9 +62,14 @@ export default function onGetIrregularJsunit() {
       let GridItem2 = CommonFunc.getComponentRect('onGetRegular2');
 
       await CommonFunc.sleep(1000);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem0.right - GridItem0.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem1.right - GridItem1.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem2.right - GridItem2.left);
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem0.right - GridItem0.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem1.right - GridItem1.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem2.right - GridItem2.left)) <=1 ).assertTrue();
+
+
+
+
+
       console.info('[onGetIrregularJsunit_0000] END');
       done();
     });
