@@ -273,7 +273,7 @@ napi_value NativeXcomponent::NapiDrawPattern(napi_env env, napi_callback_info in
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", "NapiDrawPattern");
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent",
             "NapiDrawPattern: env or info is null");
         return nullptr;
     }
