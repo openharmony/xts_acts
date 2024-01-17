@@ -48,6 +48,9 @@ import ResourceString from './ResourceTest/ResourceString.test.ets'
 import rotationTest from './RenderNodeTest/rotation.test.ets'
 import transformTest from './RenderNodeTest/transform.test.ets'
 import translationTest from './RenderNodeTest/translation.test.ets'
+import openCustomDialog from './supplementTest/openCustomDialog.test.ets'
+import outline from './supplementTest/outline.test.ets'
+import useShadowBatching from './supplementTest/useShadowBatching.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -85,4 +88,7 @@ export default function testsuite() {
   rotationTest()
   transformTest()
   translationTest()
+  openCustomDialog();
+  outline();
+  useShadowBatching();
 }

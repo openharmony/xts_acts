@@ -37,6 +37,9 @@
         "MainAbility/pages/Resource/ResourceString",
         "MainAbility/pages/RenderNode/rotation",
         "MainAbility/pages/RenderNode/transform",
-        "MainAbility/pages/RenderNode/translation"
+        "MainAbility/pages/RenderNode/translation",
+        "MainAbility/pages/supplement/openCustomDialog",
+        "MainAbility/pages/supplement/outline",
+        "MainAbility/pages/supplement/useShadowBatching"
     ]
 }
