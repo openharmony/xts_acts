@@ -44,7 +44,7 @@ void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
     }
 
     std::string id(idStr);
-    auto render = PluginRender::GetInstance(id);
+    auto render = NativeXComponent::GetInstance(id);
     uint64_t width;
     uint64_t height;
     int32_t xSize = OH_NativeXComponent_GetXComponentSize(component, window, &width, &height);
@@ -73,10 +73,10 @@ void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
     }
 
     std::string id(idStr);
-    auto render = PluginRender::GetInstance(id);
+    auto render = NativeXComponent::GetInstance(id);
     if (render != nullptr) {
         render->OnSurfaceChanged(component, window);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "surface changed");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "xcomponent surface changed");
     }
 }
 
@@ -98,7 +98,7 @@ void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
     }
 
     std::string id(idStr);
-    PluginRender::Release(id);
+    NativeXComponent::Release(id);
 }
 
 void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
@@ -119,7 +119,7 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
     }
 
     std::string id(idStr);
-    PluginRender* render = PluginRender::GetInstance(id);
+    NativeXComponent* render = NativeXComponent::GetInstance(id);
     if (render != nullptr) {
         render->OnTouchEvent(component, window);
     }
@@ -137,7 +137,7 @@ void DispatchMouseEventCB(OH_NativeXComponent* component, void* window)
     }
 
     std::string id(idStr);
-    auto render = PluginRender::GetInstance(id);
+    auto render = NativeXComponent::GetInstance(id);
     if (render != nullptr) {
         render->OnMouseEvent(component, window);
     }
@@ -155,7 +155,7 @@ void DispatchHoverEventCB(OH_NativeXComponent* component, bool isHover)
     }
 
     std::string id(idStr);
-    auto render = PluginRender::GetInstance(id);
+    auto render = NativeXComponent::GetInstance(id);
     if (render != nullptr) {
         render->OnHoverEvent(component, isHover);
     }
@@ -264,7 +264,8 @@ void NativeXcomponent::Export(napi_env env, napi_value exports)
         {"getStatus", nullptr, NativeXcomponent::TestGetXComponentStatus, nullptr, nullptr,
          nullptr, napi_default, nullptr}};
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", "Export: napi_define_properties failed");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
+        "Export: napi_define_properties failed");
     }
 }
 
@@ -273,13 +274,15 @@ napi_value NativeXcomponent::NapiDrawPattern(napi_env env, napi_callback_info in
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", "NapiDrawPattern");
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", "NapiDrawPattern: env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
+        "NapiDrawPattern: env or info is null");
         return nullptr;
     }
 
     napi_value thisArg;
     if (napi_get_cb_info(env, info, nullptr, nullptr, &thisArg, nullptr) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", "NapiDrawPattern: napi_get_cb_info fail");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", 
+        "NapiDrawPattern: napi_get_cb_info fail");
         return nullptr;
     }
 
@@ -412,7 +415,8 @@ void NativeXcomponent::OnMouseEvent(OH_NativeXComponent* component, void* window
 
 void NativeXcomponent::OnHoverEvent(OH_NativeXComponent* component, bool isHover)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", "OnHoverEvent isHover_ = %{public}d", isHover);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent", 
+    "OnHoverEvent isHover_ = %{public}d", isHover);
 }
 
 void NativeXcomponent::OnFocusEvent(OH_NativeXComponent* component, void* window)
@@ -441,10 +445,10 @@ void NativeXcomponent::OnKeyEvent(OH_NativeXComponent* component, void* window)
         OH_NativeXComponent_GetKeyEventDeviceId(keyEvent, &deviceId);
         int64_t timeStamp;
         OH_NativeXComponent_GetKeyEventTimestamp(keyEvent, &timeStamp);
-        OH_NativeXComponent_HistoricalPoints points; 
+        OH_NativeXComponent_HistoricalPoints points;
         OH_NativeXComponent_GetHistoricalPoints(&points);
         OH_NativeXComponent_ExpectedFrameRateRange frameRateRange;
-        OH_NativeXComponent_SetExpectedFrameRateRange(&frameRateRange);    
+        OH_NativeXComponent_SetExpectedFrameRateRange(&frameRateRange);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent",
             "KeyEvent Info: action=%{public}d, code=%{public}d, sourceType=%{public}d, deviceId=%{public}ld, "
             "timeStamp=%{public}ld",
