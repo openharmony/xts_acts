@@ -18,50 +18,55 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
-export default function popupArrowJsunit() {
-  describe('popupArrowJsunit', function () {
+export default function menuBlurStyleJsunit() {
+  describe('menuBlurStyleJsunit', function () {
     beforeEach(async function (done) {
-      console.info("popupArrowJsunit beforeEach start");
+      console.info("menuBlurStyleJsunit beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/popupArrow',
+        uri: 'MainAbility/pages/menuBlurStyle',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get popupArrowJsunit state pages: " + JSON.stringify(pages));
-        if (!("popupArrow" == pages.name)) {
-          console.info("get popupArrowJsunit state pages.name:" + JSON.stringify(pages.name));
+        console.info("get menuBlurStyleJsunit state pages: " + JSON.stringify(pages));
+        if (!("menuBlurStyle" == pages.name)) {
+          console.info("get menuBlurStyleJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push popupArrowJsunit page result:" + JSON.stringify(result));
+          console.info("push menuBlurStyleJsunit page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push popupArrowJsunit page error:" + err);
+        console.error("push menuBlurStyleJsunit page error:" + err);
       }
       done()
     });
 
+    afterEach(async function () {
+      await CommonFunc.sleep(1000);
+      console.info("menuBlurStyle after each called");
+    });
+
     /**
-     * @tc.number: SUB_ACE_POPUP_0100
-     * @tc.name  : popupArrowJsunit_0100
-     * @tc.desc  : set api
+     * @tc.number: SUB_ACE_CONTEXTMENU_backgroundBlurStyle_0100
+     * @tc.name  : menuBlurStyleJsunit_0100
+     * @tc.desc  : Defines menu background blur Style
      * @tc.level : Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('popupArrowJsunit_0100', 0, async function (done) {
-      console.info('[popupArrowJsunit_0100] START');
+    it('menuBlurStyleJsunit_0100', 0, async function (done) {
+      console.info('[menuBlurStyleJsunit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('popup_arrow'));
-      await button.click();
+      let button = await driver.findComponent(ON.id('menu_blurStyle'));
+      await button.longClick();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('popup_arrow');
+      let strJson = getInspectorByKey('menu_blurStyle');
       let obj = JSON.parse(strJson);
-      console.info("[popupArrowJsunit_0100] obj is: " + JSON.stringify(obj));
-      console.info("[popupArrowJsunit_0100] obj content is: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('customPopup');
-      console.info('[popupArrowJsunit_0100] END');
+      console.info("[menuBlurStyleJsunit_0100] obj is: " + JSON.stringify(obj));
+      console.info("[menuBlurStyleJsunit_0100] menuText is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual("menuBlurStyle");
+      console.info('[menuBlurStyleJsunit_0100] END');
       done();
     });
   })
