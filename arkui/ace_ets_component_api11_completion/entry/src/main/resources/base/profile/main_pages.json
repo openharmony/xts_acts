@@ -120,6 +120,7 @@
         "MainAbility/pages/geometryTransition",
         "MainAbility/pages/RenderNodeInvalidate",
         "MainAbility/pages/RenderNodeDraw",
-        "MainAbility/pages/commonApi/accessVN"
+        "MainAbility/pages/commonApi/accessVN",
+        "MainAbility/pages/menuBlurStyle"
     ]
 }
