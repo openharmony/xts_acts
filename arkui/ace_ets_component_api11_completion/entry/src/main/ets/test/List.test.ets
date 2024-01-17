@@ -133,6 +133,7 @@ import geometryTransition from './geometryTransition.test';
 import RenderNodeInvalidateJsSuit from './RenderNodeInvalidateJsSuit.test';
 import RenderNodeDrawJsSuit from './RenderNodeDrawJsSuit.test';
 import accessVNTest from './commonApi/accessVNTest.test.ets';
+import menuBlurStyleJsunit from './menuBlurStyleJsunit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -252,6 +253,6 @@ export default function testsuite() {
   RenderNodeInvalidateJsSuit()
   RenderNodeDrawJsSuit()
   accessVNTest()
-
   blendModeTest()
+  menuBlurStyleJsunit()
 }
