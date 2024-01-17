@@ -82,32 +82,16 @@ static std::tuple<bool, uint8_t, uint8_t, uint16_t> GetEndpointInfo(const struct
     }
     return {false, {}, {}, {}};
 }
-static int32_t UsbNotificationCallback(NotificationType type, uint64_t deviceId)
-{
-    if (type == 0) {
-        g_devHandle = deviceId;
-    }
-    return 0;
-}
 
 uint64_t GetDeviceId(void)
 {
-    DEBUG_LOG("OH_Usb_RegisterNotification,START");
-    int32_t res = OH_Usb_RegisterNotification(UsbNotificationCallback);
-    DEBUG_LOG("OH_Usb_RegisterNotificationBack %{public}d", res);
-    DEBUG_LOG("OH_Usb_RegisterNotification,END");
-    while (g_devHandle == 0) {
-        sleep(SLEEP);
-    }
     return g_devHandle;
 }
 
 void ReleaseDeviceId(void)
 {
-    DEBUG_LOG("OH_Usb_UnRegisterNotification,START");
-    int32_t res = OH_Usb_UnRegisterNotification(UsbNotificationCallback);
-    DEBUG_LOG("OH_Usb_UnRegisterNotificationBack %{public}d", res);
-    DEBUG_LOG("OH_Usb_UnRegisterNotification,END");
+    DEBUG_LOG("ReleaseDeviceId,START");
+    DEBUG_LOG("ReleaseDeviceId,END");
 }
 
 static napi_value UsbInit(napi_env env, napi_callback_info)
