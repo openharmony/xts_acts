@@ -2288,7 +2288,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         let backDisplaySyncBigger = displaySync.create()
         console.log(msg + ' www data '  + backDisplaySyncBigger)
         try {
-          let range = {
+          let range : ExpectedFrameRateRange = {
             expected: 10,
             min:0,
             max:120

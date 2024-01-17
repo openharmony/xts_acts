@@ -261,21 +261,6 @@ export default function marginTest() {
         left = rect.left - rectParent.left;
         right = rectParent.right - rect.right;
         bottom = rectParent.bottom - rect.bottom;
-      } else if (data.pageConfig.componentKey == 'Navigation') {
-        //Reference component
-        let referenceRect = Utils.getComponentRect(data.pageConfig.buttonComponentKey)
-
-        //Component to reference component and parent component margin calculation
-        let area = await CommonTest.getAvoidArea();
-        top = rect.top - rectParent.top
-        bottom = rectParent.bottom - rect.bottom
-        left = rect.left - rectParent.left;
-        right = referenceRect.left - rect.right;
-
-        if (!data.testValue.setValue.margin.top || data.testValue.setValue.margin.top == '0.00vp' || data.testValue.setValue.margin.top == 0){
-          top = top + area;
-          bottom = bottom - area;
-        }
       } else {
         //Reference component
         let referenceRect = Utils.getComponentRect(data.pageConfig.buttonComponentKey)

@@ -1681,6 +1681,87 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
             }
         })
     })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1280
+     * @tc.name      : testRecover
+     * @tc.desc      : test the function of Recover
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('testRecover', 0, async function (done) {
+        let msgStr = 'testRecover';
+        console.log(msgStr + ' begin');
+        ohosWindow.getLastWindow(context).then(wnd => {
+          console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+          expect(wnd != null).assertTrue();
+          try {
+            let promise = wnd.recover();
+            console.log(msgStr + "after recover")
+            promise.then(() => {
+              console.info(msgStr + 'Succeeded in recovering the window.');
+              expect(true).assertTrue()
+              done()
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
+              if (err.code == 1300001) {
+                expect(true).assertTrue()
+                done()
+              } else {
+                expect().assertFail()
+                done()
+              }
+            });
+          } catch (exception) {
+            console.error(msgStr + ' Failed to recover the window. Cause: ' + JSON.stringify(exception));
+            if (exception.code == 1300001) {
+              expect(true).assertTrue()
+              done()
+            } else {
+              expect().assertFail();
+              done();
+            }
+          }
+      })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+     * @tc.name      : testShiftAppWindowFocus_Function_Promise
+     * @tc.desc      : Test the function value of shiftAppWindowFocus
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testShiftAppWindowFocus_Function_Promise', 0, async function(done){
+      let msgStr = 'testShiftAppWindowFocus_Function_Promise';
+      console.log(msgStr + 'begin');
+      try {
+        console.log(msgStr + 'try begin')
+        let sourceWindowId = 40;
+        let targetWindowId = 41;
+        let promise = ohosWindow.shiftAppWindowFocus(sourceWindowId, targetWindowId);
+        promise.then(() => {
+          console.log(msgStr + 'Succeeded in shifting app window focus');
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to shift app window focus1. Cause:' + JSON.stringify(error));
+          if (error.code == 801) {
+              expect(true).assertTrue()
+              done()
+          } else {
+              expect().assertFail();
+              done();
+          }     
+        })
+      } catch (error) {
+        console.log(msgStr + 'Failed to shift app window focus2. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })    
 
   })
 }

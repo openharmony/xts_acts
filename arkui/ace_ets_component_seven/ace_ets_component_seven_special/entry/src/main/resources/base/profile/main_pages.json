@@ -51,7 +51,12 @@
         "MainAbility/pages/polyLine",
         "MainAbility/pages/counter",
         "MainAbility/pages/navDestination",
-        "MainAbility/pages/navRouter"
-
+        "MainAbility/pages/navRouter",
+        "MainAbility/pages/sharedTransition",
+        "MainAbility/pages/transition",
+        "MainAbility/pages/geometryTransition",
+        "MainAbility/pages/motionPath",
+        "MainAbility/pages/shortcutKey",
+        "MainAbility/pages/idKey"
     ]
 }

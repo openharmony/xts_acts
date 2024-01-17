@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -62,8 +62,20 @@ import polyLineJsunit from './PolyLine.test.ets';
 import counterJsunit from './Counter.test.ets';
 import navRouterJsunit from './NavDestination.test.ets';
 import navDestinationJsunit from './NavRouterJsunit.test.ets';
+import sharedTransitionJsunit from './SharedTransitionJsunit.test.ets';
+import transitionJsunit from './TransitionJsunit.test.ets';
+import geometryTransitionJsunit from './GeometryTransitionJsunit.test.ets';
+import motionPathJsunit from './MotionPathJsunit.test.ets';
+import shortcutKeyJsunit from './ShortcutKey.test.ets';
+import idKeyJsunit from './IdKeyJsunit.test.ets';
 
 export default function testsuite() {
+  idKeyJsunit();
+  shortcutKeyJsunit();
+  sharedTransitionJsunit();
+  transitionJsunit();
+  geometryTransitionJsunit();
+  motionPathJsunit();
   textStyleJsunit();
   tabsFirstJsunit();
   tabsSecondJsunit();
@@ -112,5 +124,5 @@ export default function testsuite() {
   polyLineJsunit();
   navDestinationJsunit();
   navRouterJsunit();
-  counterJsunit()
+  counterJsunit();
 }

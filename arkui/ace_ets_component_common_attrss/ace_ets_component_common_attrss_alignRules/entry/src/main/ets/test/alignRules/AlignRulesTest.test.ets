@@ -256,31 +256,13 @@ export default function AlignRulesTest() {
 
       //Verify actual alignment position after alignment
       if (data.testValue.describe == 'ParentAlignTopLeftJustifying') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          rec.top = top + areaHeight;
-        }
         expect(rec.left).assertEqual(recParent.left)
         expect(rec.top).assertEqual(recParent.top)
       } else if (data.testValue.describe == 'ParentAlignTopHorizontalCenter') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          rec.top = top + areaHeight;
-        }
         expect(Number(rec.left + (rec.right - rec.left) / 2).toFixed(2))
           .assertEqual(Number(recReference.left + (recReference.right - recReference.left) / 2).toFixed(2))
         expect(rec.top).assertEqual(recParent.top)
       } else if (data.testValue.describe == 'ParentAlignTopRightAlignment') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          rec.top = top + areaHeight;
-        }
         expect(rec.right).assertEqual(recParent.right)
         expect(rec.top).assertEqual(recParent.top)
       } else if (data.testValue.describe == 'ParentVerticalCenterLeftJustifying') {
@@ -307,36 +289,12 @@ export default function AlignRulesTest() {
         expect(rec.right).assertEqual(recParent.right)
         expect(rec.bottom).assertEqual(recParent.bottom)
       } else if (data.testValue.describe == 'SubassemblyAlignTopLeftJustifying') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          let bottom = rec.bottom;
-          rec.top = top + areaHeight;
-          rec.bottom = bottom + areaHeight;
-        }
         expect(rec.right).assertEqual(recReference.left)
         expect(rec.bottom).assertEqual(recReference.top)
       } else if (data.testValue.describe == 'SubassemblyAlignTopHorizontalCenter') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          let bottom = rec.bottom;
-          rec.top = top + areaHeight;
-          rec.bottom = bottom + areaHeight;
-        }
         expect(rec.right).assertEqual(recReference.right)
         expect(rec.bottom).assertEqual(recReference.top)
       } else if (data.testValue.describe == 'SubassemblyAlignTopRightAlignment') {
-        if (data.viewObj.$attrs.id == 'Navigation') {
-          let areaHeight = await CommonTest.getAvoidArea();
-          //Confirm that the height attribute values have been successfully set.
-          let top = rec.top;
-          let bottom = rec.bottom;
-          rec.top = top + areaHeight;
-          rec.bottom = bottom + areaHeight;
-        }
         expect(rec.left).assertEqual(recReference.right)
         expect(rec.bottom).assertEqual(recReference.top)
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterLeftJustifying') {
