@@ -24,6 +24,7 @@
         "MainAbility/pages/TextApi/TextStyle",
         "MainAbility/pages/RichEditor/RichEditor",
         "MainAbility/pages/UIfont/UIfont",
+        "MainAbility/pages/TimePicker/TimePicker",
         "MainAbility/pages/Scroll/Scroll",
         "MainAbility/pages/richEditorApi/richEditorApi1",
         "MainAbility/pages/richEditorApi/richEditorApi2",
