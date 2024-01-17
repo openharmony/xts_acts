@@ -51,6 +51,7 @@ import translationTest from './RenderNodeTest/translation.test.ets'
 import openCustomDialog from './supplementTest/openCustomDialog.test.ets'
 import outline from './supplementTest/outline.test.ets'
 import useShadowBatching from './supplementTest/useShadowBatching.test.ets'
+import drawCanvas from './drawCanvas.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -91,4 +92,5 @@ export default function testsuite() {
   openCustomDialog();
   outline();
   useShadowBatching();
+  drawCanvas();
 }
