@@ -17,7 +17,8 @@ group("driver") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      # "device_manager:device_manager_js_test"
+      #      "device_manager:device_manager_js_test",
+      #      "device_manager_ndk:ActsDriversExternaldevicemanagerNdkTest",
     ]
   }
 }
