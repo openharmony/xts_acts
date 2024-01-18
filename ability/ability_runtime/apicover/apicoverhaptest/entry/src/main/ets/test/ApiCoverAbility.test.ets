@@ -618,6 +618,7 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_Test_InsightIntent_0100', 0, async function (done) {
       let startOp:startOptions = {
+        withAnimation:false,
         displayId:0,
         windowLeft:100,
         windowTop:100,
