@@ -24,7 +24,7 @@ export default {
     onShow(){
     
         prompt.showToast({
-            message: 'prop1--' + name1 + '\nprop2--' + name2
+            message: 'prop1--'
         });
     },
 
