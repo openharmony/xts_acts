@@ -57,13 +57,12 @@ public:
 
 private:
     OH_NativeXComponent_Callback renderCallback_;
-    OH_NativeXComponent_MouseEvent_Callback mouseCallback_;
-    
+    OH_NativeXComponent_MouseEvent_Callback mouseCallback_;        
     OH_NativeXComponent_RegisterFocusEventCallback registerFocusCallback_;
     OH_NativeXComponent_RegisterKeyEventCallback registerKeyCallback_;
     OH_NativeXComponent_RegisterBlurEventCallback registerBlurCallback_;
     OH_NativeXComponent_RegisterOnFrameCallback registerOnFrameCallback_;
-    OH_NativeXComponent_UnregiateOnFrameCallback unregiateCallback_;
+    OH_NativeXComponent_UnregisterOnFrameCallback unregisterCallback_;
 };
 } // namespace NativeXComponentSample1
 #endif // NATIVE_XCOMPONENT_NATIVE_XCOMPONENT_H
