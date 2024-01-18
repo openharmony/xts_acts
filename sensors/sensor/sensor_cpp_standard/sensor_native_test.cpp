@@ -25,6 +25,9 @@
 #include "oh_sensor.h"
 #include "sensor_errors.h"
 
+#undef LOG_TAG
+#define LOG_TAG "SensorAgentTest"
+
 namespace OHOS {
 namespace Sensors {
 using namespace testing::ext;
@@ -33,7 +36,6 @@ using namespace Security::AccessToken;
 using Security::AccessToken::AccessTokenID;
 
 namespace {
-constexpr HiLogLabel LABEL = { LOG_CORE, OHOS::Sensors::SENSOR_LOG_DOMAIN, "SensorAgentTest" };
 constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_ACCELEROMETER };
 constexpr uint32_t SENSOR_NAME_LENGTH_MAX = 64;
 constexpr int64_t SENSOR_SAMPLE_PERIOD = 200000000;
