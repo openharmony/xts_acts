@@ -4556,11 +4556,13 @@ export default function soundPoolTest() {
         soundId_[2] = await soundPool.load(uri3);
         soundId_[3] = await soundPool.load(fd3, length3 / 3, length3);
         await sleep(1000);
-        streamId_[0] = await soundPool.play(soundId_[0]);
-        streamId_[1] = await soundPool.play(soundId_[1]);
-        streamId_[2] = await soundPool.play(soundId_[2]);
-        streamId_[3] = await soundPool.play(soundId_[3]);
+        for (let i = 0; i < 4; i++) {
+          streamId_[i] = await soundPool.play(soundId_[i]);
+        }
         await sleep(8000);
+        for (let i = 0; i < 4; i++) {
+          await soundPool.stop(streamId_[i]);
+        }
         for (let i = 0; i < 4; i++) {
           await soundPool.unload(soundId_[i]);
         }
