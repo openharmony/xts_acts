@@ -395,7 +395,7 @@ void NativeXcomponent::RegisterCallback(OH_NativeXComponent* nativeXComponent)
     OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB);
     OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB);
     OH_NativeXComponent_RegisterOnFrameCallback(nativeXComponent, OnFrameEventCB);
-    OH_NativeXComponent_UnregiateOnFrameCallback(nativeXComponent, UnOnFrameEventCB);
+    OH_NativeXComponent_UnregisterOnFrameCallback(nativeXComponent, UnOnFrameEventCB);
 }
 
 void NativeXcomponent::OnMouseEvent(OH_NativeXComponent* component, void* window)
