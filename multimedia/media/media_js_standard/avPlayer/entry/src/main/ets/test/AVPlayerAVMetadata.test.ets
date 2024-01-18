@@ -225,7 +225,7 @@ export default function AVMetadata() {
         console.info(TAG, `fetchMetadata callback success, dateTime: ${metadata.dateTime}`)
         console.info(TAG, `fetchMetadata callback success, dateTimeFormat: ${metadata.dateTimeFormat}`)
         expect(metadata.dateTime).assertEqual("2015-11-23")
-        expect(metadata.dateTimeFormat).assertEqual("")
+        expect(metadata.dateTimeFormat).assertEqual("2015-11-23 00:00:00")
         avMetadataExtractor.release();
       }).catch((error) => {
         console.error(`fetchMetadata catchCallback, error message:${error.message}`);
