@@ -13,15 +13,16 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("startabilitygetstartparametertest") {
+ohos_js_hap_suite("ActsStartAbilityGetStartParameterTest") {
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
     ":hts_demo_ets_resources",
     ":hts_demo_ets_test_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "startabilitygetstartparametertest"
+  hap_name = "ActsStartAbilityGetStartParameterTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
