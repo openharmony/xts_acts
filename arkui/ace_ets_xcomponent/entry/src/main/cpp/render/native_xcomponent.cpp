@@ -480,7 +480,7 @@ napi_value NativeXcomponent::TestGetXComponentStatus(napi_env env, napi_callback
     if (ret != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TestGetXComponentStatus", "napi_create_object error");
         return nullptr;
-    }else if(ret == napi_fatal_error){
+    } else if (ret == napi_fatal_error) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TestGetXComponentStatus",
             "napi_create_object fatal error");
     }
