@@ -24,6 +24,9 @@
 #include "sensors_errors.h"
 #include "vibrator.h"
 
+#undef LOG_TAG
+#define LOG_TAG "NativeVibratorTest"
+
 namespace OHOS {
 namespace Sensors {
 using namespace testing::ext;
@@ -34,7 +37,6 @@ using Security::AccessToken::AccessTokenID;
 namespace {
 uint32_t g_duration = 300;
 constexpr int32_t TIME_WAIT_FOR_OP = 2;
-constexpr HiLogLabel LABEL = { LOG_CORE, MISC_LOG_DOMAIN, "NativeVibratorTest" };
 PermissionDef infoManagerTestPermDef_ = {
     .permissionName = "ohos.permission.VIBRATE",
     .bundleName = "accesstoken_test",
