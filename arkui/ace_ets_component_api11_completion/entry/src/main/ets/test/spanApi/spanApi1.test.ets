@@ -58,7 +58,7 @@ export default function spanApi1() {
 
       let spanApi1 = getInspectorByKey('spanApi1');
       let Obj1 = JSON.parse(spanApi1);
-      expect(Obj1.$attrs.textBackgroundStyle).assertEqual('[{color: "#7F007DFF", radius: "5vp"}]');
+      expect(JSON.stringify(Obj1.$attrs.textBackgroundStyle)).assertEqual('{"color":"#7F007DFF","radius":"5.00vp"}');
 
       console.info('[testRichEditor_0100] END');
       done();

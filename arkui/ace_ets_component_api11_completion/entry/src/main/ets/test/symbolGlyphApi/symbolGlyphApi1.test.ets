@@ -61,7 +61,7 @@ export default function symbolGlyphApi1() {
 
       let symbolGlyphApi1 = getInspectorByKey('symbolGlyphApi1');
       let Obj1 = JSON.parse(symbolGlyphApi1);
-      expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.NONE');
+      expect(Obj1.$attrs.effectStrategy).assertEqual('EffectStrategy.NONE');
 
       console.info('[testRichEditor_0100] END');
       done();

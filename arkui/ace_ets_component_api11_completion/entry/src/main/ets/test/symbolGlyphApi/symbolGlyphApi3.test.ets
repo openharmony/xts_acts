@@ -61,7 +61,7 @@ export default function symbolGlyphApi3() {
 
       let symbolGlyphApi3 = getInspectorByKey('symbolGlyphApi3');
       let Obj1 = JSON.parse(symbolGlyphApi3);
-      expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_OPACITY');
+      expect(Obj1.$attrs.renderingStrategy).assertEqual('RenderingStrategy.MULTIPLE_OPACITY');
       console.info('[testRichEditor_0100] END');
       done();
     });

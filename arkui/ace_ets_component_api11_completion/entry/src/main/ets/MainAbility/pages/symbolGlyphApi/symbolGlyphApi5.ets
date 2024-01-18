@@ -23,7 +23,8 @@ struct symbolGlyphApi5 {
         SymbolGlyph($r('sys.symbol.ohos_lungs'))
           .fontSize(100)
           .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
-      }.key('symbolGlyphApi5')
+          .key('symbolGlyphApi5')
+      }
     }
   }
 }

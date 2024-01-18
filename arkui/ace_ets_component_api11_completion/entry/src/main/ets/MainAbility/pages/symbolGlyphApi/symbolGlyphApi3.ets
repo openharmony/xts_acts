@@ -23,7 +23,8 @@ struct symbolGlyphApi3 {
         SymbolGlyph($r('sys.symbol.ohos_lungs'))
           .fontSize(100)
           .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
-      }.key('symbolGlyphApi3')
+          .key('symbolGlyphApi3')
+      }
     }
   }
 }
