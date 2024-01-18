@@ -175,6 +175,7 @@ export default function adsTest() {
                 hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
               } else {
                 hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
+                expect(data?.parameters?.["result"]).assertEqual("onAdOpen");
                 done();
               }
             })
