@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,12 +58,11 @@ public:
 private:
     OH_NativeXComponent_Callback renderCallback_;
     OH_NativeXComponent_MouseEvent_Callback mouseCallback_;
-    
     OH_NativeXComponent_RegisterFocusEventCallback registerFocusCallback_;
     OH_NativeXComponent_RegisterKeyEventCallback registerKeyCallback_;
     OH_NativeXComponent_RegisterBlurEventCallback registerBlurCallback_;
     OH_NativeXComponent_RegisterOnFrameCallback registerOnFrameCallback_;
-    OH_NativeXComponent_UnregiateOnFrameCallback unregiateCallback_;
+    OH_NativeXComponent_UnregisterOnFrameCallback unregisterCallback_;
 };
 } // namespace NativeXComponentSample1
 #endif // NATIVE_XCOMPONENT_NATIVE_XCOMPONENT_H

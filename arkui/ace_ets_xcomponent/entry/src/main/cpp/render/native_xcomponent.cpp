@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,7 @@
 #include <string>
 
 #include "../common/common.h"
-#include "../manager/plugin_manager.h"
+#include "../plugin_manager.h"
 #include "plugin_render.h"
 #include "native_xcomponent.h"
 
@@ -395,7 +395,7 @@ void NativeXcomponent::RegisterCallback(OH_NativeXComponent* nativeXComponent)
     OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB);
     OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB);
     OH_NativeXComponent_RegisterOnFrameCallback(nativeXComponent, OnFrameEventCB);
-    OH_NativeXComponent_UnregiateOnFrameCallback(nativeXComponent, UnOnFrameEventCB);
+    OH_NativeXComponent_UnregisterOnFrameCallback(nativeXComponent, UnOnFrameEventCB);
 }
 
 void NativeXcomponent::OnMouseEvent(OH_NativeXComponent* component, void* window)
@@ -480,6 +480,9 @@ napi_value NativeXcomponent::TestGetXComponentStatus(napi_env env, napi_callback
     if (ret != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TestGetXComponentStatus", "napi_create_object error");
         return nullptr;
+    } else if (ret == napi_fatal_error) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TestGetXComponentStatus",
+            "napi_create_object fatal error");
     }
     ret = napi_set_named_property(env, obj, "hasDraw", hasDraw);
     if (ret != napi_ok) {
