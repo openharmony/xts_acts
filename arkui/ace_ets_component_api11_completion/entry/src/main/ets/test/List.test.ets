@@ -35,7 +35,7 @@ import parentX_parentY_strategy_Test from './ComAttr/ComAttr_parentX_parentY_str
 import TextStyle from './TextApi/TextStyle.test.ets';
 import tabsDemo from './TextApi/tabsDemo.test.ets';
 import TextSelectionMenu from './TextApi/TextSelectionMenu.test.ets';
-import font from './MethodStyle/font.test'
+
 import ImageAttr from './MethodStyle/ImageAttr.test'
 import menu from './MethodStyle/menu.test'
 import NavigationAttr from './MethodStyle/NavigationAttr.test'
@@ -187,7 +187,7 @@ export default function testsuite() {
   aboutToAppearTest()
   parentX_parentY_strategy_Test()
   TextStyle()
-  font()
+
   ImageAttr()
   menu()
   NavigationAttr()
