@@ -63,7 +63,7 @@ export const AV_RECORDER_STATE = {
 }
 
 export function prepareCallback(avRecorder, avConfig) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof(avRecorder) === 'undefined') {
         return;
     }
     avRecorder.prepare(avConfig, (err) => {
@@ -120,7 +120,7 @@ export function getInputSurfaceCallback(avRecorder) {
 }
 
 export async function getAVRecorderConfigPromise(avConfig, avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof(avRecorder) === 'undefined') {
         return;
     }
     await avRecorder.getAVRecorderConfig().then((config) => {
@@ -133,7 +133,7 @@ export async function getAVRecorderConfigPromise(avConfig, avRecorder) {
 }
 
 export function getAVRecorderConfigCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof(avRecorder) === 'undefined') {
         return;
     }
     let avRecorderConfig = null;
@@ -401,10 +401,10 @@ export async function setOnaudioCaptureChangeCallback(avConfig, avRecorder, reco
     console.info(`case setOnaudioCaptureChangeCallback in`);
     let audioCaptureChangeInfo = null;
     avRecorder.on('audioCaptureChange', async (audioCaptureChangeInfo) => {
-        if (state == AV_RECORDER_STATE.STARTED) {
+        if (state === AV_RECORDER_STATE.STARTED) {
             expect(audioCaptureChangeInfo.capturerState).assertEqual(2);
         }
-        if (state == AV_RECORDER_STATE.STOPPED) {
+        if (state === AV_RECORDER_STATE.STOPPED) {
             expect(audioCaptureChangeInfo.capturerState).assertEqual(3);
         }
         console.info('case avRecorder.on(audioCaptureChange) called, errMessage is ' + audioCaptureChangeInfo);
