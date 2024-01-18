@@ -2190,7 +2190,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           done();
         });
         expect(true).assertTrue();
-              done();
+        done();
       } catch (err) {
         console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
         if (err.code == 801) {
