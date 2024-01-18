@@ -159,6 +159,7 @@ export default function avVideoRecorderTestOne() {
         const CREATE_PROMISE_EVENT = 'createPromise';
         const PREPARE_PROMISE_EVENT = 'preparePromise';
         const GETINPUTSURFACE_PROMISE_EVENT = 'getInputSurfacePromise';
+        const GETAVRECORDERCONFIG_PROMISE_EVENT = 'getAVRecorderConfigPromise';
         const STARTRECORDER_PROMISE_EVENT = 'startPromise';
         const PAUSERECORDER_PROMISE_EVENT = 'pausePromise';
         const RESUMERECORDER_PROMISE_EVENT = 'resumePromise';
@@ -497,6 +498,18 @@ export default function avVideoRecorderTestOne() {
                 toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             }).catch((err) => {
                 console.info('getInputSurface failed and catch error is ' + err.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            });
+        });
+
+        eventEmitter.on(GETAVRECORDERCONFIG_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            avRecorder.getAVRecorderConfig().then((config) => {
+                console.info('getAVRecorderConfig success');
+                expect(config).assertEqual(avConfig);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }).catch((err) => {
+                console.info('getAVRecorderConfig failed and catch error is ' + err.message);
                 toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             });
         });
@@ -7883,6 +7896,39 @@ export default function avVideoRecorderTestOne() {
 
             eventEmitter.emit(mySteps[0], avRecorder, avConfigH264, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H264_1200 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100
+            * @tc.name      : 02. prepare->getAVRecorderConfig
+            * @tc.desc      : 1.create 2.prepare 3.getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 start')
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            let mySteps = new Array(
+                // setAvRecorderCallback
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
+                // AVRecorderTestBase.preparePromise
+                PREPARE_PROMISE_EVENT,
+                // getAVRecorderConfigPromise
+                GETAVRECORDERCONFIG_PROMISE_EVENT,
+                // initCamera
+                INITCAMERA_EVENT,
+                // AVRecorderTestBase.releasePromise
+                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 end')
         })
     })
 }
