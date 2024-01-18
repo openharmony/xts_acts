@@ -1040,6 +1040,7 @@ export default function audioRendererTest() {
       let resultFlag = false;
       let audioRen;
       let isPass = false;
+      let rlen = 0;
       await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
         audioRen = data;
         console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS`);
@@ -1062,12 +1063,13 @@ export default function audioRendererTest() {
       audioRen.on('markReach', 55, (position) => {
         console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
         audioRen.off('markReach');
-        audioRen.on('markReach', 100, (position) => {
-          console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
-          resultFlag = true;
-        });
+        expect(true).assertTrue();
       });
-
+      audioRen.on('markReach', 100, (position) => {
+        console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
+        resultFlag = true;
+        audioRen.off('markReach');
+      });
       console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
 
       await audioRen.start().then(() => {
@@ -1096,7 +1098,7 @@ export default function audioRendererTest() {
       console.info(`${TagFrmwkRender}:case 3 : AudioFrameworkRenderLog: File totalSize size: ${totalSize}`);
       totalSize = totalSize - 44;
       console.info(`${TagFrmwkRender}: File size : Removing header: ${totalSize}`);
-      let rlen = 0;
+      // let rlen = 0;
       while (rlen < totalSize / 4) {
         let buf = new ArrayBuffer(bufferSize);
         rlen += ss.readSync(buf);
@@ -1927,7 +1929,7 @@ export default function audioRendererTest() {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
 
@@ -2025,7 +2027,7 @@ export default function audioRendererTest() {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
         channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
 
@@ -2091,7 +2093,7 @@ export default function audioRendererTest() {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
 
@@ -2189,7 +2191,7 @@ export default function audioRendererTest() {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
         channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
 
