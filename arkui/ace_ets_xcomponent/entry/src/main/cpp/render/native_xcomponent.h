@@ -57,7 +57,7 @@ public:
 
 private:
     OH_NativeXComponent_Callback renderCallback_;
-    OH_NativeXComponent_MouseEvent_Callback mouseCallback_;        
+    OH_NativeXComponent_MouseEvent_Callback mouseCallback_;
     OH_NativeXComponent_RegisterFocusEventCallback registerFocusCallback_;
     OH_NativeXComponent_RegisterKeyEventCallback registerKeyCallback_;
     OH_NativeXComponent_RegisterBlurEventCallback registerBlurCallback_;
