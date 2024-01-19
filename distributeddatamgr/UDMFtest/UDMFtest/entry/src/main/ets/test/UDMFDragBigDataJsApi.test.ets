@@ -51,7 +51,7 @@ export default function UDMFDragBigDataJsApiTest() {
       });
     })
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0100
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0100
      * @tc.desc      : text -- one data is Over 2M
      * @tc.size      : MediumTest
@@ -108,7 +108,7 @@ export default function UDMFDragBigDataJsApiTest() {
       console.info(TAG, 'end');
     });
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0150
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0150
      * @tc.desc      : text -- one data is 2M
      * @tc.size      : MediumTest
@@ -166,7 +166,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0200
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0200
      * @tc.desc      : text -- one data is in 2M
      * @tc.size      : MediumTest
@@ -224,7 +224,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0250
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0250
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0250
      * @tc.desc      : text --one data is over 4M
      * @tc.size      : MediumTest
@@ -282,7 +282,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0300
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0300
      * @tc.desc      : text --one data is 4M
      * @tc.size      : MediumTest
@@ -340,7 +340,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0350
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0350
      * @tc.desc      : text --one data is  in 4M
      * @tc.size      : MediumTest
@@ -399,7 +399,7 @@ export default function UDMFDragBigDataJsApiTest() {
 
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0400
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0400
      * @tc.desc      : text --one data is  is  100M
      * @tc.size      : MediumTest
@@ -462,7 +462,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0450
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0450
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0450
      * @tc.desc      : PlainText --one data is 2M
      * @tc.size      : MediumTest
@@ -516,7 +516,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0500
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0500
      * @tc.desc      : PlainText one data is over 2M
      * @tc.size      : MediumTest
@@ -570,7 +570,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0550
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0550
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0550
      * @tc.desc      : PlainText --one data in 2M
      * @tc.size      : MediumTest
@@ -624,7 +624,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0600
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0600
      * @tc.desc      : PlainText -- one data is 4M
      * @tc.size      : MediumTest
@@ -678,7 +678,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0650
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0650
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0650
      * @tc.desc      : PlainText one data is over 4M
      * @tc.size      : MediumTest
@@ -732,7 +732,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0700
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0700
      * @tc.desc      : PlainText one  data is in 4M
      * @tc.size      : MediumTest
@@ -786,7 +786,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0750
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0750
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0750
      * @tc.desc      : Hyperlink one data is 2M
      * @tc.size      : MediumTest
@@ -840,7 +840,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0800
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0800
      * @tc.desc      : Hyperlink one data is over 2M
      * @tc.size      : MediumTest
@@ -894,7 +894,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0850
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0850
      * @tc.desc      : Hyperlink one data is in 2M
      * @tc.size      : MediumTest
@@ -948,7 +948,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0900
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0900
      * @tc.desc      : Hyperlink one data is 4M
      * @tc.size      : MediumTest
@@ -1002,7 +1002,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0950
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest0950
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0950
      * @tc.desc      : Hyperlink one data is over 4M
      * @tc.size      : MediumTest
@@ -1056,7 +1056,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1000
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1000
      * @tc.desc      : Hyperlink one data is in 4M
      * @tc.size      : MediumTest
@@ -1110,7 +1110,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1050
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1050
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1050
      * @tc.desc      : HTML one data is 2M
      * @tc.size      : MediumTest
@@ -1164,7 +1164,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1100
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1100
      * @tc.desc      : HTML  one data is over 2M
      * @tc.size      : MediumTest
@@ -1218,7 +1218,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1150
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1150
      * @tc.desc      : HTML one data is in 2M
      * @tc.size      : MediumTest
@@ -1272,7 +1272,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1200
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1200
      * @tc.desc      : HTML one data is 4M
      * @tc.size      : MediumTest
@@ -1326,7 +1326,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1250
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1250
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1250
      * @tc.desc      : HTML one data is over 4M
      * @tc.size      : MediumTest
@@ -1380,7 +1380,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1300
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1300
      * @tc.desc      : HTML one data is in 4M
      * @tc.size      : MediumTest
@@ -1434,7 +1434,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1350
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1350
      * @tc.desc      : SystemDefinedRecord one data is  2M
      * @tc.size      : MediumTest
@@ -1495,7 +1495,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1400
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1400
      * @tc.desc      : SystemDefinedRecord one data is  over 2M
      * @tc.size      : MediumTest
@@ -1556,7 +1556,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1450
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1450
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1450
      * @tc.desc      : SystemDefinedRecord one data is in 2M
      * @tc.size      : MediumTest
@@ -1617,7 +1617,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1500
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1500
      * @tc.desc      : SystemDefinedRecord one data is 4M
      * @tc.size      : MediumTest
@@ -1678,7 +1678,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1550
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1550
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1550
      * @tc.desc      : SystemDefinedRecord one data is over 4M
      * @tc.size      : MediumTest
@@ -1739,7 +1739,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1600
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1600
      * @tc.desc      : SystemDefinedRecord one data is in 4M
      * @tc.size      : MediumTest
@@ -1800,7 +1800,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1650
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1650
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1650
      * @tc.desc      : SystemDefinedForm one data is 2M
      * @tc.size      : MediumTest
@@ -1854,7 +1854,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1700
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1700
      * @tc.desc      : SystemDefinedForm one data over 2M
      * @tc.size      : MediumTest
@@ -1908,7 +1908,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1750
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1750
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1750
      * @tc.desc      : SystemDefinedForm one data in 2M
      * @tc.size      : MediumTest
@@ -1962,7 +1962,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1800
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1800
      * @tc.desc      : SystemDefinedForm one data is 4M
      * @tc.size      : MediumTest
@@ -2016,7 +2016,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1850
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1850
      * @tc.desc      : SystemDefinedForm one data is over 4M
      * @tc.size      : MediumTest
@@ -2070,7 +2070,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1900
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1900
      * @tc.desc      : SystemDefinedForm one data is in 4M
      * @tc.size      : MediumTest
@@ -2124,7 +2124,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1950
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest1950
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1950
      * @tc.desc      : SystemDefinedAppItem one data is 2M
      * @tc.size      : MediumTest
@@ -2178,7 +2178,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2000
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2000
      * @tc.desc      : SystemDefinedAppItem one data is over 2M
      * @tc.size      : MediumTest
@@ -2232,7 +2232,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2050
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2050
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2050
      * @tc.desc      : SystemDefinedAppItem one data is in 2M
      * @tc.size      : MediumTest
@@ -2286,7 +2286,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2100
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2100
      * @tc.desc      : SystemDefinedAppItem one data is 4M
      * @tc.size      : MediumTest
@@ -2340,7 +2340,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2150
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2150
      * @tc.desc      : SystemDefinedAppItem one data is over 4M
      * @tc.size      : MediumTest
@@ -2394,7 +2394,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2200
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2200
      * @tc.desc      : SystemDefinedAppItem one data is in 4M
      * @tc.size      : MediumTest
@@ -2449,7 +2449,7 @@ export default function UDMFDragBigDataJsApiTest() {
 
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2250
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2250
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2250
      * @tc.desc      : Folder one data is 2M
      * @tc.size      : MediumTest
@@ -2503,7 +2503,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2300
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2300
      * @tc.desc      : Folder one data is over 2M
      * @tc.size      : MediumTest
@@ -2557,7 +2557,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2350
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2350
      * @tc.desc      : Folder one data is in 2M
      * @tc.size      : MediumTest
@@ -2611,7 +2611,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2400
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2400
      * @tc.desc      : Folder one data is 4M
      * @tc.size      : MediumTest
@@ -2665,7 +2665,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2450
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2450
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2450
      * @tc.desc      : Folder one data is over 4M
      * @tc.size      : MediumTest
@@ -2719,7 +2719,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2500
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2500
      * @tc.desc      : Folder one data is in 4M
      * @tc.size      : MediumTest
@@ -2773,7 +2773,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2550
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2550
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2550
      * @tc.desc      : File one data is 2M
      * @tc.size      : MediumTest
@@ -2827,7 +2827,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2600
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2600
      * @tc.desc      : File one data is over 2M
      * @tc.size      : MediumTest
@@ -2881,7 +2881,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2650
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2650
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2650
      * @tc.desc      : File one data is in 2M
      * @tc.size      : MediumTest
@@ -2935,7 +2935,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2700
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2700
      * @tc.desc      : File one data is 4M
      * @tc.size      : MediumTest
@@ -2989,7 +2989,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2750
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2750
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2750
      * @tc.desc      : File one data is over 4M
      * @tc.size      : MediumTest
@@ -3043,7 +3043,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2800
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2800
      * @tc.desc      : File one data is in 4M
      * @tc.size      : MediumTest
@@ -3098,7 +3098,7 @@ export default function UDMFDragBigDataJsApiTest() {
 
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2850
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2850
      * @tc.desc      : Image one data is 2M
      * @tc.size      : MediumTest
@@ -3152,7 +3152,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2900
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2900
      * @tc.desc      : Image one data is over 2M
      * @tc.size      : MediumTest
@@ -3206,7 +3206,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2950
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest2950
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2950
      * @tc.desc      : Image one data is in 2M
      * @tc.size      : MediumTest
@@ -3260,7 +3260,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3000
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3000
      * @tc.desc      : Image one data is 4M
      * @tc.size      : MediumTest
@@ -3314,7 +3314,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3050
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3050
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3050
      * @tc.desc      : Image one data is over 4M
      * @tc.size      : MediumTest
@@ -3368,7 +3368,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3100
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3100
      * @tc.desc      : Image one data is in 4M
      * @tc.size      : MediumTest
@@ -3422,7 +3422,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3150
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3150
      * @tc.desc      : Video one data is 2M
      * @tc.size      : MediumTest
@@ -3476,7 +3476,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3200
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3200
      * @tc.desc      : Video one data is over 2M
      * @tc.size      : MediumTest
@@ -3530,7 +3530,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3250
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3250
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3250
      * @tc.desc      : Video one data is in 2M
      * @tc.size      : MediumTest
@@ -3584,7 +3584,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3300
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3300
      * @tc.desc      : Video one data is 4M
      * @tc.size      : MediumTest
@@ -3638,7 +3638,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3350
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3350
      * @tc.desc      : Video one data is over 4M
      * @tc.size      : MediumTest
@@ -3692,7 +3692,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3400
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3400
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3400
      * @tc.desc      : Video one data is in 4M
      * @tc.size      : MediumTest
@@ -3746,7 +3746,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3450
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3450
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3450
      * @tc.desc      : Audio one data is 2M
      * @tc.size      : MediumTest
@@ -3800,7 +3800,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3500
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3500
      * @tc.desc      : Audio one data is over 2M
      * @tc.size      : MediumTest
@@ -3854,7 +3854,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3550
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3550
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3550
      * @tc.desc      : Audio one data is in 2M
      * @tc.size      : MediumTest
@@ -3908,7 +3908,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3600
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3600
      * @tc.desc      : Audio one data is 4M
      * @tc.size      : MediumTest
@@ -3962,7 +3962,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3650
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3650
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3650
      * @tc.desc      : Audio one data is  over 4M
      * @tc.size      : MediumTest
@@ -4016,7 +4016,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3700
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3700
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3700
      * @tc.desc      : Audio one data is  in 4M
      * @tc.size      : MediumTest
@@ -4070,7 +4070,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3750
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3750
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3750
      * @tc.desc      : SystemDefinedPixelMap one data is 2M
      * @tc.size      : MediumTest
@@ -4134,7 +4134,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3800
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3800
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3800
      * @tc.desc      : SystemDefinedPixelMap one data is over 2M
      * @tc.size      : MediumTest
@@ -4198,7 +4198,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3850
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3850
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3850
      * @tc.desc      : SystemDefinedPixelMap one data is in 2M
      * @tc.size      : MediumTest
@@ -4254,7 +4254,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3900
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3900
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3900
      * @tc.desc      : SystemDefinedPixelMap one data is 4M
      * @tc.size      : MediumTest
@@ -4319,7 +4319,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3950
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest3950
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3950
      * @tc.desc      : SystemDefinedPixelMap one data is over 4M
      * @tc.size      : MediumTest
@@ -4383,7 +4383,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4000
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4000
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4000
      * @tc.desc      : SystemDefinedPixelMap one data is in 4M
      * @tc.size      : MediumTest
@@ -4439,7 +4439,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4050
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4050
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4050
      * @tc.desc      : ApplicationDefinedRecord one data is 2M
      * @tc.size      : MediumTest
@@ -4497,7 +4497,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4150
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4150
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4150
      * @tc.desc      : ApplicationDefinedRecord one data is over 2M
      * @tc.size      : MediumTest
@@ -4555,7 +4555,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4200
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4200
      * @tc.desc      : ApplicationDefinedRecord one data is in 2M
      * @tc.size      : MediumTest
@@ -4611,7 +4611,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4250
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4250
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4250
      * @tc.desc      : ApplicationDefinedRecord one data is 4M
      * @tc.size      : MediumTest
@@ -4669,7 +4669,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4300
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4300
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4300
      * @tc.desc      : ApplicationDefinedRecord one data is over 4M
      * @tc.size      : MediumTest
@@ -4727,7 +4727,7 @@ export default function UDMFDragBigDataJsApiTest() {
     });
 
     /**
-     * @tc.name      : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4350
+     * @tc.name      : testSUBDistributedDataUDMFSDKDragBigDataJsApiTest4350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4350
      * @tc.desc      : pplicationDefinedRecord one data is in 4M
      * @tc.size      : MediumTest
