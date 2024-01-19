@@ -68,18 +68,9 @@ struct WebOnInterceptKeyEvent {
                 await Utils.sleep(1000)
                 await Utils.clickComponent('WebOnInterceptKeyEventWebView')
                 await Utils.sleep(1000)
-                await Utils.triggerKey(2017)
+                await Utils.triggerKey(2047)
                 await Utils.sleep(1000)
-                this.controller.runJavaScript("getEditText()", (error, result) => {
-                  if (error) {
-                    console.info('getEditText() return error: ' + error)
-                  }
-                  if (result) {
-                    console.info('getEditText() return result: ' + result)
-                    Utils.emitEvent(this.onInterceptKeyEventCode, 70422)
-                    Utils.emitEvent(result, 70423)
-                  }
-                })
+                Utils.emitEvent(this.onInterceptKeyEventCode, 70422)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -92,18 +83,9 @@ struct WebOnInterceptKeyEvent {
                 await Utils.sleep(1000)
                 await Utils.clickComponent('WebOnInterceptKeyEventWebView')
                 await Utils.sleep(1000)
-                await Utils.triggerKey(2017)
+                await Utils.triggerKey(2047)
                 await Utils.sleep(1000)
-                this.controller.runJavaScript("getEditText()", (error, result) => {
-                  if (error) {
-                    console.info('getEditText() return error: ' + error)
-                  }
-                  if (result) {
-                    console.info('getEditText() return result: ' + result)
-                    Utils.emitEvent(this.onInterceptKeyEventCode, 70425)
-                    Utils.emitEvent(result, 70426)
-                  }
-                })
+                Utils.emitEvent(this.onInterceptKeyEventCode, 70425)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
