@@ -15,6 +15,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
@@ -27,6 +28,7 @@ export default function abilityTest() {
      */
     it('Acts_SelfAutoStartup_1200', 0, function (done) {
       console.info('====> Acts_SelfAutoStartup_1200 start');
+      expect(8).assertEqual(AbilityConstant.LaunchReason.AUTO_STARTUP);
       let AutoStartupInfo: common.AutoStartupInfo = {
         bundleName: 'com.acts.selfautostartup',
         abilityName: 'EntryAbility',
