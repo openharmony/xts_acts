@@ -5012,20 +5012,20 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_IsHardware001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsHardware001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_IsHardware()).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_AUDIODECODER_OH_AUDIODECODER_CREATEBYNAME_0100
-     * @tc.name       : testOhAudioDecoderCreateByName001
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETNAME_0100
+     * @tc.name       : testOhAvCapabilityGetName001
      * @tc.desc       : test OH_AVCapability_GetName
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetName001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetName001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_GetName()).assertEqual(0);
       done();
     });
@@ -5038,7 +5038,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetMaxSupportedInstances001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetMaxSupportedInstances001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_GetMaxSupportedInstances()).assertEqual(0);
       done();
     });
@@ -5051,7 +5051,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetEncoderBitrateRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderBitrateRange001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_GetEncoderBitrateRange()).assertEqual(0);
       done();
     });
@@ -5064,7 +5064,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_IsEncoderBitrateModeSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsEncoderBitrateModeSupported001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_IsEncoderBitrateModeSupported()).assertEqual(0);
       done();
     });
@@ -5077,7 +5077,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoWidthRangeForHeight001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthRangeForHeight001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_GetVideoWidthRangeForHeight()).assertEqual(0);
       done();
     });
@@ -5090,20 +5090,20 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoHeightRangeForWidth001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightRangeForWidth001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_GetVideoHeightRangeForWidth()).assertEqual(0);
       done();
     });
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_0100
-     * @tc.name       : estOhAvCapabilityAreProfileAndLevelSupported001
+     * @tc.name       : testOhAvCapabilityAreProfileAndLevelSupported001
      * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_AreProfileAndLevelSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityAreProfileAndLevelSupported001', 0, async (done: Function) => {
       expect(native.OH_AVCapability_AreProfileAndLevelSupported()).assertEqual(0);
       done();
     });
