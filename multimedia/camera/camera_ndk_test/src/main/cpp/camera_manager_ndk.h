@@ -38,7 +38,6 @@
 #include <vector>
 
 typedef enum CameraCallbackCode {
-    CameraManagerStatus = 0,
     CameraInputStatus = 1,
     Preview_OnFrameStart = 2,
     Preview_OnFrameEnd = 3,
@@ -54,6 +53,7 @@ typedef enum CameraCallbackCode {
     MetadataOutputError = 13,
     SessionOnFocusStateChange = 14,
     SessionOnError = 15,
+    CameraManagerStatus = 16,
     NoReceived = 10086,
 } CameraCallbackCode;
 
@@ -103,6 +103,7 @@ public:
     static CameraCallbackCode cameraCallbackCode_;
 
     Camera_ErrorCode CreateCameraInput(void);
+    Camera_ErrorCode CreateCameraInputWithPositionAndType(Camera_Position position, Camera_Type type);
     Camera_ErrorCode CreateSession(void);
     Camera_ErrorCode CameraInputOpen(void);
     Camera_ErrorCode CameraInputClose(void);
@@ -124,7 +125,7 @@ public:
     Camera_ErrorCode SessionCommitConfig();
     Camera_ErrorCode SessionStart();
     Camera_ErrorCode SessionStop();
-    Camera_ErrorCode startVideo(char* videoId);
+    Camera_ErrorCode StartVideo(char* videoId);
     Camera_ErrorCode AddVideoOutput();
     Camera_ErrorCode VideoOutputStart();
 
@@ -178,7 +179,7 @@ public:
     Camera_ErrorCode SessionGetVideoStabilizationMode();
     Camera_ErrorCode SessionSetVideoStabilizationMode(uint32_t mode);
 
-    // callback
+    // RegisterCallback
     Camera_ErrorCode CameraManagerRegisterCallback(void);
     Camera_ErrorCode CameraInputRegisterCallback(void);
     Camera_ErrorCode PreviewOutputRegisterCallback(void);
@@ -186,6 +187,15 @@ public:
     Camera_ErrorCode VideoOutputRegisterCallback(void);
     Camera_ErrorCode MetadataOutputRegisterCallback(void);
     Camera_ErrorCode CaptureSessionRegisterCallback(void);
+
+    // UnRegisterCallback
+    Camera_ErrorCode CameraManagerUnRegisterCallback(void);
+    Camera_ErrorCode CameraInputUnRegisterCallback(void);
+    Camera_ErrorCode PreviewOutputUnRegisterCallback(void);
+    Camera_ErrorCode PhotoOutputUnRegisterCallback(void);
+    Camera_ErrorCode VideoOutputUnRegisterCallback(void);
+    Camera_ErrorCode MetadataOutputUnRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionUnRegisterCallback(void);
 
     // Get callback
     CameraManager_Callbacks* GetCameraManagerListener(void);

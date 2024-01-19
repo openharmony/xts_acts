@@ -40,7 +40,7 @@ NDKCamera::NDKCamera(char* str)
     if (cameraManager_ == nullptr || ret != CAMERA_OK) {
         LOG("ndkXTS Get CameraManager failed.");
     }
-
+    CameraManagerRegisterCallback();
     valid_ = true;
 }
 
@@ -60,6 +60,7 @@ NDKCamera::~NDKCamera() {
     PreviewOutputStop();
     PreviewOutputRelease();
     PhotoOutputRelease();
+    CameraManagerUnRegisterCallback();
 }
 
 Camera_ErrorCode NDKCamera::CreateSession(void)
@@ -71,6 +72,7 @@ Camera_ErrorCode NDKCamera::CreateSession(void)
     if (captureSession_ == nullptr || ret != CAMERA_OK) {
         LOG("ndkXTS Create captureSession failed.");
     }
+    CaptureSessionRegisterCallback();
     return ret;
 }
 
@@ -202,6 +204,7 @@ Camera_ErrorCode NDKCamera::CreateCameraInput(void) {
         LOG("ndkXTS CreateCameraInput failed = %d. cameraInput_ = %p", ret_, cameraInput_);
         return CAMERA_INVALID_ARGUMENT;
     }
+    CameraInputRegisterCallback();
     LOG("ndkXTS CreateCameraInput end.");
     return ret_;
 }
@@ -225,6 +228,11 @@ Camera_ErrorCode NDKCamera::CameraInputClose(void) {
 }
 
 Camera_ErrorCode NDKCamera::CameraInputRelease(void) {
+    ret_ = CameraInputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+      LOG("ndkXTS CameraInputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_CameraInput_Release(cameraInput_);
     if (ret_ != CAMERA_OK) {
       LOG("ndkXTS CameraInput_Release failed.");
@@ -267,6 +275,7 @@ Camera_ErrorCode NDKCamera::CreatePreviewOutput(void) {
         LOG("ndkXTS CreatePreviewOutput failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
+    PreviewOutputRegisterCallback();
     return ret_;
 }
 
@@ -353,6 +362,11 @@ Camera_ErrorCode NDKCamera::PreviewOutputStop(void) {
 }
 
 Camera_ErrorCode NDKCamera::PreviewOutputRelease(void) {
+    ret_ = PreviewOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS PreviewOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_PreviewOutput_Release(previewOutput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS PreviewOutputRelease failed.");
@@ -362,6 +376,11 @@ Camera_ErrorCode NDKCamera::PreviewOutputRelease(void) {
 }
 
 Camera_ErrorCode NDKCamera::PhotoOutputRelease(void) {
+    ret_ = PhotoOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS PhotoOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_PhotoOutput_Release(photoOutput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS PhotoOutputRelease failed.");
@@ -370,7 +389,7 @@ Camera_ErrorCode NDKCamera::PhotoOutputRelease(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::startVideo(char* videoId){
+Camera_ErrorCode NDKCamera::StartVideo(char* videoId){
     LOG("ndkXTS startVideo begin.");
 
     Camera_ErrorCode ret = SessionStop();
@@ -401,6 +420,7 @@ Camera_ErrorCode NDKCamera::VideoOutputStart(){
     } else {
         LOG("ndkXTS OH_VideoOutput_Start failed. %d ", ret);
     }
+    VideoOutputRegisterCallback();
     return ret;
 }
 
@@ -463,6 +483,11 @@ Camera_ErrorCode NDKCamera::VideoOutputStop(){
 
 Camera_ErrorCode NDKCamera::VideoOutputRelease(){
     LOG("ndkXTS VideoOutputRelease begin.");
+    ret_ = VideoOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS VideoOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     Camera_ErrorCode ret = OH_VideoOutput_Release(videoOutput_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_VideoOutput_Release success.");
@@ -480,6 +505,11 @@ Camera_ErrorCode NDKCamera::MetadataOutputStart(){
     } else {
         LOG("ndkXTS OH_MetadataOutput_Start failed. %d ", ret);
     }
+    ret = MetadataOutputRegisterCallback();
+    if (ret != CAMERA_OK) {
+        LOG("ndkXTS MetadataOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     return ret;
 }
 
@@ -490,6 +520,11 @@ Camera_ErrorCode NDKCamera::MetadataOutputStop(){
         LOG("ndkXTS OH_MetadataOutput_Stop success.");
     } else {
         LOG("ndkXTS OH_MetadataOutput_Stop failed. %d ", ret);
+    }
+    ret = MetadataOutputUnRegisterCallback();
+    if (ret != CAMERA_OK) {
+        LOG("ndkXTS MetadataOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
     }
     return ret;
 }
@@ -617,6 +652,11 @@ Camera_ErrorCode NDKCamera::SessionRemoveMetadataOutput(){
 
 Camera_ErrorCode NDKCamera::SessionRelease(){
     LOG("SessionRelease begin.");
+    ret_ = CaptureSessionUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS CaptureSessionUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     Camera_ErrorCode ret = OH_CaptureSession_Release(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("OH_CaptureSession_Release success.");
@@ -919,6 +959,15 @@ Camera_ErrorCode NDKCamera::CameraManagerRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::CameraManagerUnRegisterCallback(void)
+{
+    ret_ = OH_CameraManager_UnregisterCallback(cameraManager_, GetCameraManagerListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CameraManager_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // CameraInput Callback
 void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
 {
@@ -939,6 +988,15 @@ Camera_ErrorCode NDKCamera::CameraInputRegisterCallback(void)
     ret_ = OH_CameraInput_RegisterCallback(cameraInput_, GetCameraInputListener());
     if (ret_ != CAMERA_OK) {
         LOG("OH_CameraInput_RegisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CameraInputUnRegisterCallback(void)
+{
+    ret_ = OH_CameraInput_UnregisterCallback(cameraInput_, GetCameraInputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CameraInput_UnregisterCallback failed.");
     }
     return ret_;
 }
@@ -977,6 +1035,15 @@ Camera_ErrorCode NDKCamera::PreviewOutputRegisterCallback(void)
     ret_ = OH_PreviewOutput_RegisterCallback(previewOutput_, GetPreviewOutputListener());
     if (ret_ != CAMERA_OK) {
         LOG("OH_PreviewOutput_RegisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(void)
+{
+    ret_ = OH_PreviewOutput_UnregisterCallback(previewOutput_, GetPreviewOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PreviewOutput_UnregisterCallback failed.");
     }
     return ret_;
 }
@@ -1026,6 +1093,15 @@ Camera_ErrorCode NDKCamera::PhotoOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterCallback(void)
+{
+    ret_ = OH_PhotoOutput_UnregisterCallback(photoOutput_, GetPhotoOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // VideoOutput Callback
 void VideoOutputOnFrameStart(Camera_VideoOutput* videoOutput)
 {
@@ -1064,6 +1140,15 @@ Camera_ErrorCode NDKCamera::VideoOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::VideoOutputUnRegisterCallback(void)
+{
+    ret_ = OH_VideoOutput_UnregisterCallback(videoOutput_, GetVideoOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_VideoOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // Metadata Callback
 void OnMetadataObjectAvailable(Camera_MetadataOutput* metadataOutput,
     Camera_MetadataObject* metadataObject, uint32_t size)
@@ -1096,10 +1181,19 @@ Camera_ErrorCode NDKCamera::MetadataOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::MetadataOutputUnRegisterCallback(void)
+{
+    ret_ = OH_MetadataOutput_UnregisterCallback(metadataOutput_, GetMetadataOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_MetadataOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // Session Callback
 void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
 {
-     NDKCamera::cameraCallbackCode_ = SessionOnFocusStateChange;
+    NDKCamera::cameraCallbackCode_ = SessionOnFocusStateChange;
     LOG("CaptureSessionOnFocusStateChange");
 }
 
@@ -1124,5 +1218,29 @@ Camera_ErrorCode NDKCamera::CaptureSessionRegisterCallback(void)
     if (ret_ != CAMERA_OK) {
         LOG("OH_CaptureSession_RegisterCallback failed.");
     }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CaptureSessionUnRegisterCallback(void)
+{
+    ret_ = OH_CaptureSession_UnregisterCallback(captureSession_, GetCaptureSessionRegister());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CaptureSession_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CreateCameraInputWithPositionAndType(Camera_Position position, Camera_Type type)
+{
+    LOG("ndkXTS CreateCameraInputWithPositionAndType start.");
+    if (cameraManager_ == nullptr) {
+        LOG("ndkXTS cameraManager_ is NULL.");
+    }
+    ret_ = OH_CameraManager_CreateCameraInput_WithPositionAndType(cameraManager_, position, type, &cameraInput_);
+    if (cameraInput_ == nullptr || ret_ != CAMERA_OK) {
+        LOG("ndkXTS CreateCameraInputWithPositionAndType failed = %d. cameraInput_ = %p", ret_, cameraInput_);
+        return CAMERA_INVALID_ARGUMENT;
+    }
+    LOG("ndkXTS CreateCameraInputWithPositionAndType end.");
     return ret_;
 }

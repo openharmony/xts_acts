@@ -515,6 +515,22 @@ export default function cameraJSUnitOutput() {
       }
     });
     /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100
+     * @tc.name      : unregister callback stop promise api
+     * @tc.desc      : unregister callback promise api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100', 1, async () => {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100--------------");
+      let ret = cameraObj.videoOutputRelease();
+      if (ret) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100 fail");
+        expect().assertFail();
+      }
+    });
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100
      * @tc.name      : preview output callback on frameStart api
      * @tc.desc      : preview output callback on frameStart api
@@ -567,6 +583,25 @@ export default function cameraJSUnitOutput() {
       }
       cameraObj.previewOutputStart();
       cameraObj.previewOutputStop();
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100
+     * @tc.name      : preview output callback api
+     * @tc.desc      : preview output callback api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100', 1, async () => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100--------------");
+      let ret = cameraObj.createPreviewOutput();
+      if (ret) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100 fail");
+        expect().assertFail();
+      }
+      cameraObj.previewOutputStart();
+      cameraObj.previewOutputStop();
+      cameraObj.previewOutputRelease();
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100
@@ -693,8 +728,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_RELEASE_CALLBACK_0100
-     * @tc.name      : Create previewOutput instance async api
-     * @tc.desc      : Create previewOutput instance async api
+     * @tc.name      : PhotoOutputRelease instance async api
+     * @tc.desc      : PhotoOutputRelease instance async api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
