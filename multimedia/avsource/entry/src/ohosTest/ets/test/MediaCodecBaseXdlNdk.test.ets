@@ -1987,7 +1987,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetEncoderQualityRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderQualityRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetEncoderQualityRange()).assertEqual(0);
       done();
     });
@@ -2000,7 +2000,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetEncoderComplexityRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderComplexityRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetEncoderComplexityRange()).assertEqual(0);
       done();
     });
@@ -2013,7 +2013,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetAudioSupportedSampleRates001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetAudioSupportedSampleRates001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioSupportedSampleRates()).assertEqual(0);
       done();
     });
@@ -2026,7 +2026,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetAudioChannelCountRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetAudioChannelCountRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioChannelCountRange()).assertEqual(0);
       done();
     });
@@ -2039,7 +2039,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoWidthAlignment001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthAlignment001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthAlignment()).assertEqual(0);
       done();
     });
@@ -2052,20 +2052,20 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoHeightAlignment001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightAlignment()).assertEqual(0);
       done();
     });
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_AVCAPABILITY_OH_AVCODEC_GETCAPABILITY_0100
-     * @tc.name       : testAvCodecAvCapabilityOhAvCodecGetCapability001
+     * @tc.name       : testOhAvCodecGetCapability001
      * @tc.desc       : test OH_AVCodec_GetCapability
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCodec_GetCapability001', 0, async (done: Function) => {
+    it('testOhAvCodecGetCapability001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCodec_GetCapability()).assertEqual(0);
       done();
     });
@@ -2078,7 +2078,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCodec_GetCapabilityByCategory001', 0, async (done: Function) => {
+    it('testOhAvCodecGetCapabilityByCategory001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCodec_GetCapabilityByCategory()).assertEqual(0);
       done();
     });
@@ -2091,7 +2091,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoWidthRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthRange()).assertEqual(0);
       done();
     });
@@ -2104,7 +2104,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoHeightRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightRange()).assertEqual(0);
       done();
     });
@@ -2117,7 +2117,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_IsVideoSizeSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsVideoSizeSupported001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_IsVideoSizeSupported()).assertEqual(0);
       done();
     });
@@ -2130,7 +2130,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoFrameRateRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoFrameRateRange001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRange()).assertEqual(0);
       done();
     });
@@ -2143,7 +2143,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoFrameRateRangeForSize001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoFrameRateRangeForSize001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRangeForSize()).assertEqual(0);
       done();
     });
@@ -2156,7 +2156,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_AreVideoSizeAndFrameRateSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityAreVideoSizeAndFrameRateSupported001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_AreVideoSizeAndFrameRateSupported()).assertEqual(0);
       done();
     });
@@ -2169,7 +2169,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetVideoSupportedPixelFormats001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoSupportedPixelFormats001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetVideoSupportedPixelFormats()).assertEqual(0);
       done();
     });
@@ -2182,7 +2182,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetSupportedProfiles001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetSupportedProfiles001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetSupportedProfiles()).assertEqual(0);
       done();
     });
@@ -2195,7 +2195,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOH_AVCapability_GetSupportedLevelsForProfile001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetSupportedLevelsForProfile001', 0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetSupportedLevelsForProfile()).assertEqual(0);
       done();
     });
