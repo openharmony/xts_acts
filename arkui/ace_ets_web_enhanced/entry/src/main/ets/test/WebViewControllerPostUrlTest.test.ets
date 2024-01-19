@@ -88,7 +88,7 @@ export default function webViewControllerPostUrlTest() {
     it('testWebViewControllerPostUrl003', 0, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebViewControllerPostUrl003", 'http://data/storage/el2/base/files/index.html', 4003, done);
+      Utils.registerEvent("testWebViewControllerPostUrl003", 'file:///data/storage/el2/base/files/index.html', 4003, done);
       sendEventByKey('WebViewControllerPostUrlTestButton', 10, '');
     })
 
@@ -133,7 +133,7 @@ export default function webViewControllerPostUrlTest() {
     it('testWebViewControllerPostUrl006', 0, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl006", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebViewControllerPostUrl006", 'http://data/storage/el2/base/files/index.html', 4006, done);
+      Utils.registerEvent("testWebViewControllerPostUrl006", 'file:///data/storage/el2/base/files/index.html', 4006, done);
       sendEventByKey('WebViewControllerPostUrlTestButton', 10, '');
     })
 
