@@ -1356,5 +1356,43 @@ export default function settingUiJsunit() {
           return;
         }
     });
+
+    it('settings_register_Key_Observer_123', 0, 0, (done:function) => {
+      let name = 'settings.screen.brightness123';//关键字
+      let domainName = settings.domainName.DEVICE_SHARED;
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+        let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
+        done();
+        })
+    }catch(err:BusinessError){
+          console.info("[settings_register_Key_Observer_123] error is:" + toString(error));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+
+      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
+    });
+
+    it('settings_register_Key_Observer_124', 0, 0, (done:function) => {
+      let name = 'settings.screen.brightness124';//关键字
+      let domainName = settings.domainName.USER_PROPERTY;
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+        let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
+        done();
+        })
+    }catch(err:BusinessError){
+          console.info("[settings_register_Key_Observer_124] error is:" + toString(error));
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+
+      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
+    });
   })
 }
