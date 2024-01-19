@@ -23,9 +23,7 @@
 #define LOG(fmt, ...)           \
         (void)printf(fmt, ##__VA_ARGS__);           \
 
-NDKCamera* NDKCamera::ndkCamera_ = nullptr;
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
-std::mutex NDKCamera::mtx_;
 
 NDKCamera::NDKCamera(char* str)
     : cameras_(nullptr), cameraOutputCapability_(nullptr),

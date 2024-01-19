@@ -61,22 +61,6 @@ class NDKCamera {
 public:
     ~NDKCamera(void);
     NDKCamera(char *str);
-    static NDKCamera* GetInstance(char *str) {
-        if (ndkCamera_ == nullptr) {
-            std::lock_guard<std::mutex> lock(mtx_);
-            if (ndkCamera_ == nullptr) {
-                ndkCamera_ = new NDKCamera(str);
-            }
-        }
-        return ndkCamera_;
-    }
-
-    static void Destroy(void) {
-        if (ndkCamera_ != nullptr) {
-            delete ndkCamera_;
-            ndkCamera_ = nullptr;
-        }
-    }
 
     bool IsMirror_;
     bool HasFlash_;
@@ -222,8 +206,6 @@ private:
     Camera_MetadataOutput* metadataOutput_;
     Camera_Input* cameraInput_;
     bool* isCameraMuted_;
-    // Camera_Position position_;
-    // Camera_Type type_;
     char* previewSurfaceId_;
     Camera_ErrorCode ret_;
     float step_;

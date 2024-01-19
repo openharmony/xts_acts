@@ -101,7 +101,7 @@ static Camera_Position GetPosition(int position)
     switch (position) {
         case 1:
             return Camera_Position::CAMERA_POSITION_BACK;
-        case 2:
+        case 2: // 2:Camera_Position::CAMERA_POSITION_FRONT
             return Camera_Position::CAMERA_POSITION_FRONT;
         default:
             return Camera_Position::CAMERA_POSITION_UNSPECIFIED;
@@ -113,11 +113,11 @@ static Camera_Type GetType(int type)
     switch (type) {
         case 1:
             return Camera_Type::CAMERA_TYPE_WIDE_ANGLE;
-        case 2:
+        case 2: // 2:Camera_Type::CAMERA_TYPE_ULTRA_WIDE
             return Camera_Type::CAMERA_TYPE_ULTRA_WIDE;
-        case 3:
+        case 3: // 3:Camera_Type::CAMERA_TYPE_TELEPHOTO
             return Camera_Type::CAMERA_TYPE_TELEPHOTO;
-        case 4:
+        case 4: // 4:Camera_Type::CAMERA_TYPE_TRUE_DEPTH
             return Camera_Type::CAMERA_TYPE_TRUE_DEPTH;
         default:
             return Camera_Type::CAMERA_TYPE_DEFAULT;
